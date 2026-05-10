@@ -262,6 +262,110 @@ def write_index(name_by_ticker: dict[str, dict], output_dir: Path) -> None:
     )
 
 
+# ── 리포트 집계 ─────────────────────────────────────────
+
+def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
+    """모든 ticker 인덱스 → 리포트용 사전 집계 1개 파일.
+
+    위젯:
+      sector_top         — 섹터별 +15% 누적 TOP 10 (count·avg_rate·tickers)
+      limit_up_top       — 상한가 종목 TOP 20 (count_limit desc)
+      high_52w_top       — 52주 신고가 빈번 종목 TOP 20
+      recent_30d_top     — 최근 30일 핫 종목 TOP 20 (count_recent)
+      frequent_top       — 1년 +15% 자주 친 종목 TOP 50
+      reason_top         — 상승 이유 카테고리 분포 TOP 20 (filled 만)
+    """
+    print('  build_report_summary ...')
+    files = [f for f in sorted(stock_history_dir.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+    print(f'    인덱스 파일 {len(files)} 개 집계')
+
+    sector_acc: dict[str, dict] = {}      # sector → {count, sum_rate, tickers_set}
+    reason_acc: dict[str, int] = {}       # rise_reason → count
+    limit_up: list[dict] = []             # {ticker, name, count}
+    high_52w: list[dict] = []
+    recent_30d: list[dict] = []
+    frequent: list[dict] = []
+    total_events_15 = 0
+
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        ticker = h.get('ticker') or ''
+        name = h.get('name') or ticker
+        events = h.get('events') or []
+        stats = h.get('stats') or {}
+
+        # 종목별 카운트 위젯
+        c15 = stats.get('count_15', 0)
+        c_limit = stats.get('count_limit', 0)
+        c_recent = stats.get('count_recent', 0)
+        if c_limit > 0:
+            limit_up.append({'ticker': ticker, 'name': name, 'count': c_limit})
+        if c_recent > 0:
+            recent_30d.append({'ticker': ticker, 'name': name, 'count': c_recent})
+        if c15 > 0:
+            frequent.append({'ticker': ticker, 'name': name, 'count': c15})
+            total_events_15 += c15
+
+        # 52주 신고가 — events 의 is_52w_high True 카운트
+        h52 = sum(1 for e in events if e.get('is_52w_high'))
+        if h52 > 0:
+            high_52w.append({'ticker': ticker, 'name': name, 'count': h52})
+
+        # 섹터 집계 — events 중 +15% 이상 만
+        for e in events:
+            if (e.get('change_rate') or 0) < 15:
+                continue
+            sec = (e.get('sector') or '').strip()
+            if sec:
+                rec = sector_acc.setdefault(sec, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
+                rec['count'] += 1
+                rec['sum_rate'] += float(e.get('change_rate') or 0)
+                rec['tickers'].add(ticker)
+            # 이유 카테고리 — filled 만
+            if e.get('reason_status') == 'filled':
+                lbl = (e.get('rise_reason') or '').strip()
+                if lbl and lbl not in ('-', '상한가 — 사유 미수집'):
+                    reason_acc[lbl] = reason_acc.get(lbl, 0) + 1
+
+    # 정렬·TOP N
+    sector_top = sorted(
+        ({'sector': s, 'count': r['count'],
+          'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
+          'tickers': len(r['tickers'])}
+         for s, r in sector_acc.items()),
+        key=lambda x: -x['count'],
+    )[:10]
+    limit_up.sort(key=lambda x: -x['count'])
+    high_52w.sort(key=lambda x: -x['count'])
+    recent_30d.sort(key=lambda x: -x['count'])
+    frequent.sort(key=lambda x: -x['count'])
+    reason_top = sorted(
+        ({'reason': k, 'count': v} for k, v in reason_acc.items()),
+        key=lambda x: -x['count'],
+    )[:20]
+
+    summary = {
+        'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+        'total_tickers': len(files),
+        'total_events_15': total_events_15,
+        'sector_top': sector_top,
+        'limit_up_top': limit_up[:20],
+        'high_52w_top': high_52w[:20],
+        'recent_30d_top': recent_30d[:20],
+        'frequent_top': frequent[:50],
+        'reason_top': reason_top,
+    }
+    output_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2),
+                           encoding='utf-8')
+    print(f'    -> {output_path.name}: 섹터 {len(sector_top)} / 상한가 {min(20, len(limit_up))} '
+          f'/ 신고가 {min(20, len(high_52w))} / 최근30일 {min(20, len(recent_30d))} '
+          f'/ 자주오름 {min(50, len(frequent))} / 이유 {len(reason_top)}')
+
+
 # ── 진입점 ─────────────────────────────────────────────
 
 def build_full(args) -> int:
@@ -360,6 +464,7 @@ def build_full(args) -> int:
         success += 1
 
     write_index(index_meta, output_dir)
+    build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     elapsed = time.time() - t_start
     print(f'== 완료: {success}/{total} 종목, skip {skipped}, elapsed {elapsed:.0f}s ==')
     return 0
@@ -425,6 +530,7 @@ def build_estimate_only(args) -> int:
         if processed % 20 == 0:
             print(f'  processed {processed}, updated {updated}')
     print(f'== estimate 완료: {updated}/{processed} ticker 갱신 ==')
+    build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     return 0
 
 

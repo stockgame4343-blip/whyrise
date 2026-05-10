@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리포트 — 이거왜오름?</title>
-    <meta name="description" content="섹터별·테마별 급등 분석 리포트 (준비 중).">
+    <meta name="description" content="한국 주식 1년 급등 분석 — 섹터·테마별 누적 통계, 상한가 명예의 전당, 52주 신고가 빈번 종목.">
     <meta name="theme-color" content="#191919">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/whyrise.css">
 </head>
@@ -26,24 +27,71 @@
                 <a href="/report.html" class="top-bar__link top-bar__link--active">리포트</a>
                 <a href="/admin.html" class="top-bar__link">관리자</a>
             </nav>
+            <div class="top-bar__right">
+                <span class="top-bar__updated" id="lastUpdated"></span>
+                <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드 전환">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="frame" style="max-width:720px;margin:0 auto;padding:80px 24px;text-align:center;">
-        <h1 style="font-size:32px;margin-bottom:16px;">리포트</h1>
-        <p style="color:var(--text-secondary);font-size:15px;line-height:1.7;">
-            섹터·테마·52주 신고가 분석 리포트는 다음 phase 에서 추가됩니다.<br>
-            현재는 <a href="/" style="color:var(--orange);">홈</a>에서 오늘 +15% 이상 종목을,
-            <a href="/" style="color:var(--orange);">종목 검색</a>으로 과거 급등 히스토리를 확인할 수 있습니다.
-        </p>
+    <main class="frame report-page">
+        <header class="report-page__header">
+            <h1 class="report-page__title">1년 급등 분석</h1>
+            <p class="report-page__sub" id="reportSub">최근 1년간 +15% 이상 오른 사건의 누적 분포 — <strong id="totalTickers">-</strong>종목 / <strong id="totalEvents">-</strong>건</p>
+        </header>
+
+        <div class="loading" id="loading">집계 중...</div>
+        <div class="message" id="message" style="display:none;"></div>
+
+        <section class="report-grid" id="reportGrid" style="display:none;">
+            <div class="report-card">
+                <h2 class="report-card__title">섹터별 +15% TOP 10</h2>
+                <p class="report-card__desc">1년간 가장 자주 오른 섹터 — 평균 상승률·종목 수 함께 표시</p>
+                <ol class="report-list" id="sectorTop"></ol>
+            </div>
+            <div class="report-card">
+                <h2 class="report-card__title">상한가 명예의 전당 TOP 20</h2>
+                <p class="report-card__desc">1년간 +29.9% 이상 친 종목 누적 횟수</p>
+                <ol class="report-list" id="limitTop"></ol>
+            </div>
+            <div class="report-card">
+                <h2 class="report-card__title">52주 신고가 빈번 TOP 20</h2>
+                <p class="report-card__desc">1년 동안 신고가 갱신 횟수 누적</p>
+                <ol class="report-list" id="high52w"></ol>
+            </div>
+            <div class="report-card">
+                <h2 class="report-card__title">최근 30일 핫 종목</h2>
+                <p class="report-card__desc">최근 한 달간 +15% 이상 친 횟수 (실시간성)</p>
+                <ol class="report-list" id="recent30"></ol>
+            </div>
+            <div class="report-card report-card--wide">
+                <h2 class="report-card__title">자주 오르는 종목 TOP 50</h2>
+                <p class="report-card__desc">1년 누적 +15% 이상 횟수 — 변동성 큰 종목군</p>
+                <ol class="report-list report-list--two-col" id="frequentTop"></ol>
+            </div>
+            <div class="report-card report-card--wide">
+                <h2 class="report-card__title">상승 이유 카테고리 분포</h2>
+                <p class="report-card__desc">자동 추정된 이유 라벨 — 1년 누적</p>
+                <ol class="report-list" id="reasonTop"></ol>
+            </div>
+        </section>
     </main>
 
     <div class="footer">
         <footer class="footer__wrap">
             <div class="frame footer__inner">
+                <p class="footer__disclaimer">
+                    <strong>본 사이트는 유사투자자문업 신고를 하지 않았으며, 투자자문·종목 추천을 제공하지 않습니다.</strong>
+                    모든 통계는 과거 시장 데이터를 기계적으로 집계한 결과이며 미래 수익을 의미하지 않습니다.
+                </p>
                 <p class="footer__copy">&copy; 2026 이거왜오름? (WhyRise).</p>
             </div>
         </footer>
     </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/report.js"></script>
 </body>
 </html>

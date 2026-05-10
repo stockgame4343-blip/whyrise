@@ -1,11 +1,13 @@
 name: 종목 인덱스 빌드 (1년치)
 
-# 매일 KST 18:00 (UTC 09:00) 평일 — incremental
-# 매주 일요일 KST 06:00 (UTC 21:00 토) — full rebuild (안전망)
+# 평일 KST 09:10 (UTC 00:10) — 장 시작 직후 incremental (전일 마감 데이터 fresh)
+# 평일 KST 15:40 (UTC 06:40) — 장 마감 직후 incremental (당일 마감 반영)
+# 일요일 KST 06:00 (UTC 21:00 토) — full rebuild (안전망)
 # + workflow_dispatch (수동) + repository_dispatch (admin 편집 후)
 on:
   schedule:
-    - cron: '0 9 * * 1-5'      # 평일 incremental
+    - cron: '10 0 * * 1-5'      # 평일 KST 09:10 (장 시작 후) incremental
+    - cron: '40 6 * * 1-5'      # 평일 KST 15:40 (장 마감 후) incremental
     - cron: '0 21 * * 6'        # 일요일 KST 06:00 = 토요일 UTC 21:00 full
   workflow_dispatch:
     inputs:
@@ -66,11 +68,13 @@ jobs:
             MODE="$INPUT_MODE"
           elif [ "$EVENT" = "schedule" ]; then
             HOUR_UTC=$(date -u +%H)
+            MIN_UTC=$(date -u +%M)
             DOW=$(date -u +%u)   # 1=Mon ... 7=Sun
             # 토요일 21:00 UTC = 일요일 06:00 KST → full
             if [ "$HOUR_UTC" = "21" ] && [ "$DOW" = "6" ]; then
               MODE="full"
             else
+              # 평일 — 장초(09:10 KST = 00:10 UTC) 또는 장마감(15:40 KST = 06:40 UTC)
               MODE="incremental"
             fi
           elif [ "$EVENT" = "repository_dispatch" ]; then
