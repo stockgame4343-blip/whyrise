@@ -61,20 +61,14 @@
     </section>
 
     <div class="frame">
-        <!-- 컷오프 토글 + 날짜 네비 (항상 노출) -->
-        <nav class="toolbar">
-            <div class="toolbar__left cutoff-toggle" role="group" aria-label="상승률 컷오프">
-                <button class="tab cutoff-btn" data-cutoff="10">+10%</button>
-                <button class="tab cutoff-btn active" data-cutoff="15">+15%</button>
-                <button class="tab cutoff-btn" data-cutoff="20">+20%</button>
-                <button class="tab cutoff-btn" data-cutoff="29.9">상한가</button>
-            </div>
+        <!-- 날짜 네비 + 카운트 -->
+        <nav class="toolbar toolbar--simple">
             <div class="report__date-bar">
                 <button class="date-nav" id="datePrev">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
                 </button>
                 <span class="date-text" id="dateDisplay">-</span>
-                <span class="date-badge" id="dateBadge">오늘</span>
+                <span class="date-badge" id="dateBadge">최신</span>
                 <button class="date-nav" id="dateNext">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
@@ -88,9 +82,9 @@
         <div class="loading" id="loading" style="display:none;">데이터 로딩 중...</div>
 
         <div class="layout-split">
-            <!-- 메인: 오늘 컷 이상 종목 -->
+            <!-- 메인: 오늘 +15% 이상 종목 -->
             <main class="layout-main">
-                <div class="table-wrap">
+                <div class="table-wrap glass">
                     <table class="ranking-table whyrise-table" id="rankingTable">
                         <thead>
                             <tr>
@@ -98,7 +92,7 @@
                                 <th class="col-name">종목명</th>
                                 <th class="col-reason col-reason--hero">왜 오름?</th>
                                 <th class="col-change">상승률</th>
-                                <th class="col-volume">거래대금</th>
+                                <th class="col-cap">시가총액</th>
                                 <th class="col-sector">섹터</th>
                             </tr>
                         </thead>

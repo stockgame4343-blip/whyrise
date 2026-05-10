@@ -122,7 +122,7 @@ var WhyTable = (function () {
 
         if (!rankings || rankings.length === 0) {
             tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:60px;color:var(--text-muted);">' +
-                '오늘 컷오프 이상 오른 종목이 없습니다 — 컷을 낮춰보세요.</td></tr>';
+                '오늘 +15% 이상 오른 종목이 없습니다.</td></tr>';
             return;
         }
 
@@ -141,7 +141,7 @@ var WhyTable = (function () {
             if (isEdited) rowClasses.push('row--edited');
 
             html += '<tr' + (rowClasses.length ? ' class="' + rowClasses.join(' ') + '"' : '') + ' data-ticker="' + r.ticker + '">';
-            // # rank — change_rate 정렬 후 1-base 인덱스
+            // # rank
             html += '<td class="cell-rank">' + (r._displayRank != null ? r._displayRank : '') + '</td>';
             // 종목명
             html += '<td class="cell-name"><div class="cell-name__wrap">' +
@@ -150,21 +150,22 @@ var WhyTable = (function () {
                 '<span class="cell-name__market">' + r.market + '</span>' +
                 starRatingHtml(r.ticker, ratings) +
                 '</div></td>';
-            // 이유 (hero)
+            // 이유 (hero) — 태그·이유·편집 모두 한 줄에
             var rawTag = r.theme_tag || '';
             var displayTag = shortenTheme(rawTag);
             var reason = r.rise_reason || '-';
             var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + r.ticker +
-                '" data-date="' + date + '" title="이유 편집">✏️ 편집</button>';
+                '" data-date="' + date + '" title="이유 편집">✏️</button>';
             html += '<td class="cell-reason">' +
+                '<div class="cell-reason__inline">' +
                 (displayTag ? '<span class="theme-tag">' + displayTag + '</span>' : '') +
                 '<span class="cell-reason__text">' + reason + '</span>' +
                 editBtn +
-                '</td>';
+                '</div></td>';
             // 상승률
             html += '<td class="cell-change">' + formatChangeRate(r.change_rate) + '</td>';
-            // 거래대금
-            html += '<td class="cell-volume">' + formatAmount(r.trading_value) + '</td>';
+            // 시가총액
+            html += '<td class="cell-cap">' + formatAmount(r.market_cap) + '</td>';
             // 섹터
             html += '<td class="cell-sector">' + (r.sector || '-') + '</td>';
             html += '</tr>';

@@ -9,15 +9,14 @@
 var WhyApp = (function () {
 
     var STORAGE_KEY = 'whyrise-ratings';
-    var CUTOFF_KEY = 'whyrise-cutoff';
     var THEME_KEY = 'theme';
+    var CUTOFF = 15;   // 고정
 
     var state = {
         dates: [],
         currentDateIdx: 0,
         rankings: [],         // 원본 (필터 전)
         ratings: {},
-        cutoff: 15,
     };
 
     function loadRatings() {
@@ -28,16 +27,6 @@ var WhyApp = (function () {
     function saveRatings() {
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.ratings)); }
         catch (e) {}
-    }
-
-    function loadCutoff() {
-        var v = parseFloat(localStorage.getItem(CUTOFF_KEY) || '15');
-        if (!isFinite(v)) v = 15;
-        state.cutoff = v;
-    }
-
-    function saveCutoff() {
-        localStorage.setItem(CUTOFF_KEY, String(state.cutoff));
     }
 
     function formatDate(yyyymmdd) {
@@ -52,7 +41,7 @@ var WhyApp = (function () {
 
     function applyCutoffAndRender() {
         var filtered = (state.rankings || []).filter(function (r) {
-            return r.change_rate != null && r.change_rate >= state.cutoff;
+            return r.change_rate != null && r.change_rate >= CUTOFF;
         });
         // change_rate 내림차순 정렬, 1-base 랭킹 부여
         filtered.sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
@@ -62,7 +51,7 @@ var WhyApp = (function () {
         WhyTable.render(filtered, state.ratings, { date: date });
 
         var $cnt = document.getElementById('cutoffCount');
-        if ($cnt) $cnt.textContent = filtered.length + '개 종목';
+        if ($cnt) $cnt.textContent = '+15% 이상 ' + filtered.length + '개';
     }
 
     function loadDate(date) {
@@ -113,24 +102,6 @@ var WhyApp = (function () {
                 updateDateUI();
                 loadDate(state.dates[state.currentDateIdx]);
             }
-        });
-    }
-
-    function bindCutoffToggle() {
-        var btns = document.querySelectorAll('.cutoff-btn');
-        btns.forEach(function (b) {
-            b.addEventListener('click', function () {
-                var v = parseFloat(b.getAttribute('data-cutoff'));
-                if (!isFinite(v)) return;
-                state.cutoff = v;
-                saveCutoff();
-                btns.forEach(function (x) { x.classList.toggle('active', x === b); });
-                applyCutoffAndRender();
-            });
-        });
-        // 초기 활성 상태 반영
-        btns.forEach(function (b) {
-            b.classList.toggle('active', parseFloat(b.getAttribute('data-cutoff')) === state.cutoff);
         });
     }
 
@@ -305,9 +276,7 @@ var WhyApp = (function () {
 
     function init() {
         loadRatings();
-        loadCutoff();
         bindThemeToggle();
-        bindCutoffToggle();
         bindDateNav();
         bindRatingsEvents();
         bindMemoModal();
