@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 — 이거왜오름?</title>
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#191919">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/whyrise.css">
+</head>
+<body>
+    <script>
+    (function(){
+        var t = localStorage.getItem('theme') || 'dark';
+        if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+    })();
+    </script>
+
+    <header class="top-bar">
+        <div class="top-bar__inner frame">
+            <a class="top-bar__logo" href="/">이거왜오름?</a>
+            <nav class="top-bar__nav">
+                <a href="/" class="top-bar__link">홈</a>
+                <a href="/report.html" class="top-bar__link">리포트</a>
+                <a href="/admin.html" class="top-bar__link top-bar__link--active">관리자</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="frame admin-page">
+        <h1 class="admin-page__title">관리자 모드</h1>
+
+        <section class="admin-card" id="adminLogin">
+            <h2>인증</h2>
+            <p class="admin-card__desc">
+                MVP 단계 — 관리자 토큰을 입력해주세요. (Phase 3 OAuth 도입 후 자동 인증)
+            </p>
+            <form id="adminLoginForm">
+                <input type="password" id="adminTokenInput" placeholder="관리자 토큰" class="tag-input" autocomplete="off">
+                <button type="submit" class="memo-save">로그인</button>
+            </form>
+            <p class="admin-card__error" id="adminLoginError" style="display:none;"></p>
+        </section>
+
+        <section class="admin-card" id="adminPanel" style="display:none;">
+            <h2>인증 완료</h2>
+            <p class="admin-card__desc">
+                홈(/)이나 종목 페이지(/stock/...)로 가시면 각 행의 ✏️ 버튼으로 상승이유를 인라인 편집할 수 있습니다.
+            </p>
+            <p class="admin-card__desc">
+                편집 결과는 <code>public/data/overrides/{date}.json</code> 에 별도 저장되어 원본 데이터(stock-rise)는 절대 수정되지 않습니다.
+            </p>
+            <div class="admin-card__actions">
+                <a href="/" class="memo-save">홈으로 가기</a>
+                <button class="memo-delete" id="adminLogoutBtn">로그아웃</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer">
+        <footer class="footer__wrap">
+            <div class="frame footer__inner">
+                <p class="footer__copy">&copy; 2026 이거왜오름? (WhyRise) — 관리자</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/js/admin.js"></script>
+    <script>
+    (function(){
+        // admin.html 전용 로그인 UI 핸들러
+        var $form = document.getElementById('adminLoginForm');
+        var $token = document.getElementById('adminTokenInput');
+        var $error = document.getElementById('adminLoginError');
+        var $login = document.getElementById('adminLogin');
+        var $panel = document.getElementById('adminPanel');
+
+        function showPanel() {
+            $login.style.display = 'none';
+            $panel.style.display = 'block';
+        }
+
+        if (Admin.isLoggedIn()) showPanel();
+
+        $form.addEventListener('submit', function(e){
+            e.preventDefault();
+            $error.style.display = 'none';
+            var token = $token.value.trim();
+            if (!token) return;
+            Admin.login(token).then(function(){
+                showPanel();
+                $token.value = '';
+            }).catch(function(err){
+                $error.textContent = err.message || '로그인 실패';
+                $error.style.display = 'block';
+            });
+        });
+
+        document.getElementById('adminLogoutBtn').addEventListener('click', function(){
+            Admin.logout();
+            $login.style.display = 'block';
+            $panel.style.display = 'none';
+        });
+    })();
+    </script>
+</body>
+</html>

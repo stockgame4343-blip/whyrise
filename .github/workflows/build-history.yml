@@ -1,0 +1,63 @@
+name: 종목 인덱스 빌드
+
+# 매일 KST 18:00 (UTC 09:00) 평일 — stock-rise closing 끝난 후
+# + workflow_dispatch (수동) + repository_dispatch (admin 편집 후 트리거)
+on:
+  schedule:
+    - cron: '0 9 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: '몇 일치 거래일'
+        required: false
+        default: '365'
+      cutoff:
+        description: '상승률 컷오프'
+        required: false
+        default: '15'
+  repository_dispatch:
+    types: [rebuild-history]
+
+env:
+  TZ: Asia/Seoul
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build stock history index
+        run: |
+          DAYS="${{ inputs.days }}"
+          CUTOFF="${{ inputs.cutoff }}"
+          [ -z "$DAYS" ] && DAYS=365
+          [ -z "$CUTOFF" ] && CUTOFF=15
+          echo "=== build-history days=$DAYS cutoff=$CUTOFF ==="
+          for attempt in 1 2 3; do
+            echo "--- 시도 ${attempt}/3 ---"
+            if python scripts/build-history.py --days "$DAYS" --cutoff "$CUTOFF"; then
+              echo "성공"
+              exit 0
+            fi
+            echo "실패 — 30초 후 재시도"
+            sleep 30
+          done
+          echo "::error::3회 시도 모두 실패"
+          exit 1
+
+      - name: Commit & push index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/stock-history/
+          git diff --staged --quiet || git commit -m "build: 종목 인덱스 갱신 ($(date +%Y%m%d))"
+          git pull --rebase origin master || true
+          git push

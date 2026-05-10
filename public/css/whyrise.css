@@ -1,0 +1,295 @@
+/* ── 이거왜오름? 전용 추가 스타일 (style.css 위에 얹음) ── */
+
+/* 로고 색상 — RiseWhy(빨강) 와 차별: 오렌지 */
+.top-bar__logo { color: var(--orange); }
+
+/* ── Hero 검색 ────────────────────────────── */
+.hero {
+    padding: 56px 0 28px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+.hero--mini { padding: 20px 0; }
+.hero__inner { text-align: center; }
+.hero__search-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    max-width: 720px;
+    width: 90%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 24px;
+    box-shadow: var(--shadow);
+    transition: border-color .15s;
+}
+.hero__search-wrap:focus-within { border-color: var(--orange); }
+.hero__search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: 28px;
+    font-weight: 700;
+    font-family: inherit;
+    min-width: 0;
+}
+.hero--mini .hero__search-input { font-size: 18px; }
+.hero__search-input::placeholder { color: var(--text-muted); font-weight: 500; }
+.hero__placeholder-suffix {
+    color: var(--text-secondary);
+    font-size: 24px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.hero--mini .hero__placeholder-suffix { font-size: 16px; }
+.hero__subtitle {
+    margin-top: 18px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* 자동완성 */
+.hero__suggest {
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    margin-top: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    list-style: none;
+    padding: 6px;
+    box-shadow: var(--modal-shadow);
+    z-index: 50;
+    max-height: 360px;
+    overflow-y: auto;
+    text-align: left;
+}
+.hero__suggest li {
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+.hero__suggest li:hover,
+.hero__suggest li.active { background: var(--bg-hover); }
+.hero__suggest li .ticker { color: var(--text-muted); font-size: 12px; }
+.hero__suggest li .badge {
+    background: rgba(255,99,72,.15); color: var(--orange);
+    padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
+}
+
+/* ── 컷오프 토글 ────────────────────────────── */
+.cutoff-toggle { gap: 4px; }
+.cutoff-btn { font-weight: 700; }
+.cutoff-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+.cutoff-count { font-size: 12px; color: var(--text-muted); }
+
+/* ── 메인 + 사이드 레이아웃 ───────────────── */
+.layout-split {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 28px;
+    margin-top: 8px;
+}
+@media (max-width: 1100px) {
+    .layout-split { grid-template-columns: 1fr; }
+}
+.layout-aside { min-width: 0; }
+.layout-main { min-width: 0; }
+
+/* ── 위젯 ────────────────────────────────── */
+.widget {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    margin-bottom: 16px;
+}
+.widget__title {
+    font-size: 14px; font-weight: 700; color: var(--text-primary);
+    margin-bottom: 12px; letter-spacing: -.2px;
+}
+.widget__list { list-style: none; padding: 0; margin: 0; }
+.widget__list li {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 0; border-bottom: 1px solid var(--border-subtle);
+    font-size: 13px;
+}
+.widget__list li:last-child { border-bottom: none; }
+.widget__list li a {
+    color: var(--text-primary); text-decoration: none; font-weight: 600;
+    flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.widget__list li a:hover { color: var(--orange); }
+.widget__list li .count {
+    background: rgba(255,99,72,.15); color: var(--orange);
+    padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
+    flex-shrink: 0; margin-left: 8px;
+}
+.widget__caption { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+.widget__loading { padding: 16px 0; text-align: center; color: var(--text-muted); font-size: 12px; }
+.widget__empty { padding: 16px 0; text-align: center; color: var(--text-muted); font-size: 12px; }
+
+/* ── 메인 테이블 (이유 hero) ──────────────── */
+.whyrise-table .col-reason--hero { min-width: 320px; }
+.whyrise-table .cell-reason {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.45;
+    padding: 14px 12px;
+}
+.whyrise-table .cell-reason__text {
+    display: block;
+    font-size: 14px;
+    margin-top: 4px;
+}
+.whyrise-table .cell-name { min-width: 140px; }
+.whyrise-table .col-change { width: 80px; text-align: right; }
+.whyrise-table .col-volume { width: 90px; text-align: right; }
+.whyrise-table .col-sector { width: 100px; }
+
+/* admin 편집 표식 */
+.whyrise-table tr.row--edited .cell-reason::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+.whyrise-table .admin-edit-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+.whyrise-table .admin-edit-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+/* ── 종목 페이지 ───────────────────────────── */
+.stock-page { padding-top: 24px; padding-bottom: 56px; }
+.stock-header { padding: 12px 0 28px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+.stock-header__title-row {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+}
+.stock-header__title {
+    font-size: 36px; font-weight: 800; letter-spacing: -1px; color: var(--text-primary);
+}
+.stock-header__title strong { color: var(--orange); }
+.stock-header__market {
+    background: var(--bg-tertiary); color: var(--text-secondary);
+    padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;
+}
+.stock-header__stats {
+    display: flex; gap: 28px; margin-top: 18px; flex-wrap: wrap;
+}
+.stock-header__stat { display: flex; flex-direction: column; gap: 2px; }
+.stock-header__stat-label { font-size: 11px; color: var(--text-muted); }
+.stock-header__stat-value { font-size: 22px; font-weight: 700; color: var(--text-primary); }
+.stock-header__stat-value--rise { color: var(--rise); }
+.stock-header__caption { margin-top: 18px; font-size: 13px; color: var(--text-secondary); }
+
+/* 타임라인 카드 */
+.timeline { display: flex; flex-direction: column; gap: 16px; }
+.event-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--rise);
+    border-radius: 10px;
+    padding: 18px 20px;
+}
+.event-card.row--edited { border-left-color: var(--orange); }
+.event-card__top {
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+}
+.event-card__date { font-size: 16px; font-weight: 700; }
+.event-card__rate { font-size: 18px; font-weight: 800; color: var(--rise); }
+.event-card__price { color: var(--text-secondary); font-size: 13px; }
+.event-card__theme {
+    background: rgba(91,157,249,.15); color: var(--accent);
+    padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+}
+.event-card__reason {
+    font-size: 16px; font-weight: 600; color: var(--text-primary);
+    margin-top: 12px; line-height: 1.5;
+}
+.event-card__news {
+    margin-top: 12px; display: flex; flex-direction: column; gap: 6px;
+}
+.event-card__news a {
+    font-size: 13px; color: var(--text-secondary); text-decoration: none;
+    padding: 6px 10px; border-radius: 6px; background: var(--bg-tertiary);
+    display: flex; gap: 8px; align-items: baseline;
+}
+.event-card__news a:hover { background: var(--bg-hover); color: var(--text-primary); }
+.event-card__news .news-source { color: var(--text-muted); font-size: 11px; flex-shrink: 0; }
+.event-card__edit { float: right; }
+.event-empty {
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+/* ── 관리자 페이지 ──────────────────────────── */
+.admin-page { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+.admin-page__title { font-size: 28px; margin-bottom: 28px; }
+.admin-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+}
+.admin-card h2 { font-size: 18px; margin-bottom: 12px; }
+.admin-card__desc { color: var(--text-secondary); font-size: 13px; margin-bottom: 14px; line-height: 1.6; }
+.admin-card__desc code {
+    background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px; font-size: 12px;
+}
+.admin-card__error { color: var(--rise); font-size: 13px; margin-top: 10px; }
+.admin-card__actions { display: flex; gap: 10px; align-items: center; }
+.admin-card__actions a, .admin-card__actions button {
+    text-decoration: none; padding: 10px 18px; border-radius: 8px; font-weight: 600;
+}
+#adminLoginForm { display: flex; gap: 10px; }
+#adminLoginForm input { flex: 1; }
+#adminLoginForm button { padding: 10px 18px; cursor: pointer; }
+
+/* admin 편집 모달 */
+.admin-edit__guide {
+    background: rgba(255,165,2,.1); border: 1px solid var(--yellow);
+    border-radius: 6px; padding: 10px 12px; font-size: 12px; color: var(--yellow);
+    margin-bottom: 14px;
+}
+.admin-edit__label {
+    display: block; font-size: 12px; color: var(--text-secondary);
+    margin-top: 12px; margin-bottom: 4px; font-weight: 600;
+}
+
+/* admin 편집 모드일 때 행 호버 우측에 ✏️ 버튼 표시 */
+body:not(.admin-on) .whyrise-table .admin-edit-btn,
+body:not(.admin-on) .event-card__edit { display: none; }
+.admin-on::before {
+    content: '관리자 모드 ON';
+    position: fixed; bottom: 16px; right: 16px;
+    background: var(--orange); color: #fff;
+    padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 700;
+    z-index: 200; box-shadow: var(--shadow);
+}
