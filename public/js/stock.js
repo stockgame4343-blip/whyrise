@@ -30,15 +30,21 @@
         var $stats = document.getElementById('stockStats');
         document.getElementById('pageTitle').textContent = name + ' 왜 오름? — 이거왜오름?';
         document.getElementById('pageDesc').setAttribute('content',
-            name + ' 이 +15% 이상 오른 모든 날짜와 이유. 최근 1년 ' + (stats.count_15 || 0) + '회.');
+            name + ' 이 +10% 이상 오른 모든 날짜와 이유. 최근 1년 ' + (stats.count_10 || 0) + '회.');
 
         $title.innerHTML = '<strong>' + name + '</strong> 왜 오름?';
         if (market) $market.textContent = market;
 
         if (!stats) { $stats.innerHTML = ''; return; }
         var html = '';
+        // 핵심 지표 우선 — count_10 (1년 총 횟수), count_15, count_recent (최근 30일)
+        if (stats.count_10 != null) {
+            html += '<div class="stock-header__stat">' +
+                '<span class="stock-header__stat-label">+10% 이상 (1년)</span>' +
+                '<span class="stock-header__stat-value">' + stats.count_10 + '회</span></div>';
+        }
         html += '<div class="stock-header__stat">' +
-            '<span class="stock-header__stat-label">+15% 이상 (1년)</span>' +
+            '<span class="stock-header__stat-label">+15% 이상</span>' +
             '<span class="stock-header__stat-value">' + (stats.count_15 || 0) + '회</span></div>';
         if (stats.count_20 != null) {
             html += '<div class="stock-header__stat">' +
@@ -50,6 +56,11 @@
                 '<span class="stock-header__stat-label">상한가</span>' +
                 '<span class="stock-header__stat-value">' + stats.count_limit + '회</span></div>';
         }
+        if (stats.count_recent != null) {
+            html += '<div class="stock-header__stat">' +
+                '<span class="stock-header__stat-label">최근 30일</span>' +
+                '<span class="stock-header__stat-value">' + stats.count_recent + '회</span></div>';
+        }
         if (stats.avg_rate != null) {
             html += '<div class="stock-header__stat">' +
                 '<span class="stock-header__stat-label">평균 상승률</span>' +
@@ -59,38 +70,101 @@
         $stats.innerHTML = html;
     }
 
+    function sourceBadge(source, confidence) {
+        // reason_source: stockrise | admin | news | naver | theme | pattern | dart
+        var labels = {
+            'stockrise': { text: '검증', cls: 'badge--filled' },
+            'admin':     { text: '관리자', cls: 'badge--admin' },
+            'news':      { text: '뉴스', cls: 'badge--news' },
+            'naver':     { text: '뉴스', cls: 'badge--news' },
+            'theme':     { text: '테마', cls: 'badge--theme' },
+            'pattern':   { text: '패턴', cls: 'badge--pattern' },
+        };
+        var info = labels[source];
+        if (!info) return '';
+        return '<span class="event-card__source-badge ' + info.cls + '">' + info.text + '</span>';
+    }
+
+    function reasonClass(status, confidence) {
+        if (status === 'edited') return 'event-card__reason event-card__reason--edited';
+        if (status === 'missing') return 'event-card__reason event-card__reason--missing';
+        if (confidence === 'low') return 'event-card__reason event-card__reason--low';
+        if (confidence === 'mid') return 'event-card__reason event-card__reason--mid';
+        return 'event-card__reason event-card__reason--high';
+    }
+
+    function groupByYear(events) {
+        // 50건 이상이면 연도별 그루핑, 아니면 단일 그룹
+        if (!events.length) return [];
+        if (events.length < 50) return [{ year: null, events: events }];
+        var grouped = {};
+        events.forEach(function (ev) {
+            var y = (ev.date || '').slice(0, 4);
+            if (!grouped[y]) grouped[y] = [];
+            grouped[y].push(ev);
+        });
+        return Object.keys(grouped).sort().reverse().map(function (y) {
+            return { year: y, events: grouped[y] };
+        });
+    }
+
+    function renderEventCard(ev, ticker) {
+        var newsHtml = '';
+        if (ev.news && ev.news.length) {
+            newsHtml += '<div class="event-card__news">';
+            ev.news.slice(0, 5).forEach(function (n) {
+                newsHtml += '<a href="' + n.link + '" target="_blank" rel="noopener">' +
+                    '<span>' + n.title + '</span>' +
+                    (n.source ? '<span class="news-source">' + n.source + '</span>' : '') +
+                    '</a>';
+            });
+            newsHtml += '</div>';
+        }
+        var rowClass = '';
+        if (ev.reason_status === 'edited') rowClass = ' row--edited';
+        else if (ev.reason_status === 'missing') rowClass = ' row--missing';
+        var rate = (ev.change_rate || 0);
+        var rateLabel = (rate >= 29.9) ? '<span class="event-card__limit">상한가</span>' : '';
+        var hi52w = ev.is_52w_high ? '<span class="event-card__highflag">52주 신고가</span>' : '';
+        var reasonText = ev.rise_reason || (ev.reason_status === 'missing'
+            ? '이유 미수집 — 관리자가 채울 수 있습니다'
+            : '-');
+
+        return '<article class="event-card' + rowClass + '">' +
+            '<div class="event-card__top">' +
+            '<span class="event-card__date">' + formatDate(ev.date) + '</span>' +
+            '<span class="event-card__rate">+' + rate.toFixed(2) + '%</span>' +
+            rateLabel +
+            hi52w +
+            '<span class="event-card__price">종가 ' +
+            (ev.close_price ? ev.close_price.toLocaleString('ko-KR') : '-') +
+            '원</span>' +
+            (ev.theme_tag ? '<span class="event-card__theme">' + ev.theme_tag + '</span>' : '') +
+            sourceBadge(ev.reason_source, ev.reason_confidence) +
+            '<button class="admin-edit-btn event-card__edit" data-action="admin-edit" data-ticker="' +
+            ticker + '" data-date="' + ev.date + '" title="이유 편집">✏️ 편집</button>' +
+            '</div>' +
+            '<div class="' + reasonClass(ev.reason_status, ev.reason_confidence) + '">' +
+            reasonText + '</div>' +
+            newsHtml +
+            '</article>';
+    }
+
     function renderEvents(events, ticker) {
         var $tl = document.getElementById('timeline');
         if (!events || !events.length) {
-            $tl.innerHTML = '<div class="event-empty">최근 1년간 +15% 이상 기록이 없습니다.</div>';
+            $tl.innerHTML = '<div class="event-empty">최근 1년간 +10% 이상 기록이 없습니다.</div>';
             return;
         }
+        var groups = groupByYear(events);
         var html = '';
-        events.forEach(function (ev) {
-            var newsHtml = '';
-            if (ev.news && ev.news.length) {
-                newsHtml += '<div class="event-card__news">';
-                ev.news.slice(0, 5).forEach(function (n) {
-                    newsHtml += '<a href="' + n.link + '" target="_blank" rel="noopener">' +
-                        '<span>' + n.title + '</span>' +
-                        (n.source ? '<span class="news-source">' + n.source + '</span>' : '') +
-                        '</a>';
-                });
-                newsHtml += '</div>';
+        groups.forEach(function (g) {
+            if (g.year) {
+                html += '<h2 class="timeline__year">' + g.year + '년 — ' + g.events.length + '건</h2>';
             }
-            var editClass = ev._edited ? ' row--edited' : '';
-            html += '<article class="event-card' + editClass + '">' +
-                '<div class="event-card__top">' +
-                '<span class="event-card__date">' + formatDate(ev.date) + '</span>' +
-                '<span class="event-card__rate">+' + ev.change_rate.toFixed(2) + '%</span>' +
-                '<span class="event-card__price">종가 ' + (ev.close_price ? ev.close_price.toLocaleString('ko-KR') : '-') + '원</span>' +
-                (ev.theme_tag ? '<span class="event-card__theme">' + ev.theme_tag + '</span>' : '') +
-                '<button class="admin-edit-btn event-card__edit" data-action="admin-edit" data-ticker="' + ticker +
-                    '" data-date="' + ev.date + '" title="이유 편집">✏️ 편집</button>' +
-                '</div>' +
-                '<div class="event-card__reason">' + (ev.rise_reason || '-') + '</div>' +
-                newsHtml +
-                '</article>';
+            g.events.forEach(function (ev) {
+                html += renderEventCard(ev, ticker);
+            });
         });
         $tl.innerHTML = html;
     }

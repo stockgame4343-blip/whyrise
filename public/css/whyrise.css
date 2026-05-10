@@ -248,6 +248,61 @@
     border-radius: 10px;
 }
 
+/* 타임라인 — confidence/status 별 톤 */
+.timeline__year {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+.event-card.row--edited { border-left-color: var(--orange); }
+.event-card.row--missing {
+    border-left-color: var(--text-muted);
+    opacity: .7;
+}
+.event-card__reason--high { color: var(--text-primary); font-weight: 600; }
+.event-card__reason--mid { color: var(--text-primary); font-weight: 500; }
+.event-card__reason--low { color: var(--text-secondary); font-weight: 500; }
+.event-card__reason--edited { color: var(--orange); font-weight: 700; }
+.event-card__reason--missing {
+    color: var(--text-muted);
+    font-style: italic;
+    font-weight: 400;
+}
+.event-card__limit {
+    background: rgba(255,71,87,.15); color: var(--rise);
+    padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
+}
+.event-card__highflag {
+    background: rgba(255,209,102,.18); color: var(--yellow);
+    padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
+}
+.event-card__source-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: auto;
+}
+.event-card__source-badge.badge--filled {
+    background: rgba(46,213,115,.15); color: var(--green);
+}
+.event-card__source-badge.badge--admin {
+    background: rgba(255,99,72,.15); color: var(--orange);
+}
+.event-card__source-badge.badge--news {
+    background: rgba(91,157,249,.15); color: var(--accent);
+}
+.event-card__source-badge.badge--theme {
+    background: rgba(199,163,255,.15); color: #c7a3ff;
+}
+.event-card__source-badge.badge--pattern {
+    background: rgba(170,170,170,.15); color: var(--text-muted);
+}
+
 /* ── 관리자 페이지 ──────────────────────────── */
 .admin-page { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
 .admin-page__title { font-size: 28px; margin-bottom: 28px; }

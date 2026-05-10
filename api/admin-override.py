@@ -91,6 +91,20 @@ def _save_overrides(date, overrides, sha, message):
     _gh('PUT', f'/repos/{REPO}/contents/{file_path}', payload)
 
 
+def _trigger_rebuild():
+    """admin override commit 후 인덱스 재빌드 트리거 (estimate-only 큐도 갱신).
+
+    실패해도 무시 — 다음 cron 에서 자연 갱신.
+    """
+    try:
+        _gh('POST', f'/repos/{REPO}/dispatches', {
+            'event_type': 'override-saved',
+            'client_payload': {},
+        })
+    except Exception:
+        pass
+
+
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -144,6 +158,7 @@ class handler(BaseHTTPRequestHandler):
             overrides[ticker] = entry
             _save_overrides(date, overrides, sha,
                             f'admin: override {date} {ticker}')
+            _trigger_rebuild()
             self._respond(200, {'ok': True, 'ticker': ticker, 'date': date})
         except Exception as e:
             self._respond(500, {'error': str(e)})

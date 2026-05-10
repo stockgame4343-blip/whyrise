@@ -1,161 +1,448 @@
-"""종목별 급등 인덱스 빌드.
+"""종목별 1년치 인덱스 빌드 — 네이버 OHLC + 뉴스 + 추정 결합.
 
-stock-rise 의 dates.json + 각 일자 JSON 을 순회하여:
-  - public/data/stock-history/{ticker}.json — 그 종목의 모든 +15% 이상 events
-  - public/data/stock-history/index.json    — 검색 자동완성용 ticker→{name, count, ...}
+stock-rise 의 18일치도 머지 (운영 이후 사건은 stock-rise 의 정답 사용).
 
-whyrise repo 의 overrides 도 머지(있으면 우선).
+흐름:
+  1. 네이버 시총 API 로 KOSPI+KOSDAQ 일반주식 ticker 리스트 (~2,000개)
+  2. 각 ticker 에 대해 네이버 OHLC 1년치 한 번에 fetch
+  3. 일별 등락률 계산 → 컷 +10% 이상만 events 추출
+  4. stock-rise 의 그날 종목 데이터(rise_reason, news, theme_tag) 매칭
+  5. 매칭 실패한 사건은 estimate_reasons 로 추정 (네이버 뉴스 + 패턴 + 메타)
+  6. admin overrides 적용
+  7. ticker 별 stock-history/{ticker}.json 저장 + index.json
 
 사용:
-  python scripts/build-history.py [--days 365] [--cutoff 15]
-  python scripts/build-history.py --output-dir public/data/stock-history --days 365
+  python scripts/build-history.py [--days 365] [--cutoff 10] [--limit-tickers 0]
+  python scripts/build-history.py --incremental  # 오늘 1일치만 추가
+  python scripts/build-history.py --estimate-only --limit 100  # 인덱스 있는 missing 만 추정
 """
+from __future__ import annotations
+
 import argparse
 import json
-import os
 import sys
 import time
-import urllib.request
-import urllib.error
 from collections import defaultdict
+from datetime import date, datetime, timedelta
+from pathlib import Path
+from typing import Iterable
 
+_REPO = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(_REPO))
 
+from collector import naver_client  # noqa: E402
+from collector.kr_holidays import is_kr_business_day  # noqa: E402
+from scripts.estimate_reasons import estimate_reason  # noqa: E402
+
+OUTPUT_DIR = _REPO / 'public' / 'data' / 'stock-history'
+OVERRIDES_DIR = _REPO / 'public' / 'data' / 'overrides'
 STOCK_RISE_RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data'
-DEFAULT_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                                  'public', 'data', 'stock-history')
-OVERRIDES_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                             'public', 'data', 'overrides')
-USER_AGENT = 'whyrise-build-history/1.0'
+
+DEFAULT_CUTOFF = 10.0   # 인덱스에 저장할 최저 컷 (클라 토글 +10/15/20/29.9 호환)
+DEFAULT_DAYS = 365
 
 
-def fetch_json(url, retries=3):
-    last_exc = None
-    for i in range(retries):
-        try:
-            req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                return json.loads(resp.read().decode('utf-8'))
-        except urllib.error.HTTPError as e:
-            if e.code == 404:
-                return None
-            last_exc = e
-        except Exception as e:
-            last_exc = e
-        time.sleep(1 + i)
-    if last_exc:
-        raise last_exc
-    return None
+# ── 유틸 ───────────────────────────────────────────────
+
+def _yyyymmdd(d: date) -> str:
+    return d.strftime('%Y%m%d')
 
 
-def load_local_overrides(date):
-    path = os.path.join(OVERRIDES_DIR, f'{date}.json')
-    if not os.path.exists(path):
+def _date_range_strs(start: date, end: date) -> list[str]:
+    """start~end 사이 영업일 YYYYMMDD 배열."""
+    out = []
+    cur = start
+    while cur <= end:
+        if is_kr_business_day(cur):
+            out.append(_yyyymmdd(cur))
+        cur += timedelta(days=1)
+    return out
+
+
+# ── stock-rise 데이터 로드 ─────────────────────────────
+
+def load_stockrise_dates() -> list[str]:
+    return naver_client.fetch_json(f'{STOCK_RISE_RAW}/dates.json') or []
+
+
+def load_stockrise_day(date_str: str) -> dict | None:
+    return naver_client.fetch_json(f'{STOCK_RISE_RAW}/{date_str}.json')
+
+
+def build_stockrise_lookup(dates: list[str]) -> dict[tuple[str, str], dict]:
+    """(date, ticker) → stock-rise rankings 항목.
+
+    dates 마다 1번 fetch.  운영 이후 사건의 rise_reason·news·theme_tag 정답 소스.
+    """
+    out: dict[tuple[str, str], dict] = {}
+    for d in dates:
+        data = load_stockrise_day(d)
+        if not data:
+            continue
+        for r in data.get('rankings', []):
+            t = r.get('ticker')
+            if t:
+                out[(d, t)] = r
+    return out
+
+
+# ── overrides ───────────────────────────────────────────
+
+def load_overrides_for(date_str: str) -> dict[str, dict]:
+    """public/data/overrides/{date}.json 로컬 파일 읽기."""
+    p = OVERRIDES_DIR / f'{date_str}.json'
+    if not p.exists():
         return {}
     try:
-        with open(path, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        return json.loads(p.read_text(encoding='utf-8'))
     except Exception:
         return {}
 
 
-def build(days, cutoff, output_dir):
-    print(f'== build-history: days={days} cutoff={cutoff} output={output_dir} ==')
-    os.makedirs(output_dir, exist_ok=True)
+# ── 메인 빌드 ───────────────────────────────────────────
 
-    dates = fetch_json(f'{STOCK_RISE_RAW}/dates.json') or []
-    if not dates:
-        print('dates.json 없음 — 중단')
-        return 1
-    target_dates = dates[:days]
-    print(f'대상 거래일: {len(target_dates)} 개 (가장 최근: {target_dates[0]})')
+def fetch_ticker_universe(stock_only: bool = True) -> list[dict]:
+    """KOSPI + KOSDAQ 일반주식 universe."""
+    print('  네이버 시총 API → 종목 리스트 ...')
+    items = naver_client.list_all_tickers(stock_only=stock_only)
+    print(f'    → {len(items)} 종목')
+    return items
 
-    # ticker → events list
-    events_by_ticker = defaultdict(list)
-    name_by_ticker = {}
-    market_by_ticker = {}
 
-    for i, date in enumerate(target_dates):
-        if i % 20 == 0:
-            print(f'  {i}/{len(target_dates)}: {date}')
-        data = fetch_json(f'{STOCK_RISE_RAW}/{date}.json')
-        if not data or not data.get('rankings'):
+def calc_change_rate(prev_close: float, cur_close: float) -> float:
+    if prev_close <= 0:
+        return 0.0
+    return round((cur_close - prev_close) / prev_close * 100, 2)
+
+
+def is_52w_high(ohlc: list[dict], idx: int) -> bool:
+    """ohlc[idx] 의 highPrice 가 직전 252일 내 최고치 경신했는지."""
+    if idx < 1:
+        return False
+    cur = ohlc[idx].get('highPrice') or 0
+    prior = ohlc[max(0, idx - 252):idx]
+    if not prior:
+        return False
+    prior_max = max(p.get('highPrice', 0) or 0 for p in prior)
+    return cur >= prior_max and cur > 0
+
+
+def build_events_for_ticker(
+    ticker: str,
+    name: str,
+    market: str,
+    ohlc: list[dict],
+    cutoff: float,
+    stockrise_lookup: dict[tuple[str, str], dict],
+    fetch_news_fn,
+    meta: dict | None = None,
+) -> list[dict]:
+    """1년치 OHLC → 컷 이상 사건 events.
+
+    fetch_news_fn(ticker, date_str) -> news_items_normalized (list of {title, link, source, date})
+    """
+    if len(ohlc) < 2:
+        return []
+    # OHLC 정렬 보장 (네이버는 오름차순으로 보내지만 안전)
+    ohlc_sorted = sorted(ohlc, key=lambda r: r.get('localDate', ''))
+    events: list[dict] = []
+    for i in range(1, len(ohlc_sorted)):
+        prev = ohlc_sorted[i - 1].get('closePrice') or 0
+        cur = ohlc_sorted[i].get('closePrice') or 0
+        if prev <= 0 or cur <= 0:
             continue
-        overrides = load_local_overrides(date)
-        for r in data['rankings']:
-            rate = r.get('change_rate')
-            if rate is None or rate < cutoff:
-                continue
-            ticker = r.get('ticker')
-            if not ticker:
-                continue
-            ov = overrides.get(ticker, {})
-            event = {
-                'date': date,
-                'change_rate': float(rate),
-                'close_price': r.get('close_price'),
-                'rise_reason': ov.get('rise_reason') or r.get('rise_reason') or '',
-                'theme_tag': ov.get('theme_tag') or r.get('theme_tag') or '',
-                'sector': r.get('sector') or '',
-                'news': (r.get('news') or [])[:5],
-            }
-            if ov:
-                event['_edited'] = True
-                if ov.get('note'):
-                    event['note'] = ov['note']
-            events_by_ticker[ticker].append(event)
-            name_by_ticker[ticker] = r.get('name', ticker)
-            market_by_ticker[ticker] = r.get('market', '')
+        rate = calc_change_rate(prev, cur)
+        if rate < cutoff:
+            continue
+        d = ohlc_sorted[i].get('localDate', '')
+        if not d:
+            continue
+        is_high = is_52w_high(ohlc_sorted, i)
 
-    # 종목별 파일 + 통계 계산
-    index = {}
-    cutoff_30d_set = set(target_dates[:22])  # 최근 30일 ≈ 거래일 22
+        # 1) stock-rise 정답 우선
+        sr = stockrise_lookup.get((d, ticker))
+        if sr:
+            events.append({
+                'date': d,
+                'change_rate': rate,
+                'close_price': cur,
+                'rise_reason': sr.get('rise_reason') or '',
+                'reason_confidence': 'high',
+                'reason_source': 'stockrise',
+                'reason_status': 'filled' if sr.get('rise_reason') else 'missing',
+                'theme_tag': sr.get('theme_tag') or '',
+                'news': sr.get('news') or [],
+                'sector': sr.get('sector') or (meta or {}).get('sector', ''),
+                'is_52w_high': is_high,
+                'source': 'stockrise',
+            })
+            continue
 
-    for ticker, events in events_by_ticker.items():
-        events.sort(key=lambda e: e['date'], reverse=True)
-        count_15 = sum(1 for e in events if e['change_rate'] >= 15)
-        count_20 = sum(1 for e in events if e['change_rate'] >= 20)
-        count_limit = sum(1 for e in events if e['change_rate'] >= 29.9)
-        count_recent = sum(1 for e in events if e['date'] in cutoff_30d_set)
-        avg_rate = sum(e['change_rate'] for e in events) / len(events) if events else 0
-        history = {
-            'ticker': ticker,
-            'name': name_by_ticker.get(ticker, ticker),
-            'market': market_by_ticker.get(ticker, ''),
-            'events': events,
-            'stats': {
-                'count_15': count_15,
-                'count_20': count_20,
-                'count_limit': count_limit,
-                'count_recent': count_recent,
-                'avg_rate': round(avg_rate, 2),
-            },
-            'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+        # 2) 네이버 뉴스 + 추정
+        news_items = fetch_news_fn(ticker, d)
+        est = estimate_reason(
+            news_items=news_items,
+            change_rate=rate,
+            is_52w_high=is_high,
+            meta=meta,
+        )
+        events.append({
+            'date': d,
+            'change_rate': rate,
+            'close_price': cur,
+            'rise_reason': est['rise_reason'],
+            'reason_confidence': est['reason_confidence'],
+            'reason_source': est['reason_source'] or 'naver',
+            'reason_status': est['reason_status'],
+            'theme_tag': '',
+            'news': [naver_client.normalize_news_item(n) for n in (news_items or [])[:5]],
+            'sector': (meta or {}).get('sector', ''),
+            'is_52w_high': is_high,
+            'source': 'estimated',
+        })
+    # 최신 → 과거 정렬
+    events.sort(key=lambda e: e['date'], reverse=True)
+    return events
+
+
+def apply_overrides(events: list[dict], ticker: str) -> list[dict]:
+    """events 의 각 date 에 대해 overrides/{date}.json[ticker] 머지."""
+    for ev in events:
+        ov = load_overrides_for(ev['date']).get(ticker)
+        if not ov:
+            continue
+        if ov.get('rise_reason'):
+            ev['rise_reason'] = ov['rise_reason']
+            ev['reason_confidence'] = 'high'
+            ev['reason_source'] = 'admin'
+            ev['reason_status'] = 'edited'
+        if ov.get('theme_tag'):
+            ev['theme_tag'] = ov['theme_tag']
+    return events
+
+
+def calc_stats(events: list[dict]) -> dict:
+    if not events:
+        return {'count_10': 0, 'count_15': 0, 'count_20': 0, 'count_limit': 0,
+                'count_recent': 0, 'avg_rate': 0}
+    today = date.today()
+    cutoff_30d = (today - timedelta(days=30)).strftime('%Y%m%d')
+    return {
+        'count_10': sum(1 for e in events if e['change_rate'] >= 10),
+        'count_15': sum(1 for e in events if e['change_rate'] >= 15),
+        'count_20': sum(1 for e in events if e['change_rate'] >= 20),
+        'count_limit': sum(1 for e in events if e['change_rate'] >= 29.9),
+        'count_recent': sum(1 for e in events if e['date'] >= cutoff_30d),
+        'avg_rate': round(sum(e['change_rate'] for e in events) / len(events), 2),
+    }
+
+
+def write_ticker_history(ticker: str, name: str, market: str,
+                         events: list[dict], output_dir: Path) -> None:
+    history = {
+        'ticker': ticker,
+        'name': name,
+        'market': market,
+        'events': events,
+        'stats': calc_stats(events),
+        'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+    }
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / f'{ticker}.json').write_text(
+        json.dumps(history, ensure_ascii=False, indent=2),
+        encoding='utf-8',
+    )
+
+
+def write_index(name_by_ticker: dict[str, dict], output_dir: Path) -> None:
+    """검색 자동완성용 index.json."""
+    (output_dir / 'index.json').write_text(
+        json.dumps(name_by_ticker, ensure_ascii=False),
+        encoding='utf-8',
+    )
+
+
+# ── 진입점 ─────────────────────────────────────────────
+
+def build_full(args) -> int:
+    cutoff = args.cutoff
+    days = args.days
+    limit_tickers = args.limit_tickers
+    output_dir = OUTPUT_DIR
+
+    today = date.today()
+    start = today - timedelta(days=days + 30)  # 52주 신고가 계산 위해 여유
+    end = today
+
+    print(f'== build-history full: days={days} cutoff={cutoff} ==')
+    print(f'  기간: {_yyyymmdd(start)} ~ {_yyyymmdd(end)}')
+
+    # 1. ticker universe
+    universe = fetch_ticker_universe(stock_only=True)
+    if limit_tickers:
+        universe = universe[:limit_tickers]
+        print(f'  --limit-tickers={limit_tickers} 적용')
+
+    # 2. stock-rise dates → lookup (운영 이후 정답)
+    sr_dates = load_stockrise_dates()
+    print(f'  stock-rise dates: {len(sr_dates)} 거래일')
+    sr_lookup = build_stockrise_lookup(sr_dates)
+    print(f'  stock-rise lookup 항목: {len(sr_lookup)}')
+
+    # 3. 뉴스 캐시 (같은 ticker 한 번만 fetch — 최신 40건 기준)
+    news_cache_by_ticker: dict[str, list[dict]] = {}
+
+    def fetch_news_fn(ticker: str, date_str: str) -> list[dict]:
+        if ticker not in news_cache_by_ticker:
+            try:
+                news_cache_by_ticker[ticker] = naver_client.fetch_stock_news(ticker, page_size=40)
+            except Exception as e:
+                print(f'    news fetch fail {ticker}: {e}')
+                news_cache_by_ticker[ticker] = []
+        items = news_cache_by_ticker[ticker]
+        if not items:
+            return []
+        target = int(date_str)
+        out = []
+        for it in items:
+            dt = (it.get('datetime') or '')[:8]
+            if dt.isdigit() and abs(int(dt) - target) <= 1:
+                out.append(it)
+        return out[:5]
+
+    # 4. 종목별 OHLC + events
+    index_meta: dict[str, dict] = {}
+    total = len(universe)
+    success = 0
+    skipped = 0
+    start_str = _yyyymmdd(start)
+    end_str = _yyyymmdd(end)
+    t_start = time.time()
+
+    for i, item in enumerate(universe):
+        ticker = item.get('itemCode') or ''
+        name = item.get('stockName') or ticker
+        market = 'KOSPI' if (item.get('sosok') == 'KOSPI' or item.get('stockExchangeType', {}).get('code') == 'KS') else 'KOSDAQ'
+        if not ticker or len(ticker) != 6:
+            skipped += 1
+            continue
+        if i % 50 == 0:
+            elapsed = time.time() - t_start
+            eta = (elapsed / max(1, i + 1)) * (total - i - 1)
+            print(f'  [{i + 1}/{total}] {ticker} {name} (elapsed {elapsed:.0f}s, ETA {eta:.0f}s)')
+        try:
+            ohlc = naver_client.fetch_ohlc_daily(ticker, start_str, end_str)
+        except Exception as e:
+            print(f'    OHLC fail {ticker}: {e}')
+            skipped += 1
+            continue
+        if not ohlc or len(ohlc) < 2:
+            skipped += 1
+            continue
+        events = build_events_for_ticker(
+            ticker=ticker, name=name, market=market,
+            ohlc=ohlc, cutoff=cutoff,
+            stockrise_lookup=sr_lookup,
+            fetch_news_fn=fetch_news_fn,
+            meta={'sector': item.get('industryName') or ''},
+        )
+        if not events:
+            skipped += 1
+            continue
+        events = apply_overrides(events, ticker)
+        write_ticker_history(ticker, name, market, events, output_dir)
+        index_meta[ticker] = {
+            'name': name,
+            'count': len([e for e in events if e['change_rate'] >= 15]),
+            'count_recent': sum(1 for e in events if e['date'] >=
+                                _yyyymmdd(today - timedelta(days=30))),
         }
-        out_path = os.path.join(output_dir, f'{ticker}.json')
-        with open(out_path, 'w', encoding='utf-8') as f:
-            json.dump(history, f, ensure_ascii=False, indent=2)
-        index[ticker] = {
-            'name': name_by_ticker.get(ticker, ticker),
-            'count': count_15,
-            'count_recent': count_recent,
-        }
+        success += 1
 
-    # index.json (검색 자동완성용)
-    index_path = os.path.join(output_dir, 'index.json')
-    with open(index_path, 'w', encoding='utf-8') as f:
-        json.dump(index, f, ensure_ascii=False)
-
-    print(f'== 완료: {len(events_by_ticker)} 종목, index.json {len(index)} 항목 ==')
+    write_index(index_meta, output_dir)
+    elapsed = time.time() - t_start
+    print(f'== 완료: {success}/{total} 종목, skip {skipped}, elapsed {elapsed:.0f}s ==')
     return 0
 
 
-def main():
+def build_estimate_only(args) -> int:
+    """이미 빌드된 인덱스에서 reason_status: missing 만 재추정."""
+    output_dir = OUTPUT_DIR
+    if not output_dir.exists():
+        print('인덱스 디렉토리 없음 — 먼저 풀빌드 실행')
+        return 1
+    limit = args.limit
+    files = sorted(output_dir.glob('*.json'))
+    files = [f for f in files if f.name != 'index.json']
+    print(f'== estimate-only: {len(files)} ticker 파일 검사 (limit={limit}) ==')
+    processed = 0
+    updated = 0
+    for f in files:
+        if limit and processed >= limit:
+            break
+        try:
+            history = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        ticker = history.get('ticker')
+        if not ticker:
+            continue
+        missing_events = [e for e in history.get('events', [])
+                          if e.get('reason_status') == 'missing']
+        if not missing_events:
+            continue
+        # 한 ticker 의 모든 missing 한 번에 처리
+        try:
+            news_items = naver_client.fetch_stock_news(ticker, page_size=40)
+        except Exception:
+            news_items = []
+        any_updated = False
+        for ev in missing_events:
+            target = int(ev['date'])
+            related = [n for n in news_items
+                       if (n.get('datetime') or '')[:8].isdigit() and
+                       abs(int((n.get('datetime') or '00000000')[:8]) - target) <= 1]
+            est = estimate_reason(
+                news_items=related[:5],
+                change_rate=ev['change_rate'],
+                is_52w_high=ev.get('is_52w_high', False),
+                meta={'sector': ev.get('sector', '')},
+            )
+            if est['reason_status'] == 'filled':
+                ev.update({
+                    'rise_reason': est['rise_reason'],
+                    'reason_confidence': est['reason_confidence'],
+                    'reason_source': est['reason_source'],
+                    'reason_status': 'filled',
+                    'news': [naver_client.normalize_news_item(n) for n in related[:5]],
+                })
+                any_updated = True
+        if any_updated:
+            history['built_at'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+            f.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding='utf-8')
+            updated += 1
+        processed += 1
+        if processed % 20 == 0:
+            print(f'  processed {processed}, updated {updated}')
+    print(f'== estimate 완료: {updated}/{processed} ticker 갱신 ==')
+    return 0
+
+
+def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument('--days', type=int, default=365, help='몇 일치 거래일을 볼지 (기본 365)')
-    p.add_argument('--cutoff', type=float, default=15.0, help='상승률 컷오프 (기본 15)')
-    p.add_argument('--output-dir', default=DEFAULT_OUTPUT_DIR)
+    p.add_argument('--days', type=int, default=DEFAULT_DAYS)
+    p.add_argument('--cutoff', type=float, default=DEFAULT_CUTOFF)
+    p.add_argument('--limit-tickers', type=int, default=0,
+                   help='상위 N 종목만 빌드 (0=전체)')
+    p.add_argument('--estimate-only', action='store_true',
+                   help='인덱스 missing 만 재추정')
+    p.add_argument('--limit', type=int, default=0,
+                   help='estimate-only 시 처리 개수 한도')
     args = p.parse_args()
-    sys.exit(build(args.days, args.cutoff, args.output_dir))
+
+    if args.estimate_only:
+        sys.exit(build_estimate_only(args))
+    sys.exit(build_full(args))
 
 
 if __name__ == '__main__':

@@ -1,31 +1,48 @@
-name: 종목 인덱스 빌드
+name: 종목 인덱스 빌드 (1년치)
 
-# 매일 KST 18:00 (UTC 09:00) 평일 — stock-rise closing 끝난 후
-# + workflow_dispatch (수동) + repository_dispatch (admin 편집 후 트리거)
+# 매일 KST 18:00 (UTC 09:00) 평일 — incremental
+# 매주 일요일 KST 06:00 (UTC 21:00 토) — full rebuild (안전망)
+# + workflow_dispatch (수동) + repository_dispatch (admin 편집 후)
 on:
   schedule:
-    - cron: '0 9 * * 1-5'
+    - cron: '0 9 * * 1-5'      # 평일 incremental
+    - cron: '0 21 * * 6'        # 일요일 KST 06:00 = 토요일 UTC 21:00 full
   workflow_dispatch:
     inputs:
+      mode:
+        description: 'full | incremental | estimate-only'
+        required: false
+        default: 'incremental'
+        type: choice
+        options: [full, incremental, estimate-only]
       days:
-        description: '몇 일치 거래일'
+        description: '풀빌드 기간 (full mode)'
         required: false
         default: '365'
       cutoff:
-        description: '상승률 컷오프'
+        description: '컷오프 % (인덱스 저장 최저)'
         required: false
-        default: '15'
+        default: '10'
+      limit:
+        description: 'estimate-only 처리 한도'
+        required: false
+        default: '500'
   repository_dispatch:
-    types: [rebuild-history]
+    types: [rebuild-history, override-saved]
 
 env:
   TZ: Asia/Seoul
+
+concurrency:
+  group: build-history
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    timeout-minutes: 350      # 풀빌드 ~3시간 여유
 
     steps:
       - uses: actions/checkout@v4
@@ -33,31 +50,104 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
 
-      - name: Build stock history index
+      - name: Install dependencies
         run: |
-          DAYS="${{ inputs.days }}"
-          CUTOFF="${{ inputs.cutoff }}"
-          [ -z "$DAYS" ] && DAYS=365
-          [ -z "$CUTOFF" ] && CUTOFF=15
-          echo "=== build-history days=$DAYS cutoff=$CUTOFF ==="
-          for attempt in 1 2 3; do
-            echo "--- 시도 ${attempt}/3 ---"
-            if python scripts/build-history.py --days "$DAYS" --cutoff "$CUTOFF"; then
-              echo "성공"
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Determine mode
+        id: mode
+        run: |
+          EVENT="${{ github.event_name }}"
+          INPUT_MODE="${{ inputs.mode }}"
+          if [ "$EVENT" = "workflow_dispatch" ] && [ -n "$INPUT_MODE" ]; then
+            MODE="$INPUT_MODE"
+          elif [ "$EVENT" = "schedule" ]; then
+            HOUR_UTC=$(date -u +%H)
+            DOW=$(date -u +%u)   # 1=Mon ... 7=Sun
+            # 토요일 21:00 UTC = 일요일 06:00 KST → full
+            if [ "$HOUR_UTC" = "21" ] && [ "$DOW" = "6" ]; then
+              MODE="full"
+            else
+              MODE="incremental"
+            fi
+          elif [ "$EVENT" = "repository_dispatch" ]; then
+            MODE="estimate-only"
+          else
+            MODE="incremental"
+          fi
+          echo "mode=$MODE" >> $GITHUB_OUTPUT
+          echo "결정 모드: $MODE (event=$EVENT)"
+
+      - name: Holiday gate
+        id: gate
+        run: |
+          TODAY=$(date +%Y%m%d)
+          MODE="${{ steps.mode.outputs.mode }}"
+          # full / estimate-only 는 평일/주말 무관
+          if [ "$MODE" = "incremental" ]; then
+            DOW=$(date +%u)
+            if [ $DOW -ge 6 ]; then
+              echo "skip=true" >> $GITHUB_OUTPUT
+              echo "주말 — incremental 스킵"
               exit 0
             fi
-            echo "실패 — 30초 후 재시도"
-            sleep 30
-          done
-          echo "::error::3회 시도 모두 실패"
-          exit 1
+            # 한국 공휴일 스킵
+            python3 -c "
+          import sys
+          sys.path.insert(0, '.')
+          from collector.kr_holidays import is_kr_holiday
+          import datetime
+          if is_kr_holiday(datetime.date.today()):
+            sys.exit(1)
+          " || (echo "한국 공휴일 — 스킵" && echo "skip=true" >> $GITHUB_OUTPUT && exit 0)
+          fi
+          echo "skip=false" >> $GITHUB_OUTPUT
 
-      - name: Commit & push index
+      - name: Run build
+        if: steps.gate.outputs.skip != 'true'
+        run: |
+          MODE="${{ steps.mode.outputs.mode }}"
+          DAYS="${{ inputs.days }}"
+          CUTOFF="${{ inputs.cutoff }}"
+          LIMIT="${{ inputs.limit }}"
+          [ -z "$DAYS" ] && DAYS=365
+          [ -z "$CUTOFF" ] && CUTOFF=10
+          [ -z "$LIMIT" ] && LIMIT=500
+          echo "=== $MODE (days=$DAYS cutoff=$CUTOFF limit=$LIMIT) ==="
+          set -e
+          if [ "$MODE" = "full" ]; then
+            python3 scripts/build-history.py --days "$DAYS" --cutoff "$CUTOFF"
+          elif [ "$MODE" = "estimate-only" ]; then
+            python3 scripts/build-history.py --estimate-only --limit "$LIMIT"
+          else
+            # incremental — 짧은 기간만 fetch + 머지
+            python3 scripts/build-history.py --days 30 --cutoff "$CUTOFF"
+          fi
+
+      - name: Diff guard (full only)
+        if: steps.gate.outputs.skip != 'true' && steps.mode.outputs.mode == 'full'
+        run: |
+          # 풀빌드가 50% 이상 파일 다 새로 쓰면 의심 (덮어쓰기 사고 방지)
+          CHANGED=$(git diff --name-only public/data/stock-history/ | wc -l)
+          TOTAL=$(ls public/data/stock-history/*.json 2>/dev/null | wc -l)
+          [ "$TOTAL" = "0" ] && TOTAL=1
+          PERCENT=$((CHANGED * 100 / TOTAL))
+          echo "변경 $CHANGED / $TOTAL = $PERCENT%"
+          if [ "$PERCENT" -gt 80 ] && [ "$TOTAL" -gt 100 ]; then
+            echo "::warning::풀빌드 변경률 $PERCENT% — 덮어쓰기 사고 의심"
+          fi
+
+      - name: Commit & push
+        if: steps.gate.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/data/stock-history/
-          git diff --staged --quiet || git commit -m "build: 종목 인덱스 갱신 ($(date +%Y%m%d))"
+          git diff --staged --quiet || git commit -m "build: 종목 인덱스 ${MODE:-incremental} 갱신 ($(date +%Y%m%d))"
           git pull --rebase origin master || true
           git push
