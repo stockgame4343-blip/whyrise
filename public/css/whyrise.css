@@ -198,23 +198,27 @@ body {
     padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;
 }
 
-/* ── 단순 툴바 (날짜 좌, 관심 우 — 메인 컬럼 폭과 동일) ── */
+/* ── 단순 툴바 (날짜 좌, 관심 우 — 메인 컬럼 폭에 한정) ── */
 .toolbar--simple {
-    display: grid;
-    grid-template-columns: 1fr 300px;   /* layout-split 와 동일 그리드 */
-    gap: 24px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 18px 4px;
     margin-bottom: 8px;
+    /* 위젯 컬럼(300px) + gap(24px) 만큼 우측 비워 메인 컬럼 폭과 일치 */
+    margin-right: 324px;
 }
-.toolbar--simple .report__date-bar { justify-self: start; grid-column: 1; }
+.toolbar--simple .report__date-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 .toolbar--simple .toolbar__right {
-    grid-column: 1;       /* 위젯 컬럼 X, 첫 컬럼(메인 테이블) 안 */
-    justify-self: end;    /* 메인 테이블 우측 끝에 정렬 */
-    grid-row: 1;          /* 같은 줄 */
+    display: flex;
+    align-items: center;
 }
 @media (max-width: 1100px) {
-    .toolbar--simple { grid-template-columns: 1fr; }
+    .toolbar--simple { margin-right: 0; }
 }
 .cutoff-count {
     background: var(--glass-bg);
@@ -244,26 +248,31 @@ body {
 }
 .layout-main { min-width: 0; }
 
-/* ── 위젯 — 글래스풍 (메인 테이블 thead 와 시작 라인 정렬) ── */
+/* ── 위젯 — 글래스풍 (메인 테이블 thead 와 정확한 y 라인 정렬) ── */
 .widget {
     background: var(--glass-bg);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
-    padding: 8px 18px 14px;   /* table-wrap padding-top 8px 와 일치 */
+    padding: 8px 14px;        /* table-wrap padding 8px 14px 와 정확히 동일 */
     margin-bottom: 18px;
     box-shadow: var(--glass-shadow);
 }
 .widget__title {
-    /* thead th 와 동일한 padding-top (14px) → 메인 테이블 thead 와 같은 y 라인 */
-    font-size: 11px; font-weight: 600; color: var(--text-muted);
-    padding: 14px 0;
+    /* thead th 와 100% 동일 box: padding 14px 10px / font-size 11px / line-height 1 */
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 14px 10px;
     margin: 0;
+    line-height: 1;
     letter-spacing: 0.6px;
     text-transform: uppercase;
     border-bottom: 1px solid var(--glass-border);
 }
+.widget__list { padding: 0 10px; }   /* thead th padding-left 와 동일 */
+.widget__caption { padding: 0 10px; }
 .widget__list { list-style: none; padding: 0; margin: 0; }
 .widget__list li {
     display: flex; align-items: center; justify-content: space-between;
@@ -654,8 +663,8 @@ body {
 .visitor-row__dot {
     width: 7px; height: 7px;
     border-radius: 50%;
-    background: var(--wr-accent);
-    box-shadow: 0 0 8px rgba(49, 130, 246, 0.6);
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
     animation: visitor-pulse 2s ease-in-out infinite;
 }
 .visitor-row__num {
