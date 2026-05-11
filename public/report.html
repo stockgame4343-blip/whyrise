@@ -81,6 +81,12 @@
     <div class="footer">
         <footer class="footer__wrap">
             <div class="frame footer__inner">
+                <div class="visitor-row" id="visitorRow" style="display:none;">
+                    <span class="visitor-row__dot"></span>
+                    <span><span class="visitor-row__num" id="visitorOnline">—</span>명 보는 중</span>
+                    <span class="visitor-row__sep">·</span>
+                    <span>누적 <span class="visitor-row__num" id="visitorUnique">—</span>명</span>
+                </div>
                 <p class="footer__disclaimer">
                     <strong>본 사이트는 유사투자자문업 신고를 하지 않았으며, 투자자문·종목 추천을 제공하지 않습니다.</strong>
                     모든 통계는 과거 시장 데이터를 기계적으로 집계한 결과이며 미래 수익을 의미하지 않습니다.
@@ -92,5 +98,6 @@
 
     <script src="/js/api.js"></script>
     <script src="/js/report.js"></script>
+    <script src="/js/visitor.js"></script>
 </body>
 </html>

@@ -643,6 +643,39 @@ body {
     backdrop-filter: blur(20px);
     border-top: 1px solid var(--glass-border);
 }
+/* 방문자 카운터 — 푸터 위쪽 작은 라인 */
+.visitor-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+}
+.visitor-row__dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+    animation: visitor-pulse 2s ease-in-out infinite;
+}
+.visitor-row__num {
+    color: var(--wr-accent);
+    font-weight: 700;
+    font-feature-settings: 'tnum';
+    margin: 0 2px;
+}
+.visitor-row__sep { color: var(--text-muted); }
+@keyframes visitor-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+}
+
 /* 관리자 링크 — 푸터 끝에 작은 점만 */
 .footer__admin-link {
     color: var(--text-muted);
