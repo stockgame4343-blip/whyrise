@@ -1,36 +1,73 @@
-/* ── 이거왜오름? 전용 — 글래스풍 디자인 ── */
+/* ── 이거왜오름? 전용 — 글래스풍 + 차분한 사이언/인디고 톤 ── */
 
-/* 베이스 배경 — 깊은 네이비 + 오렌지 글로우 그라데이션 */
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.04);
+    /* 베이스 — 거의 흑색에 가까운 깊은 차콜 */
+    --wr-bg-base: #0a0b0f;
+    --wr-bg-soft: #12141a;
+
+    /* 글래스 */
+    --glass-bg: rgba(255, 255, 255, 0.035);
     --glass-bg-strong: rgba(255, 255, 255, 0.06);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-border-strong: rgba(255, 255, 255, 0.14);
-    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-    --gradient-orange: linear-gradient(135deg, #ff6348 0%, #ffa502 100%);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+    /* 액센트 — 차분한 사이언↔인디고 (Linear/Vercel 톤) */
+    --wr-accent: #7dd3fc;        /* sky-300 — primary */
+    --wr-accent-2: #a5b4fc;      /* indigo-300 — secondary */
+    --wr-accent-strong: #38bdf8; /* sky-400 — 강조용 */
+    --wr-accent-soft: rgba(125, 211, 252, 0.12);
+    --gradient-accent: linear-gradient(135deg, #7dd3fc 0%, #a5b4fc 100%);
+    --gradient-accent-soft: linear-gradient(135deg,
+        rgba(125, 211, 252, 0.16),
+        rgba(165, 180, 252, 0.10));
+
+    /* 상승 — 한국 증시 색 유지, 채도 살짝 낮춤 */
+    --wr-rise: #f87171;          /* red-400 */
+    --wr-rise-soft: rgba(248, 113, 113, 0.14);
 }
+
 body {
     background:
-        radial-gradient(circle at 15% 5%, rgba(255, 99, 72, 0.12), transparent 35%),
-        radial-gradient(circle at 85% 25%, rgba(91, 157, 249, 0.10), transparent 40%),
-        radial-gradient(circle at 50% 100%, rgba(255, 165, 2, 0.08), transparent 50%),
-        var(--bg-primary);
+        radial-gradient(circle at 12% 8%, rgba(125, 211, 252, 0.08), transparent 38%),
+        radial-gradient(circle at 88% 22%, rgba(165, 180, 252, 0.07), transparent 42%),
+        radial-gradient(circle at 50% 100%, rgba(56, 189, 248, 0.05), transparent 55%),
+        var(--wr-bg-base);
     background-attachment: fixed;
+    color: #e7e9ee;
     min-height: 100vh;
 }
 [data-theme="light"] body {
     background:
-        radial-gradient(circle at 15% 5%, rgba(255, 99, 72, 0.10), transparent 35%),
-        radial-gradient(circle at 85% 25%, rgba(0, 113, 227, 0.08), transparent 40%),
-        var(--bg-primary);
+        radial-gradient(circle at 12% 8%, rgba(56, 189, 248, 0.08), transparent 38%),
+        radial-gradient(circle at 88% 22%, rgba(99, 102, 241, 0.06), transparent 42%),
+        #f6f7fb;
     background-attachment: fixed;
+    color: #18181b;
 }
 [data-theme="light"] {
-    --glass-bg: rgba(255, 255, 255, 0.55);
-    --glass-bg-strong: rgba(255, 255, 255, 0.75);
+    --wr-accent: #0284c7;        /* sky-600 더 짙게 */
+    --wr-accent-2: #6366f1;      /* indigo-500 */
+    --wr-accent-strong: #0369a1;
+    --wr-accent-soft: rgba(2, 132, 199, 0.12);
+    --gradient-accent: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
+    --gradient-accent-soft: linear-gradient(135deg,
+        rgba(2, 132, 199, 0.12),
+        rgba(99, 102, 241, 0.08));
+    --wr-rise: #dc2626;
+    --wr-rise-soft: rgba(220, 38, 38, 0.10);
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-bg-strong: rgba(255, 255, 255, 0.8);
     --glass-border: rgba(0, 0, 0, 0.06);
     --glass-border-strong: rgba(0, 0, 0, 0.1);
-    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* style.css 의 --orange 사용처 호환 — 기존 변수도 새 톤으로 매핑 */
+:root {
+    --orange: var(--wr-accent);
+    --rise: var(--wr-rise);
+    --accent: var(--wr-accent);
 }
 
 /* 글래스 공통 클래스 */
@@ -45,7 +82,7 @@ body {
 
 /* 로고 — 오렌지 그라데이션 텍스트 */
 .top-bar__logo {
-    background: var(--gradient-orange);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -69,7 +106,7 @@ body {
 .top-bar__link:hover { color: var(--text-primary); background: var(--glass-bg); }
 .top-bar__link--active {
     color: #fff;
-    background: var(--gradient-orange);
+    background: var(--gradient-accent);
 }
 .top-bar__nav { display: flex; gap: 4px; }
 
@@ -97,7 +134,7 @@ body {
 }
 .hero__search-wrap:focus-within {
     border-color: var(--orange);
-    box-shadow: 0 12px 48px rgba(255, 99, 72, 0.25);
+    box-shadow: 0 12px 48px rgba(125, 211, 252, 0.25);
     transform: translateY(-1px);
 }
 .hero__search-input {
@@ -115,7 +152,7 @@ body {
 .hero--mini .hero__search-input { font-size: 17px; }
 .hero__search-input::placeholder { color: var(--text-muted); font-weight: 500; }
 .hero__placeholder-suffix {
-    background: var(--gradient-orange);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -165,7 +202,7 @@ body {
 .hero__suggest li.active { background: var(--glass-bg-strong); }
 .hero__suggest li .ticker { color: var(--text-muted); font-size: 12px; }
 .hero__suggest li .badge {
-    background: rgba(255,99,72,.2); color: var(--orange);
+    background: rgba(125, 211, 252, .2); color: var(--orange);
     padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;
 }
 
@@ -232,14 +269,14 @@ body {
 }
 .widget__list li a:hover { color: var(--orange); }
 .widget__list li .count {
-    background: linear-gradient(135deg, rgba(255,99,72,.2), rgba(255,165,2,.15));
+    background: linear-gradient(135deg, rgba(125, 211, 252, .2), rgba(165, 180, 252, .15));
     color: var(--orange);
     padding: 3px 10px;
     border-radius: 999px;
     font-size: 11px;
     font-weight: 700;
     flex-shrink: 0; margin-left: 8px;
-    border: 1px solid rgba(255,99,72,.2);
+    border: 1px solid rgba(125, 211, 252, .2);
 }
 .widget__caption { font-size: 11px; color: var(--text-muted); margin-top: 12px; }
 .widget__loading,
@@ -351,7 +388,7 @@ body {
     white-space: nowrap;
 }
 .whyrise-table .theme-tag {
-    background: linear-gradient(135deg, rgba(255, 99, 72, 0.18), rgba(255, 165, 2, 0.12));
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.18), rgba(165, 180, 252, 0.12));
     color: var(--orange);
     padding: 4px 10px;
     border-radius: 999px;
@@ -359,7 +396,7 @@ body {
     font-weight: 700;
     white-space: nowrap;
     flex-shrink: 0;
-    border: 1px solid rgba(255, 99, 72, 0.2);
+    border: 1px solid rgba(125, 211, 252, 0.2);
 }
 
 /* admin 편집 표식 */
@@ -404,7 +441,7 @@ body {
     font-size: 36px; font-weight: 800; letter-spacing: -1.5px; color: var(--text-primary);
 }
 .stock-header__title strong {
-    background: var(--gradient-orange);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -428,7 +465,7 @@ body {
     letter-spacing: -.5px;
 }
 .stock-header__stat-value--rise {
-    background: var(--gradient-orange);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -460,7 +497,7 @@ body {
 .event-card__date { font-size: 16px; font-weight: 700; }
 .event-card__rate {
     font-size: 20px; font-weight: 800;
-    background: var(--gradient-orange);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -550,7 +587,7 @@ body {
     background: rgba(46,213,115,.15); color: var(--green);
 }
 .event-card__source-badge.badge--admin {
-    background: rgba(255,99,72,.15); color: var(--orange);
+    background: rgba(125, 211, 252, .15); color: var(--orange);
 }
 .event-card__source-badge.badge--news {
     background: rgba(91,157,249,.15); color: var(--accent);
@@ -632,7 +669,7 @@ body {
 
 /* admin 편집 모달 */
 .admin-edit__guide {
-    background: rgba(255,165,2,.1); border: 1px solid var(--yellow);
+    background: rgba(165, 180, 252, .1); border: 1px solid var(--yellow);
     border-radius: 6px; padding: 10px 12px; font-size: 12px; color: var(--yellow);
     margin-bottom: 14px;
 }
@@ -649,7 +686,7 @@ body {
 }
 .report-page__sub { margin-top: 10px; color: var(--text-secondary); font-size: 14px; }
 .report-page__sub strong {
-    background: var(--gradient-orange);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -696,7 +733,7 @@ body {
 .report-row__bar {
     position: absolute;
     left: 0; top: 0; bottom: 0;
-    background: rgba(255,99,72,.08);
+    background: rgba(125, 211, 252, .08);
     z-index: 0;
 }
 .report-row__content {
@@ -727,7 +764,7 @@ body {
     flex-shrink: 0;
 }
 .report-row__count {
-    background: rgba(255,99,72,.15);
+    background: rgba(125, 211, 252, .15);
     color: var(--orange);
     padding: 2px 10px;
     border-radius: 4px;
