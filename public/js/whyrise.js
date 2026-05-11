@@ -9,6 +9,7 @@
 var WhyApp = (function () {
 
     var STORAGE_KEY = 'whyrise-ratings';
+    var WATCHLIST_KEY = 'whyrise-watchlist-mode';
     var THEME_KEY = 'theme';
     var CUTOFF = 15;   // 고정
 
@@ -17,6 +18,7 @@ var WhyApp = (function () {
         currentDateIdx: 0,
         rankings: [],         // 원본 (필터 전)
         ratings: {},
+        watchlistMode: false, // 별점 매긴 종목만 필터
     };
 
     function loadRatings() {
@@ -43,6 +45,13 @@ var WhyApp = (function () {
         var filtered = (state.rankings || []).filter(function (r) {
             return r.change_rate != null && r.change_rate >= CUTOFF;
         });
+        // 관심 모드: 별점 매긴 종목만
+        if (state.watchlistMode) {
+            filtered = filtered.filter(function (r) {
+                var rt = state.ratings[r.ticker] || {};
+                return (rt.stars || 0) > 0;
+            });
+        }
         // change_rate 내림차순 정렬, 1-base 랭킹 부여
         filtered.sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
         filtered.forEach(function (r, i) { r._displayRank = i + 1; });
@@ -51,7 +60,11 @@ var WhyApp = (function () {
         WhyTable.render(filtered, state.ratings, { date: date });
 
         var $cnt = document.getElementById('cutoffCount');
-        if ($cnt) $cnt.textContent = '+15% 이상 ' + filtered.length + '개';
+        if ($cnt) {
+            $cnt.textContent = state.watchlistMode
+                ? '관심 ' + filtered.length + '개'
+                : '+15% 이상 ' + filtered.length + '개';
+        }
     }
 
     function loadDate(date) {
@@ -89,6 +102,17 @@ var WhyApp = (function () {
     function bindDateNav() {
         var $prev = document.getElementById('datePrev');
         var $next = document.getElementById('dateNext');
+        var $disp = document.getElementById('dateDisplay');
+        var $badge = document.getElementById('dateBadge');
+
+        function jumpTo(date) {
+            var idx = state.dates.indexOf(date);
+            if (idx < 0) return;
+            state.currentDateIdx = idx;
+            updateDateUI();
+            loadDate(date);
+        }
+
         if ($prev) $prev.addEventListener('click', function () {
             if (state.currentDateIdx < state.dates.length - 1) {
                 state.currentDateIdx++;
@@ -102,6 +126,36 @@ var WhyApp = (function () {
                 updateDateUI();
                 loadDate(state.dates[state.currentDateIdx]);
             }
+        });
+
+        // dateDisplay 클릭 → 캘린더 팝오버 (date-picker.js 가 글로벌 DatePicker 제공)
+        function openPicker(trigger) {
+            if (typeof DatePicker === 'undefined' || !DatePicker.open) return;
+            DatePicker.open({
+                trigger: trigger,
+                dates: state.dates,
+                current: state.dates[state.currentDateIdx],
+                onSelect: jumpTo,
+            });
+        }
+        if ($disp) $disp.addEventListener('click', function () { openPicker($disp); });
+        if ($badge) $badge.addEventListener('click', function () { openPicker($badge); });
+    }
+
+    function bindWatchlistToggle() {
+        var $btn = document.getElementById('watchlistBtn');
+        if (!$btn) return;
+        // 초기 복원
+        try {
+            state.watchlistMode = localStorage.getItem(WATCHLIST_KEY) === '1';
+        } catch (e) {}
+        $btn.classList.toggle('active', state.watchlistMode);
+        $btn.addEventListener('click', function () {
+            state.watchlistMode = !state.watchlistMode;
+            $btn.classList.toggle('active', state.watchlistMode);
+            try { localStorage.setItem(WATCHLIST_KEY, state.watchlistMode ? '1' : '0'); }
+            catch (e) {}
+            applyCutoffAndRender();
         });
     }
 
@@ -278,6 +332,7 @@ var WhyApp = (function () {
         loadRatings();
         bindThemeToggle();
         bindDateNav();
+        bindWatchlistToggle();
         bindRatingsEvents();
         bindMemoModal();
         bindNewsModal();

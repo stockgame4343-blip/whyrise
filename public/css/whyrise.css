@@ -13,11 +13,11 @@
     --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 
     /* 액센트 — 진한 맑은 블루 (단색) */
-    --wr-accent: #2563eb;        /* blue-600 */
-    --wr-accent-2: #2563eb;
-    --wr-accent-strong: #1d4ed8; /* blue-700 */
-    --wr-accent-soft: rgba(37, 99, 235, 0.14);
-    --wr-accent-bg: rgba(37, 99, 235, 0.18);
+    --wr-accent: #5b9df9;        /* blue-600 */
+    --wr-accent-2: #5b9df9;
+    --wr-accent-strong: #4a8de8; /* blue-700 */
+    --wr-accent-soft: rgba(91, 157, 249, 0.14);
+    --wr-accent-bg: rgba(91, 157, 249, 0.18);
     /* 그라데이션 변수는 호환용 — 단색 처리 (그라데이션 제거) */
     --gradient-accent: var(--wr-accent);
     --gradient-accent-soft: var(--wr-accent-soft);
@@ -37,11 +37,11 @@ body {
     color: #18181b;
 }
 [data-theme="light"] {
-    --wr-accent: #2563eb;        /* blue-600 */
-    --wr-accent-2: #2563eb;
-    --wr-accent-strong: #1d4ed8; /* blue-700 */
-    --wr-accent-soft: rgba(37, 99, 235, 0.12);
-    --wr-accent-bg: rgba(37, 99, 235, 0.14);
+    --wr-accent: #5b9df9;        /* blue-600 */
+    --wr-accent-2: #5b9df9;
+    --wr-accent-strong: #4a8de8; /* blue-700 */
+    --wr-accent-soft: rgba(91, 157, 249, 0.12);
+    --wr-accent-bg: rgba(91, 157, 249, 0.14);
     --gradient-accent: var(--wr-accent);
     --gradient-accent-soft: var(--wr-accent-soft);
     --wr-rise: #dc2626;
@@ -121,7 +121,7 @@ body {
 }
 .hero__search-wrap:focus-within {
     border-color: var(--orange);
-    box-shadow: 0 12px 48px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 12px 48px rgba(91, 157, 249, 0.25);
     transform: translateY(-1px);
 }
 .hero__search-input {
@@ -186,7 +186,7 @@ body {
 .hero__suggest li.active { background: var(--glass-bg-strong); }
 .hero__suggest li .ticker { color: var(--text-muted); font-size: 12px; }
 .hero__suggest li .badge {
-    background: rgba(37, 99, 235, .2); color: var(--orange);
+    background: rgba(91, 157, 249, .2); color: var(--orange);
     padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;
 }
 
@@ -557,7 +557,7 @@ body {
     background: rgba(46,213,115,.15); color: var(--green);
 }
 .event-card__source-badge.badge--admin {
-    background: rgba(37, 99, 235, .15); color: var(--orange);
+    background: rgba(91, 157, 249, .15); color: var(--orange);
 }
 .event-card__source-badge.badge--news {
     background: rgba(91,157,249,.15); color: var(--accent);
@@ -605,7 +605,15 @@ body {
 }
 
 /* date 영역 */
-.date-text { color: var(--text-primary); }
+.date-text {
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 8px;
+    transition: background .15s;
+    font-weight: 700;
+}
+.date-text:hover { background: var(--glass-bg-strong); }
 .date-badge {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -614,11 +622,41 @@ body {
     border-radius: 999px;
     font-size: 11px;
     font-weight: 700;
+    cursor: pointer;
 }
 .date-badge--past {
     border-color: var(--glass-border);
     color: var(--text-muted);
 }
+
+/* 관심 토글 버튼 */
+.tab.tab--watchlist {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all .15s;
+}
+.tab.tab--watchlist svg { opacity: 0.5; }
+.tab.tab--watchlist:hover {
+    color: var(--text-primary);
+    background: var(--glass-bg-strong);
+}
+.tab.tab--watchlist:hover svg { opacity: 0.9; }
+.tab.tab--watchlist.active {
+    background: var(--wr-accent);
+    border-color: var(--wr-accent);
+    color: #fff;
+}
+.tab.tab--watchlist.active svg { opacity: 1; }
+.toolbar--simple .toolbar__left { display: flex; align-items: center; }
 .date-nav {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -639,7 +677,7 @@ body {
 
 /* admin 편집 모달 */
 .admin-edit__guide {
-    background: rgba(37, 99, 235, .1); border: 1px solid var(--yellow);
+    background: rgba(91, 157, 249, .1); border: 1px solid var(--yellow);
     border-radius: 6px; padding: 10px 12px; font-size: 12px; color: var(--yellow);
     margin-bottom: 14px;
 }
@@ -700,7 +738,7 @@ body {
 .report-row__bar {
     position: absolute;
     left: 0; top: 0; bottom: 0;
-    background: rgba(37, 99, 235, .08);
+    background: rgba(91, 157, 249, .08);
     z-index: 0;
 }
 .report-row__content {
@@ -731,7 +769,7 @@ body {
     flex-shrink: 0;
 }
 .report-row__count {
-    background: rgba(37, 99, 235, .15);
+    background: rgba(91, 157, 249, .15);
     color: var(--orange);
     padding: 2px 10px;
     border-radius: 4px;
