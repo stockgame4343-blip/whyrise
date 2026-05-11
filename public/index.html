@@ -91,31 +91,27 @@
     </section>
 
     <div class="frame">
-        <!-- 좌: 날짜 / 우: 관심 -->
-        <nav class="toolbar toolbar--simple">
-            <div class="report__date-bar">
-                <button class="date-nav" id="datePrev" type="button">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <button class="date-nav" id="dateNext" type="button">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-                <span class="date-text" id="dateDisplay" title="클릭하여 거래일 선택">-</span>
-            </div>
-            <div class="toolbar__right">
-                <button class="tab tab--watchlist" id="watchlistBtn" type="button">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
-                    관심
-                </button>
-            </div>
-        </nav>
-
         <div class="message" id="message" style="display:none;"></div>
         <div class="loading" id="loading" style="display:none;">데이터 로딩 중...</div>
 
         <div class="layout-split">
-            <!-- 메인: 오늘 +15% 이상 종목 -->
+            <!-- 메인: 헤더(날짜·관심) + 오늘 +15% 이상 종목 -->
             <main class="layout-main">
+                <div class="main-head">
+                    <div class="report__date-bar">
+                        <button class="date-nav" id="datePrev" type="button">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                        </button>
+                        <span class="date-text" id="dateDisplay" title="클릭하여 거래일 선택">-</span>
+                        <button class="date-nav" id="dateNext" type="button">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
+                    </div>
+                    <button class="tab tab--watchlist" id="watchlistBtn" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+                        관심
+                    </button>
+                </div>
                 <div class="table-wrap glass">
                     <table class="ranking-table whyrise-table" id="rankingTable">
                         <thead>
@@ -133,7 +129,7 @@
                 </div>
             </main>
 
-            <!-- 사이드: 위젯 -->
+            <!-- 사이드: 위젯 (메인 높이만큼 채움) -->
             <aside class="layout-aside">
                 <div class="widget" id="widgetTopRecent">
                     <h3 class="widget__title">최근 한 달 자주 오른 종목</h3>
