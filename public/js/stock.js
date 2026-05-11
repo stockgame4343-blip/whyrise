@@ -68,9 +68,18 @@
         var $title = document.getElementById('stockTitle');
         var $market = document.getElementById('stockMarket');
         var $stats = document.getElementById('stockStats');
-        document.getElementById('pageTitle').textContent = name + ' 왜 오름? — 이거왜오름?';
-        document.getElementById('pageDesc').setAttribute('content',
-            name + ' 이 +10% 이상 오른 모든 날짜와 이유. 최근 1년 ' + (stats.count_10 || 0) + '회.');
+        var pageTitle = name + ' 왜 오름? — 이거왜오름?';
+        var pageDesc = name + ' 이 최근 1년간 +15% 이상 오른 ' + (stats.count_15 || 0) + '회의 날짜와 이유·뉴스.';
+        document.getElementById('pageTitle').textContent = pageTitle;
+        document.getElementById('pageDesc').setAttribute('content', pageDesc);
+        var ticker = (new URLSearchParams(window.location.search)).get('ticker')
+            || (window.location.pathname.match(/\/stock\/(\d{6})/) || [])[1] || '';
+        var $can = document.getElementById('pageCanonical');
+        if ($can && ticker) $can.setAttribute('href', 'https://whyrise.vercel.app/stock/' + ticker);
+        var $ogT = document.getElementById('pageOgTitle');
+        if ($ogT) $ogT.setAttribute('content', pageTitle);
+        var $ogD = document.getElementById('pageOgDesc');
+        if ($ogD) $ogD.setAttribute('content', pageDesc);
 
         $title.innerHTML = '<strong>' + name + '</strong> 왜 오름?';
         if (market) $market.textContent = market;

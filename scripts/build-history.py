@@ -262,6 +262,43 @@ def write_index(name_by_ticker: dict[str, dict], output_dir: Path) -> None:
     )
 
 
+# ── sitemap 생성 ─────────────────────────────────────────
+
+def build_sitemap(stock_history_dir: Path, public_dir: Path,
+                  site: str = 'https://whyrise.vercel.app') -> None:
+    """sitemap.xml — 정적 + 종목별 페이지 (검색 인덱스의 ticker 들)."""
+    today = date.today().strftime('%Y-%m-%d')
+    static = [
+        (f'{site}/', '1.0', 'daily'),
+        (f'{site}/report.html', '0.8', 'daily'),
+    ]
+    # 종목 페이지
+    idx_path = stock_history_dir / 'index.json'
+    tickers: list[str] = []
+    if idx_path.exists():
+        try:
+            idx = json.loads(idx_path.read_text(encoding='utf-8'))
+            tickers = sorted(idx.keys())
+        except Exception:
+            pass
+
+    parts = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for url, prio, freq in static:
+        parts.append(f'  <url><loc>{url}</loc><lastmod>{today}</lastmod>'
+                     f'<changefreq>{freq}</changefreq><priority>{prio}</priority></url>')
+    for t in tickers:
+        parts.append(f'  <url><loc>{site}/stock/{t}</loc>'
+                     f'<lastmod>{today}</lastmod>'
+                     '<changefreq>weekly</changefreq><priority>0.6</priority></url>')
+    parts.append('</urlset>')
+
+    (public_dir / 'sitemap.xml').write_text('\n'.join(parts), encoding='utf-8')
+    print(f'  sitemap.xml: {len(tickers) + len(static)} URL')
+
+
 # ── 리포트 집계 ─────────────────────────────────────────
 
 def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
@@ -465,6 +502,7 @@ def build_full(args) -> int:
 
     write_index(index_meta, output_dir)
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
+    build_sitemap(output_dir, output_dir.parent.parent)  # public/sitemap.xml
     elapsed = time.time() - t_start
     print(f'== 완료: {success}/{total} 종목, skip {skipped}, elapsed {elapsed:.0f}s ==')
     return 0
@@ -531,6 +569,7 @@ def build_estimate_only(args) -> int:
             print(f'  processed {processed}, updated {updated}')
     print(f'== estimate 완료: {updated}/{processed} ticker 갱신 ==')
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
+    build_sitemap(output_dir, output_dir.parent.parent)
     return 0
 
 

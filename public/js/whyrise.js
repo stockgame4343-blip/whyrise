@@ -59,12 +59,6 @@ var WhyApp = (function () {
         var date = state.dates[state.currentDateIdx] || '';
         WhyTable.render(filtered, state.ratings, { date: date });
 
-        var $cnt = document.getElementById('cutoffCount');
-        if ($cnt) {
-            $cnt.textContent = state.watchlistMode
-                ? '관심 ' + filtered.length + '개'
-                : '+15% 이상 ' + filtered.length + '개';
-        }
     }
 
     function loadDate(date) {
@@ -90,20 +84,14 @@ var WhyApp = (function () {
 
     function updateDateUI() {
         var $disp = document.getElementById('dateDisplay');
-        var $badge = document.getElementById('dateBadge');
         var date = state.dates[state.currentDateIdx];
         if ($disp) $disp.textContent = formatDate(date);
-        if ($badge) {
-            $badge.textContent = state.currentDateIdx === 0 ? '최신' : '과거';
-            $badge.classList.toggle('date-badge--past', state.currentDateIdx > 0);
-        }
     }
 
     function bindDateNav() {
         var $prev = document.getElementById('datePrev');
         var $next = document.getElementById('dateNext');
         var $disp = document.getElementById('dateDisplay');
-        var $badge = document.getElementById('dateBadge');
 
         function jumpTo(date) {
             var idx = state.dates.indexOf(date);
@@ -139,7 +127,6 @@ var WhyApp = (function () {
             });
         }
         if ($disp) $disp.addEventListener('click', function () { openPicker($disp); });
-        if ($badge) $badge.addEventListener('click', function () { openPicker($badge); });
     }
 
     function bindWatchlistToggle() {

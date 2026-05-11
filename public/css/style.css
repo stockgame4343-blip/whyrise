@@ -1,13 +1,13 @@
 /* ── 리셋 & 다크 테마 (기본) ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;font-family:inherit}
 :root{
-    --bg-primary:#191919;--bg-secondary:#232323;--bg-tertiary:#2c2c2c;
-    --bg-hover:#353535;--text-primary:#e8e8e8;--text-secondary:#999;
-    --text-muted:#666;--border:#333;--accent:#5b9df9;
-    --rise:#ff4757;--fall:#3742fa;--green:#2ed573;--yellow:#ffa502;
+    --bg-primary:#191919;--bg-secondary:#1F1F1F;--bg-tertiary:#2A2A2A;
+    --bg-hover:#353535;--text-primary:#FFFFFF;--text-secondary:#A8A8A8;
+    --text-muted:#6E6E6E;--border:#333;--accent:#3182F6;
+    --rise:#F04452;--fall:#3182F6;--green:#2ed573;--yellow:#ffa502;
     --orange:#ff6348;--naver-green:#03c75a;
-    --intensity-boom:#ff4757;--intensity-surge:#ff6348;
-    --intensity-active:#ffa502;--intensity-normal:#666;
+    --intensity-boom:#F04452;--intensity-surge:#ff6348;
+    --intensity-active:#ffa502;--intensity-normal:#6E6E6E;
     --border-subtle:rgba(255,255,255,.06);
     --shadow:0 1px 4px rgba(0,0,0,.3);
     --modal-backdrop:rgba(0,0,0,.6);--modal-shadow:0 16px 48px rgba(0,0,0,.5);
@@ -15,15 +15,15 @@
     --font-sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Noto Sans KR','Malgun Gothic',sans-serif;
 }
 
-/* ── 라이트 테마 ── */
+/* ── 라이트 테마 (토스증권 팔레트) ── */
 [data-theme="light"]{
-    --bg-primary:#f5f5f7;--bg-secondary:#ffffff;--bg-tertiary:#f0f0f2;
-    --bg-hover:#e8e8ec;--text-primary:#1d1d1f;--text-secondary:#6e6e73;
-    --text-muted:#aeaeb2;--border:#e0e0e4;--accent:#0071e3;
-    --rise:#ff3b30;--fall:#007aff;--green:#34c759;--yellow:#ff9500;
+    --bg-primary:#F2F4F6;--bg-secondary:#ffffff;--bg-tertiary:#F2F4F6;
+    --bg-hover:#E5E8EB;--text-primary:#191919;--text-secondary:#4E5968;
+    --text-muted:#8B95A1;--border:#E5E8EB;--accent:#3182F6;
+    --rise:#F04452;--fall:#3182F6;--green:#34c759;--yellow:#ff9500;
     --orange:#e8590c;--naver-green:#03c75a;
-    --intensity-boom:#ff3b30;--intensity-surge:#e8590c;
-    --intensity-active:#ff9500;--intensity-normal:#aeaeb2;
+    --intensity-boom:#F04452;--intensity-surge:#e8590c;
+    --intensity-active:#ff9500;--intensity-normal:#8B95A1;
     --border-subtle:rgba(0,0,0,.06);
     --shadow:0 1px 4px rgba(0,0,0,.06);
     --modal-backdrop:rgba(0,0,0,.25);--modal-shadow:0 16px 48px rgba(0,0,0,.12);
