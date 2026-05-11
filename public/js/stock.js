@@ -24,6 +24,46 @@
         return y + '. ' + m + '. ' + d + ' (' + DAYS[dt.getDay()] + ')';
     }
 
+    function topByFreq(items, getKey) {
+        var count = {};
+        items.forEach(function (it) {
+            var k = getKey(it);
+            if (!k) return;
+            count[k] = (count[k] || 0) + 1;
+        });
+        var keys = Object.keys(count);
+        if (!keys.length) return null;
+        keys.sort(function (a, b) { return count[b] - count[a]; });
+        return { key: keys[0], count: count[keys[0]] };
+    }
+
+    function buildSummary(events) {
+        if (!events || !events.length) return '';
+        // 가장 빈번한 theme_tag (filled 사건 위주, fallback 전체)
+        var filledEvents = events.filter(function (e) {
+            return e.reason_status === 'filled' || e.reason_status === 'edited';
+        });
+        var sourceEvents = filledEvents.length ? filledEvents : events;
+        var topTheme = topByFreq(sourceEvents, function (e) { return e.theme_tag || ''; });
+        // 가장 빈번한 reason (missing / "52주 신고가 도달" 같은 placeholder 제외)
+        var GENERIC = ['52주 신고가 도달', '상한가 — 사유 미수집', '-', ''];
+        var topReason = topByFreq(filledEvents, function (e) {
+            var r = e.rise_reason || '';
+            if (GENERIC.indexOf(r) >= 0) return '';
+            return r;
+        });
+
+        var parts = [];
+        if (topTheme && topTheme.key) parts.push(topTheme.key);
+        if (topReason && topReason.key) parts.push(topReason.key);
+        if (!parts.length) {
+            // 둘 다 없으면 sector 기반 폴백
+            var topSector = topByFreq(events, function (e) { return e.sector || ''; });
+            if (topSector && topSector.key) parts.push(topSector.key);
+        }
+        return parts.join(' · ');
+    }
+
     function renderHeader(name, market, stats) {
         var $title = document.getElementById('stockTitle');
         var $market = document.getElementById('stockMarket');
@@ -238,6 +278,12 @@
                 return;
             }
             renderHeader(history.name || ticker, history.market || '', history.stats || {});
+            var $sum = document.getElementById('stockSummary');
+            if ($sum) {
+                var summary = buildSummary(history.events || []);
+                $sum.textContent = summary || '';
+                $sum.style.display = summary ? 'block' : 'none';
+            }
             renderEvents(history.events || [], ticker);
             bindAdminEdit(history);
         }).catch(function (err) {
