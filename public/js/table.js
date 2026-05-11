@@ -12,36 +12,6 @@ var WhyTable = (function () {
 
     var _currentData = [];
 
-    // 토스 스타일 종목 원형 아이콘 팔레트 (다양한 톤으로 종목 시각 분간)
-    var STOCK_ICON_PALETTE = [
-        '#3182F6', '#F04452', '#00B8D4', '#FF8A00', '#8E5CFF',
-        '#22C55E', '#0064FF', '#EC4899', '#06B6D4', '#F59E0B'
-    ];
-
-    function stockIconColor(ticker) {
-        if (!ticker) return STOCK_ICON_PALETTE[0];
-        var sum = 0;
-        for (var i = 0; i < ticker.length; i++) {
-            sum = (sum * 31 + ticker.charCodeAt(i)) | 0;
-        }
-        return STOCK_ICON_PALETTE[Math.abs(sum) % STOCK_ICON_PALETTE.length];
-    }
-
-    function stockIconInitials(name) {
-        if (!name) return '?';
-        var korean = name.match(/[가-힣]/g);
-        if (korean && korean.length > 0) return korean.slice(0, 2).join('');
-        var ascii = name.match(/[A-Za-z0-9]/g);
-        if (ascii && ascii.length > 0) return ascii.slice(0, 2).join('').toUpperCase();
-        return name.substring(0, 2);
-    }
-
-    function stockIconHtml(ticker, name) {
-        var color = stockIconColor(ticker);
-        var initials = stockIconInitials(name);
-        return '<span class="stock-icon" style="background:' + color + ';" aria-hidden="true">' + initials + '</span>';
-    }
-
     function shortenTheme(name, maxLen) {
         if (!name) return name;
         maxLen = maxLen || 14;
@@ -175,7 +145,6 @@ var WhyTable = (function () {
             html += '<td class="cell-rank">' + (r._displayRank != null ? r._displayRank : '') + '</td>';
             // 종목명
             html += '<td class="cell-name"><div class="cell-name__wrap">' +
-                stockIconHtml(r.ticker, r.name) +
                 '<a href="' + detailUrl + '" class="cell-name__link" data-ticker="' + r.ticker + '">' + r.name + '</a>' +
                 miniIndicatorsHtml(r.ticker, ratings) +
                 '<span class="cell-name__market">' + r.market + '</span>' +

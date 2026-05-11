@@ -228,22 +228,22 @@ body {
 .layout-aside { min-width: 0; }
 .layout-main { min-width: 0; }
 
-/* ── 위젯 — 글래스풍 (메인 테이블과 줄 맞춤) ── */
+/* ── 위젯 — 글래스풍 (메인 테이블 thead 와 시작 라인 정렬) ── */
 .widget {
     background: var(--glass-bg);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
-    padding: 14px 18px;   /* table-wrap 의 padding 8px 14px 와 시작 맞춤 (thead 14px 와 일치) */
+    padding: 8px 18px 14px;   /* table-wrap padding-top 8px 와 일치 */
     margin-bottom: 18px;
     box-shadow: var(--glass-shadow);
 }
 .widget__title {
-    /* thead th 와 동일한 높이·톤 */
+    /* thead th 와 동일한 padding-top (14px) → 메인 테이블 thead 와 같은 y 라인 */
     font-size: 11px; font-weight: 600; color: var(--text-muted);
-    padding: 14px 0 14px 0;
-    margin: 0 0 4px 0;
+    padding: 14px 0;
+    margin: 0;
     letter-spacing: 0.6px;
     text-transform: uppercase;
     border-bottom: 1px solid var(--glass-border);
@@ -311,28 +311,6 @@ body {
 .whyrise-table tbody tr:hover { background: var(--glass-bg); }
 .whyrise-table tbody tr:last-child td { border-bottom: none; }
 /* 상한가 행 배경 강조 제거 — hover 톤만 글래스 기본 */
-
-/* ── 종목 원형 컬러 아이콘 (토스 스타일) ── */
-.stock-icon {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 800;
-    color: #fff;
-    flex-shrink: 0;
-    letter-spacing: -0.4px;
-    background: var(--stock-icon-bg, #3182F6);
-    text-transform: uppercase;
-}
-.cell-name__wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
-}
 
 .whyrise-table .col-rank { width: 36px; text-align: center; }
 .whyrise-table .col-name { min-width: 180px; }
@@ -886,10 +864,6 @@ body {
     /* toolbar — 좁은 폭에서 wrap */
     .toolbar--simple { flex-wrap: wrap; gap: 8px; padding: 14px 4px; }
     .cutoff-count { padding: 5px 10px; font-size: 11px; }
-
-    /* 종목 원형 아이콘 — 모바일 28px, cell-name__wrap gap 축소 */
-    .stock-icon { width: 28px; height: 28px; font-size: 10px; }
-    .cell-name__wrap { gap: 8px; }
 
     /* 위젯 — 좁은 폭에서 패딩 축소 */
     .widget { padding: 16px 14px; border-radius: 14px; }
