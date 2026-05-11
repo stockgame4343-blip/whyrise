@@ -198,20 +198,23 @@ body {
     padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;
 }
 
-/* ── 메인 컬럼 헤더 (날짜 좌·관심 우) ── */
-.main-head {
-    display: flex;
-    justify-content: space-between;
+/* ── 단순 툴바 (날짜 좌, 관심 우 — 메인 컬럼 폭과 동일) ── */
+.toolbar--simple {
+    display: grid;
+    grid-template-columns: 1fr 300px;   /* layout-split 와 동일 그리드 */
+    gap: 24px;
     align-items: center;
-    gap: 16px;
     padding: 18px 4px;
-    flex-wrap: wrap;
+    margin-bottom: 8px;
 }
-.main-head .report__date-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+.toolbar--simple .report__date-bar { justify-self: start; grid-column: 1; }
+.toolbar--simple .toolbar__right {
+    grid-column: 1;       /* 위젯 컬럼 X, 첫 컬럼(메인 테이블) 안 */
+    justify-self: end;    /* 메인 테이블 우측 끝에 정렬 */
+    grid-row: 1;          /* 같은 줄 */
+}
+@media (max-width: 1100px) {
+    .toolbar--simple { grid-template-columns: 1fr; }
 }
 .cutoff-count {
     background: var(--glass-bg);
@@ -234,27 +237,12 @@ body {
 @media (max-width: 1100px) {
     .layout-split { grid-template-columns: 1fr; align-items: start; }
 }
-.layout-main { min-width: 0; display: flex; flex-direction: column; }
 .layout-aside {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    /* 메인 컬럼 헤더(main-head) 만큼 아래에서 시작 — 위젯이 테이블 thead 와 같은 y */
-    padding-top: 70px;    /* main-head 의 높이(약 70px) 와 일치 */
 }
-.layout-aside .widget {
-    flex: 1;              /* 위젯이 메인 테이블 높이 채움 */
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-}
-.layout-aside .widget__list {
-    flex: 1;              /* 위젯 본문이 남는 공간 채움 (빈 공간 자연스럽게) */
-    overflow-y: auto;
-}
-@media (max-width: 1100px) {
-    .layout-aside { padding-top: 0; }
-}
+.layout-main { min-width: 0; }
 
 /* ── 위젯 — 글래스풍 (메인 테이블 thead 와 시작 라인 정렬) ── */
 .widget {
@@ -666,8 +654,8 @@ body {
 .visitor-row__dot {
     width: 7px; height: 7px;
     border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+    background: var(--wr-accent);
+    box-shadow: 0 0 8px rgba(49, 130, 246, 0.6);
     animation: visitor-pulse 2s ease-in-out infinite;
 }
 .visitor-row__num {
