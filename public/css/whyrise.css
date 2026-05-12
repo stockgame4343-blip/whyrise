@@ -143,6 +143,9 @@ body {
 /* search-wrap 자체는 blur 제거 (자식 backdrop-filter 충돌 방지) */
 .hero__search-wrap:focus-within {
     border-color: var(--orange);
+    border-width: 2px;
+    /* border 2px 되며 1px 증가분만큼 padding 보정해 컨텐츠 점프 방지 */
+    padding: 19px 31px;
     box-shadow: 0 12px 48px rgba(49, 130, 246, 0.25);
     transform: translateY(-1px);
 }
@@ -161,7 +164,7 @@ body {
 .hero--mini .hero__search-input { font-size: 17px; }
 .hero__search-input::placeholder {
     color: var(--text-muted);
-    font-weight: 500;
+    font-weight: 700;
     transition: opacity .25s ease;
     opacity: 1;
 }
@@ -180,8 +183,8 @@ body {
     letter-spacing: -.1px;
 }
 .hero__subtitle strong {
-    color: var(--wr-accent);
-    font-weight: 700;
+    color: inherit;
+    font-weight: 800;
 }
 
 /* 자동완성 — 진한 글래스 (parent backdrop-filter 없으니 자식이 잘 작동) */
