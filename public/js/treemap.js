@@ -41,12 +41,14 @@
     var SORT_LABEL = { mcap: '시총', volume: '거래량', change: '상승률' };
 
     // 정렬 기준별 score. 상승률은 양수만 큰 순 — 음수(하락)는 자연 정렬로 뒤로 감.
+    // change: 면적 상대성 강화를 위해 제곱 (5%~30% → 25~900 → 면적 비율 36:1).
+    // 정렬 순위는 단조 변환이라 동일.
     function sortScore(it, sort) {
         if (sort === 'volume') return it.trading_value || 0;
         if (sort === 'change') {
             var r = it.change_rate;
             if (r == null || isNaN(r)) return -Infinity;
-            return r;
+            return r > 0 ? r * r : r;
         }
         return it.market_cap || 0;
     }
