@@ -136,9 +136,10 @@
     }
     function formatMcap(v) {
         if (!v) return '-';
-        if (v >= 1e12) return (v / 1e12).toFixed(1) + '조';
-        if (v >= 1e8) return Math.round(v / 1e8) + '억';
-        return Math.round(v).toLocaleString();
+        // marketValue 는 억원 단위 (네이버 m.stock 응답). 1만 억 = 1조.
+        if (v >= 100 * 10000) return Math.round(v / 10000).toLocaleString() + '조'; // 100조↑ 정수
+        if (v >= 10000) return (v / 10000).toFixed(1) + '조';                       // 1~100조 .1자리
+        return Math.round(v).toLocaleString() + '억';                                // 1조 미만 억
     }
 
     // ── 색상 (HSL) ─────────────────────────────────────
@@ -341,29 +342,43 @@
             var g = d3.select(this);
             var nameSize = Math.max(10, Math.min(20, cw / 8));
             var rateSize = Math.max(9, nameSize - 3);
+            var mcapSize = Math.max(8, Math.min(13, nameSize - 5));
 
             var name = d.data.name || '';
             var maxChars = Math.max(2, Math.floor(cw / (nameSize * 0.55)) - 1);
             if (name.length > maxChars) name = name.slice(0, maxChars - 1) + '…';
 
-            g.append('text')
-                .attr('class', 'tmap-name')
-                .attr('x', cw / 2)
-                .attr('y', ch / 2 - rateSize / 2)
-                .attr('text-anchor', 'middle')
-                .attr('dominant-baseline', 'middle')
-                .style('font-size', nameSize + 'px')
-                .text(name);
+            // 셀 크기에 따라 3줄 / 2줄 / 1줄 분기 — hover 내용을 항상 박아둠
+            var has3 = ch >= 60 && cw >= 60;
+            var has2 = ch >= 42;
+            var mcapStr = formatMcap(d.data.market_cap);
+            var rateStr = formatRate(d.data.change_rate);
 
-            if (ch >= 42) {
-                g.append('text')
-                    .attr('class', 'tmap-rate')
+            function line(cls, y, size, txt, opacity) {
+                var t = g.append('text')
+                    .attr('class', cls)
                     .attr('x', cw / 2)
-                    .attr('y', ch / 2 + nameSize / 2 + 2)
+                    .attr('y', y)
                     .attr('text-anchor', 'middle')
                     .attr('dominant-baseline', 'middle')
-                    .style('font-size', rateSize + 'px')
-                    .text(formatRate(d.data.change_rate));
+                    .style('font-size', size + 'px')
+                    .text(txt);
+                if (opacity != null) t.style('opacity', opacity);
+                return t;
+            }
+
+            if (has3) {
+                var gap = 2;
+                var totalH = nameSize + mcapSize + rateSize + gap * 2;
+                var topY = ch / 2 - totalH / 2 + nameSize / 2;
+                line('tmap-name', topY, nameSize, name);
+                line('tmap-mcap', topY + nameSize / 2 + gap + mcapSize / 2, mcapSize, mcapStr, 0.78);
+                line('tmap-rate', topY + nameSize / 2 + gap + mcapSize + gap + rateSize / 2, rateSize, rateStr);
+            } else if (has2) {
+                line('tmap-name', ch / 2 - rateSize / 2, nameSize, name);
+                line('tmap-rate', ch / 2 + nameSize / 2 + 2, rateSize, rateStr);
+            } else {
+                line('tmap-name', ch / 2, nameSize, name);
             }
         });
 
@@ -627,6 +642,10 @@
         });
         clone.querySelectorAll('.tmap-cell .tmap-name').forEach(function (el) {
             el.setAttribute('font-weight', '700');
+        });
+        clone.querySelectorAll('.tmap-cell .tmap-mcap').forEach(function (el) {
+            el.setAttribute('font-weight', '500');
+            el.setAttribute('opacity', '0.78');
         });
         clone.querySelectorAll('.tmap-cell .tmap-rate').forEach(function (el) {
             el.setAttribute('font-weight', '600');
