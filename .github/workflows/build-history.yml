@@ -12,11 +12,11 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'full | incremental | estimate-only | bubbles-only | marketmap-only'
+        description: 'full | incremental | estimate-only | marketmap-only'
         required: false
         default: 'incremental'
         type: choice
-        options: [full, incremental, estimate-only, bubbles-only, marketmap-only]
+        options: [full, incremental, estimate-only, marketmap-only]
       days:
         description: '풀빌드 기간 (full mode)'
         required: false
@@ -126,8 +126,6 @@ jobs:
             python3 scripts/build-history.py --days "$DAYS" --cutoff "$CUTOFF"
           elif [ "$MODE" = "estimate-only" ]; then
             python3 scripts/build-history.py --estimate-only --limit "$LIMIT"
-          elif [ "$MODE" = "bubbles-only" ]; then
-            python3 scripts/build-history.py --bubbles-only
           elif [ "$MODE" = "marketmap-only" ]; then
             python3 scripts/build-history.py --marketmap-only
           else
@@ -155,7 +153,6 @@ jobs:
         with:
           name: build-output-${{ github.run_id }}
           path: |
-            public/data/bubbles.json
             public/data/report-summary.json
             public/data/stock-history/
             public/sitemap.xml

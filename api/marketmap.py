@@ -67,10 +67,13 @@ def _normalize(stocks, market_label):
         )
         if mc <= 0:
             continue
-        # fluctuationsRatio: 문자열 '-2.28' / '+1.05'. 부호 포함.
         rate = _parse_float(s.get('fluctuationsRatio'))
-        # 보합 코드 확인: compareToPreviousPrice.code = '3' 보합, '2/4' 상승, '5/1' 하락 등
         close = _parse_int(s.get('closePriceRaw')) or _parse_int(s.get('closePrice')) or 0
+        # 거래대금 (원). raw 가 우선, 없으면 콤마 문자열(천 단위) × 1000
+        tv = _parse_int(s.get('accumulatedTradingValueRaw'))
+        if not tv:
+            tv = (_parse_int(s.get('accumulatedTradingValue')) or 0) * 1000
+        tvol = _parse_int(s.get('accumulatedTradingVolumeRaw')) or _parse_int(s.get('accumulatedTradingVolume')) or 0
         out.append({
             'ticker': ticker,
             'name': s.get('stockName') or ticker,
@@ -78,6 +81,8 @@ def _normalize(stocks, market_label):
             'market_cap': mc,
             'close_price': close,
             'change_rate': round(rate, 2),
+            'trading_value': tv or 0,
+            'trading_volume': tvol,
         })
     return out
 

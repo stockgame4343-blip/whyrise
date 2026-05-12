@@ -262,39 +262,6 @@ def write_index(name_by_ticker: dict[str, dict], output_dir: Path) -> None:
     )
 
 
-# ── bubbles.json 생성 (기간별 변동률) ─────────────────────
-
-# 기간별 비현실 변동률 cap (액면분할/병합 등 코퍼레이트 액션 의심 → None)
-_SANITY_CAP_PCT = {
-    1:   35.0,    # 1D — 한국 상한가 ±30% + 여유
-    5:   100.0,   # 1W — 5일 연속 상한가도 ~150%, 100%면 의심
-    20:  250.0,   # 1M — 20일 누적 250% 이상은 분할 의심
-    60:  500.0,   # 3M — 5배
-    251: 1000.0,  # 1Y — 10배 (실제 한국 1년 5~8배 종목 존재)
-}
-
-
-def _change_n_days(ohlc_sorted: list[dict], n: int):
-    """ohlc 의 마지막(가장 최근) close vs n 거래일 전 close → %.
-
-    비현실 cap 초과 (분할/병합 의심) 시 None.
-    """
-    if len(ohlc_sorted) <= n:
-        return None
-    try:
-        cur = float(ohlc_sorted[-1].get('closePrice') or 0)
-        past = float(ohlc_sorted[-1 - n].get('closePrice') or 0)
-    except (TypeError, ValueError):
-        return None
-    if cur <= 0 or past <= 0:
-        return None
-    pct = round((cur / past - 1) * 100, 2)
-    cap = _SANITY_CAP_PCT.get(n, 2000.0)
-    if abs(pct) > cap:
-        return None
-    return pct
-
-
 def _parse_int(v):
     """문자열·숫자 어디서 와도 int 로 — 콤마 포함 문자열 대응."""
     if v is None:
@@ -305,42 +272,6 @@ def _parse_int(v):
         return int(v)
     except (ValueError, TypeError):
         return None
-
-
-def _bubble_entry(ticker: str, name: str, market: str, sector: str,
-                  ohlc: list[dict], market_cap) -> dict | None:
-    """버블맵용 종목 1개 항목 — 기간별 변동률 + 메타."""
-    if not ohlc or len(ohlc) < 2:
-        return None
-    sorted_ = sorted(ohlc, key=lambda r: r.get('localDate', ''))
-    d1 = _change_n_days(sorted_, 1)
-    if d1 is None:
-        return None
-    cur_close = sorted_[-1].get('closePrice') or 0
-    return {
-        't': ticker,
-        'n': name,
-        'm': market,                                          # KOSPI / KOSDAQ
-        's': sector or '',
-        'mc': _parse_int(market_cap),                         # 시가총액
-        'p': _parse_int(cur_close),                           # 현재 종가
-        'd1': d1,
-        'w1': _change_n_days(sorted_, 5),
-        'm1': _change_n_days(sorted_, 20),
-        'm3': _change_n_days(sorted_, 60),
-        'y1': _change_n_days(sorted_, 251),
-    }
-
-
-def _write_bubbles(entries: list[dict], output_path: Path) -> None:
-    """bubbles.json 저장 — 모든 종목 + 5개 기간 변동률."""
-    payload = {
-        'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
-        'count': len(entries),
-        'stocks': entries,
-    }
-    output_path.write_text(json.dumps(payload, ensure_ascii=False), encoding='utf-8')
-    print(f'  bubbles.json: {len(entries)} 종목')
 
 
 # ── sitemap 생성 ─────────────────────────────────────────
@@ -631,9 +562,8 @@ def build_full(args) -> int:
                 out.append(it)
         return out[:5]
 
-    # 4. 종목별 OHLC + events + bubbles (기간별 변동률)
+    # 4. 종목별 OHLC + events
     index_meta: dict[str, dict] = {}
-    bubbles_data: list[dict] = []
     total = len(universe)
     success = 0
     skipped = 0
@@ -662,13 +592,6 @@ def build_full(args) -> int:
             skipped += 1
             continue
 
-        # bubbles 데이터 — 기간별 변동률 (모든 종목, +15% 사건 무관)
-        bub = _bubble_entry(ticker, name, market,
-                            item.get('industryName') or '',
-                            ohlc, item.get('marketValue'))
-        if bub:
-            bubbles_data.append(bub)
-
         events = build_events_for_ticker(
             ticker=ticker, name=name, market=market,
             ohlc=ohlc, cutoff=cutoff,
@@ -692,7 +615,6 @@ def build_full(args) -> int:
     write_index(index_meta, output_dir)
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     build_sitemap(output_dir, output_dir.parent.parent)
-    _write_bubbles(bubbles_data, output_dir.parent / 'bubbles.json')
     build_marketmap(output_dir.parent.parent)
     elapsed = time.time() - t_start
     print(f'== 완료: {success}/{total} 종목, skip {skipped}, elapsed {elapsed:.0f}s ==')
@@ -982,6 +904,9 @@ def _write_marketmap_snapshot(
         if cur <= 0 or prev <= 0:
             continue
         rates = _calc_period_rates_at(ohlc, idx)
+        # 거래대금 = volume × close_price (OHLC 에 거래대금 필드 없음)
+        tvol = int(ohlc[idx].get('accumulatedTradingVolume') or 0)
+        tv = int(tvol * cur)
         items.append({
             'ticker': td['ticker'],
             'name': td['name'],
@@ -991,6 +916,8 @@ def _write_marketmap_snapshot(
             'close_price': cur,
             'change_rate': rates.get('1d', calc_change_rate(prev, cur)),
             'rates': rates,
+            'trading_value': tv,
+            'trading_volume': tvol,
         })
     if not items:
         return False
@@ -1115,58 +1042,6 @@ def build_marketmap_backfill(public_dir: Path | None = None,
     return saved
 
 
-def build_bubbles_only(args) -> int:
-    """OHLC 만 fetch 해서 bubbles.json 빌드 — 풀빌드보다 ~10배 빠름.
-
-    뉴스·이유 추정·인덱스 빌드 모두 스킵.
-    """
-    today = date.today()
-    start = today - timedelta(days=400)
-    end = today
-    start_str = _yyyymmdd(start)
-    end_str = _yyyymmdd(end)
-
-    print(f'== bubbles-only: 기간 {start_str} ~ {end_str} ==')
-    universe = fetch_ticker_universe(stock_only=True)
-
-    bubbles_data: list[dict] = []
-    total = len(universe)
-    t_start = time.time()
-    skipped = 0
-
-    for i, item in enumerate(universe):
-        ticker = item.get('itemCode') or ''
-        name = item.get('stockName') or ticker
-        market = 'KOSPI' if (item.get('sosok') == 'KOSPI' or
-                             item.get('stockExchangeType', {}).get('code') == 'KS') else 'KOSDAQ'
-        if not ticker or len(ticker) != 6:
-            skipped += 1
-            continue
-        if i % 100 == 0:
-            elapsed = time.time() - t_start
-            eta = (elapsed / max(1, i + 1)) * (total - i - 1)
-            print(f'  [{i + 1}/{total}] elapsed {elapsed:.0f}s, ETA {eta:.0f}s')
-        try:
-            ohlc = naver_client.fetch_ohlc_daily(ticker, start_str, end_str)
-        except Exception as e:
-            skipped += 1
-            continue
-        if not ohlc or len(ohlc) < 2:
-            skipped += 1
-            continue
-        bub = _bubble_entry(ticker, name, market,
-                            item.get('industryName') or '',
-                            ohlc, item.get('marketValue'))
-        if bub:
-            bubbles_data.append(bub)
-
-    _write_bubbles(bubbles_data, OUTPUT_DIR.parent / 'bubbles.json')
-    build_marketmap(OUTPUT_DIR.parent.parent)
-    elapsed = time.time() - t_start
-    print(f'== bubbles-only 완료: {len(bubbles_data)}/{total} 종목, skip {skipped}, {elapsed:.0f}s ==')
-    return 0
-
-
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument('--days', type=int, default=DEFAULT_DAYS)
@@ -1175,8 +1050,6 @@ def main() -> None:
                    help='상위 N 종목만 빌드 (0=전체)')
     p.add_argument('--estimate-only', action='store_true',
                    help='인덱스 missing 만 재추정')
-    p.add_argument('--bubbles-only', action='store_true',
-                   help='OHLC 만 fetch 해서 bubbles.json 만 빠르게 빌드')
     p.add_argument('--marketmap-only', action='store_true',
                    help='시총 TOP 100 + 등락률 → marketmap.json 만 빠르게 빌드 (~30s)')
     p.add_argument('--backfill-days', type=int, default=0,
@@ -1189,8 +1062,6 @@ def main() -> None:
 
     if args.marketmap_only:
         sys.exit(build_marketmap_only(args))
-    if args.bubbles_only:
-        sys.exit(build_bubbles_only(args))
     if args.estimate_only:
         sys.exit(build_estimate_only(args))
     if args.report_only:
