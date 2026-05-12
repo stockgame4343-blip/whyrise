@@ -1061,6 +1061,30 @@ body.page-treemap {
 .tmap-cell rect { transition: filter .12s, stroke .12s; }
 .tmap-cell:hover rect { filter: brightness(1.18); stroke: #fff; stroke-width: 1.5; }
 
+/* ── 버블맵2 — 떠다니는 원형 버블 ── */
+.bmap2-stage { /* tmap-stage 기반, 추가 룰 */ }
+.bmap2-node text {
+    fill: #fff;
+    pointer-events: none;
+    user-select: none;
+    font-family: inherit;
+    paint-order: stroke;
+    stroke: rgba(0,0,0,.5);
+    stroke-width: 0.7px;
+}
+.bmap2-node__name { font-weight: 700; letter-spacing: -.3px; }
+.bmap2-node__mcap { font-weight: 500; font-feature-settings: 'tnum'; letter-spacing: -.2px; opacity: .78; }
+.bmap2-node__rate { font-weight: 600; font-feature-settings: 'tnum'; opacity: .96; }
+.bmap2-node__circle { transition: filter .15s, stroke .15s; }
+.bmap2-node:hover .bmap2-node__circle {
+    filter: brightness(1.18);
+    stroke: rgba(255,255,255,0.55) !important;
+    stroke-width: 2 !important;
+}
+[data-theme="light"] .bmap2-node:hover .bmap2-node__circle {
+    stroke: rgba(0,0,0,0.45) !important;
+}
+
 /* 섹터 박스 (전체 모드 nested treemap) */
 .tmap-sector__box {
     transition: stroke .12s, fill .12s;
