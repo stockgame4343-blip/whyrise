@@ -988,9 +988,9 @@ body.page-treemap {
 .tmap-cell:hover rect { filter: brightness(1.18); stroke: #fff; stroke-width: 1.5; }
 
 /* ── 버블맵2 — 떠다니는 원형 버블 ── */
-/* 라이트 모드여도 버블 필드는 항상 다크 — 흰 배경 위 버블색이 잘 안 보임 */
-.bmap2-stage { background: #0a0b0f; }
-[data-theme="light"] .bmap2-stage { background: #0a0b0f; }
+/* 라이트 모드여도 버블 필드는 항상 다크 — 홈·리포트와 동일한 토스 차콜 */
+.bmap2-stage { background: var(--wr-bg-base); }
+[data-theme="light"] .bmap2-stage { background: var(--wr-bg-base); }
 .bmap2-node text {
     fill: #fff;
     pointer-events: none;
