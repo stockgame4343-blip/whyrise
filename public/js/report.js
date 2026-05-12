@@ -1,19 +1,14 @@
 /**
- * 리포트 페이지 — 사전 집계된 report-summary.json 한 번 fetch 후
- * 기간 토글(1D/1W/1M/3M/1Y) 별 위젯 렌더.
+ * 리포트 페이지 — 사전 집계된 report-summary.json fetch + 기간 토글.
  *
- * 데이터: scripts/build-history.py 의 build_report_summary() 가 빌드 끝에 생성.
- *   { periods: { d1, w1, m1, m3, y1 }, total_tickers, built_at, ... + y1 미러 }
- * 갱신: 평일 KST 09:10 / 15:40 incremental + 일요일 06:00 full 시 자동.
+ * 데이터: scripts/build-history.py build_report_summary() 가 빌드 끝에 생성.
+ *   { periods: { d1, w1, m1, m3, y1 }, total_tickers, built_at, ... + y1 top-level 미러 }
  */
 (function () {
     var PERIODS = ['d1', 'w1', 'm1', 'm3', 'y1'];
-    var PERIOD_LABEL = { d1: '1일', w1: '1주', m1: '1개월', m3: '3개월', y1: '1년' };
+    var PERIOD_LABEL = { d1: '오늘', w1: '1주', m1: '1개월', m3: '3개월', y1: '1년' };
 
-    var state = {
-        period: 'y1',
-        summary: null,
-    };
+    var state = { period: 'y1', summary: null };
 
     function bindThemeToggle() {
         var $btn = document.getElementById('themeToggle');
@@ -27,18 +22,16 @@
         });
     }
 
-    function fmt(n) {
-        return (n != null) ? n.toLocaleString('ko-KR') : '-';
-    }
+    function fmt(n) { return (n != null) ? n.toLocaleString('ko-KR') : '-'; }
 
     function pct(n) {
         if (n == null) return '-';
         return (n >= 0 ? '+' : '') + n.toFixed(1) + '%';
     }
 
-    /** bar — primary 수치(상승률) 강조, count 는 우측 보조 라벨로. */
+    /** bar — primary 수치(상승률) 기반 바, count 는 우측 라벨로. */
     function bar(primary, max, label, sub, countLabel) {
-        var width = max ? (primary / max * 100).toFixed(1) : 0;
+        var width = max > 0 ? (primary / max * 100).toFixed(1) : 0;
         return '<li class="report-row">' +
             '<div class="report-row__bar" style="width:' + width + '%"></div>' +
             '<div class="report-row__content">' +
@@ -71,7 +64,7 @@
             var label = '<a href="/stock/' + r.ticker + '">' + r.name + '</a>';
             var subParts = [];
             if (opts && opts.showTicker) subParts.push(r.ticker);
-            if (hasSumRate) subParts.push(r.count + '회');
+            if (hasSumRate && r.count) subParts.push(r.count + '회');
             var sub = subParts.join(' · ');
             var countLabel = hasSumRate ? pct(r.sum_rate) : (r.count + '회');
             return bar(r[key], max, label, sub, countLabel);
@@ -89,18 +82,12 @@
 
     function fmtBuiltAt(iso) {
         if (!iso) return '';
-        try {
-            var d = new Date(iso);
-            return d.toLocaleString('ko-KR', { hour12: false });
-        } catch (e) { return iso; }
+        try { return new Date(iso).toLocaleString('ko-KR', { hour12: false }); }
+        catch (e) { return iso; }
     }
 
-    /** summary 에서 현재 period 의 데이터 추출 (없으면 top-level fallback) */
     function pickPeriod(summary, period) {
-        if (summary && summary.periods && summary.periods[period]) {
-            return summary.periods[period];
-        }
-        // 구 포맷 (periods 없는 빌드) — top-level 이 y1 미러
+        if (summary && summary.periods && summary.periods[period]) return summary.periods[period];
         return {
             total_events_15: summary.total_events_15,
             sector_top: summary.sector_top || [],
@@ -115,28 +102,12 @@
         if (!state.summary) return;
         var data = pickPeriod(state.summary, state.period);
         var label = PERIOD_LABEL[state.period] || '';
-
-        document.getElementById('reportTitle').textContent = label + ' 급등 분석';
-
         var $sub = document.getElementById('reportSub');
         if ($sub) {
-            $sub.innerHTML = '최근 ' + label + ' +15% 이상 사건 — ' +
+            $sub.innerHTML = '<strong>' + label + '</strong> · ' +
                 '<strong>' + fmt(state.summary.total_tickers) + '</strong>종목 / ' +
-                '<strong>' + fmt(data.total_events_15) + '</strong>건';
+                '<strong>' + fmt(data.total_events_15) + '</strong>건 +15% 사건 누적';
         }
-
-        // 위젯별 desc 도 기간 반영
-        var $descSector = document.getElementById('descSector');
-        if ($descSector) $descSector.textContent = label + ' 누적 상승률 합산 — 평균 상승률·종목 수';
-        var $descLimit = document.getElementById('descLimit');
-        if ($descLimit) $descLimit.textContent = label + ' 상한가(+29.9%) 친 종목 — 누적 상승률 순';
-        var $descHigh = document.getElementById('descHigh');
-        if ($descHigh) $descHigh.textContent = label + ' 52주 신고가 갱신 종목 — 누적 상승률 순';
-        var $descFrequent = document.getElementById('descFrequent');
-        if ($descFrequent) $descFrequent.textContent = label + ' +15% 이상 누적 상승률 TOP — 동률은 횟수 보조';
-        var $descReason = document.getElementById('descReason');
-        if ($descReason) $descReason.textContent = label + ' 자동 추정된 이유 라벨';
-
         renderSectorTop(data.sector_top);
         renderTickerList('limitTop', data.limit_up_top);
         renderTickerList('high52w', data.high_52w_top);
@@ -169,11 +140,10 @@
         var $msg = document.getElementById('message');
         var $grid = document.getElementById('reportGrid');
 
-        fetch('/data/report-summary.json', { cache: 'no-cache' })
-            .then(function (r) {
-                if (!r.ok) throw new Error('HTTP ' + r.status);
-                return r.json();
-            })
+        // 캐시 무효화 — CDN/브라우저가 옛 report-summary.json 잡고 있을 가능성
+        var cacheBust = '?v=' + Date.now();
+        fetch('/data/report-summary.json' + cacheBust, { cache: 'no-store' })
+            .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
             .then(function (s) {
                 state.summary = s;
                 $loading.style.display = 'none';

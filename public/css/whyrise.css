@@ -1242,21 +1242,40 @@ body.page-treemap {
 
 /* ── 리포트 페이지 ────────────────────────── */
 .report-page { padding: 36px 0 56px; }
-.report-page__header { margin-bottom: 32px; }
+.report-page__header { margin-bottom: 28px; }
 .report-page__head-row {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    gap: 16px;
+    gap: 18px;
     flex-wrap: wrap;
 }
-.report-page__title {
-    font-size: 36px; font-weight: 800; letter-spacing: -1px;
+.report-page__title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
 }
-.report-page__sub { margin-top: 10px; color: var(--text-secondary); font-size: 14px; }
+.report-page__title {
+    font-size: 32px; font-weight: 800; letter-spacing: -.8px;
+    margin: 0;
+}
+.report-page__sub {
+    margin: 0; color: var(--text-secondary); font-size: 13px;
+    letter-spacing: -.1px;
+}
 .report-page__sub strong {
-    color: var(--wr-accent);
-    font-weight: 800;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+.report-period-tabs {
+    padding: 4px;
+    flex-shrink: 0;
+}
+.report-period-tabs button {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .report-grid {
@@ -1330,13 +1349,16 @@ body.page-treemap {
     flex-shrink: 0;
 }
 .report-row__count {
-    background: rgba(49, 130, 246, .15);
-    color: var(--orange);
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 700;
+    background: var(--wr-rise-soft);
+    color: var(--wr-rise);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 800;
     flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    min-width: 64px;
+    text-align: right;
 }
 .report-empty {
     padding: 24px 0;
@@ -1349,6 +1371,15 @@ body.page-treemap {
     .report-grid { grid-template-columns: 1fr; }
     .report-list--two-col { columns: 1; }
     .report-page__title { font-size: 24px; }
+    .report-page__head-row { align-items: stretch; }
+    .report-period-tabs {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .report-period-tabs button {
+        flex: 1;
+        padding: 8px 4px;
+    }
 
     /* whyrise-table 모바일 — style.css 의 .ranking-table 카드 전환과 호환 */
     .whyrise-table { min-width: 0; width: 100%; }
