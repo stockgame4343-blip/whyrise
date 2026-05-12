@@ -51,13 +51,14 @@
     }
 
     function radius(cap, maxCap, minCap) {
-        // log 스케일 — 시총 큰 종목 너무 크지 않게
-        var minR = 36, maxR = 130;
+        // sqrt 스케일 + 화면 비율 — 상대성 강조 + 화면 꽉 채움
+        // 화면 대비 적정: 최소 ~화면 짧은 변의 6%, 최대 ~22%
+        var shortSide = Math.min(state.width || 1200, state.height || 700);
+        var minR = Math.max(40, shortSide * 0.06);
+        var maxR = Math.max(160, shortSide * 0.22);
         if (!cap || cap <= 0) return minR;
-        var lcap = Math.log10(Math.max(1, cap));
-        var lmin = Math.log10(Math.max(1, minCap || 1));
-        var lmax = Math.log10(Math.max(1, maxCap || 1));
-        var t = (lmax === lmin) ? 0.5 : (lcap - lmin) / (lmax - lmin);
+        // sqrt 스케일 → log 보다 차이 극단적 (시총 100배 → 반지름 10배)
+        var t = Math.sqrt(Math.max(1, cap)) / Math.sqrt(Math.max(1, maxCap || 1));
         return minR + (maxR - minR) * t;
     }
 
@@ -93,6 +94,13 @@
             .attr('width', s.w).attr('height', s.h);
 
         var nodes = state.nodes;
+        // 화면 크기 변경 또는 첫 렌더 시점에 반지름 재계산
+        var caps = nodes.map(function (n) { return n.market_cap || 0; }).filter(function (c) { return c > 0; });
+        var maxCap = caps.length ? Math.max.apply(null, caps) : 1;
+        var minCap = caps.length ? Math.min.apply(null, caps) : 1;
+        nodes.forEach(function (n) {
+            n.r = radius(n.market_cap, maxCap, minCap);
+        });
         if (!nodes.length) {
             $svg.append('text')
                 .attr('x', s.w / 2).attr('y', s.h / 2)
@@ -160,19 +168,24 @@
             })
         );
 
-        // 시뮬레이션 — 부유 유지
+        // 초기 위치를 화면 전체에 랜덤 분산 → 가운데 뭉침 회피
+        nodes.forEach(function (d) {
+            if (d.x == null) d.x = Math.random() * s.w;
+            if (d.y == null) d.y = Math.random() * s.h;
+        });
+
+        // 시뮬레이션 — 부유 유지 + 화면 채움 (cryptobubbles 식)
         if (state.sim) state.sim.stop();
         var sim = d3.forceSimulation(nodes)
-            .force('collide', d3.forceCollide(function (d) { return d.r + 3; }).strength(1).iterations(3))
-            .force('charge', d3.forceManyBody().strength(-30))
-            .alphaDecay(0.005)
-            .alphaMin(0.001)
-            .velocityDecay(0.3)
+            .force('collide', d3.forceCollide(function (d) { return d.r + 4; }).strength(1).iterations(4))
+            .force('charge', d3.forceManyBody().strength(-8))
+            // 매우 약한 중앙 끌어당김 — 화면 전체에 자연스럽게 퍼짐
+            .force('x', d3.forceX(s.w / 2).strength(0.012))
+            .force('y', d3.forceY(s.h / 2).strength(0.012))
+            .alphaDecay(0.002)
+            .alphaMin(0.0005)
+            .velocityDecay(0.18)
             .on('tick', tick);
-
-        // 화면 중앙 부드러운 끌어당김 (cryptobubbles 식)
-        sim.force('x', d3.forceX(s.w / 2).strength(0.04))
-           .force('y', d3.forceY(s.h / 2).strength(0.04));
 
         function tick() {
             nodeG.attr('transform', function (d) {
