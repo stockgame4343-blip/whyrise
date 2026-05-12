@@ -345,24 +345,23 @@ body {
 .whyrise-table .col-cap { width: 100px; text-align: right; }
 .whyrise-table .col-sector { width: 130px; }
 
-/* 정렬 헤더 — 클릭 가능 + 삼각형 인디케이터 */
-.whyrise-table th.th-sort {
+/* 정렬 헤더 — 클릭 가능. 활성 컬럼만 ▲▼ 표시 (비활성은 빈공간) */
+.whyrise-table th.th-sort,
+.whyrise-table th.th-rank-reset {
     cursor: pointer;
     user-select: none;
     transition: color .15s;
 }
-.whyrise-table th.th-sort:hover { color: var(--text-secondary); }
+.whyrise-table th.th-sort:hover,
+.whyrise-table th.th-rank-reset:hover { color: var(--text-secondary); }
 .whyrise-table th.th-sort--active { color: var(--wr-accent); }
 .whyrise-table th.th-sort .sort-ind {
     display: inline-block;
     margin-left: 4px;
-    font-size: 9px;
-    opacity: 0.4;
-    transition: opacity .15s;
+    font-size: 10px;
+    font-weight: 700;
     vertical-align: middle;
 }
-.whyrise-table th.th-sort--active .sort-ind { opacity: 1; }
-.whyrise-table th.th-sort:hover .sort-ind { opacity: 0.8; }
 
 .whyrise-table .cell-rank {
     text-align: center;

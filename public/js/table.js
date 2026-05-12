@@ -20,8 +20,26 @@ var WhyTable = (function () {
     function applySort(rows) {
         if (!_sort.key) return rows.slice();
         var key = _sort.key;
-        var dir = _sort.dir === 'asc' ? 1 : -1;
         var arr = rows.slice();
+        // name 키 — dir: 'asc' 가나다 / 'desc' 가나다 역 / 'market-asc' KOSPI 먼저+가나다 / 'market-desc' KOSDAQ 먼저+가나다
+        if (key === 'name') {
+            var marketSort = (_sort.dir === 'market-asc' || _sort.dir === 'market-desc');
+            var marketDir = (_sort.dir === 'market-asc') ? 1 : -1;
+            arr.sort(function (a, b) {
+                if (marketSort) {
+                    var ma = (a.market === 'KOSPI') ? 0 : 1;
+                    var mb = (b.market === 'KOSPI') ? 0 : 1;
+                    if (ma !== mb) return (ma - mb) * marketDir;
+                }
+                var na = (a.name || '').trim();
+                var nb = (b.name || '').trim();
+                if (na === nb) return 0;
+                var nameDir = (_sort.dir === 'desc') ? -1 : 1;
+                return (na.localeCompare(nb, 'ko-KR')) * nameDir;
+            });
+            return arr;
+        }
+        var dir = _sort.dir === 'asc' ? 1 : -1;
         arr.sort(function (a, b) {
             var va, vb;
             if (key === 'change')      { va = a.change_rate;  vb = b.change_rate; }
@@ -239,12 +257,30 @@ var WhyTable = (function () {
             var ind = th.querySelector('.sort-ind');
             if (key === _sort.key) {
                 th.classList.add('th-sort--active');
-                if (ind) ind.textContent = _sort.dir === 'asc' ? '▲' : '▼';
+                if (ind) ind.textContent = indicatorText(key, _sort.dir);
             } else {
                 th.classList.remove('th-sort--active');
-                if (ind) ind.textContent = '◇';
+                if (ind) ind.textContent = '';
             }
         }
+    }
+
+    function indicatorText(key, dir) {
+        if (key === 'name') {
+            if (dir === 'asc') return '가↑';
+            if (dir === 'desc') return '가↓';
+            if (dir === 'market-asc') return 'K↑';
+            if (dir === 'market-desc') return 'D↑';
+        }
+        return dir === 'asc' ? '▲' : '▼';
+    }
+
+    /** name 키 4-state cycle: asc → desc → market-asc → market-desc → asc. */
+    function nextNameDir(cur) {
+        if (cur === 'asc') return 'desc';
+        if (cur === 'desc') return 'market-asc';
+        if (cur === 'market-asc') return 'market-desc';
+        return 'asc';
     }
 
     /** 헤더 클릭 → 정렬 키 토글 + 리렌더. */
@@ -254,15 +290,26 @@ var WhyTable = (function () {
         var thead = table.querySelector('thead');
         if (!thead) return;
         thead.addEventListener('click', function (e) {
+            // # 컬럼 클릭 — 정렬 초기화 (원래 1,2,3 순)
+            var resetTh = e.target.closest('th.th-rank-reset');
+            if (resetTh) {
+                _sort.key = null;
+                _sort.dir = 'desc';
+                render(_currentData, _lastRatings, _lastOpts);
+                return;
+            }
             var th = e.target.closest('th.th-sort');
             if (!th) return;
             var key = th.getAttribute('data-sort-key');
             if (!key) return;
             if (_sort.key === key) {
-                _sort.dir = _sort.dir === 'desc' ? 'asc' : 'desc';
+                if (key === 'name') _sort.dir = nextNameDir(_sort.dir);
+                else _sort.dir = _sort.dir === 'desc' ? 'asc' : 'desc';
             } else {
                 _sort.key = key;
-                _sort.dir = (key === 'sector' || key === 'reason') ? 'asc' : 'desc';
+                if (key === 'name') _sort.dir = 'asc';
+                else if (key === 'sector' || key === 'reason') _sort.dir = 'asc';
+                else _sort.dir = 'desc';
             }
             render(_currentData, _lastRatings, _lastOpts);
         });
