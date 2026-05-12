@@ -181,21 +181,14 @@
         var prev = {};
         lastNodes.forEach(function (n) { prev[n.ticker] = n; });
 
-        // 각 노드에 외곽 target (random) 부여 — center 가 아닌 화면 전반 분산
+        // 초기 위치: 화면 전체에 균등 random — 중앙 편향 없음
         var nodes = items.map(function (d, i) {
             var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(d.market_cap || 1)));
             var p = prev[d.ticker];
-            // random 자리 — 화면 전체에 균등 분포
-            var angle = (i * 137.5) * Math.PI / 180;   // 황금각 분산
-            var radius = Math.sqrt((i + 0.5) / items.length) * Math.min(w, h) * 0.48;
-            var tx = w / 2 + Math.cos(angle) * radius;
-            var ty = h / 2 + Math.sin(angle) * radius;
             return Object.assign({}, d, {
                 r: r,
-                targetX: tx,
-                targetY: ty,
-                x: p ? p.x : tx,
-                y: p ? p.y : ty,
+                x: p ? p.x : (r + Math.random() * (w - r * 2)),
+                y: p ? p.y : (r + Math.random() * (h - r * 2)),
                 vx: p ? p.vx : 0,
                 vy: p ? p.vy : 0,
             });
@@ -311,10 +304,12 @@
         });
 
         // 끊임없이 둥둥 떠다니는 force simulation
-        //  - alphaDecay 0 → 영원히 안 멈춤 (백그라운드 탭에서는 visibility 로 정지)
-        //  - velocityDecay 0.16 → 가벼운 마찰, 너무 빠르지 않게
-        //  - drift force → 매 tick 약한 random velocity 더해서 살랑살랑 부유
-        //  - collide + 경계 반사 → 부딪히면 살짝 튕김
+        //  - alphaDecay 0: 영원히 안 멈춤
+        //  - velocityDecay 0.16: 가벼운 마찰
+        //  - charge: 노드끼리 강한 반발 (가까운 노드만) → 화면 전체 외곽 분산
+        //  - collide: 겹침 방지 + 빽빽한 패킹
+        //  - drift: 매 tick 약한 random velocity → 살랑살랑 부유
+        //  - center force 없음 (가운데로 모이지 않음)
         if (simulation) simulation.stop();
         var DRIFT = 0.06;
         function driftForce() {
@@ -328,18 +323,18 @@
             .alphaMin(0)
             .alphaDecay(0)
             .velocityDecay(0.16)
-            .force('charge', d3.forceManyBody().strength(-1.2))
+            // 가까운 노드끼리만 반발 — 화면 전체로 자연 분산
+            .force('charge', d3.forceManyBody()
+                .strength(-12)
+                .distanceMax(120))
             .force('collide', d3.forceCollide()
                 .radius(function (d) { return d.r + 1.5; })
-                .strength(0.95)
+                .strength(1.0)
                 .iterations(2))
-            .force('x', d3.forceX(function (d) { return d.targetX; }).strength(0.018))
-            .force('y', d3.forceY(function (d) { return d.targetY; }).strength(0.018))
             .force('drift', driftForce)
             .on('tick', function () {
                 node.attr('transform', function (d) {
                     var pad = d.r;
-                    // 경계 부딪힘 — 살짝 튕김 (반발 60%)
                     if (d.x < pad) { d.x = pad; d.vx = Math.abs(d.vx) * 0.6; }
                     if (d.x > w - pad) { d.x = w - pad; d.vx = -Math.abs(d.vx) * 0.6; }
                     if (d.y < pad) { d.y = pad; d.vy = Math.abs(d.vy) * 0.6; }
