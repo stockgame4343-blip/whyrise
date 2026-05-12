@@ -19,7 +19,6 @@
 
     var state = {
         nodes: [],
-        groupBy: 'sector',     // 'sector' | 'theme' | 'none'
         sim: null,
         width: 0,
         height: 0,
@@ -83,25 +82,6 @@
         };
     }
 
-    function groupCenters(nodes, key) {
-        if (key === 'none') return null;
-        var keys = Array.from(new Set(nodes.map(function (n) { return n[key] || '기타'; }))).sort();
-        var n = keys.length;
-        var w = state.width, h = state.height;
-        var cols = Math.max(1, Math.ceil(Math.sqrt(n * (w / Math.max(1, h)))));
-        var rows = Math.max(1, Math.ceil(n / cols));
-        var centers = {};
-        keys.forEach(function (k, i) {
-            var c = i % cols, r = Math.floor(i / cols);
-            centers[k] = {
-                x: w * (c + 0.5) / cols,
-                y: h * (r + 0.5) / rows + 12,
-                label: k,
-            };
-        });
-        return centers;
-    }
-
     function render() {
         var $svg = d3.select('#bubblesSvg');
         $svg.selectAll('*').remove();
@@ -121,25 +101,6 @@
                 .attr('font-size', 16)
                 .text('오늘 +15% 이상 오른 종목이 없습니다.');
             return;
-        }
-
-        var groupKey = state.groupBy;
-        var centers = groupCenters(nodes, groupKey);
-
-        // 그룹 배경 라벨
-        if (centers) {
-            var labels = $svg.append('g').attr('class', 'bubble-labels');
-            Object.keys(centers).forEach(function (k) {
-                labels.append('text')
-                    .attr('x', centers[k].x).attr('y', centers[k].y - 100)
-                    .attr('text-anchor', 'middle')
-                    .attr('class', 'bubble-group-label')
-                    .attr('fill', 'currentColor')
-                    .attr('opacity', 0.06)
-                    .attr('font-size', Math.min(56, Math.max(24, s.w / 18)))
-                    .attr('font-weight', 800)
-                    .text(k);
-            });
         }
 
         var nodeG = $svg.append('g').attr('class', 'bubble-nodes')
@@ -209,13 +170,9 @@
             .velocityDecay(0.3)
             .on('tick', tick);
 
-        if (centers) {
-            sim.force('x', d3.forceX(function (d) { return centers[d[groupKey] || '기타'].x; }).strength(0.12))
-               .force('y', d3.forceY(function (d) { return centers[d[groupKey] || '기타'].y; }).strength(0.12));
-        } else {
-            sim.force('x', d3.forceX(s.w / 2).strength(0.04))
-               .force('y', d3.forceY(s.h / 2).strength(0.04));
-        }
+        // 화면 중앙 부드러운 끌어당김 (cryptobubbles 식)
+        sim.force('x', d3.forceX(s.w / 2).strength(0.04))
+           .force('y', d3.forceY(s.h / 2).strength(0.04));
 
         function tick() {
             nodeG.attr('transform', function (d) {
@@ -244,19 +201,6 @@
                 var tk = (d.ticker || '').toLowerCase();
                 return (name.indexOf(q) !== -1 || tk.indexOf(q) === 0);
             });
-    }
-
-    function bindGroupToggle() {
-        var btns = document.querySelectorAll('.group-btn');
-        btns.forEach(function (b) {
-            b.addEventListener('click', function () {
-                var g = b.getAttribute('data-group');
-                if (g === state.groupBy) return;
-                state.groupBy = g;
-                btns.forEach(function (x) { x.classList.toggle('active', x === b); });
-                render();
-            });
-        });
     }
 
     function bindSearch() {
@@ -352,7 +296,6 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         bindThemeToggle();
-        bindGroupToggle();
         bindSearch();
         bindModal();
         loadAndRender();

@@ -76,7 +76,7 @@
 
         var groupKey = state.groupBy;
 
-        // 계층 데이터: root → group → leaves
+        // 계층 데이터: root → group → leaves. 면적 = 상승률 (사용자 요청).
         var groups = d3.group(rankings, function (d) { return d[groupKey === 'theme' ? 'theme_tag' : 'sector'] || '기타'; });
         var root = d3.hierarchy({
             name: 'root',
@@ -84,7 +84,8 @@
                 return {
                     name: entry[0],
                     children: entry[1].map(function (r) {
-                        return Object.assign({}, r, { value: Math.max(1, r.market_cap || 1) });
+                        // 상승률 - 14 (15% 컷오프 기준) 으로 차이 강조. 14는 모두 양수 보장.
+                        return Object.assign({}, r, { value: Math.max(1, (r.change_rate || 0) - 14) });
                     }),
                 };
             }),
