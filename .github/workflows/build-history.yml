@@ -29,6 +29,10 @@ on:
         description: 'estimate-only 처리 한도'
         required: false
         default: '500'
+      backfill_days:
+        description: 'marketmap-only 백필 영업일 수 (0 = 백필 없음, 252 = 1년)'
+        required: false
+        default: '0'
   repository_dispatch:
     types: [rebuild-history, override-saved]
 
@@ -117,17 +121,23 @@ jobs:
           DAYS="${{ inputs.days }}"
           CUTOFF="${{ inputs.cutoff }}"
           LIMIT="${{ inputs.limit }}"
+          BACKFILL="${{ inputs.backfill_days }}"
           [ -z "$DAYS" ] && DAYS=365
           [ -z "$CUTOFF" ] && CUTOFF=10
           [ -z "$LIMIT" ] && LIMIT=500
-          echo "=== $MODE (days=$DAYS cutoff=$CUTOFF limit=$LIMIT) ==="
+          [ -z "$BACKFILL" ] && BACKFILL=0
+          echo "=== $MODE (days=$DAYS cutoff=$CUTOFF limit=$LIMIT backfill=$BACKFILL) ==="
           set -e
           if [ "$MODE" = "full" ]; then
             python3 scripts/build-history.py --days "$DAYS" --cutoff "$CUTOFF"
           elif [ "$MODE" = "estimate-only" ]; then
             python3 scripts/build-history.py --estimate-only --limit "$LIMIT"
           elif [ "$MODE" = "marketmap-only" ]; then
-            python3 scripts/build-history.py --marketmap-only
+            if [ "$BACKFILL" -gt 0 ]; then
+              python3 scripts/build-history.py --marketmap-only --backfill-days "$BACKFILL"
+            else
+              python3 scripts/build-history.py --marketmap-only
+            fi
           else
             # incremental — 짧은 기간만 fetch + 머지
             python3 scripts/build-history.py --days 30 --cutoff "$CUTOFF"

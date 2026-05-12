@@ -20,16 +20,26 @@
     var SEMI_LEAD_GROUP = '반도체';
     var SEMI_LEAD_TICKERS = { '005930': true, '005935': true, '000660': true };
 
-    // 시총 1·2위 (삼성전자·SK하이닉스) 면적 80% 로 축소 — 시각 균형
+    // 시총 1·2위 (삼성전자·SK하이닉스) 면적 80% 로 축소 — 시각 균형 (시총 모드 한정)
     var SIZE_SCALE_TICKERS = { '005930': 0.8, '000660': 0.8 };
-    function sizeOf(it) {
-        var mc = it.market_cap || 0;
-        var s = SIZE_SCALE_TICKERS[it.ticker];
-        if (s) mc = mc * s;
-        return Math.max(mc, 1);
+    function sizeOf(it, sort) {
+        var v = sortScore(it, sort);
+        if (sort === 'mcap') {
+            var s = SIZE_SCALE_TICKERS[it.ticker];
+            if (s) v = v * s;
+        }
+        return Math.max(v, 1);
     }
 
     var PERIOD_LABEL = { '1d': '1일', '1w': '1주', '1m': '1달', '3m': '3달', '1y': '1년' };
+    var SORT_LABEL = { mcap: '시총', volume: '거래량', change: '상승률' };
+
+    // 정렬 기준별 score 추출. 상승률은 절대값(상·하 모두 큰 변동을 크게 보이게).
+    function sortScore(it, sort) {
+        if (sort === 'volume') return it.trading_value || 0;
+        if (sort === 'change') return Math.abs(it.change_rate || 0);
+        return it.market_cap || 0;
+    }
 
     var SECTOR_FORMAT = {
         '반도체와반도체장비': '반도체·장비',
@@ -62,6 +72,7 @@
     var $ringFg = document.querySelector('.tmap-live__ring-fg');
     var $marketTabs = document.querySelectorAll('.tmap-tabs--market .tmap-tab');
     var $periodTabs = document.querySelectorAll('.tmap-tabs--period .tmap-tab');
+    var $sortTabs = document.querySelectorAll('.tmap-tabs--sort .tmap-tab');
     var $save = document.getElementById('tmapSave');
     var $datePrev = document.getElementById('tmapDatePrev');
     var $dateNext = document.getElementById('tmapDateNext');
@@ -72,6 +83,7 @@
         sectorMap: {},
         filter: 'ALL',
         period: '1d',
+        sort: 'mcap',
         availableDates: [],
         dateIndex: 0,
         currentDate: '',
@@ -156,8 +168,9 @@
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
             items = items.filter(function (it) { return it.market === state.filter; });
         }
-        // 어느 필터든 시총 상위 100 까지만 (전체 모드는 KOSPI+KOSDAQ 통합에서 100)
-        items.sort(function (a, b) { return (b.market_cap || 0) - (a.market_cap || 0); });
+        // 선택된 정렬 기준으로 상위 100 — 시총·거래량은 절대값, 상승률은 |등락률|
+        var sort = state.sort;
+        items.sort(function (a, b) { return sortScore(b, sort) - sortScore(a, sort); });
         return items.slice(0, 100);
     }
 
@@ -177,9 +190,10 @@
         $message.style.display = 'none';
 
         // 반지름 — 모든 버블의 면적 합이 화면 면적의 fill_ratio 만큼 차도록 스케일 산출.
-        // sizeOf() 로 1·2위 종목 면적 80% 가중 적용 (시각 균형)
+        // sizeOf() 는 정렬 기준에 따라 시총·거래대금·|등락률| 사용
+        var sortKey = state.sort;
         var totalSize = 0;
-        items.forEach(function (d) { totalSize += sizeOf(d); });
+        items.forEach(function (d) { totalSize += sizeOf(d, sortKey); });
         var fillRatio = 0.72;                    // 화면 72% — 너무 꽉 안 차게
         var rMax = Math.min(w, h) * 0.22;
         var rMin = Math.max(10, Math.min(w, h) * 0.022);
@@ -193,7 +207,7 @@
 
         // 초기 위치: 화면 전체에 균등 random — 중앙 편향 없음
         var nodes = items.map(function (d, i) {
-            var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(sizeOf(d))));
+            var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(sizeOf(d, sortKey))));
             var p = prev[d.ticker];
             return Object.assign({}, d, {
                 r: r,
@@ -473,6 +487,16 @@
         setLiveState(p === '1d' && isLiveDate() && isMarketOpen());
         render();
     }
+    function setSort(s) {
+        if (state.sort === s) return;
+        state.sort = s;
+        $sortTabs.forEach(function (b) {
+            b.classList.toggle('is-active', b.getAttribute('data-sort') === s);
+        });
+        // 정렬 바뀌면 면적 스케일이 완전 달라지므로 lastNodes 무효화 (위치 재배치)
+        lastNodes = [];
+        render();
+    }
     function gotoDateIndex(idx) {
         if (idx < 0 || idx >= state.availableDates.length) return;
         state.dateIndex = idx;
@@ -538,7 +562,8 @@
         wrap.appendChild(mkText(20, HEAD_H - 16, '이거왜오름?', { size: 16, weight: 800, fill: fgColor }));
         wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
-        var ctxStr = (PERIOD_LABEL[state.period] || state.period) + ' · ' + modeText + '   ·   ' + formatDate(state.currentDate);
+        var sortText = SORT_LABEL[state.sort] || '시총';
+        var ctxStr = (PERIOD_LABEL[state.period] || state.period) + ' · ' + modeText + ' · ' + sortText + '   ·   ' + formatDate(state.currentDate);
         wrap.appendChild(mkText(w - 20, HEAD_H - 16, ctxStr, { size: 13, weight: 700, fill: fgColor, anchor: 'end' }));
 
         var clone = svgEl.cloneNode(true);
@@ -582,7 +607,7 @@
                 var dl = URL.createObjectURL(b);
                 var a = document.createElement('a');
                 var stamp = (state.currentDate || '').replace(/[^0-9]/g, '') || 'live';
-                var fname = 'whyrise-bubblemap2-' + stamp + '-' + state.filter.toLowerCase() + '-' + state.period + '.png';
+                var fname = 'whyrise-bubblemap2-' + stamp + '-' + state.filter.toLowerCase() + '-' + state.period + '-' + state.sort + '.png';
                 a.href = dl; a.download = fname;
                 document.body.appendChild(a); a.click(); document.body.removeChild(a);
                 URL.revokeObjectURL(dl);
@@ -600,6 +625,9 @@
         });
         $periodTabs.forEach(function (b) {
             b.addEventListener('click', function () { setPeriod(b.getAttribute('data-period')); });
+        });
+        $sortTabs.forEach(function (b) {
+            b.addEventListener('click', function () { setSort(b.getAttribute('data-sort')); });
         });
         if ($save) $save.addEventListener('click', savePNG);
         if ($datePrev) $datePrev.addEventListener('click', function () { gotoDateIndex(state.dateIndex + 1); });

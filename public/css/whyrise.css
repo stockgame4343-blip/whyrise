@@ -339,10 +339,30 @@ body {
 
 .whyrise-table .col-rank { width: 36px; text-align: center; }
 .whyrise-table .col-name { min-width: 180px; }
-.whyrise-table .col-reason--hero { min-width: 340px; }
+.whyrise-table .col-reason--hero { min-width: 280px; }
 .whyrise-table .col-change { width: 90px; text-align: right; }
+.whyrise-table .col-volume { width: 100px; text-align: right; }
 .whyrise-table .col-cap { width: 100px; text-align: right; }
 .whyrise-table .col-sector { width: 130px; }
+
+/* 정렬 헤더 — 클릭 가능 + 삼각형 인디케이터 */
+.whyrise-table th.th-sort {
+    cursor: pointer;
+    user-select: none;
+    transition: color .15s;
+}
+.whyrise-table th.th-sort:hover { color: var(--text-secondary); }
+.whyrise-table th.th-sort--active { color: var(--wr-accent); }
+.whyrise-table th.th-sort .sort-ind {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 9px;
+    opacity: 0.4;
+    transition: opacity .15s;
+    vertical-align: middle;
+}
+.whyrise-table th.th-sort--active .sort-ind { opacity: 1; }
+.whyrise-table th.th-sort:hover .sort-ind { opacity: 0.8; }
 
 .whyrise-table .cell-rank {
     text-align: center;
@@ -752,6 +772,7 @@ body.page-treemap {
     border-radius: 8px;
 }
 .tmap-tabs--period { margin-right: 4px; }
+.tmap-tabs--sort { margin-left: 4px; }
 
 /* 날짜 네비 */
 .tmap-datenav {

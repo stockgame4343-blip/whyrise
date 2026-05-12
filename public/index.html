@@ -46,8 +46,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/whyrise.css">
+    <link rel="stylesheet" href="/css/style.css?v=20260512d">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260512d">
 </head>
 <body>
     <script>
@@ -124,10 +124,11 @@
                             <tr>
                                 <th class="col-rank">#</th>
                                 <th class="col-name">종목명</th>
-                                <th class="col-reason col-reason--hero">왜 오름?</th>
-                                <th class="col-change">상승률</th>
-                                <th class="col-cap">시가총액</th>
-                                <th class="col-sector">섹터</th>
+                                <th class="col-reason col-reason--hero th-sort" data-sort-key="reason">왜 오름? <span class="sort-ind"></span></th>
+                                <th class="col-change th-sort" data-sort-key="change">상승률 <span class="sort-ind"></span></th>
+                                <th class="col-volume th-sort" data-sort-key="volume">거래대금 <span class="sort-ind"></span></th>
+                                <th class="col-cap th-sort" data-sort-key="cap">시가총액 <span class="sort-ind"></span></th>
+                                <th class="col-sector th-sort" data-sort-key="sector">섹터 <span class="sort-ind"></span></th>
                             </tr>
                         </thead>
                         <tbody id="rankingBody"></tbody>
@@ -222,12 +223,12 @@
         </div>
     </div>
 
-    <script src="/js/api.js"></script>
-    <script src="/js/date-picker.js"></script>
-    <script src="/js/table.js"></script>
-    <script src="/js/search.js"></script>
-    <script src="/js/admin.js"></script>
-    <script src="/js/whyrise.js"></script>
-    <script src="/js/visitor.js"></script>
+    <script src="/js/api.js?v=20260512d"></script>
+    <script src="/js/date-picker.js?v=20260512d"></script>
+    <script src="/js/table.js?v=20260512d"></script>
+    <script src="/js/search.js?v=20260512d"></script>
+    <script src="/js/admin.js?v=20260512d"></script>
+    <script src="/js/whyrise.js?v=20260512d"></script>
+    <script src="/js/visitor.js?v=20260512d"></script>
 </body>
 </html>

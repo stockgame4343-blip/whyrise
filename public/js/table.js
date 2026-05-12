@@ -11,6 +11,55 @@
 var WhyTable = (function () {
 
     var _currentData = [];
+    var _lastRatings = {};
+    var _lastOpts = {};
+    /** 정렬 상태 — key: 'change'|'volume'|'cap'|'sector'|'reason', dir: 'asc'|'desc'. 기본: change desc (서버 순서) */
+    var _sort = { key: null, dir: 'desc' };
+
+    /** 정렬 적용 — _currentData 를 정렬한 사본 반환. key=null 이면 원본 순서. */
+    function applySort(rows) {
+        if (!_sort.key) return rows.slice();
+        var key = _sort.key;
+        var dir = _sort.dir === 'asc' ? 1 : -1;
+        var arr = rows.slice();
+        arr.sort(function (a, b) {
+            var va, vb;
+            if (key === 'change')      { va = a.change_rate;  vb = b.change_rate; }
+            else if (key === 'volume') { va = a.trading_value; vb = b.trading_value; }
+            else if (key === 'cap')    { va = a.market_cap;   vb = b.market_cap; }
+            else if (key === 'sector') {
+                va = (a.sector || '').trim();
+                vb = (b.sector || '').trim();
+                if (va < vb) return -1 * dir;
+                if (va > vb) return  1 * dir;
+                return (b.change_rate || 0) - (a.change_rate || 0);
+            }
+            else if (key === 'reason') {
+                // 태그(theme_tag) 우선, 동률은 rise_reason 알파벳 순
+                var ta = (a.theme_tag || '').trim();
+                var tb = (b.theme_tag || '').trim();
+                if (ta !== tb) {
+                    // 빈 태그는 항상 뒤로
+                    if (!ta) return 1;
+                    if (!tb) return -1;
+                    return (ta < tb ? -1 : 1) * dir;
+                }
+                var ra = (a.rise_reason || '').trim();
+                var rb = (b.rise_reason || '').trim();
+                if (ra !== rb) {
+                    if (!ra) return 1;
+                    if (!rb) return -1;
+                    return (ra < rb ? -1 : 1) * dir;
+                }
+                return 0;
+            }
+            else { va = 0; vb = 0; }
+            va = (va == null) ? -Infinity : va;
+            vb = (vb == null) ? -Infinity : vb;
+            return (va - vb) * dir;
+        });
+        return arr;
+    }
 
     function shortenTheme(name, maxLen) {
         if (!name) return name;
@@ -116,18 +165,24 @@ var WhyTable = (function () {
         var tbody = document.getElementById('rankingBody');
         if (!tbody) return;
         _currentData = rankings;
-        ratings = ratings || {};
-        opts = opts || {};
+        _lastRatings = ratings || {};
+        _lastOpts = opts || {};
+        ratings = _lastRatings;
+        opts = _lastOpts;
         var date = opts.date || '';
 
+        // 정렬 헤더 인디케이터 갱신
+        updateSortIndicators();
+
         if (!rankings || rankings.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:60px;color:var(--text-muted);">' +
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:60px;color:var(--text-muted);">' +
                 '오늘 +15% 이상 오른 종목이 없습니다.</td></tr>';
             return;
         }
 
+        var sortedRows = applySort(rankings);
         var html = '';
-        rankings.forEach(function (r) {
+        sortedRows.forEach(function (r) {
             var detailUrl = '/stock/' + r.ticker;
             var ratingData = ratings[r.ticker] || {};
             var isExcluded = ratingData.excluded || false;
@@ -164,6 +219,8 @@ var WhyTable = (function () {
                 '</div></td>';
             // 상승률
             html += '<td class="cell-change">' + formatChangeRate(r.change_rate) + '</td>';
+            // 거래대금
+            html += '<td class="cell-volume">' + formatAmount(r.trading_value) + '</td>';
             // 시가총액
             html += '<td class="cell-cap">' + formatAmount(r.market_cap) + '</td>';
             // 섹터
@@ -172,6 +229,45 @@ var WhyTable = (function () {
         });
         tbody.innerHTML = html;
     }
+
+    /** 헤더 인디케이터(▲▼) 업데이트 — 활성 컬럼만 표시. */
+    function updateSortIndicators() {
+        var ths = document.querySelectorAll('th.th-sort');
+        for (var i = 0; i < ths.length; i++) {
+            var th = ths[i];
+            var key = th.getAttribute('data-sort-key');
+            var ind = th.querySelector('.sort-ind');
+            if (key === _sort.key) {
+                th.classList.add('th-sort--active');
+                if (ind) ind.textContent = _sort.dir === 'asc' ? '▲' : '▼';
+            } else {
+                th.classList.remove('th-sort--active');
+                if (ind) ind.textContent = '◇';
+            }
+        }
+    }
+
+    /** 헤더 클릭 → 정렬 키 토글 + 리렌더. */
+    function bindHeaderSort() {
+        var table = document.getElementById('rankingTable');
+        if (!table) return;
+        var thead = table.querySelector('thead');
+        if (!thead) return;
+        thead.addEventListener('click', function (e) {
+            var th = e.target.closest('th.th-sort');
+            if (!th) return;
+            var key = th.getAttribute('data-sort-key');
+            if (!key) return;
+            if (_sort.key === key) {
+                _sort.dir = _sort.dir === 'desc' ? 'asc' : 'desc';
+            } else {
+                _sort.key = key;
+                _sort.dir = (key === 'sector' || key === 'reason') ? 'asc' : 'desc';
+            }
+            render(_currentData, _lastRatings, _lastOpts);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', bindHeaderSort);
 
     return {
         render: render,

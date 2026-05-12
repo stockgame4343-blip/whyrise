@@ -825,6 +825,9 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
         if d > latest_date:
             latest_date = d
         rates = _calc_period_rates(ohlc_sorted)
+        # 거래대금 = volume × close_price (OHLC 에 거래대금 필드 없음)
+        tvol = int(ohlc_sorted[-1].get('accumulatedTradingVolume') or 0)
+        tv = int(tvol * cur)
         items.append({
             'ticker': ticker,
             'name': name,
@@ -834,6 +837,8 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
             'close_price': cur,
             'change_rate': rates.get('1d', calc_change_rate(prev, cur)),
             'rates': rates,
+            'trading_value': tv,
+            'trading_volume': tvol,
         })
 
     items.sort(key=lambda x: x['market_cap'], reverse=True)

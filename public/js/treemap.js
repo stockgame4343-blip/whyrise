@@ -36,6 +36,14 @@
     var SEMI_LEAD_TICKERS = { '005930': true, '005935': true, '000660': true };
 
     var PERIOD_LABEL = { '1d': '1일', '1w': '1주', '1m': '1달', '3m': '3달', '1y': '1년' };
+    var SORT_LABEL = { mcap: '시총', volume: '거래량', change: '상승률' };
+
+    // 정렬 기준별 score. 상승률은 절대값(상·하 둘 다 강한 변동을 크게).
+    function sortScore(it, sort) {
+        if (sort === 'volume') return it.trading_value || 0;
+        if (sort === 'change') return Math.abs(it.change_rate || 0);
+        return it.market_cap || 0;
+    }
 
     // 네이버 industry 원본은 띄어쓰기 없음 — 표시용 매핑
     var SECTOR_FORMAT = {
@@ -86,6 +94,7 @@
     var $ringFg = document.querySelector('.tmap-live__ring-fg');
     var $marketTabs = document.querySelectorAll('.tmap-tabs--market .tmap-tab');
     var $periodTabs = document.querySelectorAll('.tmap-tabs--period .tmap-tab');
+    var $sortTabs = document.querySelectorAll('.tmap-tabs--sort .tmap-tab');
     var $back = document.getElementById('tmapBack');
     var $backLabel = document.getElementById('tmapBackLabel');
     var $save = document.getElementById('tmapSave');
@@ -98,6 +107,7 @@
         sectorMap: {},         // ticker → sector
         filter: 'ALL',
         period: '1d',
+        sort: 'mcap',          // mcap | volume | change
         zoomedSector: null,
         availableDates: [],    // 과거 스냅샷 일자 (최신순)
         dateIndex: 0,          // 0 = 오늘(또는 최신)
@@ -195,22 +205,28 @@
     function visibleItems() {
         var items = activeItems();
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
-            return items.filter(function (it) { return it.market === state.filter; });
+            items = items.filter(function (it) { return it.market === state.filter; });
         }
-        return items;
+        // 선택된 정렬 기준 상위 100 (시총·거래량·상승률 공통)
+        var sort = state.sort;
+        items.sort(function (a, b) { return sortScore(b, sort) - sortScore(a, sort); });
+        return items.slice(0, 100);
     }
 
     function isSectorGrouped() {
-        // 전체 모드면 기간과 무관하게 섹터 박스 유지 — 셀 색만 기간 등락률로 바뀜
-        return state.filter === 'ALL';
+        // 시총 정렬 + 전체 모드일 때만 섹터 그룹화. 거래량·상승률은 평면 (섹터 의미 약함)
+        return state.filter === 'ALL' && state.sort === 'mcap';
     }
 
-    // 면적 가중치 — SIZE_SCALE_TICKERS 의 종목은 그 배율로 축소 (시각 균형)
+    // 면적 — 정렬 기준에 따라. 시총 모드에서만 SIZE_SCALE_TICKERS 적용 (시각 균형)
     function sizeOf(it) {
-        var mc = it.market_cap || 0;
-        var s = SIZE_SCALE_TICKERS[it.ticker];
-        if (s) mc = mc * s;
-        return Math.max(mc, 1);
+        var sort = state.sort;
+        var v = sortScore(it, sort);
+        if (sort === 'mcap') {
+            var s = SIZE_SCALE_TICKERS[it.ticker];
+            if (s) v = v * s;
+        }
+        return Math.max(v, 1);
     }
 
     function buildHierarchyData(items) {
@@ -536,6 +552,16 @@
         setLiveState(p === '1d' && isLiveDate() && isMarketOpen());
         render();
     }
+    function setSort(s) {
+        if (state.sort === s) return;
+        state.sort = s;
+        state.zoomedSector = null;   // 섹터 그룹화가 사라질 수도 있으니 zoom 해제
+        $sortTabs.forEach(function (b) {
+            b.classList.toggle('is-active', b.getAttribute('data-sort') === s);
+        });
+        updateBackBtn();
+        render();
+    }
     function gotoDateIndex(idx) {
         if (idx < 0 || idx >= state.availableDates.length) return;
         state.dateIndex = idx;
@@ -614,7 +640,8 @@
 
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
         if (state.zoomedSector) modeText += ' · ' + displaySector(state.zoomedSector);
-        var ctxStr = (PERIOD_LABEL[state.period] || state.period) + ' · ' + modeText + '   ·   ' + formatDate(state.currentDate);
+        var sortText = SORT_LABEL[state.sort] || '시총';
+        var ctxStr = (PERIOD_LABEL[state.period] || state.period) + ' · ' + modeText + ' · ' + sortText + '   ·   ' + formatDate(state.currentDate);
         wrap.appendChild(mkText(w - 20, HEAD_H - 16, ctxStr, { size: 13, weight: 700, fill: fgColor, anchor: 'end' }));
 
         // SVG 클론 — 외부 CSS 가 PNG 에 적용 안 되므로 fill/stroke 를 인라인
@@ -678,7 +705,7 @@
                 var dl = URL.createObjectURL(b);
                 var a = document.createElement('a');
                 var stamp = (state.currentDate || '').replace(/[^0-9]/g, '') || 'live';
-                var modeStamp = state.filter.toLowerCase() + '-' + state.period;
+                var modeStamp = state.filter.toLowerCase() + '-' + state.period + '-' + state.sort;
                 if (state.zoomedSector) modeStamp += '-' + state.zoomedSector;
                 var fname = 'whyrise-treemap-' + stamp + '-' + modeStamp + '.png';
                 a.href = dl;
@@ -707,6 +734,9 @@
         });
         $periodTabs.forEach(function (b) {
             b.addEventListener('click', function () { setPeriod(b.getAttribute('data-period')); });
+        });
+        $sortTabs.forEach(function (b) {
+            b.addEventListener('click', function () { setSort(b.getAttribute('data-sort')); });
         });
         if ($back) {
             $back.addEventListener('click', function () {
