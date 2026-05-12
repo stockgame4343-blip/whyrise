@@ -70,13 +70,28 @@ body {
     box-shadow: var(--glass-shadow);
 }
 
-/* 로고 — 다크: 흰색, 라이트: 블랙 */
+/* 로고 — 다크: 흰색, 라이트: 블랙 (SVG fill 은 currentColor) */
 .top-bar__logo {
     color: #fff;
-    font-weight: 800;
-    letter-spacing: -.5px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1;
 }
 [data-theme="light"] .top-bar__logo { color: #191919; }
+.top-bar__logo-svg {
+    height: 26px;
+    width: auto;
+    display: block;
+}
+/* 스크린리더 전용 — 화면엔 안 보임 */
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+}
 /* top-bar — 스크롤 시 hero 가 뒤로 흘러가도록 sticky + z-index 최상위.
    그래야 backdrop-filter 가 hero 컨텐츠 blur 처리. */
 .top-bar {
