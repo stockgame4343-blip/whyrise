@@ -41,42 +41,60 @@
             '</div></li>';
     }
 
+    function emptyMsg(period) {
+        var label = PERIOD_LABEL[period] || '';
+        return '<li class="report-empty">' + label + ' 기간엔 자료가 부족합니다 — 더 긴 기간을 선택해보세요</li>';
+    }
+
     function renderSectorTop(rows) {
         var $el = document.getElementById('sectorTop');
-        if (!rows || !rows.length) { $el.innerHTML = '<li class="report-empty">데이터 없음</li>'; return; }
+        if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
         var hasSumRate = rows[0].sum_rate != null;
         var key = hasSumRate ? 'sum_rate' : 'count';
         var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
         $el.innerHTML = rows.map(function (r) {
-            var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목';
+            var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목 · ' + r.count + '회';
             var countLabel = hasSumRate ? pct(r.sum_rate) : (r.count + '회');
             return bar(r[key], max, r.sector, sub, countLabel);
         }).join('');
     }
 
+    function renderThemeTop(rows) {
+        var $el = document.getElementById('themeTop');
+        if (!$el) return;
+        if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
+        var key = 'sum_rate';
+        var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
+        $el.innerHTML = rows.map(function (r) {
+            var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목 · ' + r.count + '회';
+            var label = '<span class="theme-tag">' + r.theme + '</span>';
+            return bar(r[key], max, label, sub, pct(r.sum_rate));
+        }).join('');
+    }
+
+    /** 시총 표시 — 억원 단위 raw → 1조 5천억 같은 한국식. */
+    function fmtMcap(억) {
+        if (!억) return '';
+        if (억 >= 10000) return (억 / 10000).toFixed(1) + '조';
+        if (억 >= 1000) return (억 / 1000).toFixed(1) + '천억';
+        return Math.round(억) + '억';
+    }
+
     function renderTickerList(elId, rows, opts) {
         var $el = document.getElementById(elId);
-        if (!rows || !rows.length) { $el.innerHTML = '<li class="report-empty">데이터 없음</li>'; return; }
+        if (!$el) return;
+        if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
         var hasSumRate = rows[0].sum_rate != null;
         var key = hasSumRate ? 'sum_rate' : 'count';
         var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
         $el.innerHTML = rows.map(function (r) {
             var label = '<a href="/stock/' + r.ticker + '">' + r.name + '</a>';
             var subParts = [];
-            if (opts && opts.showTicker) subParts.push(r.ticker);
+            if (r.market_cap) subParts.push(fmtMcap(r.market_cap));
             if (hasSumRate && r.count) subParts.push(r.count + '회');
             var sub = subParts.join(' · ');
             var countLabel = hasSumRate ? pct(r.sum_rate) : (r.count + '회');
             return bar(r[key], max, label, sub, countLabel);
-        }).join('');
-    }
-
-    function renderReasonTop(rows) {
-        var $el = document.getElementById('reasonTop');
-        if (!rows || !rows.length) { $el.innerHTML = '<li class="report-empty">데이터 없음</li>'; return; }
-        var max = Math.max.apply(null, rows.map(function (r) { return r.count; }));
-        $el.innerHTML = rows.map(function (r) {
-            return bar(r.count, max, r.reason, '', r.count + '회');
         }).join('');
     }
 
@@ -90,11 +108,15 @@
         if (summary && summary.periods && summary.periods[period]) return summary.periods[period];
         return {
             total_events_15: summary.total_events_15,
+            total_events_all: summary.total_events_15,
+            total_limit_count: 0,
+            total_52w_count: 0,
+            avg_rate_15: 0,
             sector_top: summary.sector_top || [],
+            theme_top: [],
             limit_up_top: summary.limit_up_top || [],
             high_52w_top: summary.high_52w_top || [],
             frequent_top: summary.frequent_top || [],
-            reason_top: summary.reason_top || [],
         };
     }
 
@@ -104,15 +126,23 @@
         var label = PERIOD_LABEL[state.period] || '';
         var $sub = document.getElementById('reportSub');
         if ($sub) {
-            $sub.innerHTML = '<strong>' + label + '</strong> · ' +
-                '<strong>' + fmt(state.summary.total_tickers) + '</strong>종목 / ' +
-                '<strong>' + fmt(data.total_events_15) + '</strong>건 +15% 사건 누적';
+            $sub.innerHTML = '<strong>' + label + '</strong> · 종목 리스트는 KOSPI/KOSDAQ 시총 TOP 200 한정 (잡주 제외)';
         }
+        // 헤더 4개 stat — 전체 universe (잡주 포함) 통계
+        var $e1 = document.getElementById('statTotalEvents');
+        var $e2 = document.getElementById('statAvgRate');
+        var $e3 = document.getElementById('statLimitCount');
+        var $e4 = document.getElementById('stat52wCount');
+        if ($e1) $e1.textContent = fmt(data.total_events_all || data.total_events_15);
+        if ($e2) $e2.textContent = pct(data.avg_rate_15);
+        if ($e3) $e3.textContent = fmt(data.total_limit_count);
+        if ($e4) $e4.textContent = fmt(data.total_52w_count);
+
         renderSectorTop(data.sector_top);
+        renderThemeTop(data.theme_top);
         renderTickerList('limitTop', data.limit_up_top);
         renderTickerList('high52w', data.high_52w_top);
         renderTickerList('frequentTop', data.frequent_top, { showTicker: true });
-        renderReasonTop(data.reason_top);
     }
 
     function bindPeriodTabs() {

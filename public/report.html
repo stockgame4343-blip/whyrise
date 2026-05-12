@@ -8,8 +8,8 @@
     <meta name="theme-color" content="#191919">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20260512c">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260512c">
+    <link rel="stylesheet" href="/css/style.css?v=20260513a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260513a">
 </head>
 <body>
     <script>
@@ -52,6 +52,25 @@
                     <button data-p="y1" class="active" type="button">1년</button>
                 </div>
             </div>
+
+            <div class="report-stats" id="reportStats">
+                <div class="report-stat">
+                    <span class="report-stat__num" id="statTotalEvents">-</span>
+                    <span class="report-stat__lbl">+15% 사건</span>
+                </div>
+                <div class="report-stat">
+                    <span class="report-stat__num" id="statAvgRate">-</span>
+                    <span class="report-stat__lbl">평균 상승률</span>
+                </div>
+                <div class="report-stat">
+                    <span class="report-stat__num" id="statLimitCount">-</span>
+                    <span class="report-stat__lbl">상한가 사건</span>
+                </div>
+                <div class="report-stat">
+                    <span class="report-stat__num" id="stat52wCount">-</span>
+                    <span class="report-stat__lbl">52주 신고가</span>
+                </div>
+            </div>
         </header>
 
         <div class="loading" id="loading">집계 중...</div>
@@ -60,8 +79,13 @@
         <section class="report-grid" id="reportGrid" style="display:none;">
             <div class="report-card">
                 <h2 class="report-card__title">섹터 TOP 10</h2>
-                <p class="report-card__desc">+15% 사건이 가장 많이 일어난 섹터 — 누적 상승률 순</p>
+                <p class="report-card__desc">+15% 사건이 가장 많이 일어난 업종 — 누적 상승률 순</p>
                 <ol class="report-list" id="sectorTop"></ol>
+            </div>
+            <div class="report-card">
+                <h2 class="report-card__title">테마 TOP 15</h2>
+                <p class="report-card__desc">함께 자주 오른 테마 태그 — 누적 상승률 순</p>
+                <ol class="report-list" id="themeTop"></ol>
             </div>
             <div class="report-card">
                 <h2 class="report-card__title">상한가 TOP 20</h2>
@@ -77,11 +101,6 @@
                 <h2 class="report-card__title">상승률 TOP 50</h2>
                 <p class="report-card__desc">+15% 누적 상승률 합산 — 동률은 횟수 우선</p>
                 <ol class="report-list report-list--two-col" id="frequentTop"></ol>
-            </div>
-            <div class="report-card report-card--wide">
-                <h2 class="report-card__title">상승 이유 카테고리</h2>
-                <p class="report-card__desc">자동 추정된 이유 라벨</p>
-                <ol class="report-list" id="reasonTop"></ol>
             </div>
         </section>
     </main>
@@ -104,8 +123,8 @@
         </footer>
     </div>
 
-    <script src="/js/api.js?v=20260512c"></script>
-    <script src="/js/report.js?v=20260512c"></script>
-    <script src="/js/visitor.js?v=20260512c"></script>
+    <script src="/js/api.js?v=20260513a"></script>
+    <script src="/js/report.js?v=20260513a"></script>
+    <script src="/js/visitor.js?v=20260513a"></script>
 </body>
 </html>

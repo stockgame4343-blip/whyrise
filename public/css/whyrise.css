@@ -442,7 +442,8 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.whyrise-table .theme-tag {
+.whyrise-table .theme-tag,
+.theme-tag {
     background: var(--wr-accent-bg);
     color: var(--wr-accent);
     padding: 4px 10px;
@@ -452,6 +453,7 @@ body {
     white-space: nowrap;
     flex-shrink: 0;
     border: 1px solid var(--wr-accent-soft);
+    display: inline-block;
 }
 
 /* admin 편집 표식 */
@@ -1253,6 +1255,42 @@ body.page-treemap {
     padding: 8px 16px;
     font-size: 13px;
     font-weight: 700;
+}
+
+/* 핵심 수치 카드 4개 — 헤더 아래 가로 배치 */
+.report-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+.report-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 18px;
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+}
+.report-stat__num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -.5px;
+    font-variant-numeric: tabular-nums;
+}
+.report-stat__lbl {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: -.1px;
+}
+@media (max-width: 768px) {
+    .report-stats { grid-template-columns: repeat(2, 1fr); }
+    .report-stat { padding: 10px 14px; }
+    .report-stat__num { font-size: 18px; }
 }
 
 .report-grid {
