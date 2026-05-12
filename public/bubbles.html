@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버블맵 — 이거왜오름?</title>
+    <meta name="description" content="오늘 +15% 이상 오른 종목 버블맵. 섹터/테마별로 클러스터링된 인터랙티브 시각화.">
+    <meta name="theme-color" content="#191919">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://whyrise.vercel.app/bubbles.html">
+    <link rel="icon" href="/og-default.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="버블맵 — 이거왜오름?">
+    <meta property="og:description" content="오늘 +15% 이상 오른 종목 버블맵 — 섹터·테마별 인터랙티브 시각화.">
+    <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/whyrise.css">
+</head>
+<body>
+    <script>
+    (function(){
+        var t = localStorage.getItem('theme') || 'dark';
+        if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+    })();
+    </script>
+
+    <header class="top-bar">
+        <div class="top-bar__inner frame">
+            <a class="top-bar__logo" href="/">이거왜오름?</a>
+            <nav class="top-bar__nav">
+                <a href="/" class="top-bar__link">홈</a>
+                <a href="/bubbles.html" class="top-bar__link top-bar__link--active">버블맵</a>
+                <a href="/report.html" class="top-bar__link">리포트</a>
+            </nav>
+            <div class="top-bar__right">
+                <span class="top-bar__updated" id="lastUpdated"></span>
+                <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드 전환">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="frame bubbles-page">
+        <header class="bubbles-head">
+            <div class="bubbles-head__title">
+                <h1>버블맵</h1>
+                <p class="bubbles-head__sub" id="bubblesSub">오늘 +15% 이상 오른 종목들의 분포</p>
+            </div>
+            <div class="bubbles-head__controls">
+                <div class="group-toggle" role="group" aria-label="그룹핑">
+                    <button class="group-btn active" data-group="sector" type="button">섹터별</button>
+                    <button class="group-btn" data-group="theme" type="button">테마별</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="loading" id="loading" style="display:none;">버블맵 그리는 중...</div>
+        <div class="message" id="message" style="display:none;"></div>
+
+        <div class="bubbles-wrap glass" id="bubblesWrap">
+            <svg id="bubblesSvg" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+
+        <p class="bubbles-legend">
+            <span>크기 = 시가총액</span><span class="bubbles-legend__sep">·</span>
+            <span>색 = 상승률</span><span class="bubbles-legend__sep">·</span>
+            <span>드래그 가능 · 클릭하면 종목 페이지로</span>
+        </p>
+    </main>
+
+    <div class="footer">
+        <footer class="footer__wrap">
+            <div class="frame footer__inner">
+                <div class="visitor-row" id="visitorRow" style="display:none;">
+                    <span class="visitor-row__dot"></span>
+                    <span><span class="visitor-row__num" id="visitorOnline">—</span>명 보는 중</span>
+                    <span class="visitor-row__sep">·</span>
+                    <span>누적 <span class="visitor-row__num" id="visitorUnique">—</span>명</span>
+                </div>
+                <p class="footer__disclaimer">
+                    <strong>본 사이트는 투자자문·종목 추천을 제공하지 않습니다.</strong>
+                    모든 수치는 과거 시장 데이터의 기계적 집계이며 미래 수익을 의미하지 않습니다.
+                </p>
+                <p class="footer__copy">&copy; 2026 이거왜오름? (WhyRise). <a href="/admin.html" class="footer__admin-link">·</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/bubbles.js"></script>
+    <script src="/js/visitor.js"></script>
+</body>
+</html>

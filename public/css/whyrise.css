@@ -646,6 +646,108 @@ body {
     backdrop-filter: blur(20px);
     border-top: 1px solid var(--glass-border);
 }
+/* ── 버블맵 페이지 ────────────────────────── */
+.bubbles-page { padding: 28px 0 56px; }
+.bubbles-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+.bubbles-head__title h1 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 0;
+}
+.bubbles-head__sub {
+    margin-top: 6px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+.group-toggle {
+    display: inline-flex;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    padding: 4px;
+}
+.group-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all .15s;
+    font-family: inherit;
+}
+.group-btn:hover { color: var(--text-primary); }
+.group-btn.active {
+    background: var(--wr-accent);
+    color: #fff;
+}
+
+.bubbles-wrap {
+    min-height: 560px;
+    padding: 4px;
+    overflow: hidden;
+}
+.bubbles-wrap svg { display: block; width: 100%; }
+.bubble-node circle { transition: stroke-width .15s, filter .15s; }
+.bubble-node:hover circle {
+    stroke: rgba(255,255,255,0.6);
+    stroke-width: 2;
+    filter: brightness(1.1);
+}
+.bubble-group-label { user-select: none; pointer-events: none; }
+
+.bubble-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(25, 25, 25, 0.95);
+    color: #fff;
+    border: 1px solid var(--glass-border-strong);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 13px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    z-index: 1000;
+    max-width: 280px;
+}
+[data-theme="light"] .bubble-tooltip {
+    background: rgba(255,255,255,0.95);
+    color: #191919;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+.bubble-tooltip__title { font-weight: 700; font-size: 14px; }
+.bubble-tooltip__ticker { color: var(--text-muted); font-size: 11px; font-weight: 500; margin-left: 4px; }
+.bubble-tooltip__rate {
+    color: var(--wr-rise);
+    font-weight: 800;
+    font-size: 16px;
+    margin-top: 4px;
+}
+.bubble-tooltip__reason { margin-top: 6px; color: var(--text-secondary); font-size: 12px; }
+.bubble-tooltip__meta { margin-top: 4px; color: var(--text-muted); font-size: 11px; }
+
+.bubbles-legend {
+    margin-top: 14px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+.bubbles-legend__sep { margin: 0 8px; opacity: 0.5; }
+
+@media (max-width: 720px) {
+    .bubbles-head { flex-direction: column; align-items: flex-start; }
+    .bubbles-head__title h1 { font-size: 24px; }
+}
+
 /* 방문자 카운터 — 푸터 위쪽 작은 라인 */
 .visitor-row {
     display: inline-flex;
