@@ -708,11 +708,8 @@ body.page-treemap {
     flex-direction: column;
 }
 .tmap-bar {
-    /* 최상단 top-bar 와 동일한 글래스 스타일 */
-    background: var(--glass-bg-strong);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary, var(--bg));
     flex-shrink: 0;
 }
 .tmap-bar__inner {
