@@ -264,8 +264,21 @@ def write_index(name_by_ticker: dict[str, dict], output_dir: Path) -> None:
 
 # ── bubbles.json 생성 (기간별 변동률) ─────────────────────
 
+# 기간별 비현실 변동률 cap (액면분할/병합 등 코퍼레이트 액션 의심 → None)
+_SANITY_CAP_PCT = {
+    1:   35.0,    # 1D — 한국 상한가 ±30% + 여유
+    5:   100.0,   # 1W — 5일 연속 상한가도 ~150%, 100%면 의심
+    20:  250.0,   # 1M — 20일 누적 250% 이상은 분할 의심
+    60:  500.0,   # 3M — 5배
+    251: 1000.0,  # 1Y — 10배 (실제 한국 1년 5~8배 종목 존재)
+}
+
+
 def _change_n_days(ohlc_sorted: list[dict], n: int):
-    """ohlc 의 마지막(가장 최근) close vs n 거래일 전 close → %."""
+    """ohlc 의 마지막(가장 최근) close vs n 거래일 전 close → %.
+
+    비현실 cap 초과 (분할/병합 의심) 시 None.
+    """
     if len(ohlc_sorted) <= n:
         return None
     try:
@@ -275,7 +288,11 @@ def _change_n_days(ohlc_sorted: list[dict], n: int):
         return None
     if cur <= 0 or past <= 0:
         return None
-    return round((cur / past - 1) * 100, 2)
+    pct = round((cur / past - 1) * 100, 2)
+    cap = _SANITY_CAP_PCT.get(n, 2000.0)
+    if abs(pct) > cap:
+        return None
+    return pct
 
 
 def _parse_int(v):
