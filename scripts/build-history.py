@@ -412,10 +412,15 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
         return {
             'sector_acc': {},          # sector → {count, sum_rate, tickers}
             'reason_acc': {},          # rise_reason → count
+            'theme_acc': {},           # theme_tag → {count, sum_rate, tickers}
             'limit_up': [],
             'high_52w': [],
             'frequent': [],
             'total_events_15': 0,
+            'total_events_all_universe': 0,    # 시총필터 무관, 전체 universe 의 +15% 사건
+            'total_limit_count': 0,            # 상한가 사건 수
+            'total_52w_count': 0,              # 신고가 사건 수
+            'sum_rate_all': 0.0,               # 평균 상승률 계산용
         }
     periods = {k: _empty_period() for k in _PERIOD_DAYS}
 
@@ -442,6 +447,7 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
             if rate < 15 or rate > 35:
                 continue
             sec = (e.get('sector') or '').strip()
+            theme = (e.get('theme_tag') or '').strip()
             reason_status = e.get('reason_status')
             reason = (e.get('rise_reason') or '').strip()
             is_high = bool(e.get('is_52w_high'))
@@ -459,13 +465,26 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                     per_period_counts[k]['c_limit'] += 1
                 if is_high:
                     per_period_counts[k]['c_52w'] += 1
+                # 헤더용 통계 (universe 전체 — 잡주 포함 = 전체 시장 활동)
+                pp['total_events_all_universe'] += 1
+                pp['sum_rate_all'] += float(rate)
+                if is_limit:
+                    pp['total_limit_count'] += 1
+                if is_high:
+                    pp['total_52w_count'] += 1
                 # 섹터 집계
                 if sec:
                     rec = pp['sector_acc'].setdefault(sec, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
                     rec['count'] += 1
                     rec['sum_rate'] += float(rate)
                     rec['tickers'].add(ticker)
-                # 이유 카테고리
+                # 테마 태그 집계 (theme_tag — stock-rise 가 분류한 구체적 테마)
+                if theme:
+                    rec = pp['theme_acc'].setdefault(theme, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
+                    rec['count'] += 1
+                    rec['sum_rate'] += float(rate)
+                    rec['tickers'].add(ticker)
+                # 이유 카테고리 (자동 추정 라벨)
                 if reason_status == 'filled' and reason and reason not in ('-', '상한가 — 사유 미수집'):
                     pp['reason_acc'][reason] = pp['reason_acc'].get(reason, 0) + 1
 
@@ -506,8 +525,6 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                 })
 
     # 정렬·TOP N — 기간별 분리
-    # 종목 위젯은 누적상승률(sum_rate) desc, 동률은 count desc 보조 정렬
-    # → 1D 에선 sum_rate 가 그날 상승률, 1Y 에선 누적 합. "많이 오른 종목" 우선.
     result_periods = {}
     for k, pp in periods.items():
         sector_top = sorted(
@@ -518,6 +535,14 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
              for s, r in pp['sector_acc'].items()),
             key=lambda x: (-x['sum_rate'], -x['count']),
         )[:10]
+        theme_top = sorted(
+            ({'theme': t, 'count': r['count'],
+              'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
+              'sum_rate': round(r['sum_rate'], 2),
+              'tickers': len(r['tickers'])}
+             for t, r in pp['theme_acc'].items()),
+            key=lambda x: (-x['sum_rate'], -x['count']),
+        )[:15]
         ticker_sort_key = lambda x: (-x['sum_rate'], -x['count'])
         pp['limit_up'].sort(key=ticker_sort_key)
         pp['high_52w'].sort(key=ticker_sort_key)
@@ -526,9 +551,15 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
             ({'reason': r, 'count': v} for r, v in pp['reason_acc'].items()),
             key=lambda x: -x['count'],
         )[:20]
+        total_all = pp['total_events_all_universe']
         result_periods[k] = {
             'total_events_15': pp['total_events_15'],
+            'total_events_all': total_all,
+            'total_limit_count': pp['total_limit_count'],
+            'total_52w_count': pp['total_52w_count'],
+            'avg_rate_15': round(pp['sum_rate_all'] / total_all, 2) if total_all else 0,
             'sector_top': sector_top,
+            'theme_top': theme_top,
             'limit_up_top': pp['limit_up'][:20],
             'high_52w_top': pp['high_52w'][:20],
             'frequent_top': pp['frequent'][:50],
@@ -787,16 +818,15 @@ def _calc_period_rates(ohlc_sorted: list[dict]) -> dict[str, float]:
 
 
 def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -> dict | None:
-    """시총 TOP N (KOSPI) + 시총 TOP N (KOSDAQ) = 총 2N 종목 → marketmap.json.
+    """marketmap.json + 최신 일별 스냅샷 빌드 (전종목 universe + union TOP).
 
-    각 종목에 1d/1w/1m/3m/1y 다중 기간 등락률 포함.
-    매일 빌드 시 marketmap/{YYYYMMDD}.json 일별 스냅샷 + marketmap/index.json
-    날짜 인덱스 갱신 — 과거 날짜 트리맵 조회용.
-
-    장 마감 후 백업/SEO 용도 정적 데이터. 라이브 1d 시세는 /api/marketmap polling.
+    universe = KOSPI/KOSDAQ 전종목. 각 종목 OHLC 1년치 fetch (캐시 사용).
+    마지막 영업일 기준 (시총/거래대금/양수 상승률) TOP n union 만 저장.
     """
     target_dir = (public_dir or _REPO / 'public') / 'data'
     target_dir.mkdir(parents=True, exist_ok=True)
+    snap_dir = target_dir / 'marketmap'
+    snap_dir.mkdir(parents=True, exist_ok=True)
 
     today = date.today()
     # 1Y 정확 산정 위해 영업일 252개 + 휴장일 마진 — 500일 윈도우
@@ -804,22 +834,23 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
     start_str = _yyyymmdd(start)
     end_str = _yyyymmdd(today)
 
-    print(f'== marketmap: KOSPI TOP {top_per_market} + KOSDAQ TOP {top_per_market} ==')
+    print(f'== marketmap: 전종목 universe (KOSPI+KOSDAQ) → union TOP {top_per_market} ==')
     universe = fetch_ticker_universe(stock_only=True)
-    kospi_pool = [x for x in universe if (x.get('sosok') == 'KOSPI' or
-                                            x.get('stockExchangeType', {}).get('code') == 'KS')]
-    kosdaq_pool = [x for x in universe if not (x.get('sosok') == 'KOSPI' or
-                                                 x.get('stockExchangeType', {}).get('code') == 'KS')]
-    kospi_pool.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
-    kosdaq_pool.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
-    top = [(it, 'KOSPI') for it in kospi_pool[:top_per_market]] + \
-          [(it, 'KOSDAQ') for it in kosdaq_pool[:top_per_market]]
+    pool: list[tuple[dict, str]] = []
+    for x in universe:
+        ticker = x.get('itemCode') or ''
+        if not ticker or len(ticker) != 6:
+            continue
+        mc = _parse_int(x.get('marketValue')) or 0
+        if mc <= 0:
+            continue
+        is_kospi = (x.get('sosok') == 'KOSPI' or
+                    x.get('stockExchangeType', {}).get('code') == 'KS')
+        pool.append((x, 'KOSPI' if is_kospi else 'KOSDAQ'))
+    print(f'  universe: {len(pool)} 종목')
 
-    # 산업 코드 → 이름 매핑 (한 번)
     industry_name = _fetch_industry_name_map()
     print(f'  산업명 매핑: {len(industry_name)} 개')
-
-    # 기존 marketmap.json 에 있던 sector 캐시 — integration API 호출 줄이기 위함
     existing_sector: dict[str, str] = {}
     existing_path = target_dir / 'marketmap.json'
     if existing_path.exists():
@@ -833,24 +864,19 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
         except Exception:
             pass
 
-    items: list[dict] = []
+    items_data: list[dict] = []
     latest_date = ''
     skipped = 0
-    for idx, (it, market) in enumerate(top):
+    t_start = time.time()
+    total = len(pool)
+    log_every = max(50, total // 20)
+    for i, (it, market) in enumerate(pool):
         ticker = it.get('itemCode') or ''
         name = it.get('stockName') or ticker
         market_cap = _parse_int(it.get('marketValue')) or 0
-        # sector: (1) universe industryName → (2) 기존 캐시 → (3) integration API
         sector = it.get('industryName') or existing_sector.get(ticker) or ''
-        if not sector and ticker and industry_name:
-            code = _fetch_stock_industry_code(ticker)
-            if code:
-                sector = industry_name.get(code, '')
-        if not ticker or len(ticker) != 6 or market_cap <= 0:
-            skipped += 1
-            continue
         try:
-            ohlc = naver_client.fetch_ohlc_daily(ticker, start_str, end_str)
+            ohlc = fetch_ohlc_cached(ticker, start_str, end_str)
         except Exception:
             skipped += 1
             continue
@@ -859,62 +885,53 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
         if len(ohlc_sorted) < 2:
             skipped += 1
             continue
-        prev = float(ohlc_sorted[-2].get('closePrice') or 0)
-        cur = float(ohlc_sorted[-1].get('closePrice') or 0)
         d = ohlc_sorted[-1].get('localDate', '')
-        if not d or prev <= 0:
-            skipped += 1
-            continue
-        if d > latest_date:
+        if d and d > latest_date:
             latest_date = d
-        rates = _calc_period_rates(ohlc_sorted)
-        # 거래대금 = volume × close_price (OHLC 에 거래대금 필드 없음)
-        tvol = int(ohlc_sorted[-1].get('accumulatedTradingVolume') or 0)
-        tv = int(tvol * cur)
-        items.append({
-            'ticker': ticker,
-            'name': name,
-            'market': market,
-            'sector': sector,
-            'market_cap': market_cap,
-            'close_price': cur,
-            'change_rate': rates.get('1d', calc_change_rate(prev, cur)),
-            'rates': rates,
-            'trading_value': tv,
-            'trading_volume': tvol,
+        items_data.append({
+            'ticker': ticker, 'name': name, 'market': market, 'sector': sector,
+            'market_cap': market_cap, 'ohlc_sorted': ohlc_sorted,
+            'today_close': float(ohlc_sorted[-1].get('closePrice') or 0),
         })
+        if (i + 1) % log_every == 0 or i + 1 == total:
+            el = time.time() - t_start
+            eta = (el / max(1, i + 1)) * (total - i - 1)
+            hit = _ohlc_cache_stats['hit']; miss = _ohlc_cache_stats['miss']
+            print(f'  [{i + 1}/{total}] OHLC 진행 el={el:.0f}s ETA={eta:.0f}s cache={hit}/{hit + miss}')
 
-    items.sort(key=lambda x: x['market_cap'], reverse=True)
-    output = {
-        'date': latest_date,
-        'updated_at': datetime.now().isoformat(timespec='seconds'),
-        'items': items,
-    }
+    if not latest_date or not items_data:
+        print(f'== marketmap 실패: 데이터 부족 (items={len(items_data)}) ==')
+        return None
+
+    # 최신 일자 스냅샷 (union) → 그 결과를 marketmap.json 으로 사본
+    ok = _write_marketmap_snapshot(latest_date, items_data, snap_dir, top_n=top_per_market)
+    if not ok:
+        print('== marketmap 실패: 스냅샷 생성 실패 ==')
+        return None
+    snap_path = snap_dir / f'{latest_date}.json'
     out_path = target_dir / 'marketmap.json'
-    out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding='utf-8')
+    out_path.write_text(snap_path.read_text(encoding='utf-8'), encoding='utf-8')
+    output = json.loads(out_path.read_text(encoding='utf-8'))
+    items = output.get('items') or []
 
-    # 일별 스냅샷 — marketmap/{YYYYMMDD}.json + index.json (날짜 인덱스, 최신순)
-    if latest_date:
-        snap_dir = target_dir / 'marketmap'
-        snap_dir.mkdir(parents=True, exist_ok=True)
-        snap_path = snap_dir / f'{latest_date}.json'
-        snap_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding='utf-8')
-        idx_path = snap_dir / 'index.json'
-        dates: list[str] = []
-        if idx_path.exists():
-            try:
-                dates = json.loads(idx_path.read_text(encoding='utf-8'))
-                if not isinstance(dates, list):
-                    dates = []
-            except Exception:
+    # 인덱스 갱신 (일별 파일은 _write_marketmap_snapshot 이 이미 저장)
+    idx_path = snap_dir / 'index.json'
+    dates: list[str] = []
+    if idx_path.exists():
+        try:
+            dates = json.loads(idx_path.read_text(encoding='utf-8'))
+            if not isinstance(dates, list):
                 dates = []
-        if latest_date not in dates:
-            dates.append(latest_date)
-        dates = sorted(set(dates), reverse=True)
-        idx_path.write_text(json.dumps(dates), encoding='utf-8')
-        print(f'  스냅샷: marketmap/{latest_date}.json (인덱스 {len(dates)}일)')
+        except Exception:
+            dates = []
+    if latest_date not in dates:
+        dates.append(latest_date)
+    dates = sorted(set(dates), reverse=True)
+    idx_path.write_text(json.dumps(dates), encoding='utf-8')
+    hit = _ohlc_cache_stats['hit']; miss = _ohlc_cache_stats['miss']
+    print(f'  스냅샷: marketmap/{latest_date}.json (인덱스 {len(dates)}일)  OHLC cache={hit}/{hit + miss}')
 
-    print(f'== marketmap 완료: {len(items)} 종목 (skip {skipped}), 기준일 {latest_date} ==')
+    print(f'== marketmap 완료: union {len(items)} 종목 (skip {skipped}), 기준일 {latest_date} ==')
     return output
 
 
@@ -930,12 +947,17 @@ def _write_marketmap_snapshot(
     target_date: str,
     items_data: list[dict],
     snap_dir: Path,
+    top_n: int = 100,
 ) -> bool:
     """주어진 영업일의 marketmap snapshot 저장.
 
-    items_data 각 원소: { ticker, name, market, sector, market_cap, ohlc_sorted }
+    items_data 각 원소: { ticker, name, market, sector, market_cap(=오늘 시총),
+                          today_close, ohlc_sorted }
+
+    스냅샷 universe = KOSPI/KOSDAQ 별 (시총 TOP n + 거래대금 TOP n + 양수 상승률 TOP n) union.
+    그날 시총 ≈ 오늘 시총 × (그날 종가 / 오늘 종가).
     """
-    items: list[dict] = []
+    candidates: list[dict] = []
     for td in items_data:
         ohlc = td['ohlc_sorted']
         idx = -1
@@ -955,24 +977,43 @@ def _write_marketmap_snapshot(
         # 거래대금 = volume × close_price (OHLC 에 거래대금 필드 없음)
         tvol = int(ohlc[idx].get('accumulatedTradingVolume') or 0)
         tv = int(tvol * cur)
-        items.append({
+        # 그 시점 시총 근사 (오늘 시총 × 종가 비율)
+        today_close = td.get('today_close') or cur
+        ratio = (cur / today_close) if today_close > 0 else 1.0
+        mc_at_t = max(1, int(td['market_cap'] * ratio))
+        candidates.append({
             'ticker': td['ticker'],
             'name': td['name'],
             'market': td['market'],
             'sector': td['sector'],
-            'market_cap': td['market_cap'],
+            'market_cap': mc_at_t,
             'close_price': cur,
             'change_rate': rates.get('1d', calc_change_rate(prev, cur)),
             'rates': rates,
             'trading_value': tv,
             'trading_volume': tvol,
         })
-    if not items:
+    if not candidates:
         return False
+    # 시장별 (시총/거래량/양수 상승률) TOP n union — 어떤 정렬에서도 진짜 TOP 100 보장
+    selected: dict[str, dict] = {}
+    for market in ('KOSPI', 'KOSDAQ'):
+        ms = [c for c in candidates if c['market'] == market]
+        if not ms:
+            continue
+        for it in sorted(ms, key=lambda x: x['market_cap'], reverse=True)[:top_n]:
+            selected[it['ticker']] = it
+        for it in sorted(ms, key=lambda x: x['trading_value'], reverse=True)[:top_n]:
+            selected[it['ticker']] = it
+        rise = [c for c in ms if (c.get('change_rate') or 0) > 0]
+        for it in sorted(rise, key=lambda x: x['change_rate'], reverse=True)[:top_n]:
+            selected[it['ticker']] = it
+    items = list(selected.values())
     items.sort(key=lambda x: x['market_cap'], reverse=True)
     output = {
         'date': target_date,
         'updated_at': datetime.now().isoformat(timespec='seconds'),
+        'universe': 'union',   # (시총·거래량·양수 상승률) TOP n union
         'items': items,
     }
     snap_path = snap_dir / f'{target_date}.json'
@@ -985,8 +1026,8 @@ def build_marketmap_backfill(public_dir: Path | None = None,
                               backfill_days: int = 14) -> list[str]:
     """과거 N 영업일치 marketmap 일별 스냅샷 일괄 빌드.
 
-    universe 는 오늘 기준 시총 TOP (KOSPI/KOSDAQ 각 N) 고정. OHLC 한 번 fetch
-    로 모든 일자 추출 — 정확한 그 시점 시총 TOP은 아니지만 시각화엔 충분.
+    universe = KOSPI/KOSDAQ 전종목. 종목별 OHLC 1년치 한 번 fetch 로 일자별
+    (시총/거래대금/상승률) TOP 100 union 스냅샷 산출 → 어떤 정렬에서도 진짜 TOP.
     """
     target_dir = (public_dir or _REPO / 'public') / 'data'
     target_dir.mkdir(parents=True, exist_ok=True)
@@ -998,16 +1039,21 @@ def build_marketmap_backfill(public_dir: Path | None = None,
     start_str = _yyyymmdd(start)
     end_str = _yyyymmdd(today)
 
-    print(f'== marketmap backfill: 과거 {backfill_days} 영업일 ==')
+    print(f'== marketmap backfill: 과거 {backfill_days} 영업일 (전종목 universe) ==')
     universe = fetch_ticker_universe(stock_only=True)
-    kospi_pool = [x for x in universe if (x.get('sosok') == 'KOSPI' or
-                                            x.get('stockExchangeType', {}).get('code') == 'KS')]
-    kosdaq_pool = [x for x in universe if not (x.get('sosok') == 'KOSPI' or
-                                                 x.get('stockExchangeType', {}).get('code') == 'KS')]
-    kospi_pool.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
-    kosdaq_pool.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
-    top = [(it, 'KOSPI') for it in kospi_pool[:top_per_market]] + \
-          [(it, 'KOSDAQ') for it in kosdaq_pool[:top_per_market]]
+    # 전종목 분류 + 시총 0 제외
+    pool: list[tuple[dict, str]] = []
+    for x in universe:
+        ticker = x.get('itemCode') or ''
+        if not ticker or len(ticker) != 6:
+            continue
+        mc = _parse_int(x.get('marketValue')) or 0
+        if mc <= 0:
+            continue
+        is_kospi = (x.get('sosok') == 'KOSPI' or
+                    x.get('stockExchangeType', {}).get('code') == 'KS')
+        pool.append((x, 'KOSPI' if is_kospi else 'KOSDAQ'))
+    print(f'  universe: {len(pool)} 종목 (KOSPI+KOSDAQ 전체)')
 
     industry_name = _fetch_industry_name_map()
     print(f'  산업명 매핑: {len(industry_name)} 개')
@@ -1024,18 +1070,15 @@ def build_marketmap_backfill(public_dir: Path | None = None,
 
     items_data: list[dict] = []
     skipped = 0
-    for it, market in top:
+    t_start = time.time()
+    total = len(pool)
+    log_every = max(50, total // 20)
+    for i, (it, market) in enumerate(pool):
         ticker = it.get('itemCode') or ''
         name = it.get('stockName') or ticker
         market_cap = _parse_int(it.get('marketValue')) or 0
+        # sector: (1) universe industryName → (2) 기존 캐시. integration API 호출은 비용 큼 → backfill 에선 생략
         sector = it.get('industryName') or existing_sector.get(ticker) or ''
-        if not sector and ticker and industry_name:
-            code = _fetch_stock_industry_code(ticker)
-            if code:
-                sector = industry_name.get(code, '')
-        if not ticker or len(ticker) != 6 or market_cap <= 0:
-            skipped += 1
-            continue
         try:
             ohlc = fetch_ohlc_cached(ticker, start_str, end_str)
         except Exception:
@@ -1049,7 +1092,13 @@ def build_marketmap_backfill(public_dir: Path | None = None,
         items_data.append({
             'ticker': ticker, 'name': name, 'market': market, 'sector': sector,
             'market_cap': market_cap, 'ohlc_sorted': ohlc_sorted,
+            'today_close': float(ohlc_sorted[-1].get('closePrice') or 0),
         })
+        if (i + 1) % log_every == 0 or i + 1 == total:
+            el = time.time() - t_start
+            eta = (el / max(1, i + 1)) * (total - i - 1)
+            hit = _ohlc_cache_stats['hit']; miss = _ohlc_cache_stats['miss']
+            print(f'  [{i + 1}/{total}] OHLC 진행 el={el:.0f}s ETA={eta:.0f}s cache={hit}/{hit + miss}')
 
     print(f'  OHLC 수집: {len(items_data)} 종목 (skip {skipped})')
 
@@ -1063,22 +1112,22 @@ def build_marketmap_backfill(public_dir: Path | None = None,
     for td_str in target_dates:
         if not (len(td_str) == 8 and td_str.isdigit()):
             continue
-        # 이미 trading_value 있는 스냅샷이면 skip — 재시도시 즉시 통과
+        # union 으로 이미 빌드된 스냅샷은 skip (재시도 가속)
         snap_path = snap_dir / f'{td_str}.json'
         if snap_path.exists():
             try:
                 old = json.loads(snap_path.read_text(encoding='utf-8'))
-                items_old = old.get('items') or []
-                if items_old and 'trading_value' in items_old[0]:
+                if (old.get('universe') == 'union'
+                        and old.get('items') and 'trading_value' in old['items'][0]):
                     saved.append(td_str)
                     skipped_existing += 1
                     continue
             except Exception:
                 pass
-        if _write_marketmap_snapshot(td_str, items_data, snap_dir):
+        if _write_marketmap_snapshot(td_str, items_data, snap_dir, top_n=top_per_market):
             saved.append(td_str)
     if skipped_existing:
-        print(f'  skip (이미 trading_value 있음): {skipped_existing} 일')
+        print(f'  skip (이미 union 빌드됨): {skipped_existing} 일')
     print(f'  OHLC 캐시: hit {_ohlc_cache_stats["hit"]} / miss {_ohlc_cache_stats["miss"]}')
 
     # index.json 갱신

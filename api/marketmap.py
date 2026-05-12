@@ -23,8 +23,10 @@ from http.server import BaseHTTPRequestHandler
 
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-KOSPI_URL = 'https://m.stock.naver.com/api/stocks/marketValue/KOSPI?page=1&pageSize=100'
-KOSDAQ_URL = 'https://m.stock.naver.com/api/stocks/marketValue/KOSDAQ?page=1&pageSize=100'
+# m.stock marketValue 는 pageSize 100 이 한계. page 1~3 으로 시총 TOP 300씩 → 모집단 확대
+PAGES = (1, 2, 3)
+URL_TPL = 'https://m.stock.naver.com/api/stocks/marketValue/{mkt}?page={page}&pageSize=100'
+TOP_N = 100   # 정렬 기준별 TOP n 으로 union 산출
 
 
 def _parse_int(v):
@@ -87,28 +89,55 @@ def _normalize(stocks, market_label):
     return out
 
 
+def _fetch_market_pool(market_label: str):
+    """page 1..N 을 합쳐서 그 시장의 확장 모집단 반환 + 첫 페이지 메타."""
+    pool = []
+    first_meta = {}
+    for p in PAGES:
+        try:
+            data = _fetch(URL_TPL.format(mkt=market_label, page=p))
+        except Exception:
+            break
+        stocks = data.get('stocks') or []
+        if p == 1 and stocks:
+            first_meta = stocks[0]
+        if not stocks:
+            break
+        pool.extend(_normalize(stocks, market_label))
+    return pool, first_meta
+
+
+def _union_top(pool, n=TOP_N):
+    """모집단에서 (시총·거래량·양수 상승률) TOP n union 추출 — ticker 기준 중복 제거."""
+    selected = {}
+    for it in sorted(pool, key=lambda x: x.get('market_cap') or 0, reverse=True)[:n]:
+        selected[it['ticker']] = it
+    for it in sorted(pool, key=lambda x: x.get('trading_value') or 0, reverse=True)[:n]:
+        selected[it['ticker']] = it
+    rise = [x for x in pool if (x.get('change_rate') or 0) > 0]
+    for it in sorted(rise, key=lambda x: x['change_rate'], reverse=True)[:n]:
+        selected[it['ticker']] = it
+    return list(selected.values())
+
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
-            k = _fetch(KOSPI_URL)
-            d = _fetch(KOSDAQ_URL)
-            kospi_items = _normalize(k.get('stocks'), 'KOSPI')
-            kosdaq_items = _normalize(d.get('stocks'), 'KOSDAQ')
+            kospi_pool, k_first = _fetch_market_pool('KOSPI')
+            kosdaq_pool, _ = _fetch_market_pool('KOSDAQ')
 
-            # 시총 내림차순 — 시장 내부 정렬은 이미 API 가 보장 (marketValue 순)
-            kospi_items.sort(key=lambda x: x['market_cap'], reverse=True)
-            kosdaq_items.sort(key=lambda x: x['market_cap'], reverse=True)
-            items = kospi_items[:100] + kosdaq_items[:100]
+            # 시장별로 union TOP n — 어떤 정렬에서도 진짜 TOP 100 보임
+            items = _union_top(kospi_pool, TOP_N) + _union_top(kosdaq_pool, TOP_N)
+            items.sort(key=lambda x: x['market_cap'], reverse=True)
 
-            # 시장 상태 / 기준일
-            first = (k.get('stocks') or [{}])[0] if k.get('stocks') else {}
-            market_status = first.get('marketStatus') or 'CLOSE'
-            traded = (first.get('localTradedAt') or '')[:10].replace('-', '')
+            market_status = (k_first or {}).get('marketStatus') or 'CLOSE'
+            traded = ((k_first or {}).get('localTradedAt') or '')[:10].replace('-', '')
 
             self._respond(200, {
                 'date': traded,
                 'updated_at': datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z'),
                 'market_status': market_status,
+                'universe': 'union',
                 'items': items,
             })
         except urllib.error.HTTPError as e:
