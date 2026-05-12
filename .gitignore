@@ -8,3 +8,6 @@ node_modules/
 *.log
 
 .vercel
+
+# OHLC 디스크 캐시 — actions/cache 로 별도 보존, repo 에는 commit 안 함
+public/data/_cache/

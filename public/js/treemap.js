@@ -38,10 +38,14 @@
     var PERIOD_LABEL = { '1d': '1일', '1w': '1주', '1m': '1달', '3m': '3달', '1y': '1년' };
     var SORT_LABEL = { mcap: '시총', volume: '거래량', change: '상승률' };
 
-    // 정렬 기준별 score. 상승률은 절대값(상·하 둘 다 강한 변동을 크게).
+    // 정렬 기준별 score. 상승률은 양수만 큰 순 — 음수(하락)는 자연 정렬로 뒤로 감.
     function sortScore(it, sort) {
         if (sort === 'volume') return it.trading_value || 0;
-        if (sort === 'change') return Math.abs(it.change_rate || 0);
+        if (sort === 'change') {
+            var r = it.change_rate;
+            if (r == null || isNaN(r)) return -Infinity;
+            return r;
+        }
         return it.market_cap || 0;
     }
 

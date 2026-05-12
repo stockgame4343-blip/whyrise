@@ -57,6 +57,17 @@ jobs:
         with:
           python-version: '3.12'
 
+      # OHLC 디스크 캐시 — 백필이 중간 실패해도 다음 실행은 즉시 hit.
+      # save-always: true 로 job 실패해도 캐시 저장.
+      - name: Restore OHLC cache
+        uses: actions/cache@v4
+        with:
+          path: public/data/_cache/ohlc
+          key: ohlc-cache-v1-${{ github.run_id }}
+          restore-keys: |
+            ohlc-cache-v1-
+          save-always: true
+
       - name: Install dependencies
         run: |
           # 표준 라이브러리만 사용 — 외부 패키지 불필요 (urllib, json, etc.)

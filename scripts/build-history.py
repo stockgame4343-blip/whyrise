@@ -38,6 +38,49 @@ OUTPUT_DIR = _REPO / 'public' / 'data' / 'stock-history'
 OVERRIDES_DIR = _REPO / 'public' / 'data' / 'overrides'
 STOCK_RISE_RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data'
 
+# ── OHLC 디스크 캐시 (백필 재시도 시 즉시 통과) ──────────────────────
+# 워크플로우가 중간에 실패해도 캐시는 actions/cache 로 보존됨 → 재시작 빠름.
+_OHLC_CACHE_DIR = _REPO / 'public' / 'data' / '_cache' / 'ohlc'
+_OHLC_CACHE_TTL_S = 7 * 24 * 3600   # 7일 — 백필 재시도엔 충분, 과한 stale 방지
+_ohlc_cache_stats = {'hit': 0, 'miss': 0}
+
+
+def fetch_ohlc_cached(ticker: str, start: str, end: str) -> list[dict]:
+    """ticker 별 OHLC fetch — 디스크 캐시 우선.
+
+    캐시 키: ticker (start/end 는 백필 한 번 안에서 동일). 캐시된 범위가 요청 범위를
+    포함하면 그대로 사용, 아니면 fresh fetch + 캐시 갱신.
+    """
+    _OHLC_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    p = _OHLC_CACHE_DIR / f'{ticker}.json'
+    now = time.time()
+    if p.exists():
+        try:
+            blob = json.loads(p.read_text(encoding='utf-8'))
+            age = now - float(blob.get('fetched_at', 0))
+            cs = str(blob.get('start') or '')
+            ce = str(blob.get('end') or '')
+            rows = blob.get('rows') or []
+            # 캐시 범위가 요청 범위를 포함하고 TTL 안이면 hit
+            if rows and age < _OHLC_CACHE_TTL_S and cs <= start and ce >= end:
+                _ohlc_cache_stats['hit'] += 1
+                return rows
+        except Exception:
+            pass
+    _ohlc_cache_stats['miss'] += 1
+    rows = naver_client.fetch_ohlc_daily(ticker, start, end)
+    if rows:
+        try:
+            p.write_text(json.dumps({
+                'ticker': ticker,
+                'start': start, 'end': end,
+                'fetched_at': now,
+                'rows': rows,
+            }, ensure_ascii=False), encoding='utf-8')
+        except Exception:
+            pass
+    return rows
+
 DEFAULT_CUTOFF = 10.0   # 인덱스에 저장할 최저 컷 (클라 토글 +10/15/20/29.9 호환)
 DEFAULT_DAYS = 365
 
@@ -994,7 +1037,7 @@ def build_marketmap_backfill(public_dir: Path | None = None,
             skipped += 1
             continue
         try:
-            ohlc = naver_client.fetch_ohlc_daily(ticker, start_str, end_str)
+            ohlc = fetch_ohlc_cached(ticker, start_str, end_str)
         except Exception:
             skipped += 1
             continue
@@ -1016,10 +1059,27 @@ def build_marketmap_backfill(public_dir: Path | None = None,
     target_dates = all_dates[-backfill_days:] if len(all_dates) > backfill_days else all_dates
 
     saved: list[str] = []
+    skipped_existing = 0
     for td_str in target_dates:
-        if len(td_str) == 8 and td_str.isdigit():
-            if _write_marketmap_snapshot(td_str, items_data, snap_dir):
-                saved.append(td_str)
+        if not (len(td_str) == 8 and td_str.isdigit()):
+            continue
+        # 이미 trading_value 있는 스냅샷이면 skip — 재시도시 즉시 통과
+        snap_path = snap_dir / f'{td_str}.json'
+        if snap_path.exists():
+            try:
+                old = json.loads(snap_path.read_text(encoding='utf-8'))
+                items_old = old.get('items') or []
+                if items_old and 'trading_value' in items_old[0]:
+                    saved.append(td_str)
+                    skipped_existing += 1
+                    continue
+            except Exception:
+                pass
+        if _write_marketmap_snapshot(td_str, items_data, snap_dir):
+            saved.append(td_str)
+    if skipped_existing:
+        print(f'  skip (이미 trading_value 있음): {skipped_existing} 일')
+    print(f'  OHLC 캐시: hit {_ohlc_cache_stats["hit"]} / miss {_ohlc_cache_stats["miss"]}')
 
     # index.json 갱신
     idx_path = snap_dir / 'index.json'
