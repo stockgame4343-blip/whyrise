@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>버블맵 — 이거왜오름?</title>
-    <meta name="description" content="오늘 +15% 이상 오른 종목 버블맵. 섹터/테마별로 클러스터링된 인터랙티브 시각화.">
+    <meta name="description" content="기간(1D/1W/1M/3M/1Y) × 개수(25/50/100) 토글 — 한국 주식 상승률 상위 종목 인터랙티브 버블맵.">
     <meta name="theme-color" content="#0a0b0f">
-    <meta name="robots" content="index,follow">
     <link rel="canonical" href="https://whyrise.vercel.app/bubbles.html">
     <link rel="icon" href="/og-default.svg" type="image/svg+xml">
     <meta property="og:type" content="website">
     <meta property="og:title" content="버블맵 — 이거왜오름?">
-    <meta property="og:description" content="오늘 +15% 이상 오른 종목 버블맵 — 섹터·테마별 인터랙티브 시각화.">
+    <meta property="og:description" content="1D/1W/1M/3M/1Y × 25/50/100 토글 인터랙티브 버블맵.">
     <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -46,34 +45,36 @@
     <div class="bubbles-controls">
         <div class="bubbles-controls__inner">
             <div class="bubbles-controls__left">
-                <span class="bubbles-controls__title">오늘 +15% 이상 <strong id="bubblesCount">—</strong>개</span>
-                <span class="bubbles-controls__date" id="bubblesDate">—</span>
+                <div class="bubble-toggle" id="periodTabs" role="group">
+                    <button data-p="d1" type="button">1D</button>
+                    <button data-p="w1" class="active" type="button">1W</button>
+                    <button data-p="m1" type="button">1M</button>
+                    <button data-p="m3" type="button">3M</button>
+                    <button data-p="y1" type="button">1Y</button>
+                </div>
+                <div class="bubble-toggle" id="countTabs" role="group">
+                    <button data-c="25" type="button">25</button>
+                    <button data-c="50" class="active" type="button">50</button>
+                    <button data-c="100" type="button">100</button>
+                </div>
+                <div class="bubble-toggle" id="marketTabs" role="group">
+                    <button data-m="ALL" class="active" type="button">ALL</button>
+                    <button data-m="KOSPI" type="button">KOSPI</button>
+                    <button data-m="KOSDAQ" type="button">KOSDAQ</button>
+                </div>
             </div>
             <div class="bubbles-controls__right">
                 <input type="text" id="bubblesSearch" class="bubbles-search" placeholder="종목 검색" />
+                <span class="bubbles-stat" id="bubblesStat">—</span>
             </div>
         </div>
     </div>
 
     <div id="bubblesStage" class="bubbles-stage">
-        <div class="loading" id="loading" style="display:none;">버블맵 그리는 중...</div>
+        <div class="loading" id="loading" style="display:flex;">버블맵 그리는 중...</div>
         <div class="message" id="message" style="display:none;"></div>
-        <svg id="bubblesSvg"></svg>
-    </div>
-
-    <div class="bubble-modal" id="bubbleModal" style="display:none;">
-        <div class="bubble-modal__overlay" id="bubbleModalOverlay"></div>
-        <article class="bubble-modal__card glass">
-            <button class="bubble-modal__close" id="bubbleModalClose">&times;</button>
-            <header class="bubble-modal__head">
-                <h2 class="bubble-modal__name" id="modalName"></h2>
-                <span class="bubble-modal__ticker" id="modalTicker"></span>
-            </header>
-            <div class="bubble-modal__rate" id="modalRate"></div>
-            <p class="bubble-modal__reason" id="modalReason"></p>
-            <dl class="bubble-modal__meta" id="modalMeta"></dl>
-            <a class="bubble-modal__cta" id="modalCta" href="#">종목 페이지 →</a>
-        </article>
+        <canvas id="bubblesCanvas"></canvas>
+        <div class="bubble-tip" id="bubbleTip"></div>
     </div>
 
     <footer class="bubbles-foot">
@@ -83,12 +84,10 @@
             <span class="visitor-row__sep">·</span>
             <span>누적 <span class="visitor-row__num" id="visitorUnique">—</span>명</span>
         </div>
-        <span class="bubbles-foot__legend">크기 = 시가총액 · 색 = 상승률 강도 · 드래그·검색·클릭</span>
+        <span class="bubbles-foot__legend">크기 = 변동률 강도 · 빨강 = 상승 · 파랑 = 하락 · 드래그·검색·클릭</span>
         <a href="/admin.html" class="footer__admin-link">·</a>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
-    <script src="/js/api.js"></script>
     <script src="/js/bubbles.js"></script>
     <script src="/js/visitor.js"></script>
 </body>

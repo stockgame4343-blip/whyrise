@@ -262,6 +262,58 @@ def write_index(name_by_ticker: dict[str, dict], output_dir: Path) -> None:
     )
 
 
+# ── bubbles.json 생성 (기간별 변동률) ─────────────────────
+
+def _change_n_days(ohlc_sorted: list[dict], n: int):
+    """ohlc 의 마지막(가장 최근) close vs n 거래일 전 close → %."""
+    if len(ohlc_sorted) <= n:
+        return None
+    try:
+        cur = float(ohlc_sorted[-1].get('closePrice') or 0)
+        past = float(ohlc_sorted[-1 - n].get('closePrice') or 0)
+    except (TypeError, ValueError):
+        return None
+    if cur <= 0 or past <= 0:
+        return None
+    return round((cur / past - 1) * 100, 2)
+
+
+def _bubble_entry(ticker: str, name: str, market: str, sector: str,
+                  ohlc: list[dict], market_cap) -> dict | None:
+    """버블맵용 종목 1개 항목 — 기간별 변동률 + 메타."""
+    if not ohlc or len(ohlc) < 2:
+        return None
+    sorted_ = sorted(ohlc, key=lambda r: r.get('localDate', ''))
+    d1 = _change_n_days(sorted_, 1)
+    if d1 is None:
+        return None
+    cur_close = sorted_[-1].get('closePrice') or 0
+    return {
+        't': ticker,
+        'n': name,
+        'm': market,                                          # KOSPI / KOSDAQ
+        's': sector or '',
+        'mc': int(market_cap) if market_cap else None,        # 시가총액 (원)
+        'p': int(cur_close) if cur_close else None,           # 현재 종가
+        'd1': d1,
+        'w1': _change_n_days(sorted_, 5),
+        'm1': _change_n_days(sorted_, 20),
+        'm3': _change_n_days(sorted_, 60),
+        'y1': _change_n_days(sorted_, 251),
+    }
+
+
+def _write_bubbles(entries: list[dict], output_path: Path) -> None:
+    """bubbles.json 저장 — 모든 종목 + 5개 기간 변동률."""
+    payload = {
+        'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+        'count': len(entries),
+        'stocks': entries,
+    }
+    output_path.write_text(json.dumps(payload, ensure_ascii=False), encoding='utf-8')
+    print(f'  bubbles.json: {len(entries)} 종목')
+
+
 # ── sitemap 생성 ─────────────────────────────────────────
 
 def build_sitemap(stock_history_dir: Path, public_dir: Path,
@@ -453,8 +505,9 @@ def build_full(args) -> int:
                 out.append(it)
         return out[:5]
 
-    # 4. 종목별 OHLC + events
+    # 4. 종목별 OHLC + events + bubbles (기간별 변동률)
     index_meta: dict[str, dict] = {}
+    bubbles_data: list[dict] = []
     total = len(universe)
     success = 0
     skipped = 0
@@ -482,6 +535,14 @@ def build_full(args) -> int:
         if not ohlc or len(ohlc) < 2:
             skipped += 1
             continue
+
+        # bubbles 데이터 — 기간별 변동률 (모든 종목, +15% 사건 무관)
+        bub = _bubble_entry(ticker, name, market,
+                            item.get('industryName') or '',
+                            ohlc, item.get('marketValue'))
+        if bub:
+            bubbles_data.append(bub)
+
         events = build_events_for_ticker(
             ticker=ticker, name=name, market=market,
             ohlc=ohlc, cutoff=cutoff,
@@ -504,7 +565,8 @@ def build_full(args) -> int:
 
     write_index(index_meta, output_dir)
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
-    build_sitemap(output_dir, output_dir.parent.parent)  # public/sitemap.xml
+    build_sitemap(output_dir, output_dir.parent.parent)
+    _write_bubbles(bubbles_data, output_dir.parent / 'bubbles.json')
     elapsed = time.time() - t_start
     print(f'== 완료: {success}/{total} 종목, skip {skipped}, elapsed {elapsed:.0f}s ==')
     return 0

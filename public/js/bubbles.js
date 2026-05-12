@@ -1,29 +1,45 @@
 /**
- * 버블맵 — cryptobubbles.net 스타일.
+ * 버블맵 — Canvas + 글로시 3D + 물리 시뮬레이션.
  *
- * 풀스크린 캔버스 + D3 force simulation:
- *  - 버블 안에 종목명·상승률 큰 텍스트
- *  - 부유 모션 (alphaDecay 0, 약한 charge → 계속 떠다님)
- *  - 드래그 가능, 검색 하이라이트, 클릭 시 모달
- *  - 토글: 섹터별 / 테마별 / 자유(forceCenter)
- *  - 색: 상승률 강도 — 15% rgba(.45) → 30% rgba(1) 빨강 (한국 증시)
- *  - 크기: log scale on market_cap
+ * 데이터: /data/bubbles.json — 전 종목 × 5개 기간(d1/w1/m1/m3/y1) 변동률.
+ * 토글: 기간 × 개수(25/50/100) × 시장(ALL/KOSPI/KOSDAQ).
+ *
+ * 표시 종목 = (시장 필터 → 선택 기간 변동률 절댓값 desc → top N → 검색 dim).
+ * 빨강 = 상승 (한국 증시), 파랑 = 하락.
+ * 클릭 → /stock/{ticker}.
  */
 (function () {
-    if (typeof d3 === 'undefined') {
-        console.error('d3 not loaded');
-        return;
-    }
-
-    var CUTOFF = 15;
+    var canvas = document.getElementById('bubblesCanvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var tip = document.getElementById('bubbleTip');
+    var stat = document.getElementById('bubblesStat');
 
     var state = {
-        nodes: [],
-        sim: null,
-        width: 0,
-        height: 0,
-        searchTerm: '',
+        all: [],            // 모든 종목 (필터 전)
+        period: 'w1',
+        count: 50,
+        market: 'ALL',
+        search: '',
+        bubbles: [],
+        dragging: null,
+        hovered: null,
+        w: 0, h: 0, dpr: 1,
     };
+
+    function resize() {
+        var $stage = document.getElementById('bubblesStage');
+        var rect = $stage.getBoundingClientRect();
+        state.w = rect.width;
+        state.h = rect.height;
+        state.dpr = window.devicePixelRatio || 1;
+        canvas.width = state.w * state.dpr;
+        canvas.height = state.h * state.dpr;
+        canvas.style.width = state.w + 'px';
+        canvas.style.height = state.h + 'px';
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(state.dpr, state.dpr);
+    }
 
     function bindThemeToggle() {
         var $btn = document.getElementById('themeToggle');
@@ -37,280 +53,311 @@
         });
     }
 
-    function shadeColor(rate) {
-        // 15% → 30% 강도. 단순 빨강 채도/명도.
-        // 한국 증시 빨강 (#F04452) 기반.
-        var t = Math.max(0, Math.min(1, (rate - 15) / 15));
-        var alpha = 0.5 + 0.5 * t;
-        return 'rgba(240, 68, 82, ' + alpha.toFixed(3) + ')';
-    }
-
-    function strokeColor(rate) {
-        var t = Math.max(0, Math.min(1, (rate - 15) / 15));
-        return 'rgba(255, 110, 130, ' + (0.6 + 0.4 * t).toFixed(2) + ')';
-    }
-
-    function radius(cap, maxCap, minCap) {
-        // sqrt 스케일 + 화면 비율 — 상대성 강조 + 화면 꽉 채움
-        // 화면 대비 적정: 최소 ~화면 짧은 변의 6%, 최대 ~22%
-        var shortSide = Math.min(state.width || 1200, state.height || 700);
-        var minR = Math.max(40, shortSide * 0.06);
-        var maxR = Math.max(160, shortSide * 0.22);
-        if (!cap || cap <= 0) return minR;
-        // sqrt 스케일 → log 보다 차이 극단적 (시총 100배 → 반지름 10배)
-        var t = Math.sqrt(Math.max(1, cap)) / Math.sqrt(Math.max(1, maxCap || 1));
-        return minR + (maxR - minR) * t;
-    }
-
-    function shortName(name, max) {
-        max = max || 6;
-        if (!name) return '';
-        return name.length > max ? name.slice(0, max - 1) + '…' : name;
-    }
-
-    function fmtCap(n) {
-        if (n == null || n === 0) return '-';
-        if (n >= 1e12) return (n / 1e12).toFixed(1) + '조';
-        if (n >= 1e8) return Math.round(n / 1e8) + '억';
-        return n.toLocaleString('ko-KR');
-    }
-
-    function stage() {
-        var $stage = document.getElementById('bubblesStage');
-        return {
-            w: $stage.clientWidth,
-            h: $stage.clientHeight,
-        };
-    }
-
-    function render() {
-        var $svg = d3.select('#bubblesSvg');
-        $svg.selectAll('*').remove();
-
-        var s = stage();
-        state.width = s.w;
-        state.height = s.h;
-        $svg.attr('viewBox', '0 0 ' + s.w + ' ' + s.h)
-            .attr('width', s.w).attr('height', s.h);
-
-        var nodes = state.nodes;
-        // 화면 크기 변경 또는 첫 렌더 시점에 반지름 재계산
-        var caps = nodes.map(function (n) { return n.market_cap || 0; }).filter(function (c) { return c > 0; });
-        var maxCap = caps.length ? Math.max.apply(null, caps) : 1;
-        var minCap = caps.length ? Math.min.apply(null, caps) : 1;
-        nodes.forEach(function (n) {
-            n.r = radius(n.market_cap, maxCap, minCap);
-        });
-        if (!nodes.length) {
-            $svg.append('text')
-                .attr('x', s.w / 2).attr('y', s.h / 2)
-                .attr('text-anchor', 'middle')
-                .attr('fill', 'currentColor').attr('opacity', 0.4)
-                .attr('font-size', 16)
-                .text('오늘 +15% 이상 오른 종목이 없습니다.');
-            return;
+    // ── 색 ─────────────────────────────────────
+    // 한국 증시: 빨강(상승), 파랑(하락). 변동률 절댓값 50% 까지 강도 매핑.
+    function colorFor(change) {
+        var abs = Math.min(Math.abs(change || 0), 50);
+        var t = abs / 50;
+        if (change >= 0) {
+            // 빨강 (#f04452 톤 → 진한 빨강)
+            var r = Math.round(240 + (255 - 240) * t);
+            var g = Math.round(80 - 50 * t);
+            var b = Math.round(82 - 60 * t);
+            return { r: r, g: g, b: b };
+        } else {
+            // 파랑 (#5b9df9 톤 → 진한 파랑)
+            var r2 = Math.round(91 - 71 * t);
+            var g2 = Math.round(157 - 67 * t);
+            var b2 = Math.round(249 - 19 * t);
+            return { r: r2, g: g2, b: b2 };
         }
+    }
 
-        var nodeG = $svg.append('g').attr('class', 'bubble-nodes')
-            .selectAll('g').data(nodes, function (d) { return d.ticker; }).join('g')
-            .attr('class', 'bubble-node')
-            .style('cursor', 'pointer')
-            .on('click', function (event, d) {
-                if (event.defaultPrevented) return;
-                openModal(d);
-            });
+    // ── 필터·정렬 ──────────────────────────────
+    function rebuild() {
+        var p = state.period;
+        var filtered = state.all.filter(function (s) {
+            if (state.market !== 'ALL' && s.m !== state.market) return false;
+            return s[p] != null;
+        });
+        // 변동률 절댓값 내림차순 — 상승만 보고 싶다면 desc(s[p]). 사용자는 "상승 TOP" 원해서 desc(s[p]) 사용.
+        filtered.sort(function (a, b) { return (b[p] || 0) - (a[p] || 0); });
+        var top = filtered.slice(0, state.count);
 
-        nodeG.append('circle')
-            .attr('class', 'bubble-circle')
-            .attr('r', function (d) { return d.r; })
-            .attr('fill', function (d) { return shadeColor(d.change_rate); })
-            .attr('stroke', function (d) { return strokeColor(d.change_rate); })
-            .attr('stroke-width', 1.5);
+        var maxAbs = top.reduce(function (m, s) { return Math.max(m, Math.abs(s[p] || 0)); }, 5);
+        var shortSide = Math.min(state.w || 1200, state.h || 700);
+        var minR = Math.max(20, shortSide * 0.035);
+        var maxR = Math.max(70, shortSide * 0.12);
 
-        // 종목명 (윗줄)
-        nodeG.append('text')
-            .attr('class', 'bubble-name')
-            .attr('text-anchor', 'middle')
-            .attr('dy', '-0.25em')
-            .attr('fill', '#fff')
-            .attr('font-weight', 700)
-            .attr('font-size', function (d) { return Math.max(11, d.r * 0.26); })
-            .attr('pointer-events', 'none')
-            .text(function (d) {
-                var max = Math.max(3, Math.floor(d.r / 9));
-                return shortName(d.name, max);
-            });
+        var byTicker = {};
+        state.bubbles.forEach(function (b) { byTicker[b.t] = b; });
 
-        // 상승률 (큰 글씨, 아래)
-        nodeG.append('text')
-            .attr('class', 'bubble-rate')
-            .attr('text-anchor', 'middle')
-            .attr('dy', '1.05em')
-            .attr('fill', '#fff')
-            .attr('font-weight', 800)
-            .attr('font-size', function (d) { return Math.max(13, d.r * 0.38); })
-            .attr('pointer-events', 'none')
-            .text(function (d) { return '+' + d.change_rate.toFixed(1) + '%'; });
-
-        // 드래그
-        nodeG.call(d3.drag()
-            .on('start', function (event, d) {
-                if (!event.active) state.sim.alphaTarget(0.3).restart();
-                d.fx = d.x; d.fy = d.y;
-                event.sourceEvent && event.sourceEvent.preventDefault();
-            })
-            .on('drag', function (event, d) {
-                d.fx = event.x; d.fy = event.y;
-            })
-            .on('end', function (event, d) {
-                if (!event.active) state.sim.alphaTarget(0.05);
-                d.fx = null; d.fy = null;
-            })
-        );
-
-        // 초기 위치를 화면 전체에 랜덤 분산 → 가운데 뭉침 회피
-        nodes.forEach(function (d) {
-            if (d.x == null) d.x = Math.random() * s.w;
-            if (d.y == null) d.y = Math.random() * s.h;
+        state.bubbles = top.map(function (s) {
+            var existing = byTicker[s.t];
+            var change = s[p] || 0;
+            var r = minR + Math.sqrt(Math.abs(change) / maxAbs) * (maxR - minR);
+            return {
+                t: s.t, n: s.n, m: s.m, s: s.s, mc: s.mc, p: s.p,
+                change: change,
+                r: r,
+                targetR: r,
+                x: existing ? existing.x : state.w / 2 + (Math.random() - 0.5) * state.w * 0.7,
+                y: existing ? existing.y : state.h / 2 + (Math.random() - 0.5) * state.h * 0.7,
+                vx: existing ? existing.vx : (Math.random() - 0.5) * 2,
+                vy: existing ? existing.vy : (Math.random() - 0.5) * 2,
+                _dim: false,
+            };
         });
 
-        // 시뮬레이션 — 부유 유지 + 화면 채움 (cryptobubbles 식)
-        if (state.sim) state.sim.stop();
-        var sim = d3.forceSimulation(nodes)
-            .force('collide', d3.forceCollide(function (d) { return d.r + 4; }).strength(1).iterations(4))
-            .force('charge', d3.forceManyBody().strength(-8))
-            // 매우 약한 중앙 끌어당김 — 화면 전체에 자연스럽게 퍼짐
-            .force('x', d3.forceX(s.w / 2).strength(0.012))
-            .force('y', d3.forceY(s.h / 2).strength(0.012))
-            .alphaDecay(0.002)
-            .alphaMin(0.0005)
-            .velocityDecay(0.18)
-            .on('tick', tick);
-
-        function tick() {
-            nodeG.attr('transform', function (d) {
-                d.x = Math.max(d.r + 2, Math.min(s.w - d.r - 2, d.x));
-                d.y = Math.max(d.r + 2, Math.min(s.h - d.r - 2, d.y));
-                return 'translate(' + d.x + ',' + d.y + ')';
-            });
-        }
-        state.sim = sim;
-
+        // 검색 dim
         applySearch();
+
+        var up = state.bubbles.filter(function (b) { return b.change >= 0; }).length;
+        var dn = state.bubbles.length - up;
+        var label = ({ d1: '1일', w1: '1주', m1: '1달', m3: '3달', y1: '1년' })[p];
+        if (stat) stat.textContent = label + ' 상승 TOP ' + state.bubbles.length + '  ▲' + up + '  ▼' + dn;
     }
 
     function applySearch() {
-        var q = (state.searchTerm || '').toLowerCase().trim();
-        d3.selectAll('.bubble-node')
-            .classed('dim', function (d) {
-                if (!q) return false;
-                var name = (d.name || '').toLowerCase();
-                var tk = (d.ticker || '').toLowerCase();
-                return !(name.indexOf(q) !== -1 || tk.indexOf(q) === 0);
-            })
-            .classed('hit', function (d) {
-                if (!q) return false;
-                var name = (d.name || '').toLowerCase();
-                var tk = (d.ticker || '').toLowerCase();
-                return (name.indexOf(q) !== -1 || tk.indexOf(q) === 0);
+        var q = (state.search || '').toLowerCase().trim();
+        state.bubbles.forEach(function (b) {
+            if (!q) { b._dim = false; return; }
+            var nm = (b.n || '').toLowerCase();
+            var tk = (b.t || '').toLowerCase();
+            b._dim = !(nm.indexOf(q) !== -1 || tk.indexOf(q) === 0);
+        });
+    }
+
+    // ── 물리 ───────────────────────────────────
+    function physics() {
+        var W = state.w, H = state.h;
+        var bubbles = state.bubbles;
+        for (var i = 0; i < bubbles.length; i++) {
+            var b = bubbles[i];
+            if (b === state.dragging) continue;
+            b.r += (b.targetR - b.r) * 0.1;
+            var cx = W / 2, cy = H / 2;
+            var dx = cx - b.x, dy = cy - b.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist > 0.1) {
+                b.vx += (dx / dist) * 0.015;
+                b.vy += (dy / dist) * 0.015;
+            }
+            b.vx *= 0.95; b.vy *= 0.95;
+            b.x += b.vx; b.y += b.vy;
+            if (b.x - b.r < 0) { b.x = b.r; b.vx *= -0.6; }
+            if (b.x + b.r > W) { b.x = W - b.r; b.vx *= -0.6; }
+            if (b.y - b.r < 0) { b.y = b.r; b.vy *= -0.6; }
+            if (b.y + b.r > H) { b.y = H - b.r; b.vy *= -0.6; }
+            for (var j = i + 1; j < bubbles.length; j++) {
+                var o = bubbles[j];
+                var ddx = o.x - b.x, ddy = o.y - b.y;
+                var d = Math.sqrt(ddx * ddx + ddy * ddy);
+                var minD = b.r + o.r + 1;
+                if (d < minD && d > 0.001) {
+                    var overlap = (minD - d) / 2;
+                    var nx = ddx / d, ny = ddy / d;
+                    if (b !== state.dragging) { b.x -= nx * overlap; b.vx -= nx * 0.3; b.vy -= ny * 0.3; }
+                    if (o !== state.dragging) { o.x += nx * overlap; o.vx += nx * 0.3; o.vy += ny * 0.3; }
+                }
+            }
+        }
+    }
+
+    // ── 렌더 (글로시 3D) ───────────────────────
+    function draw() {
+        ctx.clearRect(0, 0, state.w, state.h);
+        state.bubbles.forEach(function (b) {
+            var col = colorFor(b.change);
+            var isHover = b === state.hovered;
+            var alpha = b._dim ? 0.18 : 1;
+
+            // 외곽 글로우
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + col.r + ',' + col.g + ',' + col.b + ',' + (0.15 * alpha) + ')';
+            ctx.fill();
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = 'rgba(' + col.r + ',' + col.g + ',' + col.b + ',' +
+                ((isHover ? 0.6 : 0.28) * alpha) + ')';
+            ctx.stroke();
+
+            // 메인 그라디언트 (3D 구체)
+            var grad = ctx.createRadialGradient(
+                b.x - b.r * 0.3, b.y - b.r * 0.3, b.r * 0.1,
+                b.x, b.y, b.r
+            );
+            grad.addColorStop(0, 'rgba(' + col.r + ',' + col.g + ',' + col.b + ',' + (0.95 * alpha) + ')');
+            grad.addColorStop(0.55, 'rgba(' + col.r + ',' + col.g + ',' + col.b + ',' + (0.72 * alpha) + ')');
+            grad.addColorStop(1, 'rgba(' +
+                Math.round(col.r * 0.45) + ',' + Math.round(col.g * 0.45) + ',' + Math.round(col.b * 0.45) +
+                ',' + (0.88 * alpha) + ')');
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, b.r * 0.92, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            // 광택 하이라이트
+            var hl = ctx.createRadialGradient(
+                b.x - b.r * 0.32, b.y - b.r * 0.36, 0,
+                b.x - b.r * 0.32, b.y - b.r * 0.36, b.r * 0.4
+            );
+            hl.addColorStop(0, 'rgba(255,255,255,' + (0.38 * alpha) + ')');
+            hl.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.beginPath();
+            ctx.arc(b.x - b.r * 0.32, b.y - b.r * 0.36, b.r * 0.4, 0, Math.PI * 2);
+            ctx.fillStyle = hl;
+            ctx.fill();
+
+            // 텍스트 (반지름 > 15px 만)
+            if (b.r > 15) {
+                var pct = (b.change >= 0 ? '+' : '') + b.change.toFixed(1) + '%';
+                var pctSize = Math.min(b.r * 0.42, 28);
+                var nameSize = Math.min(b.r * 0.28, 14);
+                ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = '700 ' + pctSize + 'px -apple-system, system-ui, sans-serif';
+                ctx.fillText(pct, b.x, b.y - b.r * 0.1);
+                if (b.r > 25) {
+                    ctx.font = '500 ' + nameSize + 'px -apple-system, system-ui, sans-serif';
+                    ctx.fillStyle = 'rgba(255,255,255,' + (0.88 * alpha) + ')';
+                    var nm = b.r > 42 ? b.n : (b.n || '').slice(0, 5);
+                    ctx.fillText(nm, b.x, b.y + b.r * 0.32);
+                }
+            }
+        });
+    }
+
+    function loop() {
+        physics();
+        draw();
+        requestAnimationFrame(loop);
+    }
+
+    // ── 인터랙션 ───────────────────────────────
+    function pick(mx, my) {
+        for (var i = state.bubbles.length - 1; i >= 0; i--) {
+            var b = state.bubbles[i];
+            var dx = mx - b.x, dy = my - b.y;
+            if (dx * dx + dy * dy < b.r * b.r) return b;
+        }
+        return null;
+    }
+    function getPos(e) {
+        var rect = canvas.getBoundingClientRect();
+        return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+    function bindCanvas() {
+        canvas.addEventListener('mousedown', function (e) {
+            var p = getPos(e);
+            var b = pick(p.x, p.y);
+            if (b) { state.dragging = b; canvas.style.cursor = 'grabbing'; }
+        });
+        canvas.addEventListener('mousemove', function (e) {
+            var p = getPos(e);
+            if (state.dragging) {
+                state.dragging.vx = (p.x - state.dragging.x) * 0.3;
+                state.dragging.vy = (p.y - state.dragging.y) * 0.3;
+                state.dragging.x = p.x; state.dragging.y = p.y;
+            } else {
+                var b = pick(p.x, p.y);
+                state.hovered = b;
+                canvas.style.cursor = b ? 'pointer' : 'default';
+                if (b) {
+                    tip.style.opacity = '1';
+                    tip.style.left = (p.x + 14) + 'px';
+                    tip.style.top = (p.y - 10) + 'px';
+                    var sign = b.change >= 0 ? '+' : '';
+                    var col = b.change >= 0 ? '#f04452' : '#5b9df9';
+                    var mc = b.mc ? (b.mc >= 1e12 ? (b.mc / 1e12).toFixed(1) + '조'
+                        : b.mc >= 1e8 ? Math.round(b.mc / 1e8) + '억' : '-') : '-';
+                    tip.innerHTML =
+                        '<div class="bubble-tip__name">' + b.n + '</div>' +
+                        '<div class="bubble-tip__meta">' + b.t + ' · ' + b.m + (b.s ? ' · ' + b.s : '') + '</div>' +
+                        '<div class="bubble-tip__row">시총 ' + mc +
+                        ' · <span style="color:' + col + ';font-weight:700;">' + sign + b.change.toFixed(2) + '%</span></div>';
+                } else {
+                    tip.style.opacity = '0';
+                }
+            }
+        });
+        canvas.addEventListener('mouseup', function () {
+            state.dragging = null;
+            canvas.style.cursor = 'pointer';
+        });
+        canvas.addEventListener('mouseleave', function () {
+            state.dragging = null; state.hovered = null;
+            tip.style.opacity = '0';
+        });
+        canvas.addEventListener('click', function (e) {
+            var p = getPos(e);
+            var b = pick(p.x, p.y);
+            if (b && b.t) window.location.href = '/stock/' + b.t;
+        });
+    }
+
+    function bindToggles() {
+        document.querySelectorAll('#periodTabs button').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('#periodTabs button').forEach(function (x) { x.classList.remove('active'); });
+                btn.classList.add('active');
+                state.period = btn.dataset.p; rebuild();
             });
-    }
-
-    function bindSearch() {
+        });
+        document.querySelectorAll('#countTabs button').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('#countTabs button').forEach(function (x) { x.classList.remove('active'); });
+                btn.classList.add('active');
+                state.count = parseInt(btn.dataset.c, 10); rebuild();
+            });
+        });
+        document.querySelectorAll('#marketTabs button').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('#marketTabs button').forEach(function (x) { x.classList.remove('active'); });
+                btn.classList.add('active');
+                state.market = btn.dataset.m; rebuild();
+            });
+        });
         var $s = document.getElementById('bubblesSearch');
-        if (!$s) return;
-        $s.addEventListener('input', function () {
-            state.searchTerm = $s.value;
-            applySearch();
+        if ($s) $s.addEventListener('input', function () {
+            state.search = $s.value; applySearch();
         });
     }
 
-    // ── 모달 ────────────────────────────────────────────
-    function openModal(d) {
-        var $modal = document.getElementById('bubbleModal');
-        if (!$modal) return;
-        document.getElementById('modalName').textContent = d.name || d.ticker;
-        document.getElementById('modalTicker').textContent = d.ticker || '';
-        document.getElementById('modalRate').textContent = '+' + d.change_rate.toFixed(2) + '%';
-        document.getElementById('modalReason').textContent = d.rise_reason || '이유 미수집';
-        var $meta = document.getElementById('modalMeta');
-        $meta.innerHTML =
-            '<dt>섹터</dt><dd>' + (d.sector || '-') + '</dd>' +
-            '<dt>테마</dt><dd>' + (d.theme || '-') + '</dd>' +
-            '<dt>시가총액</dt><dd>' + fmtCap(d.market_cap) + '</dd>' +
-            '<dt>시장</dt><dd>' + (d.market || '-') + '</dd>';
-        document.getElementById('modalCta').setAttribute('href', '/stock/' + d.ticker);
-        $modal.style.display = 'flex';
-    }
-    function closeModal() {
-        var $modal = document.getElementById('bubbleModal');
-        if ($modal) $modal.style.display = 'none';
-    }
-    function bindModal() {
-        document.getElementById('bubbleModalClose').addEventListener('click', closeModal);
-        document.getElementById('bubbleModalOverlay').addEventListener('click', closeModal);
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeModal();
-        });
-    }
-
-    // ── 데이터 ─────────────────────────────────────────
-    function buildNodes(rankings) {
-        var caps = rankings.map(function (r) { return r.market_cap || 0; }).filter(function (c) { return c > 0; });
-        var maxCap = caps.length ? Math.max.apply(null, caps) : 1;
-        var minCap = caps.length ? Math.min.apply(null, caps) : 1;
-        return rankings.map(function (r) {
-            return {
-                ticker: r.ticker,
-                name: r.name,
-                change_rate: r.change_rate,
-                market_cap: r.market_cap,
-                market: r.market,
-                sector: r.sector || '기타',
-                theme: (r.theme_tag || '').trim() || '기타',
-                rise_reason: r.rise_reason || '',
-                r: radius(r.market_cap, maxCap, minCap),
-            };
-        });
-    }
-
-    function loadAndRender() {
+    // ── 데이터 ─────────────────────────────────
+    function load() {
         var $loading = document.getElementById('loading');
         var $msg = document.getElementById('message');
-        $loading.style.display = 'block';
-
-        WhyAPI.getDates().then(function (dates) {
-            if (!dates || !dates.length) throw new Error('거래일 데이터 없음');
-            return WhyAPI.getRankings(dates[0]).then(function (data) {
-                var filtered = (data.rankings || []).filter(function (r) {
-                    return r.change_rate != null && r.change_rate >= CUTOFF;
-                });
-                state.nodes = buildNodes(filtered);
-
-                document.getElementById('bubblesCount').textContent = filtered.length;
-                var d = dates[0];
-                document.getElementById('bubblesDate').textContent =
-                    d.slice(0,4) + '.' + d.slice(4,6) + '.' + d.slice(6,8);
-
+        fetch('/data/bubbles.json', { cache: 'no-cache' })
+            .then(function (r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.json();
+            })
+            .then(function (data) {
+                state.all = data.stocks || [];
                 $loading.style.display = 'none';
-                render();
-
-                window.addEventListener('resize', function () {
-                    clearTimeout(window._wrResize);
-                    window._wrResize = setTimeout(render, 250);
-                });
+                rebuild();
+            })
+            .catch(function (err) {
+                $loading.style.display = 'none';
+                $msg.textContent = 'bubbles.json 로딩 실패: ' + err.message +
+                    ' — 다음 빌드 후 표시됩니다.';
+                $msg.style.display = 'flex';
             });
-        }).catch(function (err) {
-            $loading.style.display = 'none';
-            $msg.textContent = '데이터 로딩 실패: ' + err.message;
-            $msg.style.display = 'block';
-        });
     }
 
     document.addEventListener('DOMContentLoaded', function () {
         bindThemeToggle();
-        bindSearch();
-        bindModal();
-        loadAndRender();
+        bindToggles();
+        bindCanvas();
+        resize();
+        window.addEventListener('resize', function () {
+            resize();
+            clearTimeout(window._bResize);
+            window._bResize = setTimeout(rebuild, 200);
+        });
+        load();
+        loop();
     });
 })();
