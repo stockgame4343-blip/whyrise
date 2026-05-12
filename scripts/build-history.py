@@ -648,6 +648,57 @@ def build_estimate_only(args) -> int:
     return 0
 
 
+def build_bubbles_only(args) -> int:
+    """OHLC 만 fetch 해서 bubbles.json 빌드 — 풀빌드보다 ~10배 빠름.
+
+    뉴스·이유 추정·인덱스 빌드 모두 스킵.
+    """
+    today = date.today()
+    start = today - timedelta(days=400)
+    end = today
+    start_str = _yyyymmdd(start)
+    end_str = _yyyymmdd(end)
+
+    print(f'== bubbles-only: 기간 {start_str} ~ {end_str} ==')
+    universe = fetch_ticker_universe(stock_only=True)
+
+    bubbles_data: list[dict] = []
+    total = len(universe)
+    t_start = time.time()
+    skipped = 0
+
+    for i, item in enumerate(universe):
+        ticker = item.get('itemCode') or ''
+        name = item.get('stockName') or ticker
+        market = 'KOSPI' if (item.get('sosok') == 'KOSPI' or
+                             item.get('stockExchangeType', {}).get('code') == 'KS') else 'KOSDAQ'
+        if not ticker or len(ticker) != 6:
+            skipped += 1
+            continue
+        if i % 100 == 0:
+            elapsed = time.time() - t_start
+            eta = (elapsed / max(1, i + 1)) * (total - i - 1)
+            print(f'  [{i + 1}/{total}] elapsed {elapsed:.0f}s, ETA {eta:.0f}s')
+        try:
+            ohlc = naver_client.fetch_ohlc_daily(ticker, start_str, end_str)
+        except Exception as e:
+            skipped += 1
+            continue
+        if not ohlc or len(ohlc) < 2:
+            skipped += 1
+            continue
+        bub = _bubble_entry(ticker, name, market,
+                            item.get('industryName') or '',
+                            ohlc, item.get('marketValue'))
+        if bub:
+            bubbles_data.append(bub)
+
+    _write_bubbles(bubbles_data, OUTPUT_DIR.parent / 'bubbles.json')
+    elapsed = time.time() - t_start
+    print(f'== bubbles-only 완료: {len(bubbles_data)}/{total} 종목, skip {skipped}, {elapsed:.0f}s ==')
+    return 0
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument('--days', type=int, default=DEFAULT_DAYS)
@@ -656,10 +707,14 @@ def main() -> None:
                    help='상위 N 종목만 빌드 (0=전체)')
     p.add_argument('--estimate-only', action='store_true',
                    help='인덱스 missing 만 재추정')
+    p.add_argument('--bubbles-only', action='store_true',
+                   help='OHLC 만 fetch 해서 bubbles.json 만 빠르게 빌드')
     p.add_argument('--limit', type=int, default=0,
                    help='estimate-only 시 처리 개수 한도')
     args = p.parse_args()
 
+    if args.bubbles_only:
+        sys.exit(build_bubbles_only(args))
     if args.estimate_only:
         sys.exit(build_estimate_only(args))
     sys.exit(build_full(args))
