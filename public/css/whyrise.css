@@ -121,14 +121,15 @@ body {
 [data-theme="light"] .top-bar .top-bar__link:hover {
     background: rgba(0, 0, 0, 0.06);
 }
+/* 활성 — 박스/블루 제거, 메인 텍스트 컬러 + 볼드. 비활성은 var(--text-secondary) 그레이 */
 .top-bar .top-bar__link--active {
-    color: var(--wr-accent);
-    background: var(--wr-accent-soft);
-    font-weight: 700;
+    color: var(--text-primary);
+    background: transparent;
+    font-weight: 800;
 }
 .top-bar .top-bar__link--active:hover {
-    color: var(--wr-accent);
-    background: var(--wr-accent-bg);
+    color: var(--text-primary);
+    background: transparent;
 }
 .top-bar__nav { display: flex; gap: 4px; }
 
