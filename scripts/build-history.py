@@ -335,7 +335,6 @@ def build_sitemap(stock_history_dir: Path, public_dir: Path,
     static = [
         (f'{site}/', '1.0', 'daily'),
         (f'{site}/bubbles.html', '0.8', 'daily'),
-        (f'{site}/treemap.html', '0.8', 'daily'),
         (f'{site}/report.html', '0.8', 'daily'),
     ]
     # 종목 페이지
