@@ -149,14 +149,17 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 모든 산출물 (stock-history/, bubbles.json, report-summary.json, sitemap.xml) 일괄 stage
+          # 빌드 산출물 stage (public/data/)
           git add public/data/
+          # 추가 unstaged 변경 (예: pip cache·기타) 도 stage 또는 버림
+          git checkout -- . || true   # 추적 중인 다른 파일 변경 복원
+          git clean -fd -e 'public/data/_cache' || true  # 추적 안 되는 파일 제거 (cache 디렉토리는 보존)
           git diff --staged --quiet && echo "변경 없음" && exit 0
           git commit -m "build: 인덱스+버블+리포트 갱신 ($(date +%Y%m%d))"
-          # push 시 origin 변경 있으면 rebase 후 retry (최대 3회)
+          # push 시 origin 변경 있으면 autostash rebase 후 retry (최대 3회)
           for attempt in 1 2 3; do
             git fetch origin master
-            if git rebase origin/master; then
+            if git -c rebase.autoStash=true rebase origin/master; then
               if git push; then
                 echo "push 성공 (시도 $attempt)"
                 exit 0
