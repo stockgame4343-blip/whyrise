@@ -335,6 +335,7 @@ def build_sitemap(stock_history_dir: Path, public_dir: Path,
     static = [
         (f'{site}/', '1.0', 'daily'),
         (f'{site}/bubbles.html', '0.8', 'daily'),
+        (f'{site}/treemap.html', '0.8', 'daily'),
         (f'{site}/report.html', '0.8', 'daily'),
     ]
     # 종목 페이지
@@ -578,6 +579,7 @@ def build_full(args) -> int:
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     build_sitemap(output_dir, output_dir.parent.parent)
     _write_bubbles(bubbles_data, output_dir.parent / 'bubbles.json')
+    build_marketmap(output_dir.parent.parent)
     elapsed = time.time() - t_start
     print(f'== 완료: {success}/{total} 종목, skip {skipped}, elapsed {elapsed:.0f}s ==')
     return 0
@@ -648,6 +650,86 @@ def build_estimate_only(args) -> int:
     return 0
 
 
+# ── marketmap (시총 TOP 100 트리맵) ────────────────────
+
+def build_marketmap(public_dir: Path | None = None, top_n: int = 100) -> dict | None:
+    """시총 TOP N 종목 + 최신 거래일 등락률 → public/data/marketmap.json.
+
+    universe 의 시총 내림차순 상위 N 만 처리하므로 매우 빠름 (~30s).
+    호출 위치: build_full / build_estimate_only / build_bubbles_only 끝, 또는
+    --marketmap-only 단독 실행.
+    """
+    target_dir = (public_dir or _REPO / 'public') / 'data'
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    today = date.today()
+    start = today - timedelta(days=14)   # 직전 영업일 종가 확보 윈도우
+    start_str = _yyyymmdd(start)
+    end_str = _yyyymmdd(today)
+
+    print(f'== marketmap: 시총 TOP {top_n} ==')
+    universe = fetch_ticker_universe(stock_only=True)
+    universe.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
+    top = universe[:top_n]
+
+    items: list[dict] = []
+    latest_date = ''
+    skipped = 0
+    for it in top:
+        ticker = it.get('itemCode') or ''
+        name = it.get('stockName') or ticker
+        sector = it.get('industryName') or ''
+        market = 'KOSPI' if (it.get('sosok') == 'KOSPI' or
+                             it.get('stockExchangeType', {}).get('code') == 'KS') else 'KOSDAQ'
+        market_cap = _parse_int(it.get('marketValue')) or 0
+        if not ticker or len(ticker) != 6 or market_cap <= 0:
+            skipped += 1
+            continue
+        try:
+            ohlc = naver_client.fetch_ohlc_daily(ticker, start_str, end_str)
+        except Exception:
+            skipped += 1
+            continue
+        ohlc_sorted = [r for r in (ohlc or []) if (r.get('closePrice') or 0) > 0]
+        ohlc_sorted.sort(key=lambda r: r.get('localDate', ''))
+        if len(ohlc_sorted) < 2:
+            skipped += 1
+            continue
+        prev = float(ohlc_sorted[-2].get('closePrice') or 0)
+        cur = float(ohlc_sorted[-1].get('closePrice') or 0)
+        d = ohlc_sorted[-1].get('localDate', '')
+        if not d or prev <= 0:
+            skipped += 1
+            continue
+        if d > latest_date:
+            latest_date = d
+        items.append({
+            'ticker': ticker,
+            'name': name,
+            'market': market,
+            'sector': sector,
+            'market_cap': market_cap,
+            'close_price': cur,
+            'change_rate': calc_change_rate(prev, cur),
+        })
+
+    items.sort(key=lambda x: x['market_cap'], reverse=True)
+    output = {
+        'date': latest_date,
+        'updated_at': datetime.now().isoformat(timespec='seconds'),
+        'items': items,
+    }
+    out_path = target_dir / 'marketmap.json'
+    out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding='utf-8')
+    print(f'== marketmap 완료: {len(items)} 종목 (skip {skipped}), 기준일 {latest_date} ==')
+    return output
+
+
+def build_marketmap_only(args) -> int:
+    build_marketmap()
+    return 0
+
+
 def build_bubbles_only(args) -> int:
     """OHLC 만 fetch 해서 bubbles.json 빌드 — 풀빌드보다 ~10배 빠름.
 
@@ -694,6 +776,7 @@ def build_bubbles_only(args) -> int:
             bubbles_data.append(bub)
 
     _write_bubbles(bubbles_data, OUTPUT_DIR.parent / 'bubbles.json')
+    build_marketmap(OUTPUT_DIR.parent.parent)
     elapsed = time.time() - t_start
     print(f'== bubbles-only 완료: {len(bubbles_data)}/{total} 종목, skip {skipped}, {elapsed:.0f}s ==')
     return 0
@@ -709,10 +792,14 @@ def main() -> None:
                    help='인덱스 missing 만 재추정')
     p.add_argument('--bubbles-only', action='store_true',
                    help='OHLC 만 fetch 해서 bubbles.json 만 빠르게 빌드')
+    p.add_argument('--marketmap-only', action='store_true',
+                   help='시총 TOP 100 + 등락률 → marketmap.json 만 빠르게 빌드 (~30s)')
     p.add_argument('--limit', type=int, default=0,
                    help='estimate-only 시 처리 개수 한도')
     args = p.parse_args()
 
+    if args.marketmap_only:
+        sys.exit(build_marketmap_only(args))
     if args.bubbles_only:
         sys.exit(build_bubbles_only(args))
     if args.estimate_only:

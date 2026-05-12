@@ -788,18 +788,129 @@ body.page-bubbles .footer { display: none; }
 .bubble-name { letter-spacing: -.3px; }
 .bubble-rate { font-feature-settings: 'tnum'; letter-spacing: -.5px; }
 
-/* 흐름 페이지 (Sankey 풀스크린) */
+/* 흐름 (Sankey) — deprecated, 메뉴에서 제거됨. 옛 URL 접근 시 보존. */
 .flow-link { transition: stroke-opacity .15s; }
 .flow-node rect { transition: opacity .15s, filter .15s; }
 .flow-node--col2:hover rect { filter: brightness(1.2); }
 .flow-node--col2.dim { opacity: 0.18; }
 .flow-node-label { letter-spacing: -.2px; }
 
-/* 트리맵 셀 (옛 코드 호환 — 사용 안 함, 보존) */
-.tree-leaf rect { transition: filter .15s, stroke .15s; }
-.tree-leaf:hover rect { filter: brightness(1.2); stroke: #fff; stroke-width: 2; }
-.tree-leaf.dim { opacity: 0.2; }
-.tree-leaf-name, .tree-leaf-rate { letter-spacing: -.3px; font-feature-settings: 'tnum'; }
+/* ── 트리맵 (시총 TOP 100) ── */
+body.page-treemap {
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.tmap-bar {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary, var(--bg));
+    flex-shrink: 0;
+}
+.tmap-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.tmap-bar__left { display: flex; align-items: baseline; gap: 12px; }
+.tmap-bar__title { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -.2px; }
+.tmap-bar__title strong { color: var(--text-primary); }
+.tmap-bar__date { font-size: 12px; color: var(--text-muted, var(--text-secondary)); }
+.tmap-tabs {
+    display: inline-flex;
+    gap: 4px;
+    background: var(--bg-tertiary, rgba(127,127,127,.08));
+    padding: 3px;
+    border-radius: 8px;
+}
+.tmap-tab {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background .15s, color .15s;
+}
+.tmap-tab:hover { color: var(--text-primary); }
+.tmap-tab.is-active {
+    background: var(--bg-primary, var(--bg));
+    color: var(--text-primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,.18);
+}
+.tmap-stage {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-primary, var(--bg));
+    min-height: 0;
+}
+.tmap-stage svg { display: block; width: 100%; height: 100%; }
+.tmap-loading, .tmap-message {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-secondary);
+    font-size: 13px;
+    text-align: center;
+}
+.tmap-cell text {
+    fill: #fff;
+    pointer-events: none;
+    user-select: none;
+    font-family: inherit;
+    paint-order: stroke;
+    stroke: rgba(0,0,0,.32);
+    stroke-width: 0.6px;
+}
+.tmap-cell .tmap-name { font-weight: 700; letter-spacing: -.3px; }
+.tmap-cell .tmap-rate { font-weight: 600; font-feature-settings: 'tnum'; opacity: .94; }
+.tmap-cell rect { transition: filter .12s, stroke .12s; }
+.tmap-cell:hover rect { filter: brightness(1.18); stroke: #fff; stroke-width: 1.5; }
+
+.tmap-foot {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-secondary, var(--bg));
+    font-size: 11px;
+    color: var(--text-muted, var(--text-secondary));
+    text-align: center;
+    line-height: 1.6;
+}
+.tmap-foot__legend { display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.tmap-foot__chip {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 100px;
+    font-weight: 700;
+    color: #fff;
+    font-size: 10px;
+}
+.tmap-foot__chip--up { background: rgb(255, 55, 66); }
+.tmap-foot__chip--flat { background: #5a5e66; }
+.tmap-foot__chip--down { background: rgb(55, 66, 255); }
+
+@media (max-width: 768px) {
+    .tmap-bar__inner { padding: 10px 14px; gap: 8px; }
+    .tmap-bar__title { font-size: 14px; }
+    .tmap-bar__date { font-size: 11px; }
+    .tmap-tab { padding: 4px 10px; font-size: 11px; }
+    .tmap-foot { font-size: 10.5px; padding: 7px 10px; }
+    .tmap-foot__chip { font-size: 9.5px; padding: 1px 6px; }
+}
+@media (max-width: 560px) {
+    .tmap-bar__inner { flex-direction: column; align-items: stretch; }
+    .tmap-bar__right { display: flex; justify-content: center; }
+}
 
 /* 모달 */
 .bubble-modal {

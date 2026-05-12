@@ -12,11 +12,11 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'full | incremental | estimate-only | bubbles-only'
+        description: 'full | incremental | estimate-only | bubbles-only | marketmap-only'
         required: false
         default: 'incremental'
         type: choice
-        options: [full, incremental, estimate-only, bubbles-only]
+        options: [full, incremental, estimate-only, bubbles-only, marketmap-only]
       days:
         description: '풀빌드 기간 (full mode)'
         required: false
@@ -128,6 +128,8 @@ jobs:
             python3 scripts/build-history.py --estimate-only --limit "$LIMIT"
           elif [ "$MODE" = "bubbles-only" ]; then
             python3 scripts/build-history.py --bubbles-only
+          elif [ "$MODE" = "marketmap-only" ]; then
+            python3 scripts/build-history.py --marketmap-only
           else
             # incremental — 짧은 기간만 fetch + 머지
             python3 scripts/build-history.py --days 30 --cutoff "$CUTOFF"
