@@ -742,7 +742,50 @@ body.page-bubbles .footer { display: none; }
 .bubble-name { letter-spacing: -.3px; }
 .bubble-rate { font-feature-settings: 'tnum'; letter-spacing: -.5px; }
 
-/* 트리맵 셀 */
+/* 시각화 샘플 페이지 */
+.viz-page { padding: 28px 0 56px; }
+.viz-page__head { margin-bottom: 24px; }
+.viz-page__head h1 { font-size: 28px; font-weight: 800; letter-spacing: -.8px; margin: 0; }
+.viz-page__head p { margin-top: 8px; color: var(--text-secondary); font-size: 14px; }
+.viz-page__head strong { color: var(--wr-rise); font-weight: 800; }
+
+.viz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 18px 0;
+}
+@media (max-width: 900px) {
+    .viz-grid { grid-template-columns: 1fr; }
+}
+
+.viz-card {
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+}
+.viz-card h2 {
+    font-size: 18px; font-weight: 700; margin: 0 0 4px;
+    display: flex; align-items: center; gap: 10px;
+}
+.viz-letter {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px;
+    background: var(--wr-accent); color: #fff;
+    border-radius: 999px;
+    font-size: 13px; font-weight: 800;
+}
+.viz-desc { color: var(--text-muted); font-size: 12px; margin-bottom: 14px; }
+.viz-svg { display: block; width: 100%; height: auto; max-height: 520px; }
+
+.viz-foot {
+    text-align: center;
+    margin-top: 24px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+/* 트리맵 셀 (옛 코드 호환 — 사용 안 함, 보존) */
 .tree-leaf rect { transition: filter .15s, stroke .15s; }
 .tree-leaf:hover rect { filter: brightness(1.2); stroke: #fff; stroke-width: 2; }
 .tree-leaf.dim { opacity: 0.2; }

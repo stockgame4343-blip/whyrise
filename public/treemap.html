@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>트리맵 — 이거왜오름?</title>
-    <meta name="description" content="오늘 +15% 이상 오른 종목 트리맵 — finviz 스타일 섹터별 시총·상승률 시각화.">
+    <title>시각화 샘플 — 이거왜오름?</title>
+    <meta name="description" content="오늘 +15% 이상 오른 종목 시각화 — 워드클라우드·비스웜·선버스트·바차트·생키 비교.">
     <meta name="theme-color" content="#0a0b0f">
-    <meta name="robots" content="index,follow">
     <link rel="canonical" href="https://whyrise.vercel.app/treemap.html">
     <link rel="icon" href="/og-default.svg" type="image/svg+xml">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="트리맵 — 이거왜오름?">
-    <meta property="og:description" content="오늘 +15% 이상 오른 종목을 섹터별 면적·색으로 한눈에.">
-    <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/whyrise.css">
 </head>
-<body class="page-bubbles">
+<body>
     <script>
     (function(){
         var t = localStorage.getItem('theme') || 'dark';
@@ -32,7 +27,7 @@
             <nav class="top-bar__nav">
                 <a href="/" class="top-bar__link">홈</a>
                 <a href="/bubbles.html" class="top-bar__link">버블맵</a>
-                <a href="/treemap.html" class="top-bar__link top-bar__link--active">트리맵</a>
+                <a href="/treemap.html" class="top-bar__link top-bar__link--active">샘플</a>
                 <a href="/report.html" class="top-bar__link">리포트</a>
             </nav>
             <div class="top-bar__right">
@@ -43,55 +38,67 @@
         </div>
     </header>
 
-    <div class="bubbles-controls">
-        <div class="bubbles-controls__inner">
-            <div class="bubbles-controls__left">
-                <span class="bubbles-controls__title">오늘 +15% 이상 <strong id="treeCount">—</strong>개</span>
-                <span class="bubbles-controls__date" id="treeDate">—</span>
-            </div>
-            <div class="bubbles-controls__right">
-                <div class="group-toggle" role="group" aria-label="그룹핑">
-                    <button class="group-btn active" data-group="sector" type="button">섹터별</button>
-                    <button class="group-btn" data-group="theme" type="button">테마별</button>
-                </div>
-                <input type="text" id="treeSearch" class="bubbles-search" placeholder="종목 검색" />
-            </div>
-        </div>
-    </div>
+    <main class="frame viz-page">
+        <header class="viz-page__head">
+            <h1>시각화 샘플</h1>
+            <p>오늘 +15% 이상 오른 <strong id="vizCount">—</strong>개 종목으로 5가지 시각화 비교 (<span id="vizDate">—</span>)</p>
+        </header>
 
-    <div id="treeStage" class="bubbles-stage">
-        <div class="loading" id="loading" style="display:none;">트리맵 그리는 중...</div>
+        <div class="loading" id="loading">데이터 로딩 중...</div>
         <div class="message" id="message" style="display:none;"></div>
-        <svg id="treeSvg"></svg>
-    </div>
 
-    <div class="bubble-modal" id="bubbleModal" style="display:none;">
-        <div class="bubble-modal__overlay" id="bubbleModalOverlay"></div>
-        <article class="bubble-modal__card glass">
-            <button class="bubble-modal__close" id="bubbleModalClose">&times;</button>
-            <header class="bubble-modal__head">
-                <h2 class="bubble-modal__name" id="modalName"></h2>
-                <span class="bubble-modal__ticker" id="modalTicker"></span>
-            </header>
-            <div class="bubble-modal__rate" id="modalRate"></div>
-            <p class="bubble-modal__reason" id="modalReason"></p>
-            <dl class="bubble-modal__meta" id="modalMeta"></dl>
-            <a class="bubble-modal__cta" id="modalCta" href="#">종목 페이지 →</a>
-        </article>
-    </div>
+        <section class="viz-card glass viz-card--full">
+            <h2><span class="viz-letter">A</span> 이유 워드 클라우드</h2>
+            <p class="viz-desc">오늘 가장 많이 나온 상승이유 키워드 — 크기 = 빈도</p>
+            <svg id="vizCloud" class="viz-svg" viewBox="0 0 800 300"></svg>
+        </section>
 
-    <footer class="bubbles-foot">
-        <div class="visitor-row" id="visitorRow" style="display:none;">
-            <span class="visitor-row__dot"></span>
-            <span><span class="visitor-row__num" id="visitorOnline">—</span>명 보는 중</span>
-            <span class="visitor-row__sep">·</span>
-            <span>누적 <span class="visitor-row__num" id="visitorUnique">—</span>명</span>
+        <section class="viz-card glass viz-card--full">
+            <h2><span class="viz-letter">B</span> 상승률 분포 (Beeswarm)</h2>
+            <p class="viz-desc">x = 상승률 · 점 = 종목 · 색 = 섹터 · 호버 = 상세</p>
+            <svg id="vizBeeswarm" class="viz-svg" viewBox="0 0 800 220"></svg>
+        </section>
+
+        <div class="viz-grid">
+            <section class="viz-card glass">
+                <h2><span class="viz-letter">C</span> 섹터 선버스트</h2>
+                <p class="viz-desc">섹터 → 종목 계층 · 호 크기 = 시가총액 · 색 = 상승률</p>
+                <svg id="vizSunburst" class="viz-svg" viewBox="0 0 400 400"></svg>
+            </section>
+
+            <section class="viz-card glass">
+                <h2><span class="viz-letter">D</span> 상승률 TOP 바차트</h2>
+                <p class="viz-desc">가장 많이 오른 종목 TOP 20</p>
+                <svg id="vizBar" class="viz-svg" viewBox="0 0 400 500"></svg>
+            </section>
         </div>
-        <span class="bubbles-foot__legend">면적 = 상승률 · 색 = 상승률 강도 · 섹터/테마별 묶음 · 클릭하면 상세</span>
-        <a href="/admin.html" class="footer__admin-link">·</a>
-    </footer>
+
+        <section class="viz-card glass viz-card--full">
+            <h2><span class="viz-letter">E</span> 섹터 ↔ 테마 흐름 (Sankey)</h2>
+            <p class="viz-desc">왼쪽 섹터에서 오른쪽 테마로 종목 수 흐름</p>
+            <svg id="vizSankey" class="viz-svg" viewBox="0 0 900 360"></svg>
+        </section>
+
+        <p class="viz-foot">각 시각화 후보 중 마음에 드는 것을 알려주세요. 트리맵 자리에 채택됩니다.</p>
+    </main>
+
+    <div class="footer">
+        <footer class="footer__wrap">
+            <div class="frame footer__inner">
+                <div class="visitor-row" id="visitorRow" style="display:none;">
+                    <span class="visitor-row__dot"></span>
+                    <span><span class="visitor-row__num" id="visitorOnline">—</span>명 보는 중</span>
+                    <span class="visitor-row__sep">·</span>
+                    <span>누적 <span class="visitor-row__num" id="visitorUnique">—</span>명</span>
+                </div>
+                <p class="footer__copy">&copy; 2026 이거왜오름? (WhyRise). <a href="/admin.html" class="footer__admin-link">·</a></p>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.7/build/d3.layout.cloud.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
     <script src="/js/api.js"></script>
     <script src="/js/treemap.js"></script>
     <script src="/js/visitor.js"></script>
