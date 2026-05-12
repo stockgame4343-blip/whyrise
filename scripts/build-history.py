@@ -396,6 +396,9 @@ _PERIOD_DAYS = {
 def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
     """모든 ticker 인덱스 → 기간별(1D/1W/1M/3M/1Y) 리포트 집계.
 
+    잡주(시총 작음) 제거를 위해 marketmap.json (KOSPI+KOSDAQ 시총 TOP 200) 에
+    포함된 ticker 만 종목 위젯에 노출. 섹터/이유는 전체 universe 그대로.
+
     각 기간 별로 위젯:
       sector_top    — 섹터별 +15% 누적 TOP 10
       limit_up_top  — 상한가 종목 TOP 20
@@ -407,6 +410,21 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
     files = [f for f in sorted(stock_history_dir.glob('*.json'))
              if f.name not in ('index.json', 'report-summary.json')]
     print(f'    인덱스 파일 {len(files)} 개 집계')
+
+    # marketmap.json — 시총 TOP 종목 ticker set (잡주 필터)
+    marketmap_path = stock_history_dir.parent / 'marketmap.json'
+    mkt_cap_lookup: dict[str, int] = {}
+    if marketmap_path.exists():
+        try:
+            mm = json.loads(marketmap_path.read_text(encoding='utf-8'))
+            for it in (mm.get('items') or []):
+                t = it.get('ticker')
+                c = it.get('market_cap')
+                if t and c:
+                    mkt_cap_lookup[t] = int(c)
+            print(f'    시총 lookup: {len(mkt_cap_lookup)} 종목 (잡주 필터용)')
+        except Exception as e:
+            print(f'    marketmap.json 로드 실패: {e}')
 
     today = date.today()
     cutoff_yyyymmdd = {
@@ -476,7 +494,12 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                 if reason_status == 'filled' and reason and reason not in ('-', '상한가 — 사유 미수집'):
                     pp['reason_acc'][reason] = pp['reason_acc'].get(reason, 0) + 1
 
-        # 종목별 리스트 (각 기간) — count + 누적상승률(sum_rate) + 최고가일률(max_rate) 함께 저장
+        # 종목별 리스트 (각 기간) — 잡주 제거: marketmap (시총 TOP 200) 포함 ticker 만
+        # 마켓맵 없으면 (개발 환경) 전체 통과 (필터 생략)
+        in_marketmap = (not mkt_cap_lookup) or (ticker in mkt_cap_lookup)
+        market_cap = mkt_cap_lookup.get(ticker, 0)
+        if not in_marketmap:
+            continue
         for k, counts in per_period_counts.items():
             pp = periods[k]
             if counts['c15'] > 0:
@@ -486,6 +509,7 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                     'count': counts['c15'],
                     'sum_rate': round(counts['sum_rate'], 2),
                     'max_rate': round(counts['max_rate'], 2),
+                    'market_cap': market_cap,
                 }
                 pp['frequent'].append(entry)
                 pp['total_events_15'] += counts['c15']
@@ -495,6 +519,7 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                     'count': counts['c_limit'],
                     'sum_rate': round(counts['sum_rate'], 2),
                     'max_rate': round(counts['max_rate'], 2),
+                    'market_cap': market_cap,
                 })
             if counts['c_52w'] > 0:
                 pp['high_52w'].append({
@@ -502,6 +527,7 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                     'count': counts['c_52w'],
                     'sum_rate': round(counts['sum_rate'], 2),
                     'max_rate': round(counts['max_rate'], 2),
+                    'market_cap': market_cap,
                 })
 
     # 정렬·TOP N — 기간별 분리
@@ -805,8 +831,8 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
     target_dir.mkdir(parents=True, exist_ok=True)
 
     today = date.today()
-    # 1년치 + 여유 (영업일 252개 확보)
-    start = today - timedelta(days=380)
+    # 1Y 정확 산정 위해 영업일 252개 + 휴장일 마진 — 500일 윈도우
+    start = today - timedelta(days=500)
     start_str = _yyyymmdd(start)
     end_str = _yyyymmdd(today)
 

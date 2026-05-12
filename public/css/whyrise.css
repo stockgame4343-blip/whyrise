@@ -657,7 +657,7 @@ body.page-bubbles .footer { display: none; }
     backdrop-filter: blur(20px);
 }
 .bubbles-controls__inner {
-    max-width: 1600px;
+    /* 풀 폭 활용 — 양옆 좁은 padding 만 */
     margin: 0 auto;
     padding: 12px 24px;
     display: flex;
@@ -1241,7 +1241,14 @@ body.page-treemap {
 }
 
 /* ── 리포트 페이지 ────────────────────────── */
-.report-page { padding: 36px 0 56px; }
+.report-page {
+    padding: 36px 40px 56px;
+    /* frame 1440 보다 넓게 — 화면 폭 더 활용 */
+    max-width: 1680px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 .report-page__header { margin-bottom: 28px; }
 .report-page__head-row {
     display: flex;
@@ -1280,26 +1287,31 @@ body.page-treemap {
 
 .report-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+    /* 자동 채움 — 카드가 화면 폭 따라 1~3열 자동 배치, 가운데 모이지 않게 */
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 16px;
+    align-items: start;
 }
 .report-card {
     background: var(--glass-bg);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid var(--glass-border);
-    border-radius: 18px;
-    padding: 24px 26px;
-    box-shadow: var(--glass-shadow);
+    border-radius: 12px;
+    padding: 20px 22px;
+    /* 플랫 글래스 — 그림자 제거, 보더만으로 분리 */
+    box-shadow: none;
 }
 .report-card--wide { grid-column: 1 / -1; }
 .report-card__title {
-    font-size: 18px; font-weight: 700;
-    color: var(--text-primary); margin-bottom: 6px;
+    font-size: 16px; font-weight: 700;
+    color: var(--text-primary); margin-bottom: 4px;
+    letter-spacing: -.2px;
 }
 .report-card__desc {
-    font-size: 12px; color: var(--text-muted);
-    margin-bottom: 14px;
+    font-size: 11px; color: var(--text-muted);
+    margin-bottom: 12px;
+    letter-spacing: -.1px;
 }
 .report-list { list-style: none; padding: 0; margin: 0; }
 .report-list--two-col {
