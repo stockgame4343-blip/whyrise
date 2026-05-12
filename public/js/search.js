@@ -9,6 +9,13 @@ var WhySearch = (function () {
     var _index = null;            // { ticker: name }
     var _stats = null;            // optional — 자주 오른 횟수 등
 
+    function esc(s) {
+        if (s == null) return '';
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
     var KO_INITIALS = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
 
     function initialOf(ch) {
@@ -73,8 +80,9 @@ var WhySearch = (function () {
             if (!results.length) { suggestEl.hidden = true; suggestEl.innerHTML = ''; return; }
             var html = '';
             results.forEach(function (r, idx) {
-                html += '<li data-ticker="' + r.ticker + '" class="' + (idx === activeIdx ? 'active' : '') + '">' +
-                    '<span><strong>' + r.name + '</strong> <span class="ticker">' + r.ticker + '</span></span>' +
+                var tEsc = esc(r.ticker);
+                html += '<li data-ticker="' + tEsc + '" class="' + (idx === activeIdx ? 'active' : '') + '">' +
+                    '<span><strong>' + esc(r.name) + '</strong> <span class="ticker">' + tEsc + '</span></span>' +
                     (r.count > 0 ? '<span class="badge">+15% ' + r.count + '회</span>' : '') +
                     '</li>';
             });

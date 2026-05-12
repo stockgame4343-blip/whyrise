@@ -12,6 +12,14 @@
     // 차단 종목 — 모든 페이지에서 가려짐 (에이프로젠바이오로직스/졸스/에이프로젠)
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
+    /** HTML 이스케이프 — XSS 방어. */
+    function esc(s) {
+        if (s == null) return '';
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
     function bindThemeToggle() {
         var $btn = document.getElementById('themeToggle');
         if (!$btn) return;
@@ -57,7 +65,7 @@
         $el.innerHTML = rows.map(function (r) {
             var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목 · ' + r.count + '회';
             var countLabel = hasSumRate ? pct(r.sum_rate) : (r.count + '회');
-            return bar(r[key], max, r.sector, sub, countLabel);
+            return bar(r[key], max, esc(r.sector), sub, countLabel);
         }).join('');
     }
 
@@ -69,7 +77,7 @@
         var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
         $el.innerHTML = rows.map(function (r) {
             var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목 · ' + r.count + '회';
-            var label = '<span class="theme-tag">' + r.theme + '</span>';
+            var label = '<span class="theme-tag">' + esc(r.theme) + '</span>';
             return bar(r[key], max, label, sub, pct(r.sum_rate));
         }).join('');
     }
@@ -91,7 +99,7 @@
         var key = hasSumRate ? 'sum_rate' : 'count';
         var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
         $el.innerHTML = rows.map(function (r) {
-            var label = '<a href="/stock/' + r.ticker + '">' + r.name + '</a>';
+            var label = '<a href="/stock/' + esc(r.ticker) + '">' + esc(r.name) + '</a>';
             var subParts = [];
             if (r.market_cap) subParts.push(fmtMcap(r.market_cap));
             if (hasSumRate && r.count) subParts.push(r.count + '회');

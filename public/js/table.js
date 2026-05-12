@@ -10,6 +10,20 @@
  */
 var WhyTable = (function () {
 
+    /** HTML 이스케이프 — XSS 방어. 사용자/3rd-party 텍스트는 항상 통과시킴. */
+    function esc(s) {
+        if (s == null) return '';
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    function safeLink(href) {
+        if (!href) return '';
+        var s = String(href).trim();
+        if (/^(javascript|data|vbscript):/i.test(s)) return '';
+        return esc(s);
+    }
+
     var _currentData = [];
     var _lastRatings = {};
     var _lastOpts = {};
@@ -158,10 +172,10 @@ var WhyTable = (function () {
             var html = '';
             stock.news.forEach(function (n) {
                 html += '<div class="news-item">' +
-                    '<a class="news-item__title" href="' + n.link + '" target="_blank" rel="noopener">' + n.title + '</a>' +
+                    '<a class="news-item__title" href="' + safeLink(n.link) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + '</a>' +
                     '<span class="news-item__meta">' +
-                    (n.source ? '<span class="news-item__source">' + n.source + '</span>' : '') +
-                    (n.date ? '<span class="news-item__date">' + n.date + '</span>' : '') +
+                    (n.source ? '<span class="news-item__source">' + esc(n.source) + '</span>' : '') +
+                    (n.date ? '<span class="news-item__date">' + esc(n.date) + '</span>' : '') +
                     '</span></div>';
             });
             $body.innerHTML = html;
@@ -210,26 +224,27 @@ var WhyTable = (function () {
             if (isLimitUp) rowClasses.push('row--limit-up');
             if (isEdited) rowClasses.push('row--edited');
 
-            html += '<tr' + (rowClasses.length ? ' class="' + rowClasses.join(' ') + '"' : '') + ' data-ticker="' + r.ticker + '">';
+            var tEsc = esc(r.ticker);
+            html += '<tr' + (rowClasses.length ? ' class="' + rowClasses.join(' ') + '"' : '') + ' data-ticker="' + tEsc + '">';
             // # rank
             html += '<td class="cell-rank">' + (r._displayRank != null ? r._displayRank : '') + '</td>';
             // 종목명
             html += '<td class="cell-name"><div class="cell-name__wrap">' +
-                '<a href="' + detailUrl + '" class="cell-name__link" data-ticker="' + r.ticker + '">' + r.name + '</a>' +
+                '<a href="' + detailUrl + '" class="cell-name__link" data-ticker="' + tEsc + '">' + esc(r.name) + '</a>' +
                 miniIndicatorsHtml(r.ticker, ratings) +
-                '<span class="cell-name__market">' + r.market + '</span>' +
+                '<span class="cell-name__market">' + esc(r.market) + '</span>' +
                 starRatingHtml(r.ticker, ratings) +
                 '</div></td>';
             // 이유 (hero) — 태그·이유·편집 모두 한 줄에
             var rawTag = r.theme_tag || '';
             var displayTag = shortenTheme(rawTag);
             var reason = r.rise_reason || '-';
-            var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + r.ticker +
-                '" data-date="' + date + '" title="이유 편집">✏️</button>';
+            var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + tEsc +
+                '" data-date="' + esc(date) + '" title="이유 편집">✏️</button>';
             html += '<td class="cell-reason">' +
                 '<div class="cell-reason__inline">' +
-                (displayTag ? '<span class="theme-tag">' + displayTag + '</span>' : '') +
-                '<span class="cell-reason__text">' + reason + '</span>' +
+                (displayTag ? '<span class="theme-tag">' + esc(displayTag) + '</span>' : '') +
+                '<span class="cell-reason__text">' + esc(reason) + '</span>' +
                 editBtn +
                 '</div></td>';
             // 상승률
@@ -239,7 +254,7 @@ var WhyTable = (function () {
             // 시가총액
             html += '<td class="cell-cap">' + formatAmount(r.market_cap) + '</td>';
             // 섹터
-            html += '<td class="cell-sector">' + (r.sector || '-') + '</td>';
+            html += '<td class="cell-sector">' + esc(r.sector || '-') + '</td>';
             html += '</tr>';
         });
         tbody.innerHTML = html;

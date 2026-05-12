@@ -5,12 +5,21 @@
  * 관리자 모드일 때 각 event 카드 우측에 ✏️ 편집 버튼.
  */
 (function () {
+    /** HTML 이스케이프 — XSS 방어. 사용자/3rd-party 텍스트는 항상 통과시킴. */
+    function esc(s) {
+        if (s == null) return '';
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
     function getTicker() {
         var qs = new URLSearchParams(window.location.search);
         var t = qs.get('ticker');
-        if (t) return t;
+        // 6자리 숫자 or 알파/숫자 (KRX 신코드) 만 허용. XSS 방어.
+        if (t && /^[0-9A-Z]{6}$/i.test(t)) return t;
         // /stock/008420 직접 접근 (rewrite 미동작) 백업
-        var m = window.location.pathname.match(/\/stock\/(\d{6})/);
+        var m = window.location.pathname.match(/\/stock\/([0-9A-Z]{6})/i);
         return m ? m[1] : null;
     }
 
@@ -72,8 +81,7 @@
         var pageDesc = name + ' 이 최근 1년간 +15% 이상 오른 ' + (stats.count_15 || 0) + '회의 날짜와 이유·뉴스.';
         document.getElementById('pageTitle').textContent = pageTitle;
         document.getElementById('pageDesc').setAttribute('content', pageDesc);
-        var ticker = (new URLSearchParams(window.location.search)).get('ticker')
-            || (window.location.pathname.match(/\/stock\/(\d{6})/) || [])[1] || '';
+        var ticker = getTicker() || '';
         var $can = document.getElementById('pageCanonical');
         if ($can && ticker) $can.setAttribute('href', 'https://whyrise.vercel.app/stock/' + ticker);
         var $ogT = document.getElementById('pageOgTitle');
@@ -81,7 +89,7 @@
         var $ogD = document.getElementById('pageOgDesc');
         if ($ogD) $ogD.setAttribute('content', pageDesc);
 
-        $title.innerHTML = '<strong>' + name + '</strong> 왜 오름?';
+        $title.innerHTML = '<strong>' + esc(name) + '</strong> 왜 오름?';
         if (market) $market.textContent = market;
 
         // 네이버 증권 바로가기 (모바일 페이지)
@@ -164,14 +172,22 @@
         });
     }
 
+    function safeLink(href) {
+        // javascript:/data: 스킴 차단
+        if (!href) return '';
+        var s = String(href).trim();
+        if (/^(javascript|data|vbscript):/i.test(s)) return '';
+        return esc(s);
+    }
+
     function renderEventCard(ev, ticker) {
         var newsHtml = '';
         if (ev.news && ev.news.length) {
             newsHtml += '<div class="event-card__news">';
             ev.news.slice(0, 5).forEach(function (n) {
-                newsHtml += '<a href="' + n.link + '" target="_blank" rel="noopener">' +
-                    '<span>' + n.title + '</span>' +
-                    (n.source ? '<span class="news-source">' + n.source + '</span>' : '') +
+                newsHtml += '<a href="' + safeLink(n.link) + '" target="_blank" rel="noopener noreferrer">' +
+                    '<span>' + esc(n.title) + '</span>' +
+                    (n.source ? '<span class="news-source">' + esc(n.source) + '</span>' : '') +
                     '</a>';
             });
             newsHtml += '</div>';
@@ -195,13 +211,13 @@
             '<span class="event-card__price">종가 ' +
             (ev.close_price ? ev.close_price.toLocaleString('ko-KR') : '-') +
             '원</span>' +
-            (ev.theme_tag ? '<span class="event-card__theme">' + ev.theme_tag + '</span>' : '') +
+            (ev.theme_tag ? '<span class="event-card__theme">' + esc(ev.theme_tag) + '</span>' : '') +
             sourceBadge(ev.reason_source, ev.reason_confidence) +
             '<button class="admin-edit-btn event-card__edit" data-action="admin-edit" data-ticker="' +
-            ticker + '" data-date="' + ev.date + '" title="이유 편집">✏️ 편집</button>' +
+            esc(ticker) + '" data-date="' + esc(ev.date) + '" title="이유 편집">✏️ 편집</button>' +
             '</div>' +
             '<div class="' + reasonClass(ev.reason_status, ev.reason_confidence) + '">' +
-            reasonText + '</div>' +
+            esc(reasonText) + '</div>' +
             newsHtml +
             '</article>';
     }
@@ -290,7 +306,7 @@
             if (!history) {
                 $msg.textContent = '이 종목의 인덱스가 없습니다 (아직 빌드 전이거나, 최근 1년간 +15% 이상 기록 없음).';
                 $msg.style.display = 'block';
-                document.getElementById('stockTitle').innerHTML = '<strong>' + ticker + '</strong> 왜 오름?';
+                document.getElementById('stockTitle').innerHTML = '<strong>' + esc(ticker) + '</strong> 왜 오름?';
                 return;
             }
             renderHeader(history.name || ticker, history.market || '', history.stats || {});

@@ -141,9 +141,20 @@ class handler(BaseHTTPRequestHandler):
             self._respond(400, {'error': 'date(YYYYMMDD), ticker(6자리) 형식 오류'})
             return
 
-        rise_reason = (body.get('rise_reason') or '').strip()[:500]
-        theme_tag = (body.get('theme_tag') or '').strip()[:100]
-        note = (body.get('note') or '').strip()[:500]
+        # 입력 정제 — HTML/JS 태그 strip (저장 시점 방어)
+        def _sanitize(s, maxlen):
+            s = (s or '').strip()
+            if not s:
+                return ''
+            # <...> 패턴 제거 (escape 보다 강한 strip — 마크업 자체 거부)
+            import re as _re
+            s = _re.sub(r'<[^>]*>', '', s)
+            # 제어 문자 제거
+            s = _re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f]', '', s)
+            return s[:maxlen]
+        rise_reason = _sanitize(body.get('rise_reason'), 500)
+        theme_tag = _sanitize(body.get('theme_tag'), 100)
+        note = _sanitize(body.get('note'), 500)
 
         try:
             overrides, sha = _get_overrides(date)
