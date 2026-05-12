@@ -795,7 +795,7 @@ body.page-bubbles .footer { display: none; }
 .flow-node--col2.dim { opacity: 0.18; }
 .flow-node-label { letter-spacing: -.2px; }
 
-/* ── 트리맵 (시총 TOP 100) ── */
+/* ── 트리맵 (시총 TOP 100 KOSPI + 100 KOSDAQ, 라이브 5s polling) ── */
 body.page-treemap {
     overflow: hidden;
     height: 100vh;
@@ -812,15 +812,63 @@ body.page-treemap {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 12px 20px;
+    padding: 10px 20px;
     max-width: 1600px;
     margin: 0 auto;
     flex-wrap: wrap;
 }
-.tmap-bar__left { display: flex; align-items: baseline; gap: 12px; }
-.tmap-bar__title { font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: -.2px; }
-.tmap-bar__title strong { color: var(--text-primary); }
-.tmap-bar__date { font-size: 12px; color: var(--text-muted, var(--text-secondary)); }
+.tmap-bar__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-feature-settings: 'tnum';
+}
+
+/* 라이브 인디케이터 — 5초 채워지는 ring */
+.tmap-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #ff4757;
+}
+.tmap-live__ring {
+    width: 18px; height: 18px;
+    display: inline-flex; align-items: center; justify-content: center;
+}
+.tmap-live__ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.tmap-live__ring-bg {
+    fill: none;
+    stroke: rgba(255, 71, 87, 0.20);
+    stroke-width: 2.5;
+}
+.tmap-live__ring-fg {
+    fill: none;
+    stroke: #ff4757;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 56.549;   /* 2πr (r=9) */
+    stroke-dashoffset: 56.549;
+    transition: stroke-dashoffset 5s linear;
+}
+.tmap-live--idle { color: var(--text-muted, #777); }
+.tmap-live--idle .tmap-live__ring-bg { stroke: rgba(127,127,127,0.22); }
+.tmap-live--idle .tmap-live__ring-fg { stroke: var(--text-muted, #777); }
+
+.tmap-clock {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -.2px;
+}
+.tmap-date {
+    font-size: 12px;
+    color: var(--text-muted, var(--text-secondary));
+}
+
+/* 필터 탭 */
 .tmap-tabs {
     display: inline-flex;
     gap: 4px;
@@ -846,6 +894,8 @@ body.page-treemap {
     color: var(--text-primary);
     box-shadow: 0 1px 3px rgba(0,0,0,.18);
 }
+
+/* 캔버스 */
 .tmap-stage {
     flex: 1;
     position: relative;
@@ -868,7 +918,7 @@ body.page-treemap {
     user-select: none;
     font-family: inherit;
     paint-order: stroke;
-    stroke: rgba(0,0,0,.32);
+    stroke: rgba(0,0,0,.38);
     stroke-width: 0.6px;
 }
 .tmap-cell .tmap-name { font-weight: 700; letter-spacing: -.3px; }
@@ -876,40 +926,17 @@ body.page-treemap {
 .tmap-cell rect { transition: filter .12s, stroke .12s; }
 .tmap-cell:hover rect { filter: brightness(1.18); stroke: #fff; stroke-width: 1.5; }
 
-.tmap-foot {
-    flex-shrink: 0;
-    padding: 8px 16px;
-    border-top: 1px solid var(--border);
-    background: var(--bg-secondary, var(--bg));
-    font-size: 11px;
-    color: var(--text-muted, var(--text-secondary));
-    text-align: center;
-    line-height: 1.6;
-}
-.tmap-foot__legend { display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; }
-.tmap-foot__chip {
-    display: inline-block;
-    padding: 1px 8px;
-    border-radius: 100px;
-    font-weight: 700;
-    color: #fff;
-    font-size: 10px;
-}
-.tmap-foot__chip--up { background: rgb(255, 55, 66); }
-.tmap-foot__chip--flat { background: #5a5e66; }
-.tmap-foot__chip--down { background: rgb(55, 66, 255); }
-
 @media (max-width: 768px) {
-    .tmap-bar__inner { padding: 10px 14px; gap: 8px; }
-    .tmap-bar__title { font-size: 14px; }
-    .tmap-bar__date { font-size: 11px; }
-    .tmap-tab { padding: 4px 10px; font-size: 11px; }
-    .tmap-foot { font-size: 10.5px; padding: 7px 10px; }
-    .tmap-foot__chip { font-size: 9.5px; padding: 1px 6px; }
+    .tmap-bar__inner { padding: 8px 14px; gap: 8px; }
+    .tmap-clock { font-size: 12px; }
+    .tmap-date { font-size: 11px; }
+    .tmap-tab { padding: 4px 9px; font-size: 11px; }
 }
 @media (max-width: 560px) {
     .tmap-bar__inner { flex-direction: column; align-items: stretch; }
+    .tmap-bar__left { justify-content: center; flex-wrap: wrap; }
     .tmap-bar__right { display: flex; justify-content: center; }
+    .tmap-date { width: 100%; text-align: center; font-size: 10.5px; }
 }
 
 /* 모달 */

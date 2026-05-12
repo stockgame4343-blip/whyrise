@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>트리맵 — 이거왜오름?</title>
-    <meta name="description" content="국내 시가총액 TOP 100 종목의 등락을 면적·색상으로 한눈에 — 시총 크기는 면적, 상승은 빨강·하락은 파랑.">
+    <meta name="description" content="국내 시가총액 TOP 종목의 등락을 면적·색상으로 실시간 한눈에 — 면적=시가총액, 상승=빨강·하락=파랑.">
     <meta name="theme-color" content="#0a0b0f">
     <link rel="canonical" href="https://whyrise.vercel.app/treemap.html">
     <link rel="icon" href="/og-default.svg" type="image/svg+xml">
     <meta property="og:type" content="website">
     <meta property="og:title" content="트리맵 — 이거왜오름?">
-    <meta property="og:description" content="시총 TOP 100 종목 등락을 면적·색상으로 한눈에.">
+    <meta property="og:description" content="시총 TOP 종목 등락을 면적·색상으로 실시간 한눈에.">
     <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -45,14 +45,23 @@
     <div class="tmap-bar">
         <div class="tmap-bar__inner">
             <div class="tmap-bar__left">
-                <span class="tmap-bar__title">시총 TOP <strong id="tmapCount">100</strong></span>
-                <span class="tmap-bar__date" id="tmapDate">—</span>
+                <span class="tmap-live" id="tmapLive">
+                    <span class="tmap-live__ring">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle class="tmap-live__ring-bg" cx="12" cy="12" r="9"/>
+                            <circle class="tmap-live__ring-fg" cx="12" cy="12" r="9"/>
+                        </svg>
+                    </span>
+                    <span class="tmap-live__label" id="tmapLiveLabel">LIVE</span>
+                </span>
+                <span class="tmap-clock" id="tmapClock">--:--:--</span>
+                <span class="tmap-date" id="tmapDate">— 기준</span>
             </div>
             <div class="tmap-bar__right">
                 <div class="tmap-tabs" role="tablist">
-                    <button class="tmap-tab is-active" data-filter="ALL">전체</button>
-                    <button class="tmap-tab" data-filter="KOSPI">코스피</button>
-                    <button class="tmap-tab" data-filter="KOSDAQ">코스닥</button>
+                    <button class="tmap-tab is-active" data-filter="ALL">전체 200</button>
+                    <button class="tmap-tab" data-filter="KOSPI">코스피 100</button>
+                    <button class="tmap-tab" data-filter="KOSDAQ">코스닥 100</button>
                 </div>
             </div>
         </div>
@@ -63,16 +72,6 @@
         <div class="tmap-message" id="tmapMessage" style="display:none;"></div>
         <svg id="tmapSvg" aria-label="시총 트리맵"></svg>
     </main>
-
-    <footer class="tmap-foot">
-        <span class="tmap-foot__legend">
-            면적 = 시가총액 · 색 = 전일대비 등락률 ·
-            <span class="tmap-foot__chip tmap-foot__chip--up">상승</span>
-            <span class="tmap-foot__chip tmap-foot__chip--flat">보합</span>
-            <span class="tmap-foot__chip tmap-foot__chip--down">하락</span>
-            · 종목 클릭 시 상세
-        </span>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
     <script src="/js/treemap.js"></script>

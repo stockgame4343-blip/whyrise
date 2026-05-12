@@ -652,35 +652,37 @@ def build_estimate_only(args) -> int:
 
 # ── marketmap (시총 TOP 100 트리맵) ────────────────────
 
-def build_marketmap(public_dir: Path | None = None, top_n: int = 100) -> dict | None:
-    """시총 TOP N 종목 + 최신 거래일 등락률 → public/data/marketmap.json.
+def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -> dict | None:
+    """시총 TOP N (KOSPI) + 시총 TOP N (KOSDAQ) = 총 2N 종목 → marketmap.json.
 
-    universe 의 시총 내림차순 상위 N 만 처리하므로 매우 빠름 (~30s).
-    호출 위치: build_full / build_estimate_only / build_bubbles_only 끝, 또는
-    --marketmap-only 단독 실행.
+    장 마감 후 백업/SEO 용도 정적 데이터. 라이브 시세는 /api/marketmap 으로 polling.
     """
     target_dir = (public_dir or _REPO / 'public') / 'data'
     target_dir.mkdir(parents=True, exist_ok=True)
 
     today = date.today()
-    start = today - timedelta(days=14)   # 직전 영업일 종가 확보 윈도우
+    start = today - timedelta(days=14)
     start_str = _yyyymmdd(start)
     end_str = _yyyymmdd(today)
 
-    print(f'== marketmap: 시총 TOP {top_n} ==')
+    print(f'== marketmap: KOSPI TOP {top_per_market} + KOSDAQ TOP {top_per_market} ==')
     universe = fetch_ticker_universe(stock_only=True)
-    universe.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
-    top = universe[:top_n]
+    kospi_pool = [x for x in universe if (x.get('sosok') == 'KOSPI' or
+                                            x.get('stockExchangeType', {}).get('code') == 'KS')]
+    kosdaq_pool = [x for x in universe if not (x.get('sosok') == 'KOSPI' or
+                                                 x.get('stockExchangeType', {}).get('code') == 'KS')]
+    kospi_pool.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
+    kosdaq_pool.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
+    top = [(it, 'KOSPI') for it in kospi_pool[:top_per_market]] + \
+          [(it, 'KOSDAQ') for it in kosdaq_pool[:top_per_market]]
 
     items: list[dict] = []
     latest_date = ''
     skipped = 0
-    for it in top:
+    for it, market in top:
         ticker = it.get('itemCode') or ''
         name = it.get('stockName') or ticker
         sector = it.get('industryName') or ''
-        market = 'KOSPI' if (it.get('sosok') == 'KOSPI' or
-                             it.get('stockExchangeType', {}).get('code') == 'KS') else 'KOSDAQ'
         market_cap = _parse_int(it.get('marketValue')) or 0
         if not ticker or len(ticker) != 6 or market_cap <= 0:
             skipped += 1
