@@ -20,6 +20,15 @@
     var SEMI_LEAD_GROUP = '반도체';
     var SEMI_LEAD_TICKERS = { '005930': true, '005935': true, '000660': true };
 
+    // 시총 1·2위 (삼성전자·SK하이닉스) 면적 80% 로 축소 — 시각 균형
+    var SIZE_SCALE_TICKERS = { '005930': 0.8, '000660': 0.8 };
+    function sizeOf(it) {
+        var mc = it.market_cap || 0;
+        var s = SIZE_SCALE_TICKERS[it.ticker];
+        if (s) mc = mc * s;
+        return Math.max(mc, 1);
+    }
+
     var PERIOD_LABEL = { '1d': '1일', '1w': '1주', '1m': '1달', '3m': '3달', '1y': '1년' };
 
     var SECTOR_FORMAT = {
@@ -168,13 +177,14 @@
         $message.style.display = 'none';
 
         // 반지름 — 모든 버블의 면적 합이 화면 면적의 fill_ratio 만큼 차도록 스케일 산출.
-        var totalMcap = 0;
-        items.forEach(function (d) { totalMcap += (d.market_cap || 0); });
+        // sizeOf() 로 1·2위 종목 면적 80% 가중 적용 (시각 균형)
+        var totalSize = 0;
+        items.forEach(function (d) { totalSize += sizeOf(d); });
         var fillRatio = 0.72;                    // 화면 72% — 너무 꽉 안 차게
         var rMax = Math.min(w, h) * 0.22;
         var rMin = Math.max(10, Math.min(w, h) * 0.022);
-        var k = totalMcap > 0
-            ? Math.sqrt((w * h * fillRatio) / (Math.PI * totalMcap))
+        var k = totalSize > 0
+            ? Math.sqrt((w * h * fillRatio) / (Math.PI * totalSize))
             : Math.min(w, h) * 0.05;
 
         // 같은 ticker 의 이전 위치·속도 유지 — 갱신 시 자연 transition
@@ -183,7 +193,7 @@
 
         // 초기 위치: 화면 전체에 균등 random — 중앙 편향 없음
         var nodes = items.map(function (d, i) {
-            var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(d.market_cap || 1)));
+            var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(sizeOf(d))));
             var p = prev[d.ticker];
             return Object.assign({}, d, {
                 r: r,

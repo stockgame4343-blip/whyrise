@@ -27,8 +27,8 @@
     var RING_CIRCUM = 2 * Math.PI * 9;
     var SECTOR_LABEL_HEIGHT = 22;
 
-    // 시총이 너무 큰 종목은 면적 가중치 절반 — 균형 잡힌 시각화
-    var SIZE_HALF_TICKERS = { '005930': true, '005935': true, '000660': true };
+    // 시총 1·2위 (삼성전자·SK하이닉스) 만 면적 80% 로 축소 — 균형 잡힌 시각화
+    var SIZE_SCALE_TICKERS = { '005930': 0.8, '000660': 0.8 };
 
     // 별도 "반도체" 그룹으로 분리 — 시총 큰 3종목.
     // 나머지 "반도체와반도체장비" 섹터 종목은 "반도체·장비" 그룹으로 유지.
@@ -205,10 +205,11 @@
         return state.filter === 'ALL';
     }
 
-    // 면적 가중치 — 시총 너무 큰 종목 면적 절반 (시각 균형)
+    // 면적 가중치 — SIZE_SCALE_TICKERS 의 종목은 그 배율로 축소 (시각 균형)
     function sizeOf(it) {
         var mc = it.market_cap || 0;
-        if (SIZE_HALF_TICKERS[it.ticker]) mc = mc / 2;
+        var s = SIZE_SCALE_TICKERS[it.ticker];
+        if (s) mc = mc * s;
         return Math.max(mc, 1);
     }
 
