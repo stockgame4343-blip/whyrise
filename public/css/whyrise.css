@@ -92,15 +92,18 @@ body {
     font-weight: 600;
     transition: all .2s;
 }
-.top-bar__link:hover { color: var(--text-primary); background: var(--glass-bg); }
+.top-bar__link:hover {
+    color: var(--text-primary);
+    background: var(--glass-bg-strong);
+}
 .top-bar__link--active {
     color: var(--wr-accent);
-    background: transparent;
+    background: var(--wr-accent-soft);
     font-weight: 700;
 }
 .top-bar__link--active:hover {
     color: var(--wr-accent);
-    background: var(--wr-accent-soft);
+    background: var(--wr-accent-bg);
 }
 .top-bar__nav { display: flex; gap: 4px; }
 
