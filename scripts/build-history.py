@@ -278,6 +278,18 @@ def _change_n_days(ohlc_sorted: list[dict], n: int):
     return round((cur / past - 1) * 100, 2)
 
 
+def _parse_int(v):
+    """문자열·숫자 어디서 와도 int 로 — 콤마 포함 문자열 대응."""
+    if v is None:
+        return None
+    try:
+        if isinstance(v, str):
+            return int(v.replace(',', '').strip())
+        return int(v)
+    except (ValueError, TypeError):
+        return None
+
+
 def _bubble_entry(ticker: str, name: str, market: str, sector: str,
                   ohlc: list[dict], market_cap) -> dict | None:
     """버블맵용 종목 1개 항목 — 기간별 변동률 + 메타."""
@@ -293,8 +305,8 @@ def _bubble_entry(ticker: str, name: str, market: str, sector: str,
         'n': name,
         'm': market,                                          # KOSPI / KOSDAQ
         's': sector or '',
-        'mc': int(market_cap) if market_cap else None,        # 시가총액 (원)
-        'p': int(cur_close) if cur_close else None,           # 현재 종가
+        'mc': _parse_int(market_cap),                         # 시가총액
+        'p': _parse_int(cur_close),                           # 현재 종가
         'd1': d1,
         'w1': _change_n_days(sorted_, 5),
         'm1': _change_n_days(sorted_, 20),
