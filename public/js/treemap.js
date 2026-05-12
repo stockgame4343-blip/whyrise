@@ -35,6 +35,8 @@
     var SEMI_LEAD_GROUP = '반도체';
     var SEMI_LEAD_TICKERS = { '005930': true, '005935': true, '000660': true };
 
+    var PERIOD_LABEL = { '1d': '1일', '1w': '1주', '1m': '1달', '3m': '3달', '1y': '1년' };
+
     // 네이버 industry 원본은 띄어쓰기 없음 — 표시용 매핑
     var SECTOR_FORMAT = {
         '반도체와반도체장비': '반도체·장비',
@@ -369,7 +371,7 @@
             return d.data.name + ' (' + d.data.ticker + ')\n'
                 + d.data.market + (d.data.sector ? ' · ' + displaySector(d.data.sector) : '') + '\n'
                 + '시총: ' + formatMcap(d.data.market_cap) + '\n'
-                + state.period.toUpperCase() + ' ' + formatRate(d.data.change_rate);
+                + (PERIOD_LABEL[state.period] || state.period) + ' ' + formatRate(d.data.change_rate);
         });
     }
 
@@ -546,7 +548,7 @@
         });
     }
 
-    // ── 이미지 저장 (SVG → PNG with 워터마크) ─────────
+    // ── 이미지 저장 (SVG → PNG with 워터마크 헤더만) ─────
     function savePNG() {
         var svgEl = $svg;
         var w = svgEl.clientWidth;
@@ -554,12 +556,13 @@
         if (w < 80 || h < 80) return;
 
         var HEAD_H = 44;
-        var FOOT_H = 26;
-        var totalH = h + HEAD_H + FOOT_H;
+        var totalH = h + HEAD_H;
         var isDark = document.documentElement.getAttribute('data-theme') !== 'light';
         var bgColor = isDark ? '#0a0b0f' : '#ffffff';
         var fgColor = isDark ? '#ffffff' : '#0a0b0f';
         var fgDim = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(10,11,15,0.55)';
+        var sectorLabelFill = isDark ? 'rgba(255,255,255,0.92)' : 'rgba(20,22,28,0.92)';
+        var cellTextStrokeColor = isDark ? 'rgba(0,0,0,0.55)' : 'rgba(0,0,0,0.45)';
         var fontStack = '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif';
         var ns = 'http://www.w3.org/2000/svg';
 
@@ -583,37 +586,49 @@
         wrap.setAttribute('height', String(totalH));
         wrap.setAttribute('viewBox', '0 0 ' + w + ' ' + totalH);
 
-        var styleEl = document.createElementNS(ns, 'style');
-        var sectorLabelFill = isDark ? 'rgba(255,255,255,0.92)' : 'rgba(20,22,28,0.92)';
-        styleEl.textContent = '\n'
-            + '.tmap-cell text { fill: #fff; pointer-events: none; user-select: none; font-family: ' + fontStack + '; paint-order: stroke; stroke: rgba(0,0,0,.4); stroke-width: 0.6px; }\n'
-            + '.tmap-cell .tmap-name { font-weight: 700; letter-spacing: -.3px; }\n'
-            + '.tmap-cell .tmap-rate { font-weight: 600; font-feature-settings: "tnum"; opacity: .94; }\n'
-            + '.tmap-sector__label { fill: ' + sectorLabelFill + '; font-size: 12px; font-weight: 800; letter-spacing: -.2px; font-family: ' + fontStack + '; }\n';
-        wrap.appendChild(styleEl);
-
         var bg = document.createElementNS(ns, 'rect');
         bg.setAttribute('width', String(w));
         bg.setAttribute('height', String(totalH));
         bg.setAttribute('fill', bgColor);
         wrap.appendChild(bg);
 
+        // 헤더 워터마크
         wrap.appendChild(mkText(20, HEAD_H - 16, '이거왜오름?', { size: 16, weight: 800, fill: fgColor }));
         wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
 
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
         if (state.zoomedSector) modeText += ' · ' + displaySector(state.zoomedSector);
-        var ctxStr = state.period.toUpperCase() + ' · ' + modeText + '   ·   ' + formatDate(state.currentDate);
+        var ctxStr = (PERIOD_LABEL[state.period] || state.period) + ' · ' + modeText + '   ·   ' + formatDate(state.currentDate);
         wrap.appendChild(mkText(w - 20, HEAD_H - 16, ctxStr, { size: 13, weight: 700, fill: fgColor, anchor: 'end' }));
 
+        // SVG 클론 — 외부 CSS 가 PNG 에 적용 안 되므로 fill/stroke 를 인라인
+        // attribute 로 직접 설정 (인라인 <style> 보다 안정적)
         var clone = svgEl.cloneNode(true);
+        clone.querySelectorAll('.tmap-sector__label').forEach(function (el) {
+            el.setAttribute('fill', sectorLabelFill);
+            el.setAttribute('font-family', fontStack);
+            el.setAttribute('font-size', '12');
+            el.setAttribute('font-weight', '800');
+            el.setAttribute('letter-spacing', '-0.2');
+        });
+        clone.querySelectorAll('.tmap-cell text').forEach(function (el) {
+            el.setAttribute('fill', '#fff');
+            el.setAttribute('font-family', fontStack);
+            el.setAttribute('paint-order', 'stroke');
+            el.setAttribute('stroke', cellTextStrokeColor);
+            el.setAttribute('stroke-width', '0.6');
+        });
+        clone.querySelectorAll('.tmap-cell .tmap-name').forEach(function (el) {
+            el.setAttribute('font-weight', '700');
+        });
+        clone.querySelectorAll('.tmap-cell .tmap-rate').forEach(function (el) {
+            el.setAttribute('font-weight', '600');
+        });
+
         var mapG = document.createElementNS(ns, 'g');
         mapG.setAttribute('transform', 'translate(0, ' + HEAD_H + ')');
         while (clone.firstChild) mapG.appendChild(clone.firstChild);
         wrap.appendChild(mapG);
-
-        wrap.appendChild(mkText(20, totalH - 10, '면적 = 시가총액 · 색 = ' + state.period.toUpperCase() + ' 등락률', { size: 10, weight: 600, fill: fgDim }));
-        wrap.appendChild(mkText(w - 20, totalH - 10, 'whyrise.vercel.app', { size: 10, weight: 700, fill: fgDim, anchor: 'end' }));
 
         var svgStr = new XMLSerializer().serializeToString(wrap);
         var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });

@@ -812,10 +812,10 @@ body.page-treemap {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    /* 상단 .top-bar__inner.frame 의 max-width:1440 + padding:0 40px 과 좌우 정렬 일치 */
-    padding: 10px 40px;
-    max-width: 1440px;
-    margin: 0 auto;
+    /* viewport 좌우 끝까지 (헤더 frame 1440 제약 무시) — 컨트롤 늘어나서 여백 32 */
+    padding: 10px 32px;
+    max-width: none;
+    margin: 0;
     flex-wrap: wrap;
 }
 .tmap-bar__left {
