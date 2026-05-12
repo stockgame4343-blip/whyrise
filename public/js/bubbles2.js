@@ -106,16 +106,18 @@
         return Math.round(v).toLocaleString() + '억';
     }
 
+    // 글래스 톤 — 반투명 단색 (radial gradient 없이 flat). 강도에 따라 alpha·L 변화.
     function colorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) {
-            return 'hsl(220, 5%, 28%)';
+            return 'hsla(220, 6%, 48%, 0.55)';
         }
         var r = Math.max(-5, Math.min(5, rate));
         var t = Math.abs(r) / 5;
+        var a = 0.55 + t * 0.30;            // 활발할수록 진함
         if (r > 0) {
-            return 'hsl(0, ' + (65 + t * 20) + '%, ' + (32 + t * 30) + '%)';
+            return 'hsla(0, ' + (72 + t * 18) + '%, ' + (50 + t * 8) + '%, ' + a + ')';
         }
-        return 'hsl(220, ' + (55 + t * 25) + '%, ' + (32 - t * 23) + '%)';
+        return 'hsla(220, ' + (62 + t * 18) + '%, ' + (48 - t * 8) + '%, ' + a + ')';
     }
 
     // ── 데이터 ────────────────────────────────────────
@@ -163,23 +165,36 @@
         }
         $message.style.display = 'none';
 
-        // 반지름 sqrt 스케일 — 큰 종목도 자연스럽게
-        var maxMcap = d3.max(items, function (d) { return d.market_cap || 0; }) || 1;
-        var rMax = Math.min(w, h) * 0.10;       // 화면 단변의 10%
-        var rMin = Math.max(8, Math.min(w, h) * 0.012);
-        var rScale = d3.scaleSqrt().domain([0, maxMcap]).range([0, rMax]);
+        // 반지름 — 모든 버블의 면적 합이 화면 면적의 fill_ratio 만큼 차도록 스케일 산출.
+        // (sum(π r²) = w*h*fill ⇒ r = k·√mc, k = √(w*h*fill / (π·Σmc)))
+        var totalMcap = 0;
+        items.forEach(function (d) { totalMcap += (d.market_cap || 0); });
+        var fillRatio = 0.62;                    // 화면의 62% 면적 점유 — 빽빽
+        var rMax = Math.min(w, h) * 0.20;        // 단변의 20% 상한
+        var rMin = Math.max(10, Math.min(w, h) * 0.015);
+        var k = totalMcap > 0
+            ? Math.sqrt((w * h * fillRatio) / (Math.PI * totalMcap))
+            : Math.min(w, h) * 0.05;
 
-        // 같은 ticker 의 이전 위치·속도 유지 — 자연스러운 transition
+        // 같은 ticker 의 이전 위치·속도 유지 — 갱신 시 자연 transition
         var prev = {};
         lastNodes.forEach(function (n) { prev[n.ticker] = n; });
 
-        var nodes = items.map(function (d) {
-            var r = Math.max(rMin, rScale(d.market_cap || 0));
+        // 각 노드에 외곽 target (random) 부여 — center 가 아닌 화면 전반 분산
+        var nodes = items.map(function (d, i) {
+            var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(d.market_cap || 1)));
             var p = prev[d.ticker];
+            // random 자리 — 화면 전체에 균등 분포
+            var angle = (i * 137.5) * Math.PI / 180;   // 황금각 분산
+            var radius = Math.sqrt((i + 0.5) / items.length) * Math.min(w, h) * 0.48;
+            var tx = w / 2 + Math.cos(angle) * radius;
+            var ty = h / 2 + Math.sin(angle) * radius;
             return Object.assign({}, d, {
                 r: r,
-                x: p ? p.x : w / 2 + (Math.random() - 0.5) * w * 0.6,
-                y: p ? p.y : h / 2 + (Math.random() - 0.5) * h * 0.6,
+                targetX: tx,
+                targetY: ty,
+                x: p ? p.x : tx,
+                y: p ? p.y : ty,
                 vx: p ? p.vx : 0,
                 vy: p ? p.vy : 0,
             });
@@ -192,14 +207,6 @@
             .attr('viewBox', '0 0 ' + w + ' ' + h);
         svg.selectAll('*').remove();
 
-        // glossy radial gradient — 위쪽 흰 하이라이트
-        var defs = svg.append('defs');
-        var grad = defs.append('radialGradient')
-            .attr('id', 'bmap2-shine')
-            .attr('cx', '30%').attr('cy', '25%').attr('r', '70%');
-        grad.append('stop').attr('offset', '0%').attr('stop-color', 'rgba(255,255,255,0.35)');
-        grad.append('stop').attr('offset', '55%').attr('stop-color', 'rgba(255,255,255,0)');
-
         var node = svg.selectAll('g.bmap2-node')
             .data(nodes, function (d) { return d.ticker; })
             .enter()
@@ -210,20 +217,13 @@
                 if (d && d.ticker) window.location.href = '/stock/' + d.ticker;
             });
 
-        // base circle
+        // 평평한 글래스 원 — radial gradient 제거, 단색 + 살짝 stroke
         node.append('circle')
             .attr('class', 'bmap2-node__circle')
             .attr('r', function (d) { return d.r; })
             .attr('fill', function (d) { return colorFor(d.change_rate); })
-            .attr('stroke', 'rgba(255,255,255,0.18)')
+            .attr('stroke', 'rgba(255,255,255,0.28)')
             .attr('stroke-width', 1);
-
-        // glossy overlay
-        node.append('circle')
-            .attr('class', 'bmap2-node__shine')
-            .attr('r', function (d) { return d.r; })
-            .attr('fill', 'url(#bmap2-shine)')
-            .attr('pointer-events', 'none');
 
         node.each(function (d) {
             var g = d3.select(this);
@@ -274,16 +274,18 @@
                 + (PERIOD_LABEL[state.period] || state.period) + ' ' + formatRate(d.change_rate);
         });
 
-        // force simulation — 부드럽게 떠다니는 패킹
+        // force simulation — 중심 끌어당김 없이 외곽 분산 + collide 만으로 패킹
+        // 각 노드에 부여한 targetX/Y (황금각 분산) 으로 약하게 끌어 → 화면 전체로 흩어짐.
         if (simulation) simulation.stop();
         simulation = d3.forceSimulation(nodes)
-            .alphaDecay(0.018)
-            .force('charge', d3.forceManyBody().strength(-2))
+            .alphaDecay(0.020)
+            .force('charge', d3.forceManyBody().strength(-1.2))
             .force('collide', d3.forceCollide()
                 .radius(function (d) { return d.r + 1.5; })
-                .strength(0.9))
-            .force('x', d3.forceX(w / 2).strength(0.04))
-            .force('y', d3.forceY(h / 2).strength(0.04))
+                .strength(1.0)
+                .iterations(2))
+            .force('x', d3.forceX(function (d) { return d.targetX; }).strength(0.05))
+            .force('y', d3.forceY(function (d) { return d.targetY; }).strength(0.05))
             .on('tick', function () {
                 node.attr('transform', function (d) {
                     var pad = d.r;
