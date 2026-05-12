@@ -6,7 +6,7 @@
  */
 (function () {
     var PERIODS = ['d1', 'w1', 'm1', 'm3', 'y1'];
-    var PERIOD_LABEL = { d1: '오늘', w1: '1주', m1: '1개월', m3: '3개월', y1: '1년' };
+    var PERIOD_LABEL = { d1: '1일', w1: '1주', m1: '1달', m3: '3달', y1: '1년' };
 
     var state = { period: 'y1', summary: null };
 
@@ -123,12 +123,7 @@
     function applyPeriod() {
         if (!state.summary) return;
         var data = pickPeriod(state.summary, state.period);
-        var label = PERIOD_LABEL[state.period] || '';
-        var $sub = document.getElementById('reportSub');
-        if ($sub) {
-            $sub.innerHTML = '<strong>' + label + '</strong> · KOSPI/KOSDAQ 전체 universe 기준';
-        }
-        // 헤더 4개 stat — 전체 universe (잡주 포함) 통계
+        // 헤더 4개 stat — 전체 universe 통계
         var $e1 = document.getElementById('statTotalEvents');
         var $e2 = document.getElementById('statAvgRate');
         var $e3 = document.getElementById('statLimitCount');

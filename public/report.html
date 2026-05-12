@@ -8,8 +8,8 @@
     <meta name="theme-color" content="#191919">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20260513b">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260513b">
+    <link rel="stylesheet" href="/css/style.css?v=20260513c">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260513c">
 </head>
 <body>
     <script>
@@ -24,9 +24,9 @@
             <a class="top-bar__logo" href="/">이거왜오름?</a>
             <nav class="top-bar__nav">
                 <a href="/" class="top-bar__link">홈</a>
-                <a href="/bubbles2.html" class="top-bar__link">버블맵</a>
-                <a href="/treemap.html" class="top-bar__link">트리맵</a>
                 <a href="/report.html" class="top-bar__link top-bar__link--active">리포트</a>
+                <a href="/treemap.html" class="top-bar__link">트리맵</a>
+                <a href="/bubbles2.html" class="top-bar__link">버블맵</a>
             </nav>
             <div class="top-bar__right">
                 <span class="top-bar__updated" id="lastUpdated"></span>
@@ -41,14 +41,13 @@
         <header class="report-page__header">
             <div class="report-page__head-row">
                 <div class="report-page__title-wrap">
-                    <h1 class="report-page__title">급등 분석</h1>
-                    <p class="report-page__sub" id="reportSub">집계 중...</p>
+                    <h1 class="report-page__title">급등 분석 리포트</h1>
                 </div>
                 <div class="bubble-toggle report-period-tabs" id="reportPeriodTabs" role="group" aria-label="기간">
-                    <button data-p="d1" type="button">오늘</button>
+                    <button data-p="d1" type="button">1일</button>
                     <button data-p="w1" type="button">1주</button>
-                    <button data-p="m1" type="button">1개월</button>
-                    <button data-p="m3" type="button">3개월</button>
+                    <button data-p="m1" type="button">1달</button>
+                    <button data-p="m3" type="button">3달</button>
                     <button data-p="y1" class="active" type="button">1년</button>
                 </div>
             </div>
@@ -123,8 +122,8 @@
         </footer>
     </div>
 
-    <script src="/js/api.js?v=20260513b"></script>
-    <script src="/js/report.js?v=20260513b"></script>
-    <script src="/js/visitor.js?v=20260513b"></script>
+    <script src="/js/api.js?v=20260513c"></script>
+    <script src="/js/report.js?v=20260513c"></script>
+    <script src="/js/visitor.js?v=20260513c"></script>
 </body>
 </html>

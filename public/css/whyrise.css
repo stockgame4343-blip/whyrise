@@ -223,8 +223,6 @@ body {
     align-items: center;
     padding: 18px 4px;
     margin-bottom: 8px;
-    /* 위젯 컬럼(300px) + gap(24px) 만큼 우측 비워 메인 컬럼 폭과 일치 */
-    margin-right: 324px;
 }
 .toolbar--simple .report__date-bar {
     display: flex;
@@ -234,9 +232,6 @@ body {
 .toolbar--simple .toolbar__right {
     display: flex;
     align-items: center;
-}
-@media (max-width: 1100px) {
-    .toolbar--simple { margin-right: 0; }
 }
 .cutoff-count {
     background: var(--glass-bg);
