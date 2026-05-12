@@ -106,19 +106,21 @@
         return Math.round(v).toLocaleString() + '억';
     }
 
-    // 글래스 톤 — 반투명 단색 (radial gradient 없이 flat). 강도에 따라 alpha·L 변화.
-    function colorFor(rate) {
+    // 외곽 그라데이션용 색 — 글래스 안쪽은 거의 투명, 외곽에만 색이 살짝 퍼짐
+    function edgeColorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) {
-            return 'hsla(220, 6%, 48%, 0.55)';
+            return 'hsla(220, 6%, 55%, 0.50)';
         }
         var r = Math.max(-5, Math.min(5, rate));
         var t = Math.abs(r) / 5;
-        var a = 0.55 + t * 0.30;            // 활발할수록 진함
+        var a = 0.60 + t * 0.30;
         if (r > 0) {
-            return 'hsla(0, ' + (72 + t * 18) + '%, ' + (50 + t * 8) + '%, ' + a + ')';
+            return 'hsla(0, ' + (78 + t * 14) + '%, ' + (54 + t * 6) + '%, ' + a + ')';
         }
-        return 'hsla(220, ' + (62 + t * 18) + '%, ' + (48 - t * 8) + '%, ' + a + ')';
+        return 'hsla(220, ' + (66 + t * 14) + '%, ' + (50 - t * 6) + '%, ' + a + ')';
     }
+    // 호환용 — savePNG 등에서 단일 fill 필요할 때
+    function colorFor(rate) { return edgeColorFor(rate); }
 
     // ── 데이터 ────────────────────────────────────────
     function isLiveDate() { return state.dateIndex === 0; }
@@ -166,12 +168,11 @@
         $message.style.display = 'none';
 
         // 반지름 — 모든 버블의 면적 합이 화면 면적의 fill_ratio 만큼 차도록 스케일 산출.
-        // (sum(π r²) = w*h*fill ⇒ r = k·√mc, k = √(w*h*fill / (π·Σmc)))
         var totalMcap = 0;
         items.forEach(function (d) { totalMcap += (d.market_cap || 0); });
-        var fillRatio = 0.62;                    // 화면의 62% 면적 점유 — 빽빽
-        var rMax = Math.min(w, h) * 0.20;        // 단변의 20% 상한
-        var rMin = Math.max(10, Math.min(w, h) * 0.015);
+        var fillRatio = 0.85;                    // 화면의 85% 면적 점유 — 빽빽
+        var rMax = Math.min(w, h) * 0.22;        // 단변의 22% 상한
+        var rMin = Math.max(10, Math.min(w, h) * 0.018);
         var k = totalMcap > 0
             ? Math.sqrt((w * h * fillRatio) / (Math.PI * totalMcap))
             : Math.min(w, h) * 0.05;
@@ -207,23 +208,58 @@
             .attr('viewBox', '0 0 ' + w + ' ' + h);
         svg.selectAll('*').remove();
 
+        // 글래스 외곽 그라데이션 — 안쪽 거의 투명 / 외곽에만 색이 살짝 비침
+        var defs = svg.append('defs');
+        nodes.forEach(function (d, i) {
+            var gid = 'bmap2-g-' + i;
+            d._gradId = gid;
+            var edge = edgeColorFor(d.change_rate);
+            var grad = defs.append('radialGradient')
+                .attr('id', gid)
+                .attr('cx', '50%').attr('cy', '50%').attr('r', '55%');
+            grad.append('stop').attr('offset', '0%').attr('stop-color', 'rgba(255,255,255,0.06)');
+            grad.append('stop').attr('offset', '55%').attr('stop-color', 'rgba(255,255,255,0.04)');
+            grad.append('stop').attr('offset', '85%').attr('stop-color', edge).attr('stop-opacity', 0.45);
+            grad.append('stop').attr('offset', '100%').attr('stop-color', edge);
+        });
+
+        // 클릭(작은 이동) vs 드래그(큰 이동) 구분용
+        var dragMoved = 0;
+        function onDragStart(event, d) {
+            dragMoved = 0;
+            d.fx = d.x; d.fy = d.y;
+        }
+        function onDrag(event, d) {
+            dragMoved += Math.abs(event.dx) + Math.abs(event.dy);
+            d.fx = event.x; d.fy = event.y;
+            if (simulation) simulation.alpha(1);   // 흔들리면 시뮬레이션 깨움
+        }
+        function onDragEnd(event, d) {
+            d.fx = null; d.fy = null;
+            if (dragMoved < 4 && d && d.ticker) {
+                window.location.href = '/stock/' + d.ticker;
+            }
+        }
+
         var node = svg.selectAll('g.bmap2-node')
             .data(nodes, function (d) { return d.ticker; })
             .enter()
             .append('g')
             .attr('class', 'bmap2-node')
             .style('cursor', 'pointer')
-            .on('click', function (e, d) {
-                if (d && d.ticker) window.location.href = '/stock/' + d.ticker;
-            });
+            .call(d3.drag()
+                .on('start', onDragStart)
+                .on('drag', onDrag)
+                .on('end', onDragEnd));
 
-        // 평평한 글래스 원 — radial gradient 제거, 단색 + 살짝 stroke
+        // 글래스 외곽 그라데이션 원
         node.append('circle')
             .attr('class', 'bmap2-node__circle')
             .attr('r', function (d) { return d.r; })
-            .attr('fill', function (d) { return colorFor(d.change_rate); })
-            .attr('stroke', 'rgba(255,255,255,0.28)')
-            .attr('stroke-width', 1);
+            .attr('fill', function (d) { return 'url(#' + d._gradId + ')'; })
+            .attr('stroke', function (d) { return edgeColorFor(d.change_rate); })
+            .attr('stroke-width', 1)
+            .attr('stroke-opacity', 0.45);
 
         node.each(function (d) {
             var g = d3.select(this);
