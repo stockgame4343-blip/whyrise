@@ -140,8 +140,8 @@
             .nodeWidth(14)
             .nodePadding(6)
             .extent([[PAD + 60, PAD], [s.w - PAD - 80, s.h - PAD - 8]])
-            .nodeId(function (d) { return d.key; })
             .nodeAlign(d3.sankeyJustify);
+        // link source/target 가 정수 인덱스이므로 nodeId 함수 미지정 (기본: index)
         var graph = sankeyGen({
             nodes: nodes.map(function (n) { return Object.assign({}, n); }),
             links: links.map(function (l) { return Object.assign({}, l); }),
