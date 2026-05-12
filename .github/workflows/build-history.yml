@@ -146,6 +146,20 @@ jobs:
             echo "::warning::풀빌드 변경률 $PERCENT% — 덮어쓰기 사고 의심"
           fi
 
+      # 빌드 산출물을 artifact 로 먼저 보관 — push 실패해도 90일간 다운로드 가능
+      - name: Upload build artifacts
+        if: steps.gate.outputs.skip != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output-${{ github.run_id }}
+          path: |
+            public/data/bubbles.json
+            public/data/report-summary.json
+            public/data/stock-history/
+            public/sitemap.xml
+          retention-days: 90
+          if-no-files-found: warn
+
       - name: Commit & push
         if: steps.gate.outputs.skip != 'true'
         run: |
