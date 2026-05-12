@@ -1,21 +1,36 @@
 /**
- * 시각화 샘플 — 5가지 (A 워드클라우드, B 비스웜, C 선버스트, D 바차트, E 생키).
- * 사용자가 마음에 드는 것을 채택하기 위한 비교용 페이지.
+ * 흐름 (Sankey) — 섹터 → 테마 → 종목 3단계.
+ *
+ * - 노드:
+ *    Col 1 = 섹터 (sector)
+ *    Col 2 = 테마 (theme_tag, 빈 값은 "기타")
+ *    Col 3 = 종목 (ticker)
+ * - 링크 두께 ∝ change_rate
+ *    (sector→theme): 그 쌍에 속한 종목들 상승률 합
+ *    (theme→stock):  종목 자신의 상승률
+ * - 색:
+ *    섹터 노드 = 섹터 categorical
+ *    테마 노드 = 회색 톤
+ *    종목 노드 = 상승률 강도 빨강
+ *    링크 = 섹터 색 (반투명)
+ * - 호버:
+ *    노드 hover → 그 노드에 연결된 흐름만 강조 (다른 dim)
+ *    종목 hover → title 툴팁 (이름·상승률·이유)
+ * - 클릭:
+ *    종목 노드 클릭 → 모달
  */
 (function () {
     if (typeof d3 === 'undefined') { console.error('d3 not loaded'); return; }
+    if (typeof d3.sankey === 'undefined') { console.error('d3-sankey not loaded'); return; }
 
     var CUTOFF = 15;
-    var ACCENT = '#5b9df9';
-    var RISE = '#f04452';
 
-    // 섹터별 색 (categorical) — 톤 다운된 파스텔
     var SECTOR_PALETTE = [
         '#5b9df9', '#22c55e', '#f59e0b', '#ec4899', '#a78bfa',
         '#06b6d4', '#84cc16', '#f97316', '#14b8a6', '#fb7185',
         '#8b5cf6', '#10b981', '#eab308', '#3b82f6', '#d946ef',
     ];
-    function sectorColor(sectors) {
+    function sectorColorFn(sectors) {
         var map = {};
         sectors.forEach(function (s, i) { map[s] = SECTOR_PALETTE[i % SECTOR_PALETTE.length]; });
         return function (s) { return map[s] || SECTOR_PALETTE[0]; };
@@ -23,7 +38,7 @@
 
     function rateShade(rate) {
         var t = Math.max(0, Math.min(1, (rate - 15) / 15));
-        var alpha = 0.45 + 0.55 * t;
+        var alpha = 0.5 + 0.5 * t;
         return 'rgba(240, 68, 82, ' + alpha.toFixed(2) + ')';
     }
 
@@ -46,348 +61,254 @@
         });
     }
 
-    // ── A. 워드 클라우드 — 이유 카테고리 빈도 ─────────
-    function renderCloud(rankings) {
-        var $svg = d3.select('#vizCloud');
+    var state = { rankings: [], searchTerm: '', stockByTicker: {} };
+
+    function stage() {
+        var $s = document.getElementById('flowStage');
+        return { w: $s.clientWidth, h: $s.clientHeight };
+    }
+
+    function shortLabel(s, max) {
+        if (!s) return '';
+        return s.length > max ? s.slice(0, max - 1) + '…' : s;
+    }
+
+    function render() {
+        var $svg = d3.select('#flowSvg');
         $svg.selectAll('*').remove();
-        var counts = d3.rollup(rankings,
-            function (v) { return v.length; },
-            function (d) {
-                var r = (d.rise_reason || '').trim();
-                if (!r || r === '-' || r === '상한가 — 사유 미수집' || r === '52주 신고가 도달') return null;
-                return r;
-            });
-        var words = Array.from(counts, function (e) { return { text: e[0], count: e[1] }; })
-            .filter(function (w) { return w.text; })
-            .sort(function (a, b) { return b.count - a.count; })
-            .slice(0, 40);
-        if (!words.length) {
-            $svg.append('text').attr('x', 400).attr('y', 150)
+
+        var s = stage();
+        $svg.attr('viewBox', '0 0 ' + s.w + ' ' + s.h)
+            .attr('width', s.w).attr('height', s.h);
+
+        var rankings = state.rankings;
+        if (!rankings.length) {
+            $svg.append('text').attr('x', s.w / 2).attr('y', s.h / 2)
                 .attr('text-anchor', 'middle').attr('fill', 'currentColor').attr('opacity', 0.4)
-                .text('이유 데이터 없음');
-            return;
-        }
-        var maxC = words[0].count;
-        var minC = words[words.length - 1].count;
-        var sizeOf = function (c) { return 12 + (c - minC) / Math.max(1, maxC - minC) * 38; };
-
-        if (typeof d3.layout === 'undefined' || typeof d3.layout.cloud === 'undefined') {
-            // fallback — grid 배치
-            var cols = Math.ceil(Math.sqrt(words.length));
-            words.forEach(function (w, i) {
-                var x = 50 + (i % cols) * (700 / cols);
-                var y = 40 + Math.floor(i / cols) * (260 / Math.ceil(words.length / cols));
-                $svg.append('text')
-                    .attr('x', x).attr('y', y)
-                    .attr('fill', ACCENT).attr('font-weight', 700)
-                    .attr('font-size', sizeOf(w.count))
-                    .text(w.text + ' (' + w.count + ')');
-            });
+                .text('오늘 +15% 이상 오른 종목이 없습니다.');
             return;
         }
 
-        d3.layout.cloud()
-            .size([800, 300])
-            .words(words.map(function (w) { return { text: w.text, size: sizeOf(w.count), count: w.count }; }))
-            .padding(4)
-            .rotate(function () { return (Math.random() < 0.7 ? 0 : 90); })
-            .fontSize(function (d) { return d.size; })
-            .on('end', function (laid) {
-                var g = $svg.append('g').attr('transform', 'translate(400,150)');
-                g.selectAll('text').data(laid).join('text')
-                    .attr('text-anchor', 'middle')
-                    .attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ') rotate(' + d.rotate + ')'; })
-                    .attr('fill', function (d, i) { return d3.interpolateRgb('#7dd3fc', '#1d4ed8')(i / laid.length); })
-                    .attr('font-weight', 700)
-                    .attr('font-size', function (d) { return d.size; })
-                    .text(function (d) { return d.text; })
-                    .append('title').text(function (d) { return d.text + ' — ' + d.count + '건'; });
-            })
-            .start();
-    }
-
-    // ── B. Beeswarm — 상승률 분포 ─────────────────
-    function renderBeeswarm(rankings) {
-        var $svg = d3.select('#vizBeeswarm');
-        $svg.selectAll('*').remove();
-        if (!rankings.length) return;
-        var W = 800, H = 220, PAD = 50;
-        var x = d3.scaleLinear().domain([14.5, Math.max(30.5, d3.max(rankings, function (d) { return d.change_rate; }))])
-            .range([PAD, W - PAD]);
-        // x 축
-        var ax = $svg.append('g').attr('transform', 'translate(0,' + (H - 30) + ')');
-        ax.selectAll('line.tick').data([15, 20, 25, 30]).join('line')
-            .attr('x1', x).attr('x2', x).attr('y1', -5).attr('y2', 0)
-            .attr('stroke', 'currentColor').attr('opacity', 0.3);
-        ax.selectAll('text.tick').data([15, 20, 25, 30]).join('text')
-            .attr('x', x).attr('y', 16).attr('text-anchor', 'middle')
-            .attr('fill', 'currentColor').attr('opacity', 0.5).attr('font-size', 11)
-            .text(function (d) { return '+' + d + '%'; });
-        // 기준선
-        $svg.append('line').attr('x1', PAD).attr('x2', W - PAD)
-            .attr('y1', H - 30).attr('y2', H - 30)
-            .attr('stroke', 'currentColor').attr('opacity', 0.2);
-
-        var sectors = Array.from(new Set(rankings.map(function (d) { return d.sector || '기타'; })));
-        var colorFn = sectorColor(sectors);
-
-        var nodes = rankings.map(function (r) {
-            return Object.assign({}, r, {
-                x: x(r.change_rate),
-                y: (H - 30) / 2,
-                r: 7,
-            });
-        });
-
-        // 충돌 시뮬레이션 — x 고정, y jitter
-        var sim = d3.forceSimulation(nodes)
-            .force('x', d3.forceX(function (d) { return x(d.change_rate); }).strength(1))
-            .force('y', d3.forceY((H - 30) / 2).strength(0.3))
-            .force('collide', d3.forceCollide(function (d) { return d.r + 1.5; }).iterations(3))
-            .stop();
-        for (var i = 0; i < 200; i++) sim.tick();
-
-        var g = $svg.append('g').attr('class', 'bee-nodes');
-        g.selectAll('circle').data(nodes).join('circle')
-            .attr('cx', function (d) { return d.x; })
-            .attr('cy', function (d) { return d.y; })
-            .attr('r', function (d) { return d.r; })
-            .attr('fill', function (d) { return colorFn(d.sector || '기타'); })
-            .attr('stroke', '#fff').attr('stroke-width', 0.5).attr('opacity', 0.9)
-            .style('cursor', 'pointer')
-            .on('click', function (e, d) { window.location.href = '/stock/' + d.ticker; })
-            .append('title').text(function (d) {
-                return d.name + ' (' + d.ticker + ')\n' +
-                    '+' + d.change_rate.toFixed(2) + '%\n' +
-                    (d.sector || '') + ' · ' + (d.rise_reason || '');
-            });
-    }
-
-    // ── C. 선버스트 — 섹터 → 종목 ─────────────────
-    function renderSunburst(rankings) {
-        var $svg = d3.select('#vizSunburst');
-        $svg.selectAll('*').remove();
-        if (!rankings.length) return;
-        var W = 400, H = 400, R = Math.min(W, H) / 2 - 8;
-
-        var groups = d3.group(rankings, function (d) { return d.sector || '기타'; });
-        var root = d3.hierarchy({
-            name: 'root',
-            children: Array.from(groups, function (e) {
-                return {
-                    name: e[0],
-                    children: e[1].map(function (r) {
-                        return Object.assign({}, r, { value: Math.max(1, r.market_cap || 1) });
-                    }),
-                };
-            }),
-        }).sum(function (d) { return d.value; });
-
-        d3.partition().size([2 * Math.PI, R])(root);
-        var arc = d3.arc()
-            .startAngle(function (d) { return d.x0; })
-            .endAngle(function (d) { return d.x1; })
-            .innerRadius(function (d) { return d.y0; })
-            .outerRadius(function (d) { return d.y1 - 1; })
-            .padAngle(0.005);
-
-        var sectors = Array.from(groups.keys());
-        var colorFn = sectorColor(sectors);
-
-        var g = $svg.append('g').attr('transform', 'translate(' + W / 2 + ',' + H / 2 + ')');
-
-        // 섹터 호 (depth 1)
-        var sectorArcs = root.descendants().filter(function (d) { return d.depth === 1; });
-        g.selectAll('path.sect').data(sectorArcs).join('path')
-            .attr('class', 'sect')
-            .attr('d', arc)
-            .attr('fill', function (d) { return colorFn(d.data.name); })
-            .attr('opacity', 0.85)
-            .append('title').text(function (d) { return d.data.name + ' — ' + d.children.length + '종목'; });
-
-        // 종목 호 (depth 2)
-        var leafArcs = root.descendants().filter(function (d) { return d.depth === 2; });
-        g.selectAll('path.leaf').data(leafArcs).join('path')
-            .attr('class', 'leaf')
-            .attr('d', arc)
-            .attr('fill', function (d) { return rateShade(d.data.change_rate); })
-            .attr('stroke', 'rgba(0,0,0,0.4)').attr('stroke-width', 0.5)
-            .style('cursor', 'pointer')
-            .on('click', function (e, d) { window.location.href = '/stock/' + d.data.ticker; })
-            .append('title').text(function (d) {
-                return d.data.name + ' (' + d.data.ticker + ')\n' +
-                    '+' + d.data.change_rate.toFixed(2) + '%\n' +
-                    (d.data.rise_reason || '');
-            });
-
-        // 중앙 라벨
-        g.append('text').attr('text-anchor', 'middle').attr('dy', '.3em')
-            .attr('fill', 'currentColor').attr('font-weight', 700)
-            .attr('font-size', 14).text(rankings.length + '종목');
-    }
-
-    // ── D. 바차트 TOP 20 ──────────────────────────
-    function renderBar(rankings) {
-        var $svg = d3.select('#vizBar');
-        $svg.selectAll('*').remove();
-        if (!rankings.length) return;
-        var W = 400, H = 500, PAD_L = 90, PAD_R = 16, PAD_T = 8, PAD_B = 8;
-        var top = rankings.slice().sort(function (a, b) { return b.change_rate - a.change_rate; }).slice(0, 20);
-        var x = d3.scaleLinear().domain([0, d3.max(top, function (d) { return d.change_rate; })])
-            .range([PAD_L, W - PAD_R]);
-        var y = d3.scaleBand().domain(top.map(function (d) { return d.ticker; }))
-            .range([PAD_T, H - PAD_B]).padding(0.18);
-
-        var g = $svg.append('g');
-        // 막대
-        g.selectAll('rect').data(top).join('rect')
-            .attr('x', PAD_L)
-            .attr('y', function (d) { return y(d.ticker); })
-            .attr('width', function (d) { return x(d.change_rate) - PAD_L; })
-            .attr('height', y.bandwidth())
-            .attr('fill', function (d) { return rateShade(d.change_rate); })
-            .attr('rx', 3)
-            .style('cursor', 'pointer')
-            .on('click', function (e, d) { window.location.href = '/stock/' + d.ticker; })
-            .append('title').text(function (d) {
-                return d.name + ' +' + d.change_rate.toFixed(2) + '% — ' + (d.rise_reason || '');
-            });
-
-        // 종목명 (좌측)
-        g.selectAll('text.label').data(top).join('text')
-            .attr('class', 'label')
-            .attr('x', PAD_L - 6)
-            .attr('y', function (d) { return y(d.ticker) + y.bandwidth() / 2; })
-            .attr('dy', '.32em').attr('text-anchor', 'end')
-            .attr('fill', 'currentColor').attr('font-size', 11).attr('font-weight', 600)
-            .text(function (d) {
-                var nm = d.name || '';
-                return nm.length > 8 ? nm.slice(0, 7) + '…' : nm;
-            });
-
-        // 상승률 (막대 끝)
-        g.selectAll('text.value').data(top).join('text')
-            .attr('class', 'value')
-            .attr('x', function (d) { return x(d.change_rate) - 4; })
-            .attr('y', function (d) { return y(d.ticker) + y.bandwidth() / 2; })
-            .attr('dy', '.32em').attr('text-anchor', 'end')
-            .attr('fill', '#fff').attr('font-size', 11).attr('font-weight', 700)
-            .text(function (d) { return '+' + d.change_rate.toFixed(1); });
-    }
-
-    // ── E. Sankey — 섹터 → 테마 ───────────────────
-    function renderSankey(rankings) {
-        var $svg = d3.select('#vizSankey');
-        $svg.selectAll('*').remove();
-        if (!rankings.length || typeof d3.sankey === 'undefined') {
-            $svg.append('text').attr('x', 450).attr('y', 180).attr('text-anchor', 'middle')
-                .attr('fill', 'currentColor').attr('opacity', 0.4)
-                .text(typeof d3.sankey === 'undefined' ? 'd3-sankey 미로드' : '데이터 없음');
-            return;
-        }
-        var W = 900, H = 360, PAD = 24;
-
-        // 노드: 섹터 set + 테마 set (양쪽)
-        var sectors = Array.from(new Set(rankings.map(function (d) { return 'S:' + (d.sector || '기타'); })));
-        var themes = Array.from(new Set(rankings.map(function (d) {
-            var t = (d.theme_tag || '').trim();
-            return 'T:' + (t || '기타');
-        })));
-        var nodeKeys = sectors.concat(themes);
-        var nodes = nodeKeys.map(function (k) { return { name: k.slice(2), key: k }; });
-        var nodeIdx = {};
-        nodeKeys.forEach(function (k, i) { nodeIdx[k] = i; });
-
-        var linkMap = {};
+        // 노드 키: prefix 로 컬럼 구분
+        var sectorSet = new Map();   // name → totalRate
+        var themeSet = new Map();
         rankings.forEach(function (r) {
-            var sk = 'S:' + (r.sector || '기타');
-            var tk = 'T:' + ((r.theme_tag || '').trim() || '기타');
-            var key = sk + '|' + tk;
-            linkMap[key] = (linkMap[key] || 0) + 1;
-        });
-        var links = Object.keys(linkMap).map(function (k) {
-            var parts = k.split('|');
-            return { source: nodeIdx[parts[0]], target: nodeIdx[parts[1]], value: linkMap[k] };
+            var sec = r.sector || '기타';
+            var th = (r.theme_tag || '').trim() || '기타';
+            sectorSet.set(sec, (sectorSet.get(sec) || 0) + r.change_rate);
+            themeSet.set(th, (themeSet.get(th) || 0) + r.change_rate);
         });
 
-        var sankey = d3.sankey()
-            .nodeWidth(14).nodePadding(8)
-            .extent([[PAD, PAD], [W - PAD, H - PAD]]);
-        var graph = sankey({
+        var sectors = Array.from(sectorSet.keys()).sort();
+        var themes = Array.from(themeSet.keys()).sort();
+        var stocks = rankings.slice().sort(function (a, b) { return b.change_rate - a.change_rate; });
+
+        var nodes = [];
+        var nodeIdx = {};
+        sectors.forEach(function (k) { nodeIdx['S:' + k] = nodes.length; nodes.push({ key: 'S:' + k, name: k, col: 0 }); });
+        themes.forEach(function (k) { nodeIdx['T:' + k] = nodes.length; nodes.push({ key: 'T:' + k, name: k, col: 1 }); });
+        stocks.forEach(function (r) { nodeIdx['N:' + r.ticker] = nodes.length; nodes.push({ key: 'N:' + r.ticker, name: r.name, ticker: r.ticker, col: 2, stock: r }); });
+
+        var links = [];
+        var stMap = {};   // (sector, theme) → rate 합
+        rankings.forEach(function (r) {
+            var sec = r.sector || '기타';
+            var th = (r.theme_tag || '').trim() || '기타';
+            var key = sec + '|' + th;
+            stMap[key] = (stMap[key] || 0) + r.change_rate;
+            links.push({
+                source: nodeIdx['T:' + th],
+                target: nodeIdx['N:' + r.ticker],
+                value: r.change_rate,
+                sector: sec,
+                kind: 't2n',
+            });
+        });
+        Object.keys(stMap).forEach(function (k) {
+            var p = k.split('|');
+            links.push({
+                source: nodeIdx['S:' + p[0]],
+                target: nodeIdx['T:' + p[1]],
+                value: stMap[k],
+                sector: p[0],
+                kind: 's2t',
+            });
+        });
+
+        var PAD = 18;
+        var sankeyGen = d3.sankey()
+            .nodeWidth(14)
+            .nodePadding(6)
+            .extent([[PAD + 60, PAD], [s.w - PAD - 80, s.h - PAD - 8]])
+            .nodeId(function (d) { return d.key; })
+            .nodeAlign(d3.sankeyJustify);
+        var graph = sankeyGen({
             nodes: nodes.map(function (n) { return Object.assign({}, n); }),
             links: links.map(function (l) { return Object.assign({}, l); }),
         });
 
-        var sectorList = sectors.map(function (s) { return s.slice(2); });
-        var colorFn = sectorColor(sectorList);
+        var colorFn = sectorColorFn(sectors);
 
-        // 링크
-        $svg.append('g').selectAll('path').data(graph.links).join('path')
+        // ── 링크 ──
+        var linkG = $svg.append('g').attr('class', 'flow-links').attr('fill', 'none');
+        var linkSel = linkG.selectAll('path').data(graph.links).join('path')
+            .attr('class', 'flow-link')
             .attr('d', d3.sankeyLinkHorizontal())
-            .attr('fill', 'none')
-            .attr('stroke', function (d) {
-                return colorFn(d.source.name);
-            })
-            .attr('stroke-opacity', 0.35)
-            .attr('stroke-width', function (d) { return Math.max(1, d.width); })
-            .append('title').text(function (d) { return d.source.name + ' → ' + d.target.name + ' (' + d.value + ')'; });
+            .attr('stroke', function (d) { return colorFn(d.sector); })
+            .attr('stroke-opacity', 0.28)
+            .attr('stroke-width', function (d) { return Math.max(1, d.width); });
 
-        // 노드
-        var nodeG = $svg.append('g').selectAll('g').data(graph.nodes).join('g');
-        nodeG.append('rect')
-            .attr('x', function (d) { return d.x0; })
-            .attr('y', function (d) { return d.y0; })
+        linkSel.append('title').text(function (d) {
+            var sName = (typeof d.source === 'object') ? d.source.name : '';
+            var tName = (typeof d.target === 'object') ? d.target.name : '';
+            return sName + '  →  ' + tName + '\n상승률 합 ' + d.value.toFixed(1) + '%';
+        });
+
+        // ── 노드 ──
+        var nodeG = $svg.append('g').attr('class', 'flow-nodes');
+        var nSel = nodeG.selectAll('g').data(graph.nodes).join('g')
+            .attr('class', function (d) { return 'flow-node flow-node--col' + d.col; })
+            .attr('transform', function (d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; });
+
+        nSel.append('rect')
             .attr('width', function (d) { return d.x1 - d.x0; })
-            .attr('height', function (d) { return d.y1 - d.y0; })
+            .attr('height', function (d) { return Math.max(2, d.y1 - d.y0); })
+            .attr('rx', 3)
             .attr('fill', function (d) {
-                if (d.key && d.key[0] === 'S') return colorFn(d.name);
-                return 'rgba(255,255,255,0.4)';
+                if (d.col === 0) return colorFn(d.name);                          // 섹터
+                if (d.col === 1) return 'rgba(255,255,255,0.45)';                  // 테마
+                return rateShade((d.stock && d.stock.change_rate) || 15);          // 종목
             })
-            .append('title').text(function (d) { return d.name + ' (' + d.value + ')'; });
+            .style('cursor', function (d) { return d.col === 2 ? 'pointer' : 'default'; })
+            .on('click', function (e, d) {
+                if (d.col === 2 && d.stock) openModal(d.stock);
+            });
 
         // 노드 라벨
-        nodeG.append('text')
-            .attr('x', function (d) { return d.x0 < W / 2 ? d.x1 + 6 : d.x0 - 6; })
-            .attr('y', function (d) { return (d.y0 + d.y1) / 2; })
+        nSel.append('text')
+            .attr('class', 'flow-node-label')
+            .attr('y', function (d) { return (d.y1 - d.y0) / 2; })
             .attr('dy', '.32em')
-            .attr('text-anchor', function (d) { return d.x0 < W / 2 ? 'start' : 'end'; })
-            .attr('fill', 'currentColor').attr('font-size', 11).attr('font-weight', 600)
+            .attr('fill', 'currentColor')
+            .attr('font-size', function (d) { return d.col === 2 ? 11 : 12; })
+            .attr('font-weight', function (d) { return d.col === 0 ? 700 : 600; })
+            .attr('x', function (d) { return d.col === 2 ? (d.x1 - d.x0) + 6 : -6; })
+            .attr('text-anchor', function (d) { return d.col === 2 ? 'start' : 'end'; })
             .text(function (d) {
-                var nm = d.name || '';
-                return nm.length > 14 ? nm.slice(0, 13) + '…' : nm;
+                if (d.col === 2 && d.stock) {
+                    var nm = shortLabel(d.name, 8);
+                    return nm + '  +' + d.stock.change_rate.toFixed(1) + '%';
+                }
+                return shortLabel(d.name, 10);
+            });
+
+        // hover 강조
+        nSel.on('mouseenter', function (event, d) {
+            var connectedLinks = graph.links.filter(function (l) {
+                var sk = (typeof l.source === 'object') ? l.source.key : l.source;
+                var tk = (typeof l.target === 'object') ? l.target.key : l.target;
+                return sk === d.key || tk === d.key;
+            });
+            var connectedNodes = new Set();
+            connectedLinks.forEach(function (l) {
+                var sk = (typeof l.source === 'object') ? l.source.key : l.source;
+                var tk = (typeof l.target === 'object') ? l.target.key : l.target;
+                connectedNodes.add(sk); connectedNodes.add(tk);
+            });
+            connectedNodes.add(d.key);
+            linkSel.attr('stroke-opacity', function (l) {
+                return connectedLinks.indexOf(l) >= 0 ? 0.7 : 0.06;
+            });
+            nSel.attr('opacity', function (n) { return connectedNodes.has(n.key) ? 1 : 0.25; });
+        }).on('mouseleave', function () {
+            linkSel.attr('stroke-opacity', 0.28);
+            nSel.attr('opacity', 1);
+        });
+
+        nSel.filter(function (d) { return d.col === 2 && d.stock; })
+            .append('title').text(function (d) {
+                var r = d.stock;
+                return r.name + ' (' + r.ticker + ')\n+' + r.change_rate.toFixed(2) + '%\n' +
+                    (r.sector || '') + ' · ' + (r.theme_tag || '') + '\n' + (r.rise_reason || '');
+            });
+
+        applySearch();
+    }
+
+    function applySearch() {
+        var q = (state.searchTerm || '').toLowerCase().trim();
+        d3.selectAll('.flow-node--col2')
+            .classed('dim', function (d) {
+                if (!q) return false;
+                var nm = (d.name || '').toLowerCase();
+                var tk = (d.ticker || '').toLowerCase();
+                return !(nm.indexOf(q) !== -1 || tk.indexOf(q) === 0);
             });
     }
 
-    // ── 진입점 ─────────────────────────────────────
-    function loadAll() {
+    // ── 모달 ──
+    function openModal(d) {
+        var $modal = document.getElementById('bubbleModal');
+        if (!$modal) return;
+        document.getElementById('modalName').textContent = d.name || d.ticker;
+        document.getElementById('modalTicker').textContent = d.ticker || '';
+        document.getElementById('modalRate').textContent = '+' + d.change_rate.toFixed(2) + '%';
+        document.getElementById('modalReason').textContent = d.rise_reason || '이유 미수집';
+        document.getElementById('modalMeta').innerHTML =
+            '<dt>섹터</dt><dd>' + (d.sector || '-') + '</dd>' +
+            '<dt>테마</dt><dd>' + (d.theme_tag || '-') + '</dd>' +
+            '<dt>시가총액</dt><dd>' + fmtCap(d.market_cap) + '</dd>' +
+            '<dt>시장</dt><dd>' + (d.market || '-') + '</dd>';
+        document.getElementById('modalCta').setAttribute('href', '/stock/' + d.ticker);
+        $modal.style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('bubbleModal').style.display = 'none'; }
+    function bindModal() {
+        document.getElementById('bubbleModalClose').addEventListener('click', closeModal);
+        document.getElementById('bubbleModalOverlay').addEventListener('click', closeModal);
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+    }
+
+    function bindSearch() {
+        var $s = document.getElementById('flowSearch');
+        if (!$s) return;
+        $s.addEventListener('input', function () { state.searchTerm = $s.value; applySearch(); });
+    }
+
+    // ── 데이터 ──
+    function loadAndRender() {
         var $loading = document.getElementById('loading');
         var $msg = document.getElementById('message');
+        $loading.style.display = 'flex';
 
         WhyAPI.getDates().then(function (dates) {
             if (!dates || !dates.length) throw new Error('거래일 데이터 없음');
             return WhyAPI.getRankings(dates[0]).then(function (data) {
-                var ranks = (data.rankings || []).filter(function (r) { return r.change_rate >= CUTOFF; });
-                document.getElementById('vizCount').textContent = ranks.length;
+                state.rankings = (data.rankings || []).filter(function (r) {
+                    return r.change_rate != null && r.change_rate >= CUTOFF;
+                });
+                document.getElementById('flowCount').textContent = state.rankings.length;
                 var d = dates[0];
-                document.getElementById('vizDate').textContent =
-                    d.slice(0, 4) + '.' + d.slice(4, 6) + '.' + d.slice(6, 8);
+                document.getElementById('flowDate').textContent =
+                    d.slice(0,4) + '.' + d.slice(4,6) + '.' + d.slice(6,8);
                 $loading.style.display = 'none';
-
-                renderCloud(ranks);
-                renderBeeswarm(ranks);
-                renderSunburst(ranks);
-                renderBar(ranks);
-                renderSankey(ranks);
+                render();
+                window.addEventListener('resize', function () {
+                    clearTimeout(window._flowResize);
+                    window._flowResize = setTimeout(render, 250);
+                });
             });
         }).catch(function (err) {
             $loading.style.display = 'none';
             $msg.textContent = '데이터 로딩 실패: ' + err.message;
-            $msg.style.display = 'block';
+            $msg.style.display = 'flex';
         });
     }
 
     document.addEventListener('DOMContentLoaded', function () {
         bindThemeToggle();
-        loadAll();
+        bindSearch();
+        bindModal();
+        loadAndRender();
     });
 })();
