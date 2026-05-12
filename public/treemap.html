@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>트리맵 — 이거왜오름?</title>
-    <meta name="description" content="국내 시가총액 TOP 종목의 등락을 면적·색상으로 실시간 한눈에 — 면적=시가총액, 상승=빨강·하락=파랑.">
+    <meta name="description" content="국내 시가총액 TOP 종목의 등락을 면적·색상으로 실시간 한눈에 — 전체는 섹터별로, 시장별은 평면. 면적=시가총액, 상승=빨강·하락=파랑.">
     <meta name="theme-color" content="#0a0b0f">
     <link rel="canonical" href="https://whyrise.vercel.app/treemap.html">
     <link rel="icon" href="/og-default.svg" type="image/svg+xml">
@@ -56,13 +56,21 @@
                 </span>
                 <span class="tmap-clock" id="tmapClock">--:--:--</span>
                 <span class="tmap-date" id="tmapDate">— 기준</span>
+                <button class="tmap-back" id="tmapBack" style="display:none;" title="전체로">← <span id="tmapBackLabel">전체</span></button>
             </div>
             <div class="tmap-bar__right">
                 <div class="tmap-tabs" role="tablist">
-                    <button class="tmap-tab is-active" data-filter="ALL">전체 200</button>
+                    <button class="tmap-tab is-active" data-filter="ALL">전체</button>
                     <button class="tmap-tab" data-filter="KOSPI">코스피 100</button>
                     <button class="tmap-tab" data-filter="KOSDAQ">코스닥 100</button>
                 </div>
+                <button class="tmap-save" id="tmapSave" title="PNG 이미지로 저장" aria-label="이미지 저장">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>

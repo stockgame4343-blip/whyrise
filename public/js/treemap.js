@@ -1,28 +1,34 @@
 /**
  * 트리맵 — 한국 시총 TOP 100 KOSPI + 100 KOSDAQ.
  *
- * 라이브 polling
- *  - 평일 KST 09:00 ~ 15:30 사이에 5초마다 /api/marketmap fetch.
- *  - 장 시간 외엔 polling 정지, 마지막 데이터 또는 정적 /data/marketmap.json fallback.
+ * 모드
+ *  - ALL    : 섹터별로 nested treemap (FinViz/kospd 스타일)
+ *  - KOSPI  : 코스피 100 평면
+ *  - KOSDAQ : 코스닥 100 평면
+ *  - ALL 모드에서 섹터 박스 클릭 → zoom (그 섹터 종목만 평면)
  *
- * 색감
- *  - 상승: 강할수록 밝아짐 (빨강 L 32% → 62%)
- *  - 하락: 강할수록 어두워짐 (파랑 L 32% →  9%)
- *  - 보합(±0.1% 이내): 회색
+ * 라이브 polling (15초)
+ *  - 평일 KST 09:00 ~ 15:30 사이만. /api/marketmap (라이브 — sector 없음)
+ *  - sector 는 /data/marketmap.json (정적 빌드) 의 ticker→sector 매핑을 클라
+ *    측에서 머지.
  *
- * 면적 = market_cap (squarified treemap)
- * 클릭 = /stock/{ticker} 이동
+ * 이미지 저장
+ *  - SVG 클론 + 인라인 <style> 임베드 → Canvas 렌더 → PNG 다운로드 (retina 2×).
+ *
+ * 색감 (HSL)
+ *  - 상승 강할수록 밝게 (L 32→62%), 하락 강할수록 어둡게 (L 32→9%).
+ *
+ * 면적 = market_cap, 클릭 = /stock/{ticker}.
  */
 (function () {
     'use strict';
 
-    // polling 주기 — 사용자 늘면 60000(60s) 로 조정 가능. ring 채워지는 속도도
-    // 같이 따라감 (transition duration = POLL_MS / 1000 s).
     var POLL_MS = 15000;
-    var KST_OFFSET = 9 * 60;            // 분 단위
-    var OPEN_MIN = 9 * 60;              // 09:00
-    var CLOSE_MIN = 15 * 60 + 30;       // 15:30
-    var RING_CIRCUM = 2 * Math.PI * 9;  // 2πr (r=9) — SVG viewBox 24×24 기준
+    var KST_OFFSET = 9 * 60;
+    var OPEN_MIN = 9 * 60;
+    var CLOSE_MIN = 15 * 60 + 30;
+    var RING_CIRCUM = 2 * Math.PI * 9;
+    var SECTOR_LABEL_HEIGHT = 18;
 
     var $stage = document.getElementById('tmapStage');
     var $svg = document.getElementById('tmapSvg');
@@ -34,10 +40,15 @@
     var $liveLabel = document.getElementById('tmapLiveLabel');
     var $ringFg = document.querySelector('.tmap-live__ring-fg');
     var $tabs = document.querySelectorAll('.tmap-tab');
+    var $back = document.getElementById('tmapBack');
+    var $backLabel = document.getElementById('tmapBackLabel');
+    var $save = document.getElementById('tmapSave');
 
     var state = {
-        items: [],         // 전체 200 종목 (KOSPI 100 + KOSDAQ 100)
-        filter: 'ALL',     // 'ALL' / 'KOSPI' / 'KOSDAQ'
+        items: [],         // 라이브 또는 정적. KOSPI 100 + KOSDAQ 100 = 200.
+        sectorMap: {},     // ticker → sector (정적 빌드에서 캐싱)
+        filter: 'ALL',
+        zoomedSector: null,
         date: '',
         marketStatus: 'CLOSE',
     };
@@ -49,7 +60,7 @@
     }
     function isMarketOpen() {
         var k = kstNow();
-        var day = k.getUTCDay();   // 위 kstNow 는 UTC 시각으로 KST 표현 → UTC getter 사용
+        var day = k.getUTCDay();
         if (day === 0 || day === 6) return false;
         var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
         return mins >= OPEN_MIN && mins < CLOSE_MIN;
@@ -78,33 +89,77 @@
     }
 
     // ── 색상 (HSL) ─────────────────────────────────────
-    // 상승: 강할수록 L 증가 (밝아짐). 하락: 강할수록 L 감소 (어두워짐).
     function colorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) {
             return 'hsl(220, 5%, 28%)';
         }
         var r = Math.max(-5, Math.min(5, rate));
-        var t = Math.abs(r) / 5;     // 0..1
+        var t = Math.abs(r) / 5;
         if (r > 0) {
-            var l = 32 + t * 30;     // 32 → 62
-            var s = 65 + t * 20;     // 65 → 85
+            var l = 32 + t * 30;
+            var s = 65 + t * 20;
             return 'hsl(0, ' + s + '%, ' + l + '%)';
         }
-        var l2 = 32 - t * 23;        // 32 → 9
-        var s2 = 55 + t * 25;        // 55 → 80
+        var l2 = 32 - t * 23;
+        var s2 = 55 + t * 25;
         return 'hsl(220, ' + s2 + '%, ' + l2 + '%)';
+    }
+
+    // ── 데이터 가공 ────────────────────────────────────
+    function ensureSector(items) {
+        // 라이브 응답에 sector 없으면 sectorMap 으로 채워줌
+        return items.map(function (it) {
+            if (it.sector) return it;
+            var sec = state.sectorMap[it.ticker] || '';
+            return Object.assign({}, it, { sector: sec });
+        });
+    }
+
+    function visibleItems() {
+        var items = state.items;
+        if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
+            return items.filter(function (it) { return it.market === state.filter; });
+        }
+        if (state.zoomedSector) {
+            return items.filter(function (it) {
+                return (it.sector || '기타') === state.zoomedSector;
+            });
+        }
+        return items;
+    }
+
+    function isGrouped() {
+        // 전체 모드 + zoom 안 한 상태 = 섹터 그룹 hierarchy
+        return state.filter === 'ALL' && !state.zoomedSector;
+    }
+
+    function buildHierarchyData(items) {
+        if (!isGrouped()) {
+            return { children: items };
+        }
+        var bySector = {};
+        items.forEach(function (it) {
+            var sec = it.sector || '기타';
+            (bySector[sec] = bySector[sec] || []).push(it);
+        });
+        var sectors = Object.keys(bySector).map(function (sec) {
+            return { name: sec, isSector: true, children: bySector[sec] };
+        });
+        // 섹터 합계 시총 내림차순
+        sectors.sort(function (a, b) {
+            var sa = a.children.reduce(function (s, x) { return s + (x.market_cap || 0); }, 0);
+            var sb = b.children.reduce(function (s, x) { return s + (x.market_cap || 0); }, 0);
+            return sb - sa;
+        });
+        return { children: sectors };
     }
 
     // ── 트리맵 렌더 ────────────────────────────────────
     function render() {
-        if (!state.items.length) return;
+        var items = visibleItems();
         var w = $stage.clientWidth;
         var h = $stage.clientHeight;
         if (w < 80 || h < 80) return;
-
-        var items = state.filter === 'ALL'
-            ? state.items
-            : state.items.filter(function (it) { return it.market === state.filter; });
 
         if (!items.length) {
             $svg.innerHTML = '';
@@ -114,14 +169,16 @@
         }
         $message.style.display = 'none';
 
-        var root = d3.hierarchy({ children: items })
-            .sum(function (d) { return Math.max(d.market_cap || 0, 1); })
+        var grouped = isGrouped();
+        var root = d3.hierarchy(buildHierarchyData(items))
+            .sum(function (d) { return d.children ? 0 : Math.max(d.market_cap || 0, 1); })
             .sort(function (a, b) { return b.value - a.value; });
 
         d3.treemap()
             .size([w, h])
-            .paddingInner(2)
-            .paddingOuter(0)
+            .paddingOuter(grouped ? 1 : 0)
+            .paddingTop(function (d) { return grouped && d.depth === 0 ? 0 : (grouped && d.data && d.data.isSector ? SECTOR_LABEL_HEIGHT : 0); })
+            .paddingInner(grouped ? 1.5 : 2)
             .round(true)(root);
 
         var svg = d3.select($svg)
@@ -131,6 +188,51 @@
 
         svg.selectAll('*').remove();
 
+        // ── 섹터 박스 (grouped 모드만) ──
+        if (grouped) {
+            var sectorG = svg.selectAll('g.tmap-sector')
+                .data(root.children || [])
+                .enter()
+                .append('g')
+                .attr('class', 'tmap-sector')
+                .attr('transform', function (d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; })
+                .style('cursor', 'pointer')
+                .on('click', function (e, d) {
+                    state.zoomedSector = d.data.name;
+                    updateBackBtn();
+                    render();
+                });
+
+            sectorG.append('rect')
+                .attr('class', 'tmap-sector__box')
+                .attr('width', function (d) { return Math.max(0, d.x1 - d.x0); })
+                .attr('height', function (d) { return Math.max(0, d.y1 - d.y0); })
+                .attr('fill', 'rgba(255,255,255,0.04)')
+                .attr('stroke', 'rgba(255,255,255,0.10)')
+                .attr('stroke-width', 1)
+                .attr('rx', 3);
+
+            sectorG.append('text')
+                .attr('class', 'tmap-sector__label')
+                .attr('x', 6)
+                .attr('y', 13)
+                .text(function (d) {
+                    var w = d.x1 - d.x0;
+                    var name = d.data.name || '기타';
+                    var max = Math.max(2, Math.floor(w / 7));
+                    if (name.length > max) name = name.slice(0, max - 1) + '…';
+                    var sum = 0; (d.children || []).forEach(function (c) { sum += c.value; });
+                    var cnt = (d.children || []).length;
+                    return name + '  ' + cnt;
+                });
+
+            sectorG.append('title').text(function (d) {
+                var sum = 0; (d.children || []).forEach(function (c) { sum += c.value; });
+                return d.data.name + ' · ' + (d.children || []).length + '종목 · 합산시총 ' + formatMcap(sum);
+            });
+        }
+
+        // ── 종목 셀 ──
         var cell = svg.selectAll('g.tmap-cell')
             .data(root.leaves())
             .enter()
@@ -140,6 +242,7 @@
             .attr('data-ticker', function (d) { return d.data.ticker; })
             .style('cursor', 'pointer')
             .on('click', function (e, d) {
+                e.stopPropagation();
                 if (d && d.data && d.data.ticker) {
                     window.location.href = '/stock/' + d.data.ticker;
                 }
@@ -192,13 +295,20 @@
         });
     }
 
+    function updateBackBtn() {
+        if (state.zoomedSector) {
+            $back.style.display = '';
+            $backLabel.textContent = state.zoomedSector;
+        } else {
+            $back.style.display = 'none';
+        }
+    }
+
     // ── 라이브 ring 애니메이션 ─────────────────────────
-    // 5초 동안 stroke-dashoffset RING_CIRCUM → 0 (채워짐). 매 fetch 시점에 리셋.
     function startRingFill() {
         if (!$ringFg) return;
         $ringFg.style.transition = 'none';
         $ringFg.style.strokeDashoffset = String(RING_CIRCUM);
-        // reflow 후 transition 적용
         void $ringFg.getBoundingClientRect();
         $ringFg.style.transition = 'stroke-dashoffset ' + (POLL_MS / 1000) + 's linear';
         $ringFg.style.strokeDashoffset = '0';
@@ -208,7 +318,6 @@
         $ringFg.style.transition = 'none';
         $ringFg.style.strokeDashoffset = String(RING_CIRCUM);
     }
-
     function setLiveState(open) {
         if (open) {
             $live.classList.remove('tmap-live--idle');
@@ -229,7 +338,7 @@
             })
             .then(function (data) {
                 if (!data || !data.items || !data.items.length) throw new Error('empty');
-                state.items = data.items;
+                state.items = ensureSector(data.items);
                 state.date = data.date || state.date;
                 state.marketStatus = data.market_status || state.marketStatus;
                 $date.textContent = formatDate(state.date) + ' 기준';
@@ -245,7 +354,12 @@
                 return r.json();
             })
             .then(function (data) {
-                state.items = (data && data.items) || [];
+                var items = (data && data.items) || [];
+                // sectorMap 캐시 — 이후 라이브 데이터 머지에 사용
+                items.forEach(function (it) {
+                    if (it.ticker && it.sector) state.sectorMap[it.ticker] = it.sector;
+                });
+                state.items = items;
                 state.date = (data && data.date) || '';
                 $date.textContent = formatDate(state.date) + ' 기준';
                 $loading.style.display = 'none';
@@ -253,14 +367,12 @@
             });
     }
 
-    // ── 메인 loop ──────────────────────────────────────
     function tick() {
         $clock.textContent = formatClock();
         var open = isMarketOpen();
-        // hidden 탭은 polling 건너뜀 (네트워크/Vercel 비용 절감)
         if (open && document.visibilityState !== 'hidden') {
             startRingFill();
-            fetchLive().catch(function () { /* 실패 시 다음 cycle 재시도 */ });
+            fetchLive().catch(function () {});
             setLiveState(true);
         } else {
             setLiveState(false);
@@ -268,45 +380,113 @@
     }
 
     function setFilter(f) {
-        if (state.filter === f) return;
+        if (state.filter === f && !state.zoomedSector) return;
         state.filter = f;
+        state.zoomedSector = null;
         $tabs.forEach(function (b) {
             b.classList.toggle('is-active', b.getAttribute('data-filter') === f);
         });
+        updateBackBtn();
         render();
     }
 
+    // ── 이미지 저장 (SVG → PNG) ────────────────────────
+    function savePNG() {
+        var svgEl = $svg;
+        var w = svgEl.clientWidth;
+        var h = svgEl.clientHeight;
+        if (w < 80 || h < 80) return;
+
+        var clone = svgEl.cloneNode(true);
+        clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        clone.setAttribute('width', w);
+        clone.setAttribute('height', h);
+
+        // PNG 출력용 인라인 스타일 (외부 CSS 는 PNG 에 반영 안 됨)
+        var styleCss = '\n'
+            + '.tmap-cell text { fill: #fff; pointer-events: none; user-select: none; font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; paint-order: stroke; stroke: rgba(0,0,0,.4); stroke-width: 0.6px; }\n'
+            + '.tmap-cell .tmap-name { font-weight: 700; letter-spacing: -.3px; }\n'
+            + '.tmap-cell .tmap-rate { font-weight: 600; font-feature-settings: "tnum"; opacity: .94; }\n'
+            + '.tmap-sector__label { fill: rgba(255,255,255,0.88); font-size: 11px; font-weight: 800; letter-spacing: -.2px; font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; }\n';
+        var styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+        styleEl.textContent = styleCss;
+        clone.insertBefore(styleEl, clone.firstChild);
+
+        var bg = getComputedStyle(document.body).backgroundColor || '#0a0b0f';
+        var svgStr = new XMLSerializer().serializeToString(clone);
+        var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+
+        var img = new Image();
+        img.onload = function () {
+            var scale = 2;
+            var canvas = document.createElement('canvas');
+            canvas.width = w * scale;
+            canvas.height = h * scale;
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            URL.revokeObjectURL(url);
+
+            canvas.toBlob(function (b) {
+                if (!b) return;
+                var dl = URL.createObjectURL(b);
+                var a = document.createElement('a');
+                var stamp = (state.date || '').replace(/[^0-9]/g, '') || 'live';
+                var fname = 'whyrise-treemap-' + stamp + '.png';
+                a.href = dl;
+                a.download = fname;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(dl);
+            }, 'image/png');
+        };
+        img.onerror = function () {
+            URL.revokeObjectURL(url);
+            $message.style.display = '';
+            $message.textContent = '이미지 변환 실패 — 다시 시도해주세요.';
+            setTimeout(function () { $message.style.display = 'none'; }, 2000);
+        };
+        img.src = url;
+    }
+
+    // ── 초기화 ─────────────────────────────────────────
     function init() {
         $tabs.forEach(function (b) {
             b.addEventListener('click', function () { setFilter(b.getAttribute('data-filter')); });
         });
+        if ($back) {
+            $back.addEventListener('click', function () {
+                state.zoomedSector = null;
+                updateBackBtn();
+                render();
+            });
+        }
+        if ($save) $save.addEventListener('click', savePNG);
 
-        // 시계는 1초마다 (5초 polling 과 무관, 항상 흐름)
         $clock.textContent = formatClock();
         setInterval(function () { $clock.textContent = formatClock(); }, 1000);
 
-        // 초기 로드: 장중이면 라이브, 아니면 정적 fallback
-        var firstLoad;
-        if (isMarketOpen()) {
-            firstLoad = fetchLive().catch(fetchStatic);
-        } else {
-            firstLoad = fetchStatic().catch(fetchLive);
-            setLiveState(false);
-        }
-        firstLoad.catch(function (err) {
-            $loading.style.display = 'none';
-            $message.style.display = '';
-            $message.textContent = '데이터를 불러올 수 없습니다 — ' + (err && err.message ? err.message : err);
-        });
+        // 정적 marketmap.json 을 먼저 받아 sectorMap 채운 뒤, 장중이면 라이브 덮어씀.
+        fetchStatic()
+            .catch(function () { /* 정적 없어도 일단 라이브 시도 */ })
+            .then(function () {
+                if (isMarketOpen()) return fetchLive().catch(function () {});
+            })
+            .catch(function (err) {
+                $loading.style.display = 'none';
+                $message.style.display = '';
+                $message.textContent = '데이터를 불러올 수 없습니다 — ' + (err && err.message ? err.message : err);
+            });
 
-        // 장중이면 5초 polling 시작
         if (isMarketOpen()) {
             startRingFill();
             setLiveState(true);
         }
         setInterval(tick, POLL_MS);
 
-        // 탭이 다시 보이면 즉시 1회 갱신
         document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible' && isMarketOpen()) tick();
         });

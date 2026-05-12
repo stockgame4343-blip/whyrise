@@ -926,6 +926,46 @@ body.page-treemap {
 .tmap-cell rect { transition: filter .12s, stroke .12s; }
 .tmap-cell:hover rect { filter: brightness(1.18); stroke: #fff; stroke-width: 1.5; }
 
+/* 섹터 박스 (전체 모드 nested treemap) */
+.tmap-sector__box { transition: stroke .12s, fill .12s; }
+.tmap-sector:hover .tmap-sector__box { stroke: rgba(255,255,255,0.28); fill: rgba(255,255,255,0.06); }
+.tmap-sector__label {
+    fill: rgba(255,255,255,0.88);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: -.2px;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* 뒤로 버튼 + 저장 버튼 */
+.tmap-back {
+    margin-left: 4px;
+    padding: 4px 10px;
+    background: var(--bg-tertiary, rgba(127,127,127,.10));
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    transition: background .15s, border-color .15s;
+}
+.tmap-back:hover { background: var(--bg-hover, rgba(127,127,127,.18)); border-color: var(--text-muted); }
+.tmap-bar__right { display: flex; align-items: center; gap: 8px; }
+.tmap-save {
+    width: 32px; height: 32px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--bg-tertiary, rgba(127,127,127,.10));
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+}
+.tmap-save:hover { background: var(--bg-hover, rgba(127,127,127,.18)); border-color: var(--text-muted); color: var(--text-primary); }
+
 @media (max-width: 768px) {
     .tmap-bar__inner { padding: 8px 14px; gap: 8px; }
     .tmap-clock { font-size: 12px; }
