@@ -119,7 +119,7 @@ body {
 
 /* ── Hero 검색 ────────────────────────────── */
 .hero {
-    padding: 64px 0 36px;
+    padding: 72px 0 44px;
     position: relative;
     z-index: 10;   /* 자동완성이 테이블 위로 올라오게 (top-bar=500 보다는 낮게) */
 }
@@ -152,28 +152,37 @@ body {
     border: none;
     outline: none;
     color: var(--text-primary);
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 700;
     font-family: inherit;
     min-width: 0;
     letter-spacing: -0.3px;
 }
 .hero--mini .hero__search-input { font-size: 17px; }
-.hero__search-input::placeholder { color: var(--text-muted); font-weight: 500; }
+.hero__search-input::placeholder {
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: opacity .25s ease;
+    opacity: 1;
+}
+.hero__search-input.placeholder-fading::placeholder { opacity: 0; }
 .hero__placeholder-suffix {
     color: var(--wr-accent);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
     flex-shrink: 0;
 }
 .hero--mini .hero__placeholder-suffix { font-size: 15px; }
 .hero__subtitle {
-    margin-top: 20px;
+    margin-top: 26px;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 15px;
     letter-spacing: -.1px;
 }
-.hero__subtitle strong { color: var(--text-primary); font-weight: 700; }
+.hero__subtitle strong {
+    color: var(--wr-accent);
+    font-weight: 700;
+}
 
 /* 자동완성 — 진한 글래스 (parent backdrop-filter 없으니 자식이 잘 작동) */
 .hero__suggest {
@@ -1406,9 +1415,9 @@ body.page-treemap {
     /* hero 검색바 — 한 줄 유지하되 폰트·패딩 축소 */
     .hero { padding: 32px 0 20px; }
     .hero__search-wrap { padding: 12px 18px; gap: 6px; border-radius: 999px; }
-    .hero__search-input { font-size: 17px; }
-    .hero__placeholder-suffix { font-size: 15px; }
-    .hero__subtitle { font-size: 12px; margin-top: 14px; padding: 0 10px; }
+    .hero__search-input { font-size: 19px; }
+    .hero__placeholder-suffix { font-size: 17px; }
+    .hero__subtitle { font-size: 13px; margin-top: 18px; padding: 0 10px; }
 
     /* toolbar — 좁은 폭에서 wrap */
     .toolbar--simple { flex-wrap: wrap; gap: 8px; padding: 14px 4px; }
