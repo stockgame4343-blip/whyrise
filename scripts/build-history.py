@@ -384,29 +384,47 @@ def build_sitemap(stock_history_dir: Path, public_dir: Path,
 
 # ── 리포트 집계 ─────────────────────────────────────────
 
-def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
-    """모든 ticker 인덱스 → 리포트용 사전 집계 1개 파일.
+_PERIOD_DAYS = {
+    'd1': 1,
+    'w1': 7,
+    'm1': 31,
+    'm3': 92,
+    'y1': 400,    # 1년치 전체
+}
 
-    위젯:
-      sector_top         — 섹터별 +15% 누적 TOP 10 (count·avg_rate·tickers)
-      limit_up_top       — 상한가 종목 TOP 20 (count_limit desc)
-      high_52w_top       — 52주 신고가 빈번 종목 TOP 20
-      recent_30d_top     — 최근 30일 핫 종목 TOP 20 (count_recent)
-      frequent_top       — 1년 +15% 자주 친 종목 TOP 50
-      reason_top         — 상승 이유 카테고리 분포 TOP 20 (filled 만)
+
+def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
+    """모든 ticker 인덱스 → 기간별(1D/1W/1M/3M/1Y) 리포트 집계.
+
+    각 기간 별로 위젯:
+      sector_top    — 섹터별 +15% 누적 TOP 10
+      limit_up_top  — 상한가 종목 TOP 20
+      high_52w_top  — 52주 신고가 빈번 TOP 20
+      frequent_top  — 그 기간 +15% 자주 친 종목 TOP 50
+      reason_top    — 상승 이유 카테고리 분포 TOP 20
     """
-    print('  build_report_summary ...')
+    print('  build_report_summary (5 periods) ...')
     files = [f for f in sorted(stock_history_dir.glob('*.json'))
              if f.name not in ('index.json', 'report-summary.json')]
     print(f'    인덱스 파일 {len(files)} 개 집계')
 
-    sector_acc: dict[str, dict] = {}      # sector → {count, sum_rate, tickers_set}
-    reason_acc: dict[str, int] = {}       # rise_reason → count
-    limit_up: list[dict] = []             # {ticker, name, count}
-    high_52w: list[dict] = []
-    recent_30d: list[dict] = []
-    frequent: list[dict] = []
-    total_events_15 = 0
+    today = date.today()
+    cutoff_yyyymmdd = {
+        k: (today - timedelta(days=days)).strftime('%Y%m%d')
+        for k, days in _PERIOD_DAYS.items()
+    }
+
+    # 기간별 누적 컨테이너
+    def _empty_period():
+        return {
+            'sector_acc': {},          # sector → {count, sum_rate, tickers}
+            'reason_acc': {},          # rise_reason → count
+            'limit_up': [],
+            'high_52w': [],
+            'frequent': [],
+            'total_events_15': 0,
+        }
+    periods = {k: _empty_period() for k in _PERIOD_DAYS}
 
     for f in files:
         try:
@@ -416,74 +434,98 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
         ticker = h.get('ticker') or ''
         name = h.get('name') or ticker
         events = h.get('events') or []
-        stats = h.get('stats') or {}
 
-        # 종목별 카운트 위젯
-        c15 = stats.get('count_15', 0)
-        c_limit = stats.get('count_limit', 0)
-        c_recent = stats.get('count_recent', 0)
-        if c_limit > 0:
-            limit_up.append({'ticker': ticker, 'name': name, 'count': c_limit})
-        if c_recent > 0:
-            recent_30d.append({'ticker': ticker, 'name': name, 'count': c_recent})
-        if c15 > 0:
-            frequent.append({'ticker': ticker, 'name': name, 'count': c15})
-            total_events_15 += c15
+        # 각 기간 별 ticker-level count 집계 (events 한 번 순회)
+        per_period_counts = {k: {'c15': 0, 'c_limit': 0, 'c_52w': 0} for k in _PERIOD_DAYS}
 
-        # 52주 신고가 — events 의 is_52w_high True 카운트
-        h52 = sum(1 for e in events if e.get('is_52w_high'))
-        if h52 > 0:
-            high_52w.append({'ticker': ticker, 'name': name, 'count': h52})
-
-        # 섹터 집계 — events 중 +15% 이상 만
         for e in events:
-            if (e.get('change_rate') or 0) < 15:
+            date_str = e.get('date', '')
+            rate = e.get('change_rate') or 0
+            if rate < 15:
                 continue
             sec = (e.get('sector') or '').strip()
-            if sec:
-                rec = sector_acc.setdefault(sec, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
-                rec['count'] += 1
-                rec['sum_rate'] += float(e.get('change_rate') or 0)
-                rec['tickers'].add(ticker)
-            # 이유 카테고리 — filled 만
-            if e.get('reason_status') == 'filled':
-                lbl = (e.get('rise_reason') or '').strip()
-                if lbl and lbl not in ('-', '상한가 — 사유 미수집'):
-                    reason_acc[lbl] = reason_acc.get(lbl, 0) + 1
+            reason_status = e.get('reason_status')
+            reason = (e.get('rise_reason') or '').strip()
+            is_high = bool(e.get('is_52w_high'))
+            is_limit = rate >= 29.9
 
-    # 정렬·TOP N
-    sector_top = sorted(
-        ({'sector': s, 'count': r['count'],
-          'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
-          'tickers': len(r['tickers'])}
-         for s, r in sector_acc.items()),
-        key=lambda x: -x['count'],
-    )[:10]
-    limit_up.sort(key=lambda x: -x['count'])
-    high_52w.sort(key=lambda x: -x['count'])
-    recent_30d.sort(key=lambda x: -x['count'])
-    frequent.sort(key=lambda x: -x['count'])
-    reason_top = sorted(
-        ({'reason': k, 'count': v} for k, v in reason_acc.items()),
-        key=lambda x: -x['count'],
-    )[:20]
+            for k, cutoff in cutoff_yyyymmdd.items():
+                if date_str < cutoff:
+                    continue
+                pp = periods[k]
+                # ticker 별 count (나중에 frequent/limit/52w 리스트 만들 때 사용)
+                per_period_counts[k]['c15'] += 1
+                if is_limit:
+                    per_period_counts[k]['c_limit'] += 1
+                if is_high:
+                    per_period_counts[k]['c_52w'] += 1
+                # 섹터 집계
+                if sec:
+                    rec = pp['sector_acc'].setdefault(sec, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
+                    rec['count'] += 1
+                    rec['sum_rate'] += float(rate)
+                    rec['tickers'].add(ticker)
+                # 이유 카테고리
+                if reason_status == 'filled' and reason and reason not in ('-', '상한가 — 사유 미수집'):
+                    pp['reason_acc'][reason] = pp['reason_acc'].get(reason, 0) + 1
+
+        # 종목별 리스트 (각 기간)
+        for k, counts in per_period_counts.items():
+            pp = periods[k]
+            if counts['c15'] > 0:
+                pp['frequent'].append({'ticker': ticker, 'name': name, 'count': counts['c15']})
+                pp['total_events_15'] += counts['c15']
+            if counts['c_limit'] > 0:
+                pp['limit_up'].append({'ticker': ticker, 'name': name, 'count': counts['c_limit']})
+            if counts['c_52w'] > 0:
+                pp['high_52w'].append({'ticker': ticker, 'name': name, 'count': counts['c_52w']})
+
+    # 정렬·TOP N — 기간별 분리
+    result_periods = {}
+    for k, pp in periods.items():
+        sector_top = sorted(
+            ({'sector': s, 'count': r['count'],
+              'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
+              'tickers': len(r['tickers'])}
+             for s, r in pp['sector_acc'].items()),
+            key=lambda x: -x['count'],
+        )[:10]
+        pp['limit_up'].sort(key=lambda x: -x['count'])
+        pp['high_52w'].sort(key=lambda x: -x['count'])
+        pp['frequent'].sort(key=lambda x: -x['count'])
+        reason_top = sorted(
+            ({'reason': r, 'count': v} for r, v in pp['reason_acc'].items()),
+            key=lambda x: -x['count'],
+        )[:20]
+        result_periods[k] = {
+            'total_events_15': pp['total_events_15'],
+            'sector_top': sector_top,
+            'limit_up_top': pp['limit_up'][:20],
+            'high_52w_top': pp['high_52w'][:20],
+            'frequent_top': pp['frequent'][:50],
+            'reason_top': reason_top,
+        }
 
     summary = {
         'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
         'total_tickers': len(files),
-        'total_events_15': total_events_15,
-        'sector_top': sector_top,
-        'limit_up_top': limit_up[:20],
-        'high_52w_top': high_52w[:20],
-        'recent_30d_top': recent_30d[:20],
-        'frequent_top': frequent[:50],
-        'reason_top': reason_top,
+        'periods': result_periods,
+        # 호환 (옛 프런트가 1년 키 그대로 참조 시) — y1 의 핵심 위젯 미러
+        'total_events_15': result_periods.get('y1', {}).get('total_events_15', 0),
+        'sector_top': result_periods.get('y1', {}).get('sector_top', []),
+        'limit_up_top': result_periods.get('y1', {}).get('limit_up_top', []),
+        'high_52w_top': result_periods.get('y1', {}).get('high_52w_top', []),
+        'recent_30d_top': result_periods.get('m1', {}).get('frequent_top', [])[:20],
+        'frequent_top': result_periods.get('y1', {}).get('frequent_top', []),
+        'reason_top': result_periods.get('y1', {}).get('reason_top', []),
     }
     output_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2),
                            encoding='utf-8')
-    print(f'    -> {output_path.name}: 섹터 {len(sector_top)} / 상한가 {min(20, len(limit_up))} '
-          f'/ 신고가 {min(20, len(high_52w))} / 최근30일 {min(20, len(recent_30d))} '
-          f'/ 자주오름 {min(50, len(frequent))} / 이유 {len(reason_top)}')
+    y1 = result_periods.get('y1', {})
+    d1 = result_periods.get('d1', {})
+    print(f"    -> {output_path.name}: 1Y 섹터 {len(y1.get('sector_top', []))} / "
+          f"상한가 {len(y1.get('limit_up_top', []))} / "
+          f"이유 {len(y1.get('reason_top', []))}  ·  1D 이벤트 {d1.get('total_events_15', 0)}")
 
 
 # ── 진입점 ─────────────────────────────────────────────
@@ -669,6 +711,35 @@ def build_estimate_only(args) -> int:
 
 # ── marketmap (시총 TOP 100 트리맵) ────────────────────
 
+def _fetch_industry_name_map() -> dict[str, str]:
+    """네이버 산업 그룹 목록 → industryCode(str) → industryName 매핑.
+
+    /api/stocks/industry 응답의 groups[] 에 no/name 쌍이 있음.
+    """
+    out: dict[str, str] = {}
+    try:
+        data = naver_client.fetch_json('https://m.stock.naver.com/api/stocks/industry')
+        for g in (data or {}).get('groups', []):
+            no = g.get('no')
+            name = g.get('name')
+            if no is not None and name:
+                out[str(no)] = name
+    except Exception:
+        pass
+    return out
+
+
+def _fetch_stock_industry_code(ticker: str) -> str:
+    """종목 integration API → industryCode (문자열). 실패 시 빈 문자열."""
+    try:
+        url = f'https://m.stock.naver.com/api/stock/{ticker}/integration'
+        data = naver_client.fetch_json(url)
+        code = (data or {}).get('industryCode')
+        return str(code) if code is not None else ''
+    except Exception:
+        return ''
+
+
 def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -> dict | None:
     """시총 TOP N (KOSPI) + 시총 TOP N (KOSDAQ) = 총 2N 종목 → marketmap.json.
 
@@ -693,14 +764,37 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
     top = [(it, 'KOSPI') for it in kospi_pool[:top_per_market]] + \
           [(it, 'KOSDAQ') for it in kosdaq_pool[:top_per_market]]
 
+    # 산업 코드 → 이름 매핑 (한 번)
+    industry_name = _fetch_industry_name_map()
+    print(f'  산업명 매핑: {len(industry_name)} 개')
+
+    # 기존 marketmap.json 에 있던 sector 캐시 — integration API 호출 줄이기 위함
+    existing_sector: dict[str, str] = {}
+    existing_path = target_dir / 'marketmap.json'
+    if existing_path.exists():
+        try:
+            old = json.loads(existing_path.read_text(encoding='utf-8'))
+            for old_it in (old.get('items') or []):
+                t = old_it.get('ticker')
+                s = old_it.get('sector')
+                if t and s:
+                    existing_sector[t] = s
+        except Exception:
+            pass
+
     items: list[dict] = []
     latest_date = ''
     skipped = 0
-    for it, market in top:
+    for idx, (it, market) in enumerate(top):
         ticker = it.get('itemCode') or ''
         name = it.get('stockName') or ticker
-        sector = it.get('industryName') or ''
         market_cap = _parse_int(it.get('marketValue')) or 0
+        # sector: (1) universe industryName → (2) 기존 캐시 → (3) integration API
+        sector = it.get('industryName') or existing_sector.get(ticker) or ''
+        if not sector and ticker and industry_name:
+            code = _fetch_stock_industry_code(ticker)
+            if code:
+                sector = industry_name.get(code, '')
         if not ticker or len(ticker) != 6 or market_cap <= 0:
             skipped += 1
             continue

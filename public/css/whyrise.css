@@ -1199,6 +1199,13 @@ body.page-treemap {
 /* ── 리포트 페이지 ────────────────────────── */
 .report-page { padding: 36px 0 56px; }
 .report-page__header { margin-bottom: 32px; }
+.report-page__head-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
 .report-page__title {
     font-size: 36px; font-weight: 800; letter-spacing: -1px;
 }

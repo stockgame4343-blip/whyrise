@@ -1,10 +1,20 @@
 /**
- * 리포트 페이지 — 사전 집계된 report-summary.json 한 번 fetch 후 위젯 렌더.
+ * 리포트 페이지 — 사전 집계된 report-summary.json 한 번 fetch 후
+ * 기간 토글(1D/1W/1M/3M/1Y) 별 위젯 렌더.
  *
  * 데이터: scripts/build-history.py 의 build_report_summary() 가 빌드 끝에 생성.
+ *   { periods: { d1, w1, m1, m3, y1 }, total_tickers, built_at, ... + y1 미러 }
  * 갱신: 평일 KST 09:10 / 15:40 incremental + 일요일 06:00 full 시 자동.
  */
 (function () {
+    var PERIODS = ['d1', 'w1', 'm1', 'm3', 'y1'];
+    var PERIOD_LABEL = { d1: '1일', w1: '1주', m1: '1개월', m3: '3개월', y1: '1년' };
+
+    var state = {
+        period: 'y1',
+        summary: null,
+    };
+
     function bindThemeToggle() {
         var $btn = document.getElementById('themeToggle');
         if (!$btn) return;
@@ -26,7 +36,6 @@
         return (n >= 0 ? '+' : '') + n.toFixed(1) + '%';
     }
 
-    /** 막대 너비 = count / max * 100% */
     function bar(count, max, label, sub) {
         var width = max ? (count / max * 100).toFixed(1) : 0;
         return '<li class="report-row">' +
@@ -70,15 +79,81 @@
 
     function fmtBuiltAt(iso) {
         if (!iso) return '';
-        // 'YYYY-MM-DDTHH:MM:SSZ' → 'YYYY-MM-DD HH:MM UTC' → KST 변환
         try {
             var d = new Date(iso);
             return d.toLocaleString('ko-KR', { hour12: false });
         } catch (e) { return iso; }
     }
 
+    /** summary 에서 현재 period 의 데이터 추출 (없으면 top-level fallback) */
+    function pickPeriod(summary, period) {
+        if (summary && summary.periods && summary.periods[period]) {
+            return summary.periods[period];
+        }
+        // 구 포맷 (periods 없는 빌드) — top-level 이 y1 미러
+        return {
+            total_events_15: summary.total_events_15,
+            sector_top: summary.sector_top || [],
+            limit_up_top: summary.limit_up_top || [],
+            high_52w_top: summary.high_52w_top || [],
+            frequent_top: summary.frequent_top || [],
+            reason_top: summary.reason_top || [],
+        };
+    }
+
+    function applyPeriod() {
+        if (!state.summary) return;
+        var data = pickPeriod(state.summary, state.period);
+        var label = PERIOD_LABEL[state.period] || '';
+
+        document.getElementById('reportTitle').textContent = label + ' 급등 분석';
+
+        var $sub = document.getElementById('reportSub');
+        if ($sub) {
+            $sub.innerHTML = '최근 ' + label + ' +15% 이상 사건 — ' +
+                '<strong>' + fmt(state.summary.total_tickers) + '</strong>종목 / ' +
+                '<strong>' + fmt(data.total_events_15) + '</strong>건';
+        }
+
+        // 위젯별 desc 도 기간 반영
+        var $descSector = document.getElementById('descSector');
+        if ($descSector) $descSector.textContent = label + ' 가장 자주 오른 섹터 — 평균 상승률·종목 수';
+        var $descLimit = document.getElementById('descLimit');
+        if ($descLimit) $descLimit.textContent = label + ' 누적 +29.9% 이상 횟수';
+        var $descHigh = document.getElementById('descHigh');
+        if ($descHigh) $descHigh.textContent = label + ' 신고가 갱신 횟수';
+        var $descFrequent = document.getElementById('descFrequent');
+        if ($descFrequent) $descFrequent.textContent = label + ' +15% 이상 누적 — 변동성 큰 종목군';
+        var $descReason = document.getElementById('descReason');
+        if ($descReason) $descReason.textContent = label + ' 자동 추정된 이유 라벨';
+
+        renderSectorTop(data.sector_top);
+        renderTickerList('limitTop', data.limit_up_top);
+        renderTickerList('high52w', data.high_52w_top);
+        renderTickerList('frequentTop', data.frequent_top, { showTicker: true });
+        renderReasonTop(data.reason_top);
+    }
+
+    function bindPeriodTabs() {
+        var $tabs = document.getElementById('reportPeriodTabs');
+        if (!$tabs) return;
+        $tabs.addEventListener('click', function (e) {
+            var btn = e.target.closest('button[data-p]');
+            if (!btn) return;
+            var p = btn.getAttribute('data-p');
+            if (!p || PERIODS.indexOf(p) < 0 || p === state.period) return;
+            state.period = p;
+            var btns = $tabs.querySelectorAll('button[data-p]');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.toggle('active', btns[i].getAttribute('data-p') === p);
+            }
+            applyPeriod();
+        });
+    }
+
     function init() {
         bindThemeToggle();
+        bindPeriodTabs();
 
         var $loading = document.getElementById('loading');
         var $msg = document.getElementById('message');
@@ -90,19 +165,12 @@
                 return r.json();
             })
             .then(function (s) {
+                state.summary = s;
                 $loading.style.display = 'none';
                 $grid.style.display = 'grid';
-                document.getElementById('totalTickers').textContent = fmt(s.total_tickers);
-                document.getElementById('totalEvents').textContent = fmt(s.total_events_15);
                 var $upd = document.getElementById('lastUpdated');
                 if ($upd && s.built_at) $upd.textContent = fmtBuiltAt(s.built_at) + ' 갱신';
-
-                renderSectorTop(s.sector_top);
-                renderTickerList('limitTop', s.limit_up_top);
-                renderTickerList('high52w', s.high_52w_top);
-                renderTickerList('recent30', s.recent_30d_top);
-                renderTickerList('frequentTop', s.frequent_top, { showTicker: true });
-                renderReasonTop(s.reason_top);
+                applyPeriod();
             })
             .catch(function (err) {
                 $loading.style.display = 'none';

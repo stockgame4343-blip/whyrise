@@ -39,8 +39,17 @@
 
     <main class="frame report-page">
         <header class="report-page__header">
-            <h1 class="report-page__title">1년 급등 분석</h1>
-            <p class="report-page__sub" id="reportSub">최근 1년간 +15% 이상 오른 사건의 누적 분포 — <strong id="totalTickers">-</strong>종목 / <strong id="totalEvents">-</strong>건</p>
+            <div class="report-page__head-row">
+                <h1 class="report-page__title" id="reportTitle">급등 분석</h1>
+                <div class="bubble-toggle" id="reportPeriodTabs" role="group" aria-label="기간">
+                    <button data-p="d1" type="button">1D</button>
+                    <button data-p="w1" type="button">1W</button>
+                    <button data-p="m1" type="button">1M</button>
+                    <button data-p="m3" type="button">3M</button>
+                    <button data-p="y1" class="active" type="button">1Y</button>
+                </div>
+            </div>
+            <p class="report-page__sub" id="reportSub"><strong id="totalTickers">-</strong>종목 / <strong id="totalEvents">-</strong>건 +15% 이상 사건</p>
         </header>
 
         <div class="loading" id="loading">집계 중...</div>
@@ -49,32 +58,27 @@
         <section class="report-grid" id="reportGrid" style="display:none;">
             <div class="report-card">
                 <h2 class="report-card__title">섹터별 +15% TOP 10</h2>
-                <p class="report-card__desc">1년간 가장 자주 오른 섹터 — 평균 상승률·종목 수 함께 표시</p>
+                <p class="report-card__desc" id="descSector">가장 자주 오른 섹터 — 평균 상승률·종목 수</p>
                 <ol class="report-list" id="sectorTop"></ol>
             </div>
             <div class="report-card">
                 <h2 class="report-card__title">상한가 명예의 전당 TOP 20</h2>
-                <p class="report-card__desc">1년간 +29.9% 이상 친 종목 누적 횟수</p>
+                <p class="report-card__desc" id="descLimit">+29.9% 이상 친 종목 누적 횟수</p>
                 <ol class="report-list" id="limitTop"></ol>
             </div>
             <div class="report-card">
                 <h2 class="report-card__title">52주 신고가 빈번 TOP 20</h2>
-                <p class="report-card__desc">1년 동안 신고가 갱신 횟수 누적</p>
+                <p class="report-card__desc" id="descHigh">신고가 갱신 횟수 누적</p>
                 <ol class="report-list" id="high52w"></ol>
-            </div>
-            <div class="report-card">
-                <h2 class="report-card__title">최근 30일 핫 종목</h2>
-                <p class="report-card__desc">최근 한 달간 +15% 이상 친 횟수 (실시간성)</p>
-                <ol class="report-list" id="recent30"></ol>
             </div>
             <div class="report-card report-card--wide">
                 <h2 class="report-card__title">자주 오르는 종목 TOP 50</h2>
-                <p class="report-card__desc">1년 누적 +15% 이상 횟수 — 변동성 큰 종목군</p>
+                <p class="report-card__desc" id="descFrequent">+15% 이상 횟수 — 변동성 큰 종목군</p>
                 <ol class="report-list report-list--two-col" id="frequentTop"></ol>
             </div>
             <div class="report-card report-card--wide">
                 <h2 class="report-card__title">상승 이유 카테고리 분포</h2>
-                <p class="report-card__desc">자동 추정된 이유 라벨 — 1년 누적</p>
+                <p class="report-card__desc" id="descReason">자동 추정된 이유 라벨</p>
                 <ol class="report-list" id="reasonTop"></ol>
             </div>
         </section>
