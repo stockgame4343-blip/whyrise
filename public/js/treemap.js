@@ -198,8 +198,8 @@
     }
 
     function isSectorGrouped() {
-        // 섹터 박스 hierarchy 사용 — 전체 모드 + 1d 일 때
-        return state.filter === 'ALL' && state.period === '1d';
+        // 전체 모드면 기간과 무관하게 섹터 박스 유지 — 셀 색만 기간 등락률로 바뀜
+        return state.filter === 'ALL';
     }
 
     // 면적 가중치 — 시총 너무 큰 종목 면적 절반 (시각 균형)
