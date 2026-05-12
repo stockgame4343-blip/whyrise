@@ -797,25 +797,27 @@ def _fetch_stock_industry_code(ticker: str) -> str:
         return ''
 
 
-def _calc_period_rates(ohlc_sorted: list[dict]) -> dict[str, float]:
-    """1d/1w/1m/3m/1y 등락률 (영업일 인덱스 기준)."""
-    n = len(ohlc_sorted)
-    if n < 2:
+def _calc_period_rates_at(ohlc_sorted: list[dict], idx: int) -> dict[str, float]:
+    """ohlc[idx] 시점 기준 1d/1w/1m/3m/1y 등락률."""
+    if idx < 1 or idx >= len(ohlc_sorted):
         return {}
-    cur = float(ohlc_sorted[-1].get('closePrice') or 0)
+    cur = float(ohlc_sorted[idx].get('closePrice') or 0)
     if cur <= 0:
         return {}
-    # 1주=5영업일, 1달=21, 3달=63, 1년=252
     windows = {'1d': 1, '1w': 5, '1m': 21, '3m': 63, '1y': 252}
     out: dict[str, float] = {}
     for k, w in windows.items():
-        idx = n - 1 - w
-        if idx < 0:
-            continue
-        prev = float(ohlc_sorted[idx].get('closePrice') or 0)
-        if prev > 0:
-            out[k] = calc_change_rate(prev, cur)
+        pi = idx - w
+        if pi >= 0:
+            pp = float(ohlc_sorted[pi].get('closePrice') or 0)
+            if pp > 0:
+                out[k] = calc_change_rate(pp, cur)
     return out
+
+
+def _calc_period_rates(ohlc_sorted: list[dict]) -> dict[str, float]:
+    """마지막 영업일 기준 다중 기간 등락률."""
+    return _calc_period_rates_at(ohlc_sorted, len(ohlc_sorted) - 1)
 
 
 def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -> dict | None:
@@ -946,8 +948,170 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
 
 
 def build_marketmap_only(args) -> int:
+    if getattr(args, 'backfill_days', 0) and args.backfill_days > 0:
+        build_marketmap_backfill(backfill_days=args.backfill_days)
+        return 0
     build_marketmap()
     return 0
+
+
+def _write_marketmap_snapshot(
+    target_date: str,
+    items_data: list[dict],
+    snap_dir: Path,
+) -> bool:
+    """주어진 영업일의 marketmap snapshot 저장.
+
+    items_data 각 원소: { ticker, name, market, sector, market_cap, ohlc_sorted }
+    """
+    items: list[dict] = []
+    for td in items_data:
+        ohlc = td['ohlc_sorted']
+        idx = -1
+        for j, r in enumerate(ohlc):
+            d = r.get('localDate', '')
+            if d and d <= target_date:
+                idx = j
+            else:
+                break
+        if idx < 1:
+            continue
+        cur = float(ohlc[idx].get('closePrice') or 0)
+        prev = float(ohlc[idx - 1].get('closePrice') or 0)
+        if cur <= 0 or prev <= 0:
+            continue
+        rates = _calc_period_rates_at(ohlc, idx)
+        items.append({
+            'ticker': td['ticker'],
+            'name': td['name'],
+            'market': td['market'],
+            'sector': td['sector'],
+            'market_cap': td['market_cap'],
+            'close_price': cur,
+            'change_rate': rates.get('1d', calc_change_rate(prev, cur)),
+            'rates': rates,
+        })
+    if not items:
+        return False
+    items.sort(key=lambda x: x['market_cap'], reverse=True)
+    output = {
+        'date': target_date,
+        'updated_at': datetime.now().isoformat(timespec='seconds'),
+        'items': items,
+    }
+    snap_path = snap_dir / f'{target_date}.json'
+    snap_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding='utf-8')
+    return True
+
+
+def build_marketmap_backfill(public_dir: Path | None = None,
+                              top_per_market: int = 100,
+                              backfill_days: int = 14) -> list[str]:
+    """과거 N 영업일치 marketmap 일별 스냅샷 일괄 빌드.
+
+    universe 는 오늘 기준 시총 TOP (KOSPI/KOSDAQ 각 N) 고정. OHLC 한 번 fetch
+    로 모든 일자 추출 — 정확한 그 시점 시총 TOP은 아니지만 시각화엔 충분.
+    """
+    target_dir = (public_dir or _REPO / 'public') / 'data'
+    target_dir.mkdir(parents=True, exist_ok=True)
+    snap_dir = target_dir / 'marketmap'
+    snap_dir.mkdir(parents=True, exist_ok=True)
+
+    today = date.today()
+    start = today - timedelta(days=500)
+    start_str = _yyyymmdd(start)
+    end_str = _yyyymmdd(today)
+
+    print(f'== marketmap backfill: 과거 {backfill_days} 영업일 ==')
+    universe = fetch_ticker_universe(stock_only=True)
+    kospi_pool = [x for x in universe if (x.get('sosok') == 'KOSPI' or
+                                            x.get('stockExchangeType', {}).get('code') == 'KS')]
+    kosdaq_pool = [x for x in universe if not (x.get('sosok') == 'KOSPI' or
+                                                 x.get('stockExchangeType', {}).get('code') == 'KS')]
+    kospi_pool.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
+    kosdaq_pool.sort(key=lambda x: _parse_int(x.get('marketValue')) or 0, reverse=True)
+    top = [(it, 'KOSPI') for it in kospi_pool[:top_per_market]] + \
+          [(it, 'KOSDAQ') for it in kosdaq_pool[:top_per_market]]
+
+    industry_name = _fetch_industry_name_map()
+    print(f'  산업명 매핑: {len(industry_name)} 개')
+    existing_sector: dict[str, str] = {}
+    existing_path = target_dir / 'marketmap.json'
+    if existing_path.exists():
+        try:
+            old = json.loads(existing_path.read_text(encoding='utf-8'))
+            for it in (old.get('items') or []):
+                if it.get('ticker') and it.get('sector'):
+                    existing_sector[it['ticker']] = it['sector']
+        except Exception:
+            pass
+
+    items_data: list[dict] = []
+    skipped = 0
+    for it, market in top:
+        ticker = it.get('itemCode') or ''
+        name = it.get('stockName') or ticker
+        market_cap = _parse_int(it.get('marketValue')) or 0
+        sector = it.get('industryName') or existing_sector.get(ticker) or ''
+        if not sector and ticker and industry_name:
+            code = _fetch_stock_industry_code(ticker)
+            if code:
+                sector = industry_name.get(code, '')
+        if not ticker or len(ticker) != 6 or market_cap <= 0:
+            skipped += 1
+            continue
+        try:
+            ohlc = naver_client.fetch_ohlc_daily(ticker, start_str, end_str)
+        except Exception:
+            skipped += 1
+            continue
+        ohlc_sorted = [r for r in (ohlc or []) if (r.get('closePrice') or 0) > 0]
+        ohlc_sorted.sort(key=lambda r: r.get('localDate', ''))
+        if len(ohlc_sorted) < 2:
+            skipped += 1
+            continue
+        items_data.append({
+            'ticker': ticker, 'name': name, 'market': market, 'sector': sector,
+            'market_cap': market_cap, 'ohlc_sorted': ohlc_sorted,
+        })
+
+    print(f'  OHLC 수집: {len(items_data)} 종목 (skip {skipped})')
+
+    # 영업일 합집합 — 마지막 N
+    all_dates = sorted({r.get('localDate') for td in items_data for r in td['ohlc_sorted']
+                        if r.get('localDate')})
+    target_dates = all_dates[-backfill_days:] if len(all_dates) > backfill_days else all_dates
+
+    saved: list[str] = []
+    for td_str in target_dates:
+        if len(td_str) == 8 and td_str.isdigit():
+            if _write_marketmap_snapshot(td_str, items_data, snap_dir):
+                saved.append(td_str)
+
+    # index.json 갱신
+    idx_path = snap_dir / 'index.json'
+    dates_existing: list[str] = []
+    if idx_path.exists():
+        try:
+            d_ = json.loads(idx_path.read_text(encoding='utf-8'))
+            if isinstance(d_, list):
+                dates_existing = d_
+        except Exception:
+            pass
+    dates_list = sorted(set(dates_existing) | set(saved), reverse=True)
+    idx_path.write_text(json.dumps(dates_list), encoding='utf-8')
+
+    # 최신 marketmap.json = 가장 최근 일자 스냅샷
+    if saved:
+        latest = max(saved)
+        latest_snap = snap_dir / f'{latest}.json'
+        if latest_snap.exists():
+            (target_dir / 'marketmap.json').write_text(
+                latest_snap.read_text(encoding='utf-8'), encoding='utf-8'
+            )
+
+    print(f'== 백필 완료: {len(saved)} 영업일 저장, 인덱스 {len(dates_list)} 일 ==')
+    return saved
 
 
 def build_bubbles_only(args) -> int:
@@ -1014,6 +1178,8 @@ def main() -> None:
                    help='OHLC 만 fetch 해서 bubbles.json 만 빠르게 빌드')
     p.add_argument('--marketmap-only', action='store_true',
                    help='시총 TOP 100 + 등락률 → marketmap.json 만 빠르게 빌드 (~30s)')
+    p.add_argument('--backfill-days', type=int, default=0,
+                   help='--marketmap-only 와 함께: 과거 N 영업일치 일별 스냅샷 일괄 빌드')
     p.add_argument('--report-only', action='store_true',
                    help='기존 stock-history/*.json 만 읽어서 report-summary.json 재집계 (~30s)')
     p.add_argument('--limit', type=int, default=0,
