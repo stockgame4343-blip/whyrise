@@ -387,12 +387,21 @@
         var i = state.dateIndex;
         if ($datePrev) $datePrev.disabled = i >= n - 1;
         if ($dateNext) $dateNext.disabled = i <= 0;
-        var d = state.currentDate;
-        var label = formatDate(d);
-        if (i === 0 && isMarketOpen()) label += ' · 실시간';
-        else if (i === 0) label += ' · 마감';
-        else label += ' · 과거';
-        $date.textContent = label;
+        $date.textContent = formatDate(state.currentDate);
+    }
+
+    function openDatePicker() {
+        if (!window.DatePicker || !state.availableDates || !state.availableDates.length) return;
+        DatePicker.open({
+            trigger: $date,
+            dates: state.availableDates,
+            current: state.currentDate,
+            onSelect: function (picked) {
+                var idx = state.availableDates.indexOf(picked);
+                if (idx < 0 || idx === state.dateIndex) return;
+                gotoDateIndex(idx);
+            },
+        });
     }
 
     // ── 라이브 ring 애니메이션 ─────────────────────────
@@ -667,6 +676,7 @@
         if ($save) $save.addEventListener('click', savePNG);
         if ($datePrev) $datePrev.addEventListener('click', function () { gotoDateIndex(state.dateIndex + 1); });
         if ($dateNext) $dateNext.addEventListener('click', function () { gotoDateIndex(state.dateIndex - 1); });
+        if ($date) $date.addEventListener('click', openDatePicker);
 
         $clock.textContent = formatClock();
         setInterval(function () { $clock.textContent = formatClock(); }, 1000);

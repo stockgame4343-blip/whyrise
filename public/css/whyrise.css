@@ -812,8 +812,9 @@ body.page-treemap {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 10px 20px;
-    max-width: 1600px;
+    /* 상단 .top-bar__inner.frame 의 max-width:1440 + padding:0 40px 과 좌우 정렬 일치 */
+    padding: 10px 40px;
+    max-width: 1440px;
     margin: 0 auto;
     flex-wrap: wrap;
 }
@@ -901,7 +902,114 @@ body.page-treemap {
 }
 .tmap-datenav__btn:hover:not(:disabled) { background: var(--bg-hover, rgba(127,127,127,.18)); color: var(--text-primary); }
 .tmap-datenav__btn:disabled { opacity: .35; cursor: not-allowed; }
-.tmap-datenav .tmap-date { padding: 0 8px; }
+.tmap-datenav .tmap-date {
+    padding: 2px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+.tmap-datenav .tmap-date:hover {
+    background: var(--bg-hover, rgba(127,127,127,.18));
+    color: var(--text-primary);
+}
+
+/* ── 캘린더 피커 (트리맵 날짜 점프) ── */
+.date-picker {
+    z-index: 1000;
+    background: var(--wr-bg-soft, var(--bg-secondary, #1f1f1f));
+    border: 1px solid var(--glass-border, rgba(255,255,255,0.12));
+    border-radius: 12px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    padding: 12px;
+    width: 280px;
+    font-family: inherit;
+    user-select: none;
+    animation: date-picker-in .12s ease-out;
+    color: var(--text-primary, #fff);
+}
+[data-theme="light"] .date-picker {
+    background: #fff;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+    color: #191919;
+}
+@keyframes date-picker-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.date-picker__head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
+}
+.date-picker__title { font-size: 13px; font-weight: 700; }
+.date-picker__nav {
+    background: none;
+    border: 1px solid var(--glass-border, rgba(255,255,255,0.14));
+    color: var(--text-secondary, rgba(255,255,255,0.6));
+    width: 26px; height: 26px; border-radius: 6px; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center; line-height: 1;
+    transition: all .15s; font-family: inherit;
+}
+.date-picker__nav:hover {
+    background: var(--glass-bg, rgba(255,255,255,0.05));
+    color: var(--text-primary, #fff);
+}
+.date-picker__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.date-picker__weekday {
+    font-size: 10px; font-weight: 600;
+    color: var(--text-muted, rgba(255,255,255,0.4));
+    text-align: center; padding: 4px 0;
+    letter-spacing: .5px; text-transform: uppercase;
+}
+.date-picker__weekday--sun { color: var(--wr-rise, #F04452); }
+.date-picker__weekday--sat { color: #3182F6; }
+.date-picker__cell {
+    background: none; border: none;
+    color: var(--text-secondary);
+    aspect-ratio: 1; border-radius: 6px; cursor: pointer;
+    font-size: 12px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; transition: all .12s; font-family: inherit;
+}
+.date-picker__cell--empty { cursor: default; visibility: hidden; }
+.date-picker__cell--sun { color: var(--wr-rise); }
+.date-picker__cell--sat { color: #3182F6; }
+.date-picker__cell--has { color: var(--text-primary); font-weight: 600; }
+.date-picker__cell--has:hover { background: var(--glass-bg, rgba(127,127,127,.10)); }
+.date-picker__cell--none {
+    color: var(--text-muted); opacity: .35; cursor: not-allowed; font-weight: 400;
+}
+.date-picker__cell--current {
+    background: var(--wr-accent, #3182F6) !important;
+    color: #fff !important; font-weight: 700;
+}
+.date-picker__cell--latest:not(.date-picker__cell--current)::after {
+    content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%; background: var(--wr-rise);
+}
+.date-picker__foot {
+    margin-top: 8px; padding-top: 8px;
+    border-top: 1px solid var(--glass-border);
+    display: flex; justify-content: center;
+}
+.date-picker__quick {
+    background: none; border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    padding: 5px 12px; border-radius: 6px; cursor: pointer;
+    font-size: 12px; font-weight: 600;
+    transition: all .15s; font-family: inherit;
+}
+.date-picker__quick:hover {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+}
+@media (max-width: 768px) {
+    .date-picker { width: 300px; padding: 14px; }
+    .date-picker__cell { font-size: 13px; }
+    .date-picker__nav { width: 32px; height: 32px; }
+}
 .tmap-tab {
     background: transparent;
     border: none;
