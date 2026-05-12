@@ -390,30 +390,84 @@
         render();
     }
 
-    // ── 이미지 저장 (SVG → PNG) ────────────────────────
+    // ── 이미지 저장 (SVG → PNG with 워터마크 헤더/푸터) ────
     function savePNG() {
         var svgEl = $svg;
         var w = svgEl.clientWidth;
         var h = svgEl.clientHeight;
         if (w < 80 || h < 80) return;
 
-        var clone = svgEl.cloneNode(true);
-        clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-        clone.setAttribute('width', w);
-        clone.setAttribute('height', h);
+        var HEAD_H = 44;
+        var FOOT_H = 26;
+        var totalH = h + HEAD_H + FOOT_H;
+        var isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+        var bgColor = isDark ? '#0a0b0f' : '#ffffff';
+        var fgColor = isDark ? '#ffffff' : '#0a0b0f';
+        var fgDim = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(10,11,15,0.55)';
+        var fontStack = '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif';
+        var ns = 'http://www.w3.org/2000/svg';
 
-        // PNG 출력용 인라인 스타일 (외부 CSS 는 PNG 에 반영 안 됨)
-        var styleCss = '\n'
-            + '.tmap-cell text { fill: #fff; pointer-events: none; user-select: none; font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; paint-order: stroke; stroke: rgba(0,0,0,.4); stroke-width: 0.6px; }\n'
+        function mkText(x, y, txt, opts) {
+            opts = opts || {};
+            var t = document.createElementNS(ns, 'text');
+            t.setAttribute('x', String(x));
+            t.setAttribute('y', String(y));
+            t.setAttribute('fill', opts.fill || fgColor);
+            t.setAttribute('font-size', String(opts.size || 12));
+            t.setAttribute('font-weight', String(opts.weight || 600));
+            t.setAttribute('font-family', fontStack);
+            if (opts.anchor) t.setAttribute('text-anchor', opts.anchor);
+            t.textContent = txt;
+            return t;
+        }
+
+        // 새 컨테이너
+        var wrap = document.createElementNS(ns, 'svg');
+        wrap.setAttribute('xmlns', ns);
+        wrap.setAttribute('width', String(w));
+        wrap.setAttribute('height', String(totalH));
+        wrap.setAttribute('viewBox', '0 0 ' + w + ' ' + totalH);
+
+        // 인라인 스타일 (외부 CSS 는 PNG 에 반영 안 됨)
+        var styleEl = document.createElementNS(ns, 'style');
+        styleEl.textContent = '\n'
+            + '.tmap-cell text { fill: #fff; pointer-events: none; user-select: none; font-family: ' + fontStack + '; paint-order: stroke; stroke: rgba(0,0,0,.4); stroke-width: 0.6px; }\n'
             + '.tmap-cell .tmap-name { font-weight: 700; letter-spacing: -.3px; }\n'
             + '.tmap-cell .tmap-rate { font-weight: 600; font-feature-settings: "tnum"; opacity: .94; }\n'
-            + '.tmap-sector__label { fill: rgba(255,255,255,0.88); font-size: 11px; font-weight: 800; letter-spacing: -.2px; font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; }\n';
-        var styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-        styleEl.textContent = styleCss;
-        clone.insertBefore(styleEl, clone.firstChild);
+            + '.tmap-sector__label { fill: rgba(255,255,255,0.88); font-size: 11px; font-weight: 800; letter-spacing: -.2px; font-family: ' + fontStack + '; }\n';
+        wrap.appendChild(styleEl);
 
-        var bg = getComputedStyle(document.body).backgroundColor || '#0a0b0f';
-        var svgStr = new XMLSerializer().serializeToString(clone);
+        // 배경
+        var bg = document.createElementNS(ns, 'rect');
+        bg.setAttribute('width', String(w));
+        bg.setAttribute('height', String(totalH));
+        bg.setAttribute('fill', bgColor);
+        wrap.appendChild(bg);
+
+        // 헤더: 좌측 로고·도메인, 우측 모드·날짜
+        var brand = mkText(20, HEAD_H - 16, '이거왜오름?', { size: 16, weight: 800, fill: fgColor });
+        wrap.appendChild(brand);
+        var domain = mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim });
+        wrap.appendChild(domain);
+
+        var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피 100' : '코스닥 100');
+        if (state.zoomedSector) modeText += ' · ' + state.zoomedSector;
+        var ctxStr = modeText + '   ·   ' + formatDate(state.date) + ' 기준';
+        wrap.appendChild(mkText(w - 20, HEAD_H - 16, ctxStr, { size: 13, weight: 700, fill: fgColor, anchor: 'end' }));
+
+        // 트리맵 클론 → translate(0, HEAD_H) 그룹
+        var clone = svgEl.cloneNode(true);
+        var mapG = document.createElementNS(ns, 'g');
+        mapG.setAttribute('transform', 'translate(0, ' + HEAD_H + ')');
+        while (clone.firstChild) mapG.appendChild(clone.firstChild);
+        wrap.appendChild(mapG);
+
+        // 푸터: 좌측 안내, 우측 도메인 워터마크
+        wrap.appendChild(mkText(20, totalH - 10, '면적 = 시가총액 · 색 = 등락률 · 한국 시총 TOP 200', { size: 10, weight: 600, fill: fgDim }));
+        wrap.appendChild(mkText(w - 20, totalH - 10, 'whyrise.vercel.app', { size: 10, weight: 700, fill: fgDim, anchor: 'end' }));
+
+        // SVG → PNG
+        var svgStr = new XMLSerializer().serializeToString(wrap);
         var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
         var url = URL.createObjectURL(blob);
 
@@ -422,9 +476,9 @@
             var scale = 2;
             var canvas = document.createElement('canvas');
             canvas.width = w * scale;
-            canvas.height = h * scale;
+            canvas.height = totalH * scale;
             var ctx = canvas.getContext('2d');
-            ctx.fillStyle = bg;
+            ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             URL.revokeObjectURL(url);
@@ -434,7 +488,9 @@
                 var dl = URL.createObjectURL(b);
                 var a = document.createElement('a');
                 var stamp = (state.date || '').replace(/[^0-9]/g, '') || 'live';
-                var fname = 'whyrise-treemap-' + stamp + '.png';
+                var modeStamp = state.filter.toLowerCase();
+                if (state.zoomedSector) modeStamp += '-' + state.zoomedSector;
+                var fname = 'whyrise-treemap-' + stamp + '-' + modeStamp + '.png';
                 a.href = dl;
                 a.download = fname;
                 document.body.appendChild(a);

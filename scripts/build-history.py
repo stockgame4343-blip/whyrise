@@ -714,11 +714,14 @@ def build_estimate_only(args) -> int:
 def _fetch_industry_name_map() -> dict[str, str]:
     """네이버 산업 그룹 목록 → industryCode(str) → industryName 매핑.
 
-    /api/stocks/industry 응답의 groups[] 에 no/name 쌍이 있음.
+    /api/stocks/industry?pageSize=200 응답의 groups[] 에 no/name 쌍.
+    기본 pageSize 20 이라 큰 값으로 명시.
     """
     out: dict[str, str] = {}
     try:
-        data = naver_client.fetch_json('https://m.stock.naver.com/api/stocks/industry')
+        data = naver_client.fetch_json(
+            'https://m.stock.naver.com/api/stocks/industry?page=1&pageSize=100'
+        )
         for g in (data or {}).get('groups', []):
             no = g.get('no')
             name = g.get('name')
