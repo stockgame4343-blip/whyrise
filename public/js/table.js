@@ -21,21 +21,16 @@ var WhyTable = (function () {
         if (!_sort.key) return rows.slice();
         var key = _sort.key;
         var arr = rows.slice();
-        // name 키 — dir: 'asc' 가나다 / 'desc' 가나다 역 / 'market-asc' KOSPI 먼저+가나다 / 'market-desc' KOSDAQ 먼저+가나다
+        // name 키 — 코스피/코스닥 정렬. asc: KOSPI 먼저, desc: KOSDAQ 먼저. 같은 시장 내 가나다.
         if (key === 'name') {
-            var marketSort = (_sort.dir === 'market-asc' || _sort.dir === 'market-desc');
-            var marketDir = (_sort.dir === 'market-asc') ? 1 : -1;
+            var marketDir = (_sort.dir === 'desc') ? -1 : 1;
             arr.sort(function (a, b) {
-                if (marketSort) {
-                    var ma = (a.market === 'KOSPI') ? 0 : 1;
-                    var mb = (b.market === 'KOSPI') ? 0 : 1;
-                    if (ma !== mb) return (ma - mb) * marketDir;
-                }
+                var ma = (a.market === 'KOSPI') ? 0 : 1;
+                var mb = (b.market === 'KOSPI') ? 0 : 1;
+                if (ma !== mb) return (ma - mb) * marketDir;
                 var na = (a.name || '').trim();
                 var nb = (b.name || '').trim();
-                if (na === nb) return 0;
-                var nameDir = (_sort.dir === 'desc') ? -1 : 1;
-                return (na.localeCompare(nb, 'ko-KR')) * nameDir;
+                return na.localeCompare(nb, 'ko-KR');
             });
             return arr;
         }
@@ -248,39 +243,22 @@ var WhyTable = (function () {
         tbody.innerHTML = html;
     }
 
-    /** 헤더 인디케이터(▲▼) 업데이트 — 활성 컬럼만 표시. */
+    /** 헤더 인디케이터 — 모든 헤더 항상 ▼ 디폴트, 활성 컬럼은 색만 강조 + 방향 따라 ▲▼ 전환. */
     function updateSortIndicators() {
         var ths = document.querySelectorAll('th.th-sort');
         for (var i = 0; i < ths.length; i++) {
             var th = ths[i];
             var key = th.getAttribute('data-sort-key');
             var ind = th.querySelector('.sort-ind');
-            if (key === _sort.key) {
+            var active = (key === _sort.key);
+            if (active) {
                 th.classList.add('th-sort--active');
-                if (ind) ind.textContent = indicatorText(key, _sort.dir);
+                if (ind) ind.textContent = _sort.dir === 'asc' ? '▲' : '▼';
             } else {
                 th.classList.remove('th-sort--active');
-                if (ind) ind.textContent = '';
+                if (ind) ind.textContent = '▼';
             }
         }
-    }
-
-    function indicatorText(key, dir) {
-        if (key === 'name') {
-            if (dir === 'asc') return '가↑';
-            if (dir === 'desc') return '가↓';
-            if (dir === 'market-asc') return 'K↑';
-            if (dir === 'market-desc') return 'D↑';
-        }
-        return dir === 'asc' ? '▲' : '▼';
-    }
-
-    /** name 키 4-state cycle: asc → desc → market-asc → market-desc → asc. */
-    function nextNameDir(cur) {
-        if (cur === 'asc') return 'desc';
-        if (cur === 'desc') return 'market-asc';
-        if (cur === 'market-asc') return 'market-desc';
-        return 'asc';
     }
 
     /** 헤더 클릭 → 정렬 키 토글 + 리렌더. */
@@ -302,14 +280,14 @@ var WhyTable = (function () {
             if (!th) return;
             var key = th.getAttribute('data-sort-key');
             if (!key) return;
+            // 같은 키 재클릭 → asc/desc 토글
             if (_sort.key === key) {
-                if (key === 'name') _sort.dir = nextNameDir(_sort.dir);
-                else _sort.dir = _sort.dir === 'desc' ? 'asc' : 'desc';
+                _sort.dir = _sort.dir === 'desc' ? 'asc' : 'desc';
             } else {
                 _sort.key = key;
-                if (key === 'name') _sort.dir = 'asc';
-                else if (key === 'sector' || key === 'reason') _sort.dir = 'asc';
-                else _sort.dir = 'desc';
+                // 기본 방향: sector/reason 은 asc(가나다), 나머지(상승률/거래대금/시총)는 desc
+                // name 은 KOSPI 먼저 = 'asc' (작은 값=KOSPI rank 0)
+                _sort.dir = (key === 'sector' || key === 'reason' || key === 'name') ? 'asc' : 'desc';
             }
             render(_currentData, _lastRatings, _lastOpts);
         });

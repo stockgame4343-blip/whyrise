@@ -345,7 +345,7 @@ body {
 .whyrise-table .col-cap { width: 100px; text-align: right; }
 .whyrise-table .col-sector { width: 130px; }
 
-/* 정렬 헤더 — 클릭 가능. 활성 컬럼만 ▲▼ 표시 (비활성은 빈공간) */
+/* 정렬 헤더 — 모든 컬럼 항상 ▼ 디폴트, 활성 시 액센트 색 + 방향 따라 ▲/▼ */
 .whyrise-table th.th-sort,
 .whyrise-table th.th-rank-reset {
     cursor: pointer;
@@ -357,11 +357,15 @@ body {
 .whyrise-table th.th-sort--active { color: var(--wr-accent); }
 .whyrise-table th.th-sort .sort-ind {
     display: inline-block;
-    margin-left: 4px;
-    font-size: 10px;
+    margin-left: 3px;
+    font-size: 8px;
     font-weight: 700;
     vertical-align: middle;
+    opacity: 0.35;
+    transition: opacity .15s;
 }
+.whyrise-table th.th-sort:hover .sort-ind { opacity: 0.7; }
+.whyrise-table th.th-sort--active .sort-ind { opacity: 1; }
 
 .whyrise-table .cell-rank {
     text-align: center;
