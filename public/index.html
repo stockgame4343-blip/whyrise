@@ -46,8 +46,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20260513i">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260513i">
+    <link rel="stylesheet" href="/css/style.css?v=20260513j">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260513j">
 </head>
 <body>
     <script>
@@ -61,10 +61,16 @@
     <header class="top-bar">
         <div class="top-bar__inner frame">
             <a class="top-bar__logo" href="/" aria-label="WAORNO 홈">
-                <svg class="top-bar__logo-svg" viewBox="0 0 172 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-                    <text x="0" y="29" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="900" fill="currentColor" letter-spacing="-1">WAORN</text>
-                    <circle cx="156" cy="18" r="14" fill="#3182F6"/>
-                    <path d="M 149.5 21 L 156 13.5 L 162.5 21" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg class="top-bar__logo-svg" viewBox="0 0 178 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                    <text x="0" y="29" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="900" fill="currentColor" letter-spacing="-1.5">WAORNO</text>
+                    <!-- O 두 개의 구멍을 currentColor 로 채움 (다크=흰, 라이트=검) -->
+                    <circle cx="52" cy="20" r="3.8" fill="currentColor"/>
+                    <circle cx="150" cy="20" r="3.8" fill="currentColor"/>
+                    <!-- 토스 블루 작은 상승 화살표 ↗ -->
+                    <g stroke="#3182F6" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="161" y1="14" x2="173" y2="2"/>
+                        <polyline points="166,2 173,2 173,9"/>
+                    </g>
                 </svg>
                 <span class="sr-only">WAORNO (이거왜오름?)</span>
             </a>
@@ -217,13 +223,13 @@
         </div>
     </div>
 
-    <script src="/js/api.js?v=20260513i"></script>
-    <script src="/js/date-picker.js?v=20260513i"></script>
-    <script src="/js/table.js?v=20260513i"></script>
-    <script src="/js/search.js?v=20260513i"></script>
-    <script src="/js/admin.js?v=20260513i"></script>
-    <script src="/js/whyrise.js?v=20260513i"></script>
-    <script src="/js/visitor.js?v=20260513i"></script>
+    <script src="/js/api.js?v=20260513j"></script>
+    <script src="/js/date-picker.js?v=20260513j"></script>
+    <script src="/js/table.js?v=20260513j"></script>
+    <script src="/js/search.js?v=20260513j"></script>
+    <script src="/js/admin.js?v=20260513j"></script>
+    <script src="/js/whyrise.js?v=20260513j"></script>
+    <script src="/js/visitor.js?v=20260513j"></script>
     <script>
     // placeholder rotation — 대표 종목 슥슥 회전
     (function () {
