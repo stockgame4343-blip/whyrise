@@ -77,31 +77,41 @@ body {
     letter-spacing: -.5px;
 }
 [data-theme="light"] .top-bar__logo { color: #191919; }
+/* top-bar — 스크롤 시 hero 가 뒤로 흘러가도록 sticky + z-index 최상위.
+   그래야 backdrop-filter 가 hero 컨텐츠 blur 처리. */
 .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 500;
     background: var(--glass-bg-strong);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     backdrop-filter: blur(24px) saturate(180%);
     border-bottom: 1px solid var(--glass-border);
 }
-.top-bar__link {
+.top-bar .top-bar__link {
     color: var(--text-secondary);
     padding: 6px 14px;
     border-radius: 8px;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    transition: all .2s;
+    transition: all .15s;
+    background: transparent;
 }
-.top-bar__link:hover {
+/* 회색 호버 — 둘 다 잘 보이도록 강화 (0.06 → 0.12) */
+.top-bar .top-bar__link:hover {
     color: var(--text-primary);
-    background: var(--glass-bg-strong);
+    background: rgba(255, 255, 255, 0.12);
 }
-.top-bar__link--active {
+[data-theme="light"] .top-bar .top-bar__link:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+.top-bar .top-bar__link--active {
     color: var(--wr-accent);
     background: var(--wr-accent-soft);
     font-weight: 700;
 }
-.top-bar__link--active:hover {
+.top-bar .top-bar__link--active:hover {
     color: var(--wr-accent);
     background: var(--wr-accent-bg);
 }
@@ -111,7 +121,7 @@ body {
 .hero {
     padding: 64px 0 36px;
     position: relative;
-    z-index: 100;   /* 자동완성 결과가 테이블 위로 올라오게 */
+    z-index: 10;   /* 자동완성이 테이블 위로 올라오게 (top-bar=500 보다는 낮게) */
 }
 .hero--mini { padding: 24px 0; }
 .hero__inner { text-align: center; }
