@@ -868,7 +868,7 @@ body.page-treemap {
     color: var(--text-muted, var(--text-secondary));
 }
 
-/* 필터 탭 */
+/* 필터·기간 탭 */
 .tmap-tabs {
     display: inline-flex;
     gap: 4px;
@@ -876,6 +876,32 @@ body.page-treemap {
     padding: 3px;
     border-radius: 8px;
 }
+.tmap-tabs--period { margin-right: 4px; }
+
+/* 날짜 네비 */
+.tmap-datenav {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    background: var(--bg-tertiary, rgba(127,127,127,.08));
+    padding: 2px 4px;
+    border-radius: 8px;
+}
+.tmap-datenav__btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    line-height: 1;
+    transition: background .15s, color .15s;
+}
+.tmap-datenav__btn:hover:not(:disabled) { background: var(--bg-hover, rgba(127,127,127,.18)); color: var(--text-primary); }
+.tmap-datenav__btn:disabled { opacity: .35; cursor: not-allowed; }
+.tmap-datenav .tmap-date { padding: 0 8px; }
 .tmap-tab {
     background: transparent;
     border: none;
@@ -927,15 +953,33 @@ body.page-treemap {
 .tmap-cell:hover rect { filter: brightness(1.18); stroke: #fff; stroke-width: 1.5; }
 
 /* 섹터 박스 (전체 모드 nested treemap) */
-.tmap-sector__box { transition: stroke .12s, fill .12s; }
-.tmap-sector:hover .tmap-sector__box { stroke: rgba(255,255,255,0.28); fill: rgba(255,255,255,0.06); }
+.tmap-sector__box {
+    transition: stroke .12s, fill .12s;
+    fill: rgba(255,255,255,0.04);
+    stroke: rgba(255,255,255,0.14);
+}
+[data-theme="light"] .tmap-sector__box {
+    fill: rgba(0,0,0,0.035);
+    stroke: rgba(0,0,0,0.16);
+}
+.tmap-sector:hover .tmap-sector__box {
+    stroke: rgba(255,255,255,0.34);
+    fill: rgba(255,255,255,0.08);
+}
+[data-theme="light"] .tmap-sector:hover .tmap-sector__box {
+    stroke: rgba(0,0,0,0.34);
+    fill: rgba(0,0,0,0.06);
+}
 .tmap-sector__label {
-    fill: rgba(255,255,255,0.88);
-    font-size: 11px;
+    fill: rgba(255,255,255,0.92);
+    font-size: 12px;
     font-weight: 800;
     letter-spacing: -.2px;
     pointer-events: none;
     user-select: none;
+}
+[data-theme="light"] .tmap-sector__label {
+    fill: rgba(20,22,28,0.92);
 }
 
 /* 뒤로 버튼 + 저장 버튼 */

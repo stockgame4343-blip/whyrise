@@ -1,24 +1,21 @@
 /**
  * 트리맵 — 한국 시총 TOP 100 KOSPI + 100 KOSDAQ.
  *
- * 모드
- *  - ALL    : 섹터별로 nested treemap (FinViz/kospd 스타일)
- *  - KOSPI  : 코스피 100 평면
- *  - KOSDAQ : 코스닥 100 평면
- *  - ALL 모드에서 섹터 박스 클릭 → zoom (그 섹터 종목만 평면)
+ * 모드/필터/기간
+ *  - filter: ALL / KOSPI / KOSDAQ
+ *  - period: 1d / 1w / 1m / 3m / 1y
+ *  - zoomedSector: 섹터 박스 클릭 → 그 섹터만
+ *  - currentDate: 오늘이면 라이브 (1d), 과거면 스냅샷
  *
- * 라이브 polling (15초)
- *  - 평일 KST 09:00 ~ 15:30 사이만. /api/marketmap (라이브 — sector 없음)
- *  - sector 는 /data/marketmap.json (정적 빌드) 의 ticker→sector 매핑을 클라
- *    측에서 머지.
+ * 데이터 소스
+ *  - /api/marketmap     (라이브, 1d만, 평일 KST 09:00~15:30)
+ *  - /data/marketmap.json (정적 빌드 — sector + rates[1d/1w/1m/3m/1y])
+ *  - /data/marketmap/{YYYYMMDD}.json (일별 스냅샷)
+ *  - /data/marketmap/index.json (날짜 인덱스, 최신순)
  *
- * 이미지 저장
- *  - SVG 클론 + 인라인 <style> 임베드 → Canvas 렌더 → PNG 다운로드 (retina 2×).
- *
- * 색감 (HSL)
- *  - 상승 강할수록 밝게 (L 32→62%), 하락 강할수록 어둡게 (L 32→9%).
- *
- * 면적 = market_cap, 클릭 = /stock/{ticker}.
+ * UI
+ *  - LIVE ring (15s) / 시계 / 날짜 네비 < > / 시간 탭 / 시장 탭 / 저장
+ *  - 섹터 그룹화는 ALL && 1d 모드에서만 활성. 다른 기간은 평면 (섹터 의미 약함)
  */
 (function () {
     'use strict';
@@ -28,7 +25,7 @@
     var OPEN_MIN = 9 * 60;
     var CLOSE_MIN = 15 * 60 + 30;
     var RING_CIRCUM = 2 * Math.PI * 9;
-    var SECTOR_LABEL_HEIGHT = 18;
+    var SECTOR_LABEL_HEIGHT = 22;
 
     var $stage = document.getElementById('tmapStage');
     var $svg = document.getElementById('tmapSvg');
@@ -39,17 +36,24 @@
     var $live = document.getElementById('tmapLive');
     var $liveLabel = document.getElementById('tmapLiveLabel');
     var $ringFg = document.querySelector('.tmap-live__ring-fg');
-    var $tabs = document.querySelectorAll('.tmap-tab');
+    var $marketTabs = document.querySelectorAll('.tmap-tabs--market .tmap-tab');
+    var $periodTabs = document.querySelectorAll('.tmap-tabs--period .tmap-tab');
     var $back = document.getElementById('tmapBack');
     var $backLabel = document.getElementById('tmapBackLabel');
     var $save = document.getElementById('tmapSave');
+    var $datePrev = document.getElementById('tmapDatePrev');
+    var $dateNext = document.getElementById('tmapDateNext');
 
     var state = {
-        items: [],         // 라이브 또는 정적. KOSPI 100 + KOSDAQ 100 = 200.
-        sectorMap: {},     // ticker → sector (정적 빌드에서 캐싱)
+        liveItems: [],         // 라이브 1d (오늘) — 시총·등락률 최신
+        snapshotItems: [],     // 정적 (오늘 or 과거) — rates 포함
+        sectorMap: {},         // ticker → sector
         filter: 'ALL',
+        period: '1d',
         zoomedSector: null,
-        date: '',
+        availableDates: [],    // 과거 스냅샷 일자 (최신순)
+        dateIndex: 0,          // 0 = 오늘(또는 최신)
+        currentDate: '',
         marketStatus: 'CLOSE',
     };
 
@@ -106,17 +110,43 @@
     }
 
     // ── 데이터 가공 ────────────────────────────────────
-    function ensureSector(items) {
-        // 라이브 응답에 sector 없으면 sectorMap 으로 채워줌
-        return items.map(function (it) {
-            if (it.sector) return it;
-            var sec = state.sectorMap[it.ticker] || '';
-            return Object.assign({}, it, { sector: sec });
+    function isLiveDate() {
+        // 오늘(또는 최신 일자) 보고 있을 때만 라이브 polling 적용
+        return state.dateIndex === 0;
+    }
+
+    function activeItems() {
+        // 1d 라이브 (오늘 + 1d 모드) 이면 라이브 우선, 아니면 스냅샷
+        var useLive = isLiveDate() && state.period === '1d' && state.liveItems.length;
+        var base = useLive ? state.liveItems : state.snapshotItems;
+        // 라이브엔 rates 없음 → snapshotItems 의 rates 머지
+        if (useLive && state.period !== '1d') {
+            // 시간 모드는 어차피 snapshot 사용. 여기 도달 X
+        }
+        return base.map(function (it) {
+            var copy = Object.assign({}, it);
+            // sector 머지
+            if (!copy.sector) copy.sector = state.sectorMap[copy.ticker] || '';
+            // 시간 모드 → change_rate 교체
+            if (state.period !== '1d') {
+                var rates = copy.rates || null;
+                if (!rates) {
+                    // 라이브 아이템에 rates 없으면 snapshot 매핑
+                    var snap = state.snapshotItems.find(function (s) { return s.ticker === copy.ticker; });
+                    rates = snap && snap.rates ? snap.rates : null;
+                }
+                if (rates && rates[state.period] != null) {
+                    copy.change_rate = rates[state.period];
+                } else {
+                    copy.change_rate = null; // 데이터 부족 — 보합 회색
+                }
+            }
+            return copy;
         });
     }
 
     function visibleItems() {
-        var items = state.items;
+        var items = activeItems();
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
             return items.filter(function (it) { return it.market === state.filter; });
         }
@@ -129,8 +159,8 @@
     }
 
     function isGrouped() {
-        // 전체 모드 + zoom 안 한 상태 = 섹터 그룹 hierarchy
-        return state.filter === 'ALL' && !state.zoomedSector;
+        // 전체 + 1d + zoom 안 한 상태에서만 섹터 그룹
+        return state.filter === 'ALL' && state.period === '1d' && !state.zoomedSector;
     }
 
     function buildHierarchyData(items) {
@@ -145,7 +175,6 @@
         var sectors = Object.keys(bySector).map(function (sec) {
             return { name: sec, isSector: true, children: bySector[sec] };
         });
-        // 섹터 합계 시총 내림차순
         sectors.sort(function (a, b) {
             var sa = a.children.reduce(function (s, x) { return s + (x.market_cap || 0); }, 0);
             var sb = b.children.reduce(function (s, x) { return s + (x.market_cap || 0); }, 0);
@@ -176,9 +205,14 @@
 
         d3.treemap()
             .size([w, h])
-            .paddingOuter(grouped ? 1 : 0)
-            .paddingTop(function (d) { return grouped && d.depth === 0 ? 0 : (grouped && d.data && d.data.isSector ? SECTOR_LABEL_HEIGHT : 0); })
-            .paddingInner(grouped ? 1.5 : 2)
+            .paddingOuter(grouped ? 4 : 0)
+            .paddingTop(function (d) {
+                if (!grouped) return 0;
+                if (d.depth === 0) return 0;
+                if (d.data && d.data.isSector) return SECTOR_LABEL_HEIGHT;
+                return 0;
+            })
+            .paddingInner(grouped ? 5 : 2)
             .round(true)(root);
 
         var svg = d3.select($svg)
@@ -188,7 +222,6 @@
 
         svg.selectAll('*').remove();
 
-        // ── 섹터 박스 (grouped 모드만) ──
         if (grouped) {
             var sectorG = svg.selectAll('g.tmap-sector')
                 .data(root.children || [])
@@ -207,23 +240,18 @@
                 .attr('class', 'tmap-sector__box')
                 .attr('width', function (d) { return Math.max(0, d.x1 - d.x0); })
                 .attr('height', function (d) { return Math.max(0, d.y1 - d.y0); })
-                .attr('fill', 'rgba(255,255,255,0.04)')
-                .attr('stroke', 'rgba(255,255,255,0.10)')
-                .attr('stroke-width', 1)
-                .attr('rx', 3);
+                .attr('rx', 4);
 
             sectorG.append('text')
                 .attr('class', 'tmap-sector__label')
-                .attr('x', 6)
-                .attr('y', 13)
+                .attr('x', 8)
+                .attr('y', 15)
                 .text(function (d) {
                     var w = d.x1 - d.x0;
                     var name = d.data.name || '기타';
-                    var max = Math.max(2, Math.floor(w / 7));
+                    var max = Math.max(2, Math.floor(w / 8));
                     if (name.length > max) name = name.slice(0, max - 1) + '…';
-                    var sum = 0; (d.children || []).forEach(function (c) { sum += c.value; });
-                    var cnt = (d.children || []).length;
-                    return name + '  ' + cnt;
+                    return name;
                 });
 
             sectorG.append('title').text(function (d) {
@@ -232,7 +260,6 @@
             });
         }
 
-        // ── 종목 셀 ──
         var cell = svg.selectAll('g.tmap-cell')
             .data(root.leaves())
             .enter()
@@ -291,7 +318,7 @@
             return d.data.name + ' (' + d.data.ticker + ')\n'
                 + d.data.market + (d.data.sector ? ' · ' + d.data.sector : '') + '\n'
                 + '시총: ' + formatMcap(d.data.market_cap) + '\n'
-                + formatRate(d.data.change_rate);
+                + state.period.toUpperCase() + ' ' + formatRate(d.data.change_rate);
         });
     }
 
@@ -302,6 +329,19 @@
         } else {
             $back.style.display = 'none';
         }
+    }
+
+    function updateDateNav() {
+        var n = state.availableDates.length;
+        var i = state.dateIndex;
+        if ($datePrev) $datePrev.disabled = i >= n - 1;
+        if ($dateNext) $dateNext.disabled = i <= 0;
+        var d = state.currentDate;
+        var label = formatDate(d);
+        if (i === 0 && isMarketOpen()) label += ' · 실시간';
+        else if (i === 0) label += ' · 마감';
+        else label += ' · 과거';
+        $date.textContent = label;
     }
 
     // ── 라이브 ring 애니메이션 ─────────────────────────
@@ -324,7 +364,7 @@
             $liveLabel.textContent = 'LIVE';
         } else {
             $live.classList.add('tmap-live--idle');
-            $liveLabel.textContent = 'CLOSED';
+            $liveLabel.textContent = isLiveDate() ? 'CLOSED' : 'PAST';
             stopRingFill();
         }
     }
@@ -338,59 +378,115 @@
             })
             .then(function (data) {
                 if (!data || !data.items || !data.items.length) throw new Error('empty');
-                state.items = ensureSector(data.items);
-                state.date = data.date || state.date;
+                state.liveItems = data.items;
                 state.marketStatus = data.market_status || state.marketStatus;
-                $date.textContent = formatDate(state.date) + ' 기준';
-                $loading.style.display = 'none';
-                render();
+                if (state.dateIndex === 0 && state.period === '1d') {
+                    render();
+                }
             });
     }
 
-    function fetchStatic() {
-        return fetch('/data/marketmap.json', { cache: 'no-cache' })
+    function fetchSnapshot(dateStr) {
+        // dateStr: YYYYMMDD or '' (= 최신)
+        var url = dateStr ? ('/data/marketmap/' + dateStr + '.json') : '/data/marketmap.json';
+        return fetch(url, { cache: 'no-cache' })
             .then(function (r) {
-                if (!r.ok) throw new Error('정적 데이터 없음');
+                if (!r.ok) throw new Error('스냅샷 없음: ' + url);
                 return r.json();
             })
             .then(function (data) {
                 var items = (data && data.items) || [];
-                // sectorMap 캐시 — 이후 라이브 데이터 머지에 사용
                 items.forEach(function (it) {
                     if (it.ticker && it.sector) state.sectorMap[it.ticker] = it.sector;
                 });
-                state.items = items;
-                state.date = (data && data.date) || '';
-                $date.textContent = formatDate(state.date) + ' 기준';
+                state.snapshotItems = items;
+                state.currentDate = (data && data.date) || dateStr || '';
+                updateDateNav();
                 $loading.style.display = 'none';
-                if (state.items.length) render();
+                if (items.length) render();
             });
+    }
+
+    function fetchDateIndex() {
+        return fetch('/data/marketmap/index.json', { cache: 'no-cache' })
+            .then(function (r) { return r.ok ? r.json() : []; })
+            .then(function (dates) {
+                state.availableDates = Array.isArray(dates) ? dates : [];
+                if (!state.availableDates.length && state.currentDate) {
+                    state.availableDates = [state.currentDate];
+                }
+                updateDateNav();
+            })
+            .catch(function () {});
     }
 
     function tick() {
         $clock.textContent = formatClock();
         var open = isMarketOpen();
-        if (open && document.visibilityState !== 'hidden') {
+        var live = isLiveDate() && state.period === '1d';
+        if (live && open && document.visibilityState !== 'hidden') {
             startRingFill();
             fetchLive().catch(function () {});
             setLiveState(true);
         } else {
             setLiveState(false);
         }
+        // 시계 영향만으로 라벨 갱신
+        updateDateNav();
     }
 
+    // ── 컨트롤 ────────────────────────────────────────
     function setFilter(f) {
         if (state.filter === f && !state.zoomedSector) return;
         state.filter = f;
         state.zoomedSector = null;
-        $tabs.forEach(function (b) {
+        $marketTabs.forEach(function (b) {
             b.classList.toggle('is-active', b.getAttribute('data-filter') === f);
         });
         updateBackBtn();
         render();
     }
+    function setPeriod(p) {
+        if (state.period === p) return;
+        state.period = p;
+        state.zoomedSector = null;
+        $periodTabs.forEach(function (b) {
+            b.classList.toggle('is-active', b.getAttribute('data-period') === p);
+        });
+        updateBackBtn();
+        // 1d 가 아니면 라이브 의미 없음 — ring 정지
+        setLiveState(p === '1d' && isLiveDate() && isMarketOpen());
+        render();
+    }
+    function gotoDateIndex(idx) {
+        if (idx < 0 || idx >= state.availableDates.length) return;
+        state.dateIndex = idx;
+        state.zoomedSector = null;
+        updateBackBtn();
+        var d = state.availableDates[idx];
+        if (idx === 0) {
+            // 최신 — 메인 marketmap.json
+            fetchSnapshot('');
+        } else {
+            fetchSnapshot(d);
+        }
+        setLiveState(idx === 0 && state.period === '1d' && isMarketOpen());
+    }
 
-    // ── 이미지 저장 (SVG → PNG with 워터마크 헤더/푸터) ────
+    // ── 다크/라이트 토글 ──────────────────────────────
+    function bindThemeToggle() {
+        var btn = document.getElementById('themeToggle');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+            var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+            var next = cur === 'light' ? 'dark' : 'light';
+            if (next === 'light') document.documentElement.setAttribute('data-theme', 'light');
+            else document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', next);
+        });
+    }
+
+    // ── 이미지 저장 (SVG → PNG with 워터마크) ─────────
     function savePNG() {
         var svgEl = $svg;
         var w = svgEl.clientWidth;
@@ -421,52 +517,44 @@
             return t;
         }
 
-        // 새 컨테이너
         var wrap = document.createElementNS(ns, 'svg');
         wrap.setAttribute('xmlns', ns);
         wrap.setAttribute('width', String(w));
         wrap.setAttribute('height', String(totalH));
         wrap.setAttribute('viewBox', '0 0 ' + w + ' ' + totalH);
 
-        // 인라인 스타일 (외부 CSS 는 PNG 에 반영 안 됨)
         var styleEl = document.createElementNS(ns, 'style');
+        var sectorLabelFill = isDark ? 'rgba(255,255,255,0.92)' : 'rgba(20,22,28,0.92)';
         styleEl.textContent = '\n'
             + '.tmap-cell text { fill: #fff; pointer-events: none; user-select: none; font-family: ' + fontStack + '; paint-order: stroke; stroke: rgba(0,0,0,.4); stroke-width: 0.6px; }\n'
             + '.tmap-cell .tmap-name { font-weight: 700; letter-spacing: -.3px; }\n'
             + '.tmap-cell .tmap-rate { font-weight: 600; font-feature-settings: "tnum"; opacity: .94; }\n'
-            + '.tmap-sector__label { fill: rgba(255,255,255,0.88); font-size: 11px; font-weight: 800; letter-spacing: -.2px; font-family: ' + fontStack + '; }\n';
+            + '.tmap-sector__label { fill: ' + sectorLabelFill + '; font-size: 12px; font-weight: 800; letter-spacing: -.2px; font-family: ' + fontStack + '; }\n';
         wrap.appendChild(styleEl);
 
-        // 배경
         var bg = document.createElementNS(ns, 'rect');
         bg.setAttribute('width', String(w));
         bg.setAttribute('height', String(totalH));
         bg.setAttribute('fill', bgColor);
         wrap.appendChild(bg);
 
-        // 헤더: 좌측 로고·도메인, 우측 모드·날짜
-        var brand = mkText(20, HEAD_H - 16, '이거왜오름?', { size: 16, weight: 800, fill: fgColor });
-        wrap.appendChild(brand);
-        var domain = mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim });
-        wrap.appendChild(domain);
+        wrap.appendChild(mkText(20, HEAD_H - 16, '이거왜오름?', { size: 16, weight: 800, fill: fgColor }));
+        wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
 
-        var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피 100' : '코스닥 100');
+        var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
         if (state.zoomedSector) modeText += ' · ' + state.zoomedSector;
-        var ctxStr = modeText + '   ·   ' + formatDate(state.date) + ' 기준';
+        var ctxStr = state.period.toUpperCase() + ' · ' + modeText + '   ·   ' + formatDate(state.currentDate);
         wrap.appendChild(mkText(w - 20, HEAD_H - 16, ctxStr, { size: 13, weight: 700, fill: fgColor, anchor: 'end' }));
 
-        // 트리맵 클론 → translate(0, HEAD_H) 그룹
         var clone = svgEl.cloneNode(true);
         var mapG = document.createElementNS(ns, 'g');
         mapG.setAttribute('transform', 'translate(0, ' + HEAD_H + ')');
         while (clone.firstChild) mapG.appendChild(clone.firstChild);
         wrap.appendChild(mapG);
 
-        // 푸터: 좌측 안내, 우측 도메인 워터마크
-        wrap.appendChild(mkText(20, totalH - 10, '면적 = 시가총액 · 색 = 등락률 · 한국 시총 TOP 200', { size: 10, weight: 600, fill: fgDim }));
+        wrap.appendChild(mkText(20, totalH - 10, '면적 = 시가총액 · 색 = ' + state.period.toUpperCase() + ' 등락률', { size: 10, weight: 600, fill: fgDim }));
         wrap.appendChild(mkText(w - 20, totalH - 10, 'whyrise.vercel.app', { size: 10, weight: 700, fill: fgDim, anchor: 'end' }));
 
-        // SVG → PNG
         var svgStr = new XMLSerializer().serializeToString(wrap);
         var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
         var url = URL.createObjectURL(blob);
@@ -487,8 +575,8 @@
                 if (!b) return;
                 var dl = URL.createObjectURL(b);
                 var a = document.createElement('a');
-                var stamp = (state.date || '').replace(/[^0-9]/g, '') || 'live';
-                var modeStamp = state.filter.toLowerCase();
+                var stamp = (state.currentDate || '').replace(/[^0-9]/g, '') || 'live';
+                var modeStamp = state.filter.toLowerCase() + '-' + state.period;
                 if (state.zoomedSector) modeStamp += '-' + state.zoomedSector;
                 var fname = 'whyrise-treemap-' + stamp + '-' + modeStamp + '.png';
                 a.href = dl;
@@ -510,8 +598,13 @@
 
     // ── 초기화 ─────────────────────────────────────────
     function init() {
-        $tabs.forEach(function (b) {
+        bindThemeToggle();
+
+        $marketTabs.forEach(function (b) {
             b.addEventListener('click', function () { setFilter(b.getAttribute('data-filter')); });
+        });
+        $periodTabs.forEach(function (b) {
+            b.addEventListener('click', function () { setPeriod(b.getAttribute('data-period')); });
         });
         if ($back) {
             $back.addEventListener('click', function () {
@@ -521,15 +614,21 @@
             });
         }
         if ($save) $save.addEventListener('click', savePNG);
+        if ($datePrev) $datePrev.addEventListener('click', function () { gotoDateIndex(state.dateIndex + 1); });
+        if ($dateNext) $dateNext.addEventListener('click', function () { gotoDateIndex(state.dateIndex - 1); });
 
         $clock.textContent = formatClock();
         setInterval(function () { $clock.textContent = formatClock(); }, 1000);
 
-        // 정적 marketmap.json 을 먼저 받아 sectorMap 채운 뒤, 장중이면 라이브 덮어씀.
-        fetchStatic()
-            .catch(function () { /* 정적 없어도 일단 라이브 시도 */ })
+        // 1) 정적 latest marketmap.json → sectorMap + 첫 렌더
+        // 2) 일별 index 로딩
+        // 3) 장중이면 라이브 시도
+        fetchSnapshot('')
+            .then(fetchDateIndex)
             .then(function () {
-                if (isMarketOpen()) return fetchLive().catch(function () {});
+                if (isMarketOpen() && state.period === '1d' && state.dateIndex === 0) {
+                    return fetchLive().catch(function () {});
+                }
             })
             .catch(function (err) {
                 $loading.style.display = 'none';
@@ -537,14 +636,16 @@
                 $message.textContent = '데이터를 불러올 수 없습니다 — ' + (err && err.message ? err.message : err);
             });
 
-        if (isMarketOpen()) {
+        if (isMarketOpen() && state.period === '1d' && state.dateIndex === 0) {
             startRingFill();
             setLiveState(true);
+        } else {
+            setLiveState(false);
         }
         setInterval(tick, POLL_MS);
 
         document.addEventListener('visibilitychange', function () {
-            if (document.visibilityState === 'visible' && isMarketOpen()) tick();
+            if (document.visibilityState === 'visible') tick();
         });
 
         var rt;

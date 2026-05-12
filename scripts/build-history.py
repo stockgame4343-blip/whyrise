@@ -770,16 +770,42 @@ def _fetch_stock_industry_code(ticker: str) -> str:
         return ''
 
 
+def _calc_period_rates(ohlc_sorted: list[dict]) -> dict[str, float]:
+    """1d/1w/1m/3m/1y 등락률 (영업일 인덱스 기준)."""
+    n = len(ohlc_sorted)
+    if n < 2:
+        return {}
+    cur = float(ohlc_sorted[-1].get('closePrice') or 0)
+    if cur <= 0:
+        return {}
+    # 1주=5영업일, 1달=21, 3달=63, 1년=252
+    windows = {'1d': 1, '1w': 5, '1m': 21, '3m': 63, '1y': 252}
+    out: dict[str, float] = {}
+    for k, w in windows.items():
+        idx = n - 1 - w
+        if idx < 0:
+            continue
+        prev = float(ohlc_sorted[idx].get('closePrice') or 0)
+        if prev > 0:
+            out[k] = calc_change_rate(prev, cur)
+    return out
+
+
 def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -> dict | None:
     """시총 TOP N (KOSPI) + 시총 TOP N (KOSDAQ) = 총 2N 종목 → marketmap.json.
 
-    장 마감 후 백업/SEO 용도 정적 데이터. 라이브 시세는 /api/marketmap 으로 polling.
+    각 종목에 1d/1w/1m/3m/1y 다중 기간 등락률 포함.
+    매일 빌드 시 marketmap/{YYYYMMDD}.json 일별 스냅샷 + marketmap/index.json
+    날짜 인덱스 갱신 — 과거 날짜 트리맵 조회용.
+
+    장 마감 후 백업/SEO 용도 정적 데이터. 라이브 1d 시세는 /api/marketmap polling.
     """
     target_dir = (public_dir or _REPO / 'public') / 'data'
     target_dir.mkdir(parents=True, exist_ok=True)
 
     today = date.today()
-    start = today - timedelta(days=14)
+    # 1년치 + 여유 (영업일 252개 확보)
+    start = today - timedelta(days=380)
     start_str = _yyyymmdd(start)
     end_str = _yyyymmdd(today)
 
@@ -846,6 +872,7 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
             continue
         if d > latest_date:
             latest_date = d
+        rates = _calc_period_rates(ohlc_sorted)
         items.append({
             'ticker': ticker,
             'name': name,
@@ -853,7 +880,8 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
             'sector': sector,
             'market_cap': market_cap,
             'close_price': cur,
-            'change_rate': calc_change_rate(prev, cur),
+            'change_rate': rates.get('1d', calc_change_rate(prev, cur)),
+            'rates': rates,
         })
 
     items.sort(key=lambda x: x['market_cap'], reverse=True)
@@ -864,6 +892,28 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
     }
     out_path = target_dir / 'marketmap.json'
     out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding='utf-8')
+
+    # 일별 스냅샷 — marketmap/{YYYYMMDD}.json + index.json (날짜 인덱스, 최신순)
+    if latest_date:
+        snap_dir = target_dir / 'marketmap'
+        snap_dir.mkdir(parents=True, exist_ok=True)
+        snap_path = snap_dir / f'{latest_date}.json'
+        snap_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding='utf-8')
+        idx_path = snap_dir / 'index.json'
+        dates: list[str] = []
+        if idx_path.exists():
+            try:
+                dates = json.loads(idx_path.read_text(encoding='utf-8'))
+                if not isinstance(dates, list):
+                    dates = []
+            except Exception:
+                dates = []
+        if latest_date not in dates:
+            dates.append(latest_date)
+        dates = sorted(set(dates), reverse=True)
+        idx_path.write_text(json.dumps(dates), encoding='utf-8')
+        print(f'  스냅샷: marketmap/{latest_date}.json (인덱스 {len(dates)}일)')
+
     print(f'== marketmap 완료: {len(items)} 종목 (skip {skipped}), 기준일 {latest_date} ==')
     return output
 

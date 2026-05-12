@@ -55,14 +55,25 @@
                     <span class="tmap-live__label" id="tmapLiveLabel">LIVE</span>
                 </span>
                 <span class="tmap-clock" id="tmapClock">--:--:--</span>
-                <span class="tmap-date" id="tmapDate">— 기준</span>
+                <div class="tmap-datenav" id="tmapDateNav">
+                    <button class="tmap-datenav__btn" id="tmapDatePrev" aria-label="이전 영업일">‹</button>
+                    <span class="tmap-date" id="tmapDate">—</span>
+                    <button class="tmap-datenav__btn" id="tmapDateNext" aria-label="다음 영업일">›</button>
+                </div>
                 <button class="tmap-back" id="tmapBack" style="display:none;" title="전체로">← <span id="tmapBackLabel">전체</span></button>
             </div>
             <div class="tmap-bar__right">
-                <div class="tmap-tabs" role="tablist">
+                <div class="tmap-tabs tmap-tabs--period" role="tablist" aria-label="기간">
+                    <button class="tmap-tab is-active" data-period="1d">1D</button>
+                    <button class="tmap-tab" data-period="1w">1W</button>
+                    <button class="tmap-tab" data-period="1m">1M</button>
+                    <button class="tmap-tab" data-period="3m">3M</button>
+                    <button class="tmap-tab" data-period="1y">1Y</button>
+                </div>
+                <div class="tmap-tabs tmap-tabs--market" role="tablist" aria-label="시장">
                     <button class="tmap-tab is-active" data-filter="ALL">전체</button>
-                    <button class="tmap-tab" data-filter="KOSPI">코스피 100</button>
-                    <button class="tmap-tab" data-filter="KOSDAQ">코스닥 100</button>
+                    <button class="tmap-tab" data-filter="KOSPI">코스피</button>
+                    <button class="tmap-tab" data-filter="KOSDAQ">코스닥</button>
                 </div>
                 <button class="tmap-save" id="tmapSave" title="PNG 이미지로 저장" aria-label="이미지 저장">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
