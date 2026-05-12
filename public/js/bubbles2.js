@@ -106,20 +106,18 @@
         return Math.round(v).toLocaleString() + '억';
     }
 
-    // 외곽 그라데이션용 색 — 글래스 안쪽은 거의 투명, 외곽에만 색이 살짝 퍼짐
+    // 외곽 색 (alpha 없는 hsl). stop-opacity 로 그라데이션 알파 조절.
     function edgeColorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) {
-            return 'hsla(220, 6%, 55%, 0.50)';
+            return 'hsl(220, 6%, 58%)';
         }
         var r = Math.max(-5, Math.min(5, rate));
         var t = Math.abs(r) / 5;
-        var a = 0.60 + t * 0.30;
         if (r > 0) {
-            return 'hsla(0, ' + (78 + t * 14) + '%, ' + (54 + t * 6) + '%, ' + a + ')';
+            return 'hsl(0, ' + (80 + t * 12) + '%, ' + (54 + t * 6) + '%)';
         }
-        return 'hsla(220, ' + (66 + t * 14) + '%, ' + (50 - t * 6) + '%, ' + a + ')';
+        return 'hsl(220, ' + (70 + t * 12) + '%, ' + (52 - t * 4) + '%)';
     }
-    // 호환용 — savePNG 등에서 단일 fill 필요할 때
     function colorFor(rate) { return edgeColorFor(rate); }
 
     // ── 데이터 ────────────────────────────────────────
@@ -147,9 +145,11 @@
     function visibleItems() {
         var items = activeItems();
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
-            return items.filter(function (it) { return it.market === state.filter; });
+            items = items.filter(function (it) { return it.market === state.filter; });
         }
-        return items;
+        // 어느 필터든 시총 상위 100 까지만 (전체 모드는 KOSPI+KOSDAQ 통합에서 100)
+        items.sort(function (a, b) { return (b.market_cap || 0) - (a.market_cap || 0); });
+        return items.slice(0, 100);
     }
 
     // ── 버블 렌더 ──────────────────────────────────────
@@ -170,9 +170,9 @@
         // 반지름 — 모든 버블의 면적 합이 화면 면적의 fill_ratio 만큼 차도록 스케일 산출.
         var totalMcap = 0;
         items.forEach(function (d) { totalMcap += (d.market_cap || 0); });
-        var fillRatio = 0.85;                    // 화면의 85% 면적 점유 — 빽빽
-        var rMax = Math.min(w, h) * 0.22;        // 단변의 22% 상한
-        var rMin = Math.max(10, Math.min(w, h) * 0.018);
+        var fillRatio = 0.72;                    // 화면 72% — 너무 꽉 안 차게
+        var rMax = Math.min(w, h) * 0.22;
+        var rMin = Math.max(10, Math.min(w, h) * 0.022);
         var k = totalMcap > 0
             ? Math.sqrt((w * h * fillRatio) / (Math.PI * totalMcap))
             : Math.min(w, h) * 0.05;
@@ -201,7 +201,7 @@
             .attr('viewBox', '0 0 ' + w + ' ' + h);
         svg.selectAll('*').remove();
 
-        // 글래스 외곽 그라데이션 — 안쪽 거의 투명 / 외곽에만 색이 살짝 비침
+        // 외곽 → 투명 그라데이션 — 안쪽 거의 투명, 외곽 가장자리만 색
         var defs = svg.append('defs');
         nodes.forEach(function (d, i) {
             var gid = 'bmap2-g-' + i;
@@ -209,11 +209,12 @@
             var edge = edgeColorFor(d.change_rate);
             var grad = defs.append('radialGradient')
                 .attr('id', gid)
-                .attr('cx', '50%').attr('cy', '50%').attr('r', '55%');
-            grad.append('stop').attr('offset', '0%').attr('stop-color', 'rgba(255,255,255,0.06)');
-            grad.append('stop').attr('offset', '55%').attr('stop-color', 'rgba(255,255,255,0.04)');
-            grad.append('stop').attr('offset', '85%').attr('stop-color', edge).attr('stop-opacity', 0.45);
-            grad.append('stop').attr('offset', '100%').attr('stop-color', edge);
+                .attr('cx', '50%').attr('cy', '50%').attr('r', '50%');
+            grad.append('stop').attr('offset', '0%').attr('stop-color', edge).attr('stop-opacity', 0);
+            grad.append('stop').attr('offset', '45%').attr('stop-color', edge).attr('stop-opacity', 0);
+            grad.append('stop').attr('offset', '78%').attr('stop-color', edge).attr('stop-opacity', 0.18);
+            grad.append('stop').attr('offset', '95%').attr('stop-color', edge).attr('stop-opacity', 0.55);
+            grad.append('stop').attr('offset', '100%').attr('stop-color', edge).attr('stop-opacity', 0.85);
         });
 
         // 클릭(작은 이동) vs 드래그(큰 이동) 구분용
@@ -328,9 +329,9 @@
                 .strength(-12)
                 .distanceMax(120))
             .force('collide', d3.forceCollide()
-                .radius(function (d) { return d.r + 1.5; })
+                .radius(function (d) { return d.r + 3; })
                 .strength(1.0)
-                .iterations(2))
+                .iterations(4))
             .force('drift', driftForce)
             .on('tick', function () {
                 node.attr('transform', function (d) {
