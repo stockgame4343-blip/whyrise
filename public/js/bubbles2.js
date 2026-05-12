@@ -274,25 +274,40 @@
                 + (PERIOD_LABEL[state.period] || state.period) + ' ' + formatRate(d.change_rate);
         });
 
-        // force simulation — 중심 끌어당김 없이 외곽 분산 + collide 만으로 패킹
-        // 각 노드에 부여한 targetX/Y (황금각 분산) 으로 약하게 끌어 → 화면 전체로 흩어짐.
+        // 끊임없이 둥둥 떠다니는 force simulation
+        //  - alphaDecay 0 → 영원히 안 멈춤 (백그라운드 탭에서는 visibility 로 정지)
+        //  - velocityDecay 0.16 → 가벼운 마찰, 너무 빠르지 않게
+        //  - drift force → 매 tick 약한 random velocity 더해서 살랑살랑 부유
+        //  - collide + 경계 반사 → 부딪히면 살짝 튕김
         if (simulation) simulation.stop();
+        var DRIFT = 0.06;
+        function driftForce() {
+            for (var i = 0; i < nodes.length; i++) {
+                nodes[i].vx += (Math.random() - 0.5) * DRIFT;
+                nodes[i].vy += (Math.random() - 0.5) * DRIFT;
+            }
+        }
         simulation = d3.forceSimulation(nodes)
-            .alphaDecay(0.020)
+            .alpha(1)
+            .alphaMin(0)
+            .alphaDecay(0)
+            .velocityDecay(0.16)
             .force('charge', d3.forceManyBody().strength(-1.2))
             .force('collide', d3.forceCollide()
                 .radius(function (d) { return d.r + 1.5; })
-                .strength(1.0)
+                .strength(0.95)
                 .iterations(2))
-            .force('x', d3.forceX(function (d) { return d.targetX; }).strength(0.05))
-            .force('y', d3.forceY(function (d) { return d.targetY; }).strength(0.05))
+            .force('x', d3.forceX(function (d) { return d.targetX; }).strength(0.018))
+            .force('y', d3.forceY(function (d) { return d.targetY; }).strength(0.018))
+            .force('drift', driftForce)
             .on('tick', function () {
                 node.attr('transform', function (d) {
                     var pad = d.r;
-                    if (d.x < pad) d.x = pad;
-                    if (d.x > w - pad) d.x = w - pad;
-                    if (d.y < pad) d.y = pad;
-                    if (d.y > h - pad) d.y = h - pad;
+                    // 경계 부딪힘 — 살짝 튕김 (반발 60%)
+                    if (d.x < pad) { d.x = pad; d.vx = Math.abs(d.vx) * 0.6; }
+                    if (d.x > w - pad) { d.x = w - pad; d.vx = -Math.abs(d.vx) * 0.6; }
+                    if (d.y < pad) { d.y = pad; d.vy = Math.abs(d.vy) * 0.6; }
+                    if (d.y > h - pad) { d.y = h - pad; d.vy = -Math.abs(d.vy) * 0.6; }
                     return 'translate(' + d.x + ',' + d.y + ')';
                 });
             });
@@ -574,7 +589,13 @@
         setInterval(tick, POLL_MS);
 
         document.addEventListener('visibilitychange', function () {
-            if (document.visibilityState === 'visible') tick();
+            if (document.visibilityState === 'visible') {
+                if (simulation) simulation.alpha(1).restart();
+                tick();
+            } else {
+                // 백그라운드 탭에서는 CPU 절약 — 시뮬레이션 정지
+                if (simulation) simulation.stop();
+            }
         });
 
         var rt;
