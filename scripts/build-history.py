@@ -371,8 +371,8 @@ _PERIOD_DAYS = {
 def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
     """모든 ticker 인덱스 → 기간별(1D/1W/1M/3M/1Y) 리포트 집계.
 
-    잡주(시총 작음) 제거를 위해 marketmap.json (KOSPI+KOSDAQ 시총 TOP 200) 에
-    포함된 ticker 만 종목 위젯에 노출. 섹터/이유는 전체 universe 그대로.
+    전체 universe 포함 (시총 필터 없음 — 다양한 상승 종목 노출이 사이트 컨셉).
+    marketmap.json 은 시총 정보 보조 용도만.
 
     각 기간 별로 위젯:
       sector_top    — 섹터별 +15% 누적 TOP 10
@@ -386,7 +386,7 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
              if f.name not in ('index.json', 'report-summary.json')]
     print(f'    인덱스 파일 {len(files)} 개 집계')
 
-    # marketmap.json — 시총 TOP 종목 ticker set (잡주 필터)
+    # marketmap.json — 시총 정보 보조 (필터 X, 표시용)
     marketmap_path = stock_history_dir.parent / 'marketmap.json'
     mkt_cap_lookup: dict[str, int] = {}
     if marketmap_path.exists():
@@ -397,7 +397,7 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                 c = it.get('market_cap')
                 if t and c:
                     mkt_cap_lookup[t] = int(c)
-            print(f'    시총 lookup: {len(mkt_cap_lookup)} 종목 (잡주 필터용)')
+            print(f'    시총 lookup: {len(mkt_cap_lookup)} 종목 (표시용)')
         except Exception as e:
             print(f'    marketmap.json 로드 실패: {e}')
 
@@ -488,12 +488,9 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                 if reason_status == 'filled' and reason and reason not in ('-', '상한가 — 사유 미수집'):
                     pp['reason_acc'][reason] = pp['reason_acc'].get(reason, 0) + 1
 
-        # 종목별 리스트 (각 기간) — 잡주 제거: marketmap (시총 TOP 200) 포함 ticker 만
-        # 마켓맵 없으면 (개발 환경) 전체 통과 (필터 생략)
-        in_marketmap = (not mkt_cap_lookup) or (ticker in mkt_cap_lookup)
+        # 종목별 리스트 — 전체 universe 포함 (시총 필터 없음).
+        # 시총 정보는 marketmap (TOP 200) 에 있는 것만 표시, 그 외는 0.
         market_cap = mkt_cap_lookup.get(ticker, 0)
-        if not in_marketmap:
-            continue
         for k, counts in per_period_counts.items():
             pp = periods[k]
             if counts['c15'] > 0:

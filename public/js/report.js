@@ -126,7 +126,7 @@
         var label = PERIOD_LABEL[state.period] || '';
         var $sub = document.getElementById('reportSub');
         if ($sub) {
-            $sub.innerHTML = '<strong>' + label + '</strong> · 종목 리스트는 KOSPI/KOSDAQ 시총 TOP 200 한정 (잡주 제외)';
+            $sub.innerHTML = '<strong>' + label + '</strong> · KOSPI/KOSDAQ 전체 universe 기준';
         }
         // 헤더 4개 stat — 전체 universe (잡주 포함) 통계
         var $e1 = document.getElementById('statTotalEvents');
