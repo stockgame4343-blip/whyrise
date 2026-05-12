@@ -16,7 +16,9 @@
 (function () {
     'use strict';
 
-    var POLL_MS = 5000;
+    // polling 주기 — 사용자 늘면 60000(60s) 로 조정 가능. ring 채워지는 속도도
+    // 같이 따라감 (transition duration = POLL_MS / 1000 s).
+    var POLL_MS = 15000;
     var KST_OFFSET = 9 * 60;            // 분 단위
     var OPEN_MIN = 9 * 60;              // 09:00
     var CLOSE_MIN = 15 * 60 + 30;       // 15:30
