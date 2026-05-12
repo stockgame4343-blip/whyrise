@@ -415,7 +415,7 @@
             $liveLabel.textContent = 'LIVE';
         } else {
             $live.classList.add('tmap-live--idle');
-            $liveLabel.textContent = isLiveDate() ? 'CLOSED' : 'PAST';
+            $liveLabel.textContent = '장 마감';
             stopRingFill();
         }
     }

@@ -943,6 +943,17 @@ body.page-treemap {
     color: var(--text-primary);
     box-shadow: 0 1px 3px rgba(0,0,0,.18);
 }
+/* 라이트 모드 — 회색 위 회색이라 잘 안보여 활성 탭 완전 흰색 + 약한 보더로 도드라지게 */
+[data-theme="light"] .tmap-tabs {
+    background: rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .tmap-tab.is-active {
+    background: #ffffff;
+    color: var(--wr-accent);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] .tmap-tab:not(.is-active) { color: #6b7684; }
+[data-theme="light"] .tmap-tab:not(.is-active):hover { color: #191919; background: rgba(255, 255, 255, 0.6); }
 
 /* 캔버스 */
 .tmap-stage {
@@ -977,7 +988,9 @@ body.page-treemap {
 .tmap-cell:hover rect { filter: brightness(1.18); stroke: #fff; stroke-width: 1.5; }
 
 /* ── 버블맵2 — 떠다니는 원형 버블 ── */
-.bmap2-stage { /* tmap-stage 기반, 추가 룰 */ }
+/* 라이트 모드여도 버블 필드는 항상 다크 — 흰 배경 위 버블색이 잘 안 보임 */
+.bmap2-stage { background: #0a0b0f; }
+[data-theme="light"] .bmap2-stage { background: #0a0b0f; }
 .bmap2-node text {
     fill: #fff;
     pointer-events: none;
