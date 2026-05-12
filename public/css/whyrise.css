@@ -684,6 +684,8 @@ body {
     backdrop-filter: blur(20px);
     border-top: 1px solid var(--glass-border);
 }
+/* disclaimer — style.css 의 max-width:600 override (한 줄 더 흡수) */
+.footer__disclaimer { max-width: 820px; }
 /* ── 기간 토글 (report 페이지 등에서 사용) ─────── */
 .bubble-toggle {
     display: inline-flex;
