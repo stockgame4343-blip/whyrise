@@ -604,6 +604,13 @@
         // SVG 클론 — 외부 CSS 가 PNG 에 적용 안 되므로 fill/stroke 를 인라인
         // attribute 로 직접 설정 (인라인 <style> 보다 안정적)
         var clone = svgEl.cloneNode(true);
+        var sectorBoxFill = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.035)';
+        var sectorBoxStroke = isDark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.16)';
+        clone.querySelectorAll('.tmap-sector__box').forEach(function (el) {
+            el.setAttribute('fill', sectorBoxFill);
+            el.setAttribute('stroke', sectorBoxStroke);
+            el.setAttribute('stroke-width', '1');
+        });
         clone.querySelectorAll('.tmap-sector__label').forEach(function (el) {
             el.setAttribute('fill', sectorLabelFill);
             el.setAttribute('font-family', fontStack);
