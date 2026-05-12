@@ -436,7 +436,11 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
         events = h.get('events') or []
 
         # 각 기간 별 ticker-level count 집계 (events 한 번 순회)
-        per_period_counts = {k: {'c15': 0, 'c_limit': 0, 'c_52w': 0} for k in _PERIOD_DAYS}
+        per_period_counts = {
+            k: {'c15': 0, 'c_limit': 0, 'c_52w': 0,
+                'sum_rate': 0.0, 'max_rate': 0.0}
+            for k in _PERIOD_DAYS
+        }
 
         for e in events:
             date_str = e.get('date', '')
@@ -453,8 +457,10 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                 if date_str < cutoff:
                     continue
                 pp = periods[k]
-                # ticker 별 count (나중에 frequent/limit/52w 리스트 만들 때 사용)
                 per_period_counts[k]['c15'] += 1
+                per_period_counts[k]['sum_rate'] += float(rate)
+                if rate > per_period_counts[k]['max_rate']:
+                    per_period_counts[k]['max_rate'] = float(rate)
                 if is_limit:
                     per_period_counts[k]['c_limit'] += 1
                 if is_high:
@@ -469,30 +475,51 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                 if reason_status == 'filled' and reason and reason not in ('-', '상한가 — 사유 미수집'):
                     pp['reason_acc'][reason] = pp['reason_acc'].get(reason, 0) + 1
 
-        # 종목별 리스트 (각 기간)
+        # 종목별 리스트 (각 기간) — count + 누적상승률(sum_rate) + 최고가일률(max_rate) 함께 저장
         for k, counts in per_period_counts.items():
             pp = periods[k]
             if counts['c15'] > 0:
-                pp['frequent'].append({'ticker': ticker, 'name': name, 'count': counts['c15']})
+                entry = {
+                    'ticker': ticker,
+                    'name': name,
+                    'count': counts['c15'],
+                    'sum_rate': round(counts['sum_rate'], 2),
+                    'max_rate': round(counts['max_rate'], 2),
+                }
+                pp['frequent'].append(entry)
                 pp['total_events_15'] += counts['c15']
             if counts['c_limit'] > 0:
-                pp['limit_up'].append({'ticker': ticker, 'name': name, 'count': counts['c_limit']})
+                pp['limit_up'].append({
+                    'ticker': ticker, 'name': name,
+                    'count': counts['c_limit'],
+                    'sum_rate': round(counts['sum_rate'], 2),
+                    'max_rate': round(counts['max_rate'], 2),
+                })
             if counts['c_52w'] > 0:
-                pp['high_52w'].append({'ticker': ticker, 'name': name, 'count': counts['c_52w']})
+                pp['high_52w'].append({
+                    'ticker': ticker, 'name': name,
+                    'count': counts['c_52w'],
+                    'sum_rate': round(counts['sum_rate'], 2),
+                    'max_rate': round(counts['max_rate'], 2),
+                })
 
     # 정렬·TOP N — 기간별 분리
+    # 종목 위젯은 누적상승률(sum_rate) desc, 동률은 count desc 보조 정렬
+    # → 1D 에선 sum_rate 가 그날 상승률, 1Y 에선 누적 합. "많이 오른 종목" 우선.
     result_periods = {}
     for k, pp in periods.items():
         sector_top = sorted(
             ({'sector': s, 'count': r['count'],
               'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
+              'sum_rate': round(r['sum_rate'], 2),
               'tickers': len(r['tickers'])}
              for s, r in pp['sector_acc'].items()),
-            key=lambda x: -x['count'],
+            key=lambda x: (-x['sum_rate'], -x['count']),
         )[:10]
-        pp['limit_up'].sort(key=lambda x: -x['count'])
-        pp['high_52w'].sort(key=lambda x: -x['count'])
-        pp['frequent'].sort(key=lambda x: -x['count'])
+        ticker_sort_key = lambda x: (-x['sum_rate'], -x['count'])
+        pp['limit_up'].sort(key=ticker_sort_key)
+        pp['high_52w'].sort(key=ticker_sort_key)
+        pp['frequent'].sort(key=ticker_sort_key)
         reason_top = sorted(
             ({'reason': r, 'count': v} for r, v in pp['reason_acc'].items()),
             key=lambda x: -x['count'],

@@ -36,35 +36,45 @@
         return (n >= 0 ? '+' : '') + n.toFixed(1) + '%';
     }
 
-    function bar(count, max, label, sub) {
-        var width = max ? (count / max * 100).toFixed(1) : 0;
+    /** bar — primary 수치(상승률) 강조, count 는 우측 보조 라벨로. */
+    function bar(primary, max, label, sub, countLabel) {
+        var width = max ? (primary / max * 100).toFixed(1) : 0;
         return '<li class="report-row">' +
             '<div class="report-row__bar" style="width:' + width + '%"></div>' +
             '<div class="report-row__content">' +
             '<span class="report-row__label">' + label + '</span>' +
             (sub ? '<span class="report-row__sub">' + sub + '</span>' : '') +
-            '<span class="report-row__count">' + count + '회</span>' +
+            '<span class="report-row__count">' + countLabel + '</span>' +
             '</div></li>';
     }
 
     function renderSectorTop(rows) {
         var $el = document.getElementById('sectorTop');
         if (!rows || !rows.length) { $el.innerHTML = '<li class="report-empty">데이터 없음</li>'; return; }
-        var max = Math.max.apply(null, rows.map(function (r) { return r.count; }));
+        var hasSumRate = rows[0].sum_rate != null;
+        var key = hasSumRate ? 'sum_rate' : 'count';
+        var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
         $el.innerHTML = rows.map(function (r) {
             var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목';
-            return bar(r.count, max, r.sector, sub);
+            var countLabel = hasSumRate ? pct(r.sum_rate) : (r.count + '회');
+            return bar(r[key], max, r.sector, sub, countLabel);
         }).join('');
     }
 
     function renderTickerList(elId, rows, opts) {
         var $el = document.getElementById(elId);
         if (!rows || !rows.length) { $el.innerHTML = '<li class="report-empty">데이터 없음</li>'; return; }
-        var max = Math.max.apply(null, rows.map(function (r) { return r.count; }));
+        var hasSumRate = rows[0].sum_rate != null;
+        var key = hasSumRate ? 'sum_rate' : 'count';
+        var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
         $el.innerHTML = rows.map(function (r) {
             var label = '<a href="/stock/' + r.ticker + '">' + r.name + '</a>';
-            var sub = (opts && opts.showTicker) ? r.ticker : '';
-            return bar(r.count, max, label, sub);
+            var subParts = [];
+            if (opts && opts.showTicker) subParts.push(r.ticker);
+            if (hasSumRate) subParts.push(r.count + '회');
+            var sub = subParts.join(' · ');
+            var countLabel = hasSumRate ? pct(r.sum_rate) : (r.count + '회');
+            return bar(r[key], max, label, sub, countLabel);
         }).join('');
     }
 
@@ -73,7 +83,7 @@
         if (!rows || !rows.length) { $el.innerHTML = '<li class="report-empty">데이터 없음</li>'; return; }
         var max = Math.max.apply(null, rows.map(function (r) { return r.count; }));
         $el.innerHTML = rows.map(function (r) {
-            return bar(r.count, max, r.reason, '');
+            return bar(r.count, max, r.reason, '', r.count + '회');
         }).join('');
     }
 
@@ -117,13 +127,13 @@
 
         // 위젯별 desc 도 기간 반영
         var $descSector = document.getElementById('descSector');
-        if ($descSector) $descSector.textContent = label + ' 가장 자주 오른 섹터 — 평균 상승률·종목 수';
+        if ($descSector) $descSector.textContent = label + ' 누적 상승률 합산 — 평균 상승률·종목 수';
         var $descLimit = document.getElementById('descLimit');
-        if ($descLimit) $descLimit.textContent = label + ' 누적 +29.9% 이상 횟수';
+        if ($descLimit) $descLimit.textContent = label + ' 상한가(+29.9%) 친 종목 — 누적 상승률 순';
         var $descHigh = document.getElementById('descHigh');
-        if ($descHigh) $descHigh.textContent = label + ' 신고가 갱신 횟수';
+        if ($descHigh) $descHigh.textContent = label + ' 52주 신고가 갱신 종목 — 누적 상승률 순';
         var $descFrequent = document.getElementById('descFrequent');
-        if ($descFrequent) $descFrequent.textContent = label + ' +15% 이상 누적 — 변동성 큰 종목군';
+        if ($descFrequent) $descFrequent.textContent = label + ' +15% 이상 누적 상승률 TOP — 동률은 횟수 보조';
         var $descReason = document.getElementById('descReason');
         if ($descReason) $descReason.textContent = label + ' 자동 추정된 이유 라벨';
 
