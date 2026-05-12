@@ -445,7 +445,8 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
         for e in events:
             date_str = e.get('date', '')
             rate = e.get('change_rate') or 0
-            if rate < 15:
+            # 단일일 +30% 한국 상한가 한도 → 35% 컷으로 액면분할·병합 등 비정상치 제외
+            if rate < 15 or rate > 35:
                 continue
             sec = (e.get('sector') or '').strip()
             reason_status = e.get('reason_status')
@@ -987,6 +988,8 @@ def main() -> None:
                    help='OHLC 만 fetch 해서 bubbles.json 만 빠르게 빌드')
     p.add_argument('--marketmap-only', action='store_true',
                    help='시총 TOP 100 + 등락률 → marketmap.json 만 빠르게 빌드 (~30s)')
+    p.add_argument('--report-only', action='store_true',
+                   help='기존 stock-history/*.json 만 읽어서 report-summary.json 재집계 (~30s)')
     p.add_argument('--limit', type=int, default=0,
                    help='estimate-only 시 처리 개수 한도')
     args = p.parse_args()
@@ -997,6 +1000,9 @@ def main() -> None:
         sys.exit(build_bubbles_only(args))
     if args.estimate_only:
         sys.exit(build_estimate_only(args))
+    if args.report_only:
+        build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
+        sys.exit(0)
     sys.exit(build_full(args))
 
 

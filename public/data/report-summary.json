@@ -1,707 +1,4897 @@
 {
-  "built_at": "2026-05-10T17:35:07Z",
-  "total_tickers": 2148,
-  "total_events_15": 5602,
+  "built_at": "2026-05-12T12:21:13Z",
+  "total_tickers": 2158,
+  "periods": {
+    "d1": {
+      "total_events_15": 58,
+      "sector_top": [
+        {
+          "sector": "반도체와반도체장비",
+          "count": 7,
+          "avg_rate": 23.74,
+          "sum_rate": 166.2,
+          "tickers": 6
+        },
+        {
+          "sector": "자동차부품",
+          "count": 6,
+          "avg_rate": 27.23,
+          "sum_rate": 163.37,
+          "tickers": 5
+        },
+        {
+          "sector": "통신장비",
+          "count": 6,
+          "avg_rate": 21.04,
+          "sum_rate": 126.27,
+          "tickers": 5
+        },
+        {
+          "sector": "제약",
+          "count": 4,
+          "avg_rate": 26.28,
+          "sum_rate": 105.1,
+          "tickers": 4
+        },
+        {
+          "sector": "전자장비와기기",
+          "count": 4,
+          "avg_rate": 23.51,
+          "sum_rate": 94.06,
+          "tickers": 4
+        },
+        {
+          "sector": "전기제품",
+          "count": 3,
+          "avg_rate": 30.0,
+          "sum_rate": 90.0,
+          "tickers": 3
+        },
+        {
+          "sector": "IT서비스",
+          "count": 4,
+          "avg_rate": 21.6,
+          "sum_rate": 86.4,
+          "tickers": 4
+        },
+        {
+          "sector": "기계",
+          "count": 3,
+          "avg_rate": 28.56,
+          "sum_rate": 85.68,
+          "tickers": 3
+        },
+        {
+          "sector": "전자제품",
+          "count": 3,
+          "avg_rate": 21.75,
+          "sum_rate": 65.26,
+          "tickers": 3
+        },
+        {
+          "sector": "식품",
+          "count": 2,
+          "avg_rate": 29.97,
+          "sum_rate": 59.94,
+          "tickers": 1
+        }
+      ],
+      "limit_up_top": [
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 2,
+          "sum_rate": 59.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "051780",
+          "name": "큐로홀딩스",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "032580",
+          "name": "피델릭스",
+          "count": 2,
+          "sum_rate": 59.87,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 1,
+          "sum_rate": 53.25,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 1,
+          "sum_rate": 49.19,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "003060",
+          "name": "에이프로젠바이오로직스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "007460",
+          "name": "에이프로젠",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014910",
+          "name": "성문전자",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014915",
+          "name": "성문전자우",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "439960",
+          "name": "코스모로보틱스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "452200",
+          "name": "민테크",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "320000",
+          "name": "한울반도체",
+          "count": 1,
+          "sum_rate": 29.99,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "048770",
+          "name": "TPC로보틱스",
+          "count": 1,
+          "sum_rate": 29.98,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "254490",
+          "name": "미래반도체",
+          "count": 1,
+          "sum_rate": 29.98,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 1,
+          "sum_rate": 29.96,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "012860",
+          "name": "모베이스전자",
+          "count": 1,
+          "sum_rate": 29.96,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "950220",
+          "name": "네오이뮨텍",
+          "count": 1,
+          "sum_rate": 29.95,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "081150",
+          "name": "티플랙스",
+          "count": 1,
+          "sum_rate": 29.94,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "012200",
+          "name": "계양전기",
+          "count": 1,
+          "sum_rate": 29.91,
+          "max_rate": 29.91
+        }
+      ],
+      "high_52w_top": [
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 1,
+          "sum_rate": 59.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "051780",
+          "name": "큐로홀딩스",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "032580",
+          "name": "피델릭스",
+          "count": 2,
+          "sum_rate": 59.87,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 1,
+          "sum_rate": 49.19,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014910",
+          "name": "성문전자",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014915",
+          "name": "성문전자우",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "439960",
+          "name": "코스모로보틱스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "452200",
+          "name": "민테크",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "320000",
+          "name": "한울반도체",
+          "count": 1,
+          "sum_rate": 29.99,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "048770",
+          "name": "TPC로보틱스",
+          "count": 1,
+          "sum_rate": 29.98,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "254490",
+          "name": "미래반도체",
+          "count": 1,
+          "sum_rate": 29.98,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 1,
+          "sum_rate": 29.96,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "012860",
+          "name": "모베이스전자",
+          "count": 1,
+          "sum_rate": 29.96,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "081150",
+          "name": "티플랙스",
+          "count": 1,
+          "sum_rate": 29.94,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "012200",
+          "name": "계양전기",
+          "count": 1,
+          "sum_rate": 29.91,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "142280",
+          "name": "녹십자엠에스",
+          "count": 1,
+          "sum_rate": 29.85,
+          "max_rate": 29.85
+        },
+        {
+          "ticker": "009140",
+          "name": "경인전자",
+          "count": 1,
+          "sum_rate": 29.81,
+          "max_rate": 29.81
+        },
+        {
+          "ticker": "389500",
+          "name": "에스비비테크",
+          "count": 1,
+          "sum_rate": 25.7,
+          "max_rate": 25.7
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 1,
+          "sum_rate": 25.06,
+          "max_rate": 25.06
+        },
+        {
+          "ticker": "005250",
+          "name": "녹십자홀딩스",
+          "count": 1,
+          "sum_rate": 24.32,
+          "max_rate": 24.32
+        }
+      ],
+      "frequent_top": [
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 2,
+          "sum_rate": 59.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "051780",
+          "name": "큐로홀딩스",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "032580",
+          "name": "피델릭스",
+          "count": 2,
+          "sum_rate": 59.87,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 2,
+          "sum_rate": 53.25,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 2,
+          "sum_rate": 49.19,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "003060",
+          "name": "에이프로젠바이오로직스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "007460",
+          "name": "에이프로젠",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014910",
+          "name": "성문전자",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014915",
+          "name": "성문전자우",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "439960",
+          "name": "코스모로보틱스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "452200",
+          "name": "민테크",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "320000",
+          "name": "한울반도체",
+          "count": 1,
+          "sum_rate": 29.99,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "048770",
+          "name": "TPC로보틱스",
+          "count": 1,
+          "sum_rate": 29.98,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "254490",
+          "name": "미래반도체",
+          "count": 1,
+          "sum_rate": 29.98,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 1,
+          "sum_rate": 29.96,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "012860",
+          "name": "모베이스전자",
+          "count": 1,
+          "sum_rate": 29.96,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "950220",
+          "name": "네오이뮨텍",
+          "count": 1,
+          "sum_rate": 29.95,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "081150",
+          "name": "티플랙스",
+          "count": 1,
+          "sum_rate": 29.94,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "012200",
+          "name": "계양전기",
+          "count": 1,
+          "sum_rate": 29.91,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "950130",
+          "name": "엑세스바이오",
+          "count": 1,
+          "sum_rate": 29.89,
+          "max_rate": 29.89
+        },
+        {
+          "ticker": "389680",
+          "name": "유디엠텍",
+          "count": 1,
+          "sum_rate": 29.87,
+          "max_rate": 29.87
+        },
+        {
+          "ticker": "142280",
+          "name": "녹십자엠에스",
+          "count": 1,
+          "sum_rate": 29.85,
+          "max_rate": 29.85
+        },
+        {
+          "ticker": "009140",
+          "name": "경인전자",
+          "count": 1,
+          "sum_rate": 29.81,
+          "max_rate": 29.81
+        },
+        {
+          "ticker": "389500",
+          "name": "에스비비테크",
+          "count": 1,
+          "sum_rate": 25.7,
+          "max_rate": 25.7
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 1,
+          "sum_rate": 25.06,
+          "max_rate": 25.06
+        },
+        {
+          "ticker": "005250",
+          "name": "녹십자홀딩스",
+          "count": 1,
+          "sum_rate": 24.32,
+          "max_rate": 24.32
+        },
+        {
+          "ticker": "406820",
+          "name": "뷰티스킨",
+          "count": 1,
+          "sum_rate": 24.1,
+          "max_rate": 24.1
+        },
+        {
+          "ticker": "101330",
+          "name": "모베이스",
+          "count": 1,
+          "sum_rate": 23.41,
+          "max_rate": 23.41
+        },
+        {
+          "ticker": "142210",
+          "name": "유니트론텍",
+          "count": 1,
+          "sum_rate": 21.6,
+          "max_rate": 21.6
+        },
+        {
+          "ticker": "065440",
+          "name": "이루온",
+          "count": 1,
+          "sum_rate": 20.89,
+          "max_rate": 20.89
+        },
+        {
+          "ticker": "311320",
+          "name": "지오엘리먼트",
+          "count": 1,
+          "sum_rate": 20.85,
+          "max_rate": 20.85
+        },
+        {
+          "ticker": "004590",
+          "name": "한국가구",
+          "count": 1,
+          "sum_rate": 20.18,
+          "max_rate": 20.18
+        },
+        {
+          "ticker": "018880",
+          "name": "한온시스템",
+          "count": 1,
+          "sum_rate": 20.13,
+          "max_rate": 20.13
+        },
+        {
+          "ticker": "189330",
+          "name": "씨이랩",
+          "count": 1,
+          "sum_rate": 19.86,
+          "max_rate": 19.86
+        },
+        {
+          "ticker": "005257",
+          "name": "녹십자홀딩스2우",
+          "count": 1,
+          "sum_rate": 19.73,
+          "max_rate": 19.73
+        },
+        {
+          "ticker": "078890",
+          "name": "가온그룹",
+          "count": 1,
+          "sum_rate": 19.43,
+          "max_rate": 19.43
+        },
+        {
+          "ticker": "295310",
+          "name": "에이치브이엠",
+          "count": 1,
+          "sum_rate": 18.02,
+          "max_rate": 18.02
+        },
+        {
+          "ticker": "036930",
+          "name": "주성엔지니어링",
+          "count": 1,
+          "sum_rate": 17.93,
+          "max_rate": 17.93
+        },
+        {
+          "ticker": "041830",
+          "name": "인바디",
+          "count": 1,
+          "sum_rate": 17.92,
+          "max_rate": 17.92
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 1,
+          "sum_rate": 17.75,
+          "max_rate": 17.75
+        },
+        {
+          "ticker": "155650",
+          "name": "와이엠씨",
+          "count": 1,
+          "sum_rate": 17.34,
+          "max_rate": 17.34
+        },
+        {
+          "ticker": "069540",
+          "name": "빛과전자",
+          "count": 1,
+          "sum_rate": 16.73,
+          "max_rate": 16.73
+        },
+        {
+          "ticker": "168360",
+          "name": "펨트론",
+          "count": 1,
+          "sum_rate": 16.36,
+          "max_rate": 16.36
+        },
+        {
+          "ticker": "100590",
+          "name": "머큐리",
+          "count": 1,
+          "sum_rate": 16.17,
+          "max_rate": 16.17
+        },
+        {
+          "ticker": "066570",
+          "name": "LG전자",
+          "count": 1,
+          "sum_rate": 16.02,
+          "max_rate": 16.02
+        },
+        {
+          "ticker": "396270",
+          "name": "넥스트칩",
+          "count": 1,
+          "sum_rate": 15.97,
+          "max_rate": 15.97
+        },
+        {
+          "ticker": "356680",
+          "name": "엑스게이트",
+          "count": 1,
+          "sum_rate": 15.88,
+          "max_rate": 15.88
+        },
+        {
+          "ticker": "031820",
+          "name": "아이티센씨티에스",
+          "count": 1,
+          "sum_rate": 15.78,
+          "max_rate": 15.78
+        },
+        {
+          "ticker": "096530",
+          "name": "씨젠",
+          "count": 1,
+          "sum_rate": 15.78,
+          "max_rate": 15.78
+        },
+        {
+          "ticker": "066430",
+          "name": "아이로보틱스",
+          "count": 1,
+          "sum_rate": 15.43,
+          "max_rate": 15.43
+        }
+      ],
+      "reason_top": [
+        {
+          "reason": "영업이익 공시",
+          "count": 5
+        },
+        {
+          "reason": "매출 관련 뉴스",
+          "count": 4
+        },
+        {
+          "reason": "자사주 소각",
+          "count": 3
+        },
+        {
+          "reason": "외국인 순매수 보도",
+          "count": 3
+        },
+        {
+          "reason": "투자 관련 뉴스",
+          "count": 3
+        },
+        {
+          "reason": "흑자 전환 보도",
+          "count": 2
+        },
+        {
+          "reason": "실적 개선",
+          "count": 2
+        },
+        {
+          "reason": "FDA 관련 뉴스",
+          "count": 2
+        },
+        {
+          "reason": "실적 관련 뉴스",
+          "count": 2
+        },
+        {
+          "reason": "협력 관련 뉴스",
+          "count": 2
+        },
+        {
+          "reason": "공급 관련 뉴스",
+          "count": 2
+        },
+        {
+          "reason": "유상증자 공시",
+          "count": 2
+        },
+        {
+          "reason": "증권사 리포트 공개",
+          "count": 2
+        },
+        {
+          "reason": "공급 계약 체결",
+          "count": 2
+        },
+        {
+          "reason": "임상 3상 진입",
+          "count": 1
+        },
+        {
+          "reason": "공시 관련 뉴스",
+          "count": 1
+        },
+        {
+          "reason": "52주 신고가 도달",
+          "count": 1
+        },
+        {
+          "reason": "전력 인프라 투자 기대감",
+          "count": 1
+        },
+        {
+          "reason": "납품 계약 체결",
+          "count": 1
+        },
+        {
+          "reason": "경영진 교체",
+          "count": 1
+        }
+      ]
+    },
+    "w1": {
+      "total_events_15": 144,
+      "sector_top": [
+        {
+          "sector": "전자장비와기기",
+          "count": 13,
+          "avg_rate": 24.14,
+          "sum_rate": 313.86,
+          "tickers": 10
+        },
+        {
+          "sector": "반도체와반도체장비",
+          "count": 13,
+          "avg_rate": 23.66,
+          "sum_rate": 307.59,
+          "tickers": 11
+        },
+        {
+          "sector": "전기제품",
+          "count": 12,
+          "avg_rate": 25.03,
+          "sum_rate": 300.37,
+          "tickers": 11
+        },
+        {
+          "sector": "전기장비",
+          "count": 9,
+          "avg_rate": 26.56,
+          "sum_rate": 239.02,
+          "tickers": 5
+        },
+        {
+          "sector": "통신장비",
+          "count": 11,
+          "avg_rate": 21.7,
+          "sum_rate": 238.68,
+          "tickers": 8
+        },
+        {
+          "sector": "자동차부품",
+          "count": 9,
+          "avg_rate": 26.5,
+          "sum_rate": 238.52,
+          "tickers": 6
+        },
+        {
+          "sector": "기계",
+          "count": 9,
+          "avg_rate": 23.74,
+          "sum_rate": 213.63,
+          "tickers": 8
+        },
+        {
+          "sector": "디스플레이장비및부품",
+          "count": 9,
+          "avg_rate": 20.98,
+          "sum_rate": 188.84,
+          "tickers": 8
+        },
+        {
+          "sector": "제약",
+          "count": 5,
+          "avg_rate": 26.98,
+          "sum_rate": 134.9,
+          "tickers": 5
+        },
+        {
+          "sector": "건강관리장비와용품",
+          "count": 5,
+          "avg_rate": 25.36,
+          "sum_rate": 126.79,
+          "tickers": 3
+        }
+      ],
+      "limit_up_top": [
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 3,
+          "sum_rate": 89.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 1,
+          "sum_rate": 65.22,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 1,
+          "sum_rate": 64.69,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "320000",
+          "name": "한울반도체",
+          "count": 2,
+          "sum_rate": 59.98,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "229000",
+          "name": "젠큐릭스",
+          "count": 2,
+          "sum_rate": 59.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "051780",
+          "name": "큐로홀딩스",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "452200",
+          "name": "민테크",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "032580",
+          "name": "피델릭스",
+          "count": 2,
+          "sum_rate": 59.87,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 1,
+          "sum_rate": 59.79,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "012200",
+          "name": "계양전기",
+          "count": 1,
+          "sum_rate": 59.77,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "000500",
+          "name": "가온전선",
+          "count": 1,
+          "sum_rate": 57.18,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 1,
+          "sum_rate": 53.25,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "076610",
+          "name": "해성옵틱스",
+          "count": 1,
+          "sum_rate": 52.39,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "048770",
+          "name": "TPC로보틱스",
+          "count": 1,
+          "sum_rate": 47.04,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "003060",
+          "name": "에이프로젠바이오로직스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "007460",
+          "name": "에이프로젠",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "011790",
+          "name": "SKC",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014910",
+          "name": "성문전자",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014915",
+          "name": "성문전자우",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "038060",
+          "name": "루멘스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        }
+      ],
+      "high_52w_top": [
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 1,
+          "sum_rate": 89.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 2,
+          "sum_rate": 65.22,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 3,
+          "sum_rate": 64.69,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "320000",
+          "name": "한울반도체",
+          "count": 2,
+          "sum_rate": 59.98,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "051780",
+          "name": "큐로홀딩스",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "452200",
+          "name": "민테크",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "032580",
+          "name": "피델릭스",
+          "count": 2,
+          "sum_rate": 59.87,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 2,
+          "sum_rate": 59.79,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "012200",
+          "name": "계양전기",
+          "count": 2,
+          "sum_rate": 59.77,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "000500",
+          "name": "가온전선",
+          "count": 2,
+          "sum_rate": 57.18,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "076610",
+          "name": "해성옵틱스",
+          "count": 2,
+          "sum_rate": 52.39,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "041830",
+          "name": "인바디",
+          "count": 2,
+          "sum_rate": 47.77,
+          "max_rate": 29.85
+        },
+        {
+          "ticker": "048770",
+          "name": "TPC로보틱스",
+          "count": 2,
+          "sum_rate": 47.04,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 2,
+          "sum_rate": 44.38,
+          "max_rate": 25.06
+        },
+        {
+          "ticker": "356680",
+          "name": "엑스게이트",
+          "count": 1,
+          "sum_rate": 38.93,
+          "max_rate": 23.05
+        },
+        {
+          "ticker": "321260",
+          "name": "프로이천",
+          "count": 1,
+          "sum_rate": 34.53,
+          "max_rate": 19.37
+        },
+        {
+          "ticker": "396270",
+          "name": "넥스트칩",
+          "count": 2,
+          "sum_rate": 32.41,
+          "max_rate": 16.44
+        },
+        {
+          "ticker": "011790",
+          "name": "SKC",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014910",
+          "name": "성문전자",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014915",
+          "name": "성문전자우",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        }
+      ],
+      "frequent_top": [
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 3,
+          "sum_rate": 89.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 3,
+          "sum_rate": 65.22,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 3,
+          "sum_rate": 64.69,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "320000",
+          "name": "한울반도체",
+          "count": 2,
+          "sum_rate": 59.98,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "229000",
+          "name": "젠큐릭스",
+          "count": 2,
+          "sum_rate": 59.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "051780",
+          "name": "큐로홀딩스",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "452200",
+          "name": "민테크",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "032580",
+          "name": "피델릭스",
+          "count": 2,
+          "sum_rate": 59.87,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 2,
+          "sum_rate": 59.79,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "012200",
+          "name": "계양전기",
+          "count": 2,
+          "sum_rate": 59.77,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "000500",
+          "name": "가온전선",
+          "count": 2,
+          "sum_rate": 57.18,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 2,
+          "sum_rate": 53.25,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "076610",
+          "name": "해성옵틱스",
+          "count": 2,
+          "sum_rate": 52.39,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "041830",
+          "name": "인바디",
+          "count": 2,
+          "sum_rate": 47.77,
+          "max_rate": 29.85
+        },
+        {
+          "ticker": "048770",
+          "name": "TPC로보틱스",
+          "count": 2,
+          "sum_rate": 47.04,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 2,
+          "sum_rate": 44.38,
+          "max_rate": 25.06
+        },
+        {
+          "ticker": "356680",
+          "name": "엑스게이트",
+          "count": 2,
+          "sum_rate": 38.93,
+          "max_rate": 23.05
+        },
+        {
+          "ticker": "100590",
+          "name": "머큐리",
+          "count": 2,
+          "sum_rate": 36.01,
+          "max_rate": 19.84
+        },
+        {
+          "ticker": "321260",
+          "name": "프로이천",
+          "count": 2,
+          "sum_rate": 34.53,
+          "max_rate": 19.37
+        },
+        {
+          "ticker": "396270",
+          "name": "넥스트칩",
+          "count": 2,
+          "sum_rate": 32.41,
+          "max_rate": 16.44
+        },
+        {
+          "ticker": "003060",
+          "name": "에이프로젠바이오로직스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "007460",
+          "name": "에이프로젠",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "011790",
+          "name": "SKC",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014910",
+          "name": "성문전자",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "014915",
+          "name": "성문전자우",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "038060",
+          "name": "루멘스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "049120",
+          "name": "파인디앤씨",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "439960",
+          "name": "코스모로보틱스",
+          "count": 1,
+          "sum_rate": 30.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "254490",
+          "name": "미래반도체",
+          "count": 1,
+          "sum_rate": 29.98,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "037030",
+          "name": "파워넷",
+          "count": 1,
+          "sum_rate": 29.97,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "037440",
+          "name": "희림",
+          "count": 1,
+          "sum_rate": 29.97,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "307950",
+          "name": "현대오토에버",
+          "count": 1,
+          "sum_rate": 29.97,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "429270",
+          "name": "시지트로닉스",
+          "count": 1,
+          "sum_rate": 29.97,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "012860",
+          "name": "모베이스전자",
+          "count": 1,
+          "sum_rate": 29.96,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "079190",
+          "name": "케스피온",
+          "count": 1,
+          "sum_rate": 29.95,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "276730",
+          "name": "한울앤제주",
+          "count": 1,
+          "sum_rate": 29.95,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "950220",
+          "name": "네오이뮨텍",
+          "count": 1,
+          "sum_rate": 29.95,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "012340",
+          "name": "뉴인텍",
+          "count": 1,
+          "sum_rate": 29.94,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "067170",
+          "name": "오텍",
+          "count": 1,
+          "sum_rate": 29.94,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "081150",
+          "name": "티플랙스",
+          "count": 1,
+          "sum_rate": 29.94,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "323350",
+          "name": "다원넥스뷰",
+          "count": 1,
+          "sum_rate": 29.94,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "396470",
+          "name": "워트",
+          "count": 1,
+          "sum_rate": 29.94,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "009415",
+          "name": "태영건설우",
+          "count": 1,
+          "sum_rate": 29.93,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "072950",
+          "name": "빛샘전자",
+          "count": 1,
+          "sum_rate": 29.93,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "195990",
+          "name": "에이비프로바이오",
+          "count": 1,
+          "sum_rate": 29.93,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "203650",
+          "name": "드림시큐리티",
+          "count": 1,
+          "sum_rate": 29.93,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "011000",
+          "name": "진원생명과학",
+          "count": 1,
+          "sum_rate": 29.92,
+          "max_rate": 29.92
+        },
+        {
+          "ticker": "264850",
+          "name": "이랜시스",
+          "count": 1,
+          "sum_rate": 29.92,
+          "max_rate": 29.92
+        },
+        {
+          "ticker": "061090",
+          "name": "세나테크놀로지",
+          "count": 1,
+          "sum_rate": 29.91,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "078150",
+          "name": "HB테크놀러지",
+          "count": 1,
+          "sum_rate": 29.89,
+          "max_rate": 29.89
+        }
+      ],
+      "reason_top": [
+        {
+          "reason": "영업이익 공시",
+          "count": 7
+        },
+        {
+          "reason": "매출 관련 뉴스",
+          "count": 6
+        },
+        {
+          "reason": "흑자 전환 보도",
+          "count": 6
+        },
+        {
+          "reason": "실적 관련 뉴스",
+          "count": 6
+        },
+        {
+          "reason": "공급 계약 체결",
+          "count": 6
+        },
+        {
+          "reason": "협력 관련 뉴스",
+          "count": 5
+        },
+        {
+          "reason": "외국인 순매수 보도",
+          "count": 5
+        },
+        {
+          "reason": "증권사 리포트 공개",
+          "count": 5
+        },
+        {
+          "reason": "투자 관련 뉴스",
+          "count": 5
+        },
+        {
+          "reason": "상장 이슈",
+          "count": 4
+        },
+        {
+          "reason": "전선 관련 뉴스",
+          "count": 3
+        },
+        {
+          "reason": "자사주 소각",
+          "count": 3
+        },
+        {
+          "reason": "거래량 증가",
+          "count": 3
+        },
+        {
+          "reason": "계약 체결",
+          "count": 3
+        },
+        {
+          "reason": "수출 관련 뉴스",
+          "count": 3
+        },
+        {
+          "reason": "수주 공시",
+          "count": 2
+        },
+        {
+          "reason": "실적 개선",
+          "count": 2
+        },
+        {
+          "reason": "FDA 관련 뉴스",
+          "count": 2
+        },
+        {
+          "reason": "경영진 교체",
+          "count": 2
+        },
+        {
+          "reason": "공급 관련 뉴스",
+          "count": 2
+        }
+      ]
+    },
+    "m1": {
+      "total_events_15": 675,
+      "sector_top": [
+        {
+          "sector": "반도체와반도체장비",
+          "count": 65,
+          "avg_rate": 22.32,
+          "sum_rate": 1450.55,
+          "tickers": 50
+        },
+        {
+          "sector": "전자장비와기기",
+          "count": 54,
+          "avg_rate": 23.83,
+          "sum_rate": 1286.58,
+          "tickers": 35
+        },
+        {
+          "sector": "전기장비",
+          "count": 53,
+          "avg_rate": 24.07,
+          "sum_rate": 1275.77,
+          "tickers": 23
+        },
+        {
+          "sector": "IT서비스",
+          "count": 44,
+          "avg_rate": 23.84,
+          "sum_rate": 1048.77,
+          "tickers": 31
+        },
+        {
+          "sector": "통신장비",
+          "count": 39,
+          "avg_rate": 23.72,
+          "sum_rate": 925.17,
+          "tickers": 22
+        },
+        {
+          "sector": "디스플레이장비및부품",
+          "count": 32,
+          "avg_rate": 23.68,
+          "sum_rate": 757.82,
+          "tickers": 17
+        },
+        {
+          "sector": "전기제품",
+          "count": 29,
+          "avg_rate": 22.85,
+          "sum_rate": 662.52,
+          "tickers": 24
+        },
+        {
+          "sector": "소프트웨어",
+          "count": 26,
+          "avg_rate": 24.7,
+          "sum_rate": 642.13,
+          "tickers": 17
+        },
+        {
+          "sector": "화학",
+          "count": 27,
+          "avg_rate": 21.66,
+          "sum_rate": 584.85,
+          "tickers": 20
+        },
+        {
+          "sector": "핸드셋",
+          "count": 22,
+          "avg_rate": 24.68,
+          "sum_rate": 543.03,
+          "tickers": 14
+        }
+      ],
+      "limit_up_top": [
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 3,
+          "sum_rate": 183.75,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "024840",
+          "name": "KBI메탈",
+          "count": 3,
+          "sum_rate": 135.17,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000500",
+          "name": "가온전선",
+          "count": 1,
+          "sum_rate": 129.05,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "356680",
+          "name": "엑스게이트",
+          "count": 3,
+          "sum_rate": 128.74,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 3,
+          "sum_rate": 125.16,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "900100",
+          "name": "애머릿지",
+          "count": 2,
+          "sum_rate": 120.35,
+          "max_rate": 29.92
+        },
+        {
+          "ticker": "038060",
+          "name": "루멘스",
+          "count": 4,
+          "sum_rate": 119.94,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 4,
+          "sum_rate": 119.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "203650",
+          "name": "드림시큐리티",
+          "count": 3,
+          "sum_rate": 119.76,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "072950",
+          "name": "빛샘전자",
+          "count": 3,
+          "sum_rate": 119.63,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "131760",
+          "name": "파인텍",
+          "count": 3,
+          "sum_rate": 119.55,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 2,
+          "sum_rate": 113.01,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 2,
+          "sum_rate": 111.59,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 2,
+          "sum_rate": 93.17,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "006340",
+          "name": "대원전선",
+          "count": 1,
+          "sum_rate": 90.36,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "092190",
+          "name": "서울바이오시스",
+          "count": 3,
+          "sum_rate": 89.89,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "009415",
+          "name": "태영건설우",
+          "count": 3,
+          "sum_rate": 89.88,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "027040",
+          "name": "서울전자통신",
+          "count": 3,
+          "sum_rate": 89.86,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "115500",
+          "name": "케이씨에스",
+          "count": 3,
+          "sum_rate": 89.8,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "011000",
+          "name": "진원생명과학",
+          "count": 2,
+          "sum_rate": 89.8,
+          "max_rate": 29.99
+        }
+      ],
+      "high_52w_top": [
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 7,
+          "sum_rate": 183.75,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "024840",
+          "name": "KBI메탈",
+          "count": 5,
+          "sum_rate": 135.17,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000500",
+          "name": "가온전선",
+          "count": 6,
+          "sum_rate": 129.05,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "356680",
+          "name": "엑스게이트",
+          "count": 4,
+          "sum_rate": 128.74,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 4,
+          "sum_rate": 125.16,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "900100",
+          "name": "애머릿지",
+          "count": 2,
+          "sum_rate": 120.35,
+          "max_rate": 29.92
+        },
+        {
+          "ticker": "038060",
+          "name": "루멘스",
+          "count": 3,
+          "sum_rate": 119.94,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 1,
+          "sum_rate": 119.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "203650",
+          "name": "드림시큐리티",
+          "count": 3,
+          "sum_rate": 119.76,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "072950",
+          "name": "빛샘전자",
+          "count": 3,
+          "sum_rate": 119.63,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "131760",
+          "name": "파인텍",
+          "count": 4,
+          "sum_rate": 119.55,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 1,
+          "sum_rate": 113.01,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 5,
+          "sum_rate": 111.59,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 2,
+          "sum_rate": 93.17,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "006340",
+          "name": "대원전선",
+          "count": 4,
+          "sum_rate": 90.36,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "092190",
+          "name": "서울바이오시스",
+          "count": 3,
+          "sum_rate": 89.89,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "009415",
+          "name": "태영건설우",
+          "count": 2,
+          "sum_rate": 89.88,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "027040",
+          "name": "서울전자통신",
+          "count": 3,
+          "sum_rate": 89.86,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "115500",
+          "name": "케이씨에스",
+          "count": 3,
+          "sum_rate": 89.8,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "011000",
+          "name": "진원생명과학",
+          "count": 1,
+          "sum_rate": 89.8,
+          "max_rate": 29.99
+        }
+      ],
+      "frequent_top": [
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 7,
+          "sum_rate": 183.75,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "024840",
+          "name": "KBI메탈",
+          "count": 5,
+          "sum_rate": 135.17,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000500",
+          "name": "가온전선",
+          "count": 6,
+          "sum_rate": 129.05,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "356680",
+          "name": "엑스게이트",
+          "count": 5,
+          "sum_rate": 128.74,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 5,
+          "sum_rate": 125.16,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "900100",
+          "name": "애머릿지",
+          "count": 5,
+          "sum_rate": 120.35,
+          "max_rate": 29.92
+        },
+        {
+          "ticker": "038060",
+          "name": "루멘스",
+          "count": 4,
+          "sum_rate": 119.94,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 4,
+          "sum_rate": 119.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "203650",
+          "name": "드림시큐리티",
+          "count": 4,
+          "sum_rate": 119.76,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "072950",
+          "name": "빛샘전자",
+          "count": 4,
+          "sum_rate": 119.63,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "131760",
+          "name": "파인텍",
+          "count": 4,
+          "sum_rate": 119.55,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 4,
+          "sum_rate": 113.01,
+          "max_rate": 29.95
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 5,
+          "sum_rate": 111.59,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 4,
+          "sum_rate": 93.17,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "006340",
+          "name": "대원전선",
+          "count": 4,
+          "sum_rate": 90.36,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "092190",
+          "name": "서울바이오시스",
+          "count": 3,
+          "sum_rate": 89.89,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "009415",
+          "name": "태영건설우",
+          "count": 3,
+          "sum_rate": 89.88,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "027040",
+          "name": "서울전자통신",
+          "count": 3,
+          "sum_rate": 89.86,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "011000",
+          "name": "진원생명과학",
+          "count": 3,
+          "sum_rate": 89.8,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "115500",
+          "name": "케이씨에스",
+          "count": 3,
+          "sum_rate": 89.8,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "058450",
+          "name": "한주에이알티",
+          "count": 3,
+          "sum_rate": 89.76,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "184230",
+          "name": "SGA솔루션즈",
+          "count": 3,
+          "sum_rate": 89.75,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "900300",
+          "name": "오가닉티코스메틱",
+          "count": 3,
+          "sum_rate": 89.37,
+          "max_rate": 29.92
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 4,
+          "sum_rate": 81.12,
+          "max_rate": 25.06
+        },
+        {
+          "ticker": "037030",
+          "name": "파워넷",
+          "count": 3,
+          "sum_rate": 80.81,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "189330",
+          "name": "씨이랩",
+          "count": 3,
+          "sum_rate": 79.76,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "036930",
+          "name": "주성엔지니어링",
+          "count": 3,
+          "sum_rate": 77.85,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "100590",
+          "name": "머큐리",
+          "count": 4,
+          "sum_rate": 77.38,
+          "max_rate": 21.85
+        },
+        {
+          "ticker": "069540",
+          "name": "빛과전자",
+          "count": 3,
+          "sum_rate": 76.54,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "308080",
+          "name": "바이젠셀",
+          "count": 3,
+          "sum_rate": 76.46,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "189860",
+          "name": "서전기전",
+          "count": 3,
+          "sum_rate": 75.47,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "027360",
+          "name": "아주IB투자",
+          "count": 3,
+          "sum_rate": 74.99,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "010060",
+          "name": "OCI홀딩스",
+          "count": 3,
+          "sum_rate": 71.84,
+          "max_rate": 27.66
+        },
+        {
+          "ticker": "076610",
+          "name": "해성옵틱스",
+          "count": 3,
+          "sum_rate": 71.74,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "100790",
+          "name": "미래에셋벤처투자",
+          "count": 3,
+          "sum_rate": 71.38,
+          "max_rate": 29.88
+        },
+        {
+          "ticker": "088280",
+          "name": "쏘닉스",
+          "count": 3,
+          "sum_rate": 70.01,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "046970",
+          "name": "우리로",
+          "count": 3,
+          "sum_rate": 68.36,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "209640",
+          "name": "와이제이링크",
+          "count": 3,
+          "sum_rate": 67.85,
+          "max_rate": 29.82
+        },
+        {
+          "ticker": "429270",
+          "name": "시지트로닉스",
+          "count": 3,
+          "sum_rate": 67.23,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "321260",
+          "name": "프로이천",
+          "count": 3,
+          "sum_rate": 64.51,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "073570",
+          "name": "리튬포어스",
+          "count": 3,
+          "sum_rate": 63.46,
+          "max_rate": 29.9
+        },
+        {
+          "ticker": "092220",
+          "name": "KEC",
+          "count": 3,
+          "sum_rate": 62.77,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "187790",
+          "name": "나노",
+          "count": 3,
+          "sum_rate": 60.45,
+          "max_rate": 24.44
+        },
+        {
+          "ticker": "368600",
+          "name": "아이씨에이치",
+          "count": 2,
+          "sum_rate": 59.99,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "320000",
+          "name": "한울반도체",
+          "count": 2,
+          "sum_rate": 59.98,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "229000",
+          "name": "젠큐릭스",
+          "count": 2,
+          "sum_rate": 59.96,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "045510",
+          "name": "정원엔시스",
+          "count": 2,
+          "sum_rate": 59.95,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "079190",
+          "name": "케스피온",
+          "count": 2,
+          "sum_rate": 59.95,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "051780",
+          "name": "큐로홀딩스",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "452200",
+          "name": "민테크",
+          "count": 2,
+          "sum_rate": 59.94,
+          "max_rate": 30.0
+        }
+      ],
+      "reason_top": [
+        {
+          "reason": "계약 체결",
+          "count": 17
+        },
+        {
+          "reason": "자사주 소각",
+          "count": 14
+        },
+        {
+          "reason": "영업이익 공시",
+          "count": 13
+        },
+        {
+          "reason": "52주 신고가 도달",
+          "count": 13
+        },
+        {
+          "reason": "상장 이슈",
+          "count": 13
+        },
+        {
+          "reason": "거래 급증",
+          "count": 12
+        },
+        {
+          "reason": "공급 계약 체결",
+          "count": 12
+        },
+        {
+          "reason": "실적 관련 뉴스",
+          "count": 11
+        },
+        {
+          "reason": "매출 관련 뉴스",
+          "count": 11
+        },
+        {
+          "reason": "투자 관련 뉴스",
+          "count": 9
+        },
+        {
+          "reason": "흑자 전환 보도",
+          "count": 8
+        },
+        {
+          "reason": "실적 호조",
+          "count": 8
+        },
+        {
+          "reason": "수주 공시",
+          "count": 7
+        },
+        {
+          "reason": "경영진 교체",
+          "count": 7
+        },
+        {
+          "reason": "시장 관심 증가",
+          "count": 7
+        },
+        {
+          "reason": "흑자 전환",
+          "count": 7
+        },
+        {
+          "reason": "인수 기대감",
+          "count": 6
+        },
+        {
+          "reason": "협력 관련 뉴스",
+          "count": 6
+        },
+        {
+          "reason": "증권사 리포트 공개",
+          "count": 6
+        },
+        {
+          "reason": "특허 취득",
+          "count": 6
+        }
+      ]
+    },
+    "m3": {
+      "total_events_15": 1512,
+      "sector_top": [
+        {
+          "sector": "반도체와반도체장비",
+          "count": 65,
+          "avg_rate": 22.32,
+          "sum_rate": 1450.55,
+          "tickers": 50
+        },
+        {
+          "sector": "전자장비와기기",
+          "count": 54,
+          "avg_rate": 23.83,
+          "sum_rate": 1286.58,
+          "tickers": 35
+        },
+        {
+          "sector": "전기장비",
+          "count": 53,
+          "avg_rate": 24.07,
+          "sum_rate": 1275.77,
+          "tickers": 23
+        },
+        {
+          "sector": "IT서비스",
+          "count": 44,
+          "avg_rate": 23.84,
+          "sum_rate": 1048.77,
+          "tickers": 31
+        },
+        {
+          "sector": "통신장비",
+          "count": 39,
+          "avg_rate": 23.72,
+          "sum_rate": 925.17,
+          "tickers": 22
+        },
+        {
+          "sector": "디스플레이장비및부품",
+          "count": 32,
+          "avg_rate": 23.68,
+          "sum_rate": 757.82,
+          "tickers": 17
+        },
+        {
+          "sector": "전기제품",
+          "count": 29,
+          "avg_rate": 22.85,
+          "sum_rate": 662.52,
+          "tickers": 24
+        },
+        {
+          "sector": "소프트웨어",
+          "count": 26,
+          "avg_rate": 24.7,
+          "sum_rate": 642.13,
+          "tickers": 17
+        },
+        {
+          "sector": "화학",
+          "count": 27,
+          "avg_rate": 21.66,
+          "sum_rate": 584.85,
+          "tickers": 20
+        },
+        {
+          "sector": "핸드셋",
+          "count": 22,
+          "avg_rate": 24.68,
+          "sum_rate": 543.03,
+          "tickers": 14
+        }
+      ],
+      "limit_up_top": [
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 7,
+          "sum_rate": 367.31,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 4,
+          "sum_rate": 293.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "046970",
+          "name": "우리로",
+          "count": 5,
+          "sum_rate": 247.92,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "069540",
+          "name": "빛과전자",
+          "count": 3,
+          "sum_rate": 242.09,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "049080",
+          "name": "기가레인",
+          "count": 7,
+          "sum_rate": 241.57,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 7,
+          "sum_rate": 209.64,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "072950",
+          "name": "빛샘전자",
+          "count": 4,
+          "sum_rate": 191.08,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "037030",
+          "name": "파워넷",
+          "count": 1,
+          "sum_rate": 186.18,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 3,
+          "sum_rate": 183.75,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "900100",
+          "name": "애머릿지",
+          "count": 3,
+          "sum_rate": 180.2,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 1,
+          "sum_rate": 178.52,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "073540",
+          "name": "에프알텍",
+          "count": 2,
+          "sum_rate": 152.36,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "001515",
+          "name": "SK증권우",
+          "count": 5,
+          "sum_rate": 149.85,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "009415",
+          "name": "태영건설우",
+          "count": 4,
+          "sum_rate": 149.72,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "058450",
+          "name": "한주에이알티",
+          "count": 3,
+          "sum_rate": 149.62,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "321260",
+          "name": "프로이천",
+          "count": 1,
+          "sum_rate": 142.45,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "027360",
+          "name": "아주IB투자",
+          "count": 1,
+          "sum_rate": 138.43,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "065770",
+          "name": "CS",
+          "count": 3,
+          "sum_rate": 136.28,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "024840",
+          "name": "KBI메탈",
+          "count": 3,
+          "sum_rate": 135.17,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "088280",
+          "name": "쏘닉스",
+          "count": 2,
+          "sum_rate": 134.77,
+          "max_rate": 29.97
+        }
+      ],
+      "high_52w_top": [
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 9,
+          "sum_rate": 367.31,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 8,
+          "sum_rate": 293.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "046970",
+          "name": "우리로",
+          "count": 8,
+          "sum_rate": 247.92,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "069540",
+          "name": "빛과전자",
+          "count": 6,
+          "sum_rate": 242.09,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "049080",
+          "name": "기가레인",
+          "count": 5,
+          "sum_rate": 241.57,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 4,
+          "sum_rate": 209.64,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "072950",
+          "name": "빛샘전자",
+          "count": 6,
+          "sum_rate": 191.08,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "100590",
+          "name": "머큐리",
+          "count": 4,
+          "sum_rate": 190.94,
+          "max_rate": 29.88
+        },
+        {
+          "ticker": "037030",
+          "name": "파워넷",
+          "count": 7,
+          "sum_rate": 186.18,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 7,
+          "sum_rate": 183.75,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "900100",
+          "name": "애머릿지",
+          "count": 2,
+          "sum_rate": 180.2,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 5,
+          "sum_rate": 178.52,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "073540",
+          "name": "에프알텍",
+          "count": 5,
+          "sum_rate": 152.36,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "001515",
+          "name": "SK증권우",
+          "count": 3,
+          "sum_rate": 149.85,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "009415",
+          "name": "태영건설우",
+          "count": 3,
+          "sum_rate": 149.72,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "058450",
+          "name": "한주에이알티",
+          "count": 3,
+          "sum_rate": 149.62,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "321260",
+          "name": "프로이천",
+          "count": 3,
+          "sum_rate": 142.45,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "027360",
+          "name": "아주IB투자",
+          "count": 5,
+          "sum_rate": 138.43,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "065770",
+          "name": "CS",
+          "count": 3,
+          "sum_rate": 136.28,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "024840",
+          "name": "KBI메탈",
+          "count": 5,
+          "sum_rate": 135.17,
+          "max_rate": 30.0
+        }
+      ],
+      "frequent_top": [
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 13,
+          "sum_rate": 367.31,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 11,
+          "sum_rate": 293.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "046970",
+          "name": "우리로",
+          "count": 9,
+          "sum_rate": 247.92,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "069540",
+          "name": "빛과전자",
+          "count": 10,
+          "sum_rate": 242.09,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "049080",
+          "name": "기가레인",
+          "count": 9,
+          "sum_rate": 241.57,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 7,
+          "sum_rate": 209.64,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "072950",
+          "name": "빛샘전자",
+          "count": 7,
+          "sum_rate": 191.08,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "100590",
+          "name": "머큐리",
+          "count": 9,
+          "sum_rate": 190.94,
+          "max_rate": 29.88
+        },
+        {
+          "ticker": "037030",
+          "name": "파워넷",
+          "count": 8,
+          "sum_rate": 186.18,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 7,
+          "sum_rate": 183.75,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "900100",
+          "name": "애머릿지",
+          "count": 7,
+          "sum_rate": 180.2,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 8,
+          "sum_rate": 178.52,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "073540",
+          "name": "에프알텍",
+          "count": 6,
+          "sum_rate": 152.36,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "001515",
+          "name": "SK증권우",
+          "count": 5,
+          "sum_rate": 149.85,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "009415",
+          "name": "태영건설우",
+          "count": 5,
+          "sum_rate": 149.72,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "058450",
+          "name": "한주에이알티",
+          "count": 5,
+          "sum_rate": 149.62,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "321260",
+          "name": "프로이천",
+          "count": 6,
+          "sum_rate": 142.45,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "027360",
+          "name": "아주IB투자",
+          "count": 6,
+          "sum_rate": 138.43,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "065770",
+          "name": "CS",
+          "count": 5,
+          "sum_rate": 136.28,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "024840",
+          "name": "KBI메탈",
+          "count": 5,
+          "sum_rate": 135.17,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "088280",
+          "name": "쏘닉스",
+          "count": 6,
+          "sum_rate": 134.77,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "047040",
+          "name": "대우건설",
+          "count": 6,
+          "sum_rate": 134.07,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "076610",
+          "name": "해성옵틱스",
+          "count": 5,
+          "sum_rate": 131.66,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "000500",
+          "name": "가온전선",
+          "count": 6,
+          "sum_rate": 129.05,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "356680",
+          "name": "엑스게이트",
+          "count": 5,
+          "sum_rate": 128.74,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "007610",
+          "name": "선도전기",
+          "count": 5,
+          "sum_rate": 125.16,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "138360",
+          "name": "앤로보틱스",
+          "count": 5,
+          "sum_rate": 121.39,
+          "max_rate": 29.89
+        },
+        {
+          "ticker": "189860",
+          "name": "서전기전",
+          "count": 5,
+          "sum_rate": 120.53,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "038060",
+          "name": "루멘스",
+          "count": 4,
+          "sum_rate": 119.94,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "225430",
+          "name": "케이엠제약",
+          "count": 4,
+          "sum_rate": 119.83,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "049120",
+          "name": "파인디앤씨",
+          "count": 4,
+          "sum_rate": 119.78,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "203650",
+          "name": "드림시큐리티",
+          "count": 4,
+          "sum_rate": 119.76,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "062970",
+          "name": "한국첨단소재",
+          "count": 4,
+          "sum_rate": 119.62,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "131760",
+          "name": "파인텍",
+          "count": 4,
+          "sum_rate": 119.55,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "900300",
+          "name": "오가닉티코스메틱",
+          "count": 4,
+          "sum_rate": 118.5,
+          "max_rate": 29.92
+        },
+        {
+          "ticker": "217590",
+          "name": "티엠씨",
+          "count": 5,
+          "sum_rate": 117.82,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "100790",
+          "name": "미래에셋벤처투자",
+          "count": 5,
+          "sum_rate": 116.41,
+          "max_rate": 29.88
+        },
+        {
+          "ticker": "192410",
+          "name": "오늘이엔엠",
+          "count": 4,
+          "sum_rate": 111.93,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "004710",
+          "name": "한솔테크닉스",
+          "count": 5,
+          "sum_rate": 111.59,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "027040",
+          "name": "서울전자통신",
+          "count": 4,
+          "sum_rate": 109.86,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "092600",
+          "name": "앤씨앤",
+          "count": 4,
+          "sum_rate": 105.62,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "020400",
+          "name": "대동금속",
+          "count": 4,
+          "sum_rate": 105.25,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "322780",
+          "name": "코퍼스코리아",
+          "count": 4,
+          "sum_rate": 105.08,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "115440",
+          "name": "우리넷",
+          "count": 4,
+          "sum_rate": 100.87,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "003280",
+          "name": "흥아해운",
+          "count": 4,
+          "sum_rate": 99.96,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "065440",
+          "name": "이루온",
+          "count": 4,
+          "sum_rate": 99.43,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "006490",
+          "name": "인스코비",
+          "count": 4,
+          "sum_rate": 99.29,
+          "max_rate": 29.85
+        },
+        {
+          "ticker": "209640",
+          "name": "와이제이링크",
+          "count": 4,
+          "sum_rate": 97.85,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "036930",
+          "name": "주성엔지니어링",
+          "count": 4,
+          "sum_rate": 97.19,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "429270",
+          "name": "시지트로닉스",
+          "count": 4,
+          "sum_rate": 97.19,
+          "max_rate": 29.97
+        }
+      ],
+      "reason_top": [
+        {
+          "reason": "52주 신고가 도달",
+          "count": 373
+        },
+        {
+          "reason": "AI/반도체 테마",
+          "count": 90
+        },
+        {
+          "reason": "바이오",
+          "count": 74
+        },
+        {
+          "reason": "조선/해운",
+          "count": 26
+        },
+        {
+          "reason": "자사주 소각",
+          "count": 20
+        },
+        {
+          "reason": "실적 호조",
+          "count": 17
+        },
+        {
+          "reason": "계약 체결",
+          "count": 17
+        },
+        {
+          "reason": "로봇/자동화",
+          "count": 14
+        },
+        {
+          "reason": "영업이익 공시",
+          "count": 13
+        },
+        {
+          "reason": "상장 이슈",
+          "count": 13
+        },
+        {
+          "reason": "태양광/재생에너지",
+          "count": 12
+        },
+        {
+          "reason": "거래 급증",
+          "count": 12
+        },
+        {
+          "reason": "공급 계약 체결",
+          "count": 12
+        },
+        {
+          "reason": "실적 관련 뉴스",
+          "count": 11
+        },
+        {
+          "reason": "매출 관련 뉴스",
+          "count": 11
+        },
+        {
+          "reason": "방산",
+          "count": 11
+        },
+        {
+          "reason": "흑자 전환",
+          "count": 11
+        },
+        {
+          "reason": "이차전지 테마",
+          "count": 10
+        },
+        {
+          "reason": "투자 관련 뉴스",
+          "count": 9
+        },
+        {
+          "reason": "수주 공시",
+          "count": 8
+        }
+      ]
+    },
+    "y1": {
+      "total_events_15": 2858,
+      "sector_top": [
+        {
+          "sector": "반도체와반도체장비",
+          "count": 65,
+          "avg_rate": 22.32,
+          "sum_rate": 1450.55,
+          "tickers": 50
+        },
+        {
+          "sector": "전자장비와기기",
+          "count": 54,
+          "avg_rate": 23.83,
+          "sum_rate": 1286.58,
+          "tickers": 35
+        },
+        {
+          "sector": "전기장비",
+          "count": 53,
+          "avg_rate": 24.07,
+          "sum_rate": 1275.77,
+          "tickers": 23
+        },
+        {
+          "sector": "IT서비스",
+          "count": 44,
+          "avg_rate": 23.84,
+          "sum_rate": 1048.77,
+          "tickers": 31
+        },
+        {
+          "sector": "통신장비",
+          "count": 39,
+          "avg_rate": 23.72,
+          "sum_rate": 925.17,
+          "tickers": 22
+        },
+        {
+          "sector": "디스플레이장비및부품",
+          "count": 32,
+          "avg_rate": 23.68,
+          "sum_rate": 757.82,
+          "tickers": 17
+        },
+        {
+          "sector": "전기제품",
+          "count": 29,
+          "avg_rate": 22.85,
+          "sum_rate": 662.52,
+          "tickers": 24
+        },
+        {
+          "sector": "소프트웨어",
+          "count": 26,
+          "avg_rate": 24.7,
+          "sum_rate": 642.13,
+          "tickers": 17
+        },
+        {
+          "sector": "화학",
+          "count": 27,
+          "avg_rate": 21.66,
+          "sum_rate": 584.85,
+          "tickers": 20
+        },
+        {
+          "sector": "핸드셋",
+          "count": 22,
+          "avg_rate": 24.68,
+          "sum_rate": 543.03,
+          "tickers": 14
+        }
+      ],
+      "limit_up_top": [
+        {
+          "ticker": "084670",
+          "name": "동양고속",
+          "count": 11,
+          "sum_rate": 409.2,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 7,
+          "sum_rate": 367.31,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "049180",
+          "name": "셀루메드",
+          "count": 9,
+          "sum_rate": 366.6,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000650",
+          "name": "천일고속",
+          "count": 7,
+          "sum_rate": 355.7,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "389140",
+          "name": "포바이포",
+          "count": 8,
+          "sum_rate": 320.69,
+          "max_rate": 30.01
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 4,
+          "sum_rate": 293.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "340930",
+          "name": "유일에너테크",
+          "count": 4,
+          "sum_rate": 291.37,
+          "max_rate": 30.06
+        },
+        {
+          "ticker": "046970",
+          "name": "우리로",
+          "count": 5,
+          "sum_rate": 247.92,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "001525",
+          "name": "동양우",
+          "count": 2,
+          "sum_rate": 247.39,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "069540",
+          "name": "빛과전자",
+          "count": 3,
+          "sum_rate": 242.09,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "049080",
+          "name": "기가레인",
+          "count": 7,
+          "sum_rate": 241.57,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "056080",
+          "name": "유진로봇",
+          "count": 3,
+          "sum_rate": 222.55,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "044180",
+          "name": "KD",
+          "count": 3,
+          "sum_rate": 221.05,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "380540",
+          "name": "옵티코어",
+          "count": 1,
+          "sum_rate": 214.42,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 7,
+          "sum_rate": 209.64,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "052770",
+          "name": "아이톡시",
+          "count": 4,
+          "sum_rate": 209.42,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "36328K",
+          "name": "티와이홀딩스우",
+          "count": 4,
+          "sum_rate": 209.36,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "203400",
+          "name": "에이비온",
+          "count": 4,
+          "sum_rate": 200.56,
+          "max_rate": 30.01
+        },
+        {
+          "ticker": "001527",
+          "name": "동양2우B",
+          "count": 4,
+          "sum_rate": 196.77,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000545",
+          "name": "흥국화재우",
+          "count": 5,
+          "sum_rate": 196.33,
+          "max_rate": 30.0
+        }
+      ],
+      "high_52w_top": [
+        {
+          "ticker": "084670",
+          "name": "동양고속",
+          "count": 10,
+          "sum_rate": 409.2,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 9,
+          "sum_rate": 367.31,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "049180",
+          "name": "셀루메드",
+          "count": 4,
+          "sum_rate": 366.6,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000650",
+          "name": "천일고속",
+          "count": 9,
+          "sum_rate": 355.7,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "389140",
+          "name": "포바이포",
+          "count": 6,
+          "sum_rate": 320.69,
+          "max_rate": 30.01
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 8,
+          "sum_rate": 293.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "340930",
+          "name": "유일에너테크",
+          "count": 2,
+          "sum_rate": 291.37,
+          "max_rate": 30.06
+        },
+        {
+          "ticker": "046970",
+          "name": "우리로",
+          "count": 8,
+          "sum_rate": 247.92,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "001525",
+          "name": "동양우",
+          "count": 3,
+          "sum_rate": 247.39,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "069540",
+          "name": "빛과전자",
+          "count": 6,
+          "sum_rate": 242.09,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "049080",
+          "name": "기가레인",
+          "count": 5,
+          "sum_rate": 241.57,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "056080",
+          "name": "유진로봇",
+          "count": 6,
+          "sum_rate": 222.55,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "380540",
+          "name": "옵티코어",
+          "count": 4,
+          "sum_rate": 214.42,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 4,
+          "sum_rate": 209.64,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "36328K",
+          "name": "티와이홀딩스우",
+          "count": 4,
+          "sum_rate": 209.36,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "203400",
+          "name": "에이비온",
+          "count": 2,
+          "sum_rate": 200.56,
+          "max_rate": 30.01
+        },
+        {
+          "ticker": "001527",
+          "name": "동양2우B",
+          "count": 4,
+          "sum_rate": 196.77,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000545",
+          "name": "흥국화재우",
+          "count": 2,
+          "sum_rate": 196.33,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "389470",
+          "name": "인벤티지랩",
+          "count": 6,
+          "sum_rate": 195.09,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "210120",
+          "name": "캔버스엔",
+          "count": 2,
+          "sum_rate": 193.16,
+          "max_rate": 29.99
+        }
+      ],
+      "frequent_top": [
+        {
+          "ticker": "084670",
+          "name": "동양고속",
+          "count": 14,
+          "sum_rate": 409.2,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "215790",
+          "name": "이노인스트루먼트",
+          "count": 13,
+          "sum_rate": 367.31,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "049180",
+          "name": "셀루메드",
+          "count": 13,
+          "sum_rate": 366.6,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000650",
+          "name": "천일고속",
+          "count": 12,
+          "sum_rate": 355.7,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "389140",
+          "name": "포바이포",
+          "count": 11,
+          "sum_rate": 320.69,
+          "max_rate": 30.01
+        },
+        {
+          "ticker": "017900",
+          "name": "광전자",
+          "count": 11,
+          "sum_rate": 293.9,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "340930",
+          "name": "유일에너테크",
+          "count": 13,
+          "sum_rate": 291.37,
+          "max_rate": 30.06
+        },
+        {
+          "ticker": "046970",
+          "name": "우리로",
+          "count": 9,
+          "sum_rate": 247.92,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "001525",
+          "name": "동양우",
+          "count": 9,
+          "sum_rate": 247.39,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "069540",
+          "name": "빛과전자",
+          "count": 10,
+          "sum_rate": 242.09,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "049080",
+          "name": "기가레인",
+          "count": 9,
+          "sum_rate": 241.57,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "056080",
+          "name": "유진로봇",
+          "count": 9,
+          "sum_rate": 222.55,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "044180",
+          "name": "KD",
+          "count": 9,
+          "sum_rate": 221.05,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "380540",
+          "name": "옵티코어",
+          "count": 11,
+          "sum_rate": 214.42,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "012205",
+          "name": "계양전기우",
+          "count": 7,
+          "sum_rate": 209.64,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "052770",
+          "name": "아이톡시",
+          "count": 7,
+          "sum_rate": 209.42,
+          "max_rate": 29.98
+        },
+        {
+          "ticker": "36328K",
+          "name": "티와이홀딩스우",
+          "count": 7,
+          "sum_rate": 209.36,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "203400",
+          "name": "에이비온",
+          "count": 8,
+          "sum_rate": 200.56,
+          "max_rate": 30.01
+        },
+        {
+          "ticker": "001527",
+          "name": "동양2우B",
+          "count": 7,
+          "sum_rate": 196.77,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "000545",
+          "name": "흥국화재우",
+          "count": 7,
+          "sum_rate": 196.33,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "389470",
+          "name": "인벤티지랩",
+          "count": 8,
+          "sum_rate": 195.09,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "210120",
+          "name": "캔버스엔",
+          "count": 9,
+          "sum_rate": 193.16,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "072950",
+          "name": "빛샘전자",
+          "count": 7,
+          "sum_rate": 191.08,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "100590",
+          "name": "머큐리",
+          "count": 9,
+          "sum_rate": 190.94,
+          "max_rate": 29.88
+        },
+        {
+          "ticker": "037030",
+          "name": "파워넷",
+          "count": 8,
+          "sum_rate": 186.18,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "006345",
+          "name": "대원전선우",
+          "count": 7,
+          "sum_rate": 183.75,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "128820",
+          "name": "대성산업",
+          "count": 7,
+          "sum_rate": 181.23,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "900100",
+          "name": "애머릿지",
+          "count": 7,
+          "sum_rate": 180.2,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "010170",
+          "name": "대한광통신",
+          "count": 8,
+          "sum_rate": 178.52,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "462860",
+          "name": "더즌",
+          "count": 8,
+          "sum_rate": 171.9,
+          "max_rate": 26.59
+        },
+        {
+          "ticker": "148780",
+          "name": "비큐AI",
+          "count": 7,
+          "sum_rate": 165.34,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "014950",
+          "name": "삼익제약",
+          "count": 6,
+          "sum_rate": 165.34,
+          "max_rate": 29.94
+        },
+        {
+          "ticker": "294570",
+          "name": "쿠콘",
+          "count": 7,
+          "sum_rate": 163.36,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "413630",
+          "name": "씨피시스템",
+          "count": 7,
+          "sum_rate": 160.28,
+          "max_rate": 29.92
+        },
+        {
+          "ticker": "317770",
+          "name": "엑스페릭스",
+          "count": 6,
+          "sum_rate": 159.41,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "054540",
+          "name": "삼영엠텍",
+          "count": 7,
+          "sum_rate": 158.33,
+          "max_rate": 29.93
+        },
+        {
+          "ticker": "435570",
+          "name": "에르코스",
+          "count": 6,
+          "sum_rate": 158.25,
+          "max_rate": 29.96
+        },
+        {
+          "ticker": "000440",
+          "name": "중앙에너비스",
+          "count": 6,
+          "sum_rate": 156.82,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "380550",
+          "name": "뉴로핏",
+          "count": 7,
+          "sum_rate": 156.76,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "004310",
+          "name": "현대약품",
+          "count": 6,
+          "sum_rate": 155.47,
+          "max_rate": 29.91
+        },
+        {
+          "ticker": "010580",
+          "name": "에스엠벡셀",
+          "count": 6,
+          "sum_rate": 154.0,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "010770",
+          "name": "평화홀딩스",
+          "count": 6,
+          "sum_rate": 153.37,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "054180",
+          "name": "메디콕스",
+          "count": 6,
+          "sum_rate": 153.19,
+          "max_rate": 29.81
+        },
+        {
+          "ticker": "073540",
+          "name": "에프알텍",
+          "count": 6,
+          "sum_rate": 152.36,
+          "max_rate": 29.97
+        },
+        {
+          "ticker": "001515",
+          "name": "SK증권우",
+          "count": 5,
+          "sum_rate": 149.85,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "009415",
+          "name": "태영건설우",
+          "count": 5,
+          "sum_rate": 149.72,
+          "max_rate": 30.0
+        },
+        {
+          "ticker": "058450",
+          "name": "한주에이알티",
+          "count": 5,
+          "sum_rate": 149.62,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "372800",
+          "name": "아이티아이즈",
+          "count": 5,
+          "sum_rate": 149.59,
+          "max_rate": 29.99
+        },
+        {
+          "ticker": "040350",
+          "name": "크레오에스지",
+          "count": 7,
+          "sum_rate": 149.16,
+          "max_rate": 29.86
+        },
+        {
+          "ticker": "090370",
+          "name": "메타랩스",
+          "count": 5,
+          "sum_rate": 149.05,
+          "max_rate": 29.98
+        }
+      ],
+      "reason_top": [
+        {
+          "reason": "52주 신고가 도달",
+          "count": 1048
+        },
+        {
+          "reason": "바이오",
+          "count": 132
+        },
+        {
+          "reason": "AI/반도체 테마",
+          "count": 127
+        },
+        {
+          "reason": "로봇/자동화",
+          "count": 60
+        },
+        {
+          "reason": "조선/해운",
+          "count": 33
+        },
+        {
+          "reason": "자사주 소각",
+          "count": 23
+        },
+        {
+          "reason": "실적 호조",
+          "count": 21
+        },
+        {
+          "reason": "이차전지 테마",
+          "count": 20
+        },
+        {
+          "reason": "계약 체결",
+          "count": 17
+        },
+        {
+          "reason": "트럼프/관세",
+          "count": 16
+        },
+        {
+          "reason": "수주 공시",
+          "count": 14
+        },
+        {
+          "reason": "흑자 전환",
+          "count": 13
+        },
+        {
+          "reason": "원전/SMR",
+          "count": 13
+        },
+        {
+          "reason": "영업이익 공시",
+          "count": 13
+        },
+        {
+          "reason": "방산",
+          "count": 13
+        },
+        {
+          "reason": "상장 이슈",
+          "count": 13
+        },
+        {
+          "reason": "태양광/재생에너지",
+          "count": 12
+        },
+        {
+          "reason": "거래 급증",
+          "count": 12
+        },
+        {
+          "reason": "공급 계약 체결",
+          "count": 12
+        },
+        {
+          "reason": "실적 관련 뉴스",
+          "count": 11
+        }
+      ]
+    }
+  },
+  "total_events_15": 2858,
   "sector_top": [
     {
       "sector": "반도체와반도체장비",
-      "count": 58,
-      "avg_rate": 22.14,
-      "tickers": 47
-    },
-    {
-      "sector": "전기장비",
-      "count": 52,
-      "avg_rate": 25.83,
-      "tickers": 23
+      "count": 65,
+      "avg_rate": 22.32,
+      "sum_rate": 1450.55,
+      "tickers": 50
     },
     {
       "sector": "전자장비와기기",
-      "count": 50,
-      "avg_rate": 23.85,
-      "tickers": 34
+      "count": 54,
+      "avg_rate": 23.83,
+      "sum_rate": 1286.58,
+      "tickers": 35
+    },
+    {
+      "sector": "전기장비",
+      "count": 53,
+      "avg_rate": 24.07,
+      "sum_rate": 1275.77,
+      "tickers": 23
     },
     {
       "sector": "IT서비스",
-      "count": 40,
-      "avg_rate": 24.06,
-      "tickers": 29
+      "count": 44,
+      "avg_rate": 23.84,
+      "sum_rate": 1048.77,
+      "tickers": 31
     },
     {
       "sector": "통신장비",
-      "count": 33,
-      "avg_rate": 24.21,
+      "count": 39,
+      "avg_rate": 23.72,
+      "sum_rate": 925.17,
       "tickers": 22
     },
     {
       "sector": "디스플레이장비및부품",
-      "count": 30,
-      "avg_rate": 24.18,
-      "tickers": 16
-    },
-    {
-      "sector": "화학",
-      "count": 26,
-      "avg_rate": 21.9,
-      "tickers": 20
+      "count": 32,
+      "avg_rate": 23.68,
+      "sum_rate": 757.82,
+      "tickers": 17
     },
     {
       "sector": "전기제품",
-      "count": 26,
-      "avg_rate": 22.02,
-      "tickers": 22
+      "count": 29,
+      "avg_rate": 22.85,
+      "sum_rate": 662.52,
+      "tickers": 24
     },
     {
       "sector": "소프트웨어",
-      "count": 25,
-      "avg_rate": 25.05,
+      "count": 26,
+      "avg_rate": 24.7,
+      "sum_rate": 642.13,
       "tickers": 17
+    },
+    {
+      "sector": "화학",
+      "count": 27,
+      "avg_rate": 21.66,
+      "sum_rate": 584.85,
+      "tickers": 20
     },
     {
       "sector": "핸드셋",
       "count": 22,
       "avg_rate": 24.68,
+      "sum_rate": 543.03,
       "tickers": 14
     }
   ],
   "limit_up_top": [
     {
-      "ticker": "009415",
-      "name": "태영건설우",
-      "count": 12
-    },
-    {
-      "ticker": "012205",
-      "name": "계양전기우",
-      "count": 12
-    },
-    {
-      "ticker": "042940",
-      "name": "상지건설",
-      "count": 11
-    },
-    {
       "ticker": "084670",
       "name": "동양고속",
-      "count": 11
-    },
-    {
-      "ticker": "45226K",
-      "name": "한화갤러리아우",
-      "count": 11
-    },
-    {
-      "ticker": "023790",
-      "name": "동일스틸럭스",
-      "count": 10
-    },
-    {
-      "ticker": "076610",
-      "name": "해성옵틱스",
-      "count": 10
-    },
-    {
-      "ticker": "001515",
-      "name": "SK증권우",
-      "count": 9
-    },
-    {
-      "ticker": "008500",
-      "name": "일정실업",
-      "count": 9
-    },
-    {
-      "ticker": "014970",
-      "name": "삼륭물산",
-      "count": 9
-    },
-    {
-      "ticker": "049180",
-      "name": "셀루메드",
-      "count": 9
-    },
-    {
-      "ticker": "221800",
-      "name": "지구홀딩스",
-      "count": 9
-    },
-    {
-      "ticker": "002995",
-      "name": "금호건설우",
-      "count": 8
-    },
-    {
-      "ticker": "079950",
-      "name": "인베니아",
-      "count": 8
-    },
-    {
-      "ticker": "187660",
-      "name": "페니트리움바이오",
-      "count": 8
+      "count": 11,
+      "sum_rate": 409.2,
+      "max_rate": 29.99
     },
     {
       "ticker": "215790",
       "name": "이노인스트루먼트",
-      "count": 8
-    },
-    {
-      "ticker": "389140",
-      "name": "포바이포",
-      "count": 8
-    },
-    {
-      "ticker": "000650",
-      "name": "천일고속",
-      "count": 7
-    },
-    {
-      "ticker": "049080",
-      "name": "기가레인",
-      "count": 7
-    },
-    {
-      "ticker": "065170",
-      "name": "비엘팜텍",
-      "count": 7
-    }
-  ],
-  "high_52w_top": [
-    {
-      "ticker": "010170",
-      "name": "대한광통신",
-      "count": 22
-    },
-    {
-      "ticker": "327260",
-      "name": "RF머트리얼즈",
-      "count": 17
-    },
-    {
-      "ticker": "043260",
-      "name": "성호전자",
-      "count": 16
-    },
-    {
-      "ticker": "032820",
-      "name": "우리기술",
-      "count": 15
-    },
-    {
-      "ticker": "030530",
-      "name": "원익홀딩스",
-      "count": 14
-    },
-    {
-      "ticker": "376900",
-      "name": "로킷헬스케어",
-      "count": 14
-    },
-    {
-      "ticker": "448900",
-      "name": "한국피아이엠",
-      "count": 14
-    },
-    {
-      "ticker": "000500",
-      "name": "가온전선",
-      "count": 13
-    },
-    {
-      "ticker": "049630",
-      "name": "재영솔루텍",
-      "count": 13
-    },
-    {
-      "ticker": "090710",
-      "name": "휴림로봇",
-      "count": 13
-    },
-    {
-      "ticker": "100790",
-      "name": "미래에셋벤처투자",
-      "count": 13
-    },
-    {
-      "ticker": "006800",
-      "name": "미래에셋증권",
-      "count": 12
-    },
-    {
-      "ticker": "058610",
-      "name": "에스피지",
-      "count": 12
-    },
-    {
-      "ticker": "000250",
-      "name": "삼천당제약",
-      "count": 11
-    },
-    {
-      "ticker": "047040",
-      "name": "대우건설",
-      "count": 11
-    },
-    {
-      "ticker": "049470",
-      "name": "비트플래닛",
-      "count": 11
-    },
-    {
-      "ticker": "084670",
-      "name": "동양고속",
-      "count": 11
-    },
-    {
-      "ticker": "108490",
-      "name": "로보티즈",
-      "count": 11
-    },
-    {
-      "ticker": "124500",
-      "name": "아이티센글로벌",
-      "count": 11
-    },
-    {
-      "ticker": "174900",
-      "name": "앱클론",
-      "count": 11
-    }
-  ],
-  "recent_30d_top": [
-    {
-      "ticker": "000500",
-      "name": "가온전선",
-      "count": 8
-    },
-    {
-      "ticker": "006345",
-      "name": "대원전선우",
-      "count": 8
-    },
-    {
-      "ticker": "006340",
-      "name": "대원전선",
-      "count": 7
-    },
-    {
-      "ticker": "092190",
-      "name": "서울바이오시스",
-      "count": 7
-    },
-    {
-      "ticker": "024840",
-      "name": "KBI메탈",
-      "count": 6
-    },
-    {
-      "ticker": "900100",
-      "name": "애머릿지",
-      "count": 6
-    },
-    {
-      "ticker": "004710",
-      "name": "한솔테크닉스",
-      "count": 5
-    },
-    {
-      "ticker": "010170",
-      "name": "대한광통신",
-      "count": 5
-    },
-    {
-      "ticker": "131760",
-      "name": "파인텍",
-      "count": 5
-    },
-    {
-      "ticker": "336260",
-      "name": "두산퓨얼셀",
-      "count": 5
-    },
-    {
-      "ticker": "355150",
-      "name": "코스텍시스",
-      "count": 5
-    },
-    {
-      "ticker": "452190",
-      "name": "한빛레이저",
-      "count": 5
-    },
-    {
-      "ticker": "001440",
-      "name": "대한전선",
-      "count": 4
-    },
-    {
-      "ticker": "007610",
-      "name": "선도전기",
-      "count": 4
-    },
-    {
-      "ticker": "010820",
-      "name": "퍼스텍",
-      "count": 4
-    },
-    {
-      "ticker": "038060",
-      "name": "루멘스",
-      "count": 4
-    },
-    {
-      "ticker": "040160",
-      "name": "누리플렉스",
-      "count": 4
-    },
-    {
-      "ticker": "054920",
-      "name": "한컴위드",
-      "count": 4
-    },
-    {
-      "ticker": "072950",
-      "name": "빛샘전자",
-      "count": 4
-    },
-    {
-      "ticker": "073570",
-      "name": "리튬포어스",
-      "count": 4
-    }
-  ],
-  "frequent_top": [
-    {
-      "ticker": "010170",
-      "name": "대한광통신",
-      "count": 20
-    },
-    {
-      "ticker": "069540",
-      "name": "빛과전자",
-      "count": 19
-    },
-    {
-      "ticker": "215790",
-      "name": "이노인스트루먼트",
-      "count": 17
-    },
-    {
-      "ticker": "448900",
-      "name": "한국피아이엠",
-      "count": 17
-    },
-    {
-      "ticker": "012205",
-      "name": "계양전기우",
-      "count": 16
-    },
-    {
-      "ticker": "065170",
-      "name": "비엘팜텍",
-      "count": 16
-    },
-    {
-      "ticker": "221800",
-      "name": "지구홀딩스",
-      "count": 16
-    },
-    {
-      "ticker": "009415",
-      "name": "태영건설우",
-      "count": 15
-    },
-    {
-      "ticker": "014970",
-      "name": "삼륭물산",
-      "count": 15
-    },
-    {
-      "ticker": "042940",
-      "name": "상지건설",
-      "count": 15
-    },
-    {
-      "ticker": "043260",
-      "name": "성호전자",
-      "count": 15
-    },
-    {
-      "ticker": "084670",
-      "name": "동양고속",
-      "count": 14
-    },
-    {
-      "ticker": "187660",
-      "name": "페니트리움바이오",
-      "count": 14
+      "count": 7,
+      "sum_rate": 367.31,
+      "max_rate": 29.99
     },
     {
       "ticker": "049180",
       "name": "셀루메드",
-      "count": 13
-    },
-    {
-      "ticker": "076610",
-      "name": "해성옵틱스",
-      "count": 13
-    },
-    {
-      "ticker": "100790",
-      "name": "미래에셋벤처투자",
-      "count": 13
-    },
-    {
-      "ticker": "138360",
-      "name": "앤로보틱스",
-      "count": 13
-    },
-    {
-      "ticker": "340930",
-      "name": "유일에너테크",
-      "count": 13
-    },
-    {
-      "ticker": "45226K",
-      "name": "한화갤러리아우",
-      "count": 13
+      "count": 9,
+      "sum_rate": 366.6,
+      "max_rate": 30.0
     },
     {
       "ticker": "000650",
       "name": "천일고속",
-      "count": 12
-    },
-    {
-      "ticker": "023790",
-      "name": "동일스틸럭스",
-      "count": 12
-    },
-    {
-      "ticker": "027360",
-      "name": "아주IB투자",
-      "count": 12
-    },
-    {
-      "ticker": "042520",
-      "name": "한스바이오메드",
-      "count": 12
-    },
-    {
-      "ticker": "049470",
-      "name": "비트플래닛",
-      "count": 12
-    },
-    {
-      "ticker": "429270",
-      "name": "시지트로닉스",
-      "count": 12
-    },
-    {
-      "ticker": "002995",
-      "name": "금호건설우",
-      "count": 11
-    },
-    {
-      "ticker": "008500",
-      "name": "일정실업",
-      "count": 11
-    },
-    {
-      "ticker": "0120G0",
-      "name": "삼양바이오팜",
-      "count": 11
-    },
-    {
-      "ticker": "015260",
-      "name": "에이엔피",
-      "count": 11
-    },
-    {
-      "ticker": "019175",
-      "name": "신풍제약우",
-      "count": 11
-    },
-    {
-      "ticker": "030530",
-      "name": "원익홀딩스",
-      "count": 11
-    },
-    {
-      "ticker": "124500",
-      "name": "아이티센글로벌",
-      "count": 11
-    },
-    {
-      "ticker": "179530",
-      "name": "애드바이오텍",
-      "count": 11
-    },
-    {
-      "ticker": "192410",
-      "name": "오늘이엔엠",
-      "count": 11
-    },
-    {
-      "ticker": "199430",
-      "name": "케이엔알시스템",
-      "count": 11
-    },
-    {
-      "ticker": "229000",
-      "name": "젠큐릭스",
-      "count": 11
-    },
-    {
-      "ticker": "288330",
-      "name": "파라택시스코리아",
-      "count": 11
-    },
-    {
-      "ticker": "319400",
-      "name": "현대무벡스",
-      "count": 11
-    },
-    {
-      "ticker": "322000",
-      "name": "HD현대에너지솔루션",
-      "count": 11
-    },
-    {
-      "ticker": "327260",
-      "name": "RF머트리얼즈",
-      "count": 11
-    },
-    {
-      "ticker": "380540",
-      "name": "옵티코어",
-      "count": 11
+      "count": 7,
+      "sum_rate": 355.7,
+      "max_rate": 30.0
     },
     {
       "ticker": "389140",
       "name": "포바이포",
-      "count": 11
-    },
-    {
-      "ticker": "001510",
-      "name": "SK증권",
-      "count": 10
-    },
-    {
-      "ticker": "011080",
-      "name": "형지I&C",
-      "count": 10
-    },
-    {
-      "ticker": "012200",
-      "name": "계양전기",
-      "count": 10
+      "count": 8,
+      "sum_rate": 320.69,
+      "max_rate": 30.01
     },
     {
       "ticker": "017900",
       "name": "광전자",
-      "count": 10
+      "count": 4,
+      "sum_rate": 293.9,
+      "max_rate": 30.0
     },
     {
-      "ticker": "031860",
-      "name": "디에이치엑스컴퍼니",
-      "count": 10
-    },
-    {
-      "ticker": "032820",
-      "name": "우리기술",
-      "count": 10
-    },
-    {
-      "ticker": "036170",
-      "name": "에이치엠넥스",
-      "count": 10
+      "ticker": "340930",
+      "name": "유일에너테크",
+      "count": 4,
+      "sum_rate": 291.37,
+      "max_rate": 30.06
     },
     {
       "ticker": "046970",
       "name": "우리로",
-      "count": 10
+      "count": 5,
+      "sum_rate": 247.92,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "001525",
+      "name": "동양우",
+      "count": 2,
+      "sum_rate": 247.39,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "069540",
+      "name": "빛과전자",
+      "count": 3,
+      "sum_rate": 242.09,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "049080",
+      "name": "기가레인",
+      "count": 7,
+      "sum_rate": 241.57,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "056080",
+      "name": "유진로봇",
+      "count": 3,
+      "sum_rate": 222.55,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "044180",
+      "name": "KD",
+      "count": 3,
+      "sum_rate": 221.05,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "380540",
+      "name": "옵티코어",
+      "count": 1,
+      "sum_rate": 214.42,
+      "max_rate": 29.96
+    },
+    {
+      "ticker": "012205",
+      "name": "계양전기우",
+      "count": 7,
+      "sum_rate": 209.64,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "052770",
+      "name": "아이톡시",
+      "count": 4,
+      "sum_rate": 209.42,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "36328K",
+      "name": "티와이홀딩스우",
+      "count": 4,
+      "sum_rate": 209.36,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "203400",
+      "name": "에이비온",
+      "count": 4,
+      "sum_rate": 200.56,
+      "max_rate": 30.01
+    },
+    {
+      "ticker": "001527",
+      "name": "동양2우B",
+      "count": 4,
+      "sum_rate": 196.77,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "000545",
+      "name": "흥국화재우",
+      "count": 5,
+      "sum_rate": 196.33,
+      "max_rate": 30.0
+    }
+  ],
+  "high_52w_top": [
+    {
+      "ticker": "084670",
+      "name": "동양고속",
+      "count": 10,
+      "sum_rate": 409.2,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "215790",
+      "name": "이노인스트루먼트",
+      "count": 9,
+      "sum_rate": 367.31,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "049180",
+      "name": "셀루메드",
+      "count": 4,
+      "sum_rate": 366.6,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "000650",
+      "name": "천일고속",
+      "count": 9,
+      "sum_rate": 355.7,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "389140",
+      "name": "포바이포",
+      "count": 6,
+      "sum_rate": 320.69,
+      "max_rate": 30.01
+    },
+    {
+      "ticker": "017900",
+      "name": "광전자",
+      "count": 8,
+      "sum_rate": 293.9,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "340930",
+      "name": "유일에너테크",
+      "count": 2,
+      "sum_rate": 291.37,
+      "max_rate": 30.06
+    },
+    {
+      "ticker": "046970",
+      "name": "우리로",
+      "count": 8,
+      "sum_rate": 247.92,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "001525",
+      "name": "동양우",
+      "count": 3,
+      "sum_rate": 247.39,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "069540",
+      "name": "빛과전자",
+      "count": 6,
+      "sum_rate": 242.09,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "049080",
+      "name": "기가레인",
+      "count": 5,
+      "sum_rate": 241.57,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "056080",
+      "name": "유진로봇",
+      "count": 6,
+      "sum_rate": 222.55,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "380540",
+      "name": "옵티코어",
+      "count": 4,
+      "sum_rate": 214.42,
+      "max_rate": 29.96
+    },
+    {
+      "ticker": "012205",
+      "name": "계양전기우",
+      "count": 4,
+      "sum_rate": 209.64,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "36328K",
+      "name": "티와이홀딩스우",
+      "count": 4,
+      "sum_rate": 209.36,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "203400",
+      "name": "에이비온",
+      "count": 2,
+      "sum_rate": 200.56,
+      "max_rate": 30.01
+    },
+    {
+      "ticker": "001527",
+      "name": "동양2우B",
+      "count": 4,
+      "sum_rate": 196.77,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "000545",
+      "name": "흥국화재우",
+      "count": 2,
+      "sum_rate": 196.33,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "389470",
+      "name": "인벤티지랩",
+      "count": 6,
+      "sum_rate": 195.09,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "210120",
+      "name": "캔버스엔",
+      "count": 2,
+      "sum_rate": 193.16,
+      "max_rate": 29.99
+    }
+  ],
+  "recent_30d_top": [
+    {
+      "ticker": "006345",
+      "name": "대원전선우",
+      "count": 7,
+      "sum_rate": 183.75,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "024840",
+      "name": "KBI메탈",
+      "count": 5,
+      "sum_rate": 135.17,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "000500",
+      "name": "가온전선",
+      "count": 6,
+      "sum_rate": 129.05,
+      "max_rate": 29.97
+    },
+    {
+      "ticker": "356680",
+      "name": "엑스게이트",
+      "count": 5,
+      "sum_rate": 128.74,
+      "max_rate": 29.97
+    },
+    {
+      "ticker": "007610",
+      "name": "선도전기",
+      "count": 5,
+      "sum_rate": 125.16,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "900100",
+      "name": "애머릿지",
+      "count": 5,
+      "sum_rate": 120.35,
+      "max_rate": 29.92
+    },
+    {
+      "ticker": "038060",
+      "name": "루멘스",
+      "count": 4,
+      "sum_rate": 119.94,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "012205",
+      "name": "계양전기우",
+      "count": 4,
+      "sum_rate": 119.9,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "203650",
+      "name": "드림시큐리티",
+      "count": 4,
+      "sum_rate": 119.76,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "072950",
+      "name": "빛샘전자",
+      "count": 4,
+      "sum_rate": 119.63,
+      "max_rate": 29.96
+    },
+    {
+      "ticker": "131760",
+      "name": "파인텍",
+      "count": 4,
+      "sum_rate": 119.55,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "215790",
+      "name": "이노인스트루먼트",
+      "count": 4,
+      "sum_rate": 113.01,
+      "max_rate": 29.95
+    },
+    {
+      "ticker": "004710",
+      "name": "한솔테크닉스",
+      "count": 5,
+      "sum_rate": 111.59,
+      "max_rate": 29.96
+    },
+    {
+      "ticker": "017900",
+      "name": "광전자",
+      "count": 4,
+      "sum_rate": 93.17,
+      "max_rate": 29.97
+    },
+    {
+      "ticker": "006340",
+      "name": "대원전선",
+      "count": 4,
+      "sum_rate": 90.36,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "092190",
+      "name": "서울바이오시스",
+      "count": 3,
+      "sum_rate": 89.89,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "009415",
+      "name": "태영건설우",
+      "count": 3,
+      "sum_rate": 89.88,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "027040",
+      "name": "서울전자통신",
+      "count": 3,
+      "sum_rate": 89.86,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "011000",
+      "name": "진원생명과학",
+      "count": 3,
+      "sum_rate": 89.8,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "115500",
+      "name": "케이씨에스",
+      "count": 3,
+      "sum_rate": 89.8,
+      "max_rate": 29.97
+    }
+  ],
+  "frequent_top": [
+    {
+      "ticker": "084670",
+      "name": "동양고속",
+      "count": 14,
+      "sum_rate": 409.2,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "215790",
+      "name": "이노인스트루먼트",
+      "count": 13,
+      "sum_rate": 367.31,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "049180",
+      "name": "셀루메드",
+      "count": 13,
+      "sum_rate": 366.6,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "000650",
+      "name": "천일고속",
+      "count": 12,
+      "sum_rate": 355.7,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "389140",
+      "name": "포바이포",
+      "count": 11,
+      "sum_rate": 320.69,
+      "max_rate": 30.01
+    },
+    {
+      "ticker": "017900",
+      "name": "광전자",
+      "count": 11,
+      "sum_rate": 293.9,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "340930",
+      "name": "유일에너테크",
+      "count": 13,
+      "sum_rate": 291.37,
+      "max_rate": 30.06
+    },
+    {
+      "ticker": "046970",
+      "name": "우리로",
+      "count": 9,
+      "sum_rate": 247.92,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "001525",
+      "name": "동양우",
+      "count": 9,
+      "sum_rate": 247.39,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "069540",
+      "name": "빛과전자",
+      "count": 10,
+      "sum_rate": 242.09,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "049080",
+      "name": "기가레인",
+      "count": 9,
+      "sum_rate": 241.57,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "056080",
+      "name": "유진로봇",
+      "count": 9,
+      "sum_rate": 222.55,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "044180",
+      "name": "KD",
+      "count": 9,
+      "sum_rate": 221.05,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "380540",
+      "name": "옵티코어",
+      "count": 11,
+      "sum_rate": 214.42,
+      "max_rate": 29.96
+    },
+    {
+      "ticker": "012205",
+      "name": "계양전기우",
+      "count": 7,
+      "sum_rate": 209.64,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "052770",
+      "name": "아이톡시",
+      "count": 7,
+      "sum_rate": 209.42,
+      "max_rate": 29.98
+    },
+    {
+      "ticker": "36328K",
+      "name": "티와이홀딩스우",
+      "count": 7,
+      "sum_rate": 209.36,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "203400",
+      "name": "에이비온",
+      "count": 8,
+      "sum_rate": 200.56,
+      "max_rate": 30.01
+    },
+    {
+      "ticker": "001527",
+      "name": "동양2우B",
+      "count": 7,
+      "sum_rate": 196.77,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "000545",
+      "name": "흥국화재우",
+      "count": 7,
+      "sum_rate": 196.33,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "389470",
+      "name": "인벤티지랩",
+      "count": 8,
+      "sum_rate": 195.09,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "210120",
+      "name": "캔버스엔",
+      "count": 9,
+      "sum_rate": 193.16,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "072950",
+      "name": "빛샘전자",
+      "count": 7,
+      "sum_rate": 191.08,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "100590",
+      "name": "머큐리",
+      "count": 9,
+      "sum_rate": 190.94,
+      "max_rate": 29.88
+    },
+    {
+      "ticker": "037030",
+      "name": "파워넷",
+      "count": 8,
+      "sum_rate": 186.18,
+      "max_rate": 29.97
+    },
+    {
+      "ticker": "006345",
+      "name": "대원전선우",
+      "count": 7,
+      "sum_rate": 183.75,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "128820",
+      "name": "대성산업",
+      "count": 7,
+      "sum_rate": 181.23,
+      "max_rate": 29.97
+    },
+    {
+      "ticker": "900100",
+      "name": "애머릿지",
+      "count": 7,
+      "sum_rate": 180.2,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "010170",
+      "name": "대한광통신",
+      "count": 8,
+      "sum_rate": 178.52,
+      "max_rate": 29.97
+    },
+    {
+      "ticker": "462860",
+      "name": "더즌",
+      "count": 8,
+      "sum_rate": 171.9,
+      "max_rate": 26.59
+    },
+    {
+      "ticker": "148780",
+      "name": "비큐AI",
+      "count": 7,
+      "sum_rate": 165.34,
+      "max_rate": 29.97
+    },
+    {
+      "ticker": "014950",
+      "name": "삼익제약",
+      "count": 6,
+      "sum_rate": 165.34,
+      "max_rate": 29.94
+    },
+    {
+      "ticker": "294570",
+      "name": "쿠콘",
+      "count": 7,
+      "sum_rate": 163.36,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "413630",
+      "name": "씨피시스템",
+      "count": 7,
+      "sum_rate": 160.28,
+      "max_rate": 29.92
+    },
+    {
+      "ticker": "317770",
+      "name": "엑스페릭스",
+      "count": 6,
+      "sum_rate": 159.41,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "054540",
+      "name": "삼영엠텍",
+      "count": 7,
+      "sum_rate": 158.33,
+      "max_rate": 29.93
+    },
+    {
+      "ticker": "435570",
+      "name": "에르코스",
+      "count": 6,
+      "sum_rate": 158.25,
+      "max_rate": 29.96
+    },
+    {
+      "ticker": "000440",
+      "name": "중앙에너비스",
+      "count": 6,
+      "sum_rate": 156.82,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "380550",
+      "name": "뉴로핏",
+      "count": 7,
+      "sum_rate": 156.76,
+      "max_rate": 29.91
+    },
+    {
+      "ticker": "004310",
+      "name": "현대약품",
+      "count": 6,
+      "sum_rate": 155.47,
+      "max_rate": 29.91
+    },
+    {
+      "ticker": "010580",
+      "name": "에스엠벡셀",
+      "count": 6,
+      "sum_rate": 154.0,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "010770",
+      "name": "평화홀딩스",
+      "count": 6,
+      "sum_rate": 153.37,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "054180",
+      "name": "메디콕스",
+      "count": 6,
+      "sum_rate": 153.19,
+      "max_rate": 29.81
+    },
+    {
+      "ticker": "073540",
+      "name": "에프알텍",
+      "count": 6,
+      "sum_rate": 152.36,
+      "max_rate": 29.97
+    },
+    {
+      "ticker": "001515",
+      "name": "SK증권우",
+      "count": 5,
+      "sum_rate": 149.85,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "009415",
+      "name": "태영건설우",
+      "count": 5,
+      "sum_rate": 149.72,
+      "max_rate": 30.0
+    },
+    {
+      "ticker": "058450",
+      "name": "한주에이알티",
+      "count": 5,
+      "sum_rate": 149.62,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "372800",
+      "name": "아이티아이즈",
+      "count": 5,
+      "sum_rate": 149.59,
+      "max_rate": 29.99
+    },
+    {
+      "ticker": "040350",
+      "name": "크레오에스지",
+      "count": 7,
+      "sum_rate": 149.16,
+      "max_rate": 29.86
+    },
+    {
+      "ticker": "090370",
+      "name": "메타랩스",
+      "count": 5,
+      "sum_rate": 149.05,
+      "max_rate": 29.98
     }
   ],
   "reason_top": [
     {
       "reason": "52주 신고가 도달",
-      "count": 2202
+      "count": 1048
     },
     {
       "reason": "바이오",
-      "count": 293
+      "count": 132
     },
     {
       "reason": "AI/반도체 테마",
-      "count": 260
+      "count": 127
     },
     {
       "reason": "로봇/자동화",
-      "count": 118
+      "count": 60
     },
     {
       "reason": "조선/해운",
-      "count": 43
-    },
-    {
-      "reason": "이차전지 테마",
-      "count": 41
-    },
-    {
-      "reason": "실적 호조",
-      "count": 32
-    },
-    {
-      "reason": "태양광/재생에너지",
-      "count": 31
-    },
-    {
-      "reason": "원전/SMR",
-      "count": 28
-    },
-    {
-      "reason": "방산",
-      "count": 28
-    },
-    {
-      "reason": "트럼프/관세",
-      "count": 26
-    },
-    {
-      "reason": "수주 공시",
-      "count": 25
-    },
-    {
-      "reason": "유상증자",
-      "count": 24
+      "count": 33
     },
     {
       "reason": "자사주 소각",
       "count": 23
     },
     {
-      "reason": "무상증자",
-      "count": 18
+      "reason": "실적 호조",
+      "count": 21
     },
     {
-      "reason": "대형 수주",
-      "count": 16
+      "reason": "이차전지 테마",
+      "count": 20
     },
     {
       "reason": "계약 체결",
+      "count": 17
+    },
+    {
+      "reason": "트럼프/관세",
       "count": 16
     },
     {
-      "reason": "실적 개선",
-      "count": 13
+      "reason": "수주 공시",
+      "count": 14
     },
     {
       "reason": "흑자 전환",
       "count": 13
     },
     {
+      "reason": "원전/SMR",
+      "count": 13
+    },
+    {
+      "reason": "영업이익 공시",
+      "count": 13
+    },
+    {
+      "reason": "방산",
+      "count": 13
+    },
+    {
       "reason": "상장 이슈",
       "count": 13
+    },
+    {
+      "reason": "태양광/재생에너지",
+      "count": 12
+    },
+    {
+      "reason": "거래 급증",
+      "count": 12
+    },
+    {
+      "reason": "공급 계약 체결",
+      "count": 12
+    },
+    {
+      "reason": "실적 관련 뉴스",
+      "count": 11
     }
   ]
 }
