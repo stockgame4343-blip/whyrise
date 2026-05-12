@@ -71,7 +71,7 @@ var WhyApp = (function () {
             state.rankings = data.rankings || [];
             applyCutoffAndRender();
             var $upd = document.getElementById('lastUpdated');
-            if ($upd) $upd.textContent = data.collected_at ? data.collected_at.replace('T', ' ').slice(0, 16) + ' 수집' : '';
+            if ($upd) $upd.textContent = data.collected_at ? data.collected_at.replace('T', ' ').slice(0, 16) + ' 업데이트' : '';
         }).catch(function (err) {
             if ($msg) {
                 $msg.textContent = '데이터 로딩 실패: ' + err.message;

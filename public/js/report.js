@@ -100,8 +100,8 @@
 
     function fmtBuiltAt(iso) {
         if (!iso) return '';
-        try { return new Date(iso).toLocaleString('ko-KR', { hour12: false }); }
-        catch (e) { return iso; }
+        // 'YYYY-MM-DDTHH:MM:SS' → 'YYYY-MM-DD HH:MM' (홈과 동일 포맷)
+        return String(iso).replace('T', ' ').slice(0, 16);
     }
 
     function pickPeriod(summary, period) {
@@ -174,7 +174,7 @@
                 $loading.style.display = 'none';
                 $grid.style.display = 'grid';
                 var $upd = document.getElementById('lastUpdated');
-                if ($upd && s.built_at) $upd.textContent = fmtBuiltAt(s.built_at) + ' 갱신';
+                if ($upd && s.built_at) $upd.textContent = fmtBuiltAt(s.built_at) + ' 업데이트';
                 applyPeriod();
             })
             .catch(function (err) {
