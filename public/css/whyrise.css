@@ -782,8 +782,7 @@ body.page-treemap {
     padding: 3px;
     border-radius: 8px;
 }
-.tmap-tabs--period { margin-right: 4px; }
-.tmap-tabs--sort { margin-left: 4px; }
+/* 그룹 간 간격은 .tmap-bar__right 의 gap 으로만 — 개별 margin 룰 제거 */
 
 /* 날짜 네비 */
 .tmap-datenav {

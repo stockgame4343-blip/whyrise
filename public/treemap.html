@@ -63,22 +63,22 @@
                 <button class="tmap-back" id="tmapBack" style="display:none;" title="전체로">← <span id="tmapBackLabel">전체</span></button>
             </div>
             <div class="tmap-bar__right">
-                <div class="tmap-tabs tmap-tabs--period" role="tablist" aria-label="기간">
-                    <button class="tmap-tab is-active" data-period="1d">1일</button>
-                    <button class="tmap-tab" data-period="1w">1주</button>
-                    <button class="tmap-tab" data-period="1m">1달</button>
-                    <button class="tmap-tab" data-period="3m">3달</button>
-                    <button class="tmap-tab" data-period="1y">1년</button>
-                </div>
                 <div class="tmap-tabs tmap-tabs--market" role="tablist" aria-label="시장">
                     <button class="tmap-tab is-active" data-filter="ALL">전체</button>
                     <button class="tmap-tab" data-filter="KOSPI">코스피</button>
                     <button class="tmap-tab" data-filter="KOSDAQ">코스닥</button>
                 </div>
-                <div class="tmap-tabs tmap-tabs--sort" role="tablist" aria-label="정렬">
+                <div class="tmap-tabs tmap-tabs--sort" role="tablist" aria-label="종류">
                     <button class="tmap-tab is-active" data-sort="mcap">시총</button>
                     <button class="tmap-tab" data-sort="volume">거래량</button>
                     <button class="tmap-tab" data-sort="change">상승률</button>
+                </div>
+                <div class="tmap-tabs tmap-tabs--period" role="tablist" aria-label="날짜">
+                    <button class="tmap-tab is-active" data-period="1d">1일</button>
+                    <button class="tmap-tab" data-period="1w">1주</button>
+                    <button class="tmap-tab" data-period="1m">1달</button>
+                    <button class="tmap-tab" data-period="3m">3달</button>
+                    <button class="tmap-tab" data-period="1y">1년</button>
                 </div>
                 <button class="tmap-save" id="tmapSave" title="PNG 이미지로 저장" aria-label="이미지 저장">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
