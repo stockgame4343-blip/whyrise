@@ -188,8 +188,10 @@ var WhyTable = (function () {
         updateSortIndicators();
 
         if (!rankings || rankings.length === 0) {
+            var emptyMsg = (opts && opts.emptyMsg) ||
+                '오늘 +15% 이상 오른 종목이 없습니다.';
             tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:60px;color:var(--text-muted);">' +
-                '오늘 +15% 이상 오른 종목이 없습니다.</td></tr>';
+                emptyMsg + '</td></tr>';
             return;
         }
 

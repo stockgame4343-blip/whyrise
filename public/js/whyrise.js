@@ -46,7 +46,11 @@ var WhyApp = (function () {
             return r.change_rate != null && r.change_rate >= CUTOFF;
         });
         // 관심 모드: 별점 매긴 종목만
+        var starredCount = 0;
         if (state.watchlistMode) {
+            for (var t in state.ratings) {
+                if (state.ratings[t] && (state.ratings[t].stars || 0) > 0) starredCount++;
+            }
             filtered = filtered.filter(function (r) {
                 var rt = state.ratings[r.ticker] || {};
                 return (rt.stars || 0) > 0;
@@ -57,7 +61,13 @@ var WhyApp = (function () {
         filtered.forEach(function (r, i) { r._displayRank = i + 1; });
 
         var date = state.dates[state.currentDateIdx] || '';
-        WhyTable.render(filtered, state.ratings, { date: date });
+        var emptyMsg;
+        if (state.watchlistMode) {
+            emptyMsg = (starredCount === 0)
+                ? '관심 종목이 없습니다 — 종목 행에서 별(★)을 매겨 등록하세요.'
+                : '관심 종목 중 이 날 +15% 이상 오른 종목이 없습니다.';
+        }
+        WhyTable.render(filtered, state.ratings, { date: date, emptyMsg: emptyMsg });
 
     }
 
