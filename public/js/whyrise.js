@@ -42,33 +42,51 @@ var WhyApp = (function () {
     }
 
     function applyCutoffAndRender() {
-        var filtered = (state.rankings || []).filter(function (r) {
-            return r.change_rate != null && r.change_rate >= CUTOFF;
-        });
-        // 관심 모드: 별점 매긴 종목만
-        var starredCount = 0;
+        var date = state.dates[state.currentDateIdx] || '';
+        var filtered;
+        var emptyMsg;
+
         if (state.watchlistMode) {
+            // 관심 모드 — 별 매긴 종목 전부 표시 (날짜 무관).
+            // 그 날 +15% 친 종목은 실제 데이터, 아닌 종목은 인덱스 메타로 dummy row.
+            var starred = [];
             for (var t in state.ratings) {
-                if (state.ratings[t] && (state.ratings[t].stars || 0) > 0) starredCount++;
+                if (state.ratings[t] && (state.ratings[t].stars || 0) > 0) starred.push(t);
             }
-            filtered = filtered.filter(function (r) {
-                var rt = state.ratings[r.ticker] || {};
-                return (rt.stars || 0) > 0;
+            var rankingsByTicker = {};
+            (state.rankings || []).forEach(function (r) { rankingsByTicker[r.ticker] = r; });
+            filtered = starred.map(function (ticker) {
+                if (rankingsByTicker[ticker]) return rankingsByTicker[ticker];
+                var meta = (state.tickerMeta || {})[ticker] || {};
+                return {
+                    ticker: ticker,
+                    name: meta.name || ticker,
+                    market: meta.market || '',
+                    change_rate: null,
+                    trading_value: null,
+                    market_cap: null,
+                    sector: '',
+                    theme_tag: '',
+                    rise_reason: '',
+                    news: [],
+                };
             });
+            // 정렬: 그 날 오른 종목(change_rate desc) 먼저, 미해당(null) 뒤
+            filtered.sort(function (a, b) {
+                var ar = (a.change_rate == null) ? -Infinity : a.change_rate;
+                var br = (b.change_rate == null) ? -Infinity : b.change_rate;
+                return br - ar;
+            });
+            emptyMsg = '관심 종목이 없습니다.';
+        } else {
+            filtered = (state.rankings || []).filter(function (r) {
+                return r.change_rate != null && r.change_rate >= CUTOFF;
+            });
+            filtered.sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
         }
-        // change_rate 내림차순 정렬, 1-base 랭킹 부여
-        filtered.sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
         filtered.forEach(function (r, i) { r._displayRank = i + 1; });
 
-        var date = state.dates[state.currentDateIdx] || '';
-        var emptyMsg;
-        if (state.watchlistMode) {
-            emptyMsg = (starredCount === 0)
-                ? '관심 종목이 없습니다 — 종목 행에서 별(★)을 매겨 등록하세요.'
-                : '관심 종목 중 이 날 +15% 이상 오른 종목이 없습니다.';
-        }
         WhyTable.render(filtered, state.ratings, { date: date, emptyMsg: emptyMsg });
-
     }
 
     function loadDate(date) {
@@ -325,6 +343,14 @@ var WhyApp = (function () {
         });
     }
 
+    function loadTickerMeta() {
+        // stock-history/index.json — 1177 종목의 name/count 메타.  관심 모드용.
+        return fetch('/data/stock-history/index.json', { cache: 'no-store' })
+            .then(function (r) { return r.ok ? r.json() : {}; })
+            .then(function (m) { state.tickerMeta = m || {}; })
+            .catch(function () { state.tickerMeta = {}; });
+    }
+
     function init() {
         loadRatings();
         bindThemeToggle();
@@ -333,7 +359,7 @@ var WhyApp = (function () {
         bindRatingsEvents();
         bindMemoModal();
         bindNewsModal();
-        loadWidgetTopRecent();
+        loadTickerMeta();
 
         WhyAPI.getDates().then(function (dates) {
             if (!Array.isArray(dates) || !dates.length) {
