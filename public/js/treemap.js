@@ -30,6 +30,11 @@
     // 시총이 너무 큰 종목은 면적 가중치 절반 — 균형 잡힌 시각화
     var SIZE_HALF_TICKERS = { '005930': true, '005935': true, '000660': true };
 
+    // 별도 "반도체" 그룹으로 분리 — 시총 큰 3종목.
+    // 나머지 "반도체와반도체장비" 섹터 종목은 "반도체·장비" 그룹으로 유지.
+    var SEMI_LEAD_GROUP = '반도체';
+    var SEMI_LEAD_TICKERS = { '005930': true, '005935': true, '000660': true };
+
     // 네이버 industry 원본은 띄어쓰기 없음 — 표시용 매핑
     var SECTOR_FORMAT = {
         '반도체와반도체장비': '반도체·장비',
@@ -99,9 +104,10 @@
     };
 
     // ── 시간 ──────────────────────────────────────────
+    // KST = UTC + 9h. Date.now() 가 UTC epoch ms 이므로 사용자 시간대와 무관하게
+    // 항상 KST 시각을 표현하는 Date 객체 반환. getUTC* 로 KST 값 추출.
     function kstNow() {
-        var n = new Date();
-        return new Date(n.getTime() + (n.getTimezoneOffset() + KST_OFFSET) * 60000);
+        return new Date(Date.now() + KST_OFFSET * 60000);
     }
     function isMarketOpen() {
         var k = kstNow();
@@ -160,26 +166,23 @@
         // 1d 라이브 (오늘 + 1d 모드) 이면 라이브 우선, 아니면 스냅샷
         var useLive = isLiveDate() && state.period === '1d' && state.liveItems.length;
         var base = useLive ? state.liveItems : state.snapshotItems;
-        // 라이브엔 rates 없음 → snapshotItems 의 rates 머지
-        if (useLive && state.period !== '1d') {
-            // 시간 모드는 어차피 snapshot 사용. 여기 도달 X
-        }
         return base.map(function (it) {
             var copy = Object.assign({}, it);
-            // sector 머지
+            // sector 머지 (라이브엔 sector 없음)
             if (!copy.sector) copy.sector = state.sectorMap[copy.ticker] || '';
+            // 삼성전자·우·SK하이닉스 만 별도 "반도체" 그룹으로 떼어냄
+            if (SEMI_LEAD_TICKERS[copy.ticker]) copy.sector = SEMI_LEAD_GROUP;
             // 시간 모드 → change_rate 교체
             if (state.period !== '1d') {
                 var rates = copy.rates || null;
                 if (!rates) {
-                    // 라이브 아이템에 rates 없으면 snapshot 매핑
                     var snap = state.snapshotItems.find(function (s) { return s.ticker === copy.ticker; });
                     rates = snap && snap.rates ? snap.rates : null;
                 }
                 if (rates && rates[state.period] != null) {
                     copy.change_rate = rates[state.period];
                 } else {
-                    copy.change_rate = null; // 데이터 부족 — 보합 회색
+                    copy.change_rate = null;
                 }
             }
             return copy;
