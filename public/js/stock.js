@@ -84,6 +84,13 @@
         $title.innerHTML = '<strong>' + name + '</strong> 왜 오름?';
         if (market) $market.textContent = market;
 
+        // 네이버 증권 바로가기 (모바일 페이지)
+        var $naver = document.getElementById('stockNaverLink');
+        if ($naver && ticker) {
+            $naver.href = 'https://m.stock.naver.com/domestic/stock/' + ticker + '/total';
+            $naver.style.display = '';
+        }
+
         if (!stats) { $stats.innerHTML = ''; return; }
         var html = '';
         // 핵심 지표 우선 — count_10 (1년 총 횟수), count_15, count_recent (최근 30일)

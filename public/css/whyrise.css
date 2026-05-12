@@ -530,6 +530,28 @@ body {
     color: var(--text-secondary);
     padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700;
 }
+/* 네이버 증권 바로가기 — 우측 정렬 */
+.stock-header__naver {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color .15s, border-color .15s, background .15s;
+}
+.stock-header__naver:hover {
+    color: var(--text-primary);
+    border-color: var(--glass-border-strong);
+    background: var(--glass-bg);
+}
+.stock-header__naver svg { flex-shrink: 0; }
 .stock-header__stats {
     display: flex; gap: 32px; margin-top: 22px; flex-wrap: wrap;
 }

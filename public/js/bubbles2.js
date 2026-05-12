@@ -19,6 +19,8 @@
 
     var SEMI_LEAD_GROUP = '반도체';
     var SEMI_LEAD_TICKERS = { '005930': true, '005935': true, '000660': true };
+    // 차단 종목 — 모든 페이지에서 가려짐
+    var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
     // 시총 1·2위 (삼성전자·SK하이닉스) 면적 80% 로 축소 — 시각 균형 (시총 모드 한정)
     var SIZE_SCALE_TICKERS = { '005930': 0.8, '000660': 0.8 };
@@ -176,7 +178,7 @@
         });
     }
     function visibleItems() {
-        var items = activeItems();
+        var items = activeItems().filter(function (it) { return !BLOCKED_TICKERS[it.ticker]; });
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
             items = items.filter(function (it) { return it.market === state.filter; });
         }

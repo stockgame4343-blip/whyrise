@@ -9,6 +9,8 @@
     var PERIOD_LABEL = { d1: '1일', w1: '1주', m1: '1달', m3: '3달', y1: '1년' };
 
     var state = { period: 'y1', summary: null };
+    // 차단 종목 — 모든 페이지에서 가려짐 (에이프로젠바이오로직스/졸스/에이프로젠)
+    var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
     function bindThemeToggle() {
         var $btn = document.getElementById('themeToggle');
@@ -83,7 +85,8 @@
     function renderTickerList(elId, rows, opts) {
         var $el = document.getElementById(elId);
         if (!$el) return;
-        if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
+        rows = (rows || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
+        if (!rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
         var hasSumRate = rows[0].sum_rate != null;
         var key = hasSumRate ? 'sum_rate' : 'count';
         var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));

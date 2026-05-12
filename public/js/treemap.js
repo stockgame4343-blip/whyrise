@@ -34,6 +34,8 @@
     // 나머지 "반도체와반도체장비" 섹터 종목은 "반도체·장비" 그룹으로 유지.
     var SEMI_LEAD_GROUP = '반도체';
     var SEMI_LEAD_TICKERS = { '005930': true, '005935': true, '000660': true };
+    // 차단 종목 — 모든 페이지에서 가려짐
+    var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
     var PERIOD_LABEL = { '1d': '1일', '1w': '1주', '1m': '1달', '3m': '3달', '1y': '1년' };
     var SORT_LABEL = { mcap: '시총', volume: '거래량', change: '상승률' };
@@ -215,7 +217,7 @@
     }
 
     function visibleItems() {
-        var items = activeItems();
+        var items = activeItems().filter(function (it) { return !BLOCKED_TICKERS[it.ticker]; });
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
             items = items.filter(function (it) { return it.market === state.filter; });
         }

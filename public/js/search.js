@@ -41,6 +41,9 @@ var WhySearch = (function () {
         return false;
     }
 
+    // 차단 종목 — 모든 페이지에서 가려짐 (에이프로젠바이오로직스/졸스/에이프로젠)
+    var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
+
     function search(query, limit) {
         if (!_index) return [];
         if (!query || !query.trim()) return [];
@@ -49,6 +52,7 @@ var WhySearch = (function () {
         var keys = Object.keys(_index);
         for (var i = 0; i < keys.length; i++) {
             var ticker = keys[i];
+            if (BLOCKED_TICKERS[ticker]) continue;
             var entry = _index[ticker];
             var name = typeof entry === 'string' ? entry : entry.name;
             if (matches(name, query) || ticker.indexOf(query) === 0) {

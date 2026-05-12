@@ -12,6 +12,8 @@ var WhyApp = (function () {
     var WATCHLIST_KEY = 'whyrise-watchlist-mode';
     var THEME_KEY = 'theme';
     var CUTOFF = 15;   // 고정
+    // 모든 메뉴에서 가려야 할 종목 — 에이프로젠바이오로직스, 졸스, 에이프로젠
+    var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
     var state = {
         dates: [],
@@ -96,7 +98,7 @@ var WhyApp = (function () {
         if ($msg) $msg.style.display = 'none';
 
         return WhyAPI.getRankings(date).then(function (data) {
-            state.rankings = data.rankings || [];
+            state.rankings = (data.rankings || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
             applyCutoffAndRender();
             var $upd = document.getElementById('lastUpdated');
             if ($upd) $upd.textContent = data.collected_at ? data.collected_at.replace('T', ' ').slice(0, 16) + ' 업데이트' : '';
