@@ -155,6 +155,14 @@
         if (v >= 10000) return (v / 10000).toFixed(1) + '조';                       // 1~100조 .1자리
         return Math.round(v).toLocaleString() + '억';                                // 1조 미만 억
     }
+    // 거래대금 (원 단위)
+    function formatTradingValue(v) {
+        if (!v || v <= 0) return '-';
+        if (v >= 1e12) return (v / 1e12).toFixed(1) + '조';
+        if (v >= 1e8) return Math.round(v / 1e8).toLocaleString() + '억';
+        if (v >= 1e4) return Math.round(v / 1e4).toLocaleString() + '만';
+        return Math.round(v).toLocaleString();
+    }
 
     // ── 색상 (HSL) ─────────────────────────────────────
     function colorFor(rate) {
@@ -211,8 +219,14 @@
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
             items = items.filter(function (it) { return it.market === state.filter; });
         }
-        // 선택된 정렬 기준 상위 100 (시총·거래량·상승률 공통)
         var sort = state.sort;
+        // 상승률 모드: 음수(하락) 종목 제외 — 라벨 의미에 맞춤
+        if (sort === 'change') {
+            items = items.filter(function (it) {
+                var r = it.change_rate;
+                return r != null && !isNaN(r) && r > 0;
+            });
+        }
         items.sort(function (a, b) { return sortScore(b, sort) - sortScore(a, sort); });
         return items.slice(0, 100);
     }
@@ -356,6 +370,7 @@
             .attr('fill', function (d) { return colorFor(d.data.change_rate); })
             .attr('rx', 2);
 
+        var showVolume = state.sort === 'volume';
         cell.each(function (d) {
             var cw = d.x1 - d.x0;
             var ch = d.y1 - d.y0;
@@ -364,16 +379,19 @@
             var nameSize = Math.max(10, Math.min(20, cw / 8));
             var rateSize = Math.max(9, nameSize - 3);
             var mcapSize = Math.max(8, Math.min(13, nameSize - 5));
+            var volSize = Math.max(8, Math.min(12, nameSize - 6));
 
             var name = d.data.name || '';
             var maxChars = Math.max(2, Math.floor(cw / (nameSize * 0.55)) - 1);
             if (name.length > maxChars) name = name.slice(0, maxChars - 1) + '…';
 
-            // 셀 크기에 따라 3줄 / 2줄 / 1줄 분기 — hover 내용을 항상 박아둠
+            // 셀 크기에 따라 4·3·2·1 줄 — 거래량 모드일 땐 4번째 줄에 거래대금
+            var has4 = showVolume && ch >= 84 && cw >= 70;
             var has3 = ch >= 60 && cw >= 60;
             var has2 = ch >= 42;
             var mcapStr = formatMcap(d.data.market_cap);
             var rateStr = formatRate(d.data.change_rate);
+            var volStr = formatTradingValue(d.data.trading_value);
 
             function line(cls, y, size, txt, opacity) {
                 var t = g.append('text')
@@ -388,7 +406,15 @@
                 return t;
             }
 
-            if (has3) {
+            if (has4) {
+                var g4 = 2;
+                var totalH4 = nameSize + mcapSize + rateSize + volSize + g4 * 3;
+                var topY4 = ch / 2 - totalH4 / 2 + nameSize / 2;
+                line('tmap-name', topY4, nameSize, name);
+                line('tmap-mcap', topY4 + nameSize / 2 + g4 + mcapSize / 2, mcapSize, mcapStr, 0.78);
+                line('tmap-rate', topY4 + nameSize / 2 + g4 + mcapSize + g4 + rateSize / 2, rateSize, rateStr);
+                line('tmap-vol', topY4 + nameSize / 2 + g4 + mcapSize + g4 + rateSize + g4 + volSize / 2, volSize, volStr, 0.7);
+            } else if (has3) {
                 var gap = 2;
                 var totalH = nameSize + mcapSize + rateSize + gap * 2;
                 var topY = ch / 2 - totalH / 2 + nameSize / 2;
@@ -681,6 +707,10 @@
         });
         clone.querySelectorAll('.tmap-cell .tmap-rate').forEach(function (el) {
             el.setAttribute('font-weight', '600');
+        });
+        clone.querySelectorAll('.tmap-cell .tmap-vol').forEach(function (el) {
+            el.setAttribute('font-weight', '500');
+            el.setAttribute('opacity', '0.7');
         });
 
         var mapG = document.createElementNS(ns, 'g');

@@ -130,6 +130,14 @@
         if (v >= 10000) return (v / 10000).toFixed(1) + '조';
         return Math.round(v).toLocaleString() + '억';
     }
+    // 거래대금 (원 단위) — 조/억/만 으로 압축
+    function formatTradingValue(v) {
+        if (!v || v <= 0) return '-';
+        if (v >= 1e12) return (v / 1e12).toFixed(1) + '조';
+        if (v >= 1e8) return Math.round(v / 1e8).toLocaleString() + '억';
+        if (v >= 1e4) return Math.round(v / 1e4).toLocaleString() + '만';
+        return Math.round(v).toLocaleString();
+    }
 
     // 외곽 색 (alpha 없는 hsl). stop-opacity 로 그라데이션 알파 조절.
     function edgeColorFor(rate) {
@@ -172,8 +180,14 @@
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
             items = items.filter(function (it) { return it.market === state.filter; });
         }
-        // 선택된 정렬 기준으로 상위 100 — 시총·거래량은 절대값, 상승률은 |등락률|
         var sort = state.sort;
+        // 상승률 모드: 음수(하락) 종목은 제외 — "상승률" 라벨 의미에 맞춤
+        if (sort === 'change') {
+            items = items.filter(function (it) {
+                var r = it.change_rate;
+                return r != null && !isNaN(r) && r > 0;
+            });
+        }
         items.sort(function (a, b) { return sortScore(b, sort) - sortScore(a, sort); });
         return items.slice(0, 100);
     }
@@ -198,7 +212,7 @@
         var sortKey = state.sort;
         var totalSize = 0;
         items.forEach(function (d) { totalSize += sizeOf(d, sortKey); });
-        var fillRatio = 0.72;                    // 화면 72% — 너무 꽉 안 차게
+        var fillRatio = 0.67;                    // 5% 축소 — 더 여유롭게 둥둥
         var rMax = Math.min(w, h) * 0.22;
         var rMin = Math.max(10, Math.min(w, h) * 0.022);
         var k = totalSize > 0
@@ -283,6 +297,7 @@
             .attr('stroke-width', 1)
             .attr('stroke-opacity', 0.45);
 
+        var showVolume = state.sort === 'volume';
         node.each(function (d) {
             var g = d3.select(this);
             var r = d.r;
@@ -290,11 +305,14 @@
             var nameSize = Math.max(8, Math.min(18, r * 0.42));
             var rateSize = Math.max(7, Math.min(14, r * 0.32));
             var mcapSize = Math.max(7, Math.min(12, r * 0.28));
+            var volSize = Math.max(7, Math.min(11, r * 0.26));
 
             var name = d.name || '';
             var maxChars = Math.max(2, Math.floor(r * 1.8 / nameSize));
             if (name.length > maxChars) name = name.slice(0, maxChars - 1) + '…';
 
+            // 4줄(name/mcap/rate/volume) 은 충분히 큰 버블만, 그 외엔 기존 3·2·1 줄
+            var has4 = showVolume && r >= 46;
             var has3 = r >= 38;
             var has2 = r >= 22;
 
@@ -312,7 +330,16 @@
                 return t;
             }
 
-            if (has3) {
+            if (has4) {
+                // name, mcap, rate, volume — 가운데 정렬을 4줄 합 기준으로
+                var gap4 = 1;
+                var totalH4 = nameSize + mcapSize + rateSize + volSize + gap4 * 3;
+                var top4 = -totalH4 / 2 + nameSize / 2;
+                line('bmap2-node__name', top4, nameSize, name);
+                line('bmap2-node__mcap', top4 + nameSize / 2 + gap4 + mcapSize / 2, mcapSize, formatMcap(d.market_cap), 0.78);
+                line('bmap2-node__rate', top4 + nameSize / 2 + gap4 + mcapSize + gap4 + rateSize / 2, rateSize, formatRate(d.change_rate));
+                line('bmap2-node__vol', top4 + nameSize / 2 + gap4 + mcapSize + gap4 + rateSize + gap4 + volSize / 2, volSize, formatTradingValue(d.trading_value), 0.7);
+            } else if (has3) {
                 var gap = 1;
                 line('bmap2-node__name', -mcapSize / 2 - gap - rateSize / 2, nameSize, name);
                 line('bmap2-node__mcap', 0, mcapSize, formatMcap(d.market_cap), 0.78);
@@ -340,7 +367,7 @@
         //  - drift: 매 tick 약한 random velocity → 살랑살랑 부유
         //  - center force 없음 (가운데로 모이지 않음)
         if (simulation) simulation.stop();
-        var DRIFT = 0.06;
+        var DRIFT = 0.11;                        // 둥둥 강화 (0.06 → 0.11)
         function driftForce() {
             for (var i = 0; i < nodes.length; i++) {
                 nodes[i].vx += (Math.random() - 0.5) * DRIFT;
@@ -351,7 +378,7 @@
             .alpha(1)
             .alphaMin(0)
             .alphaDecay(0)
-            .velocityDecay(0.16)
+            .velocityDecay(0.13)                 // 마찰 살짝 줄여 흐름 더 부드럽게
             // 가까운 노드끼리만 반발 — 화면 전체로 자연 분산
             .force('charge', d3.forceManyBody()
                 .strength(-12)
@@ -586,6 +613,10 @@
             el.setAttribute('opacity', '0.78');
         });
         clone.querySelectorAll('.bmap2-node__rate').forEach(function (el) { el.setAttribute('font-weight', '600'); });
+        clone.querySelectorAll('.bmap2-node__vol').forEach(function (el) {
+            el.setAttribute('font-weight', '500');
+            el.setAttribute('opacity', '0.7');
+        });
 
         var mapG = document.createElementNS(ns, 'g');
         mapG.setAttribute('transform', 'translate(0, ' + HEAD_H + ')');
