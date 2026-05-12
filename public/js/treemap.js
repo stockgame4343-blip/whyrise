@@ -27,6 +27,47 @@
     var RING_CIRCUM = 2 * Math.PI * 9;
     var SECTOR_LABEL_HEIGHT = 22;
 
+    // 시총이 너무 큰 종목은 면적 가중치 절반 — 균형 잡힌 시각화
+    var SIZE_HALF_TICKERS = { '005930': true, '005935': true, '000660': true };
+
+    // 네이버 industry 원본은 띄어쓰기 없음 — 표시용 매핑
+    var SECTOR_FORMAT = {
+        '반도체와반도체장비': '반도체·장비',
+        '소프트웨어와서비스': '소프트웨어·서비스',
+        '제약과생물공학': '제약·바이오',
+        '기술하드웨어와장비': '하드웨어·장비',
+        '상업및전문서비스': '상업·전문서비스',
+        '내구재와의류': '내구재·의류',
+        '식품과주요생필품소매': '식품·생필품',
+        '식품음료와담배': '식품·음료',
+        '자동차와부품': '자동차·부품',
+        '미디어와엔터테인먼트': '미디어·엔터',
+        '건강관리장비와서비스': '의료장비·서비스',
+        '건강관리장비': '의료장비',
+        '의약품·생물공학·생명과학': '제약·바이오',
+        '의약품및생물공학': '제약·바이오',
+        '운수창고업': '운수·창고',
+        '종합금융': '종합금융',
+        '기타금융': '기타 금융',
+        '음식료품': '음식료',
+        '비철금속': '비철금속',
+        '전기·전자': '전기전자',
+        '에너지': '에너지',
+        '소재': '소재',
+        '자본재': '자본재',
+        '은행': '은행',
+        '보험': '보험',
+        '통신서비스': '통신',
+        '유틸리티': '유틸리티',
+        '운송': '운송',
+        '소비자서비스': '소비자서비스',
+        '부동산': '부동산',
+    };
+    function displaySector(name) {
+        if (!name) return '기타';
+        return SECTOR_FORMAT[name] || name;
+    }
+
     var $stage = document.getElementById('tmapStage');
     var $svg = document.getElementById('tmapSvg');
     var $loading = document.getElementById('tmapLoading');
@@ -150,21 +191,23 @@
         if (state.filter === 'KOSPI' || state.filter === 'KOSDAQ') {
             return items.filter(function (it) { return it.market === state.filter; });
         }
-        if (state.zoomedSector) {
-            return items.filter(function (it) {
-                return (it.sector || '기타') === state.zoomedSector;
-            });
-        }
         return items;
     }
 
-    function isGrouped() {
-        // 전체 + 1d + zoom 안 한 상태에서만 섹터 그룹
-        return state.filter === 'ALL' && state.period === '1d' && !state.zoomedSector;
+    function isSectorGrouped() {
+        // 섹터 박스 hierarchy 사용 — 전체 모드 + 1d 일 때
+        return state.filter === 'ALL' && state.period === '1d';
+    }
+
+    // 면적 가중치 — 시총 너무 큰 종목 면적 절반 (시각 균형)
+    function sizeOf(it) {
+        var mc = it.market_cap || 0;
+        if (SIZE_HALF_TICKERS[it.ticker]) mc = mc / 2;
+        return Math.max(mc, 1);
     }
 
     function buildHierarchyData(items) {
-        if (!isGrouped()) {
+        if (!isSectorGrouped()) {
             return { children: items };
         }
         var bySector = {};
@@ -176,10 +219,15 @@
             return { name: sec, isSector: true, children: bySector[sec] };
         });
         sectors.sort(function (a, b) {
-            var sa = a.children.reduce(function (s, x) { return s + (x.market_cap || 0); }, 0);
-            var sb = b.children.reduce(function (s, x) { return s + (x.market_cap || 0); }, 0);
+            var sa = a.children.reduce(function (s, x) { return s + sizeOf(x); }, 0);
+            var sb = b.children.reduce(function (s, x) { return s + sizeOf(x); }, 0);
             return sb - sa;
         });
+        // zoom 모드: 선택한 섹터만 hierarchy 에 — 박스 + 라벨 그대로 유지
+        if (state.zoomedSector) {
+            var picked = sectors.filter(function (s) { return s.name === state.zoomedSector; });
+            return { children: picked.length ? picked : sectors };
+        }
         return { children: sectors };
     }
 
@@ -198,9 +246,9 @@
         }
         $message.style.display = 'none';
 
-        var grouped = isGrouped();
+        var grouped = isSectorGrouped();
         var root = d3.hierarchy(buildHierarchyData(items))
-            .sum(function (d) { return d.children ? 0 : Math.max(d.market_cap || 0, 1); })
+            .sum(function (d) { return d.children ? 0 : sizeOf(d); })
             .sort(function (a, b) { return b.value - a.value; });
 
         d3.treemap()
@@ -248,7 +296,7 @@
                 .attr('y', 15)
                 .text(function (d) {
                     var w = d.x1 - d.x0;
-                    var name = d.data.name || '기타';
+                    var name = displaySector(d.data.name || '기타');
                     var max = Math.max(2, Math.floor(w / 8));
                     if (name.length > max) name = name.slice(0, max - 1) + '…';
                     return name;
@@ -256,7 +304,7 @@
 
             sectorG.append('title').text(function (d) {
                 var sum = 0; (d.children || []).forEach(function (c) { sum += c.value; });
-                return d.data.name + ' · ' + (d.children || []).length + '종목 · 합산시총 ' + formatMcap(sum);
+                return displaySector(d.data.name) + ' · ' + (d.children || []).length + '종목 · 합산시총 ' + formatMcap(sum);
             });
         }
 
@@ -316,7 +364,7 @@
 
         cell.append('title').text(function (d) {
             return d.data.name + ' (' + d.data.ticker + ')\n'
-                + d.data.market + (d.data.sector ? ' · ' + d.data.sector : '') + '\n'
+                + d.data.market + (d.data.sector ? ' · ' + displaySector(d.data.sector) : '') + '\n'
                 + '시총: ' + formatMcap(d.data.market_cap) + '\n'
                 + state.period.toUpperCase() + ' ' + formatRate(d.data.change_rate);
         });
@@ -325,7 +373,7 @@
     function updateBackBtn() {
         if (state.zoomedSector) {
             $back.style.display = '';
-            $backLabel.textContent = state.zoomedSector;
+            $backLabel.textContent = displaySector(state.zoomedSector);
         } else {
             $back.style.display = 'none';
         }
@@ -542,7 +590,7 @@
         wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
 
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
-        if (state.zoomedSector) modeText += ' · ' + state.zoomedSector;
+        if (state.zoomedSector) modeText += ' · ' + displaySector(state.zoomedSector);
         var ctxStr = state.period.toUpperCase() + ' · ' + modeText + '   ·   ' + formatDate(state.currentDate);
         wrap.appendChild(mkText(w - 20, HEAD_H - 16, ctxStr, { size: 13, weight: 700, fill: fgColor, anchor: 'end' }));
 
