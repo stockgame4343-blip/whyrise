@@ -65,7 +65,7 @@ body{background:var(--bg-primary);color:var(--text-primary);font-family:var(--fo
 .date-text:hover{background:var(--bg-tertiary)}
 .date-text--active{background:var(--bg-tertiary)}
 /* 날짜 옆 작은 메타 시각 (리포트 REPORT 옆 패턴과 동일) */
-.date-meta{font-size:11px;font-weight:600;color:var(--text-muted, var(--text-secondary));font-feature-settings:'tnum';margin-left:6px;white-space:nowrap}
+.date-meta{font-size:11px;font-weight:600;color:var(--text-muted, var(--text-secondary));font-feature-settings:'tnum';white-space:nowrap}
 .date-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:4px;background:transparent;border:1px solid var(--text-secondary);color:var(--text-primary);font-size:11px;font-weight:700}
 .date-badge--past{border-color:var(--text-muted);color:var(--text-muted);cursor:pointer}
 .date-badge--past:hover{border-color:var(--text-secondary);color:var(--text-secondary)}

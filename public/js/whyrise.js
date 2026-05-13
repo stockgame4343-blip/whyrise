@@ -116,7 +116,7 @@ var WhyApp = (function () {
             applyCutoffAndRender();
             var $upd = document.getElementById('lastUpdated');
             if ($upd) $upd.textContent = data.collected_at
-                ? '업데이트: ' + data.collected_at.replace('T', ' ').slice(0, 16)
+                ? data.collected_at.replace('T', ' ').slice(0, 16)
                 : '';
         }).catch(function (err) {
             if ($msg) {
