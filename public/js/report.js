@@ -192,8 +192,12 @@
                     $loading.style.display = 'none';
                     $grid.style.display = 'grid';
                 }
-                var $built = document.getElementById('reportBuiltAt');
-                if ($built && s.built_at) $built.textContent = fmtBuiltAt(s.built_at);
+                // REPORT 라벨에 빌드 시각 합침 — 버블맵/트리맵의 'LIVE · HH:MM' 패턴과 동일
+                var $lab = document.getElementById('reportLiveLabel');
+                if ($lab && s.built_at) {
+                    var hhmm = String(s.built_at).slice(11, 16);
+                    $lab.textContent = hhmm ? ('REPORT · ' + hhmm) : 'REPORT';
+                }
                 applyPeriod();
             })
             .catch(function (err) {
