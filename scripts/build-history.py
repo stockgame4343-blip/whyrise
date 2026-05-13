@@ -288,7 +288,8 @@ def write_ticker_history(ticker: str, name: str, market: str,
         'market': market,
         'events': events,
         'stats': calc_stats(events),
-        'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+        # KST timezone-naive ISO — runner 의 TZ=Asia/Seoul 가정 (yml env 에서 설정)
+        'built_at': datetime.now().isoformat(timespec='seconds'),
     }
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / f'{ticker}.json').write_text(
@@ -563,7 +564,7 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
         }
 
     summary = {
-        'built_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+        'built_at': datetime.now().isoformat(timespec='seconds'),   # KST (runner TZ=Seoul)
         'total_tickers': len(files),
         'periods': result_periods,
         # 호환 (옛 프런트가 1년 키 그대로 참조 시) — y1 의 핵심 위젯 미러
@@ -744,7 +745,7 @@ def build_estimate_only(args) -> int:
                 })
                 any_updated = True
         if any_updated:
-            history['built_at'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+            history['built_at'] = datetime.now().isoformat(timespec='seconds')   # KST
             f.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding='utf-8')
             updated += 1
         processed += 1

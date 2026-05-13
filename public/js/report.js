@@ -122,8 +122,17 @@
 
     function fmtBuiltAt(iso) {
         if (!iso) return '';
-        // 'YYYY-MM-DDTHH:MM:SS' → 'YYYY-MM-DD HH:MM' (홈과 동일 포맷)
-        return String(iso).replace('T', ' ').slice(0, 16);
+        // 'Z' 가 있으면 UTC → KST(+9h) 변환. 없으면 그대로 (KST timezone-naive 가정)
+        var t = String(iso);
+        if (t.endsWith('Z') || /[+-]\d{2}:?\d{2}$/.test(t)) {
+            try {
+                var d = new Date(t);
+                var k = new Date(d.getTime() + 9 * 3600000);
+                t = k.toISOString().slice(0, 19);   // 'YYYY-MM-DDTHH:MM:SS'
+            } catch (e) {}
+        }
+        // 'YYYY-MM-DDTHH:MM:SS' → 'YYYY.MM.DD HH:MM'
+        return t.slice(0, 10).replace(/-/g, '.') + ' ' + t.slice(11, 16);
     }
 
     function pickPeriod(summary, period) {
@@ -192,13 +201,11 @@
                     $loading.style.display = 'none';
                     $grid.style.display = 'grid';
                 }
-                // REPORT 라벨에 빌드 시각 합침 — 'REPORT · YYYY.MM.DD HH:MM'
+                // REPORT 라벨에 빌드 시각 합침 — 'REPORT · YYYY.MM.DD HH:MM' (KST)
                 var $lab = document.getElementById('reportLiveLabel');
                 if ($lab && s.built_at) {
-                    var t = String(s.built_at);
-                    var ymd = t.slice(0, 10).replace(/-/g, '.');
-                    var hhmm = t.slice(11, 16);
-                    $lab.textContent = (ymd && hhmm) ? ('REPORT · ' + ymd + ' ' + hhmm) : 'REPORT';
+                    var formatted = fmtBuiltAt(s.built_at);
+                    $lab.textContent = formatted ? ('REPORT · ' + formatted) : 'REPORT';
                 }
                 applyPeriod();
             })
