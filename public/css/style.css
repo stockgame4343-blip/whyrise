@@ -566,10 +566,12 @@ body{background:var(--bg-primary);color:var(--text-primary);font-family:var(--fo
 @media(max-width:768px){
     /* ── 프레임 & 헤더 ── */
     .frame{padding:0 12px}
-    .top-bar__inner{height:46px}
+    .top-bar__inner{height:46px;padding:0 12px}
     .top-bar__logo{font-size:15px}
-    .top-bar__nav{gap:2px}
-    .top-bar__link{font-size:12px;padding:6px 10px}
+    .top-bar__logo-svg{height:20px}
+    .top-bar__nav{gap:0;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .top-bar__nav::-webkit-scrollbar{display:none}
+    .top-bar__link{font-size:12px;padding:5px 7px;flex-shrink:0;white-space:nowrap}
     .top-bar__right{gap:6px}
     /* 업데이트 시간: 모바일에서도 표시 (텍스트 축소) */
     .top-bar__updated{font-size:10px;white-space:nowrap;max-width:72px;overflow:hidden;text-overflow:ellipsis}

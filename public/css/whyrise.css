@@ -1186,16 +1186,26 @@ body.page-treemap {
 .tmap-save:hover { background: var(--bg-hover, rgba(127,127,127,.18)); border-color: var(--text-muted); color: var(--text-primary); }
 
 @media (max-width: 768px) {
-    .tmap-bar__inner { padding: 8px 14px; gap: 8px; }
+    .tmap-bar__inner { padding: 8px 12px; gap: 6px; flex-wrap: wrap; }
+    .tmap-bar__left { flex-wrap: wrap; gap: 8px; row-gap: 4px; }
+    .tmap-bar__right { flex-wrap: wrap; gap: 6px; row-gap: 4px; justify-content: flex-end; }
     .tmap-clock { font-size: 12px; }
     .tmap-date { font-size: 11px; }
-    .tmap-tab { padding: 4px 9px; font-size: 11px; }
+    .tmap-tab { padding: 4px 8px; font-size: 11px; }
+    .tmap-tabs { padding: 2px; gap: 2px; }
+    .tmap-live__label { font-size: 10.5px; }
+    .tmap-datenav { padding: 1px 2px; }
+    .tmap-datenav__btn { width: 20px; height: 20px; font-size: 14px; }
+    .tmap-save { width: 28px; height: 28px; }
+    .tmap-back { font-size: 11px; padding: 4px 8px; }
 }
-@media (max-width: 560px) {
-    .tmap-bar__inner { flex-direction: column; align-items: stretch; }
-    .tmap-bar__left { justify-content: center; flex-wrap: wrap; }
-    .tmap-bar__right { display: flex; justify-content: center; }
-    .tmap-date { width: 100%; text-align: center; font-size: 10.5px; }
+@media (max-width: 480px) {
+    .tmap-bar__inner { flex-direction: column; align-items: stretch; padding: 8px 10px; }
+    .tmap-bar__left, .tmap-bar__right { justify-content: center; }
+    .tmap-bar__right { flex-wrap: wrap; }
+    .tmap-tab { padding: 4px 7px; font-size: 10.5px; }
+    /* REPORT·LIVE 라벨이 시각 합쳐 길어지면 좁은 화면에서 줄바꿈 허용 */
+    .tmap-live__label { white-space: normal; line-height: 1.3; }
 }
 
 /* 방문자 카운터 — 푸터 위쪽 작은 라인 */
