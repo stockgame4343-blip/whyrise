@@ -109,7 +109,10 @@ var WhyApp = (function () {
         if ($msg) $msg.style.display = 'none';
 
         return WhyAPI.getRankings(date).then(function (data) {
-            state.rankings = (data.rankings || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
+            // 홈 table.js 의 formatAmount 는 원 단위 입력 가정 — stock-rise rankings 그대로
+            state.rankings = (data.rankings || []).filter(function (r) {
+                return !BLOCKED_TICKERS[r.ticker];
+            });
             applyCutoffAndRender();
             var $upd = document.getElementById('lastUpdated');
             if ($upd) $upd.textContent = data.collected_at ? data.collected_at.replace('T', ' ').slice(0, 16) + ' 업데이트' : '';

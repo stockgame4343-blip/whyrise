@@ -124,6 +124,13 @@
     }
 
     // ── 데이터 가공 ────────────────────────────────────
+    // stock-rise rankings 의 market_cap 단위 = 원. formatMcap 은 억원 입력 가정.
+    // fetch 시점에 정규화하여 모든 후속 처리 일관.
+    function normalizeRanking(r) {
+        return Object.assign({}, r, {
+            market_cap: Math.max(1, Math.round((r.market_cap || 0) / 1e8)),  // 원 → 억원
+        });
+    }
     function activeItems() {
         return (state.rankings || []).filter(function (r) {
             return !BLOCKED_TICKERS[r.ticker] && r.ticker && (r.change_rate || 0) > 0;
@@ -585,13 +592,27 @@
             $liveLabel.textContent = '장 마감';
             stopRingFill();
         }
+        updateLastUpdated();   // 시각 부분 다시 붙임
+    }
+
+    function updateLastUpdated() {
+        if (!$liveLabel) return;
+        var t = state.collectedAt || '';
+        if (!t) return;
+        // 'YYYY-MM-DDTHH:MM:SS' → 'HH:MM'
+        var hhmm = t.slice(11, 16);
+        // LIVE 또는 장 마감 라벨 옆에 마지막 fetch 시각 함께
+        var prefix = $liveLabel.textContent && $liveLabel.textContent.indexOf('LIVE') === 0 ? 'LIVE' : '장 마감';
+        $liveLabel.textContent = prefix + ' · ' + hhmm;
     }
 
     // 새 데이터 도착 시 같은 ticker 위치 보존 + 그룹 화면이면 사이즈만 갱신
     function refreshLive() {
         if (!isLiveDate()) return Promise.resolve();
         return WhyAPI.getRankings(state.currentDate).then(function (data) {
-            state.rankings = data.rankings || [];
+            state.rankings = (data.rankings || []).map(normalizeRanking);
+            state.collectedAt = data.collected_at || state.collectedAt;
+            updateLastUpdated();
             render();   // lastNodes 에 prev x/y 있어 위치 유지
         }).catch(function () {});
     }
@@ -612,9 +633,11 @@
     function loadDate(date) {
         $loading.style.display = '';
         return WhyAPI.getRankings(date).then(function (data) {
-            state.rankings = data.rankings || [];
+            state.rankings = (data.rankings || []).map(normalizeRanking);
+            state.collectedAt = data.collected_at || '';
             state.currentDate = date;
             updateDateNav();
+            updateLastUpdated();
             $loading.style.display = 'none';
             render();
         }).catch(function (err) {

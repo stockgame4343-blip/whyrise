@@ -449,6 +449,22 @@
             $liveLabel.textContent = '장 마감';
             stopRingFill();
         }
+        updateLastUpdated();
+    }
+    function updateLastUpdated() {
+        if (!$liveLabel) return;
+        var iso = state.lastUpdated || '';
+        if (!iso) return;
+        // 라이브 API 의 updated_at = UTC ISO. KST(+9h) 로 변환
+        try {
+            var d = new Date(iso);
+            if (isNaN(d.getTime())) return;
+            var k = new Date(d.getTime() + 9 * 3600000);
+            var hh = ('0' + k.getUTCHours()).slice(-2);
+            var mm = ('0' + k.getUTCMinutes()).slice(-2);
+            var prefix = $liveLabel.textContent.indexOf('LIVE') === 0 ? 'LIVE' : '장 마감';
+            $liveLabel.textContent = prefix + ' · ' + hh + ':' + mm;
+        } catch (e) {}
     }
 
     // ── fetch ──────────────────────────────────────────
@@ -459,6 +475,8 @@
                 if (!data || !data.items || !data.items.length) throw new Error('empty');
                 state.liveItems = data.items;
                 state.marketStatus = data.market_status || state.marketStatus;
+                state.lastUpdated = data.updated_at || state.lastUpdated;
+                updateLastUpdated();
                 if (state.dateIndex === 0 && state.period === '1d') render();
             });
     }

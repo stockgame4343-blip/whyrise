@@ -64,11 +64,15 @@ def _normalize(stocks, market_label):
         if not ticker or len(ticker) != 6:
             continue
         # marketValueRaw 가 원 단위 정확값. marketValue 는 백만원 단위 콤마 문자열.
-        mc = _parse_int(s.get('marketValueRaw')) or (
+        mc_won = _parse_int(s.get('marketValueRaw')) or (
             (_parse_int(s.get('marketValue')) or 0) * 1_000_000
         )
-        if mc <= 0:
+        if mc_won <= 0:
             continue
+        # 정적 marketmap.json 과 단위 통일 → 억원
+        mc = mc_won // 100_000_000
+        if mc <= 0:
+            mc = 1   # 1억 미만은 1억으로 표시
         rate = _parse_float(s.get('fluctuationsRatio'))
         close = _parse_int(s.get('closePriceRaw')) or _parse_int(s.get('closePrice')) or 0
         # 거래대금 (원). raw 가 우선, 없으면 콤마 문자열(천 단위) × 1000
@@ -80,10 +84,10 @@ def _normalize(stocks, market_label):
             'ticker': ticker,
             'name': s.get('stockName') or ticker,
             'market': market_label,
-            'market_cap': mc,
+            'market_cap': mc,        # 억원 (정적 marketmap.json 과 동일)
             'close_price': close,
             'change_rate': round(rate, 2),
-            'trading_value': tv or 0,
+            'trading_value': tv or 0,  # 원
             'trading_volume': tvol,
         })
     return out
