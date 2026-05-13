@@ -1334,39 +1334,9 @@ body.page-treemap {
     box-sizing: border-box;
 }
 .report-page__header { margin-bottom: 28px; }
-.report-page__head-row {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 18px;
-    flex-wrap: wrap;
-}
-.report-page__title-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 0;
-}
 .report-page__title {
     font-size: 32px; font-weight: 800; letter-spacing: -.8px;
-    margin: 0;
-}
-.report-page__sub {
-    margin: 0; color: var(--text-secondary); font-size: 13px;
-    letter-spacing: -.1px;
-}
-.report-page__sub strong {
-    color: var(--text-primary);
-    font-weight: 700;
-}
-.report-period-tabs {
-    padding: 4px;
-    flex-shrink: 0;
-}
-.report-period-tabs button {
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 700;
+    margin: 0 0 20px;
 }
 
 /* 핵심 수치 카드 4개 — 헤더 아래 가로 배치 */
@@ -1503,15 +1473,6 @@ body.page-treemap {
     .report-grid { grid-template-columns: 1fr; }
     .report-list--two-col { columns: 1; }
     .report-page__title { font-size: 24px; }
-    .report-page__head-row { align-items: stretch; }
-    .report-period-tabs {
-        width: 100%;
-        justify-content: space-between;
-    }
-    .report-period-tabs button {
-        flex: 1;
-        padding: 8px 4px;
-    }
 
     /* whyrise-table 모바일 — style.css 의 .ranking-table 카드 전환과 호환 */
     .whyrise-table { min-width: 0; width: 100%; }

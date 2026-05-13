@@ -173,7 +173,7 @@
             state.period = p;
             var btns = $tabs.querySelectorAll('button[data-p]');
             for (var i = 0; i < btns.length; i++) {
-                btns[i].classList.toggle('active', btns[i].getAttribute('data-p') === p);
+                btns[i].classList.toggle('is-active', btns[i].getAttribute('data-p') === p);
             }
             applyPeriod();
         });
@@ -194,6 +194,8 @@
                 }
                 var $upd = document.getElementById('lastUpdated');
                 if ($upd && s.built_at) $upd.textContent = fmtBuiltAt(s.built_at) + ' 업데이트';
+                var $built = document.getElementById('reportBuiltAt');
+                if ($built && s.built_at) $built.textContent = fmtBuiltAt(s.built_at);
                 applyPeriod();
             })
             .catch(function (err) {

@@ -68,7 +68,7 @@
         availableDates: [],
         dateIndex: 0,
         currentDate: '',
-        mode: 'rise',
+        mode: 'sector',
         view: 'bubble',
         zoomedGroup: null,    // sector/theme 이름 — 버블 모드의 그룹 dive 상태
     };

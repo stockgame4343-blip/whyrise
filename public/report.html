@@ -8,8 +8,8 @@
     <meta name="theme-color" content="#191919">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20260513n">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260513n">
+    <link rel="stylesheet" href="/css/style.css?v=20260513o">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260513o">
 </head>
 <body>
     <script>
@@ -43,21 +43,36 @@
         </div>
     </header>
 
-    <main class="report-page">
-        <header class="report-page__header">
-            <div class="report-page__head-row">
-                <div class="report-page__title-wrap">
-                    <h1 class="report-page__title">급등 분석 리포트</h1>
-                </div>
-                <div class="bubble-toggle report-period-tabs" id="reportPeriodTabs" role="group" aria-label="기간">
-                    <button data-p="d1" class="active" type="button">1일</button>
-                    <button data-p="w1" type="button">1주</button>
-                    <button data-p="m1" type="button">1달</button>
-                    <button data-p="m3" type="button">3달</button>
-                    <button data-p="y1" type="button">1년</button>
+    <!-- 통일된 상단 바 (트리맵·버블맵과 동일 패턴) -->
+    <div class="tmap-bar">
+        <div class="tmap-bar__inner">
+            <div class="tmap-bar__left">
+                <span class="tmap-live tmap-live--idle" id="reportLive">
+                    <span class="tmap-live__ring">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle class="tmap-live__ring-bg" cx="12" cy="12" r="9"/>
+                            <circle class="tmap-live__ring-fg" cx="12" cy="12" r="9"/>
+                        </svg>
+                    </span>
+                    <span class="tmap-live__label">REPORT</span>
+                </span>
+                <span class="tmap-date" id="reportBuiltAt">—</span>
+            </div>
+            <div class="tmap-bar__right">
+                <div class="tmap-tabs tmap-tabs--period" id="reportPeriodTabs" role="tablist" aria-label="기간">
+                    <button class="tmap-tab is-active" data-p="d1" type="button">1일</button>
+                    <button class="tmap-tab" data-p="w1" type="button">1주</button>
+                    <button class="tmap-tab" data-p="m1" type="button">1달</button>
+                    <button class="tmap-tab" data-p="m3" type="button">3달</button>
+                    <button class="tmap-tab" data-p="y1" type="button">1년</button>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <main class="report-page">
+        <header class="report-page__header">
+            <h1 class="report-page__title">급등 분석 리포트</h1>
             <div class="report-stats" id="reportStats">
                 <div class="report-stat">
                     <span class="report-stat__num" id="statTotalEvents">-</span>
@@ -131,8 +146,8 @@
         </footer>
     </div>
 
-    <script src="/js/api.js?v=20260513n"></script>
-    <script src="/js/report.js?v=20260513n"></script>
-    <script src="/js/visitor.js?v=20260513n"></script>
+    <script src="/js/api.js?v=20260513o"></script>
+    <script src="/js/report.js?v=20260513o"></script>
+    <script src="/js/visitor.js?v=20260513o"></script>
 </body>
 </html>
