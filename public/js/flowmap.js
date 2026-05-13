@@ -140,12 +140,14 @@
         var r = it.change_rate || 0;
         return r > 0 ? r * r : 1;
     }
+    var RISE_CUTOFF = 15;   // 상승률 모드 컷오프 (%)
     function buildHierarchy() {
         var items = activeItems();
         if (state.mode === 'rise') {
-            // 상승률 모드: TOP 50 (변동 큰 종목 강조). change_rate desc 정렬 후 cut
-            var sorted = items.slice().sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
-            return { children: sorted.slice(0, 50) };
+            // 상승률 모드: +15% 이상만. change_rate desc 정렬
+            var filtered = items.filter(function (it) { return (it.change_rate || 0) >= RISE_CUTOFF; });
+            filtered.sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
+            return { children: filtered };
         }
         if (state.mode === 'sector') {
             var by = {};
