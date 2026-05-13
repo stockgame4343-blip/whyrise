@@ -1,14 +1,14 @@
 name: 종목 인덱스 빌드 (1년치)
 
-# 평일 KST 매시 :10 (UTC 00:10~06:10) — marketmap-only 장중 갱신 (OHLC 캐시 hit 으로 가벼움)
+# 평일 KST 매시 :10 (UTC 00:10~07:10) — marketmap-only 장중 갱신 (OHLC 캐시 hit 으로 가벼움)
 # 평일 KST 15:40 (UTC 06:40) — incremental (장 마감 직후 stock-history + marketmap)
 # 일요일 KST 06:00 (UTC 21:00 토) — full rebuild
 on:
   schedule:
-    - cron: '10 0,1,2,3,4,5 * * 1-5'   # 평일 KST 09:10/10:10/11:10/12:10/13:10/14:10 — marketmap-only
-    - cron: '10 6 * * 1-5'             # 평일 KST 15:10 — marketmap-only (장 마감 20분 전)
-    - cron: '40 6 * * 1-5'             # 평일 KST 15:40 — incremental (장 마감 직후)
-    - cron: '0 21 * * 6'               # 일요일 KST 06:00 = 토요일 UTC 21:00 full
+    - cron: '10 0,1,2,3,4,5,7 * * 1-5'  # 평일 KST 09:10/10:10/.../14:10/16:10 — marketmap-only
+    - cron: '10 6 * * 1-5'              # 평일 KST 15:10 — marketmap-only (장 마감 20분 전)
+    - cron: '40 6 * * 1-5'              # 평일 KST 15:40 — incremental (장 마감 직후)
+    - cron: '0 21 * * 6'                # 일요일 KST 06:00 = 토요일 UTC 21:00 full
   workflow_dispatch:
     inputs:
       mode:
