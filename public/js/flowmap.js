@@ -382,16 +382,29 @@
             grad.append('stop').attr('offset', '100%').attr('stop-color', groupEdge).attr('stop-opacity', 0.8);
         });
 
+        // 드래그·클릭 구분 — 종목 버블과 동일 패턴 (< 4px 이동 = 클릭 = zoom)
+        var dragMoved = 0;
         var g = svg.selectAll('g.flow-group')
             .data(nodes, function (d) { return d.name; })
             .enter().append('g')
             .attr('class', 'flow-group flow-group--clickable')
             .style('cursor', 'pointer')
-            .on('click', function (e, d) {
-                state.zoomedGroup = d.name;
-                updateBackBtn();
-                render();
-            });
+            .call(d3.drag()
+                .on('start', function (e, d) { dragMoved = 0; d.fx = d.x; d.fy = d.y; })
+                .on('drag', function (e, d) {
+                    dragMoved += Math.abs(e.dx) + Math.abs(e.dy);
+                    d.fx = e.x; d.fy = e.y;
+                    if (simulation) simulation.alpha(1);
+                })
+                .on('end', function (e, d) {
+                    d.fx = null; d.fy = null;
+                    if (dragMoved < 4) {
+                        state.zoomedGroup = d.name;
+                        updateBackBtn();
+                        render();
+                    }
+                })
+            );
         g.append('circle')
             .attr('class', 'flow-group__bigcircle')
             .attr('r', function (d) { return d.r; })
