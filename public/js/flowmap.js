@@ -143,7 +143,9 @@
     function buildHierarchy() {
         var items = activeItems();
         if (state.mode === 'rise') {
-            return { children: items.slice(0, 100) };
+            // 상승률 모드: TOP 50 (변동 큰 종목 강조). change_rate desc 정렬 후 cut
+            var sorted = items.slice().sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
+            return { children: sorted.slice(0, 50) };
         }
         if (state.mode === 'sector') {
             var by = {};
@@ -157,7 +159,7 @@
                 }),
             };
         }
-        // theme — 한 종목이 여러 테마면 각 테마에 중복 (시각 가중치 자연)
+        // theme — 한 종목이 여러 테마면 각 테마에 중복 (시각 가중치 자연). 그룹 수 제한 없음
         var by2 = {};
         items.forEach(function (it) {
             var tags = (it.theme_tags && it.theme_tags.length) ? it.theme_tags : (it.theme_tag ? [it.theme_tag] : []);
@@ -166,12 +168,11 @@
                 (by2[t] = by2[t] || []).push(it);
             });
         });
-        // 테마가 너무 많을 수도 — 종목 수 상위 30개만
         var groups = Object.keys(by2).map(function (k) {
             return { name: k, isGroup: true, children: by2[k] };
         });
         groups.sort(function (a, b) { return b.children.length - a.children.length; });
-        return { children: groups.slice(0, 30) };
+        return { children: groups };
     }
 
     // 버블 모드 — 그룹 노드 산출 (sector/theme 모드에서 사용)
@@ -429,7 +430,7 @@
     function renderItemBubbles(w, h) {
         var items;
         if (state.zoomedGroup) items = zoomedItems();
-        else items = activeItems().slice(0, 100);
+        else items = buildHierarchy().children || [];   // rise 모드: TOP 50 (buildHierarchy 가 cut)
         if (!items.length) return renderEmpty();
 
         var totalSize = 0;
