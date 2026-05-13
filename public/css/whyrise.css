@@ -1063,6 +1063,41 @@ body.page-treemap {
     stroke: rgba(0,0,0,0.45) !important;
 }
 
+/* ── 흐름맵 — d3.pack 그룹 + 종목 노드 ── */
+.flowmap-stage { background: var(--wr-bg-base); }
+[data-theme="light"] .flowmap-stage { background: var(--wr-bg-base); }
+.flow-group__circle {
+    fill: none;
+    stroke: rgba(255,255,255,0.14);
+    stroke-width: 1;
+    stroke-dasharray: 4 3;
+}
+[data-theme="light"] .flow-group__circle { stroke: rgba(255,255,255,0.18); }
+.flow-group__label {
+    fill: rgba(255,255,255,0.92);
+    font-weight: 800;
+    letter-spacing: -.3px;
+    pointer-events: none;
+    user-select: none;
+}
+.flow-node text {
+    fill: #fff;
+    pointer-events: none;
+    user-select: none;
+    font-family: inherit;
+    paint-order: stroke;
+    stroke: rgba(0,0,0,.5);
+    stroke-width: 0.7px;
+}
+.flow-node__name { font-weight: 700; letter-spacing: -.3px; }
+.flow-node__rate { font-weight: 600; font-feature-settings: 'tnum'; opacity: .96; }
+.flow-node__circle { transition: filter .15s, stroke .15s; }
+.flow-node:hover .flow-node__circle {
+    filter: brightness(1.18);
+    stroke: rgba(255,255,255,0.55) !important;
+    stroke-width: 2 !important;
+}
+
 /* 섹터 박스 (전체 모드 nested treemap) */
 .tmap-sector__box {
     transition: stroke .12s, fill .12s;

@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>트리맵 — 이거왜오름?</title>
-    <meta name="description" content="국내 시가총액 TOP 종목의 등락을 면적·색상으로 실시간 한눈에 — 전체는 섹터별로, 시장별은 평면. 면적=시가총액, 상승=빨강·하락=파랑.">
+    <title>흐름맵 — 이거왜오름?</title>
+    <meta name="description" content="오늘 한국 주식 자금이 어디로 — 상승률·주도섹터·핫테마 한눈에. 트리·버블 두 방식으로.">
     <meta name="theme-color" content="#0a0b0f">
-    <link rel="canonical" href="https://whyrise.vercel.app/treemap.html">
+    <link rel="canonical" href="https://whyrise.vercel.app/flowmap.html">
     <link rel="icon" href="/og-default.svg" type="image/svg+xml">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="트리맵 — 이거왜오름?">
-    <meta property="og:description" content="시총 TOP 종목 등락을 면적·색상으로 실시간 한눈에.">
+    <meta property="og:title" content="흐름맵 — 이거왜오름?">
+    <meta property="og:description" content="오늘 주도섹터·핫테마·상승률을 트리/버블로.">
     <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20260513m">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260513m">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/whyrise.css">
 </head>
-<body class="page-treemap">
+<body class="page-treemap page-flowmap">
     <script>
     (function(){
         var t = localStorage.getItem('theme') || 'dark';
@@ -37,8 +37,8 @@
                 <a href="/" class="top-bar__link">홈</a>
                 <a href="/report.html" class="top-bar__link">리포트</a>
                 <a href="/bubbles2.html" class="top-bar__link">버블맵</a>
-                <a href="/treemap.html" class="top-bar__link top-bar__link--active">트리맵</a>
-                <a href="/flowmap.html" class="top-bar__link">흐름맵</a>
+                <a href="/treemap.html" class="top-bar__link">트리맵</a>
+                <a href="/flowmap.html" class="top-bar__link top-bar__link--active">흐름맵</a>
             </nav>
             <div class="top-bar__right">
                 <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드 전환">
@@ -51,40 +51,22 @@
     <div class="tmap-bar">
         <div class="tmap-bar__inner">
             <div class="tmap-bar__left">
-                <span class="tmap-live" id="tmapLive">
-                    <span class="tmap-live__ring">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle class="tmap-live__ring-bg" cx="12" cy="12" r="9"/>
-                            <circle class="tmap-live__ring-fg" cx="12" cy="12" r="9"/>
-                        </svg>
-                    </span>
-                    <span class="tmap-live__label" id="tmapLiveLabel">LIVE</span>
-                </span>
                 <span class="tmap-clock" id="tmapClock">--:--:--</span>
                 <div class="tmap-datenav" id="tmapDateNav">
                     <button class="tmap-datenav__btn" id="tmapDatePrev" aria-label="이전 영업일">‹</button>
                     <span class="tmap-date" id="tmapDate">—</span>
                     <button class="tmap-datenav__btn" id="tmapDateNext" aria-label="다음 영업일">›</button>
                 </div>
-                <button class="tmap-back" id="tmapBack" style="display:none;" title="전체로">← <span id="tmapBackLabel">전체</span></button>
             </div>
             <div class="tmap-bar__right">
-                <div class="tmap-tabs tmap-tabs--market" role="tablist" aria-label="시장">
-                    <button class="tmap-tab is-active" data-filter="ALL">전체</button>
-                    <button class="tmap-tab" data-filter="KOSPI">코스피</button>
-                    <button class="tmap-tab" data-filter="KOSDAQ">코스닥</button>
+                <div class="tmap-tabs tmap-tabs--mode" role="tablist" aria-label="기준">
+                    <button class="tmap-tab is-active" data-mode="rise">상승률</button>
+                    <button class="tmap-tab" data-mode="sector">주도섹터</button>
+                    <button class="tmap-tab" data-mode="theme">핫테마</button>
                 </div>
-                <div class="tmap-tabs tmap-tabs--sort" role="tablist" aria-label="종류">
-                    <button class="tmap-tab is-active" data-sort="mcap">시총</button>
-                    <button class="tmap-tab" data-sort="volume">거래량</button>
-                    <button class="tmap-tab" data-sort="change">상승률</button>
-                </div>
-                <div class="tmap-tabs tmap-tabs--period" role="tablist" aria-label="날짜">
-                    <button class="tmap-tab is-active" data-period="1d">1일</button>
-                    <button class="tmap-tab" data-period="1w">1주</button>
-                    <button class="tmap-tab" data-period="1m">1달</button>
-                    <button class="tmap-tab" data-period="3m">3달</button>
-                    <button class="tmap-tab" data-period="1y">1년</button>
+                <div class="tmap-tabs tmap-tabs--view" role="tablist" aria-label="표시">
+                    <button class="tmap-tab is-active" data-view="tree">트리</button>
+                    <button class="tmap-tab" data-view="bubble">버블</button>
                 </div>
                 <button class="tmap-save" id="tmapSave" title="PNG 이미지로 저장" aria-label="이미지 저장">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -97,14 +79,15 @@
         </div>
     </div>
 
-    <main id="tmapStage" class="tmap-stage">
+    <main id="tmapStage" class="tmap-stage flowmap-stage">
         <div class="tmap-loading" id="tmapLoading">불러오는 중...</div>
         <div class="tmap-message" id="tmapMessage" style="display:none;"></div>
-        <svg id="tmapSvg" aria-label="시총 트리맵"></svg>
+        <svg id="tmapSvg" aria-label="흐름맵"></svg>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
-    <script src="/js/date-picker.js?v=20260513m"></script>
-    <script src="/js/treemap.js?v=20260513m"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/date-picker.js"></script>
+    <script src="/js/flowmap.js"></script>
 </body>
 </html>
