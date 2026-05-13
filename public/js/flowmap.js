@@ -875,8 +875,7 @@
             }
         });
 
-        $clock.textContent = formatClock();
-        setInterval(function () { $clock.textContent = formatClock(); }, 1000);
+        // 시계 element 제거 — LIVE 라벨의 마지막 업데이트 시각만 표시
 
         loadDates().then(function () {
             liveCycle();   // chain pattern 시작

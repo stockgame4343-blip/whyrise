@@ -700,8 +700,7 @@
         if ($dateNext) $dateNext.addEventListener('click', function () { gotoDateIndex(state.dateIndex - 1); });
         if ($date) $date.addEventListener('click', openDatePicker);
 
-        $clock.textContent = formatClock();
-        setInterval(function () { $clock.textContent = formatClock(); }, 1000);
+        // 시계 element 제거 — LIVE 라벨의 마지막 업데이트 시각만 표시
 
         fetchSnapshot('')
             .then(fetchDateIndex)
