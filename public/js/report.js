@@ -8,9 +8,20 @@
     var PERIODS = ['d1', 'w1', 'm1', 'm3', 'y1'];
     var PERIOD_LABEL = { d1: '1일', w1: '1주', m1: '1달', m3: '3달', y1: '1년' };
 
-    var state = { period: 'y1', summary: null };
+    var state = { period: 'd1', summary: null };
     // 차단 종목 — 모든 페이지에서 가려짐 (에이프로젠바이오로직스/졸스/에이프로젠)
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
+    // 라이브 polling — 홈과 동일 60s (장중 + 탭 visible)
+    var POLL_MS = 60 * 1000;
+    var KST_OFFSET = 9 * 60;
+    var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
+    function isMarketOpenKST() {
+        var k = new Date(Date.now() + KST_OFFSET * 60000);
+        var day = k.getUTCDay();
+        if (day === 0 || day === 6) return false;
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
 
     /** HTML 이스케이프 — XSS 방어. */
     function esc(s) {
@@ -168,31 +179,42 @@
         });
     }
 
-    function init() {
-        bindThemeToggle();
-        bindPeriodTabs();
-
+    function fetchSummary(firstLoad) {
         var $loading = document.getElementById('loading');
         var $msg = document.getElementById('message');
         var $grid = document.getElementById('reportGrid');
-
-        // 캐시 무효화 — CDN/브라우저가 옛 report-summary.json 잡고 있을 가능성
         var cacheBust = '?v=' + Date.now();
-        fetch('/data/report-summary.json' + cacheBust, { cache: 'no-store' })
+        return fetch('/data/report-summary.json' + cacheBust, { cache: 'no-store' })
             .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
             .then(function (s) {
                 state.summary = s;
-                $loading.style.display = 'none';
-                $grid.style.display = 'grid';
+                if (firstLoad) {
+                    $loading.style.display = 'none';
+                    $grid.style.display = 'grid';
+                }
                 var $upd = document.getElementById('lastUpdated');
                 if ($upd && s.built_at) $upd.textContent = fmtBuiltAt(s.built_at) + ' 업데이트';
                 applyPeriod();
             })
             .catch(function (err) {
-                $loading.style.display = 'none';
-                $msg.textContent = '리포트 로딩 실패: ' + err.message + ' — 다음 빌드 후 표시됩니다.';
-                $msg.style.display = 'block';
+                if (firstLoad) {
+                    $loading.style.display = 'none';
+                    $msg.textContent = '리포트 로딩 실패: ' + err.message + ' — 다음 빌드 후 표시됩니다.';
+                    $msg.style.display = 'block';
+                }
             });
+    }
+
+    function init() {
+        bindThemeToggle();
+        bindPeriodTabs();
+        fetchSummary(true);
+        // 라이브 polling — 홈과 동일 60s, 장중 + 탭 visible 일 때만
+        setInterval(function () {
+            if (!isMarketOpenKST()) return;
+            if (document.visibilityState === 'hidden') return;
+            fetchSummary(false);
+        }, POLL_MS);
     }
 
     document.addEventListener('DOMContentLoaded', init);
