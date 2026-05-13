@@ -41,19 +41,20 @@ STOCK_RISE_RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-ris
 # ── OHLC 디스크 캐시 (백필 재시도 시 즉시 통과) ──────────────────────
 # 워크플로우가 중간에 실패해도 캐시는 actions/cache 로 보존됨 → 재시작 빠름.
 _OHLC_CACHE_DIR = _REPO / 'public' / 'data' / '_cache' / 'ohlc'
-_OHLC_CACHE_TTL_S = 7 * 24 * 3600   # 7일 — 백필 재시도엔 충분, 과한 stale 방지
+_OHLC_CACHE_TTL_S = 7 * 24 * 3600       # 백필 기본 7일
+_OHLC_CACHE_TTL_INTRADAY_S = 20 * 60    # 장중 빌드 — 20분 (오늘 row 자주 갱신)
 _ohlc_cache_stats = {'hit': 0, 'miss': 0}
 
 
-def fetch_ohlc_cached(ticker: str, start: str, end: str) -> list[dict]:
+def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = None) -> list[dict]:
     """ticker 별 OHLC fetch — 디스크 캐시 우선.
 
-    캐시 키: ticker (start/end 는 백필 한 번 안에서 동일). 캐시된 범위가 요청 범위를
-    포함하면 그대로 사용, 아니면 fresh fetch + 캐시 갱신.
+    ttl_s: None 이면 _OHLC_CACHE_TTL_S 사용 (백필 7일). 장중 매시 빌드는 짧게 전달.
     """
     _OHLC_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     p = _OHLC_CACHE_DIR / f'{ticker}.json'
     now = time.time()
+    ttl = ttl_s if ttl_s is not None else _OHLC_CACHE_TTL_S
     if p.exists():
         try:
             blob = json.loads(p.read_text(encoding='utf-8'))
@@ -61,8 +62,7 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str) -> list[dict]:
             cs = str(blob.get('start') or '')
             ce = str(blob.get('end') or '')
             rows = blob.get('rows') or []
-            # 캐시 범위가 요청 범위를 포함하고 TTL 안이면 hit
-            if rows and age < _OHLC_CACHE_TTL_S and cs <= start and ce >= end:
+            if rows and age < ttl and cs <= start and ce >= end:
                 _ohlc_cache_stats['hit'] += 1
                 return rows
         except Exception:
@@ -872,7 +872,8 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
         market_cap = _parse_int(it.get('marketValue')) or 0
         sector = it.get('industryName') or existing_sector.get(ticker) or ''
         try:
-            ohlc = fetch_ohlc_cached(ticker, start_str, end_str)
+            # 장중 빌드 — 짧은 TTL 로 오늘 row 자주 갱신
+            ohlc = fetch_ohlc_cached(ticker, start_str, end_str, ttl_s=_OHLC_CACHE_TTL_INTRADAY_S)
         except Exception:
             skipped += 1
             continue

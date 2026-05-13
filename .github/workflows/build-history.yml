@@ -1,14 +1,14 @@
 name: 종목 인덱스 빌드 (1년치)
 
-# 평일 KST 09:10 (UTC 00:10) — 장 시작 직후 incremental (전일 마감 데이터 fresh)
-# 평일 KST 15:40 (UTC 06:40) — 장 마감 직후 incremental (당일 마감 반영)
-# 일요일 KST 06:00 (UTC 21:00 토) — full rebuild (안전망)
-# + workflow_dispatch (수동) + repository_dispatch (admin 편집 후)
+# 평일 KST 매시 :10 (UTC 00:10~06:10) — marketmap-only 장중 갱신 (OHLC 캐시 hit 으로 가벼움)
+# 평일 KST 15:40 (UTC 06:40) — incremental (장 마감 직후 stock-history + marketmap)
+# 일요일 KST 06:00 (UTC 21:00 토) — full rebuild
 on:
   schedule:
-    - cron: '10 0 * * 1-5'      # 평일 KST 09:10 (장 시작 후) incremental
-    - cron: '40 6 * * 1-5'      # 평일 KST 15:40 (장 마감 후) incremental
-    - cron: '0 21 * * 6'        # 일요일 KST 06:00 = 토요일 UTC 21:00 full
+    - cron: '10 0,1,2,3,4,5 * * 1-5'   # 평일 KST 09:10/10:10/11:10/12:10/13:10/14:10 — marketmap-only
+    - cron: '10 6 * * 1-5'             # 평일 KST 15:10 — marketmap-only (장 마감 20분 전)
+    - cron: '40 6 * * 1-5'             # 평일 KST 15:40 — incremental (장 마감 직후)
+    - cron: '0 21 * * 6'               # 일요일 KST 06:00 = 토요일 UTC 21:00 full
   workflow_dispatch:
     inputs:
       mode:
@@ -88,9 +88,12 @@ jobs:
             # 토요일 21:00 UTC = 일요일 06:00 KST → full
             if [ "$HOUR_UTC" = "21" ] && [ "$DOW" = "6" ]; then
               MODE="full"
-            else
-              # 평일 — 장초(09:10 KST = 00:10 UTC) 또는 장마감(15:40 KST = 06:40 UTC)
+            elif [ "$HOUR_UTC" = "6" ] && [ "$MIN_UTC" -ge "30" ]; then
+              # 평일 KST 15:40 (UTC 06:40) — 장 마감 직후 incremental
               MODE="incremental"
+            else
+              # 평일 매시 :10 — 가벼운 marketmap-only (장중 데이터 갱신)
+              MODE="marketmap-only"
             fi
           elif [ "$EVENT" = "repository_dispatch" ]; then
             MODE="estimate-only"
