@@ -47,11 +47,11 @@ var WhyApp = (function () {
     function formatDate(yyyymmdd) {
         if (!yyyymmdd || yyyymmdd.length !== 8) return yyyymmdd;
         var y = yyyymmdd.slice(0, 4);
-        var m = parseInt(yyyymmdd.slice(4, 6), 10);
-        var d = parseInt(yyyymmdd.slice(6, 8), 10);
+        var m = yyyymmdd.slice(4, 6);
+        var d = yyyymmdd.slice(6, 8);
         var DAYS = ['일','월','화','수','목','금','토'];
-        var dt = new Date(parseInt(y,10), m - 1, d);
-        return y + '. ' + m + '. ' + d + ' (' + DAYS[dt.getDay()] + ')';
+        var dt = new Date(+y, +m - 1, +d);
+        return y + '.' + m + '.' + d + ' (' + DAYS[dt.getDay()] + ')';
     }
 
     function applyCutoffAndRender() {
@@ -115,9 +115,13 @@ var WhyApp = (function () {
             });
             applyCutoffAndRender();
             var $upd = document.getElementById('lastUpdated');
-            if ($upd) $upd.textContent = data.collected_at
-                ? data.collected_at.replace('T', ' ').slice(0, 16)
-                : '';
+            if ($upd) {
+                // 'YYYY-MM-DDTHH:MM:SS' → 'YYYY.MM.DD HH:MM'
+                var t = data.collected_at || '';
+                $upd.textContent = t
+                    ? t.slice(0, 10).replace(/-/g, '.') + ' ' + t.slice(11, 16)
+                    : '';
+            }
         }).catch(function (err) {
             if ($msg) {
                 $msg.textContent = '데이터 로딩 실패: ' + err.message;
