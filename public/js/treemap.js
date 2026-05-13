@@ -565,19 +565,21 @@
             .catch(function () {});
     }
 
-    function tick() {
-        $clock.textContent = formatClock();
+    // ring transition 시간 = setTimeout = fetch 정확 동기화 (chain pattern)
+    function liveCycle() {
+        updateDateNav();
         var open = isMarketOpen();
         var live = isLiveDate() && state.period === '1d';
-        if (live && open && document.visibilityState !== 'hidden') {
-            startRingFill();
-            fetchLive().catch(function () {});
-            setLiveState(true);
-        } else {
+        if (!(live && open) || document.visibilityState === 'hidden') {
             setLiveState(false);
+            setTimeout(liveCycle, 5000);
+            return;
         }
-        // 시계 영향만으로 라벨 갱신
-        updateDateNav();
+        setLiveState(true);
+        startRingFill();
+        setTimeout(function () {
+            fetchLive().catch(function () {}).then(function () { liveCycle(); });
+        }, POLL_MS);
     }
 
     // ── 컨트롤 ────────────────────────────────────────
@@ -818,23 +820,12 @@
                     return fetchLive().catch(function () {});
                 }
             })
+            .then(function () { liveCycle(); })   // chain pattern 시작
             .catch(function (err) {
                 $loading.style.display = 'none';
                 $message.style.display = '';
                 $message.textContent = '데이터를 불러올 수 없습니다 — ' + (err && err.message ? err.message : err);
             });
-
-        if (isMarketOpen() && state.period === '1d' && state.dateIndex === 0) {
-            startRingFill();
-            setLiveState(true);
-        } else {
-            setLiveState(false);
-        }
-        setInterval(tick, POLL_MS);
-
-        document.addEventListener('visibilitychange', function () {
-            if (document.visibilityState === 'visible') tick();
-        });
 
         var rt;
         window.addEventListener('resize', function () {

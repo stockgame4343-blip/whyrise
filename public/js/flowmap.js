@@ -617,16 +617,19 @@
         }).catch(function () {});
     }
 
-    function tick() {
-        $clock.textContent = formatClock();
+    // ring transition 시간 = setTimeout = fetch 정확 동기화 (chain pattern)
+    function liveCycle() {
         var open = isMarketOpen();
-        if (isLiveDate() && open && document.visibilityState !== 'hidden') {
-            startRingFill();
-            refreshLive();
-            setLiveState(true);
-        } else {
+        if (!isLiveDate() || !open || document.visibilityState === 'hidden') {
             setLiveState(false);
+            setTimeout(liveCycle, 5000);
+            return;
         }
+        setLiveState(true);
+        startRingFill();
+        setTimeout(function () {
+            refreshLive().then(function () { liveCycle(); });
+        }, POLL_MS);
     }
 
     // ── 데이터 fetch ───────────────────────────────────
@@ -876,14 +879,7 @@
         setInterval(function () { $clock.textContent = formatClock(); }, 1000);
 
         loadDates().then(function () {
-            // 첫 로드 직후 시장 OPEN 이면 ring 시작 + polling
-            if (isMarketOpen() && isLiveDate()) {
-                startRingFill();
-                setLiveState(true);
-            } else {
-                setLiveState(false);
-            }
-            setInterval(tick, POLL_MS);
+            liveCycle();   // chain pattern 시작
         }).catch(function (err) {
             $loading.style.display = 'none';
             $message.style.display = '';

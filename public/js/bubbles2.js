@@ -509,18 +509,27 @@
             .catch(function () {});
     }
 
-    function tick() {
-        $clock.textContent = formatClock();
+    // 라이브 사이클 — ring transition 시간 = setTimeout = 다음 fetch 까지의 시간 (정확 동기화).
+    // setInterval 의 drift 가 없도록 chain pattern. fetch 끝나면 다음 cycle 시작.
+    var _cycleRunning = false;
+    function liveCycle() {
+        _cycleRunning = false;
+        updateDateNav();
         var open = isMarketOpen();
         var live = isLiveDate() && state.period === '1d';
-        if (live && open && document.visibilityState !== 'hidden') {
-            startRingFill();
-            fetchLive().catch(function () {});
-            setLiveState(true);
-        } else {
+        if (!(live && open) || document.visibilityState === 'hidden') {
             setLiveState(false);
+            // 라이브 조건 아닐 때는 5s 후 다시 체크 (장 시작/탭 복귀 감지)
+            _cycleRunning = true;
+            setTimeout(liveCycle, 5000);
+            return;
         }
-        updateDateNav();
+        setLiveState(true);
+        startRingFill();
+        _cycleRunning = true;
+        setTimeout(function () {
+            fetchLive().catch(function () {}).then(function () { liveCycle(); });
+        }, POLL_MS);
     }
 
     function setFilter(f) {
@@ -701,26 +710,17 @@
                     return fetchLive().catch(function () {});
                 }
             })
+            .then(function () { liveCycle(); })   // chain pattern 시작
             .catch(function (err) {
                 $loading.style.display = 'none';
                 $message.style.display = '';
                 $message.textContent = '데이터를 불러올 수 없습니다 — ' + (err && err.message ? err.message : err);
             });
 
-        if (isMarketOpen() && state.period === '1d' && state.dateIndex === 0) {
-            startRingFill();
-            setLiveState(true);
-        } else {
-            setLiveState(false);
-        }
-        setInterval(tick, POLL_MS);
-
         document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible') {
                 if (simulation) simulation.alpha(1).restart();
-                tick();
             } else {
-                // 백그라운드 탭에서는 CPU 절약 — 시뮬레이션 정지
                 if (simulation) simulation.stop();
             }
         });
