@@ -141,6 +141,7 @@
         return r > 0 ? r * r : 1;
     }
     var RISE_CUTOFF = 15;   // 상승률 모드 컷오프 (%)
+    var GROUP_MIN = 3;      // 주도섹터·핫테마: 그룹 종목 ≥ N 만 표시 (1·2 종목짜리 노이즈 제거)
     function buildHierarchy() {
         var items = activeItems();
         if (state.mode === 'rise') {
@@ -156,12 +157,14 @@
                 (by[s] = by[s] || []).push(it);
             });
             return {
-                children: Object.keys(by).map(function (k) {
-                    return { name: k, isGroup: true, children: by[k] };
-                }),
+                children: Object.keys(by)
+                    .filter(function (k) { return by[k].length >= GROUP_MIN; })
+                    .map(function (k) {
+                        return { name: k, isGroup: true, children: by[k] };
+                    }),
             };
         }
-        // theme — 한 종목이 여러 테마면 각 테마에 중복 (시각 가중치 자연). 그룹 수 제한 없음
+        // theme — 한 종목이 여러 테마면 각 테마에 중복 (시각 가중치 자연). ≥3 그룹만
         var by2 = {};
         items.forEach(function (it) {
             var tags = (it.theme_tags && it.theme_tags.length) ? it.theme_tags : (it.theme_tag ? [it.theme_tag] : []);
@@ -170,9 +173,9 @@
                 (by2[t] = by2[t] || []).push(it);
             });
         });
-        var groups = Object.keys(by2).map(function (k) {
-            return { name: k, isGroup: true, children: by2[k] };
-        });
+        var groups = Object.keys(by2)
+            .filter(function (k) { return by2[k].length >= GROUP_MIN; })
+            .map(function (k) { return { name: k, isGroup: true, children: by2[k] }; });
         groups.sort(function (a, b) { return b.children.length - a.children.length; });
         return { children: groups };
     }
