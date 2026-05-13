@@ -1083,25 +1083,13 @@ body.page-treemap {
     user-select: none;
 }
 
-/* 버블 모드 — 그룹 큰 원 (클릭 가능, 떠다님) */
+/* 버블 모드 — 그룹 큰 원 (클릭 가능, 떠다님). 종목 버블과 같은 외곽 그라데이션 — 그레이 톤. */
 .flow-group--clickable { transition: filter .15s; }
-.flow-group__bigcircle {
-    fill: rgba(49, 130, 246, 0.12);
-    stroke: rgba(49, 130, 246, 0.55);
-    stroke-width: 1.5;
-    transition: fill .15s, stroke .15s, filter .15s;
-}
+.flow-group__bigcircle { transition: filter .15s, stroke .15s; }
 .flow-group--clickable:hover .flow-group__bigcircle {
-    fill: rgba(49, 130, 246, 0.22);
-    stroke: rgba(49, 130, 246, 0.85);
-    filter: brightness(1.12);
-}
-[data-theme="light"] .flow-group__bigcircle {
-    fill: rgba(49, 130, 246, 0.10);
-    stroke: rgba(49, 130, 246, 0.5);
-}
-[data-theme="light"] .flow-group--clickable:hover .flow-group__bigcircle {
-    fill: rgba(49, 130, 246, 0.18);
+    filter: brightness(1.18);
+    stroke-opacity: 0.75 !important;
+    stroke-width: 1.6 !important;
 }
 .flow-group__name {
     fill: #fff;

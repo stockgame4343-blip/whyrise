@@ -51,6 +51,15 @@
     <div class="tmap-bar">
         <div class="tmap-bar__inner">
             <div class="tmap-bar__left">
+                <span class="tmap-live" id="tmapLive">
+                    <span class="tmap-live__ring">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle class="tmap-live__ring-bg" cx="12" cy="12" r="9"/>
+                            <circle class="tmap-live__ring-fg" cx="12" cy="12" r="9"/>
+                        </svg>
+                    </span>
+                    <span class="tmap-live__label" id="tmapLiveLabel">LIVE</span>
+                </span>
                 <span class="tmap-clock" id="tmapClock">--:--:--</span>
                 <div class="tmap-datenav" id="tmapDateNav">
                     <button class="tmap-datenav__btn" id="tmapDatePrev" aria-label="이전 영업일">‹</button>
@@ -66,8 +75,8 @@
                     <button class="tmap-tab" data-mode="theme">핫테마</button>
                 </div>
                 <div class="tmap-tabs tmap-tabs--view" role="tablist" aria-label="표시">
-                    <button class="tmap-tab is-active" data-view="tree">트리</button>
-                    <button class="tmap-tab" data-view="bubble">버블</button>
+                    <button class="tmap-tab is-active" data-view="bubble">버블</button>
+                    <button class="tmap-tab" data-view="tree">트리</button>
                 </div>
                 <button class="tmap-save" id="tmapSave" title="PNG 이미지로 저장" aria-label="이미지 저장">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

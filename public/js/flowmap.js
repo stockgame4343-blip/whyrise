@@ -16,6 +16,10 @@
     'use strict';
 
     var KST_OFFSET = 9 * 60;
+    var OPEN_MIN = 9 * 60;
+    var CLOSE_MIN = 15 * 60 + 30;
+    var POLL_MS = 60 * 1000;     // 60초 (stock-rise 일별이 5분 주기로 갱신되지만 ux 위해 짧게)
+    var RING_CIRCUM = 2 * Math.PI * 9;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
     var MODE_LABEL = { rise: '상승률', sector: '주도섹터', theme: '핫테마' };
@@ -55,6 +59,9 @@
     var $dateNext = document.getElementById('tmapDateNext');
     var $back = document.getElementById('tmapBack');
     var $backLabel = document.getElementById('tmapBackLabel');
+    var $live = document.getElementById('tmapLive');
+    var $liveLabel = document.getElementById('tmapLiveLabel');
+    var $ringFg = document.querySelector('.tmap-live__ring-fg');
 
     var state = {
         rankings: [],
@@ -62,7 +69,7 @@
         dateIndex: 0,
         currentDate: '',
         mode: 'rise',
-        view: 'tree',
+        view: 'bubble',
         zoomedGroup: null,    // sector/theme 이름 — 버블 모드의 그룹 dive 상태
     };
 
@@ -71,6 +78,14 @@
 
     // ── 시간 / 포맷 ────────────────────────────────────
     function kstNow() { return new Date(Date.now() + KST_OFFSET * 60000); }
+    function isMarketOpen() {
+        var k = kstNow();
+        var day = k.getUTCDay();
+        if (day === 0 || day === 6) return false;
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
+    function isLiveDate() { return state.dateIndex === 0; }
     function formatClock() {
         var k = kstNow();
         function pad(n) { return n < 10 ? '0' + n : '' + n; }
@@ -314,6 +329,7 @@
     }
 
     // 그룹 큰 원만 떠다님 (sector/theme 모드 첫 화면)
+    // 디자인: 종목 버블과 동일한 외곽 그라데이션 + 그레이 톤 (그룹은 변동률 의미 없으므로)
     function renderGroupBubbles(w, h) {
         var groups = groupNodes();
         if (!groups.length) return renderEmpty();
@@ -337,6 +353,21 @@
 
         var svg = d3.select($svg).attr('width', w).attr('height', h).attr('viewBox', '0 0 ' + w + ' ' + h);
         svg.selectAll('*').remove();
+        var defs = svg.append('defs');
+
+        // 종목과 동일한 글래스 그라데이션 — 단, 그레이 톤 (그룹은 변동률 의미 없음)
+        var groupEdge = 'hsl(220, 8%, 64%)';
+        nodes.forEach(function (d, i) {
+            var gid = 'flow-gr-' + i;
+            d._gradId = gid;
+            var grad = defs.append('radialGradient').attr('id', gid)
+                .attr('cx', '50%').attr('cy', '50%').attr('r', '50%');
+            grad.append('stop').attr('offset', '0%').attr('stop-color', groupEdge).attr('stop-opacity', 0);
+            grad.append('stop').attr('offset', '45%').attr('stop-color', groupEdge).attr('stop-opacity', 0);
+            grad.append('stop').attr('offset', '78%').attr('stop-color', groupEdge).attr('stop-opacity', 0.16);
+            grad.append('stop').attr('offset', '95%').attr('stop-color', groupEdge).attr('stop-opacity', 0.5);
+            grad.append('stop').attr('offset', '100%').attr('stop-color', groupEdge).attr('stop-opacity', 0.8);
+        });
 
         var g = svg.selectAll('g.flow-group')
             .data(nodes, function (d) { return d.name; })
@@ -350,7 +381,11 @@
             });
         g.append('circle')
             .attr('class', 'flow-group__bigcircle')
-            .attr('r', function (d) { return d.r; });
+            .attr('r', function (d) { return d.r; })
+            .attr('fill', function (d) { return 'url(#' + d._gradId + ')'; })
+            .attr('stroke', groupEdge)
+            .attr('stroke-width', 1)
+            .attr('stroke-opacity', 0.45);
         g.each(function (d) {
             var sel = d3.select(this);
             var r = d.r;
@@ -526,6 +561,53 @@
         }
     }
 
+    // ── 라이브 ring ───────────────────────────────────
+    function startRingFill() {
+        if (!$ringFg) return;
+        $ringFg.style.transition = 'none';
+        $ringFg.style.strokeDashoffset = String(RING_CIRCUM);
+        void $ringFg.getBoundingClientRect();
+        $ringFg.style.transition = 'stroke-dashoffset ' + (POLL_MS / 1000) + 's linear';
+        $ringFg.style.strokeDashoffset = '0';
+    }
+    function stopRingFill() {
+        if (!$ringFg) return;
+        $ringFg.style.transition = 'none';
+        $ringFg.style.strokeDashoffset = String(RING_CIRCUM);
+    }
+    function setLiveState(open) {
+        if (!$live) return;
+        if (open) {
+            $live.classList.remove('tmap-live--idle');
+            $liveLabel.textContent = 'LIVE';
+        } else {
+            $live.classList.add('tmap-live--idle');
+            $liveLabel.textContent = '장 마감';
+            stopRingFill();
+        }
+    }
+
+    // 새 데이터 도착 시 같은 ticker 위치 보존 + 그룹 화면이면 사이즈만 갱신
+    function refreshLive() {
+        if (!isLiveDate()) return Promise.resolve();
+        return WhyAPI.getRankings(state.currentDate).then(function (data) {
+            state.rankings = data.rankings || [];
+            render();   // lastNodes 에 prev x/y 있어 위치 유지
+        }).catch(function () {});
+    }
+
+    function tick() {
+        $clock.textContent = formatClock();
+        var open = isMarketOpen();
+        if (isLiveDate() && open && document.visibilityState !== 'hidden') {
+            startRingFill();
+            refreshLive();
+            setLiveState(true);
+        } else {
+            setLiveState(false);
+        }
+    }
+
     // ── 데이터 fetch ───────────────────────────────────
     function loadDate(date) {
         $loading.style.display = '';
@@ -688,10 +770,10 @@
             el.setAttribute('fill', labelFill);
             el.setAttribute('font-family', fontStack); el.setAttribute('font-weight', '700');
         });
+        // 그룹 큰 원 — JS 인라인 그라데이션이 fill 이미 적용. stroke 만 그레이 톤 유지.
         clone.querySelectorAll('.flow-group__bigcircle').forEach(function (el) {
-            el.setAttribute('fill', 'rgba(49,130,246,0.14)');
-            el.setAttribute('stroke', 'rgba(49,130,246,0.6)');
-            el.setAttribute('stroke-width', '1.5');
+            el.setAttribute('stroke', 'hsl(220, 8%, 64%)');
+            el.setAttribute('stroke-width', '1');
         });
         clone.querySelectorAll('.flow-group__name').forEach(function (el) {
             el.setAttribute('fill', '#fff'); el.setAttribute('font-family', fontStack);
@@ -770,7 +852,16 @@
         $clock.textContent = formatClock();
         setInterval(function () { $clock.textContent = formatClock(); }, 1000);
 
-        loadDates().catch(function (err) {
+        loadDates().then(function () {
+            // 첫 로드 직후 시장 OPEN 이면 ring 시작 + polling
+            if (isMarketOpen() && isLiveDate()) {
+                startRingFill();
+                setLiveState(true);
+            } else {
+                setLiveState(false);
+            }
+            setInterval(tick, POLL_MS);
+        }).catch(function (err) {
             $loading.style.display = 'none';
             $message.style.display = '';
             $message.textContent = '데이터를 불러올 수 없습니다 — ' + (err && err.message ? err.message : err);

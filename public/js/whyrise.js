@@ -14,6 +14,17 @@ var WhyApp = (function () {
     var CUTOFF = 15;   // 고정
     // 모든 메뉴에서 가려야 할 종목 — 에이프로젠바이오로직스, 졸스, 에이프로젠
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
+    // 라이브 polling — 장중 + 최신 날짜일 때 60초마다 reload
+    var POLL_MS = 60 * 1000;
+    var KST_OFFSET = 9 * 60;
+    var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
+    function isMarketOpenKST() {
+        var k = new Date(Date.now() + KST_OFFSET * 60000);
+        var day = k.getUTCDay();
+        if (day === 0 || day === 6) return false;
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
 
     var state = {
         dates: [],
@@ -374,6 +385,14 @@ var WhyApp = (function () {
             updateDateUI();
             return loadDate(dates[0]);
         });
+
+        // 라이브 polling — 최신 날짜 + 장중 + 탭 visible 일 때만 60s 마다 reload
+        setInterval(function () {
+            if (state.currentDateIdx !== 0) return;
+            if (!isMarketOpenKST()) return;
+            if (document.visibilityState === 'hidden') return;
+            loadDate(state.dates[0]);
+        }, POLL_MS);
     }
 
     return { init: init };
