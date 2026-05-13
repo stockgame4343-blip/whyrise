@@ -525,10 +525,18 @@
                 state.marketStatus = data.market_status || state.marketStatus;
                 state.lastUpdated = data.updated_at || state.lastUpdated;
                 updateLastUpdated();
+                $loading.style.display = 'none';
                 if (state.dateIndex === 0 && state.period === '1d') {
                     render();
                 }
             });
+    }
+
+    // 라이브 대기 중 정적 (어제) 표시 안 함 — 5s 후 fallback
+    var _liveTimeout = false;
+    function isWaitingLive() {
+        return isMarketOpen() && state.period === '1d' && state.dateIndex === 0
+            && !state.liveItems.length && !_liveTimeout;
     }
 
     function fetchSnapshot(dateStr) {
@@ -547,6 +555,7 @@
                 state.snapshotItems = items;
                 state.currentDate = (data && data.date) || dateStr || '';
                 updateDateNav();
+                if (isWaitingLive()) return;   // 라이브 도착 대기 중이면 보류
                 $loading.style.display = 'none';
                 if (items.length) render();
             });
@@ -812,6 +821,16 @@
         // 1) 정적 latest marketmap.json → sectorMap + 첫 렌더
         // 2) 일별 index 로딩
         // 3) 장중이면 라이브 시도
+        // 5s 안에 라이브 도착 안 하면 정적으로 fallback
+        setTimeout(function () {
+            if (state.liveItems.length || _liveTimeout) return;
+            _liveTimeout = true;
+            if (state.snapshotItems.length) {
+                $loading.style.display = 'none';
+                render();
+            }
+        }, 5000);
+
         fetchSnapshot('')
             .then(fetchDateIndex)
             .then(function () {

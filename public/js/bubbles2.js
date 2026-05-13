@@ -477,8 +477,16 @@
                 state.marketStatus = data.market_status || state.marketStatus;
                 state.lastUpdated = data.updated_at || state.lastUpdated;
                 updateLastUpdated();
+                $loading.style.display = 'none';
                 if (state.dateIndex === 0 && state.period === '1d') render();
             });
+    }
+    // 라이브 대기 중 정적 데이터 render 안 함 (어제 가격 잠깐 보이는 혼란 방지)
+    // 5s 후엔 라이브가 실패한 것으로 보고 정적으로 fallback
+    var _liveTimeout = false;
+    function isWaitingLive() {
+        return isMarketOpen() && state.period === '1d' && state.dateIndex === 0
+            && !state.liveItems.length && !_liveTimeout;
     }
     function fetchSnapshot(dateStr) {
         var url = dateStr ? ('/data/marketmap/' + dateStr + '.json') : '/data/marketmap.json';
@@ -492,6 +500,8 @@
                 state.snapshotItems = items;
                 state.currentDate = (data && data.date) || dateStr || '';
                 updateDateNav();
+                // 라이브 도착 대기 중이면 보류 (어제 가격 표시 방지)
+                if (isWaitingLive()) return;
                 $loading.style.display = 'none';
                 if (items.length) render();
             });
@@ -701,6 +711,16 @@
         if ($date) $date.addEventListener('click', openDatePicker);
 
         // 시계 element 제거 — LIVE 라벨의 마지막 업데이트 시각만 표시
+
+        // 5s 안에 라이브 도착 안 하면 정적 데이터로 fallback render
+        setTimeout(function () {
+            if (state.liveItems.length || _liveTimeout) return;
+            _liveTimeout = true;
+            if (state.snapshotItems.length) {
+                $loading.style.display = 'none';
+                render();
+            }
+        }, 5000);
 
         fetchSnapshot('')
             .then(fetchDateIndex)
