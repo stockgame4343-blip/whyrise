@@ -554,6 +554,10 @@
                 });
                 state.snapshotItems = items;
                 state.currentDate = (data && data.date) || dateStr || '';
+                if (data && data.updated_at && !state.lastUpdated) {
+                    state.lastUpdated = data.updated_at;
+                    updateLastUpdated();
+                }
                 updateDateNav();
                 if (isWaitingLive()) return;   // 라이브 도착 대기 중이면 보류
                 $loading.style.display = 'none';

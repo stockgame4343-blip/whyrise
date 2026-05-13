@@ -499,9 +499,13 @@
                 });
                 state.snapshotItems = items;
                 state.currentDate = (data && data.date) || dateStr || '';
+                // 정적 marketmap.json 도 updated_at 가짐 — LIVE 옆 시각 채우기
+                if (data && data.updated_at && !state.lastUpdated) {
+                    state.lastUpdated = data.updated_at;
+                    updateLastUpdated();
+                }
                 updateDateNav();
-                // 라이브 도착 대기 중이면 보류 (어제 가격 표시 방지)
-                if (isWaitingLive()) return;
+                if (isWaitingLive()) return;   // 라이브 도착 대기 중이면 render 보류
                 $loading.style.display = 'none';
                 if (items.length) render();
             });

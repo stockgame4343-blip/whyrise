@@ -192,8 +192,6 @@
                     $loading.style.display = 'none';
                     $grid.style.display = 'grid';
                 }
-                var $upd = document.getElementById('lastUpdated');
-                if ($upd && s.built_at) $upd.textContent = fmtBuiltAt(s.built_at) + ' 업데이트';
                 var $built = document.getElementById('reportBuiltAt');
                 if ($built && s.built_at) $built.textContent = fmtBuiltAt(s.built_at);
                 applyPeriod();

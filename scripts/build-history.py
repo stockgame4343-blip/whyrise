@@ -1079,6 +1079,14 @@ def build_marketmap_intraday(public_dir: Path | None = None, top_n: int = 100) -
     idx_path.write_text(json.dumps(dates_existing), encoding='utf-8')
 
     print(f'== marketmap-intraday 완료: {len(items)} 종목, 기준일 {target_date} ==')
+
+    # report-summary.json 의 built_at 도 같이 갱신 — 사용자에게 "최신" 인상
+    # (stock-history/*.json 이 15:40 까지 안 바뀌니 통계 수치는 동일, built_at 만 새로 찍힘)
+    try:
+        build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
+    except Exception as e:
+        print(f'  report-summary 갱신 실패 (무시): {e}')
+
     return 0
 
 

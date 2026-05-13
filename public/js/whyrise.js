@@ -115,7 +115,7 @@ var WhyApp = (function () {
             });
             applyCutoffAndRender();
             var $upd = document.getElementById('lastUpdated');
-            if ($upd) $upd.textContent = data.collected_at ? data.collected_at.replace('T', ' ').slice(0, 16) + ' 업데이트' : '';
+            if ($upd) $upd.textContent = data.collected_at ? data.collected_at.replace('T', ' ').slice(0, 16) : '';
         }).catch(function (err) {
             if ($msg) {
                 $msg.textContent = '데이터 로딩 실패: ' + err.message;
