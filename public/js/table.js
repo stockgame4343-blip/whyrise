@@ -255,6 +255,13 @@ var WhyTable = (function () {
             html += '<td class="cell-cap">' + formatAmount(r.market_cap) + '</td>';
             // 섹터
             html += '<td class="cell-sector">' + esc(r.sector || '-') + '</td>';
+            // 모바일 카드 전용 meta 한 줄 (PC 에선 CSS display:none) — 시장·섹터·시총·거래대금 합쳐서 보존
+            var metaParts = [];
+            if (r.market) metaParts.push(esc(r.market));
+            if (r.sector) metaParts.push(esc(r.sector));
+            if (r.market_cap) metaParts.push('시총 ' + formatAmount(r.market_cap));
+            if (r.trading_value) metaParts.push('거래 ' + formatAmount(r.trading_value));
+            html += '<td class="cell-meta-compact">' + metaParts.join(' · ') + '</td>';
             html += '</tr>';
         });
         tbody.innerHTML = html;

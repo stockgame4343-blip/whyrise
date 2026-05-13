@@ -133,6 +133,48 @@ body {
 }
 .top-bar__nav { display: flex; gap: 4px; }
 
+/* 햄버거 버튼 — PC 에선 숨김 */
+.top-bar__hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+}
+.top-bar__hamburger:hover { background: var(--glass-bg); }
+
+@media (max-width: 768px) {
+    .top-bar { position: relative; }
+    .top-bar__hamburger { display: inline-flex; }
+    .top-bar__nav {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 10px 16px 14px;
+        background: var(--wr-bg-base);
+        border-bottom: 1px solid var(--glass-border);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        overflow: visible;
+        z-index: 600;
+    }
+    [data-theme="light"] .top-bar__nav { background: #ffffff; box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+    .top-bar__nav--open { display: flex; }
+    .top-bar__nav .top-bar__link {
+        padding: 11px 14px;
+        font-size: 15px;
+        border-radius: 8px;
+        text-align: left;
+    }
+    .top-bar__nav .top-bar__link--active { background: var(--glass-bg); }
+}
+
 /* ── Hero 검색 ────────────────────────────── */
 .hero {
     padding: 72px 0 44px;
