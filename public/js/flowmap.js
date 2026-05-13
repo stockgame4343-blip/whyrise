@@ -53,6 +53,8 @@
     var $save = document.getElementById('tmapSave');
     var $datePrev = document.getElementById('tmapDatePrev');
     var $dateNext = document.getElementById('tmapDateNext');
+    var $back = document.getElementById('tmapBack');
+    var $backLabel = document.getElementById('tmapBackLabel');
 
     var state = {
         rankings: [],
@@ -61,7 +63,11 @@
         currentDate: '',
         mode: 'rise',
         view: 'tree',
+        zoomedGroup: null,    // sector/theme 이름 — 버블 모드의 그룹 dive 상태
     };
+
+    var simulation = null;
+    var lastNodes = [];
 
     // ── 시간 / 포맷 ────────────────────────────────────
     function kstNow() { return new Date(Date.now() + KST_OFFSET * 60000); }
@@ -144,6 +150,36 @@
         });
         groups.sort(function (a, b) { return b.children.length - a.children.length; });
         return { children: groups.slice(0, 30) };
+    }
+
+    // 버블 모드 — 그룹 노드 산출 (sector/theme 모드에서 사용)
+    function groupNodes() {
+        var hier = buildHierarchy();
+        return (hier.children || []).map(function (g) {
+            var children = g.children || [];
+            var sum = 0, maxRate = 0;
+            children.forEach(function (c) {
+                var r = c.change_rate || 0;
+                sum += r > 0 ? r * r : 0;
+                if (r > maxRate) maxRate = r;
+            });
+            // 그룹 사이즈 = 종목 change_rate^2 합. 그룹 색 = 그 그룹 최고 상승률
+            return {
+                name: g.name,
+                isGroup: true,
+                children: children,
+                value: Math.max(sum, 1),
+                topRate: maxRate,
+            };
+        });
+    }
+
+    // 줌인된 그룹의 종목 리스트
+    function zoomedItems() {
+        if (!state.zoomedGroup) return [];
+        var groups = groupNodes();
+        var picked = groups.filter(function (g) { return g.name === state.zoomedGroup; })[0];
+        return picked ? (picked.children || []) : [];
     }
 
     // ── 렌더링 공통 ────────────────────────────────────
@@ -269,93 +305,168 @@
         });
     }
 
-    // ── 버블맵 (d3.pack 정적) ──────────────────────────
+    // ── 버블맵 — force 기반 둥둥. mode='rise' or zoomedGroup 있으면 종목, 아니면 그룹 ──
     function renderBubble(w, h) {
-        var root = d3.hierarchy(buildHierarchy())
-            .sum(function (d) { return d.children ? 0 : sizeOf(d); })
-            .sort(function (a, b) { return b.value - a.value; });
-        d3.pack().size([w, h]).padding(function (d) { return d.depth === 0 ? 6 : 3; })(root);
+        var grouped = state.mode !== 'rise';
+        var showItems = !grouped || !!state.zoomedGroup;
+        if (showItems) renderItemBubbles(w, h);
+        else renderGroupBubbles(w, h);
+    }
 
-        var svg = d3.select($svg)
-            .attr('width', w).attr('height', h)
-            .attr('viewBox', '0 0 ' + w + ' ' + h);
+    // 그룹 큰 원만 떠다님 (sector/theme 모드 첫 화면)
+    function renderGroupBubbles(w, h) {
+        var groups = groupNodes();
+        if (!groups.length) return renderEmpty();
+
+        var totalSize = 0;
+        groups.forEach(function (g) { totalSize += g.value; });
+        var fillRatio = 0.55;
+        var rMin = Math.max(28, Math.min(w, h) * 0.06);
+        var rMax = Math.min(w, h) * 0.28;
+        var k = totalSize > 0 ? Math.sqrt((w * h * fillRatio) / (Math.PI * totalSize)) : 50;
+
+        var nodes = groups.map(function (g) {
+            var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(g.value)));
+            return Object.assign({}, g, {
+                r: r,
+                x: r + Math.random() * (w - r * 2),
+                y: r + Math.random() * (h - r * 2),
+                vx: 0, vy: 0,
+            });
+        });
+
+        var svg = d3.select($svg).attr('width', w).attr('height', h).attr('viewBox', '0 0 ' + w + ' ' + h);
+        svg.selectAll('*').remove();
+
+        var g = svg.selectAll('g.flow-group')
+            .data(nodes, function (d) { return d.name; })
+            .enter().append('g')
+            .attr('class', 'flow-group flow-group--clickable')
+            .style('cursor', 'pointer')
+            .on('click', function (e, d) {
+                state.zoomedGroup = d.name;
+                updateBackBtn();
+                render();
+            });
+        g.append('circle')
+            .attr('class', 'flow-group__bigcircle')
+            .attr('r', function (d) { return d.r; });
+        g.each(function (d) {
+            var sel = d3.select(this);
+            var r = d.r;
+            var labelSize = Math.max(11, Math.min(22, r * 0.20));
+            var countSize = Math.max(9, Math.min(14, r * 0.13));
+            var name = displayGroup(d.name || '');
+            var maxChars = Math.max(3, Math.floor(r / (labelSize * 0.42)));
+            if (name.length > maxChars) name = name.slice(0, maxChars - 1) + '…';
+            sel.append('text')
+                .attr('class', 'flow-group__name')
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'middle')
+                .attr('y', -countSize / 2 - 1)
+                .style('font-size', labelSize + 'px')
+                .attr('pointer-events', 'none')
+                .text(name);
+            sel.append('text')
+                .attr('class', 'flow-group__count')
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'middle')
+                .attr('y', labelSize / 2 + 1)
+                .style('font-size', countSize + 'px')
+                .attr('pointer-events', 'none')
+                .text((d.children || []).length + '종목 · 최고 +' + d.topRate.toFixed(1) + '%');
+        });
+        g.append('title').text(function (d) {
+            return displayGroup(d.name) + ' · ' + (d.children || []).length + '종목 · 최고 +' + d.topRate.toFixed(1) + '%';
+        });
+
+        runForceSimulation(nodes, w, h, g, 0.08);
+    }
+
+    // 종목 원 — rise 모드 평면 또는 zoom 모드 그룹 내 종목
+    function renderItemBubbles(w, h) {
+        var items;
+        if (state.zoomedGroup) items = zoomedItems();
+        else items = activeItems().slice(0, 100);
+        if (!items.length) return renderEmpty();
+
+        var totalSize = 0;
+        items.forEach(function (d) { totalSize += sizeOf(d); });
+        var fillRatio = state.zoomedGroup ? 0.55 : 0.62;
+        var rMax = Math.min(w, h) * 0.24;
+        var rMin = Math.max(10, Math.min(w, h) * 0.022);
+        var k = totalSize > 0 ? Math.sqrt((w * h * fillRatio) / (Math.PI * totalSize)) : Math.min(w, h) * 0.05;
+
+        var prev = {};
+        lastNodes.forEach(function (n) { prev[n.ticker] = n; });
+        var nodes = items.map(function (d) {
+            var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(sizeOf(d))));
+            var p = prev[d.ticker];
+            return Object.assign({}, d, {
+                r: r,
+                x: p ? p.x : (r + Math.random() * (w - r * 2)),
+                y: p ? p.y : (r + Math.random() * (h - r * 2)),
+                vx: p ? p.vx : 0,
+                vy: p ? p.vy : 0,
+            });
+        });
+        lastNodes = nodes;
+
+        var svg = d3.select($svg).attr('width', w).attr('height', h).attr('viewBox', '0 0 ' + w + ' ' + h);
         svg.selectAll('*').remove();
         var defs = svg.append('defs');
-
-        // 그룹 원 (depth 1 이고 children 있을 때)
-        var grouped = state.mode !== 'rise';
-        if (grouped) {
-            var groupG = svg.selectAll('g.flow-group')
-                .data((root.children || []).filter(function (d) { return d.children; }))
-                .enter().append('g')
-                .attr('class', 'flow-group')
-                .attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
-            groupG.append('circle')
-                .attr('class', 'flow-group__circle')
-                .attr('r', function (d) { return d.r; });
-            groupG.append('text')
-                .attr('class', 'flow-group__label')
-                .attr('text-anchor', 'middle')
-                .attr('y', function (d) { return -d.r + 14; })
-                .style('font-size', function (d) {
-                    return Math.max(10, Math.min(18, d.r * 0.18)) + 'px';
-                })
-                .text(function (d) {
-                    var name = displayGroup(d.data.name || '');
-                    var max = Math.max(3, Math.floor(d.r / 6));
-                    if (name.length > max) name = name.slice(0, max - 1) + '…';
-                    return name + ' · ' + (d.children || []).length;
-                });
-            groupG.append('title').text(function (d) {
-                var sum = 0;
-                (d.children || []).forEach(function (c) { sum += (c.data.change_rate || 0); });
-                return displayGroup(d.data.name) + ' · ' + (d.children || []).length + '종목 · 합산 +' + sum.toFixed(1) + '%';
-            });
-        }
-
-        // 종목 leaf 원
-        var leaves = root.leaves();
-        leaves.forEach(function (d, i) {
-            var gid = 'flow-g-' + i;
+        nodes.forEach(function (d, i) {
+            var gid = 'flow-it-' + i;
             d._gradId = gid;
-            var edge = edgeColorFor(d.data.change_rate);
+            var edge = edgeColorFor(d.change_rate);
             var grad = defs.append('radialGradient').attr('id', gid)
                 .attr('cx', '50%').attr('cy', '50%').attr('r', '50%');
             grad.append('stop').attr('offset', '0%').attr('stop-color', edge).attr('stop-opacity', 0);
-            grad.append('stop').attr('offset', '50%').attr('stop-color', edge).attr('stop-opacity', 0.05);
-            grad.append('stop').attr('offset', '85%').attr('stop-color', edge).attr('stop-opacity', 0.35);
-            grad.append('stop').attr('offset', '100%').attr('stop-color', edge).attr('stop-opacity', 0.9);
+            grad.append('stop').attr('offset', '45%').attr('stop-color', edge).attr('stop-opacity', 0);
+            grad.append('stop').attr('offset', '78%').attr('stop-color', edge).attr('stop-opacity', 0.18);
+            grad.append('stop').attr('offset', '95%').attr('stop-color', edge).attr('stop-opacity', 0.55);
+            grad.append('stop').attr('offset', '100%').attr('stop-color', edge).attr('stop-opacity', 0.85);
         });
 
+        // 드래그 vs 클릭 구분
+        var dragMoved = 0;
+        function onDragStart(event, d) { dragMoved = 0; d.fx = d.x; d.fy = d.y; }
+        function onDrag(event, d) {
+            dragMoved += Math.abs(event.dx) + Math.abs(event.dy);
+            d.fx = event.x; d.fy = event.y;
+            if (simulation) simulation.alpha(1);
+        }
+        function onDragEnd(event, d) {
+            d.fx = null; d.fy = null;
+            if (dragMoved < 4 && d && d.ticker) window.location.href = '/stock/' + d.ticker;
+        }
+
         var node = svg.selectAll('g.flow-node')
-            .data(leaves)
+            .data(nodes, function (d) { return d.ticker; })
             .enter().append('g')
             .attr('class', 'flow-node')
-            .attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; })
             .style('cursor', 'pointer')
-            .on('click', function (e, d) {
-                if (d && d.data && d.data.ticker) window.location.href = '/stock/' + d.data.ticker;
-            });
+            .call(d3.drag().on('start', onDragStart).on('drag', onDrag).on('end', onDragEnd));
         node.append('circle')
             .attr('class', 'flow-node__circle')
             .attr('r', function (d) { return d.r; })
             .attr('fill', function (d) { return 'url(#' + d._gradId + ')'; })
-            .attr('stroke', function (d) { return edgeColorFor(d.data.change_rate); })
+            .attr('stroke', function (d) { return edgeColorFor(d.change_rate); })
             .attr('stroke-width', 1)
             .attr('stroke-opacity', 0.5);
 
         node.each(function (d) {
-            var g = d3.select(this);
+            var sel = d3.select(this);
             var r = d.r;
             if (r < 14) return;
             var nameSize = Math.max(8, Math.min(16, r * 0.4));
             var rateSize = Math.max(7, Math.min(13, r * 0.3));
-            var name = d.data.name || '';
+            var name = d.name || '';
             var maxChars = Math.max(2, Math.floor(r * 1.8 / nameSize));
             if (name.length > maxChars) name = name.slice(0, maxChars - 1) + '…';
             var has2 = r >= 22;
             function line(cls, y, size, txt) {
-                g.append('text').attr('class', cls)
+                sel.append('text').attr('class', cls)
                     .attr('x', 0).attr('y', y)
                     .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
                     .attr('pointer-events', 'none')
@@ -363,18 +474,56 @@
             }
             if (has2) {
                 line('flow-node__name', -rateSize / 2 - 1, nameSize, name);
-                line('flow-node__rate', nameSize / 2 + 1, rateSize, formatRate(d.data.change_rate));
+                line('flow-node__rate', nameSize / 2 + 1, rateSize, formatRate(d.change_rate));
             } else {
                 line('flow-node__name', 0, nameSize, name);
             }
         });
 
         node.append('title').text(function (d) {
-            return d.data.name + ' (' + d.data.ticker + ')\n'
-                + d.data.market + (d.data.sector ? ' · ' + displayGroup(d.data.sector) : '') + '\n'
-                + '시총: ' + formatMcap(d.data.market_cap) + '\n'
-                + formatRate(d.data.change_rate);
+            return d.name + ' (' + d.ticker + ')\n'
+                + d.market + (d.sector ? ' · ' + displayGroup(d.sector) : '') + '\n'
+                + '시총: ' + formatMcap(d.market_cap) + '\n'
+                + formatRate(d.change_rate);
         });
+
+        runForceSimulation(nodes, w, h, node, 0.10);
+    }
+
+    // 공통 force simulation (그룹·종목 양쪽에서 사용)
+    function runForceSimulation(nodes, w, h, selection, drift) {
+        if (simulation) simulation.stop();
+        function driftForce() {
+            for (var i = 0; i < nodes.length; i++) {
+                nodes[i].vx += (Math.random() - 0.5) * drift;
+                nodes[i].vy += (Math.random() - 0.5) * drift;
+            }
+        }
+        simulation = d3.forceSimulation(nodes)
+            .alpha(1).alphaMin(0).alphaDecay(0)
+            .velocityDecay(0.14)
+            .force('charge', d3.forceManyBody().strength(-10).distanceMax(140))
+            .force('collide', d3.forceCollide().radius(function (d) { return d.r + 3; }).strength(1.0).iterations(4))
+            .force('drift', driftForce)
+            .on('tick', function () {
+                selection.attr('transform', function (d) {
+                    var pad = d.r;
+                    if (d.x < pad) { d.x = pad; d.vx = Math.abs(d.vx) * 0.6; }
+                    if (d.x > w - pad) { d.x = w - pad; d.vx = -Math.abs(d.vx) * 0.6; }
+                    if (d.y < pad) { d.y = pad; d.vy = Math.abs(d.vy) * 0.6; }
+                    if (d.y > h - pad) { d.y = h - pad; d.vy = -Math.abs(d.vy) * 0.6; }
+                    return 'translate(' + d.x + ',' + d.y + ')';
+                });
+            });
+    }
+
+    function updateBackBtn() {
+        if (state.zoomedGroup) {
+            $back.style.display = '';
+            $backLabel.textContent = displayGroup(state.zoomedGroup);
+        } else {
+            $back.style.display = 'none';
+        }
     }
 
     // ── 데이터 fetch ───────────────────────────────────
@@ -414,6 +563,9 @@
     function gotoDateIndex(idx) {
         if (idx < 0 || idx >= state.availableDates.length) return;
         state.dateIndex = idx;
+        state.zoomedGroup = null;
+        lastNodes = [];
+        updateBackBtn();
         var d = state.availableDates[idx];
         loadDate(d);
     }
@@ -433,6 +585,9 @@
     function setMode(m) {
         if (state.mode === m) return;
         state.mode = m;
+        state.zoomedGroup = null;
+        lastNodes = [];
+        updateBackBtn();
         $modeTabs.forEach(function (b) {
             b.classList.toggle('is-active', b.getAttribute('data-mode') === m);
         });
@@ -441,6 +596,7 @@
     function setView(v) {
         if (state.view === v) return;
         state.view = v;
+        lastNodes = [];
         $viewTabs.forEach(function (b) {
             b.classList.toggle('is-active', b.getAttribute('data-view') === v);
         });
@@ -532,6 +688,21 @@
             el.setAttribute('fill', labelFill);
             el.setAttribute('font-family', fontStack); el.setAttribute('font-weight', '700');
         });
+        clone.querySelectorAll('.flow-group__bigcircle').forEach(function (el) {
+            el.setAttribute('fill', 'rgba(49,130,246,0.14)');
+            el.setAttribute('stroke', 'rgba(49,130,246,0.6)');
+            el.setAttribute('stroke-width', '1.5');
+        });
+        clone.querySelectorAll('.flow-group__name').forEach(function (el) {
+            el.setAttribute('fill', '#fff'); el.setAttribute('font-family', fontStack);
+            el.setAttribute('font-weight', '800');
+            el.setAttribute('paint-order', 'stroke');
+            el.setAttribute('stroke', cellStroke); el.setAttribute('stroke-width', '0.6');
+        });
+        clone.querySelectorAll('.flow-group__count').forEach(function (el) {
+            el.setAttribute('fill', 'rgba(255,255,255,0.85)'); el.setAttribute('font-family', fontStack);
+            el.setAttribute('font-weight', '600');
+        });
         clone.querySelectorAll('.flow-node text').forEach(function (el) {
             el.setAttribute('fill', '#fff'); el.setAttribute('font-family', fontStack);
             el.setAttribute('paint-order', 'stroke');
@@ -581,6 +752,20 @@
         if ($datePrev) $datePrev.addEventListener('click', function () { gotoDateIndex(state.dateIndex + 1); });
         if ($dateNext) $dateNext.addEventListener('click', function () { gotoDateIndex(state.dateIndex - 1); });
         if ($date) $date.addEventListener('click', openDatePicker);
+        if ($back) $back.addEventListener('click', function () {
+            state.zoomedGroup = null;
+            lastNodes = [];
+            updateBackBtn();
+            render();
+        });
+
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') {
+                if (simulation) simulation.alpha(1).restart();
+            } else {
+                if (simulation) simulation.stop();
+            }
+        });
 
         $clock.textContent = formatClock();
         setInterval(function () { $clock.textContent = formatClock(); }, 1000);

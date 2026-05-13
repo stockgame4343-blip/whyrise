@@ -817,7 +817,7 @@ body.page-treemap {
     stroke-linecap: round;
     stroke-dasharray: 56.549;   /* 2πr (r=9) */
     stroke-dashoffset: 56.549;
-    transition: stroke-dashoffset 5s linear;
+    /* transition 은 JS startRingFill 가 POLL_MS 에 맞춰 인라인 설정 */
 }
 .tmap-live--idle { color: var(--text-muted, #777); }
 .tmap-live--idle .tmap-live__ring-bg { stroke: rgba(127,127,127,0.22); }
@@ -1063,9 +1063,11 @@ body.page-treemap {
     stroke: rgba(0,0,0,0.45) !important;
 }
 
-/* ── 흐름맵 — d3.pack 그룹 + 종목 노드 ── */
+/* ── 흐름맵 — 그룹 force 떠다님 + 클릭 dive ── */
 .flowmap-stage { background: var(--wr-bg-base); }
 [data-theme="light"] .flowmap-stage { background: var(--wr-bg-base); }
+
+/* 트리맵용 그룹 박스 (트리 모드에서 d3.treemap squarified 가 사용) */
 .flow-group__circle {
     fill: none;
     stroke: rgba(255,255,255,0.14);
@@ -1078,6 +1080,45 @@ body.page-treemap {
     font-weight: 800;
     letter-spacing: -.3px;
     pointer-events: none;
+    user-select: none;
+}
+
+/* 버블 모드 — 그룹 큰 원 (클릭 가능, 떠다님) */
+.flow-group--clickable { transition: filter .15s; }
+.flow-group__bigcircle {
+    fill: rgba(49, 130, 246, 0.12);
+    stroke: rgba(49, 130, 246, 0.55);
+    stroke-width: 1.5;
+    transition: fill .15s, stroke .15s, filter .15s;
+}
+.flow-group--clickable:hover .flow-group__bigcircle {
+    fill: rgba(49, 130, 246, 0.22);
+    stroke: rgba(49, 130, 246, 0.85);
+    filter: brightness(1.12);
+}
+[data-theme="light"] .flow-group__bigcircle {
+    fill: rgba(49, 130, 246, 0.10);
+    stroke: rgba(49, 130, 246, 0.5);
+}
+[data-theme="light"] .flow-group--clickable:hover .flow-group__bigcircle {
+    fill: rgba(49, 130, 246, 0.18);
+}
+.flow-group__name {
+    fill: #fff;
+    font-weight: 800;
+    letter-spacing: -.3px;
+    paint-order: stroke;
+    stroke: rgba(0,0,0,.45);
+    stroke-width: 0.6px;
+    user-select: none;
+}
+.flow-group__count {
+    fill: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-feature-settings: 'tnum';
+    paint-order: stroke;
+    stroke: rgba(0,0,0,.4);
+    stroke-width: 0.5px;
     user-select: none;
 }
 .flow-node text {
