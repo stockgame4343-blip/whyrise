@@ -940,6 +940,148 @@ def build_marketmap_only(args) -> int:
     return 0
 
 
+def build_marketmap_intraday(public_dir: Path | None = None, top_n: int = 100) -> int:
+    """라이브 m.stock API 만으로 marketmap.json 빠르게 갱신 (~30s).
+
+    1년치 OHLC fetch 안 함 — 기존 marketmap.json 의 rates 1w/1m/3m/1y 그대로 유지.
+    오늘 1d (market_cap, close_price, change_rate, trading_value/volume, rates['1d']) 만
+    라이브 값으로 update.
+
+    매시 :10 cron 용. 장중 빠른 갱신.
+    """
+    target_dir = (public_dir or _REPO / 'public') / 'data'
+    target_dir.mkdir(parents=True, exist_ok=True)
+    snap_dir = target_dir / 'marketmap'
+    snap_dir.mkdir(parents=True, exist_ok=True)
+
+    def parse_float(v):
+        if v is None: return 0.0
+        try:
+            return float(v.replace(',', '').strip()) if isinstance(v, str) else float(v)
+        except (ValueError, TypeError):
+            return 0.0
+
+    print('== marketmap-intraday: m.stock 라이브 페이지 1~3 fetch ==')
+    pool: list[dict] = []
+    first_meta: dict = {}
+    for market in ('KOSPI', 'KOSDAQ'):
+        for page in (1, 2, 3):
+            url = f'https://m.stock.naver.com/api/stocks/marketValue/{market}?page={page}&pageSize=100'
+            try:
+                data = naver_client.fetch_json(url)
+            except Exception:
+                break
+            stocks = (data or {}).get('stocks') or []
+            if page == 1 and market == 'KOSPI' and stocks:
+                first_meta = stocks[0]
+            if not stocks:
+                break
+            for s in stocks:
+                ticker = s.get('itemCode') or ''
+                if not ticker or len(ticker) != 6:
+                    continue
+                mc_won = _parse_int(s.get('marketValueRaw')) or (
+                    (_parse_int(s.get('marketValue')) or 0) * 1_000_000
+                )
+                if mc_won <= 0:
+                    continue
+                mc = max(1, mc_won // 100_000_000)   # 원 → 억원 (정적 marketmap.json 과 단위 일치)
+                rate = parse_float(s.get('fluctuationsRatio'))
+                close = _parse_int(s.get('closePriceRaw')) or _parse_int(s.get('closePrice')) or 0
+                tv = _parse_int(s.get('accumulatedTradingValueRaw'))
+                if not tv:
+                    tv = (_parse_int(s.get('accumulatedTradingValue')) or 0) * 1000
+                tvol = (_parse_int(s.get('accumulatedTradingVolumeRaw'))
+                        or _parse_int(s.get('accumulatedTradingVolume')) or 0)
+                pool.append({
+                    'ticker': ticker,
+                    'name': s.get('stockName') or ticker,
+                    'market': market,
+                    'market_cap': mc,
+                    'close_price': close,
+                    'change_rate': round(rate, 2),
+                    'trading_value': tv or 0,
+                    'trading_volume': tvol,
+                })
+    if not pool:
+        print('== marketmap-intraday 실패: 라이브 fetch 결과 없음 ==')
+        return 1
+
+    # union TOP n per market (시총·거래량·양수상승률)
+    def union_top(market):
+        ms = [x for x in pool if x['market'] == market]
+        selected = {}
+        for it in sorted(ms, key=lambda x: x['market_cap'], reverse=True)[:top_n]:
+            selected[it['ticker']] = it
+        for it in sorted(ms, key=lambda x: x['trading_value'], reverse=True)[:top_n]:
+            selected[it['ticker']] = it
+        rise = [c for c in ms if (c.get('change_rate') or 0) > 0]
+        for it in sorted(rise, key=lambda x: x['change_rate'], reverse=True)[:top_n]:
+            selected[it['ticker']] = it
+        return list(selected.values())
+    union = union_top('KOSPI') + union_top('KOSDAQ')
+
+    target_date = (first_meta.get('localTradedAt') or '')[:10].replace('-', '') or _yyyymmdd(date.today())
+
+    # 기존 marketmap.json 의 rates / sector 보존
+    existing_by_ticker: dict[str, dict] = {}
+    existing_path = target_dir / 'marketmap.json'
+    if existing_path.exists():
+        try:
+            old = json.loads(existing_path.read_text(encoding='utf-8'))
+            for it in (old.get('items') or []):
+                if it.get('ticker'):
+                    existing_by_ticker[it['ticker']] = it
+        except Exception:
+            pass
+
+    items: list[dict] = []
+    for it in union:
+        old_it = existing_by_ticker.get(it['ticker']) or {}
+        rates = dict(old_it.get('rates') or {})
+        rates['1d'] = it['change_rate']
+        items.append({
+            'ticker': it['ticker'],
+            'name': it['name'],
+            'market': it['market'],
+            'sector': old_it.get('sector', ''),
+            'market_cap': it['market_cap'],
+            'close_price': it['close_price'],
+            'change_rate': it['change_rate'],
+            'rates': rates,
+            'trading_value': it['trading_value'],
+            'trading_volume': it['trading_volume'],
+        })
+    items.sort(key=lambda x: x['market_cap'], reverse=True)
+    output = {
+        'date': target_date,
+        'updated_at': datetime.now().isoformat(timespec='seconds'),
+        'universe': 'union',
+        'items': items,
+    }
+    existing_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding='utf-8')
+    snap_path = snap_dir / f'{target_date}.json'
+    snap_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding='utf-8')
+
+    # 일별 인덱스 갱신
+    idx_path = snap_dir / 'index.json'
+    dates_existing: list[str] = []
+    if idx_path.exists():
+        try:
+            d_ = json.loads(idx_path.read_text(encoding='utf-8'))
+            if isinstance(d_, list):
+                dates_existing = d_
+        except Exception:
+            pass
+    if target_date not in dates_existing:
+        dates_existing.append(target_date)
+    dates_existing = sorted(set(dates_existing), reverse=True)
+    idx_path.write_text(json.dumps(dates_existing), encoding='utf-8')
+
+    print(f'== marketmap-intraday 완료: {len(items)} 종목, 기준일 {target_date} ==')
+    return 0
+
+
 def _write_marketmap_snapshot(
     target_date: str,
     items_data: list[dict],
@@ -1162,7 +1304,9 @@ def main() -> None:
     p.add_argument('--estimate-only', action='store_true',
                    help='인덱스 missing 만 재추정')
     p.add_argument('--marketmap-only', action='store_true',
-                   help='시총 TOP 100 + 등락률 → marketmap.json 만 빠르게 빌드 (~30s)')
+                   help='전종목 OHLC 1년치 + union → marketmap.json (5~15분, rates 다 갱신)')
+    p.add_argument('--marketmap-intraday', action='store_true',
+                   help='라이브 m.stock 만으로 marketmap.json 1d 빠르게 갱신 (~30s, rates 1w/1m/3m/1y 유지)')
     p.add_argument('--backfill-days', type=int, default=0,
                    help='--marketmap-only 와 함께: 과거 N 영업일치 일별 스냅샷 일괄 빌드')
     p.add_argument('--report-only', action='store_true',
@@ -1171,6 +1315,8 @@ def main() -> None:
                    help='estimate-only 시 처리 개수 한도')
     args = p.parse_args()
 
+    if args.marketmap_intraday:
+        sys.exit(build_marketmap_intraday())
     if args.marketmap_only:
         sys.exit(build_marketmap_only(args))
     if args.estimate_only:

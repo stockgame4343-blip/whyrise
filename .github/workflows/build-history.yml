@@ -12,11 +12,11 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'full | incremental | estimate-only | marketmap-only'
+        description: 'full | incremental | estimate-only | marketmap-only | marketmap-intraday'
         required: false
         default: 'incremental'
         type: choice
-        options: [full, incremental, estimate-only, marketmap-only]
+        options: [full, incremental, estimate-only, marketmap-only, marketmap-intraday]
       days:
         description: '풀빌드 기간 (full mode)'
         required: false
@@ -89,11 +89,11 @@ jobs:
             if [ "$HOUR_UTC" = "21" ] && [ "$DOW" = "6" ]; then
               MODE="full"
             elif [ "$HOUR_UTC" = "6" ] && [ "$MIN_UTC" -ge "30" ]; then
-              # 평일 KST 15:40 (UTC 06:40) — 장 마감 직후 incremental
+              # 평일 KST 15:40 (UTC 06:40) — 장 마감 직후 incremental (full 빌드 stock-history+marketmap)
               MODE="incremental"
             else
-              # 평일 매시 :10 — 가벼운 marketmap-only (장중 데이터 갱신)
-              MODE="marketmap-only"
+              # 평일 매시 :10 — 가벼운 marketmap-intraday (~30s, 라이브 API 만)
+              MODE="marketmap-intraday"
             fi
           elif [ "$EVENT" = "repository_dispatch" ]; then
             MODE="estimate-only"
@@ -146,6 +146,9 @@ jobs:
             python3 scripts/build-history.py --days "$DAYS" --cutoff "$CUTOFF"
           elif [ "$MODE" = "estimate-only" ]; then
             python3 scripts/build-history.py --estimate-only --limit "$LIMIT"
+          elif [ "$MODE" = "marketmap-intraday" ]; then
+            # 장중 빠른 갱신 — 라이브 API 만, ~30s
+            python3 scripts/build-history.py --marketmap-intraday
           elif [ "$MODE" = "marketmap-only" ]; then
             if [ "$BACKFILL" -gt 0 ]; then
               python3 scripts/build-history.py --marketmap-only --backfill-days "$BACKFILL"
