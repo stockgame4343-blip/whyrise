@@ -1346,7 +1346,12 @@ body.page-treemap {
     color: #fff;
 }
 .tab.tab--watchlist.active svg { opacity: 1; }
-.toolbar--simple .toolbar__left { display: flex; align-items: center; }
+.toolbar--simple .toolbar__left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 560px) {
+    .toolbar--simple { flex-direction: column; align-items: stretch; gap: 8px; }
+    .toolbar--simple .toolbar__left { justify-content: flex-start; }
+    .toolbar--simple .toolbar__right { justify-content: flex-end; }
+}
 .date-nav {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
