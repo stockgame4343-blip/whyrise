@@ -191,19 +191,18 @@
         var hier = buildHierarchy();
         return (hier.children || []).map(function (g) {
             var children = g.children || [];
-            var sum = 0, maxRate = 0;
+            var sizeSum = 0, rateSum = 0;
             children.forEach(function (c) {
-                sum += sizeOf(c);   // sizeOf 가 +30% 초과 종목 캡 처리
-                var r = c.change_rate || 0;
-                if (r > maxRate) maxRate = r;
+                sizeSum += sizeOf(c);   // 사이즈는 캡 적용 (신규상장 outlier 방지)
+                rateSum += (c.change_rate || 0);   // 평균용 — 실값
             });
-            // 그룹 사이즈 = 종목 sizeOf 합 (캡 적용). 그룹 색 = 그 그룹 최고 상승률 (실값)
+            var avgRate = children.length > 0 ? rateSum / children.length : 0;
             return {
                 name: g.name,
                 isGroup: true,
                 children: children,
-                value: Math.max(sum, 1),
-                topRate: maxRate,
+                value: Math.max(sizeSum, 1),
+                avgRate: avgRate,
             };
         });
     }
@@ -284,9 +283,11 @@
                     return name + ' · ' + (d.children || []).length;
                 });
             sectorG.append('title').text(function (d) {
+                var ch = d.children || [];
                 var sum = 0;
-                (d.children || []).forEach(function (c) { sum += (c.data.change_rate || 0); });
-                return displayGroup(d.data.name) + ' · ' + (d.children || []).length + '종목 · 합산 +' + sum.toFixed(1) + '%';
+                ch.forEach(function (c) { sum += (c.data.change_rate || 0); });
+                var avg = ch.length > 0 ? sum / ch.length : 0;
+                return displayGroup(d.data.name) + ' · ' + ch.length + '종목 · 평균 +' + avg.toFixed(1) + '%';
             });
         }
 
@@ -441,10 +442,10 @@
                 .attr('y', labelSize / 2 + 1)
                 .style('font-size', countSize + 'px')
                 .attr('pointer-events', 'none')
-                .text((d.children || []).length + '종목 · 최고 +' + d.topRate.toFixed(1) + '%');
+                .text((d.children || []).length + '종목 · 평균 +' + d.avgRate.toFixed(1) + '%');
         });
         g.append('title').text(function (d) {
-            return displayGroup(d.name) + ' · ' + (d.children || []).length + '종목 · 최고 +' + d.topRate.toFixed(1) + '%';
+            return displayGroup(d.name) + ' · ' + (d.children || []).length + '종목 · 평균 +' + d.avgRate.toFixed(1) + '%';
         });
 
         runForceSimulation(nodes, w, h, g, 0.08);
