@@ -46,27 +46,29 @@ var WhyApp = (function () {
         if (d.length !== 8) return '';
         return d.slice(0, 4) + '.' + d.slice(4, 6) + '.' + d.slice(6, 8);
     }
+    function _composeLabel(open) {
+        var prefix = open ? 'LIVE' : '장 마감';
+        var ds = _dateStrKST();
+        var hhmm = (state.collectedAt || '').slice(11, 16);
+        var parts = [prefix];
+        if (ds) parts.push(ds);
+        if (hhmm) parts.push(hhmm);
+        return parts.join(' · ');
+    }
     function setLiveState(open) {
         var live = document.getElementById('homeLive');
         var lab = document.getElementById('homeLiveLabel');
         if (!live || !lab) return;
-        var ds = _dateStrKST();
-        if (open) {
-            live.classList.remove('tmap-live--idle');
-            lab.textContent = ds ? ('LIVE · ' + ds) : 'LIVE';
-        } else {
-            live.classList.add('tmap-live--idle');
-            lab.textContent = ds ? ('장 마감 · ' + ds) : '장 마감';
-            stopRingFill();
-        }
+        if (open) live.classList.remove('tmap-live--idle');
+        else { live.classList.add('tmap-live--idle'); stopRingFill(); }
+        lab.textContent = _composeLabel(open);
     }
     function refreshLiveLabel() {
-        // 날짜 변경 시 라벨 동기화 (state 변동 후 호출)
+        // state 변동 후 라벨 동기화 (ring 안 깜빡임)
         var lab = document.getElementById('homeLiveLabel');
         if (!lab) return;
-        var prefix = lab.textContent.indexOf('LIVE') === 0 ? 'LIVE' : '장 마감';
-        var ds = _dateStrKST();
-        lab.textContent = ds ? (prefix + ' · ' + ds) : prefix;
+        var open = lab.textContent.indexOf('LIVE') === 0;
+        lab.textContent = _composeLabel(open);
     }
     function liveCycle() {
         var isLatest = state.currentDateIdx === 0;
@@ -167,17 +169,12 @@ var WhyApp = (function () {
         if ($msg) $msg.style.display = 'none';
 
         return WhyAPI.getRankings(date).then(function (data) {
-            // 홈 table.js 의 formatAmount 는 원 단위 입력 가정 — stock-rise rankings 그대로
             state.rankings = (data.rankings || []).filter(function (r) {
                 return !BLOCKED_TICKERS[r.ticker];
             });
+            state.collectedAt = data.collected_at || '';
             applyCutoffAndRender();
-            var $upd = document.getElementById('lastUpdated');
-            if ($upd) {
-                // LIVE 라벨에 이미 날짜 들어가니 시각 HH:MM 만
-                var t = data.collected_at || '';
-                $upd.textContent = t ? t.slice(11, 16) : '';
-            }
+            refreshLiveLabel();
         }).catch(function (err) {
             if ($msg) {
                 $msg.textContent = '데이터 로딩 실패: ' + err.message;
