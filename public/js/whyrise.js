@@ -47,13 +47,11 @@ var WhyApp = (function () {
         if (d.length !== 8) return '';
         return d.slice(0, 4) + '.' + d.slice(4, 6) + '.' + d.slice(6, 8);
     }
-    function _composeLabel(open) {
-        var prefix = open ? 'LIVE' : '장 마감';
+    function _composeLabel() {
+        // 'LIVE' 글자 없이 날짜·시간만 — 회색 텍스트 + ring 만으로 라이브 표현
         var ds = _dateStrKST();
         var hhmm = (state.collectedAt || '').slice(11, 16);
-        // 트리맵·리포트와 동일 패턴: 'LIVE · 2026.05.14 19:27'
-        var dt = [ds, hhmm].filter(Boolean).join(' ');
-        return dt ? (prefix + ' · ' + dt) : prefix;
+        return [ds, hhmm].filter(Boolean).join(' ');
     }
     function setLiveState(open) {
         var live = document.getElementById('homeLive');
@@ -61,14 +59,12 @@ var WhyApp = (function () {
         if (!live || !lab) return;
         if (open) live.classList.remove('tmap-live--idle');
         else { live.classList.add('tmap-live--idle'); stopRingFill(); }
-        lab.textContent = _composeLabel(open);
+        lab.textContent = _composeLabel();
     }
     function refreshLiveLabel() {
-        // state 변동 후 라벨 동기화 (ring 안 깜빡임)
         var lab = document.getElementById('homeLiveLabel');
         if (!lab) return;
-        var open = lab.textContent.indexOf('LIVE') === 0;
-        lab.textContent = _composeLabel(open);
+        lab.textContent = _composeLabel();
     }
     function liveCycle() {
         var isLatest = state.currentDateIdx === 0;
