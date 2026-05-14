@@ -193,11 +193,11 @@
             var children = g.children || [];
             var sum = 0, maxRate = 0;
             children.forEach(function (c) {
+                sum += sizeOf(c);   // sizeOf 가 +30% 초과 종목 캡 처리
                 var r = c.change_rate || 0;
-                sum += r > 0 ? r * r : 0;
                 if (r > maxRate) maxRate = r;
             });
-            // 그룹 사이즈 = 종목 change_rate^2 합. 그룹 색 = 그 그룹 최고 상승률
+            // 그룹 사이즈 = 종목 sizeOf 합 (캡 적용). 그룹 색 = 그 그룹 최고 상승률 (실값)
             return {
                 name: g.name,
                 isGroup: true,
