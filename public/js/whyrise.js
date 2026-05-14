@@ -14,8 +14,9 @@ var WhyApp = (function () {
     var CUTOFF = 15;   // 고정
     // 모든 메뉴에서 가려야 할 종목 — 에이프로젠바이오로직스, 졸스, 에이프로젠
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
-    // 라이브 polling — 장중 + 최신 날짜일 때 60초마다 reload
-    var POLL_MS = 60 * 1000;
+    // 라이브 polling — 버블맵과 동일 15s (stock-rise backend 는 5분 주기 갱신이라
+    // 실제 데이터 변경은 5분마다, ring 만 자주 채워짐)
+    var POLL_MS = 15 * 1000;
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
     var RING_CIRCUM = 2 * Math.PI * 9;
@@ -50,10 +51,8 @@ var WhyApp = (function () {
         var prefix = open ? 'LIVE' : '장 마감';
         var ds = _dateStrKST();
         var hhmm = (state.collectedAt || '').slice(11, 16);
-        var parts = [prefix];
-        if (ds) parts.push(ds);
-        if (hhmm) parts.push(hhmm);
-        return parts.join(' · ');
+        // 'LIVE 2026.05.14 10:22' — 점 없이 공백 구분
+        return [prefix, ds, hhmm].filter(Boolean).join(' ');
     }
     function setLiveState(open) {
         var live = document.getElementById('homeLive');
