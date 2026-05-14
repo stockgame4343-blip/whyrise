@@ -41,18 +41,32 @@ var WhyApp = (function () {
         el.style.transition = 'none';
         el.style.strokeDashoffset = String(RING_CIRCUM);
     }
+    function _dateStrKST() {
+        var d = state.dates[state.currentDateIdx] || '';
+        if (d.length !== 8) return '';
+        return d.slice(0, 4) + '.' + d.slice(4, 6) + '.' + d.slice(6, 8);
+    }
     function setLiveState(open) {
         var live = document.getElementById('homeLive');
         var lab = document.getElementById('homeLiveLabel');
         if (!live || !lab) return;
+        var ds = _dateStrKST();
         if (open) {
             live.classList.remove('tmap-live--idle');
-            lab.textContent = 'LIVE';
+            lab.textContent = ds ? ('LIVE · ' + ds) : 'LIVE';
         } else {
             live.classList.add('tmap-live--idle');
-            lab.textContent = '장 마감';
+            lab.textContent = ds ? ('장 마감 · ' + ds) : '장 마감';
             stopRingFill();
         }
+    }
+    function refreshLiveLabel() {
+        // 날짜 변경 시 라벨 동기화 (state 변동 후 호출)
+        var lab = document.getElementById('homeLiveLabel');
+        if (!lab) return;
+        var prefix = lab.textContent.indexOf('LIVE') === 0 ? 'LIVE' : '장 마감';
+        var ds = _dateStrKST();
+        lab.textContent = ds ? (prefix + ' · ' + ds) : prefix;
     }
     function liveCycle() {
         var isLatest = state.currentDateIdx === 0;
@@ -160,11 +174,9 @@ var WhyApp = (function () {
             applyCutoffAndRender();
             var $upd = document.getElementById('lastUpdated');
             if ($upd) {
-                // 'YYYY-MM-DDTHH:MM:SS' → 'YYYY.MM.DD HH:MM'
+                // LIVE 라벨에 이미 날짜 들어가니 시각 HH:MM 만
                 var t = data.collected_at || '';
-                $upd.textContent = t
-                    ? t.slice(0, 10).replace(/-/g, '.') + ' ' + t.slice(11, 16)
-                    : '';
+                $upd.textContent = t ? t.slice(11, 16) : '';
             }
         }).catch(function (err) {
             if ($msg) {
@@ -180,6 +192,7 @@ var WhyApp = (function () {
         var $disp = document.getElementById('dateDisplay');
         var date = state.dates[state.currentDateIdx];
         if ($disp) $disp.textContent = formatDate(date);
+        refreshLiveLabel();   // LIVE 라벨에도 같은 날짜 동기화
     }
 
     function bindDateNav() {
