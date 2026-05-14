@@ -24,14 +24,15 @@
 
     // 시총 1·2위 (삼성전자·SK하이닉스) 면적 80% 로 축소 — 시각 균형 (시총 모드 한정)
     var SIZE_SCALE_TICKERS = { '005930': 0.8, '000660': 0.8 };
-    // 상승률 면적 캡 — +30% 초과(신규상장 +100/+300%)는 모두 동일 사이즈, +30% 의 1.3배 면적
+    // 1d 상승률 면적 캡 — 한국 일일 상한 +30%. 신규상장만 +100/+300% (왜곡) → 캡 +30%×1.3.
+    // 1주/1달/3달/1년 누적은 +100%+ 도 정상이라 캡 적용 X.
     var CHANGE_SIZE_THRESHOLD = 30;
-    var CHANGE_SIZE_CAP_SCORE = 30 * 30 * 1.3;   // = 1170 (반지름 ~ +34% 효과)
+    var CHANGE_SIZE_CAP_SCORE = 30 * 30 * 1.3;   // = 1170
     function sizeOf(it, sort) {
         if (sort === 'change') {
             var r = it.change_rate;
             if (r == null || isNaN(r) || r <= 0) return 1;
-            if (r > CHANGE_SIZE_THRESHOLD) return CHANGE_SIZE_CAP_SCORE;
+            if (state.period === '1d' && r > CHANGE_SIZE_THRESHOLD) return CHANGE_SIZE_CAP_SCORE;
             return r * r;
         }
         var v = sortScore(it, sort);

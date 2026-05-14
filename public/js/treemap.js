@@ -240,7 +240,8 @@
         return state.filter === 'ALL' && state.sort === 'mcap';
     }
 
-    // 면적 — 시총 모드 SIZE_SCALE_TICKERS 적용. 상승률 +30% 초과는 동일 사이즈(+30% 의 1.3배).
+    // 1d 상승률 면적 캡 — 한국 일일 상한 +30%. 신규상장만 +100/+300% 라 왜곡 → 1d 에서만 캡.
+    // 1주/1달/3달/1년 누적은 +100%+ 정상이라 r*r 그대로.
     var CHANGE_SIZE_THRESHOLD = 30;
     var CHANGE_SIZE_CAP_SCORE = 30 * 30 * 1.3;
     function sizeOf(it) {
@@ -248,7 +249,7 @@
         if (sort === 'change') {
             var r = it.change_rate;
             if (r == null || isNaN(r) || r <= 0) return 1;
-            if (r > CHANGE_SIZE_THRESHOLD) return CHANGE_SIZE_CAP_SCORE;
+            if (state.period === '1d' && r > CHANGE_SIZE_THRESHOLD) return CHANGE_SIZE_CAP_SCORE;
             return r * r;
         }
         var v = sortScore(it, sort);
