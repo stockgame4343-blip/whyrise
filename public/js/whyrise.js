@@ -18,12 +18,56 @@ var WhyApp = (function () {
     var POLL_MS = 60 * 1000;
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
+    var RING_CIRCUM = 2 * Math.PI * 9;
     function isMarketOpenKST() {
         var k = new Date(Date.now() + KST_OFFSET * 60000);
         var day = k.getUTCDay();
         if (day === 0 || day === 6) return false;
         var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
         return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
+    // ── LIVE ring / chain pattern (버블맵·트리맵과 동일) ──
+    function $ringFg() { return document.querySelector('#homeLive .tmap-live__ring-fg'); }
+    function startRingFill() {
+        var el = $ringFg(); if (!el) return;
+        el.style.transition = 'none';
+        el.style.strokeDashoffset = String(RING_CIRCUM);
+        void el.getBoundingClientRect();
+        el.style.transition = 'stroke-dashoffset ' + (POLL_MS / 1000) + 's linear';
+        el.style.strokeDashoffset = '0';
+    }
+    function stopRingFill() {
+        var el = $ringFg(); if (!el) return;
+        el.style.transition = 'none';
+        el.style.strokeDashoffset = String(RING_CIRCUM);
+    }
+    function setLiveState(open) {
+        var live = document.getElementById('homeLive');
+        var lab = document.getElementById('homeLiveLabel');
+        if (!live || !lab) return;
+        if (open) {
+            live.classList.remove('tmap-live--idle');
+            lab.textContent = 'LIVE';
+        } else {
+            live.classList.add('tmap-live--idle');
+            lab.textContent = '장 마감';
+            stopRingFill();
+        }
+    }
+    function liveCycle() {
+        var isLatest = state.currentDateIdx === 0;
+        var open = isMarketOpenKST();
+        if (!isLatest || !open || document.visibilityState === 'hidden') {
+            setLiveState(false);
+            setTimeout(liveCycle, 5000);
+            return;
+        }
+        setLiveState(true);
+        startRingFill();
+        setTimeout(function () {
+            var p = loadDate(state.dates[0]);
+            (p && p.then ? p : Promise.resolve()).then(function () { liveCycle(); });
+        }, POLL_MS);
     }
 
     var state = {
@@ -393,15 +437,9 @@ var WhyApp = (function () {
             state.currentDateIdx = 0;
             updateDateUI();
             return loadDate(dates[0]);
+        }).then(function () {
+            liveCycle();   // chain pattern (ring transition = setTimeout = fetch 정확 동기화)
         });
-
-        // 라이브 polling — 최신 날짜 + 장중 + 탭 visible 일 때만 60s 마다 reload
-        setInterval(function () {
-            if (state.currentDateIdx !== 0) return;
-            if (!isMarketOpenKST()) return;
-            if (document.visibilityState === 'hidden') return;
-            loadDate(state.dates[0]);
-        }, POLL_MS);
     }
 
     return { init: init };

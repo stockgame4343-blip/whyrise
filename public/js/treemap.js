@@ -533,6 +533,14 @@
                 state.liveItems = data.items;
                 state.marketStatus = data.market_status || state.marketStatus;
                 state.lastUpdated = data.updated_at || state.lastUpdated;
+                // 라이브 date 가 정적(어제) 보다 새로우면 화면 날짜도 갱신
+                if (state.dateIndex === 0 && data.date && data.date > (state.currentDate || '')) {
+                    state.currentDate = data.date;
+                    if (state.availableDates && state.availableDates.indexOf(data.date) < 0) {
+                        state.availableDates.unshift(data.date);
+                    }
+                    updateDateNav();
+                }
                 updateLastUpdated();
                 $loading.style.display = 'none';
                 if (state.dateIndex === 0 && state.period === '1d') {
