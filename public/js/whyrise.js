@@ -51,8 +51,9 @@ var WhyApp = (function () {
         var prefix = open ? 'LIVE' : '장 마감';
         var ds = _dateStrKST();
         var hhmm = (state.collectedAt || '').slice(11, 16);
-        // 'LIVE 2026.05.14 10:22' — 점 없이 공백 구분
-        return [prefix, ds, hhmm].filter(Boolean).join(' ');
+        // 트리맵·리포트와 동일 패턴: 'LIVE · 2026.05.14 19:27'
+        var dt = [ds, hhmm].filter(Boolean).join(' ');
+        return dt ? (prefix + ' · ' + dt) : prefix;
     }
     function setLiveState(open) {
         var live = document.getElementById('homeLive');
