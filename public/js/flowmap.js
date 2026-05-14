@@ -136,9 +136,13 @@
             return !BLOCKED_TICKERS[r.ticker] && r.ticker && (r.change_rate || 0) > 0;
         });
     }
+    // 신규상장 +100%/+300% 면적 폭주 방지 — +45% 캡. 정렬 순위는 그대로.
+    var CHANGE_SIZE_CAP = 45;
     function sizeOf(it) {
         var r = it.change_rate || 0;
-        return r > 0 ? r * r : 1;
+        if (r <= 0) return 1;
+        var capped = Math.min(r, CHANGE_SIZE_CAP);
+        return capped * capped;
     }
     var RISE_CUTOFF = 15;   // 상승률 모드 컷오프 (%)
     var GROUP_MIN = 3;      // 주도섹터·핫테마: 그룹 종목 ≥ N 만 표시 (1·2 종목짜리 노이즈 제거)

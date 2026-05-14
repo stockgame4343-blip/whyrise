@@ -24,7 +24,15 @@
 
     // 시총 1·2위 (삼성전자·SK하이닉스) 면적 80% 로 축소 — 시각 균형 (시총 모드 한정)
     var SIZE_SCALE_TICKERS = { '005930': 0.8, '000660': 0.8 };
+    // 신규상장 +100%/+300% 같은 outlier 가 면적 폭주 안 하도록 캡 (정렬 순위는 그대로)
+    var CHANGE_SIZE_CAP = 45;
     function sizeOf(it, sort) {
+        if (sort === 'change') {
+            var r = it.change_rate;
+            if (r == null || isNaN(r) || r <= 0) return 1;
+            var capped = Math.min(r, CHANGE_SIZE_CAP);
+            return capped * capped;
+        }
         var v = sortScore(it, sort);
         if (sort === 'mcap') {
             var s = SIZE_SCALE_TICKERS[it.ticker];
@@ -36,9 +44,7 @@
     var PERIOD_LABEL = { '1d': '1일', '1w': '1주', '1m': '1달', '3m': '3달', '1y': '1년' };
     var SORT_LABEL = { mcap: '시총', volume: '거래량', change: '상승률' };
 
-    // 정렬 기준별 score. 상승률은 양수만 큰 순 — 음수(하락)는 매우 낮은 점수로 뒤로.
-    // change: 사이즈 상대성을 키우기 위해 제곱 (5%~30% → 25~900 → 면적 비율 36:1).
-    // 정렬 순위는 단조 변환이라 영향 없음, 면적만 더 차별됨.
+    // 정렬용 score — 양수 큰 순. 사이즈 차별 위해 제곱. 정렬은 캡 적용 X (큰 순 정확).
     function sortScore(it, sort) {
         if (sort === 'volume') return it.trading_value || 0;
         if (sort === 'change') {

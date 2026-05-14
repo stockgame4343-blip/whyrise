@@ -240,9 +240,17 @@
         return state.filter === 'ALL' && state.sort === 'mcap';
     }
 
-    // 면적 — 정렬 기준에 따라. 시총 모드에서만 SIZE_SCALE_TICKERS 적용 (시각 균형)
+    // 면적 — 정렬 기준에 따라. 시총 모드에서만 SIZE_SCALE_TICKERS 적용 (시각 균형).
+    // 상승률 모드 +100%/+300% (신규상장) 면적 폭주 방지 — +45% 로 캡. 정렬 순위는 무관.
+    var CHANGE_SIZE_CAP = 45;
     function sizeOf(it) {
         var sort = state.sort;
+        if (sort === 'change') {
+            var r = it.change_rate;
+            if (r == null || isNaN(r) || r <= 0) return 1;
+            var capped = Math.min(r, CHANGE_SIZE_CAP);
+            return capped * capped;
+        }
         var v = sortScore(it, sort);
         if (sort === 'mcap') {
             var s = SIZE_SCALE_TICKERS[it.ticker];
