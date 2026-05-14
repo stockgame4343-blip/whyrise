@@ -66,10 +66,10 @@ body{background:var(--bg-primary);color:var(--text-primary);font-family:var(--fo
 .date-text--active{background:var(--bg-tertiary)}
 /* 날짜 옆 작은 메타 시각 (리포트 REPORT 옆 패턴과 동일) */
 .date-meta{font-size:11px;font-weight:600;color:var(--text-muted, var(--text-secondary));font-feature-settings:'tnum';white-space:nowrap}
-/* 리스트 하단 메타 — 우측 정렬: ring + 회색 날짜·시간 */
+/* 리스트 하단 메타 — 우측 정렬: 볼드 회색 날짜·시간 */
 .ranking-meta{display:flex;justify-content:flex-end;align-items:center;margin-top:10px;font-feature-settings:'tnum'}
 .ranking-meta .tmap-live{color:var(--text-muted, var(--text-secondary))}
-.ranking-meta .tmap-live__label{font-weight:600;font-size:11px;letter-spacing:0;color:var(--text-muted, var(--text-secondary))}
+.ranking-meta .tmap-live__label{font-weight:800;font-size:11px;letter-spacing:0;color:var(--text-muted, var(--text-secondary))}
 .date-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:4px;background:transparent;border:1px solid var(--text-secondary);color:var(--text-primary);font-size:11px;font-weight:700}
 .date-badge--past{border-color:var(--text-muted);color:var(--text-muted);cursor:pointer}
 .date-badge--past:hover{border-color:var(--text-secondary);color:var(--text-secondary)}
