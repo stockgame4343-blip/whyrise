@@ -167,12 +167,17 @@ body {
     [data-theme="light"] .top-bar__nav { background: #ffffff; box-shadow: 0 12px 32px rgba(0,0,0,.12); }
     .top-bar__nav--open { display: flex; }
     .top-bar__nav .top-bar__link {
-        padding: 11px 14px;
-        font-size: 15px;
+        padding: 13px 16px;
+        font-size: 16px;
         border-radius: 8px;
         text-align: left;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
     .top-bar__nav .top-bar__link--active { background: var(--glass-bg); }
+    /* drawer 가 좁아 보이는 시각 이슈 — width 100% 명시 + 좌우 외부 backdrop dim 으로 풀와이드 인상 강화 */
+    .top-bar__nav--open { width: 100%; }
 }
 
 /* ── Hero 검색 ────────────────────────────── */
@@ -1527,20 +1532,105 @@ body.page-treemap {
 }
 
 @media (max-width: 768px) {
-    .report-grid { grid-template-columns: 1fr; }
+    /* report-page: PC padding 36 40 56 은 모바일에서 좌우 80px = 폭 21% 잡아먹음 → 좌우 12 로 축소 */
+    .report-page { padding: 20px 12px 40px; }
+    /* report-grid: PC minmax(380,1fr) — 모바일 viewport 360~390 보다 넓어 가로 오버플로우(bodyW=407 vs vp=375) 유발.
+       모바일에선 풀폭 1열 + 카드 padding 축소. */
+    .report-grid { grid-template-columns: 1fr; gap: 12px; }
+    .report-card { padding: 16px 16px; }
     .report-list--two-col { columns: 1; }
     .report-page__title { font-size: 24px; }
+    /* report-row 내부 — 모바일에서 +N% pill 우측 여유 + 라벨 ellipsis 강화 */
+    .report-row { padding: 8px 6px; }
+    .report-row__content { gap: 8px; font-size: 12.5px; }
+    .report-row__count { min-width: 56px; padding: 3px 8px; font-size: 11px; }
+    .report-row__sub { font-size: 10.5px; }
 
-    /* whyrise-table 모바일 — style.css 의 .ranking-table 카드 전환과 호환 */
+    /* ⋯ 버튼 가시성 보강 — base style.css 의 32×32 흐릿한 배경 → 40×40 + 진한 배경으로 클릭 가능 신호 강화 */
+    .ctrl-toggle {
+        width: 40px !important;
+        height: 40px !important;
+        background: rgba(255, 255, 255, .09);
+        color: var(--text-secondary);
+    }
+    [data-theme="light"] .ctrl-toggle { background: rgba(0, 0, 0, .07); color: var(--text-secondary); }
+    .ctrl-toggle:active { background: var(--bg-tertiary, rgba(255, 255, 255, .18)); }
+
+    /* 푸터 면책 — 모바일에서 강조 문구 한 단계 키워 가독성 확보 */
+    .footer__disclaimer { font-size: 11px; line-height: 1.7; padding: 0 4px; }
+    .footer__disclaimer strong { font-size: 12px; display: inline-block; margin-bottom: 4px; }
+    .footer__copy { font-size: 10.5px; }
+
+    /* 터치 타깃 보강 (Apple HIG 44pt / WCAG 24px AAA, 최소 36~40px) — mobile only */
+    .theme-toggle { padding: 9px; min-width: 40px; min-height: 40px; justify-content: center; }
+    .top-bar__hamburger { padding: 9px; min-width: 40px; min-height: 40px; }
+    .date-nav { min-width: 40px; min-height: 40px; }
+    /* 햄버거 메뉴 안 nav 링크 — 이미 padding:11px 14px 인데 font-size 키워 가독성 + 터치 영역 강화 */
+    .top-bar__nav .top-bar__link { padding: 13px 16px; min-height: 44px; font-size: 16px; }
+    /* tmap-tab (서브 탭) — 패딩 5px 12px (작음) → 9px 14px 로 확장 */
+    .tmap-tab { padding: 9px 14px; min-height: 38px; font-size: 13px; }
+    /* tmap-back / tmap-save 도 보강 */
+    .tmap-back { padding: 8px 12px; min-height: 36px; font-size: 12px; }
+    .tmap-save { width: 38px; height: 38px; }
+
+    /* whyrise-table 모바일 — style.css 의 stock-rise 용 4열 그리드(rank|name|price|change)는
+       whyrise 컬럼 구성(rank|name|reason|change|volume|cap|sector — 가격 없음)과 안 맞아
+       종목명 옆에 빈 그리드 셀이 남았음. 여기서 whyrise 전용 3열로 override:
+         Row 1:  rank | name(+미니인디케이터) | change(상승률)
+         Row 2:  reason (전체 폭, 카드 hero)
+         Row 3:  meta-compact (시장·섹터·시총·거래)
+       volume/cap/sector 는 base css 가 이미 display:none 처리. */
     .whyrise-table { min-width: 0; width: 100%; }
     .table-wrap.glass { padding: 0; overflow: visible; }
+    .whyrise-table tr {
+        grid-template-columns: auto minmax(0, 1fr) auto !important;
+        gap: 8px 12px !important;
+    }
+    /* whyrise.css 의 PC `.whyrise-table td { border-bottom; padding 16px 10px }` 가 모바일에서도 적용돼
+       각 셀 바닥에 짧은 underline 3개 생기던 문제 → 모바일에선 td 보더·패딩 모두 제거 */
+    .whyrise-table td { border-bottom: none !important; padding: 0 !important; }
+    .whyrise-table td.cell-rank { grid-column: 1; grid-row: 1; }
+    .whyrise-table td.cell-name { grid-column: 2; grid-row: 1; }
+    .whyrise-table td.cell-change { grid-column: 3; grid-row: 1; }
+    .whyrise-table td.cell-reason {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        padding: 4px 0 0 !important;
+        margin: 0;
+        text-align: left;
+    }
+    .whyrise-table td.cell-meta-compact {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        padding: 6px 0 0 !important;
+        font-size: 11.5px;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border-subtle);
+        margin-top: 4px;
+    }
+    /* cell-reason 내부 inline 레이아웃 — 태그 + 이유 + 편집 한 줄 wrap */
+    .whyrise-table .cell-reason__inline {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
+        line-height: 1.45;
+    }
+    .whyrise-table .cell-reason__text {
+        flex: 1 1 auto; min-width: 0;
+        font-size: 13.5px; color: var(--text-primary);
+        word-break: keep-all; overflow-wrap: break-word;
+    }
 
-    /* hero 검색바 — 한 줄 유지하되 폰트·패딩 축소 */
+    /* hero 검색바 — 한 줄 유지하되 폰트·패딩 축소 + input 수직 중앙(기본 baseline은 모바일에서 input 23px 떠 보임) */
     .hero { padding: 32px 0 20px; }
-    .hero__search-wrap { padding: 12px 18px; gap: 6px; border-radius: 999px; }
-    .hero__search-input { font-size: 19px; }
+    .hero__search-wrap { padding: 12px 18px; gap: 6px; border-radius: 999px; align-items: center; }
+    .hero__search-wrap:focus-within { padding: 11px 17px; }
+    .hero__search-input { font-size: 19px; min-height: 30px; line-height: 30px; }
     .hero__placeholder-suffix { font-size: 17px; }
     .hero__subtitle { font-size: 13px; margin-top: 18px; padding: 0 10px; }
+    /* 자동완성 드롭다운 — 모바일에서 우측 5~10px 잘려보이는 이슈: li 우측 패딩 축소 + badge 폰트 압축 */
+    .hero__suggest { padding: 6px; max-height: 320px; border-radius: 14px; }
+    .hero__suggest li { padding: 9px 10px; gap: 8px; font-size: 13.5px; }
+    .hero__suggest li .ticker { font-size: 11px; }
+    .hero__suggest li .badge { padding: 2px 6px; font-size: 10.5px; white-space: nowrap; }
 
     /* toolbar — 좁은 폭에서 wrap */
     .toolbar--simple { flex-wrap: wrap; gap: 8px; padding: 14px 4px; }
@@ -1552,8 +1642,11 @@ body.page-treemap {
     /* stock 페이지 헤더 모바일 */
     .stock-header { padding: 22px 18px; border-radius: 16px; }
     .stock-header__title { font-size: 26px; }
-    .stock-header__stat-value { font-size: 20px; }
-    .stock-header__summary { font-size: 16px; }
+    /* 4-stat 라인 — PC flex+wrap 은 모바일(특히 SE 375) 좁아 라벨 줄바꿈 직전 상태 → 2x2 그리드로 안정 */
+    .stock-header__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; margin-top: 18px; }
+    .stock-header__stat-label { font-size: 10.5px; letter-spacing: .2px; }
+    .stock-header__stat-value { font-size: 19px; }
+    .stock-header__summary { font-size: 15px; line-height: 1.55; }
 
     /* event-card 모바일 */
     .event-card { padding: 16px 18px; border-radius: 14px; }

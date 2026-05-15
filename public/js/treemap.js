@@ -344,12 +344,16 @@
                 .attr('height', function (d) { return Math.max(0, d.y1 - d.y0); })
                 .attr('rx', 4);
 
+            // 모바일에서만 너무 작은 셀 라벨 숨김(인접 셀로 텍스트 넘쳐 보이던 이슈 — PC 영향 없도록 viewport 조건 한정)
+            var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
             sectorG.append('text')
                 .attr('class', 'tmap-sector__label')
                 .attr('x', 8)
                 .attr('y', 15)
                 .text(function (d) {
                     var w = d.x1 - d.x0;
+                    var h = d.y1 - d.y0;
+                    if (isMobile && (w < 40 || h < 18)) return '';
                     var name = displaySector(d.data.name || '기타');
                     var max = Math.max(2, Math.floor(w / 8));
                     if (name.length > max) name = name.slice(0, max - 1) + '…';
