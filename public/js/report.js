@@ -64,6 +64,9 @@
 
     function emptyMsg(period) {
         var label = PERIOD_LABEL[period] || '';
+        if (period === 'd1') {
+            return '<li class="report-empty">최근 1거래일 동안 +15% 이상 오른 종목이 없습니다 — 1주 이상의 기간을 선택해보세요</li>';
+        }
         return '<li class="report-empty">' + label + ' 기간엔 자료가 부족합니다 — 더 긴 기간을 선택해보세요</li>';
     }
 
@@ -188,6 +191,37 @@
         });
     }
 
+    /** 기간 데이터가 비어 있는지 — 모든 섹션이 0/빈 배열이면 true */
+    function isPeriodEmpty(p) {
+        if (!p) return true;
+        var total = p.total_events_15 || p.total_events_all || 0;
+        if (total > 0) return false;
+        var lists = ['sector_top', 'theme_top', 'limit_up_top', 'high_52w_top', 'frequent_top'];
+        for (var i = 0; i < lists.length; i++) {
+            if ((p[lists[i]] || []).length > 0) return false;
+        }
+        return true;
+    }
+
+    /** firstLoad 일 때 d1 비어 있으면 가장 가까운 비어있지 않은 기간으로 자동 전환 (1주 → 1달 → 3달 → 1년) */
+    function pickInitialPeriod(summary) {
+        if (!summary || !summary.periods) return 'd1';
+        for (var i = 0; i < PERIODS.length; i++) {
+            var p = PERIODS[i];
+            if (!isPeriodEmpty(summary.periods[p])) return p;
+        }
+        return 'd1';
+    }
+
+    function setActiveTab(period) {
+        var $tabs = document.getElementById('reportPeriodTabs');
+        if (!$tabs) return;
+        var btns = $tabs.querySelectorAll('button[data-p]');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.toggle('is-active', btns[i].getAttribute('data-p') === period);
+        }
+    }
+
     function fetchSummary(firstLoad) {
         var $loading = document.getElementById('loading');
         var $msg = document.getElementById('message');
@@ -200,6 +234,14 @@
                 if (firstLoad) {
                     $loading.style.display = 'none';
                     $grid.style.display = 'grid';
+                    // 1일(d1) 이 비어 있으면 (휴장·집계 전 등) 가장 가까운 채워진 기간으로 자동 전환
+                    if (isPeriodEmpty(s.periods && s.periods[state.period])) {
+                        var fallback = pickInitialPeriod(s);
+                        if (fallback !== state.period) {
+                            state.period = fallback;
+                            setActiveTab(fallback);
+                        }
+                    }
                 }
                 // REPORT 라벨에 빌드 시각 합침 — 'REPORT · YYYY.MM.DD HH:MM' (KST)
                 var $lab = document.getElementById('reportLiveLabel');

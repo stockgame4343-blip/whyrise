@@ -7,6 +7,27 @@
     var nav = document.querySelector('.top-bar__nav');
     if (!btn || !nav) return;
 
+    // 모바일 햄버거 drawer 안에 테마 토글 아이템 주입 — PC 에서는 CSS 로 숨김.
+    // 본래 PC 우측의 #themeToggle 버튼은 그대로 두고, drawer 용 분신을 만들어 같은 동작을 위임.
+    (function injectThemeItem() {
+        var orig = document.getElementById('themeToggle');
+        if (!orig || nav.querySelector('.top-bar__theme-item')) return;
+        var item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'top-bar__link top-bar__theme-item';
+        item.setAttribute('aria-label', '다크/라이트 모드 전환');
+        item.innerHTML =
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+            '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>' +
+            '<span class="top-bar__theme-item-label">다크/라이트 모드</span>';
+        item.addEventListener('click', function (e) {
+            e.stopPropagation();
+            orig.click();  // 페이지별 bindThemeToggle 이 이미 #themeToggle 에 바인딩됨
+        });
+        nav.appendChild(item);
+    })();
+
     function setOpen(open) {
         nav.classList.toggle('top-bar__nav--open', open);
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -17,8 +38,9 @@
         setOpen(!nav.classList.contains('top-bar__nav--open'));
     });
 
-    // 메뉴 항목 클릭 시 자동 닫기
+    // 메뉴 항목 클릭 시 자동 닫기 (단, 테마 아이템은 닫지 않음 — 토글 후에도 메뉴 유지)
     nav.addEventListener('click', function (e) {
+        if (e.target.closest('.top-bar__theme-item')) return;
         if (e.target.closest('a')) setOpen(false);
     });
 

@@ -60,6 +60,9 @@ body {
     --accent: var(--wr-accent);
 }
 
+/* drawer 안 테마 아이템 — PC 에서는 항상 숨김 (모바일 @media 에서만 노출) */
+.top-bar__theme-item { display: none; }
+
 /* 글래스 공통 클래스 */
 .glass {
     background: var(--glass-bg);
@@ -150,6 +153,31 @@ body {
 @media (max-width: 768px) {
     .top-bar { position: relative; }
     .top-bar__hamburger { display: inline-flex; }
+    /* 모바일: 햄버거가 최우측에 오도록 순서 강제 — 기존 .top-bar__right 안 [hamburger, theme] → [theme(숨김), hamburger] */
+    .top-bar__right { gap: 4px; }
+    .top-bar__right .theme-toggle { display: none; }
+    .top-bar__right .top-bar__hamburger { margin-left: auto; order: 99; }
+    /* drawer 안 테마 아이템 — 메뉴 마지막에 노출 */
+    .top-bar__theme-item {
+        background: transparent;
+        border: none;
+        font: inherit;
+        cursor: pointer;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 16px;
+        min-height: 44px;
+        font-size: 16px;
+        border-radius: 8px;
+        text-align: left;
+        border-top: 1px solid var(--glass-border);
+        margin-top: 4px;
+        width: 100%;
+    }
+    .top-bar__theme-item:hover { background: var(--glass-bg); }
+    .top-bar__theme-item-label { line-height: 1; }
     .top-bar__nav {
         display: none;
         position: absolute;
@@ -810,7 +838,10 @@ body {
 /* ── 트리맵 (시총 TOP 100 KOSPI + 100 KOSDAQ, 라이브 5s polling) ── */
 body.page-treemap {
     overflow: hidden;
+    /* 모바일 사파리/크롬 주소창 가림 보정 — dvh 는 chrome 표시 따라 동적 갱신.
+       PC 에서는 dvh 와 vh 가 동일 → PC 영향 없음. dvh 미지원 구형 브라우저는 vh 폴백. */
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
 }
@@ -1233,24 +1264,25 @@ body.page-treemap {
 .tmap-save:hover { background: var(--bg-hover, rgba(127,127,127,.18)); border-color: var(--text-muted); color: var(--text-primary); }
 
 @media (max-width: 768px) {
-    .tmap-bar__inner { padding: 8px 12px; gap: 6px; flex-wrap: wrap; }
-    .tmap-bar__left { flex-wrap: wrap; gap: 8px; row-gap: 4px; }
-    .tmap-bar__right { flex-wrap: wrap; gap: 6px; row-gap: 4px; justify-content: flex-end; }
-    .tmap-clock { font-size: 12px; }
-    .tmap-date { font-size: 11px; }
-    .tmap-tab { padding: 4px 8px; font-size: 11px; }
-    .tmap-tabs { padding: 2px; gap: 2px; }
-    .tmap-live__label { font-size: 10.5px; }
-    .tmap-datenav { padding: 1px 2px; }
-    .tmap-datenav__btn { width: 20px; height: 20px; font-size: 14px; }
-    .tmap-save { width: 28px; height: 28px; }
-    .tmap-back { font-size: 11px; padding: 4px 8px; }
+    /* 사용자 요청: 날짜 row 살짝 두께 보강 — padding·아이콘 한 단계 키움 */
+    .tmap-bar__inner { padding: 12px 14px; gap: 8px; flex-wrap: wrap; min-height: 50px; }
+    .tmap-bar__left { flex-wrap: wrap; gap: 10px; row-gap: 6px; min-height: 30px; align-items: center; }
+    .tmap-bar__right { flex-wrap: wrap; gap: 8px; row-gap: 6px; justify-content: flex-end; }
+    .tmap-clock { font-size: 12.5px; }
+    .tmap-date { font-size: 12px; }
+    .tmap-tab { padding: 7px 12px; font-size: 12px; min-height: 32px; }
+    .tmap-tabs { padding: 3px; gap: 3px; }
+    .tmap-live__label { font-size: 11px; }
+    .tmap-datenav { padding: 2px 4px; }
+    .tmap-datenav__btn { width: 26px; height: 26px; font-size: 14px; }
+    .tmap-save { width: 32px; height: 32px; }
+    .tmap-back { font-size: 11.5px; padding: 6px 10px; min-height: 30px; }
 }
 @media (max-width: 480px) {
-    .tmap-bar__inner { flex-direction: column; align-items: stretch; padding: 8px 10px; }
+    .tmap-bar__inner { flex-direction: column; align-items: stretch; padding: 10px 12px; gap: 8px; }
     .tmap-bar__left, .tmap-bar__right { justify-content: center; }
     .tmap-bar__right { flex-wrap: wrap; }
-    .tmap-tab { padding: 4px 7px; font-size: 10.5px; }
+    .tmap-tab { padding: 7px 11px; font-size: 12px; min-height: 32px; }
     /* REPORT·LIVE 라벨이 시각 합쳐 길어지면 좁은 화면에서 줄바꿈 허용 */
     .tmap-live__label { white-space: normal; line-height: 1.3; }
 }
@@ -1581,7 +1613,16 @@ body.page-treemap {
          Row 3:  meta-compact (시장·섹터·시총·거래)
        volume/cap/sector 는 base css 가 이미 display:none 처리. */
     .whyrise-table { min-width: 0; width: 100%; }
-    .table-wrap.glass { padding: 0; overflow: visible; }
+    /* 모바일: 카드 리스트를 감싸는 외곽 글래스 컨테이너 제거 (사용자 요청 — 카드들 자체가 글래스라 중첩 불필요) */
+    .table-wrap.glass {
+        padding: 0;
+        overflow: visible;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
     .whyrise-table tr {
         grid-template-columns: auto minmax(0, 1fr) auto !important;
         gap: 8px 12px !important;
@@ -1632,8 +1673,13 @@ body.page-treemap {
     .hero__suggest li .ticker { font-size: 11px; }
     .hero__suggest li .badge { padding: 2px 6px; font-size: 10.5px; white-space: nowrap; }
 
-    /* toolbar — 좁은 폭에서 wrap */
-    .toolbar--simple { flex-wrap: wrap; gap: 8px; padding: 14px 4px; }
+    /* toolbar — 모바일에서 날짜(좌) + 관심(우) 한 줄 (사용자 요청).
+       base style.css 가 toolbar__right{order:1}, .toolbar .report__date-bar{order:2;flex:0 0 100%} 로
+       관심 먼저·날짜 새 줄 wrap 시키는데 whyrise toolbar--simple 에선 그걸 모두 reset. */
+    .toolbar--simple { flex-wrap: nowrap; flex-direction: row; align-items: center; gap: 8px; padding: 14px 4px; }
+    .toolbar--simple .report__date-bar { order: 1; flex: 0 1 auto; min-width: 0; gap: 4px; padding: 0; justify-content: flex-start; }
+    .toolbar--simple .toolbar__right { order: 2; flex-shrink: 0; margin-left: auto; }
+    .toolbar--simple .date-text { font-size: 13.5px; padding: 4px 6px; }
     .cutoff-count { padding: 5px 10px; font-size: 11px; }
 
     /* 위젯 — 좁은 폭에서 패딩 축소 */
