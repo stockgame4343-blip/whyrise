@@ -401,9 +401,29 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
         except Exception as e:
             print(f'    marketmap.json 로드 실패: {e}')
 
-    today = date.today()
+    # 'd1' 정의 — "오늘" 이 아니라 "가장 최근 거래일" 기준.
+    # 주말·휴장·데이터 지연 시 today 로 잡으면 빈 결과가 되므로,
+    # events 가 실제 존재하는 최신 날짜를 앵커로 사용. (사용자 피드백 2026-05-16)
+    latest_event_date = ''
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        for e in (h.get('events') or []):
+            d_ = e.get('date', '')
+            if d_ and d_ > latest_event_date:
+                latest_event_date = d_
+    anchor = today = date.today()
+    if latest_event_date and len(latest_event_date) == 8:
+        try:
+            anchor = date(int(latest_event_date[0:4]), int(latest_event_date[4:6]), int(latest_event_date[6:8]))
+        except Exception:
+            anchor = today
+    print(f"    기간 anchor: latest_event={latest_event_date or 'n/a'} → {anchor.isoformat()} (today={today.isoformat()})")
     cutoff_yyyymmdd = {
-        k: (today - timedelta(days=days)).strftime('%Y%m%d')
+        # d1 만 anchor 일자 그대로(=마지막 거래일만 포함), 나머지는 anchor-기간
+        k: (anchor if k == 'd1' else anchor - timedelta(days=days - 1)).strftime('%Y%m%d')
         for k, days in _PERIOD_DAYS.items()
     }
 
