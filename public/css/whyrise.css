@@ -1288,10 +1288,10 @@ body.page-treemap {
     .tmap-live__label { font-size: 11px; }
     .tmap-datenav { padding: 1px 3px; }
     .tmap-datenav__btn { width: 24px; height: 24px; font-size: 14px; }
-    /* 우측 sub-tabs 는 더 컴팩트 — market(182) + sort(182) = 364 > 355 이라 줄바꿈 됐던 걸
-       padding 3×7 로 줄여서 2개 그룹이 한 줄에 들어가도록. period+save 는 자연 다음 줄. */
-    .tmap-tab { padding: 3px 7px; font-size: 10.5px; min-height: 24px; }
-    .tmap-tabs { padding: 2px; gap: 1px; }
+    /* 우측 sub-tabs — market + sort 한 줄 fit 유지하면서도 가독성 있는 중간 크기.
+       padding 5×10 font 12 min-h 30 → market(~145) + sort(~145) ≈ 290 < 355 ✅ */
+    .tmap-tab { padding: 5px 10px; font-size: 12px; min-height: 30px; }
+    .tmap-tabs { padding: 2px; gap: 2px; }
     .tmap-save { width: 28px; height: 28px; }
     .tmap-back { font-size: 11px; padding: 4px 8px; min-height: 26px; }
 }
@@ -1299,9 +1299,9 @@ body.page-treemap {
     .tmap-bar__inner { flex-direction: column; align-items: stretch; padding: 8px 10px; gap: 6px; }
     .tmap-bar__left, .tmap-bar__right { justify-content: center; }
     .tmap-bar__right { flex-wrap: wrap; }
-    /* tmap-tab 480 이하에서도 컴팩트 유지 (사용자 피드백) — 768 룰과 동일하게 더 작게 */
-    .tmap-tab { padding: 3px 7px; font-size: 10.5px; min-height: 24px; }
-    .tmap-tabs { padding: 2px; gap: 1px; }
+    /* 480 이하에서도 768 룰과 동일하게 중간 크기 유지 */
+    .tmap-tab { padding: 5px 10px; font-size: 12px; min-height: 30px; }
+    .tmap-tabs { padding: 2px; gap: 2px; }
     /* REPORT·LIVE 라벨이 시각 합쳐 길어지면 좁은 화면에서 줄바꿈 허용 */
     .tmap-live__label { white-space: normal; line-height: 1.3; }
 }
