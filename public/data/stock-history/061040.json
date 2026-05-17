@@ -65,17 +65,17 @@
         }
       ],
       "sector": "핸드셋",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
       "date": "20260410",
       "change_rate": 29.76,
       "close_price": 2010.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -86,17 +86,77 @@
         }
       ],
       "sector": "",
-      "is_52w_high": true,
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20260227",
+      "change_rate": 29.87,
+      "close_price": 2365.0,
+      "rise_reason": "유상증자",
+      "reason_confidence": "high",
+      "reason_source": "news",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [
+        {
+          "title": "[특징주]알에프텍, 최대주주 변경 소식에 상한가",
+          "link": "https://n.news.naver.com/mnews/article/277/0005727095",
+          "source": "아시아경제",
+          "date": "2026-02-27"
+        },
+        {
+          "title": "[서울데이터랩]‘바텍’ 29.93% 폭등…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003621417",
+          "source": "서울신문",
+          "date": "2026-02-27"
+        },
+        {
+          "title": "알에프텍, 오성첨단소재에 150억원 규모 제3자배정 유상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006225539",
+          "source": "이데일리",
+          "date": "2026-02-26"
+        },
+        {
+          "title": "알에프텍, 최대주주 알에프스탠다드→오성첨단소재 변경 예정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006225537",
+          "source": "이데일리",
+          "date": "2026-02-26"
+        }
+      ],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20260223",
+      "change_rate": 14.06,
+      "close_price": 2020.0,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [
+        {
+          "title": "알에프텍, 65억 규모 자동화 설비 수주…'소부장' 전문 기업 도약 본격...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005724402",
+          "source": "아시아경제",
+          "date": "2026-02-23"
+        }
+      ],
+      "sector": "",
+      "is_52w_high": false,
       "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 2,
-    "count_15": 2,
-    "count_20": 2,
+    "count_10": 4,
+    "count_15": 3,
+    "count_20": 3,
     "count_limit": 0,
-    "count_recent": 1,
-    "avg_rate": 29.8
+    "count_recent": 0,
+    "avg_rate": 25.89
   },
-  "built_at": "2026-05-12T06:02:23Z"
+  "built_at": "2026-05-17T07:59:44"
 }

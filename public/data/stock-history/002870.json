@@ -4,6 +4,45 @@
   "market": "KOSPI",
   "events": [
     {
+      "date": "20260514",
+      "change_rate": 20.23,
+      "close_price": 1242.0,
+      "rise_reason": "제지 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "제지",
+      "news": [
+        {
+          "title": "[기로의상장사]신풍, 5년 연속 적자…매각 7개월째 난항",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005613976&office_id=277&code=002870&page=&sm=",
+          "source": "아시아경제",
+          "date": "2025.06.27"
+        },
+        {
+          "title": "신풍, 2025년 영업손실 23억원…적자폭 48% 축소",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000078663&office_id=293&code=002870&page=&sm=",
+          "source": "블로터",
+          "date": "2026.01.30"
+        },
+        {
+          "title": "제지공장 멈추자 고물상도 비상…'재활용 대란' 오나",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005273252&office_id=015&code=002870&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.04.10"
+        },
+        {
+          "title": "부채비율 0.92%p↑…3개월만 부채 50.8조 증가[1분기 코스피 결...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006018153&office_id=018&code=002870&page=&sm=",
+          "source": "이데일리",
+          "date": "2025.05.19"
+        }
+      ],
+      "sector": "포장재",
+      "is_52w_high": false,
+      "source": "stockrise"
+    },
+    {
       "date": "20260310",
       "change_rate": 10.4,
       "close_price": 1337.0,
@@ -28,10 +67,10 @@
       "date": "20250602",
       "change_rate": 10.63,
       "close_price": 1176.0,
-      "rise_reason": "",
-      "reason_confidence": "low",
-      "reason_source": "naver",
-      "reason_status": "missing",
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
       "theme_tag": "",
       "news": [
         {
@@ -42,17 +81,17 @@
         }
       ],
       "sector": "",
-      "is_52w_high": false,
+      "is_52w_high": true,
       "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 2,
-    "count_15": 0,
-    "count_20": 0,
+    "count_10": 3,
+    "count_15": 1,
+    "count_20": 1,
     "count_limit": 0,
-    "count_recent": 0,
-    "avg_rate": 10.52
+    "count_recent": 1,
+    "avg_rate": 13.75
   },
-  "built_at": "2026-05-10T14:53:10Z"
+  "built_at": "2026-05-17T07:21:00"
 }

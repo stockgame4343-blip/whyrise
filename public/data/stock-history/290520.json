@@ -4,6 +4,27 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20260513",
+      "change_rate": 22.43,
+      "close_price": 3330.0,
+      "rise_reason": "기관 순매수 보도",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "플렉서블 디스플레이",
+      "news": [
+        {
+          "title": "코스피, 외인·기관 순매수 전환에 3200선 회복 '눈앞'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005624210&office_id=277&code=290520&page=&sm=",
+          "source": "아시아경제",
+          "date": "2025.07.17"
+        }
+      ],
+      "sector": "디스플레이장비및부품",
+      "is_52w_high": true,
+      "source": "stockrise"
+    },
+    {
       "date": "20260506",
       "change_rate": 15.21,
       "close_price": 3030.0,
@@ -49,10 +70,10 @@
       "date": "20260323",
       "change_rate": 10.83,
       "close_price": 2160.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -63,17 +84,71 @@
         }
       ],
       "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20251023",
+      "change_rate": 15.4,
+      "close_price": 1649.0,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [
+        {
+          "title": "[서울데이터랩]케이이엠텍 29.99% 상승…금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003584740",
+          "source": "서울신문",
+          "date": "2025-10-23"
+        }
+      ],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20250717",
+      "change_rate": 29.76,
+      "close_price": 2180.0,
+      "rise_reason": "기관 매수",
+      "reason_confidence": "mid",
+      "reason_source": "news",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [
+        {
+          "title": "[서울데이터랩]‘SGA’ 29.95% 상한가…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003558827",
+          "source": "서울신문",
+          "date": "2025-07-18"
+        },
+        {
+          "title": "코스피, 외인·기관 순매수 전환에 3200선 회복 '눈앞'",
+          "link": "https://n.news.naver.com/mnews/article/277/0005624210",
+          "source": "아시아경제",
+          "date": "2025-07-17"
+        },
+        {
+          "title": "[서울데이터랩]네오리진 29.95% 상승…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003558411",
+          "source": "서울신문",
+          "date": "2025-07-17"
+        }
+      ],
+      "sector": "",
       "is_52w_high": true,
       "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 3,
-    "count_15": 2,
-    "count_20": 0,
+    "count_10": 6,
+    "count_15": 5,
+    "count_20": 2,
     "count_limit": 0,
-    "count_recent": 2,
-    "avg_rate": 14.06
+    "count_recent": 3,
+    "avg_rate": 18.3
   },
-  "built_at": "2026-05-12T06:10:46Z"
+  "built_at": "2026-05-17T08:11:08"
 }

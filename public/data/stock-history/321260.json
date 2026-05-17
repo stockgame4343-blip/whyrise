@@ -4,6 +4,45 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20260513",
+      "change_rate": 11.45,
+      "close_price": 4430.0,
+      "rise_reason": "매출 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "반도체 장비",
+      "news": [
+        {
+          "title": "프로이천 \"해외 빅테크 선행제품용 검사장치 지그 공급 협업\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002416778&office_id=092&code=321260&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.03.30"
+        },
+        {
+          "title": "프로이천, 작년 영업익 28억…전년비 136% 증가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006224441&office_id=018&code=321260&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.02.25"
+        },
+        {
+          "title": "이노테크 \"매출 구조 다변화·글로벌 장비 기업 도약\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000974069&office_id=031&code=321260&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2025.10.22"
+        },
+        {
+          "title": "'폴더블 검사장비 강자' 이노테크, 코스닥 상장 도전…\"반도체로 확장...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000040951&office_id=648&code=321260&page=&sm=",
+          "source": "비즈워치",
+          "date": "2025.10.22"
+        }
+      ],
+      "sector": "디스플레이장비및부품",
+      "is_52w_high": true,
+      "source": "stockrise"
+    },
+    {
       "date": "20260511",
       "change_rate": 15.16,
       "close_price": 4330.0,
@@ -210,10 +249,10 @@
       "date": "20260331",
       "change_rate": 29.73,
       "close_price": 2055.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -236,17 +275,44 @@
         }
       ],
       "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20250813",
+      "change_rate": 29.85,
+      "close_price": 2545.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [
+        {
+          "title": "[종목리포트] 미국 내 中 OLED 퇴출 전망 속 반사수혜 기대감",
+          "link": "https://n.news.naver.com/mnews/article/374/0000457440",
+          "source": "SBS Biz",
+          "date": "2025-08-13"
+        },
+        {
+          "title": "'美서 中OLED 퇴출' 가능성에…LG디스플레이, 22%↑ [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/119/0002990695",
+          "source": "데일리안",
+          "date": "2025-08-13"
+        }
+      ],
+      "sector": "",
       "is_52w_high": true,
       "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 7,
-    "count_15": 6,
-    "count_20": 3,
+    "count_10": 9,
+    "count_15": 7,
+    "count_20": 4,
     "count_limit": 1,
     "count_recent": 4,
-    "avg_rate": 21.95
+    "avg_rate": 21.66
   },
-  "built_at": "2026-05-12T05:59:37Z"
+  "built_at": "2026-05-17T07:55:58"
 }

@@ -179,15 +179,15 @@
         }
       ],
       "sector": "",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "estimated"
     },
     {
       "date": "20260331",
       "change_rate": 29.97,
       "close_price": 1609.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
+      "rise_reason": "상한가 — 사유 미수집",
+      "reason_confidence": "low",
       "reason_source": "pattern",
       "reason_status": "filled",
       "theme_tag": "",
@@ -224,17 +224,59 @@
         }
       ],
       "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20260305",
+      "change_rate": 12.33,
+      "close_price": 1230.0,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20251226",
+      "change_rate": 14.79,
+      "close_price": 1389.0,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20250430",
+      "change_rate": 13.76,
+      "close_price": 1703.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
       "is_52w_high": true,
       "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 4,
+    "count_10": 7,
     "count_15": 2,
     "count_20": 2,
     "count_limit": 1,
-    "count_recent": 2,
-    "avg_rate": 20.41
+    "count_recent": 1,
+    "avg_rate": 17.5
   },
-  "built_at": "2026-05-12T05:31:44Z"
+  "built_at": "2026-05-17T07:12:32"
 }

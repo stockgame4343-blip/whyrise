@@ -213,17 +213,52 @@
         }
       ],
       "sector": "전기장비",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
+    },
+    {
+      "date": "20260130",
+      "change_rate": 12.34,
+      "close_price": 5600.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
+    },
+    {
+      "date": "20260122",
+      "change_rate": 10.94,
+      "close_price": 4615.0,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [
+        {
+          "title": "피앤씨테크, 광명전기 차입 담보 192억 제공기간 연장",
+          "link": "https://n.news.naver.com/mnews/article/293/0000078142",
+          "source": "블로터",
+          "date": "2026-01-21"
+        }
+      ],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 3,
+    "count_10": 5,
     "count_15": 1,
     "count_20": 1,
     "count_limit": 1,
     "count_recent": 3,
-    "avg_rate": 18.02
+    "avg_rate": 15.47
   },
-  "built_at": "2026-05-12T06:12:52Z"
+  "built_at": "2026-05-17T08:18:24"
 }
