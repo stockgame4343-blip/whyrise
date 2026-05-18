@@ -23,9 +23,13 @@ from http.server import BaseHTTPRequestHandler
 
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-# m.stock marketValue 는 pageSize 100 이 한계. page 1~3 으로 시총 TOP 300씩 → 모집단 확대
-PAGES = (1, 2, 3)
-URL_TPL = 'https://m.stock.naver.com/api/stocks/marketValue/{mkt}?page={page}&pageSize=100'
+# Vercel serverless timeout (~10s) 안에 처리하려고 두 정렬 endpoint 분리:
+# 1) marketValue 시총 정렬 TOP 500 — 시총·거래대금 큰 종목 대부분 커버
+# 2) up 상승률 정렬 TOP 300 — 시총 작은 급등주 보장 진입 (intraday 와 정합)
+URL_MCAP = 'https://m.stock.naver.com/api/stocks/marketValue/{mkt}?page={page}&pageSize=100'
+URL_UP = 'https://m.stock.naver.com/api/stocks/up/{mkt}?page={page}&pageSize=100'
+PAGES_MCAP = (1, 2, 3, 4, 5)
+PAGES_UP = (1, 2, 3)
 TOP_N = 100   # 정렬 기준별 TOP n 으로 union 산출
 
 
@@ -60,6 +64,9 @@ def _fetch(url, timeout=8):
 def _normalize(stocks, market_label):
     out = []
     for s in stocks or []:
+        # ETF/ETN/리츠 제외 — build_marketmap (full) 의 stock_only=True 와 정합
+        if s.get('stockEndType') != 'stock':
+            continue
         ticker = s.get('itemCode') or ''
         if not ticker or len(ticker) != 6:
             continue
@@ -94,12 +101,17 @@ def _normalize(stocks, market_label):
 
 
 def _fetch_market_pool(market_label: str):
-    """page 1..N 을 합쳐서 그 시장의 확장 모집단 반환 + 첫 페이지 메타."""
-    pool = []
-    first_meta = {}
-    for p in PAGES:
+    """시총 정렬 TOP 500 + 상승률 정렬 TOP 300 fetch → ticker 중복 제거 union.
+
+    시총 작은 급등주는 marketValue 페이지에서는 5위 페이지 밖이지만 up 페이지의
+    상위에 잡힘 → 두 정렬 합치면 시총 무관하게 +14% 이상 종목 모두 진입.
+    """
+    pool_by_ticker: dict[str, dict] = {}
+    first_meta: dict = {}
+    # 1) 시총 정렬 — 시총·거래대금 큰 종목 커버
+    for p in PAGES_MCAP:
         try:
-            data = _fetch(URL_TPL.format(mkt=market_label, page=p))
+            data = _fetch(URL_MCAP.format(mkt=market_label, page=p))
         except Exception:
             break
         stocks = data.get('stocks') or []
@@ -107,8 +119,21 @@ def _fetch_market_pool(market_label: str):
             first_meta = stocks[0]
         if not stocks:
             break
-        pool.extend(_normalize(stocks, market_label))
-    return pool, first_meta
+        for it in _normalize(stocks, market_label):
+            pool_by_ticker[it['ticker']] = it
+    # 2) 상승률 정렬 — 시총 작은 급등주 보장 진입
+    for p in PAGES_UP:
+        try:
+            data = _fetch(URL_UP.format(mkt=market_label, page=p))
+        except Exception:
+            break
+        stocks = data.get('stocks') or []
+        if not stocks:
+            break
+        for it in _normalize(stocks, market_label):
+            # 시총 page에 이미 있으면 그쪽 (동일 데이터)
+            pool_by_ticker.setdefault(it['ticker'], it)
+    return list(pool_by_ticker.values()), first_meta
 
 
 def _union_top(pool, n=TOP_N):
