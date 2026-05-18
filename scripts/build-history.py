@@ -962,11 +962,14 @@ def build_marketmap_only(args) -> int:
 
 
 def build_marketmap_intraday(public_dir: Path | None = None, top_n: int = 100) -> int:
-    """라이브 m.stock API 만으로 marketmap.json 빠르게 갱신 (~30s).
+    """라이브 m.stock API 만으로 marketmap.json 빠르게 갱신 (~60s).
 
     1년치 OHLC fetch 안 함 — 기존 marketmap.json 의 rates 1w/1m/3m/1y 그대로 유지.
     오늘 1d (market_cap, close_price, change_rate, trading_value/volume, rates['1d']) 만
     라이브 값으로 update.
+
+    universe: KOSPI/KOSDAQ 전종목 시총 페이지 (list_market_tickers) — 시총·거래대금·양수
+    상승률 union TOP n 후보를 시총과 무관하게 확보 (시총 작은 급등주 누락 방지).
 
     매시 :10 cron 용. 장중 빠른 갱신.
     """
@@ -982,48 +985,48 @@ def build_marketmap_intraday(public_dir: Path | None = None, top_n: int = 100) -
         except (ValueError, TypeError):
             return 0.0
 
-    print('== marketmap-intraday: m.stock 라이브 페이지 1~3 fetch ==')
+    print('== marketmap-intraday: m.stock 전종목 universe fetch ==')
     pool: list[dict] = []
     first_meta: dict = {}
     for market in ('KOSPI', 'KOSDAQ'):
-        for page in (1, 2, 3):
-            url = f'https://m.stock.naver.com/api/stocks/marketValue/{market}?page={page}&pageSize=100'
-            try:
-                data = naver_client.fetch_json(url)
-            except Exception:
-                break
-            stocks = (data or {}).get('stocks') or []
-            if page == 1 and market == 'KOSPI' and stocks:
-                first_meta = stocks[0]
-            if not stocks:
-                break
-            for s in stocks:
-                ticker = s.get('itemCode') or ''
-                if not ticker or len(ticker) != 6:
-                    continue
-                mc_won = _parse_int(s.get('marketValueRaw')) or (
-                    (_parse_int(s.get('marketValue')) or 0) * 1_000_000
-                )
-                if mc_won <= 0:
-                    continue
-                mc = max(1, mc_won // 100_000_000)   # 원 → 억원 (정적 marketmap.json 과 단위 일치)
-                rate = parse_float(s.get('fluctuationsRatio'))
-                close = _parse_int(s.get('closePriceRaw')) or _parse_int(s.get('closePrice')) or 0
-                tv = _parse_int(s.get('accumulatedTradingValueRaw'))
-                if not tv:
-                    tv = (_parse_int(s.get('accumulatedTradingValue')) or 0) * 1000
-                tvol = (_parse_int(s.get('accumulatedTradingVolumeRaw'))
-                        or _parse_int(s.get('accumulatedTradingVolume')) or 0)
-                pool.append({
-                    'ticker': ticker,
-                    'name': s.get('stockName') or ticker,
-                    'market': market,
-                    'market_cap': mc,
-                    'close_price': close,
-                    'change_rate': round(rate, 2),
-                    'trading_value': tv or 0,
-                    'trading_volume': tvol,
-                })
+        try:
+            stocks = naver_client.list_market_tickers(market)
+        except Exception as e:
+            print(f'  {market} fetch 실패: {e}')
+            stocks = []
+        # ETF/ETN/리츠 제외 — build_marketmap (full) 의 fetch_ticker_universe(stock_only=True) 와 정합
+        stocks = [s for s in stocks if s.get('stockEndType') == 'stock']
+        if market == 'KOSPI' and stocks:
+            first_meta = stocks[0]
+        if stocks:
+            print(f'  {market}: {len(stocks)} 종목 fetch')
+        for s in stocks:
+            ticker = s.get('itemCode') or ''
+            if not ticker or len(ticker) != 6:
+                continue
+            mc_won = _parse_int(s.get('marketValueRaw')) or (
+                (_parse_int(s.get('marketValue')) or 0) * 1_000_000
+            )
+            if mc_won <= 0:
+                continue
+            mc = max(1, mc_won // 100_000_000)   # 원 → 억원 (정적 marketmap.json 과 단위 일치)
+            rate = parse_float(s.get('fluctuationsRatio'))
+            close = _parse_int(s.get('closePriceRaw')) or _parse_int(s.get('closePrice')) or 0
+            tv = _parse_int(s.get('accumulatedTradingValueRaw'))
+            if not tv:
+                tv = (_parse_int(s.get('accumulatedTradingValue')) or 0) * 1000
+            tvol = (_parse_int(s.get('accumulatedTradingVolumeRaw'))
+                    or _parse_int(s.get('accumulatedTradingVolume')) or 0)
+            pool.append({
+                'ticker': ticker,
+                'name': s.get('stockName') or ticker,
+                'market': market,
+                'market_cap': mc,
+                'close_price': close,
+                'change_rate': round(rate, 2),
+                'trading_value': tv or 0,
+                'trading_volume': tvol,
+            })
     if not pool:
         print('== marketmap-intraday 실패: 라이브 fetch 결과 없음 ==')
         return 1
