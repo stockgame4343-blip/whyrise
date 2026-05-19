@@ -641,6 +641,54 @@ body {
     background: var(--glass-bg);
 }
 .stock-header__naver svg { flex-shrink: 0; }
+
+/* 헤더 관심 별점 — 시장 뱃지 옆 인라인 (메인 페이지의 whyrise-ratings localStorage 와 공유) */
+.stock-header__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+}
+.stock-header__rating-stars {
+    display: inline-flex;
+    gap: 1px;
+}
+.stock-header__rating .star {
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    transition: color .12s, transform .08s;
+    user-select: none;
+    padding: 0 1px;
+}
+.stock-header__rating .star:hover { color: var(--yellow); transform: scale(1.15); }
+.stock-header__rating .star--active { color: var(--yellow); }
+.stock-header__rating-memo {
+    background: none;
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: color .15s, border-color .15s;
+}
+.stock-header__rating-memo:hover { border-color: var(--wr-accent); color: var(--wr-accent); }
+.stock-header__rating-memo--has { color: var(--wr-accent); border-color: var(--wr-accent); }
+@media (max-width: 560px) {
+    .stock-header__rating { padding: 3px 8px; gap: 6px; }
+    .stock-header__rating .star { font-size: 18px; padding: 2px; }
+    .stock-header__rating-memo { width: 28px; height: 28px; font-size: 13px; }
+}
+
 .stock-header__stats {
     display: flex; gap: 32px; margin-top: 22px; flex-wrap: wrap;
 }

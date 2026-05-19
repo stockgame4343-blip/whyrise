@@ -91,6 +91,7 @@
 
         $title.innerHTML = '<strong>' + esc(name) + '</strong> 왜 오름?';
         if (market) $market.textContent = market;
+        _stockName = name;
 
         // 네이버 증권 바로가기 (PC 버전 finance.naver.com)
         var $naver = document.getElementById('stockNaverLink');
@@ -98,6 +99,9 @@
             $naver.href = 'https://finance.naver.com/item/main.naver?code=' + ticker;
             $naver.style.display = '';
         }
+
+        // 관심 별점 표시 (whyrise-ratings localStorage 와 동기화)
+        if (ticker) renderHeaderRating(ticker);
 
         if (!stats) { $stats.innerHTML = ''; return; }
         var html = '';
@@ -287,9 +291,113 @@
         });
     }
 
+    // 관심 별점 + 메모 — localStorage 키는 메인(index.html) 의 whyrise.js 와 공유.
+    var RATINGS_KEY = 'whyrise-ratings';
+    var _stockName = '';
+
+    function loadRatings() {
+        try { return JSON.parse(localStorage.getItem(RATINGS_KEY) || '{}'); }
+        catch (e) { return {}; }
+    }
+    function saveRatings(r) {
+        try { localStorage.setItem(RATINGS_KEY, JSON.stringify(r)); } catch (e) {}
+    }
+
+    function renderHeaderRating(ticker) {
+        var $wrap = document.getElementById('stockHeaderRating');
+        var $stars = document.getElementById('stockHeaderStars');
+        var $memo = document.getElementById('stockHeaderMemoBtn');
+        if (!$wrap || !$stars || !$memo) return;
+        var ratings = loadRatings();
+        var rating = ratings[ticker] || {};
+        var stars = rating.stars || 0;
+        var hasMemo = !!(rating.memo && rating.memo.trim());
+        var html = '';
+        for (var i = 1; i <= 5; i++) {
+            html += '<span class="star' + (i <= stars ? ' star--active' : '') + '" data-star="' + i + '" role="button" aria-label="별 ' + i + '점">★</span>';
+        }
+        $stars.innerHTML = html;
+        $stars.setAttribute('data-ticker', ticker);
+        $memo.setAttribute('data-ticker', ticker);
+        $memo.classList.toggle('stock-header__rating-memo--has', hasMemo);
+        $wrap.style.display = '';
+    }
+
+    function bindHeaderRating() {
+        var $stars = document.getElementById('stockHeaderStars');
+        var $memo = document.getElementById('stockHeaderMemoBtn');
+        if ($stars) {
+            $stars.addEventListener('click', function (e) {
+                var $s = e.target.closest('.star');
+                if (!$s) return;
+                var ticker = $stars.getAttribute('data-ticker');
+                if (!ticker) return;
+                var n = parseInt($s.getAttribute('data-star'), 10);
+                var ratings = loadRatings();
+                ratings[ticker] = ratings[ticker] || {};
+                if (ratings[ticker].stars === n) ratings[ticker].stars = 0;
+                else ratings[ticker].stars = n;
+                saveRatings(ratings);
+                renderHeaderRating(ticker);
+            });
+        }
+        if ($memo) {
+            $memo.addEventListener('click', function () {
+                var ticker = $memo.getAttribute('data-ticker');
+                if (ticker) openMemo(ticker);
+            });
+        }
+    }
+
+    function openMemo(ticker) {
+        var $modal = document.getElementById('memoModal');
+        var $title = document.getElementById('memoModalTitle');
+        var $area = document.getElementById('memoTextarea');
+        if (!$modal || !$area) return;
+        var ratings = loadRatings();
+        var rating = ratings[ticker] || {};
+        if ($title) $title.textContent = (_stockName || ticker) + ' 메모';
+        $area.value = rating.memo || '';
+        $area.setAttribute('data-ticker', ticker);
+        $modal.style.display = 'flex';
+        setTimeout(function () { $area.focus(); }, 50);
+    }
+
+    function bindMemoModal() {
+        var $modal = document.getElementById('memoModal');
+        if (!$modal) return;
+        var $close = document.getElementById('memoModalClose');
+        var $save = document.getElementById('memoSave');
+        var $del = document.getElementById('memoDelete');
+        var $area = document.getElementById('memoTextarea');
+        if ($close) $close.addEventListener('click', function () { $modal.style.display = 'none'; });
+        $modal.addEventListener('click', function (e) { if (e.target === $modal) $modal.style.display = 'none'; });
+        if ($save) $save.addEventListener('click', function () {
+            var ticker = $area.getAttribute('data-ticker');
+            if (!ticker) return;
+            var ratings = loadRatings();
+            ratings[ticker] = ratings[ticker] || {};
+            ratings[ticker].memo = $area.value.trim();
+            saveRatings(ratings);
+            renderHeaderRating(ticker);
+            $modal.style.display = 'none';
+        });
+        if ($del) $del.addEventListener('click', function () {
+            var ticker = $area.getAttribute('data-ticker');
+            if (!ticker) return;
+            var ratings = loadRatings();
+            if (ratings[ticker]) delete ratings[ticker].memo;
+            saveRatings(ratings);
+            renderHeaderRating(ticker);
+            $modal.style.display = 'none';
+        });
+    }
+
     function init() {
         bindThemeToggle();
         bindNewsModal();
+        bindHeaderRating();
+        bindMemoModal();
 
         var ticker = getTicker();
         if (!ticker) {
