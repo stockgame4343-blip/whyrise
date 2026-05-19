@@ -307,11 +307,13 @@
         var $wrap = document.getElementById('stockHeaderRating');
         var $stars = document.getElementById('stockHeaderStars');
         var $memo = document.getElementById('stockHeaderMemoBtn');
-        if (!$wrap || !$stars || !$memo) return;
+        var $excl = document.getElementById('stockHeaderExcludeBtn');
+        if (!$wrap || !$stars || !$memo || !$excl) return;
         var ratings = loadRatings();
         var rating = ratings[ticker] || {};
         var stars = rating.stars || 0;
         var hasMemo = !!(rating.memo && rating.memo.trim());
+        var excluded = !!rating.excluded;
         var html = '';
         for (var i = 1; i <= 5; i++) {
             html += '<span class="star' + (i <= stars ? ' star--active' : '') + '" data-star="' + i + '" role="button" aria-label="별 ' + i + '점">★</span>';
@@ -320,12 +322,17 @@
         $stars.setAttribute('data-ticker', ticker);
         $memo.setAttribute('data-ticker', ticker);
         $memo.classList.toggle('stock-header__rating-memo--has', hasMemo);
-        $wrap.style.display = '';
+        $excl.setAttribute('data-ticker', ticker);
+        $excl.classList.toggle('stock-header__rating-exclude--active', excluded);
+        $wrap.removeAttribute('hidden');
     }
 
     function bindHeaderRating() {
+        var $wrap = document.getElementById('stockHeaderRating');
         var $stars = document.getElementById('stockHeaderStars');
         var $memo = document.getElementById('stockHeaderMemoBtn');
+        var $excl = document.getElementById('stockHeaderExcludeBtn');
+        var $title = document.getElementById('stockTitle');
         if ($stars) {
             $stars.addEventListener('click', function (e) {
                 var $s = e.target.closest('.star');
@@ -341,10 +348,27 @@
                 renderHeaderRating(ticker);
             });
         }
+        if ($excl) {
+            $excl.addEventListener('click', function () {
+                var ticker = $excl.getAttribute('data-ticker');
+                if (!ticker) return;
+                var ratings = loadRatings();
+                ratings[ticker] = ratings[ticker] || {};
+                ratings[ticker].excluded = !ratings[ticker].excluded;
+                saveRatings(ratings);
+                renderHeaderRating(ticker);
+            });
+        }
         if ($memo) {
             $memo.addEventListener('click', function () {
                 var ticker = $memo.getAttribute('data-ticker');
                 if (ticker) openMemo(ticker);
+            });
+        }
+        // 모바일: 제목 탭하면 rating 토글 (CSS .is-open 매칭). 데스크톱은 항상 노출이라 무영향.
+        if ($title && $wrap) {
+            $title.addEventListener('click', function () {
+                $wrap.classList.toggle('is-open');
             });
         }
     }

@@ -605,19 +605,23 @@ body {
     box-shadow: var(--glass-shadow);
 }
 .stock-header__title-row {
-    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
 }
 .stock-header__title {
     font-size: 36px; font-weight: 800; letter-spacing: -1.5px; color: var(--text-primary);
+    line-height: 1.1;
+    cursor: default;
 }
 .stock-header__title strong {
     color: var(--wr-accent);
 }
+/* 시장 뱃지 — 메인 홈 테이블(.cell-name__market)과 동일한 톤, 사이즈만 헤더용 */
 .stock-header__market {
-    background: var(--glass-bg-strong);
-    border: 1px solid var(--glass-border);
-    color: var(--text-secondary);
-    padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700;
+    background: var(--glass-bg);
+    color: var(--text-muted);
+    padding: 3px 8px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0;
 }
 /* 네이버 증권 바로가기 — 우측 정렬 */
 .stock-header__naver {
@@ -641,20 +645,24 @@ body {
     background: var(--glass-bg);
 }
 .stock-header__naver svg { flex-shrink: 0; }
+/* 네이버 링크는 우측 끝 정렬 (별점은 KOSPI 옆에 두고 네이버는 행 끝) */
+.stock-header__naver { margin-left: auto; }
 
-/* 헤더 관심 별점 — 시장 뱃지 옆 인라인 (메인 페이지의 whyrise-ratings localStorage 와 공유) */
+/* 헤더 관심 별점 — 시장 뱃지 옆 인라인 (메인 페이지의 whyrise-ratings localStorage 와 공유)
+   PC: 상시 노출. 모바일: 기본 숨김, 제목 탭 시 토글. */
 .stock-header__rating {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 4px 10px;
-    background: var(--glass-bg-strong);
-    border: 1px solid var(--glass-border);
+    padding: 3px 10px;
+    background: var(--glass-bg);
     border-radius: 999px;
 }
+.stock-header__rating[hidden] { display: none; }
 .stock-header__rating-stars {
     display: inline-flex;
     gap: 1px;
+    align-items: center;
 }
 .stock-header__rating .star {
     color: var(--text-muted);
@@ -667,6 +675,7 @@ body {
 }
 .stock-header__rating .star:hover { color: var(--yellow); transform: scale(1.15); }
 .stock-header__rating .star--active { color: var(--yellow); }
+.stock-header__rating-exclude,
 .stock-header__rating-memo {
     background: none;
     border: 1px solid var(--glass-border);
@@ -681,11 +690,18 @@ body {
     padding: 0;
     transition: color .15s, border-color .15s;
 }
+.stock-header__rating-exclude:hover { border-color: var(--rise); color: var(--rise); }
+.stock-header__rating-exclude--active { color: var(--rise); border-color: var(--rise); }
 .stock-header__rating-memo:hover { border-color: var(--wr-accent); color: var(--wr-accent); }
 .stock-header__rating-memo--has { color: var(--wr-accent); border-color: var(--wr-accent); }
+
 @media (max-width: 560px) {
-    .stock-header__rating { padding: 3px 8px; gap: 6px; }
-    .stock-header__rating .star { font-size: 18px; padding: 2px; }
+    /* 모바일: 별점 기본 숨김 + 제목 탭하면 토글 */
+    .stock-header__title { cursor: pointer; }
+    .stock-header__rating { display: none; padding: 4px 10px; gap: 6px; }
+    .stock-header__rating.is-open { display: inline-flex; }
+    .stock-header__rating .star { font-size: 20px; padding: 2px; }
+    .stock-header__rating-exclude,
     .stock-header__rating-memo { width: 28px; height: 28px; font-size: 13px; }
 }
 
