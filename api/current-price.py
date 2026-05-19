@@ -31,7 +31,21 @@ class handler(BaseHTTPRequestHandler):
                 return
 
             price_int = int(str(price).replace(',', ''))
-            self._respond(200, {'ticker': ticker, 'price': price_int})
+            # 종목 메타 — stock-history 미빌드 종목 fallback 용
+            name = data.get('stockName') or ''
+            exch = (data.get('stockExchangeType') or {})
+            market = exch.get('name') or ''  # 'KOSPI' / 'KOSDAQ'
+            try:
+                rate = float(str(data.get('fluctuationsRatio') or 0).replace(',', ''))
+            except (ValueError, TypeError):
+                rate = 0.0
+            self._respond(200, {
+                'ticker': ticker,
+                'price': price_int,
+                'name': name,
+                'market': market,
+                'change_rate': round(rate, 2),
+            })
 
         except urllib.error.HTTPError as e:
             self._respond(502, {'error': f'네이버 API 오류: {e.code}', 'ticker': ticker})

@@ -690,10 +690,9 @@ def build_full(args) -> int:
             fetch_news_fn=fetch_news_fn,
             meta={'sector': item.get('industryName') or ''},
         )
-        if not events:
-            skipped += 1
-            continue
         events = apply_overrides(events, ticker)
+        # events 비어도 stock-history 빌드 — 종목 페이지가 "기록 없음" 안내라도 보여주도록.
+        # 검색 자동완성·sitemap 도 모든 종목 포함.
         write_ticker_history(ticker, name, market, events, output_dir)
         index_meta[ticker] = {
             'name': name,

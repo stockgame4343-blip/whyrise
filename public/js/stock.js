@@ -304,9 +304,22 @@
         WhyAPI.getStockHistory(ticker).then(function (history) {
             $loading.style.display = 'none';
             if (!history) {
-                $msg.textContent = '이 종목의 인덱스가 없습니다 (아직 빌드 전이거나, 최근 1년간 +15% 이상 기록 없음).';
-                $msg.style.display = 'block';
-                document.getElementById('stockTitle').innerHTML = '<strong>' + esc(ticker) + '</strong> 왜 오름?';
+                // stock-history 미빌드 (1년간 +10% 미달 등) — 네이버 메타 즉석 fetch fallback
+                fetch('/api/current-price?ticker=' + encodeURIComponent(ticker))
+                    .then(function (r) { return r.ok ? r.json() : null; })
+                    .then(function (meta) {
+                        var name = (meta && meta.name) || ticker;
+                        var market = (meta && meta.market) || '';
+                        renderHeader(name, market, {});
+                        renderEvents([], ticker);
+                        $msg.textContent = '최근 1년간 +10% 이상 급등 기록이 없는 종목입니다.';
+                        $msg.style.display = 'block';
+                    })
+                    .catch(function () {
+                        document.getElementById('stockTitle').innerHTML = '<strong>' + esc(ticker) + '</strong> 왜 오름?';
+                        $msg.textContent = '종목 정보를 불러올 수 없습니다.';
+                        $msg.style.display = 'block';
+                    });
                 return;
             }
             renderHeader(history.name || ticker, history.market || '', history.stats || {});
