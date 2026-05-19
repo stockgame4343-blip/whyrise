@@ -92,10 +92,10 @@
         $title.innerHTML = '<strong>' + esc(name) + '</strong> 왜 오름?';
         if (market) $market.textContent = market;
 
-        // 네이버 증권 바로가기 (모바일 페이지)
+        // 네이버 증권 바로가기 (PC 버전 finance.naver.com)
         var $naver = document.getElementById('stockNaverLink');
         if ($naver && ticker) {
-            $naver.href = 'https://m.stock.naver.com/domestic/stock/' + ticker + '/total';
+            $naver.href = 'https://finance.naver.com/item/main.naver?code=' + ticker;
             $naver.style.display = '';
         }
 
