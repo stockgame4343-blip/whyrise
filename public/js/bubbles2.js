@@ -142,6 +142,10 @@
         if (v >= 10000) return (v / 10000).toFixed(1) + '조';
         return Math.round(v).toLocaleString() + '억';
     }
+    function formatPrice(p) {
+        if (p == null) return '';
+        return p.toLocaleString('ko-KR');
+    }
     // 거래대금 (원 단위) — 조/억/만 으로 압축
     function formatTradingValue(v) {
         if (!v || v <= 0) return '-';
@@ -342,7 +346,20 @@
                 return t;
             }
 
-            if (has4) {
+            // 매우 큰 버블에 한해 주가도 표시 (mcap 과 rate 사이 한 줄 추가)
+            var has5 = has4 && r >= 54 && d.close_price != null;
+
+            if (has5) {
+                var gap5 = 1;
+                var priceSize = mcapSize;
+                var totalH5 = nameSize + mcapSize + priceSize + rateSize + volSize + gap5 * 4;
+                var top5 = -totalH5 / 2 + nameSize / 2;
+                line('bmap2-node__name', top5, nameSize, name);
+                line('bmap2-node__mcap', top5 + nameSize / 2 + gap5 + mcapSize / 2, mcapSize, formatMcap(d.market_cap), 0.78);
+                line('bmap2-node__price', top5 + nameSize / 2 + gap5 + mcapSize + gap5 + priceSize / 2, priceSize, formatPrice(d.close_price), 0.7);
+                line('bmap2-node__rate', top5 + nameSize / 2 + gap5 + mcapSize + gap5 + priceSize + gap5 + rateSize / 2, rateSize, formatRate(d.change_rate));
+                line('bmap2-node__vol', top5 + nameSize / 2 + gap5 + mcapSize + gap5 + priceSize + gap5 + rateSize + gap5 + volSize / 2, volSize, formatTradingValue(d.trading_value), 0.7);
+            } else if (has4) {
                 // name, mcap, rate, volume — 가운데 정렬을 4줄 합 기준으로
                 var gap4 = 1;
                 var totalH4 = nameSize + mcapSize + rateSize + volSize + gap4 * 3;
