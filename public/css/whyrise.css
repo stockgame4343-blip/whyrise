@@ -649,8 +649,15 @@ body {
 .stock-header__naver { margin-left: auto; }
 
 /* 헤더 별점 — 메인 홈과 동일한 .ctrl-wrap/.float-controls/.star/.exclude-btn/.memo-btn
-   클래스 그대로 사용 (style.css 가 모두 처리). 여기서는 호버 트리거만 추가.
-   .stock-header__rating-mount 는 단순 마운트 컨테이너 (스타일 없음). */
+   클래스 그대로 사용 (style.css 가 모두 처리). 여기서는 호버 트리거 + 앵커 보정. */
+.stock-header__rating-mount {
+    /* 모바일 미디어쿼리에서 style.css 가 .ctrl-wrap{position:static} 으로
+       만들기 때문에, .float-controls 의 absolute 앵커가 페이지 body 까지
+       올라가 하단으로 떨어짐. 마운트를 relative 로 두어 앵커 역할. */
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
 .stock-header__rating-mount[hidden] { display: none; }
 /* PC: title-row 호버 시 float-controls 표시 (메인 .cell-name__wrap:hover 와 동일 패턴) */
 .stock-header__title-row:hover .float-controls,
