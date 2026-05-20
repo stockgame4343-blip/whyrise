@@ -304,74 +304,74 @@
         if (window.WhyRatingsSync) window.WhyRatingsSync.push(r);
     }
 
+    /** 메인 홈(table.js starRatingHtml) 과 동일한 HTML 구조 — 호버/탭 동작 메인과 통일. */
     function renderHeaderRating(ticker) {
-        var $wrap = document.getElementById('stockHeaderRating');
-        var $stars = document.getElementById('stockHeaderStars');
-        var $memo = document.getElementById('stockHeaderMemoBtn');
-        var $excl = document.getElementById('stockHeaderExcludeBtn');
-        if (!$wrap || !$stars || !$memo || !$excl) return;
+        var $mount = document.getElementById('stockHeaderRating');
+        if (!$mount) return;
         var ratings = loadRatings();
         var rating = ratings[ticker] || {};
         var stars = rating.stars || 0;
         var hasMemo = !!(rating.memo && rating.memo.trim());
         var excluded = !!rating.excluded;
-        var html = '';
+        var html = '<span class="ctrl-wrap">';
+        html += '<button class="ctrl-toggle" type="button" data-ticker="' + ticker + '" aria-label="평가">⋯</button>';
+        html += '<div class="float-controls" data-ticker="' + ticker + '">';
+        html += '<span class="star-rating" data-ticker="' + ticker + '">';
         for (var i = 1; i <= 5; i++) {
-            html += '<span class="star' + (i <= stars ? ' star--active' : '') + '" data-star="' + i + '" role="button" aria-label="별 ' + i + '점">★</span>';
+            html += '<span class="star' + (i <= stars ? ' star--active' : '') + '" data-star="' + i + '">★</span>';
         }
-        $stars.innerHTML = html;
-        $stars.setAttribute('data-ticker', ticker);
-        $memo.setAttribute('data-ticker', ticker);
-        $memo.classList.toggle('stock-header__rating-memo--has', hasMemo);
-        $excl.setAttribute('data-ticker', ticker);
-        $excl.classList.toggle('stock-header__rating-exclude--active', excluded);
-        $wrap.removeAttribute('hidden');
+        html += '</span>';
+        html += '<button class="exclude-btn' + (excluded ? ' exclude-btn--active' : '') + '" data-ticker="' + ticker + '" title="제외">✕</button>';
+        html += '<button class="memo-btn' + (hasMemo ? ' memo-btn--has' : '') + '" data-ticker="' + ticker + '" title="메모">✎</button>';
+        html += '</div></span>';
+        $mount.innerHTML = html;
+        $mount.removeAttribute('hidden');
     }
 
+    /** 마운트 안에서 메인 whyrise.js bindRatingsEvents 와 동일한 이벤트 위임. */
     function bindHeaderRating() {
-        var $wrap = document.getElementById('stockHeaderRating');
-        var $stars = document.getElementById('stockHeaderStars');
-        var $memo = document.getElementById('stockHeaderMemoBtn');
-        var $excl = document.getElementById('stockHeaderExcludeBtn');
-        var $title = document.getElementById('stockTitle');
-        if ($stars) {
-            $stars.addEventListener('click', function (e) {
-                var $s = e.target.closest('.star');
-                if (!$s) return;
-                var ticker = $stars.getAttribute('data-ticker');
-                if (!ticker) return;
-                var n = parseInt($s.getAttribute('data-star'), 10);
+        var $mount = document.getElementById('stockHeaderRating');
+        if (!$mount) return;
+        $mount.addEventListener('click', function (e) {
+            var ticker = getTicker();
+            if (!ticker) return;
+            // 별점
+            var star = e.target.closest('.star');
+            if (star) {
+                var n = parseInt(star.getAttribute('data-star'), 10);
+                if (!n) return;
                 var ratings = loadRatings();
                 ratings[ticker] = ratings[ticker] || {};
                 if (ratings[ticker].stars === n) ratings[ticker].stars = 0;
                 else ratings[ticker].stars = n;
                 saveRatings(ratings);
                 renderHeaderRating(ticker);
-            });
-        }
-        if ($excl) {
-            $excl.addEventListener('click', function () {
-                var ticker = $excl.getAttribute('data-ticker');
-                if (!ticker) return;
-                var ratings = loadRatings();
-                ratings[ticker] = ratings[ticker] || {};
-                ratings[ticker].excluded = !ratings[ticker].excluded;
-                saveRatings(ratings);
+                return;
+            }
+            // 제외
+            var ex = e.target.closest('.exclude-btn');
+            if (ex) {
+                var r2 = loadRatings();
+                r2[ticker] = r2[ticker] || {};
+                r2[ticker].excluded = !r2[ticker].excluded;
+                saveRatings(r2);
                 renderHeaderRating(ticker);
-            });
-        }
-        if ($memo) {
-            $memo.addEventListener('click', function () {
-                var ticker = $memo.getAttribute('data-ticker');
-                if (ticker) openMemo(ticker);
-            });
-        }
-        // 모바일: 제목 탭하면 rating 토글 (CSS .is-open 매칭). 데스크톱은 항상 노출이라 무영향.
-        if ($title && $wrap) {
-            $title.addEventListener('click', function () {
-                $wrap.classList.toggle('is-open');
-            });
-        }
+                return;
+            }
+            // 메모
+            var memo = e.target.closest('.memo-btn');
+            if (memo) {
+                openMemo(ticker);
+                return;
+            }
+            // 모바일 ⋯ 토글
+            var toggle = e.target.closest('.ctrl-toggle');
+            if (toggle) {
+                var wrap = toggle.parentNode;
+                wrap.classList.toggle('is-open');
+                return;
+            }
+        });
     }
 
     function openMemo(ticker) {
