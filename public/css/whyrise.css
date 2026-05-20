@@ -659,21 +659,15 @@ body {
     align-items: center;
 }
 .stock-header__rating-mount[hidden] { display: none; }
-/* PC: title-row 호버 시 float-controls 표시 (메인 .cell-name__wrap:hover 와 동일 패턴) */
-.stock-header__title-row:hover .float-controls,
-.stock-header__title-row .float-controls:hover {
-    opacity: 1;
-    pointer-events: auto;
-    transition-delay: 0s;
-}
-/* 모바일: hover 트리거 reset (터치 시 :hover sticky 로 패널 안 닫히는 문제).
-   메인 style.css 의 @media (max-width:768px) 패턴과 동일. */
-@media (max-width: 768px) {
+/* PC 만 호버 트리거. 모바일은 .ctrl-toggle 탭 → .is-open 토글로 제어.
+   @media (hover:hover) 로 감싸 모바일에서 sticky hover 가 활성화되어도
+   규칙 자체가 매치 안 되도록 함 (메인 style.css line 147 와 동일 패턴). */
+@media (hover: hover) {
     .stock-header__title-row:hover .float-controls,
     .stock-header__title-row .float-controls:hover {
-        opacity: 0;
-        pointer-events: none;
-        transition-delay: .12s;
+        opacity: 1;
+        pointer-events: auto;
+        transition-delay: 0s;
     }
 }
 
@@ -1247,6 +1241,7 @@ body.page-treemap {
     stroke-width: 0.7px;
 }
 .flow-node__name { font-weight: 700; letter-spacing: -.3px; }
+.flow-node__mcap { font-weight: 500; font-feature-settings: 'tnum'; letter-spacing: -.2px; opacity: .78; }
 .flow-node__rate { font-weight: 600; font-feature-settings: 'tnum'; opacity: .96; }
 .flow-node__circle { transition: filter .15s, stroke .15s; }
 .flow-node:hover .flow-node__circle {

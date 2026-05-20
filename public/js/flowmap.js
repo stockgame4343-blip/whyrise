@@ -532,15 +532,26 @@
             var name = d.name || '';
             var maxChars = Math.max(2, Math.floor(r * 1.8 / nameSize));
             if (name.length > maxChars) name = name.slice(0, maxChars - 1) + '…';
+            var mcapSize = Math.max(7, Math.min(11, r * 0.26));
+            // 충분히 큰 노드만 시총 라인 추가 (name 과 rate 사이)
+            var has3 = r >= 30;
             var has2 = r >= 22;
-            function line(cls, y, size, txt) {
-                sel.append('text').attr('class', cls)
+            function line(cls, y, size, txt, opacity) {
+                var t = sel.append('text').attr('class', cls)
                     .attr('x', 0).attr('y', y)
                     .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
                     .attr('pointer-events', 'none')
                     .style('font-size', size + 'px').text(txt);
+                if (opacity != null) t.style('opacity', opacity);
             }
-            if (has2) {
+            if (has3) {
+                var gap3 = 1;
+                var totalH3 = nameSize + mcapSize + rateSize + gap3 * 2;
+                var top3 = -totalH3 / 2 + nameSize / 2;
+                line('flow-node__name', top3, nameSize, name);
+                line('flow-node__mcap', top3 + nameSize / 2 + gap3 + mcapSize / 2, mcapSize, formatMcap(d.market_cap), 0.78);
+                line('flow-node__rate', top3 + nameSize / 2 + gap3 + mcapSize + gap3 + rateSize / 2, rateSize, formatRate(d.change_rate));
+            } else if (has2) {
                 line('flow-node__name', -rateSize / 2 - 1, nameSize, name);
                 line('flow-node__rate', nameSize / 2 + 1, rateSize, formatRate(d.change_rate));
             } else {
