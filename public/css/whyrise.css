@@ -666,6 +666,16 @@ body {
     pointer-events: auto;
     transition-delay: 0s;
 }
+/* 모바일: hover 트리거 reset (터치 시 :hover sticky 로 패널 안 닫히는 문제).
+   메인 style.css 의 @media (max-width:768px) 패턴과 동일. */
+@media (max-width: 768px) {
+    .stock-header__title-row:hover .float-controls,
+    .stock-header__title-row .float-controls:hover {
+        opacity: 0;
+        pointer-events: none;
+        transition-delay: .12s;
+    }
+}
 
 .stock-header__stats {
     display: flex; gap: 32px; margin-top: 22px; flex-wrap: wrap;
