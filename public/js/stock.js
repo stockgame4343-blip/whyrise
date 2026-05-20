@@ -301,6 +301,7 @@
     }
     function saveRatings(r) {
         try { localStorage.setItem(RATINGS_KEY, JSON.stringify(r)); } catch (e) {}
+        if (window.WhyRatingsSync) window.WhyRatingsSync.push(r);
     }
 
     function renderHeaderRating(ticker) {
@@ -427,6 +428,13 @@
         if (!ticker) {
             document.getElementById('stockTitle').textContent = '종목 코드가 없습니다';
             return;
+        }
+
+        // 서버 별점 동기화 — KV pull 후 머지되면 별점 다시 그림.
+        if (window.WhyRatingsSync) {
+            window.WhyRatingsSync.pull().then(function (result) {
+                if (result && result.source === 'remote') renderHeaderRating(ticker);
+            });
         }
 
         var $loading = document.getElementById('loading');

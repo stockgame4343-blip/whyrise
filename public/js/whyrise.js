@@ -98,6 +98,7 @@ var WhyApp = (function () {
     function saveRatings() {
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.ratings)); }
         catch (e) {}
+        if (window.WhyRatingsSync) window.WhyRatingsSync.push(state.ratings);
     }
 
     function formatDate(yyyymmdd) {
@@ -445,6 +446,15 @@ var WhyApp = (function () {
             return loadDate(dates[0]);
         }).then(function () {
             liveCycle();   // chain pattern (ring transition = setTimeout = fetch 정확 동기화)
+            // 서버 별점 동기화 — KV pull 후 머지되면 다시 그림. 실패해도 로컬 모드로 작동.
+            if (window.WhyRatingsSync) {
+                window.WhyRatingsSync.pull().then(function (result) {
+                    if (result && result.source === 'remote') {
+                        loadRatings();
+                        applyCutoffAndRender();
+                    }
+                });
+            }
         });
     }
 
