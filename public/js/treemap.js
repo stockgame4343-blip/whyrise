@@ -159,10 +159,6 @@
         if (v >= 10000) return (v / 10000).toFixed(1) + '조';                       // 1~100조 .1자리
         return Math.round(v).toLocaleString() + '억';                                // 1조 미만 억
     }
-    function formatPrice(p) {
-        if (p == null) return '';
-        return p.toLocaleString('ko-KR');
-    }
     // 거래대금 (원 단위)
     function formatTradingValue(v) {
         if (!v || v <= 0) return '-';
@@ -427,21 +423,7 @@
                 return t;
             }
 
-            // 충분히 큰 셀에 주가도 추가 (mcap 과 rate 사이 한 줄)
-            var has5 = has4 && ch >= 110 && cw >= 80 && d.data.close_price != null;
-            var priceStr = formatPrice(d.data.close_price);
-            var priceSize = mcapSize;
-
-            if (has5) {
-                var g5 = 2;
-                var totalH5 = nameSize + mcapSize + priceSize + rateSize + volSize + g5 * 4;
-                var topY5 = ch / 2 - totalH5 / 2 + nameSize / 2;
-                line('tmap-name', topY5, nameSize, name);
-                line('tmap-mcap', topY5 + nameSize / 2 + g5 + mcapSize / 2, mcapSize, mcapStr, 0.78);
-                line('tmap-price', topY5 + nameSize / 2 + g5 + mcapSize + g5 + priceSize / 2, priceSize, priceStr, 0.7);
-                line('tmap-rate', topY5 + nameSize / 2 + g5 + mcapSize + g5 + priceSize + g5 + rateSize / 2, rateSize, rateStr);
-                line('tmap-vol', topY5 + nameSize / 2 + g5 + mcapSize + g5 + priceSize + g5 + rateSize + g5 + volSize / 2, volSize, volStr, 0.7);
-            } else if (has4) {
+            if (has4) {
                 var g4 = 2;
                 var totalH4 = nameSize + mcapSize + rateSize + volSize + g4 * 3;
                 var topY4 = ch / 2 - totalH4 / 2 + nameSize / 2;
