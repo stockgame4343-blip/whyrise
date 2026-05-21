@@ -88,6 +88,11 @@ var WhyApp = (function () {
         rankings: [],         // 원본 (필터 전)
         ratings: {},
         watchlistMode: false, // 별점 매긴 종목만 필터
+        // 관심 모드 fallback: 그 날 랭킹에 없는 별표 종목을 stock-history events[0] 로 채우기 위한 캐시
+        // ticker → {ticker,name,market,date,change_rate,close_price,rise_reason,theme_tag,sector,news}
+        latestEvent: {},
+        // history fetch 진행 중 ticker 집합 — 중복 fetch 방지
+        _historyInFlight: {},
     };
 
     function loadRatings() {
@@ -111,22 +116,88 @@ var WhyApp = (function () {
         return y + '.' + m + '.' + d + ' (' + DAYS[dt.getDay()] + ')';
     }
 
+    /**
+     * stock-history fetch — 별표 종목 중 그 날 랭킹에 없고 캐시에도 없는 ticker.
+     * events[0] (가장 최근 +15% 친 날) 을 state.latestEvent 에 저장.
+     * 모두 끝나면 onDone() 호출 — 호출자가 재렌더 트리거.
+     * 중복 fetch 방지: state._historyInFlight 로 진행 중인 건 건너뜀.
+     */
+    function prefetchLatestEvents(tickers, onDone) {
+        var todo = tickers.filter(function (t) {
+            return !state.latestEvent[t] && !state._historyInFlight[t];
+        });
+        if (!todo.length) { if (onDone) onDone(false); return; }
+        todo.forEach(function (t) { state._historyInFlight[t] = true; });
+        var promises = todo.map(function (ticker) {
+            return WhyAPI.getStockHistory(ticker).then(function (hist) {
+                if (hist && hist.events && hist.events.length) {
+                    var ev = hist.events[0];
+                    state.latestEvent[ticker] = {
+                        ticker: ticker,
+                        name: hist.name || ticker,
+                        market: hist.market || '',
+                        date: ev.date || '',
+                        change_rate: ev.change_rate,
+                        close_price: ev.close_price,
+                        rise_reason: ev.rise_reason || '',
+                        theme_tag: ev.theme_tag || '',
+                        sector: ev.sector || '',
+                        news: ev.news || [],
+                    };
+                }
+            }).catch(function () { /* 404 등 무시 — meta fallback */ })
+              .then(function () { delete state._historyInFlight[ticker]; });
+        });
+        Promise.all(promises).then(function () { if (onDone) onDone(true); });
+    }
+
+    /** YYYYMMDD → "M/D" (관심 모드 fallback 행에 표시할 짧은 날짜) */
+    function shortDate(yyyymmdd) {
+        if (!yyyymmdd || yyyymmdd.length !== 8) return '';
+        return String(+yyyymmdd.slice(4, 6)) + '/' + String(+yyyymmdd.slice(6, 8));
+    }
+
     function applyCutoffAndRender() {
         var date = state.dates[state.currentDateIdx] || '';
         var filtered;
         var emptyMsg;
 
         if (state.watchlistMode) {
-            // 관심 모드 — 별 매긴 종목 전부 표시 (날짜 무관).
-            // 그 날 +15% 친 종목은 실제 데이터, 아닌 종목은 인덱스 메타로 dummy row.
+            // 관심 모드 — 날짜 무관, 별표 단 모든 종목을 stock-history events[0]
+            // (각 종목의 가장 최근 +15% 친 날) 으로 통일. 사용자: "관심은 날자랑 상관없는거야".
             var starred = [];
             for (var t in state.ratings) {
                 if (state.ratings[t] && (state.ratings[t].stars || 0) > 0) starred.push(t);
             }
-            var rankingsByTicker = {};
-            (state.rankings || []).forEach(function (r) { rankingsByTicker[r.ticker] = r; });
+
+            // 모든 별표 종목 prefetch — 캐시에 없는 것만 fetch (중복 가드는 prefetchLatestEvents 내부)
+            var needPrefetch = starred.filter(function (tk) { return !state.latestEvent[tk]; });
+            if (needPrefetch.length) {
+                prefetchLatestEvents(needPrefetch, function (changed) {
+                    if (changed && state.watchlistMode) applyCutoffAndRender();
+                });
+            }
+
             filtered = starred.map(function (ticker) {
-                if (rankingsByTicker[ticker]) return rankingsByTicker[ticker];
+                var ev = state.latestEvent[ticker];
+                if (ev) {
+                    var datePrefix = ev.date ? '(' + shortDate(ev.date) + ') ' : '';
+                    return {
+                        ticker: ticker,
+                        name: ev.name || ticker,
+                        market: ev.market || '',
+                        change_rate: ev.change_rate,
+                        trading_value: null,   // history 에 없음
+                        market_cap: null,      // history 에 없음
+                        sector: ev.sector || '',
+                        theme_tag: ev.theme_tag || '',
+                        rise_reason: datePrefix + (ev.rise_reason || ''),
+                        news: ev.news || [],
+                        _fromHistory: true,
+                        _historyDate: ev.date || '',
+                    };
+                }
+                // history 도 없으면 인덱스 메타로 최소 dummy
                 var meta = (state.tickerMeta || {})[ticker] || {};
                 return {
                     ticker: ticker,
@@ -141,11 +212,12 @@ var WhyApp = (function () {
                     news: [],
                 };
             });
-            // 정렬: 그 날 오른 종목(change_rate desc) 먼저, 미해당(null) 뒤
+            // 정렬: 최근 등장일(_historyDate) 최신순, 없으면 뒤로
             filtered.sort(function (a, b) {
-                var ar = (a.change_rate == null) ? -Infinity : a.change_rate;
-                var br = (b.change_rate == null) ? -Infinity : b.change_rate;
-                return br - ar;
+                var ad = a._historyDate || '';
+                var bd = b._historyDate || '';
+                if (ad !== bd) return ad < bd ? 1 : -1;
+                return (b.change_rate || -Infinity) - (a.change_rate || -Infinity);
             });
             emptyMsg = '관심 종목이 없습니다.';
         } else {
