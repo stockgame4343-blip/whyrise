@@ -221,14 +221,6 @@
         });
     }
 
-    // 줌인된 그룹의 종목 리스트
-    function zoomedItems() {
-        if (!state.zoomedGroup) return [];
-        var groups = groupNodes();
-        var picked = groups.filter(function (g) { return g.name === state.zoomedGroup; })[0];
-        return picked ? (picked.children || []) : [];
-    }
-
     // ── 렌더링 공통 ────────────────────────────────────
     function clearSvg() {
         d3.select($svg).selectAll('*').remove();
@@ -484,9 +476,8 @@
 
     // 종목 원 — rise 모드 평면 또는 zoom 모드 그룹 내 종목
     function renderItemBubbles(w, h) {
-        var items;
-        if (state.zoomedGroup) items = zoomedItems();
-        else items = buildHierarchy().children || [];   // rise 모드: TOP 50 (buildHierarchy 가 cut)
+        // rise 모드 / 줌인 모드 모두 buildHierarchy 가 flat 종목 배열로 잘라 둠.
+        var items = buildHierarchy().children || [];
         if (!items.length) return renderEmpty();
 
         var totalSize = 0;
