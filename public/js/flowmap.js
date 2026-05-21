@@ -21,6 +21,9 @@
     var POLL_MS = 60 * 1000;     // 60초 (stock-rise 일별이 5분 주기로 갱신되지만 ux 위해 짧게)
     var RING_CIRCUM = 2 * Math.PI * 9;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
+    // 모바일 탭은 손가락 떨림으로 시작점 주변에서 왕복함. 누적 경로가 아니라
+    // "시작점으로부터의 최대 변위" 가 임계값을 넘어야 드래그로 친다. 10px 반경.
+    var TAP_RADIUS_SQ = 100;
 
     var MODE_LABEL = { rise: '상승률', sector: '주도섹터', theme: '핫테마' };
     var VIEW_LABEL = { tree: '트리', bubble: '버블' };
@@ -150,6 +153,17 @@
     var GROUP_MIN = 3;      // 주도섹터·핫테마: 그룹 종목 ≥ N 만 표시 (1·2 종목짜리 노이즈 제거)
     function buildHierarchy() {
         var items = activeItems();
+        // 줌인 — sector/theme 모드에서 특정 그룹 선택. 그 그룹 종목만 flat. (트리·버블 공용)
+        if (state.zoomedGroup && state.mode !== 'rise') {
+            var picked = items.filter(function (it) {
+                if (state.mode === 'sector') return (it.sector || '기타') === state.zoomedGroup;
+                var tags = (it.theme_tags && it.theme_tags.length)
+                    ? it.theme_tags : (it.theme_tag ? [it.theme_tag] : []);
+                return tags.indexOf(state.zoomedGroup) >= 0;
+            });
+            picked.sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
+            return { children: picked };
+        }
         if (state.mode === 'rise') {
             // 상승률 모드: +15% 이상만. change_rate desc 정렬
             var filtered = items.filter(function (it) { return (it.change_rate || 0) >= RISE_CUTOFF; });
@@ -239,7 +253,8 @@
 
     // ── 트리맵 ─────────────────────────────────────────
     function renderTree(w, h) {
-        var grouped = state.mode !== 'rise';
+        // 줌 상태에서는 그룹 wrap 없이 flat — buildHierarchy 가 이미 flat 으로 자름
+        var grouped = state.mode !== 'rise' && !state.zoomedGroup;
         var SECTOR_LABEL_H = 22;
         var root = d3.hierarchy(buildHierarchy())
             .sum(function (d) { return d.children ? 0 : sizeOf(d); })
@@ -265,8 +280,18 @@
             var sectorG = svg.selectAll('g.tmap-sector')
                 .data(root.children || [])
                 .enter().append('g')
-                .attr('class', 'tmap-sector')
-                .attr('transform', function (d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; });
+                .attr('class', 'tmap-sector tmap-sector--clickable')
+                .attr('transform', function (d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; })
+                .style('cursor', 'pointer')
+                .on('click', function (e, d) {
+                    // 종목 셀 클릭 시 사방으로 버블링되어 들어오는 이벤트 차단
+                    if (e.target && e.target.closest && e.target.closest('g.tmap-cell')) return;
+                    if (!d || !d.data || !d.data.isGroup) return;
+                    state.zoomedGroup = d.data.name;
+                    lastNodes = [];
+                    updateBackBtn();
+                    render();
+                });
             sectorG.append('rect')
                 .attr('class', 'tmap-sector__box')
                 .attr('width', function (d) { return Math.max(0, d.x1 - d.x0); })
@@ -389,23 +414,29 @@
             grad.append('stop').attr('offset', '100%').attr('stop-color', groupEdge).attr('stop-opacity', 0.8);
         });
 
-        // 드래그·클릭 구분 — 종목 버블과 동일 패턴 (< 4px 이동 = 클릭 = zoom)
-        var dragMoved = 0;
+        // 드래그·클릭 구분 — 시작점 대비 최대 변위가 TAP_RADIUS_SQ 안이면 탭(=zoom).
+        // 누적 경로가 아니라 변위라서 손가락 떨림(왕복)을 흡수.
+        var startX = 0, startY = 0, maxDistSq = 0;
         var g = svg.selectAll('g.flow-group')
             .data(nodes, function (d) { return d.name; })
             .enter().append('g')
             .attr('class', 'flow-group flow-group--clickable')
             .style('cursor', 'pointer')
             .call(d3.drag()
-                .on('start', function (e, d) { dragMoved = 0; d.fx = d.x; d.fy = d.y; })
+                .on('start', function (e, d) {
+                    startX = e.x; startY = e.y; maxDistSq = 0;
+                    d.fx = d.x; d.fy = d.y;
+                })
                 .on('drag', function (e, d) {
-                    dragMoved += Math.abs(e.dx) + Math.abs(e.dy);
+                    var ddx = e.x - startX, ddy = e.y - startY;
+                    var d2 = ddx * ddx + ddy * ddy;
+                    if (d2 > maxDistSq) maxDistSq = d2;
                     d.fx = e.x; d.fy = e.y;
                     if (simulation) simulation.alpha(1);
                 })
                 .on('end', function (e, d) {
                     d.fx = null; d.fy = null;
-                    if (dragMoved < 4) {
+                    if (maxDistSq < TAP_RADIUS_SQ) {
                         state.zoomedGroup = d.name;
                         updateBackBtn();
                         render();
@@ -496,17 +527,22 @@
             grad.append('stop').attr('offset', '100%').attr('stop-color', edge).attr('stop-opacity', 0.85);
         });
 
-        // 드래그 vs 클릭 구분
-        var dragMoved = 0;
-        function onDragStart(event, d) { dragMoved = 0; d.fx = d.x; d.fy = d.y; }
+        // 드래그 vs 클릭 — 시작점 대비 최대 변위 기준 (떨림 흡수)
+        var startX = 0, startY = 0, maxDistSq = 0;
+        function onDragStart(event, d) {
+            startX = event.x; startY = event.y; maxDistSq = 0;
+            d.fx = d.x; d.fy = d.y;
+        }
         function onDrag(event, d) {
-            dragMoved += Math.abs(event.dx) + Math.abs(event.dy);
+            var ddx = event.x - startX, ddy = event.y - startY;
+            var d2 = ddx * ddx + ddy * ddy;
+            if (d2 > maxDistSq) maxDistSq = d2;
             d.fx = event.x; d.fy = event.y;
             if (simulation) simulation.alpha(1);
         }
         function onDragEnd(event, d) {
             d.fx = null; d.fy = null;
-            if (dragMoved < 4 && d && d.ticker) window.location.href = '/stock/' + d.ticker;
+            if (maxDistSq < TAP_RADIUS_SQ && d && d.ticker) window.location.href = '/stock/' + d.ticker;
         }
 
         var node = svg.selectAll('g.flow-node')
