@@ -119,12 +119,15 @@ var WhyApp = (function () {
     /**
      * stock-history fetch — 별표 종목 중 그 날 랭킹에 없고 캐시에도 없는 ticker.
      * events[0] (가장 최근 +15% 친 날) 을 state.latestEvent 에 저장.
-     * 모두 끝나면 onDone() 호출 — 호출자가 재렌더 트리거.
-     * 중복 fetch 방지: state._historyInFlight 로 진행 중인 건 건너뜀.
+     * 모두 끝나면 onDone(changed) 호출 — true 일 때만 재렌더 트리거.
+     *
+     * 중요: 실패·404·이벤트 없는 ticker 도 latestEvent[ticker]=null 로 마킹.
+     * 이 sentinel 이 없으면 호출자 가드가 매번 다시 fetch 트리거 → 무한 루프.
+     * 가드는 hasOwnProperty 로 — null 도 "시도했음" 으로 인정.
      */
     function prefetchLatestEvents(tickers, onDone) {
         var todo = tickers.filter(function (t) {
-            return !state.latestEvent[t] && !state._historyInFlight[t];
+            return !state.latestEvent.hasOwnProperty(t) && !state._historyInFlight[t];
         });
         if (!todo.length) { if (onDone) onDone(false); return; }
         todo.forEach(function (t) { state._historyInFlight[t] = true; });
@@ -144,9 +147,12 @@ var WhyApp = (function () {
                         sector: ev.sector || '',
                         news: ev.news || [],
                     };
+                } else {
+                    state.latestEvent[ticker] = null;   // 시도했지만 events 없음
                 }
-            }).catch(function () { /* 404 등 무시 — meta fallback */ })
-              .then(function () { delete state._historyInFlight[ticker]; });
+            }).catch(function () {
+                state.latestEvent[ticker] = null;        // 404 등 — 재시도 막기 위한 sentinel
+            }).then(function () { delete state._historyInFlight[ticker]; });
         });
         Promise.all(promises).then(function () { if (onDone) onDone(true); });
     }
@@ -170,8 +176,11 @@ var WhyApp = (function () {
                 if (state.ratings[t] && (state.ratings[t].stars || 0) > 0) starred.push(t);
             }
 
-            // 모든 별표 종목 prefetch — 캐시에 없는 것만 fetch (중복 가드는 prefetchLatestEvents 내부)
-            var needPrefetch = starred.filter(function (tk) { return !state.latestEvent[tk]; });
+            // 모든 별표 종목 prefetch — 한 번도 시도 안 한 ticker 만.
+            // 가드는 hasOwnProperty — null sentinel(=시도 후 history 없음) 도 재시도 안 함.
+            var needPrefetch = starred.filter(function (tk) {
+                return !state.latestEvent.hasOwnProperty(tk);
+            });
             if (needPrefetch.length) {
                 prefetchLatestEvents(needPrefetch, function (changed) {
                     if (changed && state.watchlistMode) applyCutoffAndRender();
