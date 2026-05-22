@@ -93,6 +93,7 @@ var WhyApp = (function () {
         latestEvent: {},
         // history fetch 진행 중 ticker 집합 — 중복 fetch 방지
         _historyInFlight: {},
+        tickerMeta: {},
     };
 
     function loadRatings() {
@@ -135,18 +136,36 @@ var WhyApp = (function () {
             return WhyAPI.getStockHistory(ticker).then(function (hist) {
                 if (hist && hist.events && hist.events.length) {
                     var ev = hist.events[0];
-                    state.latestEvent[ticker] = {
+                    var entry = {
                         ticker: ticker,
                         name: hist.name || ticker,
                         market: hist.market || '',
                         date: ev.date || '',
                         change_rate: ev.change_rate,
                         close_price: ev.close_price,
+                        trading_value: ev.trading_value || null,
+                        market_cap: ev.market_cap || null,
                         rise_reason: ev.rise_reason || '',
                         theme_tag: ev.theme_tag || '',
                         sector: ev.sector || '',
                         news: ev.news || [],
                     };
+                    state.latestEvent[ticker] = entry;
+                    if (ev.date) {
+                        return WhyAPI.getRankings(ev.date).then(function (daily) {
+                            var rankings = (daily && daily.rankings) || [];
+                            for (var i = 0; i < rankings.length; i++) {
+                                if (rankings[i].ticker === ticker) {
+                                    var row = rankings[i];
+                                    entry.trading_value = row.trading_value || entry.trading_value || null;
+                                    entry.market_cap = row.market_cap || entry.market_cap || null;
+                                    entry.market = entry.market || row.market || '';
+                                    entry.sector = entry.sector || row.sector || '';
+                                    break;
+                                }
+                            }
+                        }).catch(function () {});
+                    }
                 } else {
                     state.latestEvent[ticker] = null;   // 시도했지만 events 없음
                 }
@@ -155,12 +174,6 @@ var WhyApp = (function () {
             }).then(function () { delete state._historyInFlight[ticker]; });
         });
         Promise.all(promises).then(function () { if (onDone) onDone(true); });
-    }
-
-    /** YYYYMMDD → "M/D" (관심 모드 fallback 행에 표시할 짧은 날짜) */
-    function shortDate(yyyymmdd) {
-        if (!yyyymmdd || yyyymmdd.length !== 8) return '';
-        return String(+yyyymmdd.slice(4, 6)) + '/' + String(+yyyymmdd.slice(6, 8));
     }
 
     function applyCutoffAndRender() {
@@ -190,17 +203,16 @@ var WhyApp = (function () {
             filtered = starred.map(function (ticker) {
                 var ev = state.latestEvent[ticker];
                 if (ev) {
-                    var datePrefix = ev.date ? '(' + shortDate(ev.date) + ') ' : '';
                     return {
                         ticker: ticker,
                         name: ev.name || ticker,
                         market: ev.market || '',
                         change_rate: ev.change_rate,
-                        trading_value: null,   // history 에 없음
-                        market_cap: null,      // history 에 없음
+                        trading_value: ev.trading_value || null,
+                        market_cap: ev.market_cap || null,
                         sector: ev.sector || '',
                         theme_tag: ev.theme_tag || '',
-                        rise_reason: datePrefix + (ev.rise_reason || ''),
+                        rise_reason: ev.rise_reason || '',
                         news: ev.news || [],
                         _fromHistory: true,
                         _historyDate: ev.date || '',

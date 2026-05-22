@@ -135,6 +135,12 @@ var WhyTable = (function () {
         return '<span class="' + cls + '">' + arrow + sign + rate.toFixed(2) + '%</span>';
     }
 
+    function formatCompactDate(yyyymmdd) {
+        var s = String(yyyymmdd || '');
+        if (s.length !== 8) return '';
+        return s.substring(2, 4) + '.' + s.substring(4, 6) + '.' + s.substring(6, 8);
+    }
+
     function starRatingHtml(ticker, ratings) {
         var rating = ratings[ticker] || {};
         var stars = rating.stars || 0;
@@ -256,8 +262,10 @@ var WhyTable = (function () {
             var rawTag = r.theme_tag || '';
             var displayTag = shortenTheme(rawTag);
             var reason = r.rise_reason || '-';
+            var eventDate = opts.watchlistMode ? (r._historyDate || r.date || '') : '';
+            var editDate = eventDate || date;
             var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + tEsc +
-                '" data-date="' + esc(date) + '" title="이유 편집">✏️</button>';
+                '" data-date="' + esc(editDate) + '" title="이유 편집">✏️</button>';
             html += '<td class="cell-reason">' +
                 '<div class="cell-reason__inline">' +
                 (displayTag ? '<span class="theme-tag">' + esc(displayTag) + '</span>' : '') +
@@ -265,7 +273,8 @@ var WhyTable = (function () {
                 editBtn +
                 '</div></td>';
             // 상승률
-            html += '<td class="cell-change">' + formatChangeRate(r.change_rate) + '</td>';
+            var eventDateHtml = eventDate ? '<span class="cell-change__date">' + esc(formatCompactDate(eventDate)) + '</span>' : '';
+            html += '<td class="cell-change">' + eventDateHtml + formatChangeRate(r.change_rate) + '</td>';
             // 거래대금
             html += '<td class="cell-volume">' + formatAmount(r.trading_value) + '</td>';
             // 시가총액

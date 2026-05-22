@@ -6,6 +6,7 @@ var WhyScreening = (function () {
     'use strict';
 
     var STORAGE_KEY = 'whyrise-ratings';
+    var WATCHLIST_KEY = 'whyrise-screening-watchlist-mode';
     var THEME_KEY = 'theme';
     var DATA_URL = '/data/screening.json';
     var LIMIT = 250;
@@ -26,6 +27,7 @@ var WhyScreening = (function () {
         themes: [],
         ratings: {},
         filtered: [],
+        watchlistMode: false,
     };
 
     function $(id) { return document.getElementById(id); }
@@ -191,6 +193,7 @@ var WhyScreening = (function () {
         for (var i = 0; i < state.tickers.length; i++) {
             var row = state.tickers[i];
             if (!row || BLOCKED_TICKERS[row.ticker]) continue;
+            if (state.watchlistMode && !((state.ratings[row.ticker] || {}).stars > 0)) continue;
             if (countValue(row, f.countKey) < f.minCount) continue;
             if (f.market && row.market !== f.market) continue;
             if (f.sector && row.sector !== f.sector) continue;
@@ -382,6 +385,22 @@ var WhyScreening = (function () {
     function bindControls() {
         var controls = getControls();
         var searchTimer = null;
+        var watchBtn = $('screeningWatchBtn');
+
+        if (watchBtn) {
+            try { state.watchlistMode = localStorage.getItem(WATCHLIST_KEY) === '1'; }
+            catch (e) {}
+            watchBtn.classList.toggle('is-active', state.watchlistMode);
+            watchBtn.setAttribute('aria-pressed', state.watchlistMode ? 'true' : 'false');
+            watchBtn.addEventListener('click', function () {
+                state.watchlistMode = !state.watchlistMode;
+                watchBtn.classList.toggle('is-active', state.watchlistMode);
+                watchBtn.setAttribute('aria-pressed', state.watchlistMode ? 'true' : 'false');
+                try { localStorage.setItem(WATCHLIST_KEY, state.watchlistMode ? '1' : '0'); }
+                catch (e) {}
+                applyFilters();
+            });
+        }
 
         if (controls.search) {
             controls.search.addEventListener('input', function () {
@@ -405,6 +424,12 @@ var WhyScreening = (function () {
         if (reset) {
             reset.addEventListener('click', function () {
                 if (controls.search) controls.search.value = '';
+                state.watchlistMode = false;
+                if (watchBtn) {
+                    watchBtn.classList.remove('is-active');
+                    watchBtn.setAttribute('aria-pressed', 'false');
+                }
+                try { localStorage.setItem(WATCHLIST_KEY, '0'); } catch (e) {}
                 if (controls.countKey) controls.countKey.value = 'count_10';
                 if (controls.minCount) controls.minCount.value = '1';
                 if (controls.market) controls.market.value = '';
