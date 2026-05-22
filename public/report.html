@@ -8,12 +8,12 @@
     <meta name="apple-mobile-web-app-title" content="WAORNO">
     <link rel="apple-touch-icon" href="/og-default.svg">
     <title>리포트 — 이거왜오름?</title>
-    <meta name="description" content="한국 주식 1년 급등 분석 — 섹터·테마별 누적 통계, 상한가 명예의 전당, 52주 신고가 빈번 종목.">
+    <meta name="description" content="한국 주식 시장 다이제스트 — 섹터 로테이션, 테마 히트맵, 이유 카테고리, 52주 신고가를 이전 기간과 비교.">
     <meta name="theme-color" content="#191919">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20260513p">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260513p">
+    <link rel="stylesheet" href="/css/style.css?v=20260522r">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260522r">
 </head>
 <body>
     <script>
@@ -78,23 +78,31 @@
 
     <main class="report-page">
         <header class="report-page__header">
-            <h1 class="report-page__title">급등 분석 리포트</h1>
+            <div class="report-page__head-row">
+                <h1 class="report-page__title">시장 다이제스트</h1>
+                <a class="report-cta" href="/screening.html">스크리닝에서 종목 보기 →</a>
+            </div>
+            <p class="report-page__subtitle">지금 어디가 끓고 있나 — 섹터·테마·이유·신고가를 이전 기간과 비교해 한눈에.</p>
             <div class="report-stats" id="reportStats">
                 <div class="report-stat">
                     <span class="report-stat__num" id="statTotalEvents">-</span>
                     <span class="report-stat__lbl">+15% 사건</span>
+                    <span class="report-stat__delta" id="statTotalEventsDelta"></span>
                 </div>
                 <div class="report-stat">
                     <span class="report-stat__num" id="statAvgRate">-</span>
                     <span class="report-stat__lbl">평균 상승률</span>
+                    <span class="report-stat__delta" id="statAvgRateDelta"></span>
                 </div>
                 <div class="report-stat">
                     <span class="report-stat__num" id="statLimitCount">-</span>
                     <span class="report-stat__lbl">상한가 사건</span>
+                    <span class="report-stat__delta" id="statLimitCountDelta"></span>
                 </div>
                 <div class="report-stat">
                     <span class="report-stat__num" id="stat52wCount">-</span>
                     <span class="report-stat__lbl">52주 신고가</span>
+                    <span class="report-stat__delta" id="stat52wCountDelta"></span>
                 </div>
             </div>
         </header>
@@ -104,29 +112,24 @@
 
         <section class="report-grid" id="reportGrid" style="display:none;">
             <div class="report-card">
-                <h2 class="report-card__title">섹터 TOP 10</h2>
-                <p class="report-card__desc">+15% 사건이 가장 많이 일어난 업종 — 누적 상승률 순</p>
+                <h2 class="report-card__title">섹터 로테이션</h2>
+                <p class="report-card__desc">현 기간 누적 상승률 + 이전 기간 대비 ↗↘. 행 클릭 → 스크리닝</p>
                 <ol class="report-list" id="sectorTop"></ol>
             </div>
             <div class="report-card">
-                <h2 class="report-card__title">테마 TOP 15</h2>
-                <p class="report-card__desc">함께 자주 오른 테마 태그 — 누적 상승률 순</p>
+                <h2 class="report-card__title">테마 히트맵</h2>
+                <p class="report-card__desc">함께 자주 오른 테마 태그 + 이전 기간 대비 변화. 행 클릭 → 스크리닝</p>
                 <ol class="report-list" id="themeTop"></ol>
             </div>
             <div class="report-card">
-                <h2 class="report-card__title">상한가 TOP 20</h2>
-                <p class="report-card__desc">상한가(+29.9%) 친 종목 — 누적 상승률 순</p>
-                <ol class="report-list" id="limitTop"></ol>
-            </div>
-            <div class="report-card">
-                <h2 class="report-card__title">52주 신고가 TOP 20</h2>
-                <p class="report-card__desc">52주 신고가 갱신한 종목 — 누적 상승률 순</p>
-                <ol class="report-list" id="high52w"></ol>
+                <h2 class="report-card__title">이유 카테고리</h2>
+                <p class="report-card__desc">이번 기간 호재 분포 — 실적·계약·테마·신고가·정책·지배구조</p>
+                <ul class="report-reason-bars" id="reasonCategories"></ul>
             </div>
             <div class="report-card report-card--wide">
-                <h2 class="report-card__title">상승률 TOP 50</h2>
-                <p class="report-card__desc">+15% 누적 상승률 합산 — 동률은 횟수 우선</p>
-                <ol class="report-list report-list--two-col" id="frequentTop"></ol>
+                <h2 class="report-card__title">52주 신고가</h2>
+                <p class="report-card__desc">최근 신고가 갱신 종목 — 카드 클릭 → 종목 상세</p>
+                <div class="report-52w-grid" id="high52w"></div>
             </div>
         </section>
     </main>
@@ -152,9 +155,9 @@
         </footer>
     </div>
 
-    <script src="/js/nav.js?v=20260513p"></script>
-    <script src="/js/api.js?v=20260513p"></script>
-    <script src="/js/report.js?v=20260513p"></script>
-    <script src="/js/visitor.js?v=20260513p"></script>
+    <script src="/js/nav.js?v=20260522r"></script>
+    <script src="/js/api.js?v=20260522r"></script>
+    <script src="/js/report.js?v=20260522r"></script>
+    <script src="/js/visitor.js?v=20260522r"></script>
 </body>
 </html>

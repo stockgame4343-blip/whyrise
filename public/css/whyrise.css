@@ -2101,3 +2101,143 @@ body:not(.admin-on) .event-card__edit { display: none; }
     }
 }
 
+/* ─────────────────────────────────────────────────────────────
+   리포트 — 시장 다이제스트 재구성
+   섹터/테마 행 클릭 → 스크리닝 점프, 이전 기간 대비 delta 배지,
+   이유 카테고리 가로 막대, 52주 신고가 카드 그리드.
+   ───────────────────────────────────────────────────────────── */
+
+.report-page__head-row {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+}
+.report-cta {
+    font-size: 13px; font-weight: 600;
+    color: var(--toss-blue, #3182F6);
+    text-decoration: none;
+    padding: 6px 10px; border-radius: 8px;
+    transition: background .12s;
+}
+.report-cta:hover { background: var(--bg-hover); }
+.report-page__subtitle {
+    margin: 6px 0 14px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    letter-spacing: -.1px;
+}
+
+.report-stat__delta {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: -.1px;
+    min-height: 14px;          /* 빈 delta 자리 점프 방지 */
+}
+.report-stat__delta--up   { color: #F04452; }   /* 상승 = 토스 레드 */
+.report-stat__delta--down { color: #3182F6; }   /* 하락 = 토스 블루 */
+
+.report-row__link {
+    color: inherit; text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    transition: border-color .12s, color .12s;
+}
+.report-row__link:hover {
+    color: var(--toss-blue, #3182F6);
+    border-bottom-color: currentColor;
+}
+
+.report-delta {
+    display: inline-flex; align-items: center;
+    font-size: 11px; font-weight: 700;
+    padding: 1px 6px; border-radius: 999px;
+    margin-left: 4px;
+    line-height: 1.4;
+    letter-spacing: -.1px;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+.report-delta--up   { background: rgba(240, 68, 82, 0.16); color: #F04452; }
+.report-delta--down { background: rgba(49, 130, 246, 0.16); color: #3182F6; }
+.report-delta--new  { background: rgba(240, 68, 82, 0.16); color: #F04452; }
+.report-delta--flat { background: var(--bg-tertiary); color: var(--text-muted); }
+
+/* ─── 이유 카테고리 가로 막대 ─── */
+.report-reason-bars { list-style: none; padding: 0; margin: 0; }
+.report-reason-row {
+    display: grid;
+    grid-template-columns: 92px 1fr 52px 56px;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 4px;
+    border-bottom: 1px solid var(--border);
+}
+.report-reason-row:last-child { border-bottom: none; }
+.report-reason-row__label {
+    font-size: 13px; font-weight: 600; color: var(--text-primary);
+}
+.report-reason-row__track {
+    height: 8px; border-radius: 999px; background: var(--bg-tertiary);
+    overflow: hidden;
+}
+.report-reason-row__fill {
+    height: 100%; background: var(--toss-blue, #3182F6);
+    border-radius: 999px;
+    transition: width .25s ease-out;
+}
+.report-reason-row__pct {
+    font-size: 12px; font-weight: 700; color: var(--text-primary);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+.report-reason-row__count {
+    font-size: 11.5px; color: var(--text-muted);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── 52주 신고가 카드 그리드 ─── */
+.report-52w-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+    padding: 4px 0;
+}
+.report-52w-card {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 10px 12px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none; color: inherit;
+    transition: background .12s, border-color .12s, transform .08s;
+}
+.report-52w-card:hover {
+    background: var(--bg-hover);
+    border-color: var(--toss-blue, #3182F6);
+}
+.report-52w-card:active { transform: translateY(1px); }
+.report-52w-card__name {
+    font-size: 13px; font-weight: 700; color: var(--text-primary);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.report-52w-card__sub {
+    font-size: 11.5px; color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+/* 모바일 — 좁은 화면에서 reason 막대 라벨 압축 */
+@media (max-width: 600px) {
+    .report-page__head-row { gap: 8px; }
+    .report-cta { font-size: 12px; padding: 4px 8px; }
+    .report-reason-row {
+        grid-template-columns: 80px 1fr 48px 44px;
+        gap: 6px;
+    }
+    .report-reason-row__label { font-size: 12px; }
+    .report-52w-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+

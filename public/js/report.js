@@ -62,6 +62,35 @@
             '</div></li>';
     }
 
+    /** 이전 기간 대비 변화 배지. prev null/undefined 면 빈 문자열. */
+    function deltaBadge(curr, prev) {
+        if (prev == null) return '';
+        curr = curr || 0;
+        if (prev === 0 && curr > 0) return ' <span class="report-delta report-delta--new">⊕ 신규</span>';
+        if (curr === prev) return ' <span class="report-delta report-delta--flat">―</span>';
+        var diff = curr - prev;
+        var cls = diff > 0 ? 'up' : 'down';
+        var arrow = diff > 0 ? '↗' : '↘';
+        var sign = diff > 0 ? '+' : '';
+        return ' <span class="report-delta report-delta--' + cls + '">' + arrow + ' ' + sign + diff + '</span>';
+    }
+
+    /** 상단 stat 옆 delta 한 줄 (e.g. "+18 vs 이전 1주"). */
+    function statDeltaText(curr, prev, label) {
+        if (prev == null || prev === 0) return '';
+        var diff = (curr || 0) - prev;
+        if (diff === 0) return '― vs 이전 ' + label;
+        var sign = diff > 0 ? '+' : '';
+        return sign + diff.toLocaleString('ko-KR') + ' vs 이전 ' + label;
+    }
+    function statDeltaCls(curr, prev) {
+        if (prev == null || prev === 0) return '';
+        var diff = (curr || 0) - prev;
+        if (diff > 0) return 'report-stat__delta--up';
+        if (diff < 0) return 'report-stat__delta--down';
+        return '';
+    }
+
     function emptyMsg(period) {
         var label = PERIOD_LABEL[period] || '';
         if (period === 'd1') {
@@ -72,14 +101,16 @@
 
     function renderSectorTop(rows) {
         var $el = document.getElementById('sectorTop');
+        if (!$el) return;
         if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
-        var hasSumRate = rows[0].sum_rate != null;
-        var key = hasSumRate ? 'sum_rate' : 'count';
+        var key = 'sum_rate';
         var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
         $el.innerHTML = rows.map(function (r) {
             var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목 · ' + r.count + '회';
-            var countLabel = hasSumRate ? pct(r.sum_rate) : (r.count + '회');
-            return bar(r[key], max, esc(r.sector), sub, countLabel);
+            var href = '/screening.html?sector=' + encodeURIComponent(r.sector) + '&min=1';
+            var label = '<a class="report-row__link" href="' + href + '">' + esc(r.sector) + '</a>' +
+                deltaBadge(r.count, r.prev_count);
+            return bar(r[key], max, label, sub, pct(r.sum_rate));
         }).join('');
     }
 
@@ -91,8 +122,51 @@
         var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
         $el.innerHTML = rows.map(function (r) {
             var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목 · ' + r.count + '회';
-            var label = '<span class="theme-tag">' + esc(r.theme) + '</span>';
+            var href = '/screening.html?theme=' + encodeURIComponent(r.theme) + '&min=1';
+            var label = '<a class="report-row__link" href="' + href + '">' +
+                '<span class="theme-tag">' + esc(r.theme) + '</span></a>' +
+                deltaBadge(r.count, r.prev_count);
             return bar(r[key], max, label, sub, pct(r.sum_rate));
+        }).join('');
+    }
+
+    /** 이유 카테고리 — 가로 막대 백분율 (실적·공시 / 계약·수주 / 지배구조 / 신고가·돌파 / 정책·정부 / 테마·이슈 / 기타). */
+    function renderReasonCategories(rows) {
+        var $el = document.getElementById('reasonCategories');
+        if (!$el) return;
+        if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
+        var total = rows.reduce(function (s, r) { return s + (r.count || 0); }, 0);
+        if (!total) { $el.innerHTML = emptyMsg(state.period); return; }
+        // count=0 카테고리는 가시성 위해 빼고 표시 (단 모두 0 이면 위에서 emptyMsg)
+        var filtered = rows.filter(function (r) { return (r.count || 0) > 0; });
+        $el.innerHTML = filtered.map(function (r) {
+            var ratio = total ? (r.count / total) : 0;
+            var pctStr = (ratio * 100).toFixed(1) + '%';
+            return '<li class="report-reason-row">' +
+                '<span class="report-reason-row__label">' + esc(r.category) + '</span>' +
+                '<div class="report-reason-row__track">' +
+                '<div class="report-reason-row__fill" style="width:' + pctStr + '"></div>' +
+                '</div>' +
+                '<span class="report-reason-row__pct">' + pctStr + '</span>' +
+                '<span class="report-reason-row__count">' + r.count + '건</span>' +
+                '</li>';
+        }).join('');
+    }
+
+    /** 52주 신고가 — 종목 카드 그리드. */
+    function renderHigh52wGrid(rows) {
+        var $el = document.getElementById('high52w');
+        if (!$el) return;
+        rows = (rows || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
+        if (!rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
+        $el.innerHTML = rows.map(function (r) {
+            var subParts = [];
+            if (r.count) subParts.push(r.count + '회');
+            if (r.market_cap) subParts.push(fmtMcap(r.market_cap));
+            return '<a class="report-52w-card" href="/stock/' + esc(r.ticker) + '">' +
+                '<span class="report-52w-card__name">' + esc(r.name) + '</span>' +
+                '<span class="report-52w-card__sub">' + subParts.join(' · ') + '</span>' +
+                '</a>';
         }).join('');
     }
 
@@ -154,24 +228,47 @@
         };
     }
 
+    /** stat 카드 한 개 갱신 — number + 이전 기간 대비 delta 한 줄. */
+    function setStat(numId, deltaId, curr, prev, periodLabel, isPct) {
+        var $n = document.getElementById(numId);
+        if ($n) $n.textContent = isPct ? pct(curr) : fmt(curr);
+        var $d = document.getElementById(deltaId);
+        if (!$d) return;
+        $d.className = 'report-stat__delta';
+        if (prev == null || prev === 0) {
+            $d.textContent = '';
+            return;
+        }
+        var diff = (curr || 0) - prev;
+        if (diff === 0) {
+            $d.textContent = '― vs 이전 ' + periodLabel;
+            return;
+        }
+        var sign = diff > 0 ? '+' : '';
+        $d.textContent = isPct
+            ? sign + diff.toFixed(1) + '%p vs 이전 ' + periodLabel
+            : sign + Math.round(diff).toLocaleString('ko-KR') + ' vs 이전 ' + periodLabel;
+        $d.classList.add(diff > 0 ? 'report-stat__delta--up' : 'report-stat__delta--down');
+    }
+
     function applyPeriod() {
         if (!state.summary) return;
         var data = pickPeriod(state.summary, state.period);
-        // 헤더 4개 stat — 전체 universe 통계
-        var $e1 = document.getElementById('statTotalEvents');
-        var $e2 = document.getElementById('statAvgRate');
-        var $e3 = document.getElementById('statLimitCount');
-        var $e4 = document.getElementById('stat52wCount');
-        if ($e1) $e1.textContent = fmt(data.total_events_all || data.total_events_15);
-        if ($e2) $e2.textContent = pct(data.avg_rate_15);
-        if ($e3) $e3.textContent = fmt(data.total_limit_count);
-        if ($e4) $e4.textContent = fmt(data.total_52w_count);
+        var label = PERIOD_LABEL[state.period] || '';
+        // 헤더 4개 stat — 전체 universe 통계 + 이전 기간 대비 delta
+        setStat('statTotalEvents', 'statTotalEventsDelta',
+            data.total_events_all || data.total_events_15, data.prev_total_events_15, label, false);
+        setStat('statAvgRate', 'statAvgRateDelta',
+            data.avg_rate_15, data.prev_avg_rate_15, label, true);
+        setStat('statLimitCount', 'statLimitCountDelta',
+            data.total_limit_count, data.prev_total_limit_count, label, false);
+        setStat('stat52wCount', 'stat52wCountDelta',
+            data.total_52w_count, data.prev_total_52w_count, label, false);
 
         renderSectorTop(data.sector_top);
         renderThemeTop(data.theme_top);
-        renderTickerList('limitTop', data.limit_up_top);
-        renderTickerList('high52w', data.high_52w_top);
-        renderTickerList('frequentTop', data.frequent_top, { showTicker: true });
+        renderReasonCategories(data.reason_categories);
+        renderHigh52wGrid(data.high_52w_top);
     }
 
     function bindPeriodTabs() {

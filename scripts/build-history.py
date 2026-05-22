@@ -367,6 +367,28 @@ _PERIOD_DAYS = {
     'y1': 400,    # 1년치 전체
 }
 
+# rise_reason 텍스트 → 카테고리 매핑 (가장 먼저 매치되는 카테고리 우선)
+# 어디에도 안 맞으면 '기타'. 키워드는 사용자 피드백·실 데이터 분포 보고 보강.
+_REASON_CATEGORIES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ('실적·공시',   ('실적', '매출', '영업이익', '잠정', '공시', '연간')),
+    ('계약·수주',   ('수주', '계약', '공급', '납품', 'MOU', '체결')),
+    ('지배구조',    ('자사주', '소각', '합병', '인수', '분할', '자회사')),
+    ('신고가·돌파', ('신고가', '52주', '돌파', '최고')),
+    ('정책·정부',   ('정부', '예산', '승인', '허가', '법안', '지원')),
+    ('테마·이슈',   ('테마', '강세', '이슈', '모멘텀', '관련주')),
+)
+_REASON_OTHER = '기타'
+
+
+def _categorize_reason(reason: str) -> str:
+    if not reason:
+        return _REASON_OTHER
+    for cat, kws in _REASON_CATEGORIES:
+        for kw in kws:
+            if kw in reason:
+                return cat
+    return _REASON_OTHER
+
 
 def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
     """모든 ticker 인덱스 → 기간별(1D/1W/1M/3M/1Y) 리포트 집계.
@@ -426,6 +448,14 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
         k: (anchor if k == 'd1' else anchor - timedelta(days=days - 1)).strftime('%Y%m%d')
         for k, days in _PERIOD_DAYS.items()
     }
+    # 이전 기간 윈도우 — "현 기간 vs 직전 같은 길이" 비교용. d1 은 직전 1일.
+    # 현재: [anchor-(days-1), anchor]  /  이전: [anchor-(2*days-1), anchor-days]
+    prev_window = {
+        k: {
+            'start': (anchor - timedelta(days=(2 * days) - 1)).strftime('%Y%m%d'),
+            'end':   (anchor - timedelta(days=days)).strftime('%Y%m%d'),
+        } for k, days in _PERIOD_DAYS.items()
+    }
 
     # 기간별 누적 컨테이너
     def _empty_period():
@@ -433,6 +463,14 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
             'sector_acc': {},          # sector → {count, sum_rate, tickers}
             'reason_acc': {},          # rise_reason → count
             'theme_acc': {},           # theme_tag → {count, sum_rate, tickers}
+            'reason_cat_acc': {},      # category → count (현재 윈도우)
+            # 이전 윈도우 누적 — 카테고리·종목 단위는 빼고 group(섹터/테마/총량)만
+            'prev_sector_acc': {},     # sector → {count, sum_rate}
+            'prev_theme_acc': {},      # theme_tag → {count, sum_rate}
+            'prev_total_events_15': 0,
+            'prev_total_limit_count': 0,
+            'prev_total_52w_count': 0,
+            'prev_sum_rate_all': 0.0,
             'limit_up': [],
             'high_52w': [],
             'frequent': [],
@@ -474,39 +512,59 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
             is_limit = rate >= 29.9
 
             for k, cutoff in cutoff_yyyymmdd.items():
-                if date_str < cutoff:
-                    continue
                 pp = periods[k]
-                per_period_counts[k]['c15'] += 1
-                per_period_counts[k]['sum_rate'] += float(rate)
-                if rate > per_period_counts[k]['max_rate']:
-                    per_period_counts[k]['max_rate'] = float(rate)
-                if is_limit:
-                    per_period_counts[k]['c_limit'] += 1
-                if is_high:
-                    per_period_counts[k]['c_52w'] += 1
-                # 헤더용 통계 (universe 전체 — 잡주 포함 = 전체 시장 활동)
-                pp['total_events_all_universe'] += 1
-                pp['sum_rate_all'] += float(rate)
-                if is_limit:
-                    pp['total_limit_count'] += 1
-                if is_high:
-                    pp['total_52w_count'] += 1
-                # 섹터 집계
-                if sec:
-                    rec = pp['sector_acc'].setdefault(sec, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
-                    rec['count'] += 1
-                    rec['sum_rate'] += float(rate)
-                    rec['tickers'].add(ticker)
-                # 테마 태그 집계 (theme_tag — stock-rise 가 분류한 구체적 테마)
-                if theme:
-                    rec = pp['theme_acc'].setdefault(theme, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
-                    rec['count'] += 1
-                    rec['sum_rate'] += float(rate)
-                    rec['tickers'].add(ticker)
-                # 이유 카테고리 (자동 추정 라벨)
-                if reason_status == 'filled' and reason and reason not in ('-', '상한가 — 사유 미수집'):
-                    pp['reason_acc'][reason] = pp['reason_acc'].get(reason, 0) + 1
+                # ── 현재 윈도우 (기존 로직) ──
+                if date_str >= cutoff:
+                    per_period_counts[k]['c15'] += 1
+                    per_period_counts[k]['sum_rate'] += float(rate)
+                    if rate > per_period_counts[k]['max_rate']:
+                        per_period_counts[k]['max_rate'] = float(rate)
+                    if is_limit:
+                        per_period_counts[k]['c_limit'] += 1
+                    if is_high:
+                        per_period_counts[k]['c_52w'] += 1
+                    # 헤더용 통계 (universe 전체 — 잡주 포함 = 전체 시장 활동)
+                    pp['total_events_all_universe'] += 1
+                    pp['sum_rate_all'] += float(rate)
+                    if is_limit:
+                        pp['total_limit_count'] += 1
+                    if is_high:
+                        pp['total_52w_count'] += 1
+                    # 섹터 집계
+                    if sec:
+                        rec = pp['sector_acc'].setdefault(sec, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
+                        rec['count'] += 1
+                        rec['sum_rate'] += float(rate)
+                        rec['tickers'].add(ticker)
+                    # 테마 태그 집계 (theme_tag — stock-rise 가 분류한 구체적 테마)
+                    if theme:
+                        rec = pp['theme_acc'].setdefault(theme, {'count': 0, 'sum_rate': 0.0, 'tickers': set()})
+                        rec['count'] += 1
+                        rec['sum_rate'] += float(rate)
+                        rec['tickers'].add(ticker)
+                    # 이유 카테고리 (자동 추정 라벨)
+                    if reason_status == 'filled' and reason and reason not in ('-', '상한가 — 사유 미수집'):
+                        pp['reason_acc'][reason] = pp['reason_acc'].get(reason, 0) + 1
+                        # NEW — 같은 이유 텍스트를 5+1 카테고리로 그룹화
+                        cat = _categorize_reason(reason)
+                        pp['reason_cat_acc'][cat] = pp['reason_cat_acc'].get(cat, 0) + 1
+                # ── 이전 윈도우 누적 (현재 기간 vs 이전 기간 비교용) ──
+                pw = prev_window[k]
+                if pw['start'] <= date_str <= pw['end']:
+                    pp['prev_total_events_15'] += 1
+                    pp['prev_sum_rate_all'] += float(rate)
+                    if is_limit:
+                        pp['prev_total_limit_count'] += 1
+                    if is_high:
+                        pp['prev_total_52w_count'] += 1
+                    if sec:
+                        rec = pp['prev_sector_acc'].setdefault(sec, {'count': 0, 'sum_rate': 0.0})
+                        rec['count'] += 1
+                        rec['sum_rate'] += float(rate)
+                    if theme:
+                        rec = pp['prev_theme_acc'].setdefault(theme, {'count': 0, 'sum_rate': 0.0})
+                        rec['count'] += 1
+                        rec['sum_rate'] += float(rate)
 
         # 종목별 리스트 — 전체 universe 포함 (시총 필터 없음).
         # 시총 정보는 marketmap (TOP 200) 에 있는 것만 표시, 그 외는 0.
@@ -544,22 +602,37 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
     # 정렬·TOP N — 기간별 분리
     result_periods = {}
     for k, pp in periods.items():
-        sector_top = sorted(
-            ({'sector': s, 'count': r['count'],
-              'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
-              'sum_rate': round(r['sum_rate'], 2),
-              'tickers': len(r['tickers'])}
-             for s, r in pp['sector_acc'].items()),
-            key=lambda x: (-x['sum_rate'], -x['count']),
-        )[:10]
-        theme_top = sorted(
-            ({'theme': t, 'count': r['count'],
-              'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
-              'sum_rate': round(r['sum_rate'], 2),
-              'tickers': len(r['tickers'])}
-             for t, r in pp['theme_acc'].items()),
-            key=lambda x: (-x['sum_rate'], -x['count']),
-        )[:15]
+        prev_sec = pp['prev_sector_acc']
+        prev_thm = pp['prev_theme_acc']
+
+        sector_top = []
+        for s, r in pp['sector_acc'].items():
+            ps = prev_sec.get(s) or {'count': 0, 'sum_rate': 0.0}
+            sector_top.append({
+                'sector': s, 'count': r['count'],
+                'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
+                'sum_rate': round(r['sum_rate'], 2),
+                'tickers': len(r['tickers']),
+                'prev_count': ps['count'],
+                'prev_sum_rate': round(ps['sum_rate'], 2),
+            })
+        sector_top.sort(key=lambda x: (-x['sum_rate'], -x['count']))
+        sector_top = sector_top[:10]
+
+        theme_top = []
+        for t, r in pp['theme_acc'].items():
+            pt = prev_thm.get(t) or {'count': 0, 'sum_rate': 0.0}
+            theme_top.append({
+                'theme': t, 'count': r['count'],
+                'avg_rate': round(r['sum_rate'] / max(1, r['count']), 2),
+                'sum_rate': round(r['sum_rate'], 2),
+                'tickers': len(r['tickers']),
+                'prev_count': pt['count'],
+                'prev_sum_rate': round(pt['sum_rate'], 2),
+            })
+        theme_top.sort(key=lambda x: (-x['sum_rate'], -x['count']))
+        theme_top = theme_top[:15]
+
         ticker_sort_key = lambda x: (-x['sum_rate'], -x['count'])
         pp['limit_up'].sort(key=ticker_sort_key)
         pp['high_52w'].sort(key=ticker_sort_key)
@@ -568,19 +641,39 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
             ({'reason': r, 'count': v} for r, v in pp['reason_acc'].items()),
             key=lambda x: -x['count'],
         )[:20]
+
+        # reason_categories — 정의된 6 카테고리 + '기타' 고정 순서로 출력 (count=0 도 포함)
+        cat_total = sum(pp['reason_cat_acc'].values())
+        cat_order = [c for c, _ in _REASON_CATEGORIES] + [_REASON_OTHER]
+        reason_categories = []
+        for cat in cat_order:
+            cnt = pp['reason_cat_acc'].get(cat, 0)
+            reason_categories.append({
+                'category': cat,
+                'count': cnt,
+                'ratio': round(cnt / cat_total, 4) if cat_total else 0,
+            })
+
         total_all = pp['total_events_all_universe']
+        prev_total = pp['prev_total_events_15']
         result_periods[k] = {
             'total_events_15': pp['total_events_15'],
             'total_events_all': total_all,
             'total_limit_count': pp['total_limit_count'],
             'total_52w_count': pp['total_52w_count'],
             'avg_rate_15': round(pp['sum_rate_all'] / total_all, 2) if total_all else 0,
+            # NEW — 이전 기간 같은 길이 윈도우 통계
+            'prev_total_events_15': prev_total,
+            'prev_total_limit_count': pp['prev_total_limit_count'],
+            'prev_total_52w_count': pp['prev_total_52w_count'],
+            'prev_avg_rate_15': round(pp['prev_sum_rate_all'] / prev_total, 2) if prev_total else 0,
             'sector_top': sector_top,
             'theme_top': theme_top,
             'limit_up_top': pp['limit_up'][:20],
             'high_52w_top': pp['high_52w'][:20],
             'frequent_top': pp['frequent'][:50],
             'reason_top': reason_top,
+            'reason_categories': reason_categories,
         }
 
     summary = {

@@ -426,6 +426,37 @@ var WhyScreening = (function () {
         meta.textContent = built || '';
     }
 
+    /** URL 쿼리(?sector=…&theme=…&cnt=…&min=…&cap=…&market=…&q=…) → select 값 동기화.
+     * 리포트·종목상세 같은 다른 페이지에서 점프했을 때 필터 자동 적용. */
+    function applyUrlQueryFilters() {
+        var qs;
+        try { qs = new URLSearchParams(window.location.search); }
+        catch (e) { return; }
+        if (!qs || !qs.toString()) return;
+        var c = getControls();
+        var sector = qs.get('sector');
+        if (sector && c.sector) c.sector.value = sector;
+        var theme = qs.get('theme');
+        if (theme && c.theme) c.theme.value = theme;
+        var market = qs.get('market');
+        if (market && c.market) c.market.value = market;
+        var cap = qs.get('cap');
+        if (cap && c.mcap) c.mcap.value = cap;
+        var minN = parseInt(qs.get('min') || '', 10);
+        if (!isNaN(minN) && minN > 0 && c.minCount) c.minCount.value = String(minN);
+        var cnt = qs.get('cnt');
+        if (cnt && c.countKey) {
+            var key = cnt.indexOf('count_') === 0 ? cnt : 'count_' + cnt;
+            var valid = ['count_10', 'count_15', 'count_20', 'count_limit', 'count_recent'];
+            if (valid.indexOf(key) >= 0) {
+                c.countKey.value = key;
+                if (c.sort) c.sort.value = key;       // 디폴트 정렬도 같은 키로
+            }
+        }
+        var q = qs.get('q');
+        if (q && c.search) c.search.value = q;
+    }
+
     function loadData() {
         return fetch(DATA_URL, { cache: 'no-store' })
             .then(function (r) {
@@ -438,6 +469,7 @@ var WhyScreening = (function () {
                 state.themes = data.themes || [];
                 state.loaded = true;
                 populateSelects(data);
+                applyUrlQueryFilters();   // 옵션 채운 후 URL 쿼리 적용 (옵션 없으면 select 가 무시)
                 updateMeta(data);
                 applyFilters();
             });
