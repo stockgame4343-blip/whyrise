@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WAORNO">
+    <link rel="apple-touch-icon" href="/og-default.svg">
+    <title>스크리닝 — 이거왜오름?</title>
+    <meta name="description" content="횟수·섹터·테마·시총으로 한국 주식 급등 종목 스크리닝.">
+    <meta name="theme-color" content="#0a0b0f">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://whyrise.vercel.app/screening.html">
+    <link rel="icon" href="/og-default.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="이거왜오름?">
+    <meta property="og:title" content="스크리닝 — 이거왜오름?">
+    <meta property="og:description" content="횟수·섹터·테마·시총으로 한국 주식 급등 종목 스크리닝.">
+    <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://whyrise.vercel.app/og-default.svg">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=20260522a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260522a">
+</head>
+<body>
+    <script>
+    (function(){
+        var t = localStorage.getItem('theme') || 'dark';
+        if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+    })();
+    </script>
+
+    <header class="top-bar">
+        <div class="top-bar__inner frame">
+            <a class="top-bar__logo" href="/" aria-label="WAORNO 홈">
+                <svg class="top-bar__logo-svg" viewBox="0 0 168 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                    <text x="0" y="29" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="900" fill="currentColor" letter-spacing="-1.5">WAORNO</text>
+                </svg>
+                <span class="sr-only">WAORNO (이거왜오름?)</span>
+            </a>
+            <nav class="top-bar__nav">
+                <a href="/" class="top-bar__link">홈</a>
+                <a href="/flowmap.html" class="top-bar__link">주도주</a>
+                <a href="/report.html" class="top-bar__link">리포트</a>
+                <a href="/screening.html" class="top-bar__link top-bar__link--active">스크리닝</a>
+                <a href="/screening2.html" class="top-bar__link">스크리닝2</a>
+                <a href="/bubbles2.html" class="top-bar__link">버블맵</a>
+                <a href="/treemap.html" class="top-bar__link">트리맵</a>
+            </nav>
+            <div class="top-bar__right">
+                <button class="top-bar__hamburger" id="navToggle" type="button" aria-label="메뉴" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드 전환">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero hero--mini">
+        <div class="frame hero__inner">
+            <div class="hero__search-wrap">
+                <input type="text" class="hero__search-input" id="heroSearch"
+                       placeholder="다른 종목 검색"
+                       autocomplete="off"
+                       spellcheck="false">
+                <span class="hero__placeholder-suffix">왜 오름?</span>
+                <ul class="hero__suggest" id="heroSuggest" hidden></ul>
+            </div>
+        </div>
+    </section>
+
+    <main class="frame screening-page">
+        <div class="screening-page__layout">
+            <!-- 필터 패널 -->
+            <aside class="screening-filters" id="screeningFilters">
+                <header class="screening-filters__header">
+                    <h2 class="screening-filters__title">필터</h2>
+                    <button class="screening-filters__reset" id="filterReset" type="button">초기화</button>
+                </header>
+
+                <section class="filter-section">
+                    <h3 class="filter-section__title">횟수 (최근 1년)</h3>
+                    <div class="filter-count-list" id="countFilters">
+                        <!-- JS 가 +10/+15/+20/상한가/최근30일 칩 + 단계 버튼 주입 -->
+                    </div>
+                </section>
+
+                <section class="filter-section">
+                    <h3 class="filter-section__title">섹터</h3>
+                    <select class="filter-select" id="sectorSelect">
+                        <option value="">전체 섹터</option>
+                    </select>
+                </section>
+
+                <section class="filter-section">
+                    <h3 class="filter-section__title">테마</h3>
+                    <select class="filter-select" id="themeSelect">
+                        <option value="">전체 테마</option>
+                    </select>
+                </section>
+
+                <section class="filter-section">
+                    <h3 class="filter-section__title">시가총액</h3>
+                    <div class="cap-chips" id="capChips" role="radiogroup">
+                        <button type="button" class="cap-chip cap-chip--active" data-cap="all" role="radio" aria-checked="true">전체</button>
+                        <button type="button" class="cap-chip" data-cap="small" role="radio" aria-checked="false">소형<small> &lt;2천억</small></button>
+                        <button type="button" class="cap-chip" data-cap="mid" role="radio" aria-checked="false">중형<small> 2천억~1조</small></button>
+                        <button type="button" class="cap-chip" data-cap="large" role="radio" aria-checked="false">대형<small> 1조+</small></button>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- 결과 영역 -->
+            <section class="screening-results">
+                <div class="screening-results__head">
+                    <button class="screening-mobile-toggle" id="filterToggle" type="button" aria-controls="screeningFilters" aria-expanded="false">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+                        필터
+                        <span class="screening-mobile-toggle__count" id="filterActiveCount" hidden>0</span>
+                    </button>
+                    <span class="screening-results__count" id="resultCount">로딩 중…</span>
+                </div>
+
+                <div class="message" id="message" style="display:none;"></div>
+                <div class="loading" id="loading" style="display:block;">스크리닝 인덱스 로딩 중…</div>
+
+                <div class="table-wrap glass">
+                    <table class="ranking-table whyrise-table" id="rankingTable">
+                        <thead>
+                            <tr>
+                                <th class="col-rank th-rank-reset" title="기본 순서로">#</th>
+                                <th class="col-name th-sort" data-sort-key="name">종목명 <span class="sort-ind"></span></th>
+                                <th class="col-reason col-reason--hero th-sort" data-sort-key="reason">최근 이유 <span class="sort-ind"></span></th>
+                                <th class="col-change th-sort" data-sort-key="change">최근 상승률 <span class="sort-ind"></span></th>
+                                <th class="col-volume th-sort" data-sort-key="volume">거래대금 <span class="sort-ind"></span></th>
+                                <th class="col-cap th-sort" data-sort-key="cap">시가총액 <span class="sort-ind"></span></th>
+                                <th class="col-sector th-sort" data-sort-key="sector">섹터 <span class="sort-ind"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="rankingBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="footer">
+        <footer class="footer__wrap">
+            <div class="frame footer__inner">
+                <div class="visitor-row" id="visitorRow" style="display:none;">
+                    <span class="visitor-row__dot"></span>
+                    <span><span class="visitor-row__num" id="visitorOnline">—</span>명 보는 중</span>
+                    <span class="visitor-row__sep">·</span>
+                    <span>누적 <span class="visitor-row__num" id="visitorUnique">—</span>명</span>
+                </div>
+                <p class="footer__disclaimer">
+                    <strong>본 사이트는 유사투자자문업 신고를 하지 않았으며, 어떠한 형태의 투자자문·종목 추천·매수/매도 권유도 제공하지 않습니다.</strong><br>
+                    스크리닝 결과는 과거 거래 데이터를 기계적으로 집계·분류한 것일 뿐, 미래 수익이나 매수·매도 신호를 의미하지 않습니다.
+                </p>
+                <p class="footer__copy">&copy; 2026 이거왜오름? (WhyRise). 비영리 개인 프로젝트. <a href="/admin.html" class="footer__admin-link">·</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 메모 모달 (홈 / 종목상세와 공유) -->
+    <div class="modal-overlay" id="memoModal" style="display:none;">
+        <div class="modal">
+            <div class="modal__header">
+                <h3 class="modal__title" id="memoModalTitle">메모</h3>
+                <button class="modal__close" id="memoModalClose">&times;</button>
+            </div>
+            <div class="modal__body">
+                <textarea class="memo-textarea" id="memoTextarea" placeholder="이 종목에 대한 메모를 작성하세요..."></textarea>
+                <div class="memo-actions">
+                    <button class="memo-delete" id="memoDelete">삭제</button>
+                    <button class="memo-save" id="memoSave">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 뉴스 모달 (table.js openNews 호환 — 스크리닝에는 뉴스 없지만 모달 핸들러 일치 위해 유지) -->
+    <div class="modal-overlay" id="newsModal" style="display:none;">
+        <div class="modal news-modal">
+            <div class="modal__header">
+                <h3 class="modal__title" id="newsModalTitle">관련 뉴스</h3>
+                <button class="modal__close" id="newsModalClose">&times;</button>
+            </div>
+            <div class="modal__body" id="newsModalBody"></div>
+        </div>
+    </div>
+
+    <script src="/js/nav.js?v=20260522a"></script>
+    <script src="/js/api.js?v=20260522a"></script>
+    <script src="/js/table.js?v=20260522b"></script>
+    <script src="/js/search.js?v=20260522a"></script>
+    <script src="/js/ratings-sync.js?v=20260522a"></script>
+    <script src="/js/screening.js?v=20260522a"></script>
+    <script src="/js/visitor.js?v=20260522a"></script>
+</body>
+</html>

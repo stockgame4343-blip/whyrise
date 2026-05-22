@@ -605,6 +605,126 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
           f"이유 {len(y1.get('reason_top', []))}  ·  1D 이벤트 {d1.get('total_events_15', 0)}")
 
 
+# ── 스크리닝 인덱스 ─────────────────────────────────────
+
+# 테마 빈도 TOP N 추출 시 사용
+_SCREENING_THEMES_PER_TICKER = 3
+_SCREENING_THEMES_GLOBAL_TOP = 150
+
+
+def _theme_freq(events: list[dict], top_n: int = _SCREENING_THEMES_PER_TICKER) -> list[str]:
+    """events 의 theme_tag 빈도 TOP N — 스크리닝 필터 matching 용."""
+    if not events:
+        return []
+    counts: dict[str, int] = {}
+    for ev in events:
+        t = (ev.get('theme_tag') or '').strip()
+        if t:
+            counts[t] = counts.get(t, 0) + 1
+    if not counts:
+        return []
+    return [t for t, _ in sorted(counts.items(), key=lambda x: -x[1])[:top_n]]
+
+
+def build_screening_index(
+    stock_history_dir: Path,
+    output_path: Path,
+    marketmap_path: Path | None = None,
+) -> None:
+    """종목별 스크리닝 인덱스 빌드 → /data/screening.json.
+
+    각 ticker 의 stats(count_10/15/20/limit/recent) + sector + market_cap + themes TOP 3 +
+    가장 최근 +10% event 메타를 한 행으로 정리. 클라이언트가 횟수·섹터·테마·시총 필터 적용.
+    count_10 == 0 (1년간 +10% 0회) 종목은 스크리닝 의미 없어 스킵.
+    """
+    print('  build_screening_index ...')
+    files = [f for f in sorted(stock_history_dir.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+
+    mkt_lookup: dict[str, dict] = {}
+    mp = marketmap_path or (stock_history_dir.parent / 'marketmap.json')
+    if mp.exists():
+        try:
+            mm = json.loads(mp.read_text(encoding='utf-8'))
+            for it in (mm.get('items') or []):
+                t = it.get('ticker')
+                if t:
+                    mkt_lookup[t] = {
+                        'sector': (it.get('sector') or '').strip(),
+                        'market_cap': it.get('market_cap') or 0,
+                    }
+        except Exception as e:
+            print(f'    marketmap 로드 실패: {e}')
+
+    tickers_data: list[dict] = []
+    sectors_set: set[str] = set()
+    theme_ticker_counts: dict[str, int] = {}
+
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        ticker = h.get('ticker') or ''
+        if not ticker:
+            continue
+        stats = h.get('stats') or {}
+        if (stats.get('count_10') or 0) == 0:
+            continue
+        events = h.get('events') or []
+        themes_top = _theme_freq(events)
+        latest = events[0] if events else {}
+        latest_sector = (latest.get('sector') or '').strip()
+        mkt = mkt_lookup.get(ticker, {})
+        sector = latest_sector or mkt.get('sector', '')
+        market_cap = mkt.get('market_cap', 0) or 0
+
+        tickers_data.append({
+            'ticker': ticker,
+            'name': h.get('name') or ticker,
+            'market': h.get('market') or '',
+            'sector': sector,
+            'market_cap': market_cap,
+            'count_10': stats.get('count_10') or 0,
+            'count_15': stats.get('count_15') or 0,
+            'count_20': stats.get('count_20') or 0,
+            'count_limit': stats.get('count_limit') or 0,
+            'count_recent': stats.get('count_recent') or 0,
+            'avg_rate': stats.get('avg_rate') or 0,
+            'themes': themes_top,
+            'latest_date': latest.get('date') or '',
+            'latest_change_rate': latest.get('change_rate') or 0,
+            'latest_reason': latest.get('rise_reason') or '',
+            'latest_theme': (latest.get('theme_tag') or '').strip(),
+        })
+        if sector:
+            sectors_set.add(sector)
+        for t in themes_top:
+            theme_ticker_counts[t] = theme_ticker_counts.get(t, 0) + 1
+
+    # 디폴트 표시 순서: count_15 desc → count_10 desc → market_cap desc
+    tickers_data.sort(key=lambda x: (
+        -(x['count_15'] or 0), -(x['count_10'] or 0), -(x['market_cap'] or 0)
+    ))
+
+    themes_top_global = sorted(
+        ({'theme': t, 'tickers': c} for t, c in theme_ticker_counts.items()),
+        key=lambda x: -x['tickers'],
+    )[:_SCREENING_THEMES_GLOBAL_TOP]
+
+    output = {
+        'built_at': datetime.now().isoformat(timespec='seconds'),
+        'total_tickers': len(tickers_data),
+        'sectors': sorted(sectors_set),
+        'themes': themes_top_global,
+        'tickers': tickers_data,
+    }
+    output_path.write_text(json.dumps(output, ensure_ascii=False), encoding='utf-8')
+    size_kb = output_path.stat().st_size // 1024
+    print(f'    -> {output_path.name}: {len(tickers_data)} 종목, '
+          f'{len(sectors_set)} 섹터, {len(themes_top_global)} 테마 ({size_kb}KB)')
+
+
 # ── 진입점 ─────────────────────────────────────────────
 
 def build_full(args) -> int:
@@ -706,6 +826,7 @@ def build_full(args) -> int:
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     build_sitemap(output_dir, output_dir.parent.parent)
     build_marketmap(output_dir.parent.parent)
+    build_screening_index(output_dir, output_dir.parent / 'screening.json')
     elapsed = time.time() - t_start
     print(f'== 완료: {success}/{total} 종목, skip {skipped}, elapsed {elapsed:.0f}s ==')
     return 0
@@ -773,6 +894,7 @@ def build_estimate_only(args) -> int:
     print(f'== estimate 완료: {updated}/{processed} ticker 갱신 ==')
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     build_sitemap(output_dir, output_dir.parent.parent)
+    build_screening_index(output_dir, output_dir.parent / 'screening.json')
     return 0
 
 
@@ -1109,6 +1231,11 @@ def build_marketmap_intraday(public_dir: Path | None = None, top_n: int = 100) -
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
     except Exception as e:
         print(f'  report-summary 갱신 실패 (무시): {e}')
+    # screening.json 도 같이 — marketmap 의 최신 시총 반영 위해
+    try:
+        build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
+    except Exception as e:
+        print(f'  screening 갱신 실패 (무시): {e}')
 
     return 0
 
@@ -1354,6 +1481,7 @@ def main() -> None:
         sys.exit(build_estimate_only(args))
     if args.report_only:
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
+        build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
         sys.exit(0)
     sys.exit(build_full(args))
 

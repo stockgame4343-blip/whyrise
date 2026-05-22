@@ -106,30 +106,22 @@
         if (!stats) { $stats.innerHTML = ''; return; }
         var html = '';
         // 핵심 지표 우선 — count_10 (1년 총 횟수), count_15, count_recent (최근 30일)
-        if (stats.count_10 != null) {
-            html += '<div class="stock-header__stat">' +
-                '<span class="stock-header__stat-label">+10% 이상 (1년)</span>' +
-                '<span class="stock-header__stat-value">' + stats.count_10 + '회</span></div>';
+        // 각 카드 → 같은 조건의 스크리닝 페이지로 점프 (kind/min=1)
+        function statCard(kind, label, value) {
+            return '<a class="stock-header__stat stock-header__stat--clickable" ' +
+                'href="/screening.html?cnt=' + kind + '&min=1" ' +
+                'data-stat="' + kind + '" ' +
+                'title="' + label + ' 1회 이상 종목 스크리닝">' +
+                '<span class="stock-header__stat-label">' + label + '</span>' +
+                '<span class="stock-header__stat-value">' + value + '</span></a>';
         }
-        html += '<div class="stock-header__stat">' +
-            '<span class="stock-header__stat-label">+15% 이상</span>' +
-            '<span class="stock-header__stat-value">' + (stats.count_15 || 0) + '회</span></div>';
-        if (stats.count_20 != null) {
-            html += '<div class="stock-header__stat">' +
-                '<span class="stock-header__stat-label">+20% 이상</span>' +
-                '<span class="stock-header__stat-value">' + stats.count_20 + '회</span></div>';
-        }
-        if (stats.count_limit != null) {
-            html += '<div class="stock-header__stat">' +
-                '<span class="stock-header__stat-label">상한가</span>' +
-                '<span class="stock-header__stat-value">' + stats.count_limit + '회</span></div>';
-        }
-        if (stats.count_recent != null) {
-            html += '<div class="stock-header__stat">' +
-                '<span class="stock-header__stat-label">최근 30일</span>' +
-                '<span class="stock-header__stat-value">' + stats.count_recent + '회</span></div>';
-        }
+        if (stats.count_10 != null) html += statCard('10', '+10% 이상 (1년)', stats.count_10 + '회');
+        html += statCard('15', '+15% 이상', (stats.count_15 || 0) + '회');
+        if (stats.count_20 != null) html += statCard('20', '+20% 이상', stats.count_20 + '회');
+        if (stats.count_limit != null) html += statCard('limit', '상한가', stats.count_limit + '회');
+        if (stats.count_recent != null) html += statCard('recent', '최근 30일', stats.count_recent + '회');
         if (stats.avg_rate != null) {
+            // 평균 상승률 — 스크리닝 조건 아님, 클릭 비활성 (a 태그 아님)
             html += '<div class="stock-header__stat">' +
                 '<span class="stock-header__stat-label">평균 상승률</span>' +
                 '<span class="stock-header__stat-value stock-header__stat-value--rise">+' +
