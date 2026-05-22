@@ -9,6 +9,8 @@ var WhyScreening = (function () {
     var WATCHLIST_KEY = 'whyrise-screening-watchlist-mode';
     var THEME_KEY = 'theme';
     var DATA_URL = '/data/screening.json';
+    // 모든 종목 시총 lookup — marketmap 컷오프 밖 종목까지 cover. 빌더: scripts/build_mcap_all.py
+    var MCAP_ALL_URL = '/data/mcap-all.json';
     var LIMIT = 250;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
@@ -606,22 +608,50 @@ var WhyScreening = (function () {
         if (q && c.search) c.search.value = q;
     }
 
+    function _loadMcapAll() {
+        // edge 캐시 사용 — 모든 사용자가 같은 정적 파일을 받음
+        return fetch(MCAP_ALL_URL)
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .catch(function () { return null; });
+    }
+
+    function _applyMcapAll(mcapAll) {
+        if (!mcapAll || !mcapAll.items) return 0;
+        var items = mcapAll.items;
+        var filled = 0;
+        for (var i = 0; i < state.tickers.length; i++) {
+            var r = state.tickers[i];
+            if (r && (!r.market_cap || r.market_cap <= 0)) {
+                var v = items[r.ticker];
+                if (typeof v === 'number' && v > 0) {
+                    r.market_cap = v;
+                    filled++;
+                }
+            }
+        }
+        return filled;
+    }
+
     function loadData() {
-        return fetch(DATA_URL, { cache: 'no-store' })
-            .then(function (r) {
+        return Promise.all([
+            fetch(DATA_URL, { cache: 'no-store' }).then(function (r) {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
                 return r.json();
-            })
-            .then(function (data) {
-                state.tickers = data.tickers || [];
-                state.sectors = data.sectors || [];
-                state.themes = data.themes || [];
-                state.loaded = true;
-                populateSelects(data);
-                applyUrlQueryFilters();   // 옵션 채운 후 URL 쿼리 적용 (옵션 없으면 select 가 무시)
-                updateMeta(data);
-                applyFilters();
-            });
+            }),
+            _loadMcapAll(),
+        ]).then(function (results) {
+            var data = results[0];
+            var mcapAll = results[1];
+            state.tickers = data.tickers || [];
+            state.sectors = data.sectors || [];
+            state.themes = data.themes || [];
+            state.loaded = true;
+            _applyMcapAll(mcapAll);   // 빈 시총 정적 lookup 으로 채우기 (filter·sort 전에)
+            populateSelects(data);
+            applyUrlQueryFilters();
+            updateMeta(data);
+            applyFilters();
+        });
     }
 
     function suppressHover(target) {
