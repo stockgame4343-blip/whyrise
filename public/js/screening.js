@@ -199,19 +199,24 @@ var WhyScreening = (function () {
         return (a.name || '').localeCompare(b.name || '', 'ko-KR');
     }
 
+    function _rowMatchesFilters(row, f) {
+        if (!row || BLOCKED_TICKERS[row.ticker]) return false;
+        if (state.watchlistMode && !((state.ratings[row.ticker] || {}).stars > 0)) return false;
+        if (countValue(row, f.countKey) < f.minCount) return false;
+        if (f.market && row.market !== f.market) return false;
+        if (f.sector && row.sector !== f.sector) return false;
+        if (!hasTheme(row, f.theme)) return false;
+        if (!inMcapRange(row, f.mcap)) return false;
+        if (!matchesQuery(row, f.query)) return false;
+        return true;
+    }
+
     function applyFilters() {
         var f = getFilters();
         var out = [];
         for (var i = 0; i < state.tickers.length; i++) {
             var row = state.tickers[i];
-            if (!row || BLOCKED_TICKERS[row.ticker]) continue;
-            if (state.watchlistMode && !((state.ratings[row.ticker] || {}).stars > 0)) continue;
-            if (countValue(row, f.countKey) < f.minCount) continue;
-            if (f.market && row.market !== f.market) continue;
-            if (f.sector && row.sector !== f.sector) continue;
-            if (!hasTheme(row, f.theme)) continue;
-            if (!inMcapRange(row, f.mcap)) continue;
-            if (!matchesQuery(row, f.query)) continue;
+            if (!_rowMatchesFilters(row, f)) continue;
             out.push(row);
         }
         out.sort(function (a, b) { return compareRows(a, b, f.sort, f.countKey); });
@@ -345,6 +350,26 @@ var WhyScreening = (function () {
         cache[ticker] = { v: mc, ts: Date.now() };
         try { localStorage.setItem(MCAP_CACHE_KEY, JSON.stringify(cache)); } catch (e) {}
     }
+    // backfill 결과 채워진 row 가 더 이상 현재 필터(미집계 등)에 안 맞으면 DOM 에서 제거.
+    // rank·총종목 카운트도 즉시 재매김 — applyFilters 통째 호출보다 row 점프 적음.
+    // 현재 결과 리스트(state.filtered) 에 있는 row 만 처리 (LIMIT 밖·다른 필터 화면 무관).
+    function _refilterAfterBackfill(ticker, row) {
+        var idx = -1;
+        for (var i = 0; i < state.filtered.length; i++) {
+            if (state.filtered[i].ticker === ticker) { idx = i; break; }
+        }
+        if (idx < 0) return;
+        var f = getFilters();
+        if (_rowMatchesFilters(row, f)) return;
+        var trs = document.querySelectorAll('#screeningBody tr[data-ticker="' + ticker + '"]');
+        for (var k = 0; k < trs.length; k++) trs[k].parentNode.removeChild(trs[k]);
+        state.filtered.splice(idx, 1);
+        var rankCells = document.querySelectorAll('#screeningBody tr .cell-rank');
+        for (var j = 0; j < rankCells.length; j++) rankCells[j].textContent = (j + 1);
+        var totalEl = document.getElementById('screeningTotal');
+        if (totalEl) totalEl.textContent = state.filtered.length.toLocaleString('ko-KR') + '종목';
+    }
+
     function _backfillCell(ticker, mc) {
         // 같은 ticker 행의 시총 셀 + 모바일 meta-compact 동기화
         var rows = document.querySelectorAll('tr[data-ticker="' + ticker + '"]');
@@ -366,6 +391,7 @@ var WhyScreening = (function () {
             if ((!r.market_cap || r.market_cap <= 0) && cache[r.ticker]) {
                 r.market_cap = cache[r.ticker].v || 0;
                 _backfillCell(r.ticker, r.market_cap);
+                _refilterAfterBackfill(r.ticker, r);
             }
         });
         // 캐시에 없고 진행중도 아닌 ticker 만 fetch 후보
@@ -388,13 +414,16 @@ var WhyScreening = (function () {
                     var sectorFromHtml = (d && typeof d.sector === 'string') ? d.sector : '';
                     _saveMcapEntry(cache, t, mc);
                     // state 원본 갱신 → 다음 필터·정렬에 반영
+                    var updated = null;
                     state.tickers.forEach(function (row2) {
                         if (row2.ticker !== t) return;
                         if (!row2.market_cap || row2.market_cap <= 0) row2.market_cap = mc;
                         if (!row2.sector && sectorFromHtml) row2.sector = sectorFromHtml;
+                        updated = row2;
                     });
                     if (mc > 0) _backfillCell(t, mc);
                     if (sectorFromHtml) _backfillMetaCells(t, { sector: sectorFromHtml });
+                    if (updated) _refilterAfterBackfill(t, updated);
                 })
                 .catch(function () {})
                 .then(function () {
@@ -473,6 +502,7 @@ var WhyScreening = (function () {
             if (!r.latest_theme && m.theme) r.latest_theme = m.theme;
             if (!r.sector && m.sector) r.sector = m.sector;
             if (m.reason || m.theme || m.sector) _backfillMetaCells(r.ticker, m);
+            _refilterAfterBackfill(r.ticker, r);
         });
         // fetch 후보 — 한 항목이라도 비어있고 캐시 없는 ticker
         var need = rows.filter(function (r) {
@@ -495,13 +525,16 @@ var WhyScreening = (function () {
                         meta.sector = ev.sector || '';
                     }
                     _saveMetaEntry(cache, t, meta);
+                    var updated = null;
                     state.tickers.forEach(function (row2) {
                         if (row2.ticker !== t) return;
                         if (!row2.latest_reason && meta.reason) row2.latest_reason = meta.reason;
                         if (!row2.latest_theme && meta.theme) row2.latest_theme = meta.theme;
                         if (!row2.sector && meta.sector) row2.sector = meta.sector;
+                        updated = row2;
                     });
                     if (meta.reason || meta.theme || meta.sector) _backfillMetaCells(t, meta);
+                    if (updated) _refilterAfterBackfill(t, updated);
                 })
                 .catch(function () {})
                 .then(function () {
