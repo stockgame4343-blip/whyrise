@@ -18,6 +18,12 @@ var WhyScreening = (function () {
     var MCAP_FETCH_CONCURRENCY = 5;
     var _mcapInFlight = {};
 
+    // 이유·태그·섹터 빈칸 보강 — stock-history JSON 의 events[0] 에서 채움.
+    var META_CACHE_KEY = 'whyrise-history-meta-cache';
+    var META_CACHE_TTL = 24 * 3600 * 1000;
+    var META_FETCH_CONCURRENCY = 5;
+    var _metaInFlight = {};
+
     var COUNT_LABELS = {
         count_10: '+10%',
         count_15: '+15%',
@@ -313,6 +319,7 @@ var WhyScreening = (function () {
         });
         body.innerHTML = html;
         backfillMissingMcap(rows.slice(0, LIMIT));
+        backfillMissingMeta(rows.slice(0, LIMIT));
     }
 
     // ── 미집계 시총 lazy fetch ─────────────────────────────────
@@ -378,14 +385,16 @@ var WhyScreening = (function () {
                 .then(function (r) { return r.ok ? r.json() : null; })
                 .then(function (d) {
                     var mc = (d && typeof d.market_cap === 'number') ? d.market_cap : 0;
+                    var sectorFromHtml = (d && typeof d.sector === 'string') ? d.sector : '';
                     _saveMcapEntry(cache, t, mc);
                     // state 원본 갱신 → 다음 필터·정렬에 반영
                     state.tickers.forEach(function (row2) {
-                        if (row2.ticker === t && (!row2.market_cap || row2.market_cap <= 0)) {
-                            row2.market_cap = mc;
-                        }
+                        if (row2.ticker !== t) return;
+                        if (!row2.market_cap || row2.market_cap <= 0) row2.market_cap = mc;
+                        if (!row2.sector && sectorFromHtml) row2.sector = sectorFromHtml;
                     });
                     if (mc > 0) _backfillCell(t, mc);
+                    if (sectorFromHtml) _backfillMetaCells(t, { sector: sectorFromHtml });
                 })
                 .catch(function () {})
                 .then(function () {
@@ -394,6 +403,113 @@ var WhyScreening = (function () {
                 });
         }
         for (var k = 0; k < Math.min(MCAP_FETCH_CONCURRENCY, need.length); k++) next();
+    }
+
+    // ── 빈 이유·태그·섹터 lazy fetch ───────────────────────────
+    function _loadMetaCache() {
+        try {
+            var c = JSON.parse(localStorage.getItem(META_CACHE_KEY) || '{}');
+            var now = Date.now();
+            var dirty = false;
+            for (var k in c) {
+                if (!c[k] || (now - (c[k].ts || 0)) > META_CACHE_TTL) {
+                    delete c[k];
+                    dirty = true;
+                }
+            }
+            if (dirty) {
+                try { localStorage.setItem(META_CACHE_KEY, JSON.stringify(c)); } catch (e) {}
+            }
+            return c;
+        } catch (e) { return {}; }
+    }
+    function _saveMetaEntry(cache, ticker, meta) {
+        cache[ticker] = { v: meta, ts: Date.now() };
+        try { localStorage.setItem(META_CACHE_KEY, JSON.stringify(cache)); } catch (e) {}
+    }
+    function _backfillMetaCells(ticker, meta) {
+        // PC: cell-reason__inline (theme 태그 + reason 텍스트), cell-sector 텍스트.
+        // sector 만 전달된 경우(mcap fetch 결과) inline 은 안 건드림 — 기존 reason 보존.
+        // 모바일 cell-meta-compact 의 sector 부분은 다음 render 사이클에서 자연 반영.
+        var rows = document.querySelectorAll('tr[data-ticker="' + ticker + '"]');
+        for (var i = 0; i < rows.length; i++) {
+            var tr = rows[i];
+            if (meta.reason || meta.theme) {
+                var inline = tr.querySelector('.cell-reason__inline');
+                if (inline) {
+                    inline.innerHTML = '';
+                    if (meta.theme) {
+                        var btn = document.createElement('button');
+                        btn.className = 'theme-tag screening-theme-tag';
+                        btn.type = 'button';
+                        btn.setAttribute('data-theme', meta.theme);
+                        btn.textContent = meta.theme;
+                        inline.appendChild(btn);
+                    }
+                    var span = document.createElement('span');
+                    span.className = 'cell-reason__text';
+                    span.textContent = meta.reason || '-';
+                    inline.appendChild(span);
+                }
+            }
+            if (meta.sector) {
+                var sectorCell = tr.querySelector('.cell-sector');
+                if (sectorCell) sectorCell.textContent = meta.sector;
+            }
+        }
+    }
+    function _isMetaMissing(row) {
+        return !row.latest_reason || !row.latest_theme || !row.sector;
+    }
+    function backfillMissingMeta(rows) {
+        if (!rows || !rows.length) return;
+        var cache = _loadMetaCache();
+        // 캐시 적용 — state 원본도 비어있을 때만 채움 (실값 덮어쓰기 X)
+        rows.forEach(function (r) {
+            var entry = cache[r.ticker];
+            if (!entry || !entry.v) return;
+            var m = entry.v;
+            if (!r.latest_reason && m.reason) r.latest_reason = m.reason;
+            if (!r.latest_theme && m.theme) r.latest_theme = m.theme;
+            if (!r.sector && m.sector) r.sector = m.sector;
+            if (m.reason || m.theme || m.sector) _backfillMetaCells(r.ticker, m);
+        });
+        // fetch 후보 — 한 항목이라도 비어있고 캐시 없는 ticker
+        var need = rows.filter(function (r) {
+            return _isMetaMissing(r) && !cache[r.ticker] && !_metaInFlight[r.ticker];
+        });
+        if (!need.length) return;
+        var idx = 0;
+        function next() {
+            if (idx >= need.length) return;
+            var t = need[idx++].ticker;
+            _metaInFlight[t] = true;
+            fetch('/data/stock-history/' + encodeURIComponent(t) + '.json')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) {
+                    var meta = { reason: '', theme: '', sector: '' };
+                    var ev = (d && d.events && d.events[0]) || null;
+                    if (ev) {
+                        meta.reason = ev.rise_reason || '';
+                        meta.theme = ev.theme_tag || '';
+                        meta.sector = ev.sector || '';
+                    }
+                    _saveMetaEntry(cache, t, meta);
+                    state.tickers.forEach(function (row2) {
+                        if (row2.ticker !== t) return;
+                        if (!row2.latest_reason && meta.reason) row2.latest_reason = meta.reason;
+                        if (!row2.latest_theme && meta.theme) row2.latest_theme = meta.theme;
+                        if (!row2.sector && meta.sector) row2.sector = meta.sector;
+                    });
+                    if (meta.reason || meta.theme || meta.sector) _backfillMetaCells(t, meta);
+                })
+                .catch(function () {})
+                .then(function () {
+                    delete _metaInFlight[t];
+                    next();
+                });
+        }
+        for (var k = 0; k < Math.min(META_FETCH_CONCURRENCY, need.length); k++) next();
     }
 
     function populateSelects(data) {

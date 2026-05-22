@@ -1,9 +1,12 @@
-"""단일 종목 시총 조회 — screening 페이지 '미집계' 보강용.
+"""단일 종목 시총·업종 조회 — screening 페이지 미집계·빈 sector 보강용.
 
 marketmap.json 에 잡혀있지 않은 중소형주에 대해 finance.naver.com 종목 페이지
-HTML 의 `<em id="_market_sum">` 영역(조·억 두 그룹 또는 억 한 그룹)을 파싱해
-억원 단위로 반환. 네이버 mobile API /basic·/integration 은 marketValue 필드가
-None 으로 빠져있어 사용 불가.
+HTML 에서 다음을 한 번에 파싱:
+ - 시총(억원): `<em id="_market_sum">` (조+억 두 그룹 또는 억 한 그룹)
+ - 업종(sector): sise_group_detail 링크 텍스트
+
+네이버 mobile API /basic·/integration 은 marketValue 필드가 None 으로 빠져있어
+사용 불가. HTML 인코딩은 UTF-8 (이전 EUC-KR 가정은 잘못됨 — 시총 숫자만 통과했음).
 
 edge 캐시 1h — 같은 ticker 요청은 vercel edge 즉시 응답.
 """
@@ -18,6 +21,7 @@ UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
 URL = 'https://finance.naver.com/item/main.naver?code={ticker}'
 _RE_MARKET_SUM = re.compile(r'id="_market_sum"[^>]*>(.*?)</em>', re.S)
 _RE_NUMS = re.compile(r'([0-9,]+)')
+_RE_SECTOR = re.compile(r'href="[^"]*sise_group_detail[^"]*"[^>]*>([^<]+)</a>')
 
 
 def _parse_market_sum_eok(html: str) -> int:
@@ -34,6 +38,12 @@ def _parse_market_sum_eok(html: str) -> int:
     return 0
 
 
+def _parse_sector(html: str) -> str:
+    """HTML 에서 업종(sector) 추출. sise_group_detail 링크 텍스트."""
+    m = _RE_SECTOR.search(html)
+    return m.group(1).strip() if m else ''
+
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         from urllib.parse import urlparse, parse_qs
@@ -47,9 +57,10 @@ class handler(BaseHTTPRequestHandler):
         try:
             req = urllib.request.Request(URL.format(ticker=ticker), headers={'User-Agent': UA})
             with urllib.request.urlopen(req, timeout=5) as resp:
-                html = resp.read().decode('euc-kr', errors='ignore')
+                html = resp.read().decode('utf-8', errors='ignore')
             mc_eok = _parse_market_sum_eok(html)
-            self._respond(200, {'ticker': ticker, 'market_cap': mc_eok})
+            sector = _parse_sector(html)
+            self._respond(200, {'ticker': ticker, 'market_cap': mc_eok, 'sector': sector})
         except urllib.error.HTTPError as e:
             self._respond(502, {'error': f'네이버 {e.code}', 'ticker': ticker})
         except Exception as e:
