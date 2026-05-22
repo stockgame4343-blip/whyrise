@@ -12,6 +12,12 @@ var WhyScreening = (function () {
     var LIMIT = 250;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
+    // 미집계 보강 — /api/mcap 으로 단일 종목 시총 lazy fetch. localStorage 캐시 24h.
+    var MCAP_CACHE_KEY = 'whyrise-mcap-cache';
+    var MCAP_CACHE_TTL = 24 * 3600 * 1000;
+    var MCAP_FETCH_CONCURRENCY = 5;
+    var _mcapInFlight = {};
+
     var COUNT_LABELS = {
         count_10: '+10%',
         count_15: '+15%',
@@ -306,6 +312,88 @@ var WhyScreening = (function () {
             html += '</tr>';
         });
         body.innerHTML = html;
+        backfillMissingMcap(rows.slice(0, LIMIT));
+    }
+
+    // ── 미집계 시총 lazy fetch ─────────────────────────────────
+    function _loadMcapCache() {
+        try {
+            var c = JSON.parse(localStorage.getItem(MCAP_CACHE_KEY) || '{}');
+            var now = Date.now();
+            // 만료 청소
+            var dirty = false;
+            for (var k in c) {
+                if (!c[k] || (now - (c[k].ts || 0)) > MCAP_CACHE_TTL) {
+                    delete c[k];
+                    dirty = true;
+                }
+            }
+            if (dirty) {
+                try { localStorage.setItem(MCAP_CACHE_KEY, JSON.stringify(c)); } catch (e) {}
+            }
+            return c;
+        } catch (e) { return {}; }
+    }
+    function _saveMcapEntry(cache, ticker, mc) {
+        cache[ticker] = { v: mc, ts: Date.now() };
+        try { localStorage.setItem(MCAP_CACHE_KEY, JSON.stringify(cache)); } catch (e) {}
+    }
+    function _backfillCell(ticker, mc) {
+        // 같은 ticker 행의 시총 셀 + 모바일 meta-compact 동기화
+        var rows = document.querySelectorAll('tr[data-ticker="' + ticker + '"]');
+        for (var i = 0; i < rows.length; i++) {
+            var tr = rows[i];
+            var cap = tr.querySelector('.cell-cap');
+            if (cap) cap.textContent = formatMcap(mc);
+            var meta = tr.querySelector('.cell-meta-compact');
+            if (meta) {
+                meta.textContent = meta.textContent.replace(/시총\s+[^·]+/, '시총 ' + formatMcap(mc));
+            }
+        }
+    }
+    function backfillMissingMcap(rows) {
+        if (!rows || !rows.length) return;
+        var cache = _loadMcapCache();
+        // 캐시에 있는 ticker 는 즉시 적용 — state.tickers 의 원본도 갱신해 정렬·필터에 반영
+        rows.forEach(function (r) {
+            if ((!r.market_cap || r.market_cap <= 0) && cache[r.ticker]) {
+                r.market_cap = cache[r.ticker].v || 0;
+                _backfillCell(r.ticker, r.market_cap);
+            }
+        });
+        // 캐시에 없고 진행중도 아닌 ticker 만 fetch 후보
+        var need = rows.filter(function (r) {
+            return (!r.market_cap || r.market_cap <= 0)
+                && !cache[r.ticker]
+                && !_mcapInFlight[r.ticker];
+        });
+        if (!need.length) return;
+        var idx = 0;
+        function next() {
+            if (idx >= need.length) return;
+            var row = need[idx++];
+            var t = row.ticker;
+            _mcapInFlight[t] = true;
+            fetch('/api/mcap?ticker=' + encodeURIComponent(t))
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) {
+                    var mc = (d && typeof d.market_cap === 'number') ? d.market_cap : 0;
+                    _saveMcapEntry(cache, t, mc);
+                    // state 원본 갱신 → 다음 필터·정렬에 반영
+                    state.tickers.forEach(function (row2) {
+                        if (row2.ticker === t && (!row2.market_cap || row2.market_cap <= 0)) {
+                            row2.market_cap = mc;
+                        }
+                    });
+                    if (mc > 0) _backfillCell(t, mc);
+                })
+                .catch(function () {})
+                .then(function () {
+                    delete _mcapInFlight[t];
+                    next();
+                });
+        }
+        for (var k = 0; k < Math.min(MCAP_FETCH_CONCURRENCY, need.length); k++) next();
     }
 
     function populateSelects(data) {
