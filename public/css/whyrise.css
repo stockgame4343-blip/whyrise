@@ -1759,12 +1759,13 @@ body:not(.admin-on) .event-card__edit { display: none; }
 }
 
 /* ─────────────────────────────────────────────────────────────
-   스크리닝2 — /screening2.html
+   스크리닝 — /screening.html
    기존 홈 리스트와 같은 관심/메모 컨트롤을 쓰되, 횟수 칩과 상단 필터를 추가.
    ───────────────────────────────────────────────────────────── */
 
 .screening2-page {
-    padding: 24px 0 44px;
+    padding-top: 24px;
+    padding-bottom: 44px;
 }
 .screening2-head {
     display: flex;
@@ -1939,7 +1940,8 @@ body:not(.admin-on) .event-card__edit { display: none; }
 
 @media (max-width: 768px) {
     .screening2-page {
-        padding: 16px 0 34px;
+        padding-top: 16px;
+        padding-bottom: 34px;
     }
     .screening2-head {
         align-items: flex-start;
@@ -1976,7 +1978,7 @@ body:not(.admin-on) .event-card__edit { display: none; }
         width: 100%;
     }
     .screening2-table tr {
-        grid-template-columns: auto minmax(0, 1fr) auto !important;
+        grid-template-columns: auto minmax(0, 1fr) !important;
         gap: 8px 10px !important;
     }
     .screening2-table td.cell-rank {
@@ -1984,14 +1986,11 @@ body:not(.admin-on) .event-card__edit { display: none; }
         grid-row: 1;
     }
     .screening2-table td.cell-name {
-        grid-column: 2;
+        grid-column: 2 / -1;
         grid-row: 1;
     }
     .screening2-table td.cell-change {
-        grid-column: 3;
-        grid-row: 1;
-        align-self: center;
-        text-align: right;
+        display: none !important;
     }
     .screening2-table td.cell-reason {
         grid-column: 1 / -1;
@@ -2034,7 +2033,7 @@ body:not(.admin-on) .event-card__edit { display: none; }
         grid-template-columns: 1fr;
     }
     .screening2-table tr {
-        grid-template-columns: 30px minmax(0, 1fr) auto !important;
+        grid-template-columns: 30px minmax(0, 1fr) !important;
     }
     .screening2-date {
         font-size: 10.5px;

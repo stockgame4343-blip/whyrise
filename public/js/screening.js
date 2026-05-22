@@ -1,8 +1,8 @@
 /**
- * 스크리닝2 — /data/screening.json 기반 독립 리스트.
+ * 스크리닝 — /data/screening.json 기반 독립 리스트.
  * 홈/상세와 같은 whyrise-ratings 저장소를 사용해 관심·메모를 공유한다.
  */
-var WhyScreening2 = (function () {
+var WhyScreening = (function () {
     'use strict';
 
     var STORAGE_KEY = 'whyrise-ratings';
@@ -61,6 +61,14 @@ var WhyScreening2 = (function () {
         return s.substring(2, 4) + '.' + s.substring(4, 6) + '.' + s.substring(6, 8);
     }
 
+    function formatBuiltAt(value) {
+        if (!value) return '';
+        var s = String(value).trim();
+        var m = /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(s);
+        if (!m) return s.replace('T', ' ').substring(0, 16);
+        return m[1] + '.' + m[2] + '.' + m[3] + ' ' + m[4] + ':' + m[5];
+    }
+
     function formatRate(rate) {
         if (rate == null || isNaN(rate)) return '<span class="screening2-rate">-</span>';
         var n = Number(rate);
@@ -68,6 +76,12 @@ var WhyScreening2 = (function () {
         var arrow = n >= 0 ? '▲' : '▼';
         var cls = n >= 0 ? 'cell-change--up' : 'cell-change--down';
         return '<span class="' + cls + '">' + arrow + sign + n.toFixed(2) + '%</span>';
+    }
+
+    function formatRateText(rate) {
+        if (rate == null || isNaN(rate)) return '-';
+        var n = Number(rate);
+        return (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
     }
 
     function formatMcap(v) {
@@ -103,13 +117,13 @@ var WhyScreening2 = (function () {
         var c = getControls();
         return {
             query: normalize(c.search && c.search.value),
-            countKey: (c.countKey && c.countKey.value) || 'count_15',
+            countKey: (c.countKey && c.countKey.value) || 'count_10',
             minCount: parseInt((c.minCount && c.minCount.value) || '1', 10) || 1,
             market: (c.market && c.market.value) || '',
             sector: (c.sector && c.sector.value) || '',
             theme: (c.theme && c.theme.value) || '',
             mcap: (c.mcap && c.mcap.value) || '',
-            sort: (c.sort && c.sort.value) || 'count_15',
+            sort: (c.sort && c.sort.value) || 'count_10',
         };
     }
 
@@ -265,6 +279,7 @@ var WhyScreening2 = (function () {
             var meta = [];
             if (market) meta.push(esc(market));
             if (sector) meta.push(esc(sector));
+            meta.push('최근 ' + formatDate(row.latest_date) + ' ' + formatRateText(row.latest_change_rate));
             meta.push('시총 ' + formatMcap(row.market_cap));
             meta.push('평균 ' + (row.avg_rate != null ? Number(row.avg_rate).toFixed(2) + '%' : '-'));
 
@@ -316,9 +331,9 @@ var WhyScreening2 = (function () {
     function updateMeta(data) {
         var meta = $('screening2Meta');
         if (!meta) return;
-        var built = data && data.built_at ? String(data.built_at).replace('T', ' ').substring(0, 16) : '';
+        var built = formatBuiltAt(data && data.built_at);
         var total = data && data.total_tickers ? Number(data.total_tickers).toLocaleString('ko-KR') : state.tickers.length.toLocaleString('ko-KR');
-        meta.textContent = '전체 ' + total + '종목' + (built ? ' · 업데이트 ' + built : '');
+        meta.textContent = '인덱스 ' + total + '종목' + (built ? ' · 업데이트 ' + built : '');
     }
 
     function loadData() {
@@ -390,13 +405,13 @@ var WhyScreening2 = (function () {
         if (reset) {
             reset.addEventListener('click', function () {
                 if (controls.search) controls.search.value = '';
-                if (controls.countKey) controls.countKey.value = 'count_15';
+                if (controls.countKey) controls.countKey.value = 'count_10';
                 if (controls.minCount) controls.minCount.value = '1';
                 if (controls.market) controls.market.value = '';
                 if (controls.sector) controls.sector.value = '';
                 if (controls.theme) controls.theme.value = '';
                 if (controls.mcap) controls.mcap.value = '';
-                if (controls.sort) controls.sort.value = 'count_15';
+                if (controls.sort) controls.sort.value = 'count_10';
                 applyFilters();
             });
         }
@@ -540,11 +555,11 @@ var WhyScreening2 = (function () {
                 });
             }
         }).catch(function (err) {
-            showError('스크리닝2 데이터 로딩 실패: ' + (err.message || err));
+            showError('스크리닝 데이터 로딩 실패: ' + (err.message || err));
         });
     }
 
     return { init: init };
 })();
 
-document.addEventListener('DOMContentLoaded', WhyScreening2.init);
+document.addEventListener('DOMContentLoaded', WhyScreening.init);
