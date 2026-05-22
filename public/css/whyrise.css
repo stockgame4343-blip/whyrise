@@ -1791,12 +1791,6 @@ body:not(.admin-on) .event-card__edit { display: none; }
     letter-spacing: 0;
     color: var(--text-primary);
 }
-.screening-meta {
-    margin: 7px 0 0;
-    color: var(--text-muted);
-    font-size: 13px;
-    line-height: 1.45;
-}
 .screening-total {
     flex-shrink: 0;
     color: var(--text-primary);
@@ -1832,6 +1826,10 @@ body:not(.admin-on) .event-card__edit { display: none; }
 .screening-field select {
     padding: 0 32px 0 10px;
     cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: none;
+    text-overflow: ellipsis;
 }
 .screening-input:focus,
 .screening-field select:focus {
@@ -1885,9 +1883,23 @@ body:not(.admin-on) .event-card__edit { display: none; }
 }
 .screening-field {
     display: flex;
+    position: relative;
     min-width: 0;
     flex-direction: column;
     gap: 5px;
+}
+.screening-field::after {
+    content: "";
+    position: absolute;
+    right: 13px;
+    bottom: 15px;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    pointer-events: none;
+    transform: rotate(45deg);
+    transform-origin: center;
 }
 .screening-field span {
     color: var(--text-muted);
@@ -1900,6 +1912,17 @@ body:not(.admin-on) .event-card__edit { display: none; }
 }
 .screening-table-wrap {
     margin-top: 0;
+}
+.screening-list-meta {
+    display: flex;
+    justify-content: flex-end;
+    min-height: 18px;
+    margin: 8px 2px 0;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.35;
+    font-variant-numeric: tabular-nums;
 }
 .screening-table {
     min-width: 1180px;
@@ -1981,9 +2004,6 @@ body:not(.admin-on) .event-card__edit { display: none; }
     .screening-title {
         font-size: 24px;
     }
-    .screening-meta {
-        font-size: 12px;
-    }
     .screening-total {
         padding-top: 4px;
         font-size: 16px;
@@ -2054,6 +2074,11 @@ body:not(.admin-on) .event-card__edit { display: none; }
         min-height: 24px;
         padding: 2px 7px;
         font-size: 11px;
+    }
+    .screening-list-meta {
+        margin-top: 7px;
+        padding-right: 2px;
+        font-size: 10.5px;
     }
 }
 

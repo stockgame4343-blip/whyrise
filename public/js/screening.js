@@ -332,11 +332,10 @@ var WhyScreening = (function () {
     }
 
     function updateMeta(data) {
-        var meta = $('screeningMeta');
+        var meta = $('screeningUpdatedAt');
         if (!meta) return;
         var built = formatBuiltAt(data && data.built_at);
-        var total = data && data.total_tickers ? Number(data.total_tickers).toLocaleString('ko-KR') : state.tickers.length.toLocaleString('ko-KR');
-        meta.textContent = '인덱스 ' + total + '종목' + (built ? ' · 업데이트 ' + built : '');
+        meta.textContent = built || '';
     }
 
     function loadData() {
