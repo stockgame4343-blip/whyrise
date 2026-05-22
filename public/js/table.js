@@ -35,10 +35,17 @@ var WhyTable = (function () {
         if (!_sort.key) return rows.slice();
         var key = _sort.key;
         var arr = rows.slice();
-        // name 키 — 코스피/코스닥 정렬. asc: KOSPI 먼저, desc: KOSDAQ 먼저. 같은 시장 내 가나다.
+        // name 키 — 관심 모드면 별 개수 desc 우선, 그 다음 시장+가나다.
+        // 일반 모드: 코스피/코스닥 정렬. asc: KOSPI 먼저, desc: KOSDAQ 먼저. 같은 시장 내 가나다.
         if (key === 'name') {
             var marketDir = (_sort.dir === 'desc') ? -1 : 1;
+            var watchlist = !!_lastOpts.watchlistMode;
             arr.sort(function (a, b) {
+                if (watchlist) {
+                    var sa = (_lastRatings[a.ticker] || {}).stars || 0;
+                    var sb = (_lastRatings[b.ticker] || {}).stars || 0;
+                    if (sa !== sb) return sb - sa;   // 별 desc 우선
+                }
                 var ma = (a.market === 'KOSPI') ? 0 : 1;
                 var mb = (b.market === 'KOSPI') ? 0 : 1;
                 if (ma !== mb) return (ma - mb) * marketDir;

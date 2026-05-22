@@ -237,7 +237,11 @@ var WhyApp = (function () {
         }
         filtered.forEach(function (r, i) { r._displayRank = i + 1; });
 
-        WhyTable.render(filtered, state.ratings, { date: date, emptyMsg: emptyMsg });
+        WhyTable.render(filtered, state.ratings, {
+            date: date,
+            emptyMsg: emptyMsg,
+            watchlistMode: state.watchlistMode,
+        });
     }
 
     function loadDate(date) {
