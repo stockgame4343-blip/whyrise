@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -61,24 +61,24 @@
         </div>
     </header>
 
-    <main class="frame screening2-page">
-        <header class="screening2-head">
+    <main class="frame screening-page">
+        <header class="screening-head">
             <div>
-                <h1 class="screening2-title">스크리닝</h1>
-                <p class="screening2-meta" id="screening2Meta">데이터 준비 중</p>
+                <h1 class="screening-title">스크리닝</h1>
+                <p class="screening-meta" id="screeningMeta">데이터 준비 중</p>
             </div>
-            <div class="screening2-total" id="screening2Total">-</div>
+            <div class="screening-total" id="screeningTotal">-</div>
         </header>
 
-        <section class="screening2-controls glass" aria-label="스크리닝 필터">
-            <div class="screening2-search">
-                <input class="screening2-input" id="screening2Search" type="search" placeholder="종목명·코드·섹터·테마·이유 검색" autocomplete="off" spellcheck="false">
-                <button class="screening2-reset" id="screening2Reset" type="button">초기화</button>
+        <section class="screening-controls glass" aria-label="스크리닝 필터">
+            <div class="screening-search">
+                <input class="screening-input" id="screeningSearch" type="search" placeholder="종목명·코드·섹터·테마·이유 검색" autocomplete="off" spellcheck="false">
+                <button class="screening-reset" id="screeningReset" type="button">초기화</button>
             </div>
-            <div class="screening2-filter-grid">
-                <label class="screening2-field">
+            <div class="screening-filter-grid">
+                <label class="screening-field">
                     <span>기준 횟수</span>
-                    <select id="screening2CountKey">
+                    <select id="screeningCountKey">
                         <option value="count_10">+10% 이상</option>
                         <option value="count_15">+15% 이상</option>
                         <option value="count_20">+20% 이상</option>
@@ -86,38 +86,38 @@
                         <option value="count_recent">최근 30일</option>
                     </select>
                 </label>
-                <label class="screening2-field">
+                <label class="screening-field">
                     <span>최소</span>
-                    <select id="screening2MinCount">
+                    <select id="screeningMinCount">
                         <option value="1">1회 이상</option>
                         <option value="3">3회 이상</option>
                         <option value="5">5회 이상</option>
                         <option value="10">10회 이상</option>
                     </select>
                 </label>
-                <label class="screening2-field">
+                <label class="screening-field">
                     <span>시장</span>
-                    <select id="screening2Market">
+                    <select id="screeningMarket">
                         <option value="">전체</option>
                         <option value="KOSPI">KOSPI</option>
                         <option value="KOSDAQ">KOSDAQ</option>
                     </select>
                 </label>
-                <label class="screening2-field">
+                <label class="screening-field">
                     <span>섹터</span>
-                    <select id="screening2Sector">
+                    <select id="screeningSector">
                         <option value="">전체 섹터</option>
                     </select>
                 </label>
-                <label class="screening2-field screening2-field--wide">
+                <label class="screening-field screening-field--wide">
                     <span>테마</span>
-                    <select id="screening2Theme">
+                    <select id="screeningTheme">
                         <option value="">전체 테마</option>
                     </select>
                 </label>
-                <label class="screening2-field">
+                <label class="screening-field">
                     <span>시총</span>
-                    <select id="screening2Mcap">
+                    <select id="screeningMcap">
                         <option value="">전체</option>
                         <option value="under_1000">1천억 미만</option>
                         <option value="1000_10000">1천억~1조</option>
@@ -126,9 +126,9 @@
                         <option value="unknown">미집계</option>
                     </select>
                 </label>
-                <label class="screening2-field">
+                <label class="screening-field">
                     <span>정렬</span>
-                    <select id="screening2Sort">
+                    <select id="screeningSort">
                         <option value="count_10">+10% 횟수순</option>
                         <option value="count_15">+15% 횟수순</option>
                         <option value="count_20">+20% 횟수순</option>
@@ -143,11 +143,11 @@
             </div>
         </section>
 
-        <div class="message" id="screening2Message" style="display:none;"></div>
-        <div class="loading" id="screening2Loading" style="display:block;">스크리닝 데이터 로딩 중...</div>
+        <div class="message" id="screeningMessage" style="display:none;"></div>
+        <div class="loading" id="screeningLoading" style="display:block;">스크리닝 데이터 로딩 중...</div>
 
-        <div class="table-wrap glass screening2-table-wrap">
-            <table class="ranking-table whyrise-table screening2-table" id="screening2Table">
+        <div class="table-wrap glass screening-table-wrap">
+            <table class="ranking-table whyrise-table screening-table" id="screeningTable">
                 <thead>
                     <tr>
                         <th class="col-rank">#</th>
@@ -159,7 +159,7 @@
                         <th class="col-sector">섹터</th>
                     </tr>
                 </thead>
-                <tbody id="screening2Body"></tbody>
+                <tbody id="screeningBody"></tbody>
             </table>
         </div>
     </main>

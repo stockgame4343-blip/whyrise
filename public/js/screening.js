@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 스크리닝 — /data/screening.json 기반 독립 리스트.
  * 홈/상세와 같은 whyrise-ratings 저장소를 사용해 관심·메모를 공유한다.
  */
@@ -70,7 +70,7 @@ var WhyScreening = (function () {
     }
 
     function formatRate(rate) {
-        if (rate == null || isNaN(rate)) return '<span class="screening2-rate">-</span>';
+        if (rate == null || isNaN(rate)) return '<span class="screening-rate">-</span>';
         var n = Number(rate);
         var sign = n >= 0 ? '+' : '';
         var arrow = n >= 0 ? '▲' : '▼';
@@ -102,14 +102,14 @@ var WhyScreening = (function () {
 
     function getControls() {
         return {
-            search: $('screening2Search'),
-            countKey: $('screening2CountKey'),
-            minCount: $('screening2MinCount'),
-            market: $('screening2Market'),
-            sector: $('screening2Sector'),
-            theme: $('screening2Theme'),
-            mcap: $('screening2Mcap'),
-            sort: $('screening2Sort'),
+            search: $('screeningSearch'),
+            countKey: $('screeningCountKey'),
+            minCount: $('screeningMinCount'),
+            market: $('screeningMarket'),
+            sector: $('screeningSector'),
+            theme: $('screeningTheme'),
+            mcap: $('screeningMcap'),
+            sort: $('screeningSort'),
         };
     }
 
@@ -240,7 +240,7 @@ var WhyScreening = (function () {
 
     function countPillsHtml(row, activeKey) {
         var keys = ['count_10', 'count_15', 'count_20', 'count_limit', 'count_recent'];
-        var html = '<div class="screening2-counts">';
+        var html = '<div class="screening-counts">';
         keys.forEach(function (key) {
             var active = key === activeKey;
             html += '<span class="' + (active ? 'is-active' : '') + '">' +
@@ -251,15 +251,15 @@ var WhyScreening = (function () {
     }
 
     function render(rows, filters) {
-        var body = $('screening2Body');
-        var total = $('screening2Total');
-        var loading = $('screening2Loading');
+        var body = $('screeningBody');
+        var total = $('screeningTotal');
+        var loading = $('screeningLoading');
         if (loading) loading.style.display = 'none';
         if (total) total.textContent = rows.length.toLocaleString('ko-KR') + '종목';
         if (!body) return;
 
         if (!rows.length) {
-            body.innerHTML = '<tr><td colspan="7" class="screening2-empty">조건에 맞는 종목이 없습니다.</td></tr>';
+            body.innerHTML = '<tr><td colspan="7" class="screening-empty">조건에 맞는 종목이 없습니다.</td></tr>';
             return;
         }
 
@@ -292,11 +292,11 @@ var WhyScreening = (function () {
                 starRatingHtml(row.ticker) +
                 '</div></td>';
             html += '<td class="cell-reason"><div class="cell-reason__inline">' +
-                (theme ? '<button class="theme-tag screening2-theme-tag" type="button" data-theme="' + esc(theme) + '">' + esc(theme) + '</button>' : '') +
+                (theme ? '<button class="theme-tag screening-theme-tag" type="button" data-theme="' + esc(theme) + '">' + esc(theme) + '</button>' : '') +
                 '<span class="cell-reason__text">' + esc(reason) + '</span>' +
                 '</div></td>';
             html += '<td class="cell-counts">' + countPillsHtml(row, filters.countKey) + '</td>';
-            html += '<td class="cell-change"><span class="screening2-date">' + formatDate(row.latest_date) + '</span>' + formatRate(row.latest_change_rate) + '</td>';
+            html += '<td class="cell-change"><span class="screening-date">' + formatDate(row.latest_date) + '</span>' + formatRate(row.latest_change_rate) + '</td>';
             html += '<td class="cell-cap">' + formatMcap(row.market_cap) + '</td>';
             html += '<td class="cell-sector">' + esc(sector) + '</td>';
             html += '<td class="cell-meta-compact">' + meta.join(' · ') + '</td>';
@@ -306,8 +306,8 @@ var WhyScreening = (function () {
     }
 
     function populateSelects(data) {
-        var sectorSel = $('screening2Sector');
-        var themeSel = $('screening2Theme');
+        var sectorSel = $('screeningSector');
+        var themeSel = $('screeningTheme');
         if (sectorSel) {
             var sectorHtml = '<option value="">전체 섹터</option>';
             (data.sectors || []).forEach(function (sector) {
@@ -329,7 +329,7 @@ var WhyScreening = (function () {
     }
 
     function updateMeta(data) {
-        var meta = $('screening2Meta');
+        var meta = $('screeningMeta');
         if (!meta) return;
         var built = formatBuiltAt(data && data.built_at);
         var total = data && data.total_tickers ? Number(data.total_tickers).toLocaleString('ko-KR') : state.tickers.length.toLocaleString('ko-KR');
@@ -401,7 +401,7 @@ var WhyScreening = (function () {
             });
         }
 
-        var reset = $('screening2Reset');
+        var reset = $('screeningReset');
         if (reset) {
             reset.addEventListener('click', function () {
                 if (controls.search) controls.search.value = '';
@@ -418,7 +418,7 @@ var WhyScreening = (function () {
     }
 
     function bindTableEvents() {
-        var body = $('screening2Body');
+        var body = $('screeningBody');
         if (!body) return;
         body.addEventListener('click', function (e) {
             var star = e.target.closest('.star');
@@ -460,9 +460,9 @@ var WhyScreening = (function () {
                 return;
             }
 
-            var theme = e.target.closest('.screening2-theme-tag');
+            var theme = e.target.closest('.screening-theme-tag');
             if (theme) {
-                var themeSel = $('screening2Theme');
+                var themeSel = $('screeningTheme');
                 if (themeSel) {
                     themeSel.value = theme.getAttribute('data-theme') || '';
                     applyFilters();
@@ -528,8 +528,8 @@ var WhyScreening = (function () {
     }
 
     function showError(message) {
-        var msg = $('screening2Message');
-        var loading = $('screening2Loading');
+        var msg = $('screeningMessage');
+        var loading = $('screeningLoading');
         if (loading) loading.style.display = 'none';
         if (msg) {
             msg.textContent = message;
