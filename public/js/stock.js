@@ -168,12 +168,23 @@
         });
     }
 
+    // 모바일에서 finance.naver.com/item/news_read.naver?... 는 네이버가 m.stock.naver.com 404
+    // 페이지로 리다이렉트시킴. 모바일 UA 일 때만 n.news.naver.com/mnews/article 형식으로 변환.
+    // PC 는 기존 finance.naver.com 페이지 그대로.
+    function normalizeNewsLink(s) {
+        if (!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) return s;
+        if (s.indexOf('finance.naver.com/item/news_read') < 0) return s;
+        var a = /[?&]article_id=([0-9]+)/.exec(s);
+        var o = /[?&]office_id=([0-9]+)/.exec(s);
+        if (!a || !o) return s;
+        return 'https://n.news.naver.com/mnews/article/' + o[1] + '/' + a[1];
+    }
     function safeLink(href) {
         // javascript:/data: 스킴 차단
         if (!href) return '';
         var s = String(href).trim();
         if (/^(javascript|data|vbscript):/i.test(s)) return '';
-        return esc(s);
+        return esc(normalizeNewsLink(s));
     }
 
     function renderEventCard(ev, ticker) {

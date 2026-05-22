@@ -1971,3 +1971,286 @@ body:not(.admin-on) .event-card__edit { display: none; }
     }
 }
 
+/* ─────────────────────────────────────────────────────────────
+   스크리닝2 — /screening2.html
+   기존 홈 리스트와 같은 관심/메모 컨트롤을 쓰되, 횟수 칩과 상단 필터를 추가.
+   ───────────────────────────────────────────────────────────── */
+
+.screening2-page {
+    padding: 24px 0 44px;
+}
+.screening2-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 8px 0 14px;
+}
+.screening2-title {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.15;
+    font-weight: 850;
+    letter-spacing: 0;
+    color: var(--text-primary);
+}
+.screening2-meta {
+    margin: 7px 0 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.45;
+}
+.screening2-total {
+    flex-shrink: 0;
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 850;
+    font-variant-numeric: tabular-nums;
+}
+.screening2-controls {
+    padding: 14px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+}
+.screening2-search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.screening2-input,
+.screening2-field select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.3;
+}
+.screening2-input {
+    padding: 0 12px;
+}
+.screening2-field select {
+    padding: 0 32px 0 10px;
+    cursor: pointer;
+}
+.screening2-input:focus,
+.screening2-field select:focus {
+    outline: none;
+    border-color: var(--toss-blue, #3182F6);
+}
+.screening2-reset {
+    flex: 0 0 auto;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.screening2-reset:hover {
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+.screening2-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(100px, 1fr));
+    gap: 8px;
+    align-items: end;
+}
+.screening2-field {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 5px;
+}
+.screening2-field span {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+.screening2-field--wide {
+    grid-column: span 2;
+}
+.screening2-table-wrap {
+    margin-top: 0;
+}
+.screening2-table {
+    min-width: 1180px;
+}
+.screening2-table .col-counts,
+.screening2-table td.cell-counts {
+    min-width: 230px;
+}
+.screening2-table td.cell-counts {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+.screening2-counts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.screening2-counts span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 22px;
+    padding: 2px 7px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.screening2-counts span.is-active {
+    border-color: rgba(49, 130, 246, .45);
+    background: rgba(49, 130, 246, .12);
+    color: var(--accent);
+}
+.screening2-counts b {
+    color: var(--text-primary);
+    font-weight: 850;
+    font-variant-numeric: tabular-nums;
+}
+.screening2-table td.cell-change {
+    white-space: nowrap;
+    text-align: right;
+}
+.screening2-date {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+}
+.screening2-theme-tag {
+    border: 0;
+    font-family: inherit;
+}
+.screening2-empty {
+    text-align: center;
+    padding: 60px 12px !important;
+    color: var(--text-muted);
+}
+
+@media (max-width: 1100px) {
+    .screening2-filter-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .screening2-field--wide {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .screening2-page {
+        padding: 16px 0 34px;
+    }
+    .screening2-head {
+        align-items: flex-start;
+        margin: 2px 0 12px;
+    }
+    .screening2-title {
+        font-size: 24px;
+    }
+    .screening2-meta {
+        font-size: 12px;
+    }
+    .screening2-total {
+        padding-top: 4px;
+        font-size: 16px;
+    }
+    .screening2-controls {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    .screening2-search {
+        flex-direction: column;
+    }
+    .screening2-reset {
+        width: 100%;
+    }
+    .screening2-filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .screening2-field--wide {
+        grid-column: 1 / -1;
+    }
+    .screening2-table {
+        min-width: 0;
+        width: 100%;
+    }
+    .screening2-table tr {
+        grid-template-columns: auto minmax(0, 1fr) auto !important;
+        gap: 8px 10px !important;
+    }
+    .screening2-table td.cell-rank {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .screening2-table td.cell-name {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .screening2-table td.cell-change {
+        grid-column: 3;
+        grid-row: 1;
+        align-self: center;
+        text-align: right;
+    }
+    .screening2-table td.cell-reason {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+    .screening2-table td.cell-counts {
+        display: block !important;
+        grid-column: 1 / -1;
+        grid-row: 3;
+        min-width: 0;
+        padding: 6px 0 0 !important;
+    }
+    .screening2-table td.cell-meta-compact {
+        grid-column: 1 / -1;
+        grid-row: 4;
+    }
+    .screening2-table td.cell-cap,
+    .screening2-table td.cell-sector {
+        display: none !important;
+    }
+    .screening2-counts {
+        gap: 5px;
+    }
+    .screening2-counts span {
+        min-height: 24px;
+        padding: 2px 7px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 430px) {
+    .screening2-head {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .screening2-total {
+        padding-top: 0;
+    }
+    .screening2-filter-grid {
+        grid-template-columns: 1fr;
+    }
+    .screening2-table tr {
+        grid-template-columns: 30px minmax(0, 1fr) auto !important;
+    }
+    .screening2-date {
+        font-size: 10.5px;
+    }
+}
+
