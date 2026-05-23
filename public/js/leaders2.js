@@ -20,7 +20,9 @@
     var $stack = document.getElementById('leaders2Stack');
     var $loading = document.getElementById('leaders2Loading');
     var $date = document.getElementById('leaders2Date');
+    var $liveWrap = document.getElementById('leaders2LiveWrap');
     var $live = document.getElementById('leaders2Live');
+    var $ringFg = document.getElementById('leaders2RingFg');
     var $prev = document.getElementById('leaders2DatePrev');
     var $next = document.getElementById('leaders2DateNext');
     var $back = document.getElementById('leaders2Back');
@@ -28,6 +30,7 @@
     var $marketControls = document.getElementById('leaders2MarketControls');
     var frames = {};
     var syncTimer = null;
+    var pendingDate = '';
 
     var state = readState();
 
@@ -37,6 +40,7 @@
             metric: 'sector',
             market: 'ALL',
             period: '1d',
+            date: '',
         };
         try {
             var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
@@ -48,6 +52,7 @@
         if (!LEADER_METRICS[base.metric] && !MARKET_METRICS[base.metric]) base.metric = 'sector';
         if (['ALL', 'KOSPI', 'KOSDAQ'].indexOf(base.market) < 0) base.market = 'ALL';
         if (['1d', '1w', '1m', '3m', '1y'].indexOf(base.period) < 0) base.period = '1d';
+        if (!/^\d{8}$/.test(base.date)) base.date = '';
         return base;
     }
 
@@ -199,15 +204,57 @@
         } catch (err) {}
     }
 
-    function syncChrome() {
+    function getBridge() {
         var frame = frames[engineForState()];
+        try {
+            return frame && frame.contentWindow && frame.contentWindow.WhyRiseTmapBridge;
+        } catch (err) {
+            return null;
+        }
+    }
+
+    function applySelectedDate(bridge) {
+        if (!bridge || !state.date || !bridge.getDates || !bridge.gotoDate) return;
+        if (pendingDate && pendingDate === state.date) return;
+        var dates = bridge.getDates() || [];
+        if (dates.indexOf(state.date) < 0) return;
+        if (bridge.getCurrentDate && bridge.getCurrentDate() === state.date) return;
+        pendingDate = state.date;
+        bridge.gotoDate(state.date);
+    }
+
+    function syncChrome() {
+        var bridge = getBridge();
+        var frame = frames[engineForState()];
+        var chrome = bridge && bridge.getChrome ? bridge.getChrome() : null;
         if (!frame) return;
-        if ($date) $date.textContent = textInFrame(frame, '#tmapDate', '—');
-        if ($live) $live.textContent = textInFrame(frame, '#tmapLiveLabel', 'LIVE');
-        if ($back) $back.hidden = !visibleInFrame(frame, '#tmapBack');
+        if (bridge) applySelectedDate(bridge);
+
+        if (bridge && bridge.getCurrentDate) {
+            var currentDate = bridge.getCurrentDate();
+            var dates = bridge.getDates ? (bridge.getDates() || []) : [];
+            if (pendingDate) {
+                if (currentDate === pendingDate || dates.indexOf(pendingDate) < 0) pendingDate = '';
+            }
+            if (!pendingDate && currentDate && currentDate !== state.date) {
+                state.date = currentDate;
+                saveState();
+            }
+        }
+
+        if ($date) $date.textContent = chrome && chrome.dateText ? chrome.dateText : textInFrame(frame, '#tmapDate', '—');
+        if ($live) $live.textContent = chrome && chrome.liveText ? chrome.liveText : textInFrame(frame, '#tmapLiveLabel', 'LIVE');
+        if ($liveWrap && chrome) $liveWrap.classList.toggle('tmap-live--idle', !!chrome.liveIdle);
+        if ($ringFg && chrome) {
+            $ringFg.style.transition = chrome.ringTransition || '';
+            $ringFg.style.strokeDashoffset = chrome.ringDashoffset || '';
+        }
+        if ($prev && chrome) $prev.disabled = !!chrome.prevDisabled;
+        if ($next && chrome) $next.disabled = !!chrome.nextDisabled;
+        if ($back) $back.hidden = chrome ? !chrome.backVisible : !visibleInFrame(frame, '#tmapBack');
         if ($loading) {
             var loaded = frame.classList.contains('is-loaded');
-            var innerLoading = visibleInFrame(frame, '#tmapLoading');
+            var innerLoading = chrome ? chrome.loadingVisible : visibleInFrame(frame, '#tmapLoading');
             $loading.style.display = loaded && !innerLoading ? 'none' : '';
         }
     }
@@ -222,15 +269,18 @@
         var engine = engineForState();
         var frame = frames[engine];
         if (!frame || !frame.classList.contains('is-loaded')) return;
+        var bridge = getBridge();
+        if (!bridge) return;
 
         if (engine === 'flow') {
-            clickInFrame(frame, '[data-mode="' + state.metric + '"]');
-            clickInFrame(frame, '[data-view="' + state.view + '"]');
+            if (bridge.setMode) bridge.setMode(state.metric);
+            if (bridge.setView) bridge.setView(state.view);
         } else {
-            clickInFrame(frame, '[data-sort="' + state.metric + '"]');
-            clickInFrame(frame, '[data-filter="' + state.market + '"]');
-            clickInFrame(frame, '[data-period="' + state.period + '"]');
+            if (bridge.setSort) bridge.setSort(state.metric);
+            if (bridge.setFilter) bridge.setFilter(state.market);
+            if (bridge.setPeriod) bridge.setPeriod(state.period);
         }
+        applySelectedDate(bridge);
 
         nudgeFrame(frame);
         syncChrome();
@@ -259,11 +309,51 @@
         showActiveFrame();
     }
 
-    function relay(selector) {
+    function dateAtBridgeIndex(bridge) {
+        if (!bridge || !bridge.getDates || !bridge.getDateIndex) return '';
+        var dates = bridge.getDates() || [];
+        var index = bridge.getDateIndex();
+        return dates[index] || '';
+    }
+
+    function relayAction(action, fallbackSelector) {
+        var bridge = getBridge();
         var frame = frames[engineForState()];
-        if (!frame) return;
-        clickInFrame(frame, selector);
+        if (bridge && bridge[action]) {
+            var isDateNav = action === 'prevDate' || action === 'nextDate';
+            if (isDateNav) pendingDate = '';
+            bridge[action]();
+            if (isDateNav) {
+                var targetDate = dateAtBridgeIndex(bridge);
+                if (targetDate) {
+                    state.date = targetDate;
+                    pendingDate = targetDate;
+                    saveState();
+                }
+            }
+        } else if (frame && fallbackSelector) {
+            clickInFrame(frame, fallbackSelector);
+        }
         setTimeout(syncChrome, 120);
+    }
+
+    function openDatePicker() {
+        var bridge = getBridge();
+        if (!bridge || !window.DatePicker || !bridge.getDates) return;
+        var dates = bridge.getDates() || [];
+        if (!dates.length) return;
+        DatePicker.open({
+            trigger: $date,
+            dates: dates,
+            current: (bridge.getCurrentDate && bridge.getCurrentDate()) || state.date || dates[0],
+            onSelect: function (picked) {
+                state.date = picked;
+                pendingDate = picked;
+                saveState();
+                if (bridge.gotoDate) bridge.gotoDate(picked);
+                setTimeout(syncChrome, 120);
+            },
+        });
     }
 
     function bindControls() {
@@ -292,10 +382,11 @@
             });
         });
 
-        if ($prev) $prev.addEventListener('click', function () { relay('#tmapDatePrev'); });
-        if ($next) $next.addEventListener('click', function () { relay('#tmapDateNext'); });
-        if ($back) $back.addEventListener('click', function () { relay('#tmapBack'); });
-        if ($save) $save.addEventListener('click', function () { relay('#tmapSave'); });
+        if ($prev) $prev.addEventListener('click', function () { relayAction('prevDate', '#tmapDatePrev'); });
+        if ($next) $next.addEventListener('click', function () { relayAction('nextDate', '#tmapDateNext'); });
+        if ($date) $date.addEventListener('click', openDatePicker);
+        if ($back) $back.addEventListener('click', function () { relayAction('reset', '#tmapBack'); });
+        if ($save) $save.addEventListener('click', function () { relayAction('save', '#tmapSave'); });
     }
 
     function init() {

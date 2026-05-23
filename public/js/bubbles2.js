@@ -713,8 +713,42 @@
         img.src = url;
     }
 
+    function exposeBridge() {
+        window.WhyRiseTmapBridge = {
+            kind: 'bubble',
+            getDates: function () { return state.availableDates.slice(); },
+            getCurrentDate: function () { return state.currentDate; },
+            getDateIndex: function () { return state.dateIndex; },
+            gotoDate: function (date) {
+                var idx = state.availableDates.indexOf(date);
+                if (idx >= 0) gotoDateIndex(idx);
+            },
+            prevDate: function () { gotoDateIndex(state.dateIndex + 1); },
+            nextDate: function () { gotoDateIndex(state.dateIndex - 1); },
+            setFilter: setFilter,
+            setPeriod: setPeriod,
+            setSort: setSort,
+            reset: function () {},
+            save: savePNG,
+            getChrome: function () {
+                return {
+                    dateText: $date ? $date.textContent : '',
+                    liveText: $liveLabel ? $liveLabel.textContent : '',
+                    liveIdle: $live ? $live.classList.contains('tmap-live--idle') : true,
+                    prevDisabled: $datePrev ? !!$datePrev.disabled : false,
+                    nextDisabled: $dateNext ? !!$dateNext.disabled : false,
+                    backVisible: false,
+                    loadingVisible: $loading ? $loading.style.display !== 'none' : false,
+                    ringDashoffset: $ringFg ? $ringFg.style.strokeDashoffset : '',
+                    ringTransition: $ringFg ? $ringFg.style.transition : '',
+                };
+            },
+        };
+    }
+
     // ── 초기화 ─────────────────────────────────────────
     function init() {
+        exposeBridge();
         bindThemeToggle();
         $marketTabs.forEach(function (b) {
             b.addEventListener('click', function () { setFilter(b.getAttribute('data-filter')); });

@@ -19,7 +19,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260523a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260524e">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260524f">
 </head>
 <body class="page-treemap page-leaders2">
     <script>
@@ -60,18 +60,18 @@
     <div class="tmap-bar leaders2-bar">
         <div class="tmap-bar__inner leaders2-bar__inner">
             <div class="tmap-bar__left">
-                <span class="tmap-live">
+                <span class="tmap-live" id="leaders2LiveWrap">
                     <span class="tmap-live__ring">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <circle class="tmap-live__ring-bg" cx="12" cy="12" r="9"/>
-                            <circle class="tmap-live__ring-fg" cx="12" cy="12" r="9"/>
+                            <circle class="tmap-live__ring-fg" id="leaders2RingFg" cx="12" cy="12" r="9"/>
                         </svg>
                     </span>
                     <span class="tmap-live__label" id="leaders2Live">LIVE</span>
                 </span>
                 <div class="tmap-datenav" id="leaders2DateNav">
                     <button class="tmap-datenav__btn" id="leaders2DatePrev" type="button" aria-label="이전 거래일">‹</button>
-                    <span class="tmap-date" id="leaders2Date">—</span>
+                    <span class="tmap-date" id="leaders2Date" title="클릭하여 거래일 선택">—</span>
                     <button class="tmap-datenav__btn" id="leaders2DateNext" type="button" aria-label="다음 거래일">›</button>
                 </div>
                 <button class="tmap-back" id="leaders2Back" type="button" hidden>← 전체</button>
@@ -119,7 +119,8 @@
     </main>
 
     <script src="/js/nav.js?v=20260524c"></script>
-    <script src="/js/leaders2.js?v=20260524d"></script>
+    <script src="/js/date-picker.js?v=20260524f"></script>
+    <script src="/js/leaders2.js?v=20260524f"></script>
     <script src="/js/visitor.js?v=20260523a"></script>
 </body>
 </html>
