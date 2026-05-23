@@ -522,7 +522,6 @@ body {
     flex: 0 0 auto;
     min-height: 17px;
     padding: 1px 6px;
-    border: 1px solid var(--glass-border);
     border-radius: 4px;
     background: var(--glass-bg);
     color: var(--text-muted);
@@ -645,7 +644,6 @@ body {
     align-items: center;
     justify-content: center;
     background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
     color: var(--text-muted);
     padding: 2px 7px;
     border-radius: 4px;
@@ -3057,11 +3055,11 @@ body:not(.admin-on) .event-card__edit { display: none; }
     margin-bottom: 18px;
 }
 .report-page--compact .report-section {
-    margin-bottom: 36px;
+    margin-bottom: 46px;
 }
 .report-page--compact .report-section__head {
     align-items: center;
-    margin-bottom: 13px;
+    margin-bottom: 16px;
 }
 .report-page--compact .report-section__title {
     font-size: 16px;

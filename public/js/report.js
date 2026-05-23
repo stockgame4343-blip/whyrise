@@ -3,9 +3,9 @@
  *
  * 기준:
  * - 주도 섹터/핫 테마: 그날 +15% 이상 종목 중 3종목 이상 그룹만 표시
- * - 오늘의 대장주: +20% 이상 상승 종목 중 거래대금 우선, 비슷하면 상승률까지 종합
+ * - 오늘의 대장: +20% 이상 상승 종목 중 거래대금 우선, 비슷하면 상승률까지 종합
  * - 52주 신고가: +10% 이상 상승하면서 해당 날짜에 52주 신고가를 기록한 종목
- * - 급등 후 조정 후 반등: +15% 이상 급등 후 고점 이후 저점 -20% 이상, 저점 대비 현재가 +15% 이상
+ * - 조정 후 반등 시도: +15% 이상 급등 후 저점 -20% 이상, 저점 대비 현재가 +15% 이상, 이전 고점 미회복
  */
 var WhyReport = (function () {
     'use strict';
@@ -367,7 +367,8 @@ var WhyReport = (function () {
             if (lowDrawdownPct(pb) < PB_DROP_MIN) return false;
             if (normalizedBouncePct(pb) < PB_BOUNCE_MIN) return false;
             var prices = pullbackPrices(pb);
-            return prices.peak > 0 && prices.current > 0;
+            if (!(prices.peak > 0 && prices.current > 0)) return false;
+            return prices.current < prices.peak;
         }).sort(function (a, b) {
             return normalizedBouncePct(b) - normalizedBouncePct(a) ||
                 lowDrawdownPct(b) - lowDrawdownPct(a);
@@ -398,7 +399,7 @@ var WhyReport = (function () {
             '<span class="report-leader-tile__label">' + esc(label) + '</span>' +
             '<a class="report-leader-tile__name" href="' + esc(screeningUrl(type, group.key)) + '">' + esc(group.key) + '</a>' +
             '<span class="report-leader-tile__meta">' + group.count + '종목 · 평균 ' + pct(group.avgRate, 1) + ' · 거래 ' + fmtAmount(group.totalVolume) + '</span>' +
-            (topText ? '<span class="report-leader-tile__sub">대표 ' + topText + '</span>' : '') +
+            (topText ? '<span class="report-leader-tile__sub">[대표종목] ' + topText + '</span>' : '') +
         '</article>';
     }
 
@@ -406,12 +407,14 @@ var WhyReport = (function () {
         var el = $('leaderCard');
         if (!el) return;
         if (!row) {
-            el.innerHTML = '<div class="report-empty">오늘 기준에 맞는 대장주가 없습니다.</div>';
+            el.innerHTML = '<div class="report-empty">오늘 기준에 맞는 대장이 없습니다.</div>';
             return;
         }
         var theme = themeOf(row);
         var reason = reasonOf(row);
         var sectorTheme = [row.sector, theme].filter(Boolean).join(' · ');
+        var detailTag = theme || row.sector || '대장';
+        var detailText = '[' + detailTag + '] ' + (reason || sectorTheme || '거래대금 상위 종목');
 
         el.innerHTML = '<article class="report-leader-card ' + ratingClass(row.ticker) + '" data-ticker="' + esc(row.ticker) + '">' +
             '<div class="report-leader-grid">' +
@@ -419,7 +422,7 @@ var WhyReport = (function () {
                     '<span class="report-leader-tile__label">대장주</span>' +
                     stockNameHtml(row, 'report-leader-card__name') +
                     '<span class="report-leader-tile__meta"><strong class="cell-change--up">' + pct(row.change_rate) + '</strong> · 거래 ' + fmtAmount(row.trading_value) + '</span>' +
-                    '<span class="report-leader-tile__sub">' + esc(reason || sectorTheme || '거래대금 상위 종목') + '</span>' +
+                    '<span class="report-leader-tile__sub">' + esc(detailText) + '</span>' +
                 '</section>' +
                 leaderGroupTile(sectorGroup, 'sector', '대장섹터', '주도 섹터 없음') +
                 leaderGroupTile(themeGroup, 'theme', '대장테마', '핫 테마 없음') +
@@ -526,7 +529,7 @@ var WhyReport = (function () {
             return '<li class="report-move-row ' + ratingClass(pb.ticker) + '" data-ticker="' + esc(pb.ticker) + '">' +
                 '<div class="report-move-row__stock">' + stockNameHtml(row, 'report-move-row__name') + '</div>' +
                 '<div class="report-move-row__metrics">' +
-                    '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.peak) + '</strong><em>고점</em></span><small class="report-rate--down">고점 대비 ' + pctDown(drawdown) + '</small></span>' +
+                    '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.peak) + '</strong><em>고점</em></span><small class="report-rate--down">현재가 대비 ' + pctDown(drawdown) + '</small></span>' +
                     '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.low) + '</strong><em>저점</em></span><small class="report-rate--down">고점 대비 ' + pctDown(lowDrop) + '</small></span>' +
                     '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.current) + '</strong><em>현재</em></span><small class="cell-change--up">저점 대비 ' + pct(bounce, 1) + '</small></span>' +
                 '</div>' +
