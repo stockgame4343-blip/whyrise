@@ -7,7 +7,7 @@
 (function () {
     'use strict';
 
-    var STORAGE_KEY = 'whyrise-leaders2-state';
+    var STORAGE_KEY = 'whyrise-leaders2-state-v2';
     var LEADER_METRICS = { sector: 1, theme: 1 };
     var MARKET_METRICS = { mcap: 1, volume: 1, change: 1 };
 
@@ -36,7 +36,7 @@
 
     function readState() {
         var base = {
-            view: 'bubble',
+            view: 'tree',
             metric: 'sector',
             market: 'ALL',
             period: '1d',
@@ -48,7 +48,7 @@
                 if (saved[key]) base[key] = saved[key];
             });
         } catch (err) {}
-        if (base.view !== 'bubble' && base.view !== 'tree') base.view = 'bubble';
+        if (base.view !== 'bubble' && base.view !== 'tree') base.view = 'tree';
         if (!LEADER_METRICS[base.metric] && !MARKET_METRICS[base.metric]) base.metric = 'sector';
         if (['ALL', 'KOSPI', 'KOSDAQ'].indexOf(base.market) < 0) base.market = 'ALL';
         if (['1d', '1w', '1m', '3m', '1y'].indexOf(base.period) < 0) base.period = '1d';
@@ -197,10 +197,9 @@
 
     function nudgeFrame(frame) {
         try {
-            frame.contentWindow.dispatchEvent(new frame.contentWindow.Event('resize'));
             setTimeout(function () {
                 frame.contentWindow.dispatchEvent(new frame.contentWindow.Event('resize'));
-            }, 180);
+            }, 80);
         } catch (err) {}
     }
 
@@ -282,12 +281,13 @@
         }
         applySelectedDate(bridge);
 
-        nudgeFrame(frame);
         syncChrome();
     }
 
     function showActiveFrame() {
         var engine = engineForState();
+        var existingActiveFrame = frames[engine];
+        var wasActive = existingActiveFrame && existingActiveFrame.classList.contains('is-active');
         Object.keys(ENGINES).forEach(function (name) {
             var frame = frames[name];
             if (!frame) return;
@@ -300,6 +300,7 @@
         activeFrame.setAttribute('aria-hidden', 'false');
         if ($loading) $loading.style.display = activeFrame.classList.contains('is-loaded') ? 'none' : '';
         driveActiveFrame();
+        if (wasActive === false && activeFrame.classList.contains('is-loaded')) nudgeFrame(activeFrame);
         beginSync();
     }
 

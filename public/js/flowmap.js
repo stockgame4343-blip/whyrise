@@ -66,13 +66,22 @@
     var $liveLabel = document.getElementById('tmapLiveLabel');
     var $ringFg = document.querySelector('.tmap-live__ring-fg');
 
+    function initialView() {
+        try {
+            var view = new URLSearchParams(window.location.search).get('view');
+            if (view === 'tree' || view === 'bubble') return view;
+            if (new URLSearchParams(window.location.search).get('embed') === 'leaders2') return 'tree';
+        } catch (err) {}
+        return 'bubble';
+    }
+
     var state = {
         rankings: [],
         availableDates: [],
         dateIndex: 0,
         currentDate: '',
         mode: 'sector',
-        view: 'bubble',
+        view: initialView(),
         zoomedGroup: null,    // sector/theme 이름 — 버블 모드의 그룹 dive 상태
     };
 
@@ -774,6 +783,11 @@
         });
         render();
     }
+    function syncInitialControls() {
+        $viewTabs.forEach(function (b) {
+            b.classList.toggle('is-active', b.getAttribute('data-view') === state.view);
+        });
+    }
     function bindThemeToggle() {
         var btn = document.getElementById('themeToggle');
         if (!btn) return;
@@ -952,6 +966,7 @@
     function init() {
         exposeBridge();
         bindThemeToggle();
+        syncInitialControls();
         $modeTabs.forEach(function (b) {
             b.addEventListener('click', function () { setMode(b.getAttribute('data-mode')); });
         });
