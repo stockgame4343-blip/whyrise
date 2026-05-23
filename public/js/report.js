@@ -3,7 +3,7 @@
  *
  * 기준:
  * - 주도 섹터/핫 테마: 그날 +15% 이상 종목 중 3종목 이상 그룹만 표시
- * - 오늘의 대장주: 거래대금과 상승률을 중심으로 1종목 선정
+ * - 오늘의 대장주: +20% 이상 상승 종목 중 거래대금 우선, 비슷하면 상승률까지 종합
  * - 52주 신고가: +10% 이상 상승하면서 해당 날짜에 52주 신고가를 기록한 종목
  * - 급등 후 조정 후 반등: +15% 이상 급등 후 고점 이후 저점 -20% 이상, 저점 대비 현재가 +15% 이상
  */
@@ -15,6 +15,7 @@ var WhyReport = (function () {
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
     var RISE_CUTOFF = 15;
+    var LEADER_CUTOFF = 20;
     var HIGH52_CUTOFF = 10;
     var GROUP_MIN = 3;
     var GROUP_TOP_STOCKS = 4;
@@ -85,6 +86,23 @@ var WhyReport = (function () {
         if (n == null || isNaN(n)) return '-';
         n = Math.abs(Number(n));
         return '-' + n.toFixed(1) + '%';
+    }
+
+    function formatChangeRate(rate) {
+        if (rate == null || isNaN(rate)) return '-';
+        var sign = rate >= 0 ? '+' : '';
+        var arrow = rate >= 0 ? '▲' : '▼';
+        var cls = rate >= 0 ? 'cell-change--up' : 'cell-change--down';
+        return '<span class="' + cls + '">' + arrow + sign + Number(rate).toFixed(2) + '%</span>';
+    }
+
+    function shortenTheme(name, maxLen) {
+        if (!name) return name;
+        maxLen = maxLen || 14;
+        var short = String(name).replace(/\(.*?\)/g, '').trim();
+        if (!short) return name;
+        if (short.length > maxLen) short = short.substring(0, maxLen) + '…';
+        return short;
     }
 
     function formatDate(yyyymmdd) {
@@ -262,58 +280,34 @@ var WhyReport = (function () {
         return { sector: sectorMap, theme: themeMap };
     }
 
-    function rankScores(rows, valueFn) {
-        var sorted = rows.slice().sort(function (a, b) {
-            return valueFn(b) - valueFn(a);
-        });
-        var out = {};
-        var denom = Math.max(1, sorted.length - 1);
-        sorted.forEach(function (row, idx) {
-            out[row.ticker] = 1 - (idx / denom);
-        });
-        return out;
-    }
-
-    function turnoverRatio(row) {
-        var cap = num(row.market_cap);
-        return cap > 0 ? num(row.trading_value) / cap : 0;
-    }
-
-    function leaderScore(row, maps, scores) {
-        var sectorCount = maps.sector[row.sector] ? maps.sector[row.sector].count : 1;
-        var bestThemeCount = 1;
-        themeTags(row).forEach(function (tag) {
-            if (maps.theme[tag]) bestThemeCount = Math.max(bestThemeCount, maps.theme[tag].count);
-        });
-        var groupCount = Math.max(sectorCount, bestThemeCount);
-        var groupScore = groupCount >= GROUP_MIN ? Math.min(1, (groupCount - GROUP_MIN + 1) / 8) : 0;
-        return (scores.value[row.ticker] || 0) * 45 +
-            (scores.change[row.ticker] || 0) * 40 +
-            (scores.turnover[row.ticker] || 0) * 10 +
-            groupScore * 5;
-    }
-
     function pickLeader(rows, sectors, themes) {
-        if (!rows.length) return null;
+        var candidates = (rows || []).filter(function (row) {
+            return num(row.change_rate) >= LEADER_CUTOFF && num(row.trading_value) > 0;
+        });
+        if (!candidates.length) return null;
         var maps = groupMaps(sectors, themes);
-        var scores = {
-            value: rankScores(rows, function (row) { return num(row.trading_value); }),
-            change: rankScores(rows, function (row) { return num(row.change_rate); }),
-            turnover: rankScores(rows, turnoverRatio),
-        };
-        var sorted = rows.slice().sort(function (a, b) {
-            return leaderScore(b, maps, scores) - leaderScore(a, maps, scores) ||
+        var maxVolume = Math.max.apply(null, candidates.map(function (row) { return num(row.trading_value); }));
+        var volumePeers = candidates.filter(function (row) {
+            return num(row.trading_value) >= maxVolume * 0.7;
+        });
+        var maxChange = Math.max.apply(null, volumePeers.map(function (row) { return num(row.change_rate); }));
+        function score(row) {
+            var volumeScore = maxVolume > 0 ? num(row.trading_value) / maxVolume : 0;
+            var changeScore = maxChange > 0 ? num(row.change_rate) / maxChange : 0;
+            return volumeScore * 70 + changeScore * 30;
+        }
+        var sorted = volumePeers.slice().sort(function (a, b) {
+            return score(b) - score(a) ||
                 num(b.trading_value) - num(a.trading_value) ||
                 num(b.change_rate) - num(a.change_rate);
         });
         var leader = Object.assign({}, sorted[0]);
-        leader._leaderScore = leaderScore(sorted[0], maps, scores);
+        leader._leaderScore = score(sorted[0]);
         leader._sectorCount = maps.sector[leader.sector] ? maps.sector[leader.sector].count : 1;
         leader._themeCount = 1;
         themeTags(leader).forEach(function (tag) {
             if (maps.theme[tag]) leader._themeCount = Math.max(leader._themeCount, maps.theme[tag].count);
         });
-        leader._turnoverRatio = turnoverRatio(leader);
         return leader;
     }
 
@@ -400,25 +394,25 @@ var WhyReport = (function () {
         }
         var theme = themeOf(row);
         var reason = reasonOf(row);
-        var chips = [];
-        chips.push('<span>상승률 ' + pct(row.change_rate) + '</span>');
-        if (row.trading_value) chips.push('<span>거래대금 ' + fmtAmount(row.trading_value) + '</span>');
-        if (row._turnoverRatio) chips.push('<span>거래대금/시총 ' + pct(row._turnoverRatio * 100, 1) + '</span>');
-        if (row.market_cap) chips.push('<span>시총 ' + fmtAmount(row.market_cap) + '</span>');
-        if (theme) chips.push('<span>' + esc(theme) + '</span>');
+        var sectorTheme = [row.sector, theme].filter(Boolean).join(' · ');
 
         el.innerHTML = '<article class="report-leader-card ' + ratingClass(row.ticker) + '" data-ticker="' + esc(row.ticker) + '">' +
             '<div class="report-leader-card__main">' +
                 '<div class="report-leader-card__stock">' +
                     stockNameHtml(row, 'report-leader-card__name') +
-                    '<p class="report-leader-card__reason">' + esc(reason || '거래대금과 상승률 중심으로 선정') + '</p>' +
+                    '<p class="report-leader-card__reason">' + esc(reason || sectorTheme || '거래대금 상위 종목') + '</p>' +
                 '</div>' +
                 '<div class="report-leader-card__rate">' +
                     '<strong class="cell-change--up">' + pct(row.change_rate) + '</strong>' +
-                    '<span>거래 ' + fmtAmount(row.trading_value) + '</span>' +
+                    '<span>거래대금 ' + fmtAmount(row.trading_value) + '</span>' +
                 '</div>' +
             '</div>' +
-            '<div class="report-leader-card__chips">' + chips.join('') + '</div>' +
+            '<dl class="report-leader-card__facts">' +
+                '<div><dt>거래대금</dt><dd>' + fmtAmount(row.trading_value) + '</dd></div>' +
+                '<div><dt>상승률</dt><dd class="cell-change--up">' + pct(row.change_rate) + '</dd></div>' +
+                '<div><dt>시가총액</dt><dd>' + fmtAmount(row.market_cap) + '</dd></div>' +
+                '<div><dt>섹터/테마</dt><dd>' + esc(sectorTheme || '-') + '</dd></div>' +
+            '</dl>' +
         '</article>';
     }
 
@@ -429,7 +423,10 @@ var WhyReport = (function () {
                 miniIndicatorsHtml(row.ticker) +
                 starRatingHtml(row.ticker) +
             '</span>' +
-            '<strong class="cell-change--up">' + pct(row.change_rate, 1) + '</strong>' +
+            '<span class="report-group-stock__meta">' +
+                '<strong class="cell-change--up">' + pct(row.change_rate, 1) + '</strong>' +
+                '<span>거래 ' + fmtAmount(row.trading_value) + '</span>' +
+            '</span>' +
         '</span>';
     }
 
@@ -463,31 +460,38 @@ var WhyReport = (function () {
         var el = $('high52wList');
         if (!el) return;
         if (!rows.length) {
-            el.innerHTML = '<li class="report-empty">오늘 52주 신고가를 돌파한 종목이 없습니다.</li>';
+            el.innerHTML = '<tr><td colspan="7" class="report-empty">오늘 52주 신고가를 돌파한 종목이 없습니다.</td></tr>';
             return;
         }
-        el.innerHTML = rows.map(function (row) {
-            var high = row.high_price || row.high_52w || row.close_price;
-            var theme = themeOf(row);
+        el.innerHTML = rows.map(function (row, i) {
+            var tEsc = esc(row.ticker);
+            var rowClasses = [ratingClass(row.ticker)];
+            if (num(row.change_rate) >= 29.9) rowClasses.push('row--limit-up');
+            var theme = shortenTheme(themeOf(row));
             var reason = reasonOf(row);
             var meta = [];
             if (row.market) meta.push(esc(row.market));
             if (row.sector) meta.push(esc(row.sector));
             if (row.market_cap) meta.push('시총 ' + fmtAmount(row.market_cap));
             if (row.trading_value) meta.push('거래 ' + fmtAmount(row.trading_value));
-            return '<li class="report-home-row ' + ratingClass(row.ticker) + '" data-ticker="' + esc(row.ticker) + '">' +
-                stockNameHtml(row, 'report-home-row__name') +
-                '<div class="report-home-row__reason">' +
+            return '<tr class="' + rowClasses.join(' ').trim() + '" data-ticker="' + tEsc + '">' +
+                '<td class="cell-rank">' + (i + 1) + '</td>' +
+                '<td class="cell-name"><div class="cell-name__wrap">' +
+                    '<a href="' + stockUrl(row.ticker) + '" class="cell-name__link" data-ticker="' + tEsc + '">' + esc(row.name || row.ticker) + '</a>' +
+                    miniIndicatorsHtml(row.ticker) +
+                    '<span class="cell-name__market">' + esc(row.market || '-') + '</span>' +
+                    starRatingHtml(row.ticker) +
+                '</div></td>' +
+                '<td class="cell-reason"><div class="cell-reason__inline">' +
                     (theme ? '<span class="theme-tag">' + esc(theme) + '</span>' : '') +
-                    '<span class="report-home-row__reason-text">' + esc(reason || '52주 신고가 돌파') + '</span>' +
-                    '<span class="report-home-row__high">고가 ' + fmtPrice(high) + '</span>' +
-                '</div>' +
-                '<strong class="report-home-row__rate cell-change--up">' + pct(row.change_rate) + '</strong>' +
-                '<span class="report-home-row__volume">' + fmtAmount(row.trading_value) + '</span>' +
-                '<span class="report-home-row__cap">' + fmtAmount(row.market_cap) + '</span>' +
-                '<span class="report-home-row__sector">' + esc(row.sector || '-') + '</span>' +
-                '<span class="report-home-row__meta">' + meta.join(' · ') + '</span>' +
-            '</li>';
+                    '<span class="cell-reason__text">' + esc(reason || '52주 신고가 돌파') + '</span>' +
+                '</div></td>' +
+                '<td class="cell-change">' + formatChangeRate(row.change_rate) + '</td>' +
+                '<td class="cell-volume">' + fmtAmount(row.trading_value) + '</td>' +
+                '<td class="cell-cap">' + fmtAmount(row.market_cap) + '</td>' +
+                '<td class="cell-sector">' + esc(row.sector || '-') + '</td>' +
+                '<td class="cell-meta-compact">' + meta.join(' · ') + '</td>' +
+            '</tr>';
         }).join('');
     }
 
@@ -495,12 +499,13 @@ var WhyReport = (function () {
         var el = $('pullbackList');
         if (!el) return;
         if (!rows.length) {
-            el.innerHTML = '<li class="report-empty">조건에 맞는 급등 후 조정 후 반등 종목이 없습니다.</li>';
+            el.innerHTML = '<li class="report-empty">조건에 맞는 조정 후 반등 시도 종목이 없습니다.</li>';
             return;
         }
         el.innerHTML = rows.map(function (pb) {
             var p = pullbackPrices(pb);
             var drawdown = currentDrawdownPct(pb);
+            var lowDrop = lowDrawdownPct(pb);
             var bounce = normalizedBouncePct(pb);
             var row = {
                 ticker: pb.ticker,
@@ -510,13 +515,9 @@ var WhyReport = (function () {
             return '<li class="report-move-row ' + ratingClass(pb.ticker) + '" data-ticker="' + esc(pb.ticker) + '">' +
                 '<div class="report-move-row__stock">' + stockNameHtml(row, 'report-move-row__name') + '</div>' +
                 '<div class="report-move-row__metrics">' +
-                    '<span>고점 <strong>' + fmtPrice(p.peak) + '</strong></span>' +
-                    '<span>저점 <strong>' + fmtPrice(p.low) + '</strong></span>' +
-                    '<span>현재 <strong>' + fmtPrice(p.current) + '</strong></span>' +
-                '</div>' +
-                '<div class="report-move-row__rates">' +
-                    '<strong class="report-rate--down">' + pctDown(drawdown) + '</strong>' +
-                    '<strong class="cell-change--up">저점 대비 ' + pct(bounce, 1) + '</strong>' +
+                    '<span class="report-move-metric"><em>고점</em><strong>' + fmtPrice(p.peak) + '</strong><small class="report-rate--down">고점 대비 ' + pctDown(drawdown) + '</small></span>' +
+                    '<span class="report-move-metric"><em>저점</em><strong>' + fmtPrice(p.low) + '</strong><small class="report-rate--down">고점 대비 ' + pctDown(lowDrop) + '</small></span>' +
+                    '<span class="report-move-metric"><em>현재</em><strong>' + fmtPrice(p.current) + '</strong><small class="cell-change--up">저점 대비 ' + pct(bounce, 1) + '</small></span>' +
                 '</div>' +
             '</li>';
         }).join('');
