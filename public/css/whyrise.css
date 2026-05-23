@@ -3560,105 +3560,18 @@ body:not(.admin-on) .event-card__edit { display: none; }
 }
 
 /* ─────────────────────────────────────────────────────────────
-   주도주2 — visualizer shell
+   주도주2 — tmap style visualizer shell
    ───────────────────────────────────────────────────────────── */
-.leaders2-page {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100dvh - 58px);
-    padding-top: 22px;
-    padding-bottom: 28px;
+body.page-leaders2 .top-bar {
+    flex-shrink: 0;
 }
-.leaders2-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-    margin: 0 0 18px;
-}
-.leaders2-title-block {
-    display: flex;
-    flex-direction: column;
+.page-leaders2 .leaders2-bar__inner {
+    padding: 8px 24px;
     gap: 10px;
-    min-width: 180px;
-}
-.leaders2-title {
-    margin: 0;
-    font-size: 30px;
-    font-weight: 900;
-    line-height: 1.1;
-    color: var(--text-primary);
-}
-.leaders2-datebar {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--text-secondary);
-    font-size: 12px;
-    font-weight: 800;
-    font-feature-settings: 'tnum';
-}
-.leaders2-live {
-    min-width: 42px;
-    color: var(--text-muted);
-}
-.leaders2-date {
-    min-width: 122px;
-    color: var(--text-secondary);
-    text-align: center;
-}
-.leaders2-datebtn,
-.leaders2-back,
-.leaders2-save {
-    appearance: none;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg-tertiary, rgba(127,127,127,.10));
-    color: var(--text-secondary);
-    cursor: pointer;
-    font: inherit;
-    font-weight: 900;
-}
-.leaders2-datebtn {
-    width: 30px;
-    height: 30px;
-    line-height: 1;
-}
-.leaders2-back {
-    min-height: 30px;
-    padding: 0 10px;
-    font-size: 12px;
-}
-.leaders2-save {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    width: 36px;
-    height: 36px;
-}
-.leaders2-datebtn:hover,
-.leaders2-back:hover,
-.leaders2-save:hover {
-    color: var(--text-primary);
-    background: var(--bg-hover, rgba(127,127,127,.18));
 }
 .leaders2-controls {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    gap: 8px;
     flex-wrap: wrap;
-    min-width: 0;
-}
-.leaders2-tabs {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg-secondary);
+    justify-content: flex-end;
     min-width: 0;
 }
 .leaders2-tabs--metric {
@@ -3670,40 +3583,8 @@ body:not(.admin-on) .event-card__edit { display: none; }
 .leaders2-extra[hidden] {
     display: none;
 }
-.leaders2-tab {
-    appearance: none;
-    border: 0;
-    border-radius: 6px;
-    background: transparent;
-    color: var(--text-secondary);
-    cursor: pointer;
-    font: inherit;
-    font-size: 13px;
-    font-weight: 800;
-    line-height: 1;
-    min-height: 32px;
-    padding: 0 14px;
-    white-space: nowrap;
-}
-.leaders2-tab:hover {
-    color: var(--text-primary);
-    background: rgba(255,255,255,.08);
-}
-[data-theme="light"] .leaders2-tab:hover {
-    background: rgba(0,0,0,.05);
-}
-.leaders2-tab.is-active {
-    background: var(--text-primary);
-    color: var(--bg-primary);
-}
 .leaders2-shell {
-    flex: 1 1 auto;
-    position: relative;
-    min-height: 540px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg-primary);
+    min-height: 0;
 }
 .leaders2-stack {
     position: absolute;
@@ -3726,56 +3607,16 @@ body:not(.admin-on) .event-card__edit { display: none; }
     opacity: 1;
 }
 .leaders2-loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
     z-index: 3;
-    transform: translate(-50%, -50%);
-    color: var(--text-muted);
-    font-size: 14px;
-    font-weight: 800;
 }
 @media (max-width: 768px) {
-    .leaders2-page {
-        min-height: calc(100dvh - 57px);
-        padding-top: 18px;
-        padding-bottom: 18px;
-    }
-    .leaders2-head {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-        margin: 0 0 14px;
-    }
-    .leaders2-title-block,
-    .leaders2-controls {
-        width: 100%;
-    }
-    .leaders2-datebar {
-        width: 100%;
-        flex-wrap: wrap;
+    .page-leaders2 .leaders2-bar__inner {
+        padding: 8px 12px;
     }
     .leaders2-controls {
+        width: 100%;
         justify-content: flex-start;
         gap: 6px;
     }
-    .leaders2-title {
-        font-size: 24px;
-    }
-    .leaders2-tabs {
-        width: 100%;
-        overflow-x: auto;
-        justify-content: flex-start;
-        -webkit-overflow-scrolling: touch;
-    }
-    .leaders2-tab {
-        flex: 1 0 auto;
-        min-height: 34px;
-        padding: 0 12px;
-    }
-    .leaders2-shell {
-        min-height: 500px;
-    }
 }
-
 
