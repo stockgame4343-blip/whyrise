@@ -385,7 +385,24 @@ var WhyReport = (function () {
             '</span>';
     }
 
-    function renderLeader(row) {
+    function leaderGroupTile(group, type, label, emptyText) {
+        if (!group) {
+            return '<article class="report-leader-tile report-leader-tile--empty">' +
+                '<span class="report-leader-tile__label">' + esc(label) + '</span>' +
+                '<strong>' + esc(emptyText) + '</strong>' +
+            '</article>';
+        }
+        var top = group.stocks && group.stocks[0];
+        var topText = top ? esc(top.name || top.ticker) + ' ' + pct(top.change_rate, 1) : '';
+        return '<article class="report-leader-tile">' +
+            '<span class="report-leader-tile__label">' + esc(label) + '</span>' +
+            '<a class="report-leader-tile__name" href="' + esc(screeningUrl(type, group.key)) + '">' + esc(group.key) + '</a>' +
+            '<span class="report-leader-tile__meta">' + group.count + '종목 · 평균 ' + pct(group.avgRate, 1) + ' · 거래 ' + fmtAmount(group.totalVolume) + '</span>' +
+            (topText ? '<span class="report-leader-tile__sub">대표 ' + topText + '</span>' : '') +
+        '</article>';
+    }
+
+    function renderLeader(row, sectorGroup, themeGroup) {
         var el = $('leaderCard');
         if (!el) return;
         if (!row) {
@@ -397,22 +414,16 @@ var WhyReport = (function () {
         var sectorTheme = [row.sector, theme].filter(Boolean).join(' · ');
 
         el.innerHTML = '<article class="report-leader-card ' + ratingClass(row.ticker) + '" data-ticker="' + esc(row.ticker) + '">' +
-            '<div class="report-leader-card__main">' +
-                '<div class="report-leader-card__stock">' +
+            '<div class="report-leader-grid">' +
+                '<section class="report-leader-tile report-leader-tile--stock">' +
+                    '<span class="report-leader-tile__label">대장주</span>' +
                     stockNameHtml(row, 'report-leader-card__name') +
-                    '<p class="report-leader-card__reason">' + esc(reason || sectorTheme || '거래대금 상위 종목') + '</p>' +
-                '</div>' +
-                '<div class="report-leader-card__rate">' +
-                    '<strong class="cell-change--up">' + pct(row.change_rate) + '</strong>' +
-                    '<span>거래대금 ' + fmtAmount(row.trading_value) + '</span>' +
-                '</div>' +
+                    '<span class="report-leader-tile__meta"><strong class="cell-change--up">' + pct(row.change_rate) + '</strong> · 거래 ' + fmtAmount(row.trading_value) + '</span>' +
+                    '<span class="report-leader-tile__sub">' + esc(reason || sectorTheme || '거래대금 상위 종목') + '</span>' +
+                '</section>' +
+                leaderGroupTile(sectorGroup, 'sector', '대장섹터', '주도 섹터 없음') +
+                leaderGroupTile(themeGroup, 'theme', '대장테마', '핫 테마 없음') +
             '</div>' +
-            '<dl class="report-leader-card__facts">' +
-                '<div><dt>거래대금</dt><dd>' + fmtAmount(row.trading_value) + '</dd></div>' +
-                '<div><dt>상승률</dt><dd class="cell-change--up">' + pct(row.change_rate) + '</dd></div>' +
-                '<div><dt>시가총액</dt><dd>' + fmtAmount(row.market_cap) + '</dd></div>' +
-                '<div><dt>섹터/테마</dt><dd>' + esc(sectorTheme || '-') + '</dd></div>' +
-            '</dl>' +
         '</article>';
     }
 
@@ -515,9 +526,9 @@ var WhyReport = (function () {
             return '<li class="report-move-row ' + ratingClass(pb.ticker) + '" data-ticker="' + esc(pb.ticker) + '">' +
                 '<div class="report-move-row__stock">' + stockNameHtml(row, 'report-move-row__name') + '</div>' +
                 '<div class="report-move-row__metrics">' +
-                    '<span class="report-move-metric"><em>고점</em><strong>' + fmtPrice(p.peak) + '</strong><small class="report-rate--down">고점 대비 ' + pctDown(drawdown) + '</small></span>' +
-                    '<span class="report-move-metric"><em>저점</em><strong>' + fmtPrice(p.low) + '</strong><small class="report-rate--down">고점 대비 ' + pctDown(lowDrop) + '</small></span>' +
-                    '<span class="report-move-metric"><em>현재</em><strong>' + fmtPrice(p.current) + '</strong><small class="cell-change--up">저점 대비 ' + pct(bounce, 1) + '</small></span>' +
+                    '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.peak) + '</strong><em>고점</em></span><small class="report-rate--down">고점 대비 ' + pctDown(drawdown) + '</small></span>' +
+                    '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.low) + '</strong><em>저점</em></span><small class="report-rate--down">고점 대비 ' + pctDown(lowDrop) + '</small></span>' +
+                    '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.current) + '</strong><em>현재</em></span><small class="cell-change--up">저점 대비 ' + pct(bounce, 1) + '</small></span>' +
                 '</div>' +
             '</li>';
         }).join('');
@@ -534,7 +545,7 @@ var WhyReport = (function () {
         var highRows = deriveHigh52w(day.rankings || [], date);
         var pullbacks = derivePullbacks(day.pullbacks || []);
 
-        renderLeader(leader);
+        renderLeader(leader, sectors[0], themes[0]);
         renderGroups(sectors, 'sectorGroups', 'sector', '3종목 이상 몰린 주도 섹터가 없습니다.');
         renderGroups(themes, 'themeGroups', 'theme', '3종목 이상 몰린 핫 테마가 없습니다.');
         renderHigh52w(highRows);
