@@ -19,7 +19,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260523a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260524f">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260524i">
 </head>
 <body class="page-treemap page-leaders2">
     <script>
@@ -88,18 +88,18 @@
                     <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-metric="volume">거래량</button>
                     <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-metric="change">상승률</button>
                 </div>
-                <div class="leaders2-extra" id="leaders2MarketControls" hidden>
+                <div class="leaders2-extra is-disabled" id="leaders2MarketControls" aria-disabled="true">
                     <div class="tmap-tabs" role="tablist" aria-label="시장">
-                        <button class="tmap-tab is-active" type="button" role="tab" aria-selected="true" data-market="ALL">전체</button>
-                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-market="KOSPI">코스피</button>
-                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-market="KOSDAQ">코스닥</button>
+                        <button class="tmap-tab is-active" type="button" role="tab" aria-selected="true" aria-disabled="true" data-market="ALL" disabled>전체</button>
+                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" aria-disabled="true" data-market="KOSPI" disabled>코스피</button>
+                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" aria-disabled="true" data-market="KOSDAQ" disabled>코스닥</button>
                     </div>
                     <div class="tmap-tabs" role="tablist" aria-label="기간">
-                        <button class="tmap-tab is-active" type="button" role="tab" aria-selected="true" data-period="1d">1일</button>
-                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-period="1w">1주</button>
-                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-period="1m">1달</button>
-                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-period="3m">3달</button>
-                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-period="1y">1년</button>
+                        <button class="tmap-tab is-active" type="button" role="tab" aria-selected="true" aria-disabled="true" data-period="1d" disabled>1일</button>
+                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" aria-disabled="true" data-period="1w" disabled>1주</button>
+                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" aria-disabled="true" data-period="1m" disabled>1달</button>
+                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" aria-disabled="true" data-period="3m" disabled>3달</button>
+                        <button class="tmap-tab" type="button" role="tab" aria-selected="false" aria-disabled="true" data-period="1y" disabled>1년</button>
                     </div>
                 </div>
                 <button class="tmap-save" id="leaders2Save" type="button" aria-label="이미지 저장" title="이미지 저장">
@@ -120,7 +120,7 @@
 
     <script src="/js/nav.js?v=20260524c"></script>
     <script src="/js/date-picker.js?v=20260524f"></script>
-    <script src="/js/leaders2.js?v=20260524h"></script>
+    <script src="/js/leaders2.js?v=20260524i"></script>
     <script src="/js/visitor.js?v=20260523a"></script>
 </body>
 </html>

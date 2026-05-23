@@ -3583,6 +3583,18 @@ body.page-leaders2 .top-bar {
 .leaders2-extra[hidden] {
     display: none;
 }
+.leaders2-extra.is-disabled .tmap-tabs {
+    opacity: .42;
+}
+.leaders2-extra.is-disabled .tmap-tab {
+    cursor: not-allowed;
+}
+.leaders2-extra.is-disabled .tmap-tab.is-active {
+    box-shadow: none;
+}
+.leaders2-extra .tmap-tab:disabled {
+    pointer-events: none;
+}
 .leaders2-shell {
     min-height: 0;
 }

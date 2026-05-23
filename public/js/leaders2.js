@@ -12,7 +12,7 @@
     var MARKET_METRICS = { mcap: 1, volume: 1, change: 1 };
 
     var ENGINES = {
-        flow: '/flowmap.html?embed=leaders2&v=20260524h',
+        flow: '/flowmap.html?embed=leaders2&v=20260524i',
         bubble: '/bubbles2.html?embed=leaders2',
         tree: '/treemap.html?embed=leaders2',
     };
@@ -108,12 +108,25 @@
         });
     }
 
+    function setDisabled(selector, disabled) {
+        queryAll(selector).forEach(function (btn) {
+            btn.disabled = disabled;
+            btn.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+        });
+    }
+
     function updateControls() {
+        var marketEnabled = isMarketMetric();
         setActive('[data-view]', 'data-view', state.view);
         setActive('[data-metric]', 'data-metric', state.metric);
         setActive('[data-market]', 'data-market', state.market);
         setActive('[data-period]', 'data-period', state.period);
-        if ($marketControls) $marketControls.hidden = !isMarketMetric();
+        setDisabled('[data-market], [data-period]', !marketEnabled);
+        if ($marketControls) {
+            $marketControls.hidden = false;
+            $marketControls.classList.toggle('is-disabled', !marketEnabled);
+            $marketControls.setAttribute('aria-disabled', marketEnabled ? 'false' : 'true');
+        }
     }
 
     function embedCss() {
@@ -372,12 +385,14 @@
         });
         queryAll('[data-market]').forEach(function (btn) {
             btn.addEventListener('click', function () {
+                if (!isMarketMetric()) return;
                 state.market = btn.getAttribute('data-market');
                 applyState();
             });
         });
         queryAll('[data-period]').forEach(function (btn) {
             btn.addEventListener('click', function () {
+                if (!isMarketMetric()) return;
                 state.period = btn.getAttribute('data-period');
                 applyState();
             });
