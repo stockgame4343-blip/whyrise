@@ -1,29 +1,42 @@
 /**
- * 리포트 페이지 — 사전 집계된 report-summary.json fetch + 기간 토글.
+ * 리포트 페이지 — 일별 시황 (/report.html)
  *
- * 데이터: scripts/build-history.py build_report_summary() 가 빌드 끝에 생성.
- *   { periods: { d1, w1, m1, m3, y1 }, total_tickers, built_at, ... + y1 top-level 미러 }
+ * stock-rise raw URL 일별 데이터(rankings + pullbacks) + whyrise 자체 cards/index.json.
+ * 별점·메모는 localStorage `whyrise-ratings` + WhyRatingsSync 로 다른 페이지와 공유.
  */
-(function () {
-    var PERIODS = ['d1', 'w1', 'm1', 'm3', 'y1'];
-    var PERIOD_LABEL = { d1: '1일', w1: '1주', m1: '1달', m3: '3달', y1: '1년' };
+var WhyReport = (function () {
+    'use strict';
 
-    var state = { period: 'd1', summary: null };
-    // 차단 종목 — 모든 페이지에서 가려짐 (에이프로젠바이오로직스/졸스/에이프로젠)
+    var STORAGE_KEY = 'whyrise-ratings';
+    var THEME_KEY = 'theme';
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
-    // 라이브 polling — 홈과 동일 60s (장중 + 탭 visible)
-    var POLL_MS = 60 * 1000;
-    var KST_OFFSET = 9 * 60;
-    var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
-    function isMarketOpenKST() {
-        var k = new Date(Date.now() + KST_OFFSET * 60000);
-        var day = k.getUTCDay();
-        if (day === 0 || day === 6) return false;
-        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
-        return mins >= OPEN_MIN && mins < CLOSE_MIN;
-    }
 
-    /** HTML 이스케이프 — XSS 방어. */
+    // 풀백 사용자 필터 임계값
+    var PB_PEAK_MIN = 15;       // 피크 상승률 ≥15%
+    var PB_DROP_MIN = 20;       // 고점 대비 낙폭 ≥20%
+    var PB_BOUNCE_MIN = 15;     // 저점 대비 반등 ≥15%
+
+    // 섹터·테마 카드 표시 수 (PC 가로 3, 1줄. 더 많으면 페이저)
+    var CARDS_PER_PAGE_PC = 3;
+    var CARDS_PER_PAGE_MOBILE = 2;
+    var SECTOR_THEME_TOP_TICKERS = 3;
+
+    var CARDS_TYPE_LABEL = { pre: '장전', leader: '주도주', closing: '장마감', close: '장마감' };
+
+    var state = {
+        dates: [],
+        dateIndex: 0,
+        day: null,           // { rankings, pullbacks, collected_at, ... }
+        cardsIndex: null,
+        cardsList: [],
+        cardsModalIdx: 0,
+        ratings: {},
+        sectorPage: 0,
+        themePage: 0,
+    };
+
+    function $(id) { return document.getElementById(id); }
+
     function esc(s) {
         if (s == null) return '';
         return String(s)
@@ -31,343 +44,629 @@
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
+    function fmt(n) { return (n != null && !isNaN(n)) ? Number(n).toLocaleString('ko-KR') : '-'; }
+
+    function pct(n) {
+        if (n == null || isNaN(n)) return '-';
+        return (n >= 0 ? '+' : '') + Number(n).toFixed(2) + '%';
+    }
+
+    function fmtAmount(n) {
+        if (n == null || n === 0) return '-';
+        if (n >= 1e12) return (n / 1e12).toFixed(1) + '조';
+        if (n >= 1e8) return Math.round(n / 1e8) + '억';
+        if (n >= 1e4) return Math.round(n / 1e4) + '만';
+        return n.toLocaleString('ko-KR');
+    }
+
+    function formatDate(yyyymmdd) {
+        if (!yyyymmdd || String(yyyymmdd).length !== 8) return String(yyyymmdd || '-');
+        var s = String(yyyymmdd);
+        var y = s.slice(0, 4), m = parseInt(s.slice(4, 6), 10), d = parseInt(s.slice(6, 8), 10);
+        var DAYS = ['일','월','화','수','목','금','토'];
+        var dt = new Date(+y, m - 1, d);
+        return y + '.' + s.slice(4, 6) + '.' + s.slice(6, 8) + ' (' + DAYS[dt.getDay()] + ')';
+    }
+
+    function isMobile() {
+        return window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
+    }
+
+    // ─── 별점·메모 ────────────────────────────────────
+
+    function loadRatings() {
+        try { state.ratings = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+        catch (e) { state.ratings = {}; }
+    }
+    function saveRatings() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.ratings)); }
+        catch (e) {}
+        if (window.WhyRatingsSync) window.WhyRatingsSync.push(state.ratings);
+    }
+
+    function starRatingHtml(ticker) {
+        var r = state.ratings[ticker] || {};
+        var stars = r.stars || 0;
+        var excluded = !!r.excluded;
+        var hasMemo = !!r.memo;
+        var t = esc(ticker);
+        var html = '<span class="ctrl-wrap">';
+        html += '<button class="ctrl-toggle" type="button" data-ticker="' + t + '" aria-label="평가">⋯</button>';
+        html += '<div class="float-controls" data-ticker="' + t + '">';
+        html += '<span class="star-rating" data-ticker="' + t + '">';
+        for (var i = 1; i <= 5; i++) {
+            html += '<span class="star' + (i <= stars ? ' star--active' : '') + '" data-star="' + i + '">★</span>';
+        }
+        html += '</span>';
+        html += '<button class="exclude-btn' + (excluded ? ' exclude-btn--active' : '') + '" data-ticker="' + t + '" title="제외">✕</button>';
+        html += '<button class="memo-btn' + (hasMemo ? ' memo-btn--has' : '') + '" data-ticker="' + t + '" title="메모">✎</button>';
+        html += '</div></span>';
+        return html;
+    }
+
+    function miniIndicatorsHtml(ticker) {
+        var r = state.ratings[ticker] || {};
+        var stars = r.stars || 0;
+        var excluded = !!r.excluded;
+        var hasMemo = !!r.memo;
+        if (!(stars > 0 || excluded || hasMemo)) return '';
+        var html = '<span class="mini-indicators">';
+        if (stars > 0) html += '<span class="mini-star">★' + stars + '</span>';
+        if (excluded) html += '<span class="mini-exclude">✕</span>';
+        if (hasMemo) html += '<span class="mini-memo">✎</span>';
+        html += '</span>';
+        return html;
+    }
+
+    // ─── 데이터 derive ────────────────────────────────
+
+    function deriveSummary(rankings) {
+        var count = rankings.length;
+        var sumRate = 0, limit = 0, volume = 0;
+        for (var i = 0; i < rankings.length; i++) {
+            var r = rankings[i];
+            sumRate += Number(r.change_rate || 0);
+            if (Number(r.change_rate || 0) >= 29.9) limit++;
+            volume += Number(r.trading_value || 0);
+        }
+        return {
+            count: count,
+            avg_rate: count ? sumRate / count : 0,
+            limit: limit,
+            volume: volume,
+        };
+    }
+
+    function deriveGroups(rankings, getKey) {
+        var groups = {};
+        for (var i = 0; i < rankings.length; i++) {
+            var r = rankings[i];
+            if (BLOCKED_TICKERS[r.ticker]) continue;
+            var key = getKey(r);
+            if (!key) continue;
+            var rate = Number(r.change_rate || 0);
+            if (!groups[key]) {
+                groups[key] = { key: key, count: 0, sum_rate: 0, tickers: [] };
+            }
+            groups[key].count++;
+            groups[key].sum_rate += rate;
+            groups[key].tickers.push(r);
+        }
+        var out = Object.keys(groups).map(function (k) {
+            var g = groups[k];
+            // 상승률 desc 상위 3 종목
+            g.tickers.sort(function (a, b) {
+                return Number(b.change_rate || 0) - Number(a.change_rate || 0);
+            });
+            g.top = g.tickers.slice(0, SECTOR_THEME_TOP_TICKERS);
+            g.avg_rate = g.count ? g.sum_rate / g.count : 0;
+            return g;
+        });
+        out.sort(function (a, b) { return b.sum_rate - a.sum_rate || b.count - a.count; });
+        return out;
+    }
+
+    function deriveSectors(rankings) {
+        return deriveGroups(rankings, function (r) { return (r.sector || '').trim(); });
+    }
+    function deriveThemes(rankings) {
+        return deriveGroups(rankings, function (r) {
+            var t = (r.theme_tag || '').trim();
+            if (t) return t;
+            if (Array.isArray(r.theme_tags) && r.theme_tags.length) {
+                return String(r.theme_tags[0] || '').trim();
+            }
+            return '';
+        });
+    }
+
+    function deriveHigh52w(rankings) {
+        return rankings.filter(function (r) {
+            return r && r.high_52w === true && !BLOCKED_TICKERS[r.ticker];
+        }).sort(function (a, b) {
+            return Number(b.change_rate || 0) - Number(a.change_rate || 0);
+        });
+    }
+
+    function derivePullbacks(pullbacks) {
+        if (!Array.isArray(pullbacks)) return [];
+        return pullbacks.filter(function (pb) {
+            if (!pb || BLOCKED_TICKERS[pb.ticker]) return false;
+            if (pb.bounceBack !== true) return false;
+            var dropPct = Number(pb.dropPct || 0);
+            var bouncePct = Number(pb.bouncePct || 0);
+            if (dropPct < PB_DROP_MIN) return false;
+            if (bouncePct < PB_BOUNCE_MIN / 100 && bouncePct < PB_BOUNCE_MIN) {
+                // bouncePct 는 0~1 (소수) 또는 0~100 (백분율) 두 형식 가능 — 양쪽 모두 컷
+                return false;
+            }
+            // 피크 상승률 — reason "+XX.X% 급등" 추출
+            var m = /\+(\d+(?:\.\d+)?)%/.exec(pb.reason || '');
+            var peakRate = m ? parseFloat(m[1]) : 0;
+            if (peakRate < PB_PEAK_MIN) return false;
+            return true;
+        }).sort(function (a, b) {
+            return Number(b.bouncePct || 0) - Number(a.bouncePct || 0);
+        });
+    }
+
+    // ─── 렌더 ────────────────────────────────────────
+
+    function renderSummary(s) {
+        $('sumCount').textContent = fmt(s.count);
+        $('sumAvgRate').textContent = pct(s.avg_rate);
+        $('sumLimit').textContent = fmt(s.limit);
+        $('sumVolume').textContent = fmtAmount(s.volume);
+    }
+
+    function getPageSize() {
+        return isMobile() ? CARDS_PER_PAGE_MOBILE : CARDS_PER_PAGE_PC;
+    }
+
+    function renderGroupCards(groups, gridId, pagerId, pageKey, label) {
+        var $grid = $(gridId);
+        var $pager = $(pagerId);
+        if (!$grid) return;
+        if (!groups.length) {
+            $grid.innerHTML = '<div class="report-empty">' + label + ' 정보가 부족합니다.</div>';
+            if ($pager) $pager.textContent = '';
+            return;
+        }
+        var size = getPageSize();
+        var totalPages = Math.max(1, Math.ceil(groups.length / size));
+        var page = Math.min(state[pageKey] || 0, totalPages - 1);
+        state[pageKey] = page;
+        var slice = groups.slice(page * size, (page + 1) * size);
+
+        var html = slice.map(function (g) {
+            var topHtml = g.top.map(function (r) {
+                var t = esc(r.ticker);
+                return '<a class="report-card-stock" href="/stock/' + t + '" data-ticker="' + t + '">' +
+                    '<span class="report-card-stock__name">' + esc(r.name) + '</span>' +
+                    '<span class="report-card-stock__rate ' +
+                    (Number(r.change_rate || 0) >= 0 ? 'cell-change--up' : 'cell-change--down') + '">' +
+                    pct(r.change_rate) + '</span>' +
+                    '</a>';
+            }).join('');
+            return '<div class="report-card-group">' +
+                '<div class="report-card-group__head">' +
+                '<span class="report-card-group__name">' + esc(g.key) + '</span>' +
+                '<span class="report-card-group__stat">' +
+                pct(g.avg_rate) + ' · ' + g.count + '종목' +
+                '</span></div>' +
+                '<div class="report-card-group__list">' + topHtml + '</div>' +
+                '</div>';
+        }).join('');
+        $grid.innerHTML = html;
+
+        if ($pager) {
+            if (totalPages <= 1) {
+                $pager.innerHTML = '';
+            } else {
+                $pager.innerHTML =
+                    '<button type="button" class="pager-btn" data-dir="prev" data-key="' + pageKey + '" aria-label="이전"' +
+                    (page === 0 ? ' disabled' : '') + '>‹</button>' +
+                    '<span class="pager-info">' + (page + 1) + ' / ' + totalPages + '</span>' +
+                    '<button type="button" class="pager-btn" data-dir="next" data-key="' + pageKey + '" aria-label="다음"' +
+                    (page >= totalPages - 1 ? ' disabled' : '') + '>›</button>';
+            }
+        }
+    }
+
+    function renderHigh52w(rows) {
+        var $el = $('high52wList');
+        if (!$el) return;
+        if (!rows.length) {
+            $el.innerHTML = '<li class="report-empty">그날 52주 신고가를 갱신한 종목이 없습니다.</li>';
+            return;
+        }
+        $el.innerHTML = rows.map(function (r) {
+            return stockRowHtml(r, {
+                priceLabel: '종가 ' + fmt(r.close_price) + '원',
+                rate: r.change_rate,
+                sector: r.sector,
+            });
+        }).join('');
+    }
+
+    function renderPullbacks(rows) {
+        var $el = $('pullbackList');
+        if (!$el) return;
+        if (!rows.length) {
+            $el.innerHTML = '<li class="report-empty">조건에 맞는 급등→조정→반등 종목이 없습니다.</li>';
+            return;
+        }
+        $el.innerHTML = rows.map(function (pb) {
+            // bouncePct 는 0~1 또는 0~100 — 양쪽 모두 호환되도록 표시
+            var bounceRaw = Number(pb.bouncePct || 0);
+            var bouncePctNum = bounceRaw <= 1 ? bounceRaw * 100 : bounceRaw;
+            var dropPctNum = Number(pb.dropPct || 0);
+            return stockRowHtml({
+                ticker: pb.ticker, name: pb.name, market: pb.market,
+                sector: pb.sector,
+            }, {
+                priceLabel: '현재 ' + fmt(pb.currentPrice) + '원',
+                rate: bouncePctNum,
+                rateLabel: '반등',
+                sub: '고점 ' + fmt(pb.peakPrice) + ' (' + (pb.peakDate ? esc(pb.peakDate.slice(4,6) + '.' + pb.peakDate.slice(6,8)) : '-') + ') ' +
+                     '· 낙폭 -' + dropPctNum.toFixed(1) + '% · ' + esc(pb.reason || ''),
+                sector: pb.sector,
+            });
+        }).join('');
+    }
+
+    /** 종목 행 공통 마크업 — high52w / pullback 양쪽 사용. */
+    function stockRowHtml(r, opts) {
+        opts = opts || {};
+        var t = esc(r.ticker);
+        var rate = opts.rate;
+        var rateCls = (rate >= 0) ? 'cell-change--up' : 'cell-change--down';
+        var ratingObj = state.ratings[r.ticker] || {};
+        var rowCls = [];
+        if (ratingObj.excluded) rowCls.push('row--excluded');
+        if ((ratingObj.stars || 0) > 0) rowCls.push('row--starred');
+
+        return '<li class="report-stock-row' + (rowCls.length ? ' ' + rowCls.join(' ') : '') + '" data-ticker="' + t + '">' +
+            '<div class="report-stock-row__name-wrap cell-name__wrap">' +
+            '<a class="report-stock-row__name cell-name__link" href="/stock/' + t + '" data-ticker="' + t + '">' + esc(r.name) + '</a>' +
+            miniIndicatorsHtml(r.ticker) +
+            '<span class="report-stock-row__market">' + esc(r.market || '') + '</span>' +
+            starRatingHtml(r.ticker) +
+            '</div>' +
+            '<div class="report-stock-row__price">' + (opts.priceLabel || '') + '</div>' +
+            '<div class="report-stock-row__rate ' + rateCls + '">' +
+                (opts.rateLabel ? '<small>' + esc(opts.rateLabel) + '</small> ' : '') +
+                pct(rate) +
+            '</div>' +
+            '<div class="report-stock-row__sub">' +
+                (opts.sub ? opts.sub : (opts.sector ? esc(opts.sector) : '')) +
+            '</div>' +
+            '</li>';
+    }
+
+    // ─── 카드뉴스 ─────────────────────────────────────
+
+    function renderCards(date) {
+        var $section = $('cardsSection');
+        var $grid = $('cardsGrid');
+        if (!$grid || !$section) return;
+        var byDate = (state.cardsIndex && state.cardsIndex[date]) || null;
+        if (!byDate || !byDate.length) {
+            $grid.innerHTML = '<div class="report-empty cards-empty">자체 카드뉴스 준비 중 — 데일리 시황 카드가 곧 노출됩니다.</div>';
+            state.cardsList = [];
+            return;
+        }
+        state.cardsList = byDate;
+        $grid.innerHTML = byDate.map(function (c, i) {
+            var src = '/cards/' + esc(c.file);
+            var tag = CARDS_TYPE_LABEL[c.type] || c.type || '';
+            return '<button type="button" class="cards-cell" data-idx="' + i + '" aria-label="' + esc(c.title || tag) + '">' +
+                '<img class="cards-cell__img" src="' + src + '" alt="' + esc(c.title || tag) + '" loading="lazy">' +
+                '<span class="cards-cell__cap"><span class="cards-cell__tag">' + esc(tag) + '</span> ' + esc(c.title || '') + '</span>' +
+                '</button>';
+        }).join('');
+    }
+
+    function openCardsModal(idx) {
+        if (!state.cardsList.length) return;
+        state.cardsModalIdx = idx;
+        var modal = $('cardsModal');
+        var c = state.cardsList[idx];
+        $('cardsModalImg').src = '/cards/' + (c.file || '');
+        $('cardsModalImg').alt = c.title || '';
+        $('cardsModalTag').textContent = CARDS_TYPE_LABEL[c.type] || c.type || '';
+        $('cardsModalTitle').textContent = c.title || '';
+        $('cardsModalCount').textContent = (idx + 1) + ' / ' + state.cardsList.length;
+        modal.style.display = 'flex';
+    }
+    function moveCardsModal(delta) {
+        if (!state.cardsList.length) return;
+        var n = state.cardsList.length;
+        state.cardsModalIdx = (state.cardsModalIdx + delta + n) % n;
+        openCardsModal(state.cardsModalIdx);
+    }
+    function closeCardsModal() { $('cardsModal').style.display = 'none'; }
+
+    // ─── 데이터 로드 + 렌더 트리거 ───────────────────
+
+    function applyDay() {
+        var d = state.day;
+        if (!d) return;
+        var rankings = (d.rankings || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
+        renderSummary(deriveSummary(rankings));
+        renderGroupCards(deriveSectors(rankings), 'sectorCards', 'sectorPager', 'sectorPage', '주도 섹터');
+        renderGroupCards(deriveThemes(rankings), 'themeCards', 'themePager', 'themePage', '핫 테마');
+        renderCards(state.dates[state.dateIndex] || '');
+        renderHigh52w(deriveHigh52w(rankings));
+        renderPullbacks(derivePullbacks(d.pullbacks || []));
+    }
+
+    function showMessage(msg) {
+        var $m = $('message');
+        $m.style.display = msg ? 'block' : 'none';
+        $m.textContent = msg || '';
+    }
+
+    function loadDate(date) {
+        var $loading = $('loading');
+        var $content = $('reportContent');
+        if ($loading) $loading.style.display = 'block';
+        if ($content) $content.style.display = 'none';
+        showMessage('');
+        return WhyAPI.getRankings(date).then(function (data) {
+            state.day = data;
+            state.sectorPage = 0;
+            state.themePage = 0;
+            applyDay();
+            if ($loading) $loading.style.display = 'none';
+            if ($content) $content.style.display = 'block';
+        }).catch(function (err) {
+            if ($loading) $loading.style.display = 'none';
+            showMessage('리포트 로딩 실패: ' + (err && err.message ? err.message : err));
+        });
+    }
+
+    function updateDateUI() {
+        var date = state.dates[state.dateIndex] || '';
+        $('dateDisplay').textContent = formatDate(date);
+        var badge = $('dateBadge');
+        if (badge) {
+            badge.textContent = state.dateIndex === 0 ? '최신' : '';
+            badge.style.display = state.dateIndex === 0 ? '' : 'none';
+        }
+    }
+
+    // ─── 이벤트 ──────────────────────────────────────
+
+    function bindDateNav() {
+        var $prev = $('datePrev'), $next = $('dateNext'), $disp = $('dateDisplay');
+        function jumpTo(date) {
+            var i = state.dates.indexOf(date);
+            if (i < 0) return;
+            state.dateIndex = i;
+            updateDateUI();
+            loadDate(date);
+        }
+        $prev.addEventListener('click', function () {
+            if (state.dateIndex < state.dates.length - 1) {
+                state.dateIndex++;
+                updateDateUI();
+                loadDate(state.dates[state.dateIndex]);
+            }
+        });
+        $next.addEventListener('click', function () {
+            if (state.dateIndex > 0) {
+                state.dateIndex--;
+                updateDateUI();
+                loadDate(state.dates[state.dateIndex]);
+            }
+        });
+        $disp.addEventListener('click', function () {
+            if (typeof DatePicker === 'undefined' || !DatePicker.open) return;
+            DatePicker.open({
+                trigger: $disp,
+                dates: state.dates,
+                current: state.dates[state.dateIndex],
+                onSelect: jumpTo,
+            });
+        });
+    }
+
+    function bindPagerClicks() {
+        document.addEventListener('click', function (e) {
+            var btn = e.target.closest('.pager-btn');
+            if (!btn || btn.disabled) return;
+            var key = btn.getAttribute('data-key');
+            var dir = btn.getAttribute('data-dir');
+            state[key] = (state[key] || 0) + (dir === 'next' ? 1 : -1);
+            if (state[key] < 0) state[key] = 0;
+            applyDay();
+        });
+    }
+
+    function bindRatingsEvents() {
+        document.addEventListener('click', function (e) {
+            // 카드뉴스 클릭
+            var cell = e.target.closest('.cards-cell');
+            if (cell) {
+                var idx = parseInt(cell.getAttribute('data-idx'), 10);
+                if (!isNaN(idx)) openCardsModal(idx);
+                return;
+            }
+            // 별점
+            var star = e.target.closest('.star');
+            if (star) {
+                var sw = star.closest('.star-rating');
+                var ticker = sw && sw.getAttribute('data-ticker');
+                var n = parseInt(star.getAttribute('data-star'), 10);
+                if (!ticker || !n) return;
+                state.ratings[ticker] = state.ratings[ticker] || {};
+                state.ratings[ticker].stars = state.ratings[ticker].stars === n ? 0 : n;
+                saveRatings();
+                applyDay();
+                return;
+            }
+            // 제외
+            var ex = e.target.closest('.exclude-btn');
+            if (ex) {
+                var t2 = ex.getAttribute('data-ticker');
+                if (!t2) return;
+                state.ratings[t2] = state.ratings[t2] || {};
+                state.ratings[t2].excluded = !state.ratings[t2].excluded;
+                saveRatings();
+                applyDay();
+                return;
+            }
+            // 메모
+            var memo = e.target.closest('.memo-btn');
+            if (memo) {
+                openMemo(memo.getAttribute('data-ticker'));
+                return;
+            }
+            // 모바일 ⋯ 토글
+            var toggle = e.target.closest('.ctrl-toggle');
+            if (toggle) {
+                var wrap = toggle.closest('.ctrl-wrap');
+                if (wrap) wrap.classList.toggle('is-open');
+                return;
+            }
+        });
+    }
+
+    function openMemo(ticker) {
+        var modal = $('memoModal');
+        var title = $('memoModalTitle');
+        var area = $('memoTextarea');
+        if (!modal || !area) return;
+        var r = state.ratings[ticker] || {};
+        if (title) {
+            var name = lookupName(ticker) || ticker;
+            title.textContent = name + ' 메모';
+        }
+        area.value = r.memo || '';
+        area.setAttribute('data-ticker', ticker);
+        modal.style.display = 'flex';
+        setTimeout(function () { area.focus(); }, 50);
+    }
+
+    function lookupName(ticker) {
+        if (!state.day) return ticker;
+        var rk = (state.day.rankings || []).find(function (r) { return r.ticker === ticker; });
+        if (rk) return rk.name;
+        var pb = (state.day.pullbacks || []).find(function (p) { return p.ticker === ticker; });
+        if (pb) return pb.name;
+        return ticker;
+    }
+
+    function bindMemoModal() {
+        var modal = $('memoModal');
+        if (!modal) return;
+        $('memoModalClose').addEventListener('click', function () { modal.style.display = 'none'; });
+        modal.addEventListener('click', function (e) { if (e.target === modal) modal.style.display = 'none'; });
+        $('memoSave').addEventListener('click', function () {
+            var area = $('memoTextarea');
+            var ticker = area.getAttribute('data-ticker');
+            if (!ticker) return;
+            state.ratings[ticker] = state.ratings[ticker] || {};
+            state.ratings[ticker].memo = area.value.trim();
+            saveRatings();
+            applyDay();
+            modal.style.display = 'none';
+        });
+        $('memoDelete').addEventListener('click', function () {
+            var area = $('memoTextarea');
+            var ticker = area.getAttribute('data-ticker');
+            if (!ticker) return;
+            if (state.ratings[ticker]) delete state.ratings[ticker].memo;
+            saveRatings();
+            applyDay();
+            modal.style.display = 'none';
+        });
+    }
+
+    function bindCardsModal() {
+        var modal = $('cardsModal');
+        if (!modal) return;
+        $('cardsModalClose').addEventListener('click', closeCardsModal);
+        modal.addEventListener('click', function (e) { if (e.target === modal) closeCardsModal(); });
+        $('cardsModalPrev').addEventListener('click', function () { moveCardsModal(-1); });
+        $('cardsModalNext').addEventListener('click', function () { moveCardsModal(1); });
+        document.addEventListener('keydown', function (e) {
+            if (modal.style.display !== 'flex') return;
+            if (e.key === 'Escape') closeCardsModal();
+            else if (e.key === 'ArrowLeft') moveCardsModal(-1);
+            else if (e.key === 'ArrowRight') moveCardsModal(1);
+        });
+    }
+
     function bindThemeToggle() {
-        var $btn = document.getElementById('themeToggle');
-        if (!$btn) return;
-        $btn.addEventListener('click', function () {
+        var btn = $('themeToggle');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
             var cur = document.documentElement.getAttribute('data-theme') || 'dark';
             var next = cur === 'light' ? 'dark' : 'light';
             if (next === 'light') document.documentElement.setAttribute('data-theme', 'light');
             else document.documentElement.removeAttribute('data-theme');
-            localStorage.setItem('theme', next);
+            localStorage.setItem(THEME_KEY, next);
         });
     }
 
-    function fmt(n) { return (n != null) ? n.toLocaleString('ko-KR') : '-'; }
-
-    function pct(n) {
-        if (n == null) return '-';
-        return (n >= 0 ? '+' : '') + n.toFixed(1) + '%';
-    }
-
-    /** bar — primary 수치(상승률) 기반 바, count 는 우측 라벨로. */
-    function bar(primary, max, label, sub, countLabel) {
-        var width = max > 0 ? (primary / max * 100).toFixed(1) : 0;
-        return '<li class="report-row">' +
-            '<div class="report-row__bar" style="width:' + width + '%"></div>' +
-            '<div class="report-row__content">' +
-            '<span class="report-row__label">' + label + '</span>' +
-            (sub ? '<span class="report-row__sub">' + sub + '</span>' : '') +
-            '<span class="report-row__count">' + countLabel + '</span>' +
-            '</div></li>';
-    }
-
-    /** 이전 기간 대비 변화 배지. prev null/undefined 면 빈 문자열. */
-    function deltaBadge(curr, prev) {
-        if (prev == null) return '';
-        curr = curr || 0;
-        if (prev === 0 && curr > 0) return ' <span class="report-delta report-delta--new">⊕ 신규</span>';
-        if (curr === prev) return ' <span class="report-delta report-delta--flat">―</span>';
-        var diff = curr - prev;
-        var cls = diff > 0 ? 'up' : 'down';
-        var arrow = diff > 0 ? '↗' : '↘';
-        var sign = diff > 0 ? '+' : '';
-        return ' <span class="report-delta report-delta--' + cls + '">' + arrow + ' ' + sign + diff + '</span>';
-    }
-
-    /** 상단 stat 옆 delta 한 줄 (e.g. "+18 vs 이전 1주"). */
-    function statDeltaText(curr, prev, label) {
-        if (prev == null || prev === 0) return '';
-        var diff = (curr || 0) - prev;
-        if (diff === 0) return '― vs 이전 ' + label;
-        var sign = diff > 0 ? '+' : '';
-        return sign + diff.toLocaleString('ko-KR') + ' vs 이전 ' + label;
-    }
-    function statDeltaCls(curr, prev) {
-        if (prev == null || prev === 0) return '';
-        var diff = (curr || 0) - prev;
-        if (diff > 0) return 'report-stat__delta--up';
-        if (diff < 0) return 'report-stat__delta--down';
-        return '';
-    }
-
-    function emptyMsg(period) {
-        var label = PERIOD_LABEL[period] || '';
-        if (period === 'd1') {
-            return '<li class="report-empty">최근 1거래일 동안 +15% 이상 오른 종목이 없습니다 — 1주 이상의 기간을 선택해보세요</li>';
-        }
-        return '<li class="report-empty">' + label + ' 기간엔 자료가 부족합니다 — 더 긴 기간을 선택해보세요</li>';
-    }
-
-    function renderSectorTop(rows) {
-        var $el = document.getElementById('sectorTop');
-        if (!$el) return;
-        if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
-        var key = 'sum_rate';
-        var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
-        $el.innerHTML = rows.map(function (r) {
-            var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목 · ' + r.count + '회';
-            var href = '/screening.html?sector=' + encodeURIComponent(r.sector) + '&min=1';
-            var label = '<a class="report-row__link" href="' + href + '">' + esc(r.sector) + '</a>' +
-                deltaBadge(r.count, r.prev_count);
-            return bar(r[key], max, label, sub, pct(r.sum_rate));
-        }).join('');
-    }
-
-    function renderThemeTop(rows) {
-        var $el = document.getElementById('themeTop');
-        if (!$el) return;
-        if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
-        var key = 'sum_rate';
-        var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
-        $el.innerHTML = rows.map(function (r) {
-            var sub = '평균 ' + pct(r.avg_rate) + ' · ' + r.tickers + ' 종목 · ' + r.count + '회';
-            var href = '/screening.html?theme=' + encodeURIComponent(r.theme) + '&min=1';
-            var label = '<a class="report-row__link" href="' + href + '">' +
-                '<span class="theme-tag">' + esc(r.theme) + '</span></a>' +
-                deltaBadge(r.count, r.prev_count);
-            return bar(r[key], max, label, sub, pct(r.sum_rate));
-        }).join('');
-    }
-
-    /** 이유 카테고리 — 가로 막대 백분율 (실적·공시 / 계약·수주 / 지배구조 / 신고가·돌파 / 정책·정부 / 테마·이슈 / 기타). */
-    function renderReasonCategories(rows) {
-        var $el = document.getElementById('reasonCategories');
-        if (!$el) return;
-        if (!rows || !rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
-        var total = rows.reduce(function (s, r) { return s + (r.count || 0); }, 0);
-        if (!total) { $el.innerHTML = emptyMsg(state.period); return; }
-        // count=0 카테고리는 가시성 위해 빼고 표시 (단 모두 0 이면 위에서 emptyMsg)
-        var filtered = rows.filter(function (r) { return (r.count || 0) > 0; });
-        $el.innerHTML = filtered.map(function (r) {
-            var ratio = total ? (r.count / total) : 0;
-            var pctStr = (ratio * 100).toFixed(1) + '%';
-            return '<li class="report-reason-row">' +
-                '<span class="report-reason-row__label">' + esc(r.category) + '</span>' +
-                '<div class="report-reason-row__track">' +
-                '<div class="report-reason-row__fill" style="width:' + pctStr + '"></div>' +
-                '</div>' +
-                '<span class="report-reason-row__pct">' + pctStr + '</span>' +
-                '<span class="report-reason-row__count">' + r.count + '건</span>' +
-                '</li>';
-        }).join('');
-    }
-
-    /** 52주 신고가 — 종목 카드 그리드. */
-    function renderHigh52wGrid(rows) {
-        var $el = document.getElementById('high52w');
-        if (!$el) return;
-        rows = (rows || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
-        if (!rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
-        $el.innerHTML = rows.map(function (r) {
-            var subParts = [];
-            if (r.count) subParts.push(r.count + '회');
-            if (r.market_cap) subParts.push(fmtMcap(r.market_cap));
-            return '<a class="report-52w-card" href="/stock/' + esc(r.ticker) + '">' +
-                '<span class="report-52w-card__name">' + esc(r.name) + '</span>' +
-                '<span class="report-52w-card__sub">' + subParts.join(' · ') + '</span>' +
-                '</a>';
-        }).join('');
-    }
-
-    /** 시총 표시 — 억원 단위 raw → 1조 5천억 같은 한국식. */
-    function fmtMcap(억) {
-        if (!억) return '';
-        if (억 >= 10000) return (억 / 10000).toFixed(1) + '조';
-        if (억 >= 1000) return (억 / 1000).toFixed(1) + '천억';
-        return Math.round(억) + '억';
-    }
-
-    function renderTickerList(elId, rows, opts) {
-        var $el = document.getElementById(elId);
-        if (!$el) return;
-        rows = (rows || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
-        if (!rows.length) { $el.innerHTML = emptyMsg(state.period); return; }
-        var hasSumRate = rows[0].sum_rate != null;
-        var key = hasSumRate ? 'sum_rate' : 'count';
-        var max = Math.max.apply(null, rows.map(function (r) { return r[key]; }));
-        $el.innerHTML = rows.map(function (r) {
-            var label = '<a href="/stock/' + esc(r.ticker) + '">' + esc(r.name) + '</a>';
-            var subParts = [];
-            if (r.market_cap) subParts.push(fmtMcap(r.market_cap));
-            if (hasSumRate && r.count) subParts.push(r.count + '회');
-            var sub = subParts.join(' · ');
-            var countLabel = hasSumRate ? pct(r.sum_rate) : (r.count + '회');
-            return bar(r[key], max, label, sub, countLabel);
-        }).join('');
-    }
-
-    function fmtBuiltAt(iso) {
-        if (!iso) return '';
-        // 'Z' 가 있으면 UTC → KST(+9h) 변환. 없으면 그대로 (KST timezone-naive 가정)
-        var t = String(iso);
-        if (t.endsWith('Z') || /[+-]\d{2}:?\d{2}$/.test(t)) {
-            try {
-                var d = new Date(t);
-                var k = new Date(d.getTime() + 9 * 3600000);
-                t = k.toISOString().slice(0, 19);   // 'YYYY-MM-DDTHH:MM:SS'
-            } catch (e) {}
-        }
-        // 'YYYY-MM-DDTHH:MM:SS' → 'YYYY.MM.DD HH:MM'
-        return t.slice(0, 10).replace(/-/g, '.') + ' ' + t.slice(11, 16);
-    }
-
-    function pickPeriod(summary, period) {
-        if (summary && summary.periods && summary.periods[period]) return summary.periods[period];
-        return {
-            total_events_15: summary.total_events_15,
-            total_events_all: summary.total_events_15,
-            total_limit_count: 0,
-            total_52w_count: 0,
-            avg_rate_15: 0,
-            sector_top: summary.sector_top || [],
-            theme_top: [],
-            limit_up_top: summary.limit_up_top || [],
-            high_52w_top: summary.high_52w_top || [],
-            frequent_top: summary.frequent_top || [],
-        };
-    }
-
-    /** stat 카드 한 개 갱신 — number + 이전 기간 대비 delta 한 줄. */
-    function setStat(numId, deltaId, curr, prev, periodLabel, isPct) {
-        var $n = document.getElementById(numId);
-        if ($n) $n.textContent = isPct ? pct(curr) : fmt(curr);
-        var $d = document.getElementById(deltaId);
-        if (!$d) return;
-        $d.className = 'report-stat__delta';
-        if (prev == null || prev === 0) {
-            $d.textContent = '';
-            return;
-        }
-        var diff = (curr || 0) - prev;
-        if (diff === 0) {
-            $d.textContent = '― vs 이전 ' + periodLabel;
-            return;
-        }
-        var sign = diff > 0 ? '+' : '';
-        $d.textContent = isPct
-            ? sign + diff.toFixed(1) + '%p vs 이전 ' + periodLabel
-            : sign + Math.round(diff).toLocaleString('ko-KR') + ' vs 이전 ' + periodLabel;
-        $d.classList.add(diff > 0 ? 'report-stat__delta--up' : 'report-stat__delta--down');
-    }
-
-    function applyPeriod() {
-        if (!state.summary) return;
-        var data = pickPeriod(state.summary, state.period);
-        var label = PERIOD_LABEL[state.period] || '';
-        // 헤더 4개 stat — 전체 universe 통계 + 이전 기간 대비 delta
-        setStat('statTotalEvents', 'statTotalEventsDelta',
-            data.total_events_all || data.total_events_15, data.prev_total_events_15, label, false);
-        setStat('statAvgRate', 'statAvgRateDelta',
-            data.avg_rate_15, data.prev_avg_rate_15, label, true);
-        setStat('statLimitCount', 'statLimitCountDelta',
-            data.total_limit_count, data.prev_total_limit_count, label, false);
-        setStat('stat52wCount', 'stat52wCountDelta',
-            data.total_52w_count, data.prev_total_52w_count, label, false);
-
-        renderSectorTop(data.sector_top);
-        renderThemeTop(data.theme_top);
-        renderReasonCategories(data.reason_categories);
-        renderHigh52wGrid(data.high_52w_top);
-    }
-
-    function bindPeriodTabs() {
-        var $tabs = document.getElementById('reportPeriodTabs');
-        if (!$tabs) return;
-        $tabs.addEventListener('click', function (e) {
-            var btn = e.target.closest('button[data-p]');
-            if (!btn) return;
-            var p = btn.getAttribute('data-p');
-            if (!p || PERIODS.indexOf(p) < 0 || p === state.period) return;
-            state.period = p;
-            var btns = $tabs.querySelectorAll('button[data-p]');
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].classList.toggle('is-active', btns[i].getAttribute('data-p') === p);
-            }
-            applyPeriod();
+    function bindResize() {
+        var t = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(t);
+            t = setTimeout(function () { applyDay(); }, 150);
         });
     }
 
-    /** 기간 데이터가 비어 있는지 — 모든 섹션이 0/빈 배열이면 true */
-    function isPeriodEmpty(p) {
-        if (!p) return true;
-        var total = p.total_events_15 || p.total_events_all || 0;
-        if (total > 0) return false;
-        var lists = ['sector_top', 'theme_top', 'limit_up_top', 'high_52w_top', 'frequent_top'];
-        for (var i = 0; i < lists.length; i++) {
-            if ((p[lists[i]] || []).length > 0) return false;
-        }
-        return true;
-    }
-
-    /** firstLoad 일 때 d1 비어 있으면 가장 가까운 비어있지 않은 기간으로 자동 전환 (1주 → 1달 → 3달 → 1년) */
-    function pickInitialPeriod(summary) {
-        if (!summary || !summary.periods) return 'd1';
-        for (var i = 0; i < PERIODS.length; i++) {
-            var p = PERIODS[i];
-            if (!isPeriodEmpty(summary.periods[p])) return p;
-        }
-        return 'd1';
-    }
-
-    function setActiveTab(period) {
-        var $tabs = document.getElementById('reportPeriodTabs');
-        if (!$tabs) return;
-        var btns = $tabs.querySelectorAll('button[data-p]');
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].classList.toggle('is-active', btns[i].getAttribute('data-p') === period);
-        }
-    }
-
-    function fetchSummary(firstLoad) {
-        var $loading = document.getElementById('loading');
-        var $msg = document.getElementById('message');
-        var $grid = document.getElementById('reportGrid');
-        var cacheBust = '?v=' + Date.now();
-        return fetch('/data/report-summary.json' + cacheBust, { cache: 'no-store' })
-            .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-            .then(function (s) {
-                state.summary = s;
-                if (firstLoad) {
-                    $loading.style.display = 'none';
-                    $grid.style.display = 'grid';
-                    // 1일(d1) 이 비어 있으면 (휴장·집계 전 등) 가장 가까운 채워진 기간으로 자동 전환
-                    if (isPeriodEmpty(s.periods && s.periods[state.period])) {
-                        var fallback = pickInitialPeriod(s);
-                        if (fallback !== state.period) {
-                            state.period = fallback;
-                            setActiveTab(fallback);
-                        }
-                    }
-                }
-                // REPORT 라벨에 빌드 시각 합침 — 'REPORT · YYYY.MM.DD HH:MM' (KST)
-                var $lab = document.getElementById('reportLiveLabel');
-                if ($lab && s.built_at) {
-                    var formatted = fmtBuiltAt(s.built_at);
-                    $lab.textContent = formatted ? ('REPORT · ' + formatted) : 'REPORT';
-                }
-                applyPeriod();
-            })
-            .catch(function (err) {
-                if (firstLoad) {
-                    $loading.style.display = 'none';
-                    $msg.textContent = '리포트 로딩 실패: ' + err.message + ' — 다음 빌드 후 표시됩니다.';
-                    $msg.style.display = 'block';
-                }
-            });
+    function bindStorageSync() {
+        window.addEventListener('storage', function (e) {
+            if (e.key !== STORAGE_KEY) return;
+            loadRatings();
+            applyDay();
+        });
     }
 
     function init() {
+        loadRatings();
         bindThemeToggle();
-        bindPeriodTabs();
-        fetchSummary(true);
-        // 라이브 polling — 홈과 동일 60s, 장중 + 탭 visible 일 때만
-        setInterval(function () {
-            if (!isMarketOpenKST()) return;
-            if (document.visibilityState === 'hidden') return;
-            fetchSummary(false);
-        }, POLL_MS);
+        bindDateNav();
+        bindPagerClicks();
+        bindRatingsEvents();
+        bindMemoModal();
+        bindCardsModal();
+        bindResize();
+        bindStorageSync();
+
+        Promise.all([
+            WhyAPI.getDates(),
+            WhyAPI.getCardsIndex(),
+        ]).then(function (results) {
+            var dates = results[0];
+            var cards = results[1];
+            if (!Array.isArray(dates) || !dates.length) {
+                showMessage('거래일 데이터 없음.');
+                $('loading').style.display = 'none';
+                return null;
+            }
+            state.dates = dates;
+            state.dateIndex = 0;
+            state.cardsIndex = cards || null;
+            updateDateUI();
+            return loadDate(dates[0]);
+        }).then(function () {
+            if (window.WhyRatingsSync) {
+                window.WhyRatingsSync.pull().then(function (result) {
+                    if (result && result.source === 'remote') {
+                        loadRatings();
+                        applyDay();
+                    }
+                });
+            }
+        });
     }
 
-    document.addEventListener('DOMContentLoaded', init);
+    return { init: init };
 })();
+
+document.addEventListener('DOMContentLoaded', WhyReport.init);

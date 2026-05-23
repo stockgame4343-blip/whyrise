@@ -7,13 +7,24 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="WAORNO">
     <link rel="apple-touch-icon" href="/og-default.svg">
-    <title>리포트 — 이거왜오름?</title>
-    <meta name="description" content="한국 주식 시장 다이제스트 — 섹터 로테이션, 테마 히트맵, 이유 카테고리, 52주 신고가를 이전 기간과 비교.">
-    <meta name="theme-color" content="#191919">
+    <title>일별 리포트 — 이거왜오름?</title>
+    <meta name="description" content="한국 주식 일별 시황 — 그날 +15% 종목·주도 섹터·핫 테마·52주 신고가·급등 후 조정·카드뉴스 한 페이지에.">
+    <meta name="theme-color" content="#0a0b0f">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://whyrise.vercel.app/report.html">
+    <link rel="icon" href="/og-default.svg" type="image/svg+xml">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="이거왜오름?">
+    <meta property="og:title" content="일별 리포트 — 이거왜오름?">
+    <meta property="og:description" content="그날 +15% 종목·주도 섹터·핫 테마·52주 신고가·급등 후 조정·카드뉴스 한 페이지에.">
+    <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://whyrise.vercel.app/og-default.svg">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20260522r">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260522r">
+    <link rel="stylesheet" href="/css/style.css?v=20260523a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260523a">
 </head>
 <body>
     <script>
@@ -50,91 +61,95 @@
         </div>
     </header>
 
-    <!-- 통일된 상단 바 (트리맵·버블맵과 동일 패턴) -->
-    <div class="tmap-bar">
-        <div class="tmap-bar__inner">
-            <div class="tmap-bar__left">
-                <span class="tmap-live tmap-live--idle" id="reportLive">
-                    <span class="tmap-live__ring">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle class="tmap-live__ring-bg" cx="12" cy="12" r="9"/>
-                            <circle class="tmap-live__ring-fg" cx="12" cy="12" r="9"/>
-                        </svg>
-                    </span>
-                    <span class="tmap-live__label" id="reportLiveLabel">REPORT</span>
-                </span>
-            </div>
-            <div class="tmap-bar__right">
-                <div class="tmap-tabs tmap-tabs--period" id="reportPeriodTabs" role="tablist" aria-label="기간">
-                    <button class="tmap-tab is-active" data-p="d1" type="button">1일</button>
-                    <button class="tmap-tab" data-p="w1" type="button">1주</button>
-                    <button class="tmap-tab" data-p="m1" type="button">1달</button>
-                    <button class="tmap-tab" data-p="m3" type="button">3달</button>
-                    <button class="tmap-tab" data-p="y1" type="button">1년</button>
-                </div>
+    <section class="hero hero--mini">
+        <div class="frame hero__inner">
+            <div class="hero__search-wrap">
+                <input type="text" class="hero__search-input" id="heroSearch"
+                       placeholder="종목 검색"
+                       autocomplete="off"
+                       spellcheck="false">
+                <span class="hero__placeholder-suffix">왜 오름?</span>
+                <ul class="hero__suggest" id="heroSuggest" hidden></ul>
             </div>
         </div>
-    </div>
+    </section>
 
-    <main class="report-page">
-        <header class="report-page__header">
-            <div class="report-page__head-row">
-                <h1 class="report-page__title">시장 다이제스트</h1>
-                <a class="report-cta" href="/screening.html">스크리닝에서 종목 보기 →</a>
-            </div>
-            <p class="report-page__subtitle">지금 어디가 끓고 있나 — 섹터·테마·이유·신고가를 이전 기간과 비교해 한눈에.</p>
-            <div class="report-stats" id="reportStats">
-                <div class="report-stat">
-                    <span class="report-stat__num" id="statTotalEvents">-</span>
-                    <span class="report-stat__lbl">+15% 사건</span>
-                    <span class="report-stat__delta" id="statTotalEventsDelta"></span>
-                </div>
-                <div class="report-stat">
-                    <span class="report-stat__num" id="statAvgRate">-</span>
-                    <span class="report-stat__lbl">평균 상승률</span>
-                    <span class="report-stat__delta" id="statAvgRateDelta"></span>
-                </div>
-                <div class="report-stat">
-                    <span class="report-stat__num" id="statLimitCount">-</span>
-                    <span class="report-stat__lbl">상한가 사건</span>
-                    <span class="report-stat__delta" id="statLimitCountDelta"></span>
-                </div>
-                <div class="report-stat">
-                    <span class="report-stat__num" id="stat52wCount">-</span>
-                    <span class="report-stat__lbl">52주 신고가</span>
-                    <span class="report-stat__delta" id="stat52wCountDelta"></span>
-                </div>
-            </div>
-        </header>
+    <main class="frame report-page">
+        <div class="report-date-bar">
+            <button class="date-nav" id="datePrev" type="button" aria-label="이전 거래일">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <span class="date-text" id="dateDisplay" title="클릭하여 거래일 선택">—</span>
+            <button class="date-nav" id="dateNext" type="button" aria-label="다음 거래일">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <span class="date-badge" id="dateBadge">—</span>
+        </div>
 
-        <div class="loading" id="loading">집계 중...</div>
+        <div class="loading" id="loading">리포트 로딩 중...</div>
         <div class="message" id="message" style="display:none;"></div>
 
-        <section class="report-grid" id="reportGrid" style="display:none;">
-            <div class="report-card">
-                <h2 class="report-card__title">섹터 로테이션</h2>
-                <p class="report-card__desc">현 기간 누적 상승률 + 이전 기간 대비 ↗↘. 행 클릭 → 스크리닝</p>
-                <ol class="report-list" id="sectorTop"></ol>
-            </div>
-            <div class="report-card">
-                <h2 class="report-card__title">테마 히트맵</h2>
-                <p class="report-card__desc">함께 자주 오른 테마 태그 + 이전 기간 대비 변화. 행 클릭 → 스크리닝</p>
-                <ol class="report-list" id="themeTop"></ol>
-            </div>
-            <div class="report-card">
-                <h2 class="report-card__title">이유 카테고리</h2>
-                <p class="report-card__desc">이번 기간 호재 분포 — 실적·계약·테마·신고가·정책·지배구조</p>
-                <ul class="report-reason-bars" id="reasonCategories"></ul>
-            </div>
-            <div class="report-card report-card--wide">
-                <h2 class="report-card__title">52주 신고가</h2>
-                <p class="report-card__desc">최근 신고가 갱신 종목 — 카드 클릭 → 종목 상세</p>
-                <div class="report-52w-grid" id="high52w"></div>
-            </div>
-        </section>
+        <div id="reportContent" style="display:none;">
+
+            <section class="report-summary">
+                <div class="summary-card">
+                    <span class="summary-card__label">분석 종목</span>
+                    <span class="summary-card__value" id="sumCount">-</span>
+                </div>
+                <div class="summary-card">
+                    <span class="summary-card__label">평균 상승률</span>
+                    <span class="summary-card__value summary-card__value--rise" id="sumAvgRate">-</span>
+                </div>
+                <div class="summary-card">
+                    <span class="summary-card__label">상한가</span>
+                    <span class="summary-card__value summary-card__value--hot" id="sumLimit">-</span>
+                </div>
+                <div class="summary-card">
+                    <span class="summary-card__label">총 거래대금</span>
+                    <span class="summary-card__value" id="sumVolume">-</span>
+                </div>
+            </section>
+
+            <section class="report-section" id="sectorSection">
+                <div class="report-section__head">
+                    <h2 class="report-section__title">주도 섹터</h2>
+                    <span class="report-section__pager" id="sectorPager"></span>
+                </div>
+                <p class="report-section__desc">상승 종목이 집중된 섹터 — 누적 상승률 기준</p>
+                <div class="report-cards" id="sectorCards"></div>
+            </section>
+
+            <section class="report-section" id="themeSection">
+                <div class="report-section__head">
+                    <h2 class="report-section__title">핫 테마</h2>
+                    <span class="report-section__pager" id="themePager"></span>
+                </div>
+                <p class="report-section__desc">그날 시장을 이끈 테마 태그 — 누적 상승률 기준</p>
+                <div class="report-cards" id="themeCards"></div>
+            </section>
+
+            <section class="report-section" id="cardsSection">
+                <div class="report-section__head">
+                    <h2 class="report-section__title">카드뉴스</h2>
+                </div>
+                <p class="report-section__desc">장전 · 주도주 · 장마감 요약 카드</p>
+                <div class="cards-grid" id="cardsGrid"></div>
+            </section>
+
+            <section class="report-section" id="high52wSection">
+                <h2 class="report-section__title">52주 신고가</h2>
+                <p class="report-section__desc">그날 52주 최고가 갱신 종목</p>
+                <ul class="report-stock-list" id="high52wList"></ul>
+            </section>
+
+            <section class="report-section" id="pullbackSection">
+                <h2 class="report-section__title">급등 후 조정 · 반등</h2>
+                <p class="report-section__desc">15%+ 급등 → 고점 대비 -20%+ 낙폭 → 저점 대비 +15%+ 반등 (반등까지 나온 종목만)</p>
+                <ul class="report-stock-list" id="pullbackList"></ul>
+            </section>
+        </div>
     </main>
 
-    <!-- 푸터 -->
     <div class="footer">
         <footer class="footer__wrap">
             <div class="frame footer__inner">
@@ -146,18 +161,49 @@
                 </div>
                 <p class="footer__disclaimer">
                     <strong>본 사이트는 유사투자자문업 신고를 하지 않았으며, 어떠한 형태의 투자자문·종목 추천·매수/매도 권유도 제공하지 않습니다.</strong><br>
-                    모든 수치(상승이유·테마·점수 등)는 공개된 과거 시장 데이터를 기계적으로 집계·분류한 결과일 뿐이며, 특정 종목의 매수·매도 신호나 미래 수익을 의미하지 않습니다.
-                    데이터는 외부 소스(네이버 금융 등)에서 수집되어 지연·오류가 있을 수 있고 정확성을 보장하지 않습니다.
-                    모든 투자 판단과 그에 따른 손익은 전적으로 이용자 본인의 책임입니다.
+                    리포트 수치는 과거 시장 데이터의 기계적 집계·분류이며, 미래 수익이나 매수·매도 신호를 의미하지 않습니다.
                 </p>
                 <p class="footer__copy">&copy; 2026 이거왜오름? (WhyRise). 비영리 개인 프로젝트. <a href="/admin.html" class="footer__admin-link">·</a></p>
             </div>
         </footer>
     </div>
 
-    <script src="/js/nav.js?v=20260522r"></script>
-    <script src="/js/api.js?v=20260522r"></script>
-    <script src="/js/report.js?v=20260522r"></script>
-    <script src="/js/visitor.js?v=20260522r"></script>
+    <div class="modal-overlay cards-modal" id="cardsModal" style="display:none;">
+        <button class="cards-modal__nav cards-modal__nav--prev" id="cardsModalPrev" aria-label="이전 카드">‹</button>
+        <div class="cards-modal__inner">
+            <button class="cards-modal__close" id="cardsModalClose" aria-label="닫기">&times;</button>
+            <img class="cards-modal__img" id="cardsModalImg" alt="">
+            <div class="cards-modal__caption">
+                <span class="cards-modal__tag" id="cardsModalTag"></span>
+                <span class="cards-modal__title" id="cardsModalTitle"></span>
+                <span class="cards-modal__count" id="cardsModalCount"></span>
+            </div>
+        </div>
+        <button class="cards-modal__nav cards-modal__nav--next" id="cardsModalNext" aria-label="다음 카드">›</button>
+    </div>
+
+    <div class="modal-overlay" id="memoModal" style="display:none;">
+        <div class="modal">
+            <div class="modal__header">
+                <h3 class="modal__title" id="memoModalTitle">메모</h3>
+                <button class="modal__close" id="memoModalClose">&times;</button>
+            </div>
+            <div class="modal__body">
+                <textarea class="memo-textarea" id="memoTextarea" placeholder="이 종목에 대한 메모를 작성하세요..."></textarea>
+                <div class="memo-actions">
+                    <button class="memo-delete" id="memoDelete">삭제</button>
+                    <button class="memo-save" id="memoSave">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/nav.js?v=20260523a"></script>
+    <script src="/js/api.js?v=20260523a"></script>
+    <script src="/js/date-picker.js?v=20260523a"></script>
+    <script src="/js/search.js?v=20260523a"></script>
+    <script src="/js/ratings-sync.js?v=20260523a"></script>
+    <script src="/js/report.js?v=20260523a"></script>
+    <script src="/js/visitor.js?v=20260523a"></script>
 </body>
 </html>

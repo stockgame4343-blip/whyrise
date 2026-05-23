@@ -67,6 +67,7 @@ var WhyAPI = (function () {
             }
             return {
                 rankings: rankings,
+                pullbacks: data.pullbacks || [],   // 풀백 분석 — 리포트 페이지가 사용
                 collected_at: data.collected_at || '',
                 is_final: data.is_final || false,
                 mode: data.mode || 'closing',
@@ -97,11 +98,22 @@ var WhyAPI = (function () {
         });
     }
 
+    /** 카드뉴스 인덱스 — Phase 2 에서 whyrise 자체 생성. 그 전까지 404 fallback. */
+    function getCardsIndex() {
+        return fetch('/data/cards/index.json', { cache: 'no-store' })
+            .then(function (res) {
+                if (!res.ok) return null;
+                return res.json();
+            })
+            .catch(function () { return null; });
+    }
+
     return {
         getDates: getDates,
         getRankings: getRankings,
         getStockHistory: getStockHistory,
         getStockIndex: getStockIndex,
         getCurrentPrice: getCurrentPrice,
+        getCardsIndex: getCardsIndex,
     };
 })();
