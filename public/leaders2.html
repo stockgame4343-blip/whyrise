@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WAORNO">
+    <link rel="apple-touch-icon" href="/og-default.svg">
+    <title>주도주2 — 이거왜오름?</title>
+    <meta name="description" content="주도주, 버블맵, 트리맵을 한 화면에서 전환해 보는 통합 시각화 페이지입니다.">
+    <meta name="theme-color" content="#0a0b0f">
+    <link rel="canonical" href="https://whyrise.vercel.app/leaders2.html">
+    <link rel="icon" href="/og-default.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="주도주2 — 이거왜오름?">
+    <meta property="og:description" content="주도주, 버블맵, 트리맵을 한 화면에서 전환합니다.">
+    <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=20260523a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260524c">
+</head>
+<body>
+    <script>
+    (function(){
+        var t = localStorage.getItem('theme') || 'dark';
+        if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+    })();
+    </script>
+
+    <header class="top-bar">
+        <div class="top-bar__inner frame">
+            <a class="top-bar__logo" href="/" aria-label="WAORNO 홈">
+                <svg class="top-bar__logo-svg" viewBox="0 0 168 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                    <text x="0" y="29" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="900" fill="currentColor" letter-spacing="-1.5">WAORNO</text>
+                </svg>
+                <span class="sr-only">WAORNO (이거왜오름?)</span>
+            </a>
+            <nav class="top-bar__nav">
+                <a href="/" class="top-bar__link">홈</a>
+                <a href="/flowmap.html" class="top-bar__link">주도주</a>
+                <a href="/leaders2.html" class="top-bar__link top-bar__link--active">주도주2</a>
+                <a href="/report.html" class="top-bar__link">리포트</a>
+                <a href="/screening.html" class="top-bar__link">스크리닝</a>
+                <a href="/bubbles2.html" class="top-bar__link">버블맵</a>
+                <a href="/treemap.html" class="top-bar__link">트리맵</a>
+            </nav>
+            <div class="top-bar__right">
+                <button class="top-bar__hamburger" id="navToggle" type="button" aria-label="메뉴" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드 전환">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="frame leaders2-page">
+        <header class="leaders2-head">
+            <h1 class="leaders2-title">주도주2</h1>
+            <div class="leaders2-tabs" role="tablist" aria-label="주도주 보기">
+                <button class="leaders2-tab is-active" type="button" role="tab" aria-selected="true" data-view="flow">주도주</button>
+                <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-view="bubble">버블맵</button>
+                <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-view="tree">트리맵</button>
+            </div>
+        </header>
+
+        <section class="leaders2-shell" aria-label="주도주 통합 화면">
+            <div class="leaders2-loading" id="leaders2Loading">불러오는 중...</div>
+            <div class="leaders2-stack" id="leaders2Stack"></div>
+        </section>
+    </main>
+
+    <script src="/js/nav.js?v=20260524c"></script>
+    <script src="/js/leaders2.js?v=20260524c"></script>
+    <script src="/js/visitor.js?v=20260523a"></script>
+</body>
+</html>
