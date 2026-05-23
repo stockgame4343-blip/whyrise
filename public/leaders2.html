@@ -19,7 +19,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260523a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260524c">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260524d">
 </head>
 <body>
     <script>
@@ -59,11 +59,49 @@
 
     <main class="frame leaders2-page">
         <header class="leaders2-head">
-            <h1 class="leaders2-title">주도주2</h1>
-            <div class="leaders2-tabs" role="tablist" aria-label="주도주 보기">
-                <button class="leaders2-tab is-active" type="button" role="tab" aria-selected="true" data-view="flow">주도주</button>
-                <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-view="bubble">버블맵</button>
-                <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-view="tree">트리맵</button>
+            <div class="leaders2-title-block">
+                <h1 class="leaders2-title">주도주2</h1>
+                <div class="leaders2-datebar">
+                    <span class="leaders2-live" id="leaders2Live">LIVE</span>
+                    <button class="leaders2-datebtn" id="leaders2DatePrev" type="button" aria-label="이전 거래일">‹</button>
+                    <span class="leaders2-date" id="leaders2Date">—</span>
+                    <button class="leaders2-datebtn" id="leaders2DateNext" type="button" aria-label="다음 거래일">›</button>
+                    <button class="leaders2-back" id="leaders2Back" type="button" hidden>전체</button>
+                </div>
+            </div>
+            <div class="leaders2-controls" aria-label="주도주 통합 필터">
+                <div class="leaders2-tabs" role="tablist" aria-label="보기 방식">
+                    <button class="leaders2-tab is-active" type="button" role="tab" aria-selected="true" data-view="bubble">버블</button>
+                    <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-view="tree">트리</button>
+                </div>
+                <div class="leaders2-tabs leaders2-tabs--metric" role="tablist" aria-label="기준">
+                    <button class="leaders2-tab is-active" type="button" role="tab" aria-selected="true" data-metric="sector">주도섹터</button>
+                    <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-metric="theme">핫테마</button>
+                    <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-metric="mcap">시총</button>
+                    <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-metric="volume">거래량</button>
+                    <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-metric="change">상승률</button>
+                </div>
+                <div class="leaders2-extra" id="leaders2MarketControls" hidden>
+                    <div class="leaders2-tabs" role="tablist" aria-label="시장">
+                        <button class="leaders2-tab is-active" type="button" role="tab" aria-selected="true" data-market="ALL">전체</button>
+                        <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-market="KOSPI">코스피</button>
+                        <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-market="KOSDAQ">코스닥</button>
+                    </div>
+                    <div class="leaders2-tabs" role="tablist" aria-label="기간">
+                        <button class="leaders2-tab is-active" type="button" role="tab" aria-selected="true" data-period="1d">1일</button>
+                        <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-period="1w">1주</button>
+                        <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-period="1m">1달</button>
+                        <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-period="3m">3달</button>
+                        <button class="leaders2-tab" type="button" role="tab" aria-selected="false" data-period="1y">1년</button>
+                    </div>
+                </div>
+                <button class="leaders2-save" id="leaders2Save" type="button" aria-label="이미지 저장" title="이미지 저장">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                </button>
             </div>
         </header>
 
@@ -74,7 +112,7 @@
     </main>
 
     <script src="/js/nav.js?v=20260524c"></script>
-    <script src="/js/leaders2.js?v=20260524c"></script>
+    <script src="/js/leaders2.js?v=20260524d"></script>
     <script src="/js/visitor.js?v=20260523a"></script>
 </body>
 </html>
