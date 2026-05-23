@@ -1793,7 +1793,7 @@ body:not(.admin-on) .event-card__edit { display: none; }
    ───────────────────────────────────────────────────────────── */
 
 .screening-page {
-    padding-top: 24px;
+    padding-top: 22px;
     padding-bottom: 44px;
 }
 .screening-head {
@@ -1801,7 +1801,7 @@ body:not(.admin-on) .event-card__edit { display: none; }
     align-items: flex-end;
     justify-content: space-between;
     gap: 16px;
-    margin: 8px 0 14px;
+    margin: 0 0 18px;
 }
 .screening-title {
     margin: 0;
@@ -2014,12 +2014,12 @@ body:not(.admin-on) .event-card__edit { display: none; }
 
 @media (max-width: 768px) {
     .screening-page {
-        padding-top: 16px;
-        padding-bottom: 34px;
+        padding-top: 18px;
+        padding-bottom: 38px;
     }
     .screening-head {
         align-items: flex-start;
-        margin: 2px 0 12px;
+        margin: 0 0 14px;
     }
     .screening-title {
         font-size: 24px;
@@ -3052,7 +3052,7 @@ body:not(.admin-on) .event-card__edit { display: none; }
 .report-page--compact .report-head {
     align-items: center;
     gap: 16px;
-    margin-bottom: 18px;
+    margin: 0 0 18px;
 }
 .report-page--compact .report-section {
     margin-bottom: 46px;
@@ -3211,12 +3211,12 @@ body:not(.admin-on) .event-card__edit { display: none; }
 .report-group-table {
     display: flex;
     flex-direction: column;
-    padding: 6px 14px;
+    padding: 8px 26px;
 }
 .report-group-row {
     display: grid;
-    grid-template-columns: 34px minmax(220px, .8fr) minmax(360px, 1.4fr);
-    gap: 12px;
+    grid-template-columns: 42px minmax(220px, .8fr) minmax(360px, 1.4fr);
+    gap: 14px;
     align-items: center;
     min-width: 0;
     padding: 13px 0;
@@ -3345,7 +3345,7 @@ body:not(.admin-on) .event-card__edit { display: none; }
 .report-move-list {
     list-style: none;
     margin: 0;
-    padding: 6px 14px;
+    padding: 8px 26px;
 }
 .report-high-table-wrap {
     margin-top: 0;
@@ -3444,7 +3444,7 @@ body:not(.admin-on) .event-card__edit { display: none; }
 
 @media (max-width: 1040px) {
     .report-group-row {
-        grid-template-columns: 32px minmax(0, 1fr);
+        grid-template-columns: 38px minmax(0, 1fr);
     }
     .report-group-row__stocks {
         grid-column: 2 / -1;
@@ -3462,7 +3462,7 @@ body:not(.admin-on) .event-card__edit { display: none; }
     .report-page--compact .report-head {
         align-items: flex-start;
         gap: 10px;
-        margin-bottom: 14px;
+        margin: 0 0 14px;
     }
     .report-page--compact .report-date-bar {
         width: 100%;
@@ -3503,10 +3503,10 @@ body:not(.admin-on) .event-card__edit { display: none; }
         border-radius: 14px;
         box-shadow: var(--glass-shadow);
         margin-bottom: 8px;
-        padding: 13px 14px;
+        padding: 14px 18px;
     }
     .report-group-row {
-        grid-template-columns: 24px minmax(0, 1fr);
+        grid-template-columns: 30px minmax(0, 1fr);
         gap: 8px 10px;
     }
     .report-group-row__rank {

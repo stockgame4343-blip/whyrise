@@ -399,7 +399,7 @@ var WhyReport = (function () {
             '<span class="report-leader-tile__label">' + esc(label) + '</span>' +
             '<a class="report-leader-tile__name" href="' + esc(screeningUrl(type, group.key)) + '">' + esc(group.key) + '</a>' +
             '<span class="report-leader-tile__meta">' + group.count + '종목 · 평균 ' + pct(group.avgRate, 1) + ' · 거래 ' + fmtAmount(group.totalVolume) + '</span>' +
-            (topText ? '<span class="report-leader-tile__sub">[대표종목] ' + topText + '</span>' : '') +
+            (topText ? '<span class="report-leader-tile__sub">' + topText + '</span>' : '') +
         '</article>';
     }
 
