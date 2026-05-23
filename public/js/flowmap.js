@@ -123,16 +123,25 @@
     function colorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) return 'hsl(220, 5%, 28%)';
         var r = Math.max(-5, Math.min(30, rate));
-        var t = Math.min(1, Math.abs(r) / 15);
-        if (r > 0) return 'hsl(0, ' + (70 + t * 25) + '%, ' + (32 + t * 24) + '%)';
-        return 'hsl(220, ' + (60 + t * 25) + '%, ' + (32 - t * 12) + '%)';
+        if (r > 0) {
+            // flowmap is a +15% lead list, so map +15~+30 instead of saturating at +15.
+            var upT = r < 15 ? (r / 15) * 0.25 : 0.25 + ((r - 15) / 15) * 0.75;
+            upT = Math.max(0, Math.min(1, upT));
+            return 'hsl(0, ' + (66 + upT * 28) + '%, ' + (34 + upT * 24) + '%)';
+        }
+        var downT = Math.min(1, Math.abs(r) / 5);
+        return 'hsl(220, ' + (60 + downT * 25) + '%, ' + (32 - downT * 12) + '%)';
     }
     function edgeColorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) return 'hsl(220, 6%, 58%)';
         var r = Math.max(-5, Math.min(30, rate));
-        var t = Math.min(1, Math.abs(r) / 15);
-        if (r > 0) return 'hsl(0, ' + (80 + t * 12) + '%, ' + (54 + t * 6) + '%)';
-        return 'hsl(220, ' + (70 + t * 12) + '%, ' + (52 - t * 4) + '%)';
+        if (r > 0) {
+            var upT = r < 15 ? (r / 15) * 0.25 : 0.25 + ((r - 15) / 15) * 0.75;
+            upT = Math.max(0, Math.min(1, upT));
+            return 'hsl(0, ' + (78 + upT * 14) + '%, ' + (50 + upT * 12) + '%)';
+        }
+        var downT = Math.min(1, Math.abs(r) / 5);
+        return 'hsl(220, ' + (70 + downT * 12) + '%, ' + (52 - downT * 4) + '%)';
     }
 
     // ── 데이터 가공 ────────────────────────────────────
