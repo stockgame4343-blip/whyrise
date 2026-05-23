@@ -24,7 +24,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260523a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260523c">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260523d">
 </head>
 <body>
     <script>
@@ -62,52 +62,31 @@
     </header>
 
     <main class="frame report-page">
-        <div class="report-page__head-row">
-            <h1 class="report-page__title">데일리 리포트</h1>
-            <a class="report-cta" href="/screening.html">스크리닝</a>
-        </div>
-
-        <div class="report-date-bar">
-            <button class="date-nav" id="datePrev" type="button" aria-label="이전 거래일">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <span class="date-text" id="dateDisplay" title="클릭하여 거래일 선택">—</span>
-            <button class="date-nav" id="dateNext" type="button" aria-label="다음 거래일">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-            <span class="date-badge" id="dateBadge">—</span>
-        </div>
+        <header class="screening-head report-head">
+            <div>
+                <h1 class="screening-title report-title">리포트</h1>
+            </div>
+            <div class="report-date-bar">
+                <button class="date-nav" id="datePrev" type="button" aria-label="이전 거래일">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <span class="date-text" id="dateDisplay" title="클릭하여 거래일 선택">—</span>
+                <button class="date-nav" id="dateNext" type="button" aria-label="다음 거래일">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <span class="date-badge" id="dateBadge"></span>
+            </div>
+        </header>
 
         <div class="loading" id="loading">리포트 로딩 중...</div>
         <div class="message" id="message" style="display:none;"></div>
 
         <div id="reportContent" style="display:none;">
-
-            <section class="report-summary">
-                <div class="summary-card">
-                    <span class="summary-card__label">분석 종목</span>
-                    <span class="summary-card__value" id="sumCount">-</span>
-                </div>
-                <div class="summary-card">
-                    <span class="summary-card__label">평균 상승률</span>
-                    <span class="summary-card__value summary-card__value--rise" id="sumAvgRate">-</span>
-                </div>
-                <div class="summary-card">
-                    <span class="summary-card__label">상한가</span>
-                    <span class="summary-card__value summary-card__value--hot" id="sumLimit">-</span>
-                </div>
-                <div class="summary-card">
-                    <span class="summary-card__label">총 거래대금</span>
-                    <span class="summary-card__value" id="sumVolume">-</span>
-                </div>
-            </section>
-
             <section class="report-section" id="sectorSection">
                 <div class="report-section__head">
                     <h2 class="report-section__title">주도 섹터</h2>
                     <span class="report-section__pager" id="sectorPager"></span>
                 </div>
-                <p class="report-section__desc">상승 종목이 집중된 섹터 — 카드 제목을 누르면 스크리닝으로 이어집니다.</p>
                 <div class="report-cards" id="sectorCards"></div>
             </section>
 
@@ -116,7 +95,6 @@
                     <h2 class="report-section__title">핫 테마</h2>
                     <span class="report-section__pager" id="themePager"></span>
                 </div>
-                <p class="report-section__desc">그날 시장을 이끈 테마 태그 — 카드 제목을 누르면 스크리닝으로 이어집니다.</p>
                 <div class="report-cards" id="themeCards"></div>
             </section>
 
@@ -124,19 +102,16 @@
                 <div class="report-section__head">
                     <h2 class="report-section__title">카드뉴스</h2>
                 </div>
-                <p class="report-section__desc">장전 · 주도주 · 장마감 요약 카드</p>
                 <div class="cards-grid" id="cardsGrid"></div>
             </section>
 
             <section class="report-section" id="high52wSection">
                 <h2 class="report-section__title">52주 고점</h2>
-                <p class="report-section__desc">52주 고점 갱신 또는 당일 고가가 52주 고점 10% 이내인 종목</p>
                 <ul class="report-stock-list" id="high52wList"></ul>
             </section>
 
             <section class="report-section" id="pullbackSection">
                 <h2 class="report-section__title">급등 후 조정 · 반등</h2>
-                <p class="report-section__desc">15%+ 급등 → 고점 대비 -20%+ 낙폭 → 저점 대비 +15%+ 반등 (반등까지 나온 종목만)</p>
                 <ul class="report-stock-list" id="pullbackList"></ul>
             </section>
         </div>
@@ -166,6 +141,7 @@
         <div class="cards-modal__inner">
             <button class="cards-modal__close" id="cardsModalClose" aria-label="닫기">&times;</button>
             <img class="cards-modal__img" id="cardsModalImg" alt="">
+            <div class="cards-modal__generated" id="cardsModalGenerated"></div>
             <div class="cards-modal__caption">
                 <span class="cards-modal__tag" id="cardsModalTag"></span>
                 <span class="cards-modal__title" id="cardsModalTitle"></span>
@@ -195,7 +171,7 @@
     <script src="/js/api.js?v=20260523a"></script>
     <script src="/js/date-picker.js?v=20260523a"></script>
     <script src="/js/ratings-sync.js?v=20260523a"></script>
-    <script src="/js/report.js?v=20260523c"></script>
+    <script src="/js/report.js?v=20260523d"></script>
     <script src="/js/visitor.js?v=20260523a"></script>
 </body>
 </html>

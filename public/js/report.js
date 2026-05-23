@@ -16,10 +16,10 @@ var WhyReport = (function () {
     var PB_DROP_MIN = 20;       // 고점 대비 낙폭 ≥20%
     var PB_BOUNCE_MIN = 15;     // 저점 대비 반등 ≥15%
 
-    // 섹터·테마 카드 표시 수 (PC 가로 3, 1줄. 더 많으면 페이저)
-    var CARDS_PER_PAGE_PC = 3;
-    var CARDS_PER_PAGE_MOBILE = 2;
-    var SECTOR_THEME_TOP_TICKERS = 3;
+    // 섹터·테마 카드 표시 수: Whyrise 리포트는 한 줄 4개를 기본 밀도로 사용.
+    var CARDS_PER_PAGE_PC = 4;
+    var CARDS_PER_PAGE_MOBILE = 4;
+    var SECTOR_THEME_TOP_TICKERS = 2;
 
     var CARDS_TYPE_LABEL = { pre: '장전', leader: '주도주', closing: '장마감', close: '장마감' };
 
@@ -87,6 +87,34 @@ var WhyReport = (function () {
         if (type === 'sector') params.push('sector=' + encodeURIComponent(key));
         if (type === 'theme') params.push('theme=' + encodeURIComponent(key));
         return '/screening.html?' + params.join('&');
+    }
+
+    function shortDate(yyyymmdd) {
+        if (!yyyymmdd || String(yyyymmdd).length !== 8) return '-';
+        var s = String(yyyymmdd);
+        return s.slice(4, 6) + '.' + s.slice(6, 8);
+    }
+
+    function themeOf(row) {
+        if (!row) return '';
+        if (row.theme_tag) return row.theme_tag;
+        if (Array.isArray(row.theme_tags) && row.theme_tags.length) return row.theme_tags[0] || '';
+        return '';
+    }
+
+    function reasonOf(row) {
+        if (!row) return '';
+        return row.rise_reason || row.reason || row.latest_reason || '';
+    }
+
+    function peakRateFromReason(reason) {
+        var m = /\+(\d+(?:\.\d+)?)%/.exec(reason || '');
+        return m ? parseFloat(m[1]) : 0;
+    }
+
+    function normalizedBouncePct(pb) {
+        var raw = Number((pb && pb.bouncePct) || 0);
+        return raw <= 1 ? raw * 100 : raw;
     }
 
     function isMobile() {
@@ -209,19 +237,13 @@ var WhyReport = (function () {
             var high52 = Number(r.high_52w || 0);
             var dayHigh = Number(r.high_price || r.close_price || 0);
             if (!high52 || !dayHigh) continue;
-            var gapPct = ((dayHigh / high52) - 1) * 100;
-            var isNewHigh = r.is_52w_high === true || r.high_52w === true ||
-                (date && String(r.high_52w_date || '') === String(date)) ||
-                gapPct >= -0.1;
-            if (!isNewHigh && gapPct < -10) continue;
+            if (!date || String(r.high_52w_date || '') !== String(date)) continue;
             out.push(Object.assign({}, r, {
-                _high52GapPct: gapPct,
-                _high52IsNew: isNewHigh,
+                _high52GapPct: 0,
+                _high52IsNew: true,
             }));
         }
         out.sort(function (a, b) {
-            if (a._high52IsNew !== b._high52IsNew) return a._high52IsNew ? -1 : 1;
-            if (b._high52GapPct !== a._high52GapPct) return b._high52GapPct - a._high52GapPct;
             return Number(b.change_rate || 0) - Number(a.change_rate || 0);
         });
         return out;
@@ -239,9 +261,7 @@ var WhyReport = (function () {
                 // bouncePct 는 0~1 (소수) 또는 0~100 (백분율) 두 형식 가능 — 양쪽 모두 컷
                 return false;
             }
-            // 피크 상승률 — reason "+XX.X% 급등" 추출
-            var m = /\+(\d+(?:\.\d+)?)%/.exec(pb.reason || '');
-            var peakRate = m ? parseFloat(m[1]) : 0;
+            var peakRate = peakRateFromReason(pb.reason);
             if (peakRate < PB_PEAK_MIN) return false;
             return true;
         }).sort(function (a, b) {
@@ -252,6 +272,7 @@ var WhyReport = (function () {
     // ─── 렌더 ────────────────────────────────────────
 
     function renderSummary(s) {
+        if (!$('sumCount')) return;
         $('sumCount').textContent = fmt(s.count);
         $('sumAvgRate').textContent = pct(s.avg_rate);
         $('sumLimit').textContent = fmt(s.limit);
@@ -295,10 +316,9 @@ var WhyReport = (function () {
                 '<div class="report-card-group__head">' +
                 nameHtml +
                 '<span class="report-card-group__stat">' +
-                pct(g.avg_rate) + ' · ' + g.count + '종목' +
+                g.count + '종목 · ' + pct(g.avg_rate) +
                 '</span></div>' +
                 '<div class="report-card-group__list">' + topHtml + '</div>' +
-                (url ? '<a class="report-card-group__screening" href="' + esc(url) + '">스크리닝에서 보기</a>' : '') +
                 '</div>';
         }).join('');
         $grid.innerHTML = html;
@@ -321,16 +341,20 @@ var WhyReport = (function () {
         var $el = $('high52wList');
         if (!$el) return;
         if (!rows.length) {
-            $el.innerHTML = '<li class="report-empty">52주 고점에 근접한 급등 종목이 없습니다.</li>';
+            $el.innerHTML = '<li class="report-empty">그날 52주 고점을 돌파한 종목이 없습니다.</li>';
             return;
         }
         $el.innerHTML = rows.map(function (r) {
-            var gap = Number(r._high52GapPct || 0);
-            var status = r._high52IsNew ? '52주 신고가 갱신' : '52주 고점 대비 ' + gap.toFixed(1) + '%';
+            var meta = [];
+            var theme = themeOf(r);
+            var reason = reasonOf(r);
+            if (r.sector) meta.push(esc(r.sector));
+            if (theme) meta.push(esc(theme));
+            if (reason) meta.push(esc(reason));
             return stockRowHtml(r, {
-                priceLabel: '고가 ' + fmt(r.high_price || r.close_price) + '원 · 52주 ' + fmt(r.high_52w) + '원',
+                priceLabel: '고가 ' + fmt(r.high_price || r.close_price) + '원',
                 rate: r.change_rate,
-                sub: esc(status) + (r.sector ? ' · ' + esc(r.sector) : ''),
+                sub: meta.join(' · '),
             });
         }).join('');
     }
@@ -342,23 +366,45 @@ var WhyReport = (function () {
             $el.innerHTML = '<li class="report-empty">조건에 맞는 급등→조정→반등 종목이 없습니다.</li>';
             return;
         }
-        $el.innerHTML = rows.map(function (pb) {
-            // bouncePct 는 0~1 또는 0~100 — 양쪽 모두 호환되도록 표시
-            var bounceRaw = Number(pb.bouncePct || 0);
-            var bouncePctNum = bounceRaw <= 1 ? bounceRaw * 100 : bounceRaw;
-            var dropPctNum = Number(pb.dropPct || 0);
-            return stockRowHtml({
-                ticker: pb.ticker, name: pb.name, market: pb.market,
-                sector: pb.sector,
-            }, {
-                priceLabel: '현재 ' + fmt(pb.currentPrice) + '원',
-                rate: bouncePctNum,
-                rateLabel: '반등',
-                sub: '고점 ' + fmt(pb.peakPrice) + ' (' + (pb.peakDate ? esc(pb.peakDate.slice(4,6) + '.' + pb.peakDate.slice(6,8)) : '-') + ') ' +
-                     '· 낙폭 -' + dropPctNum.toFixed(1) + '% · ' + esc(pb.reason || ''),
-                sector: pb.sector,
-            });
-        }).join('');
+        $el.innerHTML = rows.map(pullbackRowHtml).join('');
+    }
+
+    function pullbackRowHtml(pb) {
+        var t = esc(pb.ticker);
+        var bouncePctNum = normalizedBouncePct(pb);
+        var dropPctNum = Number(pb.dropPct || 0);
+        var peakRate = peakRateFromReason(pb.reason);
+        var ratingObj = state.ratings[pb.ticker] || {};
+        var rowCls = [];
+        if (ratingObj.excluded) rowCls.push('row--excluded');
+        if ((ratingObj.stars || 0) > 0) rowCls.push('row--starred');
+        var meta = [];
+        if (pb.market) meta.push(esc(pb.market));
+        if (pb.sector) meta.push(esc(pb.sector));
+        return '<li class="report-pullback-row' + (rowCls.length ? ' ' + rowCls.join(' ') : '') + '" data-ticker="' + t + '">' +
+            '<div class="report-pullback-main">' +
+                '<div class="report-stock-row__name-wrap cell-name__wrap">' +
+                    '<a class="report-stock-row__name cell-name__link" href="/stock/' + t + '" data-ticker="' + t + '">' + esc(pb.name) + '</a>' +
+                    miniIndicatorsHtml(pb.ticker) +
+                    (pb.market ? '<span class="report-stock-row__market">' + esc(pb.market) + '</span>' : '') +
+                    starRatingHtml(pb.ticker) +
+                '</div>' +
+                '<div class="report-pullback-sub">' + (meta.length ? meta.join(' · ') + ' · ' : '') + esc(pb.reason || '') + '</div>' +
+            '</div>' +
+            '<div class="report-pullback-metric">' +
+                '<span>급등</span><strong class="cell-change--up">' + (peakRate ? pct(peakRate) : '-') + '</strong>' +
+            '</div>' +
+            '<div class="report-pullback-metric">' +
+                '<span>낙폭</span><strong class="report-rate--down">-' + dropPctNum.toFixed(1) + '%</strong>' +
+            '</div>' +
+            '<div class="report-pullback-metric">' +
+                '<span>반등</span><strong class="cell-change--up">' + pct(bouncePctNum) + '</strong>' +
+            '</div>' +
+            '<div class="report-pullback-price">' +
+                '<span>고점 ' + shortDate(pb.peakDate) + ' ' + fmt(pb.peakPrice) + '원</span>' +
+                '<span>현재 ' + fmt(pb.currentPrice) + '원</span>' +
+            '</div>' +
+            '</li>';
     }
 
     /** 종목 행 공통 마크업 — high52w / pullback 양쪽 사용. */
@@ -392,25 +438,111 @@ var WhyReport = (function () {
 
     // ─── 카드뉴스 ─────────────────────────────────────
 
-    function renderCards(date) {
+    function cardItemsFromStocks(rows, valueFn, subFn) {
+        return rows.slice(0, 3).map(function (r) {
+            return {
+                name: r.name || r.ticker || '-',
+                value: valueFn ? valueFn(r) : pct(r.change_rate),
+                sub: subFn ? subFn(r) : (themeOf(r) || r.sector || ''),
+            };
+        });
+    }
+
+    function cardItemsFromGroups(groups) {
+        return groups.slice(0, 3).map(function (g) {
+            return {
+                name: g.key,
+                value: g.count + '종목',
+                sub: pct(g.avg_rate),
+            };
+        });
+    }
+
+    function buildGeneratedCards(date, rankings, sectors, themes, highRows, pullbacks) {
+        var summary = deriveSummary(rankings);
+        var topStocks = rankings.slice().sort(function (a, b) {
+            return Number(b.change_rate || 0) - Number(a.change_rate || 0);
+        }).slice(0, 3);
+        var cards = [];
+        cards.push({
+            type: 'close',
+            tag: '마감',
+            title: '오늘 시장',
+            headline: formatDate(date),
+            note: '급등 종목 ' + fmt(summary.count) + '개 · 평균 ' + pct(summary.avg_rate),
+            items: cardItemsFromStocks(topStocks, function (r) { return pct(r.change_rate); }, function (r) { return reasonOf(r) || themeOf(r) || r.sector || ''; }),
+        });
+        if (sectors.length) {
+            cards.push({
+                type: 'sector',
+                tag: '섹터',
+                title: '주도 섹터',
+                headline: sectors[0].key,
+                note: sectors[0].count + '종목 · 평균 ' + pct(sectors[0].avg_rate),
+                items: cardItemsFromGroups(sectors),
+            });
+        }
+        if (themes.length) {
+            cards.push({
+                type: 'theme',
+                tag: '테마',
+                title: '핫 테마',
+                headline: themes[0].key,
+                note: themes[0].count + '종목 · 평균 ' + pct(themes[0].avg_rate),
+                items: cardItemsFromGroups(themes),
+            });
+        }
+        cards.push({
+            type: 'high',
+            tag: '52주',
+            title: '52주 고점',
+            headline: highRows.length ? highRows[0].name : '신규 돌파 없음',
+            note: highRows.length ? highRows.length + '종목 돌파' : '그날 52주 고점 돌파 종목 없음',
+            items: cardItemsFromStocks(highRows, function (r) { return pct(r.change_rate); }, function (r) { return '고가 ' + fmt(r.high_price || r.close_price) + '원'; }),
+        });
+        cards.push({
+            type: 'pullback',
+            tag: '반등',
+            title: '급등 후 조정',
+            headline: pullbacks.length ? pullbacks[0].name : '조건 종목 없음',
+            note: pullbacks.length ? '낙폭 후 반등 ' + pullbacks.length + '종목' : '조건에 맞는 반등 종목 없음',
+            items: pullbacks.slice(0, 3).map(function (pb) {
+                return {
+                    name: pb.name || pb.ticker || '-',
+                    value: pct(normalizedBouncePct(pb)),
+                    sub: '낙폭 -' + Number(pb.dropPct || 0).toFixed(1) + '%',
+                };
+            }),
+        });
+        return cards;
+    }
+
+    function generatedCardHtml(card, isModal) {
+        var items = (card.items || []).map(function (item) {
+            return '<span class="report-news-card__item">' +
+                '<span class="report-news-card__item-name">' + esc(item.name) + '</span>' +
+                '<span class="report-news-card__item-value">' + esc(item.value) + '</span>' +
+                (item.sub ? '<span class="report-news-card__item-sub">' + esc(item.sub) + '</span>' : '') +
+                '</span>';
+        }).join('');
+        return '<div class="report-news-card' + (isModal ? ' report-news-card--modal' : '') + ' report-news-card--' + esc(card.type || 'base') + '">' +
+            '<span class="report-news-card__tag">' + esc(card.tag || '') + '</span>' +
+            '<span class="report-news-card__title">' + esc(card.title || '') + '</span>' +
+            '<strong class="report-news-card__headline">' + esc(card.headline || '') + '</strong>' +
+            '<span class="report-news-card__note">' + esc(card.note || '') + '</span>' +
+            '<span class="report-news-card__items">' + items + '</span>' +
+            '</div>';
+    }
+
+    function renderCards(date, rankings, sectors, themes, highRows, pullbacks) {
         var $section = $('cardsSection');
         var $grid = $('cardsGrid');
         if (!$grid || !$section) return;
-        var byDate = (state.cardsIndex && state.cardsIndex[date]) || null;
-        if (!byDate || !byDate.length) {
-            state.cardsList = [];
-            $grid.innerHTML = '';
-            $section.style.display = 'none';
-            return;
-        }
         $section.style.display = '';
-        state.cardsList = byDate;
-        $grid.innerHTML = byDate.map(function (c, i) {
-            var src = '/cards/' + esc(c.file);
-            var tag = CARDS_TYPE_LABEL[c.type] || c.type || '';
-            return '<button type="button" class="cards-cell" data-idx="' + i + '" aria-label="' + esc(c.title || tag) + '">' +
-                '<img class="cards-cell__img" src="' + src + '" alt="' + esc(c.title || tag) + '" loading="lazy">' +
-                '<span class="cards-cell__cap"><span class="cards-cell__tag">' + esc(tag) + '</span> ' + esc(c.title || '') + '</span>' +
+        state.cardsList = buildGeneratedCards(date, rankings, sectors, themes, highRows, pullbacks);
+        $grid.innerHTML = state.cardsList.map(function (c, i) {
+            return '<button type="button" class="cards-cell" data-idx="' + i + '" aria-label="' + esc(c.title || c.tag || '') + '">' +
+                generatedCardHtml(c, false) +
                 '</button>';
         }).join('');
     }
@@ -420,9 +552,18 @@ var WhyReport = (function () {
         state.cardsModalIdx = idx;
         var modal = $('cardsModal');
         var c = state.cardsList[idx];
-        $('cardsModalImg').src = '/cards/' + (c.file || '');
-        $('cardsModalImg').alt = c.title || '';
-        $('cardsModalTag').textContent = CARDS_TYPE_LABEL[c.type] || c.type || '';
+        var img = $('cardsModalImg');
+        var generated = $('cardsModalGenerated');
+        if (img) {
+            img.style.display = 'none';
+            img.removeAttribute('src');
+            img.alt = '';
+        }
+        if (generated) {
+            generated.style.display = 'block';
+            generated.innerHTML = generatedCardHtml(c, true);
+        }
+        $('cardsModalTag').textContent = c.tag || CARDS_TYPE_LABEL[c.type] || c.type || '';
         $('cardsModalTitle').textContent = c.title || '';
         $('cardsModalCount').textContent = (idx + 1) + ' / ' + state.cardsList.length;
         modal.style.display = 'flex';
@@ -442,12 +583,15 @@ var WhyReport = (function () {
         if (!d) return;
         var date = state.dates[state.dateIndex] || '';
         var rankings = (d.rankings || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
-        renderSummary(deriveSummary(rankings));
-        renderGroupCards(deriveSectors(rankings), 'sectorCards', 'sectorPager', 'sectorPage', '주도 섹터', 'sector');
-        renderGroupCards(deriveThemes(rankings), 'themeCards', 'themePager', 'themePage', '핫 테마', 'theme');
-        renderCards(date);
-        renderHigh52w(deriveHigh52w(rankings, date));
-        renderPullbacks(derivePullbacks(d.pullbacks || []));
+        var sectors = deriveSectors(rankings);
+        var themes = deriveThemes(rankings);
+        var highRows = deriveHigh52w(rankings, date);
+        var pullbacks = derivePullbacks(d.pullbacks || []);
+        renderGroupCards(sectors, 'sectorCards', 'sectorPager', 'sectorPage', '주도 섹터', 'sector');
+        renderGroupCards(themes, 'themeCards', 'themePager', 'themePage', '핫 테마', 'theme');
+        renderCards(date, rankings, sectors, themes, highRows, pullbacks);
+        renderHigh52w(highRows);
+        renderPullbacks(pullbacks);
     }
 
     function showMessage(msg) {
@@ -482,8 +626,8 @@ var WhyReport = (function () {
         $('dateDisplay').textContent = formatDate(date);
         var badge = $('dateBadge');
         if (badge) {
-            badge.textContent = state.dateIndex === 0 ? '최신' : '';
-            badge.style.display = state.dateIndex === 0 ? '' : 'none';
+            badge.textContent = '';
+            badge.style.display = 'none';
         }
     }
 
@@ -689,12 +833,7 @@ var WhyReport = (function () {
         bindResize();
         bindStorageSync();
 
-        Promise.all([
-            WhyAPI.getDates(),
-            WhyAPI.getCardsIndex(),
-        ]).then(function (results) {
-            var dates = results[0];
-            var cards = results[1];
+        WhyAPI.getDates().then(function (dates) {
             if (!Array.isArray(dates) || !dates.length) {
                 showMessage('거래일 데이터 없음.');
                 $('loading').style.display = 'none';
@@ -702,7 +841,6 @@ var WhyReport = (function () {
             }
             state.dates = dates;
             state.dateIndex = 0;
-            state.cardsIndex = cards || null;
             updateDateUI();
             return loadDate(dates[0]);
         }).then(function () {
