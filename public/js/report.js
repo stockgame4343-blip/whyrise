@@ -68,6 +68,27 @@ var WhyReport = (function () {
         return y + '.' + s.slice(4, 6) + '.' + s.slice(6, 8) + ' (' + DAYS[dt.getDay()] + ')';
     }
 
+    function formatTimestamp(value) {
+        if (!value) return '';
+        var s = String(value).trim();
+        var m = /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(s);
+        if (!m) return s.replace('T', ' ').substring(0, 16);
+        return m[1] + '.' + m[2] + '.' + m[3] + ' ' + m[4] + ':' + m[5];
+    }
+
+    function setUpdatedAt(value) {
+        var el = $('reportUpdatedAt');
+        if (!el) return;
+        el.textContent = formatTimestamp(value);
+    }
+
+    function screeningUrl(type, key) {
+        var params = ['cnt=count_10', 'min=1'];
+        if (type === 'sector') params.push('sector=' + encodeURIComponent(key));
+        if (type === 'theme') params.push('theme=' + encodeURIComponent(key));
+        return '/screening.html?' + params.join('&');
+    }
+
     function isMobile() {
         return window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
     }
@@ -180,12 +201,30 @@ var WhyReport = (function () {
         });
     }
 
-    function deriveHigh52w(rankings) {
-        return rankings.filter(function (r) {
-            return r && r.high_52w === true && !BLOCKED_TICKERS[r.ticker];
-        }).sort(function (a, b) {
+    function deriveHigh52w(rankings, date) {
+        var out = [];
+        for (var i = 0; i < rankings.length; i++) {
+            var r = rankings[i];
+            if (!r || BLOCKED_TICKERS[r.ticker]) continue;
+            var high52 = Number(r.high_52w || 0);
+            var dayHigh = Number(r.high_price || r.close_price || 0);
+            if (!high52 || !dayHigh) continue;
+            var gapPct = ((dayHigh / high52) - 1) * 100;
+            var isNewHigh = r.is_52w_high === true || r.high_52w === true ||
+                (date && String(r.high_52w_date || '') === String(date)) ||
+                gapPct >= -0.1;
+            if (!isNewHigh && gapPct < -10) continue;
+            out.push(Object.assign({}, r, {
+                _high52GapPct: gapPct,
+                _high52IsNew: isNewHigh,
+            }));
+        }
+        out.sort(function (a, b) {
+            if (a._high52IsNew !== b._high52IsNew) return a._high52IsNew ? -1 : 1;
+            if (b._high52GapPct !== a._high52GapPct) return b._high52GapPct - a._high52GapPct;
             return Number(b.change_rate || 0) - Number(a.change_rate || 0);
         });
+        return out;
     }
 
     function derivePullbacks(pullbacks) {
@@ -223,7 +262,7 @@ var WhyReport = (function () {
         return isMobile() ? CARDS_PER_PAGE_MOBILE : CARDS_PER_PAGE_PC;
     }
 
-    function renderGroupCards(groups, gridId, pagerId, pageKey, label) {
+    function renderGroupCards(groups, gridId, pagerId, pageKey, label, screeningType) {
         var $grid = $(gridId);
         var $pager = $(pagerId);
         if (!$grid) return;
@@ -248,13 +287,18 @@ var WhyReport = (function () {
                     pct(r.change_rate) + '</span>' +
                     '</a>';
             }).join('');
+            var url = screeningType ? screeningUrl(screeningType, g.key) : '';
+            var nameHtml = url ?
+                '<a class="report-card-group__name" href="' + esc(url) + '">' + esc(g.key) + '</a>' :
+                '<span class="report-card-group__name">' + esc(g.key) + '</span>';
             return '<div class="report-card-group">' +
                 '<div class="report-card-group__head">' +
-                '<span class="report-card-group__name">' + esc(g.key) + '</span>' +
+                nameHtml +
                 '<span class="report-card-group__stat">' +
                 pct(g.avg_rate) + ' · ' + g.count + '종목' +
                 '</span></div>' +
                 '<div class="report-card-group__list">' + topHtml + '</div>' +
+                (url ? '<a class="report-card-group__screening" href="' + esc(url) + '">스크리닝에서 보기</a>' : '') +
                 '</div>';
         }).join('');
         $grid.innerHTML = html;
@@ -277,14 +321,16 @@ var WhyReport = (function () {
         var $el = $('high52wList');
         if (!$el) return;
         if (!rows.length) {
-            $el.innerHTML = '<li class="report-empty">그날 52주 신고가를 갱신한 종목이 없습니다.</li>';
+            $el.innerHTML = '<li class="report-empty">52주 고점에 근접한 급등 종목이 없습니다.</li>';
             return;
         }
         $el.innerHTML = rows.map(function (r) {
+            var gap = Number(r._high52GapPct || 0);
+            var status = r._high52IsNew ? '52주 신고가 갱신' : '52주 고점 대비 ' + gap.toFixed(1) + '%';
             return stockRowHtml(r, {
-                priceLabel: '종가 ' + fmt(r.close_price) + '원',
+                priceLabel: '고가 ' + fmt(r.high_price || r.close_price) + '원 · 52주 ' + fmt(r.high_52w) + '원',
                 rate: r.change_rate,
-                sector: r.sector,
+                sub: esc(status) + (r.sector ? ' · ' + esc(r.sector) : ''),
             });
         }).join('');
     }
@@ -352,10 +398,12 @@ var WhyReport = (function () {
         if (!$grid || !$section) return;
         var byDate = (state.cardsIndex && state.cardsIndex[date]) || null;
         if (!byDate || !byDate.length) {
-            $grid.innerHTML = '<div class="report-empty cards-empty">자체 카드뉴스 준비 중 — 데일리 시황 카드가 곧 노출됩니다.</div>';
             state.cardsList = [];
+            $grid.innerHTML = '';
+            $section.style.display = 'none';
             return;
         }
+        $section.style.display = '';
         state.cardsList = byDate;
         $grid.innerHTML = byDate.map(function (c, i) {
             var src = '/cards/' + esc(c.file);
@@ -392,12 +440,13 @@ var WhyReport = (function () {
     function applyDay() {
         var d = state.day;
         if (!d) return;
+        var date = state.dates[state.dateIndex] || '';
         var rankings = (d.rankings || []).filter(function (r) { return !BLOCKED_TICKERS[r.ticker]; });
         renderSummary(deriveSummary(rankings));
-        renderGroupCards(deriveSectors(rankings), 'sectorCards', 'sectorPager', 'sectorPage', '주도 섹터');
-        renderGroupCards(deriveThemes(rankings), 'themeCards', 'themePager', 'themePage', '핫 테마');
-        renderCards(state.dates[state.dateIndex] || '');
-        renderHigh52w(deriveHigh52w(rankings));
+        renderGroupCards(deriveSectors(rankings), 'sectorCards', 'sectorPager', 'sectorPage', '주도 섹터', 'sector');
+        renderGroupCards(deriveThemes(rankings), 'themeCards', 'themePager', 'themePage', '핫 테마', 'theme');
+        renderCards(date);
+        renderHigh52w(deriveHigh52w(rankings, date));
         renderPullbacks(derivePullbacks(d.pullbacks || []));
     }
 
@@ -417,11 +466,13 @@ var WhyReport = (function () {
             state.day = data;
             state.sectorPage = 0;
             state.themePage = 0;
+            setUpdatedAt(data.collected_at || '');
             applyDay();
             if ($loading) $loading.style.display = 'none';
             if ($content) $content.style.display = 'block';
         }).catch(function (err) {
             if ($loading) $loading.style.display = 'none';
+            setUpdatedAt('');
             showMessage('리포트 로딩 실패: ' + (err && err.message ? err.message : err));
         });
     }

@@ -2246,7 +2246,17 @@ body:not(.admin-on) .event-card__edit { display: none; }
    날짜 네비 + 요약 4카드 + 주도 섹터/테마 카드 + 카드뉴스 + 52w + 풀백
    ───────────────────────────────────────────────────────────── */
 
-.report-page { padding-top: 16px; padding-bottom: 44px; }
+.report-page {
+    padding-top: 24px;
+    padding-bottom: 44px;
+    overflow-x: hidden;
+}
+.report-page__head-row {
+    margin-bottom: 8px;
+}
+.report-page__head-row .report-page__title {
+    margin: 0;
+}
 
 .report-date-bar {
     display: flex; align-items: center; gap: 8px;
@@ -2283,9 +2293,11 @@ body:not(.admin-on) .event-card__edit { display: none; }
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
     margin-bottom: 24px;
+    width: 100%;
 }
 .summary-card {
     display: flex; flex-direction: column; gap: 4px;
+    min-width: 0;
     padding: 14px 16px;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
@@ -2342,8 +2354,10 @@ body:not(.admin-on) .event-card__edit { display: none; }
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
+    width: 100%;
 }
 .report-card-group {
+    min-width: 0;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -2358,6 +2372,10 @@ body:not(.admin-on) .event-card__edit { display: none; }
     font-size: 14px; font-weight: 700; color: var(--text-primary);
     letter-spacing: -.2px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70%;
+    text-decoration: none;
+}
+.report-card-group__name:hover {
+    color: var(--toss-blue, #3182F6);
 }
 .report-card-group__stat {
     font-size: 11px; color: var(--text-muted);
@@ -2383,6 +2401,27 @@ body:not(.admin-on) .event-card__edit { display: none; }
 }
 .report-card-stock__rate {
     font-size: 12px; font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.report-card-group__screening {
+    align-self: flex-start;
+    color: var(--toss-blue, #3182F6);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.report-card-group__screening:hover {
+    text-decoration: underline;
+}
+.report-list-meta {
+    display: flex;
+    justify-content: flex-end;
+    min-height: 18px;
+    margin: -14px 2px 26px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.35;
     font-variant-numeric: tabular-nums;
 }
 
@@ -2538,18 +2577,27 @@ body:not(.admin-on) .event-card__edit { display: none; }
 
 /* ── 모바일 (~768px) ── */
 @media (max-width: 768px) {
+    .report-page {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
     .report-summary {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .report-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
     }
     .summary-card__value { font-size: 19px; }
     .report-section__title { font-size: 16px; }
     .report-date-bar .date-text { font-size: 15px; }
+    .report-list-meta {
+        margin-top: -12px;
+        font-size: 10.5px;
+    }
 }
 
 @media (max-width: 480px) {
+    .report-summary { grid-template-columns: 1fr; }
     .report-cards { grid-template-columns: 1fr; }
     .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .report-stock-row {

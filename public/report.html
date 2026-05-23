@@ -24,7 +24,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260523a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260523a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260523c">
 </head>
 <body>
     <script>
@@ -61,20 +61,12 @@
         </div>
     </header>
 
-    <section class="hero hero--mini">
-        <div class="frame hero__inner">
-            <div class="hero__search-wrap">
-                <input type="text" class="hero__search-input" id="heroSearch"
-                       placeholder="종목 검색"
-                       autocomplete="off"
-                       spellcheck="false">
-                <span class="hero__placeholder-suffix">왜 오름?</span>
-                <ul class="hero__suggest" id="heroSuggest" hidden></ul>
-            </div>
-        </div>
-    </section>
-
     <main class="frame report-page">
+        <div class="report-page__head-row">
+            <h1 class="report-page__title">데일리 리포트</h1>
+            <a class="report-cta" href="/screening.html">스크리닝</a>
+        </div>
+
         <div class="report-date-bar">
             <button class="date-nav" id="datePrev" type="button" aria-label="이전 거래일">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -115,7 +107,7 @@
                     <h2 class="report-section__title">주도 섹터</h2>
                     <span class="report-section__pager" id="sectorPager"></span>
                 </div>
-                <p class="report-section__desc">상승 종목이 집중된 섹터 — 누적 상승률 기준</p>
+                <p class="report-section__desc">상승 종목이 집중된 섹터 — 카드 제목을 누르면 스크리닝으로 이어집니다.</p>
                 <div class="report-cards" id="sectorCards"></div>
             </section>
 
@@ -124,7 +116,7 @@
                     <h2 class="report-section__title">핫 테마</h2>
                     <span class="report-section__pager" id="themePager"></span>
                 </div>
-                <p class="report-section__desc">그날 시장을 이끈 테마 태그 — 누적 상승률 기준</p>
+                <p class="report-section__desc">그날 시장을 이끈 테마 태그 — 카드 제목을 누르면 스크리닝으로 이어집니다.</p>
                 <div class="report-cards" id="themeCards"></div>
             </section>
 
@@ -137,8 +129,8 @@
             </section>
 
             <section class="report-section" id="high52wSection">
-                <h2 class="report-section__title">52주 신고가</h2>
-                <p class="report-section__desc">그날 52주 최고가 갱신 종목</p>
+                <h2 class="report-section__title">52주 고점</h2>
+                <p class="report-section__desc">52주 고점 갱신 또는 당일 고가가 52주 고점 10% 이내인 종목</p>
                 <ul class="report-stock-list" id="high52wList"></ul>
             </section>
 
@@ -148,6 +140,7 @@
                 <ul class="report-stock-list" id="pullbackList"></ul>
             </section>
         </div>
+        <div class="report-list-meta" id="reportUpdatedAt"></div>
     </main>
 
     <div class="footer">
@@ -201,9 +194,8 @@
     <script src="/js/nav.js?v=20260523a"></script>
     <script src="/js/api.js?v=20260523a"></script>
     <script src="/js/date-picker.js?v=20260523a"></script>
-    <script src="/js/search.js?v=20260523a"></script>
     <script src="/js/ratings-sync.js?v=20260523a"></script>
-    <script src="/js/report.js?v=20260523a"></script>
+    <script src="/js/report.js?v=20260523c"></script>
     <script src="/js/visitor.js?v=20260523a"></script>
 </body>
 </html>
