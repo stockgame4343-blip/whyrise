@@ -159,6 +159,11 @@ body {
     display: none !important;
 }
 .top-bar__auth-item { display: none !important; }
+.theme-toggle__icon,
+.top-bar__auth-icon {
+    display: block;
+    flex: 0 0 auto;
+}
 
 /* 햄버거 버튼 — PC 에선 숨김 */
 .top-bar__hamburger {
@@ -251,6 +256,8 @@ body {
         color: var(--text-primary);
         width: 100%;
         display: flex !important;
+        align-items: center;
+        gap: 10px;
         font: inherit;
         font-weight: 700;
     }
