@@ -244,6 +244,7 @@ body {
     }
     .top-bar__nav .top-bar__link--active { background: var(--glass-bg); }
     .top-bar__auth-item {
+        position: relative;
         border: 0;
         background: transparent;
         cursor: pointer;
@@ -251,16 +252,44 @@ body {
         width: 100%;
         display: flex !important;
         font: inherit;
+        font-weight: 700;
+    }
+    .top-bar__nav--has-auth .top-bar__auth-item {
+        margin-top: 10px;
+    }
+    .top-bar__nav--has-auth .top-bar__auth-item::before {
+        content: '';
+        position: absolute;
+        left: -16px;
+        right: -16px;
+        top: -5px;
+        height: 1px;
+        background: var(--glass-border);
+        pointer-events: none;
+    }
+    .top-bar__nav--has-auth .top-bar__theme-item {
+        margin-top: 0;
+    }
+    .top-bar__nav--has-auth .top-bar__theme-item::before {
+        display: none;
     }
     /* drawer 가 좁아 보이는 시각 이슈 — width 100% 명시 + 좌우 외부 backdrop dim 으로 풀와이드 인상 강화 */
     .top-bar__nav--open { width: 100%; }
 }
 
+.auth-modal { z-index: 900; }
+.auth-modal__box {
+    width: min(92vw, 420px);
+}
+.auth-modal__body {
+    padding: 18px 22px 20px;
+}
 .auth-modal__text {
     margin: 0;
     color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.55;
+    word-break: keep-all;
 }
 .auth-modal__actions {
     display: flex;
@@ -294,10 +323,15 @@ body {
 @media (max-width: 768px) {
     .auth-modal__actions {
         flex-direction: column;
+        margin-top: 20px;
     }
     .auth-modal__login,
     .auth-modal__cancel {
         width: 100%;
+        min-height: 46px;
+    }
+    .auth-modal__body {
+        padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px));
     }
 }
 

@@ -85,10 +85,11 @@
     }
 
     function featureText(feature) {
-        if (feature === 'memo') return '메모는 로그인 후 내 계정에 저장됩니다.';
-        if (feature === 'watchlist') return '관심종목은 로그인 후 내 계정에서 볼 수 있습니다.';
+        if (feature === 'interest') return '관심종목은 로그인 후 내 계정에 저장됩니다.';
+        if (feature === 'memo') return '메모는 로그인 후 내 계정에 안전하게 저장됩니다.';
+        if (feature === 'watchlist') return '관심목록은 로그인 후 확인할 수 있습니다.';
         if (feature === 'exclude') return '제외 표시는 로그인 후 내 계정에 저장됩니다.';
-        return '관심종목과 메모는 로그인 후 내 계정에 저장됩니다.';
+        return '관심과 메모는 로그인 후 사용할 수 있습니다.';
     }
 
     function ensureModal() {
@@ -105,7 +106,7 @@
                 '<div class="modal__body auth-modal__body">' +
                     '<p class="auth-modal__text"></p>' +
                     '<div class="auth-modal__actions">' +
-                        '<button class="auth-modal__login" type="button">Google로 계속하기</button>' +
+                        '<button class="auth-modal__login" type="button">Google로 로그인</button>' +
                         '<button class="auth-modal__cancel" type="button">닫기</button>' +
                     '</div>' +
                 '</div>' +
@@ -195,6 +196,8 @@
     function renderAuthControls() {
         var top = ensureTopButton();
         var drawer = ensureDrawerButton();
+        var nav = document.querySelector('.top-bar__nav');
+        if (nav) nav.classList.toggle('top-bar__nav--has-auth', state.loginEnabled);
         if (!state.loginEnabled) {
             if (top) top.hidden = true;
             if (drawer) drawer.hidden = true;
