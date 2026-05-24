@@ -12,9 +12,9 @@
     var MARKET_METRICS = { mcap: 1, volume: 1, change: 1 };
 
     var ENGINES = {
-        flow: '/flowmap.html?embed=leaders2&v=20260524j',
-        bubble: '/bubbles2.html?embed=leaders2&v=20260524j',
-        tree: '/treemap.html?embed=leaders2&v=20260524j',
+        flow: '/flowmap.html?embed=leaders2&v=20260524k',
+        bubble: '/bubbles2.html?embed=leaders2&v=20260524k',
+        tree: '/treemap.html?embed=leaders2&v=20260524k',
     };
 
     var $stack = document.getElementById('leaders2Stack');
@@ -158,7 +158,7 @@
             frame.classList.add('is-loaded');
             driveActiveFrame();
         } catch (err) {
-            frame.classList.add('is-loaded');
+            frame.classList.remove('is-loaded');
         }
     }
 
@@ -170,6 +170,7 @@
         frame.loading = name === 'flow' ? 'eager' : 'lazy';
         frame.setAttribute('referrerpolicy', 'same-origin');
         frame.setAttribute('data-engine', name);
+        frame.setAttribute('aria-hidden', 'true');
         frame.addEventListener('load', function () {
             prepareFrame(name, frame);
         });
