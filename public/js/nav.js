@@ -7,20 +7,6 @@
     var nav = document.querySelector('.top-bar__nav');
     if (!btn || !nav) return;
 
-    (function injectLeaders2Item() {
-        if (nav.querySelector('a[href="/leaders2.html"]')) return;
-        var anchor = nav.querySelector('a[href="/flowmap.html"]');
-        if (!anchor) return;
-        var item = document.createElement('a');
-        item.href = '/leaders2.html';
-        item.className = 'top-bar__link';
-        item.textContent = '주도주2';
-        if (window.location.pathname === '/leaders2.html') {
-            item.classList.add('top-bar__link--active');
-        }
-        anchor.insertAdjacentElement('afterend', item);
-    })();
-
     // 모바일 햄버거 drawer 안에 테마 토글 아이템 주입 — PC 에서는 CSS 로 숨김.
     // 본래 PC 우측의 #themeToggle 버튼은 그대로 두고, drawer 용 분신을 만들어 같은 동작을 위임.
     (function injectThemeItem() {

@@ -7,14 +7,14 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="WAORNO">
     <link rel="apple-touch-icon" href="/og-default.svg">
-    <title>주도주2 — 이거왜오름?</title>
-    <meta name="description" content="주도주, 버블맵, 트리맵을 한 화면에서 전환해 보는 통합 시각화 페이지입니다.">
+    <title>시각화 — 이거왜오름?</title>
+    <meta name="description" content="주도 섹터, 핫 테마, 시총, 거래량, 상승률을 트리와 버블로 한눈에 보는 통합 시각화 페이지입니다.">
     <meta name="theme-color" content="#0a0b0f">
     <link rel="canonical" href="https://whyrise.vercel.app/leaders2.html">
     <link rel="icon" href="/og-default.svg" type="image/svg+xml">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="주도주2 — 이거왜오름?">
-    <meta property="og:description" content="주도주, 버블맵, 트리맵을 한 화면에서 전환합니다.">
+    <meta property="og:title" content="시각화 — 이거왜오름?">
+    <meta property="og:description" content="주도 섹터, 핫 테마, 시총, 거래량, 상승률을 트리와 버블로 한눈에 봅니다.">
     <meta property="og:image" content="https://whyrise.vercel.app/og-default.svg">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,12 +39,9 @@
             </a>
             <nav class="top-bar__nav">
                 <a href="/" class="top-bar__link">홈</a>
-                <a href="/flowmap.html" class="top-bar__link">주도주</a>
-                <a href="/leaders2.html" class="top-bar__link top-bar__link--active">주도주2</a>
                 <a href="/report.html" class="top-bar__link">리포트</a>
+                <a href="/leaders2.html" class="top-bar__link top-bar__link--active">시각화</a>
                 <a href="/screening.html" class="top-bar__link">스크리닝</a>
-                <a href="/bubbles2.html" class="top-bar__link">버블맵</a>
-                <a href="/treemap.html" class="top-bar__link">트리맵</a>
             </nav>
             <div class="top-bar__right">
                 <button class="top-bar__hamburger" id="navToggle" type="button" aria-label="메뉴" aria-expanded="false">
@@ -76,7 +73,7 @@
                 </div>
                 <button class="tmap-back" id="leaders2Back" type="button" hidden>← 전체</button>
             </div>
-            <div class="tmap-bar__right leaders2-controls" aria-label="주도주 통합 필터">
+            <div class="tmap-bar__right leaders2-controls" aria-label="시각화 필터">
                 <div class="tmap-tabs" role="tablist" aria-label="보기 방식">
                     <button class="tmap-tab is-active" type="button" role="tab" aria-selected="true" data-view="tree">트리</button>
                     <button class="tmap-tab" type="button" role="tab" aria-selected="false" data-view="bubble">버블</button>
@@ -113,12 +110,12 @@
         </div>
     </div>
 
-    <main class="tmap-stage leaders2-shell" aria-label="주도주 통합 화면">
+    <main class="tmap-stage leaders2-shell" aria-label="시각화 화면">
         <div class="tmap-loading leaders2-loading" id="leaders2Loading">불러오는 중...</div>
         <div class="leaders2-stack" id="leaders2Stack"></div>
     </main>
 
-    <script src="/js/nav.js?v=20260524c"></script>
+    <script src="/js/nav.js?v=20260524d"></script>
     <script src="/js/date-picker.js?v=20260524f"></script>
     <script src="/js/leaders2.js?v=20260524m"></script>
     <script src="/js/visitor.js?v=20260523a"></script>
