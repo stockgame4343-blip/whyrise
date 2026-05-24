@@ -169,9 +169,16 @@
     }
 
     // ── 색상 (HSL) ─────────────────────────────────────
+    function positiveLeaderT(rate) {
+        return Math.max(0, Math.min(1, (rate - 10) / 20));
+    }
     function colorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) {
             return 'hsl(220, 5%, 28%)';
+        }
+        if (state.sort === 'change' && rate > 0) {
+            var pt = positiveLeaderT(rate);
+            return 'hsl(0, ' + (65 + pt * 20) + '%, ' + (32 + pt * 30) + '%)';
         }
         var r = Math.max(-5, Math.min(5, rate));
         var t = Math.abs(r) / 5;

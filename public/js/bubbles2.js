@@ -151,10 +151,18 @@
         return Math.round(v).toLocaleString();
     }
 
+    function positiveLeaderT(rate) {
+        return Math.max(0, Math.min(1, (rate - 10) / 20));
+    }
+
     // 외곽 색 (alpha 없는 hsl). stop-opacity 로 그라데이션 알파 조절.
     function edgeColorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) {
             return 'hsl(220, 6%, 58%)';
+        }
+        if (state.sort === 'change' && rate > 0) {
+            var pt = positiveLeaderT(rate);
+            return 'hsl(0, ' + (80 + pt * 12) + '%, ' + (54 + pt * 6) + '%)';
         }
         var r = Math.max(-5, Math.min(5, rate));
         var t = Math.abs(r) / 5;

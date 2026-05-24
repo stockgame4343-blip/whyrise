@@ -120,22 +120,27 @@
         if (억 >= 10000) return (억 / 10000).toFixed(1) + '조';
         return Math.round(억).toLocaleString() + '억';
     }
+    function positiveLeaderT(rate) {
+        return Math.max(0, Math.min(1, (rate - 10) / 20));
+    }
     function colorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) return 'hsl(220, 5%, 28%)';
+        if (rate > 0) {
+            var pt = positiveLeaderT(rate);
+            return 'hsl(0, ' + (65 + pt * 20) + '%, ' + (32 + pt * 30) + '%)';
+        }
         var r = Math.max(-5, Math.min(5, rate));
         var t = Math.abs(r) / 5;
-        if (r > 0) {
-            return 'hsl(0, ' + (65 + t * 20) + '%, ' + (32 + t * 30) + '%)';
-        }
         return 'hsl(220, ' + (55 + t * 25) + '%, ' + (32 - t * 23) + '%)';
     }
     function edgeColorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) return 'hsl(220, 6%, 58%)';
+        if (rate > 0) {
+            var pt = positiveLeaderT(rate);
+            return 'hsl(0, ' + (80 + pt * 12) + '%, ' + (54 + pt * 6) + '%)';
+        }
         var r = Math.max(-5, Math.min(5, rate));
         var t = Math.abs(r) / 5;
-        if (r > 0) {
-            return 'hsl(0, ' + (80 + t * 12) + '%, ' + (54 + t * 6) + '%)';
-        }
         return 'hsl(220, ' + (70 + t * 12) + '%, ' + (52 - t * 4) + '%)';
     }
 
