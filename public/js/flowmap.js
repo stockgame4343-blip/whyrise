@@ -855,7 +855,7 @@
         bg.setAttribute('fill', bgColor);
         wrap.appendChild(bg);
 
-        wrap.appendChild(mkText(20, HEAD_H - 16, 'WAORNO', { size: 16, weight: 800, fill: fgColor }));
+        wrap.appendChild(mkText(20, HEAD_H - 16, 'ORNO', { size: 16, weight: 800, fill: fgColor }));
         wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
         var ctxStr = '흐름맵 · ' + (MODE_LABEL[state.mode] || state.mode) + ' · ' + (VIEW_LABEL[state.view] || state.view)
             + '   ·   ' + formatDate(state.currentDate);
@@ -935,7 +935,7 @@
                 var dl = URL.createObjectURL(b);
                 var a = document.createElement('a');
                 var stamp = (state.currentDate || '').replace(/[^0-9]/g, '');
-                a.href = dl; a.download = 'waorno-flowmap-' + stamp + '-' + state.mode + '-' + state.view + '.png';
+                a.href = dl; a.download = 'orno-flowmap-' + stamp + '-' + state.mode + '-' + state.view + '.png';
                 document.body.appendChild(a); a.click(); document.body.removeChild(a);
                 URL.revokeObjectURL(dl);
             }, 'image/png');
