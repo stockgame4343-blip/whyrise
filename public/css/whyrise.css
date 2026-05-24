@@ -3586,11 +3586,17 @@ body.page-leaders2 .top-bar {
 .leaders2-extra.is-disabled .tmap-tabs {
     opacity: .42;
 }
-.leaders2-extra.is-disabled .tmap-tab {
-    cursor: not-allowed;
-}
+.leaders2-extra.is-disabled .tmap-tab,
 .leaders2-extra.is-disabled .tmap-tab.is-active {
+    background: transparent;
+    color: var(--text-muted);
+    cursor: not-allowed;
     box-shadow: none;
+}
+[data-theme="light"] .leaders2-extra.is-disabled .tmap-tab,
+[data-theme="light"] .leaders2-extra.is-disabled .tmap-tab.is-active {
+    background: transparent;
+    color: #8b95a1;
 }
 .leaders2-extra .tmap-tab:disabled {
     pointer-events: none;

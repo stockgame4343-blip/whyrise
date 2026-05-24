@@ -21,8 +21,6 @@
     var POLL_MS = 60 * 1000;     // 60초 (stock-rise 일별이 5분 주기로 갱신되지만 ux 위해 짧게)
     var RING_CIRCUM = 2 * Math.PI * 9;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
-    var LEAD_COLOR_FLOOR = 15;
-    var LEAD_COLOR_CEIL = 30;
     // 모바일 탭은 손가락 떨림으로 시작점 주변에서 왕복함. 누적 경로가 아니라
     // "시작점으로부터의 최대 변위" 가 임계값을 넘어야 드래그로 친다. 10px 반경.
     var TAP_RADIUS_SQ = 100;
@@ -124,30 +122,21 @@
     }
     function colorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) return 'hsl(220, 5%, 28%)';
-        var r = Math.max(-5, Math.min(LEAD_COLOR_CEIL, rate));
+        var r = Math.max(-5, Math.min(5, rate));
+        var t = Math.abs(r) / 5;
         if (r > 0) {
-            // Absolute scale for Whyrise leaders: +15% is warm, +30% is max red.
-            var upT = r < LEAD_COLOR_FLOOR
-                ? (r / LEAD_COLOR_FLOOR) * 0.25
-                : 0.25 + ((r - LEAD_COLOR_FLOOR) / (LEAD_COLOR_CEIL - LEAD_COLOR_FLOOR)) * 0.75;
-            upT = Math.max(0, Math.min(1, upT));
-            return 'hsl(0, ' + (66 + upT * 28) + '%, ' + (34 + upT * 24) + '%)';
+            return 'hsl(0, ' + (65 + t * 20) + '%, ' + (32 + t * 30) + '%)';
         }
-        var downT = Math.min(1, Math.abs(r) / 5);
-        return 'hsl(220, ' + (60 + downT * 25) + '%, ' + (32 - downT * 12) + '%)';
+        return 'hsl(220, ' + (55 + t * 25) + '%, ' + (32 - t * 23) + '%)';
     }
     function edgeColorFor(rate) {
         if (rate == null || isNaN(rate) || Math.abs(rate) < 0.1) return 'hsl(220, 6%, 58%)';
-        var r = Math.max(-5, Math.min(LEAD_COLOR_CEIL, rate));
+        var r = Math.max(-5, Math.min(5, rate));
+        var t = Math.abs(r) / 5;
         if (r > 0) {
-            var upT = r < LEAD_COLOR_FLOOR
-                ? (r / LEAD_COLOR_FLOOR) * 0.25
-                : 0.25 + ((r - LEAD_COLOR_FLOOR) / (LEAD_COLOR_CEIL - LEAD_COLOR_FLOOR)) * 0.75;
-            upT = Math.max(0, Math.min(1, upT));
-            return 'hsl(0, ' + (78 + upT * 14) + '%, ' + (50 + upT * 12) + '%)';
+            return 'hsl(0, ' + (80 + t * 12) + '%, ' + (54 + t * 6) + '%)';
         }
-        var downT = Math.min(1, Math.abs(r) / 5);
-        return 'hsl(220, ' + (70 + downT * 12) + '%, ' + (52 - downT * 4) + '%)';
+        return 'hsl(220, ' + (70 + t * 12) + '%, ' + (52 - t * 4) + '%)';
     }
 
     // ── 데이터 가공 ────────────────────────────────────

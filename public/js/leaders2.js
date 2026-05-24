@@ -12,9 +12,9 @@
     var MARKET_METRICS = { mcap: 1, volume: 1, change: 1 };
 
     var ENGINES = {
-        flow: '/flowmap.html?embed=leaders2&v=20260524i',
-        bubble: '/bubbles2.html?embed=leaders2',
-        tree: '/treemap.html?embed=leaders2',
+        flow: '/flowmap.html?embed=leaders2&v=20260524j',
+        bubble: '/bubbles2.html?embed=leaders2&v=20260524j',
+        tree: '/treemap.html?embed=leaders2&v=20260524j',
     };
 
     var $stack = document.getElementById('leaders2Stack');
@@ -69,7 +69,9 @@
         else document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', theme);
         Object.keys(frames).forEach(function (key) {
-            applyFrameTheme(frames[key]);
+            var frame = frames[key];
+            applyFrameTheme(frame);
+            if (frame && frame.classList.contains('is-active')) nudgeFrame(frame);
         });
     }
 
