@@ -1217,6 +1217,9 @@ body.page-treemap {
 /* ── 흐름맵 — 그룹 force 떠다님 + 클릭 dive ── */
 .flowmap-stage { background: var(--wr-bg-base); }
 [data-theme="light"] .flowmap-stage { background: var(--wr-bg-base); }
+[data-theme="light"] body.page-flowmap[data-flow-view="tree"] .flowmap-stage {
+    background: #F2F4F6;
+}
 
 /* 트리맵용 그룹 박스 (트리 모드에서 d3.treemap squarified 가 사용) */
 .flow-group__circle {
@@ -1289,6 +1292,10 @@ body.page-treemap {
     fill: rgba(0,0,0,0.035);
     stroke: rgba(0,0,0,0.16);
 }
+[data-theme="light"] body.page-flowmap[data-flow-view="tree"] .tmap-sector__box {
+    fill: rgba(255,255,255,0.78);
+    stroke: rgba(49,59,76,0.18);
+}
 .tmap-sector:hover .tmap-sector__box {
     stroke: rgba(255,255,255,0.34);
     fill: rgba(255,255,255,0.08);
@@ -1296,6 +1303,10 @@ body.page-treemap {
 [data-theme="light"] .tmap-sector:hover .tmap-sector__box {
     stroke: rgba(0,0,0,0.34);
     fill: rgba(0,0,0,0.06);
+}
+[data-theme="light"] body.page-flowmap[data-flow-view="tree"] .tmap-sector:hover .tmap-sector__box {
+    stroke: rgba(49,59,76,0.32);
+    fill: rgba(255,255,255,0.92);
 }
 .tmap-sector__label {
     fill: rgba(255,255,255,0.92);

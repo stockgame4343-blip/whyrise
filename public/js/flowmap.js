@@ -246,6 +246,7 @@
     }
 
     function render() {
+        syncBodyState();
         var items = activeItems();
         var w = $stage.clientWidth;
         var h = $stage.clientHeight;
@@ -645,6 +646,12 @@
         }
     }
 
+    function syncBodyState() {
+        if (!document.body) return;
+        document.body.setAttribute('data-flow-view', state.view);
+        document.body.setAttribute('data-flow-mode', state.mode);
+    }
+
     // ── 라이브 ring ───────────────────────────────────
     function startRingFill() {
         if (!$ringFg) return;
@@ -773,6 +780,7 @@
         state.zoomedGroup = null;
         lastNodes = [];
         updateBackBtn();
+        syncBodyState();
         $modeTabs.forEach(function (b) {
             b.classList.toggle('is-active', b.getAttribute('data-mode') === m);
         });
@@ -782,12 +790,14 @@
         if (state.view === v) return;
         state.view = v;
         lastNodes = [];
+        syncBodyState();
         $viewTabs.forEach(function (b) {
             b.classList.toggle('is-active', b.getAttribute('data-view') === v);
         });
         render();
     }
     function syncInitialControls() {
+        syncBodyState();
         $viewTabs.forEach(function (b) {
             b.classList.toggle('is-active', b.getAttribute('data-view') === state.view);
         });
