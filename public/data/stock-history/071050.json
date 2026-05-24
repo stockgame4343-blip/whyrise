@@ -69,21 +69,21 @@
         }
       ],
       "sector": "증권",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
       "date": "20260408",
       "change_rate": 12.21,
       "close_price": 239000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "estimated"
     },
     {
@@ -99,15 +99,71 @@
       "sector": "",
       "is_52w_high": false,
       "source": "estimated"
+    },
+    {
+      "date": "20260305",
+      "change_rate": 11.62,
+      "close_price": 230500.0,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20260219",
+      "change_rate": 10.1,
+      "close_price": 283500.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
+    },
+    {
+      "date": "20251020",
+      "change_rate": 14.02,
+      "close_price": 175700.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
+    },
+    {
+      "date": "20250624",
+      "change_rate": 12.42,
+      "close_price": 148400.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 3,
+    "count_10": 7,
     "count_15": 0,
     "count_20": 0,
     "count_limit": 0,
     "count_recent": 1,
-    "avg_rate": 11.36
+    "avg_rate": 11.75
   },
-  "built_at": "2026-05-19T14:57:38"
+  "built_at": "2026-05-24T07:01:24"
 }
