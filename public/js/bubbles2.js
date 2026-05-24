@@ -659,7 +659,7 @@
         bg.setAttribute('fill', bgColor);
         wrap.appendChild(bg);
 
-        wrap.appendChild(mkText(20, HEAD_H - 16, '이거왜오름?', { size: 16, weight: 800, fill: fgColor }));
+        wrap.appendChild(mkText(20, HEAD_H - 16, 'WAORNO', { size: 16, weight: 800, fill: fgColor }));
         wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
         var sortText = SORT_LABEL[state.sort] || '시총';
@@ -711,7 +711,7 @@
                 var dl = URL.createObjectURL(b);
                 var a = document.createElement('a');
                 var stamp = (state.currentDate || '').replace(/[^0-9]/g, '') || 'live';
-                var fname = 'whyrise-bubblemap2-' + stamp + '-' + state.filter.toLowerCase() + '-' + state.period + '-' + state.sort + '.png';
+                var fname = 'waorno-bubblemap2-' + stamp + '-' + state.filter.toLowerCase() + '-' + state.period + '-' + state.sort + '.png';
                 a.href = dl; a.download = fname;
                 document.body.appendChild(a); a.click(); document.body.removeChild(a);
                 URL.revokeObjectURL(dl);

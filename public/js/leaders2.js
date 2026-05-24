@@ -7,14 +7,13 @@
 (function () {
     'use strict';
 
-    var STORAGE_KEY = 'whyrise-leaders2-state-v2';
     var LEADER_METRICS = { sector: 1, theme: 1 };
     var MARKET_METRICS = { mcap: 1, volume: 1, change: 1 };
 
     var ENGINES = {
-        flow: '/flowmap.html?embed=leaders2&v=20260524m',
-        bubble: '/bubbles2.html?embed=leaders2&v=20260524m',
-        tree: '/treemap.html?embed=leaders2&v=20260524m',
+        flow: '/flowmap.html?embed=leaders2&v=20260525c',
+        bubble: '/bubbles2.html?embed=leaders2&v=20260525c',
+        tree: '/treemap.html?embed=leaders2&v=20260525c',
     };
 
     var $stack = document.getElementById('leaders2Stack');
@@ -35,30 +34,16 @@
     var state = readState();
 
     function readState() {
-        var base = {
+        return {
             view: 'tree',
             metric: 'sector',
             market: 'ALL',
             period: '1d',
             date: '',
         };
-        try {
-            var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-            Object.keys(base).forEach(function (key) {
-                if (saved[key]) base[key] = saved[key];
-            });
-        } catch (err) {}
-        if (base.view !== 'bubble' && base.view !== 'tree') base.view = 'tree';
-        if (!LEADER_METRICS[base.metric] && !MARKET_METRICS[base.metric]) base.metric = 'sector';
-        if (['ALL', 'KOSPI', 'KOSDAQ'].indexOf(base.market) < 0) base.market = 'ALL';
-        if (['1d', '1w', '1m', '3m', '1y'].indexOf(base.period) < 0) base.period = '1d';
-        if (!/^\d{8}$/.test(base.date)) base.date = '';
-        return base;
     }
 
-    function saveState() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
+    function saveState() {}
 
     function currentTheme() {
         return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';

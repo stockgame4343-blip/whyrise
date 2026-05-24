@@ -2149,15 +2149,20 @@ body:not(.admin-on) .event-card__edit { display: none; }
         padding-bottom: 38px;
     }
     .screening-head {
-        align-items: flex-start;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
         margin: 0 0 14px;
     }
     .screening-title {
         font-size: 24px;
     }
     .screening-total {
-        padding-top: 4px;
-        font-size: 16px;
+        margin-left: auto;
+        padding-top: 0;
+        font-size: 15px;
+        text-align: right;
+        white-space: nowrap;
     }
     .screening-controls {
         padding: 12px;
@@ -2235,11 +2240,15 @@ body:not(.admin-on) .event-card__edit { display: none; }
 
 @media (max-width: 430px) {
     .screening-head {
-        flex-direction: column;
-        gap: 6px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
     }
     .screening-total {
+        margin-left: auto;
         padding-top: 0;
+        font-size: 14px;
     }
     .screening-filter-grid {
         grid-template-columns: 1fr;
@@ -3101,12 +3110,16 @@ body:not(.admin-on) .event-card__edit { display: none; }
 
 @media (max-width: 768px) {
     .report-head {
-        align-items: flex-start;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
         margin: 2px 0 14px;
     }
     .report-date-bar {
-        width: 100%;
-        justify-content: flex-start;
+        width: auto;
+        flex: 0 0 auto;
+        margin-left: auto;
+        justify-content: flex-end;
     }
     .report-date-bar .date-text {
         min-width: 124px;
@@ -3591,13 +3604,16 @@ body:not(.admin-on) .event-card__edit { display: none; }
         padding: 18px 12px 38px;
     }
     .report-page--compact .report-head {
-        align-items: flex-start;
+        align-items: center;
+        justify-content: space-between;
         gap: 10px;
         margin: 0 0 14px;
     }
     .report-page--compact .report-date-bar {
-        width: 100%;
-        justify-content: flex-start;
+        width: auto;
+        flex: 0 0 auto;
+        margin-left: auto;
+        justify-content: flex-end;
     }
     .report-page--compact .report-date-bar .date-text {
         min-width: 124px;
@@ -3670,6 +3686,18 @@ body:not(.admin-on) .event-card__edit { display: none; }
 }
 
 @media (max-width: 430px) {
+    .report-page--compact .report-date-bar {
+        gap: 4px;
+    }
+    .report-page--compact .report-date-bar .date-nav {
+        width: 30px;
+        height: 30px;
+    }
+    .report-page--compact .report-date-bar .date-text {
+        min-width: 96px;
+        padding: 5px 4px;
+        font-size: 12.5px;
+    }
     .report-leader-card__name .report-stock-name {
         font-size: 15px;
     }
