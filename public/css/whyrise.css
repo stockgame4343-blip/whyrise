@@ -654,6 +654,25 @@ body {
 .whyrise-table .cell-name__market {
     margin-left: 4px;
 }
+.ctrl-wrap,
+.mini-indicators,
+.star-rating {
+    align-items: center;
+    line-height: 1;
+}
+.star {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transform: translateY(1px);
+}
+.mini-star {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    transform: translateY(1px);
+}
 .whyrise-table .cell-cap,
 .whyrise-table .cell-change,
 .whyrise-table .cell-volume {
