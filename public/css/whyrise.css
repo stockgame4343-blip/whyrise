@@ -136,6 +136,30 @@ body {
 }
 .top-bar__nav { display: flex; gap: 4px; }
 
+.top-bar__auth {
+    border: 0;
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    transition: background .15s, color .15s;
+}
+.top-bar__auth:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.12);
+}
+[data-theme="light"] .top-bar__auth:hover { background: rgba(0, 0, 0, 0.06); }
+.top-bar__auth[hidden],
+.top-bar__auth-item[hidden] {
+    display: none !important;
+}
+.top-bar__auth-item { display: none !important; }
+
 /* 햄버거 버튼 — PC 에선 숨김 */
 .top-bar__hamburger {
     display: none;
@@ -157,6 +181,7 @@ body {
        오른쪽 끝(col3, 1fr) 이 비고 햄버거가 중앙에 떠 보이던 문제 → grid-column:3 명시 + 우측 정렬 */
     .top-bar__right { grid-column: 3; justify-self: end; gap: 4px; }
     .top-bar__right .theme-toggle { display: none; }
+    .top-bar__right .top-bar__auth { display: none; }
     .top-bar__right .top-bar__hamburger { margin-left: auto; order: 99; }
     /* drawer 안 테마 아이템 — 메뉴 마지막에 노출.
        분리선은 별도 ::before pseudo 로 drawer 풀폭 (좌우 padding 침범 부분까지) 확장.
@@ -218,8 +243,62 @@ body {
         align-items: center;
     }
     .top-bar__nav .top-bar__link--active { background: var(--glass-bg); }
+    .top-bar__auth-item {
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        color: var(--text-primary);
+        width: 100%;
+        display: flex !important;
+        font: inherit;
+    }
     /* drawer 가 좁아 보이는 시각 이슈 — width 100% 명시 + 좌우 외부 backdrop dim 으로 풀와이드 인상 강화 */
     .top-bar__nav--open { width: 100%; }
+}
+
+.auth-modal__text {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.55;
+}
+.auth-modal__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 18px;
+}
+.auth-modal__login,
+.auth-modal__cancel {
+    min-height: 40px;
+    border-radius: 8px;
+    padding: 0 14px;
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 800;
+}
+.auth-modal__login {
+    color: #fff;
+    background: var(--wr-accent);
+    border-color: var(--wr-accent);
+}
+.auth-modal__login:hover { background: var(--wr-accent-strong); }
+.auth-modal__cancel {
+    color: var(--text-primary);
+    background: var(--glass-bg);
+}
+.auth-modal__cancel:hover { background: var(--glass-bg-strong); }
+
+@media (max-width: 768px) {
+    .auth-modal__actions {
+        flex-direction: column;
+    }
+    .auth-modal__login,
+    .auth-modal__cancel {
+        width: 100%;
+    }
 }
 
 /* ── Hero 검색 ────────────────────────────── */

@@ -305,14 +305,20 @@
     // 관심 별점 + 메모 — localStorage 키는 메인(index.html) 의 whyrise.js 와 공유.
     var RATINGS_KEY = 'whyrise-ratings';
     var _stockName = '';
+    var _ratings = {};
 
     function loadRatings() {
-        try { return JSON.parse(localStorage.getItem(RATINGS_KEY) || '{}'); }
-        catch (e) { return {}; }
+        _ratings = window.WhyRatingsSync ? window.WhyRatingsSync.getCached() : _ratings;
+        return _ratings || {};
     }
     function saveRatings(r) {
-        try { localStorage.setItem(RATINGS_KEY, JSON.stringify(r)); } catch (e) {}
-        if (window.WhyRatingsSync) window.WhyRatingsSync.push(r);
+        _ratings = r || {};
+        if (window.WhyRatingsSync) window.WhyRatingsSync.push(_ratings);
+    }
+    function requirePersonal(feature) {
+        if (!window.WhyAuth || window.WhyAuth.personalAllowed()) return true;
+        window.WhyAuth.requireLogin(feature);
+        return false;
     }
 
     /** 메인 홈(table.js starRatingHtml) 과 동일한 HTML 구조 — 호버/탭 동작 메인과 통일. */
@@ -349,6 +355,7 @@
             // 별점
             var star = e.target.closest('.star');
             if (star) {
+                if (!requirePersonal('interest')) return;
                 var n = parseInt(star.getAttribute('data-star'), 10);
                 if (!n) return;
                 var ratings = loadRatings();
@@ -362,6 +369,7 @@
             // 제외
             var ex = e.target.closest('.exclude-btn');
             if (ex) {
+                if (!requirePersonal('exclude')) return;
                 var r2 = loadRatings();
                 r2[ticker] = r2[ticker] || {};
                 r2[ticker].excluded = !r2[ticker].excluded;
@@ -372,6 +380,7 @@
             // 메모
             var memo = e.target.closest('.memo-btn');
             if (memo) {
+                if (!requirePersonal('memo')) return;
                 openMemo(ticker);
                 return;
             }
@@ -409,6 +418,7 @@
         if ($close) $close.addEventListener('click', function () { $modal.style.display = 'none'; });
         $modal.addEventListener('click', function (e) { if (e.target === $modal) $modal.style.display = 'none'; });
         if ($save) $save.addEventListener('click', function () {
+            if (!requirePersonal('memo')) return;
             var ticker = $area.getAttribute('data-ticker');
             if (!ticker) return;
             var ratings = loadRatings();
@@ -419,6 +429,7 @@
             $modal.style.display = 'none';
         });
         if ($del) $del.addEventListener('click', function () {
+            if (!requirePersonal('memo')) return;
             var ticker = $area.getAttribute('data-ticker');
             if (!ticker) return;
             var ratings = loadRatings();
@@ -434,6 +445,11 @@
         bindNewsModal();
         bindHeaderRating();
         bindMemoModal();
+        window.addEventListener('whyrise:ratings-updated', function (e) {
+            _ratings = (e.detail && e.detail.ratings) || {};
+            var current = getTicker();
+            if (current) renderHeaderRating(current);
+        });
 
         var ticker = getTicker();
         if (!ticker) {
@@ -444,7 +460,10 @@
         // 서버 별점 동기화 — KV pull 후 머지되면 별점 다시 그림.
         if (window.WhyRatingsSync) {
             window.WhyRatingsSync.pull().then(function (result) {
-                if (result && result.source === 'remote') renderHeaderRating(ticker);
+                if (result && result.ratings) {
+                    _ratings = result.ratings;
+                    renderHeaderRating(ticker);
+                }
             });
         }
 

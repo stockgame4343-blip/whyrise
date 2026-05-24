@@ -97,14 +97,17 @@ var WhyApp = (function () {
     };
 
     function loadRatings() {
-        try { state.ratings = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-        catch (e) { state.ratings = {}; }
+        state.ratings = window.WhyRatingsSync ? window.WhyRatingsSync.getCached() : {};
     }
 
     function saveRatings() {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.ratings)); }
-        catch (e) {}
         if (window.WhyRatingsSync) window.WhyRatingsSync.push(state.ratings);
+    }
+
+    function requirePersonal(feature) {
+        if (!window.WhyAuth || window.WhyAuth.personalAllowed()) return true;
+        window.WhyAuth.requireLogin(feature);
+        return false;
     }
 
     function formatDate(yyyymmdd) {
@@ -335,7 +338,16 @@ var WhyApp = (function () {
             state.watchlistMode = localStorage.getItem(WATCHLIST_KEY) === '1';
         } catch (e) {}
         $btn.classList.toggle('active', state.watchlistMode);
+        window.addEventListener('whyrise:auth', function () {
+            if (window.WhyAuth && !window.WhyAuth.personalAllowed() && state.watchlistMode) {
+                state.watchlistMode = false;
+                $btn.classList.remove('active');
+                try { localStorage.setItem(WATCHLIST_KEY, '0'); } catch (e) {}
+                applyCutoffAndRender();
+            }
+        });
         $btn.addEventListener('click', function () {
+            if (!requirePersonal('watchlist')) return;
             state.watchlistMode = !state.watchlistMode;
             $btn.classList.toggle('active', state.watchlistMode);
             try { localStorage.setItem(WATCHLIST_KEY, state.watchlistMode ? '1' : '0'); }
@@ -364,6 +376,7 @@ var WhyApp = (function () {
             // 별점
             var star = e.target.closest('.star');
             if (star) {
+                if (!requirePersonal('interest')) return;
                 var ticker = star.parentNode.getAttribute('data-ticker');
                 var n = parseInt(star.getAttribute('data-star'), 10);
                 if (!ticker || !n) return;
@@ -377,6 +390,7 @@ var WhyApp = (function () {
             // 제외
             var ex = e.target.closest('.exclude-btn');
             if (ex) {
+                if (!requirePersonal('exclude')) return;
                 var ticker2 = ex.getAttribute('data-ticker');
                 state.ratings[ticker2] = state.ratings[ticker2] || {};
                 state.ratings[ticker2].excluded = !state.ratings[ticker2].excluded;
@@ -387,6 +401,7 @@ var WhyApp = (function () {
             // 메모
             var memo = e.target.closest('.memo-btn');
             if (memo) {
+                if (!requirePersonal('memo')) return;
                 var ticker3 = memo.getAttribute('data-ticker');
                 openMemo(ticker3);
                 return;
@@ -455,6 +470,7 @@ var WhyApp = (function () {
         if ($close) $close.addEventListener('click', function () { $modal.style.display = 'none'; });
         $modal.addEventListener('click', function (e) { if (e.target === $modal) $modal.style.display = 'none'; });
         if ($save) $save.addEventListener('click', function () {
+            if (!requirePersonal('memo')) return;
             var ticker = $area.getAttribute('data-ticker');
             if (!ticker) return;
             state.ratings[ticker] = state.ratings[ticker] || {};
@@ -464,6 +480,7 @@ var WhyApp = (function () {
             $modal.style.display = 'none';
         });
         if ($del) $del.addEventListener('click', function () {
+            if (!requirePersonal('memo')) return;
             var ticker = $area.getAttribute('data-ticker');
             if (!ticker) return;
             if (state.ratings[ticker]) delete state.ratings[ticker].memo;
@@ -546,8 +563,8 @@ var WhyApp = (function () {
             // 서버 별점 동기화 — KV pull 후 머지되면 다시 그림. 실패해도 로컬 모드로 작동.
             if (window.WhyRatingsSync) {
                 window.WhyRatingsSync.pull().then(function (result) {
-                    if (result && result.source === 'remote') {
-                        loadRatings();
+                    if (result && result.ratings) {
+                        state.ratings = result.ratings;
                         applyCutoffAndRender();
                     }
                 });

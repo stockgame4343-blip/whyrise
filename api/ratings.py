@@ -15,9 +15,13 @@ KV 환경변수 미설정 시 503 으로 즉시 응답해 클라이언트가 동
 """
 import json
 import os
+import sys
 import time
 import urllib.request
 from http.server import BaseHTTPRequestHandler
+
+sys.path.append(os.path.dirname(__file__))
+from _auth import get_session_user, login_configured, user_key  # noqa: E402
 
 
 KV_URL = os.environ.get('KV_REST_API_URL', '').rstrip('/')
@@ -26,6 +30,21 @@ KV_TOKEN = os.environ.get('KV_REST_API_TOKEN', '')
 RATINGS_KEY = 'whyrise:ratings'
 META_KEY = 'whyrise:ratings:updated_at'
 MAX_BODY_BYTES = 256 * 1024  # 256KB — 1000+ ticker × 작은 객체 여유분
+
+
+def _keys_for_request(headers):
+    user = get_session_user(headers)
+    if user:
+        uid = user_key(user)
+        return (
+            f'whyrise:user:{uid}:ratings',
+            f'whyrise:user:{uid}:ratings:updated_at',
+            True,
+        )
+    if login_configured():
+        return None, None, False
+    # Keep legacy behavior until Google OAuth envs are connected.
+    return RATINGS_KEY, META_KEY, True
 
 
 def _kv_pipeline(commands, timeout=5):
@@ -62,13 +81,17 @@ def _result(results, idx):
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
+        ratings_key, meta_key, allowed = _keys_for_request(self.headers)
+        if not allowed:
+            self._respond(401, {'ok': False, 'reason': 'auth_required'})
+            return
         if not KV_URL or not KV_TOKEN:
             self._respond(503, {'ok': False, 'reason': 'kv_not_connected'})
             return
 
         results = _kv_pipeline([
-            ['GET', RATINGS_KEY],
-            ['GET', META_KEY],
+            ['GET', ratings_key],
+            ['GET', meta_key],
         ])
         if not results:
             self._respond(502, {'ok': False, 'reason': 'kv_error'})
@@ -91,6 +114,10 @@ class handler(BaseHTTPRequestHandler):
         })
 
     def do_POST(self):
+        ratings_key, meta_key, allowed = _keys_for_request(self.headers)
+        if not allowed:
+            self._respond(401, {'ok': False, 'reason': 'auth_required'})
+            return
         if not KV_URL or not KV_TOKEN:
             self._respond(503, {'ok': False, 'reason': 'kv_not_connected'})
             return
@@ -137,8 +164,8 @@ class handler(BaseHTTPRequestHandler):
         now = int(time.time())
         payload = json.dumps(cleaned, ensure_ascii=False)
         results = _kv_pipeline([
-            ['SET', RATINGS_KEY, payload],
-            ['SET', META_KEY, str(now)],
+            ['SET', ratings_key, payload],
+            ['SET', meta_key, str(now)],
         ])
         if not results:
             self._respond(502, {'ok': False, 'reason': 'kv_write_failed'})

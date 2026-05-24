@@ -1,43 +1,70 @@
 /**
- * 관심 별점·메모 서버 동기화 — /api/ratings (Vercel KV 단일 키).
+ * Account-scoped ratings sync.
  *
- * - localStorage 키 `whyrise-ratings` 와 서버를 머지 (서버 데이터 우선).
- * - 변경 시 push(ratings) — 300ms debounce 후 POST.
- * - 503/네트워크 실패 시 자동 비활성화 (오프라인 모드).
- *
- * 본인만 쓰는 사이트 전제 — 인증 없이 GET/POST 호출.
+ * Once Google OAuth is configured, /api/ratings requires a signed user session
+ * and stores data under that user's KV key. Until OAuth envs are connected, the
+ * API keeps legacy single-user behavior so the live site does not break.
  */
 (function () {
-    var STORAGE_KEY = 'whyrise-ratings';
+    'use strict';
+
     var ENDPOINT = '/api/ratings';
     var DEBOUNCE_MS = 300;
 
     var _disabled = false;
     var _pushTimer = null;
+    var _ratings = {};
 
-    function getLocal() {
-        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    function clone(obj) {
+        try { return JSON.parse(JSON.stringify(obj || {})); }
         catch (e) { return {}; }
     }
-    function setLocal(r) {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(r)); } catch (e) {}
+
+    function notify() {
+        try {
+            window.dispatchEvent(new CustomEvent('whyrise:ratings-updated', {
+                detail: { ratings: clone(_ratings) },
+            }));
+        } catch (e) {}
+    }
+
+    function setCached(ratings, shouldNotify) {
+        _ratings = clone(ratings);
+        if (shouldNotify) notify();
+    }
+
+    function authReady() {
+        if (window.WhyAuth && window.WhyAuth.ready) return window.WhyAuth.ready;
+        return Promise.resolve({ loginEnabled: false, authed: false });
+    }
+
+    function canSync(auth) {
+        if (!auth || !auth.loginEnabled) return true;
+        return !!auth.authed;
     }
 
     function doPush(ratings) {
         if (_disabled) return;
-        try {
-            fetch(ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ratings: ratings || {} }),
-                credentials: 'same-origin',
-            }).then(function (r) {
-                if (r.status === 503) _disabled = true;
-            }).catch(function () { /* silent */ });
-        } catch (e) { /* silent */ }
+        setCached(ratings, false);
+        authReady().then(function (auth) {
+            if (!canSync(auth)) return;
+            try {
+                fetch(ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ratings: _ratings || {} }),
+                    credentials: 'same-origin',
+                }).then(function (r) {
+                    if (r.status === 401) {
+                        setCached({}, true);
+                        return;
+                    }
+                    if (r.status === 503) _disabled = true;
+                }).catch(function () {});
+            } catch (e) {}
+        });
     }
 
-    /** 외부에서 변경 발생을 알릴 때 호출. 300ms debounce 후 POST. */
     function push(ratings, immediate) {
         if (_disabled) return;
         if (_pushTimer) { clearTimeout(_pushTimer); _pushTimer = null; }
@@ -48,44 +75,37 @@
         }, DEBOUNCE_MS);
     }
 
-    /**
-     * 페이지 로드 시 호출 — 서버에서 GET 해서 로컬 머지.
-     * 반환: Promise<{ratings, updated_at, source}|null>
-     *   source: 'remote' (서버 덮어쓴 경우) / 'local' (서버 비어 로컬 푸시) / 'empty' / null(실패)
-     */
     function pull() {
         if (_disabled) return Promise.resolve(null);
-        return fetch(ENDPOINT, { method: 'GET', credentials: 'same-origin' })
-            .then(function (r) {
-                if (r.status === 503) { _disabled = true; return null; }
-                if (!r.ok) return null;
-                return r.json();
-            })
-            .then(function (j) {
-                if (!j || !j.ok) return null;
-                var remote = j.ratings || {};
-                var local = getLocal();
-                var remoteCount = Object.keys(remote).length;
-                var localCount = Object.keys(local).length;
-
-                if (remoteCount > 0) {
-                    // 서버 데이터 우선 — 로컬 덮어쓰기 (LWW)
-                    setLocal(remote);
-                    return { ratings: remote, updated_at: j.updated_at || 0, source: 'remote' };
-                }
-                if (localCount > 0) {
-                    // 서버 비어 있는데 로컬 데이터 있으면 즉시 업로드 (최초 마이그레이션)
-                    push(local, true);
-                    return { ratings: local, updated_at: 0, source: 'local' };
-                }
-                return { ratings: {}, updated_at: 0, source: 'empty' };
-            })
-            .catch(function () { return null; });
+        return authReady().then(function (auth) {
+            if (!canSync(auth)) {
+                setCached({}, true);
+                return { ratings: {}, updated_at: 0, source: 'auth_required' };
+            }
+            return fetch(ENDPOINT, { method: 'GET', credentials: 'same-origin', cache: 'no-store' })
+                .then(function (r) {
+                    if (r.status === 401) {
+                        setCached({}, true);
+                        return { ratings: {}, updated_at: 0, source: 'auth_required' };
+                    }
+                    if (r.status === 503) { _disabled = true; return null; }
+                    if (!r.ok) return null;
+                    return r.json();
+                })
+                .then(function (j) {
+                    if (!j || !j.ok) return j && j.source ? j : null;
+                    setCached(j.ratings || {}, true);
+                    return { ratings: clone(_ratings), updated_at: j.updated_at || 0, source: 'remote' };
+                })
+                .catch(function () { return null; });
+        });
     }
 
     window.WhyRatingsSync = {
         pull: pull,
         push: push,
+        getCached: function () { return clone(_ratings); },
+        setCached: function (ratings) { setCached(ratings, true); },
         isDisabled: function () { return _disabled; },
     };
 })();

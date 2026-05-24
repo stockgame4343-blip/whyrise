@@ -163,14 +163,17 @@ var WhyReport = (function () {
     }
 
     function loadRatings() {
-        try { state.ratings = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-        catch (e) { state.ratings = {}; }
+        state.ratings = window.WhyRatingsSync ? window.WhyRatingsSync.getCached() : {};
     }
 
     function saveRatings() {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.ratings)); }
-        catch (e) {}
         if (window.WhyRatingsSync) window.WhyRatingsSync.push(state.ratings);
+    }
+
+    function requirePersonal(feature) {
+        if (!window.WhyAuth || window.WhyAuth.personalAllowed()) return true;
+        window.WhyAuth.requireLogin(feature);
+        return false;
     }
 
     function ratingClass(ticker) {
@@ -665,6 +668,7 @@ var WhyReport = (function () {
             if (star) {
                 e.preventDefault();
                 e.stopPropagation();
+                if (!requirePersonal('interest')) return;
                 var wrap = star.closest('.star-rating');
                 var ticker = wrap && wrap.getAttribute('data-ticker');
                 var value = parseInt(star.getAttribute('data-star'), 10);
@@ -680,6 +684,7 @@ var WhyReport = (function () {
             if (exclude) {
                 e.preventDefault();
                 e.stopPropagation();
+                if (!requirePersonal('exclude')) return;
                 var t1 = exclude.getAttribute('data-ticker');
                 if (!t1) return;
                 state.ratings[t1] = state.ratings[t1] || {};
@@ -693,6 +698,7 @@ var WhyReport = (function () {
             if (memo) {
                 e.preventDefault();
                 e.stopPropagation();
+                if (!requirePersonal('memo')) return;
                 openMemo(memo.getAttribute('data-ticker'));
                 return;
             }
@@ -721,6 +727,7 @@ var WhyReport = (function () {
         });
         if (save) {
             save.addEventListener('click', function () {
+                if (!requirePersonal('memo')) return;
                 var ticker = area.getAttribute('data-ticker');
                 if (!ticker) return;
                 state.ratings[ticker] = state.ratings[ticker] || {};
@@ -732,6 +739,7 @@ var WhyReport = (function () {
         }
         if (del) {
             del.addEventListener('click', function () {
+                if (!requirePersonal('memo')) return;
                 var ticker = area.getAttribute('data-ticker');
                 if (!ticker) return;
                 if (state.ratings[ticker]) delete state.ratings[ticker].memo;
@@ -760,6 +768,10 @@ var WhyReport = (function () {
             loadRatings();
             applyDay();
         });
+        window.addEventListener('whyrise:ratings-updated', function (e) {
+            state.ratings = (e.detail && e.detail.ratings) || {};
+            applyDay();
+        });
     }
 
     function init() {
@@ -784,8 +796,8 @@ var WhyReport = (function () {
         }).then(function () {
             if (window.WhyRatingsSync) {
                 return window.WhyRatingsSync.pull().then(function (result) {
-                    if (result && result.source === 'remote') {
-                        loadRatings();
+                    if (result && result.ratings) {
+                        state.ratings = result.ratings;
                         applyDay();
                     }
                     return null;
