@@ -195,18 +195,91 @@
         return esc(normalizeNewsLink(s));
     }
 
-    function renderEventCard(ev, ticker) {
-        var newsHtml = '';
-        if (ev.news && ev.news.length) {
-            newsHtml += '<div class="event-card__news">';
-            ev.news.slice(0, 5).forEach(function (n) {
-                newsHtml += '<a href="' + safeLink(n.link) + '" target="_blank" rel="noopener noreferrer">' +
-                    '<span>' + esc(n.title) + '</span>' +
-                    (n.source ? '<span class="news-source">' + esc(n.source) + '</span>' : '') +
-                    '</a>';
-            });
-            newsHtml += '</div>';
+    var _newsDecodeBox = null;
+    function cleanNewsText(s) {
+        var text = String(s || '').trim();
+        if (text.indexOf('&') >= 0 && typeof document !== 'undefined' && document.createElement) {
+            _newsDecodeBox = _newsDecodeBox || document.createElement('textarea');
+            _newsDecodeBox.innerHTML = text;
+            text = _newsDecodeBox.value;
         }
+        return text.replace(/\s+/g, ' ').trim();
+    }
+
+    function formatDateCompact(yyyymmdd) {
+        var s = String(yyyymmdd || '');
+        if (s.length !== 8) return s;
+        return s.slice(0, 4) + '.' + s.slice(4, 6) + '.' + s.slice(6, 8);
+    }
+
+    function newsKeys(n) {
+        var link = String((n && n.link) || '').trim().split('#')[0].split('?')[0].toLowerCase();
+        var title = cleanNewsText((n && n.title) || '').toLowerCase().replace(/\s+/g, ' ');
+        return { link: link, title: title };
+    }
+
+    function collectMajorNews(events, ticker) {
+        var seen = {};
+        var items = [];
+        var name = cleanNewsText(_stockName || '').toLowerCase();
+        (events || []).forEach(function (ev, eventIndex) {
+            (ev.news || []).forEach(function (n) {
+                var keys = newsKeys(n);
+                if ((!keys.link && !keys.title) || seen[keys.link] || seen[keys.title]) return;
+                var title = cleanNewsText(n.title);
+                var href = safeLink(n.link);
+                if (!title || !href) return;
+                if (keys.link) seen[keys.link] = true;
+                if (keys.title) seen[keys.title] = true;
+                var lowerTitle = title.toLowerCase();
+                var score = Math.max(0, 200 - eventIndex) / 1000;
+                if (name && lowerTitle.indexOf(name) >= 0) score += 4;
+                if (ticker && lowerTitle.indexOf(String(ticker).toLowerCase()) >= 0) score += 2;
+                if (ev.reason_source === 'news' || ev.reason_source === 'naver') score += 1;
+                items.push({
+                    title: title,
+                    href: href,
+                    source: cleanNewsText(n.source),
+                    date: ev.date || '',
+                    score: score,
+                });
+            });
+        });
+        items.sort(function (a, b) {
+            if (b.score !== a.score) return b.score - a.score;
+            return String(b.date).localeCompare(String(a.date));
+        });
+        return items.slice(0, 5);
+    }
+
+    function renderMajorNews(events, ticker) {
+        var $panel = document.getElementById('stockNewsPanel');
+        if (!$panel) return;
+        var items = collectMajorNews(events, ticker);
+        if (!items.length) {
+            $panel.innerHTML = '';
+            $panel.style.display = 'none';
+            return;
+        }
+        var html = '<div class="stock-news-panel__head">' +
+            '<h2>주요 기사</h2>' +
+            '<span>최근순 · 중복 제거</span>' +
+            '</div><div class="stock-news-list">';
+        items.forEach(function (item) {
+            html += '<a class="stock-news-item" href="' + item.href + '" target="_blank" rel="noopener noreferrer">' +
+                '<span class="stock-news-item__meta">' +
+                '<span>' + esc(formatDateCompact(item.date)) + '</span>' +
+                (item.source ? '<span>' + esc(item.source) + '</span>' : '') +
+                '</span>' +
+                '<span class="stock-news-item__title">' + esc(item.title) + '</span>' +
+                '</a>';
+        });
+        html += '</div>';
+        $panel.innerHTML = html;
+        $panel.style.display = 'block';
+    }
+
+    function renderEventCard(ev, ticker) {
         var rowClass = '';
         if (ev.reason_status === 'edited') rowClass = ' row--edited';
         else if (ev.reason_status === 'missing') rowClass = ' row--missing';
@@ -233,7 +306,6 @@
             '</div>' +
             '<div class="' + reasonClass(ev.reason_status, ev.reason_confidence) + '">' +
             esc(reasonText) + '</div>' +
-            newsHtml +
             '</article>';
     }
 
@@ -527,6 +599,7 @@
                 return;
             }
             renderHeader(history.name || ticker, history.market || '', history.stats || {});
+            renderMajorNews(history.events || [], ticker);
             var $sum = document.getElementById('stockSummary');
             if ($sum) {
                 var summary = buildSummary(history.events || []);

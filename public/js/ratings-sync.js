@@ -67,11 +67,12 @@
 
     function push(ratings, immediate) {
         if (_disabled) return;
+        setCached(ratings, false);
         if (_pushTimer) { clearTimeout(_pushTimer); _pushTimer = null; }
-        if (immediate) { doPush(ratings); return; }
+        if (immediate) { doPush(_ratings); return; }
         _pushTimer = setTimeout(function () {
             _pushTimer = null;
-            doPush(ratings);
+            doPush(_ratings);
         }, DEBOUNCE_MS);
     }
 
