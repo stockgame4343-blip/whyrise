@@ -218,24 +218,42 @@
         return { link: link, title: title };
     }
 
+    function importantTokens() {
+        var source = Array.prototype.slice.call(arguments).join(' ');
+        return cleanNewsText(source).split(/[\s,·()"'“”‘’\[\]{}<>:;|/\\]+/).filter(function (token) {
+            if (!token || token.length < 2) return false;
+            if (/^[0-9.]+%?$/.test(token)) return false;
+            return ['관련', '기대', '소식', '상승', '급등', '상한가', '특징주', '실시간', '거래량', '코스피', '코스닥'].indexOf(token) < 0;
+        }).slice(0, 8);
+    }
+
     function collectMajorNews(events, ticker) {
         var seen = {};
         var items = [];
         var name = cleanNewsText(_stockName || '').toLowerCase();
         (events || []).forEach(function (ev, eventIndex) {
+            var tokens = importantTokens(ev.theme_tag, ev.sector, ev.rise_reason);
             (ev.news || []).forEach(function (n) {
                 var keys = newsKeys(n);
                 if ((!keys.link && !keys.title) || seen[keys.link] || seen[keys.title]) return;
                 var title = cleanNewsText(n.title);
                 var href = safeLink(n.link);
                 if (!title || !href) return;
-                if (keys.link) seen[keys.link] = true;
-                if (keys.title) seen[keys.title] = true;
                 var lowerTitle = title.toLowerCase();
                 var score = Math.max(0, 200 - eventIndex) / 1000;
-                if (name && lowerTitle.indexOf(name) >= 0) score += 4;
-                if (ticker && lowerTitle.indexOf(String(ticker).toLowerCase()) >= 0) score += 2;
-                if (ev.reason_source === 'news' || ev.reason_source === 'naver') score += 1;
+                var matched = false;
+                if (name && lowerTitle.indexOf(name) >= 0) { score += 5; matched = true; }
+                if (ticker && lowerTitle.indexOf(String(ticker).toLowerCase()) >= 0) { score += 3; matched = true; }
+                tokens.forEach(function (token) {
+                    if (token && lowerTitle.indexOf(token.toLowerCase()) >= 0) {
+                        score += 1.5;
+                        matched = true;
+                    }
+                });
+                if (matched && (ev.reason_source === 'news' || ev.reason_source === 'naver')) score += 1;
+                if (!matched || score < 3) return;
+                if (keys.link) seen[keys.link] = true;
+                if (keys.title) seen[keys.title] = true;
                 items.push({
                     title: title,
                     href: href,
@@ -249,7 +267,7 @@
             if (b.score !== a.score) return b.score - a.score;
             return String(b.date).localeCompare(String(a.date));
         });
-        return items.slice(0, 5);
+        return items.slice(0, 10);
     }
 
     function renderMajorNews(events, ticker) {
@@ -263,7 +281,7 @@
         }
         var html = '<div class="stock-news-panel__head">' +
             '<h2>주요 기사</h2>' +
-            '<span>최근순 · 중복 제거</span>' +
+            '<span>핵심 기사만</span>' +
             '</div><div class="stock-news-list">';
         items.forEach(function (item) {
             html += '<a class="stock-news-item" href="' + item.href + '" target="_blank" rel="noopener noreferrer">' +
@@ -286,9 +304,10 @@
         var rate = (ev.change_rate || 0);
         var rateLabel = (rate >= 29.9) ? '<span class="event-card__limit">상한가</span>' : '';
         var hi52w = ev.is_52w_high ? '<span class="event-card__highflag">52주 신고가</span>' : '';
-        var reasonText = ev.rise_reason || (ev.reason_status === 'missing'
-            ? '이유 미수집 — 관리자가 채울 수 있습니다'
-            : '-');
+        var reasonText = (ev.reason_status === 'missing') ? '' : (ev.rise_reason || '');
+        var reasonHtml = reasonText
+            ? '<div class="' + reasonClass(ev.reason_status, ev.reason_confidence) + '">' + esc(reasonText) + '</div>'
+            : '';
 
         return '<article class="event-card' + rowClass + '">' +
             '<div class="event-card__top">' +
@@ -304,8 +323,7 @@
             '<button class="admin-edit-btn event-card__edit" data-action="admin-edit" data-ticker="' +
             esc(ticker) + '" data-date="' + esc(ev.date) + '" title="이유 편집">✏️ 편집</button>' +
             '</div>' +
-            '<div class="' + reasonClass(ev.reason_status, ev.reason_confidence) + '">' +
-            esc(reasonText) + '</div>' +
+            reasonHtml +
             '</article>';
     }
 
