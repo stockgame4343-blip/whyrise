@@ -306,6 +306,7 @@
     var RATINGS_KEY = 'whyrise-ratings';
     var _stockName = '';
     var _ratings = {};
+    var _headerRatingSuppressTimer = null;
 
     function loadRatings() {
         _ratings = window.WhyRatingsSync ? window.WhyRatingsSync.getCached() : _ratings;
@@ -319,6 +320,21 @@
         if (!window.WhyAuth || window.WhyAuth.personalAllowed()) return true;
         window.WhyAuth.requireLogin(feature);
         return false;
+    }
+
+    function suppressHeaderRatingHover() {
+        var $mount = document.getElementById('stockHeaderRating');
+        if (!$mount) return;
+        var wrap = $mount.querySelector('.ctrl-wrap');
+        if (!wrap) return;
+        var row = $mount.closest('.stock-header__title-row');
+        wrap.classList.add('ctrl-wrap--just-acted');
+        if (_headerRatingSuppressTimer) clearTimeout(_headerRatingSuppressTimer);
+        var release = function () {
+            wrap.classList.remove('ctrl-wrap--just-acted');
+        };
+        _headerRatingSuppressTimer = setTimeout(release, 2000);
+        if (row) row.addEventListener('mouseleave', release, { once: true });
     }
 
     /** 메인 홈(table.js starRatingHtml) 과 동일한 HTML 구조 — 호버/탭 동작 메인과 통일. */
@@ -355,7 +371,12 @@
             // 별점
             var star = e.target.closest('.star');
             if (star) {
-                if (!requirePersonal('interest')) return;
+                e.preventDefault();
+                e.stopPropagation();
+                if (!requirePersonal('interest')) {
+                    suppressHeaderRatingHover();
+                    return;
+                }
                 var n = parseInt(star.getAttribute('data-star'), 10);
                 if (!n) return;
                 var ratings = loadRatings();
@@ -364,22 +385,32 @@
                 else ratings[ticker].stars = n;
                 saveRatings(ratings);
                 renderHeaderRating(ticker);
+                suppressHeaderRatingHover();
                 return;
             }
             // 제외
             var ex = e.target.closest('.exclude-btn');
             if (ex) {
-                if (!requirePersonal('exclude')) return;
+                e.preventDefault();
+                e.stopPropagation();
+                if (!requirePersonal('exclude')) {
+                    suppressHeaderRatingHover();
+                    return;
+                }
                 var r2 = loadRatings();
                 r2[ticker] = r2[ticker] || {};
                 r2[ticker].excluded = !r2[ticker].excluded;
                 saveRatings(r2);
                 renderHeaderRating(ticker);
+                suppressHeaderRatingHover();
                 return;
             }
             // 메모
             var memo = e.target.closest('.memo-btn');
             if (memo) {
+                e.preventDefault();
+                e.stopPropagation();
+                suppressHeaderRatingHover();
                 if (!requirePersonal('memo')) return;
                 openMemo(ticker);
                 return;
@@ -387,7 +418,10 @@
             // 모바일 ⋯ 토글
             var toggle = e.target.closest('.ctrl-toggle');
             if (toggle) {
-                var wrap = toggle.parentNode;
+                e.preventDefault();
+                e.stopPropagation();
+                var wrap = toggle.closest('.ctrl-wrap');
+                if (!wrap) return;
                 wrap.classList.toggle('is-open');
                 return;
             }
