@@ -78,7 +78,7 @@
         var $market = document.getElementById('stockMarket');
         var $stats = document.getElementById('stockStats');
         var pageTitle = name + ' 왜 오름? - ORNO';
-        var pageDesc = name + ' 이 최근 1년간 +15% 이상 오른 ' + (stats.count_15 || 0) + '회의 날짜와 이유·뉴스.';
+        var pageDesc = name + '의 최근 1년 급등 날짜와 이유·뉴스.';
         document.getElementById('pageTitle').textContent = pageTitle;
         document.getElementById('pageDesc').setAttribute('content', pageDesc);
         var ticker = getTicker() || '';
