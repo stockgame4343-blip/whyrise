@@ -42,6 +42,7 @@ var WhyScreening = (function () {
         ratings: {},
         filtered: [],
         watchlistMode: false,
+        sortDir: 'desc',
     };
 
     function $(id) { return document.getElementById(id); }
@@ -119,6 +120,25 @@ var WhyScreening = (function () {
         return isNaN(n) ? 0 : n;
     }
 
+    function defaultSortDir(sortKey) {
+        if (sortKey === 'name' && state.watchlistMode) return 'desc';
+        return (sortKey === 'name' || sortKey === 'reason' || sortKey === 'sector') ? 'asc' : 'desc';
+    }
+
+    function optionExists(select, value) {
+        if (!select) return false;
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === value) return true;
+        }
+        return false;
+    }
+
+    function setSortValue(sortKey, sortDir) {
+        var controls = getControls();
+        if (controls.sort && optionExists(controls.sort, sortKey)) controls.sort.value = sortKey;
+        state.sortDir = sortDir || defaultSortDir(sortKey);
+    }
+
     function getControls() {
         return {
             search: $('screeningSearch'),
@@ -143,6 +163,7 @@ var WhyScreening = (function () {
             theme: (c.theme && c.theme.value) || '',
             mcap: (c.mcap && c.mcap.value) || '',
             sort: (c.sort && c.sort.value) || 'count_10',
+            sortDir: state.sortDir || defaultSortDir((c.sort && c.sort.value) || 'count_10'),
         };
     }
 
@@ -175,9 +196,15 @@ var WhyScreening = (function () {
         return haystack.indexOf(query) !== -1;
     }
 
-    function compareRows(a, b, sortKey, countKey) {
+    function compareRows(a, b, sortKey, countKey, sortDir) {
+        var dir = sortDir === 'asc' ? 1 : -1;
         if (sortKey === 'name') {
-            return (a.name || '').localeCompare(b.name || '', 'ko-KR');
+            if (state.watchlistMode) {
+                var sa = (state.ratings[a.ticker] || {}).stars || 0;
+                var sb = (state.ratings[b.ticker] || {}).stars || 0;
+                if (sa !== sb) return (sa - sb) * dir;
+            }
+            return (a.name || '').localeCompare(b.name || '', 'ko-KR') * dir;
         }
         var va;
         var vb;
@@ -190,11 +217,19 @@ var WhyScreening = (function () {
         } else if (sortKey === 'latest_date') {
             va = Number(a.latest_date || 0);
             vb = Number(b.latest_date || 0);
+        } else if (sortKey === 'sector') {
+            va = (a.sector || '').trim();
+            vb = (b.sector || '').trim();
+            if (va !== vb) return va.localeCompare(vb, 'ko-KR') * dir;
+        } else if (sortKey === 'reason') {
+            va = ((a.latest_theme || '') + ' ' + (a.latest_reason || '')).trim();
+            vb = ((b.latest_theme || '') + ' ' + (b.latest_reason || '')).trim();
+            if (va !== vb) return va.localeCompare(vb, 'ko-KR') * dir;
         } else {
             va = countValue(a, sortKey || countKey);
             vb = countValue(b, sortKey || countKey);
         }
-        if (vb !== va) return vb - va;
+        if (vb !== va) return (va - vb) * dir;
         var ca = countValue(a, countKey);
         var cb = countValue(b, countKey);
         if (cb !== ca) return cb - ca;
@@ -224,9 +259,33 @@ var WhyScreening = (function () {
             if (!_rowMatchesFilters(row, f)) continue;
             out.push(row);
         }
-        out.sort(function (a, b) { return compareRows(a, b, f.sort, f.countKey); });
+        out.sort(function (a, b) { return compareRows(a, b, f.sort, f.countKey, f.sortDir); });
         state.filtered = out;
         render(out, f);
+    }
+
+    function headerSortKey(th, filters) {
+        var key = th.getAttribute('data-sort-key') || '';
+        if (key === 'count') return filters.countKey || 'count_10';
+        return key;
+    }
+
+    function updateSortHeaders(filters) {
+        var table = $('screeningTable');
+        if (!table) return;
+        var ths = table.querySelectorAll('th.th-sort');
+        for (var i = 0; i < ths.length; i++) {
+            var th = ths[i];
+            var key = headerSortKey(th, filters);
+            var rawKey = th.getAttribute('data-sort-key') || '';
+            var ind = th.querySelector('.sort-ind');
+            var active = key === filters.sort || (rawKey === 'count' && /^count_/.test(filters.sort || ''));
+            th.classList.toggle('th-sort--active', active);
+            if (ind) ind.textContent = active && filters.sortDir === 'asc' ? '▲' : '▼';
+            if (rawKey === 'name') {
+                th.setAttribute('title', state.watchlistMode ? '관심 별 개수순' : '종목명순');
+            }
+        }
     }
 
     function starRatingHtml(ticker) {
@@ -281,6 +340,7 @@ var WhyScreening = (function () {
         var loading = $('screeningLoading');
         if (loading) loading.style.display = 'none';
         if (total) total.textContent = rows.length.toLocaleString('ko-KR') + '종목';
+        updateSortHeaders(filters);
         if (!body) return;
 
         if (!rows.length) {
@@ -683,6 +743,37 @@ var WhyScreening = (function () {
         setTimeout(function () { area.focus(); }, 50);
     }
 
+    function bindHeaderSort() {
+        var table = $('screeningTable');
+        if (!table) return;
+        var thead = table.querySelector('thead');
+        if (!thead) return;
+        thead.addEventListener('click', function (e) {
+            var resetTh = e.target.closest('th.th-rank-reset');
+            if (resetTh) {
+                setSortValue('count_10', 'desc');
+                applyFilters();
+                return;
+            }
+
+            var th = e.target.closest('th.th-sort');
+            if (!th) return;
+            var current = getFilters();
+            var sortKey = headerSortKey(th, current);
+            if (!sortKey) return;
+
+            if (current.sort === sortKey) {
+                state.sortDir = current.sortDir === 'desc' ? 'asc' : 'desc';
+            } else {
+                state.sortDir = defaultSortDir(sortKey);
+            }
+
+            var controls = getControls();
+            if (controls.sort && optionExists(controls.sort, sortKey)) controls.sort.value = sortKey;
+            applyFilters();
+        });
+    }
+
     function bindControls() {
         var controls = getControls();
         var searchTimer = null;
@@ -693,12 +784,14 @@ var WhyScreening = (function () {
             catch (e) {}
             watchBtn.classList.toggle('is-active', state.watchlistMode);
             watchBtn.setAttribute('aria-pressed', state.watchlistMode ? 'true' : 'false');
+            if (state.watchlistMode) setSortValue('name', 'desc');
             window.addEventListener('whyrise:auth', function () {
                 if (window.WhyAuth && !window.WhyAuth.personalAllowed() && state.watchlistMode) {
                     state.watchlistMode = false;
                     watchBtn.classList.remove('is-active');
                     watchBtn.setAttribute('aria-pressed', 'false');
                     try { localStorage.setItem(WATCHLIST_KEY, '0'); } catch (e) {}
+                    setSortValue('count_10', 'desc');
                     applyFilters();
                 }
             });
@@ -709,6 +802,7 @@ var WhyScreening = (function () {
                 watchBtn.setAttribute('aria-pressed', state.watchlistMode ? 'true' : 'false');
                 try { localStorage.setItem(WATCHLIST_KEY, state.watchlistMode ? '1' : '0'); }
                 catch (e) {}
+                setSortValue(state.watchlistMode ? 'name' : 'count_10', 'desc');
                 applyFilters();
             });
         }
@@ -720,13 +814,21 @@ var WhyScreening = (function () {
             });
         }
 
-        ['minCount', 'market', 'sector', 'theme', 'mcap', 'sort'].forEach(function (key) {
+        ['minCount', 'market', 'sector', 'theme', 'mcap'].forEach(function (key) {
             if (controls[key]) controls[key].addEventListener('change', applyFilters);
         });
+
+        if (controls.sort) {
+            controls.sort.addEventListener('change', function () {
+                state.sortDir = defaultSortDir(controls.sort.value || 'count_10');
+                applyFilters();
+            });
+        }
 
         if (controls.countKey) {
             controls.countKey.addEventListener('change', function () {
                 if (controls.sort) controls.sort.value = controls.countKey.value;
+                state.sortDir = defaultSortDir(controls.countKey.value || 'count_10');
                 applyFilters();
             });
         }
@@ -748,6 +850,7 @@ var WhyScreening = (function () {
                 if (controls.theme) controls.theme.value = '';
                 if (controls.mcap) controls.mcap.value = '';
                 if (controls.sort) controls.sort.value = 'count_10';
+                state.sortDir = 'desc';
                 applyFilters();
             });
         }
@@ -886,6 +989,7 @@ var WhyScreening = (function () {
         loadRatings();
         bindThemeToggle();
         bindControls();
+        bindHeaderSort();
         bindTableEvents();
         bindMemoModal();
         bindStorageSync();
