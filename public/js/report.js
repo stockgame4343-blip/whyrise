@@ -22,6 +22,10 @@ var WhyReport = (function () {
     var PB_PEAK_MIN = 15;
     var PB_DROP_MIN = 20;
     var PB_BOUNCE_MIN = 15;
+    var POLL_MS = 60 * 1000;
+    var KST_OFFSET = 9 * 60;
+    var OPEN_MIN = 9 * 60;
+    var CLOSE_MIN = 15 * 60 + 30;
 
     var state = {
         dates: [],
@@ -31,6 +35,22 @@ var WhyReport = (function () {
     };
 
     function $(id) { return document.getElementById(id); }
+
+    function kstNow() {
+        return new Date(Date.now() + KST_OFFSET * 60000);
+    }
+
+    function isMarketOpenKst() {
+        var k = kstNow();
+        var day = k.getUTCDay();
+        if (day === 0 || day === 6) return false;
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
+
+    function isLatestDate() {
+        return state.dateIndex === 0;
+    }
 
     function esc(s) {
         if (s == null) return '';
@@ -116,6 +136,17 @@ var WhyReport = (function () {
     function formatTimestamp(value) {
         if (!value) return '';
         var s = String(value).trim();
+        if (/[zZ]$|[+-]\d{2}:?\d{2}$/.test(s)) {
+            var d = new Date(s);
+            if (!isNaN(d.getTime())) {
+                var k = new Date(d.getTime() + KST_OFFSET * 60000);
+                return k.getUTCFullYear() + '.' +
+                    ('0' + (k.getUTCMonth() + 1)).slice(-2) + '.' +
+                    ('0' + k.getUTCDate()).slice(-2) + ' ' +
+                    ('0' + k.getUTCHours()).slice(-2) + ':' +
+                    ('0' + k.getUTCMinutes()).slice(-2);
+            }
+        }
         var m = /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(s);
         if (m) return m[1] + '.' + m[2] + '.' + m[3] + ' ' + m[4] + ':' + m[5];
         return s.replace('T', ' ').substring(0, 16);
@@ -607,6 +638,25 @@ var WhyReport = (function () {
         loadDate(date);
     }
 
+    function refreshLiveDate() {
+        if (!isLatestDate() || !state.dates.length) return Promise.resolve();
+        return WhyAPI.getRankings(state.dates[0]).then(function (data) {
+            state.day = data || {};
+            setUpdatedAt(data && data.collected_at);
+            applyDay();
+        }).catch(function () {});
+    }
+
+    function liveCycle() {
+        if (!isLatestDate() || !isMarketOpenKst() || document.visibilityState === 'hidden') {
+            setTimeout(liveCycle, 5000);
+            return;
+        }
+        setTimeout(function () {
+            refreshLiveDate().then(function () { liveCycle(); });
+        }, POLL_MS);
+    }
+
     function bindDateNav() {
         var prev = $('datePrev');
         var next = $('dateNext');
@@ -794,6 +844,7 @@ var WhyReport = (function () {
             updateDateUI();
             return loadDate(dates[0]);
         }).then(function () {
+            liveCycle();
             if (window.WhyRatingsSync) {
                 return window.WhyRatingsSync.pull().then(function (result) {
                     if (result && result.ratings) {

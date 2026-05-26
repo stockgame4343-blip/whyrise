@@ -47,10 +47,22 @@ var WhyApp = (function () {
         if (d.length !== 8) return '';
         return d.slice(0, 4) + '.' + d.slice(4, 6) + '.' + d.slice(6, 8);
     }
+    function _hhmmKST(value) {
+        var s = String(value || '').trim();
+        if (!s) return '';
+        if (/[zZ]$|[+-]\d{2}:?\d{2}$/.test(s)) {
+            var d = new Date(s);
+            if (!isNaN(d.getTime())) {
+                var k = new Date(d.getTime() + KST_OFFSET * 60000);
+                return ('0' + k.getUTCHours()).slice(-2) + ':' + ('0' + k.getUTCMinutes()).slice(-2);
+            }
+        }
+        return s.slice(11, 16);
+    }
     function _composeLabel() {
         // 'LIVE' 글자 없이 날짜·시간만 — 회색 텍스트 + ring 만으로 라이브 표현
         var ds = _dateStrKST();
-        var hhmm = (state.collectedAt || '').slice(11, 16);
+        var hhmm = _hhmmKST(state.collectedAt);
         return [ds, hhmm].filter(Boolean).join(' ');
     }
     function setLiveState(open) {

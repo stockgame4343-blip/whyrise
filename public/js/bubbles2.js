@@ -12,6 +12,8 @@
     'use strict';
 
     var POLL_MS = 15000;
+    var LIVE_FETCH_TIMEOUT_MS = 6500;
+    var LIVE_FALLBACK_MS = 7500;
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60;
     var CLOSE_MIN = 15 * 60 + 30;
@@ -484,8 +486,24 @@
     }
 
     // ── fetch ──────────────────────────────────────────
+    function fetchWithTimeout(url, options, timeoutMs) {
+        options = Object.assign({}, options || {});
+        if (!window.AbortController) return fetch(url, options);
+        var controller = new AbortController();
+        var timer = setTimeout(function () { controller.abort(); }, timeoutMs);
+        options.signal = controller.signal;
+        return fetch(url, options).then(function (res) {
+            clearTimeout(timer);
+            return res;
+        }, function (err) {
+            clearTimeout(timer);
+            throw err;
+        });
+    }
+
     function fetchLive() {
-        return fetch('/api/marketmap', { cache: 'no-cache' })
+        var bucket = Math.floor(Date.now() / POLL_MS);
+        return fetchWithTimeout('/api/marketmap?live=' + bucket, {}, LIVE_FETCH_TIMEOUT_MS)
             .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
             .then(function (data) {
                 if (!data || !data.items || !data.items.length) throw new Error('empty');
@@ -529,7 +547,7 @@
                     updateLastUpdated();
                 }
                 updateDateNav();
-                if (isWaitingLive()) return;   // 라이브 도착 대기 중이면 render 보류
+                if (isWaitingLive()) return;
                 $loading.style.display = 'none';
                 if (items.length) render();
             });
@@ -782,7 +800,7 @@
                 $loading.style.display = 'none';
                 render();
             }
-        }, 5000);
+        }, LIVE_FALLBACK_MS);
 
         fetchSnapshot('')
             .then(fetchDateIndex)

@@ -690,6 +690,13 @@
         if (!t) return;
         // 'YYYY-MM-DDTHH:MM:SS' → 'HH:MM'
         var hhmm = t.slice(11, 16);
+        if (/[zZ]$|[+-]\d{2}:?\d{2}$/.test(String(t))) {
+            var d = new Date(t);
+            if (!isNaN(d.getTime())) {
+                var k = new Date(d.getTime() + KST_OFFSET * 60000);
+                hhmm = ('0' + k.getUTCHours()).slice(-2) + ':' + ('0' + k.getUTCMinutes()).slice(-2);
+            }
+        }
         // LIVE 또는 장 마감 라벨 옆에 마지막 fetch 시각 함께
         var prefix = $liveLabel.textContent && $liveLabel.textContent.indexOf('LIVE') === 0 ? 'LIVE' : '장 마감';
         $liveLabel.textContent = prefix + ' · ' + hhmm;
