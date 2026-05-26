@@ -120,6 +120,40 @@
         if (억 >= 10000) return (억 / 10000).toFixed(1) + '조';
         return Math.round(억).toLocaleString() + '억';
     }
+    function truncateText(text, maxChars) {
+        if (!text) return '';
+        if (text.length <= maxChars) return text;
+        if (maxChars <= 1) return '';
+        return text.slice(0, maxChars - 1) + '…';
+    }
+    function groupMcap(children) {
+        var sum = 0;
+        var seen = {};
+        (children || []).forEach(function (child) {
+            var row = child && child.data ? child.data : child;
+            if (!row) return;
+            var ticker = row.ticker || '';
+            if (ticker) {
+                if (seen[ticker]) return;
+                seen[ticker] = true;
+            }
+            sum += row.market_cap || 0;
+        });
+        return sum;
+    }
+    function groupLabelText(node, width) {
+        var children = node.children || [];
+        var name = displayGroup((node.data && node.data.name) || '기타');
+        var mcap = formatMcap(groupMcap(children));
+        var max = Math.max(2, Math.floor((width - 10) / 8));
+        var full = name + ' · 시총 ' + mcap;
+        var compact = name + ' · ' + mcap;
+        var count = name + ' · ' + children.length;
+        if (width >= 148 && full.length <= max) return full;
+        if (width >= 108 && compact.length <= max) return compact;
+        if (count.length <= max) return count;
+        return truncateText(name, max);
+    }
     function positiveLeaderT(rate) {
         return Math.max(0, Math.min(1, (rate - 10) / 20));
     }
@@ -313,17 +347,15 @@
                 .attr('x', 8).attr('y', 15)
                 .text(function (d) {
                     var width = d.x1 - d.x0;
-                    var name = displayGroup(d.data.name || '기타');
-                    var max = Math.max(2, Math.floor(width / 8));
-                    if (name.length > max) name = name.slice(0, max - 1) + '…';
-                    return name + ' · ' + (d.children || []).length;
+                    return groupLabelText(d, width);
                 });
             sectorG.append('title').text(function (d) {
                 var ch = d.children || [];
                 var sum = 0;
                 ch.forEach(function (c) { sum += (c.data.change_rate || 0); });
                 var avg = ch.length > 0 ? sum / ch.length : 0;
-                return displayGroup(d.data.name) + ' · ' + ch.length + '종목 · 평균 +' + avg.toFixed(1) + '%';
+                return displayGroup(d.data.name) + ' · ' + ch.length + '종목 · 합산시총 '
+                    + formatMcap(groupMcap(ch)) + ' · 평균 +' + avg.toFixed(1) + '%';
             });
         }
 
