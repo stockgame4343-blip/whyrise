@@ -484,5 +484,8 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin', '*')
         # 5초 캐시 — 같은 5초 윈도우 내 다른 사용자 요청은 edge cache 히트
         self.send_header('Cache-Control', cache_control)
+        if cache_control != 'no-store':
+            self.send_header('CDN-Cache-Control', cache_control)
+            self.send_header('Vercel-CDN-Cache-Control', cache_control)
         self.end_headers()
         self.wfile.write(json.dumps(body, ensure_ascii=False).encode('utf-8'))

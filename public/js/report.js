@@ -22,15 +22,17 @@ var WhyReport = (function () {
     var PB_PEAK_MIN = 15;
     var PB_DROP_MIN = 20;
     var PB_BOUNCE_MIN = 15;
-    var POLL_MS = 60 * 1000;
+    var POLL_MS = 15 * 1000;
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60;
-    var CLOSE_MIN = 15 * 60 + 30;
+    var CLOSE_MIN = 16 * 60 + 30;
 
     var state = {
         dates: [],
         dateIndex: 0,
         day: null,
+        derivedPullbacks: [],
+        pullbackSeq: 0,
         ratings: {},
     };
 
@@ -409,6 +411,79 @@ var WhyReport = (function () {
         });
     }
 
+    function eventPrice(ev) {
+        return firstNum(ev, ['close_price', 'closePrice', 'price']);
+    }
+
+    function buildPullbackCandidate(row, history, date) {
+        if (!row || !history || !Array.isArray(history.events)) return null;
+        if (!isActiveRow(row, RISE_CUTOFF)) return null;
+        var current = firstNum(row, ['close_price', 'closePrice', 'price']);
+        var dayLow = firstNum(row, ['low_price', 'lowPrice', 'low']) || current;
+        if (!(current > 0 && dayLow > 0)) return null;
+
+        var events = history.events.filter(function (ev) {
+            return ev && String(ev.date || '') < String(date || '') && eventPrice(ev) > 0;
+        });
+        var peak = null;
+        events.forEach(function (ev) {
+            var price = eventPrice(ev);
+            if (num(ev.change_rate) < PB_PEAK_MIN) return;
+            if (price <= current) return;
+            if (!peak || price > eventPrice(peak)) peak = ev;
+        });
+        if (!peak) return null;
+
+        var peakPrice = eventPrice(peak);
+        var low = dayLow;
+        events.forEach(function (ev) {
+            var d = String(ev.date || '');
+            if (d <= String(peak.date || '') || d >= String(date || '')) return;
+            var price = eventPrice(ev);
+            if (price > 0) low = Math.min(low, price);
+        });
+
+        return {
+            ticker: row.ticker,
+            name: row.name || history.name || row.ticker,
+            market: row.market || history.market || '',
+            peakPrice: peakPrice,
+            lowPrice: low,
+            currentPrice: current,
+            peakRate: num(peak.change_rate),
+            dropPct: peakPrice > 0 && low > 0 ? ((peakPrice - low) / peakPrice) * 100 : 0,
+            bouncePct: low > 0 ? ((current - low) / low) * 100 : 0,
+            reason: (peak.change_rate >= 29.9 ? '상한가 이후 조정' : '급등 이후 조정'),
+        };
+    }
+
+    function derivePullbacksFromRankings(rankings, date) {
+        var rows = (rankings || []).filter(function (row) {
+            return isActiveRow(row, RISE_CUTOFF);
+        }).slice(0, 60);
+        if (!rows.length || !window.WhyAPI || !WhyAPI.getStockHistory) {
+            return Promise.resolve([]);
+        }
+        return Promise.all(rows.map(function (row) {
+            return WhyAPI.getStockHistory(row.ticker).then(function (history) {
+                return buildPullbackCandidate(row, history, date);
+            }).catch(function () {
+                return null;
+            });
+        })).then(function (items) {
+            return derivePullbacks(items.filter(Boolean));
+        });
+    }
+
+    function refreshDerivedPullbacks(date, day) {
+        var seq = ++state.pullbackSeq;
+        return derivePullbacksFromRankings((day && day.rankings) || [], date).then(function (rows) {
+            if (seq !== state.pullbackSeq || state.day !== day) return;
+            state.derivedPullbacks = rows || [];
+            applyDay();
+        }).catch(function () {});
+    }
+
     function stockNameHtml(row, className) {
         var ticker = esc(row.ticker);
         var market = row.market ? '<span class="report-stock-market">' + esc(row.market) + '</span>' : '';
@@ -580,7 +655,7 @@ var WhyReport = (function () {
         var themes = buildGroups(riseRows, 'theme');
         var leader = pickLeader(riseRows, sectors, themes);
         var highRows = deriveHigh52w(day.rankings || [], date);
-        var pullbacks = derivePullbacks(day.pullbacks || []);
+        var pullbacks = derivePullbacks((day.pullbacks || []).concat(state.derivedPullbacks || []));
 
         renderLeader(leader, sectors[0], themes[0]);
         renderGroups(sectors, 'sectorGroups', 'sector', '3종목 이상 몰린 주도 섹터가 없습니다.');
@@ -619,8 +694,10 @@ var WhyReport = (function () {
         showMessage('');
         return WhyAPI.getRankings(date).then(function (data) {
             state.day = data || {};
+            state.derivedPullbacks = [];
             setUpdatedAt(data && data.collected_at);
             applyDay();
+            refreshDerivedPullbacks(date, state.day);
             if (loading) loading.style.display = 'none';
             if (content) content.style.display = 'block';
         }).catch(function (err) {
@@ -642,8 +719,10 @@ var WhyReport = (function () {
         if (!isLatestDate() || !state.dates.length) return Promise.resolve();
         return WhyAPI.getRankings(state.dates[0]).then(function (data) {
             state.day = data || {};
+            state.derivedPullbacks = [];
             setUpdatedAt(data && data.collected_at);
             applyDay();
+            refreshDerivedPullbacks(state.dates[0], state.day);
         }).catch(function () {});
     }
 

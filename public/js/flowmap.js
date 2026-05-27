@@ -17,8 +17,8 @@
 
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60;
-    var CLOSE_MIN = 15 * 60 + 30;
-    var POLL_MS = 60 * 1000;     // 60초 (stock-rise 일별이 5분 주기로 갱신되지만 ux 위해 짧게)
+    var CLOSE_MIN = 16 * 60 + 30;
+    var POLL_MS = 15 * 1000;     // live API cache와 맞춰 빠르게 갱신
     var RING_CIRCUM = 2 * Math.PI * 9;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
     // 모바일 탭은 손가락 떨림으로 시작점 주변에서 왕복함. 누적 경로가 아니라
