@@ -397,7 +397,7 @@ var WhyReport = (function () {
     }
 
     function derivePullbacks(pullbacks) {
-        return (pullbacks || []).filter(function (pb) {
+        var rows = (pullbacks || []).filter(function (pb) {
             if (!pb || !pb.ticker || BLOCKED_TICKERS[pb.ticker]) return false;
             if (peakRateFromPullback(pb) < PB_PEAK_MIN) return false;
             if (lowDrawdownPct(pb) < PB_DROP_MIN) return false;
@@ -405,6 +405,18 @@ var WhyReport = (function () {
             var prices = pullbackPrices(pb);
             if (!(prices.peak > 0 && prices.current > 0)) return false;
             return prices.current < prices.peak;
+        });
+        var byTicker = {};
+        rows.forEach(function (pb) {
+            var prev = byTicker[pb.ticker];
+            if (!prev ||
+                normalizedBouncePct(pb) > normalizedBouncePct(prev) ||
+                (normalizedBouncePct(pb) === normalizedBouncePct(prev) && lowDrawdownPct(pb) > lowDrawdownPct(prev))) {
+                byTicker[pb.ticker] = pb;
+            }
+        });
+        return Object.keys(byTicker).map(function (ticker) {
+            return byTicker[ticker];
         }).sort(function (a, b) {
             return normalizedBouncePct(b) - normalizedBouncePct(a) ||
                 lowDrawdownPct(b) - lowDrawdownPct(a);
