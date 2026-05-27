@@ -2,7 +2,7 @@
  * 리포트 페이지 - Whyrise compact report.
  *
  * 기준:
- * - 주도 섹터/핫 테마: 그날 +15% 이상 종목 중 3종목 이상 그룹만 표시
+ * - 주도 섹터/핫 테마: 그날 +15% 이상 종목 중 2종목 이상 그룹만 표시
  * - 오늘의 대장: +20% 이상 상승 종목 중 거래대금 우선, 비슷하면 상승률까지 종합
  * - 52주 신고가: +10% 이상 상승하면서 해당 날짜에 52주 신고가를 기록한 종목
  * - 조정 후 반등 시도: +15% 이상 급등 후 저점 -20% 이상, 저점 대비 현재가 +15% 이상, 이전 고점 미회복
@@ -17,7 +17,7 @@ var WhyReport = (function () {
     var RISE_CUTOFF = 15;
     var LEADER_CUTOFF = 20;
     var HIGH52_CUTOFF = 10;
-    var GROUP_MIN = 3;
+    var GROUP_MIN = 2;
     var GROUP_TOP_STOCKS = 4;
     var PB_PEAK_MIN = 15;
     var PB_DROP_MIN = 20;
@@ -658,8 +658,8 @@ var WhyReport = (function () {
         var pullbacks = derivePullbacks((day.pullbacks || []).concat(state.derivedPullbacks || []));
 
         renderLeader(leader, sectors[0], themes[0]);
-        renderGroups(sectors, 'sectorGroups', 'sector', '3종목 이상 몰린 주도 섹터가 없습니다.');
-        renderGroups(themes, 'themeGroups', 'theme', '3종목 이상 몰린 핫 테마가 없습니다.');
+        renderGroups(sectors, 'sectorGroups', 'sector', '2종목 이상 몰린 주도 섹터가 없습니다.');
+        renderGroups(themes, 'themeGroups', 'theme', '2종목 이상 몰린 핫 테마가 없습니다.');
         renderHigh52w(highRows);
         renderPullbacks(pullbacks);
     }
