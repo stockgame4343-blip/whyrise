@@ -326,6 +326,25 @@ def _merge_ranking_context(live_rows, static_day, overrides, same_day):
     return merged
 
 
+def _static_rankings_fallback(static_day, overrides, cutoff, market_filter):
+    rows = []
+    for row in (static_day.get('rankings') or []):
+        if market_filter in ('KOSPI', 'KOSDAQ') and row.get('market') != market_filter:
+            continue
+        if _parse_float(row.get('change_rate')) < cutoff:
+            continue
+        merged = dict(row)
+        ov = overrides.get(row.get('ticker')) or {}
+        if ov.get('rise_reason') is not None:
+            merged['rise_reason'] = ov.get('rise_reason')
+        if ov.get('theme_tag') is not None:
+            merged['theme_tag'] = ov.get('theme_tag')
+        if merged.get('theme_tag') and not merged.get('theme_tags'):
+            merged['theme_tags'] = [merged['theme_tag']]
+        rows.append(merged)
+    return rows
+
+
 def _build_live_rankings_uncached(params):
     try:
         cutoff = float((params.get('cutoff') or [DEFAULT_RANKING_CUTOFF])[0])
@@ -352,7 +371,13 @@ def _build_live_rankings_uncached(params):
     static_day = _fetch_static_day(static_date)
     overrides = _read_overrides(live_date) or _read_overrides(static_date)
     rankings = _merge_ranking_context(live_rows, static_day, overrides, static_date == live_date)
+    mode = 'live'
+    if not rankings:
+        rankings = _static_rankings_fallback(static_day, overrides, cutoff, market_filter)
+        mode = 'static-fallback'
     quote_at = (first_meta.get('localTradedAt') or '')
+    if mode == 'static-fallback':
+        quote_at = static_day.get('collected_at') or quote_at
     if not quote_at and live_rows:
         quote_at = live_rows[0].get('_traded_at') or ''
     now = datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
@@ -364,7 +389,7 @@ def _build_live_rankings_uncached(params):
         'updated_at': quote_at or now,
         'server_updated_at': now,
         'is_final': (first_meta.get('marketStatus') or 'CLOSE') != 'OPEN',
-        'mode': 'live',
+        'mode': mode,
         'market_status': first_meta.get('marketStatus') or 'CLOSE',
         'cutoff': cutoff,
         'rankings': rankings,
