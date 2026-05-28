@@ -12,71 +12,16 @@ var WhyAPI = (function () {
     // 클라이언트 캐시 — 5분
     var _cache = {};
     var _cacheTtlMs = 5 * 60 * 1000;
-    var _fetchTimeoutMs = 8000;
-    var _liveCache = {};
-    var _liveCacheTtlMs = 15 * 1000;
-    var _latestLiveDate = '';
-
-    function _fetchWithTimeout(url, options, timeoutMs) {
-        options = Object.assign({}, options || {});
-        if (!window.AbortController) return fetch(url, options);
-        var controller = new AbortController();
-        var timer = setTimeout(function () { controller.abort(); }, timeoutMs || _fetchTimeoutMs);
-        options.signal = controller.signal;
-        return fetch(url, options).then(function (res) {
-            clearTimeout(timer);
-            return res;
-        }, function (err) {
-            clearTimeout(timer);
-            throw err;
-        });
-    }
 
     function _cachedFetch(url) {
         var now = Date.now();
         var hit = _cache[url];
         if (hit && (now - hit.t) < _cacheTtlMs) return Promise.resolve(hit.data);
-        return _fetchWithTimeout(url).then(function (res) {
+        return fetch(url).then(function (res) {
             if (!res.ok) throw new Error('HTTP ' + res.status + ' for ' + url);
             return res.json();
         }).then(function (data) {
             _cache[url] = { t: now, data: data };
-            return data;
-        });
-    }
-
-    function _kstNow() {
-        return new Date(Date.now() + 9 * 60 * 60000);
-    }
-
-    function _todayKst() {
-        var k = _kstNow();
-        return String(k.getUTCFullYear()) +
-            ('0' + (k.getUTCMonth() + 1)).slice(-2) +
-            ('0' + k.getUTCDate()).slice(-2);
-    }
-
-    function _isLiveWindowKst() {
-        var k = _kstNow();
-        var day = k.getUTCDay();
-        if (day === 0 || day === 6) return false;
-        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
-        return mins >= (8 * 60 + 50) && mins <= (16 * 60 + 30);
-    }
-
-    function _fetchLiveRankings(market) {
-        var key = market && market !== 'ALL' ? String(market) : 'ALL';
-        var now = Date.now();
-        var hit = _liveCache[key];
-        if (hit && (now - hit.t) < _liveCacheTtlMs) return Promise.resolve(hit.data);
-        var url = '/api/marketmap?rankings=1&cutoff=10';
-        if (market && market !== 'ALL') url += '&market=' + encodeURIComponent(market);
-        return _fetchWithTimeout(url, {}, 5000).then(function (res) {
-            if (!res.ok) throw new Error('HTTP ' + res.status + ' for ' + url);
-            return res.json();
-        }).then(function (data) {
-            if (data && data.date) _latestLiveDate = data.date;
-            _liveCache[key] = { t: now, data: data };
             return data;
         });
     }
@@ -93,24 +38,14 @@ var WhyAPI = (function () {
 
     /** 거래일 목록 (stock-rise 의 dates.json 재사용) */
     function getDates() {
-        return _cachedFetch(STOCK_RISE_RAW + '/dates.json').then(function (dates) {
-            dates = Array.isArray(dates) ? dates.slice() : [];
-            if (!_isLiveWindowKst()) return dates;
-            return _fetchLiveRankings().then(function (live) {
-                var d = live && live.date;
-                if (d && dates.indexOf(d) < 0) dates.unshift(d);
-                return dates;
-            }).catch(function () {
-                return dates;
-            });
-        });
+        return _cachedFetch(STOCK_RISE_RAW + '/dates.json');
     }
 
     /**
      * 일자별 종목 + overrides 머지.
      * @returns { rankings, collected_at, is_final, mode }
      */
-    function getStaticRankings(date, market) {
+    function getRankings(date, market) {
         return Promise.all([
             _cachedFetch(STOCK_RISE_RAW + '/' + date + '.json'),
             _fetchOverrides(date),
@@ -137,23 +72,6 @@ var WhyAPI = (function () {
                 is_final: data.is_final || false,
                 mode: data.mode || 'closing',
             };
-        });
-    }
-
-    function shouldUseLive(date) {
-        if (!_isLiveWindowKst()) return false;
-        return date === _todayKst() || (!!_latestLiveDate && date === _latestLiveDate);
-    }
-
-    function getRankings(date, market) {
-        if (!shouldUseLive(date)) return getStaticRankings(date, market);
-        return _fetchLiveRankings(market).then(function (data) {
-            if (!data || !data.rankings || !data.rankings.length) {
-                throw new Error('empty live rankings');
-            }
-            return data;
-        }).catch(function () {
-            return getStaticRankings(date, market);
         });
     }
 

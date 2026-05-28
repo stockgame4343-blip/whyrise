@@ -2,7 +2,7 @@
  * 리포트 페이지 - Whyrise compact report.
  *
  * 기준:
- * - 주도 섹터/핫 테마: 그날 +15% 이상 종목 중 2종목 이상 그룹만 표시
+ * - 주도 섹터/핫 테마: 그날 +15% 이상 종목 중 3종목 이상 그룹만 표시
  * - 오늘의 대장: +20% 이상 상승 종목 중 거래대금 우선, 비슷하면 상승률까지 종합
  * - 52주 신고가: +10% 이상 상승하면서 해당 날짜에 52주 신고가를 기록한 종목
  * - 조정 후 반등 시도: +15% 이상 급등 후 저점 -20% 이상, 저점 대비 현재가 +15% 이상, 이전 고점 미회복
@@ -17,42 +17,20 @@ var WhyReport = (function () {
     var RISE_CUTOFF = 15;
     var LEADER_CUTOFF = 20;
     var HIGH52_CUTOFF = 10;
-    var GROUP_MIN = 2;
+    var GROUP_MIN = 3;
     var GROUP_TOP_STOCKS = 4;
     var PB_PEAK_MIN = 15;
     var PB_DROP_MIN = 20;
     var PB_BOUNCE_MIN = 15;
-    var POLL_MS = 15 * 1000;
-    var KST_OFFSET = 9 * 60;
-    var OPEN_MIN = 9 * 60;
-    var CLOSE_MIN = 16 * 60 + 30;
 
     var state = {
         dates: [],
         dateIndex: 0,
         day: null,
-        derivedPullbacks: [],
-        pullbackSeq: 0,
         ratings: {},
     };
 
     function $(id) { return document.getElementById(id); }
-
-    function kstNow() {
-        return new Date(Date.now() + KST_OFFSET * 60000);
-    }
-
-    function isMarketOpenKst() {
-        var k = kstNow();
-        var day = k.getUTCDay();
-        if (day === 0 || day === 6) return false;
-        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
-        return mins >= OPEN_MIN && mins < CLOSE_MIN;
-    }
-
-    function isLatestDate() {
-        return state.dateIndex === 0;
-    }
 
     function esc(s) {
         if (s == null) return '';
@@ -138,17 +116,6 @@ var WhyReport = (function () {
     function formatTimestamp(value) {
         if (!value) return '';
         var s = String(value).trim();
-        if (/[zZ]$|[+-]\d{2}:?\d{2}$/.test(s)) {
-            var d = new Date(s);
-            if (!isNaN(d.getTime())) {
-                var k = new Date(d.getTime() + KST_OFFSET * 60000);
-                return k.getUTCFullYear() + '.' +
-                    ('0' + (k.getUTCMonth() + 1)).slice(-2) + '.' +
-                    ('0' + k.getUTCDate()).slice(-2) + ' ' +
-                    ('0' + k.getUTCHours()).slice(-2) + ':' +
-                    ('0' + k.getUTCMinutes()).slice(-2);
-            }
-        }
         var m = /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(s);
         if (m) return m[1] + '.' + m[2] + '.' + m[3] + ' ' + m[4] + ':' + m[5];
         return s.replace('T', ' ').substring(0, 16);
@@ -397,7 +364,7 @@ var WhyReport = (function () {
     }
 
     function derivePullbacks(pullbacks) {
-        var rows = (pullbacks || []).filter(function (pb) {
+        return (pullbacks || []).filter(function (pb) {
             if (!pb || !pb.ticker || BLOCKED_TICKERS[pb.ticker]) return false;
             if (peakRateFromPullback(pb) < PB_PEAK_MIN) return false;
             if (lowDrawdownPct(pb) < PB_DROP_MIN) return false;
@@ -405,95 +372,10 @@ var WhyReport = (function () {
             var prices = pullbackPrices(pb);
             if (!(prices.peak > 0 && prices.current > 0)) return false;
             return prices.current < prices.peak;
-        });
-        var byTicker = {};
-        rows.forEach(function (pb) {
-            var prev = byTicker[pb.ticker];
-            if (!prev ||
-                normalizedBouncePct(pb) > normalizedBouncePct(prev) ||
-                (normalizedBouncePct(pb) === normalizedBouncePct(prev) && lowDrawdownPct(pb) > lowDrawdownPct(prev))) {
-                byTicker[pb.ticker] = pb;
-            }
-        });
-        return Object.keys(byTicker).map(function (ticker) {
-            return byTicker[ticker];
         }).sort(function (a, b) {
             return normalizedBouncePct(b) - normalizedBouncePct(a) ||
                 lowDrawdownPct(b) - lowDrawdownPct(a);
         });
-    }
-
-    function eventPrice(ev) {
-        return firstNum(ev, ['close_price', 'closePrice', 'price']);
-    }
-
-    function buildPullbackCandidate(row, history, date) {
-        if (!row || !history || !Array.isArray(history.events)) return null;
-        if (!isActiveRow(row, RISE_CUTOFF)) return null;
-        var current = firstNum(row, ['close_price', 'closePrice', 'price']);
-        var dayLow = firstNum(row, ['low_price', 'lowPrice', 'low']) || current;
-        if (!(current > 0 && dayLow > 0)) return null;
-
-        var events = history.events.filter(function (ev) {
-            return ev && String(ev.date || '') < String(date || '') && eventPrice(ev) > 0;
-        });
-        var peak = null;
-        events.forEach(function (ev) {
-            var price = eventPrice(ev);
-            if (num(ev.change_rate) < PB_PEAK_MIN) return;
-            if (price <= current) return;
-            if (!peak || price > eventPrice(peak)) peak = ev;
-        });
-        if (!peak) return null;
-
-        var peakPrice = eventPrice(peak);
-        var low = dayLow;
-        events.forEach(function (ev) {
-            var d = String(ev.date || '');
-            if (d <= String(peak.date || '') || d >= String(date || '')) return;
-            var price = eventPrice(ev);
-            if (price > 0) low = Math.min(low, price);
-        });
-
-        return {
-            ticker: row.ticker,
-            name: row.name || history.name || row.ticker,
-            market: row.market || history.market || '',
-            peakPrice: peakPrice,
-            lowPrice: low,
-            currentPrice: current,
-            peakRate: num(peak.change_rate),
-            dropPct: peakPrice > 0 && low > 0 ? ((peakPrice - low) / peakPrice) * 100 : 0,
-            bouncePct: low > 0 ? ((current - low) / low) * 100 : 0,
-            reason: (peak.change_rate >= 29.9 ? '상한가 이후 조정' : '급등 이후 조정'),
-        };
-    }
-
-    function derivePullbacksFromRankings(rankings, date) {
-        var rows = (rankings || []).filter(function (row) {
-            return isActiveRow(row, RISE_CUTOFF);
-        }).slice(0, 60);
-        if (!rows.length || !window.WhyAPI || !WhyAPI.getStockHistory) {
-            return Promise.resolve([]);
-        }
-        return Promise.all(rows.map(function (row) {
-            return WhyAPI.getStockHistory(row.ticker).then(function (history) {
-                return buildPullbackCandidate(row, history, date);
-            }).catch(function () {
-                return null;
-            });
-        })).then(function (items) {
-            return derivePullbacks(items.filter(Boolean));
-        });
-    }
-
-    function refreshDerivedPullbacks(date, day) {
-        var seq = ++state.pullbackSeq;
-        return derivePullbacksFromRankings((day && day.rankings) || [], date).then(function (rows) {
-            if (seq !== state.pullbackSeq || state.day !== day) return;
-            state.derivedPullbacks = rows || [];
-            applyDay();
-        }).catch(function () {});
     }
 
     function stockNameHtml(row, className) {
@@ -667,11 +549,11 @@ var WhyReport = (function () {
         var themes = buildGroups(riseRows, 'theme');
         var leader = pickLeader(riseRows, sectors, themes);
         var highRows = deriveHigh52w(day.rankings || [], date);
-        var pullbacks = derivePullbacks((day.pullbacks || []).concat(state.derivedPullbacks || []));
+        var pullbacks = derivePullbacks(day.pullbacks || []);
 
         renderLeader(leader, sectors[0], themes[0]);
-        renderGroups(sectors, 'sectorGroups', 'sector', '2종목 이상 몰린 주도 섹터가 없습니다.');
-        renderGroups(themes, 'themeGroups', 'theme', '2종목 이상 몰린 핫 테마가 없습니다.');
+        renderGroups(sectors, 'sectorGroups', 'sector', '3종목 이상 몰린 주도 섹터가 없습니다.');
+        renderGroups(themes, 'themeGroups', 'theme', '3종목 이상 몰린 핫 테마가 없습니다.');
         renderHigh52w(highRows);
         renderPullbacks(pullbacks);
     }
@@ -706,10 +588,8 @@ var WhyReport = (function () {
         showMessage('');
         return WhyAPI.getRankings(date).then(function (data) {
             state.day = data || {};
-            state.derivedPullbacks = [];
             setUpdatedAt(data && data.collected_at);
             applyDay();
-            refreshDerivedPullbacks(date, state.day);
             if (loading) loading.style.display = 'none';
             if (content) content.style.display = 'block';
         }).catch(function (err) {
@@ -725,27 +605,6 @@ var WhyReport = (function () {
         state.dateIndex = i;
         updateDateUI();
         loadDate(date);
-    }
-
-    function refreshLiveDate() {
-        if (!isLatestDate() || !state.dates.length) return Promise.resolve();
-        return WhyAPI.getRankings(state.dates[0]).then(function (data) {
-            state.day = data || {};
-            state.derivedPullbacks = [];
-            setUpdatedAt(data && data.collected_at);
-            applyDay();
-            refreshDerivedPullbacks(state.dates[0], state.day);
-        }).catch(function () {});
-    }
-
-    function liveCycle() {
-        if (!isLatestDate() || !isMarketOpenKst() || document.visibilityState === 'hidden') {
-            setTimeout(liveCycle, 5000);
-            return;
-        }
-        setTimeout(function () {
-            refreshLiveDate().then(function () { liveCycle(); });
-        }, POLL_MS);
     }
 
     function bindDateNav() {
@@ -935,7 +794,6 @@ var WhyReport = (function () {
             updateDateUI();
             return loadDate(dates[0]);
         }).then(function () {
-            liveCycle();
             if (window.WhyRatingsSync) {
                 return window.WhyRatingsSync.pull().then(function (result) {
                     if (result && result.ratings) {

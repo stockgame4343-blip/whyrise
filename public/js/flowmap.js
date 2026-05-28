@@ -17,8 +17,8 @@
 
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60;
-    var CLOSE_MIN = 16 * 60 + 30;
-    var POLL_MS = 15 * 1000;     // live API cache와 맞춰 빠르게 갱신
+    var CLOSE_MIN = 15 * 60 + 30;
+    var POLL_MS = 60 * 1000;     // 60초 (stock-rise 일별이 5분 주기로 갱신되지만 ux 위해 짧게)
     var RING_CIRCUM = 2 * Math.PI * 9;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
     // 모바일 탭은 손가락 떨림으로 시작점 주변에서 왕복함. 누적 경로가 아니라
@@ -119,40 +119,6 @@
         if (억 >= 100 * 10000) return Math.round(억 / 10000).toLocaleString() + '조';
         if (억 >= 10000) return (억 / 10000).toFixed(1) + '조';
         return Math.round(억).toLocaleString() + '억';
-    }
-    function truncateText(text, maxChars) {
-        if (!text) return '';
-        if (text.length <= maxChars) return text;
-        if (maxChars <= 1) return '';
-        return text.slice(0, maxChars - 1) + '…';
-    }
-    function groupMcap(children) {
-        var sum = 0;
-        var seen = {};
-        (children || []).forEach(function (child) {
-            var row = child && child.data ? child.data : child;
-            if (!row) return;
-            var ticker = row.ticker || '';
-            if (ticker) {
-                if (seen[ticker]) return;
-                seen[ticker] = true;
-            }
-            sum += row.market_cap || 0;
-        });
-        return sum;
-    }
-    function groupLabelText(node, width) {
-        var children = node.children || [];
-        var name = displayGroup((node.data && node.data.name) || '기타');
-        var mcap = formatMcap(groupMcap(children));
-        var max = Math.max(2, Math.floor((width - 10) / 8));
-        var full = name + ' · 시총 ' + mcap;
-        var compact = name + ' · ' + mcap;
-        var count = name + ' · ' + children.length;
-        if (width >= 148 && full.length <= max) return full;
-        if (width >= 108 && compact.length <= max) return compact;
-        if (count.length <= max) return count;
-        return truncateText(name, max);
     }
     function positiveLeaderT(rate) {
         return Math.max(0, Math.min(1, (rate - 10) / 20));
@@ -347,15 +313,17 @@
                 .attr('x', 8).attr('y', 15)
                 .text(function (d) {
                     var width = d.x1 - d.x0;
-                    return groupLabelText(d, width);
+                    var name = displayGroup(d.data.name || '기타');
+                    var max = Math.max(2, Math.floor(width / 8));
+                    if (name.length > max) name = name.slice(0, max - 1) + '…';
+                    return name + ' · ' + (d.children || []).length;
                 });
             sectorG.append('title').text(function (d) {
                 var ch = d.children || [];
                 var sum = 0;
                 ch.forEach(function (c) { sum += (c.data.change_rate || 0); });
                 var avg = ch.length > 0 ? sum / ch.length : 0;
-                return displayGroup(d.data.name) + ' · ' + ch.length + '종목 · 합산시총 '
-                    + formatMcap(groupMcap(ch)) + ' · 평균 +' + avg.toFixed(1) + '%';
+                return displayGroup(d.data.name) + ' · ' + ch.length + '종목 · 평균 +' + avg.toFixed(1) + '%';
             });
         }
 
@@ -722,13 +690,6 @@
         if (!t) return;
         // 'YYYY-MM-DDTHH:MM:SS' → 'HH:MM'
         var hhmm = t.slice(11, 16);
-        if (/[zZ]$|[+-]\d{2}:?\d{2}$/.test(String(t))) {
-            var d = new Date(t);
-            if (!isNaN(d.getTime())) {
-                var k = new Date(d.getTime() + KST_OFFSET * 60000);
-                hhmm = ('0' + k.getUTCHours()).slice(-2) + ':' + ('0' + k.getUTCMinutes()).slice(-2);
-            }
-        }
         // LIVE 또는 장 마감 라벨 옆에 마지막 fetch 시각 함께
         var prefix = $liveLabel.textContent && $liveLabel.textContent.indexOf('LIVE') === 0 ? 'LIVE' : '장 마감';
         $liveLabel.textContent = prefix + ' · ' + hhmm;

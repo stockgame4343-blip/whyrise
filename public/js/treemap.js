@@ -20,12 +20,10 @@
 (function () {
     'use strict';
 
-    var POLL_MS = 15 * 1000;
-    var LIVE_FETCH_TIMEOUT_MS = 6500;
-    var LIVE_FALLBACK_MS = 7500;
+    var POLL_MS = 15000;
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60;
-    var CLOSE_MIN = 16 * 60 + 30;
+    var CLOSE_MIN = 15 * 60 + 30;
     var RING_CIRCUM = 2 * Math.PI * 9;
     var SECTOR_LABEL_HEIGHT = 22;
 
@@ -535,24 +533,8 @@
     }
 
     // ── 데이터 fetch ───────────────────────────────────
-    function fetchWithTimeout(url, options, timeoutMs) {
-        options = Object.assign({}, options || {});
-        if (!window.AbortController) return fetch(url, options);
-        var controller = new AbortController();
-        var timer = setTimeout(function () { controller.abort(); }, timeoutMs);
-        options.signal = controller.signal;
-        return fetch(url, options).then(function (res) {
-            clearTimeout(timer);
-            return res;
-        }, function (err) {
-            clearTimeout(timer);
-            throw err;
-        });
-    }
-
     function fetchLive() {
-        var bucket = Math.floor(Date.now() / POLL_MS);
-        return fetchWithTimeout('/api/marketmap?live=' + bucket, {}, LIVE_FETCH_TIMEOUT_MS)
+        return fetch('/api/marketmap', { cache: 'no-cache' })
             .then(function (r) {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
                 return r.json();
@@ -584,16 +566,6 @@
         return isMarketOpen() && state.period === '1d' && state.dateIndex === 0
             && !state.liveItems.length && !_liveTimeout;
     }
-    function todayKstKey() {
-        var k = kstNow();
-        return String(k.getUTCFullYear()) +
-            ('0' + (k.getUTCMonth() + 1)).slice(-2) +
-            ('0' + k.getUTCDate()).slice(-2);
-    }
-    function shouldPrimeLive() {
-        return state.period === '1d' && state.dateIndex === 0 &&
-            (isMarketOpen() || todayKstKey() > (state.currentDate || ''));
-    }
 
     function fetchSnapshot(dateStr) {
         // dateStr: YYYYMMDD or '' (= 최신)
@@ -615,7 +587,7 @@
                     updateLastUpdated();
                 }
                 updateDateNav();
-                if (isWaitingLive()) return;
+                if (isWaitingLive()) return;   // 라이브 도착 대기 중이면 보류
                 $loading.style.display = 'none';
                 if (items.length) render();
             });
@@ -927,12 +899,12 @@
                 $loading.style.display = 'none';
                 render();
             }
-        }, LIVE_FALLBACK_MS);
+        }, 5000);
 
         fetchSnapshot('')
             .then(fetchDateIndex)
             .then(function () {
-                if (shouldPrimeLive()) {
+                if (isMarketOpen() && state.period === '1d' && state.dateIndex === 0) {
                     return fetchLive().catch(function () {});
                 }
             })
