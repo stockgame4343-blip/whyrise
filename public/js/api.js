@@ -98,6 +98,55 @@ var WhyAPI = (function () {
         });
     }
 
+    /**
+     * 라이브 시세 — treemap/bubbles2 와 동일 /api/marketmap. 빠른 숫자만(주가·상승률·거래대금·시총).
+     * 세부필드(섹터·테마·상승이유·뉴스)는 이 헬퍼가 다루지 않는다 — 1시간 빌드(getRankings) 전담.
+     * no-cache(라이브 무효화 방지) + 8s 타임아웃(AbortController) + 콜드스타트 1회 재시도.
+     * @returns Promise<{ map: { [ticker]: {change_rate, close_price, trading_value, market_cap(억원)} },
+     *                    date, updated_at(KST 'YYYY-MM-DDTHH:MM:SS'), market_status, count }>
+     */
+    function getLiveMarketmap() {
+        function attempt() {
+            var ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+            var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 8000);
+            var opts = { cache: 'no-cache' };
+            if (ctl) opts.signal = ctl.signal;
+            return fetch('/api/marketmap', opts).then(function (res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            }).then(function (data) {
+                if (!data || !Array.isArray(data.items) || !data.items.length) throw new Error('empty');
+                return data;
+            }).finally(function () { clearTimeout(timer); });
+        }
+        // 1차 실패(콜드스타트 빈 응답/타임아웃/네트워크) 시 정확히 1회만 재시도. 2차 실패는 reject 전파.
+        return attempt().catch(function () { return attempt(); }).then(function (data) {
+            var map = {};
+            data.items.forEach(function (it) {
+                if (!it || !it.ticker) return;
+                map[it.ticker] = {
+                    change_rate: it.change_rate,
+                    close_price: it.close_price,
+                    trading_value: it.trading_value,
+                    market_cap: it.market_cap,   // 억원 (api/marketmap.py 에서 이미 억원)
+                };
+            });
+            // updated_at 은 서버에서 UTC ISO('...Z'). KST(+9h) 벽시계 문자열로 변환(소비자 slice(11,16)=KST HH:MM).
+            var kst = '';
+            if (data.updated_at) {
+                var d = new Date(data.updated_at);
+                if (!isNaN(d.getTime())) kst = new Date(d.getTime() + 9 * 3600000).toISOString().slice(0, 19);
+            }
+            return {
+                map: map,
+                date: data.date || '',
+                updated_at: kst,
+                market_status: data.market_status || 'CLOSE',
+                count: Object.keys(map).length,
+            };
+        });
+    }
+
     /** 카드뉴스 인덱스 — Phase 2 에서 whyrise 자체 생성. 그 전까지 404 fallback. */
     function getCardsIndex() {
         return fetch('/data/cards/index.json', { cache: 'no-store' })
@@ -114,6 +163,7 @@ var WhyAPI = (function () {
         getStockHistory: getStockHistory,
         getStockIndex: getStockIndex,
         getCurrentPrice: getCurrentPrice,
+        getLiveMarketmap: getLiveMarketmap,
         getCardsIndex: getCardsIndex,
     };
 })();

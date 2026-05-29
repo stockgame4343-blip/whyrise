@@ -14,9 +14,9 @@ var WhyApp = (function () {
     var CUTOFF = 15;   // 고정
     // 모든 메뉴에서 가려야 할 종목 — 에이프로젠바이오로직스, 졸스, 에이프로젠
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
-    // 라이브 polling — 버블맵과 동일 15s (stock-rise backend 는 5분 주기 갱신이라
-    // 실제 데이터 변경은 5분마다, ring 만 자주 채워짐)
-    var POLL_MS = 15 * 1000;
+    // 라이브 숫자 오버레이 주기 30s — /api/marketmap 에서 주가/상승률/거래대금/시총만 받아
+    // 1시간 빌드(getRankings) 행 위에 ticker 단위로 덮어씀. 세부필드(섹터/테마/뉴스)는 빌드 그대로.
+    var LIVE_POLL_MS = 30 * 1000;
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
     var RING_CIRCUM = 2 * Math.PI * 9;
@@ -34,7 +34,7 @@ var WhyApp = (function () {
         el.style.transition = 'none';
         el.style.strokeDashoffset = String(RING_CIRCUM);
         void el.getBoundingClientRect();
-        el.style.transition = 'stroke-dashoffset ' + (POLL_MS / 1000) + 's linear';
+        el.style.transition = 'stroke-dashoffset ' + (LIVE_POLL_MS / 1000) + 's linear';
         el.style.strokeDashoffset = '0';
     }
     function stopRingFill() {
@@ -69,7 +69,7 @@ var WhyApp = (function () {
     function liveCycle() {
         var isLatest = state.currentDateIdx === 0;
         var open = isMarketOpenKST();
-        if (!isLatest || !open || document.visibilityState === 'hidden') {
+        if (!isLatest || !open || document.visibilityState === 'hidden' || state.watchlistMode) {
             setLiveState(false);
             setTimeout(liveCycle, 5000);
             return;
@@ -77,15 +77,22 @@ var WhyApp = (function () {
         setLiveState(true);
         startRingFill();
         setTimeout(function () {
-            var p = loadDate(state.dates[0]);
-            (p && p.then ? p : Promise.resolve()).then(function () { liveCycle(); });
-        }, POLL_MS);
+            // 라이브 숫자(주가/상승률/거래대금/시총) 먼저 받아 state.liveMap 갱신 →
+            // loadDate(빌드, 5분 캐시)의 applyCutoffAndRender 가 그 위에 오버레이.
+            // 라이브 실패 시 liveMap 유지(최초 실패면 null→빌드값) = 직전 정상 라이브값 표시, 깜빡임 방지.
+            WhyAPI.getLiveMarketmap().then(function (res) {
+                state.liveMap = res.map;
+            }).catch(function () {})
+              .then(function () { return loadDate(state.dates[0]); })
+              .then(function () { liveCycle(); });
+        }, LIVE_POLL_MS);
     }
 
     var state = {
         dates: [],
         currentDateIdx: 0,
         rankings: [],         // 원본 (필터 전)
+        liveMap: null,        // /api/marketmap ticker→{change_rate,close_price,trading_value,market_cap(억원)} — 라이브 숫자 오버레이용
         ratings: {},
         watchlistMode: false, // 별점 매긴 종목만 필터
         // 관심 모드 fallback: 그 날 랭킹에 없는 별표 종목을 stock-history events[0] 로 채우기 위한 캐시
@@ -179,8 +186,23 @@ var WhyApp = (function () {
         Promise.all(promises).then(function () { if (onDone) onDone(true); });
     }
 
+    // 라이브 숫자 오버레이 — 최신일·일반(관심X)·liveMap 있을 때만, ticker 단위로 4숫자만 덮어씀.
+    // 세부필드(섹터/테마/상승이유/뉴스)는 절대 미변경. 라이브에 없는 종목은 빌드값 유지.
+    function _applyLiveOverlay() {
+        if (state.watchlistMode || state.currentDateIdx !== 0 || !state.liveMap) return;
+        (state.rankings || []).forEach(function (r) {
+            var lv = state.liveMap[r.ticker];
+            if (!lv) return;
+            if (lv.change_rate != null) r.change_rate = lv.change_rate;
+            if (lv.close_price != null) r.close_price = lv.close_price;
+            if (lv.trading_value != null) r.trading_value = lv.trading_value;
+            if (lv.market_cap != null) r.market_cap = lv.market_cap * 1e8;   // 억원 → 원 (table.js formatAmount 원 기대)
+        });
+    }
+
     function applyCutoffAndRender() {
         var date = state.dates[state.currentDateIdx] || '';
+        _applyLiveOverlay();   // 필터(CUTOFF)·정렬보다 먼저 — 라이브 change_rate 기준으로 컷·정렬
         var filtered;
         var emptyMsg;
 

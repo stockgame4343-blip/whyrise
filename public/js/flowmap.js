@@ -18,7 +18,7 @@
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60;
     var CLOSE_MIN = 15 * 60 + 30;
-    var POLL_MS = 60 * 1000;     // 60초 (stock-rise 일별이 5분 주기로 갱신되지만 ux 위해 짧게)
+    var POLL_MS = 30 * 1000;     // 30초 — 라이브 숫자(/api/marketmap) 오버레이 주기. ring 도 이 값에 동기.
     var RING_CIRCUM = 2 * Math.PI * 9;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
     // 모바일 탭은 손가락 떨림으로 시작점 주변에서 왕복함. 누적 경로가 아니라
@@ -698,9 +698,17 @@
     // 새 데이터 도착 시 같은 ticker 위치 보존 + 그룹 화면이면 사이즈만 갱신
     function refreshLive() {
         if (!isLiveDate()) return Promise.resolve();
-        return WhyAPI.getRankings(state.currentDate).then(function (data) {
-            state.rankings = (data.rankings || []).map(normalizeRanking);
-            state.collectedAt = data.collected_at || state.collectedAt;
+        // 라이브 숫자만 오버레이 — 섹터/테마(세부)는 loadDate 의 1시간 빌드 유지(getRankings 재호출 안 함).
+        return WhyAPI.getLiveMarketmap().then(function (res) {
+            var live = res.map;
+            (state.rankings || []).forEach(function (r) {
+                var lv = live[r.ticker];
+                if (!lv) return;
+                if (lv.change_rate != null) r.change_rate = lv.change_rate;
+                if (lv.close_price != null) r.close_price = lv.close_price;
+                if (lv.trading_value != null) r.trading_value = lv.trading_value;
+                if (lv.market_cap != null) r.market_cap = lv.market_cap;   // 억원 그대로 (state.rankings 는 normalizeRanking 으로 이미 억원)
+            });
             updateLastUpdated();
             render();   // lastNodes 에 prev x/y 있어 위치 유지
         }).catch(function () {});
