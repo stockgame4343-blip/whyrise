@@ -101,23 +101,31 @@ var WhyAPI = (function () {
     /**
      * 라이브 시세 — treemap/bubbles2 와 동일 /api/marketmap. 빠른 숫자만(주가·상승률·거래대금·시총).
      * 세부필드(섹터·테마·상승이유·뉴스)는 이 헬퍼가 다루지 않는다 — 1시간 빌드(getRankings) 전담.
-     * no-cache(라이브 무효화 방지) + 8s 타임아웃(AbortController) + 콜드스타트 1회 재시도.
+     * no-cache(라이브 무효화 방지) + 30s 타임아웃(AbortController, 느린 서버 견딤) + 콜드스타트 1회 재시도.
+     * 어떤 실패(타임아웃/빈응답/네트워크)도 reject 로 통일 → 소비자가 catch 해 빌드값 유지(화면 안 비움).
      * @returns Promise<{ map: { [ticker]: {change_rate, close_price, trading_value, market_cap(억원)} },
      *                    date, updated_at(KST 'YYYY-MM-DDTHH:MM:SS'), market_status, count }>
      */
     function getLiveMarketmap() {
         function attempt() {
             var ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
-            var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 8000);
             var opts = { cache: 'no-cache' };
             if (ctl) opts.signal = ctl.signal;
-            return fetch('/api/marketmap', opts).then(function (res) {
+            var timer;
+            // 30s 타임아웃 — 서버 콜드 시 ~22s 순차 호출 견딤(속도보다 갱신 성공 우선). AbortController 가
+            // 없거나 서버가 행이어도 Promise.race 의 timeout 이 반드시 reject 시켜, 프라미스가 영영 미정착되어
+            // 폴링이 멈추는 일이 없게 함(소비자 catch→재시도/빌드값 유지).
+            var timeout = new Promise(function (_, reject) {
+                timer = setTimeout(function () { if (ctl) ctl.abort(); reject(new Error('timeout')); }, 30000);
+            });
+            var req = fetch('/api/marketmap', opts).then(function (res) {
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 return res.json();
             }).then(function (data) {
                 if (!data || !Array.isArray(data.items) || !data.items.length) throw new Error('empty');
                 return data;
-            }).finally(function () { clearTimeout(timer); });
+            });
+            return Promise.race([req, timeout]).finally(function () { clearTimeout(timer); });
         }
         // 1차 실패(콜드스타트 빈 응답/타임아웃/네트워크) 시 정확히 1회만 재시도. 2차 실패는 reject 전파.
         return attempt().catch(function () { return attempt(); }).then(function (data) {

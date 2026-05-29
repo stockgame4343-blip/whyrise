@@ -553,44 +553,51 @@ var WhyReport = (function () {
         }).join('');
     }
 
-    // 라이브 숫자 오버레이 — 최신일 && live 맵 있을 때만, ticker 단위 4숫자만 덮어씀(in-place).
-    // 세부필드(섹터/테마/상승이유/뉴스/풀백)는 절대 미변경. change_rate 가 모든 파생(컷·그룹·대장)의 입력이라
-    // render 전(파생 전)에 적용해야 그룹 평균/멤버십/대장이 라이브 기준으로 재계산됨.
-    function _applyLiveOverlay(day) {
-        if (state.dateIndex !== 0 || !state.live || !day || !Array.isArray(day.rankings)) return;
+    // 라이브 숫자 오버레이 — 최신일 && live 맵 있을 때만, ticker 단위 4숫자만 덮어쓴 '복사본 배열' 반환(불변).
+    // 빌드 캐시 객체(state.day = getRankings 5분 캐시)를 절대 변형하지 않아 파생(컷/그룹/대장) baseline 오염 방지.
+    // 세부필드(섹터/테마/상승이유/뉴스/풀백)는 미변경. change_rate 가 모든 파생 입력이라 파생 전에 오버레이된 행으로 계산.
+    function _overlaidRankings(day) {
+        var rows = (day && day.rankings) || [];
+        if (state.dateIndex !== 0 || !state.live) return rows;
         var live = state.live;
-        day.rankings.forEach(function (row) {
+        return rows.map(function (row) {
             var lv = live[row.ticker];
-            if (!lv) return;
-            if (lv.change_rate != null) row.change_rate = lv.change_rate;
-            if (lv.close_price != null) row.close_price = lv.close_price;
-            if (lv.trading_value != null) row.trading_value = lv.trading_value;
-            if (lv.market_cap != null) row.market_cap = lv.market_cap * 1e8;   // 억원 → 원 (fmtAmount 원 기대)
+            if (!lv) return row;
+            var o = Object.assign({}, row);
+            if (lv.change_rate != null) o.change_rate = lv.change_rate;
+            if (lv.close_price != null) o.close_price = lv.close_price;
+            if (lv.trading_value != null) o.trading_value = lv.trading_value;
+            if (lv.market_cap != null) o.market_cap = lv.market_cap * 1e8;   // 억원 → 원 (fmtAmount 원 기대)
+            return o;
         });
     }
 
-    // 라이브 사이클 — 최신일·장중·포그라운드일 때만 30s 폴링, 그 외 5s 점검 재귀(단일 타이머).
+    // 라이브 사이클 — 최신일·장중·포그라운드일 때만 폴링. fetch 완료 후 다음 사이클 예약 → 느린 응답(최대 30s)이
+    // 와도 타이머 중첩/동시 fetch 없음(단일 타이머). 어떤 실패도 catch 해 빌드값 유지(오류 미노출).
     function liveCycle() {
         var live = state.dateIndex === 0 && isMarketOpen() && document.visibilityState !== 'hidden';
+        var p = Promise.resolve();
         if (live) {
-            WhyAPI.getLiveMarketmap().then(function (res) {
+            p = WhyAPI.getLiveMarketmap().then(function (res) {
                 state.live = res.map;
                 applyDay();   // state.day(빌드) + state.live 로 재파생·재렌더 (네트워크 호출 없음)
             }).catch(function () {});
         }
-        state.liveTimer = setTimeout(liveCycle, live ? LIVE_POLL_MS : 5000);
+        p.then(function () {
+            state.liveTimer = setTimeout(liveCycle, live ? LIVE_POLL_MS : 5000);
+        });
     }
 
     function applyDay() {
         var day = state.day;
         if (!day) return;
-        _applyLiveOverlay(day);
         var date = state.dates[state.dateIndex] || '';
-        var riseRows = activeRiseRows(day.rankings || []);
+        var rankings = _overlaidRankings(day);   // 불변 오버레이 — state.day 미변경, 파생 오염 방지
+        var riseRows = activeRiseRows(rankings);
         var sectors = buildGroups(riseRows, 'sector');
         var themes = buildGroups(riseRows, 'theme');
         var leader = pickLeader(riseRows, sectors, themes);
-        var highRows = deriveHigh52w(day.rankings || [], date);
+        var highRows = deriveHigh52w(rankings, date);
         var pullbacks = derivePullbacks(day.pullbacks || []);
 
         renderLeader(leader, sectors[0], themes[0]);

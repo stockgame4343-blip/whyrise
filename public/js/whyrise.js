@@ -83,7 +83,12 @@ var WhyApp = (function () {
             WhyAPI.getLiveMarketmap().then(function (res) {
                 state.liveMap = res.map;
             }).catch(function () {})
-              .then(function () { return loadDate(state.dates[0]); })
+              .then(function () {
+                  // 느린 fetch(최대 30s) 도중 사용자가 다른 날짜/관심모드로 이동했으면 최신일 강제 로드 금지
+                  // (날짜 헤더와 표 데이터 불일치 방지). 다음 liveCycle 이 isLatest 가드로 알아서 처리.
+                  if (state.currentDateIdx !== 0 || state.watchlistMode) return;
+                  return loadDate(state.dates[0]);
+              })
               .then(function () { liveCycle(); });
         }, LIVE_POLL_MS);
     }
@@ -190,13 +195,17 @@ var WhyApp = (function () {
     // 세부필드(섹터/테마/상승이유/뉴스)는 절대 미변경. 라이브에 없는 종목은 빌드값 유지.
     function _applyLiveOverlay() {
         if (state.watchlistMode || state.currentDateIdx !== 0 || !state.liveMap) return;
-        (state.rankings || []).forEach(function (r) {
+        // 불변 머지 — getRankings 5분 캐시 객체(참조 공유)를 변형하지 않도록 복사본에만 덮어씀.
+        // (in-place 면 캐시 오염 → 다음 폴링/재방문에서 잘못된 baseline 으로 누적)
+        state.rankings = (state.rankings || []).map(function (r) {
             var lv = state.liveMap[r.ticker];
-            if (!lv) return;
-            if (lv.change_rate != null) r.change_rate = lv.change_rate;
-            if (lv.close_price != null) r.close_price = lv.close_price;
-            if (lv.trading_value != null) r.trading_value = lv.trading_value;
-            if (lv.market_cap != null) r.market_cap = lv.market_cap * 1e8;   // 억원 → 원 (table.js formatAmount 원 기대)
+            if (!lv) return r;
+            var o = Object.assign({}, r);
+            if (lv.change_rate != null) o.change_rate = lv.change_rate;
+            if (lv.close_price != null) o.close_price = lv.close_price;
+            if (lv.trading_value != null) o.trading_value = lv.trading_value;
+            if (lv.market_cap != null) o.market_cap = lv.market_cap * 1e8;   // 억원 → 원 (table.js formatAmount 원 기대)
+            return o;
         });
     }
 

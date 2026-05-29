@@ -700,6 +700,7 @@
         if (!isLiveDate()) return Promise.resolve();
         // 라이브 숫자만 오버레이 — 섹터/테마(세부)는 loadDate 의 1시간 빌드 유지(getRankings 재호출 안 함).
         return WhyAPI.getLiveMarketmap().then(function (res) {
+            if (!isLiveDate()) return;   // 느린 fetch 도중 과거 날짜로 이동했으면 오버레이/렌더 스킵(불일치 방지)
             var live = res.map;
             (state.rankings || []).forEach(function (r) {
                 var lv = live[r.ticker];
