@@ -218,7 +218,11 @@
         if (pendingDate && pendingDate === state.date) return;
         var dates = bridge.getDates() || [];
         if (dates.indexOf(state.date) < 0) return;
-        if (bridge.getCurrentDate && bridge.getCurrentDate() === state.date) return;
+        var cur = bridge.getCurrentDate && bridge.getCurrentDate();
+        if (cur === state.date) return;
+        // 임베드 맵이 라이브로 더 최신 거래일(오늘)로 advance 했으면 그쪽을 따른다 —
+        // state.date 가 라이브 전 스냅샷(어제)을 채택한 상태에서 맵을 어제로 끌어내리는 것 방지.
+        if (cur && cur > state.date) { state.date = cur; return; }
         pendingDate = state.date;
         bridge.gotoDate(state.date);
     }
