@@ -511,26 +511,30 @@
     function setLiveState(open) {
         if (open) {
             $live.classList.remove('tmap-live--idle');
-            $liveLabel.textContent = 'LIVE';
         } else {
             $live.classList.add('tmap-live--idle');
-            $liveLabel.textContent = '장 마감';
             stopRingFill();
         }
         updateLastUpdated();
     }
     function updateLastUpdated() {
         if (!$liveLabel) return;
+        var open = !$live.classList.contains('tmap-live--idle');
+        // 라이브 첫 페이로드 도착 전 — 화면의 정적(직전) 데이터를 현재로 오인하지 않게 명시
+        if (open && !state.liveItems.length) {
+            $liveLabel.textContent = '갱신 중…';
+            return;
+        }
+        var label = open ? 'LIVE' : '장 마감';
         var iso = state.lastUpdated || '';
-        if (!iso) return;
+        if (!iso) { $liveLabel.textContent = label; return; }
         try {
             var d = new Date(iso);
-            if (isNaN(d.getTime())) return;
+            if (isNaN(d.getTime())) { $liveLabel.textContent = label; return; }
             var k = new Date(d.getTime() + 9 * 3600000);
             var hh = ('0' + k.getUTCHours()).slice(-2);
             var mm = ('0' + k.getUTCMinutes()).slice(-2);
-            var prefix = $liveLabel.textContent.indexOf('LIVE') === 0 ? 'LIVE' : '장 마감';
-            $liveLabel.textContent = prefix + ' · ' + hh + ':' + mm;
+            $liveLabel.textContent = label + ' · ' + hh + ':' + mm;
         } catch (e) {}
     }
 
@@ -882,6 +886,8 @@
         if ($date) $date.addEventListener('click', openDatePicker);
 
         // 시계 element 제거 — LIVE 라벨의 마지막 업데이트 시각만 표시
+        // 장중 진입 시 라이브 첫 도착 전까지 '갱신 중…' 표시 (정적=직전 데이터 오인 방지)
+        setLiveState(isMarketOpen() && state.period === '1d');
 
         // 1) 정적 latest marketmap.json → sectorMap + 즉시 렌더
         // 2) 일별 index 로딩

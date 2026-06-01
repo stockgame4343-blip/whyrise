@@ -18,6 +18,7 @@
 import json
 import urllib.request
 import urllib.error
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler
 
@@ -31,6 +32,14 @@ URL_UP = 'https://m.stock.naver.com/api/stocks/up/{mkt}?page={page}&pageSize=100
 PAGES_MCAP = (1, 2, 3, 4, 5)
 PAGES_UP = (1, 2, 3)
 TOP_N = 100   # 정렬 기준별 TOP n 으로 union 산출
+MARKETS = ('KOSPI', 'KOSDAQ')
+# 16개 네이버 요청을 순차로 돌면 Vercel 해외 리전에서 ~21s → 병렬로 ~3s.
+# 동시성은 네이버 차단 회피 위해 8 로 상한 (16요청 ÷ 8 ≈ 2 wave).
+FETCH_WORKERS = 8
+_ALL_URLS = (
+    [URL_MCAP.format(mkt=m, page=p) for m in MARKETS for p in PAGES_MCAP]
+    + [URL_UP.format(mkt=m, page=p) for m in MARKETS for p in PAGES_UP]
+)
 
 
 def _parse_int(v):
@@ -100,36 +109,38 @@ def _normalize(stocks, market_label):
     return out
 
 
-def _fetch_market_pool(market_label: str):
-    """시총 정렬 TOP 500 + 상승률 정렬 TOP 300 fetch → ticker 중복 제거 union.
+def _fetch_all(urls, workers=FETCH_WORKERS):
+    """URL 목록 병렬 fetch → {url: data|None}. 개별 실패는 None (호출부에서 빈 stocks 처리)."""
+    def _safe(u):
+        try:
+            return _fetch(u)
+        except Exception:
+            return None
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        results = list(ex.map(_safe, urls))
+    return dict(zip(urls, results))
 
-    시총 작은 급등주는 marketValue 페이지에서는 5위 페이지 밖이지만 up 페이지의
-    상위에 잡힘 → 두 정렬 합치면 시총 무관하게 +14% 이상 종목 모두 진입.
+
+def _pool_for(market_label: str, fetched: dict):
+    """병렬 fetch 결과에서 한 시장의 union pool 재구성.
+
+    시총 정렬(MCAP) + 상승률 정렬(UP) 합쳐 시총 무관하게 급등주까지 진입.
+    시총 작은 급등주는 marketValue 5위 페이지 밖이라도 up 페이지 상위에 잡힘.
     """
     pool_by_ticker: dict[str, dict] = {}
     first_meta: dict = {}
     # 1) 시총 정렬 — 시총·거래대금 큰 종목 커버
     for p in PAGES_MCAP:
-        try:
-            data = _fetch(URL_MCAP.format(mkt=market_label, page=p))
-        except Exception:
-            break
-        stocks = data.get('stocks') or []
+        data = fetched.get(URL_MCAP.format(mkt=market_label, page=p))
+        stocks = (data or {}).get('stocks') or []
         if p == 1 and stocks:
             first_meta = stocks[0]
-        if not stocks:
-            break
         for it in _normalize(stocks, market_label):
             pool_by_ticker[it['ticker']] = it
     # 2) 상승률 정렬 — 시총 작은 급등주 보장 진입
     for p in PAGES_UP:
-        try:
-            data = _fetch(URL_UP.format(mkt=market_label, page=p))
-        except Exception:
-            break
-        stocks = data.get('stocks') or []
-        if not stocks:
-            break
+        data = fetched.get(URL_UP.format(mkt=market_label, page=p))
+        stocks = (data or {}).get('stocks') or []
         for it in _normalize(stocks, market_label):
             # 시총 page에 이미 있으면 그쪽 (동일 데이터)
             pool_by_ticker.setdefault(it['ticker'], it)
@@ -152,8 +163,9 @@ def _union_top(pool, n=TOP_N):
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
-            kospi_pool, k_first = _fetch_market_pool('KOSPI')
-            kosdaq_pool, _ = _fetch_market_pool('KOSDAQ')
+            fetched = _fetch_all(_ALL_URLS)
+            kospi_pool, k_first = _pool_for('KOSPI', fetched)
+            kosdaq_pool, _ = _pool_for('KOSDAQ', fetched)
 
             # 시장별로 union TOP n — 어떤 정렬에서도 진짜 TOP 100 보임
             items = _union_top(kospi_pool, TOP_N) + _union_top(kosdaq_pool, TOP_N)
