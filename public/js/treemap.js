@@ -525,23 +525,17 @@
             $liveLabel.textContent = '갱신 중…';
             return;
         }
-        if (!open) {
-            // 장 마감: 시각(장중 빌드시각 등) 오인 방지 — 거래일만 표시
-            var dt = String(state.currentDate || '');
-            $liveLabel.textContent = (dt.length === 8)
-                ? '장 마감 · ' + (+dt.slice(4, 6)) + '.' + (+dt.slice(6, 8))
-                : '장 마감';
-            return;
-        }
+        var label = open ? 'LIVE' : '장 마감';
         var iso = state.lastUpdated || '';
-        if (!iso) { $liveLabel.textContent = 'LIVE'; return; }
+        if (!iso) { $liveLabel.textContent = label; return; }
+        // 마지막 갱신 시각 (장 마감 시엔 마감 후 라이브 1회 fetch 시각 = 종가 확보 시각)
         try {
             var d = new Date(iso);
-            if (isNaN(d.getTime())) { $liveLabel.textContent = 'LIVE'; return; }
+            if (isNaN(d.getTime())) { $liveLabel.textContent = label; return; }
             var k = new Date(d.getTime() + 9 * 3600000);
             var hh = ('0' + k.getUTCHours()).slice(-2);
             var mm = ('0' + k.getUTCMinutes()).slice(-2);
-            $liveLabel.textContent = 'LIVE · ' + hh + ':' + mm;
+            $liveLabel.textContent = label + ' · ' + hh + ':' + mm;
         } catch (e) {}
     }
 
@@ -588,7 +582,9 @@
                 });
                 state.snapshotItems = items;
                 state.currentDate = (data && data.date) || dateStr || '';
-                if (data && data.updated_at && !state.lastUpdated) {
+                // 최신일(0)은 정적 updated_at(장중 빌드시각, 예 13:58)을 쓰지 않음 —
+                // 라이브 fetch 가 마지막 갱신 시각을 제공. 과거일만 정적 시각 사용.
+                if (data && data.updated_at && !state.lastUpdated && state.dateIndex !== 0) {
                     state.lastUpdated = data.updated_at;
                     updateLastUpdated();
                 }
