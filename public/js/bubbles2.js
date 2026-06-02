@@ -469,17 +469,25 @@
     }
     function updateLastUpdated() {
         if (!$liveLabel) return;
+        var open = !$live.classList.contains('tmap-live--idle');
+        if (!open) {
+            // 장 마감: 시각(장중 빌드시각 등) 오인 방지 — 거래일만 표시
+            var dt = String(state.currentDate || '');
+            $liveLabel.textContent = (dt.length === 8)
+                ? '장 마감 · ' + (+dt.slice(4, 6)) + '.' + (+dt.slice(6, 8))
+                : '장 마감';
+            return;
+        }
         var iso = state.lastUpdated || '';
-        if (!iso) return;
+        if (!iso) { $liveLabel.textContent = 'LIVE'; return; }
         // 라이브 API 의 updated_at = UTC ISO. KST(+9h) 로 변환
         try {
             var d = new Date(iso);
-            if (isNaN(d.getTime())) return;
+            if (isNaN(d.getTime())) { $liveLabel.textContent = 'LIVE'; return; }
             var k = new Date(d.getTime() + 9 * 3600000);
             var hh = ('0' + k.getUTCHours()).slice(-2);
             var mm = ('0' + k.getUTCMinutes()).slice(-2);
-            var prefix = $liveLabel.textContent.indexOf('LIVE') === 0 ? 'LIVE' : '장 마감';
-            $liveLabel.textContent = prefix + ' · ' + hh + ':' + mm;
+            $liveLabel.textContent = 'LIVE · ' + hh + ':' + mm;
         } catch (e) {}
     }
 
@@ -787,7 +795,9 @@
         fetchSnapshot('')
             .then(fetchDateIndex)
             .then(function () {
-                if (isMarketOpen() && state.period === '1d' && state.dateIndex === 0) {
+                // 최신일 1d 면 장 마감 후에도 1회 라이브 fetch — 정적 marketmap.json 이
+                // 장중 빌드라 마감 데이터가 아닐 수 있어 '실제 종가' 스냅샷 확보.
+                if (state.period === '1d' && state.dateIndex === 0) {
                     return fetchLive().catch(function () {});
                 }
             })
