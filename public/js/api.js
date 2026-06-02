@@ -103,7 +103,7 @@ var WhyAPI = (function () {
      * 세부필드(섹터·테마·상승이유·뉴스)는 이 헬퍼가 다루지 않는다 — 1시간 빌드(getRankings) 전담.
      * no-cache(라이브 무효화 방지) + 30s 타임아웃(AbortController, 느린 서버 견딤) + 콜드스타트 1회 재시도.
      * 어떤 실패(타임아웃/빈응답/네트워크)도 reject 로 통일 → 소비자가 catch 해 빌드값 유지(화면 안 비움).
-     * @returns Promise<{ map: { [ticker]: {change_rate, close_price, trading_value, market_cap(억원)} },
+     * @returns Promise<{ map: { [ticker]: {name, market, change_rate, close_price, trading_value, market_cap(억원)} },
      *                    date, updated_at(KST 'YYYY-MM-DDTHH:MM:SS'), market_status, count }>
      */
     function getLiveMarketmap() {
@@ -133,6 +133,8 @@ var WhyAPI = (function () {
             data.items.forEach(function (it) {
                 if (!it || !it.ticker) return;
                 map[it.ticker] = {
+                    name: it.name,               // 빌드에 없는 신규 급등주 표시용
+                    market: it.market,
                     change_rate: it.change_rate,
                     close_price: it.close_price,
                     trading_value: it.trading_value,

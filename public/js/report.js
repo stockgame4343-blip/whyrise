@@ -23,8 +23,12 @@ var WhyReport = (function () {
     var PB_DROP_MIN = 20;
     var PB_BOUNCE_MIN = 15;
 
-    // 라이브 숫자 오버레이 — 30s 주기(home/flowmap 과 동일 정책). report 엔 폴링/시각 헬퍼가 없어 신설.
-    var LIVE_POLL_MS = 30 * 1000;
+    // 라이브 숫자 오버레이 — 15s 주기(home 과 동일). /api/marketmap 병렬화로 ~3s 응답이라 단축.
+    var LIVE_POLL_MS = 15 * 1000;
+    // 급등 신규 — 빌드(stock-rise 일자 rankings)에 아직 없는데 라이브 union 에서 +N% 인 종목.
+    // 오버레이는 기존 행 숫자만 갱신 → 새 종목은 못 잡으므로 별도 슬롯에 '시세만' 노출(이유 분석 대기중).
+    var NEW_CUTOFF = 15;
+    var NEW_TOP = 12;
     var KST_OFFSET = 9 * 60, OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
     function isMarketOpen() {
         var k = new Date(Date.now() + KST_OFFSET * 60000);
@@ -486,6 +490,55 @@ var WhyReport = (function () {
         }).join('');
     }
 
+    // 급등 신규 — 라이브 union 중 오늘 빌드 rankings 에 없는 +NEW_CUTOFF% 종목 (시세만, 이유 미정).
+    function deriveNewcomers(rankings) {
+        if (state.dateIndex !== 0 || !state.live) return [];
+        var have = {};
+        (rankings || []).forEach(function (r) { if (r && r.ticker) have[r.ticker] = 1; });
+        var out = [];
+        Object.keys(state.live).forEach(function (tk) {
+            if (have[tk] || BLOCKED_TICKERS[tk]) return;
+            var lv = state.live[tk] || {};
+            if (num(lv.change_rate) < NEW_CUTOFF) return;
+            out.push({
+                ticker: tk,
+                name: lv.name || tk,
+                market: lv.market || '',
+                change_rate: num(lv.change_rate),
+                trading_value: num(lv.trading_value),
+            });
+        });
+        out.sort(function (a, b) {
+            return b.change_rate - a.change_rate || b.trading_value - a.trading_value;
+        });
+        return out.slice(0, NEW_TOP);
+    }
+
+    function renderNewcomers(rows) {
+        var section = $('newcomerSection');
+        var el = $('newcomerList');
+        if (!el) return;
+        if (!rows.length) {
+            if (section) section.style.display = 'none';
+            el.innerHTML = '';
+            return;
+        }
+        if (section) section.style.display = '';
+        el.innerHTML = rows.map(function (row) {
+            return '<span class="report-group-stock ' + ratingClass(row.ticker) + '" data-ticker="' + esc(row.ticker) + '">' +
+                '<span class="report-group-stock__name cell-name__wrap">' +
+                    '<a href="' + stockUrl(row.ticker) + '" data-ticker="' + esc(row.ticker) + '">' + esc(row.name) + '</a>' +
+                    (row.market ? '<span class="report-stock-market">' + esc(row.market) + '</span>' : '') +
+                '</span>' +
+                '<span class="report-group-stock__meta">' +
+                    '<strong class="cell-change--up">' + pct(row.change_rate, 1) + '</strong>' +
+                    '<span>거래 ' + fmtAmount(row.trading_value) + '</span>' +
+                    '<span class="theme-tag">이유 분석 대기중</span>' +
+                '</span>' +
+            '</span>';
+        }).join('');
+    }
+
     function renderHigh52w(rows) {
         var el = $('high52wList');
         if (!el) return;
@@ -598,11 +651,13 @@ var WhyReport = (function () {
         var themes = buildGroups(riseRows, 'theme');
         var leader = pickLeader(riseRows, sectors, themes);
         var highRows = deriveHigh52w(rankings, date);
+        var newcomers = deriveNewcomers(rankings);
         var pullbacks = derivePullbacks(day.pullbacks || []);
 
         renderLeader(leader, sectors[0], themes[0]);
         renderGroups(sectors, 'sectorGroups', 'sector', '3종목 이상 몰린 주도 섹터가 없습니다.');
         renderGroups(themes, 'themeGroups', 'theme', '3종목 이상 몰린 핫 테마가 없습니다.');
+        renderNewcomers(newcomers);
         renderHigh52w(highRows);
         renderPullbacks(pullbacks);
     }

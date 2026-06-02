@@ -14,9 +14,10 @@ var WhyApp = (function () {
     var CUTOFF = 15;   // 고정
     // 모든 메뉴에서 가려야 할 종목 — 에이프로젠바이오로직스, 졸스, 에이프로젠
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
-    // 라이브 숫자 오버레이 주기 30s — /api/marketmap 에서 주가/상승률/거래대금/시총만 받아
+    // 라이브 숫자 오버레이 주기 15s — /api/marketmap 에서 주가/상승률/거래대금/시총만 받아
     // 1시간 빌드(getRankings) 행 위에 ticker 단위로 덮어씀. 세부필드(섹터/테마/뉴스)는 빌드 그대로.
-    var LIVE_POLL_MS = 30 * 1000;
+    // (/api/marketmap 병렬화로 ~3s 응답이라 30s→15s 단축)
+    var LIVE_POLL_MS = 15 * 1000;
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
     var RING_CIRCUM = 2 * Math.PI * 9;
