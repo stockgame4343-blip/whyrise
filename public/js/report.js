@@ -45,6 +45,7 @@ var WhyReport = (function () {
         ratings: {},
         live: null,        // /api/marketmap ticker→숫자 맵 (라이브 오버레이용)
         liveTimer: null,   // 단일 라이브 사이클 타이머
+        liveOnce: false,   // 최신일 '실제 종가' 1회 확보 여부 — 장 마감·장전에도 최소 1회는 라이브 fetch
     };
 
     function $(id) { return document.getElementById(id); }
@@ -628,16 +629,22 @@ var WhyReport = (function () {
     // 라이브 사이클 — 최신일·장중·포그라운드일 때만 폴링. fetch 완료 후 다음 사이클 예약 → 느린 응답(최대 30s)이
     // 와도 타이머 중첩/동시 fetch 없음(단일 타이머). 어떤 실패도 catch 해 빌드값 유지(오류 미노출).
     function liveCycle() {
-        var live = state.dateIndex === 0 && isMarketOpen() && document.visibilityState !== 'hidden';
+        var latest = state.dateIndex === 0 && document.visibilityState !== 'hidden';
+        var open = isMarketOpen();
+        // 장중이면 매 주기 라이브 오버레이. 장 마감·장전이라도 최신일이면 '실제 종가'를 최소 1회는 받아온다.
+        // (시각화와 동일 — 이게 없으면 마감 후 빌드값에 멈춰 '여전히 빌드만 기다림'으로 보임.)
+        var fetchNow = latest && (open || !state.liveOnce);
         var p = Promise.resolve();
-        if (live) {
+        if (fetchNow) {
             p = WhyAPI.getLiveMarketmap().then(function (res) {
                 state.live = res.map;
+                state.liveOnce = true;
+                if (res.updated_at) setUpdatedAt(res.updated_at);   // 빌드시각 대신 라이브 갱신시각 표시
                 applyDay();   // state.day(빌드) + state.live 로 재파생·재렌더 (네트워크 호출 없음)
             }).catch(function () {});
         }
         p.then(function () {
-            state.liveTimer = setTimeout(liveCycle, live ? LIVE_POLL_MS : 5000);
+            state.liveTimer = setTimeout(liveCycle, open ? LIVE_POLL_MS : 5000);
         });
     }
 
@@ -690,6 +697,7 @@ var WhyReport = (function () {
         if (loading) loading.style.display = 'block';
         if (content) content.style.display = 'none';
         showMessage('');
+        state.liveOnce = false;   // 날짜 변경 시 재무장 — 최신일로 돌아오면 실제 종가 1회 재확보
         return WhyAPI.getRankings(date).then(function (data) {
             state.day = data || {};
             setUpdatedAt(data && data.collected_at);

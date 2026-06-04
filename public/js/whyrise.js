@@ -94,6 +94,16 @@ var WhyApp = (function () {
         }, LIVE_POLL_MS);
     }
 
+    // 로드 시 최신일이면 장 마감·장전이라도 라이브 1회 즉시 fetch → 실제 종가/시세를 빌드값 위에 바로 반영.
+    // (시각화는 로드 때 항상 1회 fetch. 이게 없으면 홈은 마감 후 빌드값에 멈춰 '여전히 빌드 기다림'으로 보임.)
+    function primeLive() {
+        if (state.currentDateIdx !== 0 || state.watchlistMode) return Promise.resolve();
+        return WhyAPI.getLiveMarketmap().then(function (res) {
+            state.liveMap = res.map;
+            if (state.currentDateIdx === 0 && !state.watchlistMode) return loadDate(state.dates[0]);
+        }).catch(function () {});
+    }
+
     var state = {
         dates: [],
         currentDateIdx: 0,
@@ -590,6 +600,8 @@ var WhyApp = (function () {
             state.currentDateIdx = 0;
             updateDateUI();
             return loadDate(dates[0]);
+        }).then(function () {
+            return primeLive();   // 최신일 라이브 1회 즉시 반영 — 마감 후에도 실제 종가/시세 표시
         }).then(function () {
             liveCycle();   // chain pattern (ring transition = setTimeout = fetch 정확 동기화)
             // 서버 별점 동기화 — KV pull 후 머지되면 다시 그림. 실패해도 로컬 모드로 작동.
