@@ -4,69 +4,34 @@
   "market": "KOSDAQ",
   "events": [
     {
-      "date": "20260305",
-      "change_rate": 15.41,
-      "close_price": 9510.0,
-      "rise_reason": "",
-      "reason_confidence": "low",
-      "reason_source": "naver",
-      "reason_status": "missing",
-      "theme_tag": "",
-      "news": [],
-      "sector": "",
-      "is_52w_high": false,
-      "source": "estimated"
-    },
-    {
-      "date": "20251117",
-      "change_rate": 10.63,
-      "close_price": 9470.0,
-      "rise_reason": "",
-      "reason_confidence": "low",
-      "reason_source": "naver",
-      "reason_status": "missing",
-      "theme_tag": "",
-      "news": [],
-      "sector": "",
-      "is_52w_high": false,
-      "source": "estimated"
-    },
-    {
-      "date": "20251002",
-      "change_rate": 12.75,
-      "close_price": 8930.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "date": "20260609",
+      "change_rate": 12.39,
+      "close_price": 9070.0,
+      "rise_reason": "투자 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
       "reason_status": "filled",
-      "theme_tag": "",
-      "news": [],
-      "sector": "",
-      "is_52w_high": true,
-      "source": "estimated"
-    },
-    {
-      "date": "20250624",
-      "change_rate": 10.47,
-      "close_price": 6540.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
-      "theme_tag": "",
-      "news": [],
-      "sector": "",
-      "is_52w_high": true,
-      "source": "estimated"
+      "theme_tag": "반도체 재료/부품",
+      "news": [
+        {
+          "title": "퓨릿, 350억 규모 신규 시설 투자 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006262077&office_id=018&code=445180&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.20"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "stockrise"
     }
   ],
   "stats": {
-    "count_10": 4,
-    "count_15": 1,
+    "count_10": 1,
+    "count_15": 0,
     "count_20": 0,
     "count_limit": 0,
-    "count_recent": 0,
-    "avg_rate": 12.32
+    "count_recent": 1,
+    "avg_rate": 12.39
   },
-  "built_at": "2026-05-24T07:50:28"
+  "built_at": "2026-06-10T14:57:39"
 }
