@@ -36,6 +36,9 @@ MARKETS = ('KOSPI', 'KOSDAQ')
 # 16개 네이버 요청을 순차로 돌면 Vercel 해외 리전에서 ~21s → 병렬로 ~3s.
 # 동시성은 네이버 차단 회피 위해 8 로 상한 (16요청 ÷ 8 ≈ 2 wave).
 FETCH_WORKERS = 8
+# edge 캐시 — 장중엔 5초, 마감/휴장엔 시세가 멈춰 있으므로 60초로 늘려 네이버 호출 절감
+CACHE_OPEN = 's-maxage=5, stale-while-revalidate=10'
+CACHE_CLOSED = 's-maxage=60, stale-while-revalidate=120'
 _ALL_URLS = (
     [URL_MCAP.format(mkt=m, page=p) for m in MARKETS for p in PAGES_MCAP]
     + [URL_UP.format(mkt=m, page=p) for m in MARKETS for p in PAGES_UP]
@@ -180,17 +183,18 @@ class handler(BaseHTTPRequestHandler):
                 'market_status': market_status,
                 'universe': 'union',
                 'items': items,
-            })
+            }, cache=(CACHE_OPEN if market_status == 'OPEN' else CACHE_CLOSED))
         except urllib.error.HTTPError as e:
             self._respond(502, {'error': f'네이버 API 오류: {e.code}'})
         except Exception as e:
             self._respond(502, {'error': str(e)[:200]})
 
-    def _respond(self, status, body):
+    def _respond(self, status, body, cache=None):
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
-        # 5초 캐시 — 같은 5초 윈도우 내 다른 사용자 요청은 edge cache 히트
-        self.send_header('Cache-Control', 's-maxage=5, stale-while-revalidate=10')
+        # 같은 캐시 윈도우 내 다른 사용자 요청은 edge cache 히트. 오류 응답은 캐시 안 함.
+        if cache:
+            self.send_header('Cache-Control', cache)
         self.end_headers()
         self.wfile.write(json.dumps(body, ensure_ascii=False).encode('utf-8'))

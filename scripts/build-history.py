@@ -37,6 +37,9 @@ from scripts.estimate_reasons import estimate_reason  # noqa: E402
 OUTPUT_DIR = _REPO / 'public' / 'data' / 'stock-history'
 OVERRIDES_DIR = _REPO / 'public' / 'data' / 'overrides'
 STOCK_RISE_RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data'
+# stock-history 빌드 신선도 마커 — 워크플로우의 stale 판정(intraday → incremental 승격)에 사용.
+# stock-history 디렉토리 밖에 두는 이유: build_report_summary 가 그 안의 *.json 을 종목 파일로 순회함.
+BUILD_META_PATH = _REPO / 'public' / 'data' / 'build-meta.json'
 
 # ── OHLC 디스크 캐시 (백필 재시도 시 즉시 통과) ──────────────────────
 # 워크플로우가 중간에 실패해도 캐시는 actions/cache 로 보존됨 → 재시작 빠름.
@@ -110,6 +113,22 @@ def load_stockrise_dates() -> list[str]:
 
 def load_stockrise_day(date_str: str) -> dict | None:
     return naver_client.fetch_json(f'{STOCK_RISE_RAW}/{date_str}.json')
+
+
+def write_build_meta(sr_dates: list[str]) -> None:
+    """stock-history 빌드(full/incremental) 완료 마커.
+
+    워크플로우 Determine mode 단계가 latest_stockrise_date 를 업스트림 dates.json 과
+    비교해 stale 이면 marketmap-intraday 런을 incremental 로 승격한다.
+    """
+    try:
+        BUILD_META_PATH.write_text(json.dumps({
+            'built_at': datetime.now().isoformat(timespec='seconds'),
+            'latest_stockrise_date': max(sr_dates) if sr_dates else '',
+        }, ensure_ascii=False), encoding='utf-8')
+        print(f'  build-meta 기록: latest_stockrise_date={max(sr_dates) if sr_dates else "n/a"}')
+    except Exception as e:
+        print(f'  build-meta 기록 실패 (무시): {e}')
 
 
 def build_stockrise_lookup(dates: list[str]) -> dict[tuple[str, str], dict]:
@@ -916,6 +935,7 @@ def build_full(args) -> int:
         success += 1
 
     write_index(index_meta, output_dir)
+    write_build_meta(sr_dates)
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     build_sitemap(output_dir, output_dir.parent.parent)
     build_marketmap(output_dir.parent.parent)

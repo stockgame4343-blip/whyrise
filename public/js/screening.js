@@ -26,6 +26,13 @@ var WhyScreening = (function () {
     var META_FETCH_CONCURRENCY = 5;
     var _metaInFlight = {};
 
+    // 라이브 시세 머지 — /api/marketmap (WhyAPI.getLiveMarketmap) 으로 시총·당일 등락률 갱신.
+    // 장중(OPEN) 60초 / 마감·휴장(CLOSE) 5분 재확인. 집계표 성격이라 시각화(15s)보다 느긋한 주기.
+    var LIVE_POLL_MS = 60 * 1000;
+    var LIVE_CLOSED_RECHECK_MS = 5 * 60 * 1000;
+    // 탭 복귀 시 screening.json 자체가 이만큼 오래됐으면 재로드 (30분 빌드 주기 추종)
+    var STALE_RELOAD_MS = 10 * 60 * 1000;
+
     var COUNT_LABELS = {
         count_10: '+10%',
         count_15: '+15%',
@@ -444,7 +451,8 @@ var WhyScreening = (function () {
             if (cap) cap.textContent = formatMcap(mc);
             var meta = tr.querySelector('.cell-meta-compact');
             if (meta) {
-                meta.textContent = meta.textContent.replace(/시총\s+[^·]+/, '시총 ' + formatMcap(mc));
+                // [^·]+ 가 구분자 앞 공백까지 삼키므로 치환문에 공백 복원 — '…억· 평균' 붙음 방지
+                meta.textContent = meta.textContent.replace(/시총\s+[^·]+/, '시총 ' + formatMcap(mc) + ' ');
             }
         }
     }
@@ -477,7 +485,9 @@ var WhyScreening = (function () {
                 .then(function (d) {
                     var mc = (d && typeof d.market_cap === 'number') ? d.market_cap : 0;
                     var sectorFromHtml = (d && typeof d.sector === 'string') ? d.sector : '';
-                    _saveMcapEntry(cache, t, mc);
+                    // API 오류(d=null)는 캐시하지 않음 — 일시 장애가 '시총 0' 으로 24h 고정되는 것 방지.
+                    // 정상 응답의 0(네이버에 시총 없음)은 negative cache 로 유지.
+                    if (d) _saveMcapEntry(cache, t, mc);
                     // state 원본 갱신 → 다음 필터·정렬에 반영
                     var updated = null;
                     state.tickers.forEach(function (row2) {
@@ -709,11 +719,80 @@ var WhyScreening = (function () {
             state.sectors = data.sectors || [];
             state.themes = data.themes || [];
             state.loaded = true;
+            state._builtAt = (data && data.built_at) || '';
+            _lastLoadAt = Date.now();
             _applyMcapAll(mcapAll);   // 빈 시총 정적 lookup 으로 채우기 (filter·sort 전에)
             populateSelects(data);
             applyUrlQueryFilters();
             updateMeta(data);
             applyFilters();
+        });
+    }
+
+    // 탭 복귀 시 데이터만 재조회 — populateSelects 를 다시 부르지 않아 사용자가 고른 필터 유지.
+    var _lastLoadAt = 0;
+    function refreshData() {
+        return fetch(DATA_URL, { cache: 'no-store' })
+            .then(function (r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.json();
+            })
+            .then(function (data) {
+                _lastLoadAt = Date.now();
+                if (!data || !data.tickers || !data.tickers.length) return;
+                if (state._builtAt && data.built_at === state._builtAt) return;   // 새 빌드 없음
+                state._builtAt = data.built_at || '';
+                state.tickers = data.tickers;
+                updateMeta(data);
+                applyFilters();
+            });
+    }
+
+    // ── 라이브 시세 머지 ───────────────────────────────────────
+    // 화면 행의 시총은 항상, '최근 상승' 등락률은 그 이벤트가 오늘인 행만 라이브로 덮어씀
+    // (과거 이벤트의 등락률은 '그 날 얼마 올랐나' 라는 확정 기록이므로 보존).
+    function _backfillRateCell(row) {
+        var rows = document.querySelectorAll('tr[data-ticker="' + row.ticker + '"]');
+        for (var i = 0; i < rows.length; i++) {
+            var cell = rows[i].querySelector('.cell-change');
+            if (cell) {
+                cell.innerHTML = '<span class="screening-date">' + formatDate(row.latest_date) + '</span>'
+                    + formatRate(row.latest_change_rate);
+            }
+            rows[i].classList.toggle('row--limit-up', Number(row.latest_change_rate || 0) >= 29.9);
+        }
+    }
+
+    function applyLiveQuotes(res) {
+        if (!res || !res.map || !state.tickers.length) return;
+        state.tickers.forEach(function (r) {
+            var lv = res.map[r.ticker];
+            if (!lv) return;
+            if (lv.market_cap != null && lv.market_cap > 0 && r.market_cap !== lv.market_cap) {
+                r.market_cap = lv.market_cap;   // 억원 — screening.json 과 동일 단위
+                _backfillCell(r.ticker, lv.market_cap);
+            }
+            if (res.date && String(r.latest_date || '') === res.date && lv.change_rate != null
+                && r.latest_change_rate !== lv.change_rate) {
+                r.latest_change_rate = lv.change_rate;
+                _backfillRateCell(r);
+            }
+        });
+    }
+
+    var _liveTimer = null;
+    function liveCycle() {
+        if (!window.WhyAPI || !state.loaded || document.visibilityState === 'hidden') {
+            _liveTimer = setTimeout(liveCycle, LIVE_POLL_MS);
+            return;
+        }
+        WhyAPI.getLiveMarketmap().then(function (res) {
+            applyLiveQuotes(res);
+            // 서버 market_status 기준 — 공휴일 포함 휴장 판정. CLOSE 면 5분 간격 재확인만.
+            var open = res.market_status === 'OPEN';
+            _liveTimer = setTimeout(liveCycle, open ? LIVE_POLL_MS : LIVE_CLOSED_RECHECK_MS);
+        }).catch(function () {
+            _liveTimer = setTimeout(liveCycle, LIVE_CLOSED_RECHECK_MS);
         });
     }
 
@@ -995,6 +1074,7 @@ var WhyScreening = (function () {
         bindStorageSync();
 
         loadData().then(function () {
+            liveCycle();   // 라이브 시총·당일 등락률 머지 시작 (첫 fetch 즉시 — 마감 후엔 종가/마감 시총 1회 반영)
             if (window.WhyRatingsSync) {
                 window.WhyRatingsSync.pull().then(function (result) {
                     if (result && result.ratings) {
@@ -1005,6 +1085,15 @@ var WhyScreening = (function () {
             }
         }).catch(function (err) {
             showError('스크리닝 데이터 로딩 실패: ' + (err.message || err));
+        });
+
+        // 탭 복귀 — 빌드 산출물이 오래됐으면 재조회 (장중 30분 빌드 추종), 라이브도 즉시 1회
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState !== 'visible' || !state.loaded) return;
+            if (Date.now() - _lastLoadAt > STALE_RELOAD_MS) refreshData().catch(function () {});
+            if (window.WhyAPI) {
+                WhyAPI.getLiveMarketmap().then(applyLiveQuotes).catch(function () {});
+            }
         });
     }
 

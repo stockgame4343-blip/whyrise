@@ -58,6 +58,14 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         pulse();
-        setInterval(pulse, REFRESH_MS);
+        setInterval(function () {
+            // 백그라운드 탭은 '보는 중' 이 아님 — heartbeat 스킵 (집계 부풀림 + 불필요 KV 쓰기 방지)
+            if (document.visibilityState === 'hidden') return;
+            pulse();
+        }, REFRESH_MS);
+        // 복귀 즉시 1회 — 5분 TTL 안에 다시 잡히도록
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') pulse();
+        });
     });
 })();

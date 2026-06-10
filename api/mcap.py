@@ -19,6 +19,8 @@ from http.server import BaseHTTPRequestHandler
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
 URL = 'https://finance.naver.com/item/main.naver?code={ticker}'
+# KRX 신형 코드(예: 00088K)는 영문 포함 — screening.json 에 알파뉴메릭 티커 존재
+_TICKER_RE = re.compile(r'^[0-9A-Z]{6}$')
 _RE_MARKET_SUM = re.compile(r'id="_market_sum"[^>]*>(.*?)</em>', re.S)
 _RE_NUMS = re.compile(r'([0-9,]+)')
 _RE_SECTOR = re.compile(r'href="[^"]*sise_group_detail[^"]*"[^>]*>([^<]+)</a>')
@@ -48,10 +50,10 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         from urllib.parse import urlparse, parse_qs
         params = parse_qs(urlparse(self.path).query)
-        ticker = params.get('ticker', [None])[0]
+        ticker = (params.get('ticker', [None])[0] or '').upper()
 
-        if not ticker or len(ticker) != 6 or not ticker.isdigit():
-            self._respond(400, {'error': 'ticker 파라미터 (6자리 숫자) 필요'})
+        if not _TICKER_RE.match(ticker):
+            self._respond(400, {'error': 'ticker 파라미터 (6자리 종목코드) 필요'})
             return
 
         try:
@@ -71,6 +73,8 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
         # 1h edge 캐시 — 시총은 분단위로 안 변함. 같은 ticker 는 vercel edge 즉시 응답.
-        self.send_header('Cache-Control', 's-maxage=3600, stale-while-revalidate=7200')
+        # 오류 응답은 캐시하지 않음 (일시 장애가 1시간 고정되는 것 방지).
+        if status == 200:
+            self.send_header('Cache-Control', 's-maxage=3600, stale-while-revalidate=7200')
         self.end_headers()
         self.wfile.write(json.dumps(body, ensure_ascii=False).encode('utf-8'))

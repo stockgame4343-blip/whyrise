@@ -26,14 +26,24 @@ var WhyAPI = (function () {
         });
     }
 
+    // overrides 는 404(파일 없음)가 흔해 _cachedFetch(성공만 캐시)를 못 씀 — 결과(빈 객체 포함)를 5분 캐시.
+    // 없으면 장중 15초 폴링마다 /data/overrides/{date}.json 네트워크 요청이 반복된다.
+    var _ovCache = {};
+
     function _fetchOverrides(date) {
-        // 같은 도메인 정적 JSON. 404 면 빈 객체.
+        var now = Date.now();
+        var hit = _ovCache[date];
+        if (hit && (now - hit.t) < _cacheTtlMs) return Promise.resolve(hit.data);
         return fetch('/data/overrides/' + date + '.json')
             .then(function (res) {
                 if (!res.ok) return {};
                 return res.json();
             })
-            .catch(function () { return {}; });
+            .catch(function () { return {}; })
+            .then(function (data) {
+                _ovCache[date] = { t: now, data: data };
+                return data;
+            });
     }
 
     /** 거래일 목록 (stock-rise 의 dates.json 재사용) */

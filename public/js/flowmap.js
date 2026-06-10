@@ -19,6 +19,9 @@
     var OPEN_MIN = 9 * 60;
     var CLOSE_MIN = 15 * 60 + 30;
     var POLL_MS = 30 * 1000;     // 30초 — 라이브 숫자(/api/marketmap) 오버레이 주기. ring 도 이 값에 동기.
+    var IDLE_RECHECK_MS = 5000;          // 비라이브 상태 재확인 주기
+    var STATUS_RECHECK_MS = 5 * 60 * 1000; // 서버 CLOSE(공휴일/오판) 재확인 주기
+    var CLOSE_SETTLE_MS = 90 * 1000;     // 마감 후 확정 종가 fetch 지연 (동시호가 체결 대기)
     var RING_CIRCUM = 2 * Math.PI * 9;
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
     // 모바일 탭은 손가락 떨림으로 시작점 주변에서 왕복함. 누적 경로가 아니라
@@ -83,10 +86,12 @@
         mode: 'sector',
         view: initialView(),
         zoomedGroup: null,    // sector/theme 이름 — 버블 모드의 그룹 dive 상태
+        marketStatus: '',     // ''=미확인(로컬 시계 신뢰) | 'OPEN' | 'CLOSE' (서버 판정 — 공휴일 포함)
     };
 
     var simulation = null;
     var lastNodes = [];
+    var lastGroupNodes = [];  // 그룹 버블 위치 보존 — 라이브 갱신마다 랜덤 재배치 방지 (name 키)
 
     // ── 시간 / 포맷 ────────────────────────────────────
     function kstNow() { return new Date(Date.now() + KST_OFFSET * 60000); }
@@ -397,15 +402,21 @@
         var rMax = Math.min(w, h) * 0.28;
         var k = totalSize > 0 ? Math.sqrt((w * h * fillRatio) / (Math.PI * totalSize)) : 50;
 
+        // 같은 그룹은 직전 위치/속도 재사용 — 라이브 30초 갱신마다 전체 랜덤 재배치되는 문제 방지
+        var prevG = {};
+        lastGroupNodes.forEach(function (n) { prevG[n.name] = n; });
         var nodes = groups.map(function (g) {
             var r = Math.max(rMin, Math.min(rMax, k * Math.sqrt(g.value)));
+            var p = prevG[g.name];
             return Object.assign({}, g, {
                 r: r,
-                x: r + Math.random() * (w - r * 2),
-                y: r + Math.random() * (h - r * 2),
-                vx: 0, vy: 0,
+                x: p ? p.x : (r + Math.random() * (w - r * 2)),
+                y: p ? p.y : (r + Math.random() * (h - r * 2)),
+                vx: p ? p.vx : 0,
+                vy: p ? p.vy : 0,
             });
         });
+        lastGroupNodes = nodes;
 
         var svg = d3.select($svg).attr('width', w).attr('height', h).attr('viewBox', '0 0 ' + w + ' ' + h);
         svg.selectAll('*').remove();
@@ -702,6 +713,10 @@
         return WhyAPI.getLiveMarketmap().then(function (res) {
             if (!isLiveDate()) return;   // 느린 fetch 도중 과거 날짜로 이동했으면 오버레이/렌더 스킵(불일치 방지)
             var live = res.map;
+            state.marketStatus = res.market_status || state.marketStatus;
+            // 라벨 시각을 라이브 갱신 시각으로 — 빌드 collected_at 에 고정되던 버그 수정
+            // (getLiveMarketmap 이 이미 KST 'YYYY-MM-DDTHH:MM:SS' 로 변환, slice(11,16) 호환)
+            if (res.updated_at) state.collectedAt = res.updated_at;
             (state.rankings || []).forEach(function (r) {
                 var lv = live[r.ticker];
                 if (!lv) return;
@@ -716,13 +731,32 @@
     }
 
     // ring transition 시간 = setTimeout = fetch 정확 동기화 (chain pattern)
+    var _wasOpen = false;       // 장중→마감 전이 감지 (확정 종가 1회 fetch)
     function liveCycle() {
-        var open = isMarketOpen();
+        var clockOpen = isMarketOpen();
+        // 서버 market_status 가 권위 — 로컬 시계가 장중이어도 공휴일이면 서버는 CLOSE.
+        // ''(미확인) 은 로컬 시계 신뢰 (첫 fetch 실패 시 폴링이 영구 정지하지 않도록).
+        var open = clockOpen && state.marketStatus !== 'CLOSE';
         if (!isLiveDate() || !open || document.visibilityState === 'hidden') {
             setLiveState(false);
-            setTimeout(liveCycle, 5000);
+            if (isLiveDate() && document.visibilityState !== 'hidden') {
+                // 장중부터 열어둔 탭 — 마감 직후 1회 더 받아 동시호가 확정 종가 반영
+                if (_wasOpen && !clockOpen) {
+                    _wasOpen = false;
+                    setTimeout(function () { refreshLive(); }, CLOSE_SETTLE_MS);
+                }
+                // 로컬 시계는 장중인데 서버가 CLOSE (공휴일 또는 일시 오판) — 5분 간격 재확인으로 자동 복구
+                if (clockOpen && state.marketStatus === 'CLOSE') {
+                    setTimeout(function () {
+                        refreshLive().then(function () { liveCycle(); });
+                    }, STATUS_RECHECK_MS);
+                    return;
+                }
+            }
+            setTimeout(liveCycle, IDLE_RECHECK_MS);
             return;
         }
+        _wasOpen = true;
         setLiveState(true);
         startRingFill();
         setTimeout(function () {
@@ -1015,6 +1049,8 @@
         document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible') {
                 if (simulation) simulation.alpha(1).restart();
+                // 탭 복귀 시 즉시 1회 갱신 — idle 체크 + 30초 폴링 주기를 기다리지 않음
+                if (isLiveDate()) refreshLive();
             } else {
                 if (simulation) simulation.stop();
             }
@@ -1023,6 +1059,9 @@
         // 시계 element 제거 — LIVE 라벨의 마지막 업데이트 시각만 표시
 
         loadDates().then(function () {
+            // 로드 직후 즉시 라이브 1회 — 장중엔 첫 화면부터 라이브 숫자,
+            // 마감 후엔 '실제 종가' 확보 (treemap/bubbles2 의 init 1회 fetch 와 동작 통일)
+            refreshLive();
             liveCycle();   // chain pattern 시작
         }).catch(function (err) {
             $loading.style.display = 'none';

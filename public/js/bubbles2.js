@@ -12,6 +12,10 @@
     'use strict';
 
     var POLL_MS = 15000;
+    var IDLE_RECHECK_MS = 5000;          // 비라이브 상태 재확인 주기
+    var STATUS_RECHECK_MS = 5 * 60 * 1000; // 서버 CLOSE(공휴일/오판) 재확인 주기
+    var CLOSE_SETTLE_MS = 90 * 1000;     // 마감 후 확정 종가 fetch 지연 (동시호가 체결 대기)
+    var FETCH_TIMEOUT_MS = 30000;        // api.js getLiveMarketmap 과 동일 기준
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60;
     var CLOSE_MIN = 15 * 60 + 30;
@@ -103,7 +107,7 @@
         availableDates: [],
         dateIndex: 0,
         currentDate: '',
-        marketStatus: 'CLOSE',
+        marketStatus: '',      // ''=미확인(로컬 시계 신뢰) | 'OPEN' | 'CLOSE' (서버 판정 — 공휴일 포함)
     };
 
     var simulation = null;
@@ -486,7 +490,19 @@
 
     // ── fetch ──────────────────────────────────────────
     function fetchLive() {
-        return fetch('/api/marketmap', { cache: 'no-cache' })
+        // 타임아웃 없는 raw fetch 는 서버 행(hang) 시 폴링 체인 전체를 멈춤 —
+        // api.js getLiveMarketmap 과 동일하게 30s race 로 반드시 settle 보장.
+        var ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var opts = { cache: 'no-cache' };
+        if (ctl) opts.signal = ctl.signal;
+        var timer;
+        var timeout = new Promise(function (_, reject) {
+            timer = setTimeout(function () {
+                if (ctl) ctl.abort();
+                reject(new Error('timeout'));
+            }, FETCH_TIMEOUT_MS);
+        });
+        var req = fetch('/api/marketmap', opts)
             .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
             .then(function (data) {
                 if (!data || !data.items || !data.items.length) throw new Error('empty');
@@ -505,6 +521,7 @@
                 $loading.style.display = 'none';
                 if (state.dateIndex === 0 && state.period === '1d') render();
             });
+        return Promise.race([req, timeout]).finally(function () { clearTimeout(timer); });
     }
     // 라이브 대기 중 정적 데이터 render 안 함 (어제 가격 잠깐 보이는 혼란 방지)
     // 5s 후엔 라이브가 실패한 것으로 보고 정적으로 fallback
@@ -525,7 +542,8 @@
                 state.snapshotItems = items;
                 state.currentDate = (data && data.date) || dateStr || '';
                 // 최신일(0)은 정적 updated_at(장중 빌드시각, 예 13:58) 미사용 — 라이브가 시각 제공.
-                if (data && data.updated_at && !state.lastUpdated && state.dateIndex !== 0) {
+                // 과거일은 항상 그 날짜 스냅샷 시각으로 교체 (라이브 시각 잔존 방지).
+                if (data && data.updated_at && state.dateIndex !== 0) {
                     state.lastUpdated = data.updated_at;
                     updateLastUpdated();
                 }
@@ -550,22 +568,37 @@
 
     // 라이브 사이클 — ring transition 시간 = setTimeout = 다음 fetch 까지의 시간 (정확 동기화).
     // setInterval 의 drift 가 없도록 chain pattern. fetch 끝나면 다음 cycle 시작.
-    var _cycleRunning = false;
+    var _wasOpen = false;       // 장중→마감 전이 감지 (확정 종가 1회 fetch)
     function liveCycle() {
-        _cycleRunning = false;
         updateDateNav();
-        var open = isMarketOpen();
+        var clockOpen = isMarketOpen();
+        // 서버 market_status 가 권위 — 로컬 시계가 장중이어도 공휴일이면 서버는 CLOSE.
+        // ''(미확인) 은 로컬 시계 신뢰 (첫 fetch 실패 시 폴링이 영구 정지하지 않도록).
+        var open = clockOpen && state.marketStatus !== 'CLOSE';
         var live = isLiveDate() && state.period === '1d';
         if (!(live && open) || document.visibilityState === 'hidden') {
             setLiveState(false);
-            // 라이브 조건 아닐 때는 5s 후 다시 체크 (장 시작/탭 복귀 감지)
-            _cycleRunning = true;
-            setTimeout(liveCycle, 5000);
+            if (live && document.visibilityState !== 'hidden') {
+                // 장중부터 열어둔 탭 — 마감 직후 1회 더 받아 동시호가 확정 종가 반영
+                if (_wasOpen && !clockOpen) {
+                    _wasOpen = false;
+                    setTimeout(function () { fetchLive().catch(function () {}); }, CLOSE_SETTLE_MS);
+                }
+                // 로컬 시계는 장중인데 서버가 CLOSE (공휴일 또는 일시 오판) — 5분 간격 재확인으로 자동 복구
+                if (clockOpen && state.marketStatus === 'CLOSE') {
+                    setTimeout(function () {
+                        fetchLive().catch(function () {}).then(function () { liveCycle(); });
+                    }, STATUS_RECHECK_MS);
+                    return;
+                }
+            }
+            // 라이브 조건 아닐 때는 잠시 후 다시 체크 (장 시작/탭 복귀 감지)
+            setTimeout(liveCycle, IDLE_RECHECK_MS);
             return;
         }
+        _wasOpen = true;
         setLiveState(true);
         startRingFill();
-        _cycleRunning = true;
         setTimeout(function () {
             fetchLive().catch(function () {}).then(function () { liveCycle(); });
         }, POLL_MS);
@@ -799,11 +832,14 @@
                 $loading.style.display = 'none';
                 $message.style.display = '';
                 $message.textContent = '데이터를 불러올 수 없습니다 — ' + (err && err.message ? err.message : err);
+                liveCycle();   // 정적 로드 실패해도 장중 라이브 폴링으로 복구 시도
             });
 
         document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible') {
                 if (simulation) simulation.alpha(1).restart();
+                // 탭 복귀 시 즉시 1회 갱신 — idle 체크 + 폴링 주기를 기다리지 않음
+                if (isLiveDate() && state.period === '1d') fetchLive().catch(function () {});
             } else {
                 if (simulation) simulation.stop();
             }

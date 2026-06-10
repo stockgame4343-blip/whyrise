@@ -5,6 +5,17 @@
  * 관리자 모드일 때 각 event 카드 우측에 ✏️ 편집 버튼.
  */
 (function () {
+    // 현재가 라이브 — 장중 60초 폴링 (단일 종목 /api/current-price, marketmap 미포함 종목도 커버)
+    var PRICE_POLL_MS = 60 * 1000;
+    var KST_OFFSET = 9 * 60, OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
+    function isMarketOpenKST() {
+        var k = new Date(Date.now() + KST_OFFSET * 60000);
+        var day = k.getUTCDay();
+        if (day === 0 || day === 6) return false;
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
+
     /** HTML 이스케이프 — XSS 방어. 사용자/3rd-party 텍스트는 항상 통과시킴. */
     function esc(s) {
         if (s == null) return '';
@@ -136,6 +147,42 @@
                 stats.avg_rate.toFixed(1) + '%</span></div>';
         }
         $stats.innerHTML = html;
+    }
+
+    // 현재가·오늘 등락률 스탯 — stats 그리드 맨 앞에 삽입/갱신. '왜 오름?' 페이지에 '지금 얼마' 제공.
+    function renderPriceStat(meta) {
+        if (!meta || meta.price == null) return;
+        var $stats = document.getElementById('stockStats');
+        if (!$stats) return;
+        var el = document.getElementById('stockPriceStat');
+        if (!el) {
+            el = document.createElement('div');
+            el.className = 'stock-header__stat';
+            el.id = 'stockPriceStat';
+            $stats.insertBefore(el, $stats.firstChild);
+        }
+        var rate = Number(meta.change_rate || 0);
+        var sign = rate > 0 ? '+' : '';
+        var cls = rate > 0 ? ' stock-header__stat-value--rise' : '';
+        el.innerHTML = '<span class="stock-header__stat-label">현재가' + (isMarketOpenKST() ? ' (라이브)' : '') + '</span>' +
+            '<span class="stock-header__stat-value' + cls + '">' +
+            Number(meta.price).toLocaleString('ko-KR') + '원 ' + sign + rate.toFixed(2) + '%</span>';
+    }
+
+    // 장중엔 60초 폴링, 마감 후엔 1회(=종가)로 종료. 탭 숨김 동안은 fetch 스킵.
+    function startPricePolling(ticker) {
+        function tick() {
+            if (document.visibilityState === 'hidden') {
+                setTimeout(tick, PRICE_POLL_MS);
+                return;
+            }
+            WhyAPI.getCurrentPrice(ticker).then(function (meta) {
+                renderPriceStat(meta);
+            }).catch(function () {}).then(function () {
+                if (isMarketOpenKST()) setTimeout(tick, PRICE_POLL_MS);
+            });
+        }
+        tick();
     }
 
     function sourceBadge(source, confidence) {
@@ -599,24 +646,29 @@
             $loading.style.display = 'none';
             if (!history) {
                 // stock-history 미빌드 (1년간 +10% 미달 등) — 네이버 메타 즉석 fetch fallback
-                fetch('/api/current-price?ticker=' + encodeURIComponent(ticker))
-                    .then(function (r) { return r.ok ? r.json() : null; })
+                WhyAPI.getCurrentPrice(ticker)
                     .then(function (meta) {
                         var name = (meta && meta.name) || ticker;
                         var market = (meta && meta.market) || '';
-                        renderHeader(name, market, {});
+                        // stats 는 null — '+15% 0회' 한 줄만 덩그러니 렌더되는 것 방지
+                        renderHeader(name, market, null);
                         renderEvents([], ticker);
+                        // 이미 받아온 라이브 시세를 그대로 표시 + 장중이면 폴링 지속
+                        renderPriceStat(meta);
+                        if (isMarketOpenKST()) startPricePolling(ticker);
                         $msg.textContent = '최근 1년간 +10% 이상 급등 기록이 없는 종목입니다.';
                         $msg.style.display = 'block';
                     })
                     .catch(function () {
+                        // API 실패는 '기록 없음' 과 구분 — 정상 종목을 기록 없음으로 오인시키지 않음
                         document.getElementById('stockTitle').innerHTML = '<strong>' + esc(ticker) + '</strong> 왜 오름?';
-                        $msg.textContent = '종목 정보를 불러올 수 없습니다.';
+                        $msg.textContent = '종목 정보를 불러오지 못했습니다. 잠시 후 새로고침 해주세요.';
                         $msg.style.display = 'block';
                     });
                 return;
             }
             renderHeader(history.name || ticker, history.market || '', history.stats || {});
+            startPricePolling(ticker);   // 현재가 스탯 — 장중 60초 폴링, 마감 후 1회(종가)
             renderMajorNews(history.events || [], ticker);
             var $sum = document.getElementById('stockSummary');
             if ($sum) {

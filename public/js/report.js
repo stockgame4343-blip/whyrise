@@ -25,6 +25,9 @@ var WhyReport = (function () {
 
     // 라이브 숫자 오버레이 — 15s 주기(home 과 동일). /api/marketmap 병렬화로 ~3s 응답이라 단축.
     var LIVE_POLL_MS = 15 * 1000;
+    var IDLE_RECHECK_MS = 5000;            // 비라이브 상태 재확인 주기
+    var STATUS_RECHECK_MS = 5 * 60 * 1000; // 서버 CLOSE(공휴일/오판) 재확인 주기
+    var CLOSE_SETTLE_MS = 90 * 1000;       // 마감 후 확정 종가 fetch 지연 (동시호가 체결 대기)
     // 급등 신규 — 빌드(stock-rise 일자 rankings)에 아직 없는데 라이브 union 에서 +N% 인 종목.
     // 오버레이는 기존 행 숫자만 갱신 → 새 종목은 못 잡으므로 별도 슬롯에 '시세만' 노출(이유 분석 대기중).
     var NEW_CUTOFF = 15;
@@ -46,6 +49,7 @@ var WhyReport = (function () {
         live: null,        // /api/marketmap ticker→숫자 맵 (라이브 오버레이용)
         liveTimer: null,   // 단일 라이브 사이클 타이머
         liveOnce: false,   // 최신일 '실제 종가' 1회 확보 여부 — 장 마감·장전에도 최소 1회는 라이브 fetch
+        marketStatus: '',  // ''=미확인(로컬 시계 신뢰) | 'OPEN' | 'CLOSE' (서버 판정 — 공휴일 포함)
     };
 
     function $(id) { return document.getElementById(id); }
@@ -628,23 +632,64 @@ var WhyReport = (function () {
 
     // 라이브 사이클 — 최신일·장중·포그라운드일 때만 폴링. fetch 완료 후 다음 사이클 예약 → 느린 응답(최대 30s)이
     // 와도 타이머 중첩/동시 fetch 없음(단일 타이머). 어떤 실패도 catch 해 빌드값 유지(오류 미노출).
+    var _wasOpen = false;       // 장중→마감 전이 감지 (확정 종가 1회 재확보)
     function liveCycle() {
         var latest = state.dateIndex === 0 && document.visibilityState !== 'hidden';
-        var open = isMarketOpen();
+        var clockOpen = isMarketOpen();
+        // 서버 market_status 가 권위 — 로컬 시계가 장중이어도 공휴일이면 서버는 CLOSE.
+        // ''(미확인) 은 로컬 시계 신뢰 (첫 fetch 실패 시 폴링이 영구 정지하지 않도록).
+        var statusClosed = clockOpen && state.marketStatus === 'CLOSE';
+        var open = clockOpen && !statusClosed;
+        // 장중→마감 전이 — 동시호가 확정 종가를 잠시 후 1회 더 받도록 liveOnce 재무장
+        if (_wasOpen && !clockOpen) {
+            _wasOpen = false;
+            setTimeout(function () { state.liveOnce = false; }, CLOSE_SETTLE_MS);
+        }
+        if (open) _wasOpen = true;
         // 장중이면 매 주기 라이브 오버레이. 장 마감·장전이라도 최신일이면 '실제 종가'를 최소 1회는 받아온다.
-        // (시각화와 동일 — 이게 없으면 마감 후 빌드값에 멈춰 '여전히 빌드만 기다림'으로 보임.)
-        var fetchNow = latest && (open || !state.liveOnce);
+        // statusClosed(공휴일/오판) 면 5분 간격으로만 재확인 — 상태가 OPEN 으로 돌아오면 자동 복구.
+        var fetchNow = latest && (open || !state.liveOnce || statusClosed);
         var p = Promise.resolve();
         if (fetchNow) {
             p = WhyAPI.getLiveMarketmap().then(function (res) {
-                state.live = res.map;
                 state.liveOnce = true;
+                state.marketStatus = res.market_status || state.marketStatus;
+                if (state.dateIndex !== 0) return;   // fetch 중 과거 날짜로 이동 — 라이브/시각 오염 방지
+                state.live = res.map;
                 if (res.updated_at) setUpdatedAt(res.updated_at);   // 빌드시각 대신 라이브 갱신시각 표시
                 applyDay();   // state.day(빌드) + state.live 로 재파생·재렌더 (네트워크 호출 없음)
             }).catch(function () {});
+            // 빌드 데이터도 주기 재조회 (클라 5분 캐시 — 네트워크는 5분당 1회) —
+            // 신규 급등주 '이유 분석 대기중' 이 빌드 도착 시 정식 행으로 자동 승격.
+            if (open && state.dates.length) {
+                WhyAPI.getRankings(state.dates[0]).then(function (data) {
+                    if (state.dateIndex !== 0 || !data || !state.day) return;
+                    if (data.collected_at && data.collected_at !== state.day.collected_at) {
+                        state.day = data;
+                        applyDay();
+                    }
+                }).catch(function () {});
+            }
         }
         p.then(function () {
-            state.liveTimer = setTimeout(liveCycle, open ? LIVE_POLL_MS : 5000);
+            state.liveTimer = setTimeout(liveCycle,
+                open ? LIVE_POLL_MS : (statusClosed ? STATUS_RECHECK_MS : IDLE_RECHECK_MS));
+        });
+    }
+
+    // 풀백 행도 라이브 현재가로 재계산 — '현재' 가격·저점 대비 반등률이 장중 실시간이 됨.
+    // rankings 오버레이와 동일한 불변 복사 패턴 (state.day.pullbacks 미변형).
+    function _overlaidPullbacks(pullbacks) {
+        if (state.dateIndex !== 0 || !state.live) return pullbacks || [];
+        return (pullbacks || []).map(function (pb) {
+            var lv = pb && pb.ticker ? state.live[pb.ticker] : null;
+            if (!lv || !(num(lv.close_price) > 0)) return pb;
+            var o = Object.assign({}, pb);
+            o.currentPrice = lv.close_price;   // pullbackPrices 의 1순위 키 — 반등률/낙폭 라이브 재계산
+            // 라이브 현재가가 기존 저점 아래면 저점도 갱신 (고점 후 최저가 의미 유지)
+            var low = firstNum(pb, ['postPeakLow', 'lowPrice', 'low_price', 'troughPrice', 'bottomPrice', 'low']);
+            if (low > 0 && lv.close_price < low) o.postPeakLow = lv.close_price;
+            return o;
         });
     }
 
@@ -657,9 +702,16 @@ var WhyReport = (function () {
         var sectors = buildGroups(riseRows, 'sector');
         var themes = buildGroups(riseRows, 'theme');
         var leader = pickLeader(riseRows, sectors, themes);
-        var highRows = deriveHigh52w(rankings, date);
+        // 52주 신고가 멤버십은 빌드 확정치로 판정 — 라이브 등락률·현재가 출렁임으로
+        // '오늘 신고가 기록' 종목이 장중에 목록에서 사라지는 문제 방지. 표시 숫자만 라이브로 교체.
+        var highRows = deriveHigh52w((day && day.rankings) || [], date);
+        if (state.dateIndex === 0 && state.live) {
+            var overlaidByTicker = {};
+            rankings.forEach(function (r) { if (r && r.ticker) overlaidByTicker[r.ticker] = r; });
+            highRows = highRows.map(function (r) { return overlaidByTicker[r.ticker] || r; });
+        }
         var newcomers = deriveNewcomers(rankings);
-        var pullbacks = derivePullbacks(day.pullbacks || []);
+        var pullbacks = derivePullbacks(_overlaidPullbacks(day.pullbacks || []));
 
         renderLeader(leader, sectors[0], themes[0]);
         renderGroups(sectors, 'sectorGroups', 'sector', '3종목 이상 몰린 주도 섹터가 없습니다.');

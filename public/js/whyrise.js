@@ -18,6 +18,9 @@ var WhyApp = (function () {
     // 1시간 빌드(getRankings) 행 위에 ticker 단위로 덮어씀. 세부필드(섹터/테마/뉴스)는 빌드 그대로.
     // (/api/marketmap 병렬화로 ~3s 응답이라 30s→15s 단축)
     var LIVE_POLL_MS = 15 * 1000;
+    var IDLE_RECHECK_MS = 5000;            // 비라이브 상태 재확인 주기
+    var STATUS_RECHECK_MS = 5 * 60 * 1000; // 서버 CLOSE(공휴일/오판) 재확인 주기
+    var CLOSE_SETTLE_MS = 90 * 1000;       // 마감 후 확정 종가 fetch 지연 (동시호가 체결 대기)
     var KST_OFFSET = 9 * 60;
     var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
     var RING_CIRCUM = 2 * Math.PI * 9;
@@ -67,14 +70,41 @@ var WhyApp = (function () {
         if (!lab) return;
         lab.textContent = _composeLabel();
     }
+    var _lastLiveAt = '';   // 마지막 라이브 갱신 시각 (KST 'YYYY-MM-DDTHH:MM:SS') — 라벨용
+    var _wasOpen = false;   // 장중→마감 전이 감지 (확정 종가 1회 재확보)
+
+    // loadDate 가 라벨 시각을 빌드 collected_at 으로 되돌리므로, 라이브 직후엔 라이브 시각으로 교정.
+    function _stampLiveLabel() {
+        if (_lastLiveAt && state.currentDateIdx === 0 && !state.watchlistMode) {
+            state.collectedAt = _lastLiveAt;
+            refreshLiveLabel();
+        }
+    }
+
     function liveCycle() {
         var isLatest = state.currentDateIdx === 0;
-        var open = isMarketOpenKST();
-        if (!isLatest || !open || document.visibilityState === 'hidden' || state.watchlistMode) {
+        var clockOpen = isMarketOpenKST();
+        // 서버 market_status 가 권위 — 로컬 시계가 장중이어도 공휴일이면 서버는 CLOSE.
+        // ''(미확인) 은 로컬 시계 신뢰 (첫 fetch 실패 시 폴링이 영구 정지하지 않도록).
+        var statusClosed = clockOpen && state.marketStatus === 'CLOSE';
+        var open = clockOpen && !statusClosed;
+        var fg = document.visibilityState !== 'hidden';
+        // 장중부터 열어둔 탭 — 마감 직후 1회 더 받아 동시호가 확정 종가 반영
+        if (_wasOpen && !clockOpen && isLatest && !state.watchlistMode && fg) {
+            _wasOpen = false;
+            setTimeout(function () { primeLive(); }, CLOSE_SETTLE_MS);
+        }
+        if (!isLatest || !open || !fg || state.watchlistMode) {
             setLiveState(false);
-            setTimeout(liveCycle, 5000);
+            // 공휴일/오판 CLOSE — 5분 간격으로만 재확인 (상태가 OPEN 으로 돌아오면 자동 복구)
+            if (statusClosed && isLatest && !state.watchlistMode && fg) {
+                setTimeout(function () { primeLive().then(function () { liveCycle(); }); }, STATUS_RECHECK_MS);
+                return;
+            }
+            setTimeout(liveCycle, IDLE_RECHECK_MS);
             return;
         }
+        _wasOpen = true;
         setLiveState(true);
         startRingFill();
         setTimeout(function () {
@@ -83,12 +113,14 @@ var WhyApp = (function () {
             // 라이브 실패 시 liveMap 유지(최초 실패면 null→빌드값) = 직전 정상 라이브값 표시, 깜빡임 방지.
             WhyAPI.getLiveMarketmap().then(function (res) {
                 state.liveMap = res.map;
+                state.marketStatus = res.market_status || state.marketStatus;
+                _lastLiveAt = res.updated_at || _lastLiveAt;
             }).catch(function () {})
               .then(function () {
                   // 느린 fetch(최대 30s) 도중 사용자가 다른 날짜/관심모드로 이동했으면 최신일 강제 로드 금지
                   // (날짜 헤더와 표 데이터 불일치 방지). 다음 liveCycle 이 isLatest 가드로 알아서 처리.
                   if (state.currentDateIdx !== 0 || state.watchlistMode) return;
-                  return loadDate(state.dates[0]);
+                  return loadDate(state.dates[0]).then(_stampLiveLabel);
               })
               .then(function () { liveCycle(); });
         }, LIVE_POLL_MS);
@@ -100,7 +132,11 @@ var WhyApp = (function () {
         if (state.currentDateIdx !== 0 || state.watchlistMode) return Promise.resolve();
         return WhyAPI.getLiveMarketmap().then(function (res) {
             state.liveMap = res.map;
-            if (state.currentDateIdx === 0 && !state.watchlistMode) return loadDate(state.dates[0]);
+            state.marketStatus = res.market_status || state.marketStatus;
+            _lastLiveAt = res.updated_at || _lastLiveAt;
+            if (state.currentDateIdx === 0 && !state.watchlistMode) {
+                return loadDate(state.dates[0]).then(_stampLiveLabel);
+            }
         }).catch(function () {});
     }
 
@@ -109,6 +145,7 @@ var WhyApp = (function () {
         currentDateIdx: 0,
         rankings: [],         // 원본 (필터 전)
         liveMap: null,        // /api/marketmap ticker→{change_rate,close_price,trading_value,market_cap(억원)} — 라이브 숫자 오버레이용
+        marketStatus: '',     // ''=미확인(로컬 시계 신뢰) | 'OPEN' | 'CLOSE' (서버 판정 — 공휴일 포함)
         ratings: {},
         watchlistMode: false, // 별점 매긴 종목만 필터
         // 관심 모드 fallback: 그 날 랭킹에 없는 별표 종목을 stock-history events[0] 로 채우기 위한 캐시
@@ -217,6 +254,29 @@ var WhyApp = (function () {
             if (lv.trading_value != null) o.trading_value = lv.trading_value;
             if (lv.market_cap != null) o.market_cap = lv.market_cap * 1e8;   // 억원 → 원 (table.js formatAmount 원 기대)
             return o;
+        });
+        // 빌드에 아직 없는 신규 급등주 — 라이브 union 에서 +CUTOFF% 면 합성 행으로 즉시 노출.
+        // 세부필드(이유/테마/뉴스)는 다음 빌드 도착 시 정식 행으로 자연 교체. (api.js:136 name 필드의 용도)
+        var have = {};
+        state.rankings.forEach(function (r) { if (r && r.ticker) have[r.ticker] = 1; });
+        Object.keys(state.liveMap).forEach(function (tk) {
+            if (have[tk] || BLOCKED_TICKERS[tk]) return;
+            var lv = state.liveMap[tk];
+            if (!lv || lv.change_rate == null || lv.change_rate < CUTOFF || !lv.name) return;
+            state.rankings.push({
+                ticker: tk,
+                name: lv.name,
+                market: lv.market || '',
+                change_rate: lv.change_rate,
+                close_price: lv.close_price,
+                trading_value: lv.trading_value,
+                market_cap: lv.market_cap != null ? lv.market_cap * 1e8 : null,
+                sector: '',
+                theme_tag: '',
+                rise_reason: '이유 분석 대기중',
+                news: [],
+                _liveNew: true,
+            });
         });
     }
 
@@ -613,6 +673,11 @@ var WhyApp = (function () {
                     }
                 });
             }
+        });
+
+        // 탭 복귀 시 즉시 1회 갱신 — idle 체크 + 15초 폴링 주기를 기다리지 않음
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') primeLive();
         });
     }
 
