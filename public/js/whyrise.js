@@ -81,6 +81,18 @@ var WhyApp = (function () {
         }
     }
 
+    // 라이브 거래일(/api/marketmap 의 quote 일자)이 빌드 최신일보다 새로우면 화면 날짜도 전진 —
+    // 날짜 라벨·피커·하단 갱신시각이 어제(빌드)로 표시되는 문제 해소 (treemap/bubbles2 와 동일 패턴).
+    // 내용은 기존 그대로(직전 빌드 + 라이브 오버레이) — 오늘 빌드가 도착하면 loadDate 폴백이 자연 교체.
+    function maybeAdvanceLiveDate(liveDate) {
+        if (!liveDate || liveDate.length !== 8) return;
+        if (state.currentDateIdx !== 0 || state.watchlistMode) return;
+        if (!state.dates.length || liveDate <= state.dates[0]) return;
+        state.virtualDate = liveDate;
+        state.dates.unshift(liveDate);
+        updateDateUI();
+    }
+
     function liveCycle() {
         var isLatest = state.currentDateIdx === 0;
         var clockOpen = isMarketOpenKST();
@@ -115,6 +127,7 @@ var WhyApp = (function () {
                 state.liveMap = res.map;
                 state.marketStatus = res.market_status || state.marketStatus;
                 _lastLiveAt = res.updated_at || _lastLiveAt;
+                maybeAdvanceLiveDate(res.date);
             }).catch(function () {})
               .then(function () {
                   // 느린 fetch(최대 30s) 도중 사용자가 다른 날짜/관심모드로 이동했으면 최신일 강제 로드 금지
@@ -134,6 +147,7 @@ var WhyApp = (function () {
             state.liveMap = res.map;
             state.marketStatus = res.market_status || state.marketStatus;
             _lastLiveAt = res.updated_at || _lastLiveAt;
+            maybeAdvanceLiveDate(res.date);
             if (state.currentDateIdx === 0 && !state.watchlistMode) {
                 return loadDate(state.dates[0]).then(_stampLiveLabel);
             }
@@ -143,6 +157,7 @@ var WhyApp = (function () {
     var state = {
         dates: [],
         currentDateIdx: 0,
+        virtualDate: '',      // 라이브가 알려준 오늘 거래일 — 빌드(dates.json) 도착 전 라벨/피커용 (treemap 패턴)
         rankings: [],         // 원본 (필터 전)
         liveMap: null,        // /api/marketmap ticker→{change_rate,close_price,trading_value,market_cap(억원)} — 라이브 숫자 오버레이용
         marketStatus: '',     // ''=미확인(로컬 시계 신뢰) | 'OPEN' | 'CLOSE' (서버 판정 — 공휴일 포함)
@@ -368,6 +383,17 @@ var WhyApp = (function () {
         if ($msg) $msg.style.display = 'none';
 
         return WhyAPI.getRankings(date).then(function (data) {
+            // 가상 날짜의 빌드가 실제로 도착 — 이제 정식 거래일
+            if (date === state.virtualDate) state.virtualDate = '';
+            return data;
+        }).catch(function (err) {
+            // 라이브 가상 날짜(오늘 빌드 미도착) — 직전 거래일 빌드를 베이스라인으로.
+            // 라이브 오버레이가 오늘 시세로 덮으므로 내용은 오늘, 세부필드는 직전 빌드.
+            if (date === state.virtualDate && state.dates[1]) {
+                return WhyAPI.getRankings(state.dates[1]);
+            }
+            throw err;
+        }).then(function (data) {
             state.rankings = (data.rankings || []).filter(function (r) {
                 return !BLOCKED_TICKERS[r.ticker];
             });

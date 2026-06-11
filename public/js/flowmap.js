@@ -83,6 +83,7 @@
         availableDates: [],
         dateIndex: 0,
         currentDate: '',
+        virtualDate: '',      // 라이브가 알려준 오늘 거래일 — 빌드(dates.json) 도착 전 라벨/피커용
         mode: 'sector',
         view: initialView(),
         zoomedGroup: null,    // sector/theme 이름 — 버블 모드의 그룹 dive 상태
@@ -717,6 +718,13 @@
             // 라벨 시각을 라이브 갱신 시각으로 — 빌드 collected_at 에 고정되던 버그 수정
             // (getLiveMarketmap 이 이미 KST 'YYYY-MM-DDTHH:MM:SS' 로 변환, slice(11,16) 호환)
             if (res.updated_at) state.collectedAt = res.updated_at;
+            // 라이브 거래일이 빌드(어제)보다 새로우면 화면 날짜도 전진 — treemap/bubbles2 와 동일 패턴
+            if (res.date && res.date.length === 8 && res.date > (state.currentDate || '')) {
+                state.virtualDate = res.date;
+                state.currentDate = res.date;
+                if (state.availableDates.indexOf(res.date) < 0) state.availableDates.unshift(res.date);
+                updateDateNav();
+            }
             (state.rankings || []).forEach(function (r) {
                 var lv = live[r.ticker];
                 if (!lv) return;
@@ -768,6 +776,16 @@
     function loadDate(date) {
         $loading.style.display = '';
         return WhyAPI.getRankings(date).then(function (data) {
+            if (date === state.virtualDate) state.virtualDate = '';   // 빌드 도착 — 정식 거래일
+            return data;
+        }).catch(function (err) {
+            // 라이브 가상 날짜(오늘 빌드 미도착) — 직전 거래일 빌드를 베이스라인으로.
+            // 라이브 오버레이(refreshLive)가 오늘 시세로 덮으므로 화면 날짜는 오늘 유지.
+            if (date === state.virtualDate && state.availableDates[1]) {
+                return WhyAPI.getRankings(state.availableDates[1]);
+            }
+            throw err;
+        }).then(function (data) {
             state.rankings = (data.rankings || []).map(normalizeRanking);
             state.collectedAt = data.collected_at || '';
             state.currentDate = date;
