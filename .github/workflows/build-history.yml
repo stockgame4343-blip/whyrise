@@ -118,9 +118,16 @@ jobs:
               LOCAL=$(python3 -c "import json;print(json.load(open('public/data/build-meta.json')).get('latest_stockrise_date',''))" 2>/dev/null || echo '')
               UPSTREAM=$(curl -sf --max-time 15 https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data/dates.json | python3 -c "import json,sys;d=json.load(sys.stdin);print(max(d) if d else '')" 2>/dev/null || echo '')
               if [ -n "$UPSTREAM" ] && [[ "$UPSTREAM" > "$LOCAL" ]]; then
-                echo "stock-history stale (local=${LOCAL:-none} < upstream=$UPSTREAM) — incremental 승격"
-                MODE="incremental"
-                ESCALATED="true"
+                # 장중(미확정) 데이터로 승격하면 그날 이유/뉴스가 장중 스냅샷으로 박제됨 —
+                # 업스트림 최신일이 is_final 일 때만 승격 (아니면 다음 슬롯에서 재시도)
+                FINAL=$(curl -sf --max-time 20 "https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data/${UPSTREAM}.json" | python3 -c "import json,sys;print(json.load(sys.stdin).get('is_final', False))" 2>/dev/null || echo '')
+                if [ "$FINAL" = "True" ]; then
+                  echo "stock-history stale (local=${LOCAL:-none} < upstream=$UPSTREAM, final) — incremental 승격"
+                  MODE="incremental"
+                  ESCALATED="true"
+                else
+                  echo "업스트림 $UPSTREAM 아직 미확정(is_final=$FINAL) — 승격 보류"
+                fi
               fi
             fi
           fi
