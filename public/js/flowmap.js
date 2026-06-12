@@ -881,18 +881,61 @@
     }
 
     // ── PNG 저장 ──────────────────────────────────────
+    // <img> 로 로드되는 SVG 는 보안상 외부 리소스(CDN 웹폰트)를 못 쓰므로
+    // 캡처 시 Pretendard 를 data URI 로 SVG 안에 임베드한다.
+    var CAPTURE_FONT_URL = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2/PretendardVariable.woff2';
+    var captureFontCSS = null; // 성공 시 캐시 — 세션 내 재다운로드 방지
+
+    function loadCaptureFontCSS() {
+        if (captureFontCSS) return Promise.resolve(captureFontCSS);
+        return fetch(CAPTURE_FONT_URL)
+            .then(function (r) {
+                if (!r.ok) throw new Error('font http ' + r.status);
+                return r.blob();
+            })
+            .then(function (b) {
+                return new Promise(function (resolve, reject) {
+                    var fr = new FileReader();
+                    fr.onload = function () { resolve(fr.result); };
+                    fr.onerror = reject;
+                    fr.readAsDataURL(b);
+                });
+            })
+            .then(function (dataUri) {
+                captureFontCSS = "@font-face{font-family:'Pretendard Variable';" +
+                    'src:url(' + dataUri + ") format('woff2-variations');" +
+                    'font-weight:45 920;font-style:normal;}';
+                return captureFontCSS;
+            })
+            .catch(function () { return ''; }); // 실패 시 임베드 없이 진행, 다음 클릭 때 재시도
+    }
+
     function savePNG() {
         var svgEl = $svg;
         var w = svgEl.clientWidth, h = svgEl.clientHeight;
         if (w < 80 || h < 80) return;
-        var HEAD_H = 44;
-        var totalH = h + HEAD_H;
         var isDark = document.documentElement.getAttribute('data-theme') !== 'light';
         var bgColor = isDark ? '#191919' : '#ffffff';
         var fgColor = isDark ? '#ffffff' : '#191919';
         var fgDim = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(10,11,15,0.55)';
+        var dividerColor = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)';
         var fontStack = '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif';
         var ns = 'http://www.w3.org/2000/svg';
+
+        // ── 헤더 워터마크 레이아웃 — 텍스트 폭을 재서 1줄/2줄 결정 ──
+        var PAD_X = 20;
+        var ctxStr = '흐름맵 · ' + (MODE_LABEL[state.mode] || state.mode) + ' · ' + (VIEW_LABEL[state.view] || state.view)
+            + ' · ' + formatDate(state.currentDate);
+        var meas = document.createElement('canvas').getContext('2d');
+        meas.font = '800 16px ' + fontStack;
+        var logoW = meas.measureText('ORGO').width;
+        meas.font = '600 12.5px ' + fontStack;
+        var infoW = meas.measureText(ctxStr).width;
+        meas.font = '600 11px ' + fontStack;
+        var domainW = meas.measureText('orgo.kr').width;
+        var oneLine = PAD_X + logoW + 10 + domainW + 32 + infoW + PAD_X <= w;
+        var HEAD_H = oneLine ? 46 : 68;
+        var totalH = h + HEAD_H;
 
         function mkText(x, y, txt, opts) {
             opts = opts || {};
@@ -916,11 +959,22 @@
         bg.setAttribute('fill', bgColor);
         wrap.appendChild(bg);
 
-        wrap.appendChild(mkText(20, HEAD_H - 16, 'ORGO', { size: 16, weight: 800, fill: fgColor }));
-        wrap.appendChild(mkText(132, HEAD_H - 16, 'orgo.kr', { size: 11, weight: 600, fill: fgDim }));
-        var ctxStr = '흐름맵 · ' + (MODE_LABEL[state.mode] || state.mode) + ' · ' + (VIEW_LABEL[state.view] || state.view)
-            + '   ·   ' + formatDate(state.currentDate);
-        wrap.appendChild(mkText(w - 20, HEAD_H - 16, ctxStr, { size: 13, weight: 700, fill: fgColor, anchor: 'end' }));
+        // 헤더 워터마크 — 좌: 로고+도메인, 우(좁으면 둘째 줄): 차트 정보
+        wrap.appendChild(mkText(PAD_X, 28, 'ORGO', { size: 16, weight: 800, fill: fgColor }));
+        wrap.appendChild(mkText(PAD_X + logoW + 10, 28, 'orgo.kr', { size: 11, weight: 600, fill: fgDim }));
+        if (oneLine) {
+            wrap.appendChild(mkText(w - PAD_X, 28, ctxStr, { size: 12.5, weight: 600, fill: fgColor, anchor: 'end' }));
+        } else {
+            wrap.appendChild(mkText(PAD_X, 52, ctxStr, { size: 12.5, weight: 600, fill: fgColor }));
+        }
+        var divider = document.createElementNS(ns, 'line');
+        divider.setAttribute('x1', '0');
+        divider.setAttribute('x2', String(w));
+        divider.setAttribute('y1', String(HEAD_H - 0.5));
+        divider.setAttribute('y2', String(HEAD_H - 0.5));
+        divider.setAttribute('stroke', dividerColor);
+        divider.setAttribute('stroke-width', '1');
+        wrap.appendChild(divider);
 
         var clone = svgEl.cloneNode(true);
         // 인라인 스타일 보강 (외부 CSS 가 PNG 에 안 묻음)
@@ -980,29 +1034,36 @@
         while (clone.firstChild) mapG.appendChild(clone.firstChild);
         wrap.appendChild(mapG);
 
-        var svgStr = new XMLSerializer().serializeToString(wrap);
-        var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
-        var url = URL.createObjectURL(blob);
-        var img = new Image();
-        img.onload = function () {
-            var canvas = document.createElement('canvas');
-            canvas.width = w * 2; canvas.height = totalH * 2;
-            var ctx = canvas.getContext('2d');
-            ctx.fillStyle = bgColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            URL.revokeObjectURL(url);
-            canvas.toBlob(function (b) {
-                if (!b) return;
-                var dl = URL.createObjectURL(b);
-                var a = document.createElement('a');
-                var stamp = (state.currentDate || '').replace(/[^0-9]/g, '');
-                a.href = dl; a.download = 'orgo-flowmap-' + stamp + '-' + state.mode + '-' + state.view + '.png';
-                document.body.appendChild(a); a.click(); document.body.removeChild(a);
-                URL.revokeObjectURL(dl);
-            }, 'image/png');
-        };
-        img.onerror = function () { URL.revokeObjectURL(url); };
-        img.src = url;
+        loadCaptureFontCSS().then(function (fontCSS) {
+            if (fontCSS) {
+                var styleEl = document.createElementNS(ns, 'style');
+                styleEl.textContent = fontCSS;
+                wrap.insertBefore(styleEl, wrap.firstChild);
+            }
+            var svgStr = new XMLSerializer().serializeToString(wrap);
+            var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var img = new Image();
+            img.onload = function () {
+                var canvas = document.createElement('canvas');
+                canvas.width = w * 2; canvas.height = totalH * 2;
+                var ctx = canvas.getContext('2d');
+                ctx.fillStyle = bgColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                URL.revokeObjectURL(url);
+                canvas.toBlob(function (b) {
+                    if (!b) return;
+                    var dl = URL.createObjectURL(b);
+                    var a = document.createElement('a');
+                    var stamp = (state.currentDate || '').replace(/[^0-9]/g, '');
+                    a.href = dl; a.download = 'orgo-flowmap-' + stamp + '-' + state.mode + '-' + state.view + '.png';
+                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                    URL.revokeObjectURL(dl);
+                }, 'image/png');
+            };
+            img.onerror = function () { URL.revokeObjectURL(url); };
+            img.src = url;
+        });
     }
 
     function exposeBridge() {
