@@ -726,7 +726,7 @@
     // ── 이미지 저장 (SVG → PNG with 워터마크 헤더만) ─────
     // <img> 로 로드되는 SVG 는 보안상 외부 리소스(CDN 웹폰트)를 못 쓰므로
     // 캡처 시 Pretendard 를 data URI 로 SVG 안에 임베드한다.
-    var CAPTURE_FONT_URL = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/variable/woff2/PretendardVariable.woff2';
+    var CAPTURE_FONT_URL = '/fonts/PretendardVariable.woff2'; // 자체 호스팅 — CDN 차단(광고차단기 등) 회피
     var captureFontCSS = null; // 성공 시 캐시 — 세션 내 재다운로드 방지
 
     function loadCaptureFontCSS() {
@@ -753,6 +753,16 @@
             .catch(function () { return ''; }); // 실패 시 임베드 없이 진행, 다음 클릭 때 재시도
     }
 
+    // 캡처 시점 표기 — 오늘 데이터를 보고 있으면 시:분까지 붙인다
+    function captureDateTime() {
+        var now = new Date();
+        var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+        var todayYmd = '' + now.getFullYear() + pad(now.getMonth() + 1) + pad(now.getDate());
+        var s = formatDate(state.currentDate);
+        if (state.currentDate === todayYmd) s += ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+        return s;
+    }
+
     function savePNG() {
         var svgEl = $svg;
         var w = svgEl.clientWidth;
@@ -774,13 +784,13 @@
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
         if (state.zoomedSector) modeText += ' · ' + displaySector(state.zoomedSector);
         var sortText = SORT_LABEL[state.sort] || '시총';
-        var ctxStr = '트리맵 · ' + (PERIOD_LABEL[state.period] || state.period) + ' · ' + modeText + ' · ' + sortText + ' · ' + formatDate(state.currentDate);
+        var ctxStr = (PERIOD_LABEL[state.period] || state.period) + ' · ' + modeText + ' · ' + sortText + '  ' + captureDateTime();
         var meas = document.createElement('canvas').getContext('2d');
         meas.font = '800 16px ' + fontStack;
         var logoW = meas.measureText('ORGO').width;
         meas.font = '600 12.5px ' + fontStack;
         var infoW = meas.measureText(ctxStr).width;
-        meas.font = '600 11px ' + fontStack;
+        meas.font = '600 13px ' + fontStack;
         var domainW = meas.measureText('orgo.kr').width;
         var oneLine = PAD_X + logoW + 10 + domainW + 32 + infoW + PAD_X <= w;
         var HEAD_H = oneLine ? 46 : 68;
@@ -814,7 +824,7 @@
 
         // 헤더 워터마크 — 좌: 로고+도메인, 우(좁으면 둘째 줄): 차트 정보
         wrap.appendChild(mkText(PAD_X, 28, 'ORGO', { size: 16, weight: 800, fill: fgColor }));
-        wrap.appendChild(mkText(PAD_X + logoW + 10, 28, 'orgo.kr', { size: 11, weight: 600, fill: fgDim }));
+        wrap.appendChild(mkText(PAD_X + logoW + 10, 28, 'orgo.kr', { size: 13, weight: 600, fill: fgDim }));
         if (oneLine) {
             wrap.appendChild(mkText(w - PAD_X, 28, ctxStr, { size: 12.5, weight: 600, fill: fgColor, anchor: 'end' }));
         } else {
