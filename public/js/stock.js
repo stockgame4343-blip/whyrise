@@ -260,61 +260,184 @@
     }
 
     function newsKeys(n) {
-        var link = String((n && n.link) || '').trim().split('#')[0].split('?')[0].toLowerCase();
+        // 쿼리스트링 유지 — 네이버 금융 링크는 기사 ID가 쿼리(article_id)에 있어
+        // ?를 자르면 모든 기사가 같은 키로 충돌한다 (해시만 제거)
+        var link = String((n && n.link) || '').trim().split('#')[0].toLowerCase();
         var title = cleanNewsText((n && n.title) || '').toLowerCase().replace(/\s+/g, ' ');
         return { link: link, title: title };
     }
 
+    // ── 주요 기사 선별 — "왜 올랐는가"를 설명하는 기사만 통과시키는 점수 게이트 ──
+    // 이름만 들어간 무관 기사(악재 실적·시황·타종목 묶음·동일 사건 도배)가 그대로 노출되던 것을
+    // 인과 패턴/카탈리스트 가점 + 노이즈·악재 감점 + 유사 제목 클러스터 dedup 으로 교체.
+    var NEWS_SPLIT_RE = /[\s,·()\[\]{}<>:;|/\\"‘’“”'…]+/;
+    var NEWS_NUMERIC_RE = /^[0-9.]+%?$/;
+    // 테마 토큰 추출 제외어 — 일반 금융 단어는 타종목 기사를 끌어들이므로 토큰화하지 않음
+    var NEWS_TOKEN_STOP = ['관련', '기대', '소식', '상승', '급등', '상한가', '특징주', '실시간', '거래량',
+        '코스피', '코스닥', '뉴스', '보도', '공시', '발표', '영업이익', '영업익', '실적', '매출',
+        '결정', '증가', '개선', '전년', '분기', '이유', '종목', '주가', '리포트', '증권사'];
+    // 인과 구조 제목 — "…소식에 급등" 류 (왜 올랐는지 직접 설명하는 기사의 시그니처)
+    var NEWS_CAUSAL_RE = /(소식|기대감|기대|효과|수혜|호재|영향|훈풍|모멘텀|전망|부각)(에|에도|으로|속)|에\s*['"‘“]?(급등|강세|상한가|상승|上|껑충|불기둥|신고가)/;
+    // 상승 이유가 되는 사건 키워드
+    var NEWS_CATALYST = ['수주', '계약', '공급', '양산', '납품', '인수', '합병', '매각', '지분', '투자', '유치',
+        '임상', '승인', '허가', 'fda', '식약처', '특허', '기술이전', '상용화', '출시', '공개',
+        '선정', '체결', 'mou', '협약', '협력', '동맹', '흑자', '턴어라운드', '호실적', '최대 실적',
+        '어닝', '무상증자', '자사주', '소각', '증설', '수출', '진출', '돌파', '신고가', '재가동',
+        '목표가', '신제품', '개발', '도입', '확대', '정책', '추경', '발족',
+        '영업익', '영업이익', '매출', '실적', '적자 축소', '증가', '경신', '최대', '배당',
+        '취득', '장내매수', '수혜', '1위'];
+    // 묶음·시황 노이즈 — 종목 아닌 시장/테마 전체 기사
+    var NEWS_NOISE = ['관련주', '테마주', '관련株', '동반', '일제히', '줄줄이', '잇단', '무더기', '급등주',
+        '마감', '시황', '브리핑', '개장', '출발', '증시', '랠리', '마켓뷰', '오늘의',
+        '코스피', '코스닥', '톺아보기', '딥다이브', '핫종목', '[알림]', '[인사]', '베스트리포트',
+        '순매수', '매도세', '추격', '회복', '재탈환', '반등'];
+    // 악재·역방향 — 상승 이유 설명에 부적합
+    var NEWS_NEGATIVE = ['급락', '하락', '약세', '↓', '감소', '우려', '리스크', '불확실', '소송', '제재',
+        '담합', '고발', '조사', '갈등', '논란', '경고', '버블', '분개', '실망', '상폐', '수상',
+        '주가조작', '시세조종', '손절'];
+    var NEWS_POSITIVE_OVERRIDE = ['적자 축소', '흑자'];  // '적자' 계열 중 호재 표현
+    var NEWS_MAX_ITEMS = 8;        // 최종 노출 수
+    var NEWS_MAX_PER_DATE = 2;     // 같은 날짜(이벤트)당 최대 노출 — 사건 도배 방지
+    var NEWS_MIN_FILL = 3;         // 이유 게이트 통과가 이보다 적으면 이름매치+클린 기사로 보충
+    var NEWS_DUP_JACCARD = 0.5;    // 제목 토큰 자카드 유사도 — 동일 사건 변형 기사 묶음 기준
+
     function importantTokens() {
         var source = Array.prototype.slice.call(arguments).join(' ');
-        return cleanNewsText(source).split(/[\s,·()"'“”‘’\[\]{}<>:;|/\\]+/).filter(function (token) {
-            if (!token || token.length < 2) return false;
-            if (/^[0-9.]+%?$/.test(token)) return false;
-            return ['관련', '기대', '소식', '상승', '급등', '상한가', '특징주', '실시간', '거래량', '코스피', '코스닥'].indexOf(token) < 0;
+        var seen = {};
+        return cleanNewsText(source).split(NEWS_SPLIT_RE).filter(function (token) {
+            if (!token || token.length < 2 || seen[token]) return false;
+            if (NEWS_NUMERIC_RE.test(token)) return false;
+            if (NEWS_TOKEN_STOP.indexOf(token) >= 0) return false;
+            seen[token] = true;
+            return true;
         }).slice(0, 8);
     }
 
+    function countHits(lowerTitle, keywords) {
+        var hits = 0;
+        for (var i = 0; i < keywords.length; i++) {
+            if (lowerTitle.indexOf(keywords[i]) >= 0) hits++;
+        }
+        return hits;
+    }
+
+    function titleTokenSet(lowerTitle) {
+        var set = {};
+        lowerTitle.split(NEWS_SPLIT_RE).forEach(function (w) {
+            if (w.length >= 2) set[w] = true;
+        });
+        return set;
+    }
+
+    function jaccardOver(aSet, bSet, threshold) {
+        var inter = 0, union = 0, k;
+        for (k in aSet) { union++; if (bSet[k]) inter++; }
+        for (k in bSet) { if (!aSet[k]) union++; }
+        return union > 0 && (inter / union) >= threshold;
+    }
+
+    function scoreNews(title, lowerTitle, nameLower, tokens, sameDay) {
+        var score = 0;
+        var hasName = !!(nameLower && lowerTitle.indexOf(nameLower) >= 0);
+        if (hasName) score += 4;
+        var causal = NEWS_CAUSAL_RE.test(title);
+        if (causal) score += 3;
+        var cat = countHits(lowerTitle, NEWS_CATALYST);
+        score += Math.min(cat, 2) * 2;
+        // 토큰: 정방향 포함 또는 제목 단어(3자+)가 테마 토큰에 포함(예: '태양광' ⊂ '태양광에너지')
+        var words = lowerTitle.split(NEWS_SPLIT_RE).filter(function (w) { return w.length >= 3; });
+        var tok = 0;
+        tokens.forEach(function (t) {
+            var tl = t.toLowerCase();
+            if (lowerTitle.indexOf(tl) >= 0) { tok++; return; }
+            for (var i = 0; i < words.length; i++) {
+                if (tl.indexOf(words[i]) >= 0) { tok++; return; }
+            }
+        });
+        score += Math.min(tok, 3) * 1.5;
+        if (sameDay) score += 1;
+        var noise = countHits(lowerTitle, NEWS_NOISE);
+        score -= noise * 2.5;
+        var neg = countHits(lowerTitle, NEWS_NEGATIVE);
+        var negApplies = neg > 0 && countHits(lowerTitle, NEWS_POSITIVE_OVERRIDE) === 0;
+        if (negApplies) score -= Math.min(neg, 2) * 2;
+        // 게이트: 이름 포함 → 이유 신호(인과/카탈리스트/토큰) 하나 이상 필요 (이름만으로 통과 금지)
+        //         이름 미포함 → 인과/카탈리스트 + 테마 토큰 결합 필요, 묶음 노이즈 불허
+        var ok = hasName
+            ? ((causal || cat > 0 || tok > 0) && score >= 6)
+            : (((causal && tok >= 1) || (cat >= 1 && tok >= 1) || tok >= 2) && noise === 0 && score >= 5);
+        var fill = hasName && noise === 0 && !negApplies && score >= 4;
+        return { ok: ok, fill: fill, score: score };
+    }
+
     function collectMajorNews(events, ticker) {
-        var seen = {};
-        var items = [];
         var name = cleanNewsText(_stockName || '').toLowerCase();
-        (events || []).forEach(function (ev, eventIndex) {
+        var seen = {};
+        var cands = [];
+        (events || []).forEach(function (ev) {
             var tokens = importantTokens(ev.theme_tag, ev.sector, ev.rise_reason);
+            var evDate = String(ev.date || '').replace(/[^0-9]/g, '').slice(0, 8);
             (ev.news || []).forEach(function (n) {
                 var keys = newsKeys(n);
                 if ((!keys.link && !keys.title) || seen[keys.link] || seen[keys.title]) return;
                 var title = cleanNewsText(n.title);
                 var href = safeLink(n.link);
                 if (!title || !href) return;
-                var lowerTitle = title.toLowerCase();
-                var score = Math.max(0, 200 - eventIndex) / 1000;
-                var matched = false;
-                if (name && lowerTitle.indexOf(name) >= 0) { score += 5; matched = true; }
-                if (ticker && lowerTitle.indexOf(String(ticker).toLowerCase()) >= 0) { score += 3; matched = true; }
-                tokens.forEach(function (token) {
-                    if (token && lowerTitle.indexOf(token.toLowerCase()) >= 0) {
-                        score += 1.5;
-                        matched = true;
-                    }
-                });
-                if (matched && (ev.reason_source === 'news' || ev.reason_source === 'naver')) score += 1;
-                if (!matched || score < 3) return;
                 if (keys.link) seen[keys.link] = true;
                 if (keys.title) seen[keys.title] = true;
-                items.push({
+                var lowerTitle = title.toLowerCase();
+                var newsDate = String(n.date || '').replace(/[^0-9]/g, '').slice(0, 8);
+                var r = scoreNews(title, lowerTitle, name, tokens, !!newsDate && newsDate === evDate);
+                cands.push({
                     title: title,
                     href: href,
                     source: cleanNewsText(n.source),
                     date: ev.date || '',
-                    score: score,
+                    score: r.score,
+                    ok: r.ok,
+                    fill: r.fill,
+                    tokenSet: titleTokenSet(lowerTitle),
                 });
             });
         });
-        items.sort(function (a, b) {
-            if (b.score !== a.score) return b.score - a.score;
-            return String(b.date).localeCompare(String(a.date));
+        cands.sort(function (a, b) { return b.score - a.score; });
+
+        function isDup(c, picked) {
+            for (var i = 0; i < picked.length; i++) {
+                if (jaccardOver(c.tokenSet, picked[i].tokenSet, NEWS_DUP_JACCARD)) return true;
+            }
+            return false;
+        }
+
+        var picked = [];
+        cands.forEach(function (c) {
+            if (!c.ok || isDup(c, picked)) return;
+            picked.push(c);
         });
-        return items.slice(0, 10);
+        // 보충: 이유 기사가 부족하면 이름매치 + 노이즈·악재 없는 기사로 채움 (없으면 패널 숨김 유지)
+        if (picked.length < NEWS_MIN_FILL) {
+            cands.forEach(function (c) {
+                if (picked.length >= NEWS_MIN_FILL) return;
+                if (c.ok || !c.fill || isDup(c, picked)) return;
+                picked.push(c);
+            });
+        }
+        // 같은 날짜 도배 방지 후 날짜 내림차순(최근 사건 우선) 정렬
+        var perDate = {};
+        var final = [];
+        picked.forEach(function (c) {
+            var k = String(c.date);
+            perDate[k] = perDate[k] || 0;
+            if (perDate[k] >= NEWS_MAX_PER_DATE) return;
+            perDate[k]++;
+            final.push(c);
+        });
+        final.sort(function (a, b) {
+            var d = String(b.date).localeCompare(String(a.date));
+            if (d !== 0) return d;
+            return b.score - a.score;
+        });
+        return final.slice(0, NEWS_MAX_ITEMS);
     }
 
     function renderMajorNews(events, ticker) {
@@ -328,7 +451,7 @@
         }
         var html = '<div class="stock-news-panel__head">' +
             '<h2>주요 기사</h2>' +
-            '<span>핵심 기사만</span>' +
+            '<span>상승 이유 기사만</span>' +
             '</div><div class="stock-news-list">';
         items.forEach(function (item) {
             html += '<a class="stock-news-item" href="' + item.href + '" target="_blank" rel="noopener noreferrer">' +
