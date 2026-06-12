@@ -88,7 +88,7 @@
         var $title = document.getElementById('stockTitle');
         var $market = document.getElementById('stockMarket');
         var $stats = document.getElementById('stockStats');
-        var pageTitle = name + ' 왜 오름? - ORNO';
+        var pageTitle = name + ' 왜 오름? - ORGO';
         var pageDesc = name + '의 최근 1년 급등 날짜와 이유·뉴스.';
         document.getElementById('pageTitle').textContent = pageTitle;
         document.getElementById('pageDesc').setAttribute('content', pageDesc);

@@ -768,7 +768,7 @@
         wrap.appendChild(bg);
 
         // 헤더 워터마크
-        wrap.appendChild(mkText(20, HEAD_H - 16, 'ORNO', { size: 16, weight: 800, fill: fgColor }));
+        wrap.appendChild(mkText(20, HEAD_H - 16, 'ORGO', { size: 16, weight: 800, fill: fgColor }));
         wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
 
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
@@ -844,7 +844,7 @@
                 var stamp = (state.currentDate || '').replace(/[^0-9]/g, '') || 'live';
                 var modeStamp = state.filter.toLowerCase() + '-' + state.period + '-' + state.sort;
                 if (state.zoomedSector) modeStamp += '-' + state.zoomedSector;
-                var fname = 'orno-treemap-' + stamp + '-' + modeStamp + '.png';
+                var fname = 'orgo-treemap-' + stamp + '-' + modeStamp + '.png';
                 a.href = dl;
                 a.download = fname;
                 document.body.appendChild(a);
