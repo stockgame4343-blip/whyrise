@@ -917,7 +917,7 @@
         wrap.appendChild(bg);
 
         wrap.appendChild(mkText(20, HEAD_H - 16, 'ORGO', { size: 16, weight: 800, fill: fgColor }));
-        wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
+        wrap.appendChild(mkText(132, HEAD_H - 16, 'orgo.kr', { size: 11, weight: 600, fill: fgDim }));
         var ctxStr = '흐름맵 · ' + (MODE_LABEL[state.mode] || state.mode) + ' · ' + (VIEW_LABEL[state.view] || state.view)
             + '   ·   ' + formatDate(state.currentDate);
         wrap.appendChild(mkText(w - 20, HEAD_H - 16, ctxStr, { size: 13, weight: 700, fill: fgColor, anchor: 'end' }));

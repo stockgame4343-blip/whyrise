@@ -694,7 +694,7 @@
         wrap.appendChild(bg);
 
         wrap.appendChild(mkText(20, HEAD_H - 16, 'ORGO', { size: 16, weight: 800, fill: fgColor }));
-        wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
+        wrap.appendChild(mkText(132, HEAD_H - 16, 'orgo.kr', { size: 11, weight: 600, fill: fgDim }));
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
         var sortText = SORT_LABEL[state.sort] || '시총';
         var ctxStr = (PERIOD_LABEL[state.period] || state.period) + ' · ' + modeText + ' · ' + sortText + '   ·   ' + formatDate(state.currentDate);

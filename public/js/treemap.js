@@ -769,7 +769,7 @@
 
         // 헤더 워터마크
         wrap.appendChild(mkText(20, HEAD_H - 16, 'ORGO', { size: 16, weight: 800, fill: fgColor }));
-        wrap.appendChild(mkText(132, HEAD_H - 16, 'whyrise.vercel.app', { size: 11, weight: 600, fill: fgDim }));
+        wrap.appendChild(mkText(132, HEAD_H - 16, 'orgo.kr', { size: 11, weight: 600, fill: fgDim }));
 
         var modeText = state.filter === 'ALL' ? '전체' : (state.filter === 'KOSPI' ? '코스피' : '코스닥');
         if (state.zoomedSector) modeText += ' · ' + displaySector(state.zoomedSector);

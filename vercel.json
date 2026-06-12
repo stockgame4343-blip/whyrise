@@ -1,5 +1,19 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path((?!api/).*)",
+      "has": [{ "type": "host", "value": "whyrise.vercel.app" }],
+      "destination": "https://orgo.kr/:path",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?!api/).*)",
+      "has": [{ "type": "host", "value": "www.orgo.kr" }],
+      "destination": "https://orgo.kr/:path",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/stock/:ticker", "destination": "/stock.html?ticker=:ticker" }
   ],

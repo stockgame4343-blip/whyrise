@@ -94,7 +94,7 @@
         document.getElementById('pageDesc').setAttribute('content', pageDesc);
         var ticker = getTicker() || '';
         var $can = document.getElementById('pageCanonical');
-        if ($can && ticker) $can.setAttribute('href', 'https://whyrise.vercel.app/stock/' + ticker);
+        if ($can && ticker) $can.setAttribute('href', 'https://orgo.kr/stock/' + ticker);
         var $ogT = document.getElementById('pageOgTitle');
         if ($ogT) $ogT.setAttribute('content', pageTitle);
         var $ogD = document.getElementById('pageOgDesc');

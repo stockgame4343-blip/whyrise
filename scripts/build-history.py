@@ -340,7 +340,7 @@ def _parse_int(v):
 # ── sitemap 생성 ─────────────────────────────────────────
 
 def build_sitemap(stock_history_dir: Path, public_dir: Path,
-                  site: str = 'https://whyrise.vercel.app') -> None:
+                  site: str = 'https://orgo.kr') -> None:
     """sitemap.xml — 정적 + 종목별 페이지 (검색 인덱스의 ticker 들)."""
     today = date.today().strftime('%Y-%m-%d')
     static = [
