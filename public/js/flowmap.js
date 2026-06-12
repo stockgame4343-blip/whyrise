@@ -881,33 +881,63 @@
     }
 
     // ── PNG 저장 ──────────────────────────────────────
-    // <img> 로 로드되는 SVG 는 보안상 외부 리소스(CDN 웹폰트)를 못 쓰므로
-    // 캡처 시 Pretendard 를 data URI 로 SVG 안에 임베드한다.
-    var CAPTURE_FONT_URL = '/fonts/PretendardVariable.woff2'; // 자체 호스팅 — CDN 차단(광고차단기 등) 회피
-    var captureFontCSS = null; // 성공 시 캐시 — 세션 내 재다운로드 방지
+    // SVG-as-image 는 웹폰트 로딩이 비결정적(레이스)이라 텍스트는 SVG 에서 빼고,
+    // 페이지에 이미 로드된 폰트로 캔버스에 직접 그린다 — 폰트 적용 100% 보장.
 
-    function loadCaptureFontCSS() {
-        if (captureFontCSS) return Promise.resolve(captureFontCSS);
-        return fetch(CAPTURE_FONT_URL)
-            .then(function (r) {
-                if (!r.ok) throw new Error('font http ' + r.status);
-                return r.blob();
-            })
-            .then(function (b) {
-                return new Promise(function (resolve, reject) {
-                    var fr = new FileReader();
-                    fr.onload = function () { resolve(fr.result); };
-                    fr.onerror = reject;
-                    fr.readAsDataURL(b);
-                });
-            })
-            .then(function (dataUri) {
-                captureFontCSS = "@font-face{font-family:'Pretendard Variable';" +
-                    'src:url(' + dataUri + ") format('woff2-variations');" +
-                    'font-weight:45 920;font-style:normal;}';
-                return captureFontCSS;
-            })
-            .catch(function () { return ''; }); // 실패 시 임베드 없이 진행, 다음 클릭 때 재시도
+    // 라이브 SVG 의 <text> 들을 캔버스 드로잉 스펙으로 수집 (화면 computed style 그대로)
+    function collectTextSpecs(svgEl, offsetY, patch) {
+        var specs = [];
+        svgEl.querySelectorAll('text').forEach(function (el) {
+            var cs = window.getComputedStyle(el);
+            if (cs.display === 'none' || cs.visibility === 'hidden') return;
+            var ctm = el.getCTM();
+            if (!ctm) return;
+            var x = parseFloat(el.getAttribute('x') || '0');
+            var y = parseFloat(el.getAttribute('y') || '0');
+            var det = Math.abs(ctm.a * ctm.d - ctm.b * ctm.c);
+            var opacity = parseFloat(cs.opacity);
+            var spec = {
+                text: el.textContent,
+                x: ctm.a * x + ctm.c * y + ctm.e,
+                y: ctm.b * x + ctm.d * y + ctm.f + offsetY,
+                size: (parseFloat(cs.fontSize) || 12) * Math.sqrt(det || 1),
+                weight: cs.fontWeight || '600',
+                fill: (cs.fill && cs.fill !== 'none') ? cs.fill : '#fff',
+                opacity: isNaN(opacity) ? 1 : opacity,
+                anchor: cs.textAnchor || 'start',
+                baseline: cs.dominantBaseline || 'alphabetic',
+                stroke: (cs.stroke && cs.stroke !== 'none') ? cs.stroke : null,
+                strokeWidth: parseFloat(cs.strokeWidth) || 0,
+                letterSpacing: cs.letterSpacing,
+            };
+            if (patch) patch(el, spec);
+            specs.push(spec);
+        });
+        return specs;
+    }
+
+    function drawTextSpecs(ctx, specs, scale, fontStack) {
+        specs.forEach(function (s) {
+            ctx.save();
+            ctx.globalAlpha = s.opacity == null ? 1 : s.opacity;
+            ctx.font = (s.weight || '600') + ' ' + (s.size * scale) + 'px ' + fontStack;
+            if (s.letterSpacing && s.letterSpacing !== 'normal' && 'letterSpacing' in ctx) {
+                ctx.letterSpacing = ((parseFloat(s.letterSpacing) || 0) * scale) + 'px';
+            }
+            ctx.textAlign = s.anchor === 'middle' ? 'center' : (s.anchor === 'end' ? 'right' : 'left');
+            ctx.textBaseline = (s.baseline === 'middle' || s.baseline === 'central') ? 'middle' : 'alphabetic';
+            var px = s.x * scale, py = s.y * scale;
+            if (s.stroke && s.strokeWidth > 0) {
+                // SVG paint-order:stroke 와 동일 — 외곽선을 글자 뒤에 깐다
+                ctx.lineWidth = s.strokeWidth * scale;
+                ctx.lineJoin = 'round';
+                ctx.strokeStyle = s.stroke;
+                ctx.strokeText(s.text, px, py);
+            }
+            ctx.fillStyle = s.fill;
+            ctx.fillText(s.text, px, py);
+            ctx.restore();
+        });
     }
 
     // 캡처 시점 표기 — 오늘 데이터를 보고 있으면 시:분까지 붙인다
@@ -946,19 +976,6 @@
         var HEAD_H = oneLine ? 46 : 68;
         var totalH = h + HEAD_H;
 
-        function mkText(x, y, txt, opts) {
-            opts = opts || {};
-            var t = document.createElementNS(ns, 'text');
-            t.setAttribute('x', String(x)); t.setAttribute('y', String(y));
-            t.setAttribute('fill', opts.fill || fgColor);
-            t.setAttribute('font-size', String(opts.size || 12));
-            t.setAttribute('font-weight', String(opts.weight || 600));
-            t.setAttribute('font-family', fontStack);
-            if (opts.anchor) t.setAttribute('text-anchor', opts.anchor);
-            t.textContent = txt;
-            return t;
-        }
-
         var wrap = document.createElementNS(ns, 'svg');
         wrap.setAttribute('xmlns', ns);
         wrap.setAttribute('width', String(w)); wrap.setAttribute('height', String(totalH));
@@ -968,14 +985,14 @@
         bg.setAttribute('fill', bgColor);
         wrap.appendChild(bg);
 
-        // 헤더 워터마크 — 좌: 로고+도메인, 우(좁으면 둘째 줄): 차트 정보
-        wrap.appendChild(mkText(PAD_X, 28, 'ORGO', { size: 16, weight: 800, fill: fgColor }));
-        wrap.appendChild(mkText(PAD_X + logoW + 10, 28, 'orgo.kr', { size: 13, weight: 600, fill: fgDim }));
-        if (oneLine) {
-            wrap.appendChild(mkText(w - PAD_X, 28, ctxStr, { size: 12.5, weight: 600, fill: fgColor, anchor: 'end' }));
-        } else {
-            wrap.appendChild(mkText(PAD_X, 52, ctxStr, { size: 12.5, weight: 600, fill: fgColor }));
-        }
+        // 헤더 워터마크 — 좌: 로고+도메인, 우(좁으면 둘째 줄): 차트 정보. 캔버스로 그린다.
+        var headerSpecs = [
+            { text: 'ORGO', x: PAD_X, y: 28, size: 16, weight: '800', fill: fgColor, anchor: 'start' },
+            { text: 'orgo.kr', x: PAD_X + logoW + 10, y: 28, size: 13, weight: '600', fill: fgDim, anchor: 'start' },
+            oneLine
+                ? { text: ctxStr, x: w - PAD_X, y: 28, size: 12.5, weight: '600', fill: fgColor, anchor: 'end' }
+                : { text: ctxStr, x: PAD_X, y: 52, size: 12.5, weight: '600', fill: fgColor, anchor: 'start' }
+        ];
         var divider = document.createElementNS(ns, 'line');
         divider.setAttribute('x1', '0');
         divider.setAttribute('x2', String(w));
@@ -986,7 +1003,7 @@
         wrap.appendChild(divider);
 
         var clone = svgEl.cloneNode(true);
-        // 인라인 스타일 보강 (외부 CSS 가 PNG 에 안 묻음)
+        // 인라인 스타일 보강 (외부 CSS 가 PNG 에 안 묻음) — 도형만. 텍스트는 캔버스로.
         var sectorBoxFill = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.035)';
         var sectorBoxStroke = isDark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.16)';
         var labelFill = isDark ? 'rgba(255,255,255,0.92)' : 'rgba(20,22,28,0.92)';
@@ -997,82 +1014,68 @@
             el.setAttribute('stroke', sectorBoxStroke);
             el.setAttribute('stroke-width', '1');
         });
-        clone.querySelectorAll('.tmap-sector__label').forEach(function (el) {
-            el.setAttribute('fill', labelFill);
-            el.setAttribute('font-family', fontStack);
-            el.setAttribute('font-weight', '800');
-        });
-        clone.querySelectorAll('.tmap-cell text').forEach(function (el) {
-            el.setAttribute('fill', '#fff'); el.setAttribute('font-family', fontStack);
-            el.setAttribute('paint-order', 'stroke');
-            el.setAttribute('stroke', cellStroke); el.setAttribute('stroke-width', '0.6');
-        });
         clone.querySelectorAll('.flow-group__circle').forEach(function (el) {
             el.setAttribute('fill', 'none');
             el.setAttribute('stroke', sectorBoxStroke);
             el.setAttribute('stroke-width', '1');
             el.setAttribute('stroke-dasharray', '4 3');
         });
-        clone.querySelectorAll('.flow-group__label').forEach(function (el) {
-            el.setAttribute('fill', labelFill);
-            el.setAttribute('font-family', fontStack); el.setAttribute('font-weight', '700');
-        });
         // 그룹 큰 원 — JS 인라인 그라데이션이 fill 이미 적용. stroke 만 그레이 톤 유지.
         clone.querySelectorAll('.flow-group__bigcircle').forEach(function (el) {
             el.setAttribute('stroke', 'hsl(220, 8%, 64%)');
             el.setAttribute('stroke-width', '1');
         });
-        clone.querySelectorAll('.flow-group__name').forEach(function (el) {
-            el.setAttribute('fill', '#fff'); el.setAttribute('font-family', fontStack);
-            el.setAttribute('font-weight', '800');
-            el.setAttribute('paint-order', 'stroke');
-            el.setAttribute('stroke', cellStroke); el.setAttribute('stroke-width', '0.6');
-        });
-        clone.querySelectorAll('.flow-group__count').forEach(function (el) {
-            el.setAttribute('fill', 'rgba(255,255,255,0.85)'); el.setAttribute('font-family', fontStack);
-            el.setAttribute('font-weight', '600');
-        });
-        clone.querySelectorAll('.flow-node text').forEach(function (el) {
-            el.setAttribute('fill', '#fff'); el.setAttribute('font-family', fontStack);
-            el.setAttribute('paint-order', 'stroke');
-            el.setAttribute('stroke', cellStroke); el.setAttribute('stroke-width', '0.6');
-        });
+        clone.querySelectorAll('text').forEach(function (el) { el.parentNode.removeChild(el); });
+        var textSpecs = headerSpecs.concat(collectTextSpecs(svgEl, HEAD_H, function (el, spec) {
+            // 캡처 가독성 — 기존 캡처 스타일과 동일한 텍스트 외곽선/색 보정
+            if (el.closest && (el.closest('.tmap-cell') || el.closest('.flow-node'))) {
+                spec.fill = '#fff';
+                spec.stroke = cellStroke;
+                spec.strokeWidth = 0.6;
+            }
+            if (el.classList.contains('flow-group__name')) {
+                spec.fill = '#fff';
+                spec.stroke = cellStroke;
+                spec.strokeWidth = 0.6;
+            }
+            if (el.classList.contains('tmap-sector__label') || el.classList.contains('flow-group__label')) {
+                spec.fill = labelFill;
+            }
+            if (el.classList.contains('flow-group__count')) {
+                spec.fill = 'rgba(255,255,255,0.85)';
+            }
+        }));
 
         var mapG = document.createElementNS(ns, 'g');
         mapG.setAttribute('transform', 'translate(0, ' + HEAD_H + ')');
         while (clone.firstChild) mapG.appendChild(clone.firstChild);
         wrap.appendChild(mapG);
 
-        loadCaptureFontCSS().then(function (fontCSS) {
-            if (fontCSS) {
-                var styleEl = document.createElementNS(ns, 'style');
-                styleEl.textContent = fontCSS;
-                wrap.insertBefore(styleEl, wrap.firstChild);
-            }
-            var svgStr = new XMLSerializer().serializeToString(wrap);
-            var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
-            var url = URL.createObjectURL(blob);
-            var img = new Image();
-            img.onload = function () {
-                var canvas = document.createElement('canvas');
-                canvas.width = w * 2; canvas.height = totalH * 2;
-                var ctx = canvas.getContext('2d');
-                ctx.fillStyle = bgColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                URL.revokeObjectURL(url);
-                canvas.toBlob(function (b) {
-                    if (!b) return;
-                    var dl = URL.createObjectURL(b);
-                    var a = document.createElement('a');
-                    var stamp = (state.currentDate || '').replace(/[^0-9]/g, '');
-                    a.href = dl; a.download = 'orgo-flowmap-' + stamp + '-' + state.mode + '-' + state.view + '.png';
-                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-                    URL.revokeObjectURL(dl);
-                }, 'image/png');
-            };
-            img.onerror = function () { URL.revokeObjectURL(url); };
-            img.src = url;
-        });
+        var svgStr = new XMLSerializer().serializeToString(wrap);
+        var blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var img = new Image();
+        img.onload = function () {
+            var scale = 2;
+            var canvas = document.createElement('canvas');
+            canvas.width = w * scale; canvas.height = totalH * scale;
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = bgColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            URL.revokeObjectURL(url);
+            drawTextSpecs(ctx, textSpecs, scale, fontStack);
+            canvas.toBlob(function (b) {
+                if (!b) return;
+                var dl = URL.createObjectURL(b);
+                var a = document.createElement('a');
+                var stamp = (state.currentDate || '').replace(/[^0-9]/g, '');
+                a.href = dl; a.download = 'orgo-flowmap-' + stamp + '-' + state.mode + '-' + state.view + '.png';
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                URL.revokeObjectURL(dl);
+            }, 'image/png');
+        };
+        img.onerror = function () { URL.revokeObjectURL(url); };
+        img.src = url;
     }
 
     function exposeBridge() {
