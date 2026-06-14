@@ -75,17 +75,31 @@
         }
       ],
       "sector": "증권",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
+    },
+    {
+      "date": "20260219",
+      "change_rate": 29.21,
+      "close_price": 13800.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 1,
-    "count_15": 0,
-    "count_20": 0,
+    "count_10": 2,
+    "count_15": 1,
+    "count_20": 1,
     "count_limit": 0,
     "count_recent": 0,
-    "avg_rate": 11.07
+    "avg_rate": 20.14
   },
-  "built_at": "2026-06-12T19:57:40"
+  "built_at": "2026-06-14T07:17:58"
 }

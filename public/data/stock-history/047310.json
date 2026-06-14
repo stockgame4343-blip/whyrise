@@ -2,14 +2,64 @@
   "ticker": "047310",
   "name": "파워로직스",
   "market": "KOSDAQ",
-  "events": [],
+  "events": [
+    {
+      "date": "20260305",
+      "change_rate": 11.48,
+      "close_price": 5390.0,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20260119",
+      "change_rate": 16.47,
+      "close_price": 5870.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
+    },
+    {
+      "date": "20260114",
+      "change_rate": 29.84,
+      "close_price": 5700.0,
+      "rise_reason": "로봇/자동화",
+      "reason_confidence": "mid",
+      "reason_source": "news",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [
+        {
+          "title": "[이 시각 시황] CES가 달군 로봇주 기대감…관련주 상승세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000485973",
+          "source": "SBS Biz",
+          "date": "2026-01-13"
+        }
+      ],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
+    }
+  ],
   "stats": {
-    "count_10": 0,
-    "count_15": 0,
-    "count_20": 0,
+    "count_10": 3,
+    "count_15": 2,
+    "count_20": 1,
     "count_limit": 0,
     "count_recent": 0,
-    "avg_rate": 0
+    "avg_rate": 19.26
   },
-  "built_at": "2026-06-12T20:17:31"
+  "built_at": "2026-06-14T07:59:21"
 }

@@ -2,14 +2,57 @@
   "ticker": "040300",
   "name": "YTN",
   "market": "KOSDAQ",
-  "events": [],
+  "events": [
+    {
+      "date": "20260305",
+      "change_rate": 11.29,
+      "close_price": 3400.0,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "naver",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20251128",
+      "change_rate": 29.95,
+      "close_price": 4165.0,
+      "rise_reason": "상한가 — 사유 미수집",
+      "reason_confidence": "low",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
+      "date": "20251106",
+      "change_rate": 30.0,
+      "close_price": 3575.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
+    }
+  ],
   "stats": {
-    "count_10": 0,
-    "count_15": 0,
-    "count_20": 0,
-    "count_limit": 0,
+    "count_10": 3,
+    "count_15": 2,
+    "count_20": 2,
+    "count_limit": 2,
     "count_recent": 0,
-    "avg_rate": 0
+    "avg_rate": 23.75
   },
-  "built_at": "2026-06-12T20:19:40"
+  "built_at": "2026-06-14T08:03:50"
 }
