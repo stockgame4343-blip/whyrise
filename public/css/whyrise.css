@@ -864,79 +864,6 @@ body {
 }
 .stock-header__caption { margin-top: 22px; font-size: 13px; color: var(--text-secondary); }
 
-/* 종목 주요 기사 — 카드별 반복 대신 상단에서 중복 제거 */
-.stock-news-panel {
-    margin: 18px 0 22px;
-    padding: 18px 20px;
-    background: var(--glass-bg);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-.stock-news-panel__head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-.stock-news-panel__head h2 {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--text-primary);
-    letter-spacing: -.2px;
-}
-.stock-news-panel__head span {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    white-space: nowrap;
-}
-.stock-news-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-}
-.stock-news-item {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    min-width: 0;
-    padding: 11px 12px;
-    border-radius: 10px;
-    border: 1px solid var(--glass-border);
-    background: var(--glass-bg-strong);
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: background .15s, border-color .15s, transform .15s;
-}
-.stock-news-item:hover {
-    background: var(--bg-hover);
-    border-color: var(--glass-border-strong);
-    transform: translateY(-1px);
-}
-.stock-news-item__meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 0;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-.stock-news-item__title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 13px;
-    font-weight: 650;
-    line-height: 1.4;
-    color: var(--text-primary);
-}
-
 /* 타임라인 카드 — 글래스풍 */
 .timeline { display: flex; flex-direction: column; gap: 14px; }
 .event-card {
@@ -976,23 +903,39 @@ body {
     margin-top: 14px; line-height: 1.55;
     letter-spacing: -.2px;
 }
+/* 급등 카드 안에 그 날의 '상승 이유' 기사 직접 임베드 (상단 묶음 패널 대체) */
 .event-card__news {
-    margin-top: 14px; display: flex; flex-direction: column; gap: 6px;
+    margin-top: 14px; display: flex; flex-direction: column; gap: 7px;
 }
-.event-card__news a {
-    font-size: 13px; color: var(--text-secondary); text-decoration: none;
-    padding: 8px 12px; border-radius: 10px;
+.event-card__news-label {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; letter-spacing: -.2px;
+    color: var(--text-muted);
+}
+.event-card__news-label::before { content: '📰'; font-size: 12px; }
+.event-card__news-item {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 10px 13px; border-radius: 11px;
     background: var(--glass-bg-strong);
     border: 1px solid var(--glass-border);
-    display: flex; gap: 8px; align-items: baseline;
-    transition: all .15s;
+    border-left: 3px solid var(--wr-accent-soft);
+    color: var(--text-primary); text-decoration: none;
+    transition: background .15s, border-color .15s, transform .15s;
 }
-.event-card__news a:hover {
-    background: var(--glass-bg-strong);
-    color: var(--text-primary);
+.event-card__news-item:hover {
+    background: var(--bg-hover);
+    border-left-color: var(--wr-accent);
     transform: translateX(2px);
 }
-.event-card__news .news-source { color: var(--text-muted); font-size: 11px; flex-shrink: 0; }
+.event-card__news-title {
+    font-size: 14px; font-weight: 650; line-height: 1.45;
+    color: var(--text-primary); letter-spacing: -.2px;
+}
+.event-card__news-meta {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+}
+.event-card__news-source { color: var(--text-secondary); }
 .event-card__edit { margin-left: auto; }
 .event-empty {
     padding: 60px 24px;
@@ -1988,15 +1931,12 @@ body.page-treemap {
     .stock-header__stat-label { font-size: 10.5px; letter-spacing: .2px; }
     .stock-header__stat-value { font-size: 19px; }
     .stock-header__summary { font-size: 15px; line-height: 1.55; }
-    .stock-news-panel { margin: 14px 0 18px; padding: 15px 16px; border-radius: 14px; }
-    .stock-news-list { grid-template-columns: 1fr; }
-    .stock-news-panel__head { margin-bottom: 10px; }
-    .stock-news-item { padding: 10px 11px; }
 
     /* event-card 모바일 */
     .event-card { padding: 16px 18px; border-radius: 14px; }
     .event-card__rate { font-size: 17px; }
     .event-card__reason { font-size: 15px; }
+    .event-card__news-title { font-size: 13.5px; }
 }
 
 /* admin 편집 모드일 때 행 호버 우측에 ✏️ 버튼 표시 */

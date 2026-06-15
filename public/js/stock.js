@@ -223,6 +223,7 @@
         });
     }
 
+    //#region news-pure — 순수 함수 영역(DOM 비의존). scripts/test_event_news.js 가 이 블록을 추출해 Node 검증.
     // 모바일에서 finance.naver.com/item/news_read.naver?... 는 네이버가 m.stock.naver.com 404
     // 페이지로 리다이렉트시킴. 모바일 UA 일 때만 n.news.naver.com/mnews/article 형식으로 변환.
     // PC 는 기존 finance.naver.com 페이지 그대로.
@@ -298,19 +299,22 @@
     // 악재·역방향 — 상승 이유 설명에 부적합
     var NEWS_NEGATIVE = ['급락', '하락', '약세', '↓', '감소', '우려', '리스크', '불확실', '소송', '제재',
         '담합', '고발', '조사', '갈등', '논란', '경고', '버블', '분개', '실망', '상폐', '수상',
-        '주가조작', '시세조종', '손절', '불황', '위기', '파업', '화재', '유증', '유상증자'];
+        '주가조작', '시세조종', '손절', '불황', '위기', '파업', '화재', '유증', '유상증자',
+        '표류', '암초', '난항', '먹구름', '적신호', '급제동', '쇼크', '안갯속', '소외', '괴리',
+        '의혹', '구설', '뒷말', '적자전환', '먹튀'];
     // 카탈리스트 의미 반전 — "증설 연기"처럼 호재 키워드를 뒤집는 단어는 점수 불문 차단
     var NEWS_REVERSAL = ['연기', '중단', '취소', '철회', '결렬', '무산', '보류', '지연'];
     var NEWS_POSITIVE_OVERRIDE = ['적자 축소', '흑자'];  // '적자' 계열 중 호재 표현
     // 루틴 단신 — 수상·캠페인·인사 등 주가 영향 낮은 정형 기사
     var NEWS_ROUTINE = ['게시판', '캠페인', '어워드', '협력사', '선임', '임명', '부고', '주총', '연속'];
-    var NEWS_MAX_ITEMS = 8;        // 최종 노출 수
-    var NEWS_MAX_PER_DATE = 2;     // 같은 날짜(이벤트)당 최대 노출 — 사건 도배 방지
-    var NEWS_MIN_FILL = 3;         // 이유 게이트 통과가 이보다 적으면 보충 (인과/카탈리스트 보유 기사만)
+    var NEWS_PER_EVENT = 2;        // 급등 카드 1장당 최대 노출 기사 수 (그 날의 상승 이유 기사)
+    // 날짜 하드 게이트 — 이벤트별 news 풀은 날짜 스코프가 없어(그 종목 1년치 뉴스가 섞임) 점수만 보면
+    // 8개월 전 호재도 박힌다. "그 급등일의 이유 기사"여야 하므로 기사 날짜가 급등일과 N일 이내여야만 채택.
+    // (주말·공휴일 갭 고려 ±4일. 날짜 없는 기사는 그 날짜의 기사임을 보장 못 하므로 제외.)
+    var NEWS_MAX_GAP_DAYS = 4;
     var NEWS_DUP_JACCARD = 0.5;    // 제목 토큰 자카드 유사도 — 동일 사건 변형 기사 묶음 기준
     var NEWS_EVENT_BOOST_DIV = 15; // 이벤트 등락률 가중 분모 — +30% 사건 기사 = +2점 (영향 큰 상승 우선)
-    var NEWS_GATE_NAMED = 7;       // 게이트: 종목명 포함 기사
-    var NEWS_GATE_UNNAMED = 6;     // 게이트: 종목명 미포함 기사 (테마/정책 기사)
+    var NEWS_GATE_NAMED = 7;       // 게이트: 종목명 포함 기사 최저 점수
     var NEWS_GATE_FILL = 5.5;      // 보충 기사 최저 점수
     // 제목 선두 "주어," 패턴 — 주어가 다른 회사명이면 타종목 기사
     var NEWS_LEAD_TAG_RE = /^\s*[\[(【][^\])】]{0,24}[\])】]\s*/;
@@ -382,14 +386,16 @@
             }
         });
         score += Math.min(tok, 3) * 1.5;
-        // 사건 당일 기사 우대, 사건보다 한참 오래된 기사(재탕)는 감점
+        // 사건 당일 기사 우대. 날짜는 아래 dateOk 에서 하드 컷 — 여기선 당일 기사에 가점만.
         if (dayGap === 0) score += 1;
-        else if (dayGap !== null && dayGap > 30) score -= 2;
-        else if (dayGap !== null && dayGap > 7) score -= 1;
+        // 날짜 하드 게이트: 급등일과 NEWS_MAX_GAP_DAYS 이내 + 날짜 명시된 기사만 후보
+        var dateOk = dayGap !== null && dayGap <= NEWS_MAX_GAP_DAYS;
         // 영향 큰 상승(상한가)의 기사일수록 우선 — +30% 사건 = +2점
         score += Math.min(Math.max(eventRate || 0, 0), 30) / NEWS_EVENT_BOOST_DIV;
+        // 시황 노이즈 감점 — 종목명이 제목에 있으면("후성 20% 급등…관련주 강세") 종목 기사로 보고 가볍게,
+        // 이름 없으면(시장 전체 브리핑) 무겁게 감점.
         var noise = countHits(lowerTitle, NEWS_NOISE);
-        score -= noise * 2.5;
+        score -= noise * (hasName ? 1 : 2.5);
         var bundle = countHits(lowerTitle, NEWS_BUNDLE);
         if (!hasName) score -= bundle * 2.5;   // 이름 없는 묶음 기사 = 타종목/테마 전체 기사
         var routine = countHits(lowerTitle, NEWS_ROUTINE);
@@ -399,57 +405,57 @@
         if (negApplies) score -= Math.min(neg, 2) * 2;
         // 의미 반전(연기·중단·취소 등) — 호재 키워드가 있어도 상승 이유가 될 수 없음
         var reversed = countHits(lowerTitle, NEWS_REVERSAL) > 0;
-        // 타종목 기사 차단: 제목이 "주어," 로 시작하는데 주어에 이 종목명이 없으면
-        // 다른 회사 단독 기사일 확률이 높다 (예: HPSP 페이지의 "성호전자, …인수" 기사)
+        // 타종목 기사 차단: 제목 선두 "주어,"의 주어에 이 종목명이 없으면 다른 회사 단독 기사일 확률↑.
+        // 카드별 임베드는 "이 종목 급등 이유"라 단정하므로, 제목에 이름이 있어도(예: "파미셀, …두산…")
+        // 주어가 다른 종목이면 차단한다 — 이름 포함/미포함 모두 동일 적용 (정밀도 우선).
         var otherSubject = false;
-        if (!hasName) {
-            var m = title.replace(NEWS_LEAD_TAG_RE, '').match(NEWS_SUBJECT_RE);
-            if (m) otherSubject = true;
+        var subjMatch = title.replace(NEWS_LEAD_TAG_RE, '').match(NEWS_SUBJECT_RE);
+        if (subjMatch) {
+            var subjLower = subjMatch[1].toLowerCase();
+            otherSubject = nameLower ? subjLower.indexOf(nameLower) < 0 : true;
         }
-        // 게이트: 이름 포함 → 이유 신호(인과/급등표현/카탈리스트/토큰) 필요 (이름만으로 통과 금지)
-        //         이름 미포함 → 인과/카탈리스트 + 테마 토큰 결합 필요, 타사 주어·묶음·시황 불허
-        var ok = !reversed && (hasName
-            ? ((causal || rally || cat > 0 || tok > 0) && score >= NEWS_GATE_NAMED)
-            : (((causal && tok >= 1) || (cat >= 1 && tok >= 1) || tok >= 2) &&
-                !otherSubject && noise === 0 && bundle === 0 && score >= NEWS_GATE_UNNAMED));
-        // 보충 후보: 이름 포함 + 인과/카탈리스트 보유 + 노이즈·악재·루틴 없음
-        var fill = !reversed && hasName && (causal || rally || cat > 0) &&
+        // 게이트: 제목에 종목명이 있는 기사만 채택한다. 카드별 임베드는 "이 종목이 그 날 왜 올랐나"를
+        // 단정하므로, 이름조차 없는 시황·정책·테마 묶음 기사("삼성전자 신고가…반도체株 웃었다",
+        // "밸류업 지수 1위")는 이유 근거로 부적합 → 제외. (이름 포함 + 이유 신호 + 날짜·주어 조건)
+        var ok = dateOk && !reversed && !otherSubject && hasName &&
+            (causal || rally || cat > 0 || tok > 0) && score >= NEWS_GATE_NAMED;
+        // 보충 후보: 이름 포함 + 인과/카탈리스트 + 타사주어·노이즈·악재·루틴 없음
+        var fill = dateOk && !reversed && !otherSubject && hasName && (causal || rally || cat > 0) &&
             noise === 0 && routine === 0 && !negApplies && score >= NEWS_GATE_FILL;
         return { ok: ok, fill: fill, score: score };
     }
 
-    function collectMajorNews(events, ticker) {
-        var name = cleanNewsText(_stockName || '').toLowerCase();
+    // ── 이벤트 1건의 "왜 올랐는가" 기사 선별 — 그 급등일에 박을 기사를 점수 게이트로 고른다 ──
+    // 상단 묶음(collectMajorNews) 대신, 급등마다 해당 날짜의 이유 기사를 카드에 직접 붙인다.
+    // 1순위: 이유 게이트(ok) 통과 기사. 그게 0건일 때만 2순위(fill: 이름+인과/카탈리스트, 노이즈·악재 없음).
+    // 둘 다 없으면 빈 배열 — 수급/패턴 급등처럼 기사 없는 날은 억지로 노이즈를 박지 않는다(정직성 우선).
+    function pickEventNews(ev, nameLower) {
+        var tokens = importantTokens(ev.theme_tag, ev.sector, ev.rise_reason);
+        var evDate = String(ev.date || '').replace(/[^0-9]/g, '').slice(0, 8);
+        var evRate = Number(ev.change_rate || 0);
         var seen = {};
         var cands = [];
-        (events || []).forEach(function (ev) {
-            var tokens = importantTokens(ev.theme_tag, ev.sector, ev.rise_reason);
-            var evDate = String(ev.date || '').replace(/[^0-9]/g, '').slice(0, 8);
-            var evRate = Number(ev.change_rate || 0);
-            (ev.news || []).forEach(function (n) {
-                var keys = newsKeys(n);
-                if ((!keys.link && !keys.title) || seen[keys.link] || seen[keys.title]) return;
-                var title = cleanNewsText(n.title);
-                var href = safeLink(n.link);
-                if (!title || !href) return;
-                if (keys.link) seen[keys.link] = true;
-                if (keys.title) seen[keys.title] = true;
-                var lowerTitle = title.toLowerCase();
-                var newsDate = String(n.date || '').replace(/[^0-9]/g, '').slice(0, 8);
-                var r = scoreNews(title, lowerTitle, name, tokens,
-                    dateGapDays(newsDate, evDate), evRate);
-                cands.push({
-                    title: title,
-                    href: href,
-                    source: cleanNewsText(n.source),
-                    date: ev.date || '',
-                    newsDate: newsDate,
-                    eventRate: evRate,
-                    score: r.score,
-                    ok: r.ok,
-                    fill: r.fill,
-                    tokenSet: titleTokenSet(lowerTitle),
-                });
+        (ev.news || []).forEach(function (n) {
+            var keys = newsKeys(n);
+            if ((!keys.link && !keys.title) || seen[keys.link] || seen[keys.title]) return;
+            var title = cleanNewsText(n.title);
+            var href = safeLink(n.link);
+            if (!title || !href) return;
+            if (keys.link) seen[keys.link] = true;
+            if (keys.title) seen[keys.title] = true;
+            var lowerTitle = title.toLowerCase();
+            var newsDate = String(n.date || '').replace(/[^0-9]/g, '').slice(0, 8);
+            var r = scoreNews(title, lowerTitle, nameLower, tokens,
+                dateGapDays(newsDate, evDate), evRate);
+            cands.push({
+                title: title,
+                href: href,
+                source: cleanNewsText(n.source),
+                newsDate: newsDate,
+                score: r.score,
+                ok: r.ok,
+                fill: r.fill,
+                tokenSet: titleTokenSet(lowerTitle),
             });
         });
         cands.sort(function (a, b) { return b.score - a.score; });
@@ -462,69 +468,41 @@
         }
 
         var picked = [];
+        // 1순위: 이유 게이트 통과 기사 (점수 내림차순으로 이미 정렬됨)
         cands.forEach(function (c) {
+            if (picked.length >= NEWS_PER_EVENT) return;
             if (!c.ok || isDup(c, picked)) return;
             picked.push(c);
         });
-        // 보충: 이유 기사가 부족하면 이름매치 + 노이즈·악재 없는 기사로 채움 (없으면 패널 숨김 유지)
-        if (picked.length < NEWS_MIN_FILL) {
+        // 2순위: 통과 기사가 0건일 때만 보충 (이름매치 + 인과/카탈리스트, 노이즈·악재 없음)
+        if (!picked.length) {
             cands.forEach(function (c) {
-                if (picked.length >= NEWS_MIN_FILL) return;
-                if (c.ok || !c.fill || isDup(c, picked)) return;
+                if (picked.length >= NEWS_PER_EVENT) return;
+                if (!c.fill || isDup(c, picked)) return;
                 picked.push(c);
             });
         }
-        // 같은 날짜 도배 방지 후 날짜 내림차순(최근 사건 우선) 정렬
-        var perDate = {};
-        var chosen = [];
-        picked.forEach(function (c) {
-            var k = String(c.date);
-            perDate[k] = perDate[k] || 0;
-            if (perDate[k] >= NEWS_MAX_PER_DATE) return;
-            perDate[k]++;
-            chosen.push(c);
-        });
-        chosen.sort(function (a, b) {
-            var d = String(b.date).localeCompare(String(a.date));
-            if (d !== 0) return d;
-            return b.score - a.score;
-        });
-        return chosen.slice(0, NEWS_MAX_ITEMS);
+        return picked;
     }
+    //#endregion news-pure
 
-    function renderMajorNews(events, ticker) {
-        var $panel = document.getElementById('stockNewsPanel');
-        if (!$panel) return;
-        var items = collectMajorNews(events, ticker);
-        if (!items.length) {
-            $panel.innerHTML = '';
-            $panel.style.display = 'none';
-            return;
-        }
-        var html = '<div class="stock-news-panel__head">' +
-            '<h2>주요 기사</h2>' +
-            '<span>상승 이유 기사만</span>' +
-            '</div><div class="stock-news-list">';
-        items.forEach(function (item) {
-            // 날짜는 기사 자체 날짜 우선(이벤트 날짜와 다를 수 있음), 등락률 칩은 해당 급등 사건
-            var rateChip = item.eventRate
-                ? '<span style="color:var(--rise);font-weight:700">+' + item.eventRate.toFixed(1) + '%</span>'
-                : '';
-            html += '<a class="stock-news-item" href="' + item.href + '" target="_blank" rel="noopener noreferrer">' +
-                '<span class="stock-news-item__meta">' +
-                '<span>' + esc(formatDateCompact(item.newsDate || item.date)) + '</span>' +
-                rateChip +
-                (item.source ? '<span>' + esc(item.source) + '</span>' : '') +
-                '</span>' +
-                '<span class="stock-news-item__title">' + esc(item.title) + '</span>' +
-                '</a>';
+    function renderEventNews(ev, nameLower) {
+        var picks = pickEventNews(ev, nameLower);
+        if (!picks.length) return '';
+        var html = '<div class="event-card__news"><span class="event-card__news-label">이날 관련 기사</span>';
+        picks.forEach(function (p) {
+            html += '<a class="event-card__news-item" href="' + p.href + '" target="_blank" rel="noopener noreferrer">' +
+                '<span class="event-card__news-title">' + esc(p.title) + '</span>' +
+                '<span class="event-card__news-meta">' +
+                (p.source ? '<span class="event-card__news-source">' + esc(p.source) + '</span>' : '') +
+                (p.newsDate ? '<span>' + esc(formatDateCompact(p.newsDate)) + '</span>' : '') +
+                '</span></a>';
         });
         html += '</div>';
-        $panel.innerHTML = html;
-        $panel.style.display = 'block';
+        return html;
     }
 
-    function renderEventCard(ev, ticker) {
+    function renderEventCard(ev, ticker, nameLower) {
         var rowClass = '';
         if (ev.reason_status === 'edited') rowClass = ' row--edited';
         else if (ev.reason_status === 'missing') rowClass = ' row--missing';
@@ -551,6 +529,7 @@
             esc(ticker) + '" data-date="' + esc(ev.date) + '" title="이유 편집">✏️ 편집</button>' +
             '</div>' +
             reasonHtml +
+            renderEventNews(ev, nameLower) +
             '</article>';
     }
 
@@ -560,6 +539,7 @@
             $tl.innerHTML = '<div class="event-empty">최근 1년간 +10% 이상 기록이 없습니다.</div>';
             return;
         }
+        var nameLower = cleanNewsText(_stockName || '').toLowerCase();
         var groups = groupByYear(events);
         var html = '';
         groups.forEach(function (g) {
@@ -567,7 +547,7 @@
                 html += '<h2 class="timeline__year">' + g.year + '년 — ' + g.events.length + '건</h2>';
             }
             g.events.forEach(function (ev) {
-                html += renderEventCard(ev, ticker);
+                html += renderEventCard(ev, ticker, nameLower);
             });
         });
         $tl.innerHTML = html;
@@ -849,7 +829,6 @@
             }
             renderHeader(history.name || ticker, history.market || '', history.stats || {});
             startPricePolling(ticker);   // 현재가 스탯 — 장중 60초 폴링, 마감 후 1회(종가)
-            renderMajorNews(history.events || [], ticker);
             var $sum = document.getElementById('stockSummary');
             if ($sum) {
                 var summary = buildSummary(history.events || []);
