@@ -87,6 +87,12 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = Non
 DEFAULT_CUTOFF = 10.0   # 인덱스에 저장할 최저 컷 (클라 토글 +10/15/20/29.9 호환)
 DEFAULT_DAYS = 365
 
+# 최근 이벤트 뉴스 풀 보강 — 오늘/최근 급등은 사이트의 핵심이라, stock-rise 뉴스가 얇아도
+# 네이버 종목 뉴스(당일 타깃)로 풀을 채워 상세페이지 카드가 더 자주 '이유 기사'를 갖게 한다.
+RECENT_SUPPLEMENT_DAYS = 14   # 이벤트가 앵커(오늘)로부터 N일 이내면 보강 대상
+RECENT_NEWS_SPAN = 4          # 보강 뉴스 허용 날짜 범위(±일) — 상세페이지 카드 게이트와 동일
+RECENT_NEWS_MAX = 12          # 보강 후 이벤트당 뉴스 풀 상한
+
 
 # ── 유틸 ───────────────────────────────────────────────
 
@@ -189,6 +195,35 @@ def is_52w_high(ohlc: list[dict], idx: int) -> bool:
     return cur >= prior_max and cur > 0
 
 
+def _days_from_anchor(date_str: str, anchor_str: str) -> int | None:
+    """event date(YYYYMMDD) 와 anchor(YYYYMMDD) 사이 일수(절대값). 파싱 실패 시 None."""
+    try:
+        a = date(int(anchor_str[0:4]), int(anchor_str[4:6]), int(anchor_str[6:8]))
+        e = date(int(date_str[0:4]), int(date_str[4:6]), int(date_str[6:8]))
+        return abs((a - e).days)
+    except Exception:
+        return None
+
+
+def _merge_news(primary: list[dict], extra: list[dict], cap: int = RECENT_NEWS_MAX) -> list[dict]:
+    """primary(우선) 뒤에 extra 를 붙이되 link/title 중복 제거, cap 개로 제한."""
+    out: list[dict] = []
+    seen: set[str] = set()
+    for n in list(primary) + list(extra):
+        if not isinstance(n, dict):
+            continue
+        title = (n.get('title') or '').strip()
+        link = (n.get('link') or '').split('#')[0].strip()
+        key = link.lower() or title.lower()
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        out.append(n)
+        if len(out) >= cap:
+            break
+    return out
+
+
 def build_events_for_ticker(
     ticker: str,
     name: str,
@@ -198,6 +233,8 @@ def build_events_for_ticker(
     stockrise_lookup: dict[tuple[str, str], dict],
     fetch_news_fn,
     meta: dict | None = None,
+    supplement_news_fn=None,
+    anchor_str: str = '',
 ) -> list[dict]:
     """1년치 OHLC → 컷 이상 사건 events.
 
@@ -220,10 +257,16 @@ def build_events_for_ticker(
         if not d:
             continue
         is_high = is_52w_high(ohlc_sorted, i)
+        # 최근(앵커±N일) 이벤트는 당일 타깃 뉴스로 풀 보강 — 오늘치 카드 커버리지↑
+        _gap = _days_from_anchor(d, anchor_str) if anchor_str else None
+        recent = bool(supplement_news_fn and _gap is not None and _gap <= RECENT_SUPPLEMENT_DAYS)
 
         # 1) stock-rise 정답 우선
         sr = stockrise_lookup.get((d, ticker))
         if sr:
+            sr_news = sr.get('news') or []
+            if recent:
+                sr_news = _merge_news(sr_news, supplement_news_fn(ticker, d))
             events.append({
                 'date': d,
                 'change_rate': rate,
@@ -233,14 +276,14 @@ def build_events_for_ticker(
                 'reason_source': 'stockrise',
                 'reason_status': 'filled' if sr.get('rise_reason') else 'missing',
                 'theme_tag': sr.get('theme_tag') or '',
-                'news': sr.get('news') or [],
+                'news': sr_news,
                 'sector': sr.get('sector') or (meta or {}).get('sector', ''),
                 'is_52w_high': is_high,
                 'source': 'stockrise',
             })
             continue
 
-        # 2) 네이버 뉴스 + 추정
+        # 2) 네이버 뉴스 + 추정 (estimate_reason 입력은 ±1 그대로 — 사유 추정 회귀 방지)
         news_items = fetch_news_fn(ticker, d)
         est = estimate_reason(
             news_items=news_items,
@@ -248,6 +291,9 @@ def build_events_for_ticker(
             is_52w_high=is_high,
             meta=meta,
         )
+        est_news = [naver_client.normalize_news_item(n) for n in (news_items or [])[:5]]
+        if recent:
+            est_news = _merge_news(est_news, supplement_news_fn(ticker, d))
         events.append({
             'date': d,
             'change_rate': rate,
@@ -257,7 +303,7 @@ def build_events_for_ticker(
             'reason_source': est['reason_source'] or 'naver',
             'reason_status': est['reason_status'],
             'theme_tag': '',
-            'news': [naver_client.normalize_news_item(n) for n in (news_items or [])[:5]],
+            'news': est_news,
             'sector': (meta or {}).get('sector', ''),
             'is_52w_high': is_high,
             'source': 'estimated',
@@ -867,23 +913,32 @@ def build_full(args) -> int:
     # 3. 뉴스 캐시 (같은 ticker 한 번만 fetch — 최신 40건 기준)
     news_cache_by_ticker: dict[str, list[dict]] = {}
 
-    def fetch_news_fn(ticker: str, date_str: str) -> list[dict]:
+    def _raw_news(ticker: str) -> list[dict]:
         if ticker not in news_cache_by_ticker:
             try:
                 news_cache_by_ticker[ticker] = naver_client.fetch_stock_news(ticker, page_size=40)
             except Exception as e:
                 print(f'    news fetch fail {ticker}: {e}')
                 news_cache_by_ticker[ticker] = []
-        items = news_cache_by_ticker[ticker]
-        if not items:
-            return []
+        return news_cache_by_ticker[ticker]
+
+    def _news_within(ticker: str, date_str: str, span: int) -> list[dict]:
         target = int(date_str)
         out = []
-        for it in items:
+        for it in _raw_news(ticker):
             dt = (it.get('datetime') or '')[:8]
-            if dt.isdigit() and abs(int(dt) - target) <= 1:
+            if dt.isdigit() and abs(int(dt) - target) <= span:
                 out.append(it)
-        return out[:5]
+        return out
+
+    # 추정 경로 입력 — 기존과 동일(±1, raw, 5건). estimate_reason 회귀 방지로 윈도우 유지.
+    def fetch_news_fn(ticker: str, date_str: str) -> list[dict]:
+        return _news_within(ticker, date_str, 1)[:5]
+
+    # 최근 이벤트 풀 보강용 — 당일±SPAN 네이버 종목뉴스를 표준형으로. (캐시는 위와 공유)
+    def supplement_news_fn(ticker: str, date_str: str) -> list[dict]:
+        return [naver_client.normalize_news_item(it)
+                for it in _news_within(ticker, date_str, RECENT_NEWS_SPAN)]
 
     # 4. 종목별 OHLC + events
     index_meta: dict[str, dict] = {}
@@ -921,6 +976,8 @@ def build_full(args) -> int:
             stockrise_lookup=sr_lookup,
             fetch_news_fn=fetch_news_fn,
             meta={'sector': item.get('industryName') or ''},
+            supplement_news_fn=supplement_news_fn,
+            anchor_str=today.strftime('%Y%m%d'),
         )
         events = apply_overrides(events, ticker)
         # events 비어도 stock-history 빌드 — 종목 페이지가 "기록 없음" 안내라도 보여주도록.

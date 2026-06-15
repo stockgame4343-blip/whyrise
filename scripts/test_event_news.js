@@ -13,7 +13,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const STOCK_JS = path.join(ROOT, 'public', 'js', 'stock.js');
-const HIST_DIR = path.join(ROOT, 'public', 'data', 'stock-history');
+const HIST_DIR = process.env.WHY_HIST_DIR || path.join(ROOT, 'public', 'data', 'stock-history');
 
 // ── 1) 운영 순수 로직 추출 ──
 const src = fs.readFileSync(STOCK_JS, 'utf8');
