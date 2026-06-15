@@ -3884,35 +3884,6 @@ body.leaders2-embedded .date-picker {
 }
 .seg__btn--active:hover { color: var(--text-primary); }
 
-/* 비교용 샘플 — 시각화(tmap-tab) 컬러톤, 모양은 현행 라운딩(999px) 유지. 선택 후 제거 예정 */
-.seg-sample-row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px 10px;
-    padding: 0 4px 12px;
-}
-.seg-sample-row__label {
-    font-size: 11.5px;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-.seg--viz {
-    background: var(--bg-tertiary, rgba(127,127,127,.08));
-    border-color: transparent;
-}
-.seg--viz .seg__btn--active {
-    background: var(--bg-primary, var(--bg));
-    color: var(--text-primary);
-    box-shadow: 0 1px 3px rgba(0,0,0,.18);
-}
-[data-theme="light"] .seg--viz { background: rgba(0,0,0,0.05); }
-[data-theme="light"] .seg--viz .seg__btn--active {
-    background: #ffffff;
-    color: #191919;
-    box-shadow: 0 1px 3px rgba(0,0,0,.12);
-}
-
 @media (max-width: 768px) {
     /* 모바일: 날짜(좌)·관심(우)은 윗줄 유지, 세그먼트만 아래 줄 풀폭 3등분.
        1917 라인(@media 768)의 nowrap 을 파일 끝에서 재정의해 카스케이드로 이김. */
