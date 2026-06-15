@@ -36,21 +36,35 @@ var WhyTable = (function () {
 
     // 상승이유 표시 정리 — stock-rise 가 주는 "OO 관련 뉴스/이슈/보도" 군더더기 꼬리표를 떼고,
     // 테마칩과 중복되거나 의미 없는("테마") 문구는 숨긴다. (칩이 이미 카테고리를 보여줌)
+    // 상승이유 표시 정리 — "관련 뉴스" 군더더기·테마 중복은 정리하되, 의미 있는 문구는 그대로 둔다.
+    // "관련 뉴스"를 통째로 떼서 단어 하나만 남기지 않도록(사용자 피드백): 정상 문구는 유지하고
+    // 테마명 중복·순수 필러("테마 관련 뉴스")만 손본다.
     function cleanReasonText(reason, theme) {
-        var r = String(reason == null ? '' : reason).trim();
-        if (!r || r === '-') return '';
-        r = r.replace(/\s*관련\s*(뉴스|이슈|소식|보도)\s*$/, '')
-             .replace(/\s*보도\s*$/, '').trim();
-        if (!r || r === '테마' || r === '뉴스' || r === '관련') return '';
+        var orig = String(reason == null ? '' : reason).trim();
+        if (!orig || orig === '-') return '';
         var t = String(theme || '').replace(/\s*[\(（][^)）]*[\)）]\s*$/, '').trim();
-        if (t && r === t) return '';
-        // 이유가 테마명으로 시작하면 중복부 제거(칩에 이미 있음): "탈모 치료 신약"→"신약"
-        if (t && r.indexOf(t) === 0) {
-            var rest = r.slice(t.length).replace(/^[\s·,]+/, '').trim();
-            if (!rest) return '';
-            r = rest;
+        // 끝의 '보도'는 다단어로 남을 때만 제거("외국인 순매수 보도"→"외국인 순매수", "양산 보도"는 유지)
+        function trimTail(s) {
+            s = s.trim();
+            var nb = s.replace(/\s*보도\s*$/, '').trim();
+            return (nb && nb.indexOf(' ') >= 0) ? nb : s;
         }
-        return r;
+        function isFiller(s) {
+            return !s || s === '테마' || s === '관련'
+                || /^(관련\s*)?(뉴스|이슈|소식)$/.test(s)
+                || /^테마\s*관련\s*(뉴스|이슈|소식)?$/.test(s);
+        }
+        // 이유가 테마명으로 시작하면 중복부 제거: "탈모 치료 신약 관련 뉴스" → "신약 관련 뉴스"
+        var dedup = orig;
+        if (t && orig.indexOf(t) === 0) dedup = orig.slice(t.length).replace(/^[\s·,]+/, '').trim();
+        dedup = trimTail(dedup);
+        if (isFiller(dedup)) return '';   // "관련 뉴스"·"테마 관련 뉴스" 등 → 칩만 표시
+        // 중복 제거가 단어 1개로 너무 짧으면 다단어 원문 유지 — '한 단어만 띡' 방지
+        if (dedup.indexOf(' ') < 0) {
+            var full = trimTail(orig);
+            if (full.indexOf(' ') >= 0 && !isFiller(full)) return full;
+        }
+        return dedup;
     }
 
     var _currentData = [];
