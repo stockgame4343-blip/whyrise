@@ -336,7 +336,7 @@
     var NEWS_MAX_GAP_DAYS = 4;
     var NEWS_DUP_JACCARD = 0.5;    // 제목 토큰 자카드 유사도 — 동일 사건 변형 기사 묶음 기준
     var NEWS_EVENT_BOOST_DIV = 15; // 이벤트 등락률 가중 분모 — +30% 사건 기사 = +2점 (영향 큰 상승 우선)
-    var NEWS_GATE_NAMED = 7;       // 게이트: 종목명 포함 기사 최저 점수
+    var NEWS_GATE_NAMED = 6.5;     // 게이트: 종목명 포함 기사 최저 점수 (악재 하드차단 전제로 완화)
     var NEWS_GATE_FILL = 5.5;      // 보충 기사 최저 점수
     // 제목 선두 "주어," 패턴 — 주어가 다른 회사명이면 타종목 기사
     var NEWS_LEAD_TAG_RE = /^\s*[\[(【][^\])】]{0,24}[\])】]\s*/;
@@ -459,7 +459,8 @@
         // 인과(…소식에 급등)·카탈리스트(수주·임상·실적…)·테마 중 하나라도 있어야 '이유 있는 특징주'로 채택.
         // (rally= 급등표현만 있고 이유 없는 기사 → 단독 통과 금지. 사용자 피드백 2026-06-15)
         var hasReason = causal || cat > 0 || tok > 0;
-        var ok = dateOk && !reversed && !otherSubject && hasName &&
+        // 악재(negApplies)는 점수 불문 하드 차단 — 문턱을 낮춰도 "관리종목 우려·실적↓" 류가 새지 않게.
+        var ok = dateOk && !reversed && !otherSubject && !negApplies && hasName &&
             hasReason && score >= NEWS_GATE_NAMED;
         // 보충 후보: 이름 포함 + 인과/카탈리스트(이유 명시) + 타사주어·노이즈·악재·루틴 없음
         var fill = dateOk && !reversed && !otherSubject && hasName && (causal || cat > 0) &&
