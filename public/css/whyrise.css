@@ -457,8 +457,9 @@ body {
 /* ── 단순 툴바 (날짜 좌, 관심 우 — 메인 컬럼 폭에 한정) ── */
 .toolbar--simple {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 12px;
     padding: 18px 4px;
     margin-bottom: 8px;
 }
@@ -470,6 +471,7 @@ body {
 .toolbar--simple .toolbar__right {
     display: flex;
     align-items: center;
+    margin-left: auto;
 }
 .cutoff-count {
     background: var(--glass-bg);
@@ -3849,5 +3851,41 @@ body.leaders2-embedded .date-picker {
         justify-content: flex-start;
         gap: 6px;
     }
+}
+
+/* ── 시장 필터 세그먼트 (홈 툴바 — 전체/코스피/코스닥) ── */
+.seg {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+}
+.seg__btn {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all .15s;
+}
+.seg__btn:hover { color: var(--text-primary); }
+.seg__btn--active { background: var(--wr-accent); color: #fff; }
+.seg__btn--active:hover { color: #fff; }
+
+@media (max-width: 768px) {
+    /* 모바일: 날짜(좌)·관심(우)은 윗줄 유지, 세그먼트만 아래 줄 풀폭 3등분.
+       1917 라인(@media 768)의 nowrap 을 파일 끝에서 재정의해 카스케이드로 이김. */
+    .toolbar--simple { flex-wrap: wrap; row-gap: 10px; }
+    .toolbar--simple .seg { order: 3; flex: 1 1 100%; }
+    .toolbar--simple .seg__btn { flex: 1; text-align: center; }
 }
 

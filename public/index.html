@@ -52,7 +52,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260514a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260525f">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260615a">
 </head>
 <body>
     <script>
@@ -115,6 +115,11 @@
                 <button class="date-nav" id="dateNext" type="button">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
+            </div>
+            <div class="seg" id="marketSeg" role="group" aria-label="시장 선택">
+                <button class="seg__btn seg__btn--active" data-market="ALL" type="button">전체</button>
+                <button class="seg__btn" data-market="KOSPI" type="button">코스피</button>
+                <button class="seg__btn" data-market="KOSDAQ" type="button">코스닥</button>
             </div>
             <div class="toolbar__right">
                 <button class="tab tab--watchlist" id="watchlistBtn" type="button">
@@ -241,7 +246,7 @@
     <script src="/js/search.js?v=20260514a"></script>
     <script src="/js/admin.js?v=20260514a"></script>
     <script src="/js/ratings-sync.js?v=20260525a"></script>
-    <script src="/js/whyrise.js?v=20260611a"></script>
+    <script src="/js/whyrise.js?v=20260615a"></script>
     <script src="/js/visitor.js?v=20260610a"></script>
     <script>
     // placeholder rotation — 대표 종목 슥슥 회전

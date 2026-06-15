@@ -10,6 +10,7 @@ var WhyApp = (function () {
 
     var STORAGE_KEY = 'whyrise-ratings';
     var WATCHLIST_KEY = 'whyrise-watchlist-mode';
+    var MARKET_KEY = 'whyrise-market-filter';   // 'ALL' | 'KOSPI' | 'KOSDAQ'
     var THEME_KEY = 'theme';
     var CUTOFF = 15;   // 고정
     // 모든 메뉴에서 가려야 할 종목 — 에이프로젠바이오로직스, 졸스, 에이프로젠
@@ -157,6 +158,7 @@ var WhyApp = (function () {
     var state = {
         dates: [],
         currentDateIdx: 0,
+        marketFilter: 'ALL',  // 시장 필터 — 'ALL' | 'KOSPI' | 'KOSDAQ' (날짜·관심 모드 무관 공통)
         virtualDate: '',      // 라이브가 알려준 오늘 거래일 — 빌드(dates.json) 도착 전 라벨/피커용 (treemap 패턴)
         rankings: [],         // 원본 (필터 전)
         liveMap: null,        // /api/marketmap ticker→{change_rate,close_price,trading_value,market_cap(억원)} — 라이브 숫자 오버레이용
@@ -367,6 +369,12 @@ var WhyApp = (function () {
             });
             filtered.sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
         }
+        // 시장 필터 (전체/코스피/코스닥) — 관심·일반 양쪽 모드 공통 적용
+        if (state.marketFilter && state.marketFilter !== 'ALL') {
+            var _mkt = state.marketFilter;
+            filtered = filtered.filter(function (r) { return r.market === _mkt; });
+            emptyMsg = (_mkt === 'KOSPI' ? '코스피' : '코스닥') + ' 종목이 없습니다.';
+        }
         filtered.forEach(function (r, i) { r._displayRank = i + 1; });
 
         WhyTable.render(filtered, state.ratings, {
@@ -480,6 +488,34 @@ var WhyApp = (function () {
             $btn.classList.toggle('active', state.watchlistMode);
             try { localStorage.setItem(WATCHLIST_KEY, state.watchlistMode ? '1' : '0'); }
             catch (e) {}
+            applyCutoffAndRender();
+        });
+    }
+
+    function bindMarketFilter() {
+        var $seg = document.getElementById('marketSeg');
+        if (!$seg) return;
+        var btns = $seg.querySelectorAll('.seg__btn');
+        // 초기 복원
+        try {
+            var saved = localStorage.getItem(MARKET_KEY);
+            if (saved === 'ALL' || saved === 'KOSPI' || saved === 'KOSDAQ') state.marketFilter = saved;
+        } catch (e) {}
+        function syncActive() {
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.toggle('seg__btn--active',
+                    btns[i].getAttribute('data-market') === state.marketFilter);
+            }
+        }
+        syncActive();
+        $seg.addEventListener('click', function (e) {
+            var btn = e.target.closest('.seg__btn');
+            if (!btn) return;
+            var m = btn.getAttribute('data-market') || 'ALL';
+            if (m === state.marketFilter) return;
+            state.marketFilter = m;
+            syncActive();
+            try { localStorage.setItem(MARKET_KEY, m); } catch (e2) {}
             applyCutoffAndRender();
         });
     }
@@ -671,6 +707,7 @@ var WhyApp = (function () {
         bindThemeToggle();
         bindDateNav();
         bindWatchlistToggle();
+        bindMarketFilter();
         bindRatingsEvents();
         bindMemoModal();
         bindNewsModal();
