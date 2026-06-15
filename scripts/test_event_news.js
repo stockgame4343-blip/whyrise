@@ -74,16 +74,24 @@ const args = process.argv.slice(2);
 let tickers = [];
 let jsonOut = null;
 let sampleN = 40;
+let scanAll = false;
+let since = null;   // YYYYMMDD — 이 날짜 이후(>=) 이벤트만
 for (let i = 0; i < args.length; i++) {
     if (args[i] === '--tickers') { tickers = args.slice(i + 1).filter(a => !a.startsWith('--')); break; }
     if (args[i] === '--json') { jsonOut = args[i + 1]; i++; continue; }
+    if (args[i] === '--all') { scanAll = true; continue; }
+    if (args[i] === '--since') { since = String(args[i + 1] || '').replace(/[^0-9]/g, ''); i++; continue; }
     if (!args[i].startsWith('--')) sampleN = parseInt(args[i], 10) || sampleN;
 }
 const all = fs.readdirSync(HIST_DIR).filter(f => /^[0-9A-Z]{6}\.json$/i.test(f)).sort();
 if (!tickers.length) {
-    const step = Math.max(1, Math.floor(all.length / sampleN));
-    for (let i = 0; i < all.length && tickers.length < sampleN; i += step) {
-        tickers.push(all[i].replace('.json', ''));
+    if (scanAll) {
+        tickers = all.map(f => f.replace('.json', ''));
+    } else {
+        const step = Math.max(1, Math.floor(all.length / sampleN));
+        for (let i = 0; i < all.length && tickers.length < sampleN; i += step) {
+            tickers.push(all[i].replace('.json', ''));
+        }
     }
 }
 
@@ -97,7 +105,10 @@ for (const tk of tickers) {
     if (!fs.existsSync(fp)) continue;
     const d = JSON.parse(fs.readFileSync(fp, 'utf8'));
     const nameLower = String(d.name || '').toLowerCase();
-    const events = (d.events || []).map(ev => {
+    let srcEvents = d.events || [];
+    if (since) srcEvents = srcEvents.filter(ev => String(ev.date || '').slice(0, 8) >= since);
+    if (!srcEvents.length) continue;
+    const events = srcEvents.map(ev => {
         const picks = pickEventNews(ev, nameLower);
         evTotal++;
         if (picks.length) evWithPick++;

@@ -340,6 +340,22 @@
         return hits;
     }
 
+    // 종목명-제목 매칭(경계 인식) — 짧은 지주사명("LG","SK","DB" 등)이 자회사 기사
+    // ("LGU＋","LG전자","SK하이닉스")에 substring 으로 오인 매치되는 것을 막는다.
+    // 매치 직후 글자가 한글/영문/숫자면(=다른 고유명사로 이어짐) 불일치로 보고 다음 후보를 찾는다.
+    // 공백·문장부호·%·끝 등 경계로 끝나야 "그 종목"을 가리키는 매치로 인정.
+    var NAME_BOUNDARY_RE = /[a-z0-9가-힣]/;
+    function nameInTitle(lowerTitle, nameLower) {
+        if (!nameLower) return false;
+        var from = 0, idx;
+        while ((idx = lowerTitle.indexOf(nameLower, from)) >= 0) {
+            var after = lowerTitle.charAt(idx + nameLower.length);
+            if (!after || !NAME_BOUNDARY_RE.test(after)) return true;
+            from = idx + 1;
+        }
+        return false;
+    }
+
     function titleTokenSet(lowerTitle) {
         var set = {};
         lowerTitle.split(NEWS_SPLIT_RE).forEach(function (w) {
@@ -364,7 +380,7 @@
 
     function scoreNews(title, lowerTitle, nameLower, tokens, dayGap, eventRate) {
         var score = 0;
-        var hasName = !!(nameLower && lowerTitle.indexOf(nameLower) >= 0);
+        var hasName = nameInTitle(lowerTitle, nameLower);
         if (hasName) score += 4;
         var causal = NEWS_CAUSAL_RE.test(title);
         if (causal) score += 3;
@@ -412,7 +428,7 @@
         var subjMatch = title.replace(NEWS_LEAD_TAG_RE, '').match(NEWS_SUBJECT_RE);
         if (subjMatch) {
             var subjLower = subjMatch[1].toLowerCase();
-            otherSubject = nameLower ? subjLower.indexOf(nameLower) < 0 : true;
+            otherSubject = nameLower ? !nameInTitle(subjLower, nameLower) : true;
         }
         // 게이트: 제목에 종목명이 있는 기사만 채택한다. 카드별 임베드는 "이 종목이 그 날 왜 올랐나"를
         // 단정하므로, 이름조차 없는 시황·정책·테마 묶음 기사("삼성전자 신고가…반도체株 웃었다",
