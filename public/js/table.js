@@ -36,35 +36,34 @@ var WhyTable = (function () {
 
     // 상승이유 표시 정리 — stock-rise 가 주는 "OO 관련 뉴스/이슈/보도" 군더더기 꼬리표를 떼고,
     // 테마칩과 중복되거나 의미 없는("테마") 문구는 숨긴다. (칩이 이미 카테고리를 보여줌)
-    // 상승이유 표시 정리 — "관련 뉴스" 군더더기·테마 중복은 정리하되, 의미 있는 문구는 그대로 둔다.
-    // "관련 뉴스"를 통째로 떼서 단어 하나만 남기지 않도록(사용자 피드백): 정상 문구는 유지하고
-    // 테마명 중복·순수 필러("테마 관련 뉴스")만 손본다.
+    // 상승이유 표시 정리 — 이유 칸을 절대 비우지 않는다(빈칸=오류처럼 보임, 사용자 피드백).
+    //  · 정상 문구는 그대로("M&A 관련 뉴스"), 단어 하나로 깎지 않음
+    //  · 테마명 중복은 다단어로 남을 때만 제거("탈모 치료 신약 관련 뉴스"→"신약 관련 뉴스"),
+    //    비거나 짧아지면 원문 유지("남북경협 관련 뉴스"는 그대로, 테마와 겹쳐도 OK)
+    //  · 무의미 placeholder "테마 관련 뉴스"는 실제 테마명으로 구체화("항공 관련 뉴스")
     function cleanReasonText(reason, theme) {
         var orig = String(reason == null ? '' : reason).trim();
-        if (!orig || orig === '-') return '';
         var t = String(theme || '').replace(/\s*[\(（][^)）]*[\)）]\s*$/, '').trim();
-        // 끝의 '보도'는 다단어로 남을 때만 제거("외국인 순매수 보도"→"외국인 순매수", "양산 보도"는 유지)
+        var tShort = t.split('/')[0].trim();
+        // 이유가 없으면 테마 기반으로 채움(빈칸 금지). 테마도 없으면 '' (호출부에서 '-').
+        if (!orig || orig === '-') return tShort ? (tShort + ' 관련 뉴스') : '';
+        // "테마"/"테마 관련 뉴스" placeholder → 실제 테마명
+        if (orig === '테마' || /^테마\s*관련\s*(뉴스|이슈|소식)?$/.test(orig)) {
+            return tShort ? (tShort + ' 관련 뉴스') : orig;
+        }
+        // 끝 '보도'는 다단어로 남을 때만 제거("외국인 순매수 보도"→"외국인 순매수", "양산 보도" 유지)
         function trimTail(s) {
-            s = s.trim();
             var nb = s.replace(/\s*보도\s*$/, '').trim();
             return (nb && nb.indexOf(' ') >= 0) ? nb : s;
         }
-        function isFiller(s) {
-            return !s || s === '테마' || s === '관련'
-                || /^(관련\s*)?(뉴스|이슈|소식)$/.test(s)
-                || /^테마\s*관련\s*(뉴스|이슈|소식)?$/.test(s);
+        var r = trimTail(orig);
+        // 테마명 중복 제거 — 다단어 좋은 문구로 남을 때만(아니면 원문 유지, 빈칸 금지)
+        if (t && r.indexOf(t) === 0) {
+            var d = r.slice(t.length).replace(/^[\s·,]+/, '').trim();
+            var dFiller = !d || d === '관련' || /^(관련\s*)?(뉴스|이슈|소식)$/.test(d);
+            if (!dFiller && d.indexOf(' ') >= 0) r = d;
         }
-        // 이유가 테마명으로 시작하면 중복부 제거: "탈모 치료 신약 관련 뉴스" → "신약 관련 뉴스"
-        var dedup = orig;
-        if (t && orig.indexOf(t) === 0) dedup = orig.slice(t.length).replace(/^[\s·,]+/, '').trim();
-        dedup = trimTail(dedup);
-        if (isFiller(dedup)) return '';   // "관련 뉴스"·"테마 관련 뉴스" 등 → 칩만 표시
-        // 중복 제거가 단어 1개로 너무 짧으면 다단어 원문 유지 — '한 단어만 띡' 방지
-        if (dedup.indexOf(' ') < 0) {
-            var full = trimTail(orig);
-            if (full.indexOf(' ') >= 0 && !isFiller(full)) return full;
-        }
-        return dedup;
+        return r;
     }
 
     var _currentData = [];
@@ -294,9 +293,8 @@ var WhyTable = (function () {
             // 이유 (hero) — 태그·이유·편집 모두 한 줄에
             var rawTag = r.theme_tag || '';
             var displayTag = shortenTheme(rawTag);
-            // "OO 관련 뉴스" 군더더기 제거 + 테마칩 중복 숨김. 이유도 칩도 없을 때만 '-'.
-            var cleanedReason = cleanReasonText(r.rise_reason, rawTag);
-            var reason = cleanedReason || (displayTag ? '' : '-');
+            // 이유는 항상 채움(빈칸=오류처럼 보임). 테마 중복·"테마 관련 뉴스"만 다듬고 문구는 유지.
+            var reason = cleanReasonText(r.rise_reason, rawTag) || '-';
             var eventDate = opts.watchlistMode ? (r._historyDate || r.date || '') : '';
             var editDate = eventDate || date;
             var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + tEsc +

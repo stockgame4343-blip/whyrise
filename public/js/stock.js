@@ -26,31 +26,27 @@
 
     // 상승이유 표시 정리 — stock-rise 의 "OO 관련 뉴스/이슈/보도" 군더더기 꼬리표 제거 +
     // 테마칩과 중복되거나 의미 없는("테마") 문구 숨김. 홈(table.js) 과 동일 규칙.
-    // 상승이유 표시 정리 — "관련 뉴스" 군더더기·테마 중복은 정리하되, 의미 있는 문구는 그대로 둔다.
-    // "관련 뉴스"를 통째로 떼서 단어 하나만 남기지 않도록(사용자 피드백). 홈(table.js) 과 동일 규칙.
+    // 상승이유 표시 정리 — 이유 칸을 비우지 않는다(빈칸=오류처럼 보임). 홈(table.js) 과 동일 규칙.
+    //  정상 문구 유지("M&A 관련 뉴스"), 테마 중복은 다단어로 남을 때만 제거, "테마 관련 뉴스"는 테마명으로.
     function cleanReasonText(reason, theme) {
         var orig = String(reason == null ? '' : reason).trim();
-        if (!orig || orig === '-') return '';
         var t = String(theme || '').replace(/\s*[\(（][^)）]*[\)）]\s*$/, '').trim();
+        var tShort = t.split('/')[0].trim();
+        if (!orig || orig === '-') return tShort ? (tShort + ' 관련 뉴스') : '';
+        if (orig === '테마' || /^테마\s*관련\s*(뉴스|이슈|소식)?$/.test(orig)) {
+            return tShort ? (tShort + ' 관련 뉴스') : orig;
+        }
         function trimTail(s) {
-            s = s.trim();
             var nb = s.replace(/\s*보도\s*$/, '').trim();
             return (nb && nb.indexOf(' ') >= 0) ? nb : s;
         }
-        function isFiller(s) {
-            return !s || s === '테마' || s === '관련'
-                || /^(관련\s*)?(뉴스|이슈|소식)$/.test(s)
-                || /^테마\s*관련\s*(뉴스|이슈|소식)?$/.test(s);
+        var r = trimTail(orig);
+        if (t && r.indexOf(t) === 0) {
+            var d = r.slice(t.length).replace(/^[\s·,]+/, '').trim();
+            var dFiller = !d || d === '관련' || /^(관련\s*)?(뉴스|이슈|소식)$/.test(d);
+            if (!dFiller && d.indexOf(' ') >= 0) r = d;
         }
-        var dedup = orig;
-        if (t && orig.indexOf(t) === 0) dedup = orig.slice(t.length).replace(/^[\s·,]+/, '').trim();
-        dedup = trimTail(dedup);
-        if (isFiller(dedup)) return '';
-        if (dedup.indexOf(' ') < 0) {
-            var full = trimTail(orig);
-            if (full.indexOf(' ') >= 0 && !isFiller(full)) return full;
-        }
-        return dedup;
+        return r;
     }
 
     function getTicker() {
