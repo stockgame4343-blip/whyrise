@@ -3878,8 +3878,11 @@ body.leaders2-embedded .date-picker {
     transition: all .15s;
 }
 .seg__btn:hover { color: var(--text-primary); }
-.seg__btn--active { background: var(--wr-accent); color: #fff; }
-.seg__btn--active:hover { color: #fff; }
+.seg__btn--active {
+    background: var(--wr-accent-soft);   /* 솔리드 블루 → 옅은 블루 틴트로 톤다운 */
+    color: var(--text-primary);
+}
+.seg__btn--active:hover { color: var(--text-primary); }
 
 @media (max-width: 768px) {
     /* 모바일: 날짜(좌)·관심(우)은 윗줄 유지, 세그먼트만 아래 줄 풀폭 3등분.
