@@ -52,7 +52,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260514a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260615b">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260615c">
 </head>
 <body>
     <script>
@@ -128,6 +128,16 @@
                 </button>
             </div>
         </nav>
+
+        <!-- 임시 비교 샘플 (참고용) — 시각화(tmap-tab) 버튼 컬러톤, 모양은 현행 라운딩 유지. 결정 후 제거 -->
+        <div class="seg-sample-row">
+            <span class="seg-sample-row__label">샘플 · 시각화 버튼 톤 (비교용, 클릭 안 됨)</span>
+            <div class="seg seg--viz" aria-hidden="true">
+                <button class="seg__btn" type="button" tabindex="-1">전체</button>
+                <button class="seg__btn seg__btn--active" type="button" tabindex="-1">코스피</button>
+                <button class="seg__btn" type="button" tabindex="-1">코스닥</button>
+            </div>
+        </div>
 
         <div class="message" id="message" style="display:none;"></div>
         <div class="loading" id="loading" style="display:none;">데이터 로딩 중...</div>
