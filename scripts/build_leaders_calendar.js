@@ -1,0 +1,122 @@
+/**
+ * 일자별 '오늘의 대장' 3종(대장주/대장섹터/대장테마) precompute
+ *   → public/data/leaders-calendar.json  (캘린더(샘플2)가 읽는 작은 인덱스)
+ *
+ * stock-rise 일별 랭킹 JSON(약 334KB×수십일)을 클라가 통째로 받지 않도록 빌드 때 미리 계산한다.
+ * 대장 산출 로직은 public/js/report.js 의 pickLeader/buildGroups 와 동일(결과 일치 목적).
+ *
+ *   node scripts/build_leaders_calendar.js
+ */
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
+
+const RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data';
+const OUT = path.resolve(__dirname, '..', 'public', 'data', 'leaders-calendar.json');
+
+// report.js 와 동일 상수
+const BLOCKED = { '003060': 1, '018700': 1, '007460': 1 };
+const RISE_CUTOFF = 15;
+const LEADER_CUTOFF = 20;
+const GROUP_MIN = 3;
+
+function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
+
+function themeTags(row) {
+    var out = [], seen = {};
+    function add(v) { v = String(v || '').trim(); if (!v || seen[v]) return; seen[v] = 1; out.push(v); }
+    if (Array.isArray(row && row.theme_tags)) row.theme_tags.forEach(add);
+    add(row && row.theme_tag);
+    return out;
+}
+
+function isActive(row, cutoff) {
+    if (!row || !row.ticker || BLOCKED[row.ticker]) return false;
+    return num(row.change_rate) >= cutoff;
+}
+
+function buildGroups(rows, type) {
+    var by = {};
+    rows.forEach(function (row) {
+        var keys = type === 'theme' ? themeTags(row) : [String(row.sector || '').trim()];
+        var rowSeen = {};
+        keys.forEach(function (key) {
+            if (!key || rowSeen[key]) return;
+            rowSeen[key] = 1;
+            if (!by[key]) by[key] = { key: key, count: 0, sumRate: 0, totalVolume: 0, _t: {} };
+            if (by[key]._t[row.ticker]) return;
+            by[key]._t[row.ticker] = 1;
+            by[key].count += 1;
+            by[key].sumRate += num(row.change_rate);
+            by[key].totalVolume += num(row.trading_value);
+        });
+    });
+    return Object.keys(by).map(function (k) {
+        var g = by[k]; g.avgRate = g.count ? g.sumRate / g.count : 0; return g;
+    }).filter(function (g) { return g.count >= GROUP_MIN; })
+      .sort(function (a, b) {
+          return b.count - a.count || b.avgRate - a.avgRate || b.totalVolume - a.totalVolume;
+      });
+}
+
+function pickLeader(rows) {
+    var cands = (rows || []).filter(function (r) {
+        return !BLOCKED[r.ticker] && num(r.change_rate) >= LEADER_CUTOFF && num(r.trading_value) > 0;
+    });
+    if (!cands.length) return null;
+    var maxVol = Math.max.apply(null, cands.map(function (r) { return num(r.trading_value); }));
+    var peers = cands.filter(function (r) { return num(r.trading_value) >= maxVol * 0.7; });
+    var maxChg = Math.max.apply(null, peers.map(function (r) { return num(r.change_rate); }));
+    function score(r) {
+        var v = maxVol > 0 ? num(r.trading_value) / maxVol : 0;
+        var c = maxChg > 0 ? num(r.change_rate) / maxChg : 0;
+        return v * 70 + c * 30;
+    }
+    peers.sort(function (a, b) {
+        return score(b) - score(a) ||
+            num(b.trading_value) - num(a.trading_value) ||
+            num(b.change_rate) - num(a.change_rate);
+    });
+    return peers[0];
+}
+
+function fetchJson(url) {
+    return new Promise(function (resolve, reject) {
+        https.get(url, { headers: { 'User-Agent': 'whyrise-build' } }, function (res) {
+            if (res.statusCode !== 200) { res.resume(); return reject(new Error('HTTP ' + res.statusCode)); }
+            var data = '';
+            res.on('data', function (c) { data += c; });
+            res.on('end', function () { try { resolve(JSON.parse(data)); } catch (e) { reject(e); } });
+        }).on('error', reject);
+    });
+}
+
+async function main() {
+    const dates = await fetchJson(RAW + '/dates.json');
+    if (!Array.isArray(dates) || !dates.length) throw new Error('no dates');
+    const days = {};
+    for (const d of dates) {
+        try {
+            const day = await fetchJson(RAW + '/' + d + '.json');
+            const rk = day.rankings || [];
+            const active = rk.filter(function (r) { return isActive(r, RISE_CUTOFF); });
+            const sectors = buildGroups(active, 'sector');
+            const themes = buildGroups(active, 'theme');
+            const leader = pickLeader(rk);
+            days[d] = {
+                stock: leader ? { ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10 } : null,
+                sector: sectors[0] ? { name: sectors[0].key, count: sectors[0].count, avgRate: Math.round(sectors[0].avgRate * 10) / 10 } : null,
+                theme: themes[0] ? { name: themes[0].key, count: themes[0].count, avgRate: Math.round(themes[0].avgRate * 10) / 10 } : null,
+            };
+            console.log(d, '|주:', days[d].stock && days[d].stock.name, '|섹:', days[d].sector && days[d].sector.name, '|테:', days[d].theme && days[d].theme.name);
+        } catch (e) {
+            console.error('  skip', d, e.message);
+        }
+    }
+    const payload = { built_at: new Date().toISOString().slice(0, 19), days: days };
+    fs.writeFileSync(OUT, JSON.stringify(payload), 'utf8');
+    console.log('\nwrote', OUT, '—', Object.keys(days).length, 'days');
+}
+
+main().catch(function (e) { console.error(e); process.exit(1); });
