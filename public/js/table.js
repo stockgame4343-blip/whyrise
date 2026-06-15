@@ -34,6 +34,25 @@ var WhyTable = (function () {
         return esc(normalizeNewsLink(s));
     }
 
+    // 상승이유 표시 정리 — stock-rise 가 주는 "OO 관련 뉴스/이슈/보도" 군더더기 꼬리표를 떼고,
+    // 테마칩과 중복되거나 의미 없는("테마") 문구는 숨긴다. (칩이 이미 카테고리를 보여줌)
+    function cleanReasonText(reason, theme) {
+        var r = String(reason == null ? '' : reason).trim();
+        if (!r || r === '-') return '';
+        r = r.replace(/\s*관련\s*(뉴스|이슈|소식|보도)\s*$/, '')
+             .replace(/\s*보도\s*$/, '').trim();
+        if (!r || r === '테마' || r === '뉴스' || r === '관련') return '';
+        var t = String(theme || '').replace(/\s*[\(（][^)）]*[\)）]\s*$/, '').trim();
+        if (t && r === t) return '';
+        // 이유가 테마명으로 시작하면 중복부 제거(칩에 이미 있음): "탈모 치료 신약"→"신약"
+        if (t && r.indexOf(t) === 0) {
+            var rest = r.slice(t.length).replace(/^[\s·,]+/, '').trim();
+            if (!rest) return '';
+            r = rest;
+        }
+        return r;
+    }
+
     var _currentData = [];
     var _lastRatings = {};
     var _lastOpts = {};
@@ -261,7 +280,9 @@ var WhyTable = (function () {
             // 이유 (hero) — 태그·이유·편집 모두 한 줄에
             var rawTag = r.theme_tag || '';
             var displayTag = shortenTheme(rawTag);
-            var reason = r.rise_reason || '-';
+            // "OO 관련 뉴스" 군더더기 제거 + 테마칩 중복 숨김. 이유도 칩도 없을 때만 '-'.
+            var cleanedReason = cleanReasonText(r.rise_reason, rawTag);
+            var reason = cleanedReason || (displayTag ? '' : '-');
             var eventDate = opts.watchlistMode ? (r._historyDate || r.date || '') : '';
             var editDate = eventDate || date;
             var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + tEsc +

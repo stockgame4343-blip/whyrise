@@ -24,6 +24,25 @@
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
+    // 상승이유 표시 정리 — stock-rise 의 "OO 관련 뉴스/이슈/보도" 군더더기 꼬리표 제거 +
+    // 테마칩과 중복되거나 의미 없는("테마") 문구 숨김. 홈(table.js) 과 동일 규칙.
+    function cleanReasonText(reason, theme) {
+        var r = String(reason == null ? '' : reason).trim();
+        if (!r || r === '-') return '';
+        r = r.replace(/\s*관련\s*(뉴스|이슈|소식|보도)\s*$/, '')
+             .replace(/\s*보도\s*$/, '').trim();
+        if (!r || r === '테마' || r === '뉴스' || r === '관련') return '';
+        var t = String(theme || '').replace(/\s*[\(（][^)）]*[\)）]\s*$/, '').trim();
+        if (t && r === t) return '';
+        // 이유가 테마명으로 시작하면 중복부 제거(칩에 이미 있음): "탈모 치료 신약"→"신약"
+        if (t && r.indexOf(t) === 0) {
+            var rest = r.slice(t.length).replace(/^[\s·,]+/, '').trim();
+            if (!rest) return '';
+            r = rest;
+        }
+        return r;
+    }
+
     function getTicker() {
         var qs = new URLSearchParams(window.location.search);
         var t = qs.get('ticker');
@@ -532,7 +551,7 @@
         var rate = (ev.change_rate || 0);
         var rateLabel = (rate >= 29.9) ? '<span class="event-card__limit">상한가</span>' : '';
         var hi52w = ev.is_52w_high ? '<span class="event-card__highflag">52주 신고가</span>' : '';
-        var reasonText = (ev.reason_status === 'missing') ? '' : (ev.rise_reason || '');
+        var reasonText = (ev.reason_status === 'missing') ? '' : cleanReasonText(ev.rise_reason, ev.theme_tag);
         var reasonHtml = reasonText
             ? '<div class="' + reasonClass(ev.reason_status, ev.reason_confidence) + '">' + esc(reasonText) + '</div>'
             : '';
