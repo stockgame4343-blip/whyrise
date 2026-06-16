@@ -30,6 +30,7 @@ function themeTags(row) {
     add(row && row.theme_tag);
     return out;
 }
+function themeOf(row) { var t = themeTags(row); return t.length ? t[0] : ''; }
 
 function isActive(row, cutoff) {
     if (!row || !row.ticker || BLOCKED[row.ticker]) return false;
@@ -44,12 +45,15 @@ function buildGroups(rows, type) {
         keys.forEach(function (key) {
             if (!key || rowSeen[key]) return;
             rowSeen[key] = 1;
-            if (!by[key]) by[key] = { key: key, count: 0, sumRate: 0, totalVolume: 0, _t: {} };
+            if (!by[key]) by[key] = { key: key, count: 0, sumRate: 0, totalVolume: 0, _t: {}, top: '', topRate: -1 };
             if (by[key]._t[row.ticker]) return;
             by[key]._t[row.ticker] = 1;
             by[key].count += 1;
             by[key].sumRate += num(row.change_rate);
             by[key].totalVolume += num(row.trading_value);
+            // 그룹 내 '대장' = 상승률 최고(동률은 거래대금)
+            var cr = num(row.change_rate);
+            if (cr > by[key].topRate) { by[key].topRate = cr; by[key].top = row.name; }
         });
     });
     return Object.keys(by).map(function (k) {
@@ -115,9 +119,18 @@ async function main() {
             const themes = buildGroups(active, 'theme');
             const leader = pickLeader(rk);
             days[d] = {
-                stock: leader ? { ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10 } : null,
-                sector: sectors[0] ? { name: sectors[0].key, count: sectors[0].count, avgRate: Math.round(sectors[0].avgRate * 10) / 10 } : null,
-                theme: themes[0] ? { name: themes[0].key, count: themes[0].count, avgRate: Math.round(themes[0].avgRate * 10) / 10 } : null,
+                stock: leader ? {
+                    ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10,
+                    sector: String(leader.sector || '').trim(), theme: themeOf(leader),
+                } : null,
+                sector: sectors[0] ? {
+                    name: sectors[0].key, count: sectors[0].count,
+                    avgRate: Math.round(sectors[0].avgRate * 10) / 10, top: sectors[0].top,
+                } : null,
+                theme: themes[0] ? {
+                    name: themes[0].key, count: themes[0].count,
+                    avgRate: Math.round(themes[0].avgRate * 10) / 10, top: themes[0].top,
+                } : null,
             };
             console.log(d, '|주:', days[d].stock && days[d].stock.name, '|섹:', days[d].sector && days[d].sector.name, '|테:', days[d].theme && days[d].theme.name);
         } catch (e) {
