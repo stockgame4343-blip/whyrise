@@ -93,6 +93,11 @@ function fetchJson(url) {
 }
 
 async function main() {
+    // 누적(merge) — 기존 캘린더를 읽어 두고, stock-rise 가 보관하는 기간(약 43일)만 새로 계산해 합친다.
+    // stock-rise 의 dates.json 은 롤링 윈도(오래된 날 삭제)라, 합치지 않으면 캘린더도 43일에 머문다.
+    // 매일 빌드에서 이 스크립트가 돌면 새 날이 누적되어 시간이 지날수록 1년치에 가까워진다.
+    var existing = {};
+    try { existing = (JSON.parse(fs.readFileSync(OUT, 'utf8')) || {}).days || {}; } catch (e) { existing = {}; }
     const dates = await fetchJson(RAW + '/dates.json');
     if (!Array.isArray(dates) || !dates.length) throw new Error('no dates');
     const days = {};
@@ -114,9 +119,12 @@ async function main() {
             console.error('  skip', d, e.message);
         }
     }
-    const payload = { built_at: new Date().toISOString().slice(0, 19), days: days };
+    // 기존 + 신규 합치기(신규가 같은 날짜는 갱신, 기존-only 옛 날짜는 보존 → 누적)
+    const mergedDays = Object.assign({}, existing, days);
+    const payload = { built_at: new Date().toISOString().slice(0, 19), days: mergedDays };
     fs.writeFileSync(OUT, JSON.stringify(payload), 'utf8');
-    console.log('\nwrote', OUT, '—', Object.keys(days).length, 'days');
+    const before = Object.keys(existing).length, after = Object.keys(mergedDays).length;
+    console.log('\nwrote', OUT, '—', after, 'days (기존', before, '+ 신규', Object.keys(days).length, '→ 누적', after, ')');
 }
 
 main().catch(function (e) { console.error(e); process.exit(1); });

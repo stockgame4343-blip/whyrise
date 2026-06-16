@@ -193,6 +193,12 @@ jobs:
             python3 scripts/build-history.py --days 30 --cutoff "$CUTOFF"
           fi
 
+      # 오늘의 대장 캘린더(샘플2) — stock-rise 일별 대장 3종을 누적 계산. 비핵심이라 실패해도 본빌드 유지.
+      - name: Build leaders calendar
+        if: steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental')
+        continue-on-error: true
+        run: node scripts/build_leaders_calendar.js
+
       - name: Diff guard (full only)
         if: steps.gate.outputs.skip != 'true' && steps.mode.outputs.mode == 'full'
         run: |
