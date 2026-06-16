@@ -57,9 +57,11 @@
             transition: transform .12s, box-shadow .12s;
         }
         .cal-cell--blank { background: transparent; border-color: transparent; }
-        .cal-cell--empty { opacity: .55; }
-        .cal-cell--data { cursor: default; }
-        a.cal-cell--data:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.18); text-decoration: none; }
+        .cal-cell--empty { background: transparent; border-color: var(--glass-border); opacity: .4; }
+        .cal-cell--data { cursor: default; border-left: 3px solid var(--lead, var(--glass-border)); }
+        a.cal-cell--data { text-decoration: none; }
+        .cal-cell--data:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+        .cal-cell--today { outline: 2px solid var(--wr-accent); outline-offset: -1px; }
         .cal-cell__tint { position: absolute; inset: 0; z-index: 0; }
         .cal-cell > * { position: relative; z-index: 1; }
         .cal-cell__date { font-size: 12px; font-weight: 700; color: var(--text-secondary); font-feature-settings: 'tnum'; }
@@ -160,6 +162,6 @@
     </div>
 
     <script src="/js/nav.js?v=20260525b"></script>
-    <script src="/js/sample2.js?v=20260616b"></script>
+    <script src="/js/sample2.js?v=20260616c"></script>
 </body>
 </html>

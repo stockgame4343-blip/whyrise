@@ -24,8 +24,8 @@
         for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360;
         return h;
     }
-    function tintOf(name) { return name ? 'hsla(' + hueOf(name) + ', 70%, 55%, 0.18)' : 'transparent'; }
-    function dotOf(name) { return 'hsl(' + hueOf(name) + ', 62%, 55%)'; }
+    function tintOf(name) { return name ? 'hsla(' + hueOf(name) + ', 72%, 55%, 0.20)' : 'transparent'; }
+    function dotOf(name) { return 'hsl(' + hueOf(name) + ', 60%, 58%)'; }
 
     function ymd(y, m, d) {
         return String(y) + ('0' + (m + 1)).slice(-2) + ('0' + d).slice(-2);
@@ -95,12 +95,14 @@
             body = '<div class="cal-cell__none">대장 없음</div>';
         }
         var sub = '<div class="cal-cell__sub">' + subItems(day, state.type) + '</div>';
+        // 같은 대장 = 같은 좌측 액센트(강조) — 패턴 인지 보강
+        var leadStyle = lead ? ' style="--lead:' + dotOf(lead.name) + '"' : '';
         // 대장주일 때 종목 상세로 링크
         if (state.type === 'stock' && lead && day.stock && day.stock.ticker) {
-            return '<a class="cal-cell cal-cell--data' + todayCls + '" href="/stock/' + esc(day.stock.ticker) + '">' +
+            return '<a class="cal-cell cal-cell--data' + todayCls + '"' + leadStyle + ' href="/stock/' + esc(day.stock.ticker) + '">' +
                 tint + dateNum + body + sub + '</a>';
         }
-        return '<div class="cal-cell cal-cell--data' + todayCls + '">' + tint + dateNum + body + sub + '</div>';
+        return '<div class="cal-cell cal-cell--data' + todayCls + '"' + leadStyle + '>' + tint + dateNum + body + sub + '</div>';
     }
 
     function renderLegend() {
