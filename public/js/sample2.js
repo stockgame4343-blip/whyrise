@@ -10,7 +10,7 @@
     var DOW = ['일', '월', '화', '수', '목', '금', '토'];
     var TYPE_LABEL = { stock: '대장주', sector: '대장 섹터', theme: '대장 테마' };
 
-    var state = { days: {}, type: 'stock', year: 0, month: 0, min: null, max: null, colorMap: {}, activeColors: {} };
+    var state = { days: {}, type: 'stock', year: 0, month: 0, min: null, max: null, colorMap: {}, counts: {}, activeColors: {} };
 
     function esc(s) {
         return String(s == null ? '' : s)
@@ -114,14 +114,22 @@
                 '<div class="cal-cell__center"><span class="cal-cell__none">대장 없음</span></div></div>';
         }
 
-        // 색은 미리 깔지 않는다 — 하단 범례(또는 섹터/테마 칸) 클릭 시 applyHighlights 가 입힌다.
+        // 반복(2회+) 대장은 우상단 ×N 배지로 표시(dot 없음). 색은 범례 클릭 시 칸 배경에 입힘.
+        var cnt = (state.counts && state.counts[lead.name]) || 0;
+        var color = cnt >= 2 ? colorOf(lead.name) : '';
+        var badge = cnt >= 2
+            ? '<span class="cal-cell__badge"' + (color ? ' style="color:' + color + ';border-color:' + color + '66"' : '') + '>×' + cnt + '</span>'
+            : '';
+        var topRowB = '<div class="cal-cell__top"><span class="cal-cell__date">' + d + '</span>' + badge + '</div>';
         var leaderAttr = ' data-leader="' + esc(lead.name) + '"';
-        var inner = topRow + '<div class="cal-cell__name">' + esc(lead.name) + '</div>' + leaderBody(lead, state.type);
+        var inner = topRowB + '<div class="cal-cell__name">' + esc(lead.name) + '</div>' + leaderBody(lead, state.type);
 
+        // 대장주 → 종목 상세 / 섹터·테마 → 해당 필터 적용된 스크리닝 페이지
         if (state.type === 'stock' && day.stock && day.stock.ticker) {
             return '<a class="cal-cell cal-cell--data"' + leaderAttr + ' href="/stock/' + esc(day.stock.ticker) + '">' + inner + '</a>';
         }
-        return '<div class="cal-cell cal-cell--data"' + leaderAttr + '>' + inner + '</div>';
+        var qkey = state.type === 'sector' ? 'sector' : 'theme';
+        return '<a class="cal-cell cal-cell--data"' + leaderAttr + ' href="/screening.html?' + qkey + '=' + encodeURIComponent(lead.name) + '">' + inner + '</a>';
     }
 
     function renderLegend(counts) {
@@ -181,6 +189,7 @@
         document.getElementById('calNext').disabled = !monthHasData(next.getFullYear(), next.getMonth());
 
         var counts = monthCounts();
+        state.counts = counts;     // 칸 우상단 ×N 배지용
         // 반복(2회+) 대장에게 팔레트 색 배정 — 등장 많은 순. 같은 달 안에서 항목별로 뚜렷이 구분.
         state.colorMap = {};
         Object.keys(counts).filter(function (n) { return counts[n] >= 2; })
@@ -210,15 +219,10 @@
             var btn = e.target.closest('.seg__btn');
             if (btn) setType(btn.getAttribute('data-type'));
         });
-        // 범례 칩 클릭 → 해당 대장 색 활성/해제
+        // 범례 칩 클릭 → 해당 대장 색 활성/해제 (칸은 모두 링크라 별도 토글 없음)
         document.getElementById('calLegend').addEventListener('click', function (e) {
             var btn = e.target.closest('.cal-legend__item');
             if (btn) toggleLeader(btn.getAttribute('data-leader'));
-        });
-        // 섹터/테마 칸 클릭 → 같은 대장 강조 토글 (종목 칸은 <a>라 상세 페이지로 이동)
-        document.getElementById('calGrid').addEventListener('click', function (e) {
-            var cell = e.target.closest('.cal-cell--data[data-leader]');
-            if (cell && cell.tagName !== 'A') toggleLeader(cell.getAttribute('data-leader'));
         });
         var $t = document.getElementById('themeToggle');
         if ($t) $t.addEventListener('click', function () {

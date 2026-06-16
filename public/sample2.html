@@ -40,8 +40,11 @@
         a.cal-cell--data { text-decoration: none; }
         .cal-cell--data:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.16); border-color: var(--glass-border-strong); }
 
-        .cal-cell__top { display: flex; align-items: center; justify-content: space-between; }
+        .cal-cell__top { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
         .cal-cell__date { font-size: 12px; font-weight: 700; color: var(--text-secondary); font-feature-settings: 'tnum'; }
+        /* 반복 대장 ×N 배지 (우상단) — 반복 횟수 한눈에 */
+        .cal-cell__badge { font-size: 10px; font-weight: 800; line-height: 1; padding: 2px 5px; border-radius: 999px;
+            border: 1px solid var(--glass-border); color: var(--text-secondary); font-feature-settings: 'tnum'; flex-shrink: 0; }
 
         /* 대장없음·휴장 → 박스 중앙 */
         .cal-cell__center { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -97,7 +100,6 @@
                 <a href="/" class="top-bar__link">홈</a>
                 <a href="/report.html" class="top-bar__link">리포트</a>
                 <a href="/sample2.html" class="top-bar__link top-bar__link--active">대장캘린더</a>
-                <a href="/sample3.html" class="top-bar__link">샘플3</a>
                 <a href="/leaders2.html" class="top-bar__link">시각화</a>
                 <a href="/screening.html" class="top-bar__link">스크리닝</a>
             </nav>
@@ -156,6 +158,6 @@
     </div>
 
     <script src="/js/nav.js?v=20260525b"></script>
-    <script src="/js/sample2.js?v=20260616k"></script>
+    <script src="/js/sample2.js?v=20260616l"></script>
 </body>
 </html>
