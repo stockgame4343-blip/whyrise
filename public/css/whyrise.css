@@ -920,14 +920,12 @@ body {
     padding: 10px 13px; border-radius: 11px;
     background: var(--glass-bg-strong);
     border: 1px solid var(--glass-border);
-    border-left: 3px solid var(--wr-accent-soft);
     color: var(--text-primary); text-decoration: none;
-    transition: background .15s, border-color .15s, transform .15s;
+    transition: background .15s, border-color .15s;
 }
 .event-card__news-item:hover {
     background: var(--bg-hover);
-    border-left-color: var(--wr-accent);
-    transform: translateX(2px);
+    border-color: var(--glass-border-strong);
 }
 .event-card__news-title {
     font-size: 14px; font-weight: 650; line-height: 1.45;
