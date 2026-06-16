@@ -14,10 +14,10 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260520g">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260616a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260616i">
     <style>
         .cal-page { padding-bottom: 60px; }
-        .cal-controls { margin: 4px 0 14px; }
+        .cal-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 6px 0 16px; }
 
         .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
         .cal-dow { text-align: center; font-size: 12px; font-weight: 700; color: var(--text-muted); padding: 4px 0; }
@@ -62,6 +62,11 @@
         .cal-legend__count { color: var(--text-secondary); font-weight: 600; font-size: 13px; }
 
         @media (max-width: 640px) {
+            /* 컨트롤: 세그먼트 풀폭 + 날짜바 아래 중앙 정렬 */
+            .cal-controls { gap: 8px; }
+            .cal-controls .seg { flex: 1 1 100%; justify-content: center; }
+            .cal-controls .seg__btn { flex: 1; padding: 7px 4px; }
+            .cal-controls .report-date-bar { flex: 1 1 100%; justify-content: center; }
             /* 모바일은 자리가 좁아 주말(토·일) 칼럼 제거 → 평일 5열 */
             .cal-grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
             .cal-dow--sun, .cal-dow--sat, .cal-cell--weekend { display: none; }
@@ -87,7 +92,7 @@
             <nav class="top-bar__nav">
                 <a href="/" class="top-bar__link">홈</a>
                 <a href="/report.html" class="top-bar__link">리포트</a>
-                <a href="/sample2.html" class="top-bar__link top-bar__link--active">대장 캘린더</a>
+                <a href="/sample2.html" class="top-bar__link top-bar__link--active">대장캘린더</a>
                 <a href="/leaders2.html" class="top-bar__link">시각화</a>
                 <a href="/screening.html" class="top-bar__link">스크리닝</a>
             </nav>
@@ -107,6 +112,14 @@
             <div>
                 <h1 class="screening-title report-title">대장 캘린더</h1>
             </div>
+        </header>
+
+        <div class="cal-controls">
+            <div class="seg" id="calToggle" role="group" aria-label="대장 종류">
+                <button class="seg__btn seg__btn--active" data-type="stock" type="button">대장주</button>
+                <button class="seg__btn" data-type="sector" type="button">대장 섹터</button>
+                <button class="seg__btn" data-type="theme" type="button">대장 테마</button>
+            </div>
             <div class="report-date-bar">
                 <button class="date-nav" id="calPrev" type="button" aria-label="이전 달">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -115,14 +128,6 @@
                 <button class="date-nav" id="calNext" type="button" aria-label="다음 달">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
-            </div>
-        </header>
-
-        <div class="cal-controls">
-            <div class="seg" id="calToggle" role="group" aria-label="대장 종류">
-                <button class="seg__btn seg__btn--active" data-type="stock" type="button">대장주</button>
-                <button class="seg__btn" data-type="sector" type="button">대장 섹터</button>
-                <button class="seg__btn" data-type="theme" type="button">대장 테마</button>
             </div>
         </div>
 
@@ -146,6 +151,6 @@
     </div>
 
     <script src="/js/nav.js?v=20260525b"></script>
-    <script src="/js/sample2.js?v=20260616h"></script>
+    <script src="/js/sample2.js?v=20260616i"></script>
 </body>
 </html>

@@ -3881,6 +3881,9 @@ body.leaders2-embedded .date-picker {
     color: var(--text-primary);
 }
 .seg__btn--active:hover { color: var(--text-primary); }
+/* 라이트모드: 흰 트랙+흰 active 가 거의 안 구분되던 문제 → 회색 트랙 + 흰 active 알약(그림자)로 대비 강화 */
+[data-theme="light"] .seg { background: var(--bg-hover); border-color: var(--border); }
+[data-theme="light"] .seg__btn--active { background: #fff; color: var(--text-primary); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
 
 /* ── 샘플1: 오늘의 대장 캘린더 ── */
 .sample1-page {

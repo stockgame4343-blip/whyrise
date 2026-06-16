@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    var DATA_URL = '/data/leaders-calendar.json?v=20260616g';
+    var DATA_URL = '/data/leaders-calendar.json?v=20260616h';
     var DOW = ['일', '월', '화', '수', '목', '금', '토'];
     var TYPE_LABEL = { stock: '대장주', sector: '대장 섹터', theme: '대장 테마' };
 
@@ -18,8 +18,8 @@
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
-    // 반복 대장 구분용 고대비 팔레트 — render 에서 등장순으로 배정(같은 달 안에서 항목별로 뚜렷이 구분).
-    var PALETTE = ['#3b82f6', '#ef4444', '#22c55e', '#f59e0b', '#a855f7', '#06b6d4', '#ec4899', '#84cc16', '#f97316', '#14b8a6'];
+    // 반복 대장 구분용 팔레트 — 톤다운한 무채조 가까운 색조로 통일(채도 과하지 않게). render 에서 등장순 배정.
+    var PALETTE = ['#6b8fd4', '#e0796b', '#4fb39a', '#b888d0', '#e0a95c', '#5cb6cc', '#db82a8', '#84c66f', '#8c7fd6', '#df8f5e'];
     function colorOf(name) { return (state.colorMap && state.colorMap[name]) || ''; }
 
     // 거래대금 표기 — 리포트(fmtAmount)와 동일
@@ -116,7 +116,7 @@
 
         // 반복(2회+) 대장만 칸 배경에 옅은 팔레트 색 → 한 달 흐름 인지. 일회성은 기본 글래스.
         var color = colorOf(lead.name);
-        var tint = color ? ' style="background:' + color + '1f"' : '';
+        var tint = color ? ' style="background:' + color + '1f;border-color:' + color + '4d"' : '';
         var inner = topRow + '<div class="cal-cell__name">' + esc(lead.name) + '</div>' + leaderBody(lead, state.type);
 
         if (state.type === 'stock' && day.stock && day.stock.ticker) {
