@@ -93,15 +93,20 @@ function fetchJson(url) {
 }
 
 async function main() {
-    // 누적(merge) — 기존 캘린더를 읽어 두고, stock-rise 가 보관하는 기간(약 43일)만 새로 계산해 합친다.
-    // stock-rise 의 dates.json 은 롤링 윈도(오래된 날 삭제)라, 합치지 않으면 캘린더도 43일에 머문다.
-    // 매일 빌드에서 이 스크립트가 돌면 새 날이 누적되어 시간이 지날수록 1년치에 가까워진다.
+    // 누적(merge) — 기존 캘린더를 읽어 두고 새 날짜만 계산해 합친다.
+    // stock-rise 데이터는 무한 보관이라 dates.json 이 날마다 길어진다(시작일 2026-04-13).
+    // 매 빌드에서 누적 전체를 다시 받으면 시간이 갈수록 무거워지므로, 이미 가진 옛 날은 건너뛰고
+    // (merge 가 보존) 새 날 + 최근 2일(정정·장중갱신 반영)만 fetch 한다. → 시간이 지날수록 1년치에 수렴.
     var existing = {};
     try { existing = (JSON.parse(fs.readFileSync(OUT, 'utf8')) || {}).days || {}; } catch (e) { existing = {}; }
+    const have = new Set(Object.keys(existing));
     const dates = await fetchJson(RAW + '/dates.json');
     if (!Array.isArray(dates) || !dates.length) throw new Error('no dates');
+    const refresh = new Set(dates.slice().sort().slice(-2)); // 최근 2거래일은 항상 재계산
     const days = {};
+    let skipped = 0;
     for (const d of dates) {
+        if (have.has(d) && !refresh.has(d)) { skipped++; continue; }  // 이미 보유한 옛 날 → fetch 생략(merge 가 유지)
         try {
             const day = await fetchJson(RAW + '/' + d + '.json');
             const rk = day.rankings || [];
@@ -124,7 +129,7 @@ async function main() {
     const payload = { built_at: new Date().toISOString().slice(0, 19), days: mergedDays };
     fs.writeFileSync(OUT, JSON.stringify(payload), 'utf8');
     const before = Object.keys(existing).length, after = Object.keys(mergedDays).length;
-    console.log('\nwrote', OUT, '—', after, 'days (기존', before, '+ 신규', Object.keys(days).length, '→ 누적', after, ')');
+    console.log('\nwrote', OUT, '—', after, 'days (기존', before, '+ 신규계산', Object.keys(days).length, ', 옛날 fetch생략', skipped, '→ 누적', after, ')');
 }
 
 main().catch(function (e) { console.error(e); process.exit(1); });
