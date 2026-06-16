@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="ORGO">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <title>대장 캘린더 (샘플3) - ORGO</title>
+    <meta name="description" content="날짜별 대장주·대장 섹터·대장 테마를 캘린더 + 상세 패널로. 거래일 기준, 반복 대장은 같은 색.">
+    <meta name="theme-color" content="#0a0b0f">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=20260520g">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260616i">
+    <style>
+        .c3-page { padding-bottom: 60px; }
+        .c3-head { align-items: flex-start; }
+        .c3-sub { margin: 6px 0 0; font-size: 13px; font-weight: 500; color: var(--text-muted); line-height: 1.5; }
+        .c3-sub b { color: var(--text-secondary); font-weight: 700; }
+        .c3-controls { display: flex; justify-content: flex-start; margin: 10px 0 14px; }
+
+        /* 캘린더 + 상세 패널 2단 (데스크톱) */
+        .c3-layout { display: grid; grid-template-columns: 1fr 320px; gap: 18px; align-items: start; }
+        .c3-grid-wrap { min-width: 0; }
+
+        .c3-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+        .c3-dow { text-align: center; font-size: 12px; font-weight: 700; color: var(--text-muted); padding: 4px 0; }
+
+        .c3-cell {
+            min-height: 96px; border-radius: 14px; padding: 8px 9px;
+            border: 1px solid var(--glass-border); background: var(--glass-bg);
+            display: flex; flex-direction: column; gap: 3px;
+            transition: transform .12s, box-shadow .12s, border-color .12s;
+        }
+        .c3-cell--blank { background: transparent; border-color: transparent; }
+        .c3-cell--empty { background: transparent; }
+        .c3-cell--holiday, .c3-cell--future { opacity: .55; }
+        .c3-cell--data { cursor: pointer; }
+        .c3-cell--data:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.16); border-color: var(--glass-border-strong); }
+        .c3-cell--selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+        .c3-cell--lit { box-shadow: 0 0 0 2px var(--lit) inset; border-color: var(--lit); }
+        .c3-cell--dim { opacity: .38; }
+
+        .c3-cell__top { display: flex; align-items: center; justify-content: space-between; gap: 4px; min-height: 16px; }
+        .c3-cell__date { font-size: 12px; font-weight: 700; color: var(--text-secondary); font-feature-settings: 'tnum'; }
+        .c3-badge { font-size: 10px; font-weight: 800; line-height: 1; padding: 2px 5px; border-radius: 999px;
+            border: 1px solid var(--glass-border); color: var(--text-secondary); }
+
+        .c3-cell__name { display: flex; align-items: center; gap: 5px; font-size: 13.5px; font-weight: 800; color: var(--text-primary);
+            letter-spacing: -.3px; line-height: 1.2; min-width: 0; }
+        .c3-cell__name span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .c3-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+        .c3-cell__rate { font-size: 12px; font-weight: 800; color: var(--rise); font-feature-settings: 'tnum'; }
+
+        .c3-cell__center { flex: 1; display: flex; align-items: center; justify-content: center; }
+        .c3-cell__off { font-size: 11px; color: var(--text-muted); }
+        .c3-cell__none { font-size: 12px; color: var(--text-muted); }
+
+        /* 상세 패널 (데스크톱 우측, sticky) */
+        .c3-panel { position: sticky; top: 78px; border: 1px solid var(--glass-border); border-radius: 16px;
+            background: var(--glass-bg); overflow: hidden; }
+        .c3-panel__head { padding: 12px 16px; font-size: 13px; font-weight: 800; color: var(--text-secondary);
+            border-bottom: 1px solid var(--glass-border); }
+        .c3-panel__body { padding: 14px 16px; }
+        .c3-det__placeholder { font-size: 13px; color: var(--text-muted); line-height: 1.6; padding: 8px 0; }
+        .c3-det__date { font-size: 16px; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; }
+        .c3-det__secs { display: flex; flex-direction: column; gap: 12px; }
+        .c3-det__sec { }
+        .c3-det__label { font-size: 11px; font-weight: 800; color: var(--text-muted); letter-spacing: .3px; margin-bottom: 5px; }
+        .c3-det__lead { display: block; border: 1px solid var(--glass-border); border-radius: 12px; padding: 10px 12px; background: var(--glass-bg); }
+        a.c3-det__lead--link { text-decoration: none; transition: border-color .12s, background .12s; }
+        a.c3-det__lead--link:hover { border-color: var(--accent); }
+        .c3-det__name { display: flex; align-items: center; font-size: 15px; font-weight: 800; color: var(--text-primary); }
+        .c3-chev { margin-left: auto; color: var(--accent); font-weight: 800; font-size: 18px; line-height: 1; }
+        .c3-det__metric { margin-top: 3px; font-size: 12.5px; font-weight: 600; color: var(--text-secondary); font-feature-settings: 'tnum'; }
+        .c3-det__metric b { color: var(--rise); font-weight: 800; }
+        .c3-det__reason { margin-top: 4px; font-size: 12px; font-weight: 600; color: var(--text-muted); line-height: 1.4; }
+        .c3-det__empty { font-size: 12px; color: var(--text-muted); }
+
+        /* 범례 (클릭 시 해당 대장 칸 강조) */
+        .c3-legend { margin-top: 18px; }
+        .c3-legend__head { font-size: 14px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px; }
+        .c3-legend__hint { font-size: 12px; font-weight: 500; color: var(--text-muted); }
+        .c3-legend__items { display: flex; flex-wrap: wrap; gap: 8px; }
+        .c3-legend__item { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: 999px;
+            border: 1px solid var(--glass-border); background: transparent; font-family: inherit; font-size: 13px; font-weight: 700;
+            color: var(--text-primary); cursor: pointer; transition: background .15s, border-color .15s; }
+        .c3-legend__item:hover { border-color: var(--glass-border-strong); }
+        .c3-legend__dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+        .c3-legend__count { color: var(--text-secondary); font-weight: 600; }
+
+        /* 모바일 바텀시트 */
+        .c3-sheet { position: fixed; inset: 0; z-index: 1200; display: none; }
+        .c3-sheet--open { display: block; }
+        .c3-sheet__backdrop { position: absolute; inset: 0; background: var(--modal-backdrop); }
+        .c3-sheet__panel { position: absolute; left: 0; right: 0; bottom: 0; max-height: 78vh; overflow-y: auto;
+            background: var(--bg-secondary); border-radius: 20px 20px 0 0; padding: 8px 18px calc(20px + env(safe-area-inset-bottom));
+            box-shadow: var(--modal-shadow); animation: c3SheetUp .22s ease; }
+        @keyframes c3SheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .c3-sheet__handle { width: 40px; height: 4px; border-radius: 999px; background: var(--text-muted); opacity: .4; margin: 4px auto 12px; }
+        .c3-sheet__close { position: absolute; top: 10px; right: 14px; width: 30px; height: 30px; border: 0; border-radius: 50%;
+            background: var(--bg-tertiary); color: var(--text-secondary); font-size: 20px; line-height: 1; cursor: pointer; }
+        .c3-noscroll { overflow: hidden; }
+
+        @media (max-width: 860px) {
+            .c3-layout { grid-template-columns: 1fr; }
+            .c3-panel { display: none; }            /* 데스크톱 패널 숨김 → 바텀시트 사용 */
+            .c3-controls { justify-content: stretch; }
+            .c3-controls .seg { flex: 1 1 100%; justify-content: center; }
+            .c3-controls .seg__btn { flex: 1; padding: 7px 4px; }
+            .c3-grid { gap: 4px; }
+            .c3-cell { min-height: 74px; padding: 6px 6px; border-radius: 11px; }
+            .c3-cell__name { font-size: 12px; }
+            .c3-cell__rate { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <script>
+    (function(){ var t = localStorage.getItem('theme') || 'dark'; if (t === 'light') document.documentElement.setAttribute('data-theme','light'); })();
+    </script>
+
+    <header class="top-bar">
+        <div class="top-bar__inner frame">
+            <a class="top-bar__logo" href="/" aria-label="ORGO 홈">
+                <svg class="top-bar__logo-svg" viewBox="0 0 96 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                    <text x="0" y="29" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="900" fill="currentColor" letter-spacing="-1.5">ORGO</text>
+                </svg>
+                <span class="sr-only">ORGO</span>
+            </a>
+            <nav class="top-bar__nav">
+                <a href="/" class="top-bar__link">홈</a>
+                <a href="/report.html" class="top-bar__link">리포트</a>
+                <a href="/sample2.html" class="top-bar__link">대장캘린더</a>
+                <a href="/sample3.html" class="top-bar__link top-bar__link--active">샘플3</a>
+                <a href="/leaders2.html" class="top-bar__link">시각화</a>
+                <a href="/screening.html" class="top-bar__link">스크리닝</a>
+            </nav>
+            <div class="top-bar__right">
+                <button class="top-bar__hamburger" id="navToggle" type="button" aria-label="메뉴" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드 전환">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="frame report-page report-page--compact c3-page">
+        <header class="screening-head report-head c3-head">
+            <div>
+                <h1 class="screening-title report-title">대장 캘린더</h1>
+                <p class="c3-sub" id="c3Sub">거래일(평일) 기준 · 반복 대장은 <b>같은 색</b> · 날짜를 누르면 그날 상세</p>
+            </div>
+            <div class="report-date-bar">
+                <button class="date-nav" id="c3Prev" type="button" aria-label="이전 달">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <span class="date-text" id="c3Label">—</span>
+                <button class="date-nav" id="c3Next" type="button" aria-label="다음 달">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="cal-controls c3-controls">
+            <div class="seg" id="c3Toggle" role="group" aria-label="대장 종류 (캘린더 표시 기준)">
+                <button class="seg__btn seg__btn--active" data-type="stock" type="button">대장주</button>
+                <button class="seg__btn" data-type="sector" type="button">대장 섹터</button>
+                <button class="seg__btn" data-type="theme" type="button">대장 테마</button>
+            </div>
+        </div>
+
+        <div class="loading" id="c3Loading">데이터 로딩 중...</div>
+        <div class="message" id="c3Message" style="display:none;"></div>
+
+        <div class="c3-layout" id="c3Layout" style="display:none;">
+            <div class="c3-grid-wrap">
+                <div class="c3-grid" id="c3Grid"></div>
+                <section class="cal-legend c3-legend" id="c3Legend" style="display:none;"></section>
+            </div>
+            <aside class="c3-panel" id="c3Panel">
+                <div class="c3-panel__head">날짜 상세</div>
+                <div class="c3-panel__body" id="c3Detail"></div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- 모바일 바텀시트 -->
+    <div class="c3-sheet" id="c3Sheet" aria-hidden="true">
+        <div class="c3-sheet__backdrop" id="c3SheetBackdrop"></div>
+        <div class="c3-sheet__panel" role="dialog" aria-label="날짜 상세">
+            <div class="c3-sheet__handle"></div>
+            <button class="c3-sheet__close" id="c3SheetClose" type="button" aria-label="닫기">&times;</button>
+            <div class="c3-sheet__body" id="c3SheetBody"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <footer class="footer__wrap">
+            <div class="frame footer__inner">
+                <p class="footer__disclaimer">
+                    <strong>본 사이트는 유사투자자문업 신고를 하지 않았으며, 어떠한 형태의 투자자문·종목 추천·매수/매도 권유도 제공하지 않습니다.</strong><br>
+                    모든 데이터는 외부 소스에서 수집된 과거 기록일 뿐 미래 수익을 의미하지 않습니다.
+                </p>
+                <p class="footer__copy">&copy; 2026 ORGO.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/js/nav.js?v=20260525b"></script>
+    <script src="/js/sample3.js?v=20260616a"></script>
+</body>
+</html>
