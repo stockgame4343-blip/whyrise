@@ -1830,9 +1830,9 @@ body.page-treemap {
     .ctrl-toggle:active { background: var(--bg-tertiary, rgba(255, 255, 255, .18)); }
 
     /* 푸터 면책 — 모바일에서 강조 문구 한 단계 키워 가독성 확보 */
-    .footer__disclaimer { font-size: 11px; line-height: 1.7; padding: 0 4px; }
-    .footer__disclaimer strong { font-size: 12px; display: inline-block; margin-bottom: 4px; }
-    .footer__copy { font-size: 10.5px; }
+    .footer__disclaimer { font-size: 12px; line-height: 1.65; padding: 0 4px; color: var(--text-secondary); }
+    .footer__disclaimer strong { font-size: 13px; display: inline-block; margin-bottom: 4px; }
+    .footer__copy { font-size: 11.5px; }
 
     /* 터치 타깃 보강 (Apple HIG 44pt / WCAG 24px AAA, 최소 36~40px) — mobile only */
     .theme-toggle { padding: 9px; min-width: 40px; min-height: 40px; justify-content: center; }
