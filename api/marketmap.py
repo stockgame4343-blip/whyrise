@@ -27,8 +27,13 @@ UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
 # Vercel serverless timeout (~10s) 안에 처리하려고 두 정렬 endpoint 분리:
 # 1) marketValue 시총 정렬 TOP 500 — 시총·거래대금 큰 종목 대부분 커버
 # 2) up 상승률 정렬 TOP 300 — 시총 작은 급등주 보장 진입 (intraday 와 정합)
-URL_MCAP = 'https://m.stock.naver.com/api/stocks/marketValue/{mkt}?page={page}&pageSize=100'
-URL_UP = 'https://m.stock.naver.com/api/stocks/up/{mkt}?page={page}&pageSize=100'
+# {ex} 는 거래소 세그먼트 — 기본('') = KRX 정규장, 'NXT/' = 넥스트레이드(통합) 시세.
+# NXT 프리마켓(08:00~08:50) 동안 KRX 는 PREOPEN 이라 기본 엔드포인트가 등락률 0·거래대금
+# '-' 만 주므로, 이 창에선 NXT 세그먼트로 전환한다. NXT 모드 응답도 표준 필드
+# (closePriceRaw/fluctuationsRatio/accumulatedTradingValueRaw/marketValueRaw/marketStatus)에
+# NXT 값을 담으므로 _normalize 가 그대로 동작한다.
+URL_MCAP = 'https://m.stock.naver.com/api/stocks/{ex}marketValue/{mkt}?page={page}&pageSize=100'
+URL_UP = 'https://m.stock.naver.com/api/stocks/{ex}up/{mkt}?page={page}&pageSize=100'
 PAGES_MCAP = (1, 2, 3, 4, 5)
 PAGES_UP = (1, 2, 3)
 TOP_N = 100   # 정렬 기준별 TOP n 으로 union 산출
@@ -39,10 +44,33 @@ FETCH_WORKERS = 8
 # edge 캐시 — 장중엔 5초, 마감/휴장엔 시세가 멈춰 있으므로 60초로 늘려 네이버 호출 절감
 CACHE_OPEN = 's-maxage=5, stale-while-revalidate=10'
 CACHE_CLOSED = 's-maxage=60, stale-while-revalidate=120'
-_ALL_URLS = (
-    [URL_MCAP.format(mkt=m, page=p) for m in MARKETS for p in PAGES_MCAP]
-    + [URL_UP.format(mkt=m, page=p) for m in MARKETS for p in PAGES_UP]
-)
+
+# NXT 프리마켓 리드인 창 (KST) — 프런트 isNxtLeadIn / OPEN_MIN(08:00) 과 정합.
+# 이 창에만 NXT 세그먼트로 전환하고, 09:00 KRX 개장 후엔 기본(KRX) 엔드포인트로 복귀한다.
+KST_OFFSET_MIN = 9 * 60
+NXT_LEADIN_START_MIN = 8 * 60   # 08:00 KST — NXT 프리마켓 시작
+NXT_LEADIN_END_MIN = 9 * 60     # 09:00 KST — KRX 정규장 개장
+
+
+def _exchange_segment():
+    """현재 KST 시각이 NXT 프리마켓 리드인(평일 08:00~09:00)이면 'NXT/', 아니면 ''."""
+    now = datetime.now(timezone.utc)
+    raw = now.hour * 60 + now.minute + KST_OFFSET_MIN
+    kst_min = raw % (24 * 60)
+    # KST 요일 — UTC+9h 가 자정을 넘기면 하루 전진
+    kst_dow = (now.weekday() + (raw // (24 * 60))) % 7
+    if kst_dow >= 5:   # 토(5)·일(6) — NXT 미개장
+        return ''
+    if NXT_LEADIN_START_MIN <= kst_min < NXT_LEADIN_END_MIN:
+        return 'NXT/'
+    return ''
+
+
+def _build_urls(ex):
+    return (
+        [URL_MCAP.format(ex=ex, mkt=m, page=p) for m in MARKETS for p in PAGES_MCAP]
+        + [URL_UP.format(ex=ex, mkt=m, page=p) for m in MARKETS for p in PAGES_UP]
+    )
 
 
 def _parse_int(v):
@@ -124,17 +152,18 @@ def _fetch_all(urls, workers=FETCH_WORKERS):
     return dict(zip(urls, results))
 
 
-def _pool_for(market_label: str, fetched: dict):
+def _pool_for(market_label: str, fetched: dict, ex: str = ''):
     """병렬 fetch 결과에서 한 시장의 union pool 재구성.
 
     시총 정렬(MCAP) + 상승률 정렬(UP) 합쳐 시총 무관하게 급등주까지 진입.
     시총 작은 급등주는 marketValue 5위 페이지 밖이라도 up 페이지 상위에 잡힘.
+    ex 는 fetched 의 키와 정합해야 함 ('' = KRX, 'NXT/' = 넥스트레이드).
     """
     pool_by_ticker: dict[str, dict] = {}
     first_meta: dict = {}
     # 1) 시총 정렬 — 시총·거래대금 큰 종목 커버
     for p in PAGES_MCAP:
-        data = fetched.get(URL_MCAP.format(mkt=market_label, page=p))
+        data = fetched.get(URL_MCAP.format(ex=ex, mkt=market_label, page=p))
         stocks = (data or {}).get('stocks') or []
         if p == 1 and stocks:
             first_meta = stocks[0]
@@ -142,7 +171,7 @@ def _pool_for(market_label: str, fetched: dict):
             pool_by_ticker[it['ticker']] = it
     # 2) 상승률 정렬 — 시총 작은 급등주 보장 진입
     for p in PAGES_UP:
-        data = fetched.get(URL_UP.format(mkt=market_label, page=p))
+        data = fetched.get(URL_UP.format(ex=ex, mkt=market_label, page=p))
         stocks = (data or {}).get('stocks') or []
         for it in _normalize(stocks, market_label):
             # 시총 page에 이미 있으면 그쪽 (동일 데이터)
@@ -166,9 +195,11 @@ def _union_top(pool, n=TOP_N):
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
-            fetched = _fetch_all(_ALL_URLS)
-            kospi_pool, k_first = _pool_for('KOSPI', fetched)
-            kosdaq_pool, _ = _pool_for('KOSDAQ', fetched)
+            # NXT 프리마켓(08:00~09:00 KST)엔 NXT 통합 시세, 그 외엔 KRX 정규장.
+            ex = _exchange_segment()
+            fetched = _fetch_all(_build_urls(ex))
+            kospi_pool, k_first = _pool_for('KOSPI', fetched, ex)
+            kosdaq_pool, _ = _pool_for('KOSDAQ', fetched, ex)
 
             # 시장별로 union TOP n — 어떤 정렬에서도 진짜 TOP 100 보임
             items = _union_top(kospi_pool, TOP_N) + _union_top(kosdaq_pool, TOP_N)
