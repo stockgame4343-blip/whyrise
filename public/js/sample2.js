@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    var DATA_URL = '/data/leaders-calendar.json?v=20260616c';
+    var DATA_URL = '/data/leaders-calendar.json?v=20260616g';
     var DOW = ['일', '월', '화', '수', '목', '금', '토'];
     var TYPE_LABEL = { stock: '대장주', sector: '대장 섹터', theme: '대장 테마' };
 
@@ -86,20 +86,17 @@
         return '<div class="cal-cell__metric">' + e.count + '종목' +
             '<span class="cal-cell__vol"> · 평균 +' + Number(e.avgRate).toFixed(1) + '%' +
             (e.vol ? ' · 거래 ' + fmtAmount(e.vol) : '') + '</span></div>' +
-            (e.top ? '<div class="cal-cell__reason">그중 대장 ' + esc(e.top) + '</div>' : '');
+            (e.top ? '<div class="cal-cell__reason">대장 ' + esc(e.top) + '</div>' : '');
     }
 
     function cellHtml(y, m, d) {
         var key = ymd(y, m, d);
         var day = state.days[key];
         var dow = new Date(y, m, d).getDay();
-        var todayCls = (key === todayYmd()) ? ' cal-cell--today' : '';
-        var topRow = function (dotHtml) {
-            return '<div class="cal-cell__top"><span class="cal-cell__date">' + d + '</span>' + (dotHtml || '') + '</div>';
-        };
+        var topRow = '<div class="cal-cell__top"><span class="cal-cell__date">' + d + '</span></div>';
 
         if (!day) {
-            var cls = 'cal-cell cal-cell--empty' + todayCls;
+            var cls = 'cal-cell cal-cell--empty';
             var center = '';
             if (dow === 0 || dow === 6) {
                 cls += ' cal-cell--weekend';
@@ -108,25 +105,24 @@
                 cls += ' cal-cell--holiday';
                 center = '<div class="cal-cell__center"><span class="cal-cell__off">휴장</span></div>';
             }
-            return '<div class="' + cls + '">' + topRow('') + center + '</div>';
+            return '<div class="' + cls + '">' + topRow + center + '</div>';
         }
 
         var lead = day[state.type];
         if (!lead) {
-            return '<div class="cal-cell cal-cell--data' + todayCls + '">' + topRow('') +
+            return '<div class="cal-cell cal-cell--data">' + topRow +
                 '<div class="cal-cell__center"><span class="cal-cell__none">대장 없음</span></div></div>';
         }
 
+        // 반복(2회+) 대장만 칸 배경에 옅은 팔레트 색 → 한 달 흐름 인지. 일회성은 기본 글래스.
         var color = colorOf(lead.name);
-        var dot = color ? '<span class="cal-cell__dot" style="background:' + color + '"></span>' : '';
-        var inner = topRow(dot) +
-            '<div class="cal-cell__name">' + esc(lead.name) + '</div>' +
-            leaderBody(lead, state.type);
+        var tint = color ? ' style="background:' + color + '1f"' : '';
+        var inner = topRow + '<div class="cal-cell__name">' + esc(lead.name) + '</div>' + leaderBody(lead, state.type);
 
         if (state.type === 'stock' && day.stock && day.stock.ticker) {
-            return '<a class="cal-cell cal-cell--data' + todayCls + '" href="/stock/' + esc(day.stock.ticker) + '">' + inner + '</a>';
+            return '<a class="cal-cell cal-cell--data"' + tint + ' href="/stock/' + esc(day.stock.ticker) + '">' + inner + '</a>';
         }
-        return '<div class="cal-cell cal-cell--data' + todayCls + '">' + inner + '</div>';
+        return '<div class="cal-cell cal-cell--data"' + tint + '>' + inner + '</div>';
     }
 
     function renderLegend(counts) {
@@ -166,7 +162,8 @@
             var c = i === 0 ? ' cal-dow--sun' : (i === 6 ? ' cal-dow--sat' : '');
             html += '<div class="cal-dow' + c + '">' + dn + '</div>';
         });
-        for (var b = 0; b < first; b++) html += '<div class="cal-cell cal-cell--blank"></div>';
+        // 선두 빈칸 — 모바일(주말 숨김) 정렬 위해 일요일(b===0) 빈칸도 weekend 로 태깅
+        for (var b = 0; b < first; b++) html += '<div class="cal-cell cal-cell--blank' + (b === 0 ? ' cal-cell--weekend' : '') + '"></div>';
         for (var d = 1; d <= daysInMonth; d++) html += cellHtml(y, m, d);
         document.getElementById('calGrid').innerHTML = html;
         renderLegend(counts);

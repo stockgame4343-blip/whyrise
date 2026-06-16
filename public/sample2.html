@@ -37,12 +37,9 @@
         .cal-cell--data { cursor: default; }
         a.cal-cell--data { text-decoration: none; }
         .cal-cell--data:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.16); border-color: var(--glass-border-strong); }
-        .cal-cell--today { outline: 2px solid var(--wr-accent); outline-offset: -1px; }
 
         .cal-cell__top { display: flex; align-items: center; justify-content: space-between; }
         .cal-cell__date { font-size: 12px; font-weight: 700; color: var(--text-secondary); font-feature-settings: 'tnum'; }
-        .cal-cell--today .cal-cell__date { color: var(--wr-accent); }
-        .cal-cell__dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
 
         /* 대장없음·휴장 → 박스 중앙 */
         .cal-cell__center { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -65,10 +62,12 @@
         .cal-legend__count { color: var(--text-muted); font-weight: 600; }
 
         @media (max-width: 640px) {
-            .cal-grid { gap: 4px; }
+            /* 모바일은 자리가 좁아 주말(토·일) 칼럼 제거 → 평일 5열 */
+            .cal-grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+            .cal-dow--sun, .cal-dow--sat, .cal-cell--weekend { display: none; }
             .cal-cell { min-height: 80px; padding: 6px 6px; border-radius: 11px; }
             .cal-cell__name { font-size: 12px; }
-            .cal-cell__vol, .cal-cell__reason { display: none; }   /* 모바일은 상승률/종목수만 */
+            .cal-cell__vol, .cal-cell__reason { display: none; }   /* 상승률/종목수만 */
         }
     </style>
 </head>
@@ -148,6 +147,6 @@
     </div>
 
     <script src="/js/nav.js?v=20260525b"></script>
-    <script src="/js/sample2.js?v=20260616f"></script>
+    <script src="/js/sample2.js?v=20260616g"></script>
 </body>
 </html>
