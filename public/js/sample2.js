@@ -6,11 +6,11 @@
 (function () {
     'use strict';
 
-    var DATA_URL = '/data/leaders-calendar.json';
+    var DATA_URL = '/data/leaders-calendar.json?v=20260616c';
     var DOW = ['일', '월', '화', '수', '목', '금', '토'];
     var TYPE_LABEL = { stock: '대장주', sector: '대장 섹터', theme: '대장 테마' };
 
-    var state = { days: {}, type: 'stock', year: 0, month: 0, min: null, max: null };
+    var state = { days: {}, type: 'stock', year: 0, month: 0, min: null, max: null, colorMap: {} };
 
     function esc(s) {
         return String(s == null ? '' : s)
@@ -18,13 +18,19 @@
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
-    // 이름 → 안정적인 hue(0~359). 같은 이름 = 같은 색.
-    function hueOf(name) {
-        var s = String(name || ''), h = 0;
-        for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360;
-        return h;
+    // 반복 대장 구분용 고대비 팔레트 — render 에서 등장순으로 배정(같은 달 안에서 항목별로 뚜렷이 구분).
+    var PALETTE = ['#3b82f6', '#ef4444', '#22c55e', '#f59e0b', '#a855f7', '#06b6d4', '#ec4899', '#84cc16', '#f97316', '#14b8a6'];
+    function colorOf(name) { return (state.colorMap && state.colorMap[name]) || ''; }
+
+    // 거래대금 표기 — 리포트(fmtAmount)와 동일
+    function fmtAmount(n) {
+        n = Number(n || 0);
+        if (!n) return '-';
+        if (n >= 1e12) return (n / 1e12).toFixed(1) + '조';
+        if (n >= 1e8) return Math.round(n / 1e8).toLocaleString('ko-KR') + '억';
+        if (n >= 1e4) return Math.round(n / 1e4).toLocaleString('ko-KR') + '만';
+        return n.toLocaleString('ko-KR');
     }
-    function dotOf(name) { return 'hsl(' + hueOf(name) + ', 60%, 56%)'; }
 
     function ymd(y, m, d) { return String(y) + ('0' + (m + 1)).slice(-2) + ('0' + d).slice(-2); }
     function leaderName(day, type) { var e = day && day[type]; return e ? e.name : ''; }
@@ -66,63 +72,61 @@
         return counts;
     }
 
-    // 칸 하단 — '섹/테' 가 아니라 선택한 대장 '자신의' 정보로 채움
-    function subInfo(day, type) {
-        var e = day[type];
-        if (!e) return '';
-        var lines = [];
+    // 칸 본문 — 리포트 '오늘의 대장' 포맷과 동일하게 자기 정보로 채움
+    // 대장주: 상승률 · 거래대금  /  [태그] 상승이유
+    // 섹터·테마: N종목 · 평균 +X% · 거래대금  /  그중 대장 OO
+    function leaderBody(e, type) {
         if (type === 'stock') {
-            if (e.theme) lines.push(['테마', e.theme]);
-            if (e.sector && e.sector !== e.theme) lines.push(['섹터', e.sector]);
-        } else {
-            if (e.avgRate != null) lines.push(['평균', '+' + Number(e.avgRate).toFixed(1) + '%']);
-            if (e.top) lines.push(['대장', e.top]);
+            var tag = e.theme || e.sector || '대장';
+            var reason = e.reason || [e.sector, e.theme].filter(Boolean).join(' · ') || '거래대금 상위';
+            return '<div class="cal-cell__metric"><b class="cal-cell__rate">+' + Number(e.rate).toFixed(1) + '%</b>' +
+                (e.vol ? '<span class="cal-cell__vol"> · 거래 ' + fmtAmount(e.vol) + '</span>' : '') + '</div>' +
+                '<div class="cal-cell__reason">[' + esc(tag) + '] ' + esc(reason) + '</div>';
         }
-        return lines.map(function (l) {
-            return '<span class="cal-cell__subitem"><b>' + l[0] + '</b> ' + esc(l[1]) + '</span>';
-        }).join('');
+        return '<div class="cal-cell__metric">' + e.count + '종목' +
+            '<span class="cal-cell__vol"> · 평균 +' + Number(e.avgRate).toFixed(1) + '%' +
+            (e.vol ? ' · 거래 ' + fmtAmount(e.vol) : '') + '</span></div>' +
+            (e.top ? '<div class="cal-cell__reason">그중 대장 ' + esc(e.top) + '</div>' : '');
     }
 
-    function cellHtml(y, m, d, counts) {
+    function cellHtml(y, m, d) {
         var key = ymd(y, m, d);
         var day = state.days[key];
         var dow = new Date(y, m, d).getDay();
-        var dateNum = '<span class="cal-cell__date">' + d + '</span>';
         var todayCls = (key === todayYmd()) ? ' cal-cell--today' : '';
+        var topRow = function (dotHtml) {
+            return '<div class="cal-cell__top"><span class="cal-cell__date">' + d + '</span>' + (dotHtml || '') + '</div>';
+        };
 
         if (!day) {
             var cls = 'cal-cell cal-cell--empty' + todayCls;
-            var off = '';
+            var center = '';
             if (dow === 0 || dow === 6) {
                 cls += ' cal-cell--weekend';
             } else if (key >= state.min && key <= state.max) {
-                // 데이터 기간 안의 평일인데 기록 없음 = 공휴일(휴장) — 살짝만 표시
+                // 데이터 기간 안의 평일인데 기록 없음 = 공휴일(휴장)
                 cls += ' cal-cell--holiday';
-                off = '<span class="cal-cell__off">휴장</span>';
+                center = '<div class="cal-cell__center"><span class="cal-cell__off">휴장</span></div>';
             }
-            return '<div class="' + cls + '">' + dateNum + off + '</div>';
+            return '<div class="' + cls + '">' + topRow('') + center + '</div>';
         }
 
         var lead = day[state.type];
-        var body;
-        if (lead) {
-            var repeated = counts[lead.name] >= 2;
-            var dot = repeated ? '<span class="cal-cell__dot" style="background:' + dotOf(lead.name) + '"></span>' : '';
-            var metric = (state.type === 'stock')
-                ? (lead.rate != null ? '<span class="cal-cell__rate">+' + Number(lead.rate).toFixed(1) + '%</span>' : '')
-                : (lead.count ? '<span class="cal-cell__count">' + lead.count + '종목</span>' : '');
-            body = '<div class="cal-cell__lead">' + dot +
-                '<span class="cal-cell__name">' + esc(lead.name) + '</span></div>' +
-                metric + '<div class="cal-cell__sub">' + subInfo(day, state.type) + '</div>';
-        } else {
-            body = '<div class="cal-cell__none">대장 없음</div>';
+        if (!lead) {
+            return '<div class="cal-cell cal-cell--data' + todayCls + '">' + topRow('') +
+                '<div class="cal-cell__center"><span class="cal-cell__none">대장 없음</span></div></div>';
         }
 
-        if (state.type === 'stock' && lead && day.stock && day.stock.ticker) {
-            return '<a class="cal-cell cal-cell--data' + todayCls + '" href="/stock/' + esc(day.stock.ticker) + '">' +
-                dateNum + body + '</a>';
+        var color = colorOf(lead.name);
+        var dot = color ? '<span class="cal-cell__dot" style="background:' + color + '"></span>' : '';
+        var inner = topRow(dot) +
+            '<div class="cal-cell__name">' + esc(lead.name) + '</div>' +
+            leaderBody(lead, state.type);
+
+        if (state.type === 'stock' && day.stock && day.stock.ticker) {
+            return '<a class="cal-cell cal-cell--data' + todayCls + '" href="/stock/' + esc(day.stock.ticker) + '">' + inner + '</a>';
         }
-        return '<div class="cal-cell cal-cell--data' + todayCls + '">' + dateNum + body + '</div>';
+        return '<div class="cal-cell cal-cell--data' + todayCls + '">' + inner + '</div>';
     }
 
     function renderLegend(counts) {
@@ -131,9 +135,9 @@
             .sort(function (a, b) { return counts[b] - counts[a]; });
         if (!repeated.length) { $legend.style.display = 'none'; return; }
         var html = '<div class="cal-legend__head">이 달 여러 번 대장인 ' + TYPE_LABEL[state.type] +
-            ' <span class="cal-legend__hint">— 같은 색으로 표시</span></div><div class="cal-legend__items">';
+            '</div><div class="cal-legend__items">';
         repeated.forEach(function (n) {
-            html += '<span class="cal-legend__item"><span class="cal-legend__dot" style="background:' + dotOf(n) + '"></span>' +
+            html += '<span class="cal-legend__item"><span class="cal-legend__dot" style="background:' + colorOf(n) + '"></span>' +
                 esc(n) + ' <span class="cal-legend__count">×' + counts[n] + '</span></span>';
         });
         html += '</div>';
@@ -149,6 +153,12 @@
         document.getElementById('calNext').disabled = !monthHasData(next.getFullYear(), next.getMonth());
 
         var counts = monthCounts();
+        // 반복(2회+) 대장에게 팔레트 색 배정 — 등장 많은 순. 같은 달 안에서 항목별로 뚜렷이 구분.
+        state.colorMap = {};
+        Object.keys(counts).filter(function (n) { return counts[n] >= 2; })
+            .sort(function (a, b) { return counts[b] - counts[a]; })
+            .forEach(function (n, i) { state.colorMap[n] = PALETTE[i % PALETTE.length]; });
+
         var first = new Date(y, m, 1).getDay();
         var daysInMonth = new Date(y, m + 1, 0).getDate();
         var html = '';
@@ -157,7 +167,7 @@
             html += '<div class="cal-dow' + c + '">' + dn + '</div>';
         });
         for (var b = 0; b < first; b++) html += '<div class="cal-cell cal-cell--blank"></div>';
-        for (var d = 1; d <= daysInMonth; d++) html += cellHtml(y, m, d, counts);
+        for (var d = 1; d <= daysInMonth; d++) html += cellHtml(y, m, d);
         document.getElementById('calGrid').innerHTML = html;
         renderLegend(counts);
     }

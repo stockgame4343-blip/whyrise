@@ -18,7 +18,9 @@ const OUT = path.resolve(__dirname, '..', 'public', 'data', 'leaders-calendar.js
 // report.js 와 동일 상수
 const BLOCKED = { '003060': 1, '018700': 1, '007460': 1 };
 const RISE_CUTOFF = 15;
-const LEADER_CUTOFF = 20;
+const LEADER_CUTOFF = 15;
+const LEADER_VOLUME_PEER_RATIO = 0.5;
+const LEADER_VOLUME_TOP_N = 5;
 const GROUP_MIN = 3;
 
 function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
@@ -70,7 +72,17 @@ function pickLeader(rows) {
     });
     if (!cands.length) return null;
     var maxVol = Math.max.apply(null, cands.map(function (r) { return num(r.trading_value); }));
-    var peers = cands.filter(function (r) { return num(r.trading_value) >= maxVol * 0.7; });
+    var volumeTop = {};
+    cands.slice().sort(function (a, b) {
+        return num(b.trading_value) - num(a.trading_value) ||
+            num(b.change_rate) - num(a.change_rate);
+    }).slice(0, LEADER_VOLUME_TOP_N).forEach(function (r) {
+        volumeTop[r.ticker] = 1;
+    });
+    var peers = cands.filter(function (r) {
+        return num(r.trading_value) >= maxVol * LEADER_VOLUME_PEER_RATIO ||
+            volumeTop[r.ticker];
+    });
     var maxChg = Math.max.apply(null, peers.map(function (r) { return num(r.change_rate); }));
     function score(r) {
         var v = maxVol > 0 ? num(r.trading_value) / maxVol : 0;
@@ -122,14 +134,17 @@ async function main() {
                 stock: leader ? {
                     ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10,
                     sector: String(leader.sector || '').trim(), theme: themeOf(leader),
+                    vol: Math.round(num(leader.trading_value)), reason: String(leader.rise_reason || '').trim(),
                 } : null,
                 sector: sectors[0] ? {
                     name: sectors[0].key, count: sectors[0].count,
                     avgRate: Math.round(sectors[0].avgRate * 10) / 10, top: sectors[0].top,
+                    vol: Math.round(sectors[0].totalVolume),
                 } : null,
                 theme: themes[0] ? {
                     name: themes[0].key, count: themes[0].count,
                     avgRate: Math.round(themes[0].avgRate * 10) / 10, top: themes[0].top,
+                    vol: Math.round(themes[0].totalVolume),
                 } : null,
             };
             console.log(d, '|주:', days[d].stock && days[d].stock.name, '|섹:', days[d].sector && days[d].sector.name, '|테:', days[d].theme && days[d].theme.name);
