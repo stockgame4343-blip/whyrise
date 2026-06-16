@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ORGO">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <title>샘플1 - ORGO</title>
+    <meta name="description" content="리포트의 오늘의 대장주, 대장섹터, 대장테마를 월간 캘린더로 확인합니다.">
+    <meta name="author" content="ORGO">
+    <meta name="naver-site-verification" content="d1fa48b231a7701c86a0da43d87179bc4e40dc9d" />
+    <meta name="theme-color" content="#0a0b0f">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="canonical" href="https://orgo.kr/sample1.html">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ORGO">
+    <meta property="og:title" content="샘플1 - ORGO">
+    <meta property="og:description" content="오늘의 대장을 월간 캘린더로 봅니다.">
+    <meta property="og:url" content="https://orgo.kr/sample1.html">
+    <meta property="og:image" content="https://orgo.kr/og-default.svg">
+    <meta property="og:locale" content="ko_KR">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=20260523a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260616a">
+</head>
+<body class="page-sample1">
+    <script>
+    (function(){
+        var t = localStorage.getItem('theme') || 'dark';
+        if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+    })();
+    </script>
+
+    <header class="top-bar">
+        <div class="top-bar__inner frame">
+            <a class="top-bar__logo" href="/" aria-label="ORGO 홈">
+                <svg class="top-bar__logo-svg" viewBox="0 0 96 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                    <text x="0" y="29" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="900" fill="currentColor" letter-spacing="-1.5">ORGO</text>
+                </svg>
+                <span class="sr-only">ORGO</span>
+            </a>
+            <nav class="top-bar__nav">
+                <a href="/" class="top-bar__link">홈</a>
+                <a href="/report.html" class="top-bar__link">리포트</a>
+                <a href="/sample1.html" class="top-bar__link top-bar__link--active">샘플1</a>
+                <a href="/sample2.html" class="top-bar__link">샘플2</a>
+                <a href="/leaders2.html" class="top-bar__link">시각화</a>
+                <a href="/screening.html" class="top-bar__link">스크리닝</a>
+            </nav>
+            <div class="top-bar__right">
+                <button class="top-bar__hamburger" id="navToggle" type="button" aria-label="메뉴" aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드 전환">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="frame sample1-page">
+        <header class="screening-head sample1-head">
+            <div>
+                <h1 class="screening-title sample1-title">샘플1</h1>
+            </div>
+            <div class="sample1-monthbar">
+                <button class="sample1-monthbar__btn" id="sampleMonthPrev" type="button" aria-label="이전 달">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <span class="sample1-monthbar__label" id="sampleMonthLabel">-</span>
+                <button class="sample1-monthbar__btn" id="sampleMonthNext" type="button" aria-label="다음 달">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <section class="sample1-toolbar" aria-label="샘플1 보기 설정">
+            <div class="seg sample1-tabs" role="tablist" aria-label="캘린더 타입">
+                <button class="seg__btn seg__btn--active" type="button" role="tab" aria-selected="true" data-sample-type="stock">대장주</button>
+                <button class="seg__btn" type="button" role="tab" aria-selected="false" data-sample-type="sector">대장섹터</button>
+                <button class="seg__btn" type="button" role="tab" aria-selected="false" data-sample-type="theme">대장테마</button>
+            </div>
+            <div class="sample1-meta" id="sampleRangeMeta"></div>
+        </section>
+
+        <div class="loading sample1-loading" id="sampleLoading">캘린더 로딩 중...</div>
+        <div class="message" id="sampleMessage" style="display:none;"></div>
+
+        <div class="sample1-content" id="sampleContent" style="display:none;">
+            <section class="sample1-layout">
+                <div class="sample1-calendar-shell">
+                    <div class="sample1-weekdays" aria-hidden="true">
+                        <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+                    </div>
+                    <div class="sample1-calendar" id="sampleCalendar"></div>
+                </div>
+
+                <aside class="sample1-side">
+                    <section class="sample1-panel">
+                        <div class="sample1-panel__head">
+                            <h2 class="sample1-panel__title">이번 달 반복</h2>
+                            <span class="sample1-panel__badge" id="sampleLegendType">대장주</span>
+                        </div>
+                        <div class="sample1-legend" id="sampleLegend"></div>
+                    </section>
+
+                    <section class="sample1-panel">
+                        <div class="sample1-panel__head">
+                            <h2 class="sample1-panel__title">선택 날짜</h2>
+                            <span class="sample1-panel__badge" id="sampleSelectedDate">-</span>
+                        </div>
+                        <div class="sample1-detail" id="sampleDetail"></div>
+                    </section>
+                </aside>
+            </section>
+        </div>
+    </main>
+
+    <div class="footer">
+        <footer class="footer__wrap">
+            <div class="frame footer__inner">
+                <div class="visitor-row" id="visitorRow" style="display:none;">
+                    <span class="visitor-row__dot"></span>
+                    <span><span class="visitor-row__num" id="visitorOnline">-</span>명 보는 중</span>
+                    <span class="visitor-row__sep">·</span>
+                    <span>누적 <span class="visitor-row__num" id="visitorUnique">-</span>명</span>
+                </div>
+                <p class="footer__disclaimer">
+                    <strong>본 사이트는 유사투자자문업 신고를 하지 않았으며, 어떠한 형태의 투자자문·종목 추천·매수/매도 권유도 제공하지 않습니다.</strong><br>
+                    리포트 수치는 과거 시장 데이터의 기계적 집계·분류이며, 미래 수익이나 매수·매도 신호를 의미하지 않습니다.
+                </p>
+                <p class="footer__copy">&copy; 2026 ORGO. 비영리 개인 프로젝트. <a href="/admin.html" class="footer__admin-link">·</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/js/nav.js?v=20260525b"></script>
+    <script src="/js/auth.js?v=20260525b"></script>
+    <script src="/js/api.js?v=20260610a"></script>
+    <script src="/js/sample1.js?v=20260616a"></script>
+    <script src="/js/visitor.js?v=20260610a"></script>
+</body>
+</html>
