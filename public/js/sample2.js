@@ -18,8 +18,8 @@
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
-    // 반복 대장 구분용 팔레트 — 톤다운한 무채조 가까운 색조로 통일(채도 과하지 않게). render 에서 등장순 배정.
-    var PALETTE = ['#6b8fd4', '#e0796b', '#4fb39a', '#b888d0', '#e0a95c', '#5cb6cc', '#db82a8', '#84c66f', '#8c7fd6', '#df8f5e'];
+    // 반복 대장 구분용 팔레트 — 중채도(톤다운하되 살짝 또렷하게). render 에서 등장순 배정.
+    var PALETTE = ['#5485e0', '#e8685a', '#36b394', '#b275d4', '#e8a544', '#45b4d0', '#e06f9e', '#74c95c', '#7e6ee0', '#e88848'];
     function colorOf(name) { return (state.colorMap && state.colorMap[name]) || ''; }
 
     // 거래대금 표기 — 리포트(fmtAmount)와 동일

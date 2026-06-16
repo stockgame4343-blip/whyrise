@@ -18,11 +18,13 @@
     <style>
         .cal-page { padding-bottom: 60px; }
         .cal-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 6px 0 16px; }
+        .cal-controls .report-date-bar { margin-left: 0; padding: 0; }
 
-        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+        /* 주말(토·일)은 거래 없음 → PC·모바일 모두 칼럼에서 제외, 평일 5열 */
+        .cal-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
         .cal-dow { text-align: center; font-size: 12px; font-weight: 700; color: var(--text-muted); padding: 4px 0; }
-        .cal-dow--sun { color: #e0566a; }
-        .cal-dow--sat { color: #4f8cff; }
+        .cal-dow--sun, .cal-dow--sat { display: none; }
+        .cal-cell.cal-cell--weekend { display: none; }   /* .cal-cell{display:flex} 보다 명시도 높게 */
 
         .cal-cell {
             min-height: 104px; border-radius: 14px; padding: 8px 10px;
@@ -50,7 +52,7 @@
             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .cal-cell__metric { margin-top: 2px; font-size: 11px; color: var(--text-secondary); font-feature-settings: 'tnum'; line-height: 1.3; }
         .cal-cell__rate { color: var(--rise); font-weight: 800; }
-        .cal-cell__reason { margin-top: auto; padding-top: 3px; font-size: 10.5px; color: var(--text-muted); line-height: 1.3;
+        .cal-cell__reason { margin-top: auto; padding-top: 3px; font-size: 11px; font-weight: 600; color: var(--text-secondary); line-height: 1.35;
             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
         .cal-legend { margin-top: 24px; }
@@ -67,9 +69,7 @@
             .cal-controls .seg { flex: 1 1 100%; justify-content: center; }
             .cal-controls .seg__btn { flex: 1; padding: 7px 4px; }
             .cal-controls .report-date-bar { flex: 1 1 100%; justify-content: center; }
-            /* 모바일은 자리가 좁아 주말(토·일) 칼럼 제거 → 평일 5열 */
-            .cal-grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
-            .cal-dow--sun, .cal-dow--sat, .cal-cell--weekend { display: none; }
+            .cal-grid { gap: 4px; }
             .cal-cell { min-height: 80px; padding: 6px 6px; border-radius: 11px; }
             .cal-cell__name { font-size: 12px; }
             .cal-cell__vol, .cal-cell__reason { display: none; }   /* 상승률/종목수만 */
@@ -115,11 +115,6 @@
         </header>
 
         <div class="cal-controls">
-            <div class="seg" id="calToggle" role="group" aria-label="대장 종류">
-                <button class="seg__btn seg__btn--active" data-type="stock" type="button">대장주</button>
-                <button class="seg__btn" data-type="sector" type="button">대장 섹터</button>
-                <button class="seg__btn" data-type="theme" type="button">대장 테마</button>
-            </div>
             <div class="report-date-bar">
                 <button class="date-nav" id="calPrev" type="button" aria-label="이전 달">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -128,6 +123,11 @@
                 <button class="date-nav" id="calNext" type="button" aria-label="다음 달">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
+            </div>
+            <div class="seg" id="calToggle" role="group" aria-label="대장 종류">
+                <button class="seg__btn seg__btn--active" data-type="stock" type="button">대장주</button>
+                <button class="seg__btn" data-type="sector" type="button">대장 섹터</button>
+                <button class="seg__btn" data-type="theme" type="button">대장 테마</button>
             </div>
         </div>
 
@@ -151,6 +151,6 @@
     </div>
 
     <script src="/js/nav.js?v=20260525b"></script>
-    <script src="/js/sample2.js?v=20260616i"></script>
+    <script src="/js/sample2.js?v=20260616j"></script>
 </body>
 </html>
