@@ -412,9 +412,12 @@ var WhyReport = (function () {
     function derivePullbacks(pullbacks) {
         return (pullbacks || []).filter(function (pb) {
             if (!pb || !pb.ticker || BLOCKED_TICKERS[pb.ticker]) return false;
-            if (peakRateFromPullback(pb) < PB_PEAK_MIN) return false;
+            // 고점 회복(졸업) 종목은 급등률/반등률 컷 면제 — 회복 자체가 강한 신호. 조정 깊이만 확인.
+            // (신고가로 고점이 잡힌 종목도 회복하면 표시되도록)
+            var rec = isRecovered(pb);
+            if (!rec && peakRateFromPullback(pb) < PB_PEAK_MIN) return false;
             if (lowDrawdownPct(pb) < PB_DROP_MIN) return false;
-            if (normalizedBouncePct(pb) < PB_BOUNCE_MIN) return false;
+            if (!rec && normalizedBouncePct(pb) < PB_BOUNCE_MIN) return false;
             var prices = pullbackPrices(pb);
             // 고점 회복(current>=peak) 종목도 그날은 포함 — '고점회복' 배지로 맨 위에 표시 후 다음 날 빠짐
             return prices.peak > 0 && prices.current > 0;
