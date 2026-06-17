@@ -22,8 +22,8 @@ var WhyReport = (function () {
     var GROUP_MIN = 3;
     var GROUP_TOP_STOCKS = 4;
     var PB_PEAK_MIN = 15;
-    var PB_DROP_MIN = 20;
-    var PB_BOUNCE_MIN = 15;
+    var PB_DROP_MIN = 25;     // 고점 대비 낙폭 컷 (조정 깊이) — 너무 많이 잡혀 20→25 강화
+    var PB_BOUNCE_MIN = 25;   // 저점 대비 반등 컷 — 15→25 강화 (확실히 반등 중인 것만)
 
     // 라이브 숫자 오버레이 — 15s 주기(home 과 동일). /api/marketmap 병렬화로 ~3s 응답이라 단축.
     var LIVE_POLL_MS = 15 * 1000;
@@ -416,7 +416,7 @@ var WhyReport = (function () {
             // (신고가로 고점이 잡힌 종목도 회복하면 표시되도록)
             var rec = isRecovered(pb);
             if (!rec && peakRateFromPullback(pb) < PB_PEAK_MIN) return false;
-            if (lowDrawdownPct(pb) < PB_DROP_MIN) return false;
+            if (!rec && lowDrawdownPct(pb) < PB_DROP_MIN) return false;
             if (!rec && normalizedBouncePct(pb) < PB_BOUNCE_MIN) return false;
             var prices = pullbackPrices(pb);
             // 고점 회복(current>=peak) 종목도 그날은 포함 — '고점회복' 배지로 맨 위에 표시 후 다음 날 빠짐
