@@ -10,6 +10,16 @@
     var DOW = ['일', '월', '화', '수', '목', '금', '토'];
     var TYPE_LABEL = { stock: '대장주', sector: '대장 섹터', theme: '대장 테마' };
 
+    // 이미지 다운로드 — 워터마크/캡처 레이아웃 상수 (매직넘버 금지)
+    var CAP = {
+        SCALE: 2,          // 2배 해상도
+        HEAD_H: 52,        // 상단 워터마크 헤더 높이
+        PAD: 18,           // 캡처 외곽 여백
+        HEAD_BASELINE: 31, // 헤더 텍스트 baseline y
+        LOGO_SIZE: 16, DOMAIN_SIZE: 13, CTX_SIZE: 12.5,
+        FONT: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif',
+    };
+
     var state = { days: {}, type: 'stock', year: 0, month: 0, min: null, max: null, colorMap: {}, counts: {}, activeColors: {} };
 
     function esc(s) {
@@ -100,6 +110,10 @@
             var center = '';
             if (dow === 0 || dow === 6) {
                 cls += ' cal-cell--weekend';
+            } else if (key === todayYmd()) {
+                // 오늘(평일) — 장중/집계 전. 마감 후 데이터가 누적됨을 안내
+                cls += ' cal-cell--today';
+                center = '<div class="cal-cell__center"><span class="cal-cell__pending">장 마감 후<br>추가됩니다</span></div>';
             } else if (key >= state.min && key <= state.max) {
                 // 데이터 기간 안의 평일인데 기록 없음 = 공휴일(휴장)
                 cls += ' cal-cell--holiday';
@@ -212,9 +226,157 @@
         applyHighlights();
     }
 
+    // ── 이미지 다운로드 ───────────────────────────────────────────────
+    // 캘린더 그리드(#calGrid)만 캡처. DOM 박스/텍스트를 실측 좌표로 canvas 에
+    // 다시 그리고(로드된 폰트 그대로 사용 → 한글 안전, 외부 라이브러리 불필요),
+    // 상단에 워터마크 헤더(좌: 로고+도메인 / 우: 날짜·모드)를 합성한다.
+    function savePNG() {
+        var grid = document.getElementById('calGrid');
+        if (!grid || !grid.children.length) return;
+        var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+        ready.then(function () { renderPNG(grid); }, function () { renderPNG(grid); });
+    }
+
+    function renderPNG(grid) {
+        var gridRect = grid.getBoundingClientRect();
+        var W = Math.round(gridRect.width), GH = Math.round(gridRect.height);
+        if (W < 80 || GH < 80) return;
+
+        var PAD = CAP.PAD, HEAD_H = CAP.HEAD_H, S = CAP.SCALE;
+        var totalW = W + PAD * 2, totalH = HEAD_H + PAD + GH + PAD;
+        var ox = PAD - gridRect.left, oy = HEAD_H + PAD - gridRect.top; // 뷰포트→캔버스 보정
+
+        var rootCs = getComputedStyle(document.documentElement);
+        var bodyCs = getComputedStyle(document.body);
+        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        var bgColor = bodyCs.backgroundColor || (isLight ? '#F2F4F6' : '#191919');
+        var primary = (rootCs.getPropertyValue('--text-primary') || '').trim() || bodyCs.color;
+        var dim = isLight ? 'rgba(25,25,25,0.5)' : 'rgba(255,255,255,0.55)';
+        var dividerColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.12)';
+
+        var canvas = document.createElement('canvas');
+        canvas.width = Math.round(totalW * S);
+        canvas.height = Math.round(totalH * S);
+        var ctx = canvas.getContext('2d');
+        ctx.scale(S, S);
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, totalW, totalH);
+
+        // 헤더 워터마크 — 좌: ORGO + orgo.kr / 우: 날짜 · 모드
+        var hy = CAP.HEAD_BASELINE;
+        ctx.textBaseline = 'alphabetic';
+        ctx.textAlign = 'left';
+        ctx.font = '800 ' + CAP.LOGO_SIZE + 'px ' + CAP.FONT;
+        ctx.fillStyle = primary;
+        ctx.fillText('ORGO', PAD, hy);
+        var logoW = ctx.measureText('ORGO').width;
+        ctx.font = '600 ' + CAP.DOMAIN_SIZE + 'px ' + CAP.FONT;
+        ctx.fillStyle = dim;
+        ctx.fillText('orgo.kr', PAD + logoW + 9, hy);
+        var ctxStr = state.year + '.' + ('0' + (state.month + 1)).slice(-2) + ' · ' + (TYPE_LABEL[state.type] || '');
+        ctx.font = '600 ' + CAP.CTX_SIZE + 'px ' + CAP.FONT;
+        ctx.fillStyle = primary;
+        ctx.textAlign = 'right';
+        ctx.fillText(ctxStr, totalW - PAD, hy);
+        ctx.textAlign = 'left';
+        ctx.strokeStyle = dividerColor;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(0, HEAD_H - 0.5);
+        ctx.lineTo(totalW, HEAD_H - 0.5);
+        ctx.stroke();
+
+        function isPaint(c) { return !!c && c !== 'transparent' && c !== 'rgba(0, 0, 0, 0)'; }
+        function relRect(el) { var r = el.getBoundingClientRect(); return { x: r.left + ox, y: r.top + oy, w: r.width, h: r.height }; }
+        function roundPath(x, y, w, h, r) {
+            r = Math.max(0, Math.min(r, w / 2, h / 2));
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+        }
+        function drawBox(el, cs) {
+            var bg = cs.backgroundColor, bw = parseFloat(cs.borderTopWidth) || 0, bc = cs.borderTopColor;
+            var hasBg = isPaint(bg), hasB = bw > 0 && isPaint(bc);
+            if (!hasBg && !hasB) return;
+            var r = relRect(el);
+            roundPath(r.x, r.y, r.w, r.h, parseFloat(cs.borderTopLeftRadius) || 0);
+            if (hasBg) { ctx.fillStyle = bg; ctx.fill(); }
+            if (hasB) { ctx.lineWidth = bw; ctx.strokeStyle = bc; ctx.stroke(); }
+        }
+        // 텍스트 노드를 라인(getClientRects)별로 잘라 그림 → wrap/line-clamp/혼합색 자동 반영
+        function drawTextNode(node, cs) {
+            var text = node.nodeValue;
+            if (!text || !/\S/.test(text)) return;
+            var range = document.createRange();
+            range.selectNodeContents(node);
+            var rects = range.getClientRects();
+            if (!rects.length) return;
+            ctx.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + CAP.FONT;
+            ctx.fillStyle = cs.color;
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            var i = 0, n = text.length;
+            for (var k = 0; k < rects.length; k++) {
+                var rc = rects[k];
+                if (rc.width < 0.5) continue;
+                var line = '', w = 0;
+                while (i < n) {
+                    var cw = ctx.measureText(text[i]).width;
+                    if (line && w + cw > rc.width + 1.5) break;
+                    line += text[i]; w += cw; i++;
+                }
+                ctx.fillText(line, rc.left + ox, rc.top + oy + rc.height / 2);
+            }
+        }
+        function paintInner(el) {
+            var kids = el.childNodes;
+            for (var i = 0; i < kids.length; i++) {
+                var nd = kids[i];
+                if (nd.nodeType === 3) { drawTextNode(nd, getComputedStyle(el)); }
+                else if (nd.nodeType === 1) {
+                    var ccs = getComputedStyle(nd);
+                    if (ccs.display === 'none' || ccs.visibility === 'hidden') continue;
+                    drawBox(nd, ccs);
+                    paintInner(nd);
+                }
+            }
+        }
+
+        var children = grid.children;
+        for (var c = 0; c < children.length; c++) {
+            var el = children[c], cs = getComputedStyle(el);
+            if (cs.display === 'none') continue;
+            drawBox(el, cs);
+            var r = relRect(el);
+            ctx.save();
+            roundPath(r.x, r.y, r.w, r.h, parseFloat(cs.borderTopLeftRadius) || 0);
+            ctx.clip();
+            paintInner(el);
+            ctx.restore();
+        }
+
+        canvas.toBlob(function (b) {
+            if (!b) return;
+            var url = URL.createObjectURL(b);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'orgo-calendar-' + state.year + ('0' + (state.month + 1)).slice(-2) + '-' + state.type + '.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 'image/png');
+    }
+
     function bind() {
         document.getElementById('calPrev').addEventListener('click', function () { shiftMonth(-1); });
         document.getElementById('calNext').addEventListener('click', function () { shiftMonth(1); });
+        var $save = document.getElementById('calSave');
+        if ($save) $save.addEventListener('click', savePNG);
         document.getElementById('calToggle').addEventListener('click', function (e) {
             var btn = e.target.closest('.seg__btn');
             if (btn) setType(btn.getAttribute('data-type'));
