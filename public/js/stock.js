@@ -174,6 +174,35 @@
         return '';
     }
 
+    // 확정 공시류 강한 카탈리스트 — 제목에 명확히 잡히는 이벤트. 뉴스 다수(≥2건)에 등장하면
+    // 빌드 reason 이 부차 사유를 골랐어도(예: 가온전선 무상증자인데 '수주 공시') 이걸 우선한다.
+    var CORP_ACTIONS = [
+        ['무상증자', /무상\s*증자/], ['유상증자', /유상\s*증자/],
+        ['자사주 소각', /자사주\s*(?:소각|매입\s*후\s*소각)/],
+        ['액면분할', /액면\s*분할/], ['액면병합', /액면\s*병합|주식\s*병합/],
+    ];
+    function _reasonKeyFlat(s) { return String(s || '').replace(/\s/g, ''); }
+    function _daysApartReason(a, b) {
+        function toD(s) { s = String(s || '').replace(/[^0-9]/g, '').slice(0, 8); return s.length === 8 ? new Date(+s.slice(0,4), +s.slice(4,6)-1, +s.slice(6,8)) : null; }
+        var da = toD(a), db = toD(b);
+        return (da && db) ? Math.abs((da - db) / 86400000) : 0;
+    }
+    function dominantCorpAction(news, eventDate) {
+        if (!Array.isArray(news)) return '';
+        var counts = {};
+        for (var i = 0; i < news.length; i++) {
+            var n = news[i] || {};
+            if (_daysApartReason(n.date, eventDate) > 4) continue;   // 이벤트 ±4일 근처 기사만
+            var title = String(n.title || '');
+            for (var j = 0; j < CORP_ACTIONS.length; j++) {
+                if (CORP_ACTIONS[j][1].test(title)) counts[CORP_ACTIONS[j][0]] = (counts[CORP_ACTIONS[j][0]] || 0) + 1;
+            }
+        }
+        var best = '', bestN = 0;
+        for (var k in counts) { if (counts[k] > bestN) { bestN = counts[k]; best = k; } }
+        return bestN >= 2 ? best : '';
+    }
+
     // 상승이유 표시 정리 — 홈처럼 약한 "관련 뉴스"류를 짧은 이슈 문구로 바꾼다.
     function cleanReasonText(reason, theme, news, stockName, eventDate) {
         var orig = String(reason == null ? '' : reason).trim();
@@ -197,11 +226,17 @@
         }
         var r = trimTail(orig);
         var rTheme = compactSpaces(r).replace(/\s*[\(（][^)）]*[\)）]\s*/g, ' ');
-        if (t && rTheme.indexOf(t) === 0) {
+        // 테마명 중복 제거는 테마 뒤가 단어 경계(공백·점·쉼표·끝)일 때만 — "탈모 치료"가 "탈모 치료제"의
+        // 단어 중간에 prefix 매칭돼 "제 보험 검토"처럼 깨지는 것 방지.
+        var afterT = rTheme.charAt(t.length);
+        if (t && rTheme.indexOf(t) === 0 && (afterT === '' || /[\s·,]/.test(afterT))) {
             var d = rTheme.slice(t.length).replace(/^[\s·,]+/, '').trim();
             var dFiller = !d || d === '관련' || /^(관련\s*)?(뉴스|이슈|소식)$/.test(d);
             if (!dFiller && d.indexOf(' ') >= 0) r = d;
         }
+        // 뉴스 다수에 확정 공시(무상증자 등)가 있는데 빌드 reason 이 그걸 안 담았으면 그걸 우선.
+        var corp = dominantCorpAction(news, eventDate);
+        if (corp && _reasonKeyFlat(r).indexOf(_reasonKeyFlat(corp)) < 0) return corp;
         return issueFromReasonCore(r, tShort);
     }
 
@@ -741,10 +776,6 @@
         var rate = (ev.change_rate || 0);
         var rateLabel = (rate >= 29.9) ? '<span class="event-card__limit">상한가</span>' : '';
         var hi52w = ev.is_52w_high ? '<span class="event-card__highflag">52주 신고가</span>' : '';
-        // 오늘(실시간) 카드 — '실시간' 배지로 미확정 표시, 마감 후 build-history 확정 시 일반 카드로 교체.
-        var liveBadge = ev._live
-            ? '<span class="event-card__live-badge" style="background:#e8412c;color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px;">실시간</span>'
-            : '';
         var reasonText = (ev.reason_status === 'missing') ? '' :
             cleanReasonText(ev.rise_reason, ev.theme_tag, ev.news, _stockName, ev.date);
         var reasonHtml = reasonText
@@ -758,7 +789,6 @@
         return '<article class="event-card' + rowClass + '">' +
             '<div class="event-card__top">' +
             '<span class="event-card__date">' + formatDate(ev.date) + '</span>' +
-            liveBadge +
             '<span class="event-card__rate">+' + rate.toFixed(2) + '%</span>' +
             rateLabel +
             hi52w +

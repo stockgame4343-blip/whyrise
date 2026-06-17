@@ -34,36 +34,231 @@ var WhyTable = (function () {
         return esc(normalizeNewsLink(s));
     }
 
-    // 상승이유 표시 정리 — stock-rise 가 주는 "OO 관련 뉴스/이슈/보도" 군더더기 꼬리표를 떼고,
-    // 테마칩과 중복되거나 의미 없는("테마") 문구는 숨긴다. (칩이 이미 카테고리를 보여줌)
-    // 상승이유 표시 정리 — 이유 칸을 절대 비우지 않는다(빈칸=오류처럼 보임, 사용자 피드백).
-    //  · 정상 문구는 그대로("M&A 관련 뉴스"), 단어 하나로 깎지 않음
-    //  · 테마명 중복은 다단어로 남을 때만 제거("탈모 치료 신약 관련 뉴스"→"신약 관련 뉴스"),
-    //    비거나 짧아지면 원문 유지("남북경협 관련 뉴스"는 그대로, 테마와 겹쳐도 OK)
-    //  · 무의미 placeholder "테마 관련 뉴스"는 실제 테마명으로 구체화("항공 관련 뉴스")
-    function cleanReasonText(reason, theme) {
+    function escapeRegex(s) {
+        return String(s || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function compactSpaces(s) {
+        return String(s || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function stripThemeParen(theme) {
+        return String(theme || '').replace(/\s*[\(（][^)）]*[\)）]\s*$/, '').trim();
+    }
+
+    function normalizeKey(s) {
+        return stripThemeParen(s)
+            .replace(/\s+/g, '')
+            .replace(/[()（）/·,_-]/g, '')
+            .toLowerCase();
+    }
+
+    function issueFromReasonCore(reason, themeShort) {
+        var r = compactSpaces(reason).replace(/\s*[\(（][^)）]*[\)）]\s*/g, ' ').trim();
+        var m = /^(.+?)\s*관련\s*(뉴스|이슈|소식)$/.exec(r);
+        if (!m) return r;
+        var core = compactSpaces(m[1]);
+        if ((!core || core === '테마') && themeShort) core = themeShort;
+        if (!core) return r;
+        return core + ' 이슈';
+    }
+
+    function cleanupNewsTitle(title, stockName) {
+        var s = compactSpaces(title)
+            .replace(/\[[^\]]+\]/g, ' ')
+            .replace(/\((?:종합|상보|1보|2보|속보)[^)）]*[\)）]/g, ' ')
+            .replace(/[“”"']/g, '')
+            .replace(/…/g, ' ')
+            .replace(/[?!]/g, ' ');
+        if (stockName) {
+            s = s.replace(new RegExp(escapeRegex(stockName), 'g'), ' ');
+        }
+        return compactSpaces(s);
+    }
+
+    function polishIssuePhrase(s) {
+        var r = compactSpaces(s)
+            .replace(/^[,，·:;\-\s]+/, '')
+            .replace(/^(거래소|공시|단독)\s*/, '')
+            .replace(/^(서|에서)\s+/, '')
+            .replace(/\s*(?:에|로|으로|따라)\s*$/, '')
+            .replace(/\s*(?:주|株|관련주)?\s*(?:상한가|급등|강세|상승|불기둥|다시 난다).*$/, '');
+        r = compactSpaces(r);
+        if (!r || r.length < 3) return '';
+        if (/^(상한가|급등|강세|상승|불기둥)$/.test(r)) return '';
+        if (/주가|목표가|수익률|매매거래 정지|거래 정지|가동 중단/.test(r)) return '';
+        if (r.length > 24) {
+            var parts = r.split(/\s+/);
+            while (parts.length > 1 && parts.join(' ').length > 24) parts.shift();
+            r = parts.join(' ');
+        }
+        return r;
+    }
+
+    function extractIssueFromTitle(title, stockName, themeShort) {
+        var cleaned = cleanupNewsTitle(title, stockName);
+        if (!cleaned) return '';
+        if (/트럼프/.test(cleaned) && /사진/.test(cleaned)) {
+            if (/김정은|정상회담|북미/.test(cleaned)) return '트럼프·김정은 사진 이슈';
+            if (/남북경협|대북/.test(normalizeKey(themeShort))) return '트럼프 사진 이슈';
+        }
+
+        var parts = [cleaned];
+        cleaned.split(/[,.，;:]/).forEach(function (p) { parts.push(p); });
+        cleaned.split(/\s+(?:에|로|으로|따라|속에)\s+/).forEach(function (p) { parts.push(p); });
+
+        var patterns = [
+            /(건보\s*적용\s*논의)/,
+            /(국제유가\s*(?:하락|급락))/,
+            /(유가\s*(?:하락|급락))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:수출|실적)\s*호조)/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}흑자\s*전환)/,
+            /(주식\s*병합\s*승인)/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:공급\s*계약|대형\s*수주|수주)\s*체결)/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:영업이익|영업익|수주)\s*공시)/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:매각|인수|합병)\s*(?:검토|추진|재추진|논의|체결|결정|합의)?)/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:설계사|협력사|사업자|공급사)\s*선정)/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:데이터|기술|제품|신제품|플랫폼|서비스)\s*공개)/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:대표이사|대표집행임원|대표)\s*(?:선임|사임))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:유증|CB|전환사채|대여금)\s*(?:병행|발행|출자전환))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:승인|선정|체결|공시|소각|상장|선임|사임|공개|출시|참가|논의|검토|추진|확대|호조|개선|서프라이즈|공략|전환|채비|등록))/
+        ];
+
+        for (var i = 0; i < parts.length; i++) {
+            var part = compactSpaces(parts[i]);
+            if (!part) continue;
+            for (var j = 0; j < patterns.length; j++) {
+                var m = patterns[j].exec(part);
+                if (!m) continue;
+                var issue = polishIssuePhrase(m[1]);
+                if (issue) return issue;
+            }
+        }
+        return '';
+    }
+
+    function isGenericReasonKey(key) {
+        return !key || /^(뉴스|테마|실적|투자|공급|협력|승인|매출|신약|지분|건설)$/.test(key);
+    }
+
+    function compactIssueDate(s) {
+        return String(s || '').replace(/[^0-9]/g, '').slice(0, 8);
+    }
+
+    function dateGapDays(a, b) {
+        if (!a || !b || a.length !== 8 || b.length !== 8) return null;
+        var da = new Date(+a.slice(0, 4), +a.slice(4, 6) - 1, +a.slice(6, 8));
+        var db = new Date(+b.slice(0, 4), +b.slice(4, 6) - 1, +b.slice(6, 8));
+        return Math.abs(da - db) / 86400000;
+    }
+
+    function isNearEventNews(n, eventDate) {
+        if (!eventDate) return true;
+        var gap = dateGapDays(compactIssueDate(n && n.date), compactIssueDate(eventDate));
+        return gap !== null && gap <= 4;
+    }
+
+    function isWeakReasonText(reason) {
+        return /관련\s*(뉴스|이슈|소식)$/.test(reason) ||
+            /^(증권사 리포트 공개|투자심리 개선 영향)$/.test(reason);
+    }
+
+    function isRelevantNewsTitle(title, stockName, themeShort, reasonCore) {
+        var titleKey = normalizeKey(cleanupNewsTitle(title, ''));
+        if (!titleKey) return false;
+
+        var stockKey = normalizeKey(stockName);
+        if (stockKey && titleKey.indexOf(stockKey) >= 0) return true;
+
+        var themeKey = normalizeKey(themeShort);
+        if (themeKey && themeKey !== '뉴스' && titleKey.indexOf(themeKey) >= 0) return true;
+
+        var reasonKey = normalizeKey(reasonCore).replace(/이슈$/, '');
+        if (!isGenericReasonKey(reasonKey) && titleKey.indexOf(reasonKey) >= 0) return true;
+
+        return false;
+    }
+
+    function issueFromNews(news, stockName, themeShort, reasonCore, eventDate) {
+        if (!Array.isArray(news)) return '';
+        for (var i = 0; i < news.length && i < 3; i++) {
+            if (!isNearEventNews(news[i], eventDate)) continue;
+            var title = news[i] && news[i].title;
+            if (!isRelevantNewsTitle(title, stockName, themeShort, reasonCore)) continue;
+            var issue = extractIssueFromTitle(title, stockName, themeShort);
+            if (issue) return issue;
+        }
+        return '';
+    }
+
+    // 확정 공시류 강한 카탈리스트 — 제목에 명확히 잡히는 이벤트. 뉴스 다수(≥2건)에 등장하면
+    // 빌드 reason 이 부차 사유를 골랐어도(예: 가온전선 무상증자인데 '수주 공시') 이걸 우선한다.
+    var CORP_ACTIONS = [
+        ['무상증자', /무상\s*증자/], ['유상증자', /유상\s*증자/],
+        ['자사주 소각', /자사주\s*(?:소각|매입\s*후\s*소각)/],
+        ['액면분할', /액면\s*분할/], ['액면병합', /액면\s*병합|주식\s*병합/],
+    ];
+    function _reasonKeyFlat(s) { return String(s || '').replace(/\s/g, ''); }
+    function _daysApartReason(a, b) {
+        function toD(s) { s = String(s || '').replace(/[^0-9]/g, '').slice(0, 8); return s.length === 8 ? new Date(+s.slice(0,4), +s.slice(4,6)-1, +s.slice(6,8)) : null; }
+        var da = toD(a), db = toD(b);
+        return (da && db) ? Math.abs((da - db) / 86400000) : 0;
+    }
+    function dominantCorpAction(news, eventDate) {
+        if (!Array.isArray(news)) return '';
+        var counts = {};
+        for (var i = 0; i < news.length; i++) {
+            var n = news[i] || {};
+            if (_daysApartReason(n.date, eventDate) > 4) continue;   // 이벤트 ±4일 근처 기사만
+            var title = String(n.title || '');
+            for (var j = 0; j < CORP_ACTIONS.length; j++) {
+                if (CORP_ACTIONS[j][1].test(title)) counts[CORP_ACTIONS[j][0]] = (counts[CORP_ACTIONS[j][0]] || 0) + 1;
+            }
+        }
+        var best = '', bestN = 0;
+        for (var k in counts) { if (counts[k] > bestN) { bestN = counts[k]; best = k; } }
+        return bestN >= 2 ? best : '';
+    }
+
+    // 상승이유 표시 정리 — 이유 칸을 절대 비우지 않는다(빈칸=오류처럼 보임).
+    // 약한 "관련 뉴스"류는 뉴스 제목에서 명확한 사건을 뽑고, 실패하면 "OO 이슈"로 말끝을 닫는다.
+    function cleanReasonText(reason, theme, news, stockName, eventDate) {
         var orig = String(reason == null ? '' : reason).trim();
-        var t = String(theme || '').replace(/\s*[\(（][^)）]*[\)）]\s*$/, '').trim();
+        var t = stripThemeParen(theme);
         var tShort = t.split('/')[0].trim();
         // 이유가 없으면 테마 기반으로 채움(빈칸 금지). 테마도 없으면 '' (호출부에서 '-').
         if (!orig || orig === '-') return tShort ? (tShort + ' 관련 뉴스') : '';
         // "테마"/"테마 관련 뉴스" placeholder → 실제 테마명
         if (orig === '테마' || /^테마\s*관련\s*(뉴스|이슈|소식)?$/.test(orig)) {
-            return tShort ? (tShort + ' 관련 뉴스') : orig;
+            orig = tShort ? (tShort + ' 관련 뉴스') : orig;
         }
-        // 끝 '보도'는 다단어로 남을 때만 제거("외국인 순매수 보도"→"외국인 순매수", "양산 보도" 유지)
+
+        if (isWeakReasonText(orig)) {
+            var reasonCore = issueFromReasonCore(orig, tShort).replace(/\s*이슈$/, '');
+            var newsIssue = issueFromNews(news, stockName, tShort, reasonCore, eventDate);
+            if (newsIssue) return newsIssue;
+        }
+
+        // 끝 '보도'는 제거. 한 단어만 남으면 "이슈"를 붙여 빈약한 라벨처럼 보이지 않게 한다.
         function trimTail(s) {
             var nb = s.replace(/\s*보도\s*$/, '').trim();
-            return (nb && nb.indexOf(' ') >= 0) ? nb : s;
+            if (!nb || nb === s) return s;
+            return (nb.indexOf(' ') >= 0) ? nb : (nb + ' 이슈');
         }
         var r = trimTail(orig);
-        // 테마명 중복 제거 — 다단어 좋은 문구로 남을 때만(아니면 원문 유지, 빈칸 금지)
-        if (t && r.indexOf(t) === 0) {
-            var d = r.slice(t.length).replace(/^[\s·,]+/, '').trim();
+        // 테마명 중복 제거 — 다단어 좋은 문구로 남을 때만, 그리고 테마 뒤가 단어 경계(공백·점·쉼표·끝)
+        // 일 때만. "탈모 치료"가 "탈모 치료제"의 단어 중간에 매칭돼 "제 보험 검토"로 깨지는 것 방지.
+        var rTheme = compactSpaces(r).replace(/\s*[\(（][^)）]*[\)）]\s*/g, ' ');
+        var afterT = rTheme.charAt(t.length);
+        if (t && rTheme.indexOf(t) === 0 && (afterT === '' || /[\s·,]/.test(afterT))) {
+            var d = rTheme.slice(t.length).replace(/^[\s·,]+/, '').trim();
             var dFiller = !d || d === '관련' || /^(관련\s*)?(뉴스|이슈|소식)$/.test(d);
             if (!dFiller && d.indexOf(' ') >= 0) r = d;
         }
-        return r;
+        // 뉴스 다수에 확정 공시(무상증자 등)가 있는데 빌드 reason 이 그걸 안 담았으면 그걸 우선.
+        var corp = dominantCorpAction(news, eventDate);
+        if (corp && _reasonKeyFlat(r).indexOf(_reasonKeyFlat(corp)) < 0) return corp;
+        return issueFromReasonCore(r, tShort);
     }
 
     var _currentData = [];
@@ -293,16 +488,17 @@ var WhyTable = (function () {
             // 이유 (hero) — 태그·이유·편집 모두 한 줄에
             var rawTag = r.theme_tag || '';
             var displayTag = shortenTheme(rawTag);
-            // 이유는 항상 채움(빈칸=오류처럼 보임). 테마 중복·"테마 관련 뉴스"만 다듬고 문구는 유지.
-            var reason = cleanReasonText(r.rise_reason, rawTag) || '-';
             var eventDate = opts.watchlistMode ? (r._historyDate || r.date || '') : '';
+            var reasonDate = eventDate || date;
+            // 이유는 항상 채움(빈칸=오류처럼 보임). 약한 "관련 뉴스"류는 짧은 이슈 문구로 표시.
+            var reason = cleanReasonText(r.rise_reason, rawTag, r.news, r.name, reasonDate) || '-';
             var editDate = eventDate || date;
             var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + tEsc +
                 '" data-date="' + esc(editDate) + '" title="이유 편집">✏️</button>';
             html += '<td class="cell-reason">' +
                 '<div class="cell-reason__inline">' +
                 (displayTag ? '<span class="theme-tag">' + esc(displayTag) + '</span>' : '') +
-                '<span class="cell-reason__text">' + esc(reason) + '</span>' +
+                '<span class="cell-reason__text" title="' + esc(reason) + '">' + esc(reason) + '</span>' +
                 editBtn +
                 '</div></td>';
             // 상승률
