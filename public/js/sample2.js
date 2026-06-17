@@ -319,17 +319,31 @@
             ctx.fillStyle = cs.color;
             ctx.textAlign = 'left';
             ctx.textBaseline = 'middle';
-            var i = 0, n = text.length;
+            // 단일 라인은 통째로 그림 — measure 누적 오차로 끝 글자가 잘리는 것 방지
+            if (rects.length === 1) {
+                var r0 = rects[0];
+                ctx.fillText(text, r0.left + ox, r0.top + oy + r0.height / 2);
+                return;
+            }
+            // 멀티라인 — 글자마다 실제 렌더된 라인(top 일치)에 배분해 브라우저 줄바꿈 그대로 재현
+            var lines = [];
+            for (var li = 0; li < rects.length; li++) lines.push('');
+            var ch = document.createRange();
+            for (var j = 0; j < text.length; j++) {
+                ch.setStart(node, j);
+                ch.setEnd(node, j + 1);
+                var cr = ch.getBoundingClientRect();
+                var best = 0, bestD = Infinity;
+                for (var m = 0; m < rects.length; m++) {
+                    var d = Math.abs(rects[m].top - cr.top);
+                    if (d < bestD) { bestD = d; best = m; }
+                }
+                lines[best] += text[j];
+            }
             for (var k = 0; k < rects.length; k++) {
                 var rc = rects[k];
                 if (rc.width < 0.5) continue;
-                var line = '', w = 0;
-                while (i < n) {
-                    var cw = ctx.measureText(text[i]).width;
-                    if (line && w + cw > rc.width + 1.5) break;
-                    line += text[i]; w += cw; i++;
-                }
-                ctx.fillText(line, rc.left + ox, rc.top + oy + rc.height / 2);
+                ctx.fillText(lines[k], rc.left + ox, rc.top + oy + rc.height / 2);
             }
         }
         function paintInner(el) {
