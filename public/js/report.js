@@ -551,7 +551,7 @@ var WhyReport = (function () {
         }).join('');
     }
 
-    function renderPullbacks(rows, fallbackDate) {
+    function renderPullbacks(rows) {
         var el = $('pullbackList');
         if (!el) return;
         if (!rows.length) {
@@ -562,14 +562,7 @@ var WhyReport = (function () {
                 '</li>';
             return;
         }
-        var note = '';
-        if (fallbackDate) {
-            note = '<li class="report-pullback-note" style="list-style:none;padding:7px 12px;margin-bottom:10px;border-radius:8px;' +
-                'background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text-secondary);' +
-                'font-size:12.5px;font-weight:600;line-height:1.4;">' +
-                esc(formatDate(fallbackDate)) + ' 마감 종목 기준 · 현재가 실시간 반영 (오늘 마감 후 갱신)</li>';
-        }
-        el.innerHTML = note + rows.map(function (pb) {
+        el.innerHTML = rows.map(function (pb) {
             var p = pullbackPrices(pb);
             var drawdown = currentDrawdownPct(pb);
             var lowDrop = lowDrawdownPct(pb);
@@ -721,10 +714,8 @@ var WhyReport = (function () {
         // 장중 최신일에 오늘 풀백이 아직 없으면(intraday) 직전 마감일 풀백을 base 로 사용 —
         // 현재가 오버레이(_overlaidPullbacks)가 낙폭·반등률을 실시간으로 재계산한다.
         var rawPb = (day.pullbacks && day.pullbacks.length) ? day.pullbacks : null;
-        var pbFallbackDate = '';
         if (!rawPb && state.dateIndex === 0 && state._pbFallback && state._pbFallback.length) {
             rawPb = state._pbFallback;
-            pbFallbackDate = state._pbFallbackDate;
         }
         var pullbacks = derivePullbacks(_overlaidPullbacks(rawPb || []));
 
@@ -732,7 +723,7 @@ var WhyReport = (function () {
         renderGroups(sectors, 'sectorGroups', 'sector', '3종목 이상 몰린 주도 섹터가 없습니다.');
         renderGroups(themes, 'themeGroups', 'theme', '3종목 이상 몰린 핫 테마가 없습니다.');
         renderHigh52w(highRows);
-        renderPullbacks(pullbacks, pbFallbackDate);
+        renderPullbacks(pullbacks);
         maybeFetchPbFallback();
     }
 
