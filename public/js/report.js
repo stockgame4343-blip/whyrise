@@ -430,13 +430,14 @@ var WhyReport = (function () {
         });
     }
 
-    function stockNameHtml(row, className) {
+    function stockNameHtml(row, className, suffixHtml) {
         var ticker = esc(row.ticker);
         var market = row.market ? '<span class="report-stock-market">' + esc(row.market) + '</span>' : '';
         return '<span class="' + className + ' cell-name__wrap">' +
             '<a class="report-stock-name cell-name__link" href="' + stockUrl(row.ticker) + '" data-ticker="' + ticker + '">' + esc(row.name || row.ticker) + '</a>' +
             miniIndicatorsHtml(row.ticker) +
             market +
+            (suffixHtml || '') +
             starRatingHtml(row.ticker) +
             '</span>';
     }
@@ -591,7 +592,7 @@ var WhyReport = (function () {
                 ? '<small class="cell-change--up">고점 회복</small>'
                 : '<small class="report-rate--down">현재가 대비 ' + pctDown(drawdown) + '</small>';
             return '<li class="report-move-row ' + ratingClass(pb.ticker) + '" data-ticker="' + esc(pb.ticker) + '">' +
-                '<div class="report-move-row__stock">' + stockNameHtml(row, 'report-move-row__name') + recBadge + '</div>' +
+                '<div class="report-move-row__stock">' + stockNameHtml(row, 'report-move-row__name', recBadge) + '</div>' +
                 '<div class="report-move-row__metrics">' +
                     '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.peak) + '</strong><em>고점</em></span>' + firstCell + '</span>' +
                     '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.low) + '</strong><em>저점</em></span><small class="report-rate--down">고점 대비 ' + pctDown(lowDrop) + '</small></span>' +
