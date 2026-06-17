@@ -404,6 +404,7 @@ var WhyReport = (function () {
 
     // 현재가가 과거 고점 이상 = '고점 회복'(그날 졸업). 라이브 현재가로만 발생(과거 빌드 데이터엔 없음).
     function isRecovered(pb) {
+        if (pb && pb.recovered) return true;   // 빌드가 저장한 '졸업' 플래그 (마감 후·과거 조회에도 유지)
         var p = pullbackPrices(pb);
         return p.peak > 0 && p.current > 0 && p.current >= p.peak;
     }
