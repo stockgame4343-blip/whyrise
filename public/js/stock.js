@@ -98,6 +98,8 @@
         cleaned.split(/\s+(?:에|로|으로|따라|속에)\s+/).forEach(function (p) { parts.push(p); });
 
         var patterns = [
+            /([가-힣]{2,6}\s*재건)/,
+            /([가-힣]{2,8}\s*(?:반사이익|정책\s*모멘텀|정책\s*수혜))/,
             /(건보\s*적용\s*논의)/,
             /(국제유가\s*(?:하락|급락))/,
             /(유가\s*(?:하락|급락))/,
@@ -162,11 +164,34 @@
         return false;
     }
 
+    // 거래소 규제/순환 공시 — 급등의 '원인'이 아니므로 이유에서 제외(조회공시·거래정지 등).
+    function isNoiseRegulatoryTitle(title) {
+        return /조회공시|현저한\s*시황\s*변동|투자주의|투자경고|투자위험|단기과열|불성실공시|관리종목|상장폐지|정리매매|매매거래\s*정지|주권매매거래\s*정지|거래\s*정지|거래\s*재개/.test(String(title || ''));
+    }
+
+    // 이름/테마 불일치라도 같은날(±4일) 다수(≥2건)에 동일 카탈리스트가 잡히면 섹터 무브로 보고 채택.
+    // (예: '조선' 테마인데 철강주 '이란 재건' 호재로 동반 급등 — 빌드 reason/테마로는 못 잡는 경우.)
+    function sectorCatalystFromNews(news, stockName, themeShort, eventDate) {
+        if (!Array.isArray(news)) return '';
+        var freq = {};
+        for (var i = 0; i < news.length; i++) {
+            if (!isNearEventNews(news[i], eventDate)) continue;
+            var title = (news[i] && news[i].title) || '';
+            if (isNoiseRegulatoryTitle(title)) continue;
+            var issue = extractIssueFromTitle(title, stockName, themeShort);
+            if (issue && issue.length >= 3) freq[issue] = (freq[issue] || 0) + 1;
+        }
+        var best = '', bestN = 0;
+        for (var k in freq) { if (freq[k] > bestN) { bestN = freq[k]; best = k; } }
+        return bestN >= 2 ? best : '';
+    }
+
     function issueFromNews(news, stockName, themeShort, reasonCore, eventDate) {
         if (!Array.isArray(news)) return '';
         for (var i = 0; i < news.length && i < 3; i++) {
             if (!isNearEventNews(news[i], eventDate)) continue;
             var title = news[i] && news[i].title;
+            if (isNoiseRegulatoryTitle(title)) continue;
             if (!isRelevantIssueTitle(title, stockName, themeShort, reasonCore)) continue;
             var issue = extractIssueFromTitle(title, stockName, themeShort);
             if (issue) return issue;
@@ -217,6 +242,11 @@
             var reasonCore = issueFromReasonCore(orig, tShort).replace(/\s*이슈$/, '');
             var newsIssue = issueFromNews(news, stockName, tShort, reasonCore, eventDate);
             if (newsIssue) return newsIssue;
+            // 이름/테마 불일치라도 같은날 다수에 등장하는 섹터 카탈리스트(예: 이란 재건) 완화 추출.
+            var sectorIssue = sectorCatalystFromNews(news, stockName, tShort, eventDate);
+            if (sectorIssue) return sectorIssue;
+            // 그래도 못 뽑고 reason 코어가 일반어면 테마 기반 — 'OO 이슈' 잡탕 대신 테마 관련 뉴스.
+            if (tShort && isGenericReasonKey(normalizeReasonKey(reasonCore))) return tShort + ' 관련 뉴스';
         }
 
         function trimTail(s) {
