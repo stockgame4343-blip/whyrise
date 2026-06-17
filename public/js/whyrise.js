@@ -23,7 +23,7 @@ var WhyApp = (function () {
     var STATUS_RECHECK_MS = 5 * 60 * 1000; // 서버 CLOSE(공휴일/오판) 재확인 주기
     var CLOSE_SETTLE_MS = 90 * 1000;       // 마감 후 확정 종가 fetch 지연 (동시호가 체결 대기)
     var KST_OFFSET = 9 * 60;
-    var OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
+    var OPEN_MIN = 8 * 60, CLOSE_MIN = 15 * 60 + 30; // NXT 시작 08:00부터 라이브 대기
     var RING_CIRCUM = 2 * Math.PI * 9;
     function isMarketOpenKST() {
         var k = new Date(Date.now() + KST_OFFSET * 60000);
@@ -31,6 +31,11 @@ var WhyApp = (function () {
         if (day === 0 || day === 6) return false;
         var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
         return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
+    function isNxtLeadInKST() {
+        var k = new Date(Date.now() + KST_OFFSET * 60000);
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < 9 * 60;
     }
     // ── LIVE ring / chain pattern (버블맵·트리맵과 동일) ──
     function $ringFg() { return document.querySelector('#homeLive .tmap-live__ring-fg'); }
@@ -97,9 +102,10 @@ var WhyApp = (function () {
     function liveCycle() {
         var isLatest = state.currentDateIdx === 0;
         var clockOpen = isMarketOpenKST();
-        // 서버 market_status 가 권위 — 로컬 시계가 장중이어도 공휴일이면 서버는 CLOSE.
+        // 08~09시 NXT 리드인은 서버가 아직 CLOSE 여도 라이브 재시도를 유지.
+        // 그 이후 서버 market_status 는 휴장/공휴일 가드로 사용.
         // ''(미확인) 은 로컬 시계 신뢰 (첫 fetch 실패 시 폴링이 영구 정지하지 않도록).
-        var statusClosed = clockOpen && state.marketStatus === 'CLOSE';
+        var statusClosed = clockOpen && state.marketStatus === 'CLOSE' && !isNxtLeadInKST();
         var open = clockOpen && !statusClosed;
         var fg = document.visibilityState !== 'hidden';
         // 장중부터 열어둔 탭 — 마감 직후 1회 더 받아 동시호가 확정 종가 반영
@@ -272,6 +278,15 @@ var WhyApp = (function () {
             if (lv.market_cap != null) o.market_cap = lv.market_cap * 1e8;   // 억원 → 원 (table.js formatAmount 원 기대)
             return o;
         });
+        // NXT 프리마켓(08~09시)엔 NXT 시세가 있는 종목만 '오늘 상승'으로 인정 —
+        // 라이브(NXT)에 없는 빌드 행(어제 급등주가 어제 등락률로 박제되는 것)은 제외해
+        // 'NXT 상승분만' 표기. 09:00 정규장부터는 필터 해제(정규 상승분 전체 반영).
+        // (합성 신규행은 아래에서 별도 추가 — liveMap 출처라 이 필터와 무관.)
+        if (isNxtLeadInKST()) {
+            state.rankings = state.rankings.filter(function (r) {
+                return r && r.ticker && state.liveMap[r.ticker];
+            });
+        }
         // 빌드에 아직 없는 신규 급등주 — 라이브 union 에서 +CUTOFF% 면 합성 행으로 즉시 노출.
         // 세부필드(이유/테마/뉴스)는 다음 빌드 도착 시 정식 행으로 자연 교체. (api.js:136 name 필드의 용도)
         var have = {};

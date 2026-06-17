@@ -16,7 +16,7 @@
     'use strict';
 
     var KST_OFFSET = 9 * 60;
-    var OPEN_MIN = 9 * 60;
+    var OPEN_MIN = 8 * 60; // NXT 시작 08:00부터 라이브 대기
     var CLOSE_MIN = 15 * 60 + 30;
     var POLL_MS = 30 * 1000;     // 30초 — 라이브 숫자(/api/marketmap) 오버레이 주기. ring 도 이 값에 동기.
     var IDLE_RECHECK_MS = 5000;          // 비라이브 상태 재확인 주기
@@ -103,6 +103,11 @@
         var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
         return mins >= OPEN_MIN && mins < CLOSE_MIN;
     }
+    function isNxtLeadIn() {
+        var k = kstNow();
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < 9 * 60;
+    }
     function isLiveDate() { return state.dateIndex === 0; }
     function formatClock() {
         var k = kstNow();
@@ -159,8 +164,13 @@
         });
     }
     function activeItems() {
+        // NXT 프리마켓(08~09시)엔 NXT 시세가 있는 종목만 — 어제 급등주가 어제 등락률로
+        // 박제되는 것 방지(라이브 맵 미수신 전이면 필터 보류해 빈 화면 회피). 09:00 정규장부턴 해제.
+        var leadInLive = isLiveDate() && isNxtLeadIn() && state.liveMap;
         return (state.rankings || []).filter(function (r) {
-            return !BLOCKED_TICKERS[r.ticker] && r.ticker && (r.change_rate || 0) > 0;
+            if (!r.ticker || BLOCKED_TICKERS[r.ticker]) return false;
+            if (leadInLive && !state.liveMap[r.ticker]) return false;
+            return (r.change_rate || 0) > 0;
         });
     }
     // 주도주는 stock-rise rankings (그날 1d) 만 사용 — 항상 1d 기준이라 항상 캡.
@@ -714,6 +724,7 @@
         return WhyAPI.getLiveMarketmap().then(function (res) {
             if (!isLiveDate()) return;   // 느린 fetch 도중 과거 날짜로 이동했으면 오버레이/렌더 스킵(불일치 방지)
             var live = res.map;
+            state.liveMap = live;        // activeItems 의 NXT 프리마켓 필터용(라이브 시세 보유 종목 판정)
             state.marketStatus = res.market_status || state.marketStatus;
             // 라벨 시각을 라이브 갱신 시각으로 — 빌드 collected_at 에 고정되던 버그 수정
             // (getLiveMarketmap 이 이미 KST 'YYYY-MM-DDTHH:MM:SS' 로 변환, slice(11,16) 호환)
@@ -742,9 +753,11 @@
     var _wasOpen = false;       // 장중→마감 전이 감지 (확정 종가 1회 fetch)
     function liveCycle() {
         var clockOpen = isMarketOpen();
-        // 서버 market_status 가 권위 — 로컬 시계가 장중이어도 공휴일이면 서버는 CLOSE.
+        // 08~09시 NXT 리드인은 서버가 아직 CLOSE 여도 라이브 재시도를 유지.
+        // 그 이후 서버 market_status 는 휴장/공휴일 가드로 사용.
         // ''(미확인) 은 로컬 시계 신뢰 (첫 fetch 실패 시 폴링이 영구 정지하지 않도록).
-        var open = clockOpen && state.marketStatus !== 'CLOSE';
+        var statusClosed = clockOpen && state.marketStatus === 'CLOSE' && !isNxtLeadIn();
+        var open = clockOpen && !statusClosed;
         if (!isLiveDate() || !open || document.visibilityState === 'hidden') {
             setLiveState(false);
             if (isLiveDate() && document.visibilityState !== 'hidden') {
@@ -754,7 +767,7 @@
                     setTimeout(function () { refreshLive(); }, CLOSE_SETTLE_MS);
                 }
                 // 로컬 시계는 장중인데 서버가 CLOSE (공휴일 또는 일시 오판) — 5분 간격 재확인으로 자동 복구
-                if (clockOpen && state.marketStatus === 'CLOSE') {
+                if (statusClosed) {
                     setTimeout(function () {
                         refreshLive().then(function () { liveCycle(); });
                     }, STATUS_RECHECK_MS);

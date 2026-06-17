@@ -8,7 +8,7 @@
  *  - currentDate: 오늘이면 라이브 (1d), 과거면 스냅샷
  *
  * 데이터 소스
- *  - /api/marketmap     (라이브, 1d만, 평일 KST 09:00~15:30)
+ *  - /api/marketmap     (라이브, 1d만, 평일 KST 08:00~15:30)
  *  - /data/marketmap.json (정적 빌드 — sector + rates[1d/1w/1m/3m/1y])
  *  - /data/marketmap/{YYYYMMDD}.json (일별 스냅샷)
  *  - /data/marketmap/index.json (날짜 인덱스, 최신순)
@@ -26,7 +26,7 @@
     var CLOSE_SETTLE_MS = 90 * 1000;     // 마감 후 확정 종가 fetch 지연 (동시호가 체결 대기)
     var FETCH_TIMEOUT_MS = 30000;        // api.js getLiveMarketmap 과 동일 기준
     var KST_OFFSET = 9 * 60;
-    var OPEN_MIN = 9 * 60;
+    var OPEN_MIN = 8 * 60; // NXT 시작 08:00부터 라이브 대기
     var CLOSE_MIN = 15 * 60 + 30;
     var RING_CIRCUM = 2 * Math.PI * 9;
     var SECTOR_LABEL_HEIGHT = 22;
@@ -139,6 +139,11 @@
         if (day === 0 || day === 6) return false;
         var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
         return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
+    function isNxtLeadIn() {
+        var k = kstNow();
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < 9 * 60;
     }
     function formatClock() {
         var k = kstNow();
@@ -631,9 +636,11 @@
     function liveCycle() {
         updateDateNav();
         var clockOpen = isMarketOpen();
-        // 서버 market_status 가 권위 — 로컬 시계가 장중이어도 공휴일이면 서버는 CLOSE.
+        // 08~09시 NXT 리드인은 서버가 아직 CLOSE 여도 라이브 재시도를 유지.
+        // 그 이후 서버 market_status 는 휴장/공휴일 가드로 사용.
         // ''(미확인) 은 로컬 시계 신뢰 (첫 fetch 실패 시 폴링이 영구 정지하지 않도록).
-        var open = clockOpen && state.marketStatus !== 'CLOSE';
+        var statusClosed = clockOpen && state.marketStatus === 'CLOSE' && !isNxtLeadIn();
+        var open = clockOpen && !statusClosed;
         var live = isLiveDate() && state.period === '1d';
         if (!(live && open) || document.visibilityState === 'hidden') {
             setLiveState(false);
@@ -644,7 +651,7 @@
                     setTimeout(function () { fetchLive().catch(function () {}); }, CLOSE_SETTLE_MS);
                 }
                 // 로컬 시계는 장중인데 서버가 CLOSE (공휴일 또는 일시 오판) — 5분 간격 재확인으로 자동 복구
-                if (clockOpen && state.marketStatus === 'CLOSE') {
+                if (statusClosed) {
                     setTimeout(function () {
                         fetchLive().catch(function () {}).then(function () { liveCycle(); });
                     }, STATUS_RECHECK_MS);

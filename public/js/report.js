@@ -3,7 +3,7 @@
  *
  * 기준:
  * - 주도 섹터/핫 테마: 그날 +15% 이상 종목 중 3종목 이상 그룹만 표시
- * - 오늘의 대장: +20% 이상 상승 종목 중 거래대금 우선, 비슷하면 상승률까지 종합
+ * - 오늘의 대장: +15% 이상 상승 종목 중 거래대금 상위권 우선, 비슷하면 상승률까지 종합
  * - 52주 신고가: +10% 이상 상승하면서 해당 날짜에 52주 신고가를 기록한 종목
  * - 조정 후 반등 시도: +15% 이상 급등 후 저점 -20% 이상, 저점 대비 현재가 +15% 이상, 이전 고점 미회복
  */
@@ -15,7 +15,9 @@ var WhyReport = (function () {
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
 
     var RISE_CUTOFF = 15;
-    var LEADER_CUTOFF = 20;
+    var LEADER_CUTOFF = 15;
+    var LEADER_VOLUME_PEER_RATIO = 0.5;
+    var LEADER_VOLUME_TOP_N = 5;
     var HIGH52_CUTOFF = 10;
     var GROUP_MIN = 3;
     var GROUP_TOP_STOCKS = 4;
@@ -30,13 +32,18 @@ var WhyReport = (function () {
     var CLOSE_SETTLE_MS = 90 * 1000;       // 마감 후 확정 종가 fetch 지연 (동시호가 체결 대기)
     // 급등 신규 — 빌드(stock-rise 일자 rankings)에 아직 없는데 라이브 union 에서 +N% 인 종목.
     // 오버레이는 기존 행 숫자만 갱신 → 새 종목은 못 잡으므로 별도 슬롯에 '시세만' 노출(이유 분석 대기중).
-    var KST_OFFSET = 9 * 60, OPEN_MIN = 9 * 60, CLOSE_MIN = 15 * 60 + 30;
+    var KST_OFFSET = 9 * 60, OPEN_MIN = 8 * 60, CLOSE_MIN = 15 * 60 + 30; // NXT 시작 08:00부터 라이브 대기
     function isMarketOpen() {
         var k = new Date(Date.now() + KST_OFFSET * 60000);
         var day = k.getUTCDay();
         if (day === 0 || day === 6) return false;
         var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
         return mins >= OPEN_MIN && mins < CLOSE_MIN;
+    }
+    function isNxtLeadIn() {
+        var k = new Date(Date.now() + KST_OFFSET * 60000);
+        var mins = k.getUTCHours() * 60 + k.getUTCMinutes();
+        return mins >= OPEN_MIN && mins < 9 * 60;
     }
 
     var state = {
@@ -310,8 +317,16 @@ var WhyReport = (function () {
         if (!candidates.length) return null;
         var maps = groupMaps(sectors, themes);
         var maxVolume = Math.max.apply(null, candidates.map(function (row) { return num(row.trading_value); }));
+        var volumeTop = {};
+        candidates.slice().sort(function (a, b) {
+            return num(b.trading_value) - num(a.trading_value) ||
+                num(b.change_rate) - num(a.change_rate);
+        }).slice(0, LEADER_VOLUME_TOP_N).forEach(function (row) {
+            volumeTop[row.ticker] = 1;
+        });
         var volumePeers = candidates.filter(function (row) {
-            return num(row.trading_value) >= maxVolume * 0.7;
+            return num(row.trading_value) >= maxVolume * LEADER_VOLUME_PEER_RATIO ||
+                volumeTop[row.ticker];
         });
         var maxChange = Math.max.apply(null, volumePeers.map(function (row) { return num(row.change_rate); }));
         function score(row) {
@@ -584,9 +599,13 @@ var WhyReport = (function () {
     var _wasOpen = false;       // 장중→마감 전이 감지 (확정 종가 1회 재확보)
     function liveCycle() {
         var latest = state.dateIndex === 0 && document.visibilityState !== 'hidden';
-        var clockOpen = isMarketOpen();
-        // 서버 market_status 가 권위 — 로컬 시계가 장중이어도 공휴일이면 서버는 CLOSE.
-        // ''(미확인) 은 로컬 시계 신뢰 (첫 fetch 실패 시 폴링이 영구 정지하지 않도록).
+        // 리포트는 08~09시 NXT 프리마켓을 라이브에서 제외한다 — 대장/주도섹터/핫테마는
+        // 정규장 상승분만으로 산출(사용자 요청: NXT 시세는 홈·시각화에만 반영). 프리마켓엔
+        // 직전 정규장 빌드를 그대로 보여주고, 09:00 정규장 개장부터 라이브 오버레이를 재개해
+        // 전체 반영한다. (홈/treemap/bubbles2 의 08:00~ 라이브 창과 의도적으로 다름.)
+        var nxtLeadIn = isNxtLeadIn();
+        var clockOpen = isMarketOpen() && !nxtLeadIn;   // 리포트 라이브 창 = 정규장(09:00~15:30)
+        // 정규장 시간인데 서버가 CLOSE(공휴일/오판) 면 5분 간격 재확인 — OPEN 복귀 시 자동 복구.
         var statusClosed = clockOpen && state.marketStatus === 'CLOSE';
         var open = clockOpen && !statusClosed;
         // 장중→마감 전이 — 동시호가 확정 종가를 잠시 후 1회 더 받도록 liveOnce 재무장
@@ -595,9 +614,9 @@ var WhyReport = (function () {
             setTimeout(function () { state.liveOnce = false; }, CLOSE_SETTLE_MS);
         }
         if (open) _wasOpen = true;
-        // 장중이면 매 주기 라이브 오버레이. 장 마감·장전이라도 최신일이면 '실제 종가'를 최소 1회는 받아온다.
-        // statusClosed(공휴일/오판) 면 5분 간격으로만 재확인 — 상태가 OPEN 으로 돌아오면 자동 복구.
-        var fetchNow = latest && (open || !state.liveOnce || statusClosed);
+        // 프리마켓(nxtLeadIn)엔 fetch 자체를 건너뜀 — !state.liveOnce 경로로도 NXT 가 새지 않게.
+        // 정규장이면 매 주기 오버레이, 마감/장전이라도 최신일이면 '실제 종가'를 최소 1회는 받아온다.
+        var fetchNow = latest && !nxtLeadIn && (open || !state.liveOnce || statusClosed);
         var p = Promise.resolve();
         if (fetchNow) {
             p = WhyAPI.getLiveMarketmap().then(function (res) {
