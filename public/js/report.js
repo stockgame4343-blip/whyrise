@@ -56,6 +56,9 @@ var WhyReport = (function () {
         liveTimer: null,   // 단일 라이브 사이클 타이머
         liveOnce: false,   // 최신일 '실제 종가' 1회 확보 여부 — 장 마감·장전에도 최소 1회는 라이브 fetch
         marketStatus: '',  // ''=미확인(로컬 시계 신뢰) | 'OPEN' | 'CLOSE' (서버 판정 — 공휴일 포함)
+        _pbFallback: null,        // 장중 폴백: 직전 마감일 pullbacks (현재가 오버레이 base)
+        _pbFallbackDate: '',      // 그 직전 마감일 (YYYYMMDD)
+        _pbFallbackFetching: false,
     };
 
     function $(id) { return document.getElementById(id); }
@@ -548,14 +551,25 @@ var WhyReport = (function () {
         }).join('');
     }
 
-    function renderPullbacks(rows) {
+    function renderPullbacks(rows, fallbackDate) {
         var el = $('pullbackList');
         if (!el) return;
         if (!rows.length) {
-            el.innerHTML = '<li class="report-empty">조건에 맞는 조정 후 반등 시도 종목이 없습니다.</li>';
+            // 최신일인데 오늘이 아직 마감 전(intraday)이면 '없음'이 아니라 '집계 전' 안내
+            var pending = state.dateIndex === 0 && state.day && !state.day.is_final;
+            el.innerHTML = '<li class="report-empty">' +
+                (pending ? '오늘 데이터는 장 마감 후 집계됩니다.' : '조건에 맞는 조정 후 반등 시도 종목이 없습니다.') +
+                '</li>';
             return;
         }
-        el.innerHTML = rows.map(function (pb) {
+        var note = '';
+        if (fallbackDate) {
+            note = '<li class="report-pullback-note" style="list-style:none;padding:7px 12px;margin-bottom:10px;border-radius:8px;' +
+                'background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text-secondary);' +
+                'font-size:12.5px;font-weight:600;line-height:1.4;">' +
+                esc(formatDate(fallbackDate)) + ' 마감 종목 기준 · 현재가 실시간 반영 (오늘 마감 후 갱신)</li>';
+        }
+        el.innerHTML = note + rows.map(function (pb) {
             var p = pullbackPrices(pb);
             var drawdown = currentDrawdownPct(pb);
             var lowDrop = lowDrawdownPct(pb);
@@ -704,13 +718,43 @@ var WhyReport = (function () {
             rankings.forEach(function (r) { if (r && r.ticker) overlaidByTicker[r.ticker] = r; });
             highRows = highRows.map(function (r) { return overlaidByTicker[r.ticker] || r; });
         }
-        var pullbacks = derivePullbacks(_overlaidPullbacks(day.pullbacks || []));
+        // 장중 최신일에 오늘 풀백이 아직 없으면(intraday) 직전 마감일 풀백을 base 로 사용 —
+        // 현재가 오버레이(_overlaidPullbacks)가 낙폭·반등률을 실시간으로 재계산한다.
+        var rawPb = (day.pullbacks && day.pullbacks.length) ? day.pullbacks : null;
+        var pbFallbackDate = '';
+        if (!rawPb && state.dateIndex === 0 && state._pbFallback && state._pbFallback.length) {
+            rawPb = state._pbFallback;
+            pbFallbackDate = state._pbFallbackDate;
+        }
+        var pullbacks = derivePullbacks(_overlaidPullbacks(rawPb || []));
 
         renderLeader(leader, sectors[0], themes[0]);
         renderGroups(sectors, 'sectorGroups', 'sector', '3종목 이상 몰린 주도 섹터가 없습니다.');
         renderGroups(themes, 'themeGroups', 'theme', '3종목 이상 몰린 핫 테마가 없습니다.');
         renderHigh52w(highRows);
-        renderPullbacks(pullbacks);
+        renderPullbacks(pullbacks, pbFallbackDate);
+        maybeFetchPbFallback();
+    }
+
+    // 장중(오늘 intraday) 최신일에 풀백이 비면 직전 마감일 풀백을 1회 끌어와 base 로 캐시한다.
+    // 이후 liveCycle 의 현재가 오버레이로 '실시간 비슷'하게 노출. 오늘 마감 빌드 도착 시 자동 무시.
+    function maybeFetchPbFallback() {
+        if (state.dateIndex !== 0) return;
+        var day = state.day;
+        if (day && day.pullbacks && day.pullbacks.length) return;   // 오늘 마감 집계 있으면 폴백 불필요
+        if (state._pbFallbackFetching) return;
+        if (state._pbFallback && state._pbFallback.length) return;  // 이미 확보
+        var prevDate = state.dates[1];
+        if (!prevDate) return;
+        state._pbFallbackFetching = true;
+        WhyAPI.getRankings(prevDate).then(function (data) {
+            state._pbFallbackFetching = false;
+            if (data && data.pullbacks && data.pullbacks.length) {
+                state._pbFallback = data.pullbacks;
+                state._pbFallbackDate = prevDate;
+                if (state.dateIndex === 0) applyDay();
+            }
+        }).catch(function () { state._pbFallbackFetching = false; });
     }
 
     function showMessage(msg) {
