@@ -52,6 +52,7 @@ var WhyReport = (function () {
         day: null,
         ratings: {},
         live: null,        // /api/marketmap ticker→숫자 맵 (라이브 오버레이용)
+        liveDate: '',      // 라이브 거래일(/api/marketmap date) — 빌드 날짜와 다르면 오버레이 보류(stale 가드)
         liveTimer: null,   // 단일 라이브 사이클 타이머
         liveOnce: false,   // 최신일 '실제 종가' 1회 확보 여부 — 장 마감·장전에도 최소 1회는 라이브 fetch
         marketStatus: '',  // ''=미확인(로컬 시계 신뢰) | 'OPEN' | 'CLOSE' (서버 판정 — 공휴일 포함)
@@ -581,6 +582,11 @@ var WhyReport = (function () {
     function _overlaidRankings(day) {
         var rows = (day && day.rankings) || [];
         if (state.dateIndex !== 0 || !state.live) return rows;
+        // 빌드가 라이브 거래일과 다르면(오늘 빌드 미도착 — 장전·NXT·장초반) 오버레이 안 함:
+        // 어제 확정 빌드 위에 오늘 시세를 덮어 대장/주도섹터/핫테마를 잘못 재선정하는 것 방지
+        // (예: 16일 확정 대장이 17일 장중 급등주로 뒤바뀜). 오늘 빌드 도착 시 정상 오버레이.
+        var buildDate = state.dates[state.dateIndex] || '';
+        if (state.liveDate && buildDate && state.liveDate !== buildDate) return rows;
         var live = state.live;
         return rows.map(function (row) {
             var lv = live[row.ticker];
@@ -622,20 +628,37 @@ var WhyReport = (function () {
             p = WhyAPI.getLiveMarketmap().then(function (res) {
                 state.liveOnce = true;
                 state.marketStatus = res.market_status || state.marketStatus;
+                state.liveDate = res.date || state.liveDate;   // 라이브 거래일 — 오버레이 stale 가드 기준
                 if (state.dateIndex !== 0) return;   // fetch 중 과거 날짜로 이동 — 라이브/시각 오염 방지
                 state.live = res.map;
-                if (res.updated_at) setUpdatedAt(res.updated_at);   // 빌드시각 대신 라이브 갱신시각 표시
+                // 빌드가 오늘(라이브 거래일)분일 때만 라이브 갱신시각 표시 — 어제 빌드(stale)면 오버레이를
+                // 안 하므로 시각도 빌드값 유지(어제 데이터에 오늘 시각이 붙는 모순 방지).
+                if (res.updated_at && state.liveDate === state.dates[0]) setUpdatedAt(res.updated_at);
                 applyDay();   // state.day(빌드) + state.live 로 재파생·재렌더 (네트워크 호출 없음)
             }).catch(function () {});
-            // 빌드 데이터도 주기 재조회 (클라 5분 캐시 — 네트워크는 5분당 1회) —
-            // 신규 급등주 '이유 분석 대기중' 이 빌드 도착 시 정식 행으로 자동 승격.
+            // 빌드 재조회 — 새 거래일 빌드 도착 시 그 날짜로 전진(stale 가드 해제 → 오늘 확정 대장으로
+            // 오버레이 재개). 같은 날 intraday 갱신은 collected_at 비교로 반영. (클라 5분 캐시.)
             if (open && state.dates.length) {
-                WhyAPI.getRankings(state.dates[0]).then(function (data) {
-                    if (state.dateIndex !== 0 || !data || !state.day) return;
-                    if (data.collected_at && data.collected_at !== state.day.collected_at) {
-                        state.day = data;
-                        applyDay();
+                WhyAPI.getDates().then(function (dts) {
+                    if (state.dateIndex !== 0 || !state.day) return;
+                    var latest = (Array.isArray(dts) ? dts[0] : (dts && dts.dates && dts.dates[0])) || '';
+                    if (latest && latest > state.dates[0]) {
+                        return WhyAPI.getRankings(latest).then(function (nd) {
+                            if (state.dateIndex !== 0 || !nd || !nd.rankings) return;
+                            state.dates.unshift(latest);
+                            state.day = nd;
+                            setUpdatedAt(nd.collected_at);
+                            updateDateUI();
+                            applyDay();
+                        });
                     }
+                    return WhyAPI.getRankings(state.dates[0]).then(function (data) {
+                        if (state.dateIndex !== 0 || !data || !state.day) return;
+                        if (data.collected_at && data.collected_at !== state.day.collected_at) {
+                            state.day = data;
+                            applyDay();
+                        }
+                    });
                 }).catch(function () {});
             }
         }
@@ -649,6 +672,9 @@ var WhyReport = (function () {
     // rankings 오버레이와 동일한 불변 복사 패턴 (state.day.pullbacks 미변형).
     function _overlaidPullbacks(pullbacks) {
         if (state.dateIndex !== 0 || !state.live) return pullbacks || [];
+        // 빌드 ≠ 라이브 거래일이면 오버레이 안 함 (_overlaidRankings 와 동일 원칙).
+        var buildDate = state.dates[state.dateIndex] || '';
+        if (state.liveDate && buildDate && state.liveDate !== buildDate) return pullbacks || [];
         return (pullbacks || []).map(function (pb) {
             var lv = pb && pb.ticker ? state.live[pb.ticker] : null;
             if (!lv || !(num(lv.close_price) > 0)) return pb;
