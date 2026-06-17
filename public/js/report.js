@@ -402,6 +402,12 @@ var WhyReport = (function () {
         return Math.abs(num(pb && pb.dropPct));
     }
 
+    // 현재가가 과거 고점 이상 = '고점 회복'(그날 졸업). 라이브 현재가로만 발생(과거 빌드 데이터엔 없음).
+    function isRecovered(pb) {
+        var p = pullbackPrices(pb);
+        return p.peak > 0 && p.current > 0 && p.current >= p.peak;
+    }
+
     function derivePullbacks(pullbacks) {
         return (pullbacks || []).filter(function (pb) {
             if (!pb || !pb.ticker || BLOCKED_TICKERS[pb.ticker]) return false;
@@ -409,9 +415,12 @@ var WhyReport = (function () {
             if (lowDrawdownPct(pb) < PB_DROP_MIN) return false;
             if (normalizedBouncePct(pb) < PB_BOUNCE_MIN) return false;
             var prices = pullbackPrices(pb);
-            if (!(prices.peak > 0 && prices.current > 0)) return false;
-            return prices.current < prices.peak;
+            // 고점 회복(current>=peak) 종목도 그날은 포함 — '고점회복' 배지로 맨 위에 표시 후 다음 날 빠짐
+            return prices.peak > 0 && prices.current > 0;
         }).sort(function (a, b) {
+            // 고점 회복 종목을 맨 위로, 그다음은 반등률·낙폭 순
+            var ra = isRecovered(a) ? 1 : 0, rb = isRecovered(b) ? 1 : 0;
+            if (ra !== rb) return rb - ra;
             return normalizedBouncePct(b) - normalizedBouncePct(a) ||
                 lowDrawdownPct(b) - lowDrawdownPct(a);
         });
@@ -567,15 +576,20 @@ var WhyReport = (function () {
             var drawdown = currentDrawdownPct(pb);
             var lowDrop = lowDrawdownPct(pb);
             var bounce = normalizedBouncePct(pb);
+            var rec = isRecovered(pb);
             var row = {
                 ticker: pb.ticker,
                 name: pb.name,
                 market: pb.market,
             };
+            var recBadge = rec ? '<span class="report-recover-badge" style="display:inline-flex;align-items:center;margin-left:6px;padding:2px 7px;border-radius:999px;font-size:10.5px;font-weight:800;background:var(--wr-accent-soft,rgba(49,130,246,.14));color:var(--wr-accent,#3182F6);vertical-align:middle;white-space:nowrap;">고점회복</span>' : '';
+            var firstCell = rec
+                ? '<small class="cell-change--up">고점 회복</small>'
+                : '<small class="report-rate--down">현재가 대비 ' + pctDown(drawdown) + '</small>';
             return '<li class="report-move-row ' + ratingClass(pb.ticker) + '" data-ticker="' + esc(pb.ticker) + '">' +
-                '<div class="report-move-row__stock">' + stockNameHtml(row, 'report-move-row__name') + '</div>' +
+                '<div class="report-move-row__stock">' + stockNameHtml(row, 'report-move-row__name') + recBadge + '</div>' +
                 '<div class="report-move-row__metrics">' +
-                    '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.peak) + '</strong><em>고점</em></span><small class="report-rate--down">현재가 대비 ' + pctDown(drawdown) + '</small></span>' +
+                    '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.peak) + '</strong><em>고점</em></span>' + firstCell + '</span>' +
                     '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.low) + '</strong><em>저점</em></span><small class="report-rate--down">고점 대비 ' + pctDown(lowDrop) + '</small></span>' +
                     '<span class="report-move-metric"><span class="report-move-metric__top"><strong>' + fmtPrice(p.current) + '</strong><em>현재</em></span><small class="cell-change--up">저점 대비 ' + pct(bounce, 1) + '</small></span>' +
                 '</div>' +
