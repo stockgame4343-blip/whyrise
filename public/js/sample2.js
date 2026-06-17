@@ -152,7 +152,7 @@
             .sort(function (a, b) { return counts[b] - counts[a]; });
         if (!repeated.length) { $legend.style.display = 'none'; return; }
         var html = '<div class="cal-legend__head">이 달 여러 번 대장인 ' + TYPE_LABEL[state.type] +
-            ' <span class="cal-legend__hint">— 누르면 달력에서 강조</span></div><div class="cal-legend__items">';
+            ' <span class="cal-legend__hint">— 누르면 캘린더에서 강조</span></div><div class="cal-legend__items">';
         repeated.forEach(function (n) {
             var c = colorOf(n);
             var active = state.activeColors[n] ? ' cal-legend__item--active' : '';

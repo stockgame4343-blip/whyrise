@@ -37,7 +37,7 @@
         .cal-cell--empty { background: transparent; border-color: var(--glass-border); }
         .cal-cell--weekend { opacity: .4; }
         .cal-cell--holiday { opacity: .65; }
-        .cal-cell--today { opacity: .65; }
+        .cal-cell--today { background: var(--glass-bg); }
         .cal-cell--data { cursor: pointer; }
         a.cal-cell--data { text-decoration: none; }
         .cal-cell--data:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.16); border-color: var(--glass-border-strong); }
@@ -52,8 +52,8 @@
         .cal-cell__center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 8px; }
         .cal-cell__off { font-size: 11px; color: var(--text-muted); }
         .cal-cell__none { font-size: 12px; color: var(--text-muted); }
-        /* 오늘(평일) — 데이터 집계 전, 마감 후 누적됨을 안내 (휴장과 동일 톤으로 딤드) */
-        .cal-cell__pending { font-size: 11px; color: var(--text-muted); line-height: 1.35; }
+        /* 오늘(평일) — 데이터 집계 전. 박스는 활성, 안내는 상세설명 톤으로 셀 정중앙 */
+        .cal-cell__pending { font-size: 11px; font-weight: 600; color: var(--text-secondary); line-height: 1.35; }
 
         .cal-cell__name { margin-top: 3px; font-size: 14px; font-weight: 800; color: var(--text-primary); letter-spacing: -.3px; line-height: 1.2;
             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -74,9 +74,11 @@
         .cal-legend__count { color: var(--text-secondary); font-weight: 600; font-size: 13px; }
         .cal-legend__hint { font-size: 12px; font-weight: 500; color: var(--text-muted); }
 
-        /* 이미지 저장 버튼 — 타이틀 옆 우측 (screening-head 가 space-between) */
-        .cal-save { flex-shrink: 0; display: inline-flex; align-items: center; gap: 7px;
-            padding: 8px 14px; border-radius: 999px; border: 1px solid var(--glass-border); background: var(--glass-bg);
+        /* 하단 바 — 좌: 범례(여러 번 대장), 우하단: 이미지 저장 버튼 */
+        .cal-foot { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+        .cal-foot .cal-legend { margin-top: 0; flex: 1 1 auto; min-width: 0; }
+        .cal-save { margin-left: auto; flex-shrink: 0; display: inline-flex; align-items: center; gap: 7px;
+            padding: 9px 15px; border-radius: 999px; border: 1px solid var(--glass-border); background: var(--glass-bg);
             color: var(--text-primary); font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
             transition: background .15s, border-color .15s; }
         .cal-save:hover { background: var(--glass-bg-strong); border-color: var(--glass-border-strong); }
@@ -131,10 +133,6 @@
             <div>
                 <h1 class="screening-title report-title">대장 캘린더</h1>
             </div>
-            <button class="cal-save" id="calSave" type="button" aria-label="캘린더 이미지 저장" title="캘린더 이미지 저장">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                <span>이미지 저장</span>
-            </button>
         </header>
 
         <div class="cal-controls">
@@ -158,7 +156,13 @@
         <div class="message" id="calMessage" style="display:none;"></div>
 
         <section class="cal-grid" id="calGrid"></section>
-        <section class="cal-legend" id="calLegend" style="display:none;"></section>
+        <div class="cal-foot">
+            <section class="cal-legend" id="calLegend" style="display:none;"></section>
+            <button class="cal-save" id="calSave" type="button" aria-label="캘린더 이미지 저장" title="캘린더 이미지 저장">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>이미지 저장</span>
+            </button>
+        </div>
     </main>
 
     <div class="footer">
@@ -174,6 +178,6 @@
     </div>
 
     <script src="/js/nav.js?v=20260525b"></script>
-    <script src="/js/sample2.js?v=20260617b"></script>
+    <script src="/js/sample2.js?v=20260617c"></script>
 </body>
 </html>
