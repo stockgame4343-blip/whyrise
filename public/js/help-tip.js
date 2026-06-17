@@ -19,14 +19,13 @@
     var GAP = 8;    // 버튼과 팝오버 간격(px)
 
     var css = [
-        '.help-tip{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;',
-        'padding:0;margin-left:5px;border-radius:50%;border:1px solid var(--glass-border-strong,rgba(127,127,127,.4));',
-        'background:transparent;color:var(--text-muted,#8b8b8b);font-size:11px;font-weight:700;line-height:1;',
-        'cursor:pointer;vertical-align:middle;font-family:inherit;flex-shrink:0;',
-        'transition:background .15s,color .15s,border-color .15s;}',
-        '.help-tip:hover{background:var(--glass-bg,rgba(127,127,127,.12));color:var(--text-secondary,#aaa);',
-        'border-color:var(--text-muted,#8b8b8b);}',
-        '.help-tip:focus-visible{outline:2px solid var(--wr-accent,#3182F6);outline-offset:2px;}',
+        '.help-tip{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;',
+        'padding:0;margin-left:5px;border:0;background:transparent;color:var(--text-muted,#8b8b8b);',
+        'line-height:0;cursor:pointer;vertical-align:middle;flex-shrink:0;-webkit-appearance:none;appearance:none;',
+        'transition:color .15s;}',
+        '.help-tip svg{width:15px;height:15px;display:block;}',
+        '.help-tip:hover{color:var(--wr-accent,#3182F6);}',
+        '.help-tip:focus-visible{outline:2px solid var(--wr-accent,#3182F6);outline-offset:2px;border-radius:50%;}',
         '.help-pop{position:fixed;z-index:10000;max-width:280px;padding:12px 14px;border-radius:10px;',
         'background:#1f1f1f;color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.14);',
         'box-shadow:0 10px 32px rgba(0,0,0,.38);font-size:12.5px;font-weight:500;line-height:1.55;',
@@ -105,4 +104,22 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePop(); });
     window.addEventListener('resize', closePop);
     window.addEventListener('scroll', closePop, true);
+
+    // 버튼 안에 info 아이콘(동그라미+i) 주입 — 글자 '?' 의 baseline 정렬 문제를 피하고 완전 중앙 정렬.
+    // 각 페이지 HTML 은 그대로 두고(버튼 텍스트 무관) 여기서 일괄 교체한다.
+    var ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/>' +
+        '<line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+    function paintIcons() {
+        var btns = document.querySelectorAll('.help-tip');
+        for (var i = 0; i < btns.length; i++) {
+            if (!btns[i].querySelector('svg')) btns[i].innerHTML = ICON;
+        }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', paintIcons);
+    } else {
+        paintIcons();
+    }
 })();
