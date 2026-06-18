@@ -825,7 +825,7 @@
             '<span class="event-card__price">종가 ' +
             (ev.close_price ? ev.close_price.toLocaleString('ko-KR') : '-') +
             '원</span>' +
-            (ev.theme_tag ? '<span class="event-card__theme">' + esc(ev.theme_tag) + '</span>' : '') +
+            (ev.theme_tag ? '<a class="event-card__theme" href="/screening.html?theme=' + encodeURIComponent(ev.theme_tag) + '" style="text-decoration:none" title="' + esc(ev.theme_tag) + ' 스크리닝">' + esc(ev.theme_tag) + '</a>' : '') +
             sourceBadge(ev.reason_source, ev.reason_confidence) +
             editBtn +
             '</div>' +

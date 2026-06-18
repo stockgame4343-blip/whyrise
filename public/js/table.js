@@ -525,10 +525,11 @@ var WhyTable = (function () {
             var editDate = eventDate || date;
             var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + tEsc +
                 '" data-date="' + esc(editDate) + '" title="이유 편집">✏️</button>';
+            // 태그 → 그 테마 스크리닝, 이유 텍스트 → 종목 상세. (cell-name 처럼 native <a> 네비)
             html += '<td class="cell-reason">' +
                 '<div class="cell-reason__inline">' +
-                (displayTag ? '<span class="theme-tag">' + esc(displayTag) + '</span>' : '') +
-                '<span class="cell-reason__text" title="' + esc(reason) + '">' + esc(reason) + '</span>' +
+                (displayTag ? '<a class="theme-tag" href="/screening.html?theme=' + encodeURIComponent(rawTag) + '" style="text-decoration:none" title="' + esc(rawTag) + ' 스크리닝">' + esc(displayTag) + '</a>' : '') +
+                '<a class="cell-reason__text" href="' + detailUrl + '" data-ticker="' + tEsc + '" style="color:inherit;text-decoration:none" title="' + esc(reason) + '">' + esc(reason) + '</a>' +
                 editBtn +
                 '</div></td>';
             // 상승률
@@ -538,12 +539,12 @@ var WhyTable = (function () {
             html += '<td class="cell-volume">' + formatAmount(r.trading_value) + '</td>';
             // 시가총액
             html += '<td class="cell-cap">' + formatAmount(r.market_cap) + '</td>';
-            // 섹터
-            html += '<td class="cell-sector">' + esc(r.sector || '-') + '</td>';
+            // 섹터 → 그 섹터 스크리닝
+            html += '<td class="cell-sector">' + (r.sector ? '<a href="/screening.html?sector=' + encodeURIComponent(r.sector) + '" style="color:inherit;text-decoration:none" title="' + esc(r.sector) + ' 스크리닝">' + esc(r.sector) + '</a>' : '-') + '</td>';
             // 모바일 카드 전용 meta 한 줄 (PC 에선 CSS display:none) — 시장·섹터·시총·거래대금 합쳐서 보존
             var metaParts = [];
             if (r.market) metaParts.push(esc(r.market));
-            if (r.sector) metaParts.push(esc(r.sector));
+            if (r.sector) metaParts.push('<a href="/screening.html?sector=' + encodeURIComponent(r.sector) + '" style="color:inherit;text-decoration:none">' + esc(r.sector) + '</a>');
             if (r.market_cap) metaParts.push('시총 ' + formatAmount(r.market_cap));
             if (r.trading_value) metaParts.push('거래 ' + formatAmount(r.trading_value));
             html += '<td class="cell-meta-compact">' + metaParts.join(' · ') + '</td>';
