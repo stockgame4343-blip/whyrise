@@ -972,12 +972,23 @@
         return s;
     }
 
+    function isFlowColorDark(c) {
+        var m = /rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(c || '');
+        if (!m) return true;
+        return (0.299 * +m[1] + 0.587 * +m[2] + 0.114 * +m[3]) < 140;
+    }
+
     function savePNG() {
         var svgEl = $svg;
         var w = svgEl.clientWidth, h = svgEl.clientHeight;
         if (w < 80 || h < 80) return;
-        var isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-        var bgColor = isDark ? '#191919' : '#ffffff';
+        // 헤더 워터마크는 페이지 테마, 차트 영역은 stage 실제 배경(트리뷰=밝음 / 버블뷰=다크)으로 분리
+        var pageLight = document.documentElement.getAttribute('data-theme') === 'light';
+        var chartBg = window.getComputedStyle(svgEl.parentNode).backgroundColor;
+        if (!chartBg || chartBg === 'rgba(0, 0, 0, 0)' || chartBg === 'transparent') chartBg = pageLight ? '#F2F4F6' : '#191919';
+        var chartDark = isFlowColorDark(chartBg);   // 차트 텍스트/도형 색 기준
+        var isDark = !pageLight;   // 워터마크 헤더 색 기준(페이지 테마)
+        var bgColor = pageLight ? '#ffffff' : chartBg;
         var fgColor = isDark ? '#ffffff' : '#191919';
         var fgDim = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(10,11,15,0.55)';
         var dividerColor = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)';
@@ -1009,6 +1020,15 @@
         bg.setAttribute('fill', bgColor);
         wrap.appendChild(bg);
 
+        // 차트 영역(헤더 아래)은 stage 실제 배경(버블뷰는 다크) — 헤더(페이지 테마)와 분리
+        var chartRect = document.createElementNS(ns, 'rect');
+        chartRect.setAttribute('x', '0');
+        chartRect.setAttribute('y', String(HEAD_H));
+        chartRect.setAttribute('width', String(w));
+        chartRect.setAttribute('height', String(h));
+        chartRect.setAttribute('fill', chartBg);
+        wrap.appendChild(chartRect);
+
         // 헤더 워터마크 — 좌: 로고+도메인, 우(좁으면 둘째 줄): 차트 정보. 캔버스로 그린다.
         var headerSpecs = [
             { text: 'ORGO', x: PAD_X, y: 28, size: 16, weight: '800', fill: fgColor, anchor: 'start' },
@@ -1028,10 +1048,10 @@
 
         var clone = svgEl.cloneNode(true);
         // 인라인 스타일 보강 (외부 CSS 가 PNG 에 안 묻음) — 도형만. 텍스트는 캔버스로.
-        var sectorBoxFill = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.035)';
-        var sectorBoxStroke = isDark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.16)';
-        var labelFill = isDark ? 'rgba(255,255,255,0.92)' : 'rgba(20,22,28,0.92)';
-        var cellStroke = isDark ? 'rgba(0,0,0,0.55)' : 'rgba(0,0,0,0.45)';
+        var sectorBoxFill = chartDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.035)';
+        var sectorBoxStroke = chartDark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.16)';
+        var labelFill = chartDark ? 'rgba(255,255,255,0.92)' : 'rgba(20,22,28,0.92)';
+        var cellStroke = chartDark ? 'rgba(0,0,0,0.55)' : 'rgba(0,0,0,0.45)';
 
         clone.querySelectorAll('.tmap-sector__box').forEach(function (el) {
             el.setAttribute('fill', sectorBoxFill);
