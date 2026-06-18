@@ -986,7 +986,9 @@
 
         // ── 헤더 워터마크 레이아웃 — 텍스트 폭을 재서 1줄/2줄 결정 ──
         var PAD_X = 20;
-        var ctxStr = (MODE_LABEL[state.mode] || state.mode) + '  ' + captureDateTime();
+        var modeLabel = MODE_LABEL[state.mode] || state.mode;
+        if (state.zoomedGroup) modeLabel += ' · ' + displayGroup(state.zoomedGroup);
+        var ctxStr = modeLabel +'  ' + captureDateTime();
         var meas = document.createElement('canvas').getContext('2d');
         meas.font = '800 16px ' + fontStack;
         var logoW = meas.measureText('ORGO').width;
