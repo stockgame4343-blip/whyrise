@@ -806,8 +806,10 @@
         var h = svgEl.clientHeight;
         if (w < 80 || h < 80) return;
 
-        var isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-        var bgColor = isDark ? '#0a0b0f' : '#ffffff';
+        // 시각화 차트는 라이트 테마에서도 항상 다크 배경 → 캡처도 다크 톤 고정(화면과 일치)
+        var isDark = true;
+        var stageBg = window.getComputedStyle(svgEl.parentNode).backgroundColor;
+        var bgColor = (stageBg && stageBg !== 'rgba(0, 0, 0, 0)' && stageBg !== 'transparent') ? stageBg : '#0a0b0f';
         var fgColor = isDark ? '#ffffff' : '#0a0b0f';
         var fgDim = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(10,11,15,0.55)';
         var dividerColor = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)';
