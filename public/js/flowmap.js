@@ -364,9 +364,11 @@
             var g = d3.select(this);
             var nameSize = Math.max(10, Math.min(20, cw / 8));
             var rateSize = Math.max(9, nameSize - 3);
+            var mcapSize = Math.max(8, rateSize - 1);
             var name = d.data.name || '';
             var maxChars = Math.max(2, Math.floor(cw / (nameSize * 0.55)) - 1);
             if (name.length > maxChars) name = name.slice(0, maxChars - 1) + '…';
+            var has3 = ch >= 58;   // 이름·시총·상승률 3줄 들어갈 높이
             var has2 = ch >= 42;
             function line(cls, y, size, txt, opacity) {
                 var t = g.append('text').attr('class', cls)
@@ -376,7 +378,14 @@
                 if (opacity != null) t.style('opacity', opacity);
                 return t;
             }
-            if (has2) {
+            if (has3) {
+                var gap = 2;
+                var totalH = nameSize + mcapSize + rateSize + gap * 2;
+                var top = ch / 2 - totalH / 2;
+                line('tmap-name', top + nameSize / 2, nameSize, name);
+                line('tmap-mcap', top + nameSize + gap + mcapSize / 2, mcapSize, formatMcap(d.data.market_cap));
+                line('tmap-rate', top + nameSize + gap + mcapSize + gap + rateSize / 2, rateSize, formatRate(d.data.change_rate));
+            } else if (has2) {
                 line('tmap-name', ch / 2 - rateSize / 2, nameSize, name);
                 line('tmap-rate', ch / 2 + nameSize / 2 + 2, rateSize, formatRate(d.data.change_rate));
             } else {
