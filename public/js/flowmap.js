@@ -364,7 +364,7 @@
             var g = d3.select(this);
             var nameSize = Math.max(10, Math.min(20, cw / 8));
             var rateSize = Math.max(9, nameSize - 3);
-            var mcapSize = Math.max(8, rateSize - 1);
+            var mcapSize = Math.max(8, Math.min(13, nameSize - 5));
             var name = d.data.name || '';
             var maxChars = Math.max(2, Math.floor(cw / (nameSize * 0.55)) - 1);
             if (name.length > maxChars) name = name.slice(0, maxChars - 1) + '…';
