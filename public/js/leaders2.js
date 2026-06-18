@@ -11,9 +11,9 @@
     var MARKET_METRICS = { mcap: 1, volume: 1, change: 1 };
 
     var ENGINES = {
-        flow: '/flowmap.html?embed=leaders2&v=20260618d',
-        bubble: '/bubbles2.html?embed=leaders2&v=20260618d',
-        tree: '/treemap.html?embed=leaders2&v=20260618d',
+        flow: '/flowmap.html?embed=leaders2&v=20260618e',
+        bubble: '/bubbles2.html?embed=leaders2&v=20260618e',
+        tree: '/treemap.html?embed=leaders2&v=20260618e',
     };
 
     var $stack = document.getElementById('leaders2Stack');

@@ -734,14 +734,16 @@
         var w = svgEl.clientWidth;
         var h = svgEl.clientHeight;
         if (w < 80 || h < 80) return;
-        // 시각화 차트는 라이트 테마에서도 항상 다크 배경 → 캡처도 다크 톤 고정(화면과 일치)
-        var isDark = true;
-        var stageBg = window.getComputedStyle(svgEl.parentNode).backgroundColor;
-        var bgColor = (stageBg && stageBg !== 'rgba(0, 0, 0, 0)' && stageBg !== 'transparent') ? stageBg : '#0a0b0f';
+        // 버블 차트(bmap2-stage)는 라이트 테마에서도 항상 다크. 차트만 다크로 칠하고 워터마크 헤더는 페이지 테마.
+        var pageLight = document.documentElement.getAttribute('data-theme') === 'light';
+        var chartBg = window.getComputedStyle(svgEl.parentNode).backgroundColor;
+        if (!chartBg || chartBg === 'rgba(0, 0, 0, 0)' || chartBg === 'transparent') chartBg = '#191919';
+        var isDark = !pageLight;   // 헤더 워터마크 색은 페이지 테마 기준
+        var bgColor = pageLight ? '#ffffff' : chartBg;   // 헤더 배경(워터마크 영역)
         var fgColor = isDark ? '#ffffff' : '#0a0b0f';
         var fgDim = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(10,11,15,0.55)';
         var dividerColor = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)';
-        var cellTextStrokeColor = isDark ? 'rgba(0,0,0,0.55)' : 'rgba(0,0,0,0.45)';
+        var cellTextStrokeColor = 'rgba(0,0,0,0.55)';   // 버블 글자는 항상 다크 차트 위 → 어두운 외곽선
         var fontStack = '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif';
         var ns = 'http://www.w3.org/2000/svg';
 
@@ -772,6 +774,15 @@
         bg.setAttribute('height', String(totalH));
         bg.setAttribute('fill', bgColor);
         wrap.appendChild(bg);
+
+        // 차트 영역(헤더 아래)은 항상 다크(bmap2-stage) — 헤더(페이지 테마)와 분리
+        var chartRect = document.createElementNS(ns, 'rect');
+        chartRect.setAttribute('x', '0');
+        chartRect.setAttribute('y', String(HEAD_H));
+        chartRect.setAttribute('width', String(w));
+        chartRect.setAttribute('height', String(h));
+        chartRect.setAttribute('fill', chartBg);
+        wrap.appendChild(chartRect);
 
         // 헤더 워터마크 — 좌: 로고+도메인, 우(좁으면 둘째 줄): 차트 정보. 캔버스로 그린다.
         var headerSpecs = [
