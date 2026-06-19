@@ -18,6 +18,9 @@ var WhyReport = (function () {
     var LEADER_CUTOFF = 15;
     var LEADER_VOLUME_PEER_RATIO = 0.5;
     var LEADER_VOLUME_TOP_N = 5;
+    // 대장주 '최소 거래대금'(원) 컷 — 이 바닥을 못 넘으면 그날은 대장주 없음(약한 장의 가짜 대장 방지).
+    // 과거 대장주 거래대금 중앙값 ≈1.15조, 하위 ~4% 지점. 3,000억 미만 사례(예: 2026-06-19 화신 1,685억) 제외.
+    var LEADER_MIN_VALUE = 3000 * 1e8;   // = 3,000억
     var HIGH52_CUTOFF = 10;
     var GROUP_MIN = 3;
     var GROUP_TOP_STOCKS = 4;
@@ -343,6 +346,7 @@ var WhyReport = (function () {
                 num(b.trading_value) - num(a.trading_value) ||
                 num(b.change_rate) - num(a.change_rate);
         });
+        if (num(sorted[0].trading_value) < LEADER_MIN_VALUE) return null;   // 거래대금 컷 미달 → 그날은 대장주 없음
         var leader = Object.assign({}, sorted[0]);
         leader._leaderScore = score(sorted[0]);
         leader._sectorCount = maps.sector[leader.sector] ? maps.sector[leader.sector].count : 1;

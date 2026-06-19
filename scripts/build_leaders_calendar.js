@@ -21,6 +21,7 @@ const RISE_CUTOFF = 15;
 const LEADER_CUTOFF = 15;
 const LEADER_VOLUME_PEER_RATIO = 0.5;
 const LEADER_VOLUME_TOP_N = 5;
+const LEADER_MIN_VALUE = 3000 * 1e8;   // report.js 와 동일 — 대장주 최소 거래대금(원). 못 넘으면 그날은 대장주 없음
 const GROUP_MIN = 3;
 
 function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
@@ -94,6 +95,7 @@ function pickLeader(rows) {
             num(b.trading_value) - num(a.trading_value) ||
             num(b.change_rate) - num(a.change_rate);
     });
+    if (num(peers[0].trading_value) < LEADER_MIN_VALUE) return null;   // 거래대금 컷 미달 → 그날은 대장주 없음
     return peers[0];
 }
 
