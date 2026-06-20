@@ -256,10 +256,10 @@
       "date": "20260521",
       "change_rate": 11.02,
       "close_price": 4835.0,
-      "rise_reason": "",
+      "rise_reason": "시장 관심 증가",
       "reason_confidence": "low",
-      "reason_source": "naver",
-      "reason_status": "missing",
+      "reason_source": "estimated",
+      "reason_status": "filled",
       "theme_tag": "",
       "news": [
         {
@@ -426,7 +426,7 @@
         }
       ],
       "sector": "자동차부품",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -501,17 +501,45 @@
         }
       ],
       "sector": "자동차부품",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
+    },
+    {
+      "date": "20260219",
+      "change_rate": 18.16,
+      "close_price": 5270.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
+    },
+    {
+      "date": "20260210",
+      "change_rate": 17.94,
+      "close_price": 4570.0,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": true,
+      "source": "estimated"
     }
   ],
   "stats": {
-    "count_10": 7,
-    "count_15": 2,
+    "count_10": 9,
+    "count_15": 4,
     "count_20": 2,
     "count_limit": 0,
-    "count_recent": 4,
-    "avg_rate": 14.24
+    "count_recent": 3,
+    "avg_rate": 15.09
   },
-  "built_at": "2026-06-19T20:10:21"
+  "built_at": "2026-06-21T01:15:45"
 }
