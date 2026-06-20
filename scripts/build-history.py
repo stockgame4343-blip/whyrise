@@ -345,6 +345,29 @@ def calc_stats(events: list[dict]) -> dict:
     }
 
 
+def load_existing_events(ticker: str, output_dir: Path) -> list[dict]:
+    """기존 {ticker}.json 의 events (없거나 깨졌으면 빈 리스트)."""
+    p = output_dir / f'{ticker}.json'
+    if not p.exists():
+        return []
+    try:
+        return json.loads(p.read_text(encoding='utf-8')).get('events', []) or []
+    except Exception:
+        return []
+
+
+def merge_ticker_events(old: list[dict], new: list[dict], window_start: str) -> list[dict]:
+    """무한 누적 병합.
+
+    window_start(YYYYMMDD) 이후(>=)는 이번 빌드가 권위 — stock-rise 갱신·override·
+    컷 미달 삭제를 그대로 반영하려고 new 만 사용.
+    그 이전(<) 과거 이벤트는 이번 빌드 윈도우 밖이므로 기존 파일에서 보존
+    → 증분(--days 30)이 백필한 과거를 지우지 않음.
+    """
+    kept_old = [e for e in old if (e.get('date') or '') < window_start]
+    return sorted(new + kept_old, key=lambda e: e.get('date', ''), reverse=True)
+
+
 def write_ticker_history(ticker: str, name: str, market: str,
                          events: list[dict], output_dir: Path) -> None:
     history = {
@@ -608,7 +631,11 @@ def build_report_summary(stock_history_dir: Path, output_path: Path) -> None:
                         rec['sum_rate'] += float(rate)
                         rec['tickers'].add(ticker)
                     # 이유 카테고리 (자동 추정 라벨)
-                    if reason_status == 'filled' and reason and reason not in ('-', '상한가 — 사유 미수집'):
+                    # generic 추정 fallback('시장 관심 증가', '{섹터} 강세')은 top-reason 랭킹에서 제외 —
+                    # 의미 있는 촉매만 집계(섹터 강세는 sector_acc 에서 별도 집계). 이벤트 카드엔 그대로 표시됨.
+                    _generic_reason = (reason in ('-', '상한가 — 사유 미수집', '시장 관심 증가')
+                                       or reason == f'{sec} 강세')
+                    if reason_status == 'filled' and reason and not _generic_reason:
                         pp['reason_acc'][reason] = pp['reason_acc'].get(reason, 0) + 1
                         # NEW — 같은 이유 텍스트를 5+1 카테고리로 그룹화
                         cat = _categorize_reason(reason)
@@ -980,6 +1007,10 @@ def build_full(args) -> int:
             anchor_str=today.strftime('%Y%m%d'),
         )
         events = apply_overrides(events, ticker)
+        # 무한 누적: 이번 윈도우(start_str~) 밖 과거 이벤트는 기존 파일에서 보존.
+        # → 증분 빌드가 백필한 과거를 덮어쓰지 않음.
+        old_events = load_existing_events(ticker, output_dir)
+        events = merge_ticker_events(old_events, events, start_str)
         # events 비어도 stock-history 빌드 — 종목 페이지가 "기록 없음" 안내라도 보여주도록.
         # 검색 자동완성·sitemap 도 모든 종목 포함.
         write_ticker_history(ticker, name, market, events, output_dir)

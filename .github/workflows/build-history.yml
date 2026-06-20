@@ -169,7 +169,10 @@ jobs:
           CUTOFF="${{ inputs.cutoff }}"
           LIMIT="${{ inputs.limit }}"
           BACKFILL="${{ inputs.backfill_days }}"
-          [ -z "$DAYS" ] && DAYS=365
+          # 스케줄 풀빌드(일요일)는 60일만 — 병합(무한 누적) 덕에 과거는 보존되므로
+          # 매주 1년을 새로 만들 필요 없음. 4월 이전 1년 백필은 의도적으로 수동 실행:
+          #   workflow_dispatch (mode=full, days=365) → 별도 커밋으로 프리뷰/리버트.
+          [ -z "$DAYS" ] && DAYS=60
           [ -z "$CUTOFF" ] && CUTOFF=10
           [ -z "$LIMIT" ] && LIMIT=500
           [ -z "$BACKFILL" ] && BACKFILL=0
