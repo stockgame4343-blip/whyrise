@@ -240,12 +240,15 @@ jobs:
           git clean -fd -e 'public/data/_cache' || true  # 추적 안 되는 파일 제거 (cache 디렉토리는 보존)
           git diff --staged --quiet && echo "변경 없음" && exit 0
           git commit -m "build: 인덱스+버블+리포트 갱신 ($(date +%Y%m%d))"
-          # push 시 origin 변경 있으면 autostash rebase 후 retry (최대 3회)
+          # 트리거한 브랜치로 커밋·푸시 — 스케줄(master)이든 수동 dispatch(feature 브랜치)든
+          # 자기 브랜치에 rebase 후 push. master 하드코딩 시 feature 브랜치 백필이 add/add 충돌로 실패함.
+          BRANCH="${GITHUB_REF_NAME}"
+          echo "push 대상 브랜치: $BRANCH"
           for attempt in 1 2 3; do
-            git fetch origin master
-            if git -c rebase.autoStash=true rebase origin/master; then
-              if git push; then
-                echo "push 성공 (시도 $attempt)"
+            git fetch origin "$BRANCH"
+            if git -c rebase.autoStash=true rebase "origin/$BRANCH"; then
+              if git push origin "HEAD:$BRANCH"; then
+                echo "push 성공 (시도 $attempt, branch=$BRANCH)"
                 exit 0
               fi
             else
