@@ -1009,15 +1009,25 @@ def build_enrich_ohlc(args) -> int:
     today = date.today()
     start = _yyyymmdd(today - timedelta(days=400))
     end = _yyyymmdd(today)
+    # 현재 시총(원) — 전종목 universe(marketValue 억원). marketmap(top100)보다 커버리지 넓음.
     cap_won: dict[str, int] = {}
-    mp = OUTPUT_DIR.parent / 'marketmap.json'
-    if mp.exists():
-        try:
-            for it in (json.loads(mp.read_text(encoding='utf-8')).get('items') or []):
-                if it.get('ticker') and it.get('market_cap'):
-                    cap_won[it['ticker']] = int(it['market_cap']) * 10**8
-        except Exception:
-            pass
+    try:
+        for it in fetch_ticker_universe(stock_only=True):
+            t = it.get('itemCode')
+            mv = _parse_int(it.get('marketValue')) or 0
+            if t and mv:
+                cap_won[t] = mv * 10**8        # 억원 → 원
+    except Exception as e:
+        print(f'  universe 시총 fetch 실패({e}) — marketmap 폴백')
+    if not cap_won:
+        mp = OUTPUT_DIR.parent / 'marketmap.json'
+        if mp.exists():
+            try:
+                for it in (json.loads(mp.read_text(encoding='utf-8')).get('items') or []):
+                    if it.get('ticker') and it.get('market_cap'):
+                        cap_won[it['ticker']] = int(it['market_cap']) * 10**8
+            except Exception:
+                pass
     limit = getattr(args, 'limit', 0) or 0
     files = [f for f in sorted(OUTPUT_DIR.glob('*.json'))
              if f.name not in ('index.json', 'report-summary.json')]
