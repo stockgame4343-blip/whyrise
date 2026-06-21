@@ -14,6 +14,7 @@ const https = require('https');
 
 const RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data';
 const OUT = path.resolve(__dirname, '..', 'public', 'data', 'leaders-calendar.json');
+const RISE_DIR = path.resolve(__dirname, '..', 'public', 'data', 'rise-history');  // 백필 날짜별 (4/13 이전)
 
 // report.js 와 동일 상수
 const BLOCKED = { '003060': 1, '018700': 1, '007460': 1 };
@@ -99,6 +100,32 @@ function pickLeader(rows) {
     return peers[0];
 }
 
+// rankings 행 배열 → 그날 대장 3종 (stock-rise·rise-history 공통)
+function leadersFromRows(rk) {
+    rk = rk || [];
+    var active = rk.filter(function (r) { return isActive(r, RISE_CUTOFF); });
+    var sectors = buildGroups(active, 'sector');
+    var themes = buildGroups(active, 'theme');
+    var leader = pickLeader(rk);
+    return {
+        stock: leader ? {
+            ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10,
+            sector: String(leader.sector || '').trim(), theme: themeOf(leader),
+            vol: Math.round(num(leader.trading_value)), reason: String(leader.rise_reason || '').trim(),
+        } : null,
+        sector: sectors[0] ? {
+            name: sectors[0].key, count: sectors[0].count,
+            avgRate: Math.round(sectors[0].avgRate * 10) / 10, top: sectors[0].top,
+            vol: Math.round(sectors[0].totalVolume),
+        } : null,
+        theme: themes[0] ? {
+            name: themes[0].key, count: themes[0].count,
+            avgRate: Math.round(themes[0].avgRate * 10) / 10, top: themes[0].top,
+            vol: Math.round(themes[0].totalVolume),
+        } : null,
+    };
+}
+
 function fetchJson(url) {
     return new Promise(function (resolve, reject) {
         https.get(url, { headers: { 'User-Agent': 'whyrise-build' } }, function (res) {
@@ -127,32 +154,31 @@ async function main() {
         if (have.has(d) && !refresh.has(d)) { skipped++; continue; }  // 이미 보유한 옛 날 → fetch 생략(merge 가 유지)
         try {
             const day = await fetchJson(RAW + '/' + d + '.json');
-            const rk = day.rankings || [];
-            const active = rk.filter(function (r) { return isActive(r, RISE_CUTOFF); });
-            const sectors = buildGroups(active, 'sector');
-            const themes = buildGroups(active, 'theme');
-            const leader = pickLeader(rk);
-            days[d] = {
-                stock: leader ? {
-                    ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10,
-                    sector: String(leader.sector || '').trim(), theme: themeOf(leader),
-                    vol: Math.round(num(leader.trading_value)), reason: String(leader.rise_reason || '').trim(),
-                } : null,
-                sector: sectors[0] ? {
-                    name: sectors[0].key, count: sectors[0].count,
-                    avgRate: Math.round(sectors[0].avgRate * 10) / 10, top: sectors[0].top,
-                    vol: Math.round(sectors[0].totalVolume),
-                } : null,
-                theme: themes[0] ? {
-                    name: themes[0].key, count: themes[0].count,
-                    avgRate: Math.round(themes[0].avgRate * 10) / 10, top: themes[0].top,
-                    vol: Math.round(themes[0].totalVolume),
-                } : null,
-            };
+            days[d] = leadersFromRows(day.rankings || []);
             console.log(d, '|주:', days[d].stock && days[d].stock.name, '|섹:', days[d].sector && days[d].sector.name, '|테:', days[d].theme && days[d].theme.name);
         } catch (e) {
             console.error('  skip', d, e.message);
         }
+    }
+
+    // 백필(stock-rise 미커버 = 4/13 이전) — 로컬 rise-history 로 과거 대장 계산. 네트워크 불필요.
+    const srMin = dates.slice().sort()[0];   // stock-rise 최소일 (≈20260413)
+    let backfilled = 0;
+    try {
+        const localFiles = fs.readdirSync(RISE_DIR).filter(function (f) { return /^\d{8}\.json$/.test(f); });
+        for (const f of localFiles) {
+            const d = f.slice(0, 8);
+            if (d >= srMin) continue;                          // stock-rise 가 커버 → 위에서 처리됨
+            if (have.has(d) && !refresh.has(d)) { skipped++; continue; }  // 이미 보유 → merge 가 유지
+            try {
+                const day = JSON.parse(fs.readFileSync(path.join(RISE_DIR, f), 'utf8'));
+                days[d] = leadersFromRows(day.rankings || []);
+                backfilled++;
+            } catch (e) { console.error('  skip(local)', d, e.message); }
+        }
+        console.log('백필 대장 계산:', backfilled, '일 (rise-history, <' + srMin + ')');
+    } catch (e) {
+        console.error('rise-history dir 없음:', e.message);
     }
     // 기존 + 신규 합치기(신규가 같은 날짜는 갱신, 기존-only 옛 날짜는 보존 → 누적)
     const mergedDays = Object.assign({}, existing, days);
