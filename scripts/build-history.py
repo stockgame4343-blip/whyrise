@@ -256,6 +256,8 @@ def build_events_for_ticker(
         d = ohlc_sorted[i].get('localDate', '')
         if not d:
             continue
+        vol = ohlc_sorted[i].get('accumulatedTradingVolume') or 0
+        tval = int(vol * cur)   # 거래대금 근사 (원)
         is_high = is_52w_high(ohlc_sorted, i)
         # 최근(앵커±N일) 이벤트는 당일 타깃 뉴스로 풀 보강 — 오늘치 카드 커버리지↑
         _gap = _days_from_anchor(d, anchor_str) if anchor_str else None
@@ -271,6 +273,8 @@ def build_events_for_ticker(
                 'date': d,
                 'change_rate': rate,
                 'close_price': cur,
+                'trading_volume': int(vol),
+                'trading_value': tval,
                 'rise_reason': sr.get('rise_reason') or '',
                 'reason_confidence': 'high',
                 'reason_source': 'stockrise',
@@ -298,6 +302,8 @@ def build_events_for_ticker(
             'date': d,
             'change_rate': rate,
             'close_price': cur,
+            'trading_volume': int(vol),
+            'trading_value': tval,
             'rise_reason': est['rise_reason'],
             'reason_confidence': est['reason_confidence'],
             'reason_source': est['reason_source'] or 'naver',
@@ -818,18 +824,18 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
     백필 일자가 안 보인다. 여기서 종목별 events 를 날짜별로 역변환해
     /data/rise-history/{date}.json (getRankings 소비 스키마) + dates.json 을 만들고,
     프론트가 stock-rise 에 없는 과거 일자는 이 파일로 폴백한다.
-    거래대금은 백필 소스에 없어 0, 시총은 marketmap(현재값) 보조.
+    거래대금·거래량·시총은 이벤트에 채워진 값 사용(--enrich-ohlc). 없으면 시총은 marketmap(현재값) 폴백.
     """
     print('  build_rise_history (날짜별 역변환) ...')
     files = [f for f in sorted(stock_history_dir.glob('*.json'))
              if f.name not in ('index.json', 'report-summary.json')]
-    mcap: dict[str, int] = {}
+    cap_won_fb: dict[str, int] = {}    # marketmap 현재 시총(원) 폴백 (억원→원)
     mp = stock_history_dir.parent / 'marketmap.json'
     if mp.exists():
         try:
             for it in (json.loads(mp.read_text(encoding='utf-8')).get('items') or []):
                 if it.get('ticker') and it.get('market_cap'):
-                    mcap[it['ticker']] = int(it['market_cap'])
+                    cap_won_fb[it['ticker']] = int(it['market_cap']) * 10**8
         except Exception:
             pass
     by_date: dict[str, list[dict]] = {}
@@ -851,8 +857,9 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
                 'market': market,
                 'change_rate': e.get('change_rate'),
                 'close_price': e.get('close_price'),
-                'trading_value': 0,                 # 백필 소스에 없음 (프론트는 '-' 표시)
-                'market_cap': mcap.get(ticker, 0),  # 현재 시총 보조 (과거값 아님)
+                'trading_value': int(e.get('trading_value') or 0),   # 원 (volume×close)
+                'trading_volume': int(e.get('trading_volume') or 0),
+                'market_cap': int(e.get('market_cap') or cap_won_fb.get(ticker, 0)),  # 원
                 'rise_reason': e.get('rise_reason') or '',
                 'reason_confidence': e.get('reason_confidence') or '',
                 'reason_source': e.get('reason_source') or '',
@@ -989,6 +996,92 @@ def build_enrich_meta(args) -> int:
     build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
     build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
     build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
+    return 0
+
+
+def build_enrich_ohlc(args) -> int:
+    """이벤트에 거래량·거래대금·시총(역산) 채움 — OHLC 재수집 (전종목).
+
+    trading_volume = OHLC accumulatedTradingVolume[date]
+    trading_value  ≈ volume × close (원, 전종목)
+    market_cap     ≈ 현재시총(원) × (과거종가 / 최근종가) — marketmap 보유 종목(억원→원).
+    """
+    today = date.today()
+    start = _yyyymmdd(today - timedelta(days=400))
+    end = _yyyymmdd(today)
+    cap_won: dict[str, int] = {}
+    mp = OUTPUT_DIR.parent / 'marketmap.json'
+    if mp.exists():
+        try:
+            for it in (json.loads(mp.read_text(encoding='utf-8')).get('items') or []):
+                if it.get('ticker') and it.get('market_cap'):
+                    cap_won[it['ticker']] = int(it['market_cap']) * 10**8
+        except Exception:
+            pass
+    limit = getattr(args, 'limit', 0) or 0
+    files = [f for f in sorted(OUTPUT_DIR.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+    if limit:
+        files = files[:limit]
+    print(f'== enrich-ohlc: {len(files)} 종목, 시총맵 {len(cap_won)} (period {start}~{end}) ==')
+    n_tickers = n_ev = n_vol = n_cap = 0
+    t0 = time.time()
+    for i, f in enumerate(files):
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        evs = h.get('events') or []
+        if not evs:
+            continue
+        ticker = h.get('ticker') or f.stem
+        if i % 100 == 0:
+            print(f'  [{i}/{len(files)}] {ticker} vol={n_vol} cap={n_cap} {time.time() - t0:.0f}s')
+        try:
+            ohlc = naver_client.fetch_ohlc_daily(ticker, start, end)
+        except Exception as e:
+            print(f'    ohlc fail {ticker}: {e}')
+            continue
+        if not ohlc:
+            continue
+        by: dict[str, tuple] = {}
+        latest_close = 0
+        for r in ohlc:                      # 오름차순 → 마지막이 최신
+            d = (r.get('localDate') or '')[:8]
+            cl = r.get('closePrice') or 0
+            vol = r.get('accumulatedTradingVolume') or 0
+            if d:
+                by[d] = (cl, vol)
+                if cl:
+                    latest_close = cl
+        cw = cap_won.get(ticker, 0)
+        dirty = False
+        for e in evs:
+            rec = by.get(e.get('date'))
+            if not rec:
+                continue
+            cl, vol = rec
+            cl = cl or e.get('close_price') or 0
+            n_ev += 1
+            if vol:
+                e['trading_volume'] = int(vol)
+                e['trading_value'] = int(vol * cl)
+                n_vol += 1
+                dirty = True
+            if cw and latest_close and cl:
+                e['market_cap'] = int(cw * (cl / latest_close))
+                n_cap += 1
+                dirty = True
+        if dirty:
+            h['stats'] = calc_stats(h.get('events') or [])
+            f.write_text(json.dumps(h, ensure_ascii=False, indent=2), encoding='utf-8')
+            n_tickers += 1
+    print(f'== enrich-ohlc 완료: vol {n_vol}, cap {n_cap} / {n_ev} 매칭이벤트, '
+          f'{n_tickers} 종목, {time.time() - t0:.0f}s ==')
+    if not getattr(args, 'no_regen', False):
+        build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
+        build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+        build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
     return 0
 
 
@@ -1957,6 +2050,8 @@ def main() -> None:
                    help='기존 stock-history 에 테마/섹터 보강 + generic 사유 테마화 (OHLC 재빌드 없음)')
     p.add_argument('--no-naver', action='store_true',
                    help='--enrich-meta 시 Naver 메타 보강 생략(무료 propagation 만)')
+    p.add_argument('--enrich-ohlc', action='store_true',
+                   help='이벤트에 거래량·거래대금·시총(역산) 채움 — OHLC 재수집 (전종목)')
     p.add_argument('--enrich-news', action='store_true',
                    help='백필 저신뢰 사유를 종목별 과거 뉴스 키워드 매칭으로 업그레이드 (stock-rise 방식)')
     p.add_argument('--news-pages', type=int, default=20,
@@ -1977,6 +2072,8 @@ def main() -> None:
         sys.exit(build_estimate_only(args))
     if args.enrich_meta:
         sys.exit(build_enrich_meta(args))
+    if args.enrich_ohlc:
+        sys.exit(build_enrich_ohlc(args))
     if args.enrich_news:
         sys.exit(build_enrich_news(args))
     if args.report_only:
