@@ -178,6 +178,44 @@ def fetch_stock_news(ticker: str, page_size: int = 20) -> list[dict]:
     return out
 
 
+def fetch_stock_news_paged(ticker: str, max_pages: int = 20, page_size: int = 20) -> list[dict]:
+    """종목별 뉴스 — 과거까지 page 파라미터로 페이지네이션 (백필 사유 추정용).
+
+    api.stock.naver.com 이 page 를 무시하면 매 페이지 동일 결과 → 새 기사 0건이면
+    중단(무한루프 방지)하므로, 그 경우 최신분만 반환(안전 degrade).
+    """
+    out: list[dict] = []
+    seen: set = set()
+    for page in range(1, max_pages + 1):
+        url = (f'https://api.stock.naver.com/news/stock/{ticker}'
+               f'?pageSize={page_size}&page={page}')
+        data = fetch_json(url)
+        items: list[dict] = []
+        if isinstance(data, list):
+            for grp in data:
+                if isinstance(grp, dict) and isinstance(grp.get('items'), list):
+                    items.extend(grp['items'])
+                elif isinstance(grp, dict) and ('title' in grp):
+                    items.append(grp)
+        elif isinstance(data, dict):
+            for k in ('items', 'news', 'list'):
+                if isinstance(data.get(k), list):
+                    items.extend(data[k])
+        if not items:
+            break
+        new = 0
+        for it in items:
+            key = (it.get('officeId'), it.get('articleId'))
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(it)
+            new += 1
+        if new == 0:       # page 무시되거나 끝 도달
+            break
+    return out
+
+
 def fetch_news_for_date(ticker: str, target_date: str, span_days: int = 1) -> list[dict]:
     """target_date(YYYYMMDD) ± span_days 일자 뉴스만 필터.
 

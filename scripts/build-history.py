@@ -992,6 +992,91 @@ def build_enrich_meta(args) -> int:
     return 0
 
 
+def _dates_around(date_str: str, span: int = 1) -> set:
+    """date_str(YYYYMMDD) ±span 일 집합 (월경계 정확)."""
+    base = datetime.strptime(date_str, '%Y%m%d')
+    return {(base + timedelta(days=k)).strftime('%Y%m%d') for k in range(-span, span + 1)}
+
+
+def build_enrich_news(args) -> int:
+    """백필 저신뢰 사유를 종목별 과거 뉴스(페이지네이션) 키워드 매칭으로 업그레이드 — stock-rise 방식.
+
+    대상: reason_source ∈ {pattern,estimated,theme,naver} 이고 date < news_before 인 이벤트.
+    종목당 max_pages 페이지까지 뉴스 수집 → 각 이벤트 날짜 ±1일 기사 제목 키워드 매칭(reason_from_news).
+    stockrise/news 정답 사유는 불변.
+    """
+    from estimate_reasons import reason_from_news  # noqa: E402
+    cutoff_date = getattr(args, 'news_before', None) or '20260413'
+    max_pages = getattr(args, 'news_pages', 0) or 20
+    limit = getattr(args, 'limit', 0) or 0
+    LOW = {'pattern', 'estimated', 'theme', 'naver'}
+    files = [f for f in sorted(OUTPUT_DIR.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+    targets = []
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        evs = [e for e in h.get('events', [])
+               if (e.get('date') or '') < cutoff_date and e.get('reason_source') in LOW]
+        if evs:
+            targets.append((f, h, evs))
+    if limit:
+        targets = targets[:limit]
+    print(f'== enrich-news: 대상 {len(targets)} 종목 (max_pages={max_pages}, before={cutoff_date}, limit={limit}) ==')
+    n_tickers = n_events = n_up = 0
+    min_reached = '99999999'
+    t0 = time.time()
+    for i, (f, h, evs) in enumerate(targets):
+        ticker = h.get('ticker') or f.stem
+        if i % 50 == 0:
+            print(f'  [{i}/{len(targets)}] {ticker} up={n_up}/{n_events} '
+                  f'minNews={min_reached} elapsed={time.time() - t0:.0f}s')
+        try:
+            raw = naver_client.fetch_stock_news_paged(ticker, max_pages=max_pages)
+        except Exception as e:
+            print(f'    news fail {ticker}: {e}')
+            continue
+        dated = []
+        for it in raw:
+            dt = (it.get('datetime') or '')[:8]
+            if dt.isdigit() and len(dt) == 8:
+                dated.append((dt, it))
+                if dt < min_reached:
+                    min_reached = dt
+        if not dated:
+            continue
+        dirty = False
+        for e in evs:
+            n_events += 1
+            around = _dates_around(e['date'], 1)
+            near = [it for dt, it in dated if dt in around]
+            if not near:
+                continue
+            hit = reason_from_news([{'title': it.get('title', '')} for it in near])
+            if hit:
+                label, conf, src = hit
+                e['rise_reason'] = label
+                e['reason_confidence'] = conf
+                e['reason_source'] = 'news'
+                e['reason_status'] = 'filled'
+                e['news'] = [naver_client.normalize_news_item(it) for it in near[:5]]
+                n_up += 1
+                dirty = True
+        if dirty:
+            h['stats'] = calc_stats(h.get('events') or [])
+            f.write_text(json.dumps(h, ensure_ascii=False, indent=2), encoding='utf-8')
+            n_tickers += 1
+    print(f'== enrich-news 완료: {n_up}/{n_events} 이벤트 사유 업그레이드, {n_tickers} 종목 갱신, '
+          f'뉴스 최소도달일 {min_reached}, {time.time() - t0:.0f}s ==')
+    if not getattr(args, 'no_regen', False):
+        build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
+        build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+        build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
+    return 0
+
+
 def build_screening_index(
     stock_history_dir: Path,
     output_path: Path,
@@ -1869,6 +1954,14 @@ def main() -> None:
                    help='기존 stock-history 에 테마/섹터 보강 + generic 사유 테마화 (OHLC 재빌드 없음)')
     p.add_argument('--no-naver', action='store_true',
                    help='--enrich-meta 시 Naver 메타 보강 생략(무료 propagation 만)')
+    p.add_argument('--enrich-news', action='store_true',
+                   help='백필 저신뢰 사유를 종목별 과거 뉴스 키워드 매칭으로 업그레이드 (stock-rise 방식)')
+    p.add_argument('--news-pages', type=int, default=20,
+                   help='--enrich-news 종목당 최대 뉴스 페이지 수')
+    p.add_argument('--news-before', type=str, default='20260413',
+                   help='--enrich-news 대상: 이 날짜(YYYYMMDD) 이전 이벤트만')
+    p.add_argument('--no-regen', action='store_true',
+                   help='--enrich-news 후 파생 산출물(rise-history 등) 재생성 생략(샘플 테스트용)')
     p.add_argument('--limit', type=int, default=0,
                    help='estimate-only 시 처리 개수 한도')
     args = p.parse_args()
@@ -1881,6 +1974,8 @@ def main() -> None:
         sys.exit(build_estimate_only(args))
     if args.enrich_meta:
         sys.exit(build_enrich_meta(args))
+    if args.enrich_news:
+        sys.exit(build_enrich_news(args))
     if args.report_only:
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
         build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
