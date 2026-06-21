@@ -52,14 +52,18 @@ def reason_from_pattern(change_rate: float, is_52w_high: bool) -> tuple[str, str
 
 
 def reason_from_theme(meta: dict) -> tuple[str, str, str] | None:
-    """종목 메타 industry/sector — 모두 실패 시 fallback.
+    """종목 메타 theme_tag/industry/sector — 모두 실패 시 fallback.
 
-    1) 메타 텍스트가 키워드맵에 걸리면 그 사유(예: '2차전지 강세') 사용.
-    2) 안 걸려도 sector 가 있으면 stock-rise 식 '{sector} 강세' 로 채움
+    1) theme_tag(테마) 있으면 stock-rise 식 '{theme_tag} 테마 강세' (가장 구체적).
+    2) 메타 텍스트가 키워드맵에 걸리면 그 사유(예: '2차전지 강세') 사용.
+    3) 안 걸려도 sector 가 있으면 '{sector} 강세' 로 채움
        (뉴스 깊이 한계로 과거 일자는 대부분 여기로 떨어짐).
     """
     if not meta:
         return None
+    theme = (meta.get('theme_tag') or '').strip()
+    if theme:
+        return (f'{theme} 테마 강세', 'low', 'theme')
     text = ' '.join(filter(None, [meta.get('industry', ''), meta.get('sector', '')]))
     hit = match_keyword_reason(text)
     if hit is not None:

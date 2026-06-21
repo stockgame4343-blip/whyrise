@@ -19,11 +19,11 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'full | incremental | estimate-only | marketmap-only | marketmap-intraday'
+        description: 'full | incremental | estimate-only | enrich-meta | marketmap-only | marketmap-intraday'
         required: false
         default: 'incremental'
         type: choice
-        options: [full, incremental, estimate-only, marketmap-only, marketmap-intraday]
+        options: [full, incremental, estimate-only, enrich-meta, marketmap-only, marketmap-intraday]
       days:
         description: '풀빌드 기간 (full mode)'
         required: false
@@ -182,6 +182,9 @@ jobs:
             python3 scripts/build-history.py --days "$DAYS" --cutoff "$CUTOFF"
           elif [ "$MODE" = "estimate-only" ]; then
             python3 scripts/build-history.py --estimate-only --limit "$LIMIT"
+          elif [ "$MODE" = "enrich-meta" ]; then
+            # 기존 stock-history 테마/섹터 보강 + generic 사유 테마화 (OHLC 재빌드 없음, Naver 메타 패스)
+            python3 scripts/build-history.py --enrich-meta
           elif [ "$MODE" = "marketmap-intraday" ]; then
             # 장중 빠른 갱신 — 라이브 API 만, ~30s
             python3 scripts/build-history.py --marketmap-intraday

@@ -302,7 +302,7 @@ def build_events_for_ticker(
             'reason_confidence': est['reason_confidence'],
             'reason_source': est['reason_source'] or 'naver',
             'reason_status': est['reason_status'],
-            'theme_tag': '',
+            'theme_tag': (meta or {}).get('theme_tag', ''),
             'news': est_news,
             'sector': (meta or {}).get('sector', ''),
             'is_52w_high': is_high,
@@ -886,6 +886,112 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
           f'({dates_sorted[0] if dates_sorted else "-"} ~ {dates_sorted[-1] if dates_sorted else "-"})')
 
 
+# generic 추정 라벨 — 테마/섹터 보강으로 업그레이드 대상
+_GENERIC_REASONS = {'시장 관심 증가', '상한가 — 사유 미수집'}
+
+
+def build_meta_lookup(stock_history_dir: Path, use_naver: bool = False) -> dict[str, dict]:
+    """ticker → {theme_tag, sector} (테마는 종목 단위로 정적).
+
+    ① 기존 stock-history 이벤트(특히 source=stockrise)에서 theme_tag/sector 수집 (무료).
+    ② use_naver: sector 가 비는 종목만 m.stock basic 으로 보강 (basic 은 테마 안 줌).
+    """
+    files = [f for f in sorted(stock_history_dir.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+    meta: dict[str, dict] = {}
+    have_events: set[str] = set()
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        t = h.get('ticker') or f.stem
+        rec = meta.setdefault(t, {})
+        for e in h.get('events', []):
+            have_events.add(t)
+            th = (e.get('theme_tag') or '').strip()
+            se = (e.get('sector') or '').strip()
+            if th and (not rec.get('theme_tag') or e.get('source') == 'stockrise'):
+                rec['theme_tag'] = th
+            if se and (not rec.get('sector') or e.get('source') == 'stockrise'):
+                rec['sector'] = se
+    print(f'  meta lookup(무료): theme {sum(1 for r in meta.values() if r.get("theme_tag"))} / '
+          f'sector {sum(1 for r in meta.values() if r.get("sector"))} 종목')
+    if use_naver:
+        miss = [t for t in sorted(have_events) if not meta.get(t, {}).get('sector')]
+        print(f'  Naver 메타 보강 대상(sector 없음): {len(miss)} 종목')
+        for i, t in enumerate(miss):
+            if i % 200 == 0:
+                print(f'    meta {i}/{len(miss)} ...')
+            try:
+                m = naver_client.fetch_stock_meta(t)
+            except Exception:
+                m = {}
+            se = (m.get('sector') or '').strip()
+            if se:
+                meta.setdefault(t, {})['sector'] = se
+        print(f'  meta lookup(+Naver): sector {sum(1 for r in meta.values() if r.get("sector"))} 종목')
+    return meta
+
+
+def enrich_events_meta(stock_history_dir: Path, meta: dict[str, dict]) -> int:
+    """기존 이벤트에 theme_tag/sector 채우고 generic 사유를 테마/섹터화. 갱신 종목 수 반환.
+
+    저신뢰 추정(reason_source∈{pattern,estimated,theme,naver}) + generic 라벨만 손댐.
+    stockrise·뉴스 사유, '52주 신고가 도달' 은 불변. 필드만 채우므로 병합 안전.
+    """
+    files = [f for f in sorted(stock_history_dir.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+    changed = 0
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        m = meta.get(h.get('ticker') or f.stem) or {}
+        theme = (m.get('theme_tag') or '').strip()
+        sector = (m.get('sector') or '').strip()
+        if not theme and not sector:
+            continue
+        dirty = False
+        for e in h.get('events', []):
+            if theme and not (e.get('theme_tag') or '').strip():
+                e['theme_tag'] = theme
+                dirty = True
+            if sector and not (e.get('sector') or '').strip():
+                e['sector'] = sector
+                dirty = True
+            src = e.get('reason_source')
+            rr = (e.get('rise_reason') or '').strip()
+            if src in ('pattern', 'estimated', 'theme', 'naver') and rr in _GENERIC_REASONS:
+                if rr == '상한가 — 사유 미수집':
+                    new = f'{theme} 테마 상한가' if theme else (f'{sector} 상한가' if sector else '')
+                else:  # '시장 관심 증가'
+                    new = f'{theme} 테마 강세' if theme else (f'{sector} 강세' if sector else '')
+                if new and new != rr:
+                    e['rise_reason'] = new
+                    e['reason_source'] = 'theme'
+                    e['reason_status'] = 'filled'
+                    dirty = True
+        if dirty:
+            h['stats'] = calc_stats(h.get('events') or [])
+            f.write_text(json.dumps(h, ensure_ascii=False, indent=2), encoding='utf-8')
+            changed += 1
+    print(f'  enrich: {changed} 종목 파일 갱신')
+    return changed
+
+
+def build_enrich_meta(args) -> int:
+    """기존 stock-history 에 테마/섹터 보강 + 사유 테마화 후 파생 산출물 재생성 (OHLC 재빌드 없음)."""
+    print('== enrich-meta: 테마/섹터 보강 ==')
+    meta = build_meta_lookup(OUTPUT_DIR, use_naver=not getattr(args, 'no_naver', False))
+    enrich_events_meta(OUTPUT_DIR, meta)
+    build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
+    build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+    build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
+    return 0
+
+
 def build_screening_index(
     stock_history_dir: Path,
     output_path: Path,
@@ -1012,6 +1118,16 @@ def build_full(args) -> int:
     sr_lookup = build_stockrise_lookup(sr_dates)
     print(f'  stock-rise lookup 항목: {len(sr_lookup)}')
 
+    # ticker → {theme_tag, sector} (테마는 종목 단위로 정적) — 추정 이벤트(과거 포함)에 태그·테마 사유 부여.
+    theme_by_ticker: dict[str, dict] = {}
+    for (_d, _t), _sr in sr_lookup.items():
+        rec = theme_by_ticker.setdefault(_t, {})
+        if not rec.get('theme_tag') and _sr.get('theme_tag'):
+            rec['theme_tag'] = _sr.get('theme_tag')
+        if not rec.get('sector') and _sr.get('sector'):
+            rec['sector'] = _sr.get('sector')
+    print(f'  theme/sector lookup: {len(theme_by_ticker)} 종목')
+
     # 3. 뉴스 캐시 (같은 ticker 한 번만 fetch — 최신 40건 기준)
     news_cache_by_ticker: dict[str, list[dict]] = {}
 
@@ -1077,7 +1193,9 @@ def build_full(args) -> int:
             ohlc=ohlc, cutoff=cutoff,
             stockrise_lookup=sr_lookup,
             fetch_news_fn=fetch_news_fn,
-            meta={'sector': item.get('industryName') or ''},
+            meta={'sector': (theme_by_ticker.get(ticker, {}).get('sector')
+                             or item.get('industryName') or ''),
+                  'theme_tag': theme_by_ticker.get(ticker, {}).get('theme_tag', '')},
             supplement_news_fn=supplement_news_fn,
             anchor_str=today.strftime('%Y%m%d'),
         )
@@ -1747,6 +1865,10 @@ def main() -> None:
                    help='--marketmap-only 와 함께: 과거 N 영업일치 일별 스냅샷 일괄 빌드')
     p.add_argument('--report-only', action='store_true',
                    help='기존 stock-history/*.json 만 읽어서 report-summary.json 재집계 (~30s)')
+    p.add_argument('--enrich-meta', action='store_true',
+                   help='기존 stock-history 에 테마/섹터 보강 + generic 사유 테마화 (OHLC 재빌드 없음)')
+    p.add_argument('--no-naver', action='store_true',
+                   help='--enrich-meta 시 Naver 메타 보강 생략(무료 propagation 만)')
     p.add_argument('--limit', type=int, default=0,
                    help='estimate-only 시 처리 개수 한도')
     args = p.parse_args()
@@ -1757,6 +1879,8 @@ def main() -> None:
         sys.exit(build_marketmap_only(args))
     if args.estimate_only:
         sys.exit(build_estimate_only(args))
+    if args.enrich_meta:
+        sys.exit(build_enrich_meta(args))
     if args.report_only:
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
         build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
