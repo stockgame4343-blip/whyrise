@@ -811,6 +811,81 @@ def _theme_freq(events: list[dict], top_n: int = _SCREENING_THEMES_PER_TICKER) -
     return [t for t, _ in sorted(counts.items(), key=lambda x: -x[1])[:top_n]]
 
 
+def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
+    """종목별 stock-history → 날짜별 상승 순위 파일.
+
+    홈/리포트의 날짜 탐색은 stock-rise raw(2026-04-13~)를 직접 읽으므로 그 이전
+    백필 일자가 안 보인다. 여기서 종목별 events 를 날짜별로 역변환해
+    /data/rise-history/{date}.json (getRankings 소비 스키마) + dates.json 을 만들고,
+    프론트가 stock-rise 에 없는 과거 일자는 이 파일로 폴백한다.
+    거래대금은 백필 소스에 없어 0, 시총은 marketmap(현재값) 보조.
+    """
+    print('  build_rise_history (날짜별 역변환) ...')
+    files = [f for f in sorted(stock_history_dir.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+    mcap: dict[str, int] = {}
+    mp = stock_history_dir.parent / 'marketmap.json'
+    if mp.exists():
+        try:
+            for it in (json.loads(mp.read_text(encoding='utf-8')).get('items') or []):
+                if it.get('ticker') and it.get('market_cap'):
+                    mcap[it['ticker']] = int(it['market_cap'])
+        except Exception:
+            pass
+    by_date: dict[str, list[dict]] = {}
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        ticker = h.get('ticker') or f.stem
+        name = h.get('name') or ticker
+        market = h.get('market') or ''
+        for e in h.get('events', []):
+            d = e.get('date')
+            if not d:
+                continue
+            by_date.setdefault(d, []).append({
+                'ticker': ticker,
+                'name': name,
+                'market': market,
+                'change_rate': e.get('change_rate'),
+                'close_price': e.get('close_price'),
+                'trading_value': 0,                 # 백필 소스에 없음 (프론트는 '-' 표시)
+                'market_cap': mcap.get(ticker, 0),  # 현재 시총 보조 (과거값 아님)
+                'rise_reason': e.get('rise_reason') or '',
+                'reason_confidence': e.get('reason_confidence') or '',
+                'reason_source': e.get('reason_source') or '',
+                'reason_status': e.get('reason_status') or '',
+                'theme_tag': e.get('theme_tag') or '',
+                'sector': e.get('sector') or '',
+                'news': e.get('news') or [],
+                'is_52w_high': bool(e.get('is_52w_high')),
+            })
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for d, rows in by_date.items():
+        rows.sort(key=lambda r: (r.get('change_rate') or 0), reverse=True)
+        for i, r in enumerate(rows, 1):
+            r['rank'] = i
+        (out_dir / f'{d}.json').write_text(
+            json.dumps({
+                'date': d,
+                'collected_at': '',
+                'is_final': True,
+                'mode': 'backfill',
+                'pullbacks': [],
+                'rankings': rows,
+            }, ensure_ascii=False),
+            encoding='utf-8',
+        )
+    # stock-rise dates.json 과 동일하게 내림차순(최신 먼저) — 프론트는 dates[0]=최신 가정.
+    dates_sorted = sorted(by_date.keys(), reverse=True)
+    (out_dir / 'dates.json').write_text(
+        json.dumps(dates_sorted, ensure_ascii=False), encoding='utf-8')
+    print(f'    rise-history: {len(dates_sorted)} 일자 파일 + dates.json '
+          f'({dates_sorted[0] if dates_sorted else "-"} ~ {dates_sorted[-1] if dates_sorted else "-"})')
+
+
 def build_screening_index(
     stock_history_dir: Path,
     output_path: Path,
@@ -1025,6 +1100,7 @@ def build_full(args) -> int:
     write_index(index_meta, output_dir)
     write_build_meta(sr_dates)
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
+    build_rise_history(output_dir, output_dir.parent / 'rise-history')
     build_sitemap(output_dir, output_dir.parent.parent)
     build_marketmap(output_dir.parent.parent)
     build_screening_index(output_dir, output_dir.parent / 'screening.json')
@@ -1094,6 +1170,7 @@ def build_estimate_only(args) -> int:
             print(f'  processed {processed}, updated {updated}')
     print(f'== estimate 완료: {updated}/{processed} ticker 갱신 ==')
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
+    build_rise_history(output_dir, output_dir.parent / 'rise-history')
     build_sitemap(output_dir, output_dir.parent.parent)
     build_screening_index(output_dir, output_dir.parent / 'screening.json')
     return 0
@@ -1682,6 +1759,7 @@ def main() -> None:
         sys.exit(build_estimate_only(args))
     if args.report_only:
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
+        build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
         build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
         sys.exit(0)
     sys.exit(build_full(args))

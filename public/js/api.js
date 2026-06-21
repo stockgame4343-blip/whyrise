@@ -46,43 +46,60 @@ var WhyAPI = (function () {
             });
     }
 
-    /** 거래일 목록 (stock-rise 의 dates.json 재사용) */
+    /**
+     * 거래일 목록 — stock-rise(2026-04-13~) + 자체 백필 rise-history(2025~) 유니온.
+     * 내림차순(최신 먼저) — 소비자가 dates[0]=최신 가정.
+     */
     function getDates() {
-        return _cachedFetch(STOCK_RISE_RAW + '/dates.json');
+        return Promise.all([
+            _cachedFetch('/data/rise-history/dates.json').catch(function () { return []; }),
+            _cachedFetch(STOCK_RISE_RAW + '/dates.json').catch(function () { return []; }),
+        ]).then(function (res) {
+            var seen = {};
+            [].concat(res[0] || [], res[1] || []).forEach(function (d) { if (d) seen[d] = 1; });
+            return Object.keys(seen).sort().reverse();
+        });
+    }
+
+    function _shapeRankings(data, overrides, market) {
+        overrides = overrides || {};
+        var rankings = (data.rankings || []).map(function (r) {
+            var ov = overrides[r.ticker];
+            if (!ov) return r;
+            var merged = Object.assign({}, r);
+            if (ov.rise_reason != null) merged.rise_reason = ov.rise_reason;
+            if (ov.theme_tag != null) merged.theme_tag = ov.theme_tag;
+            merged._edited = true;
+            merged._edit_note = ov.note || '';
+            return merged;
+        });
+        if (market && market !== 'ALL') {
+            rankings = rankings.filter(function (r) { return r.market === market; });
+        }
+        return {
+            rankings: rankings,
+            pullbacks: data.pullbacks || [],   // 풀백 분석 — 리포트 페이지가 사용
+            collected_at: data.collected_at || '',
+            is_final: data.is_final || false,
+            mode: data.mode || 'closing',
+        };
     }
 
     /**
      * 일자별 종목 + overrides 머지.
+     * stock-rise 에 없는 과거 백필 일자(4/13 이전)는 자체 /data/rise-history/{date}.json 폴백.
      * @returns { rankings, collected_at, is_final, mode }
      */
     function getRankings(date, market) {
-        return Promise.all([
-            _cachedFetch(STOCK_RISE_RAW + '/' + date + '.json'),
-            _fetchOverrides(date),
-        ]).then(function (results) {
-            var data = results[0];
-            var overrides = results[1] || {};
-            var rankings = (data.rankings || []).map(function (r) {
-                var ov = overrides[r.ticker];
-                if (!ov) return r;
-                var merged = Object.assign({}, r);
-                if (ov.rise_reason != null) merged.rise_reason = ov.rise_reason;
-                if (ov.theme_tag != null) merged.theme_tag = ov.theme_tag;
-                merged._edited = true;
-                merged._edit_note = ov.note || '';
-                return merged;
+        return _cachedFetch(STOCK_RISE_RAW + '/' + date + '.json')
+            .catch(function () {
+                return _cachedFetch('/data/rise-history/' + date + '.json');
+            })
+            .then(function (data) {
+                return _fetchOverrides(date).then(function (overrides) {
+                    return _shapeRankings(data, overrides, market);
+                });
             });
-            if (market && market !== 'ALL') {
-                rankings = rankings.filter(function (r) { return r.market === market; });
-            }
-            return {
-                rankings: rankings,
-                pullbacks: data.pullbacks || [],   // 풀백 분석 — 리포트 페이지가 사용
-                collected_at: data.collected_at || '',
-                is_final: data.is_final || false,
-                mode: data.mode || 'closing',
-            };
-        });
     }
 
     /** 종목별 인덱스 (이 사이트 자체 빌드본) */
