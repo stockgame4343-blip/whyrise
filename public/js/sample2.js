@@ -197,7 +197,9 @@
 
     function render() {
         var y = state.year, m = state.month;
-        document.getElementById('calLabel').textContent = y + '. ' + ('0' + (m + 1)).slice(-2) + '.';
+        document.getElementById('calLabel').textContent = y + '. ' + ('0' + (m + 1)).slice(-2) + '. ▾';
+        var _pp = document.getElementById('calPicker');
+        if (_pp && _pp.classList.contains('open')) { _pickerYear = y; renderPicker(); }
         var prev = new Date(y, m - 1, 1), next = new Date(y, m + 1, 1);
         document.getElementById('calPrev').disabled = !monthHasData(prev.getFullYear(), prev.getMonth());
         document.getElementById('calNext').disabled = !monthHasData(next.getFullYear(), next.getMonth());
@@ -386,9 +388,94 @@
         }, 'image/png');
     }
 
+    // ── 연·월 빠른 선택 팝오버 (중앙 라벨 클릭) ───────────────────────────
+    var _pickerYear = 0;
+
+    function availableYears() {
+        if (!state.min || !state.max) return [state.year];
+        var y0 = parseInt(state.min.slice(0, 4), 10), y1 = parseInt(state.max.slice(0, 4), 10);
+        var out = []; for (var y = y1; y >= y0; y--) out.push(y); return out;
+    }
+
+    function ensurePicker() {
+        var pop = document.getElementById('calPicker');
+        if (pop) return pop;
+        var bar = document.querySelector('.cal-controls .report-date-bar');
+        if (!bar) return null;
+        bar.style.position = 'relative';
+        pop = document.createElement('div');
+        pop.id = 'calPicker';
+        pop.className = 'cal-picker';
+        pop.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var nav = e.target.closest('[data-act]');
+            if (nav) {
+                var years = availableYears();
+                var yi = years.indexOf(_pickerYear);
+                if (nav.getAttribute('data-act') === 'py' && yi < years.length - 1) _pickerYear = years[yi + 1];
+                if (nav.getAttribute('data-act') === 'ny' && yi > 0) _pickerYear = years[yi - 1];
+                renderPicker();
+                return;
+            }
+            var mb = e.target.closest('[data-m]');
+            if (mb && !mb.disabled) {
+                state.year = _pickerYear;
+                state.month = parseInt(mb.getAttribute('data-m'), 10);
+                closeMonthPicker();
+                render();
+            }
+        });
+        bar.appendChild(pop);
+        return pop;
+    }
+
+    function renderPicker() {
+        var pop = document.getElementById('calPicker');
+        if (!pop) return;
+        var years = availableYears();
+        var yi = years.indexOf(_pickerYear);
+        var h = '<div class="cal-picker__yr">' +
+            '<button class="cal-picker__yrnav" data-act="py" type="button"' + (yi < years.length - 1 ? '' : ' disabled') + '>‹</button>' +
+            '<span class="cal-picker__yrlabel">' + _pickerYear + '년</span>' +
+            '<button class="cal-picker__yrnav" data-act="ny" type="button"' + (yi > 0 ? '' : ' disabled') + '>›</button>' +
+            '</div><div class="cal-picker__months">';
+        for (var m = 0; m < 12; m++) {
+            var has = monthHasData(_pickerYear, m);
+            var cur = (_pickerYear === state.year && m === state.month);
+            h += '<button type="button" class="cal-picker__m' + (cur ? ' cal-picker__m--cur' : '') +
+                '" data-m="' + m + '"' + (has ? '' : ' disabled') + '>' + (m + 1) + '월</button>';
+        }
+        h += '</div>';
+        pop.innerHTML = h;
+    }
+
+    function toggleMonthPicker() {
+        var pop = document.getElementById('calPicker');
+        if (pop && pop.classList.contains('open')) { closeMonthPicker(); return; }
+        pop = ensurePicker();
+        if (!pop) return;
+        _pickerYear = state.year;
+        renderPicker();
+        pop.classList.add('open');
+        setTimeout(function () { document.addEventListener('click', outsidePicker, true); }, 0);
+    }
+
+    function closeMonthPicker() {
+        var pop = document.getElementById('calPicker');
+        if (pop) pop.classList.remove('open');
+        document.removeEventListener('click', outsidePicker, true);
+    }
+
+    function outsidePicker(e) {
+        var pop = document.getElementById('calPicker');
+        if (pop && !pop.contains(e.target) && e.target.id !== 'calLabel') closeMonthPicker();
+    }
+
     function bind() {
         document.getElementById('calPrev').addEventListener('click', function () { shiftMonth(-1); });
         document.getElementById('calNext').addEventListener('click', function () { shiftMonth(1); });
+        var $lbl = document.getElementById('calLabel');
+        if ($lbl) $lbl.addEventListener('click', function (e) { e.stopPropagation(); toggleMonthPicker(); });
         var $save = document.getElementById('calSave');
         if ($save) $save.addEventListener('click', savePNG);
         document.getElementById('calToggle').addEventListener('click', function (e) {

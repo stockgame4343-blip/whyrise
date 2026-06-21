@@ -888,6 +888,28 @@ body {
     display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
 }
 .event-card__date { font-size: 16px; font-weight: 700; }
+/* 대장 캘린더 연·월 빠른선택 팝오버 (중앙 라벨 클릭) */
+#calLabel { cursor: pointer; user-select: none; }
+.cal-picker {
+    display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    z-index: 50; background: var(--surface, #fff); border: 1px solid var(--glass-border, #e3e3e8);
+    border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.18); padding: 12px; min-width: 240px;
+}
+.cal-picker.open { display: block; }
+.cal-picker__yr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cal-picker__yrlabel { font-weight: 800; font-size: 16px; }
+.cal-picker__yrnav {
+    width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--glass-border, #e3e3e8);
+    background: transparent; cursor: pointer; font-size: 16px; line-height: 1;
+}
+.cal-picker__yrnav:disabled { opacity: .3; cursor: default; }
+.cal-picker__months { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.cal-picker__m {
+    padding: 9px 0; border-radius: 9px; border: 1px solid var(--glass-border, #e3e3e8);
+    background: transparent; cursor: pointer; font-size: 13px; font-weight: 600;
+}
+.cal-picker__m:disabled { opacity: .28; cursor: default; }
+.cal-picker__m--cur { background: var(--accent, #3b82f6); color: #fff; border-color: transparent; }
 /* 1년 이전(아카이브) 이벤트 — 흐리게. 보이되 '오래됨' 인지 + 횟수/스크리닝 집계 제외 */
 .event-card--archived { opacity: 0.5; }
 .event-card--archived:hover { opacity: 0.8; }
