@@ -888,6 +888,14 @@ body {
     display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
 }
 .event-card__date { font-size: 16px; font-weight: 700; }
+/* 1년 이전(아카이브) 이벤트 — 흐리게. 보이되 '오래됨' 인지 + 횟수/스크리닝 집계 제외 */
+.event-card--archived { opacity: 0.5; }
+.event-card--archived:hover { opacity: 0.8; }
+.event-card__archived-flag {
+    font-size: 11px; font-weight: 600; color: var(--text-muted, #888);
+    border: 1px solid var(--glass-border); border-radius: 6px;
+    padding: 1px 6px; white-space: nowrap;
+}
 .event-card__rate {
     font-size: 20px; font-weight: 800;
     color: var(--wr-accent);

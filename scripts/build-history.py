@@ -341,14 +341,40 @@ def calc_stats(events: list[dict]) -> dict:
                 'count_recent': 0, 'avg_rate': 0}
     today = date.today()
     cutoff_30d = (today - timedelta(days=30)).strftime('%Y%m%d')
+    cutoff_1y = (today - timedelta(days=365)).strftime('%Y%m%d')
+    # 횟수 통계는 '최근 1년' 윈도우만 — 1년 이전(백필) 이벤트는 영구 보관하되 카운트엔 미포함.
+    recent = [e for e in events if (e.get('date') or '') >= cutoff_1y]
+    base = recent or events
     return {
-        'count_10': sum(1 for e in events if e['change_rate'] >= 10),
-        'count_15': sum(1 for e in events if e['change_rate'] >= 15),
-        'count_20': sum(1 for e in events if e['change_rate'] >= 20),
-        'count_limit': sum(1 for e in events if e['change_rate'] >= 29.9),
+        'count_10': sum(1 for e in recent if e['change_rate'] >= 10),
+        'count_15': sum(1 for e in recent if e['change_rate'] >= 15),
+        'count_20': sum(1 for e in recent if e['change_rate'] >= 20),
+        'count_limit': sum(1 for e in recent if e['change_rate'] >= 29.9),
         'count_recent': sum(1 for e in events if e['date'] >= cutoff_30d),
-        'avg_rate': round(sum(e['change_rate'] for e in events) / len(events), 2),
+        'avg_rate': round(sum(e['change_rate'] for e in base) / len(base), 2),
     }
+
+
+def recompute_all_stats(stock_history_dir: Path) -> int:
+    """전 종목 파일의 stats=calc_stats(events) 재계산(순수 로컬). 변경된 파일 수 반환.
+
+    calc_stats 1년 윈도우 변경 등을 빌드 없이 즉시 반영할 때 사용(--report-only).
+    """
+    files = [f for f in sorted(stock_history_dir.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+    changed = 0
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        new_stats = calc_stats(h.get('events') or [])
+        if h.get('stats') != new_stats:
+            h['stats'] = new_stats
+            f.write_text(json.dumps(h, ensure_ascii=False, indent=2), encoding='utf-8')
+            changed += 1
+    print(f'  recompute_all_stats: {changed} 종목 stats 갱신')
+    return changed
 
 
 def load_existing_events(ticker: str, output_dir: Path) -> list[dict]:
@@ -1226,10 +1252,13 @@ def build_screening_index(
         if not ticker:
             continue
         stats = h.get('stats') or {}
-        if (stats.get('count_10') or 0) == 0:
+        if (stats.get('count_10') or 0) == 0:   # 최근 1년 +10% 0회 → 스크리닝 제외
             continue
         events = h.get('events') or []
-        themes_top = _theme_freq(events)
+        # 테마 빈도도 최근 1년 윈도우만 (1년 이전 백필 제외 — 횟수/스크리닝 일관)
+        _cut1y = (date.today() - timedelta(days=365)).strftime('%Y%m%d')
+        events_1y = [e for e in events if (e.get('date') or '') >= _cut1y] or events
+        themes_top = _theme_freq(events_1y)
         latest = events[0] if events else {}
         latest_sector = (latest.get('sector') or '').strip()
         mkt = mkt_lookup.get(ticker, {})
@@ -2087,6 +2116,7 @@ def main() -> None:
     if args.enrich_news:
         sys.exit(build_enrich_news(args))
     if args.report_only:
+        recompute_all_stats(OUTPUT_DIR)
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
         build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
         build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')

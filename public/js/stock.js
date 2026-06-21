@@ -798,11 +798,19 @@
         return html;
     }
 
+    // 1년 경계 (compact 'YYYYMMDD') — 이 이전 이벤트는 딤드(영구 보관하되 '오래됨' 인지)
+    function archiveCutoff() {
+        var d = new Date(Date.now() - 365 * 24 * 3600 * 1000);
+        return d.getFullYear() + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2);
+    }
+
     function renderEventCard(ev, ticker, nameLower) {
         var rowClass = '';
         if (ev._live) rowClass = ' event-card--live';
         else if (ev.reason_status === 'edited') rowClass = ' row--edited';
         else if (ev.reason_status === 'missing') rowClass = ' row--missing';
+        var archived = !ev._live && ev.date && String(ev.date) < archiveCutoff();
+        if (archived) rowClass += ' event-card--archived';
         var rate = (ev.change_rate || 0);
         var rateLabel = (rate >= 29.9) ? '<span class="event-card__limit">상한가</span>' : '';
         var hi52w = ev.is_52w_high ? '<span class="event-card__highflag">52주 신고가</span>' : '';
@@ -819,6 +827,7 @@
         return '<article class="event-card' + rowClass + '">' +
             '<div class="event-card__top">' +
             '<span class="event-card__date">' + formatDate(ev.date) + '</span>' +
+            (archived ? '<span class="event-card__archived-flag" title="1년 이전 기록 — 횟수·스크리닝 집계 제외">1년+ 경과</span>' : '') +
             '<span class="event-card__rate">+' + rate.toFixed(2) + '%</span>' +
             rateLabel +
             hi52w +
