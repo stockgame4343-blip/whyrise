@@ -888,35 +888,46 @@ body {
     display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
 }
 .event-card__date { font-size: 16px; font-weight: 700; }
-/* 대장 캘린더 연·월 빠른선택 팝오버 (중앙 라벨 클릭) */
+/* 대장 캘린더 연·월 빠른선택 팝오버 — date-picker 와 동일 디자인 토큰 */
 #calLabel { cursor: pointer; user-select: none; }
 .cal-picker {
     display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-    z-index: 50; background: var(--surface, #fff); border: 1px solid var(--glass-border, #e3e3e8);
-    border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.18); padding: 12px; min-width: 240px;
+    z-index: 1000; background: var(--wr-bg-soft, var(--bg-secondary, #1f1f1f));
+    border: 1px solid var(--glass-border, rgba(255,255,255,0.12)); border-radius: 12px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5); padding: 12px; width: 248px;
+    color: var(--text-primary, #fff); user-select: none; animation: date-picker-in .12s ease-out;
 }
 .cal-picker.open { display: block; }
+[data-theme="light"] .cal-picker {
+    background: #fff; border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12); color: #191919;
+}
 .cal-picker__yr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.cal-picker__yrlabel { font-weight: 800; font-size: 16px; }
+.cal-picker__yrlabel { font-size: 13px; font-weight: 700; }
 .cal-picker__yrnav {
-    width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--glass-border, #e3e3e8);
-    background: transparent; cursor: pointer; font-size: 16px; line-height: 1;
+    background: none; border: 1px solid var(--glass-border, rgba(255,255,255,0.14));
+    color: var(--text-secondary, rgba(255,255,255,0.6));
+    width: 26px; height: 26px; border-radius: 6px; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center; line-height: 1;
+    transition: all .15s; font-family: inherit;
 }
+.cal-picker__yrnav:hover:not(:disabled) { background: var(--glass-bg, rgba(255,255,255,0.05)); color: var(--text-primary, #fff); }
 .cal-picker__yrnav:disabled { opacity: .3; cursor: default; }
-.cal-picker__months { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.cal-picker__months { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
 .cal-picker__m {
-    padding: 9px 0; border-radius: 9px; border: 1px solid var(--glass-border, #e3e3e8);
-    background: transparent; cursor: pointer; font-size: 13px; font-weight: 600;
+    background: none; border: none; color: var(--text-secondary);
+    padding: 9px 0; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600;
+    transition: all .12s; font-family: inherit;
 }
-.cal-picker__m:disabled { opacity: .28; cursor: default; }
-.cal-picker__m--cur { background: var(--accent, #3b82f6); color: #fff; border-color: transparent; }
+.cal-picker__m:not(:disabled):hover { background: var(--glass-bg, rgba(127,127,127,.10)); color: var(--text-primary); }
+.cal-picker__m:disabled { color: var(--text-muted); opacity: .35; cursor: not-allowed; font-weight: 400; }
+.cal-picker__m--cur { background: var(--wr-accent, #3182F6) !important; color: #fff !important; font-weight: 700; }
 /* 1년 이전(아카이브) 이벤트 — 흐리게. 보이되 '오래됨' 인지 + 횟수/스크리닝 집계 제외 */
 .event-card--archived { opacity: 0.5; }
 .event-card--archived:hover { opacity: 0.8; }
 .event-card__archived-flag {
-    font-size: 11px; font-weight: 600; color: var(--text-muted, #888);
-    border: 1px solid var(--glass-border); border-radius: 6px;
-    padding: 1px 6px; white-space: nowrap;
+    background: rgba(127,127,127,.16); color: var(--text-muted, #8B95A1);
+    padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; white-space: nowrap;
 }
 .event-card__rate {
     font-size: 20px; font-weight: 800;
