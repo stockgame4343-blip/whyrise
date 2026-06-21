@@ -178,11 +178,13 @@ def fetch_stock_news(ticker: str, page_size: int = 20) -> list[dict]:
     return out
 
 
-def fetch_stock_news_paged(ticker: str, max_pages: int = 20, page_size: int = 20) -> list[dict]:
+def fetch_stock_news_paged(ticker: str, max_pages: int = 20, page_size: int = 20,
+                           stop_before: str = '') -> list[dict]:
     """종목별 뉴스 — 과거까지 page 파라미터로 페이지네이션 (백필 사유 추정용).
 
     api.stock.naver.com 이 page 를 무시하면 매 페이지 동일 결과 → 새 기사 0건이면
     중단(무한루프 방지)하므로, 그 경우 최신분만 반환(안전 degrade).
+    stop_before(YYYYMMDD): 이 날짜 이전 기사까지 내려가면 조기중단(필요 깊이만 fetch).
     """
     out: list[dict] = []
     seen: set = set()
@@ -204,6 +206,7 @@ def fetch_stock_news_paged(ticker: str, max_pages: int = 20, page_size: int = 20
         if not items:
             break
         new = 0
+        page_min = '99999999'
         for it in items:
             key = (it.get('officeId'), it.get('articleId'))
             if key in seen:
@@ -211,7 +214,12 @@ def fetch_stock_news_paged(ticker: str, max_pages: int = 20, page_size: int = 20
             seen.add(key)
             out.append(it)
             new += 1
+            dt = (it.get('datetime') or '')[:8]
+            if dt.isdigit() and dt < page_min:
+                page_min = dt
         if new == 0:       # page 무시되거나 끝 도달
+            break
+        if stop_before and page_min <= stop_before:   # 필요 깊이 도달 → 조기중단
             break
     return out
 

@@ -1033,8 +1033,11 @@ def build_enrich_news(args) -> int:
         if i % 50 == 0:
             print(f'  [{i}/{len(targets)}] {ticker} up={n_up}/{n_events} '
                   f'minNews={min_reached} elapsed={time.time() - t0:.0f}s')
+        # 이 종목의 가장 오래된 대상일까지만 페이지(조기중단) — 전체 런타임 대폭 단축
+        stop_before = min(e['date'] for e in evs)
         try:
-            raw = naver_client.fetch_stock_news_paged(ticker, max_pages=max_pages)
+            raw = naver_client.fetch_stock_news_paged(
+                ticker, max_pages=max_pages, stop_before=stop_before)
         except Exception as e:
             print(f'    news fail {ticker}: {e}')
             continue
