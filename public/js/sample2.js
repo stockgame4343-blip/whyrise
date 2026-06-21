@@ -197,7 +197,7 @@
 
     function render() {
         var y = state.year, m = state.month;
-        document.getElementById('calLabel').textContent = y + '. ' + ('0' + (m + 1)).slice(-2) + '. ▾';
+        document.getElementById('calLabel').textContent = y + '. ' + ('0' + (m + 1)).slice(-2) + '.';
         var _pp = document.getElementById('calPicker');
         if (_pp && _pp.classList.contains('open')) { _pickerYear = y; renderPicker(); }
         var prev = new Date(y, m - 1, 1), next = new Date(y, m + 1, 1);
