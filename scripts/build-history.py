@@ -981,19 +981,39 @@ def enrich_events_meta(stock_history_dir: Path, meta: dict[str, dict]) -> int:
             h = json.loads(f.read_text(encoding='utf-8'))
         except Exception:
             continue
-        m = meta.get(h.get('ticker') or f.stem) or {}
+        ticker = h.get('ticker') or f.stem
+        name = h.get('name') or ''
+        m = meta.get(ticker) or {}
         theme = (m.get('theme_tag') or '').strip()
         sector = (m.get('sector') or '').strip()
-        if not theme and not sector:
+        # 우선주(이름이 '우'/'우B'로 끝)는 보통주(앞5자리+'0') 태그를 물려받음.
+        # stock-rise 가 우선주에 테마를 안 주거나 '분야' placeholder 를 주는 경우 보정.
+        is_pref = len(ticker) == 6 and (name.endswith('우') or name.endswith('우B'))
+        common = ticker[:5] + '0' if is_pref else ''
+        if common:
+            cm = meta.get(common) or {}
+            if cm.get('theme_tag'):
+                theme = cm['theme_tag'].strip()
+            if cm.get('sector'):
+                sector = cm['sector'].strip()
+        if not theme and not sector and not is_pref:
             continue
         dirty = False
         for e in h.get('events', []):
-            if theme and not (e.get('theme_tag') or '').strip():
-                e['theme_tag'] = theme
+            cur_th = (e.get('theme_tag') or '').strip()
+            # 우선주: 보통주 테마로 강제 일치. 보통주: 빈 곳/‘분야’ placeholder 만 채움.
+            if theme and (is_pref or not cur_th or cur_th == '분야'):
+                if e.get('theme_tag') != theme:
+                    e['theme_tag'] = theme
+                    dirty = True
+            elif cur_th == '분야':            # 채울 테마 없으면 placeholder 제거
+                e['theme_tag'] = ''
                 dirty = True
-            if sector and not (e.get('sector') or '').strip():
-                e['sector'] = sector
-                dirty = True
+            cur_se = (e.get('sector') or '').strip()
+            if sector and (is_pref or not cur_se):
+                if e.get('sector') != sector:
+                    e['sector'] = sector
+                    dirty = True
             src = e.get('reason_source')
             rr = (e.get('rise_reason') or '').strip()
             if src in ('pattern', 'estimated', 'theme', 'naver') and rr in _GENERIC_REASONS:
