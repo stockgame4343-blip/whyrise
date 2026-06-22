@@ -350,7 +350,7 @@
             .attr('transform', function (d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; })
             .style('cursor', 'pointer')
             .on('click', function (e, d) {
-                if (d && d.data && d.data.ticker) window.location.href = '/stock/' + d.data.ticker;
+                if (d && d.data && d.data.ticker) (window.top || window).location.href = '/stock/' + d.data.ticker;
             });
         cell.append('rect')
             .attr('width', function (d) { return Math.max(0, d.x1 - d.x0); })
@@ -583,7 +583,7 @@
         }
         function onDragEnd(event, d) {
             d.fx = null; d.fy = null;
-            if (maxDistSq < TAP_RADIUS_SQ && d && d.ticker) window.location.href = '/stock/' + d.ticker;
+            if (maxDistSq < TAP_RADIUS_SQ && d && d.ticker) (window.top || window).location.href = '/stock/' + d.ticker;
         }
 
         var node = svg.selectAll('g.flow-node')

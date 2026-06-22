@@ -395,7 +395,8 @@
             .on('click', function (e, d) {
                 e.stopPropagation();
                 if (d && d.data && d.data.ticker) {
-                    window.location.href = '/stock/' + d.data.ticker;
+                    // 시각화가 leaders2 iframe 안에서 열릴 수 있어 — 최상위 창을 상세로 이동(프레임 갇힘/스크롤막힘 방지)
+                    (window.top || window).location.href = '/stock/' + d.data.ticker;
                 }
             });
 

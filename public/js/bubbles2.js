@@ -302,7 +302,8 @@
         function onDragEnd(event, d) {
             d.fx = null; d.fy = null;
             if (dragMoved < 4 && d && d.ticker) {
-                window.location.href = '/stock/' + d.ticker;
+                // leaders2 iframe 안에서도 최상위 창을 상세로 이동(프레임 갇힘 방지)
+                (window.top || window).location.href = '/stock/' + d.ticker;
             }
         }
 
