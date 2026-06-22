@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#191919">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="/css/style.css?v=20260513m">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260621c">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260621d">
 </head>
 <body>
     <script>
@@ -60,6 +60,12 @@
                 <button class="memo-delete" id="adminLogoutBtn">로그아웃</button>
             </div>
         </section>
+
+        <section class="admin-card" id="adminStats" style="display:none;">
+            <h2>방문 통계</h2>
+            <p class="admin-card__desc">자체 집계(KV) — 방문 · 신규 · 페이지뷰 · 평균 체류 · 유입. KST 기준.</p>
+            <div id="statsBody" class="admin-stats">불러오는 중…</div>
+        </section>
     </main>
 
     <div class="footer">
@@ -83,6 +89,60 @@
         function showPanel() {
             $login.style.display = 'none';
             $panel.style.display = 'block';
+            var $stats = document.getElementById('adminStats');
+            if ($stats) { $stats.style.display = 'block'; loadStats(); }
+        }
+
+        function fmtDur(s) {
+            s = Math.round(s || 0);
+            if (s < 60) return s + '초';
+            var m = Math.floor(s / 60), r = s % 60;
+            return r ? (m + '분 ' + r + '초') : (m + '분');
+        }
+        function dlabel(d) { return d.slice(4, 6) + '/' + d.slice(6, 8); }
+
+        function loadStats() {
+            var $b = document.getElementById('statsBody');
+            fetch('/api/admin-stats', { cache: 'no-store', credentials: 'same-origin' })
+                .then(function (r) { return r.json(); })
+                .then(function (j) {
+                    if (!j || !j.ok) {
+                        $b.textContent = (j && j.reason === 'kv_not_connected')
+                            ? 'KV 미연결 — 환경변수(KV_REST_API_URL/TOKEN) 설정 후 집계됩니다.'
+                            : '통계를 불러오지 못했습니다.';
+                        return;
+                    }
+                    var today = (j.days && j.days[0]) || {};
+                    function card(label, val) {
+                        return '<div class="admin-stat"><div class="admin-stat__v">' + val +
+                            '</div><div class="admin-stat__l">' + label + '</div></div>';
+                    }
+                    var top = '<div class="admin-stats__cards">' +
+                        card('지금 접속', j.online) +
+                        card('누적 방문', j.unique) +
+                        card('가입', j.signups) +
+                        card('오늘 방문', today.visitors || 0) +
+                        card('오늘 신규', today['new'] || 0) +
+                        card('오늘 PV', today.pageviews || 0) +
+                        card('오늘 평균체류', fmtDur(today.avg_dwell)) +
+                        '</div>';
+                    var rows = (j.days || []).map(function (d) {
+                        return '<tr><td>' + dlabel(d.day) + '</td><td>' + d.visitors +
+                            '</td><td>' + (d['new'] || 0) + '</td><td>' + d.pageviews +
+                            '</td><td>' + fmtDur(d.avg_dwell) + '</td></tr>';
+                    }).join('');
+                    var tbl = '<table class="admin-stats__tbl"><thead><tr><th>날짜</th><th>방문</th>' +
+                        '<th>신규</th><th>PV</th><th>평균체류</th></tr></thead><tbody>' + rows + '</tbody></table>';
+                    var refs = (j.referrers || []).length
+                        ? '<ul class="admin-stats__refs">' + j.referrers.map(function (x) {
+                            return '<li><span>' + x.host + '</span><b>' + x.count + '</b></li>';
+                        }).join('') + '</ul>'
+                        : '<p class="admin-card__desc">최근 7일 외부 유입 없음(또는 직접 방문).</p>';
+                    $b.innerHTML = top +
+                        '<h3 class="admin-stats__h">최근 7일</h3>' + tbl +
+                        '<h3 class="admin-stats__h">유입 TOP (최근 7일)</h3>' + refs;
+                })
+                .catch(function () { $b.textContent = '통계 로드 오류.'; });
         }
 
         if (Admin.isLoggedIn()) showPanel();

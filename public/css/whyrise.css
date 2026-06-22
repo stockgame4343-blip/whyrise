@@ -888,6 +888,19 @@ body {
     display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
 }
 .event-card__date { font-size: 16px; font-weight: 700; }
+/* 관리자 방문 통계 대시보드 */
+.admin-stats__cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin: 8px 0 14px; }
+.admin-stat { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px 14px; }
+.admin-stat__v { font-size: 22px; font-weight: 800; color: var(--text-primary); }
+.admin-stat__l { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.admin-stats__h { font-size: 14px; font-weight: 700; margin: 16px 0 8px; }
+.admin-stats__tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+.admin-stats__tbl th, .admin-stats__tbl td { padding: 7px 8px; text-align: right; border-bottom: 1px solid var(--glass-border); }
+.admin-stats__tbl th:first-child, .admin-stats__tbl td:first-child { text-align: left; }
+.admin-stats__tbl th { color: var(--text-muted); font-weight: 600; }
+.admin-stats__refs { list-style: none; padding: 0; margin: 0; }
+.admin-stats__refs li { display: flex; justify-content: space-between; padding: 6px 2px; border-bottom: 1px solid var(--glass-border); font-size: 13px; }
+.admin-stats__refs b { font-weight: 700; }
 /* 대장 캘린더 연·월 빠른선택 팝오버 — date-picker 와 동일 디자인 토큰 */
 #calLabel { cursor: pointer; user-select: none; }
 .cal-picker {

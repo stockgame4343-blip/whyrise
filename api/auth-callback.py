@@ -27,6 +27,35 @@ from _auth import (  # noqa: E402
     with_auth_query,
 )
 
+_KV_URL = os.environ.get('KV_REST_API_URL', '').rstrip('/')
+_KV_TOKEN = os.environ.get('KV_REST_API_TOKEN', '')
+
+
+def _count_signup(sub):
+    """최초 로그인(가입) 시 wr:signups 증가. KV 미설정/실패해도 로그인엔 영향 없음."""
+    sub = str(sub or '')
+    if not sub or not _KV_URL or not _KV_TOKEN:
+        return
+    import time
+    day = time.strftime('%Y%m%d', time.gmtime(time.time() + 9 * 3600))
+    # SADD wr:users {sub} 가 1(신규)이면 INCR signups — pipeline 으로 원자적 비슷하게
+    cmds = [['SADD', 'wr:users', sub]]
+    try:
+        req = urllib.request.Request(
+            f'{_KV_URL}/pipeline', data=json.dumps(cmds).encode('utf-8'), method='POST',
+            headers={'Authorization': f'Bearer {_KV_TOKEN}', 'Content-Type': 'application/json'})
+        with urllib.request.urlopen(req, timeout=4) as resp:
+            res = json.loads(resp.read().decode('utf-8'))
+        if res and res[0].get('result') == 1:   # 신규 유저
+            cmds2 = [['INCR', 'wr:signups'], ['INCR', f'wr:signups:{day}'],
+                     ['EXPIRE', f'wr:signups:{day}', str(40 * 86400)]]
+            req2 = urllib.request.Request(
+                f'{_KV_URL}/pipeline', data=json.dumps(cmds2).encode('utf-8'), method='POST',
+                headers={'Authorization': f'Bearer {_KV_TOKEN}', 'Content-Type': 'application/json'})
+            urllib.request.urlopen(req2, timeout=4).read()
+    except Exception:
+        pass
+
 
 def _post_form(url, data, timeout=8):
     body = urllib.parse.urlencode(data).encode('utf-8')
@@ -112,6 +141,7 @@ class handler(BaseHTTPRequestHandler):
             'name': info.get('name') or info.get('email') or '',
             'picture': info.get('picture') or '',
         }
+        _count_signup(user['sub'])   # 최초 가입 집계(대시보드용)
         session = sign_session(user)
         headers = [
             ('Set-Cookie', cookie_header(
