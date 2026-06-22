@@ -61,16 +61,26 @@ var WhyAPI = (function () {
         });
     }
 
-    function _shapeRankings(data, overrides, market) {
+    function _shapeRankings(data, overrides, market, prefThemes) {
         overrides = overrides || {};
+        prefThemes = prefThemes || {};
         var rankings = (data.rankings || []).map(function (r) {
+            var pt = prefThemes[r.ticker];
             var ov = overrides[r.ticker];
-            if (!ov) return r;
+            // 우선주는 보통주 테마/섹터로 보정, stock-rise '분야' placeholder 제거, admin override 적용
+            if (!pt && !ov && r.theme_tag !== '분야') return r;
             var merged = Object.assign({}, r);
-            if (ov.rise_reason != null) merged.rise_reason = ov.rise_reason;
-            if (ov.theme_tag != null) merged.theme_tag = ov.theme_tag;
-            merged._edited = true;
-            merged._edit_note = ov.note || '';
+            if (pt) {
+                if (pt.theme_tag) merged.theme_tag = pt.theme_tag;
+                if (pt.sector) merged.sector = pt.sector;
+            }
+            if ((merged.theme_tag || '') === '분야') merged.theme_tag = '';
+            if (ov) {
+                if (ov.rise_reason != null) merged.rise_reason = ov.rise_reason;
+                if (ov.theme_tag != null) merged.theme_tag = ov.theme_tag;
+                merged._edited = true;
+                merged._edit_note = ov.note || '';
+            }
             return merged;
         });
         if (market && market !== 'ALL') {
@@ -96,8 +106,11 @@ var WhyAPI = (function () {
                 return _cachedFetch('/data/rise-history/' + date + '.json');
             })
             .then(function (data) {
-                return _fetchOverrides(date).then(function (overrides) {
-                    return _shapeRankings(data, overrides, market);
+                return Promise.all([
+                    _fetchOverrides(date),
+                    _cachedFetch('/data/pref-themes.json').catch(function () { return {}; }),
+                ]).then(function (res) {
+                    return _shapeRankings(data, res[0], market, res[1]);
                 });
             });
     }

@@ -923,6 +923,46 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
 _GENERIC_REASONS = {'시장 관심 증가', '상한가 — 사유 미수집'}
 
 
+def build_pref_themes(stock_history_dir: Path, out_path: Path) -> None:
+    """우선주 ticker → {theme_tag, sector} (보통주에서 상속) → /data/pref-themes.json.
+
+    홈/리포트는 stock-rise 라이브(getRankings)를 직접 쓰는데, stock-rise 가 우선주에
+    테마를 안 주거나 '분야' placeholder 를 주므로, 프론트(api.js)가 이 맵으로 보정한다.
+    """
+    files = [f for f in sorted(stock_history_dir.glob('*.json'))
+             if f.name not in ('index.json', 'report-summary.json')]
+    tmap: dict[str, dict] = {}
+    names: dict[str, str] = {}
+    for f in files:
+        try:
+            h = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        t = h.get('ticker') or f.stem
+        names[t] = h.get('name') or ''
+        rec = tmap.setdefault(t, {})
+        for e in h.get('events', []):
+            th = (e.get('theme_tag') or '').strip()
+            se = (e.get('sector') or '').strip()
+            if th and th != '분야' and (not rec.get('theme_tag') or e.get('source') == 'stockrise'):
+                rec['theme_tag'] = th
+            if se and (not rec.get('sector') or e.get('source') == 'stockrise'):
+                rec['sector'] = se
+    out: dict[str, dict] = {}
+    for t, nm in names.items():
+        if len(t) == 6 and (nm.endswith('우') or nm.endswith('우B')):
+            cm = tmap.get(t[:5] + '0') or {}
+            rec = {}
+            if cm.get('theme_tag'):
+                rec['theme_tag'] = cm['theme_tag']
+            if cm.get('sector'):
+                rec['sector'] = cm['sector']
+            if rec:
+                out[t] = rec
+    out_path.write_text(json.dumps(out, ensure_ascii=False), encoding='utf-8')
+    print(f'  pref-themes: {len(out)} 우선주 → 보통주 테마 맵')
+
+
 def build_meta_lookup(stock_history_dir: Path, use_naver: bool = False) -> dict[str, dict]:
     """ticker → {theme_tag, sector} (테마는 종목 단위로 정적).
 
@@ -1041,6 +1081,7 @@ def build_enrich_meta(args) -> int:
     enrich_events_meta(OUTPUT_DIR, meta)
     build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
     build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+    build_pref_themes(OUTPUT_DIR, OUTPUT_DIR.parent / 'pref-themes.json')
     build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
     return 0
 
@@ -1137,6 +1178,7 @@ def build_enrich_ohlc(args) -> int:
     if not getattr(args, 'no_regen', False):
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
         build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+        build_pref_themes(OUTPUT_DIR, OUTPUT_DIR.parent / 'pref-themes.json')
         build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
     return 0
 
@@ -1225,6 +1267,7 @@ def build_enrich_news(args) -> int:
     if not getattr(args, 'no_regen', False):
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
         build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+        build_pref_themes(OUTPUT_DIR, OUTPUT_DIR.parent / 'pref-themes.json')
         build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
     return 0
 
@@ -1459,6 +1502,7 @@ def build_full(args) -> int:
     write_build_meta(sr_dates)
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     build_rise_history(output_dir, output_dir.parent / 'rise-history')
+    build_pref_themes(output_dir, output_dir.parent / 'pref-themes.json')
     build_sitemap(output_dir, output_dir.parent.parent)
     build_marketmap(output_dir.parent.parent)
     build_screening_index(output_dir, output_dir.parent / 'screening.json')
@@ -1529,6 +1573,7 @@ def build_estimate_only(args) -> int:
     print(f'== estimate 완료: {updated}/{processed} ticker 갱신 ==')
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
     build_rise_history(output_dir, output_dir.parent / 'rise-history')
+    build_pref_themes(output_dir, output_dir.parent / 'pref-themes.json')
     build_sitemap(output_dir, output_dir.parent.parent)
     build_screening_index(output_dir, output_dir.parent / 'screening.json')
     return 0
@@ -2139,6 +2184,7 @@ def main() -> None:
         recompute_all_stats(OUTPUT_DIR)
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
         build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+        build_pref_themes(OUTPUT_DIR, OUTPUT_DIR.parent / 'pref-themes.json')
         build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
         sys.exit(0)
     sys.exit(build_full(args))
