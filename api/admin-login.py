@@ -17,8 +17,9 @@ from http.cookies import SimpleCookie
 from http.server import BaseHTTPRequestHandler
 
 
-ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '')
-SESSION_SECRET = os.environ.get('SESSION_SECRET', ADMIN_TOKEN)
+# .strip() — Vercel 환경변수에 복붙 시 따라붙는 줄바꿈/공백 방어(401 흔한 원인)
+ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '').strip()
+SESSION_SECRET = (os.environ.get('SESSION_SECRET', '').strip() or ADMIN_TOKEN)
 COOKIE_NAME = 'wr_admin'
 COOKIE_MAX_AGE = 86400  # 24h
 

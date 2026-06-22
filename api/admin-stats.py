@@ -21,8 +21,8 @@ from http.server import BaseHTTPRequestHandler
 
 KV_URL = os.environ.get('KV_REST_API_URL', '').rstrip('/')
 KV_TOKEN = os.environ.get('KV_REST_API_TOKEN', '')
-ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '')
-SESSION_SECRET = os.environ.get('SESSION_SECRET', ADMIN_TOKEN)
+ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '').strip()
+SESSION_SECRET = (os.environ.get('SESSION_SECRET', '').strip() or ADMIN_TOKEN)
 COOKIE_NAME = 'wr_admin'
 
 
