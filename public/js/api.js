@@ -61,18 +61,25 @@ var WhyAPI = (function () {
         });
     }
 
-    function _shapeRankings(data, overrides, market, prefThemes) {
+    function _shapeRankings(data, overrides, market, prefThemes, corrections) {
         overrides = overrides || {};
         prefThemes = prefThemes || {};
+        corrections = corrections || {};
         var rankings = (data.rankings || []).map(function (r) {
             var pt = prefThemes[r.ticker];
+            var cor = corrections[r.ticker];
             var ov = overrides[r.ticker];
-            // 우선주는 보통주 테마/섹터로 보정, stock-rise '분야' placeholder 제거, admin override 적용
-            if (!pt && !ov && r.theme_tag !== '분야') return r;
+            // 우선주는 보통주 테마/섹터로 보정, 수동 보정맵(theme-corrections) 적용,
+            // stock-rise '분야' placeholder 제거, admin override(최우선) 적용
+            if (!pt && !cor && !ov && r.theme_tag !== '분야') return r;
             var merged = Object.assign({}, r);
             if (pt) {
                 if (pt.theme_tag) merged.theme_tag = pt.theme_tag;
                 if (pt.sector) merged.sector = pt.sector;
+            }
+            if (cor) {
+                if (cor.theme_tag) merged.theme_tag = cor.theme_tag;
+                if (cor.sector) merged.sector = cor.sector;
             }
             if ((merged.theme_tag || '') === '분야') merged.theme_tag = '';
             if (ov) {
@@ -109,8 +116,9 @@ var WhyAPI = (function () {
                 return Promise.all([
                     _fetchOverrides(date),
                     _cachedFetch('/data/pref-themes.json').catch(function () { return {}; }),
+                    _cachedFetch('/data/theme-corrections.json').catch(function () { return {}; }),
                 ]).then(function (res) {
-                    return _shapeRankings(data, res[0], market, res[1]);
+                    return _shapeRankings(data, res[0], market, res[1], res[2]);
                 });
             });
     }
