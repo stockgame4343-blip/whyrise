@@ -71,13 +71,15 @@
         }
       ],
       "sector": "통신장비",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
       "date": "20260414",
       "change_rate": 20.36,
       "close_price": 60900.0,
+      "trading_volume": 1240783,
+      "trading_value": 75563684700,
       "rise_reason": "시장 관심 증가",
       "reason_confidence": "high",
       "reason_source": "stockrise",
@@ -137,20 +139,19 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise",
-      "trading_volume": 1240783,
-      "trading_value": 75563684700,
-      "market_cap": 420465882352
+      "source": "stockrise"
     },
     {
       "date": "20260401",
       "change_rate": 12.49,
       "close_price": 54500.0,
-      "rise_reason": "시스템반도체 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "trading_volume": 545580,
+      "trading_value": 29734110000,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
       "reason_status": "filled",
-      "theme_tag": "시스템반도체",
+      "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
         {
           "title": "자람테크놀로지, 53억 규모 전환청구권 행사",
@@ -160,11 +161,8 @@
         }
       ],
       "sector": "통신장비",
-      "is_52w_high": false,
-      "source": "estimated",
-      "trading_volume": 545580,
-      "trading_value": 29734110000,
-      "market_cap": 376278991596
+      "is_52w_high": true,
+      "source": "estimated"
     },
     {
       "date": "20260325",
@@ -403,5 +401,5 @@
     "count_recent": 0,
     "avg_rate": 15.6
   },
-  "built_at": "2026-06-26T19:26:38"
+  "built_at": "2026-06-28T07:41:21"
 }

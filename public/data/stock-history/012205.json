@@ -145,7 +145,7 @@
         }
       ],
       "sector": "자동차부품",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -161,18 +161,36 @@
       "theme_tag": "거래량",
       "news": [],
       "sector": "자동차부품",
-      "is_52w_high": true,
+      "is_52w_high": false,
+      "source": "stockrise"
+    },
+    {
+      "date": "20260423",
+      "change_rate": 29.94,
+      "close_price": 10070.0,
+      "trading_volume": 2811670,
+      "trading_value": 28313516900,
+      "rise_reason": "거래 급증",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "",
+      "news": [],
+      "sector": "자동차부품",
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
       "date": "20260403",
       "change_rate": 29.9,
       "close_price": 11730.0,
-      "rise_reason": "거래량 테마 상한가",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "trading_volume": 3314860,
+      "trading_value": 38883307800,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
       "reason_status": "filled",
-      "theme_tag": "전기차",
+      "theme_tag": "공매도",
       "news": [
         {
           "title": "[서울데이터랩]HD현대에너지솔루션 30.00% 상한가 금일 증시 상승률 1...",
@@ -188,21 +206,20 @@
         }
       ],
       "sector": "자동차부품",
-      "is_52w_high": false,
-      "source": "estimated",
-      "trading_volume": 3314860,
-      "trading_value": 38883307800,
-      "market_cap": 13708554216
+      "is_52w_high": true,
+      "source": "estimated"
     },
     {
       "date": "20260402",
       "change_rate": 29.93,
       "close_price": 9030.0,
-      "rise_reason": "거래량 테마 상한가",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "trading_volume": 1262751,
+      "trading_value": 11402641530,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
       "reason_status": "filled",
-      "theme_tag": "전기차",
+      "theme_tag": "공매도",
       "news": [
         {
           "title": "[서울데이터랩]HD현대에너지솔루션 30.00% 상한가 금일 증시 상승률 1...",
@@ -230,21 +247,20 @@
         }
       ],
       "sector": "자동차부품",
-      "is_52w_high": false,
-      "source": "estimated",
-      "trading_volume": 1262751,
-      "trading_value": 11402641530,
-      "market_cap": 10553132530
+      "is_52w_high": true,
+      "source": "estimated"
     },
     {
       "date": "20260401",
       "change_rate": 29.91,
       "close_price": 6950.0,
-      "rise_reason": "거래량 테마 상한가",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "trading_volume": 309242,
+      "trading_value": 2149231900,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
       "reason_status": "filled",
-      "theme_tag": "전기차",
+      "theme_tag": "공매도",
       "news": [
         {
           "title": "[서울데이터랩]계양전기우 29.93% 상한가 금일 증시 상승률 1위로 마감",
@@ -266,11 +282,8 @@
         }
       ],
       "sector": "자동차부품",
-      "is_52w_high": false,
-      "source": "estimated",
-      "trading_volume": 309242,
-      "trading_value": 2149231900,
-      "market_cap": 8122289156
+      "is_52w_high": true,
+      "source": "estimated"
     },
     {
       "date": "20260227",
@@ -621,12 +634,12 @@
     }
   ],
   "stats": {
-    "count_10": 20,
-    "count_15": 20,
-    "count_20": 19,
-    "count_limit": 14,
+    "count_10": 21,
+    "count_15": 21,
+    "count_20": 20,
+    "count_limit": 15,
     "count_recent": 1,
-    "avg_rate": 28.42
+    "avg_rate": 28.49
   },
-  "built_at": "2026-06-26T19:16:42"
+  "built_at": "2026-06-28T07:27:06"
 }

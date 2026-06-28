@@ -308,7 +308,7 @@
         }
       ],
       "sector": "철강",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -385,18 +385,20 @@
         }
       ],
       "sector": "철강",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
       "date": "20260416",
       "change_rate": 14.75,
       "close_price": 2450.0,
+      "trading_volume": 848490,
+      "trading_value": 2078800500,
       "rise_reason": "합병 기대감",
       "reason_confidence": "high",
       "reason_source": "stockrise",
       "reason_status": "filled",
-      "theme_tag": "뉴스",
+      "theme_tag": "",
       "news": [
         {
           "title": "[체크!공시] 광진실업, 광진모터스와 합병 철회… \"주주 반대 지속\"",
@@ -460,21 +462,20 @@
         }
       ],
       "sector": "철강",
-      "is_52w_high": false,
-      "source": "stockrise",
-      "trading_volume": 848490,
-      "trading_value": 2078800500,
-      "market_cap": 18192265193
+      "is_52w_high": true,
+      "source": "stockrise"
     },
     {
       "date": "20260415",
       "change_rate": 29.71,
       "close_price": 2135.0,
+      "trading_volume": 844467,
+      "trading_value": 1802937045,
       "rise_reason": "합병 기대감",
       "reason_confidence": "high",
       "reason_source": "stockrise",
       "reason_status": "filled",
-      "theme_tag": "뉴스",
+      "theme_tag": "",
       "news": [
         {
           "title": "[체크!공시] 광진실업, 광진모터스와 합병 철회… \"주주 반대 지속\"",
@@ -539,20 +540,19 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise",
-      "trading_volume": 844467,
-      "trading_value": 1802937045,
-      "market_cap": 15853259668
+      "source": "stockrise"
     },
     {
       "date": "20260408",
       "change_rate": 29.96,
       "close_price": 1874.0,
-      "rise_reason": "뉴스 테마 상한가",
+      "trading_volume": 920954,
+      "trading_value": 1725867796,
+      "rise_reason": "상한가 — 사유 미수집",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "pattern",
       "reason_status": "filled",
-      "theme_tag": "뉴스",
+      "theme_tag": "특수강",
       "news": [
         {
           "title": "광진실업·코이즈·예선테크·골드앤에스, '관리종목 임박'",
@@ -563,27 +563,23 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "estimated",
-      "trading_volume": 920954,
-      "trading_value": 1725867796,
-      "market_cap": 13915226519
+      "source": "estimated"
     },
     {
       "date": "20260331",
       "change_rate": 10.3,
       "close_price": 1895.0,
-      "rise_reason": "뉴스 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
-      "theme_tag": "뉴스",
-      "news": [],
-      "sector": "철강",
-      "is_52w_high": false,
-      "source": "estimated",
       "trading_volume": 49041,
       "trading_value": 92932695,
-      "market_cap": 14071160220
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "특수강",
+      "news": [],
+      "sector": "철강",
+      "is_52w_high": true,
+      "source": "estimated"
     }
   ],
   "stats": {
@@ -591,8 +587,8 @@
     "count_15": 5,
     "count_20": 4,
     "count_limit": 2,
-    "count_recent": 3,
+    "count_recent": 1,
     "avg_rate": 19.1
   },
-  "built_at": "2026-06-26T19:41:42"
+  "built_at": "2026-06-28T08:02:19"
 }

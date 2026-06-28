@@ -159,13 +159,15 @@
         }
       ],
       "sector": "석유와가스",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
       "date": "20260420",
       "change_rate": 30.0,
       "close_price": 299.0,
+      "trading_volume": 24819221,
+      "trading_value": 7420947079,
       "rise_reason": "자원개발 계약 체결",
       "reason_confidence": "high",
       "reason_source": "stockrise",
@@ -199,18 +201,17 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise",
-      "trading_volume": 24819221,
-      "trading_value": 7420947079,
-      "market_cap": 21333146067
+      "source": "stockrise"
     },
     {
       "date": "20260402",
       "change_rate": 20.0,
       "close_price": 288.0,
-      "rise_reason": "자원개발 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "trading_volume": 55515315,
+      "trading_value": 15988410720,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
       "reason_status": "filled",
       "theme_tag": "자원개발",
       "news": [
@@ -240,11 +241,8 @@
         }
       ],
       "sector": "석유와가스",
-      "is_52w_high": false,
-      "source": "estimated",
-      "trading_volume": 55515315,
-      "trading_value": 15988410720,
-      "market_cap": 20548314606
+      "is_52w_high": true,
+      "source": "estimated"
     },
     {
       "date": "20260327",
@@ -412,8 +410,8 @@
     "count_15": 4,
     "count_20": 3,
     "count_limit": 1,
-    "count_recent": 2,
+    "count_recent": 1,
     "avg_rate": 16.5
   },
-  "built_at": "2026-06-26T19:47:40"
+  "built_at": "2026-06-28T08:10:29"
 }

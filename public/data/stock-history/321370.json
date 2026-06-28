@@ -367,16 +367,18 @@
         }
       ],
       "sector": "통신장비",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
       "date": "20260401",
       "change_rate": 16.38,
       "close_price": 3766.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "trading_volume": 13517643,
+      "trading_value": 50907443538,
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -385,20 +387,11 @@
           "link": "https://n.news.naver.com/mnews/article/081/0003631384",
           "source": "서울신문",
           "date": "2026-04-01"
-        },
-        {
-          "title": "센서뷰, 한화시스템과 17.8억 규모 공급계약 체결",
-          "link": "https://n.news.naver.com/mnews/article/018/0006246200",
-          "source": "이데일리",
-          "date": "2026-03-31"
         }
       ],
       "sector": "통신장비",
-      "is_52w_high": false,
-      "source": "estimated",
-      "trading_volume": 13517643,
-      "trading_value": 50907443538,
-      "market_cap": 194630775862
+      "is_52w_high": true,
+      "source": "estimated"
     },
     {
       "date": "20260325",
@@ -988,12 +981,12 @@
     }
   ],
   "stats": {
-    "count_10": 24,
+    "count_10": 23,
     "count_15": 11,
     "count_20": 7,
     "count_limit": 1,
     "count_recent": 1,
-    "avg_rate": 16.94
+    "avg_rate": 17.15
   },
-  "built_at": "2026-06-26T19:30:38"
+  "built_at": "2026-06-28T07:46:45"
 }

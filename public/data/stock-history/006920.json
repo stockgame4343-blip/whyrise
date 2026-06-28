@@ -41,7 +41,7 @@
         }
       ],
       "sector": "건축자재",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -165,6 +165,8 @@
       "date": "20260414",
       "change_rate": 15.17,
       "close_price": 5770.0,
+      "trading_volume": 6865874,
+      "trading_value": 39616092980,
       "rise_reason": "시멘트 자사주 매입",
       "reason_confidence": "high",
       "reason_source": "stockrise",
@@ -224,27 +226,23 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise",
-      "trading_volume": 6865874,
-      "trading_value": 39616092980,
-      "market_cap": 62930116959
+      "source": "stockrise"
     },
     {
       "date": "20260408",
       "change_rate": 14.41,
       "close_price": 5080.0,
-      "rise_reason": "DMZ 평화공원 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
-      "theme_tag": "DMZ 평화공원",
-      "news": [],
-      "sector": "건축자재",
-      "is_52w_high": false,
-      "source": "estimated",
       "trading_volume": 5653051,
       "trading_value": 28717499080,
-      "market_cap": 55404678362
+      "rise_reason": "52주 신고가 도달",
+      "reason_confidence": "mid",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "시멘트/레미콘",
+      "news": [],
+      "sector": "건축자재",
+      "is_52w_high": true,
+      "source": "estimated"
     },
     {
       "date": "20260311",
@@ -420,5 +418,5 @@
     "count_recent": 4,
     "avg_rate": 20.57
   },
-  "built_at": "2026-06-26T19:38:29"
+  "built_at": "2026-06-28T07:57:52"
 }
