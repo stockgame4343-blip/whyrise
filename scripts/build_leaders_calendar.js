@@ -23,9 +23,12 @@ const LEADER_CUTOFF = 15;
 const LEADER_VOLUME_PEER_RATIO = 0.5;
 const LEADER_VOLUME_TOP_N = 5;
 const LEADER_MIN_VALUE = 3000 * 1e8;   // report.js 와 동일 — 대장주 최소 거래대금(원). 못 넘으면 그날은 대장주 없음
+const LEADER_RATE_CAP = 30;            // report.js 와 동일 — 대장주 비교용 상승률 캡(%). +30% 초과(이벤트성)는 비교에서만 캡, 후보는 유지
 const GROUP_MIN = 3;
 
 function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
+// 대장주 비교 전용: 상승률을 LEADER_RATE_CAP(=30%)로 상한 (report.js capRate 와 동일).
+function capRate(r) { return Math.min(num(r && r.change_rate), LEADER_RATE_CAP); }
 
 function themeTags(row) {
     var out = [], seen = {};
@@ -77,7 +80,7 @@ function pickLeader(rows) {
     var volumeTop = {};
     cands.slice().sort(function (a, b) {
         return num(b.trading_value) - num(a.trading_value) ||
-            num(b.change_rate) - num(a.change_rate);
+            capRate(b) - capRate(a);
     }).slice(0, LEADER_VOLUME_TOP_N).forEach(function (r) {
         volumeTop[r.ticker] = 1;
     });
@@ -85,16 +88,17 @@ function pickLeader(rows) {
         return num(r.trading_value) >= maxVol * LEADER_VOLUME_PEER_RATIO ||
             volumeTop[r.ticker];
     });
-    var maxChg = Math.max.apply(null, peers.map(function (r) { return num(r.change_rate); }));
+    // 상승률은 캡값으로 비교 — +500% 이벤트 종목도 +30%로 환산돼 거래대금이 대장을 가른다.
+    var maxChg = Math.max.apply(null, peers.map(capRate));
     function score(r) {
         var v = maxVol > 0 ? num(r.trading_value) / maxVol : 0;
-        var c = maxChg > 0 ? num(r.change_rate) / maxChg : 0;
+        var c = maxChg > 0 ? capRate(r) / maxChg : 0;
         return v * 70 + c * 30;
     }
     peers.sort(function (a, b) {
         return score(b) - score(a) ||
             num(b.trading_value) - num(a.trading_value) ||
-            num(b.change_rate) - num(a.change_rate);
+            capRate(b) - capRate(a);
     });
     if (num(peers[0].trading_value) < LEADER_MIN_VALUE) return null;   // 거래대금 컷 미달 → 그날은 대장주 없음
     return peers[0];

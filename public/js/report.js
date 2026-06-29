@@ -21,6 +21,10 @@ var WhyReport = (function () {
     // 대장주 '최소 거래대금'(원) 컷 — 이 바닥을 못 넘으면 그날은 대장주 없음(약한 장의 가짜 대장 방지).
     // 과거 대장주 거래대금 중앙값 ≈1.15조, 하위 ~4% 지점. 3,000억 미만 사례(예: 2026-06-19 화신 1,685억) 제외.
     var LEADER_MIN_VALUE = 3000 * 1e8;   // = 3,000억
+    // 대장주 비교용 '상승률 캡'(%). +30% 초과는 신규상장·재상장 등 이벤트성(가격제한 무관 또는 첫날 무제한)이라
+    // 동일 조건 비교를 깨뜨린다. 비교 계산(점수·정렬)에서만 이 값으로 캡하고, 후보에선 제외하지 않으며
+    // 화면 표시·LEADER_CUTOFF 통과 판정은 원래 상승률을 그대로 쓴다. → 저거래·초고상승 종목의 대장 독식 방지.
+    var LEADER_RATE_CAP = 30;
     var HIGH52_CUTOFF = 10;
     var GROUP_MIN = 3;
     var GROUP_TOP_STOCKS = 4;
@@ -79,6 +83,11 @@ var WhyReport = (function () {
     function num(v, fallback) {
         var n = Number(v);
         return isFinite(n) ? n : (fallback == null ? 0 : fallback);
+    }
+
+    // 대장주 비교 전용: 상승률을 LEADER_RATE_CAP(=30%)로 상한. 표시·후보판정엔 쓰지 않는다.
+    function capRate(row) {
+        return Math.min(num(row && row.change_rate), LEADER_RATE_CAP);
     }
 
     function firstNum(obj, keys) {
@@ -327,7 +336,7 @@ var WhyReport = (function () {
         var volumeTop = {};
         candidates.slice().sort(function (a, b) {
             return num(b.trading_value) - num(a.trading_value) ||
-                num(b.change_rate) - num(a.change_rate);
+                capRate(b) - capRate(a);
         }).slice(0, LEADER_VOLUME_TOP_N).forEach(function (row) {
             volumeTop[row.ticker] = 1;
         });
@@ -335,16 +344,17 @@ var WhyReport = (function () {
             return num(row.trading_value) >= maxVolume * LEADER_VOLUME_PEER_RATIO ||
                 volumeTop[row.ticker];
         });
-        var maxChange = Math.max.apply(null, volumePeers.map(function (row) { return num(row.change_rate); }));
+        // 상승률은 캡값으로 비교 — +500% 이벤트 종목도 +30%로 환산돼 거래대금이 대장을 가른다.
+        var maxChange = Math.max.apply(null, volumePeers.map(capRate));
         function score(row) {
             var volumeScore = maxVolume > 0 ? num(row.trading_value) / maxVolume : 0;
-            var changeScore = maxChange > 0 ? num(row.change_rate) / maxChange : 0;
+            var changeScore = maxChange > 0 ? capRate(row) / maxChange : 0;
             return volumeScore * 70 + changeScore * 30;
         }
         var sorted = volumePeers.slice().sort(function (a, b) {
             return score(b) - score(a) ||
                 num(b.trading_value) - num(a.trading_value) ||
-                num(b.change_rate) - num(a.change_rate);
+                capRate(b) - capRate(a);
         });
         if (num(sorted[0].trading_value) < LEADER_MIN_VALUE) return null;   // 거래대금 컷 미달 → 그날은 대장주 없음
         var leader = Object.assign({}, sorted[0]);

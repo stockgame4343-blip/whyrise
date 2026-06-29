@@ -247,10 +247,15 @@ var WhyTable = (function () {
 
     // 상승이유 표시 정리 — 이유 칸을 절대 비우지 않는다(빈칸=오류처럼 보임).
     // 약한 "관련 뉴스"류는 뉴스 제목에서 명확한 사건을 뽑고, 실패하면 "OO 이슈"로 말끝을 닫는다.
-    function cleanReasonText(reason, theme, news, stockName, eventDate) {
+    function cleanReasonText(reason, theme, news, stockName, eventDate, relaxDate) {
         var orig = String(reason == null ? '' : reason).trim();
         var t = stripThemeParen(theme);
         var tShort = t.split('/')[0].trim();
+        // 합성행(빌드 TOP_N=100 밖 급등주)은 stock-rise 당일 reason 이 없어 raw 뉴스에 의존한다.
+        // 종목 기사가 며칠~몇주 전이면 ±4일 게이트에 다 걸려 '테마 이슈'로 폴백되므로,
+        // 합성행에 한해 날짜 게이트를 풀어(eventDate='') 종목 기사 제목에서 이슈를 뽑는다.
+        // (종목명/테마 매칭 게이트는 유지 — 시황 노이즈는 계속 차단.)
+        var ev = relaxDate ? '' : eventDate;
         // 이유가 없으면 테마 기반으로 채움(빈칸 금지). 테마도 없으면 '' (호출부에서 '-').
         if (!orig || orig === '-') return tShort ? (tShort + ' 관련 뉴스') : '';
         // "테마"/"테마 관련 뉴스" placeholder → 실제 테마명
@@ -260,10 +265,10 @@ var WhyTable = (function () {
 
         if (isWeakReasonText(orig)) {
             var reasonCore = issueFromReasonCore(orig, tShort).replace(/\s*이슈$/, '');
-            var newsIssue = issueFromNews(news, stockName, tShort, reasonCore, eventDate);
+            var newsIssue = issueFromNews(news, stockName, tShort, reasonCore, ev);
             if (newsIssue) return newsIssue;
             // 이름/테마 불일치라도 같은날 다수에 등장하는 섹터 카탈리스트(예: 이란 재건) 완화 추출.
-            var sectorIssue = sectorCatalystFromNews(news, stockName, tShort, eventDate);
+            var sectorIssue = sectorCatalystFromNews(news, stockName, tShort, ev);
             if (sectorIssue) return sectorIssue;
             // 그래도 못 뽑고 reason 코어가 일반어면 테마 기반 — 'OO 이슈' 잡탕 대신 테마 관련 뉴스.
             if (tShort && isGenericReasonKey(normalizeKey(reasonCore))) return tShort + ' 관련 뉴스';
@@ -286,7 +291,7 @@ var WhyTable = (function () {
             if (!dFiller && d.indexOf(' ') >= 0) r = d;
         }
         // 뉴스 다수에 확정 공시(무상증자 등)가 있는데 빌드 reason 이 그걸 안 담았으면 그걸 우선.
-        var corp = dominantCorpAction(news, eventDate);
+        var corp = dominantCorpAction(news, ev);
         if (corp && _reasonKeyFlat(r).indexOf(_reasonKeyFlat(corp)) < 0) return corp;
         return issueFromReasonCore(r, tShort);
     }
@@ -521,7 +526,7 @@ var WhyTable = (function () {
             var eventDate = opts.watchlistMode ? (r._historyDate || r.date || '') : '';
             var reasonDate = eventDate || date;
             // 이유는 항상 채움(빈칸=오류처럼 보임). 약한 "관련 뉴스"류는 짧은 이슈 문구로 표시.
-            var reason = cleanReasonText(r.rise_reason, rawTag, r.news, r.name, reasonDate) || '-';
+            var reason = cleanReasonText(r.rise_reason, rawTag, r.news, r.name, reasonDate, r._liveNew) || '-';
             var editDate = eventDate || date;
             var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + tEsc +
                 '" data-date="' + esc(editDate) + '" title="이유 편집">✏️</button>';
