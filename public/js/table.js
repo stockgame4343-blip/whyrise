@@ -79,7 +79,8 @@ var WhyTable = (function () {
     function polishIssuePhrase(s) {
         var r = compactSpaces(s)
             .replace(/^[,，·:;\-\s]+/, '')
-            .replace(/^(거래소|공시|단독)\s*/, '')
+            .replace(/^(거래소|공시|단독|특징주)\s*/, '')
+            .replace(/^(증가|급증|급감|확대|상승|하락|호조|개선|성장|둔화)\s+/, '')
             .replace(/^(서|에서)\s+/, '')
             .replace(/\s*(?:에|로|으로|따라)\s*$/, '')
             .replace(/\s*(?:주|株|관련주)?\s*(?:상한가|급등|강세|상승|불기둥|다시 난다).*$/, '');
@@ -203,10 +204,12 @@ var WhyTable = (function () {
         return bestN >= 2 ? best : '';
     }
 
-    function issueFromNews(news, stockName, themeShort, reasonCore, eventDate) {
+    function issueFromNews(news, stockName, themeShort, reasonCore, eventDate, relax) {
         if (!Array.isArray(news)) return '';
-        for (var i = 0; i < news.length && i < 3; i++) {
-            if (!isNearEventNews(news[i], eventDate)) continue;
+        // 합성행(relax)은 stock-rise 당일 reason 이 없어 종목 기사 전체를 훑는다(빌드는 상위 3개·±4일).
+        var maxScan = relax ? news.length : 3;
+        for (var i = 0; i < news.length && i < maxScan; i++) {
+            if (!relax && !isNearEventNews(news[i], eventDate)) continue;
             var title = news[i] && news[i].title;
             if (isNoiseRegulatoryTitle(title)) continue;
             if (!isRelevantNewsTitle(title, stockName, themeShort, reasonCore)) continue;
@@ -265,7 +268,7 @@ var WhyTable = (function () {
 
         if (isWeakReasonText(orig)) {
             var reasonCore = issueFromReasonCore(orig, tShort).replace(/\s*이슈$/, '');
-            var newsIssue = issueFromNews(news, stockName, tShort, reasonCore, ev);
+            var newsIssue = issueFromNews(news, stockName, tShort, reasonCore, ev, relaxDate);
             if (newsIssue) return newsIssue;
             // 이름/테마 불일치라도 같은날 다수에 등장하는 섹터 카탈리스트(예: 이란 재건) 완화 추출.
             var sectorIssue = sectorCatalystFromNews(news, stockName, tShort, ev);
