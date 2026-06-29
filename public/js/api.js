@@ -215,6 +215,29 @@ var WhyAPI = (function () {
             .catch(function () { return null; });
     }
 
+    /**
+     * 단일 종목 상승이유 보강 — 빌드(TOP_N=100) 밖 합성행용. /api/stock-reason 이
+     * 네이버 종목뉴스(+업종)를 빌드와 동일한 news 구조로 반환(표시 가공은 table.js 전담).
+     * 8s 타임아웃, 실패는 reject → 소비자가 '이유 분석 대기중' 유지.
+     */
+    function getStockReason(ticker, name, date) {
+        var qs = '?ticker=' + encodeURIComponent(ticker) +
+            '&name=' + encodeURIComponent(name || '') +
+            '&date=' + encodeURIComponent(date || '');
+        var ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var opts = {};
+        if (ctl) opts.signal = ctl.signal;
+        var timer;
+        var timeout = new Promise(function (_, reject) {
+            timer = setTimeout(function () { if (ctl) ctl.abort(); reject(new Error('timeout')); }, 8000);
+        });
+        var req = fetch('/api/stock-reason' + qs, opts).then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+        });
+        return Promise.race([req, timeout]).finally(function () { clearTimeout(timer); });
+    }
+
     return {
         getDates: getDates,
         getRankings: getRankings,
@@ -223,5 +246,6 @@ var WhyAPI = (function () {
         getCurrentPrice: getCurrentPrice,
         getLiveMarketmap: getLiveMarketmap,
         getCardsIndex: getCardsIndex,
+        getStockReason: getStockReason,
     };
 })();

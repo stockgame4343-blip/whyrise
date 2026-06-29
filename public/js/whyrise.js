@@ -15,6 +15,9 @@ var WhyApp = (function () {
     var CUTOFF = 15;   // 고정
     // 모든 메뉴에서 가려야 할 종목 — 에이프로젠바이오로직스, 졸스, 에이프로젠
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
+    // 합성행(빌드 TOP_N=100 밖 급등주) 상승이유 보강
+    var REASON_SS_PREFIX = 'wr:reason:';   // sessionStorage 키: wr:reason:{date}:{ticker}
+    var REASON_MAX_CONCURRENT = 4;         // 동시 보강 fetch 상한 (네이버/Vercel 부하 가드)
     // 라이브 숫자 오버레이 주기 15s — /api/marketmap 에서 주가/상승률/거래대금/시총만 받아
     // 1시간 빌드(getRankings) 행 위에 ticker 단위로 덮어씀. 세부필드(섹터/테마/뉴스)는 빌드 그대로.
     // (/api/marketmap 병렬화로 ~3s 응답이라 30s→15s 단축)
@@ -177,6 +180,10 @@ var WhyApp = (function () {
         // history fetch 진행 중 ticker 집합 — 중복 fetch 방지
         _historyInFlight: {},
         tickerMeta: {},
+        // 합성행(빌드 TOP_N=100 밖 급등주) 상승이유 보강 캐시·큐
+        reasonCache: {},      // ticker → {theme_tag, news} | null(실패) | undefined(진행 중)
+        _reasonQueue: [],     // 보강 대기 ticker
+        _reasonActive: 0,     // 진행 중 fetch 수 (동시성 제한)
     };
 
     function loadRatings() {
@@ -295,6 +302,7 @@ var WhyApp = (function () {
             if (have[tk] || BLOCKED_TICKERS[tk]) return;
             var lv = state.liveMap[tk];
             if (!lv || lv.change_rate == null || lv.change_rate < CUTOFF || !lv.name) return;
+            var rc = state.reasonCache[tk];   // 보강 도착분(있으면 테마·뉴스 채움) → table.js 가 이유 가공
             state.rankings.push({
                 ticker: tk,
                 name: lv.name,
@@ -303,10 +311,10 @@ var WhyApp = (function () {
                 close_price: lv.close_price,
                 trading_value: lv.trading_value,
                 market_cap: lv.market_cap != null ? lv.market_cap * 1e8 : null,
-                sector: '',
-                theme_tag: '',
-                rise_reason: '이유 분석 대기중',
-                news: [],
+                sector: (rc && rc.theme_tag) || '',
+                theme_tag: (rc && rc.theme_tag) || '',
+                rise_reason: _liveRowReason(rc),
+                news: (rc && rc.news) || [],
                 _liveNew: true,
             });
         });
@@ -397,6 +405,77 @@ var WhyApp = (function () {
             emptyMsg: emptyMsg,
             watchlistMode: state.watchlistMode,
         });
+        _enqueueReasonFetch();   // 합성행 상승이유 lazy 보강
+    }
+
+    // ── 합성행(빌드 TOP_N=100 밖 급등주) 상승이유 보강 ──────────────────────
+    // 빌드에 없는 종목은 이유/테마/뉴스가 비어 '이유 분석 대기중' 으로만 뜬다. 그 종목에 한해
+    // /api/stock-reason 으로 네이버 뉴스+업종을 lazy 로 받아 채운다(동시성 제한 + sessionStorage 캐시).
+    // 표시 문구는 만들지 않고 news/테마만 채워 table.js cleanReasonText 가 구체 이슈를 뽑게 한다.
+    function _reasonSSKey(date, tk) { return REASON_SS_PREFIX + date + ':' + tk; }
+    function _reasonFromSS(date, tk) {
+        try { var v = sessionStorage.getItem(_reasonSSKey(date, tk)); return v ? JSON.parse(v) : undefined; }
+        catch (e) { return undefined; }
+    }
+    function _reasonToSS(date, tk, val) {
+        try { sessionStorage.setItem(_reasonSSKey(date, tk), JSON.stringify(val)); } catch (e) {}
+    }
+
+    // 합성행 표시 이유 — 도착 전 '이유 분석 대기중', 도착 후엔 weak text 로 둬
+    // table.js cleanReasonText 가 뉴스/테마에서 구체 이슈를 뽑게 한다(단정 문구 생성 안 함).
+    function _liveRowReason(rc) {
+        if (!rc) return '이유 분석 대기중';                     // 미도착 또는 fetch 실패
+        if (rc.theme_tag) return rc.theme_tag + ' 관련 뉴스';   // → 뉴스로 구체화
+        if (rc.news && rc.news.length) return '관련 뉴스';      // 테마 없음 → 종목명 매칭으로 구체화
+        return '관련 뉴스 없음';                                // 시도했으나 뉴스 없음(대기중 무한표시 방지)
+    }
+
+    var _reasonRerenderTimer = null;
+    function _scheduleReasonRerender() {
+        if (_reasonRerenderTimer) return;        // 여러 도착을 한 번의 재렌더로 묶음
+        _reasonRerenderTimer = setTimeout(function () {
+            _reasonRerenderTimer = null;
+            if (state.currentDateIdx === 0 && !state.watchlistMode) applyCutoffAndRender();
+        }, 250);
+    }
+
+    // 합성행 중 이유 미보강(reasonCache 없음) ticker 를 큐에 모아 동시성 제한으로 보강한다.
+    function _enqueueReasonFetch() {
+        if (state.watchlistMode || state.currentDateIdx !== 0 || !state.liveMap) return;
+        var date = state.dates[state.currentDateIdx] || state.virtualDate || '';
+        var added = false;
+        (state.rankings || []).forEach(function (r) {
+            if (!r || !r._liveNew || !r.ticker) return;
+            var tk = r.ticker;
+            if (state.reasonCache.hasOwnProperty(tk)) return;     // 도착/실패/진행 중
+            var ss = _reasonFromSS(date, tk);                     // 새로고침 간 캐시 — 네트워크 없이
+            if (ss !== undefined) { state.reasonCache[tk] = ss; added = true; return; }
+            if (state._reasonQueue.indexOf(tk) < 0) state._reasonQueue.push(tk);
+        });
+        if (added) _scheduleReasonRerender();   // SS 히트분 즉시 반영
+        _pumpReasonQueue(date);
+    }
+
+    function _pumpReasonQueue(date) {
+        while (state._reasonActive < REASON_MAX_CONCURRENT && state._reasonQueue.length) {
+            var tk = state._reasonQueue.shift();
+            if (state.reasonCache.hasOwnProperty(tk)) continue;
+            state.reasonCache[tk] = undefined;   // 진행 마킹(hasOwnProperty=true → 재큐잉 차단)
+            (function (tk) {
+                state._reasonActive++;
+                var lv = state.liveMap[tk] || {};
+                WhyAPI.getStockReason(tk, lv.name || '', date).then(function (res) {
+                    state.reasonCache[tk] = { theme_tag: (res && res.theme_tag) || '', news: (res && res.news) || [] };
+                    _reasonToSS(date, tk, state.reasonCache[tk]);
+                }).catch(function () {
+                    state.reasonCache[tk] = null;   // 실패 — 이 세션 재시도 안 함
+                }).then(function () {
+                    state._reasonActive--;
+                    _scheduleReasonRerender();
+                    _pumpReasonQueue(date);
+                });
+            })(tk);
+        }
     }
 
     function loadDate(date) {
