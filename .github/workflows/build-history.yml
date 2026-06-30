@@ -193,17 +193,19 @@ jobs:
             # 이벤트에 거래량·거래대금·시총(역산) 채움 — OHLC 재수집 (전종목, limit=0)
             python3 scripts/build-history.py --enrich-ohlc --limit "$LIMIT"
           elif [ "$MODE" = "marketmap-intraday" ]; then
-            # 장중 빠른 갱신 — 라이브 API 만, ~30s
-            python3 scripts/build-history.py --marketmap-intraday
+            # 장중 빠른 갱신 — 라이브 API 만, ~30s. hang 가드 10분.
+            timeout -k 30 600 python3 scripts/build-history.py --marketmap-intraday
           elif [ "$MODE" = "marketmap-only" ]; then
             if [ "$BACKFILL" -gt 0 ]; then
               python3 scripts/build-history.py --marketmap-only --backfill-days "$BACKFILL"
             else
-              python3 scripts/build-history.py --marketmap-only
+              timeout -k 30 600 python3 scripts/build-history.py --marketmap-only
             fi
           else
-            # incremental — 짧은 기간만 fetch + 머지
-            python3 scripts/build-history.py --days 30 --cutoff "$CUTOFF"
+            # incremental — 짧은 기간만 fetch + 머지 (정상 2~5분).
+            # hang 가드: 30분 넘으면 timeout(124)으로 실패시켜 concurrency 락을 풀어 준다.
+            # full·수동 enrich/backfill 은 정상적으로 길 수 있어 무제한(job timeout-minutes 350 이 상한).
+            timeout -k 30 1800 python3 scripts/build-history.py --days 30 --cutoff "$CUTOFF"
           fi
 
       # 오늘의 대장 캘린더(샘플2) — stock-rise 일별 대장 3종을 누적 계산. 비핵심이라 실패해도 본빌드 유지.
