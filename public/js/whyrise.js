@@ -184,6 +184,8 @@ var WhyApp = (function () {
         reasonCache: {},      // ticker → {theme_tag, news} | null(실패) | undefined(진행 중)
         _reasonQueue: [],     // 보강 대기 ticker
         _reasonActive: 0,     // 진행 중 fetch 수 (동시성 제한)
+        snapshotMap: null,    // 과거일 그날 marketmap 스냅샷 ticker→숫자맵 (과거일 합성행/오버레이용)
+        snapshotDate: '',     // snapshotMap 의 거래일 (YYYYMMDD) — 중복 로드 가드
     };
 
     function loadRatings() {
@@ -269,14 +271,35 @@ var WhyApp = (function () {
         Promise.all(promises).then(function () { if (onDone) onDone(true); });
     }
 
-    // 라이브 숫자 오버레이 — 최신일·일반(관심X)·liveMap 있을 때만, ticker 단위로 4숫자만 덮어씀.
-    // 세부필드(섹터/테마/상승이유/뉴스)는 절대 미변경. 라이브에 없는 종목은 빌드값 유지.
+    // 라이브 숫자 오버레이 — 최신일=라이브(liveMap), 과거일=그날 스냅샷(snapshotMap), ticker 단위 4숫자만 덮어씀.
+    // 세부필드(섹터/테마/상승이유/뉴스)는 절대 미변경. 맵에 없는 종목은 빌드값 유지.
+    function _overlayMap() {
+        return state.currentDateIdx === 0 ? state.liveMap : state.snapshotMap;
+    }
+
+    // 과거일 그날 marketmap 스냅샷 확보 — 합성행/오버레이용. 최신일은 liveCycle(실시간)이 담당.
+    function _ensureSnapshot(date) {
+        if (state.currentDateIdx === 0) { state.snapshotMap = null; state.snapshotDate = ''; return; }
+        if (state.snapshotDate === date) return;          // 이미 로드(또는 시도)
+        state.snapshotDate = date;
+        state.snapshotMap = null;
+        WhyAPI.getMarketmapSnapshot(date).then(function (res) {
+            if (state.dates[state.currentDateIdx] !== date) return;   // 그새 날짜 이동 — 무시
+            state.snapshotMap = res.map;
+            applyCutoffAndRender();   // 스냅샷으로 합성행 재현
+        }).catch(function () {
+            if (state.dates[state.currentDateIdx] === date) state.snapshotMap = {};  // 스냅샷 없음 → 빌드만
+        });
+    }
+
     function _applyLiveOverlay() {
-        if (state.watchlistMode || state.currentDateIdx !== 0 || !state.liveMap) return;
+        if (state.watchlistMode) return;
+        var map = _overlayMap();
+        if (!map) return;
         // 불변 머지 — getRankings 5분 캐시 객체(참조 공유)를 변형하지 않도록 복사본에만 덮어씀.
         // (in-place 면 캐시 오염 → 다음 폴링/재방문에서 잘못된 baseline 으로 누적)
         state.rankings = (state.rankings || []).map(function (r) {
-            var lv = state.liveMap[r.ticker];
+            var lv = map[r.ticker];
             if (!lv) return r;
             var o = Object.assign({}, r);
             if (lv.change_rate != null) o.change_rate = lv.change_rate;
@@ -289,18 +312,18 @@ var WhyApp = (function () {
         // 라이브(NXT)에 없는 빌드 행(어제 급등주가 어제 등락률로 박제되는 것)은 제외해
         // 'NXT 상승분만' 표기. 09:00 정규장부터는 필터 해제(정규 상승분 전체 반영).
         // (합성 신규행은 아래에서 별도 추가 — liveMap 출처라 이 필터와 무관.)
-        if (isNxtLeadInKST()) {
+        if (state.currentDateIdx === 0 && isNxtLeadInKST()) {
             state.rankings = state.rankings.filter(function (r) {
-                return r && r.ticker && state.liveMap[r.ticker];
+                return r && r.ticker && map[r.ticker];
             });
         }
         // 빌드에 아직 없는 신규 급등주 — 라이브 union 에서 +CUTOFF% 면 합성 행으로 즉시 노출.
         // 세부필드(이유/테마/뉴스)는 다음 빌드 도착 시 정식 행으로 자연 교체. (api.js:136 name 필드의 용도)
         var have = {};
         state.rankings.forEach(function (r) { if (r && r.ticker) have[r.ticker] = 1; });
-        Object.keys(state.liveMap).forEach(function (tk) {
+        Object.keys(map).forEach(function (tk) {
             if (have[tk] || BLOCKED_TICKERS[tk]) return;
-            var lv = state.liveMap[tk];
+            var lv = map[tk];
             if (!lv || lv.change_rate == null || lv.change_rate < CUTOFF || !lv.name) return;
             var rc = state.reasonCache[tk];   // 보강 도착분(있으면 테마·뉴스 채움) → table.js 가 이유 가공
             state.rankings.push({
@@ -435,13 +458,13 @@ var WhyApp = (function () {
         if (_reasonRerenderTimer) return;        // 여러 도착을 한 번의 재렌더로 묶음
         _reasonRerenderTimer = setTimeout(function () {
             _reasonRerenderTimer = null;
-            if (state.currentDateIdx === 0 && !state.watchlistMode) applyCutoffAndRender();
+            if (!state.watchlistMode) applyCutoffAndRender();
         }, 250);
     }
 
     // 합성행 중 이유 미보강(reasonCache 없음) ticker 를 큐에 모아 동시성 제한으로 보강한다.
     function _enqueueReasonFetch() {
-        if (state.watchlistMode || state.currentDateIdx !== 0 || !state.liveMap) return;
+        if (state.watchlistMode || !_overlayMap()) return;   // 최신일=liveMap, 과거일=snapshotMap
         var date = state.dates[state.currentDateIdx] || state.virtualDate || '';
         var added = false;
         (state.rankings || []).forEach(function (r) {
@@ -463,7 +486,7 @@ var WhyApp = (function () {
             state.reasonCache[tk] = undefined;   // 진행 마킹(hasOwnProperty=true → 재큐잉 차단)
             (function (tk) {
                 state._reasonActive++;
-                var lv = state.liveMap[tk] || {};
+                var lv = (_overlayMap() || {})[tk] || {};
                 WhyAPI.getStockReason(tk, lv.name || '', date).then(function (res) {
                     state.reasonCache[tk] = { theme_tag: (res && res.theme_tag) || '', news: (res && res.news) || [] };
                     _reasonToSS(date, tk, state.reasonCache[tk]);
@@ -500,6 +523,7 @@ var WhyApp = (function () {
                 return !BLOCKED_TICKERS[r.ticker];
             });
             state.collectedAt = data.collected_at || '';
+            _ensureSnapshot(date);   // 과거일이면 그날 스냅샷 확보 → 합성행 재현
             applyCutoffAndRender();
             refreshLiveLabel();
         }).catch(function (err) {

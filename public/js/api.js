@@ -238,6 +238,32 @@ var WhyAPI = (function () {
         return Promise.race([req, timeout]).finally(function () { clearTimeout(timer); });
     }
 
+    /**
+     * 과거일 합성행/오버레이용 — 그날 marketmap 스냅샷(/data/marketmap/{date}.json).
+     * 실시간 /api/marketmap 과 같은 형식이라 동일 map 으로 변환(시각화 treemap/bubbles2 와 같은 소스).
+     * @returns Promise<{map:{[ticker]:{name,market,change_rate,close_price,trading_value,market_cap(억원)}}, date, count}>
+     */
+    function getMarketmapSnapshot(date) {
+        return fetch('/data/marketmap/' + date + '.json', { cache: 'no-cache' })
+            .then(function (res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            })
+            .then(function (data) {
+                if (!data || !Array.isArray(data.items)) throw new Error('empty');
+                var map = {};
+                data.items.forEach(function (it) {
+                    if (!it || !it.ticker) return;
+                    map[it.ticker] = {
+                        name: it.name, market: it.market,
+                        change_rate: it.change_rate, close_price: it.close_price,
+                        trading_value: it.trading_value, market_cap: it.market_cap,
+                    };
+                });
+                return { map: map, date: data.date || date, count: Object.keys(map).length };
+            });
+    }
+
     return {
         getDates: getDates,
         getRankings: getRankings,
@@ -247,5 +273,6 @@ var WhyAPI = (function () {
         getLiveMarketmap: getLiveMarketmap,
         getCardsIndex: getCardsIndex,
         getStockReason: getStockReason,
+        getMarketmapSnapshot: getMarketmapSnapshot,
     };
 })();
