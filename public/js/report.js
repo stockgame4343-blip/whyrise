@@ -478,8 +478,12 @@ var WhyReport = (function () {
         if (!el) return;
         if (!row) {
             el.innerHTML = '<div class="report-empty">오늘 기준에 맞는 대장이 없습니다.</div>';
+            _lastLeaderCard = null;
+            _toggleLeaderSave(false);
             return;
         }
+        _lastLeaderCard = { row: row, sectorGroup: sectorGroup, themeGroup: themeGroup };
+        _toggleLeaderSave(true);
         var theme = themeOf(row);
         var reason = reasonOf(row);
         var sectorTheme = [row.sector, theme].filter(Boolean).join(' · ');
@@ -498,6 +502,140 @@ var WhyReport = (function () {
                 leaderGroupTile(themeGroup, 'theme', '대장테마', '핫 테마 없음') +
             '</div>' +
         '</article>';
+    }
+
+    // ── 오늘의 대장 카드 이미지 저장 — 모바일 1080폭 canvas + ORGO 워터마크 ──
+    // 시각화 savePNG 는 SVG 직렬화지만 대장 카드는 HTML 이라, 데이터로 canvas 에 직접 그린다.
+    // 어디서(PC/모바일) 눌러도 동일한 모바일 사이즈로 산출.
+    var _lastLeaderCard = null;
+
+    function _toggleLeaderSave(show) {
+        var btn = $('leaderSaveBtn');
+        if (btn) btn.style.display = show ? '' : 'none';
+    }
+
+    function _lcRound(ctx, x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+    }
+
+    // 폭 제한 안에서 말줄임(…)으로 한 줄 클립
+    function _lcClip(ctx, text, maxW) {
+        text = String(text || '');
+        if (ctx.measureText(text).width <= maxW) return text;
+        while (text.length > 1 && ctx.measureText(text + '…').width > maxW) text = text.slice(0, -1);
+        return text + '…';
+    }
+
+    function _lcTile(ctx, label, group, emptyText, x, y, w, h, C) {
+        _lcRound(ctx, x, y, w, h, 24);
+        ctx.fillStyle = C.CARD; ctx.fill();
+        var ix = x + 40;
+        ctx.textAlign = 'left';
+        ctx.fillStyle = C.DIM; ctx.font = '700 23px ' + C.FONT;
+        ctx.fillText(label, ix, y + 50);
+        if (!group) {
+            ctx.fillStyle = C.FG; ctx.font = '700 34px ' + C.FONT;
+            ctx.fillText(emptyText, ix, y + 104);
+            return;
+        }
+        ctx.fillStyle = C.FG; ctx.font = '800 40px ' + C.FONT;
+        ctx.fillText(_lcClip(ctx, group.key, w - 80), ix, y + 102);
+        ctx.fillStyle = C.DIM; ctx.font = '500 25px ' + C.FONT;
+        var meta = group.count + '종목 · 평균 ' + pct(group.avgRate, 1) + ' · 거래 ' + fmtAmount(group.totalVolume);
+        ctx.fillText(_lcClip(ctx, meta, w - 80), ix, y + 144);
+    }
+
+    function _drawLeaderCard() {
+        var data = _lastLeaderCard;
+        if (!data || !data.row) return;
+        var row = data.row;
+        var ratio = 2, W = 1080, PADX = 56;
+        var C = {
+            BG: '#0a0b0f', CARD: '#16171c', LINE: 'rgba(255,255,255,0.08)',
+            FG: '#ffffff', DIM: 'rgba(255,255,255,0.55)', DIM2: 'rgba(255,255,255,0.40)', UP: '#ff4d4f',
+            FONT: 'Pretendard, "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif',
+        };
+        var HEADER_H = 150, STOCK_H = 256, TILE_H = 172, GAP = 28;
+        var totalH = HEADER_H + 28 + STOCK_H + GAP + TILE_H + GAP + TILE_H + 48;
+
+        var cv = document.createElement('canvas');
+        cv.width = W * ratio; cv.height = totalH * ratio;
+        var ctx = cv.getContext('2d');
+        ctx.scale(ratio, ratio);
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillStyle = C.BG; ctx.fillRect(0, 0, W, totalH);
+
+        // 워터마크 헤더 — 좌: ORGO·orgo.kr / 우: 오늘의 대장·날짜
+        ctx.textAlign = 'left';
+        ctx.fillStyle = C.FG; ctx.font = '800 40px ' + C.FONT;
+        ctx.fillText('ORGO', PADX, 76);
+        var logoW = ctx.measureText('ORGO').width;
+        ctx.fillStyle = C.DIM; ctx.font = '600 23px ' + C.FONT;
+        ctx.fillText('orgo.kr', PADX + logoW + 16, 76);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = C.DIM; ctx.font = '700 25px ' + C.FONT;
+        ctx.fillText('오늘의 대장', W - PADX, 60);
+        ctx.fillStyle = C.DIM2; ctx.font = '600 22px ' + C.FONT;
+        ctx.fillText(formatDate(state.dates[state.dateIndex] || ''), W - PADX, 90);
+        ctx.strokeStyle = C.LINE; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(PADX, HEADER_H); ctx.lineTo(W - PADX, HEADER_H); ctx.stroke();
+
+        // 대장주 박스
+        var y = HEADER_H + 28;
+        _lcRound(ctx, PADX, y, W - PADX * 2, STOCK_H, 24);
+        ctx.fillStyle = C.CARD; ctx.fill();
+        var ix = PADX + 40;
+        ctx.textAlign = 'left';
+        ctx.fillStyle = C.DIM; ctx.font = '700 24px ' + C.FONT;
+        ctx.fillText('대장주', ix, y + 54);
+        ctx.fillStyle = C.FG; ctx.font = '800 54px ' + C.FONT;
+        var nm = _lcClip(ctx, row.name || row.ticker, W - PADX * 2 - 220);
+        ctx.fillText(nm, ix, y + 120);
+        if (row.market) {
+            var nameW = ctx.measureText(nm).width;
+            ctx.fillStyle = C.DIM2; ctx.font = '600 24px ' + C.FONT;
+            ctx.fillText(row.market, ix + nameW + 20, y + 120);
+        }
+        ctx.font = '800 34px ' + C.FONT; ctx.fillStyle = C.UP;
+        var rateStr = pct(row.change_rate);
+        ctx.fillText(rateStr, ix, y + 174);
+        var rateW = ctx.measureText(rateStr).width;
+        ctx.fillStyle = C.DIM; ctx.font = '600 28px ' + C.FONT;
+        ctx.fillText(' · 거래 ' + fmtAmount(row.trading_value), ix + rateW, y + 174);
+        var theme = themeOf(row), reason = reasonOf(row);
+        var detailTag = theme || row.sector || '대장';
+        var detail = '[' + detailTag + '] ' + (reason || [row.sector, theme].filter(Boolean).join(' · ') || '거래대금 상위 종목');
+        ctx.fillStyle = C.DIM; ctx.font = '500 26px ' + C.FONT;
+        ctx.fillText(_lcClip(ctx, detail, W - PADX * 2 - 80), ix, y + 220);
+
+        // 대장섹터 / 대장테마
+        y += STOCK_H + GAP;
+        _lcTile(ctx, '대장섹터', data.sectorGroup, '주도 섹터 없음', PADX, y, W - PADX * 2, TILE_H, C);
+        y += TILE_H + GAP;
+        _lcTile(ctx, '대장테마', data.themeGroup, '핫 테마 없음', PADX, y, W - PADX * 2, TILE_H, C);
+
+        var fname = 'orgo-leader-' + (state.dates[state.dateIndex] || 'today') + '.png';
+        cv.toBlob(function (blob) {
+            if (!blob) return;
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url; a.download = fname;
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        }, 'image/png');
+    }
+
+    function downloadLeaderCard() {
+        if (!_lastLeaderCard || !_lastLeaderCard.row) return;
+        // 폰트(Pretendard) 로드 후 그려야 캔버스에 정확한 글꼴 적용 (미로드 시 시스템 폰트로 깨짐)
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(_drawLeaderCard);
+        else _drawLeaderCard();
     }
 
     function groupStockHtml(row) {
@@ -1005,6 +1143,8 @@ var WhyReport = (function () {
         bindRatingsEvents();
         bindMemoModal();
         bindStorageSync();
+        var _saveBtn = $('leaderSaveBtn');
+        if (_saveBtn) _saveBtn.addEventListener('click', downloadLeaderCard);
 
         WhyAPI.getDates().then(function (dates) {
             if (!Array.isArray(dates) || !dates.length) {
