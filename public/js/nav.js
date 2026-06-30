@@ -81,14 +81,34 @@
             '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
             '<path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 ' +
             '3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 ' +
-            '12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>';
+            '12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>' +
+            '<span class="top-bar__tg-label">텔레그램</span>';
         var toggle = document.getElementById('themeToggle');
         if (toggle) right.insertBefore(link, toggle);
         else right.appendChild(link);
     }
 
+    // 텔레그램 채널 링크 — 푸터(footer__copy 위)에도 라벨 링크. 푸터 있는 페이지만(시각화·admin 제외).
+    function injectFooterTelegram() {
+        var copy = document.querySelector('.footer__copy');
+        if (!copy || document.querySelector('.footer__tg')) return;
+        var link = document.createElement('a');
+        link.className = 'footer__tg';
+        link.href = 'https://t.me/whyorgo';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.innerHTML =
+            '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">' +
+            '<path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 ' +
+            '3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 ' +
+            '12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>' +
+            '<span>텔레그램 채널 — 오늘의 시황 브리핑 받기</span>';
+        copy.parentNode.insertBefore(link, copy);
+    }
+
     injectThemeItem();
     injectTelegram();
+    injectFooterTelegram();
     updateThemeIcons();
 
     try {
