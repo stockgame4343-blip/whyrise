@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260514a">
     <link rel="stylesheet" href="/css/whyrise.css?v=20260621d">
-    <link rel="stylesheet" href="/css/home-sample.css?v=20260630a">
+    <link rel="stylesheet" href="/css/home-sample.css?v=20260630b">
 </head>
 <body>
     <script>
@@ -76,6 +76,13 @@
                 <ul class="hero__suggest" id="heroSuggest" hidden></ul>
             </div>
             <p class="hero__subtitle">차트 말고 <strong>이유</strong>. 급등 이유 · 대장주 · 테마 · 시각화까지 <strong>한눈에</strong>.</p>
+            <div class="hs-hero__stats">
+                <span class="hs-hero__stat"><b>코스피·코스닥</b> 전 종목</span>
+                <span class="hs-hero__stat-dot"></span>
+                <span class="hs-hero__stat"><b>매일</b> 자동 집계</span>
+                <span class="hs-hero__stat-dot"></span>
+                <span class="hs-hero__stat"><b>급등 이유·뉴스</b> 연결</span>
+            </div>
         </div>
     </section>
 
@@ -129,22 +136,8 @@
             <div class="hs-features">
 
                 <a class="hs-feature glass" href="/sample2.html">
-                    <span class="hs-feature__thumb">
-                        <svg viewBox="0 0 140 84" aria-hidden="true">
-                            <rect class="t-cell" x="6"  y="10" width="22" height="20" rx="4"/>
-                            <rect class="t-cell" x="34" y="10" width="22" height="20" rx="4"/>
-                            <rect class="t-cell t-rise" x="62" y="10" width="22" height="20" rx="4"/>
-                            <rect class="t-cell" x="90" y="10" width="22" height="20" rx="4"/>
-                            <rect class="t-cell" x="118" y="10" width="16" height="20" rx="4"/>
-                            <rect class="t-cell" x="6"  y="34" width="22" height="20" rx="4"/>
-                            <rect class="t-cell t-accent" x="34" y="34" width="22" height="20" rx="4"/>
-                            <rect class="t-cell" x="62" y="34" width="22" height="20" rx="4"/>
-                            <rect class="t-cell t-rise" x="90" y="34" width="22" height="20" rx="4"/>
-                            <rect class="t-cell" x="118" y="34" width="16" height="20" rx="4"/>
-                            <rect class="t-cell" x="6"  y="58" width="22" height="18" rx="4"/>
-                            <rect class="t-cell" x="34" y="58" width="22" height="18" rx="4"/>
-                            <rect class="t-cell" x="62" y="58" width="22" height="18" rx="4"/>
-                        </svg>
+                    <span class="hs-feature__media">
+                        <img src="/img/home-sample/calendar.webp?v=20260630b" alt="대장캘린더 미리보기" width="800" height="347" loading="lazy">
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">대장캘린더</span>
@@ -153,14 +146,9 @@
                 </a>
 
                 <a class="hs-feature glass" href="/bubbles2.html">
-                    <span class="hs-feature__thumb">
-                        <svg viewBox="0 0 140 84" aria-hidden="true">
-                            <circle class="t-rise"   cx="44" cy="44" r="26"/>
-                            <circle class="t-accent" cx="96" cy="32" r="18"/>
-                            <circle class="t-rise"   cx="104" cy="62" r="13"/>
-                            <circle class="t-accent" cx="22" cy="22" r="10"/>
-                            <circle class="t-cell"   cx="76" cy="64" r="8"/>
-                        </svg>
+                    <span class="hs-feature__media">
+                        <img src="/img/home-sample/bubble.webp?v=20260630b" alt="버블맵 미리보기" width="800" height="294" loading="lazy">
+                        <span class="hs-feature__tag">시각화</span>
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">버블맵</span>
@@ -169,17 +157,9 @@
                 </a>
 
                 <a class="hs-feature glass" href="/treemap.html">
-                    <span class="hs-feature__thumb">
-                        <svg viewBox="0 0 140 84" aria-hidden="true">
-                            <rect class="t-rise"   x="6"  y="10" width="62" height="40" rx="3"/>
-                            <rect class="t-accent" x="72" y="10" width="40" height="24" rx="3"/>
-                            <rect class="t-cell"   x="116" y="10" width="18" height="24" rx="3"/>
-                            <rect class="t-accent" x="72" y="38" width="26" height="36" rx="3"/>
-                            <rect class="t-rise"   x="102" y="38" width="32" height="18" rx="3"/>
-                            <rect class="t-cell"   x="6"  y="54" width="30" height="20" rx="3"/>
-                            <rect class="t-rise"   x="40" y="54" width="28" height="20" rx="3"/>
-                            <rect class="t-cell"   x="102" y="60" width="32" height="14" rx="3"/>
-                        </svg>
+                    <span class="hs-feature__media">
+                        <img src="/img/home-sample/tree.webp?v=20260630b" alt="트리맵 미리보기" width="800" height="294" loading="lazy">
+                        <span class="hs-feature__tag">시각화</span>
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">트리맵</span>
@@ -188,18 +168,9 @@
                 </a>
 
                 <a class="hs-feature glass" href="/flowmap.html">
-                    <span class="hs-feature__thumb">
-                        <svg viewBox="0 0 140 84" aria-hidden="true" fill="none">
-                            <path class="t-flow" d="M16 20 C 60 20, 70 30, 120 30"/>
-                            <path class="t-flow" d="M16 42 C 60 42, 70 30, 120 30"/>
-                            <path class="t-flow t-flow--accent" d="M16 42 C 60 42, 70 56, 120 56"/>
-                            <path class="t-flow t-flow--accent" d="M16 64 C 60 64, 70 56, 120 56"/>
-                            <circle class="t-rise s-node"   cx="16" cy="20" r="5"/>
-                            <circle class="t-accent s-node" cx="16" cy="42" r="5"/>
-                            <circle class="t-accent s-node" cx="16" cy="64" r="5"/>
-                            <circle class="t-rise s-node"   cx="120" cy="30" r="7"/>
-                            <circle class="t-accent s-node" cx="120" cy="56" r="7"/>
-                        </svg>
+                    <span class="hs-feature__media">
+                        <img src="/img/home-sample/flow.webp?v=20260630b" alt="주도주 흐름 미리보기" width="800" height="294" loading="lazy">
+                        <span class="hs-feature__tag">시각화</span>
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">주도주 흐름</span>
@@ -208,16 +179,8 @@
                 </a>
 
                 <a class="hs-feature glass" href="/screening.html">
-                    <span class="hs-feature__thumb">
-                        <svg viewBox="0 0 140 84" aria-hidden="true">
-                            <rect class="t-pill"   x="8"  y="12" width="30" height="12" rx="6"/>
-                            <rect class="t-pill t-accent" x="42" y="12" width="26" height="12" rx="6"/>
-                            <rect class="t-pill"   x="72" y="12" width="34" height="12" rx="6"/>
-                            <rect class="t-row" x="8" y="36" width="124" height="10" rx="3"/>
-                            <rect class="t-row" x="8" y="52" width="100" height="10" rx="3"/>
-                            <rect class="t-row" x="8" y="68" width="116" height="10" rx="3"/>
-                            <rect class="t-rise" x="116" y="52" width="16" height="10" rx="3"/>
-                        </svg>
+                    <span class="hs-feature__media">
+                        <img src="/img/home-sample/screening.webp?v=20260630b" alt="스크리닝 미리보기" width="800" height="294" loading="lazy">
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">스크리닝</span>
@@ -226,16 +189,8 @@
                 </a>
 
                 <a class="hs-feature glass" href="/report.html">
-                    <span class="hs-feature__thumb">
-                        <svg viewBox="0 0 140 84" aria-hidden="true">
-                            <rect class="t-head t-accent" x="10" y="10" width="120" height="14" rx="4"/>
-                            <rect class="t-row" x="10" y="32" width="78" height="8" rx="3"/>
-                            <rect class="t-row" x="10" y="46" width="96" height="8" rx="3"/>
-                            <rect class="t-bar t-rise"   x="98"  y="44" width="10" height="30" rx="2"/>
-                            <rect class="t-bar t-rise"   x="112" y="36" width="10" height="38" rx="2"/>
-                            <rect class="t-bar t-accent" x="126" y="52" width="8"  height="22" rx="2"/>
-                            <rect class="t-row" x="10" y="60" width="64" height="8" rx="3"/>
-                        </svg>
+                    <span class="hs-feature__media">
+                        <img src="/img/home-sample/report.webp?v=20260630b" alt="리포트 미리보기" width="800" height="333" loading="lazy">
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">리포트</span>
@@ -267,7 +222,7 @@
     <script src="/js/nav.js?v=20260525b"></script>
     <script src="/js/api.js?v=20260630a"></script>
     <script src="/js/search.js?v=20260514a"></script>
-    <script src="/js/home-sample.js?v=20260630a"></script>
+    <script src="/js/home-sample.js?v=20260630b"></script>
     <script>
     // placeholder rotation — 대표 종목 슥슥 회전 (index 와 동일)
     (function () {

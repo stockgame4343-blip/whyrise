@@ -8,7 +8,7 @@
 (function () {
     'use strict';
 
-    var TOP_N = 8;                 // 미리보기 노출 종목 수
+    var TOP_N = 12;                // 미리보기 노출 종목 수
     var PLACEHOLDER_THEME = '분야'; // stock-rise placeholder 테마 (이유로 쓰지 않음)
 
     // ── 유틸 ──────────────────────────────────────────
