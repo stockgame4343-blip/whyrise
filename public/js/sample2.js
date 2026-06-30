@@ -17,7 +17,18 @@
         PAD: 18,           // 캡처 외곽 여백
         HEAD_BASELINE: 31, // 헤더 텍스트 baseline y
         LOGO_SIZE: 16, DOMAIN_SIZE: 13, CTX_SIZE: 12.5,
+        DESC_GAP: 18,      // 본문(그리드/범례) 하단 ~ 설명 구분선 간격
+        DESC_PAD_TOP: 12,  // 구분선 ~ 설명문 첫 줄 간격
+        DESC_SIZE: 12.5,   // 설명문 글자 크기
+        DESC_LH: 19,       // 설명문 줄 높이
         FONT: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif',
+    };
+
+    // 캡처 이미지 하단 — 모드별 '대장' 선별 기준 설명(과거 기록·비자문 고지 포함)
+    var DESC_TEXT = {
+        stock: '상승률 15% 이상 오른 종목 중 거래대금과 상승률을 종합해 그날의 주도주(대장)를 가려낸 결과입니다. 투자 자문·추천이 아닌 과거 기록입니다.',
+        sector: '상승률 15% 이상 오른 종목을 섹터로 묶어 가장 많이 오른 섹터를 그날의 대장 섹터로 본 결과입니다. 투자 자문·추천이 아닌 과거 기록입니다.',
+        theme: '상승률 15% 이상 오른 종목을 테마로 묶어 가장 많이 오른 테마를 그날의 대장 테마로 본 결과입니다. 투자 자문·추천이 아닌 과거 기록입니다.',
     };
 
     var state = { days: {}, type: 'stock', year: 0, month: 0, min: null, max: null, colorMap: {}, counts: {}, activeColors: {} };
@@ -26,6 +37,22 @@
         return String(s == null ? '' : s)
             .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    // 캔버스 설명문 줄바꿈 — 한글은 공백이 드물어 글자 단위로 폭(maxW)에 맞춰 끊는다.
+    function wrapText(ctx, text, maxW) {
+        var lines = [], line = '';
+        for (var i = 0; i < text.length; i++) {
+            var test = line + text[i];
+            if (line && ctx.measureText(test).width > maxW) {
+                lines.push(line);
+                line = text[i] === ' ' ? '' : text[i];
+            } else {
+                line = test;
+            }
+        }
+        if (line) lines.push(line);
+        return lines;
     }
 
     // 반복 대장 구분용 팔레트 — 중채도(톤다운하되 살짝 또렷하게). render 에서 등장순 배정.
@@ -245,8 +272,30 @@
         if (W < 80 || GH < 80) return;
 
         var PAD = CAP.PAD, HEAD_H = CAP.HEAD_H, S = CAP.SCALE;
-        var totalW = W + PAD * 2, totalH = HEAD_H + PAD + GH + PAD;
+
+        // 하단 합성 요소 — (1) 반복 대장 범례(있을 때만) (2) 대장 선별 기준 설명문.
+        // 캡처 동안만 저장버튼을 숨겨 범례를 전체폭으로 펴고, 클릭 안내(정적 이미지엔 무의미)는 가린다.
+        var legend = document.getElementById('calLegend');
+        var legendOn = !!(legend && legend.style.display !== 'none' && legend.children.length);
+        var $hint = legend ? legend.querySelector('.cal-legend__hint') : null;
+        var $save = document.getElementById('calSave');
+        var prevHint = $hint ? $hint.style.display : null;
+        var prevSave = $save ? $save.style.display : null;
+        if ($save) $save.style.display = 'none';
+        if ($hint) $hint.style.display = 'none';
+
+        var legendRect = legendOn ? legend.getBoundingClientRect() : null;
+        var contentBottom = legendOn ? legendRect.bottom : gridRect.bottom;
+
+        var totalW = W + PAD * 2;
         var ox = PAD - gridRect.left, oy = HEAD_H + PAD - gridRect.top; // 뷰포트→캔버스 보정
+        var bodyH = contentBottom - gridRect.top;                      // 그리드 상단 ~ 본문(그리드+범례) 하단
+
+        // 모드별 설명문 — 본문 폭에 맞춰 줄바꿈(폭 측정용 임시 컨텍스트)
+        var descText = DESC_TEXT[state.type] || DESC_TEXT.stock;
+        var measure = document.createElement('canvas').getContext('2d');
+        measure.font = '600 ' + CAP.DESC_SIZE + 'px ' + CAP.FONT;
+        var descLines = wrapText(measure, descText, totalW - PAD * 2);
 
         var rootCs = getComputedStyle(document.documentElement);
         var bodyCs = getComputedStyle(document.body);
@@ -255,6 +304,10 @@
         var primary = (rootCs.getPropertyValue('--text-primary') || '').trim() || bodyCs.color;
         var dim = isLight ? 'rgba(25,25,25,0.5)' : 'rgba(255,255,255,0.55)';
         var dividerColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.12)';
+
+        var descTop = HEAD_H + PAD + bodyH + CAP.DESC_GAP;             // 본문 아래 구분선 y
+        var descTextTop = descTop + CAP.DESC_PAD_TOP;                  // 설명문 첫 줄 top
+        var totalH = descTextTop + descLines.length * CAP.DESC_LH + PAD;
 
         var canvas = document.createElement('canvas');
         canvas.width = Math.round(totalW * S);
@@ -374,6 +427,28 @@
             paintInner(el);
             ctx.restore();
         }
+
+        // 반복 대장 범례를 그리드 아래에 합성 (전체폭으로 편 상태 그대로)
+        if (legendOn) paintInner(legend);
+
+        // 본문 아래: 구분선 + 대장 선별 기준 설명문
+        ctx.strokeStyle = dividerColor;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(PAD, descTop + 0.5);
+        ctx.lineTo(totalW - PAD, descTop + 0.5);
+        ctx.stroke();
+        ctx.font = '600 ' + CAP.DESC_SIZE + 'px ' + CAP.FONT;
+        ctx.fillStyle = dim;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        for (var li = 0; li < descLines.length; li++) {
+            ctx.fillText(descLines[li], PAD, descTextTop + li * CAP.DESC_LH);
+        }
+
+        // 캡처용으로 숨겼던 DOM 원복
+        if ($save) $save.style.display = prevSave || '';
+        if ($hint) $hint.style.display = prevHint || '';
 
         canvas.toBlob(function (b) {
             if (!b) return;
