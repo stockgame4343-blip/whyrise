@@ -296,9 +296,11 @@ var WhyApp = (function () {
         if (state.watchlistMode) return;
         var map = _overlayMap();
         if (!map) return;
+        // 이전 합성행 제거 — baseline(빌드행)에서 매번 재구성해야 늦게 도착한 reasonCache(이유)가
+        // 반영된다. (최신일은 liveCycle→loadDate 주기 리셋으로 우회됐지만, 과거일은 그 리셋이 없어
+        // 합성행이 첫 렌더의 '이유 분석 대기중' 으로 영구히 굳던 버그.)
         // 불변 머지 — getRankings 5분 캐시 객체(참조 공유)를 변형하지 않도록 복사본에만 덮어씀.
-        // (in-place 면 캐시 오염 → 다음 폴링/재방문에서 잘못된 baseline 으로 누적)
-        state.rankings = (state.rankings || []).map(function (r) {
+        state.rankings = (state.rankings || []).filter(function (r) { return !r._liveNew; }).map(function (r) {
             var lv = map[r.ticker];
             if (!lv) return r;
             var o = Object.assign({}, r);
