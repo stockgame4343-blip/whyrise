@@ -96,6 +96,10 @@
             .cal-cell__vol, .cal-cell__reason { display: none; }   /* 상승률/종목수만 */
         }
     </style>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
     <script>
@@ -152,7 +156,7 @@
             </div>
         </div>
 
-        <div class="loading" id="calLoading" style="display:none;">데이터 로딩 중...</div>
+        <div class="loading" id="calLoading" style="display:none;">데이터 로��� 중...</div>
         <div class="message" id="calMessage" style="display:none;"></div>
 
         <section class="cal-grid" id="calGrid"></section>
