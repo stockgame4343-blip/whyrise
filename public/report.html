@@ -31,7 +31,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260523a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260630a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20260630b">
 </head>
 <body>
     <script>
@@ -91,8 +91,8 @@
             <section class="report-section report-leader-section" id="leaderSection">
                 <div class="report-section__head">
                     <h2 class="report-section__title">오늘의 대장<button type="button" class="help-tip" data-help-title="오늘의 대장" data-help="그날 +15% 이상 급등한 종목 중 거래대금이 크고 상승률도 높은 대표 주도주입니다. 그날 시장의 주인공을 한 종목으로 압축해 보여줍니다." aria-label="오늘의 대장 설명">?</button></h2>
-                    <button type="button" class="leader-save-btn" id="leaderSaveBtn" title="오늘의 대장 이미지로 저장" aria-label="이미지로 저장" style="display:none">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <button type="button" class="tmap-save" id="leaderSaveBtn" title="오늘의 대장 이미지로 저장" aria-label="이미지로 저장">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     </button>
                 </div>
                 <div id="leaderCard"></div>
@@ -183,7 +183,8 @@
     <script src="/js/api.js?v=20260624a"></script>
     <script src="/js/date-picker.js?v=20260523a"></script>
     <script src="/js/ratings-sync.js?v=20260525a"></script>
-    <script src="/js/report.js?v=20260630a"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="/js/report.js?v=20260630b"></script>
     <script src="/js/help-tip.js?v=20260617b"></script>
     <script src="/js/visitor.js?v=20260621e"></script>
 </body>

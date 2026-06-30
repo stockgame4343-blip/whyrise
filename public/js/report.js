@@ -478,12 +478,8 @@ var WhyReport = (function () {
         if (!el) return;
         if (!row) {
             el.innerHTML = '<div class="report-empty">오늘 기준에 맞는 대장이 없습니다.</div>';
-            _lastLeaderCard = null;
-            _toggleLeaderSave(false);
             return;
         }
-        _lastLeaderCard = { row: row, sectorGroup: sectorGroup, themeGroup: themeGroup };
-        _toggleLeaderSave(true);
         var theme = themeOf(row);
         var reason = reasonOf(row);
         var sectorTheme = [row.sector, theme].filter(Boolean).join(' · ');
@@ -504,138 +500,78 @@ var WhyReport = (function () {
         '</article>';
     }
 
-    // ── 오늘의 대장 카드 이미지 저장 — 모바일 1080폭 canvas + ORGO 워터마크 ──
-    // 시각화 savePNG 는 SVG 직렬화지만 대장 카드는 HTML 이라, 데이터로 canvas 에 직접 그린다.
-    // 어디서(PC/모바일) 눌러도 동일한 모바일 사이즈로 산출.
-    var _lastLeaderCard = null;
+    // ── 오늘의 대장 카드 이미지 저장 — 실제 모바일 뷰를 html2canvas 로 캡처 + ORGO 워터마크 ──
+    // 시각화 savePNG 는 SVG 직렬화지만 대장 카드는 HTML 이라, DOM 을 그대로 캡처한다(새로 그리지 않음).
+    var LEADER_CAPTURE_W = 400;   // 캡처용 모바일 폭 — PC 에서 눌러도 모바일 세로 레이아웃으로 산출
 
-    function _toggleLeaderSave(show) {
-        var btn = $('leaderSaveBtn');
-        if (btn) btn.style.display = show ? '' : 'none';
-    }
-
-    function _lcRound(ctx, x, y, w, h, r) {
-        ctx.beginPath();
-        ctx.moveTo(x + r, y);
-        ctx.arcTo(x + w, y, x + w, y + h, r);
-        ctx.arcTo(x + w, y + h, x, y + h, r);
-        ctx.arcTo(x, y + h, x, y, r);
-        ctx.arcTo(x, y, x + w, y, r);
-        ctx.closePath();
-    }
-
-    // 폭 제한 안에서 말줄임(…)으로 한 줄 클립
-    function _lcClip(ctx, text, maxW) {
-        text = String(text || '');
-        if (ctx.measureText(text).width <= maxW) return text;
-        while (text.length > 1 && ctx.measureText(text + '…').width > maxW) text = text.slice(0, -1);
-        return text + '…';
-    }
-
-    function _lcTile(ctx, label, group, emptyText, x, y, w, h, C) {
-        _lcRound(ctx, x, y, w, h, 24);
-        ctx.fillStyle = C.CARD; ctx.fill();
-        var ix = x + 40;
-        ctx.textAlign = 'left';
-        ctx.fillStyle = C.DIM; ctx.font = '700 23px ' + C.FONT;
-        ctx.fillText(label, ix, y + 50);
-        if (!group) {
-            ctx.fillStyle = C.FG; ctx.font = '700 34px ' + C.FONT;
-            ctx.fillText(emptyText, ix, y + 104);
-            return;
-        }
-        ctx.fillStyle = C.FG; ctx.font = '800 40px ' + C.FONT;
-        ctx.fillText(_lcClip(ctx, group.key, w - 80), ix, y + 102);
-        ctx.fillStyle = C.DIM; ctx.font = '500 25px ' + C.FONT;
-        var meta = group.count + '종목 · 평균 ' + pct(group.avgRate, 1) + ' · 거래 ' + fmtAmount(group.totalVolume);
-        ctx.fillText(_lcClip(ctx, meta, w - 80), ix, y + 144);
-    }
-
-    function _drawLeaderCard() {
-        var data = _lastLeaderCard;
-        if (!data || !data.row) return;
-        var row = data.row;
-        var ratio = 2, W = 1080, PADX = 56;
-        var C = {
-            BG: '#0a0b0f', CARD: '#16171c', LINE: 'rgba(255,255,255,0.08)',
-            FG: '#ffffff', DIM: 'rgba(255,255,255,0.55)', DIM2: 'rgba(255,255,255,0.40)', UP: '#ff4d4f',
-            FONT: 'Pretendard, "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif',
-        };
-        var HEADER_H = 150, STOCK_H = 256, TILE_H = 172, GAP = 28;
-        var totalH = HEADER_H + 28 + STOCK_H + GAP + TILE_H + GAP + TILE_H + 48;
-
-        var cv = document.createElement('canvas');
-        cv.width = W * ratio; cv.height = totalH * ratio;
-        var ctx = cv.getContext('2d');
-        ctx.scale(ratio, ratio);
+    // 캡처 canvas 위에 워터마크 헤더(시각화 savePNG 와 동일 톤) 합성 → 최종 canvas
+    function _leaderWatermark(cardCanvas, light) {
+        var R = 2;                       // 캡처 scale 과 동일 (선명도)
+        var W = cardCanvas.width;        // 실제 픽셀
+        var HEAD = 46 * R;
+        var out = document.createElement('canvas');
+        out.width = W; out.height = cardCanvas.height + HEAD;
+        var ctx = out.getContext('2d');
+        var bg = light ? '#ffffff' : '#0a0b0f';
+        var fg = light ? '#0a0b0f' : '#ffffff';
+        var dim = light ? 'rgba(10,11,15,0.55)' : 'rgba(255,255,255,0.55)';
+        var line = light ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.12)';
+        var FONT = 'Pretendard, "Pretendard Variable", -apple-system, "Noto Sans KR", sans-serif';
+        var PX = 20 * R, BY = 28 * R;
+        ctx.fillStyle = bg; ctx.fillRect(0, 0, out.width, out.height);
         ctx.textBaseline = 'alphabetic';
-        ctx.fillStyle = C.BG; ctx.fillRect(0, 0, W, totalH);
-
-        // 워터마크 헤더 — 좌: ORGO·orgo.kr / 우: 오늘의 대장·날짜
         ctx.textAlign = 'left';
-        ctx.fillStyle = C.FG; ctx.font = '800 40px ' + C.FONT;
-        ctx.fillText('ORGO', PADX, 76);
-        var logoW = ctx.measureText('ORGO').width;
-        ctx.fillStyle = C.DIM; ctx.font = '600 23px ' + C.FONT;
-        ctx.fillText('orgo.kr', PADX + logoW + 16, 76);
+        ctx.fillStyle = fg; ctx.font = '800 ' + (16 * R) + 'px ' + FONT;
+        ctx.fillText('ORGO', PX, BY);
+        var lw = ctx.measureText('ORGO').width;
+        ctx.fillStyle = dim; ctx.font = '600 ' + (13 * R) + 'px ' + FONT;
+        ctx.fillText('orgo.kr', PX + lw + 10 * R, BY);
         ctx.textAlign = 'right';
-        ctx.fillStyle = C.DIM; ctx.font = '700 25px ' + C.FONT;
-        ctx.fillText('오늘의 대장', W - PADX, 60);
-        ctx.fillStyle = C.DIM2; ctx.font = '600 22px ' + C.FONT;
-        ctx.fillText(formatDate(state.dates[state.dateIndex] || ''), W - PADX, 90);
-        ctx.strokeStyle = C.LINE; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(PADX, HEADER_H); ctx.lineTo(W - PADX, HEADER_H); ctx.stroke();
-
-        // 대장주 박스
-        var y = HEADER_H + 28;
-        _lcRound(ctx, PADX, y, W - PADX * 2, STOCK_H, 24);
-        ctx.fillStyle = C.CARD; ctx.fill();
-        var ix = PADX + 40;
-        ctx.textAlign = 'left';
-        ctx.fillStyle = C.DIM; ctx.font = '700 24px ' + C.FONT;
-        ctx.fillText('대장주', ix, y + 54);
-        ctx.fillStyle = C.FG; ctx.font = '800 54px ' + C.FONT;
-        var nm = _lcClip(ctx, row.name || row.ticker, W - PADX * 2 - 220);
-        ctx.fillText(nm, ix, y + 120);
-        if (row.market) {
-            var nameW = ctx.measureText(nm).width;
-            ctx.fillStyle = C.DIM2; ctx.font = '600 24px ' + C.FONT;
-            ctx.fillText(row.market, ix + nameW + 20, y + 120);
-        }
-        ctx.font = '800 34px ' + C.FONT; ctx.fillStyle = C.UP;
-        var rateStr = pct(row.change_rate);
-        ctx.fillText(rateStr, ix, y + 174);
-        var rateW = ctx.measureText(rateStr).width;
-        ctx.fillStyle = C.DIM; ctx.font = '600 28px ' + C.FONT;
-        ctx.fillText(' · 거래 ' + fmtAmount(row.trading_value), ix + rateW, y + 174);
-        var theme = themeOf(row), reason = reasonOf(row);
-        var detailTag = theme || row.sector || '대장';
-        var detail = '[' + detailTag + '] ' + (reason || [row.sector, theme].filter(Boolean).join(' · ') || '거래대금 상위 종목');
-        ctx.fillStyle = C.DIM; ctx.font = '500 26px ' + C.FONT;
-        ctx.fillText(_lcClip(ctx, detail, W - PADX * 2 - 80), ix, y + 220);
-
-        // 대장섹터 / 대장테마
-        y += STOCK_H + GAP;
-        _lcTile(ctx, '대장섹터', data.sectorGroup, '주도 섹터 없음', PADX, y, W - PADX * 2, TILE_H, C);
-        y += TILE_H + GAP;
-        _lcTile(ctx, '대장테마', data.themeGroup, '핫 테마 없음', PADX, y, W - PADX * 2, TILE_H, C);
-
-        var fname = 'orgo-leader-' + (state.dates[state.dateIndex] || 'today') + '.png';
-        cv.toBlob(function (blob) {
-            if (!blob) return;
-            var url = URL.createObjectURL(blob);
-            var a = document.createElement('a');
-            a.href = url; a.download = fname;
-            document.body.appendChild(a); a.click(); a.remove();
-            setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-        }, 'image/png');
+        ctx.fillStyle = fg; ctx.font = '700 ' + (13 * R) + 'px ' + FONT;
+        ctx.fillText('오늘의 대장 · ' + formatDate(state.dates[state.dateIndex] || ''), W - PX, BY);
+        ctx.strokeStyle = line; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(0, HEAD - 0.5); ctx.lineTo(W, HEAD - 0.5); ctx.stroke();
+        ctx.drawImage(cardCanvas, 0, HEAD);
+        return out;
     }
 
     function downloadLeaderCard() {
-        if (!_lastLeaderCard || !_lastLeaderCard.row) return;
-        // 폰트(Pretendard) 로드 후 그려야 캔버스에 정확한 글꼴 적용 (미로드 시 시스템 폰트로 깨짐)
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(_drawLeaderCard);
-        else _drawLeaderCard();
+        if (typeof html2canvas === 'undefined') return;
+        var card = $('leaderCard');
+        if (!card) return;
+        var light = document.documentElement.getAttribute('data-theme') === 'light';
+        var bg = light ? '#ffffff' : '#0a0b0f';
+        // 오프스크린에 모바일 폭으로 클론 — 실제 모바일 세로 레이아웃 그대로 캡처(PC 에서도 동일)
+        var holder = document.createElement('div');
+        holder.style.cssText = 'position:fixed;left:-99999px;top:0;width:' + LEADER_CAPTURE_W +
+            'px;padding:16px;background:' + bg + ';box-sizing:border-box;';
+        if (light) holder.setAttribute('data-theme', 'light');
+        var clone = card.cloneNode(true);
+        var grid = clone.querySelector('.report-leader-grid');
+        if (grid) grid.style.gridTemplateColumns = '1fr';   // PC 가로 3열 → 모바일 세로 강제
+        holder.appendChild(clone);
+        document.body.appendChild(holder);
+
+        function cleanup() { if (holder.parentNode) holder.parentNode.removeChild(holder); }
+        function run() {
+            html2canvas(holder, { scale: 2, backgroundColor: bg, useCORS: true, logging: false })
+                .then(function (cardCanvas) {
+                    cleanup();
+                    _leaderWatermark(cardCanvas, light).toBlob(function (blob) {
+                        if (!blob) return;
+                        var url = URL.createObjectURL(blob);
+                        var a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'orgo-leader-' + (state.dates[state.dateIndex] || 'today') + '.png';
+                        document.body.appendChild(a); a.click(); a.remove();
+                        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+                    }, 'image/png');
+                })
+                .catch(cleanup);
+        }
+        // 폰트(Pretendard) 로드 후 캡처해야 글꼴이 정확
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
+        else run();
     }
 
     function groupStockHtml(row) {
