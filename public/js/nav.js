@@ -53,7 +53,29 @@
         nav.appendChild(item);
     }
 
+    // 텔레그램 채널 링크 — 전 페이지 상단(top-bar__right)에 주입. 스타일은 whyrise.css(.top-bar__tg).
+    function injectTelegram() {
+        var right = document.querySelector('.top-bar__right');
+        if (!right || right.querySelector('.top-bar__tg')) return;
+        var link = document.createElement('a');
+        link.className = 'top-bar__tg';
+        link.href = 'https://t.me/whyorgo';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.title = '텔레그램 채널 — 오늘의 시황 브리핑';
+        link.setAttribute('aria-label', 'ORGO 텔레그램 채널 (새 창에서 열림)');
+        link.innerHTML =
+            '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
+            '<path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 ' +
+            '3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 ' +
+            '12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>';
+        var toggle = document.getElementById('themeToggle');
+        if (toggle) right.insertBefore(link, toggle);
+        else right.appendChild(link);
+    }
+
     injectThemeItem();
+    injectTelegram();
     updateThemeIcons();
 
     try {

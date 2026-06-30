@@ -63,6 +63,19 @@ body {
 /* drawer 안 테마 아이템 — PC 에서는 항상 숨김 (모바일 @media 에서만 노출) */
 .top-bar__theme-item { display: none; }
 
+/* 텔레그램 채널 링크 — nav.js 가 top-bar__right 에 주입. 전 페이지 공통. PC·모바일 모두 노출. */
+.top-bar__tg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color .2s, transform .2s;
+}
+.top-bar__tg:hover { color: var(--wr-accent); transform: scale(1.12); }
+.top-bar__tg svg { display: block; width: 20px; height: 20px; }
+
 /* 글래스 공통 클래스 */
 .glass {
     background: var(--glass-bg);
