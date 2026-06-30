@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260514a">
     <link rel="stylesheet" href="/css/whyrise.css?v=20260621d">
-    <link rel="stylesheet" href="/css/home-sample.css?v=20260630b">
+    <link rel="stylesheet" href="/css/home-sample.css?v=20260630c">
 </head>
 <body>
     <script>
@@ -65,7 +65,7 @@
     <!-- Hero — 가치 제안 헤드라인 + 검색 -->
     <section class="hero hs-hero">
         <div class="frame hero__inner">
-            <span class="hs-hero__eyebrow">한국 주식 급등 분석 · 매일 자동 집계</span>
+            <span class="hs-hero__eyebrow">한국 주식 급등 이유 분석</span>
             <h1 class="hs-hero__title">오늘 오른 종목, <em>왜</em> 올랐을까?</h1>
             <div class="hero__search-wrap">
                 <input type="text" class="hero__search-input" id="heroSearch"
@@ -75,13 +75,13 @@
                 <span class="hero__placeholder-suffix">왜 오름?</span>
                 <ul class="hero__suggest" id="heroSuggest" hidden></ul>
             </div>
-            <p class="hero__subtitle">차트 말고 <strong>이유</strong>. 급등 이유 · 대장주 · 테마 · 시각화까지 <strong>한눈에</strong>.</p>
+            <p class="hero__subtitle">차트는 <strong>얼마나</strong> 올랐는지만 보여줘요. ORGO는 <strong>왜</strong> 올랐는지를 찾아 정리합니다.</p>
             <div class="hs-hero__stats">
                 <span class="hs-hero__stat"><b>코스피·코스닥</b> 전 종목</span>
                 <span class="hs-hero__stat-dot"></span>
-                <span class="hs-hero__stat"><b>매일</b> 자동 집계</span>
+                <span class="hs-hero__stat"><b>매일 장마감</b> 자동 집계</span>
                 <span class="hs-hero__stat-dot"></span>
-                <span class="hs-hero__stat"><b>급등 이유·뉴스</b> 연결</span>
+                <span class="hs-hero__stat"><b>상승 이유·뉴스</b> 연결</span>
             </div>
         </div>
     </section>
@@ -112,7 +112,7 @@
             <div class="hs-section__head">
                 <div class="hs-section__heading">
                     <h2 class="hs-section__title" id="hsLeadTitle">오늘의 대장</h2>
-                    <span class="hs-section__sub">급등이 몰린 대장 종목 · 섹터 · 테마</span>
+                    <span class="hs-section__sub">급등이 가장 몰린 종목 · 섹터 · 테마</span>
                 </div>
                 <a class="hs-section__more" href="/sample2.html">대장 캘린더
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -130,71 +130,78 @@
             <div class="hs-section__head">
                 <div class="hs-section__heading">
                     <h2 class="hs-section__title" id="hsFeatTitle">더 깊게 보기</h2>
-                    <span class="hs-section__sub">같은 데이터를, 다른 각도로</span>
+                    <span class="hs-section__sub">같은 데이터, 여섯 가지 시선</span>
                 </div>
             </div>
             <div class="hs-features">
 
                 <a class="hs-feature glass" href="/sample2.html">
                     <span class="hs-feature__media">
-                        <img src="/img/home-sample/calendar.webp?v=20260630b" alt="대장캘린더 미리보기" width="800" height="347" loading="lazy">
+                        <img src="/img/home-sample/calendar.webp?v=20260630c" alt="대장캘린더 미리보기" width="800" height="450" loading="lazy">
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">대장캘린더</span>
-                        <span class="hs-feature__desc">날짜별 그날의 대장 종목·섹터·테마를 달력처럼 모아봐요.</span>
+                        <span class="hs-feature__desc">그날의 대장 종목·섹터·테마를 달력 한 장으로. 지난 흐름을 빠르게 되짚어요.</span>
                     </span>
                 </a>
 
                 <a class="hs-feature glass" href="/bubbles2.html">
                     <span class="hs-feature__media">
-                        <img src="/img/home-sample/bubble.webp?v=20260630b" alt="버블맵 미리보기" width="800" height="294" loading="lazy">
+                        <img src="/img/home-sample/bubble.webp?v=20260630c" alt="버블맵 미리보기" width="800" height="450" loading="lazy">
                         <span class="hs-feature__tag">시각화</span>
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">버블맵</span>
-                        <span class="hs-feature__desc">시총·거래대금을 원의 크기로, 등락을 색으로 실시간 표시.</span>
+                        <span class="hs-feature__desc">시총·거래대금은 원의 크기, 등락은 색으로. 오늘 시장이 한 화면에.</span>
                     </span>
                 </a>
 
                 <a class="hs-feature glass" href="/treemap.html">
                     <span class="hs-feature__media">
-                        <img src="/img/home-sample/tree.webp?v=20260630b" alt="트리맵 미리보기" width="800" height="294" loading="lazy">
+                        <img src="/img/home-sample/tree.webp?v=20260630c" alt="트리맵 미리보기" width="800" height="450" loading="lazy">
                         <span class="hs-feature__tag">시각화</span>
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">트리맵</span>
-                        <span class="hs-feature__desc">시총 상위 종목의 등락을 사각형 크기·색으로 한 화면에.</span>
+                        <span class="hs-feature__desc">시총 비중은 사각형 크기, 등락은 색으로. 시장 전체 지도를 한눈에.</span>
                     </span>
                 </a>
 
                 <a class="hs-feature glass" href="/flowmap.html">
                     <span class="hs-feature__media">
-                        <img src="/img/home-sample/flow.webp?v=20260630b" alt="주도주 흐름 미리보기" width="800" height="294" loading="lazy">
+                        <img src="/img/home-sample/flow.webp?v=20260630c" alt="주도주 흐름 미리보기" width="800" height="450" loading="lazy">
                         <span class="hs-feature__tag">시각화</span>
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">주도주 흐름</span>
-                        <span class="hs-feature__desc">오늘 자금이 어떤 섹터·테마로 쏠리는지 흐름으로 봅니다.</span>
+                        <span class="hs-feature__desc">자금이 어떤 섹터·테마로 몰리는지, 오늘의 주도 흐름을 한눈에.</span>
                     </span>
                 </a>
 
-                <a class="hs-feature glass" href="/screening.html">
-                    <span class="hs-feature__media">
-                        <img src="/img/home-sample/screening.webp?v=20260630b" alt="스크리닝 미리보기" width="800" height="294" loading="lazy">
+                <a class="hs-feature hs-feature--icon glass" href="/screening.html">
+                    <span class="hs-feature__media hs-feature__media--icon">
+                        <svg class="hs-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                        </svg>
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">스크리닝</span>
-                        <span class="hs-feature__desc">급등 횟수·섹터·테마·시총으로 이력 종목을 빠르게 필터링.</span>
+                        <span class="hs-feature__desc">급등 횟수·섹터·테마·시총 조건으로 원하는 종목만 골라보세요.</span>
                     </span>
                 </a>
 
-                <a class="hs-feature glass" href="/report.html">
-                    <span class="hs-feature__media">
-                        <img src="/img/home-sample/report.webp?v=20260630b" alt="리포트 미리보기" width="800" height="333" loading="lazy">
+                <a class="hs-feature hs-feature--icon glass" href="/report.html">
+                    <span class="hs-feature__media hs-feature__media--icon">
+                        <svg class="hs-feature__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                            <line x1="3" y1="21" x2="21" y2="21"/>
+                        </svg>
                     </span>
                     <span class="hs-feature__body">
                         <span class="hs-feature__title">리포트</span>
-                        <span class="hs-feature__desc">주도 섹터·핫테마·52주 신고가·반등주를 날짜별로 정리.</span>
+                        <span class="hs-feature__desc">주도 섹터·핫테마·52주 신고가·반등주를 매일 정리한 마감 리포트.</span>
                     </span>
                 </a>
 
