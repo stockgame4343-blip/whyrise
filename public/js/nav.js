@@ -4,6 +4,19 @@
 (function () {
     'use strict';
 
+    // Vercel Web Analytics — 정적 사이트용 스크립트 주입(@vercel/analytics 의 inject() 동등).
+    // 빌드 단계가 없어 npm 패키지를 못 쓰므로 Vercel 이 자동 서빙하는 /_vercel/insights/script.js 를 로드.
+    // (Vercel 대시보드에서 프로젝트 Analytics 를 켜야 실제 수집이 시작된다.)
+    (function () {
+        if (window.__vaInjected) return;
+        window.__vaInjected = true;
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        var s = document.createElement('script');
+        s.defer = true;
+        s.src = '/_vercel/insights/script.js';
+        document.head.appendChild(s);
+    })();
+
     var btn = document.getElementById('navToggle');
     var nav = document.querySelector('.top-bar__nav');
     if (!btn || !nav) return;
