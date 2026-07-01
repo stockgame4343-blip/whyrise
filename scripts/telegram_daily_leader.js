@@ -116,7 +116,8 @@ function buildCaption(ymd, L, comment) {
 function templateComment(L) {
     var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name);
     if (!subj) return '오늘도 시장 잘 살펴보세요 👀';
-    return '오늘은 ' + subj + '가(이) 제대로 달렸네요 🚀';
+    // 조사 문제 회피 — '쪽이'는 받침 유무와 무관하게 자연스러움
+    return '오늘은 ' + subj + ' 쪽이 제대로 달렸네요 🚀';
 }
 
 // ── AI 멘트 (Claude) ──
