@@ -106,6 +106,23 @@
         copy.parentNode.insertBefore(link, copy);
     }
 
+    // '오른종목'(/rise.html) nav 링크 주입 — 홈 링크 바로 뒤. /rise 경로에서 active.
+    function injectRiseNav() {
+        if (nav.querySelector('[data-nav="rise"]')) return;
+        var home = nav.querySelector('a[href="/"]');
+        var link = document.createElement('a');
+        link.className = 'top-bar__link';
+        link.setAttribute('data-nav', 'rise');
+        link.href = '/rise.html';
+        link.textContent = '오른종목';
+        var path = location.pathname;
+        if (path === '/rise.html' || path === '/rise') link.classList.add('top-bar__link--active');
+        if (home && home.nextSibling) nav.insertBefore(link, home.nextSibling);
+        else if (home) nav.appendChild(link);
+        else nav.insertBefore(link, nav.firstChild);
+    }
+
+    injectRiseNav();
     injectThemeItem();
     injectTelegram();
     injectFooterTelegram();

@@ -6,7 +6,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ORGO">
-    <link rel="apple-touch-icon" href="/favicon.svg">
     <title>ORGO - 왜 올랐는지 한눈에</title>
     <meta name="description" content="차트 말고 이유. 오늘 오른 한국 주식 종목이 왜 올랐는지 급등 이유, 뉴스, 섹터·테마를 한눈에 찾아드립니다.">
     <meta name="keywords" content="ORGO,이거왜오름,왜 올랐나,왜 올랐는지,상승 이유,급등 이유,상한가 이유,급등주,오늘 오른 종목,종목 검색,한국 주식,코스피,코스닥,52주 신고가">
@@ -14,9 +13,10 @@
     <meta name="naver-site-verification" content="d1fa48b231a7701c86a0da43d87179bc4e40dc9d" />
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1">
-    <meta name="theme-color" content="#0a0b0f">
+    <meta name="theme-color" content="#101218">
     <link rel="canonical" href="https://orgo.kr/">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ORGO">
     <meta property="og:title" content="ORGO - 왜 올랐는지 한눈에">
@@ -48,30 +48,29 @@
     }
     </script>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=20260514a">
     <link rel="stylesheet" href="/css/whyrise.css?v=20260621d">
+    <link rel="stylesheet" href="/css/home.css?v=20260701p1">
 </head>
-<body>
+<body class="home2-page home6-page">
     <script>
-    (function(){
-        var t = localStorage.getItem('theme') || 'dark';
-        if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+    (function () {
+        var theme = localStorage.getItem('theme') || 'dark';
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
     })();
     </script>
 
-    <!-- 상단 타이틀 바 -->
+    <a class="home2-skip" href="#home2Main">본문으로 바로가기</a>
+
     <header class="top-bar">
         <div class="top-bar__inner frame">
             <a class="top-bar__logo" href="/" aria-label="ORGO 홈">
                 <svg class="top-bar__logo-svg" viewBox="0 0 96 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-                    <text x="0" y="29" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="900" fill="currentColor" letter-spacing="-1.5">ORGO</text>
+                    <text x="0" y="29" font-family="Pretendard, sans-serif" font-size="30" font-weight="900" fill="currentColor" letter-spacing="-1.5">ORGO</text>
                 </svg>
                 <span class="sr-only">ORGO</span>
             </a>
-            <nav class="top-bar__nav">
+            <nav class="top-bar__nav" aria-label="주요 메뉴">
                 <a href="/" class="top-bar__link top-bar__link--active">홈</a>
                 <a href="/report.html" class="top-bar__link">리포트</a>
                 <a href="/sample2.html" class="top-bar__link">대장캘린더</a>
@@ -80,195 +79,313 @@
             </nav>
             <div class="top-bar__right">
                 <button class="top-bar__hamburger" id="navToggle" type="button" aria-label="메뉴" aria-expanded="false">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
                 </button>
-                <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드 전환">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <button class="theme-toggle" id="themeToggle" type="button" title="다크/라이트 모드 전환">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Hero 검색바 -->
-    <section class="hero">
-        <div class="frame hero__inner">
-            <div class="hero__search-wrap">
-                <span class="hero__placeholder-prefix"></span>
-                <input type="text" class="hero__search-input" id="heroSearch"
-                       placeholder="삼성전자"
-                       autocomplete="off"
-                       spellcheck="false">
-                <span class="hero__placeholder-suffix">왜 오름?</span>
-                <ul class="hero__suggest" id="heroSuggest" hidden></ul>
+    <main id="home2Main">
+        <section class="home2-hero">
+            <div class="home6-hero-art" aria-hidden="true">
+                <svg viewBox="0 0 1400 700" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <linearGradient id="home6FieldGradient" x1="0" x2="1">
+                            <stop offset="0" stop-color="#397ee8" stop-opacity=".1"/>
+                            <stop offset=".34" stop-color="#5b9df9" stop-opacity=".72"/>
+                            <stop offset=".5" stop-color="#35d9ff" stop-opacity=".95"/>
+                            <stop offset=".66" stop-color="#5b9df9" stop-opacity=".72"/>
+                            <stop offset="1" stop-color="#397ee8" stop-opacity=".1"/>
+                        </linearGradient>
+                        <filter id="home6FieldGlow" x="-40%" y="-40%" width="180%" height="180%">
+                            <feGaussianBlur stdDeviation="7"/>
+                        </filter>
+                        <symbol id="home6LinePulse" viewBox="0 0 480 300">
+                            <path d="M226 8H254M212 22H268M196 36H284M180 50H300M162 64H318M142 78H338M120 92H360M96 106H384M70 120H410M42 134H438M14 148H466M42 162H438M70 176H410M96 190H384M120 204H360M142 218H338M162 232H318M180 246H300M196 260H284M212 274H268M226 288H254"/>
+                        </symbol>
+                        <pattern id="home6MicroGrid" width="44" height="44" patternUnits="userSpaceOnUse">
+                            <path d="M44 0H0V44" fill="none" stroke="currentColor" stroke-opacity=".2"/>
+                            <circle cx="0" cy="0" r="1.2" fill="currentColor" fill-opacity=".34"/>
+                        </pattern>
+                        <linearGradient id="home6GridFade" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#5b9df9" stop-opacity=".04"/>
+                            <stop offset=".5" stop-color="#35d9ff" stop-opacity=".12"/>
+                            <stop offset="1" stop-color="#5b9df9" stop-opacity=".03"/>
+                        </linearGradient>
+                    </defs>
+                    <rect class="home6-hero-art__micro-grid" x="0" y="0" width="1400" height="700" fill="url(#home6MicroGrid)"/>
+                    <g class="home6-hero-art__field home6-hero-art__field--glow" filter="url(#home6FieldGlow)">
+                        <use href="#home6LinePulse" x="-120" y="64" width="620" height="388"/>
+                        <use href="#home6LinePulse" x="900" y="236" width="620" height="388"/>
+                    </g>
+                    <g class="home6-hero-art__field">
+                        <use href="#home6LinePulse" x="-120" y="64" width="620" height="388"/>
+                        <use href="#home6LinePulse" x="900" y="236" width="620" height="388"/>
+                    </g>
+                    <g class="home6-hero-art__nodes">
+                        <circle cx="188" cy="402" r="4"/><circle cx="188" cy="402" r="12"/>
+                        <circle cx="1212" cy="298" r="4"/><circle cx="1212" cy="298" r="12"/>
+                    </g>
+                </svg>
             </div>
-            <p class="hero__subtitle">차트 말고 <strong>이유</strong>. 왜 올랐는지 <strong>찾아드려요</strong>.</p>
-        </div>
-    </section>
+            <div class="home2-shell home2-hero__grid">
+                <div class="home2-hero__copy home2-reveal is-visible">
+                    <p class="home2-kicker">한국 주식 상승 이유 브리핑</p>
+                    <h1>
+                        <span class="home6-stock-rotator" aria-hidden="true">
+                            <em id="home6RotatingStock">SK하이닉스</em>
+                        </span><br>
+                        <span><em>왜</em> 올랐을까?</span>
+                        <span class="sr-only">국내 주요 종목과 6월 대장주, 왜 올랐을까?</span>
+                    </h1>
+                    <p class="home2-hero__lead">
+                        오늘 오른 종목의 뉴스·공시·테마를 모아 <strong>“왜 올랐는지”</strong> 먼저 보여드려요.
+                    </p>
 
-    <div class="frame">
-        <!-- 좌: 날짜 / 우: 관심 -->
-        <nav class="toolbar toolbar--simple">
-            <div class="report__date-bar">
-                <button class="date-nav" id="datePrev" type="button">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <span class="date-text" id="dateDisplay" title="클릭하여 거래일 선택">-</span>
-                <button class="date-nav" id="dateNext" type="button">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-            </div>
-            <div class="seg" id="marketSeg" role="group" aria-label="시장 선택">
-                <button class="seg__btn seg__btn--active" data-market="ALL" type="button">전체</button>
-                <button class="seg__btn" data-market="KOSPI" type="button">코스피</button>
-                <button class="seg__btn" data-market="KOSDAQ" type="button">코스닥</button>
-            </div>
-            <div class="toolbar__right">
-                <button type="button" class="help-tip" data-help-title="오늘의 급등 종목" data-help="오늘 +15% 이상 오른 종목을 상승률 순으로 정리한 목록입니다. 각 종목의 왜 오름?에 그날 상승 이유가 들어가고, 장중에는 현재가·상승률이 실시간으로 반영됩니다. 별(관심)을 누르면 종목을 저장해 따로 볼 수 있어요." aria-label="목록 설명">?</button>
-                <button class="tab tab--watchlist" id="watchlistBtn" type="button">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
-                    관심
-                </button>
-            </div>
-        </nav>
-
-        <div class="message" id="message" style="display:none;"></div>
-        <div class="loading" id="loading" style="display:none;">데이터 로딩 중...</div>
-
-        <!-- 메인: 오늘 +15% 이상 종목 -->
-        <main class="layout-main">
-            <div class="table-wrap glass">
-                <table class="ranking-table whyrise-table" id="rankingTable">
-                    <thead>
-                        <tr>
-                            <th class="col-rank th-rank-reset" title="기본 순서로">#</th>
-                            <th class="col-name th-sort" data-sort-key="name">종목명 <span class="sort-ind"></span></th>
-                            <th class="col-reason col-reason--hero th-sort" data-sort-key="reason">왜 오름? <span class="sort-ind"></span></th>
-                            <th class="col-change th-sort" data-sort-key="change">상승률 <span class="sort-ind"></span></th>
-                            <th class="col-volume th-sort" data-sort-key="volume">거래대금 <span class="sort-ind"></span></th>
-                            <th class="col-cap th-sort" data-sort-key="cap">시가총액 <span class="sort-ind"></span></th>
-                            <th class="col-sector th-sort" data-sort-key="sector">섹터 <span class="sort-ind"></span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="rankingBody"></tbody>
-                </table>
-            </div>
-            <div class="ranking-meta">
-                <span class="tmap-live tmap-live--idle" id="homeLive">
-                    <span class="tmap-live__ring">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle class="tmap-live__ring-bg" cx="12" cy="12" r="9"/>
-                            <circle class="tmap-live__ring-fg" cx="12" cy="12" r="9"/>
+                    <div class="home2-search">
+                        <label class="sr-only" for="heroSearch">종목명 또는 종목코드 검색</label>
+                        <svg class="home2-search__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>
                         </svg>
-                    </span>
-                    <span class="tmap-live__label" id="homeLiveLabel"></span>
-                </span>
-            </div>
-        </main>
-    </div>
+                        <input id="heroSearch" class="hero__search-input home2-search__input" type="search"
+                               placeholder="종목명이나 종목코드를 검색하세요" autocomplete="off" spellcheck="false"
+                               role="combobox" aria-autocomplete="list" aria-controls="heroSuggest" aria-expanded="false">
+                        <button class="home2-search__submit" id="home2SearchSubmit" type="button" aria-label="검색">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                        <ul class="hero__suggest home2-search__suggest" id="heroSuggest" hidden></ul>
+                    </div>
+                    <p class="home2-search__feedback" id="home2SearchFeedback" role="status" aria-live="polite" hidden></p>
 
-    <!-- 푸터 -->
-    <div class="footer">
+                    <div class="home2-hero__actions">
+                        <a class="home2-btn home2-btn--primary" href="/rise.html">
+                            오른 종목 전체보기
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg>
+                        </a>
+                        <a class="home2-btn home2-btn--ghost" href="/report.html">오늘의 리포트</a>
+                    </div>
+                </div>
+            </div>
+            <a class="home6-scroll-cue" href="#home6Today" aria-label="오늘의 시장 요약으로 스크롤">
+                <span>SCROLL</span>
+                <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m7 10 5 5 5-5"/></svg>
+                </i>
+            </a>
+        </section>
+
+        <section class="home2-section home2-section--preview" id="home6Today">
+            <div class="home2-shell">
+                <div class="home2-section__head home2-section__head--center home2-reveal">
+                    <div>
+                        <p class="home2-overline">TODAY</p>
+                        <h2>오늘 시장을 만든 세 가지 흐름</h2>
+                        <p>대장주에서 섹터와 테마까지, 움직임이 모인 곳부터 확인해 보세요.</p>
+                    </div>
+                </div>
+
+                <div class="home6-today-meta home2-reveal">
+                    <span class="home2-live home6-market-date" id="home2MarketStatus"><i></i><span id="home2Date">불러오는 중</span></span>
+                </div>
+
+                <div class="home6-market-cards">
+                    <article class="home6-market-card home6-market-card--leader home2-reveal">
+                        <div class="home6-market-card__head">
+                            <span class="home6-market-card__step">01</span>
+                            <span class="home6-market-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4v1a4 4 0 0 0 4 4M17 6h3v1a4 4 0 0 1-4 4"/></svg>
+                            </span>
+                        </div>
+                        <p class="home6-market-card__eyebrow">TODAY'S LEADER</p>
+                        <h3>오늘의 대장주</h3>
+                        <div class="home6-leader-card__body" id="home2HeroLeader" aria-live="polite">
+                            <span class="home2-skeleton home2-skeleton--short"></span>
+                            <span class="home2-skeleton"></span>
+                            <span class="home2-skeleton home2-skeleton--medium"></span>
+                        </div>
+                        <div class="home6-leader-counts" aria-label="오늘 오른 종목 현황">
+                            <span>오른 종목 <strong id="home2StatStocks">—</strong></span>
+                            <span>상한가 근접 <strong id="home2StatLimit">—</strong></span>
+                        </div>
+                        <a class="home6-market-card__action" href="/report.html">대장주 전체보기 <span>→</span></a>
+                    </article>
+
+                    <article class="home6-market-card home2-reveal">
+                        <div class="home6-market-card__head">
+                            <span class="home6-market-card__step">02</span>
+                            <span class="home6-market-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg>
+                            </span>
+                        </div>
+                        <p class="home6-market-card__eyebrow">LEADING SECTOR</p>
+                        <h3>오늘의 주도 섹터</h3>
+                        <div class="home6-group-feature" id="home2SectorFeature" aria-live="polite">
+                            <span class="home2-skeleton home2-skeleton--short"></span>
+                            <span class="home2-skeleton"></span>
+                            <span class="home2-skeleton home2-skeleton--medium"></span>
+                        </div>
+                        <a class="home6-market-card__action" id="home2SectorAction" href="/screening.html">섹터 전체보기 <span>→</span></a>
+                    </article>
+
+                    <article class="home6-market-card home2-reveal">
+                        <div class="home6-market-card__head">
+                            <span class="home6-market-card__step">03</span>
+                            <span class="home6-market-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m20 13-7 7-9-9V4h7l9 9Z"/><circle cx="8.5" cy="8.5" r="1.2"/></svg>
+                            </span>
+                        </div>
+                        <p class="home6-market-card__eyebrow">HOT THEME</p>
+                        <h3>오늘의 핫 테마</h3>
+                        <div class="home6-group-feature" id="home2ThemeFeature" aria-live="polite">
+                            <span class="home2-skeleton home2-skeleton--short"></span>
+                            <span class="home2-skeleton"></span>
+                            <span class="home2-skeleton home2-skeleton--medium"></span>
+                        </div>
+                        <a class="home6-market-card__action" id="home2ThemeAction" href="/screening.html">테마 전체보기 <span>→</span></a>
+                    </article>
+                </div>
+                <p class="home6-today-note"><span id="home2UpdatedAt">최신 데이터</span> · 공개 시장 데이터 자동 집계</p>
+            </div>
+        </section>
+
+        <section class="home2-section home6-why" id="home6Why">
+            <div class="home2-shell">
+                <div class="home2-section__head home2-section__head--center home2-reveal">
+                    <div>
+                        <p class="home2-overline">WHY</p>
+                        <h2>오늘 오른 종목, 이유부터</h2>
+                        <p>오늘 오른 종목의 뉴스·공시·테마를 한 줄로 정리했어요.</p>
+                    </div>
+                </div>
+
+                <div class="home6-why-list home2-reveal" id="home6WhyList" aria-live="polite" aria-label="오늘 오른 종목 미리보기">
+                    <span class="home6-why-skeleton"></span>
+                    <span class="home6-why-skeleton"></span>
+                    <span class="home6-why-skeleton"></span>
+                    <span class="home6-why-skeleton"></span>
+                    <span class="home6-why-skeleton"></span>
+                    <span class="home6-why-skeleton"></span>
+                </div>
+                <a class="home6-why-more home2-reveal" href="/rise.html">오늘 오른 종목 전체보기 <span>→</span></a>
+            </div>
+        </section>
+
+        <section class="home2-section home2-section--explore">
+            <div class="home2-shell">
+                <div class="home2-section__head home2-section__head--center home2-reveal">
+                    <div>
+                        <p class="home2-overline">EXPLORE</p>
+                        <h2>같은 시장을, 더 잘 보이는 방식으로</h2>
+                        <p>표가 답답한 날에는 흐름과 크기로 시장을 읽어보세요.</p>
+                    </div>
+                </div>
+
+                <div class="home2-tools">
+                    <a class="home2-tool home2-tool--wide home2-reveal" href="/flowmap.html">
+                        <span class="home2-tool__media">
+                            <img class="home6-thumb home6-thumb--flow" src="/img/home-sample/flow.webp?v=20260630c" alt="" width="800" height="450" loading="lazy">
+                            <span class="home2-tool__shade"></span>
+                        </span>
+                        <span class="home2-tool__body">
+                            <span>
+                                <strong>주도주 흐름</strong>
+                                <small>자금이 어느 섹터와 테마로 모였는지</small>
+                            </span>
+                            <i>→</i>
+                        </span>
+                    </a>
+                    <a class="home2-tool home2-reveal" href="/bubbles2.html">
+                        <span class="home2-tool__media">
+                            <img class="home6-thumb home6-thumb--bubble" src="/img/home-sample/bubble.webp?v=20260630c" alt="" width="800" height="450" loading="lazy">
+                            <span class="home2-tool__shade"></span>
+                        </span>
+                        <span class="home2-tool__body">
+                            <span>
+                                <strong>버블맵</strong>
+                                <small>시총과 상승률로 보는 오늘의 열기</small>
+                            </span>
+                            <i>→</i>
+                        </span>
+                    </a>
+                    <a class="home2-tool home2-reveal" href="/treemap.html">
+                        <span class="home2-tool__media">
+                            <img class="home6-thumb home6-thumb--tree" src="/img/home-sample/tree.webp?v=20260630c" alt="" width="800" height="450" loading="lazy">
+                            <span class="home2-tool__shade"></span>
+                        </span>
+                        <span class="home2-tool__body">
+                            <span>
+                                <strong>트리맵</strong>
+                                <small>섹터·테마별 비중을 한눈에</small>
+                            </span>
+                            <i>→</i>
+                        </span>
+                    </a>
+                    <a class="home2-tool home2-reveal" href="/sample2.html">
+                        <span class="home2-tool__media">
+                            <img class="home6-thumb home6-thumb--calendar" src="/img/home-sample/calendar.webp?v=20260630c" alt="" width="800" height="450" loading="lazy">
+                            <span class="home2-tool__shade"></span>
+                        </span>
+                        <span class="home2-tool__body">
+                            <span>
+                                <strong>대장캘린더</strong>
+                                <small>날짜마다 시장을 이끈 종목과 테마</small>
+                            </span>
+                            <i>→</i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home2-final" id="home6Start">
+            <div class="home6-final-art" aria-hidden="true">
+                <svg viewBox="0 0 1400 560" preserveAspectRatio="xMidYMid slice">
+                    <g class="home6-final-art__field home6-final-art__field--glow" filter="url(#home6FieldGlow)">
+                        <use href="#home6LinePulse" x="-40" y="60" width="620" height="388"/>
+                        <use href="#home6LinePulse" x="820" y="112" width="620" height="388"/>
+                    </g>
+                    <g class="home6-final-art__field">
+                        <use href="#home6LinePulse" x="-40" y="60" width="620" height="388"/>
+                        <use href="#home6LinePulse" x="820" y="112" width="620" height="388"/>
+                    </g>
+                    <g class="home6-final-art__nodes">
+                        <circle cx="272" cy="254" r="4"/><circle cx="272" cy="254" r="12"/>
+                        <circle cx="1128" cy="306" r="4"/><circle cx="1128" cy="306" r="12"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="home2-shell home2-final__inner home2-reveal">
+                <p class="home2-overline">START HERE</p>
+                <h2>오늘의 주도주부터<br>오른 이유와 시장 흐름까지.</h2>
+                <p>주도주와 시장 흐름을 한눈에 보고, 종목이 오른 이유까지 바로 확인하세요.</p>
+                <div class="home2-final__actions">
+                    <a class="home2-btn home2-btn--primary" href="/rise.html">오른 종목 전체보기</a>
+                    <a class="home2-btn home2-btn--ghost" href="/report.html">오늘의 리포트</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer home2-footer">
         <footer class="footer__wrap">
             <div class="frame footer__inner">
-                <div class="visitor-row" id="visitorRow" style="display:none;">
-                    <span class="visitor-row__dot"></span>
-                    <span><span class="visitor-row__num" id="visitorOnline">—</span>명 보는 중</span>
-                    <span class="visitor-row__sep">·</span>
-                    <span>누적 <span class="visitor-row__num" id="visitorUnique">—</span>명</span>
-                </div>
                 <p class="footer__disclaimer">
-                    <strong>본 사이트는 유사투자자문업 신고를 하지 않았으며, 어떠한 형태의 투자자문·종목 추천·매수/매도 권유도 제공하지 않습니다.</strong><br>
-                    모든 수치(상승이유·테마·점수 등)는 공개된 과거 시장 데이터를 기계적으로 집계·분류한 결과일 뿐이며, 특정 종목의 매수·매도 신호나 미래 수익을 의미하지 않습니다.
-                    데이터는 외부 소스(네이버 금융 등)에서 수집되어 지연·오류가 있을 수 있고 정확성을 보장하지 않습니다.
-                    모든 투자 판단과 그에 따른 손익은 전적으로 이용자 본인의 책임입니다.
+                    <strong>본 사이트는 투자자문·종목 추천·매수/매도 권유를 제공하지 않습니다.</strong><br>
+                    모든 정보는 공개된 과거 시장 데이터를 기계적으로 집계·분류한 결과이며, 미래 수익이나 매수·매도 신호를 의미하지 않습니다.
+                    데이터는 지연·오류가 있을 수 있으며 모든 투자 판단과 손익은 이용자 본인의 책임입니다.
                 </p>
-                <p class="footer__copy">&copy; 2026 ORGO. 비영리 개인 프로젝트. <a href="/admin.html" class="footer__admin-link">·</a></p>
+                <p class="footer__copy">&copy; 2026 ORGO. 비영리 개인 프로젝트.</p>
             </div>
         </footer>
     </div>
 
-    <!-- 뉴스 모달 -->
-    <div class="modal-overlay" id="newsModal" style="display:none;">
-        <div class="modal news-modal">
-            <div class="modal__header">
-                <h3 class="modal__title" id="newsModalTitle">관련 뉴스</h3>
-                <button class="modal__close" id="newsModalClose">&times;</button>
-            </div>
-            <div class="modal__body" id="newsModalBody"></div>
-        </div>
-    </div>
-
-    <!-- 메모 모달 -->
-    <div class="modal-overlay" id="memoModal" style="display:none;">
-        <div class="modal">
-            <div class="modal__header">
-                <h3 class="modal__title" id="memoModalTitle">메모</h3>
-                <button class="modal__close" id="memoModalClose">&times;</button>
-            </div>
-            <div class="modal__body">
-                <textarea class="memo-textarea" id="memoTextarea" placeholder="이 종목에 대한 메모를 작성하세요..."></textarea>
-                <div class="memo-actions">
-                    <button class="memo-delete" id="memoDelete">삭제</button>
-                    <button class="memo-save" id="memoSave">저장</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 관리자 편집 모달 -->
-    <div class="modal-overlay" id="adminEditModal" style="display:none;">
-        <div class="modal">
-            <div class="modal__header">
-                <h3 class="modal__title" id="adminEditTitle">상승이유 편집</h3>
-                <button class="modal__close" id="adminEditClose">&times;</button>
-            </div>
-            <div class="modal__body">
-                <div class="admin-edit__guide">
-                    ⚠️ "기대"·"수혜"·"강세" 등 미래 예측·가격 자극 표현은 피해주세요 (유사투자자문업 미신고).
-                </div>
-                <label class="admin-edit__label">상승이유</label>
-                <textarea class="memo-textarea" id="adminReasonInput" placeholder="자사주 소각 발표"></textarea>
-                <label class="admin-edit__label">테마 태그 (선택)</label>
-                <input type="text" class="tag-input" id="adminThemeInput" placeholder="예: 광통신">
-                <label class="admin-edit__label">메모 (관리자용, 비공개)</label>
-                <input type="text" class="tag-input" id="adminNoteInput" placeholder="기록용">
-                <div class="memo-actions">
-                    <button class="memo-delete" id="adminEditReset">초기화</button>
-                    <button class="memo-save" id="adminEditSave">저장</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="/js/nav.js?v=20260630a"></script>
-    <script src="/js/auth.js?v=20260525b"></script>
+    <script src="/js/nav.js?v=20260525b"></script>
     <script src="/js/api.js?v=20260630a"></script>
-    <script src="/js/date-picker.js?v=20260514a"></script>
-    <script src="/js/table.js?v=20260629c"></script>
-    <script src="/js/search.js?v=20260514a"></script>
-    <script src="/js/admin.js?v=20260514a"></script>
-    <script src="/js/ratings-sync.js?v=20260525a"></script>
-    <script src="/js/whyrise.js?v=20260630b"></script>
-    <script src="/js/help-tip.js?v=20260617b"></script>
-    <script src="/js/visitor.js?v=20260621e"></script>
-    <script>
-    // placeholder rotation — 대표 종목 슥슥 회전
-    (function () {
-        var TICKERS = ['삼성전자','SK하이닉스','현대차','NAVER','카카오','셀트리온','한미반도체','에코프로비엠','두산에너빌리티','한화에어로스페이스','LG에너지솔루션','삼성바이오로직스','기아','POSCO홀딩스','크래프톤'];
-        var $input = document.getElementById('heroSearch');
-        if (!$input) return;
-        var idx = 0;
-        setInterval(function () {
-            if ($input.value) return;            // 사용자가 입력 중이면 멈춤
-            if (document.activeElement === $input) return;  // 포커스 중에도 멈춤
-            $input.classList.add('placeholder-fading');
-            setTimeout(function () {
-                idx = (idx + 1) % TICKERS.length;
-                $input.setAttribute('placeholder', TICKERS[idx]);
-                $input.classList.remove('placeholder-fading');
-            }, 250);
-        }, 2400);
-    })();
-    </script>
+    <script src="/js/search.js?v=20260630a"></script>
+    <script src="/js/report-core.js?v=20260630a"></script>
+    <script src="/js/home.js?v=20260701p1"></script>
 </body>
 </html>
