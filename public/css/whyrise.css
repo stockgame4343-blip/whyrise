@@ -136,11 +136,13 @@ body {
     position: sticky;
     top: 0;
     z-index: 500;
-    background: var(--glass-bg-strong);
+    background: rgba(255, 255, 255, 0.03);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     backdrop-filter: blur(24px) saturate(180%);
     border-bottom: 1px solid var(--glass-border);
 }
+/* 라이트 모드는 기존 값(--glass-bg-strong = white 80%) 유지 */
+[data-theme="light"] .top-bar { background: var(--glass-bg-strong); }
 .top-bar .top-bar__link {
     color: var(--text-secondary);
     padding: 6px 14px;
@@ -383,48 +385,67 @@ body {
     position: relative;
     z-index: 10;   /* 자동완성이 테이블 위로 올라오게 (top-bar=500 보다는 낮게) */
 }
-.hero--mini { padding: 24px 0; }
+.hero--mini { padding: 48px 0 20px; }
 .hero__inner { text-align: center; }
+/* 유틸리티 검색 — 홈(home2-search)과 동일: 돋보기 + 입력 + 파란 제출버튼 3단 그리드. */
 .hero__search-wrap {
     position: relative;
-    display: inline-flex;
-    align-items: baseline;
-    gap: 10px;
-    max-width: 720px;
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) 40px;
+    align-items: center;
+    gap: 12px;
+    max-width: 560px;
     width: 92%;
+    margin: 0 auto;
+    min-height: 58px;
     background: var(--glass-bg-strong);
     border: 1px solid var(--glass-border-strong);
     border-radius: 999px;
-    padding: 20px 32px;
-    box-shadow: var(--glass-shadow);
-    transition: all .25s;
+    padding: 0 12px 0 22px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .16);
+    transition: border-color .18s, box-shadow .18s;
+    text-align: left;
     z-index: 1;
 }
-/* search-wrap 자체는 blur 제거 (자식 backdrop-filter 충돌 방지) */
 .hero__search-wrap:focus-within {
-    border-color: var(--orange);
-    border-width: 2px;
-    /* border 2px 되며 1px 증가분만큼 padding 보정해 컨텐츠 점프 방지 */
-    padding: 19px 31px;
-    box-shadow: 0 12px 48px rgba(49, 130, 246, 0.25);
-    transform: translateY(-1px);
+    border-color: var(--wr-accent);
+    box-shadow: 0 0 0 4px var(--wr-accent-soft, rgba(49, 130, 246, .16)), 0 14px 44px rgba(0, 0, 0, .18);
 }
+.hero__search-icon { color: var(--text-muted); }
+/* 제출 버튼 — 시각화 다운로드 버튼(.tmap-save)과 동일한 중립 스타일 */
+.hero__search-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid var(--glass-border-strong);
+    border-radius: 999px;
+    color: var(--text-primary);
+    background: rgba(127, 127, 127, .10);
+    cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+}
+.hero__search-submit:hover { background: rgba(127, 127, 127, .18); border-color: var(--text-muted); }
+.hero--mini .hero__search-wrap { max-width: 560px; }
 .hero__search-input {
-    flex: 1;
+    width: 100%;
     background: transparent;
     border: none;
     outline: none;
     color: var(--text-primary);
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     font-family: inherit;
     min-width: 0;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.2px;
+    padding: 17px 0;
 }
-.hero--mini .hero__search-input { font-size: 17px; }
 .hero__search-input::placeholder {
     color: var(--text-muted);
-    font-weight: 700;
+    font-weight: 600;
     transition: opacity .25s ease;
     opacity: 1;
 }
@@ -1986,12 +2007,11 @@ body.page-treemap {
         word-break: keep-all; overflow-wrap: break-word;
     }
 
-    /* hero 검색바 — 한 줄 유지하되 폰트·패딩 축소 + input 수직 중앙(기본 baseline은 모바일에서 input 23px 떠 보임) */
-    .hero { padding: 32px 0 20px; }
-    .hero__search-wrap { padding: 12px 18px; gap: 6px; border-radius: 999px; align-items: center; }
-    .hero__search-wrap:focus-within { padding: 11px 17px; }
-    .hero__search-input { font-size: 19px; min-height: 30px; line-height: 30px; }
-    .hero__placeholder-suffix { font-size: 17px; }
+    /* hero 검색바 — 컴팩트 라운드사각형 유지, 폰트 16px(iOS 확대 방지) */
+    .hero { padding: 28px 0 12px; }
+    .hero__search-wrap { padding: 0 8px 0 18px; gap: 10px; border-radius: 999px; grid-template-columns: 20px minmax(0, 1fr) 36px; min-height: 52px; }
+    .hero__search-input { font-size: 16px; padding: 15px 0; }
+    .hero__search-submit { width: 32px; height: 32px; }
     .hero__subtitle { font-size: 13px; margin-top: 18px; padding: 0 10px; }
     /* 자동완성 드롭다운 — 모바일에서 우측 5~10px 잘려보이는 이슈: li 우측 패딩 축소 + badge 폰트 압축 */
     .hero__suggest { padding: 6px; max-height: 320px; border-radius: 14px; }
