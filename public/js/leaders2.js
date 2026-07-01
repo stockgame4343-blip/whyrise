@@ -34,9 +34,15 @@
     var state = readState();
 
     function readState() {
+        // URL 파라미터로 초기 뷰/지표 선택 (예: /leaders2.html?view=bubble&metric=mcap)
+        var params;
+        try { params = new URLSearchParams(location.search); } catch (e) { params = null; }
+        var view = params && params.get('view');
+        var metric = params && params.get('metric');
+        var METRICS = ['sector', 'theme', 'mcap', 'volume', 'change'];
         return {
-            view: 'tree',
-            metric: 'sector',
+            view: (view === 'bubble' || view === 'tree') ? view : 'tree',
+            metric: METRICS.indexOf(metric) >= 0 ? metric : 'sector',
             market: 'ALL',
             period: '1d',
             date: '',

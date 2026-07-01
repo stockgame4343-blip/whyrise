@@ -537,10 +537,48 @@
         }).catch(renderFailure);
     }
 
+    function bindReveals() {
+        var items = Array.prototype.slice.call(
+            document.querySelectorAll('.home2-reveal:not(.is-visible)')
+        );
+        if (!items.length) return;
+
+        var reduced = window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced || !('IntersectionObserver' in window)) {
+            items.forEach(function (item) { item.classList.add('is-visible'); });
+            document.documentElement.classList.remove('home6-motion-ready');
+            return;
+        }
+
+        [
+            '.home6-market-cards .home2-reveal',
+            '.home2-tools .home2-reveal'
+        ].forEach(function (selector) {
+            document.querySelectorAll(selector).forEach(function (item, index) {
+                item.style.setProperty('--home6-reveal-delay', (index * 90) + 'ms');
+            });
+        });
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -10% 0px'
+        });
+
+        items.forEach(function (item) { observer.observe(item); });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         bindTheme();
         bindSearch();
         bindScrollCue();
+        bindReveals();
         rotateHeadlineStocks();
         loadMarket();
         document.addEventListener('visibilitychange', function () {

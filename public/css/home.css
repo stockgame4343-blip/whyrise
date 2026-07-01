@@ -1,4 +1,4 @@
-/* ORGO 메인 홈 — home-sample2(베이스) + home-sample6(레이아웃) 병합. 프로덕션 index 전용. */
+/* ORGO 메인 홈 — home-sample2(베이스)+home-sample6(레이아웃) 병합. promote2 생성. */
 
 /* 홈샘플2 — 설명보다 경험이 먼저 오는 ORGO 랜딩 페이지 */
 
@@ -1938,8 +1938,9 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
     justify-content: center;
     gap: 7px;
     max-width: 1160px;
+    min-height: 56px;
     margin: 18px auto 0;
-    padding: 13px;
+    padding: 0 18px;
     border: 1px solid var(--home2-line);
     border-radius: 14px;
     color: var(--home2-muted);
@@ -1992,6 +1993,7 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
     border-color: var(--home2-line);
     background: var(--home2-surface);
     box-shadow: none;
+    transition: transform .2s, border-color .2s, box-shadow .2s, background .2s;
 }
 
 .home6-page .home2-tool::before {
@@ -1999,19 +2001,42 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
 }
 
 .home6-page .home2-tool:hover {
-    transform: none;
+    transform: translateY(-5px);
     border-color: var(--home2-line-strong);
-    box-shadow: none;
+    background: var(--home2-surface-2);
+    box-shadow: 0 30px 74px rgba(0, 0, 0, .18);
 }
 
 .home6-page .home2-tool:hover img {
-    transform: scale(var(--home6-thumb-scale, 1.06));
+    transform: scale(var(--home6-thumb-hover-scale, 1.10));
+    filter: saturate(.96) contrast(1.07);
 }
 
-.home6-thumb--flow { --home6-thumb-scale: 1.26; }
-.home6-thumb--bubble { --home6-thumb-scale: 1.22; }
-.home6-thumb--tree { --home6-thumb-scale: 1.32; }
-.home6-thumb--calendar { --home6-thumb-scale: 1.06; }
+.home6-page .home2-tool__body i {
+    transition: transform .2s, color .2s;
+}
+
+.home6-page .home2-tool:hover .home2-tool__body i {
+    color: color-mix(in srgb, var(--home2-blue) 76%, white);
+    transform: translateX(4px);
+}
+
+.home6-thumb--flow {
+    --home6-thumb-scale: 1.26;
+    --home6-thumb-hover-scale: 1.30;
+}
+.home6-thumb--bubble {
+    --home6-thumb-scale: 1.22;
+    --home6-thumb-hover-scale: 1.26;
+}
+.home6-thumb--tree {
+    --home6-thumb-scale: 1.32;
+    --home6-thumb-hover-scale: 1.36;
+}
+.home6-thumb--calendar {
+    --home6-thumb-scale: 1.06;
+    --home6-thumb-hover-scale: 1.10;
+}
 
 .home6-page .home2-tool__shade {
     display: none;
@@ -2084,6 +2109,31 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
 
 .home6-page .home2-final__inner {
     z-index: 2;
+}
+
+/* 스크롤 진입 시 섹션별로 차분하게 등장 */
+.home6-motion-ready .home6-page .home2-reveal {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(30px);
+    transition:
+        opacity .7s cubic-bezier(.16, 1, .3, 1),
+        filter .7s cubic-bezier(.16, 1, .3, 1),
+        transform .7s cubic-bezier(.16, 1, .3, 1);
+    transition-delay: var(--home6-reveal-delay, 0ms);
+    will-change: opacity, filter, transform;
+}
+
+.home6-motion-ready .home6-page .home2-reveal.is-visible {
+    opacity: 1;
+    filter: none;
+    transform: translateY(0);
+    will-change: auto;
+}
+
+.home6-motion-ready .home6-page .home6-market-card.home2-reveal.is-visible:hover,
+.home6-motion-ready .home6-page .home2-tool.home2-reveal.is-visible:hover {
+    transform: translateY(-5px);
 }
 
 .home6-final-art {
@@ -2275,3 +2325,10 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
         padding: 112px 0 118px;
     }
 }
+
+
+/* ===== index 통일 override (promote2) ===== */
+/* 상단바 폭을 사이트 표준(.frame 1440)과 동일하게 */
+.home2-page .top-bar__inner { max-width: 1440px; }
+/* WHY 실패/빈 상태 정돈 */
+.home6-why-list .home6-card-empty { margin: 0; padding: 22px 4px; text-align: center; }
