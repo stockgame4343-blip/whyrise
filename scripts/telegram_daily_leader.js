@@ -1,0 +1,296 @@
+/**
+ * 오늘의 대장 → 텔레그램 자동 게시 (매일 마감후)
+ *
+ *   node scripts/telegram_daily_leader.js            # 실제 게시
+ *   node scripts/telegram_daily_leader.js --dry-run  # 전송 안 함, 이미지+캡션만 산출(검증용)
+ *
+ * 동작: ① stock-rise 최신일 랭킹으로 대장 3종 계산(캘린더 빌드와 동일 로직 재사용)
+ *       ② 정사각 이미지 렌더(홈 리포트 카드 캡쳐 방식, headless Chromium)
+ *       ③ 캡션 생성 + 마지막 한 줄 멘트는 Claude API 로 매일 새로 작성(실패 시 템플릿 폴백)
+ *       ④ Telegram Bot API sendPhoto 로 채널 게시
+ *
+ * 필요한 환경변수(=GitHub Secrets):
+ *   TELEGRAM_BOT_TOKEN   BotFather 봇 토큰
+ *   TELEGRAM_CHAT_ID     채널 chat_id (또는 @publicchannel)
+ *   ANTHROPIC_API_KEY    (선택) AI 멘트용. 없으면 템플릿 멘트.
+ *   TELEGRAM_MODEL       (선택) 기본 claude-haiku-4-5-20251001
+ */
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const http = require('http');
+const { chromium } = require('playwright');
+const core = require('./build_leaders_calendar.js');
+
+const DRY = process.argv.includes('--dry-run');
+const FORCE = process.argv.includes('--force');
+const PUBLIC = path.resolve(__dirname, '..', 'public');
+const OUT_IMG = path.resolve(__dirname, '..', 'telegram-daily.png');
+const MARKER = path.resolve(PUBLIC, 'data', '_telegram-posted.json');  // 중복 게시 방지(크론 이중 발동)
+const RAW = core.RAW;
+
+const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
+const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
+const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
+const MODEL = (process.env.TELEGRAM_MODEL || 'claude-haiku-4-5-20251001').trim();
+
+const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
+
+function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
+
+// 원 → "1.5조" / "3,164억" (report.js fmtAmount 와 동일 톤)
+function fmtAmount(won) {
+    won = num(won);
+    if (won >= 1e12) return (Math.round(won / 1e11) / 10).toLocaleString('ko-KR') + '조';
+    if (won >= 1e8) return Math.round(won / 1e8).toLocaleString('ko-KR') + '억';
+    if (won > 0) return Math.round(won / 1e4).toLocaleString('ko-KR') + '만';
+    return '-';
+}
+function pct(v) { var n = num(v); return (n >= 0 ? '+' : '') + (Math.round(n * 10) / 10).toFixed(1) + '%'; }
+function ymdKst() {
+    var k = new Date(Date.now() + 9 * 3600000);
+    return k.getUTCFullYear() + ('0' + (k.getUTCMonth() + 1)).slice(-2) + ('0' + k.getUTCDate()).slice(-2);
+}
+function dateLabel(ymd) {
+    var y = ymd.slice(0, 4), m = ymd.slice(4, 6), d = ymd.slice(6, 8);
+    var dow = WEEKDAY[new Date(+y, +m - 1, +d).getDay()];
+    return y + '.' + m + '.' + d + ' ' + dow;
+}
+function marketLabel(m) {
+    m = String(m || '').toUpperCase();
+    if (m.indexOf('KOSDAQ') >= 0) return 'KOSDAQ';
+    if (m.indexOf('KOSPI') >= 0 || m.indexOf('KRX') >= 0) return 'KOSPI';
+    return m || '';
+}
+
+// ── 대장 3종 계산 (캘린더 빌드와 동일) + 캡션용 리치 필드 ──
+function computeLeaders(rankings) {
+    var leader = core.pickLeader(rankings);
+    var active = (rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
+    var sectors = core.buildGroups(active, 'sector');
+    var themes = core.buildGroups(active, 'theme');
+    return { leader: leader, sector: sectors[0] || null, theme: themes[0] || null };
+}
+
+function detailTag(leader) {
+    return core.themeOf(leader) || String(leader.sector || '').trim() || '대장';
+}
+
+// ── 캡션(구조 텍스트) ──
+function buildCaption(ymd, L, comment) {
+    var lines = [];
+    lines.push('🔥 오늘의 대장 (' + dateLabel(ymd) + ')');
+    lines.push('');
+    if (L.leader) {
+        var mk = marketLabel(L.leader.market);
+        lines.push('🥇 대장주');
+        lines.push(L.leader.name + (mk ? '(' + mk + ')' : ''));
+        lines.push(pct(L.leader.change_rate) + ' · 거래대금 ' + fmtAmount(L.leader.trading_value));
+        var reason = String(L.leader.rise_reason || '').trim();
+        lines.push('[' + detailTag(L.leader) + ']' + (reason ? ' ' + reason : ''));
+        lines.push('');
+    } else {
+        lines.push('🥇 오늘은 기준(거래대금 3,000억+)에 맞는 대장주가 없었어요.');
+        lines.push('');
+    }
+    if (L.sector) {
+        lines.push('🏢 대장섹터');
+        lines.push(L.sector.key + ' ' + L.sector.count + '종목');
+        lines.push('평균 ' + pct(L.sector.avgRate) + ' · 거래 ' + fmtAmount(L.sector.totalVolume));
+        lines.push('1위 ' + L.sector.top + ' ' + pct(L.sector.topRate));
+        lines.push('');
+    }
+    if (L.theme) {
+        lines.push('🏷️ 대장테마');
+        lines.push(L.theme.key + ' ' + L.theme.count + '종목');
+        lines.push('평균 ' + pct(L.theme.avgRate) + ' · 거래 ' + fmtAmount(L.theme.totalVolume));
+        lines.push('1위 ' + L.theme.top + ' ' + pct(L.theme.topRate));
+        lines.push('');
+    }
+    lines.push(comment);
+    lines.push('더 많은 데이터 → orgo.kr');
+    return lines.join('\n');
+}
+
+// 템플릿 멘트(폴백) — AI 없을 때
+function templateComment(L) {
+    var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name);
+    if (!subj) return '오늘도 시장 잘 살펴보세요 👀';
+    return '오늘은 ' + subj + '가(이) 제대로 달렸네요 🚀';
+}
+
+// ── AI 멘트 (Claude) ──
+async function aiComment(ymd, L) {
+    if (!ANTHROPIC_KEY) return templateComment(L);
+    var summary = {
+        date: dateLabel(ymd),
+        대장주: L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate) + ' / ' + detailTag(L.leader) + ' / ' + (L.leader.rise_reason || '')) : '없음',
+        대장섹터: L.sector ? (L.sector.key + ' 평균 ' + pct(L.sector.avgRate)) : '없음',
+        대장테마: L.theme ? (L.theme.key + ' 평균 ' + pct(L.theme.avgRate)) : '없음',
+    };
+    var prompt = '아래는 한국 주식시장 그날의 "오늘의 대장" 요약이야. 이걸 보고 텔레그램 채널에 올릴 ' +
+        '마지막 한 줄 멘트를 딱 한 문장(최대 40자)으로 써줘. 친근하고 위트있게, 이모지 1개 포함. ' +
+        '숫자 반복 금지, 과장/투자권유 금지, 따옴표 없이 문장만.\n\n' + JSON.stringify(summary, null, 2);
+    try {
+        var res = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+                'x-api-key': ANTHROPIC_KEY,
+                'anthropic-version': '2023-06-01',
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({ model: MODEL, max_tokens: 100, messages: [{ role: 'user', content: prompt }] }),
+        });
+        if (!res.ok) throw new Error('anthropic HTTP ' + res.status + ' ' + (await res.text()).slice(0, 200));
+        var j = await res.json();
+        var text = (j.content || []).map(function (b) { return b.text || ''; }).join('').trim();
+        text = text.replace(/^["'\s]+|["'\s]+$/g, '').split('\n')[0].trim();
+        return text || templateComment(L);
+    } catch (e) {
+        console.error('AI 멘트 실패 → 템플릿 폴백:', e.message);
+        return templateComment(L);
+    }
+}
+
+// ── 정사각 이미지 렌더 (홈 리포트 카드 캡쳐 방식) ──
+function servePublic() {
+    return new Promise(function (resolve) {
+        var srv = http.createServer(function (req, res) {
+            var p = decodeURIComponent(req.url.split('?')[0]);
+            if (p === '/') p = '/index.html';
+            var fp = path.join(PUBLIC, p);
+            if (!fp.startsWith(PUBLIC) || !fs.existsSync(fp) || fs.statSync(fp).isDirectory()) {
+                res.statusCode = 404; return res.end('nf');
+            }
+            var ext = path.extname(fp).toLowerCase();
+            var ct = ext === '.js' ? 'application/javascript' : ext === '.css' ? 'text/css'
+                : ext === '.json' ? 'application/json' : ext === '.html' ? 'text/html' : 'application/octet-stream';
+            res.setHeader('Content-Type', ct);
+            fs.createReadStream(fp).pipe(res);
+        });
+        srv.listen(0, '127.0.0.1', function () { resolve(srv); });
+    });
+}
+
+async function renderImage(ymd, L) {
+    var srv = await servePublic();
+    var port = srv.address().port;
+    var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
+    try {
+        var ctx = await browser.newContext({ viewport: { width: 600, height: 900 }, deviceScaleFactor: 2 });
+        var page = await ctx.newPage();
+        await page.goto('http://127.0.0.1:' + port + '/report.html', { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.evaluate(function () { try { localStorage.setItem('theme', 'dark'); } catch (e) {} document.documentElement.setAttribute('data-theme', 'dark'); });
+        await page.waitForSelector('#leaderCard .report-leader-card, #leaderCard .report-empty', { timeout: 45000 });
+        await page.waitForTimeout(1200);
+
+        var SIZE = 1080;
+        var dlabel = dateLabel(ymd);
+        await page.evaluate(function (arg) {
+            var SIZE = arg.SIZE, dateLabel = arg.dlabel;
+            var pageBg = getComputedStyle(document.body).backgroundColor || '#191919';
+            var card = document.querySelector('#leaderCard .report-leader-card') || document.querySelector('#leaderCard');
+            var st = document.createElement('style');
+            st.textContent =
+                '#__cap_frame .report-leader-tile__label{font-size:19px}' +
+                '#__cap_frame .report-leader-tile__name,#__cap_frame .report-leader-card__name .report-stock-name{font-size:30px}' +
+                '#__cap_frame .report-leader-tile__meta,#__cap_frame .report-leader-tile__sub{font-size:21px}' +
+                '#__cap_frame .report-leader-tile__meta strong{font-size:23px}';
+            document.head.appendChild(st);
+            var frame = document.createElement('div');
+            frame.id = '__cap_frame';
+            frame.style.cssText = ['position:fixed', 'left:0', 'top:0', 'z-index:2147483647',
+                'width:' + SIZE + 'px', 'height:' + SIZE + 'px', 'box-sizing:border-box', 'padding:40px 34px',
+                'background:' + pageBg, 'display:flex', 'flex-direction:column', 'gap:26px', 'overflow:hidden'].join(';');
+            var head = document.createElement('div');
+            head.style.cssText = 'display:flex;align-items:baseline;justify-content:space-between;width:100%;padding:0 6px';
+            head.innerHTML = '<div style="display:flex;align-items:baseline;gap:12px">' +
+                '<span style="font-size:34px;font-weight:800;letter-spacing:.3px;color:var(--text-primary,#fff)">ORGO</span>' +
+                '<span style="font-size:22px;font-weight:600;color:var(--text-muted,#8a8a8a)">orgo.kr</span></div>' +
+                '<span style="font-size:22px;font-weight:700;color:var(--text-muted,#8a8a8a)">오늘의 대장 · ' + dateLabel + '</span>';
+            frame.appendChild(head);
+            var body = document.createElement('div');
+            body.style.cssText = 'flex:1;display:flex;width:100%;min-height:0';
+            var clone = card.cloneNode(true);
+            clone.style.cssText = 'width:100%;display:flex;flex-direction:column;padding:18px';
+            var grid = clone.querySelector('.report-leader-grid');
+            if (grid) { grid.style.gridTemplateColumns = '1fr'; grid.style.gridTemplateRows = 'repeat(3, 1fr)'; grid.style.gap = '18px'; grid.style.flex = '1'; grid.style.minHeight = '0'; }
+            clone.querySelectorAll('.report-leader-tile').forEach(function (t) { t.style.minHeight = '0'; t.style.padding = '28px 30px'; t.style.gap = '10px'; });
+            body.appendChild(clone); frame.appendChild(body); document.body.appendChild(frame);
+        }, { SIZE: SIZE, dlabel: dlabel });
+
+        await page.waitForTimeout(300);
+        var el = await page.$('#__cap_frame');
+        await el.screenshot({ path: OUT_IMG });
+    } finally {
+        await browser.close();
+        srv.close();
+    }
+    return OUT_IMG;
+}
+
+// ── Telegram sendPhoto (multipart) ──
+async function sendPhoto(imgPath, caption) {
+    var boundary = '----wr' + Date.now();
+    var parts = [];
+    function field(name, value) {
+        parts.push(Buffer.from('--' + boundary + '\r\nContent-Disposition: form-data; name="' + name + '"\r\n\r\n' + value + '\r\n'));
+    }
+    field('chat_id', CHAT_ID);
+    field('caption', caption);
+    var img = fs.readFileSync(imgPath);
+    parts.push(Buffer.from('--' + boundary + '\r\nContent-Disposition: form-data; name="photo"; filename="leader.png"\r\nContent-Type: image/png\r\n\r\n'));
+    parts.push(img);
+    parts.push(Buffer.from('\r\n--' + boundary + '--\r\n'));
+    var bodyBuf = Buffer.concat(parts);
+    var res = await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'multipart/form-data; boundary=' + boundary },
+        body: bodyBuf,
+    });
+    var j = await res.json().catch(function () { return {}; });
+    if (!res.ok || !j.ok) throw new Error('telegram HTTP ' + res.status + ' ' + JSON.stringify(j).slice(0, 300));
+    return j;
+}
+
+async function main() {
+    if (!DRY && (!BOT_TOKEN || !CHAT_ID)) {
+        console.log('TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID 미설정 — 게시 스킵(시크릿 등록 후 자동 동작).');
+        return;   // 시크릿 없으면 워크플로 실패(빨간 X) 대신 조용히 no-op
+    }
+
+    var dates = await core.fetchJson(RAW + '/dates.json');
+    var latest = Array.isArray(dates) && dates.length ? dates.slice().sort().slice(-1)[0] : '';
+    var today = ymdKst();
+    if (latest !== today) {
+        console.log('오늘(' + today + ') 거래일 데이터 없음(최신=' + latest + ') — 게시 스킵');
+        return;
+    }
+    if (!DRY && !FORCE) {
+        try {
+            var mk = JSON.parse(fs.readFileSync(MARKER, 'utf8'));
+            if (mk && mk.last === today) { console.log('이미 오늘(' + today + ') 게시함 — 스킵'); return; }
+        } catch (e) { /* 마커 없음 → 첫 게시 */ }
+    }
+
+    var day = await core.fetchJson(RAW + '/' + today + '.json');
+    var L = computeLeaders(day.rankings || []);
+    console.log('대장주:', L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate)) : '없음',
+        '| 섹터:', L.sector && L.sector.key, '| 테마:', L.theme && L.theme.key);
+
+    var comment = await aiComment(today, L);
+    var caption = buildCaption(today, L, comment);
+    console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
+
+    await renderImage(today, L);
+    console.log('이미지:', OUT_IMG);
+
+    if (DRY) { console.log('[dry-run] 전송 생략'); return; }
+    var r = await sendPhoto(OUT_IMG, caption);
+    var mid = r.result && r.result.message_id;
+    console.log('게시 완료 — message_id', mid);
+    // 중복 방지 마커 기록(워크플로가 커밋) — 같은 날 재실행 시 스킵됨
+    fs.writeFileSync(MARKER, JSON.stringify({ last: today, message_id: mid, at: new Date().toISOString().slice(0, 19) }) + '\n', 'utf8');
+}
+
+main().catch(function (e) { console.error(e); process.exit(1); });

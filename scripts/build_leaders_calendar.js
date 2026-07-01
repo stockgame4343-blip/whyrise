@@ -114,6 +114,7 @@ function leadersFromRows(rk) {
     return {
         stock: leader ? {
             ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10,
+            market: String(leader.market || '').trim(),
             sector: String(leader.sector || '').trim(), theme: themeOf(leader),
             vol: Math.round(num(leader.trading_value)), reason: String(leader.rise_reason || '').trim(),
         } : null,
@@ -192,4 +193,13 @@ async function main() {
     console.log('\nwrote', OUT, '—', after, 'days (기존', before, '+ 신규계산', Object.keys(days).length, ', 옛날 fetch생략', skipped, '→ 누적', after, ')');
 }
 
-main().catch(function (e) { console.error(e); process.exit(1); });
+// 직접 실행(node build_leaders_calendar.js)일 때만 빌드. require 로 불러쓸 땐 함수만 노출(텔레그램 봇 등 재사용).
+if (require.main === module) {
+    main().catch(function (e) { console.error(e); process.exit(1); });
+}
+
+module.exports = {
+    leadersFromRows, buildGroups, pickLeader, themeOf, themeTags, isActive,
+    fetchJson, num, capRate,
+    RISE_CUTOFF, LEADER_CUTOFF, LEADER_MIN_VALUE, GROUP_MIN, RAW,
+};
