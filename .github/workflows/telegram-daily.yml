@@ -64,6 +64,15 @@ jobs:
           [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
           node scripts/telegram_daily_leader.js $ARGS
 
+      # 검증용 — 렌더된 이미지를 아티팩트로 업로드(dry-run 확인)
+      - name: Upload image artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: telegram-daily-image
+          path: telegram-daily.png
+          if-no-files-found: ignore
+
       # 중복 방지 마커 커밋(게시됐을 때만 변경됨). dry-run/스킵이면 변경 없음 → no-op.
       - name: Commit marker
         if: ${{ inputs.dry_run != true }}
