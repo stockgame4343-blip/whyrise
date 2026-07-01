@@ -899,6 +899,14 @@ body {
     }
 }
 
+/* 모바일: 컨트롤 패널이 화면 밖으로 안 나가게 — 앵커 오른쪽 끝 기준 왼쪽으로 펼침 */
+@media (max-width: 768px) {
+    .ctrl-wrap.is-open .float-controls { left: auto; right: 0; }
+    /* 상세 헤더: 마운트가 행 중앙이라, 타이틀 행 전체를 앵커로 삼아 우측 정렬 → 화면 안 */
+    .stock-header__title-row { position: relative; }
+    .stock-header__rating-mount { position: static; }
+}
+
 .stock-header__stats {
     display: flex; gap: 32px; margin-top: 22px; flex-wrap: wrap;
 }
