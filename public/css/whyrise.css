@@ -445,7 +445,9 @@ body {
 }
 .hero__search-input::placeholder {
     color: var(--text-muted);
+    font-size: 15px;
     font-weight: 600;
+    letter-spacing: 0;
     transition: opacity .25s ease;
     opacity: 1;
 }
@@ -1928,15 +1930,18 @@ body.page-treemap {
     .report-row__count { min-width: 56px; padding: 3px 8px; font-size: 11px; }
     .report-row__sub { font-size: 10.5px; }
 
-    /* ⋯ 버튼 가시성 보강 — base style.css 의 32×32 흐릿한 배경 → 40×40 + 진한 배경으로 클릭 가능 신호 강화 */
+    /* ⋯ 버튼 — 채운 원 배경 제거(너무 강렬), 40×40 탭영역만 유지 + 흐린 글리프. 눌렀을 때만 배경 피드백. */
     .ctrl-toggle {
         width: 40px !important;
         height: 40px !important;
-        background: rgba(255, 255, 255, .09);
-        color: var(--text-secondary);
+        background: transparent;
+        color: var(--text-muted);
     }
-    [data-theme="light"] .ctrl-toggle { background: rgba(0, 0, 0, .07); color: var(--text-secondary); }
-    .ctrl-toggle:active { background: var(--bg-tertiary, rgba(255, 255, 255, .18)); }
+    [data-theme="light"] .ctrl-toggle { background: transparent; color: var(--text-muted); }
+    .ctrl-toggle:active { background: var(--glass-bg-strong, rgba(255, 255, 255, .12)); }
+    /* 리스트: ⋯ 제거 — 종목명 롱프레스로 컨트롤 열기(whyrise.js). iOS 콜아웃·텍스트선택 차단 */
+    .whyrise-table .ctrl-toggle { display: none; }
+    .whyrise-table .cell-name__link { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 
     /* 푸터 면책 — 모바일에서 강조 문구 한 단계 키워 가독성 확보 */
     .footer__disclaimer { font-size: 11px; line-height: 1.7; padding: 0 4px; }
@@ -3518,6 +3523,27 @@ body:not(.admin-on) .event-card__edit { display: none; }
 .report-group-row:hover {
     background: rgba(255, 255, 255, .025);
 }
+/* 조정 후 반등 — 5개 초과 접기 '더보기' 버튼 (report.html 인라인 스크립트가 제어) */
+.report-more-btn {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 14px;
+    padding: 15px 18px;
+    border: 1px solid var(--glass-border-strong);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .16s, border-color .16s, color .16s;
+}
+.report-more-btn:hover { background: var(--glass-bg); border-color: var(--text-muted); color: var(--text-primary); }
+.report-more-btn[hidden] { display: none; }
+/* 리포트: ⋯ 제거 — 종목명 롱프레스로 컨트롤 열기(report.html 인라인 스크립트). iOS 콜아웃·선택 차단 */
+.report-page .ctrl-toggle { display: none; }
+.report-page a[data-ticker] { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 .report-group-row__rank {
     color: var(--text-muted);
     font-size: 12px;
@@ -3807,8 +3833,14 @@ body:not(.admin-on) .event-card__edit { display: none; }
     }
     .report-group-row__main {
         grid-column: 2 / -1;
-        flex-wrap: wrap;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
     }
+    .report-group-row__titleline { flex: 1 1 auto; min-width: 0; }
+    .report-group-row__meta { flex: 0 0 auto; }
     .report-group-row__name {
         font-size: 16px;
     }
@@ -3820,8 +3852,22 @@ body:not(.admin-on) .event-card__edit { display: none; }
     }
     .report-group-row__stocks {
         grid-column: 2 / -1;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
+        gap: 0;
     }
+    /* 모바일: 종목마다 한 줄 — 종목명(좌) / 상승률·거래(우) */
+    .report-group-stock {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 6px 0;
+        border-top: 1px solid var(--glass-border);
+    }
+    .report-group-stock__name { flex: 1 1 auto; min-width: 0; }
+    .report-group-stock__meta { flex: 0 0 auto; }
     .report-move-row {
         grid-template-columns: minmax(0, 1fr);
         gap: 9px;

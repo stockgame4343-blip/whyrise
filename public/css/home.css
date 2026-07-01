@@ -2332,3 +2332,11 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
 .home2-page .top-bar__inner { max-width: 1440px; }
 /* WHY 실패/빈 상태 정돈 */
 .home6-why-list .home6-card-empty { margin: 0; padding: 22px 4px; text-align: center; }
+
+/* WHY↔EXPLORE 세로 간격 축소 (사용자 요청: PC·모바일) */
+.home6-page #home6Why { padding-bottom: 72px; }
+.home6-page #home6Explore { padding-top: 68px; }
+@media (max-width: 768px) {
+    .home6-page #home6Why { padding-bottom: 48px; }
+    .home6-page #home6Explore { padding-top: 44px; }
+}

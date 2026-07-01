@@ -708,6 +708,56 @@ var WhyApp = (function () {
                 return;
             }
         });
+
+        // ── 종목명 롱프레스로 컨트롤 패널 열기 (모바일, ⋯ 버튼 대체) ──
+        var _lpTimer = null, _lpX = 0, _lpY = 0, _lpFired = false;
+        function _lpClear() { if (_lpTimer) { clearTimeout(_lpTimer); _lpTimer = null; } }
+        function _lpCloseAll(except) {
+            var open = $body.querySelectorAll('.ctrl-wrap.is-open');
+            for (var i = 0; i < open.length; i++) {
+                if (open[i] !== except) open[i].classList.remove('is-open');
+            }
+        }
+        $body.addEventListener('touchstart', function (e) {
+            _lpFired = false;
+            _lpClear();
+            var link = e.target.closest('.cell-name__link');
+            if (!link) return;
+            var t = e.touches[0];
+            _lpX = t.clientX; _lpY = t.clientY;
+            _lpTimer = setTimeout(function () {
+                _lpFired = true;
+                var wrap = link.closest('.cell-name__wrap');
+                var ctrlWrap = wrap && wrap.querySelector('.ctrl-wrap');
+                if (!ctrlWrap) return;
+                _lpCloseAll(ctrlWrap);
+                ctrlWrap.classList.add('is-open');
+                if (navigator.vibrate) { try { navigator.vibrate(12); } catch (e2) {} }
+            }, 420);
+        }, { passive: true });
+        $body.addEventListener('touchmove', function (e) {
+            if (!_lpTimer) return;
+            var t = e.touches[0];
+            if (Math.abs(t.clientX - _lpX) > 10 || Math.abs(t.clientY - _lpY) > 10) _lpClear();
+        }, { passive: true });
+        $body.addEventListener('touchend', _lpClear, { passive: true });
+        $body.addEventListener('touchcancel', _lpClear, { passive: true });
+        // 롱프레스가 발동했으면 이어지는 링크 네비게이션 차단
+        $body.addEventListener('click', function (e) {
+            if (_lpFired && e.target.closest('.cell-name__link')) {
+                e.preventDefault();
+                e.stopPropagation();
+                _lpFired = false;
+            }
+        }, true);
+        // 롱프레스 시 브라우저 기본 컨텍스트 메뉴 억제 (종목명 위)
+        $body.addEventListener('contextmenu', function (e) {
+            if (e.target.closest('.cell-name__link')) e.preventDefault();
+        });
+        // 패널 밖을 탭하면 닫기
+        document.addEventListener('touchstart', function (e) {
+            if (!e.target.closest('.ctrl-wrap') && !e.target.closest('.cell-name__link')) _lpCloseAll(null);
+        }, { passive: true });
     }
 
     var _adminModal = null;
