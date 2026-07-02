@@ -38,8 +38,10 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'git diff check failed' }
     }
 
-    git add -- $productionFiles
-    if ($LASTEXITCODE -ne 0) { throw 'Unable to stage production files' }
+    $dirtyProductionFiles = @(git status --porcelain -- $productionFiles)
+    if ($dirtyProductionFiles.Count) {
+        throw "Commit production files before deployment:`n$($dirtyProductionFiles -join "`n")"
+    }
 
     $previousErrorAction = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
