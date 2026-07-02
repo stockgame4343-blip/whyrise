@@ -32,6 +32,7 @@ sys.path.insert(0, str(_REPO))
 
 from collector import naver_client  # noqa: E402
 from collector.kr_holidays import is_kr_business_day  # noqa: E402
+from scripts import llm_reasons  # noqa: E402
 from scripts.estimate_reasons import estimate_reason  # noqa: E402
 
 OUTPUT_DIR = _REPO / 'public' / 'data' / 'stock-history'
@@ -1639,6 +1640,72 @@ def build_estimate_only(args) -> int:
     return 0
 
 
+# ── LLM 사유 정제 (Claude) — 상세는 scripts/llm_reasons.py ──────────
+
+def _llm_api_key() -> str:
+    import os
+    return os.environ.get('ANTHROPIC_API_KEY', '').strip()
+
+
+def _llm_apply_and_regen(targets, verdicts, stats, dry_run: bool, title: str) -> int:
+    table = llm_reasons.summary_table(targets, verdicts)
+    print(table)
+    if dry_run:
+        print(f'\n[dry-run] 데이터 미변경 — 대상 {len(targets)}건, 판정 {len(verdicts)}건, stats={stats}')
+        return 0
+    counts = llm_reasons.apply_to_stock_history(OUTPUT_DIR, verdicts)
+    counts.update(stats)
+    print(f'== {title}: {counts} ==')
+    # 사유가 바뀐 파생 산출물만 재생성 (pref-themes/sitemap 은 사유와 무관)
+    if counts.get('replaced') or counts.get('flagged'):
+        build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
+        build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+        build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
+    llm_reasons.write_step_summary(title, counts, table)
+    return 0
+
+
+def build_llm_refine(args) -> int:
+    """당일(또는 --date) 급등 이벤트의 제네릭 사유를 뉴스 근거로 정제."""
+    rise_dir = OUTPUT_DIR.parent / 'rise-history'
+    date = (getattr(args, 'date', '') or '').strip()
+    if not date:
+        try:
+            dates = json.loads((rise_dir / 'dates.json').read_text(encoding='utf-8'))
+            date = dates[0] if dates else ''
+        except Exception:
+            date = ''
+    day_path = rise_dir / f'{date}.json'
+    if not date or not day_path.exists():
+        print(f'llm-refine: 대상 일자 파일 없음({date or "?"}) — incremental 빌드 후 실행')
+        return 1
+    targets = llm_reasons.collect_day_targets(day_path)
+    print(f'== llm-refine {date}: 대상 {len(targets)}건 (>= {llm_reasons.MIN_RATE}%) ==')
+    if not targets:
+        return 0
+    api_key = _llm_api_key()
+    if not api_key:
+        print('llm-refine: ANTHROPIC_API_KEY 미설정 — 스킵')
+        return 0
+    verdicts, stats = llm_reasons.refine(targets, api_key)
+    return _llm_apply_and_regen(targets, verdicts, stats, args.dry_run, f'llm-refine {date}')
+
+
+def build_llm_backfill(args) -> int:
+    """뉴스가 저장된 저신뢰·제네릭 과거 이벤트를 일괄 정제 (수동 트리거용)."""
+    limit = args.limit or 500
+    targets = llm_reasons.collect_backfill_targets(OUTPUT_DIR, limit=limit)
+    print(f'== llm-backfill: 대상 {len(targets)}건 (limit={limit}) ==')
+    if not targets:
+        return 0
+    api_key = _llm_api_key()
+    if not api_key:
+        print('llm-backfill: ANTHROPIC_API_KEY 미설정 — 스킵')
+        return 0
+    verdicts, stats = llm_reasons.refine(targets, api_key)
+    return _llm_apply_and_regen(targets, verdicts, stats, args.dry_run, 'llm-backfill')
+
+
 # ── marketmap (시총 TOP 100 트리맵) ────────────────────
 
 def _fetch_industry_name_map() -> dict[str, str]:
@@ -2228,13 +2295,25 @@ def main() -> None:
     p.add_argument('--no-regen', action='store_true',
                    help='--enrich-news 후 파생 산출물(rise-history 등) 재생성 생략(샘플 테스트용)')
     p.add_argument('--limit', type=int, default=0,
-                   help='estimate-only 시 처리 개수 한도')
+                   help='estimate-only/llm-backfill 시 처리 개수 한도')
+    p.add_argument('--llm-refine', action='store_true',
+                   help='당일 급등(>=15%%) 제네릭 사유를 Claude 로 정제 (뉴스 제목 근거)')
+    p.add_argument('--llm-backfill', action='store_true',
+                   help='뉴스 보유 저신뢰 과거 이벤트 사유를 Claude 로 일괄 정제 (--limit)')
+    p.add_argument('--date', type=str, default='',
+                   help='--llm-refine 대상 일자(YYYYMMDD, 기본=rise-history 최신)')
+    p.add_argument('--dry-run', action='store_true',
+                   help='--llm-refine/backfill: 데이터 미변경, 전후 대조표만 출력')
     args = p.parse_args()
 
     if args.marketmap_intraday:
         sys.exit(build_marketmap_intraday())
     if args.marketmap_only:
         sys.exit(build_marketmap_only(args))
+    if args.llm_refine:
+        sys.exit(build_llm_refine(args))
+    if args.llm_backfill:
+        sys.exit(build_llm_backfill(args))
     if args.estimate_only:
         sys.exit(build_estimate_only(args))
     if args.enrich_meta:

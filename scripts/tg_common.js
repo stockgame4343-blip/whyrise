@@ -53,6 +53,13 @@ function marketLabel(m) {
 }
 function clip(s, n) { s = String(s == null ? '' : s); return s.length > n ? s.slice(0, n - 1) + '…' : s; }
 
+// utm 딥링크 — 캠페인별 유입을 admin 유입경로 패널에서 구분(visitor.js 가 utm 을 ref 로 승격)
+function orgoLink(path, campaign) {
+    return 'https://orgo.kr' + path +
+        (path.indexOf('?') >= 0 ? '&' : '?') +
+        'utm_source=telegram&utm_campaign=' + encodeURIComponent(campaign || 'post');
+}
+
 // ── 중복 방지 마커 ──
 function loadMarker(markerPath) {
     try { return JSON.parse(fs.readFileSync(markerPath, 'utf8')) || {}; } catch (e) { return {}; }
@@ -544,7 +551,7 @@ function socialThemesCaption(opts) {
 
 module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
-    num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip,
+    num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip, orgoLink,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,

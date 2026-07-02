@@ -23,7 +23,7 @@ on:
         required: false
         default: 'incremental'
         type: choice
-        options: [full, incremental, estimate-only, enrich-meta, enrich-news, enrich-ohlc, marketmap-only, marketmap-intraday]
+        options: [full, incremental, estimate-only, enrich-meta, enrich-news, enrich-ohlc, marketmap-only, marketmap-intraday, llm-refine-dry]
       days:
         description: '풀빌드 기간 (full mode)'
         required: false
@@ -194,6 +194,8 @@ jobs:
           elif [ "$MODE" = "enrich-ohlc" ]; then
             # 이벤트에 거래량·거래대금·시총(역산) 채움 — OHLC 재수집 (전종목, limit=0)
             python3 scripts/build-history.py --enrich-ohlc --limit "$LIMIT"
+          elif [ "$MODE" = "llm-refine-dry" ]; then
+            echo "llm-refine dry-run 전용 — 본빌드 스킵 (아래 LLM 스텝에서 --dry-run 실행)"
           elif [ "$MODE" = "marketmap-intraday" ]; then
             # 장중 빠른 갱신 — 라이브 API 만, ~30s. hang 가드 10분.
             timeout -k 30 600 python3 scripts/build-history.py --marketmap-intraday
@@ -211,6 +213,20 @@ jobs:
             # full·수동 enrich/backfill 은 정상적으로 길 수 있어 무제한(job timeout-minutes 350 이 상한).
             timeout -k 30 1800 python3 -u scripts/build-history.py --incremental --days 30 --cutoff "$CUTOFF"
           fi
+
+      # LLM 사유 정제 — 당일 급등의 제네릭 사유("~테마 강세" 등)를 뉴스 근거 구체 사유로 교체.
+      # continue-on-error: LLM 이 죽어도 빌드·커밋은 정상 진행 (사이트는 LLM 비의존).
+      # llm-refine-dry(수동 dispatch)는 데이터 미변경 검증용 — 대조표만 로그로 출력.
+      - name: LLM reason refinement
+        if: steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'llm-refine-dry')
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          EXTRA=""
+          if [ "${{ steps.mode.outputs.mode }}" = "llm-refine-dry" ]; then EXTRA="--dry-run"; fi
+          python3 -u scripts/build-history.py --llm-refine $EXTRA
 
       # 오늘의 대장 캘린더(샘플2) — stock-rise 일별 대장 3종을 누적 계산. 비핵심이라 실패해도 본빌드 유지.
       - name: Build leaders calendar

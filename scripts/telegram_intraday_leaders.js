@@ -48,6 +48,7 @@ function topMovers(rankings) {
 function toMovers(rows) {
     return rows.map(function (r) {
         return {
+            ticker: r.ticker,
             name: r.name, market: r.market, rate: core.num(r.change_rate),
             vol: core.num(r.trading_value), theme: core.themeOf(r), reason: String(r.rise_reason || '').trim(),
         };
@@ -61,6 +62,13 @@ function buildCaption(ymd, movers, comment) {
     });
     lines.push('');
     lines.push(comment);
+    lines.push('');
+    if (movers[0] && movers[0].ticker) {
+        lines.push('👉 ' + movers[0].name + ' 왜 오르나 보러가기');
+        lines.push(tg.orgoLink('/stock/' + movers[0].ticker, 'intraday'));
+    } else {
+        lines.push('👉 실시간 급등 현황 → ' + tg.orgoLink('/', 'intraday'));
+    }
     return lines.join('\n');
 }
 

@@ -36,6 +36,9 @@ def _ref_host(ref):
     ref = (ref or '').strip()
     if not ref:
         return ''
+    # utm 유입(visitor.js 가 'utm:telegram/daily' 형태로 승격) — 그대로 집계
+    if ref.startswith('utm:'):
+        return ref[:80]
     try:
         from urllib.parse import urlparse
         h = (urlparse(ref).hostname or '').lower()

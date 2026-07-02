@@ -125,6 +125,8 @@ async function main() {
         '🗓️ 월간 시장 리포트 · ' + monthLabel,
         '',
         comment,
+        '',
+        '👉 대장주 캘린더 보러가기 → ' + tg.orgoLink('/sample2.html', 'monthly'),
     ].join('\n');
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');

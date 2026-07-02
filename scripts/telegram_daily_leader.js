@@ -113,6 +113,13 @@ function buildCaption(ymd, L, comment) {
         lines.push('');
     }
     lines.push(comment);
+    // 바로가기 — 대장주 상세(이유·1년 이력)와 전체 리스트로 유입 (utm 으로 효과 측정)
+    lines.push('');
+    if (L.leader && L.leader.ticker) {
+        lines.push('👉 ' + L.leader.name + ' 이유·1년 이력 보러가기');
+        lines.push(tg.orgoLink('/stock/' + L.leader.ticker, 'daily'));
+    }
+    lines.push('오늘 오른 종목 전부 → ' + tg.orgoLink('/rise.html', 'daily'));
     return lines.join('\n');
 }
 

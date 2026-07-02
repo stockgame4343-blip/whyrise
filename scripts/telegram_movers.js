@@ -46,6 +46,8 @@ function buildThemeCaption(ymd, G, comment) {
         lines.push('');
     }
     lines.push(comment);
+    lines.push('');
+    lines.push('👉 섹터·테마 한눈에 → ' + tg.orgoLink('/leaders2.html', 'movers'));
     return lines.join('\n');
 }
 

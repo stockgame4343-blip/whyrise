@@ -32,6 +32,15 @@
     }
 
     function extRef() {
+        // utm 우선 — 텔레그램 앱 등은 referrer 를 안 보내므로 utm 이 유일한 유입 신호
+        try {
+            var q = new URLSearchParams(location.search);
+            var u = q.get('utm_source');
+            if (u) {
+                var c = q.get('utm_campaign') || '';
+                return 'utm:' + u + (c ? '/' + c : '');   // 예: utm:telegram/daily
+            }
+        } catch (e) {}
         var r = document.referrer || '';
         if (!r) return '';
         try { if (new URL(r).hostname === location.hostname) return ''; } catch (e) {}

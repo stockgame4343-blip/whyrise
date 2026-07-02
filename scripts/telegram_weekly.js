@@ -129,6 +129,8 @@ async function main() {
         '📅 이번 주 시장 리포트 · ' + range,
         '',
         comment,
+        '',
+        '👉 주간 흐름 자세히 → ' + tg.orgoLink('/report.html', 'weekly'),
     ].join('\n');
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');

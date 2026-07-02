@@ -433,7 +433,7 @@
     }
 
     function sourceBadge(source, confidence) {
-        // reason_source: stockrise | admin | news | naver | theme | pattern | dart
+        // reason_source: stockrise | admin | news | naver | theme | pattern | dart | llm
         var labels = {
             'stockrise': { text: '검증', cls: 'badge--filled' },
             'admin':     { text: '관리자', cls: 'badge--admin' },
@@ -441,6 +441,7 @@
             'naver':     { text: '뉴스', cls: 'badge--news' },
             'theme':     { text: '테마', cls: 'badge--theme' },
             'pattern':   { text: '패턴', cls: 'badge--pattern' },
+            'llm':       { text: 'AI', cls: 'badge--news' },
         };
         var info = labels[source];
         if (!info) return '';
