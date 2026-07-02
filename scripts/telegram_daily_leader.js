@@ -21,9 +21,11 @@ const path = require('path');
 const http = require('http');
 const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
+const tg = require('./tg_common.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
+const DATE_ARG = ((process.argv.find(function (a) { return a.indexOf('--date=') === 0; }) || '').split('=')[1] || '').trim();  // 샘플용 과거 날짜
 const PUBLIC = path.resolve(__dirname, '..', 'public');
 const OUT_IMG = path.resolve(__dirname, '..', 'telegram-daily.png');
 const MARKER = path.resolve(PUBLIC, 'data', '_telegram-posted.json');  // 중복 게시 방지(크론 이중 발동)
@@ -69,7 +71,12 @@ function computeLeaders(rankings) {
     var active = (rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
     var sectors = core.buildGroups(active, 'sector');
     var themes = core.buildGroups(active, 'theme');
-    return { leader: leader, sector: sectors[0] || null, theme: themes[0] || null };
+    // 대장주 없으면(거래대금 3,000억 미달 등) 그날 거래대금 1위 급등주를 '주도주'로 대체
+    var fallback = null;
+    if (!leader && active.length) {
+        fallback = active.slice().sort(function (a, b) { return num(b.trading_value) - num(a.trading_value); })[0];
+    }
+    return { leader: leader, fallback: fallback, sector: sectors[0] || null, theme: themes[0] || null };
 }
 
 function detailTag(leader) {
@@ -81,16 +88,18 @@ function buildCaption(ymd, L, comment) {
     var lines = [];
     lines.push('🔥 오늘의 대장 (' + dateLabel(ymd) + ')');
     lines.push('');
-    if (L.leader) {
-        var mk = marketLabel(L.leader.market);
-        lines.push('🥇 대장주');
-        lines.push(L.leader.name + (mk ? '(' + mk + ')' : ''));
-        lines.push(pct(L.leader.change_rate) + ' · 거래대금 ' + fmtAmount(L.leader.trading_value));
-        var reason = String(L.leader.rise_reason || '').trim();
-        lines.push('[' + detailTag(L.leader) + ']' + (reason ? ' ' + reason : ''));
+    var lead = L.leader || L.fallback;
+    if (lead) {
+        var mk = marketLabel(lead.market);
+        lines.push(L.leader ? '🥇 대장주' : '🥇 오늘의 주도주');
+        lines.push(lead.name + (mk ? '(' + mk + ')' : ''));
+        lines.push(pct(lead.change_rate) + ' · 거래대금 ' + fmtAmount(lead.trading_value));
+        var reason = String(lead.rise_reason || '').trim();
+        var tail = reason ? ' ' + reason : (L.leader ? '' : ' 거래대금 1위 (대장 기준 미달)');
+        lines.push('[' + detailTag(lead) + ']' + tail);
         lines.push('');
     } else {
-        lines.push('🥇 오늘은 기준(거래대금 3,000억+)에 맞는 대장주가 없었어요.');
+        lines.push('🥇 오늘은 뚜렷한 대장주가 없었어요');
         lines.push('');
     }
     if (L.sector) {
@@ -108,13 +117,12 @@ function buildCaption(ymd, L, comment) {
         lines.push('');
     }
     lines.push(comment);
-    lines.push('더 많은 데이터 → orgo.kr');
     return lines.join('\n');
 }
 
 // 템플릿 멘트(폴백) — AI 없을 때
 function templateComment(L) {
-    var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name);
+    var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name) || (L.fallback && L.fallback.name);
     if (!subj) return '오늘도 시장 잘 살펴보세요 👀';
     // 조사 문제 회피 — '쪽이'는 받침 유무와 무관하게 자연스러움
     return '오늘은 ' + subj + ' 쪽이 제대로 달렸네요 🚀';
@@ -125,7 +133,7 @@ async function aiComment(ymd, L) {
     if (!ANTHROPIC_KEY) return templateComment(L);
     var summary = {
         date: dateLabel(ymd),
-        대장주: L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate) + ' / ' + detailTag(L.leader) + ' / ' + (L.leader.rise_reason || '')) : '없음',
+        대장주: (L.leader || L.fallback) ? ((L.leader || L.fallback).name + ' ' + pct((L.leader || L.fallback).change_rate) + ' / ' + detailTag(L.leader || L.fallback) + ' / ' + ((L.leader || L.fallback).rise_reason || '') + (L.leader ? '' : ' (대장 기준 미달·주도주)')) : '없음',
         대장섹터: L.sector ? (L.sector.key + ' 평균 ' + pct(L.sector.avgRate)) : '없음',
         대장테마: L.theme ? (L.theme.key + ' 평균 ' + pct(L.theme.avgRate)) : '없음',
     };
@@ -175,59 +183,18 @@ function servePublic() {
 }
 
 async function renderImage(ymd, L) {
-    var srv = await servePublic();
-    var port = srv.address().port;
+    function grp(g) { return g ? { name: g.key, count: g.count, avgRate: g.avgRate, top: g.top, topRate: g.topRate, vol: g.totalVolume } : null; }
+    function ld(x) { return x ? { name: x.name, market: x.market, rate: x.change_rate, vol: x.trading_value, tag: detailTag(x), reason: String(x.rise_reason || '').trim() } : null; }
+    var html = tg.leaderCardHtml({
+        dateRange: dateLabel(ymd),
+        leader: ld(L.leader),
+        fallback: ld(L.fallback),
+        sector: grp(L.sector),
+        theme: grp(L.theme),
+    });
     var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
-    try {
-        var ctx = await browser.newContext({ viewport: { width: 600, height: 900 }, deviceScaleFactor: 2 });
-        var page = await ctx.newPage();
-        await page.goto('http://127.0.0.1:' + port + '/report.html', { waitUntil: 'domcontentloaded', timeout: 60000 });
-        await page.evaluate(function () { try { localStorage.setItem('theme', 'dark'); } catch (e) {} document.documentElement.setAttribute('data-theme', 'dark'); });
-        await page.waitForSelector('#leaderCard .report-leader-card, #leaderCard .report-empty', { timeout: 45000 });
-        await page.waitForTimeout(1200);
-
-        var SIZE = 1080;
-        var dlabel = dateLabel(ymd);
-        await page.evaluate(function (arg) {
-            var SIZE = arg.SIZE, dateLabel = arg.dlabel;
-            var pageBg = getComputedStyle(document.body).backgroundColor || '#191919';
-            var card = document.querySelector('#leaderCard .report-leader-card') || document.querySelector('#leaderCard');
-            var st = document.createElement('style');
-            st.textContent =
-                '#__cap_frame .report-leader-tile__label{font-size:19px}' +
-                '#__cap_frame .report-leader-tile__name,#__cap_frame .report-leader-card__name .report-stock-name{font-size:30px}' +
-                '#__cap_frame .report-leader-tile__meta,#__cap_frame .report-leader-tile__sub{font-size:21px}' +
-                '#__cap_frame .report-leader-tile__meta strong{font-size:23px}';
-            document.head.appendChild(st);
-            var frame = document.createElement('div');
-            frame.id = '__cap_frame';
-            frame.style.cssText = ['position:fixed', 'left:0', 'top:0', 'z-index:2147483647',
-                'width:' + SIZE + 'px', 'height:' + SIZE + 'px', 'box-sizing:border-box', 'padding:40px 34px',
-                'background:' + pageBg, 'display:flex', 'flex-direction:column', 'gap:26px', 'overflow:hidden'].join(';');
-            var head = document.createElement('div');
-            head.style.cssText = 'display:flex;align-items:baseline;justify-content:space-between;width:100%;padding:0 6px';
-            head.innerHTML = '<div style="display:flex;align-items:baseline;gap:12px">' +
-                '<span style="font-size:34px;font-weight:800;letter-spacing:.3px;color:var(--text-primary,#fff)">ORGO</span>' +
-                '<span style="font-size:22px;font-weight:600;color:var(--text-muted,#8a8a8a)">orgo.kr</span></div>' +
-                '<span style="font-size:22px;font-weight:700;color:var(--text-muted,#8a8a8a)">오늘의 대장 · ' + dateLabel + '</span>';
-            frame.appendChild(head);
-            var body = document.createElement('div');
-            body.style.cssText = 'flex:1;display:flex;width:100%;min-height:0';
-            var clone = card.cloneNode(true);
-            clone.style.cssText = 'width:100%;display:flex;flex-direction:column;padding:18px';
-            var grid = clone.querySelector('.report-leader-grid');
-            if (grid) { grid.style.gridTemplateColumns = '1fr'; grid.style.gridTemplateRows = 'repeat(3, 1fr)'; grid.style.gap = '18px'; grid.style.flex = '1'; grid.style.minHeight = '0'; }
-            clone.querySelectorAll('.report-leader-tile').forEach(function (t) { t.style.minHeight = '0'; t.style.padding = '28px 30px'; t.style.gap = '10px'; });
-            body.appendChild(clone); frame.appendChild(body); document.body.appendChild(frame);
-        }, { SIZE: SIZE, dlabel: dlabel });
-
-        await page.waitForTimeout(300);
-        var el = await page.$('#__cap_frame');
-        await el.screenshot({ path: OUT_IMG });
-    } finally {
-        await browser.close();
-        srv.close();
-    }
+    try { await tg.captureHtml(browser, html, { outPath: OUT_IMG }); }
+    finally { await browser.close(); }
     return OUT_IMG;
 }
 
@@ -261,12 +228,14 @@ async function main() {
         return;   // 시크릿 없으면 워크플로 실패(빨간 X) 대신 조용히 no-op
     }
 
-    var dates = await core.fetchJson(RAW + '/dates.json');
-    var latest = Array.isArray(dates) && dates.length ? dates.slice().sort().slice(-1)[0] : '';
-    var today = ymdKst();
-    if (latest !== today) {
-        console.log('오늘(' + today + ') 거래일 데이터 없음(최신=' + latest + ') — 게시 스킵');
-        return;
+    var today = DATE_ARG || ymdKst();
+    if (!DATE_ARG) {   // 샘플(--date) 이 아니면 오늘 거래일 데이터 있어야 함
+        var dates = await core.fetchJson(RAW + '/dates.json');
+        var latest = Array.isArray(dates) && dates.length ? dates.slice().sort().slice(-1)[0] : '';
+        if (latest !== today) {
+            console.log('오늘(' + today + ') 거래일 데이터 없음(최신=' + latest + ') — 게시 스킵');
+            return;
+        }
     }
     if (!DRY && !FORCE) {
         try {

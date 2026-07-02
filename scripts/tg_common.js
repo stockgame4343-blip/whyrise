@@ -253,6 +253,85 @@ function rankCardHtml(opts) {
         '</div></body></html>';
 }
 
+// 버튼 클릭으로 페이지 자체 다운로드(a[download])를 유발하고 그 파일을 가로챈다(대장캘린더 #calSave 등).
+async function captureDownloadClick(page, selector, outPath, opts) {
+    opts = opts || {};
+    await page.waitForSelector(selector, { state: 'attached', timeout: 45000 });
+    await page.waitForTimeout(opts.settle || 1200);
+    var res = await Promise.all([
+        page.waitForEvent('download', { timeout: 25000 }),
+        page.evaluate(function (sel) { var el = document.querySelector(sel); if (el) el.click(); }, selector),
+    ]);
+    await res[0].saveAs(outPath);
+    return outPath;
+}
+
+// '오늘의 대장' 3종 카드(자체 HTML). 대장주 없으면 fallback(오늘의 주도주=거래대금 1위)로 대체.
+//   opts: { dateRange, leader|null, fallback|null, sector|null, theme|null }
+//   leader/fallback: { name, market, rate, vol, tag?, reason? }   sector/theme: { name, count, avgRate, top, topRate, vol }
+function leaderCardHtml(opts) {
+    var UP = '#ff5666';
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>]/g, function (m) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[m]; }); }
+    function mk(m) { m = String(m || '').toUpperCase(); return m.indexOf('KOSDAQ') >= 0 ? 'KOSDAQ' : (m ? 'KOSPI' : ''); }
+    function tile(icon, label, nameHtml, metricHtml, subHtml) {
+        return '<div class="tile">' +
+            '<div class="tl"><span class="ic">' + icon + '</span><span class="lb">' + esc(label) + '</span></div>' +
+            '<div class="nm">' + nameHtml + '</div>' +
+            (metricHtml ? '<div class="mt">' + metricHtml + '</div>' : '') +
+            (subHtml ? '<div class="sb">' + subHtml + '</div>' : '') +
+            '</div>';
+    }
+    // 대장주(또는 주도주) 타일
+    var s1;
+    var lead = opts.leader || opts.fallback;
+    if (lead) {
+        var isFb = !opts.leader;
+        var mm = mk(lead.market);
+        s1 = tile('🥇', isFb ? '오늘의 주도주' : '대장주',
+            esc(lead.name) + (mm ? '<span class="mk">' + mm + '</span>' : ''),
+            '<b class="up">' + pct(lead.rate) + '</b> · 거래 ' + fmtAmount(lead.vol),
+            (lead.tag ? '<span class="tag">' + esc(lead.tag) + '</span> ' : '') +
+            esc(lead.reason || (isFb ? '거래대금 1위 (대장 기준 거래대금 3,000억 미달)' : '')));
+    } else {
+        s1 = tile('🥇', '대장주', '<span class="none">오늘은 뚜렷한 대장주가 없었어요</span>',
+            '', '대신 아래 섹터·테마가 시장을 이끌었습니다');
+    }
+    function grp(icon, label, g) {
+        if (!g) return tile(icon, label, '<span class="none">집계 중</span>', '', '');
+        return tile(icon, label, esc(g.name) + '<span class="cnt">' + g.count + '종목</span>',
+            '평균 <b class="up">' + pct(g.avgRate) + '</b> · 거래 ' + fmtAmount(g.vol),
+            g.top ? ('1위 ' + esc(g.top) + (g.topRate != null ? ' <b class="up">' + pct(g.topRate) + '</b>' : '')) : '');
+    }
+    return '<!doctype html><html lang="ko"><head><meta charset="utf-8">' +
+        '<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">' +
+        '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">' +
+        '<style>' +
+        '*{margin:0;padding:0;box-sizing:border-box;font-family:Pretendard,"Noto Sans KR",sans-serif}' +
+        'body{background:#0d0f14}' +
+        '#card{width:1080px;background:#101218;color:#f5f7fa;padding:58px 50px 52px;display:flex;flex-direction:column;gap:26px}' +
+        '.hd{display:flex;align-items:baseline;justify-content:space-between;gap:16px}' +
+        '.hd .lt{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}' +
+        '.hd .logo{font-size:44px;font-weight:800;letter-spacing:.3px}' +
+        '.hd .wm{font-size:21px;font-weight:600;color:#8a93a6}' +
+        '.hd .title{font-size:27px;font-weight:700;color:#c3cad8}' +
+        '.hd .range{font-size:24px;font-weight:700;color:#8a93a6;white-space:nowrap}' +
+        '.tile{padding:26px 30px;border-radius:20px;background:rgba(255,86,102,.07);border:1px solid rgba(255,86,102,.22);display:flex;flex-direction:column;gap:8px}' +
+        '.tile .tl{display:flex;align-items:center;gap:10px}' +
+        '.tile .ic{font-size:26px}.tile .lb{font-size:23px;font-weight:800;color:#e9edf5}' +
+        '.tile .nm{font-size:34px;font-weight:800;color:#fff;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}' +
+        '.tile .nm .mk{font-size:20px;font-weight:700;color:#8a93a6}' +
+        '.tile .nm .cnt{font-size:22px;font-weight:700;color:#9aa3b5}' +
+        '.tile .nm .none{font-size:27px;font-weight:700;color:#c3cad8}' +
+        '.tile .mt{font-size:24px;font-weight:700;color:#cfd6e4}.tile .mt .up{color:' + UP + '}' +
+        '.tile .sb{font-size:22px;font-weight:500;color:#aab2c2}.tile .sb .up{color:' + UP + '}' +
+        '.tile .sb .tag{color:#8a93a6;font-weight:700}' +
+        '</style></head><body><div id="card">' +
+        '<div class="hd"><div class="lt"><span class="logo">ORGO</span><span class="wm">orgo.kr</span>' +
+        '<span class="title">· 오늘의 대장</span></div><span class="range">' + esc(opts.dateRange) + '</span></div>' +
+        s1 + grp('🏢', '대장 섹터', opts.sector) + grp('🏷️', '대장 테마', opts.theme) +
+        '</div></body></html>';
+}
+
 // ── Telegram Bot API ──
 async function _tgPost(botToken, method, bodyBuf, headers) {
     var res = await fetch(TG_API + botToken + '/' + method, { method: 'POST', headers: headers, body: bodyBuf });
@@ -331,6 +410,6 @@ module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip,
     loadMarker, saveMarker,
-    servePublic, captureFramed, saveViaBridge, captureHtml, rankCardHtml,
+    servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureHtml, rankCardHtml, leaderCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment,
 };

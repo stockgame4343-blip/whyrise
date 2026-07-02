@@ -1,14 +1,15 @@
 /**
- * 월간 리포트 → 텔레그램 자동 게시 (매월 첫 거래일 아침)
+ * 월간 리포트 → 텔레그램 자동 게시 (매월 마지막 거래일 장마감 후)
  *
  *   node scripts/telegram_monthly.js            # 실제 게시
  *   node scripts/telegram_monthly.js --dry-run  # 전송 안 함, 카드+캡션만 산출(검증)
- *   node scripts/telegram_monthly.js --force     # 첫 거래일/마커 검사 무시 강제
+ *   node scripts/telegram_monthly.js --force     # 마커 검사 무시 강제
  *
  * 동작: ① report-summary.json 의 m1(최근 1달) 주도 섹터·테마 TOP5
  *       ② frequent_top 으로 '이달 단골 급등주' 6종
- *       ③ ORGO 리포트 카드 1장 렌더(자체 HTML) → sendPhoto
- * 게시 조건: 오늘이 이번 달 '첫 거래일'일 때만(백업 크론 대비 월 단위 마커). --force 로 무시.
+ *       ③ ORGO 리포트 카드 + ④ 대장캘린더 모바일 다운로드 이미지 → sendMediaGroup(앨범)
+ * 게시 조건: '이번 달 마지막 거래일'인지는 워크플로(scripts/is_last_trading_day.py, kr_holidays 반영)가 판정.
+ *           스크립트는 월 단위 마커로 중복 방지만 담당. --force 로 마커 무시.
  *
  * 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID / ANTHROPIC_API_KEY(선택) / TELEGRAM_MODEL(선택)
  * 시크릿 미설정 시 조용히 no-op.
@@ -25,8 +26,8 @@ const FORCE = process.argv.includes('--force');
 const PUBLIC = path.resolve(__dirname, '..', 'public');
 const DATA = path.resolve(PUBLIC, 'data');
 const IMG = path.resolve(__dirname, '..', 'telegram-monthly.png');
+const IMG_CAL = path.resolve(__dirname, '..', 'telegram-monthly-cal.png');
 const MARKER = path.resolve(DATA, '_telegram-monthly-posted.json');
-const RAW = core.RAW;
 const RAW_REPORT = 'https://orgo.kr/data/report-summary.json';
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
@@ -53,11 +54,7 @@ function buildStatLine(m) {
     if (m.total_52w_count) parts.push('신고가 ' + m.total_52w_count);
     return parts.join(' · ');
 }
-function prevMonthLabel(ymd) {
-    var y = +ymd.slice(0, 4), m = +ymd.slice(4, 6);
-    m -= 1; if (m < 1) { m = 12; y -= 1; }
-    return y + '.' + ('0' + m).slice(-2);
-}
+function monthLabelOf(ymd) { return ymd.slice(0, 4) + '.' + ymd.slice(4, 6); }   // 해당 월(마지막 거래일 기준)
 
 async function aiComment(topSector, topTheme, monthLabel) {
     var summary = { 기간: monthLabel, 주도섹터: topSector || '없음', 주도테마: topTheme || '없음' };
@@ -69,15 +66,24 @@ async function aiComment(topSector, topTheme, monthLabel) {
     return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
 }
 
-// 오늘이 이번 달 첫 거래일인가 (dates.json 기준)
-async function isFirstTradingDay(today) {
+// 대장캘린더(sample2.html #calGrid)를 모바일 뷰포트에서 '이미지 저장'(#calSave) 다운로드로 캡쳐
+async function renderCalendar() {
+    var srv = await tg.servePublic(PUBLIC);
+    var port = srv.address().port;
+    var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
     try {
-        var dates = await core.fetchJson(RAW + '/dates.json');
-        if (!Array.isArray(dates)) return false;
-        var ym = today.slice(0, 6);
-        var inMonth = dates.filter(function (d) { return d.slice(0, 6) === ym; }).sort();
-        return inMonth.length > 0 && inMonth[0] === today;
-    } catch (e) { return false; }
+        var ctx = await browser.newContext({
+            viewport: { width: 460, height: 1000 }, deviceScaleFactor: 2,
+            isMobile: true, hasTouch: true, acceptDownloads: true,
+        });
+        var page = await ctx.newPage();
+        await page.addInitScript(function () { try { localStorage.setItem('theme', 'dark'); } catch (e) {} });
+        await page.goto('http://127.0.0.1:' + port + '/sample2.html', { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.waitForFunction(function () { var g = document.getElementById('calGrid'); return g && g.children.length > 5; }, null, { timeout: 45000 });
+        await page.waitForTimeout(1200);
+        await tg.captureDownloadClick(page, '#calSave', IMG_CAL);
+    } finally { await browser.close(); srv.close(); }
+    return IMG_CAL;
 }
 
 async function main() {
@@ -91,7 +97,7 @@ async function main() {
     if (!FORCE && !DRY) {
         var mk = tg.loadMarker(MARKER);
         if (mk && mk.last === monthKey) { console.log('이미 이번 달(' + monthKey + ') 게시함 — 스킵'); return; }
-        if (!(await isFirstTradingDay(today))) { console.log('오늘(' + today + ')은 이번 달 첫 거래일 아님 — 스킵'); return; }
+        // '마지막 거래일' 판정은 워크플로(is_last_trading_day.py)가 담당 — 여기선 마커만 확인
     }
 
     var report = await loadReport();
@@ -102,7 +108,7 @@ async function main() {
         return { k: (i + 1) + '위', v: f.name + ' ' + (f.count || 0) + '회' };
     });
 
-    var monthLabel = prevMonthLabel(today);
+    var monthLabel = monthLabelOf(today);
     var comment = await aiComment(sectors[0] && sectors[0].name, themes[0] && themes[0].name, monthLabel);
 
     var html = tg.rankCardHtml({
@@ -128,11 +134,14 @@ async function main() {
     var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
     try { await tg.captureHtml(browser, html, { outPath: IMG }); }
     finally { await browser.close(); }
-    console.log('이미지:', IMG);
+    var images = [IMG];
+    try { await renderCalendar(); images.push(IMG_CAL); }
+    catch (e) { console.error('대장캘린더 렌더 실패(리포트 카드만 전송):', e.message); }
+    console.log('이미지:', images.join(', '));
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
-    var r = await tg.sendPhoto(BOT_TOKEN, CHAT_ID, IMG, caption);
-    var mid = r.result && r.result.message_id;
+    var r = await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, images, caption);
+    var mid = Array.isArray(r.result) && r.result[0] ? r.result[0].message_id : null;
     console.log('게시 완료 — message_id', mid);
     tg.saveMarker(MARKER, { last: monthKey, message_id: mid, at: new Date().toISOString().slice(0, 19) });
 }
