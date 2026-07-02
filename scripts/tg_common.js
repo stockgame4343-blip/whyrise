@@ -35,6 +35,10 @@ function ymdKst() {
     var k = new Date(Date.now() + 9 * 3600000);
     return k.getUTCFullYear() + ('0' + (k.getUTCMonth() + 1)).slice(-2) + ('0' + k.getUTCDate()).slice(-2);
 }
+function hmKst() {
+    var k = new Date(Date.now() + 9 * 3600000);
+    return ('0' + k.getUTCHours()).slice(-2) + ':' + ('0' + k.getUTCMinutes()).slice(-2);
+}
 function dateLabel(ymd) {
     var y = ymd.slice(0, 4), m = ymd.slice(4, 6), d = ymd.slice(6, 8);
     var dow = WEEKDAY[new Date(+y, +m - 1, +d).getDay()];
@@ -324,7 +328,7 @@ async function aiComment(promptText, apiKey, model, fallback) {
 
 module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY,
-    num, pct, fmtAmount, ymdKst, dateLabel, mdLabel, marketLabel, clip,
+    num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureHtml, rankCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment,

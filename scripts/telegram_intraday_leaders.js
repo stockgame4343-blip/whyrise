@@ -53,7 +53,7 @@ function groupLines(groups) {
 
 function buildCaption(ymd, G, comment) {
     var lines = [];
-    lines.push('🌅 오늘 장중 주도 · ' + tg.dateLabel(ymd) + ' 09:30');
+    lines.push('🌅 오늘 장중 주도 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst());
     lines.push('');
     if (G.sectors.length) {
         lines.push('📈 주도 섹터');
