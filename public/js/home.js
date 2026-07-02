@@ -135,15 +135,16 @@
         return tags.slice(0, 3);
     }
 
-    function renderLeader(leader, riseCount, limitCount) {
+    function renderLeader(leader, riseCount, limitCount, gapMode) {
         setText('home2StatStocks', riseCount + '개');
         setText('home2StatLimit', limitCount + '개');
 
         var target = document.getElementById('home2HeroLeader');
         if (!target) return;
         if (!leader) {
-            target.innerHTML =
-                '<p class="home6-card-empty">선정 기준을 충족한 대장주가 아직 없어요.</p>';
+            target.innerHTML = gapMode
+                ? '<p class="home6-card-empty">장 초반 집계 중이에요 — 기준을 충족하는 대장주가 나오면 바로 표시돼요.</p>'
+                : '<p class="home6-card-empty">선정 기준을 충족한 대장주가 아직 없어요.</p>';
             return;
         }
 
@@ -174,7 +175,7 @@
         })[0];
     }
 
-    function renderGroup(type, groups) {
+    function renderGroup(type, groups, gapMode) {
         var targetId = type === 'theme' ? 'home2ThemeFeature' : 'home2SectorFeature';
         var actionId = type === 'theme' ? 'home2ThemeAction' : 'home2SectorAction';
         var target = document.getElementById(targetId);
@@ -184,9 +185,10 @@
         if (!target) return;
 
         if (!group) {
-            target.innerHTML =
-                '<p class="home6-card-empty">3종목 이상 함께 오른 ' +
-                (type === 'theme' ? '테마' : '섹터') + '가 아직 없어요.</p>';
+            var label = type === 'theme' ? '테마' : '섹터';
+            target.innerHTML = gapMode
+                ? '<p class="home6-card-empty">오늘 ' + label + ' 집계 중이에요 — 3종목 이상 함께 오르면 바로 표시돼요.</p>'
+                : '<p class="home6-card-empty">3종목 이상 함께 오른 ' + label + '가 아직 없어요.</p>';
             if (action) {
                 action.href = '/screening.html';
                 action.innerHTML = (type === 'theme' ? '테마' : '섹터') + ' 전체보기 <span>→</span>';
@@ -225,7 +227,7 @@
             (more ? '<span class="home6-group-feature__more">' + more + '</span>' : '');
     }
 
-    function renderWhy(riseRows) {
+    function renderWhy(riseRows, gapMode) {
         var target = document.getElementById('home6WhyList');
         if (!target) return;
         var sorted = riseRows.slice().sort(function (a, b) {
@@ -234,7 +236,9 @@
         }).slice(0, 6);
 
         if (!sorted.length) {
-            target.innerHTML = '<p class="home6-card-empty">+15% 이상 오른 종목이 아직 없어요.</p>';
+            target.innerHTML = gapMode
+                ? '<p class="home6-card-empty">장 초반이라 +15% 급등 종목이 아직 없어요 — 실시간으로 채워져요.</p>'
+                : '<p class="home6-card-empty">+15% 이상 오른 종목이 아직 없어요.</p>';
             return;
         }
 
@@ -269,10 +273,10 @@
         var limitCount = riseRows.filter(CORE.isLimitUp).length;
 
         renderStatus(date, response, live, gapMode);
-        renderLeader(leader, riseRows.length, limitCount);
-        renderGroup('sector', sectors);
-        renderGroup('theme', themes);
-        renderWhy(riseRows);
+        renderLeader(leader, riseRows.length, limitCount, gapMode);
+        renderGroup('sector', sectors, gapMode);
+        renderGroup('theme', themes, gapMode);
+        renderWhy(riseRows, gapMode);
     }
 
     function renderFailure() {
@@ -379,19 +383,17 @@
         });
     }
 
-    function adoptTodayBuild() {
-        if (state.adoptBusy) return;
+    function adoptTodayBuild(liveDate) {
+        if (state.adoptBusy || !liveDate) return;
         state.adoptBusy = true;
-        // getDates 는 클라 5분 캐시 — 폴링마다 호출해도 네트워크는 5분에 1회
-        WhyAPI.getDates().then(function (dates) {
-            var latest = dates && dates[0];
-            if (!latest || latest <= state.date) return;
-            return WhyAPI.getRankings(latest, 'ALL').then(function (response) {
-                state.date = latest;
-                state.response = response || {};
-                state.baseRows = Array.isArray(state.response.rankings) ? state.response.rankings : [];
-                scheduleLive(1000);   // 다음 사이클이 정식 오버레이로 즉시 재렌더
-            });
+        // 오늘 빌드를 직접 조회 — 404 는 클라 캐시에 안 남아 폴링마다 재시도되므로
+        // 집계 도착 후 한 사이클(~15초) 내 채택 (getDates 5분 캐시를 기다리지 않음)
+        WhyAPI.getRankings(liveDate, 'ALL').then(function (response) {
+            if (!response || !Array.isArray(response.rankings)) return;
+            state.date = liveDate;
+            state.response = response;
+            state.baseRows = response.rankings;
+            scheduleLive(500);   // 즉시 정식 오버레이로 재렌더
         }).catch(function () {}).then(function () {
             state.adoptBusy = false;
         });
@@ -419,7 +421,7 @@
             } else if (live && state.date && live.date > state.date) {
                 // 라이브 거래일이 빌드보다 새로움 = 오늘 첫 집계 전 — 잠정 뷰 + 빌드 도착 감시
                 renderGapView(live);
-                adoptTodayBuild();
+                adoptTodayBuild(live.date);
             }
             if (isRegularMarketWindow()) {
                 scheduleLive(live && live.market_status === 'CLOSE' ? STATUS_RECHECK_MS : LIVE_POLL_MS);
@@ -616,6 +618,11 @@
             renderFailure();
             return;
         }
+        // 라이브를 빌드와 병렬로 선조회 — 장초반 갭에 '어제 마감' 화면이 먼저 번쩍이지 않고
+        // 첫 페인트부터 오늘 잠정 뷰가 뜬다. (NXT 리드인 08~09시는 기존 정책대로 라이브 미사용)
+        var livePre = (typeof WhyAPI.getLiveMarketmap === 'function' && !isNxtLeadIn())
+            ? WhyAPI.getLiveMarketmap().catch(function () { return null; })
+            : Promise.resolve(null);
         WhyAPI.getDates().then(function (dates) {
             if (!dates || !dates.length) throw new Error('거래일 없음');
             state.date = dates[0];
@@ -623,8 +630,20 @@
         }).then(function (response) {
             state.response = response || {};
             state.baseRows = Array.isArray(state.response.rankings) ? state.response.rankings : [];
-            renderMarket(state.baseRows, state.date, state.response, null);
-            refreshLive();
+            return livePre;
+        }).then(function (live) {
+            if (live && state.date && live.date > state.date) {
+                renderGapView(live);
+                adoptTodayBuild(live.date);
+            } else if (live && live.date === state.date) {
+                renderMarket(CORE.overlayRankings(state.baseRows, live.map), state.date, state.response, live);
+            } else {
+                // 라이브 선조회 실패 — 빌드값 먼저 렌더 후 기존 경로로 재시도
+                renderMarket(state.baseRows, state.date, state.response, null);
+                refreshLive();
+                return;
+            }
+            if (isRegularMarketWindow()) scheduleLive(LIVE_POLL_MS);
         }).catch(renderFailure);
     }
 

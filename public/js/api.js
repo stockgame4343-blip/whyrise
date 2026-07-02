@@ -49,15 +49,43 @@ var WhyAPI = (function () {
     /**
      * 거래일 목록 — stock-rise(2026-04-13~) + 자체 백필 rise-history(2025~) 유니온.
      * 내림차순(최신 먼저) — 소비자가 dates[0]=최신 가정.
+     * TTL 동적: 평일 09시 이후인데 최신일 < 오늘(장초반, 오늘 첫 집계 미도착)이면 60s 로 줄여
+     * 집계 도착을 소비자(리포트 등)가 빨리 알게 한다. 그 외 5분. 공휴일도 60s 로 오탐되지만
+     * dates.json 이 작아 부담 미미.
      */
+    var _datesCache = { t: 0, data: null };
+    var DATES_GAP_TTL_MS = 60 * 1000;
+
+    function _datesGapNow(latest) {
+        var k = new Date(Date.now() + 9 * 3600000);
+        var day = k.getUTCDay();
+        if (day === 0 || day === 6) return false;
+        if (k.getUTCHours() * 60 + k.getUTCMinutes() < 9 * 60) return false;
+        var today = k.toISOString().slice(0, 10).replace(/-/g, '');
+        return !!latest && latest < today;
+    }
+
+    function _rawJson(url) {
+        return fetch(url).then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status + ' for ' + url);
+            return res.json();
+        });
+    }
+
     function getDates() {
+        if (_datesCache.data && _datesCache.data.length) {
+            var ttl = _datesGapNow(_datesCache.data[0]) ? DATES_GAP_TTL_MS : _cacheTtlMs;
+            if ((Date.now() - _datesCache.t) < ttl) return Promise.resolve(_datesCache.data);
+        }
         return Promise.all([
-            _cachedFetch('/data/rise-history/dates.json').catch(function () { return []; }),
-            _cachedFetch(STOCK_RISE_RAW + '/dates.json').catch(function () { return []; }),
+            _rawJson('/data/rise-history/dates.json').catch(function () { return []; }),
+            _rawJson(STOCK_RISE_RAW + '/dates.json').catch(function () { return []; }),
         ]).then(function (res) {
             var seen = {};
             [].concat(res[0] || [], res[1] || []).forEach(function (d) { if (d) seen[d] = 1; });
-            return Object.keys(seen).sort().reverse();
+            var dates = Object.keys(seen).sort().reverse();
+            if (dates.length) _datesCache = { t: Date.now(), data: dates };
+            return dates;
         });
     }
 

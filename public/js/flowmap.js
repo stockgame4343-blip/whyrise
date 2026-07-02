@@ -264,7 +264,10 @@
     function renderEmpty() {
         clearSvg();
         $message.style.display = '';
-        $message.textContent = '이 날짜엔 +15% 이상 오른 종목이 없습니다.';
+        // 오늘 집계 도착 전(갭)엔 '없다' 단정 대신 집계 중 안내 — 곧 채워짐을 명시
+        $message.textContent = (state.virtualDate && isLiveDate())
+            ? '장 초반 집계 중이에요 — 조건(+15% 급등, 그룹 3종목 이상)을 충족하면 실시간으로 표시돼요.'
+            : '이 날짜엔 +15% 이상 오른 종목이 없습니다.';
     }
 
     function render() {
@@ -274,6 +277,8 @@
         var h = $stage.clientHeight;
         if (w < 80 || h < 80) return;
         if (!items.length) return renderEmpty();
+        // 종목은 있어도 모드 조건(+15% 컷·그룹 최소 3종목)에 걸려 빈 화면이면 안내로 대체
+        if (!(buildHierarchy().children || []).length) return renderEmpty();
         $message.style.display = 'none';
         if (state.view === 'tree') renderTree(w, h);
         else renderBubble(w, h);
@@ -746,15 +751,14 @@
                 if (state.availableDates.indexOf(res.date) < 0) state.availableDates.unshift(res.date);
                 updateDateNav();
             }
-            // 오늘 빌드 도착 감시 — 도착하면 전일 베이스라인 → 오늘 정식 집계로 자동 전환
-            // (getDates 는 클라 5분 캐시라 폴링마다 호출해도 네트워크는 5분에 1회)
+            // 오늘 빌드 도착 감시 — 빌드를 직접 조회(404 는 캐시 안 됨)해 도착 후 한 사이클(~30초) 내
+            // 전일 베이스라인 → 오늘 정식 집계로 자동 전환 (성공 시 virtualDate 해제 + 배지 숨김)
             if (state.virtualDate && isLiveDate() && !state.adoptBusy) {
                 state.adoptBusy = true;
-                WhyAPI.getDates().then(function (dts) {
-                    var latest = (dts && dts[0]) || '';
-                    if (latest && state.virtualDate && latest >= state.virtualDate && isLiveDate()) {
-                        return loadDate(latest);   // 성공 시 virtualDate 해제 + 준비중 배지 자동 숨김
-                    }
+                var target = state.virtualDate;
+                WhyAPI.getRankings(target).then(function () {
+                    // 성공 = 오늘 빌드 도착(결과는 5분 캐시 적재) — loadDate 는 캐시 히트로 즉시 전환
+                    if (state.virtualDate === target && isLiveDate()) return loadDate(target);
                 }).catch(function () {}).then(function () { state.adoptBusy = false; });
             }
             (state.rankings || []).forEach(function (r) {
