@@ -230,6 +230,17 @@ async function main() {
             return;
         }
     }
+    // 장 마감(종가 확정) 전 트리거 차단 — 마감 전엔 대장이 장중값으로 나가 마커를 선점(→진짜 15:45 종가 대장 스킵)하는 사고 방지.
+    // 실발송에만 적용: --dry-run(검증)/--force/--date(샘플) 는 예외.
+    if (!DRY && !DATE_ARG && !FORCE) {
+        var hm = tg.hmKst();                      // "HH:MM" (KST)
+        var nowMin = (+hm.slice(0, 2)) * 60 + (+hm.slice(3, 5));
+        var CLOSE_GATE_MIN = 15 * 60 + 40;        // 15:40 KST — 종가 수집 여유 후에만 대장 확정 발송
+        if (nowMin < CLOSE_GATE_MIN) {
+            console.log('장 마감 전(' + hm + ' KST) — 종가 대장 확정 전이라 게시 스킵(15:40 이후 발송)');
+            return;
+        }
+    }
     if (!DRY && !FORCE) {
         try {
             var mk = JSON.parse(fs.readFileSync(MARKER, 'utf8'));
