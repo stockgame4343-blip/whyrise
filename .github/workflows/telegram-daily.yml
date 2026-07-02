@@ -17,6 +17,10 @@ on:
         description: '마커 무시하고 강제 게시'
         type: boolean
         default: false
+      date:
+        description: '샘플용 과거 날짜 YYYYMMDD (비우면 오늘)'
+        type: string
+        default: ''
   schedule:
     - cron: '45 6 * * 1-5'   # 평일 KST 15:45 — 마감 15분 후(종가 안정)
     - cron: '15 7 * * 1-5'   # 평일 KST 16:15 — 백업(첫 크론 누락 대비, 마커로 중복 방지)
@@ -62,6 +66,7 @@ jobs:
           ARGS=""
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
           [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
+          [ -n "${{ inputs.date }}" ] && ARGS="$ARGS --date=${{ inputs.date }}"
           node scripts/telegram_daily_leader.js $ARGS
 
       # 검증용 — 렌더된 이미지를 아티팩트로 업로드(dry-run 확인)
