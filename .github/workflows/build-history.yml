@@ -209,11 +209,12 @@ jobs:
             # incremental — 최근 윈도우 급등 종목만 재빌드(--incremental) → 수 분 내 완료.
             #   전종목 OHLC fetch 를 하던 옛 방식이 네이버 throttle 겹치면 30분 가드(exit 124) 초과 → 상시 실패했음.
             #   -u: 버퍼 없이 진행 로그를 즉시 흘려 timeout kill 시에도 어디까지 갔는지 남긴다.
-            # hang 가드: 60분 넘으면 timeout(124)으로 실패시켜 concurrency 락을 풀어 준다.
-            #   30분이던 것을 60분으로 — 며칠치 캐치업(escalated)이면 대상이 1,600종목+로 불어나
-            #   정상 진행인데도 ~50분이 걸려 가드에 걸리고, 다음 런이 처음부터 반복(6/30~7/2 실패 원인).
+            # hang 가드: 2시간 넘으면 timeout(124)으로 실패시켜 concurrency 락을 풀어 준다.
+            #   원래 30분 — 6/30~7/2 3일 실패 원인: 다일치 캐치업이면 movers 재빌드 ~40분에 더해
+            #   말미 marketmap 전체 재빌드(2,768종목×1년 OHLC)가 캐시 콜드면 ~55분 → 총 ~95분이
+            #   정상 진행인데도 가드에 걸려 처음부터 반복. 캐시가 차면 평시 15~25분으로 복귀.
             # full·수동 enrich/backfill 은 정상적으로 길 수 있어 무제한(job timeout-minutes 350 이 상한).
-            timeout -k 30 3600 python3 -u scripts/build-history.py --incremental --days 30 --cutoff "$CUTOFF"
+            timeout -k 30 7200 python3 -u scripts/build-history.py --incremental --days 30 --cutoff "$CUTOFF"
           fi
 
       # LLM 사유 정제 — 당일 급등의 제네릭 사유("~테마 강세" 등)를 뉴스 근거 구체 사유로 교체.
