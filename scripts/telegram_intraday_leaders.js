@@ -64,17 +64,14 @@ function buildCaption(ymd, movers, comment) {
     return lines.join('\n');
 }
 
-async function aiComment(ymd, movers) {
+// 후킹형 한 줄(첫 줄 재활용) — tg.aiHook 공용 규칙 사용
+async function aiHook(ymd, movers) {
     var summary = {
-        date: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중',
+        시각: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중(개장 30분)',
         주도주: movers.slice(0, 5).map(function (m) { return m.name + ' ' + tg.pct(m.rate) + (m.theme ? '(' + m.theme + ')' : ''); }).join(', '),
     };
-    var prompt = '아래는 한국 주식시장 개장 30분(09:30) "오늘의 주도주 TOP5" 요약이야. 텔레그램 채널 구독자에게 ' +
-        '지금 시장에서 뭐가 주도하는지 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
-        '센스있고 친근하게, 흐름이 드러나게. 숫자 나열 금지, 과장·투자권유·목표가 금지, 장중 미확정 뉘앙스 살짝. 따옴표 없이 문장만.\n\n' +
-        JSON.stringify(summary, null, 2);
-    var fallback = movers[0] ? ('개장부터 ' + (movers[0].theme || movers[0].name) + ' 쪽에 눈길이 가네요 🚀') : '오늘 흐름 천천히 지켜보세요 👀';
-    return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
+    var fallback = movers[0] ? ('개장 30분, ' + (movers[0].theme || movers[0].name) + '이 벌써 판을 흔드네요 🚀') : '오늘 흐름 천천히 지켜보세요 👀';
+    return tg.aiHook('오늘의 주도주 TOP5(장중)', summary, ANTHROPIC_KEY, MODEL, fallback);
 }
 
 async function main() {
@@ -99,7 +96,7 @@ async function main() {
     if (!movers.length) { console.log('오늘 급등(>=' + core.RISE_CUTOFF + '%) 종목 없음 — 스킵'); return; }
     console.log('주도주:', movers.map(function (m) { return m.name + ' ' + tg.pct(m.rate); }).join(' / '));
 
-    var comment = await aiComment(today, movers);
+    var comment = await aiHook(today, movers);
     var caption = buildCaption(today, movers, comment);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
 

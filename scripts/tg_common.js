@@ -491,10 +491,62 @@ async function aiComment(promptText, apiKey, model, fallback) {
     }
 }
 
+// ── 후킹형 한 줄(첫 줄 스크롤 스토퍼) ───────────────────────────────────
+// 소셜(피드 알고리즘) 도달을 위해 "궁금/의외 + 구체 숫자"로 시작하는 한 줄을 만든다.
+// 텔레그램에서도 이 줄을 그대로 재활용(멘트가 더 펀치감 있어짐).
+const HOOK_RULE = [
+    '너는 한국 주식 시황 채널 에디터야. 아래 데이터로 스크롤을 멈추게 하는 "후킹형 한 줄"을 만들어.',
+    '규칙:',
+    '- 첫 마디부터 궁금하거나 의외이게. 구체적 숫자·비율·대비를 딱 하나 녹여(예: "상한가 12개 중 8개가 건설").',
+    '- 한 문장 45자 내외, 이모지 1개(문장 앞이나 뒤).',
+    '- 과장·투자권유·목표가·"잡아라/사라"류 금지. 장중이면 미확정 뉘앙스 살짝.',
+    '- 따옴표·해시태그·링크 없이 문장만 출력.',
+].join('\n');
+
+// subject: 게시물 성격(예: '오늘의 주도주 TOP5(장중)'), summary: 데이터 요약(문자열 또는 객체)
+async function aiHook(subject, summary, apiKey, model, fallback) {
+    var body = (typeof summary === 'string') ? summary : JSON.stringify(summary, null, 2);
+    return aiComment(HOOK_RULE + '\n\n[' + subject + ']\n' + body, apiKey, model, fallback);
+}
+
+// ── 소셜(Threads 등) 전용 캡션: 후킹 첫 줄 + 압축 본문 + 링크·면책 없음 + 최소 태그 ──
+// Threads 는 외부 링크 달린 글의 도달을 깎으므로 링크는 넣지 않는다(프로필/바이오로).
+function _socialTags(arr) { return arr.filter(Boolean).map(function (t) { return '#' + t; }).join(' '); }
+
+function socialMoversCaption(opts) {
+    var ymd = opts.ymd, movers = opts.movers || [], hook = (opts.hook || '').trim();
+    var lines = [];
+    if (hook) { lines.push(hook); lines.push(''); }
+    lines.push('📊 오늘의 주도주 · ' + mdLabel(ymd));
+    movers.slice(0, 5).forEach(function (m, i) {
+        lines.push((i + 1) + ' ' + m.name + ' ' + pct(m.rate) + (m.theme ? ' · ' + clip(m.theme, 12) : ''));
+    });
+    lines.push('');
+    lines.push(_socialTags(['주식', '급등주', '주도주']));
+    return lines.join('\n');
+}
+
+function socialThemesCaption(opts) {
+    var ymd = opts.ymd, G = opts.groups || { sectors: [], themes: [] }, hook = (opts.hook || '').trim();
+    var lines = [];
+    if (hook) { lines.push(hook); lines.push(''); }
+    lines.push('🔥 오늘 핫테마 · ' + mdLabel(ymd));
+    if ((G.sectors || []).length) {
+        lines.push('📈 섹터  ' + G.sectors.slice(0, 3).map(function (s) { return clip(s.key, 10) + ' ' + pct(s.avgRate); }).join(' · '));
+    }
+    if ((G.themes || []).length) {
+        lines.push('🏷️ 테마  ' + G.themes.slice(0, 3).map(function (t) { return clip(t.key, 12) + ' ' + pct(t.avgRate); }).join(' · '));
+    }
+    lines.push('');
+    lines.push(_socialTags(['주식', '테마주', '섹터']));
+    return lines.join('\n');
+}
+
 module.exports = {
-    TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY,
+    TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
-    sendMessage, sendPhoto, sendMediaGroup, aiComment,
+    sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,
+    socialMoversCaption, socialThemesCaption,
 };

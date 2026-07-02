@@ -49,18 +49,15 @@ function buildThemeCaption(ymd, G, comment) {
     return lines.join('\n');
 }
 
-async function aiThemeComment(ymd, G) {
+// 후킹형 한 줄(첫 줄 재활용) — tg.aiHook 공용 규칙 사용
+async function aiHook(ymd, G) {
     var summary = {
-        date: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중',
-        주도섹터: G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate); }).join(', ') || '없음',
-        주도테마: G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate); }).join(', ') || '없음',
+        시각: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중(개장 1시간)',
+        주도섹터: G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate) + '(' + s.count + '종목)'; }).join(', ') || '없음',
+        주도테마: G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate) + '(' + t.count + '종목)'; }).join(', ') || '없음',
     };
-    var prompt = '아래는 한국 주식시장 오전(10시경) "장중 핫테마(주도 섹터·테마)" 요약이야. 텔레그램 채널 구독자에게 ' +
-        '지금 어떤 테마·섹터가 시장을 달구는지 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
-        '센스있고 친근하게, 흐름이 드러나게. 숫자 나열 금지, 과장·투자권유·목표가 금지, 장중 미확정 뉘앙스 살짝. 따옴표 없이 문장만.\n\n' +
-        JSON.stringify(summary, null, 2);
-    var fallback = (G.themes[0] || G.sectors[0]) ? ('지금은 ' + (G.themes[0] || G.sectors[0]).key + ' 쪽이 달아오르네요 🔥') : '테마 흐름 지켜보는 중이에요 👀';
-    return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
+    var fallback = (G.themes[0] || G.sectors[0]) ? ('지금 장은 ' + (G.themes[0] || G.sectors[0]).key + ' 쪽으로 쏠리는 중이에요 🔥') : '테마 흐름 지켜보는 중이에요 👀';
+    return tg.aiHook('오늘 핫테마(주도 섹터·테마, 장중)', summary, ANTHROPIC_KEY, MODEL, fallback);
 }
 
 async function main() {
@@ -86,7 +83,7 @@ async function main() {
     console.log('주도섹터:', G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate); }).join(' / ') || '(없음)');
     console.log('주도테마:', G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate); }).join(' / ') || '(없음)');
 
-    var comment = await aiThemeComment(today, G);
+    var comment = await aiHook(today, G);
     var caption = buildThemeCaption(today, G, comment);
     console.log('\n----- 핫테마 캡션 -----\n' + caption + '\n----------------');
 
