@@ -1,0 +1,102 @@
+name: 오늘의 주도주 텔레그램 자동 게시
+
+# 평일 개장 1시간 후(KST 10:00), '오늘의 주도주 TOP5'(상승률+거래대금 종합점수, 거래대금 하한 없음)를
+#   테마·이유와 함께 카드로 whyorgo 채널에 게시.
+# 중복 게시는 public/data/_telegram-movers-posted.json 마커로 방지. 시크릿 미설정이면 no-op.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run: { description: '전송 안 함(검증)', type: boolean, default: false }
+      force: { description: '마커 무시 강제', type: boolean, default: false }
+      date: { description: '샘플용 과거 날짜 YYYYMMDD', type: string, default: '' }
+  schedule:
+    - cron: '0 1 * * 1-5'    # 평일 KST 10:00 — 개장 1시간 후
+    - cron: '15 1 * * 1-5'   # 평일 KST 10:15 — 백업(마커로 중복 방지)
+
+env:
+  TZ: Asia/Seoul
+
+concurrency:
+  group: telegram-movers
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Secret gate
+        id: gate
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          RUN=false
+          if [ -n "$TG_TOKEN" ] || [ "${{ inputs.dry_run }}" = "true" ]; then RUN=true; fi
+          echo "run=$RUN" >> $GITHUB_OUTPUT
+          echo "게이트: run=$RUN (token=$([ -n "$TG_TOKEN" ] && echo set || echo none))"
+
+      - name: Setup Node
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Cache Playwright browsers
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-chromium-v1
+
+      - name: Install Playwright
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          npm init -y >/dev/null 2>&1 || true
+          npm install playwright@1.56.1 --no-save
+          npx playwright install --with-deps chromium
+
+      - name: Post to Telegram (movers)
+        if: steps.gate.outputs.run == 'true'
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
+          [ -n "${{ inputs.date }}" ] && ARGS="$ARGS --date=${{ inputs.date }}"
+          node scripts/telegram_movers.js $ARGS
+
+      - name: Upload image artifact
+        if: always() && steps.gate.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: telegram-movers-image
+          path: telegram-movers.png
+          if-no-files-found: ignore
+
+      - name: Commit marker
+        if: steps.gate.outputs.run == 'true' && inputs.dry_run != true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          rm -f telegram-movers.png
+          git add public/data/_telegram-movers-posted.json 2>/dev/null || true
+          git diff --staged --quiet && echo "게시 안 됨/변경 없음 — 커밋 스킵" && exit 0
+          git commit -m "chore: 주도주 텔레그램 게시 마커 ($(date +%Y%m%d))"
+          BRANCH="${GITHUB_REF_NAME}"
+          for attempt in 1 2 3; do
+            git fetch origin "$BRANCH"
+            if git -c rebase.autoStash=true rebase "origin/$BRANCH"; then
+              git push origin "HEAD:$BRANCH" && echo "마커 push 성공" && exit 0
+            else
+              git rebase --abort || true
+            fi
+            sleep 5
+          done
+          echo "마커 push 실패(비치명적)" && exit 0

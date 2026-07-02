@@ -293,8 +293,8 @@ function leaderCardHtml(opts) {
             (lead.tag ? '<span class="tag">' + esc(lead.tag) + '</span> ' : '') +
             esc(lead.reason || (isFb ? '거래대금 1위 (대장 기준 거래대금 3,000억 미달)' : '')));
     } else {
-        s1 = tile('🥇', '대장주', '<span class="none">오늘은 뚜렷한 대장주가 없었어요</span>',
-            '', '대신 아래 섹터·테마가 시장을 이끌었습니다');
+        s1 = tile('🥇', '대장주', '<span class="none">해당 없음</span>',
+            '', '오늘은 대장주 조건(거래대금·상승률)에 맞는 종목이 없었어요');
     }
     function grp(icon, label, g) {
         if (!g) return tile(icon, label, '<span class="none">집계 중</span>', '', '');
@@ -329,6 +329,54 @@ function leaderCardHtml(opts) {
         '<div class="hd"><div class="lt"><span class="logo">ORGO</span><span class="wm">orgo.kr</span>' +
         '<span class="title">· 오늘의 대장</span></div><span class="range">' + esc(opts.dateRange) + '</span></div>' +
         s1 + grp('🏢', '대장 섹터', opts.sector) + grp('🏷️', '대장 테마', opts.theme) +
+        '</div></body></html>';
+}
+
+// 오늘의 주도주 TOP5 카드(자체 HTML). movers: [{ name, market, rate, vol, theme, reason }]
+function topMoversCardHtml(opts) {
+    var UP = '#ff5666';
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>]/g, function (m) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[m]; }); }
+    function mk(m) { m = String(m || '').toUpperCase(); return m.indexOf('KOSDAQ') >= 0 ? 'KOSDAQ' : (m ? 'KOSPI' : ''); }
+    var rows = (opts.movers || []).slice(0, 5).map(function (it, i) {
+        var mm = mk(it.market);
+        var sub = (it.theme ? '<span class="tag">' + esc(it.theme) + '</span> ' : '') + esc(it.reason || '');
+        return '<div class="row">' +
+            '<span class="rk">' + (i + 1) + '</span>' +
+            '<div class="col">' +
+            '<div class="nm">' + esc(it.name) + (mm ? '<span class="mk">' + mm + '</span>' : '') +
+            '<b class="up">' + pct(it.rate) + '</b><span class="vol">거래 ' + fmtAmount(it.vol) + '</span></div>' +
+            (sub.trim() ? '<div class="sb">' + sub + '</div>' : '') +
+            '</div></div>';
+    }).join('') || '<div class="row"><span class="none">집계 중</span></div>';
+    return '<!doctype html><html lang="ko"><head><meta charset="utf-8">' +
+        '<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">' +
+        '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">' +
+        '<style>' +
+        '*{margin:0;padding:0;box-sizing:border-box;font-family:Pretendard,"Noto Sans KR",sans-serif}' +
+        'body{background:#0d0f14}' +
+        '#card{width:1080px;background:#101218;color:#f5f7fa;padding:58px 50px 52px;display:flex;flex-direction:column;gap:22px}' +
+        '.hd{display:flex;align-items:baseline;justify-content:space-between;gap:16px}' +
+        '.hd .lt{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}' +
+        '.hd .logo{font-size:44px;font-weight:800;letter-spacing:.3px}' +
+        '.hd .wm{font-size:21px;font-weight:600;color:#8a93a6}' +
+        '.hd .title{font-size:27px;font-weight:700;color:#c3cad8}' +
+        '.hd .range{font-size:23px;font-weight:700;color:#8a93a6;white-space:nowrap}' +
+        '.row{display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-radius:18px;' +
+        'background:rgba(255,86,102,.07);border:1px solid rgba(255,86,102,.22)}' +
+        '.rk{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);' +
+        'color:#cfd6e4;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}' +
+        '.col{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}' +
+        '.nm{font-size:30px;font-weight:800;color:#fff;display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}' +
+        '.nm .mk{font-size:19px;font-weight:700;color:#8a93a6}' +
+        '.nm .up{color:' + UP + ';font-size:27px}' +
+        '.nm .vol{font-size:20px;font-weight:600;color:#9aa3b5}' +
+        '.sb{font-size:21px;font-weight:500;color:#aab2c2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
+        '.sb .tag{color:#8a93a6;font-weight:700}' +
+        '.none{color:#8a93a6;font-size:24px}' +
+        '</style></head><body><div id="card">' +
+        '<div class="hd"><div class="lt"><span class="logo">ORGO</span><span class="wm">orgo.kr</span>' +
+        '<span class="title">· 오늘의 주도주</span></div><span class="range">' + esc(opts.dateRange) + '</span></div>' +
+        rows +
         '</div></body></html>';
 }
 
@@ -410,6 +458,6 @@ module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip,
     loadMarker, saveMarker,
-    servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureHtml, rankCardHtml, leaderCardHtml,
+    servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment,
 };

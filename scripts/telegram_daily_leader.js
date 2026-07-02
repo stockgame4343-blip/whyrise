@@ -71,12 +71,7 @@ function computeLeaders(rankings) {
     var active = (rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
     var sectors = core.buildGroups(active, 'sector');
     var themes = core.buildGroups(active, 'theme');
-    // 대장주 없으면(거래대금 3,000억 미달 등) 그날 거래대금 1위 급등주를 '주도주'로 대체
-    var fallback = null;
-    if (!leader && active.length) {
-        fallback = active.slice().sort(function (a, b) { return num(b.trading_value) - num(a.trading_value); })[0];
-    }
-    return { leader: leader, fallback: fallback, sector: sectors[0] || null, theme: themes[0] || null };
+    return { leader: leader, sector: sectors[0] || null, theme: themes[0] || null };
 }
 
 function detailTag(leader) {
@@ -88,18 +83,17 @@ function buildCaption(ymd, L, comment) {
     var lines = [];
     lines.push('🔥 오늘의 대장 (' + dateLabel(ymd) + ')');
     lines.push('');
-    var lead = L.leader || L.fallback;
-    if (lead) {
-        var mk = marketLabel(lead.market);
-        lines.push(L.leader ? '🥇 대장주' : '🥇 오늘의 주도주');
-        lines.push(lead.name + (mk ? '(' + mk + ')' : ''));
-        lines.push(pct(lead.change_rate) + ' · 거래대금 ' + fmtAmount(lead.trading_value));
-        var reason = String(lead.rise_reason || '').trim();
-        var tail = reason ? ' ' + reason : (L.leader ? '' : ' 거래대금 1위 (대장 기준 미달)');
-        lines.push('[' + detailTag(lead) + ']' + tail);
+    if (L.leader) {
+        var mk = marketLabel(L.leader.market);
+        lines.push('🥇 대장주');
+        lines.push(L.leader.name + (mk ? '(' + mk + ')' : ''));
+        lines.push(pct(L.leader.change_rate) + ' · 거래대금 ' + fmtAmount(L.leader.trading_value));
+        var reason = String(L.leader.rise_reason || '').trim();
+        lines.push('[' + detailTag(L.leader) + ']' + (reason ? ' ' + reason : ''));
         lines.push('');
     } else {
-        lines.push('🥇 오늘은 뚜렷한 대장주가 없었어요');
+        lines.push('🥇 대장주');
+        lines.push('해당 없음 — 오늘은 대장주 조건에 맞는 종목이 없었어요');
         lines.push('');
     }
     if (L.sector) {
@@ -122,7 +116,7 @@ function buildCaption(ymd, L, comment) {
 
 // 템플릿 멘트(폴백) — AI 없을 때
 function templateComment(L) {
-    var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name) || (L.fallback && L.fallback.name);
+    var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name);
     if (!subj) return '오늘도 시장 잘 살펴보세요 👀';
     // 조사 문제 회피 — '쪽이'는 받침 유무와 무관하게 자연스러움
     return '오늘은 ' + subj + ' 쪽이 제대로 달렸네요 🚀';
@@ -133,7 +127,7 @@ async function aiComment(ymd, L) {
     if (!ANTHROPIC_KEY) return templateComment(L);
     var summary = {
         date: dateLabel(ymd),
-        대장주: (L.leader || L.fallback) ? ((L.leader || L.fallback).name + ' ' + pct((L.leader || L.fallback).change_rate) + ' / ' + detailTag(L.leader || L.fallback) + ' / ' + ((L.leader || L.fallback).rise_reason || '') + (L.leader ? '' : ' (대장 기준 미달·주도주)')) : '없음',
+        대장주: L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate) + ' / ' + detailTag(L.leader) + ' / ' + (L.leader.rise_reason || '')) : '없음',
         대장섹터: L.sector ? (L.sector.key + ' 평균 ' + pct(L.sector.avgRate)) : '없음',
         대장테마: L.theme ? (L.theme.key + ' 평균 ' + pct(L.theme.avgRate)) : '없음',
     };
@@ -188,7 +182,6 @@ async function renderImage(ymd, L) {
     var html = tg.leaderCardHtml({
         dateRange: dateLabel(ymd),
         leader: ld(L.leader),
-        fallback: ld(L.fallback),
         sector: grp(L.sector),
         theme: grp(L.theme),
     });
