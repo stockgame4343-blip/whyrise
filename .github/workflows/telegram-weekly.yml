@@ -1,19 +1,20 @@
 name: 주간 리포트 텔레그램 자동 게시
 
-# 금요일 마감후(KST 15:55), 이번 주 주도 섹터·테마 TOP5 + 일별 대장 카드를 whyorgo 채널에 게시.
-#   - 데이터: report-summary.json(w1) + leaders-calendar.json (빌드 산출물, 레포 커밋본 사용)
-#   - 이미지: 자체 HTML 카드 1장(헤드리스 Chromium)
-# 15:40 incremental 빌드가 report-summary.json 을 갱신한 뒤 도는 순서. 주 단위 마커로 중복 방지.
+# 그 주 '마지막 거래일' 장마감 후(KST 15:55), 이번 주 주도 섹터·테마 TOP5 + 일별 대장 카드를 whyorgo 채널에 게시.
+#   - 데이터: report-summary.json(w1) + leaders-calendar.json (레포 커밋본)
+# '주 마지막 거래일' 판정: scripts/is_last_trading_day.py week (KRX 공휴일 반영).
+#   보통 금요일이지만 금요일이 공휴일이면 목요일에 발행 → 장 안 열리는 날엔 안 나감.
+#   크론은 목·금에만 발사, 스크립트가 주 마지막 거래일만 통과. 주 단위 마커로 중복 방지.
 # 시크릿(TELEGRAM_BOT_TOKEN) 미설정이면 no-op.
 
 on:
   workflow_dispatch:
     inputs:
       dry_run: { description: '전송 안 함(검증)', type: boolean, default: false }
-      force: { description: '마커 무시 강제', type: boolean, default: false }
+      force: { description: '주마지막거래일/마커 무시 강제', type: boolean, default: false }
   schedule:
-    - cron: '55 6 * * 5'   # 금 KST 15:55 — 마감 25분 후
-    - cron: '25 7 * * 5'   # 금 KST 16:25 — 백업(마커로 중복 방지)
+    - cron: '55 6 * * 4,5'   # 목·금 KST 15:55 — 마감 25분 후 (금 공휴일 대비 목 포함)
+    - cron: '25 7 * * 4,5'   # 목·금 KST 16:25 — 백업(마커로 중복 방지)
 
 env:
   TZ: Asia/Seoul
@@ -30,13 +31,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Secret gate
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+
+      # 게이트: dry_run 무조건 / force+토큰 강제 / 그 외엔 토큰+'주 마지막 거래일'일 때만
+      - name: Week-end gate
         id: gate
         env:
           TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
           RUN=false
-          if [ -n "$TG_TOKEN" ] || [ "${{ inputs.dry_run }}" = "true" ]; then RUN=true; fi
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            RUN=true
+          elif [ -n "$TG_TOKEN" ]; then
+            if [ "${{ inputs.force }}" = "true" ]; then
+              RUN=true
+            elif python3 scripts/is_last_trading_day.py week; then
+              RUN=true
+            fi
+          fi
           echo "run=$RUN" >> $GITHUB_OUTPUT
           echo "게이트: run=$RUN (token=$([ -n "$TG_TOKEN" ] && echo set || echo none))"
 
