@@ -313,7 +313,8 @@ async function aiComment(promptText, apiKey, model, fallback) {
         var res = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
             headers: { 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-            body: JSON.stringify({ model: model || 'claude-haiku-4-5-20251001', max_tokens: 100, messages: [{ role: 'user', content: promptText }] }),
+            // thinking 비활성 — 한 줄 멘트에 사고 불필요(소넷5 등은 미지정 시 적응형 사고가 켜져 max_tokens 잠식→문장 잘림). max_tokens 여유.
+            body: JSON.stringify({ model: model || 'claude-sonnet-5', max_tokens: 200, thinking: { type: 'disabled' }, messages: [{ role: 'user', content: promptText }] }),
         });
         if (!res.ok) throw new Error('anthropic HTTP ' + res.status + ' ' + (await res.text()).slice(0, 200));
         var j = await res.json();

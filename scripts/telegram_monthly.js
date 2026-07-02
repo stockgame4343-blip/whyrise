@@ -32,7 +32,7 @@ const RAW_REPORT = 'https://orgo.kr/data/report-summary.json';
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
 const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-haiku-4-5-20251001').trim();
+const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 async function loadReport() {
     try { return JSON.parse(fs.readFileSync(path.join(DATA, 'report-summary.json'), 'utf8')); }
@@ -61,9 +61,10 @@ function prevMonthLabel(ymd) {
 
 async function aiComment(topSector, topTheme, monthLabel) {
     var summary = { 기간: monthLabel, 주도섹터: topSector || '없음', 주도테마: topTheme || '없음' };
-    var prompt = '아래는 한국 주식시장 최근 한 달 주도 섹터·테마 요약이야. 텔레그램 채널 월간 리포트에 올릴 ' +
-        '한 줄 멘트를 딱 한 문장(최대 40자)으로 써줘. 친근하고 위트있게, 이모지 1개 포함. ' +
-        '숫자 반복 금지, 과장/투자권유/목표가 금지. 따옴표 없이 문장만.\n\n' + JSON.stringify(summary, null, 2);
+    var prompt = '아래는 한국 주식시장 최근 한 달 주도 섹터·테마 요약이야. 텔레그램 채널 월간 리포트 구독자에게 ' +
+        '지난 한 달 시장 분위기를 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
+        '센스있고 친근하게, 굵직한 흐름이 드러나게. 숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
+        JSON.stringify(summary, null, 2);
     var fallback = topTheme ? ('지난 한 달은 ' + topTheme + ' 흐름이 굵직했네요 📈') : '지난 한 달도 수고 많으셨어요 📈';
     return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
 }

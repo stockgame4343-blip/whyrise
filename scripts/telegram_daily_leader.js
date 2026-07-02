@@ -32,7 +32,7 @@ const RAW = core.RAW;
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
 const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-haiku-4-5-20251001').trim();
+const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -129,9 +129,10 @@ async function aiComment(ymd, L) {
         대장섹터: L.sector ? (L.sector.key + ' 평균 ' + pct(L.sector.avgRate)) : '없음',
         대장테마: L.theme ? (L.theme.key + ' 평균 ' + pct(L.theme.avgRate)) : '없음',
     };
-    var prompt = '아래는 한국 주식시장 그날의 "오늘의 대장" 요약이야. 이걸 보고 텔레그램 채널에 올릴 ' +
-        '마지막 한 줄 멘트를 딱 한 문장(최대 40자)으로 써줘. 친근하고 위트있게, 이모지 1개 포함. ' +
-        '숫자 반복 금지, 과장/투자권유 금지, 따옴표 없이 문장만.\n\n' + JSON.stringify(summary, null, 2);
+    var prompt = '아래는 한국 주식시장 그날의 "오늘의 대장" 요약이야. 텔레그램 채널 구독자에게 ' +
+        '오늘 장 마감 분위기를 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
+        '센스있고 친근하게, 오늘 뭐가 주인공이었는지 드러나게. 숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
+        JSON.stringify(summary, null, 2);
     try {
         var res = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
@@ -140,7 +141,7 @@ async function aiComment(ymd, L) {
                 'anthropic-version': '2023-06-01',
                 'content-type': 'application/json',
             },
-            body: JSON.stringify({ model: MODEL, max_tokens: 100, messages: [{ role: 'user', content: prompt }] }),
+            body: JSON.stringify({ model: MODEL, max_tokens: 200, thinking: { type: 'disabled' }, messages: [{ role: 'user', content: prompt }] }),
         });
         if (!res.ok) throw new Error('anthropic HTTP ' + res.status + ' ' + (await res.text()).slice(0, 200));
         var j = await res.json();

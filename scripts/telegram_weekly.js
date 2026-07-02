@@ -31,7 +31,7 @@ const RAW_REPORT = 'https://orgo.kr/data/report-summary.json';
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
 const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-haiku-4-5-20251001').trim();
+const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 // 로컬 우선(빌드 직후 최신), 실패 시 라이브 fetch
 async function loadReport() {
@@ -75,9 +75,9 @@ function buildStatLine(w) {
 
 async function aiComment(topSector, topTheme) {
     var summary = { 주도섹터: topSector || '없음', 주도테마: topTheme || '없음' };
-    var prompt = '아래는 한국 주식시장 이번 주 주도 섹터·테마 요약이야. 텔레그램 채널 주간 리포트에 올릴 ' +
-        '한 줄 멘트를 딱 한 문장(최대 40자)으로 써줘. 친근하고 위트있게, 이모지 1개 포함. ' +
-        '숫자 반복 금지, 과장/투자권유/목표가 금지, 주말 인사 톤 살짝. 따옴표 없이 문장만.\n\n' +
+    var prompt = '아래는 한국 주식시장 이번 주 주도 섹터·테마 요약이야. 텔레그램 채널 주간 리포트 구독자에게 ' +
+        '이번 주 시장 분위기를 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
+        '센스있고 친근하게, 주말 인사 톤 살짝. 숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
         JSON.stringify(summary, null, 2);
     var fallback = topTheme ? ('이번 주는 ' + topTheme + ' 쪽이 뜨거웠네요. 좋은 주말 보내세요 🙌')
         : '한 주 수고하셨어요. 좋은 주말 보내세요 🙌';

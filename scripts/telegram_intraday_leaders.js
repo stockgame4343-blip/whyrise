@@ -31,7 +31,7 @@ const RAW = core.RAW;
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
 const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-haiku-4-5-20251001').trim();
+const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 const TOP_N = 3;   // 캡션에 노출할 섹터/테마 개수
 
@@ -85,9 +85,10 @@ async function aiComment(ymd, G) {
         주도섹터: G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate); }).join(', ') || '없음',
         주도테마: G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate); }).join(', ') || '없음',
     };
-    var prompt = '아래는 한국 주식시장 개장 30분(09:30) "장중 주도 섹터·테마" 요약이야. 텔레그램 채널에 올릴 ' +
-        '마지막 한 줄 멘트를 딱 한 문장(최대 40자)으로 써줘. 친근하고 위트있게, 이모지 1개 포함. ' +
-        '숫자 반복 금지, 과장/투자권유/목표가 금지, 장중 미확정이라는 뉘앙스 살짝. 따옴표 없이 문장만.\n\n' +
+    var prompt = '아래는 한국 주식시장 개장 30분(09:30) "장중 주도 섹터·테마" 요약이야. 텔레그램 채널 구독자에게 ' +
+        '오늘 개장 분위기를 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
+        '센스있고 친근하게, 어떤 흐름인지 자연스럽게 드러나게. 숫자 나열 금지, 과장·투자권유·목표가 금지, ' +
+        '장중 미확정 뉘앙스 살짝. 따옴표 없이 문장만.\n\n' +
         JSON.stringify(summary, null, 2);
     return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, templateComment(G));
 }
