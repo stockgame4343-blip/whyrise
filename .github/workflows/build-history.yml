@@ -232,8 +232,11 @@ jobs:
           python3 -u scripts/build-history.py --llm-refine $EXTRA
 
       # 오늘의 대장 캘린더(샘플2) — stock-rise 일별 대장 3종을 누적 계산. 비핵심이라 실패해도 본빌드 유지.
+      # !cancelled(): 앞 build 스텝이 marketmap OHLC 타임아웃(124)으로 실패해도 실행 —
+      #   대장캘린더는 stock-rise 상류를 직접 읽으므로 whyrise 증분 성공과 무관하게 최신화 가능.
+      #   (marketmap 실패가 캘린더 동결로 번지던 결합 해제)
       - name: Build leaders calendar
-        if: steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental')
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental') }}
         continue-on-error: true
         run: node scripts/build_leaders_calendar.js
 
@@ -326,8 +329,12 @@ jobs:
           rm -f telegram-daily.png
           # 게시 마커(public/data/_telegram-posted.json)는 아래 Commit & push 가 함께 커밋
 
+      # !cancelled(): build 스텝이 marketmap 타임아웃(124)으로 실패해도, 그 전에 디스크에 완성된
+      #   증분 stock-history·report·rise-history + 갱신된 대장캘린더를 커밋한다.
+      #   (marketmap은 marketmap-intraday 런들이 별도로 최신화하므로 증분의 marketmap 재빌드 실패는 비치명적)
+      #   git add + diff-quiet 가드로, 변경 없으면 no-op — 조기 실패로 쓸 게 없으면 그냥 넘어감.
       - name: Commit & push
-        if: steps.gate.outputs.skip != 'true'
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
