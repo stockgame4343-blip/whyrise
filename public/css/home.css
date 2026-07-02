@@ -1178,23 +1178,29 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
 .home6-stock-rotator {
     position: relative;
     display: inline-block;
-    min-width: 7.2em;
+    width: 7.6em;
+    max-width: 100%;
     height: 1.08em;
     overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    contain: paint;
+    clip-path: inset(0 2px);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 2.5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 2.5%, #000 95%, transparent 100%);
     vertical-align: bottom;
 }
 
 .home6-page .home2-hero .home6-stock-rotator em {
     position: absolute;
-    inset: 0;
+    inset: 0 .12em;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--home2-copy);
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
-    will-change: opacity, transform, filter;
+    will-change: opacity, transform;
     white-space: nowrap;
 }
 
@@ -1766,6 +1772,21 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
     color: var(--home2-muted);
     font-size: 12px;
     line-height: 1.6;
+}
+
+.home6-leader-card__body > .home6-card-empty {
+    min-height: 96px;
+    margin: 0 0 4px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--home2-line);
+    border-radius: 11px;
+    background: var(--home2-surface-2);
+    text-align: center;
+    transform: translateY(4px);
+    word-break: keep-all;
 }
 
 .home6-market-card__action {

@@ -1,0 +1,95 @@
+/*
+ * ORGO mobile navigation overlay.
+ *
+ * This layer is intentionally detached from document flow. It must never add
+ * body padding or alter visualization/capture dimensions.
+ */
+.app-tabbar {
+    display: none;
+}
+
+.orgo-capture-active .app-tabbar,
+[data-orgo-capturing="true"] .app-tabbar {
+    display: none !important;
+}
+
+@media print {
+    .app-tabbar {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-tabbar {
+        position: fixed;
+        z-index: 2147483000;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        isolation: isolate;
+        contain: layout paint style;
+        height: calc(64px + env(safe-area-inset-bottom));
+        padding: 7px 8px env(safe-area-inset-bottom);
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        border-top: 1px solid rgba(255, 255, 255, .08);
+        background: rgba(10, 11, 15, .9);
+        box-shadow: 0 -10px 36px rgba(0, 0, 0, .2);
+        backdrop-filter: blur(18px) saturate(150%);
+        -webkit-backdrop-filter: blur(18px) saturate(150%);
+        pointer-events: auto;
+    }
+
+    .app-tabbar__item {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        border-radius: 12px;
+        color: #737c8d;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .app-tabbar__item svg {
+        width: 21px;
+        height: 21px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.9;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .app-tabbar__label {
+        max-width: 100%;
+        overflow: hidden;
+        font-size: 10px;
+        font-weight: 650;
+        line-height: 1.1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .app-tabbar__item[aria-current="page"] {
+        color: #5a9cf8;
+        background: rgba(49, 130, 246, .1);
+    }
+
+    [data-theme="light"] .app-tabbar {
+        border-top-color: rgba(20, 34, 52, .1);
+        background: rgba(250, 251, 253, .9);
+        box-shadow: 0 -10px 36px rgba(25, 40, 60, .08);
+    }
+
+    [data-theme="light"] .app-tabbar__item {
+        color: #7c8491;
+    }
+
+    [data-theme="light"] .app-tabbar__item[aria-current="page"] {
+        color: #1768d5;
+        background: rgba(49, 130, 246, .09);
+    }
+}

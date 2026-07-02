@@ -142,9 +142,11 @@
         var target = document.getElementById('home2HeroLeader');
         if (!target) return;
         if (!leader) {
+            var emptyStyle = 'min-height:96px;margin:0 0 4px;align-items:center;justify-content:center;' +
+                'border-radius:11px;text-align:center;transform:translateY(4px);word-break:keep-all';
             target.innerHTML = gapMode
-                ? '<p class="home6-card-empty">장 초반 집계 중이에요 — 기준을 충족하는 대장주가 나오면 바로 표시돼요.</p>'
-                : '<p class="home6-card-empty">선정 기준을 충족한 대장주가 아직 없어요.</p>';
+                ? '<p class="home6-card-empty home6-leader-detail" style="' + emptyStyle + '">장 초반 집계 중이에요 — 기준을 충족하는 대장주가 나오면 바로 표시돼요.</p>'
+                : '<p class="home6-card-empty home6-leader-detail" style="' + emptyStyle + '">선정 기준을 충족한 대장주가 아직 없어요.</p>';
             return;
         }
 
@@ -588,12 +590,12 @@
                 fill: 'both'
             };
             var outgoingAnimation = outgoing.animate([
-                { transform: 'translateY(0)', opacity: 1, filter: 'blur(0)' },
-                { transform: 'translateY(-112%)', opacity: 0, filter: 'blur(4px)' }
+                { transform: 'translateY(0)', opacity: 1 },
+                { transform: 'translateY(-112%)', opacity: 0 }
             ], timing);
             var incomingAnimation = incoming.animate([
-                { transform: 'translateY(112%)', opacity: 0, filter: 'blur(4px)' },
-                { transform: 'translateY(0)', opacity: 1, filter: 'blur(0)' }
+                { transform: 'translateY(112%)', opacity: 0 },
+                { transform: 'translateY(0)', opacity: 1 }
             ], timing);
 
             Promise.all([
