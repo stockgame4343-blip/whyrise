@@ -254,24 +254,43 @@ jobs:
           TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
           POST=false
-          NOW_MIN=$((10#$(date +%H) * 60 + 10#$(date +%M)))   # TZ=Asia/Seoul, 15:45=945
+          POST_INTRADAY=false
+          NOW_MIN=$((10#$(date +%H) * 60 + 10#$(date +%M)))   # TZ=Asia/Seoul, 15:45=945, 09:30=570
           TODAY=$(date +%Y%m%d)
           LAST=$(python3 -c "import json;print(json.load(open('public/data/_telegram-posted.json')).get('last',''))" 2>/dev/null || echo '')
+          LAST_IN=$(python3 -c "import json;print(json.load(open('public/data/_telegram-intraday-posted.json')).get('last',''))" 2>/dev/null || echo '')
           if [ -n "$TG_TOKEN" ] && [ "$NOW_MIN" -ge 945 ] && [ "$LAST" != "$TODAY" ]; then POST=true; fi
+          # 09:30~11:00 첫 실행에서 장중 주도 게시 — 외부 cron-job.org dispatch(15분 그리드)로 신뢰성 확보(GitHub schedule 누락 보완)
+          if [ -n "$TG_TOKEN" ] && [ "$NOW_MIN" -ge 570 ] && [ "$NOW_MIN" -lt 660 ] && [ "$LAST_IN" != "$TODAY" ]; then POST_INTRADAY=true; fi
           echo "post=$POST" >> $GITHUB_OUTPUT
-          echo "텔레그램 게이트: post=$POST (now_min=$NOW_MIN last=$LAST today=$TODAY token=$([ -n "$TG_TOKEN" ] && echo set || echo none))"
+          echo "post_intraday=$POST_INTRADAY" >> $GITHUB_OUTPUT
+          echo "텔레그램 게이트: post=$POST intraday=$POST_INTRADAY (now_min=$NOW_MIN last=$LAST last_in=$LAST_IN today=$TODAY token=$([ -n "$TG_TOKEN" ] && echo set || echo none))"
 
       - name: Setup Node (telegram)
-        if: steps.tg.outputs.post == 'true'
+        if: steps.tg.outputs.post == 'true' || steps.tg.outputs.post_intraday == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
       - name: Cache Playwright (telegram)
-        if: steps.tg.outputs.post == 'true'
+        if: steps.tg.outputs.post == 'true' || steps.tg.outputs.post_intraday == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: pw-chromium-v1
+      # 장중 주도(09:30) — 신뢰성 높은 외부 dispatch 경로에 업힘. 마커로 하루 1회.
+      - name: Post to Telegram (intraday)
+        if: steps.tg.outputs.post_intraday == 'true'
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          npm install playwright@1.56.1 --no-save
+          npx playwright install --with-deps chromium
+          node scripts/telegram_intraday_leaders.js || true
+          rm -f telegram-intraday-*.png
+          # 마커(public/data/_telegram-intraday-posted.json)는 아래 Commit & push 가 함께 커밋
       - name: Post to Telegram
         if: steps.tg.outputs.post == 'true'
         continue-on-error: true   # 게시 실패해도 본빌드/푸시는 정상 진행
