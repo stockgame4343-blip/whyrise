@@ -876,6 +876,45 @@ body {
 /* 네이버 링크는 우측 끝 정렬 (별점 마운트는 KOSPI 옆에 두고 네이버는 행 끝) */
 .stock-header__naver { margin-left: auto; }
 
+/* 헤더 우측 액션 그룹 — 네이버·공유 두 버튼을 나란히 우측 정렬 (모바일 줄바꿈 시에도 한 덩어리) */
+.stock-header__actions { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; }
+.stock-header__actions .stock-header__naver { margin-left: 0; }
+.stock-header__share {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    line-height: 1.5;   /* <a>(네이버)와 높이 일치 — 버튼 UA 기본 line-height 보정 */
+    cursor: pointer;
+    transition: color .15s, border-color .15s, background .15s;
+}
+.stock-header__share:hover {
+    color: var(--text-primary);
+    border-color: var(--glass-border-strong);
+    background: var(--glass-bg);
+}
+.stock-header__share svg { flex-shrink: 0; }
+
+/* 프리렌더 타임라인(크롤러용 스냅샷) — JS 하이드레이션 전 짧은 노출도 무난하게 */
+.prerender-list { list-style: none; margin: 0; padding: 0; }
+.prerender-item {
+    padding: 10px 2px;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+.prerender-date { color: var(--text-muted, #8b93a1); margin-right: 6px; }
+.prerender-rate { color: var(--rise); }
+.prerender-theme { font-style: normal; color: var(--text-muted, #8b93a1); }
+
 /* 헤더 별점 — 메인 홈과 동일한 .ctrl-wrap/.float-controls/.star/.exclude-btn/.memo-btn
    클래스 그대로 사용 (style.css 가 모두 처리). 여기서는 호버 트리거 + 앵커 보정. */
 .stock-header__rating-mount {

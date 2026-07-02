@@ -357,6 +357,31 @@
             $naver.style.display = '';
         }
 
+        // 공유 — 모바일은 네이티브 공유 시트, 데스크톱은 링크 복사 (+utm 으로 유입 측정)
+        var $share = document.getElementById('stockShareBtn');
+        if ($share && ticker) {
+            $share.style.display = '';
+            if (!$share.dataset.bound) {
+                $share.dataset.bound = '1';
+                $share.addEventListener('click', function () {
+                    var url = 'https://orgo.kr/stock/' + ticker + '?utm_source=share';
+                    var shareTitle = (_stockName || ticker) + ' 왜 오름? - ORGO';
+                    if (navigator.share) {
+                        navigator.share({ title: shareTitle, url: url }).catch(function () {});
+                        return;
+                    }
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(url).then(function () {
+                            var $label = $share.querySelector('span');
+                            if (!$label) return;
+                            $label.textContent = '복사됨';
+                            setTimeout(function () { $label.textContent = '공유'; }, 1600);
+                        }).catch(function () {});
+                    }
+                });
+            }
+        }
+
         // 관심 별점 표시 (whyrise-ratings localStorage 와 동기화)
         if (ticker) renderHeaderRating(ticker);
 

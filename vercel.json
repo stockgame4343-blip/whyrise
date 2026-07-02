@@ -15,7 +15,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/stock/:ticker", "destination": "/stock.html?ticker=:ticker" }
+    { "source": "/stock/:ticker", "destination": "/stock/:ticker.html" }
   ],
   "headers": [
     {

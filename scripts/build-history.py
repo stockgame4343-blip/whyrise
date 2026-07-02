@@ -34,6 +34,7 @@ from collector import naver_client  # noqa: E402
 from collector.kr_holidays import is_kr_business_day  # noqa: E402
 from scripts import llm_reasons  # noqa: E402
 from scripts.estimate_reasons import estimate_reason  # noqa: E402
+from scripts.prerender_stocks import build_stock_prerender  # noqa: E402
 
 OUTPUT_DIR = _REPO / 'public' / 'data' / 'stock-history'
 OVERRIDES_DIR = _REPO / 'public' / 'data' / 'overrides'
@@ -1565,6 +1566,7 @@ def build_full(args) -> int:
     build_rise_history(output_dir, output_dir.parent / 'rise-history')
     build_pref_themes(output_dir, output_dir.parent / 'pref-themes.json')
     build_sitemap(output_dir, output_dir.parent.parent)
+    build_stock_prerender(output_dir, output_dir.parent.parent)
     build_marketmap(output_dir.parent.parent)
     build_screening_index(output_dir, output_dir.parent / 'screening.json')
     elapsed = time.time() - t_start
@@ -1636,6 +1638,7 @@ def build_estimate_only(args) -> int:
     build_rise_history(output_dir, output_dir.parent / 'rise-history')
     build_pref_themes(output_dir, output_dir.parent / 'pref-themes.json')
     build_sitemap(output_dir, output_dir.parent.parent)
+    build_stock_prerender(output_dir, output_dir.parent.parent)
     build_screening_index(output_dir, output_dir.parent / 'screening.json')
     return 0
 
@@ -1660,6 +1663,7 @@ def _llm_apply_and_regen(targets, verdicts, stats, dry_run: bool, title: str) ->
     if counts.get('replaced') or counts.get('flagged'):
         build_report_summary(OUTPUT_DIR, OUTPUT_DIR.parent / 'report-summary.json')
         build_rise_history(OUTPUT_DIR, OUTPUT_DIR.parent / 'rise-history')
+        build_stock_prerender(OUTPUT_DIR, OUTPUT_DIR.parent.parent)
         build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
     llm_reasons.write_step_summary(title, counts, table)
     return 0

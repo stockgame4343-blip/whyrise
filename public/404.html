@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이지를 찾을 수 없어요 - ORGO</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+    // 프리렌더에 없는 종목(예: 첫 급등 전 신규 상장) — 동적 상세 페이지로 폴백
+    (function () {
+        var m = location.pathname.match(/^\/stock\/([0-9A-Z]{6})$/i);
+        if (m) location.replace('/stock.html?ticker=' + m[1] + location.search);
+    })();
+    </script>
+    <style>
+        body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+               background: #101218; color: #e8eaf0; font-family: Pretendard, 'Noto Sans KR', sans-serif; }
+        .box { text-align: center; padding: 32px; }
+        .box h1 { font-size: 44px; margin: 0 0 8px; letter-spacing: -1px; }
+        .box p { color: #9aa1ad; margin: 0 0 24px; }
+        .box a { display: inline-block; padding: 10px 22px; border-radius: 999px;
+                 background: #3182F6; color: #fff; text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>404</h1>
+        <p>페이지를 찾을 수 없어요.</p>
+        <a href="/">ORGO 홈으로</a>
+    </div>
+</body>
+</html>
