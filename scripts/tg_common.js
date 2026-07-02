@@ -143,12 +143,33 @@ async function captureFramed(page, opts) {
 }
 
 /**
- * 자체 HTML 문자열을 정사각 PNG 로 캡쳐(주간/월간 리포트 카드용).
+ * 시각화 페이지(bubbles2/treemap)의 '이미지 저장' 기능을 그대로 실행해 다운로드 PNG 를 가로챈다.
+ * → 사용자가 모바일에서 직접 다운로드한 것과 동일한 산출물(ORGO 워터마크 헤더 포함).
+ * page 는 mobile viewport 로 열려 있어야 모바일 레이아웃으로 저장된다.
+ */
+async function saveViaBridge(page, outPath, opts) {
+    opts = opts || {};
+    await page.waitForFunction(function () {
+        return window.WhyRiseTmapBridge && typeof window.WhyRiseTmapBridge.save === 'function'
+            && document.querySelectorAll('#tmapSvg g, #tmapSvg rect').length >= 3;
+    }, null, { timeout: opts.timeout || 45000 });
+    await page.waitForTimeout(opts.settle || 1400);   // 차트 트랜지션/폰트 안정
+    var res = await Promise.all([
+        page.waitForEvent('download', { timeout: 25000 }),
+        page.evaluate(function () { window.WhyRiseTmapBridge.save(); }),
+    ]);
+    await res[0].saveAs(outPath);
+    return outPath;
+}
+
+/**
+ * 자체 HTML 문자열을 PNG 로 캡쳐(주간/월간 리포트 카드용). #card 요소 크기 그대로 저장(세로형).
  * 사이트와 동일 웹폰트(Pretendard/Noto Sans KR)를 로드해 CI(ubuntu)에서도 한글 정상 렌더.
  */
 async function captureHtml(browser, html, opts) {
-    var SIZE = (opts && opts.size) || 1080;
-    var ctx = await browser.newContext({ viewport: { width: SIZE, height: SIZE }, deviceScaleFactor: 2 });
+    var W = (opts && (opts.width || opts.size)) || 1080;
+    var H = (opts && (opts.height || opts.size)) || 1700;
+    var ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2 });
     var page = await ctx.newPage();
     try {
         await page.setContent(html, { waitUntil: 'networkidle', timeout: 30000 });
@@ -162,11 +183,14 @@ async function captureHtml(browser, html, opts) {
     return opts.outPath;
 }
 
-// ORGO 리포트 카드 HTML (주간/월간 공용). 좌측 컬러 바 없이 균일 테두리 + 배경 틴트로 강조.
-//   opts: { title, dateRange, statLine, sectors[], themes[], extraLabel, extraChips[], footnote }
+// ORGO 리포트 카드 HTML (주간/월간 공용). 모바일 세로형·콘텐츠맞춤 높이.
+//   워터마크: 좌상단 ORGO + orgo.kr(다운로드 산출물과 동일 톤). 면책·유도 문구 없음.
+//   좌측 컬러 바 없이 균일 테두리 + 배경 틴트로 강조.
+//   opts: { title, dateRange, statLine, sectors[], themes[], extraLabel, extraChips[] }
 //   sectors/themes 항목: { name, sub }   extraChips 항목: { k, v }
 function rankCardHtml(opts) {
     var UP = '#ff5666';   // 국내 관행 상승=빨강
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>]/g, function (m) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[m]; }); }
     function rows(list) {
         return (list || []).slice(0, 5).map(function (it, i) {
             return '<div class="row">' +
@@ -181,7 +205,6 @@ function rankCardHtml(opts) {
             return '<span class="chip"><b>' + esc(c.k) + '</b> ' + esc(c.v) + '</span>';
         }).join('') || '<span class="chip empty">—</span>';
     }
-    function esc(s) { return String(s == null ? '' : s).replace(/[&<>]/g, function (m) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[m]; }); }
     var extra = opts.extraChips && opts.extraChips.length ? (
         '<div class="xlabel">' + esc(opts.extraLabel || '') + '</div>' +
         '<div class="chips">' + chips(opts.extraChips) + '</div>') : '';
@@ -191,40 +214,38 @@ function rankCardHtml(opts) {
         '<style>' +
         '*{margin:0;padding:0;box-sizing:border-box;font-family:Pretendard,"Noto Sans KR",sans-serif}' +
         'body{background:#0d0f14}' +
-        '#card{width:1080px;height:1080px;background:#101218;color:#f5f7fa;padding:52px 48px 40px;display:flex;flex-direction:column;gap:26px}' +
-        '.hd{display:flex;align-items:baseline;justify-content:space-between}' +
-        '.hd .lt{display:flex;align-items:baseline;gap:14px}' +
-        '.hd .logo{font-size:40px;font-weight:800;letter-spacing:.3px}' +
-        '.hd .title{font-size:26px;font-weight:700;color:#c3cad8}' +
-        '.hd .range{font-size:22px;font-weight:600;color:#8a93a6}' +
-        '.stat{font-size:21px;font-weight:600;color:#9aa3b5;margin-top:-8px}' +
-        '.cols{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:26px;min-height:0}' +
-        '.col{display:flex;flex-direction:column;gap:14px;min-height:0}' +
-        '.col h3{font-size:25px;font-weight:800;color:#e9edf5}' +
-        '.row{display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:16px;' +
+        '#card{width:1080px;background:#101218;color:#f5f7fa;padding:60px 52px 56px;display:flex;flex-direction:column;gap:34px}' +
+        '.hd{display:flex;align-items:baseline;justify-content:space-between;gap:16px}' +
+        '.hd .lt{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}' +
+        '.hd .logo{font-size:44px;font-weight:800;letter-spacing:.3px}' +
+        '.hd .wm{font-size:21px;font-weight:600;color:#8a93a6}' +
+        '.hd .title{font-size:27px;font-weight:700;color:#c3cad8}' +
+        '.hd .range{font-size:24px;font-weight:700;color:#8a93a6;white-space:nowrap}' +
+        '.stat{font-size:22px;font-weight:600;color:#9aa3b5;margin-top:-14px}' +
+        '.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}' +
+        '.col{display:flex;flex-direction:column;gap:16px}' +
+        '.col h3{font-size:26px;font-weight:800;color:#e9edf5}' +
+        '.row{display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:18px;' +
         'background:rgba(255,86,102,.07);border:1px solid rgba(255,86,102,.22)}' +
         '.row.empty{justify-content:center;color:#8a93a6;background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}' +
-        '.rk{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);' +
-        'color:#cfd6e4;font-size:19px;font-weight:800;display:flex;align-items:center;justify-content:center}' +
-        '.nm{flex:1;font-size:26px;font-weight:700;color:#f5f7fa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
-        '.sub{flex:0 0 auto;font-size:21px;font-weight:700;color:' + UP + '}' +
-        '.xlabel{font-size:23px;font-weight:800;color:#e9edf5}' +
-        '.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:-10px}' +
-        '.chip{font-size:21px;font-weight:600;color:#e3e8f1;background:rgba(255,255,255,.06);' +
-        'border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:10px 18px}' +
+        '.rk{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);' +
+        'color:#cfd6e4;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center}' +
+        '.nm{flex:1;font-size:27px;font-weight:700;color:#f5f7fa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
+        '.sub{flex:0 0 auto;font-size:22px;font-weight:700;color:' + UP + '}' +
+        '.xlabel{font-size:24px;font-weight:800;color:#e9edf5;margin-top:6px}' +
+        '.chips{display:flex;flex-wrap:wrap;gap:13px;margin-top:-12px}' +
+        '.chip{font-size:22px;font-weight:600;color:#e3e8f1;background:rgba(255,255,255,.06);' +
+        'border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:11px 20px}' +
         '.chip b{color:#8a93a6;font-weight:700;margin-right:4px}' +
-        '.ft{display:flex;align-items:center;justify-content:space-between;font-size:19px;color:#8a93a6}' +
-        '.ft .r{font-weight:700}' +
         '</style></head><body><div id="card">' +
-        '<div class="hd"><div class="lt"><span class="logo">ORGO</span><span class="title">' + esc(opts.title) + '</span></div>' +
+        '<div class="hd"><div class="lt"><span class="logo">ORGO</span><span class="wm">orgo.kr</span>' +
+        '<span class="title">· ' + esc(opts.title) + '</span></div>' +
         '<span class="range">' + esc(opts.dateRange) + '</span></div>' +
         (opts.statLine ? '<div class="stat">' + esc(opts.statLine) + '</div>' : '') +
         '<div class="cols">' +
         '<div class="col"><h3>📈 주도 섹터</h3>' + rows(opts.sectors) + '</div>' +
         '<div class="col"><h3>🏷️ 주도 테마</h3>' + rows(opts.themes) + '</div>' +
         '</div>' + extra +
-        '<div class="ft"><span>' + esc(opts.footnote || '사실 데이터 · 투자판단은 본인 책임') + '</span>' +
-        '<span class="r">orgo.kr</span></div>' +
         '</div></body></html>';
 }
 
@@ -305,6 +326,6 @@ module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY,
     num, pct, fmtAmount, ymdKst, dateLabel, mdLabel, marketLabel, clip,
     loadMarker, saveMarker,
-    servePublic, captureFramed, captureHtml, rankCardHtml,
+    servePublic, captureFramed, saveViaBridge, captureHtml, rankCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment,
 };

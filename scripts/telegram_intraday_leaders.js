@@ -70,8 +70,6 @@ function buildCaption(ymd, G, comment) {
         lines.push('');
     }
     lines.push(comment);
-    lines.push('※ 장중(미확정) 스냅샷 · 투자판단은 본인 책임');
-    lines.push('더 많은 데이터 → orgo.kr');
     return lines.join('\n');
 }
 
@@ -94,35 +92,25 @@ async function aiComment(ymd, G) {
     return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, templateComment(G));
 }
 
-// ── 버블맵 + 트리맵 렌더 (기존 시각화 페이지 헤드리스 캡쳐) ──
-async function renderImages(ymd) {
+// ── 버블맵 + 트리맵 렌더 (모바일 뷰포트 + 사이트 다운로드 기능 재사용 → 워터마크 포함) ──
+async function renderImages() {
     var srv = await tg.servePublic(PUBLIC);
     var port = srv.address().port;
     var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
-    var subtitle = tg.dateLabel(ymd) + ' 09:30';
     try {
-        var ctx = await browser.newContext({ viewport: { width: 1120, height: 1180 }, deviceScaleFactor: 2 });
+        // 모바일 뷰포트 — 사이트가 모바일 레이아웃으로 렌더 → 다운로드도 모바일에서 받은 것과 동일
+        var ctx = await browser.newContext({
+            viewport: { width: 430, height: 932 }, deviceScaleFactor: 2,
+            isMobile: true, hasTouch: true, acceptDownloads: true,
+        });
         var page = await ctx.newPage();
         await page.addInitScript(function () { try { localStorage.setItem('theme', 'dark'); } catch (e) {} });
 
-        // 차트 노드가 실제로 그려질 때까지 대기(가시성 대신 노드 수 기준 — <defs> 오탐 회피)
-        async function waitNodes(nodeSel) {
-            await page.waitForSelector('#tmapSvg', { state: 'attached', timeout: 45000 });
-            await page.waitForFunction(function (sel) {
-                return document.querySelectorAll(sel).length >= 3;
-            }, nodeSel, { timeout: 45000 });
-            await page.waitForTimeout(1000);   // 트랜지션 안정
-        }
-
-        // 버블맵
         await page.goto('http://127.0.0.1:' + port + '/bubbles2.html', { waitUntil: 'domcontentloaded', timeout: 60000 });
-        await waitNodes('#tmapSvg g.bmap2-node');
-        await tg.captureFramed(page, { selector: '#tmapStage', title: '장중 주도 · 버블맵', subtitle: subtitle, outPath: IMG_BUBBLE });
+        await tg.saveViaBridge(page, IMG_BUBBLE);
 
-        // 트리맵
         await page.goto('http://127.0.0.1:' + port + '/treemap.html', { waitUntil: 'domcontentloaded', timeout: 60000 });
-        await waitNodes('#tmapSvg .tmap-sector__box, #tmapSvg rect');
-        await tg.captureFramed(page, { selector: '#tmapStage', title: '장중 주도 · 트리맵', subtitle: subtitle, outPath: IMG_TREE });
+        await tg.saveViaBridge(page, IMG_TREE);
     } finally {
         await browser.close();
         srv.close();
@@ -158,7 +146,7 @@ async function main() {
     var caption = buildCaption(today, G, comment);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
-    var images = await renderImages(today);
+    var images = await renderImages();
     console.log('이미지:', images.join(', '));
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }

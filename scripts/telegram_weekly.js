@@ -123,15 +123,12 @@ async function main() {
         themes: themes,
         extraLabel: '⭐ 이번 주 대장 (일별)',
         extraChips: chips,
-        footnote: '사실 데이터 · 투자판단은 본인 책임',
     });
 
     var caption = [
         '📅 이번 주 시장 리포트 · ' + range,
         '',
         comment,
-        '',
-        '더 많은 데이터 → orgo.kr',
     ].join('\n');
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');
