@@ -165,9 +165,10 @@
         });
     }
     function activeItems() {
-        // NXT 프리마켓(08~09시)엔 NXT 시세가 있는 종목만 — 어제 급등주가 어제 등락률로
-        // 박제되는 것 방지(라이브 맵 미수신 전이면 필터 보류해 빈 화면 회피). 09:00 정규장부턴 해제.
-        var leadInLive = isLiveDate() && isNxtLeadIn() && state.liveMap;
+        // NXT 프리마켓(08~09시)과 오늘 빌드 도착 전(virtualDate 갭)엔 라이브 시세가 있는 종목만 —
+        // 어제 급등주가 어제 등락률로 박제되는 것 방지(라이브 맵 미수신 전이면 필터 보류해 빈 화면 회피).
+        // 오늘 빌드 도착(virtualDate 해제) 후엔 해제 — 빌드 행 자체가 오늘 데이터.
+        var leadInLive = isLiveDate() && (isNxtLeadIn() || state.virtualDate) && state.liveMap;
         return (state.rankings || []).filter(function (r) {
             if (!r.ticker || BLOCKED_TICKERS[r.ticker]) return false;
             if (leadInLive && !state.liveMap[r.ticker]) return false;

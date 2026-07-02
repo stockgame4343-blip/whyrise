@@ -310,11 +310,12 @@ var WhyApp = (function () {
             if (lv.market_cap != null) o.market_cap = lv.market_cap * 1e8;   // 억원 → 원 (table.js formatAmount 원 기대)
             return o;
         });
-        // NXT 프리마켓(08~09시)엔 NXT 시세가 있는 종목만 '오늘 상승'으로 인정 —
-        // 라이브(NXT)에 없는 빌드 행(어제 급등주가 어제 등락률로 박제되는 것)은 제외해
-        // 'NXT 상승분만' 표기. 09:00 정규장부터는 필터 해제(정규 상승분 전체 반영).
+        // NXT 프리마켓(08~09시)과 오늘 빌드 도착 전(virtualDate 갭)엔 라이브 시세가 있는 종목만
+        // '오늘 상승'으로 인정 — 라이브에 없는 빌드 행(어제 급등주가 어제 등락률로 박제되는 것)을
+        // 제외한다. 오늘 빌드 도착(virtualDate 해제) 후엔 해제 — 빌드 행 자체가 오늘 데이터라
+        // 정규 상승분 전체 반영(06-17 정책 유지).
         // (합성 신규행은 아래에서 별도 추가 — liveMap 출처라 이 필터와 무관.)
-        if (state.currentDateIdx === 0 && isNxtLeadInKST()) {
+        if (state.currentDateIdx === 0 && (isNxtLeadInKST() || state.virtualDate)) {
             state.rankings = state.rankings.filter(function (r) {
                 return r && r.ticker && map[r.ticker];
             });
