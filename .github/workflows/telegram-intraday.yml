@@ -1,8 +1,8 @@
-name: 장중 주도 섹터·테마 텔레그램 자동 게시
+name: 오늘의 주도주 TOP5 텔레그램 자동 게시
 
-# 평일 개장 30분 후(KST 09:30), '장중 주도 섹터·테마'를 버블맵+트리맵 앨범으로 whyorgo 채널에 게시.
-#   - 섹터·테마 순위: stock-rise 당일(장중) 랭킹 → build_leaders_calendar 로직 재사용
-#   - 이미지: bubbles2.html / treemap.html 헤드리스 캡쳐(1d 장중 marketmap)
+# 평일 개장 30분 후(KST 09:30), '오늘의 주도주 TOP5'를 카드로 whyorgo 채널에 게시.
+#   - 주도주: stock-rise 당일(장중) 랭킹 → 상승률+거래대금 종합점수(대장 알고리즘, 거래대금 하한 없음) 상위 5
+#   - 이미지: 자체 카드(순위/종목/상승률/거래대금/테마/이유) 헤드리스 캡쳐
 #   - 캡션 마지막 멘트: Claude API(선택), 미설정 시 템플릿
 # 중복 게시는 public/data/_telegram-intraday-posted.json 마커로 방지(백업 크론 이중 발동 안전).
 # 시크릿(TELEGRAM_BOT_TOKEN) 미설정이면 아무 것도 하지 않음(비용/실패 방지).
@@ -88,7 +88,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: telegram-intraday-images
-          path: telegram-intraday-*.png
+          path: telegram-intraday*.png
           if-no-files-found: ignore
 
       # 중복 방지 마커만 커밋(게시됐을 때만 변경됨). dry-run/스킵이면 no-op.
@@ -97,7 +97,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          rm -f telegram-intraday-*.png
+          rm -f telegram-intraday*.png
           git add public/data/_telegram-intraday-posted.json 2>/dev/null || true
           git diff --staged --quiet && echo "게시 안 됨/변경 없음 — 커밋 스킵" && exit 0
           git commit -m "chore: 장중 주도 텔레그램 게시 마커 ($(date +%Y%m%d))"
