@@ -41,7 +41,7 @@ on:
         required: false
         default: '0'
   repository_dispatch:
-    types: [rebuild-history, override-saved, marketmap-intraday]
+    types: [rebuild-history, override-saved, marketmap-intraday, incremental-build]
 
 env:
   TZ: Asia/Seoul
@@ -103,6 +103,8 @@ jobs:
             # stock-rise cron-trigger(외부 cron-job.org)의 cross-repo dispatch — type 으로 분기
             if [ "${{ github.event.action }}" = "marketmap-intraday" ]; then
               MODE="marketmap-intraday"
+            elif [ "${{ github.event.action }}" = "incremental-build" ]; then
+              MODE="incremental"     # 외부 cron-job.org 마감후 데이터 빌드 트리거(이중화)
             else
               MODE="estimate-only"
             fi
