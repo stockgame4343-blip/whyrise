@@ -1032,7 +1032,7 @@
         if (!$mount) return;
         var wrap = $mount.querySelector('.ctrl-wrap');
         if (!wrap) return;
-        var row = $mount.closest('.stock-header__title-row');
+        var row = $mount.closest('.stock-header__actions');
         wrap.classList.add('ctrl-wrap--just-acted');
         if (_headerRatingSuppressTimer) clearTimeout(_headerRatingSuppressTimer);
         var release = function () {
@@ -1042,7 +1042,8 @@
         if (row) row.addEventListener('mouseleave', release, { once: true });
     }
 
-    /** 메인 홈(table.js starRatingHtml) 과 동일한 HTML 구조 — 호버/탭 동작 메인과 통일. */
+    /** 패널(.float-controls) 구조는 메인 홈(table.js starRatingHtml) 과 동일 — 호버/탭 동작 통일.
+        트리거만 ⋯ 대신 네이버·공유와 같은 pill 버튼('관심'). 별점·메모·제외 중 하나라도 있으면 is-set. */
     function renderHeaderRating(ticker) {
         var $mount = document.getElementById('stockHeaderRating');
         if (!$mount) return;
@@ -1051,8 +1052,12 @@
         var stars = rating.stars || 0;
         var hasMemo = !!(rating.memo && rating.memo.trim());
         var excluded = !!rating.excluded;
+        var isSet = stars > 0 || hasMemo || excluded;
         var html = '<span class="ctrl-wrap">';
-        html += '<button class="ctrl-toggle" type="button" data-ticker="' + ticker + '" aria-label="평가">⋯</button>';
+        html += '<button class="ctrl-toggle' + (isSet ? ' is-set' : '') + '" type="button" data-ticker="' + ticker + '" aria-label="관심·메모" title="별점·메모·제외">' +
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="' + (isSet ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+            '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' +
+            '<span>관심</span></button>';
         html += '<div class="float-controls" data-ticker="' + ticker + '">';
         html += '<span class="star-rating" data-ticker="' + ticker + '">';
         for (var i = 1; i <= 5; i++) {

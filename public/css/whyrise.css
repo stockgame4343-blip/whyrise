@@ -817,6 +817,12 @@ body {
 /* ── 종목 페이지 — 글래스풍 ──────────────── */
 .stock-page { padding-top: 28px; padding-bottom: 56px; }
 .stock-header {
+    /* PC: 2열 그리드 — 좌측(제목/summary/stats), 우측 1행에 액션 pill 3개(관심·네이버·공유).
+       모바일(768 이하)은 block 으로 풀어 DOM 순서(제목→summary→버튼줄→stats) 그대로 쌓음 */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 12px;
+    align-items: start;
     background: var(--glass-bg);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     backdrop-filter: blur(20px) saturate(160%);
@@ -828,7 +834,11 @@ body {
 }
 .stock-header__title-row {
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    grid-column: 1;
 }
+.stock-header__summary,
+.stock-header__stats,
+.stock-header__caption { grid-column: 1 / -1; }
 .stock-header__title {
     font-size: 36px; font-weight: 800; letter-spacing: -1.5px; color: var(--text-primary);
     line-height: 1.1;
@@ -876,8 +886,12 @@ body {
 /* 네이버 링크는 우측 끝 정렬 (별점 마운트는 KOSPI 옆에 두고 네이버는 행 끝) */
 .stock-header__naver { margin-left: auto; }
 
-/* 헤더 우측 액션 그룹 — 네이버·공유 두 버튼을 나란히 우측 정렬 (모바일 줄바꿈 시에도 한 덩어리) */
-.stock-header__actions { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; }
+/* 헤더 액션 그룹 — 관심·네이버·공유 pill 3개. PC 는 그리드 1행 우측(제목 행 옆) */
+.stock-header__actions {
+    grid-column: 2; grid-row: 1;
+    align-self: center; justify-self: end;
+    display: inline-flex; align-items: center; gap: 6px;
+}
 .stock-header__actions .stock-header__naver { margin-left: 0; }
 .stock-header__share {
     display: inline-flex;
@@ -915,34 +929,51 @@ body {
 .prerender-rate { color: var(--rise); }
 .prerender-theme { font-style: normal; color: var(--text-muted, #8b93a1); }
 
-/* 헤더 별점 — 메인 홈과 동일한 .ctrl-wrap/.float-controls/.star/.exclude-btn/.memo-btn
-   클래스 그대로 사용 (style.css 가 모두 처리). 여기서는 호버 트리거 + 앵커 보정. */
+/* 헤더 관심(별점·메모·제외) — 패널은 메인 홈과 동일한 .ctrl-wrap/.float-controls/.star/.exclude-btn/
+   .memo-btn (style.css 가 모두 처리). 트리거는 ⋯ 대신 네이버·공유와 같은 pill 버튼.
+   style.css 의 .ctrl-toggle 기본(PC display:none, 모바일 32px 원형)을 두-클래스 특이도로 덮어씀.
+   PC 호버 오픈은 style.css 의 .ctrl-wrap:hover 규칙이 그대로 담당, 탭/클릭은 .is-open 토글. */
 .stock-header__rating-mount {
-    /* 모바일 미디어쿼리에서 style.css 가 .ctrl-wrap{position:static} 으로
-       만들기 때문에, .float-controls 의 absolute 앵커가 페이지 body 까지
-       올라가 하단으로 떨어짐. 마운트를 relative 로 두어 앵커 역할. */
     position: relative;
     display: inline-flex;
     align-items: center;
 }
 .stock-header__rating-mount[hidden] { display: none; }
-/* PC 만 호버 트리거. 모바일은 .ctrl-toggle 탭 → .is-open 토글로 제어.
-   @media (hover:hover) 로 감싸 모바일에서 sticky hover 가 활성화되어도
-   규칙 자체가 매치 안 되도록 함 (메인 style.css line 147 와 동일 패턴). */
-@media (hover: hover) {
-    .stock-header__title-row:hover .float-controls,
-    .stock-header__title-row .float-controls:hover {
-        opacity: 1;
-        pointer-events: auto;
-        transition-delay: 0s;
-    }
+.stock-header__rating-mount .ctrl-wrap { margin-left: 0; }
+.stock-header__rating-mount .ctrl-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: auto;
+    height: auto;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    line-height: 1.5;   /* 네이버(<a>)와 높이 일치 — 버튼 UA 기본 line-height 보정 */
+    cursor: pointer;
+    transition: color .15s, border-color .15s, background .15s;
 }
+.stock-header__rating-mount .ctrl-toggle:hover {
+    color: var(--text-primary);
+    border-color: var(--glass-border-strong);
+    background: var(--glass-bg);
+}
+.stock-header__rating-mount .ctrl-toggle svg { flex-shrink: 0; }
+/* 별점·메모·제외 중 하나라도 설정돼 있으면 액센트 (별 아이콘은 JS 가 fill 채움) */
+.stock-header__rating-mount .ctrl-toggle.is-set { color: var(--wr-accent); }
+/* 패널은 트리거 우측 끝 기준 왼쪽으로 펼침 — 헤더/화면 밖 이탈 방지 */
+.stock-header__rating-mount .float-controls { left: auto; right: 0; }
 
-/* 모바일: 컨트롤 패널이 화면 밖으로 안 나가게 — 앵커 오른쪽 끝 기준 왼쪽으로 펼침 */
+/* 모바일: 패널 앵커를 버튼줄 전체(.stock-header__actions)로 — 줄 아래 우측 정렬로 떨어짐 */
 @media (max-width: 768px) {
     .ctrl-wrap.is-open .float-controls { left: auto; right: 0; }
-    /* 상세 헤더: 마운트가 행 중앙이라, 타이틀 행 전체를 앵커로 삼아 우측 정렬 → 화면 안 */
-    .stock-header__title-row { position: relative; }
+    .stock-header__actions { position: relative; }
     .stock-header__rating-mount { position: static; }
 }
 
@@ -2083,9 +2114,24 @@ body.page-treemap {
     /* 위젯 — 좁은 폭에서 패딩 축소 */
     .widget { padding: 16px 14px; border-radius: 14px; }
 
-    /* stock 페이지 헤더 모바일 */
-    .stock-header { padding: 22px 18px; border-radius: 16px; }
+    /* stock 페이지 헤더 모바일 — 그리드 해제, DOM 순서(제목→이유→버튼줄→stats)대로 쌓음 */
+    .stock-header { display: block; padding: 22px 18px; border-radius: 16px; }
     .stock-header__title { font-size: 26px; }
+    /* 액션 3버튼(관심·네이버·공유) — 이유(summary) 아래 한 줄 꽉 채움, grid 로 정확히 균등 3분할.
+       justify-self 리셋 필수: 최신 크롬은 block 흐름에서도 justify-self:end 를 적용(수축·우측정렬)함 */
+    .stock-header__actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        margin-top: 14px;
+        justify-self: auto; align-self: auto;
+    }
+    .stock-header__actions .stock-header__rating-mount,
+    .stock-header__actions .stock-header__naver,
+    .stock-header__actions .stock-header__share { min-width: 0; justify-content: center; }
+    .stock-header__actions .ctrl-wrap { width: 100%; }
+    /* !important — 위(2012행 부근) 홈 테이블 ⋯용 .ctrl-toggle 40×40 !important 를 pill 에서 되돌림 */
+    .stock-header__actions .ctrl-toggle { width: 100% !important; height: auto !important; }
     /* 4-stat 라인 — PC flex+wrap 은 모바일(특히 SE 375) 좁아 라벨 줄바꿈 직전 상태 → 2x2 그리드로 안정 */
     .stock-header__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; margin-top: 18px; }
     .stock-header__stat-label { font-size: 10.5px; letter-spacing: .2px; }
