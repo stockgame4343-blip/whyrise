@@ -1090,10 +1090,17 @@ body {
     border: 1px solid var(--wr-accent-soft);
     padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700;
 }
+/* 2행: [테마태그] 이유 [출처배지] — 한 줄(길면 자연 wrap), 태그·배지는 텍스트 베이스라인 정렬 */
+.event-card__reason-row {
+    display: flex; align-items: baseline; flex-wrap: wrap;
+    gap: 6px 10px;
+    margin-top: 12px;
+}
 .event-card__reason {
     font-size: 16px; font-weight: 600; color: var(--text-primary);
-    margin-top: 14px; line-height: 1.55;
+    line-height: 1.55;
     letter-spacing: -.2px;
+    min-width: 0;
 }
 /* 급등 카드 안에 그 날의 '상승 이유' 기사 직접 임베드 (상단 묶음 패널 대체) */
 .event-card__news {
@@ -1165,13 +1172,13 @@ body {
     background: rgba(255,209,102,.18); color: var(--yellow);
     padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
 }
+/* 출처 배지 — 이유 텍스트 뒤 인라인. "근거 확인됨" 신호만(검증·뉴스·AI·관리자), 테마/패턴 추정은 배지 없음 */
 .event-card__source-badge {
     display: inline-block;
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 10px;
     font-weight: 700;
-    margin-left: auto;
 }
 .event-card__source-badge.badge--filled {
     background: rgba(46,213,115,.15); color: var(--green);
@@ -1181,12 +1188,6 @@ body {
 }
 .event-card__source-badge.badge--news {
     background: rgba(49,130,246,.15); color: var(--accent);
-}
-.event-card__source-badge.badge--theme {
-    background: rgba(199,163,255,.15); color: #c7a3ff;
-}
-.event-card__source-badge.badge--pattern {
-    background: rgba(170,170,170,.15); color: var(--text-muted);
 }
 
 /* ── 관리자 페이지 ──────────────────────────── */
