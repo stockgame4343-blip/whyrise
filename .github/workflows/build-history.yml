@@ -202,10 +202,12 @@ jobs:
               timeout -k 30 600 python3 scripts/build-history.py --marketmap-only
             fi
           else
-            # incremental — 짧은 기간만 fetch + 머지 (정상 2~5분).
+            # incremental — 최근 윈도우 급등 종목만 재빌드(--incremental) → 수 분 내 완료.
+            #   전종목 OHLC fetch 를 하던 옛 방식이 네이버 throttle 겹치면 30분 가드(exit 124) 초과 → 상시 실패했음.
+            #   -u: 버퍼 없이 진행 로그를 즉시 흘려 timeout kill 시에도 어디까지 갔는지 남긴다.
             # hang 가드: 30분 넘으면 timeout(124)으로 실패시켜 concurrency 락을 풀어 준다.
             # full·수동 enrich/backfill 은 정상적으로 길 수 있어 무제한(job timeout-minutes 350 이 상한).
-            timeout -k 30 1800 python3 scripts/build-history.py --days 30 --cutoff "$CUTOFF"
+            timeout -k 30 1800 python3 -u scripts/build-history.py --incremental --days 30 --cutoff "$CUTOFF"
           fi
 
       # 오늘의 대장 캘린더(샘플2) — stock-rise 일별 대장 3종을 누적 계산. 비핵심이라 실패해도 본빌드 유지.

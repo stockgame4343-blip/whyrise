@@ -177,6 +177,41 @@ def fetch_ticker_universe(stock_only: bool = True) -> list[dict]:
     return items
 
 
+def _recent_mover_tickers(sr_lookup: dict[tuple[str, str], dict],
+                          window_start: str, cutoff: float) -> set[str]:
+    """incremental 축소 유니버스 — 윈도우 내 컷 이상 움직인 종목 집합.
+
+    incremental 은 최근 days+30 윈도우만 재빌드하므로, 그 안에서 컷 이상 급등한 적 없는
+    종목은 새로 기록할 이벤트가 없다 → 전종목 OHLC fetch(30분 가드 초과 원인) 대신 이 집합만 처리.
+
+    커버리지 두 소스 union:
+      A) stock-rise 일별 랭킹(윈도우) 등장 종목 — 일 top 급등주 정답 소스
+      B) 자체 marketmap 일별 스냅샷(윈도우) 중 상승률 >= cutoff — 상승률 top-300/시장, 깊은 커버
+    드문 엣지(그날 커버리지 밖 애매한 중소 급등)는 주간 full 리빌드(전종목)가 재수집해 복구한다.
+    """
+    wanted: set[str] = set()
+    # A) stock-rise 윈도우 랭킹
+    for (_d, t) in sr_lookup.keys():
+        if t and _d >= window_start:
+            wanted.add(t)
+    # B) marketmap 일별 스냅샷 (로컬 파일 — 네트워크 없음)
+    snap_dir = OUTPUT_DIR.parent / 'marketmap'
+    if snap_dir.exists():
+        for p in snap_dir.glob('*.json'):
+            ds = p.stem
+            if not (len(ds) == 8 and ds.isdigit() and ds >= window_start):
+                continue  # index.json 등 비-일자 파일 skip
+            try:
+                snap = json.loads(p.read_text(encoding='utf-8'))
+            except Exception:
+                continue
+            for it in snap.get('items', []):
+                t = it.get('ticker')
+                if t and (it.get('change_rate') or 0) >= cutoff:
+                    wanted.add(t)
+    return wanted
+
+
 def calc_change_rate(prev_close: float, cur_close: float) -> float:
     if prev_close <= 0:
         return 0.0
@@ -1382,24 +1417,36 @@ def build_full(args) -> int:
     limit_tickers = args.limit_tickers
     output_dir = OUTPUT_DIR
 
+    incremental = getattr(args, 'incremental', False)
     today = date.today()
     start = today - timedelta(days=days + 30)  # 52주 신고가 계산 위해 여유
     end = today
+    window_start = _yyyymmdd(start)
 
-    print(f'== build-history full: days={days} cutoff={cutoff} ==')
-    print(f'  기간: {_yyyymmdd(start)} ~ {_yyyymmdd(end)}')
+    print(f'== build-history {"incremental" if incremental else "full"}: days={days} cutoff={cutoff} ==')
+    print(f'  기간: {window_start} ~ {_yyyymmdd(end)}', flush=True)
 
-    # 1. ticker universe
+    # 1. ticker universe (전종목 메타 — OHLC fetch 아님, 가벼움)
     universe = fetch_ticker_universe(stock_only=True)
     if limit_tickers:
         universe = universe[:limit_tickers]
         print(f'  --limit-tickers={limit_tickers} 적용')
 
     # 2. stock-rise dates → lookup (운영 이후 정답)
+    #    incremental 은 윈도우 안 날짜만 fetch — 전체 250여일 fetch 회피.
     sr_dates = load_stockrise_dates()
-    print(f'  stock-rise dates: {len(sr_dates)} 거래일')
-    sr_lookup = build_stockrise_lookup(sr_dates)
-    print(f'  stock-rise lookup 항목: {len(sr_lookup)}')
+    lookup_dates = [d for d in sr_dates if d >= window_start] if incremental else sr_dates
+    print(f'  stock-rise dates: {len(sr_dates)} 거래일 (lookup {len(lookup_dates)})', flush=True)
+    sr_lookup = build_stockrise_lookup(lookup_dates)
+    print(f'  stock-rise lookup 항목: {len(sr_lookup)}', flush=True)
+
+    # 2-b. incremental: 최근 급등 종목만 처리 — 전종목 OHLC fetch(가드 30분 초과 원인) 회피.
+    #      빠지는 종목 = 윈도우에 컷 이상 급등이 없던 종목 → 새 이벤트 없음(손실 없음).
+    if incremental:
+        wanted = _recent_mover_tickers(sr_lookup, window_start, cutoff)
+        before = len(universe)
+        universe = [it for it in universe if (it.get('itemCode') or '') in wanted]
+        print(f'  [incremental] 유니버스 축소: {before} → {len(universe)} 종목 (최근 급등만)', flush=True)
 
     # ticker → {theme_tag, sector} (테마는 종목 단위로 정적) — 추정 이벤트(과거 포함)에 태그·테마 사유 부여.
     theme_by_ticker: dict[str, dict] = {}
@@ -1498,6 +1545,19 @@ def build_full(args) -> int:
         }
         success += 1
 
+    # incremental 은 처리한 종목만 index_meta 에 있으므로 기존 index.json 에 병합한다.
+    # (병합 안 하면 검색 자동완성 인덱스가 처리분으로 쪼그라듦.) full 은 전량이라 그대로 덮어씀.
+    if incremental:
+        idx_path = output_dir / 'index.json'
+        merged: dict[str, dict] = {}
+        if idx_path.exists():
+            try:
+                merged = json.loads(idx_path.read_text(encoding='utf-8')) or {}
+            except Exception:
+                merged = {}
+        merged.update(index_meta)
+        index_meta = merged
+        print(f'  [incremental] index 병합: {len(index_meta)} 종목 유지', flush=True)
     write_index(index_meta, output_dir)
     write_build_meta(sr_dates)
     build_report_summary(output_dir, output_dir.parent / 'report-summary.json')
@@ -2140,6 +2200,9 @@ def main() -> None:
     p.add_argument('--cutoff', type=float, default=DEFAULT_CUTOFF)
     p.add_argument('--limit-tickers', type=int, default=0,
                    help='상위 N 종목만 빌드 (0=전체)')
+    p.add_argument('--incremental', action='store_true',
+                   help='경량 증분 — 최근 윈도우에 급등한 종목만 처리(전종목 OHLC fetch 회피). '
+                        'index.json 은 기존과 병합. 파생물은 전 디렉토리 기반이라 영향 없음.')
     p.add_argument('--estimate-only', action='store_true',
                    help='인덱스 missing 만 재추정')
     p.add_argument('--marketmap-only', action='store_true',
