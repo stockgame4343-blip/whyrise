@@ -10,6 +10,8 @@ on:
       dry_run: { description: '전송 안 함(검증)', type: boolean, default: false }
       force: { description: '마커 무시 강제', type: boolean, default: false }
       date: { description: '샘플용 과거 날짜 YYYYMMDD', type: string, default: '' }
+  repository_dispatch:
+    types: [tg-movers]        # 외부 cron-job.org → GitHub dispatch (GitHub 크론 누락 대비 이중화)
   schedule:
     - cron: '0 1 * * 1-5'    # 평일 KST 10:00 — 개장 1시간 후
     - cron: '15 1 * * 1-5'   # 평일 KST 10:15 — 백업(마커로 중복 방지)

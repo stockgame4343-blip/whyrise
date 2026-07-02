@@ -12,6 +12,8 @@ on:
     inputs:
       dry_run: { description: '전송 안 함(검증)', type: boolean, default: false }
       force: { description: '주마지막거래일/마커 무시 강제', type: boolean, default: false }
+  repository_dispatch:
+    types: [tg-weekly]        # 외부 cron-job.org → GitHub dispatch (게이트가 주 마지막거래일만 통과)
   schedule:
     - cron: '55 6 * * 4,5'   # 목·금 KST 15:55 — 마감 25분 후 (금 공휴일 대비 목 포함)
     - cron: '25 7 * * 4,5'   # 목·금 KST 16:25 — 백업(마커로 중복 방지)
