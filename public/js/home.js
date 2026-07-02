@@ -15,6 +15,8 @@
         response: null,
         liveTimer: null,
         liveFetching: false,
+        sectorMap: null,      // ticker → sector (정적 marketmap.json) — 갭 뷰 합성행용
+        adoptBusy: false,     // 오늘 빌드 도착 감시 중복 방지
     };
 
     function esc(value) {
@@ -104,7 +106,7 @@
         return '마감';
     }
 
-    function renderStatus(date, response, live) {
+    function renderStatus(date, response, live, gapMode) {
         var phase = phaseOf(response, live);
         var status = document.getElementById('home2MarketStatus');
         if (status) {
@@ -115,7 +117,8 @@
 
         var updated = live && live.updated_at ? live.updated_at : (response && response.collected_at);
         var clock = timeLabel(updated);
-        setText('home2UpdatedAt', clock ? phase + ' ' + clock + ' 기준' : fullDateLabel(date) + ' 기준');
+        var base = clock ? phase + ' ' + clock + ' 기준' : fullDateLabel(date) + ' 기준';
+        setText('home2UpdatedAt', gapMode ? base + ' · 오늘 집계 준비 중' : base);
     }
 
     function tagList(row) {
@@ -257,7 +260,7 @@
         }).join('');
     }
 
-    function renderMarket(rows, date, response, live) {
+    function renderMarket(rows, date, response, live, gapMode) {
         if (!CORE) throw new Error('report-core unavailable');
         var riseRows = CORE.activeRiseRows(rows);
         var sectors = CORE.buildGroups(riseRows, 'sector');
@@ -265,7 +268,7 @@
         var leader = CORE.pickLeader(riseRows, sectors, themes);
         var limitCount = riseRows.filter(CORE.isLimitUp).length;
 
-        renderStatus(date, response, live);
+        renderStatus(date, response, live, gapMode);
         renderLeader(leader, riseRows.length, limitCount);
         renderGroup('sector', sectors);
         renderGroup('theme', themes);
@@ -310,6 +313,90 @@
         state.liveTimer = setTimeout(refreshLive, delay);
     }
 
+    // ── 장초반 갭(오늘 stock-rise 빌드 미도착) 처리 ──────────────
+    // 첫 공식 집계는 개장 후(보통 09:30 전후)라 그 전엔 dates[0]=전일.
+    // 전일 마감을 오늘처럼 보여주는 대신 라이브 시세로 '오늘 잠정 뷰'를 만든다.
+    function loadSectorMap() {
+        if (state.sectorMap) return Promise.resolve(state.sectorMap);
+        return fetch('/data/marketmap.json', { cache: 'no-cache' })
+            .then(function (res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            })
+            .then(function (data) {
+                var map = {};
+                ((data && data.items) || []).forEach(function (it) {
+                    if (it && it.ticker && it.sector) map[it.ticker] = it.sector;
+                });
+                state.sectorMap = map;
+                return map;
+            })
+            .catch(function () {
+                // 섹터맵 없이도 잠정 뷰는 동작 — 합성행 섹터만 비움
+                state.sectorMap = {};
+                return state.sectorMap;
+            });
+    }
+
+    function buildGapRows(live, sectorMap) {
+        var rows = [];
+        var seen = {};
+        // 전일 빌드 행: 라이브 시세가 있는 종목만 오늘 숫자로 교체 —
+        // 라이브에 없는 행을 남기면 전일 등락률이 오늘 것처럼 박제된다
+        CORE.overlayRankings(state.baseRows, live.map).forEach(function (row) {
+            if (!row || !row.ticker || !live.map[row.ticker]) return;
+            var next = Object.assign({}, row);
+            var reason = String(next.rise_reason || next.reason || next.latest_reason || '').trim();
+            next.rise_reason = reason ? '전일 사유 · ' + reason : '';
+            seen[next.ticker] = 1;
+            rows.push(next);
+        });
+        // 빌드에 없는 오늘 신규 급등주 — 라이브 맵에서 합성
+        // (섹터는 정적 marketmap, 테마·상승이유는 첫 집계 도착까지 공란 → '분석 중' 표시)
+        Object.keys(live.map).forEach(function (ticker) {
+            if (seen[ticker]) return;
+            var lv = live.map[ticker];
+            rows.push({
+                ticker: ticker,
+                name: lv.name || ticker,
+                market: lv.market || '',
+                change_rate: lv.change_rate,
+                close_price: lv.close_price,
+                trading_value: lv.trading_value,
+                market_cap: number(lv.market_cap) * 1e8,
+                sector: (sectorMap && sectorMap[ticker]) || '',
+                rise_reason: '',
+            });
+        });
+        return rows;
+    }
+
+    function renderGapView(live) {
+        loadSectorMap().then(function (sectorMap) {
+            // 섹터맵 로딩 사이 오늘 빌드가 채택됐으면 정식 렌더에 양보
+            if (!live || !state.date || !(live.date > state.date)) return;
+            renderMarket(buildGapRows(live, sectorMap), live.date, state.response, live, true);
+        });
+    }
+
+    function adoptTodayBuild() {
+        if (state.adoptBusy) return;
+        state.adoptBusy = true;
+        // getDates 는 클라 5분 캐시 — 폴링마다 호출해도 네트워크는 5분에 1회
+        WhyAPI.getDates().then(function (dates) {
+            var latest = dates && dates[0];
+            if (!latest || latest <= state.date) return;
+            return WhyAPI.getRankings(latest, 'ALL').then(function (response) {
+                state.date = latest;
+                state.response = response || {};
+                state.baseRows = Array.isArray(state.response.rankings) ? state.response.rankings : [];
+                scheduleLive(1000);   // 다음 사이클이 정식 오버레이로 즉시 재렌더
+            });
+        }).catch(function () {}).then(function () {
+            state.adoptBusy = false;
+        });
+    }
+
     function refreshLive() {
         clearTimeout(state.liveTimer);
         state.liveTimer = null;
@@ -329,6 +416,10 @@
             if (live && live.date === state.date) {
                 var overlaid = CORE.overlayRankings(state.baseRows, live.map);
                 renderMarket(overlaid, state.date, state.response, live);
+            } else if (live && state.date && live.date > state.date) {
+                // 라이브 거래일이 빌드보다 새로움 = 오늘 첫 집계 전 — 잠정 뷰 + 빌드 도착 감시
+                renderGapView(live);
+                adoptTodayBuild();
             }
             if (isRegularMarketWindow()) {
                 scheduleLive(live && live.market_status === 'CLOSE' ? STATUS_RECHECK_MS : LIVE_POLL_MS);

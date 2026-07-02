@@ -88,6 +88,7 @@
         view: initialView(),
         zoomedGroup: null,    // sector/theme 이름 — 버블 모드의 그룹 dive 상태
         marketStatus: '',     // ''=미확인(로컬 시계 신뢰) | 'OPEN' | 'CLOSE' (서버 판정 — 공휴일 포함)
+        adoptBusy: false,     // 오늘 빌드 도착 감시 중복 방지
     };
 
     var simulation = null;
@@ -745,6 +746,17 @@
                 if (state.availableDates.indexOf(res.date) < 0) state.availableDates.unshift(res.date);
                 updateDateNav();
             }
+            // 오늘 빌드 도착 감시 — 도착하면 전일 베이스라인 → 오늘 정식 집계로 자동 전환
+            // (getDates 는 클라 5분 캐시라 폴링마다 호출해도 네트워크는 5분에 1회)
+            if (state.virtualDate && isLiveDate() && !state.adoptBusy) {
+                state.adoptBusy = true;
+                WhyAPI.getDates().then(function (dts) {
+                    var latest = (dts && dts[0]) || '';
+                    if (latest && state.virtualDate && latest >= state.virtualDate && isLiveDate()) {
+                        return loadDate(latest);   // 성공 시 virtualDate 해제 + 준비중 배지 자동 숨김
+                    }
+                }).catch(function () {}).then(function () { state.adoptBusy = false; });
+            }
             (state.rankings || []).forEach(function (r) {
                 var lv = live[r.ticker];
                 if (!lv) return;
@@ -839,6 +851,27 @@
         if ($datePrev) $datePrev.disabled = i >= n - 1;
         if ($dateNext) $dateNext.disabled = i <= 0;
         $date.textContent = formatDate(state.currentDate);
+        updateGapNotice();
+    }
+
+    // 오늘 빌드(stock-rise 첫 집계) 도착 전 — 전일 급등주 베이스에 실시간 시세만
+    // 반영 중임을 명시 (준비중 안내 없이는 전일 구성이 오늘 확정처럼 보임)
+    function updateGapNotice() {
+        var show = !!state.virtualDate && isLiveDate();
+        var el = document.getElementById('tmapGapNotice');
+        if (!el) {
+            if (!show) return;
+            el = document.createElement('span');
+            el.id = 'tmapGapNotice';
+            el.textContent = '오늘 집계 준비 중';
+            el.title = '개장 후 첫 공식 집계가 도착하기 전이에요. 전일 급등주에 실시간 시세만 반영 중이며, 도착하면 자동 전환됩니다.';
+            el.style.cssText = 'display:inline-flex;align-items:center;margin-left:8px;padding:2px 8px;' +
+                'border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap;' +
+                'color:#e8a33d;background:rgba(232,163,61,.14);border:1px solid rgba(232,163,61,.35);';
+            var nav = document.getElementById('tmapDateNav');
+            if (nav && nav.parentNode) nav.parentNode.insertBefore(el, nav.nextSibling);
+        }
+        el.style.display = show ? 'inline-flex' : 'none';
     }
     function gotoDateIndex(idx) {
         if (idx < 0 || idx >= state.availableDates.length) return;
