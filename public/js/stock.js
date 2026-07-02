@@ -1142,6 +1142,14 @@
                 return;
             }
         });
+        // 패널 열림 상태에서 관심 버튼·패널 밖 아무 곳이나 탭/클릭 → 닫기
+        // (토글·별점 등 내부 클릭은 stopPropagation 또는 closest 가드로 여기 안 옴)
+        document.addEventListener('click', function (e) {
+            var open = $mount.querySelector('.ctrl-wrap.is-open');
+            if (!open) return;
+            if (e.target.closest && e.target.closest('#stockHeaderRating')) return;
+            open.classList.remove('is-open');
+        });
     }
 
     function openMemo(ticker) {
