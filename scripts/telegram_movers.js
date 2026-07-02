@@ -25,6 +25,8 @@ const FORCE = process.argv.includes('--force');
 const DATE_ARG = ((process.argv.find(function (a) { return a.indexOf('--date=') === 0; }) || '').split('=')[1] || '').trim();
 const PUBLIC = path.resolve(__dirname, '..', 'public');
 const IMG = path.resolve(__dirname, '..', 'telegram-movers.png');
+const IMG_TB = path.resolve(__dirname, '..', 'telegram-movers-theme-bubble.png');   // 핫테마 버블
+const IMG_TT = path.resolve(__dirname, '..', 'telegram-movers-theme-tree.png');     // 핫테마 트리
 const MARKER = path.resolve(PUBLIC, 'data', '_telegram-movers-posted.json');
 const RAW = core.RAW;
 
@@ -85,6 +87,40 @@ async function aiComment(ymd, movers) {
     return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
 }
 
+// ── 핫테마 버블·트리 앨범용: 섹터·테마 순위 캡션 ──
+function leadingGroups(rankings) {
+    var active = (rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
+    return { sectors: core.buildGroups(active, 'sector').slice(0, 3), themes: core.buildGroups(active, 'theme').slice(0, 3) };
+}
+function buildThemeCaption(ymd, G, comment) {
+    var lines = ['🔥 오늘 핫테마 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst(), ''];
+    if (G.sectors.length) {
+        lines.push('📈 주도 섹터');
+        G.sectors.forEach(function (g, i) { lines.push((i + 1) + ' ' + g.key + ' ' + tg.pct(g.avgRate) + ' (' + g.count + '종목)'); });
+        lines.push('');
+    }
+    if (G.themes.length) {
+        lines.push('🏷️ 주도 테마');
+        G.themes.forEach(function (g, i) { lines.push((i + 1) + ' ' + g.key + ' ' + tg.pct(g.avgRate) + ' (' + g.count + '종목)'); });
+        lines.push('');
+    }
+    lines.push(comment);
+    return lines.join('\n');
+}
+async function aiThemeComment(ymd, G) {
+    var summary = {
+        date: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중',
+        주도섹터: G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate); }).join(', ') || '없음',
+        주도테마: G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate); }).join(', ') || '없음',
+    };
+    var prompt = '아래는 한국 주식시장 오전 "장중 주도 섹터·테마" 요약이야. 텔레그램 채널 구독자에게 ' +
+        '지금 어떤 테마·섹터가 시장을 달구는지 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
+        '센스있고 친근하게, 흐름이 드러나게. 숫자 나열 금지, 과장·투자권유·목표가 금지, 장중 미확정 뉘앙스 살짝. 따옴표 없이 문장만.\n\n' +
+        JSON.stringify(summary, null, 2);
+    var fallback = (G.themes[0] || G.sectors[0]) ? ('지금은 ' + (G.themes[0] || G.sectors[0]).key + ' 쪽이 달아오르네요 🔥') : '테마 흐름 지켜보는 중이에요 👀';
+    return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
+}
+
 async function main() {
     if (!DRY && (!BOT_TOKEN || !CHAT_ID)) {
         console.log('TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID 미설정 — 게시 스킵(시크릿 등록 후 자동 동작).');
@@ -111,17 +147,35 @@ async function main() {
     var caption = buildCaption(today, movers, comment);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
 
+    // ① 주도주 TOP5 카드
     var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
     try {
         await tg.captureHtml(browser, tg.topMoversCardHtml({ dateRange: tg.dateLabel(today) + ' ' + tg.hmKst(), movers: movers }), { outPath: IMG });
     } finally { await browser.close(); }
-    console.log('이미지:', IMG);
+    console.log('주도주 이미지:', IMG);
+
+    // ② 핫테마 버블·트리 앨범 (별개 메시지) — 섹터·테마 순위 캡션
+    var G = leadingGroups(day.rankings || []);
+    var themeComment = await aiThemeComment(today, G);
+    var themeCaption = buildThemeCaption(today, G, themeComment);
+    console.log('\n----- 핫테마 캡션 -----\n' + themeCaption + '\n----------------');
+    var themeImgs = await tg.captureFlowmaps(PUBLIC, [
+        { mode: 'theme', view: 'bubble', out: IMG_TB },
+        { mode: 'theme', view: 'tree', out: IMG_TT },
+    ]);
+    console.log('핫테마 이미지:', themeImgs.join(', ') || '(실패)');
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
+
+    // 1) 주도주 TOP5 (별개 메시지)
     var r = await tg.sendPhoto(BOT_TOKEN, CHAT_ID, IMG, caption);
-    var mid = r.result && r.result.message_id;
-    console.log('게시 완료 — message_id', mid);
-    tg.saveMarker(MARKER, { last: today, message_id: mid, at: new Date().toISOString().slice(0, 19) });
+    console.log('주도주 게시 완료 — message_id', r.result && r.result.message_id);
+    // 2) 핫테마 버블·트리 (별개 메시지, 앨범)
+    if (themeImgs.length) {
+        var r2 = await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, themeImgs, themeCaption);
+        console.log('핫테마 게시 완료 — message_id', Array.isArray(r2.result) && r2.result[0] ? r2.result[0].message_id : null);
+    }
+    tg.saveMarker(MARKER, { last: today, message_id: (r.result && r.result.message_id) || null, at: new Date().toISOString().slice(0, 19) });
 }
 
 main().catch(function (e) { console.error(e); process.exit(1); });

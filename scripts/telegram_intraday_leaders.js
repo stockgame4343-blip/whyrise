@@ -23,8 +23,7 @@ const tg = require('./tg_common.js');
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
 const PUBLIC = path.resolve(__dirname, '..', 'public');
-const IMG_BUBBLE = path.resolve(__dirname, '..', 'telegram-intraday-bubble.png');
-const IMG_TREE = path.resolve(__dirname, '..', 'telegram-intraday-tree.png');
+const IMG = path.resolve(__dirname, '..', 'telegram-intraday-rise.png');   // 상승률 트리(flowmap rise/tree)
 const MARKER = path.resolve(PUBLIC, 'data', '_telegram-intraday-posted.json');
 const RAW = core.RAW;
 
@@ -45,32 +44,9 @@ function computeLeadingGroups(rankings) {
     };
 }
 
-function groupLines(groups) {
-    return groups.map(function (g, i) {
-        return (i + 1) + ' ' + g.key + ' ' + tg.pct(g.avgRate) + ' (' + g.count + '종목)';
-    });
-}
-
-function buildCaption(ymd, G, comment) {
-    var lines = [];
-    lines.push('🌅 오늘 장중 주도 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst());
-    lines.push('');
-    if (G.sectors.length) {
-        lines.push('📈 주도 섹터');
-        groupLines(G.sectors).forEach(function (l) { lines.push(l); });
-        lines.push('');
-    }
-    if (G.themes.length) {
-        lines.push('🏷️ 주도 테마');
-        groupLines(G.themes).forEach(function (l) { lines.push(l); });
-        lines.push('');
-    }
-    if (!G.sectors.length && !G.themes.length) {
-        lines.push('아직 뚜렷한 주도 그룹이 형성되기 전이에요. 개장 초반이라 변동이 큽니다.');
-        lines.push('');
-    }
-    lines.push(comment);
-    return lines.join('\n');
+// 09:30 상승률 트리용 짧은 캡션 (섹터·테마 순위는 10:00 핫테마 앨범으로 이동)
+function buildCaption(ymd, comment) {
+    return ['🌅 오늘 장중 상승 흐름 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst(), '', comment].join('\n');
 }
 
 function templateComment(G) {
@@ -93,30 +69,10 @@ async function aiComment(ymd, G) {
     return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, templateComment(G));
 }
 
-// ── 버블맵 + 트리맵 렌더 (모바일 뷰포트 + 사이트 다운로드 기능 재사용 → 워터마크 포함) ──
-async function renderImages() {
-    var srv = await tg.servePublic(PUBLIC);
-    var port = srv.address().port;
-    var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
-    try {
-        // 모바일 뷰포트 — 사이트가 모바일 레이아웃으로 렌더 → 다운로드도 모바일에서 받은 것과 동일
-        var ctx = await browser.newContext({
-            viewport: { width: 430, height: 932 }, deviceScaleFactor: 2,
-            isMobile: true, hasTouch: true, acceptDownloads: true,
-        });
-        var page = await ctx.newPage();
-        await page.addInitScript(function () { try { localStorage.setItem('theme', 'dark'); } catch (e) {} });
-
-        await page.goto('http://127.0.0.1:' + port + '/bubbles2.html', { waitUntil: 'domcontentloaded', timeout: 60000 });
-        await tg.saveViaBridge(page, IMG_BUBBLE);
-
-        await page.goto('http://127.0.0.1:' + port + '/treemap.html', { waitUntil: 'domcontentloaded', timeout: 60000 });
-        await tg.saveViaBridge(page, IMG_TREE);
-    } finally {
-        await browser.close();
-        srv.close();
-    }
-    return [IMG_BUBBLE, IMG_TREE];
+// ── 상승률 트리 렌더 (flowmap rise/tree — 급등주 기반, 모바일 다운로드 워터마크 방식) ──
+async function renderImage() {
+    var done = await tg.captureFlowmaps(PUBLIC, [{ mode: 'rise', view: 'tree', out: IMG }]);
+    return done[0] || null;
 }
 
 async function main() {
@@ -144,15 +100,15 @@ async function main() {
         '| 테마:', G.themes.map(function (t) { return t.key; }).join(',') || '-');
 
     var comment = await aiComment(today, G);
-    var caption = buildCaption(today, G, comment);
+    var caption = buildCaption(today, comment);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
-    var images = await renderImages();
-    console.log('이미지:', images.join(', '));
+    var img = await renderImage();
+    console.log('이미지:', img);
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
-    var r = await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, images, caption);
-    var mid = Array.isArray(r.result) && r.result[0] ? r.result[0].message_id : null;
+    var r = await tg.sendPhoto(BOT_TOKEN, CHAT_ID, img, caption);
+    var mid = r.result && r.result.message_id;
     console.log('게시 완료 — message_id', mid);
     tg.saveMarker(MARKER, { last: today, message_id: mid, at: new Date().toISOString().slice(0, 19) });
 }

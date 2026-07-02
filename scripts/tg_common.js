@@ -155,7 +155,7 @@ async function saveViaBridge(page, outPath, opts) {
     opts = opts || {};
     await page.waitForFunction(function () {
         return window.WhyRiseTmapBridge && typeof window.WhyRiseTmapBridge.save === 'function'
-            && document.querySelectorAll('#tmapSvg g, #tmapSvg rect').length >= 3;
+            && document.querySelectorAll('#tmapSvg g, #tmapSvg rect, #tmapSvg circle').length >= 2;
     }, null, { timeout: opts.timeout || 45000 });
     await page.waitForTimeout(opts.settle || 1400);   // 차트 트랜지션/폰트 안정
     var res = await Promise.all([
@@ -164,6 +164,43 @@ async function saveViaBridge(page, outPath, opts) {
     ]);
     await res[0].saveAs(outPath);
     return outPath;
+}
+
+/**
+ * flowmap.html(급등주 흐름맵)을 모바일 뷰포트에서 mode×view 별로 '이미지 저장' 다운로드 캡쳐.
+ *   configs: [{ mode: 'theme'|'rise'|'sector', view: 'bubble'|'tree', out: '/abs.png' }]
+ * flowmap 브릿지(WhyRiseTmapBridge.setMode/setView/save) 사용. 반환: 성공한 out 경로 배열.
+ */
+async function captureFlowmaps(publicDir, configs) {
+    var srv = await servePublic(publicDir);
+    var port = srv.address().port;
+    var browser = await require('playwright').chromium.launch({ headless: true, args: ['--no-sandbox'] });
+    var done = [];
+    try {
+        var ctx = await browser.newContext({
+            viewport: { width: 430, height: 932 }, deviceScaleFactor: 2,
+            isMobile: true, hasTouch: true, acceptDownloads: true,
+        });
+        var page = await ctx.newPage();
+        await page.addInitScript(function () { try { localStorage.setItem('theme', 'dark'); } catch (e) {} });
+        for (var i = 0; i < configs.length; i++) {
+            var c = configs[i];
+            try {
+                await page.goto('http://127.0.0.1:' + port + '/flowmap.html?view=' + c.view, { waitUntil: 'domcontentloaded', timeout: 60000 });
+                await page.waitForFunction(function () {
+                    return window.WhyRiseTmapBridge && typeof window.WhyRiseTmapBridge.setMode === 'function'
+                        && document.querySelectorAll('#tmapSvg g, #tmapSvg rect, #tmapSvg circle').length >= 2;
+                }, null, { timeout: 45000 });
+                await page.evaluate(function (a) { window.WhyRiseTmapBridge.setView(a.v); window.WhyRiseTmapBridge.setMode(a.m); }, { v: c.view, m: c.mode });
+                await page.waitForTimeout(1800);   // 모드 전환 렌더/트랜지션 안정
+                await saveViaBridge(page, c.out, { settle: 600 });
+                done.push(c.out);
+            } catch (e) {
+                console.error('flowmap 캡쳐 실패(' + c.mode + '/' + c.view + '):', e.message);
+            }
+        }
+    } finally { await browser.close(); srv.close(); }
+    return done;
 }
 
 /**
@@ -458,6 +495,6 @@ module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip,
     loadMarker, saveMarker,
-    servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
+    servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment,
 };
