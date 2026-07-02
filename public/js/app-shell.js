@@ -74,6 +74,7 @@
     function createTabbar() {
         if (!document.body || document.querySelector('.app-tabbar')) return;
         var active = activeTab(location.pathname);
+        if (active === 'visual') return;
         var nav = document.createElement('nav');
         nav.className = 'app-tabbar';
         nav.setAttribute('aria-label', '모바일 주요 메뉴');
