@@ -21,6 +21,8 @@ on:
         description: '샘플용 과거 날짜 YYYYMMDD (비우면 오늘)'
         type: string
         default: ''
+  repository_dispatch:
+    types: [tg-daily]        # 외부 cron-job.org → GitHub dispatch (GitHub 크론 누락 대비 이중화)
   schedule:
     - cron: '45 6 * * 1-5'   # 평일 KST 15:45 — 마감 15분 후(종가 안정)
     - cron: '15 7 * * 1-5'   # 평일 KST 16:15 — 백업(첫 크론 누락 대비, 마커로 중복 방지)

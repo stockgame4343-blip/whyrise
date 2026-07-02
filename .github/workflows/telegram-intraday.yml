@@ -18,6 +18,8 @@ on:
         description: '마커 무시하고 강제 게시'
         type: boolean
         default: false
+  repository_dispatch:
+    types: [tg-intraday]     # 외부 cron-job.org → GitHub dispatch (GitHub 크론 누락 대비 이중화)
   schedule:
     - cron: '30 0 * * 1-5'   # 평일 KST 09:30 — 개장 30분 후
     - cron: '45 0 * * 1-5'   # 평일 KST 09:45 — 백업(첫 크론 누락 대비, 마커로 중복 방지)
