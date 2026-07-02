@@ -1,0 +1,112 @@
+name: 장중 주도 섹터·테마 텔레그램 자동 게시
+
+# 평일 개장 30분 후(KST 09:30), '장중 주도 섹터·테마'를 버블맵+트리맵 앨범으로 whyorgo 채널에 게시.
+#   - 섹터·테마 순위: stock-rise 당일(장중) 랭킹 → build_leaders_calendar 로직 재사용
+#   - 이미지: bubbles2.html / treemap.html 헤드리스 캡쳐(1d 장중 marketmap)
+#   - 캡션 마지막 멘트: Claude API(선택), 미설정 시 템플릿
+# 중복 게시는 public/data/_telegram-intraday-posted.json 마커로 방지(백업 크론 이중 발동 안전).
+# 시크릿(TELEGRAM_BOT_TOKEN) 미설정이면 아무 것도 하지 않음(비용/실패 방지).
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '전송 안 하고 이미지+캡션만 산출(검증)'
+        type: boolean
+        default: false
+      force:
+        description: '마커 무시하고 강제 게시'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '30 0 * * 1-5'   # 평일 KST 09:30 — 개장 30분 후
+    - cron: '45 0 * * 1-5'   # 평일 KST 09:45 — 백업(첫 크론 누락 대비, 마커로 중복 방지)
+
+env:
+  TZ: Asia/Seoul
+
+concurrency:
+  group: telegram-intraday
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      # 시크릿 게이트 — 토큰 없으면(=아직 미설정) 이후 단계 전부 스킵(설치·렌더 비용 0)
+      - name: Secret gate
+        id: gate
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          RUN=false
+          if [ -n "$TG_TOKEN" ] || [ "${{ inputs.dry_run }}" = "true" ]; then RUN=true; fi
+          echo "run=$RUN" >> $GITHUB_OUTPUT
+          echo "게이트: run=$RUN (token=$([ -n "$TG_TOKEN" ] && echo set || echo none))"
+
+      - name: Setup Node
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache Playwright browsers
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-chromium-v1
+
+      - name: Install Playwright
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          npm init -y >/dev/null 2>&1 || true
+          npm install playwright@1.56.1 --no-save
+          npx playwright install --with-deps chromium
+
+      - name: Post to Telegram (intraday)
+        if: steps.gate.outputs.run == 'true'
+        continue-on-error: true   # 게시 실패해도 워크플로 실패로 안 남김
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
+          node scripts/telegram_intraday_leaders.js $ARGS
+
+      - name: Upload image artifacts
+        if: always() && steps.gate.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: telegram-intraday-images
+          path: telegram-intraday-*.png
+          if-no-files-found: ignore
+
+      # 중복 방지 마커만 커밋(게시됐을 때만 변경됨). dry-run/스킵이면 no-op.
+      - name: Commit marker
+        if: steps.gate.outputs.run == 'true' && inputs.dry_run != true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          rm -f telegram-intraday-*.png
+          git add public/data/_telegram-intraday-posted.json 2>/dev/null || true
+          git diff --staged --quiet && echo "게시 안 됨/변경 없음 — 커밋 스킵" && exit 0
+          git commit -m "chore: 장중 주도 텔레그램 게시 마커 ($(date +%Y%m%d))"
+          BRANCH="${GITHUB_REF_NAME}"
+          for attempt in 1 2 3; do
+            git fetch origin "$BRANCH"
+            if git -c rebase.autoStash=true rebase "origin/$BRANCH"; then
+              git push origin "HEAD:$BRANCH" && echo "마커 push 성공" && exit 0
+            else
+              git rebase --abort || true
+            fi
+            sleep 5
+          done
+          echo "마커 push 실패(비치명적) — 다음 실행이 마커 없이도 스킵 로직 재확인" && exit 0
