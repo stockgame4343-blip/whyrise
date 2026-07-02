@@ -77,7 +77,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: telegram-daily-image
-          path: telegram-daily.png
+          path: telegram-daily*.png
           if-no-files-found: ignore
 
       # 중복 방지 마커 커밋(게시됐을 때만 변경됨). dry-run/스킵이면 변경 없음 → no-op.
@@ -86,7 +86,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          rm -f telegram-daily.png
+          rm -f telegram-daily*.png
           git add public/data/_telegram-posted.json 2>/dev/null || true
           git diff --staged --quiet && echo "게시 안 됨/변경 없음 — 커밋 스킵" && exit 0
           git commit -m "chore: 텔레그램 게시 마커 ($(date +%Y%m%d))"

@@ -27,7 +27,9 @@ const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
 const DATE_ARG = ((process.argv.find(function (a) { return a.indexOf('--date=') === 0; }) || '').split('=')[1] || '').trim();  // 샘플용 과거 날짜
 const PUBLIC = path.resolve(__dirname, '..', 'public');
-const OUT_IMG = path.resolve(__dirname, '..', 'telegram-daily.png');
+const OUT_IMG = path.resolve(__dirname, '..', 'telegram-daily.png');            // 1번: 대장 카드
+const IMG_TB = path.resolve(__dirname, '..', 'telegram-daily-theme-bubble.png'); // 2번: 장마감 핫테마 버블
+const IMG_TT = path.resolve(__dirname, '..', 'telegram-daily-theme-tree.png');   // 3번: 장마감 핫테마 트리
 const MARKER = path.resolve(PUBLIC, 'data', '_telegram-posted.json');  // 중복 게시 방지(크론 이중 발동)
 const RAW = core.RAW;
 
@@ -258,11 +260,21 @@ async function main() {
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
     await renderImage(today, L);
-    console.log('이미지:', OUT_IMG);
+    console.log('대장 카드:', OUT_IMG);
+
+    // 장마감 핫테마(종가) 버블·트리 — 대장 카드 뒤에 붙여 "장마감 핫테마 정리" 앨범 구성
+    var themeImgs = await tg.captureFlowmaps(PUBLIC, [
+        { mode: 'theme', view: 'bubble', out: IMG_TB },
+        { mode: 'theme', view: 'tree', out: IMG_TT },
+    ]);
+    console.log('핫테마 이미지:', themeImgs.join(', ') || '(실패 → 대장 카드만 발송)');
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
-    var r = await sendPhoto(OUT_IMG, caption);
-    var mid = r.result && r.result.message_id;
+    var album = [OUT_IMG].concat(themeImgs);   // 1 대장카드 + 2 버블 + 3 트리 (실패 시 대장카드만)
+    var r = album.length > 1
+        ? await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, album, caption)
+        : await sendPhoto(OUT_IMG, caption);
+    var mid = Array.isArray(r.result) ? (r.result[0] && r.result[0].message_id) : (r.result && r.result.message_id);
     console.log('게시 완료 — message_id', mid);
     // 중복 방지 마커 기록(워크플로가 커밋) — 같은 날 재실행 시 스킵됨
     fs.writeFileSync(MARKER, JSON.stringify({ last: today, message_id: mid, at: new Date().toISOString().slice(0, 19) }) + '\n', 'utf8');
