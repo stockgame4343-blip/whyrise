@@ -1182,10 +1182,6 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
     height: 1.08em;
     overflow: hidden;
     vertical-align: bottom;
-    /* 좌우 가장자리 소프트 마스크 — 긴 종목명이 고정폭 박스에 하드 클립돼
-       '흰 글자 모서리'로 보이던 것을 부드러운 페이드로 대체(모바일 우측 특히). */
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
 }
 
 .home6-page .home2-hero .home6-stock-rotator em {
@@ -1203,11 +1199,11 @@ a.home2-cluster:hover { border-color: var(--home2-blue); color: var(--home2-copy
 }
 
 .home6-page .home2-hero .home6-stock-rotator em.is-long {
-    font-size: .74em;
+    font-size: .82em;
 }
 
 .home6-page .home2-hero .home6-stock-rotator em.is-xlong {
-    font-size: .62em;
+    font-size: .72em;
 }
 
 .home6-page .home2-btn--primary {
