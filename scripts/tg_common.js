@@ -60,6 +60,17 @@ function orgoLink(path, campaign) {
         'utm_source=telegram&utm_campaign=' + encodeURIComponent(campaign || 'post');
 }
 
+// Telegram HTML parse_mode 이스케이프 — HTML 캡션에선 태그 밖 모든 동적 텍스트에 필수
+// (미이스케이프 & < > 는 Bot API 가 "can't parse entities" 400 으로 거부)
+function escHtml(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// 텍스트 링크 — 긴 URL 노출 없이 문구만 파란 링크로. parse_mode:'HTML' 과 함께 사용.
+function htmlLink(text, url) {
+    return '<a href="' + escHtml(url) + '">' + escHtml(text) + '</a>';
+}
+
 // ── 중복 방지 마커 ──
 function loadMarker(markerPath) {
     try { return JSON.parse(fs.readFileSync(markerPath, 'utf8')) || {}; } catch (e) { return {}; }
@@ -456,8 +467,11 @@ async function sendMessage(botToken, chatId, text, opts) {
     return _tgPost(botToken, 'sendMessage', JSON.stringify(payload), { 'Content-Type': 'application/json' });
 }
 
-async function sendPhoto(botToken, chatId, imgPath, caption) {
-    var mp = _multipart({ __seq: ++_seq, chat_id: chatId, caption: clip(caption, TG_CAPTION_MAX) },
+async function sendPhoto(botToken, chatId, imgPath, caption, opts) {
+    opts = opts || {};
+    var fields = { __seq: ++_seq, chat_id: chatId, caption: clip(caption, TG_CAPTION_MAX) };
+    if (opts.parse_mode) fields.parse_mode = opts.parse_mode;
+    var mp = _multipart(fields,
         [{ name: 'photo', filename: 'orgo.png', path: imgPath }]);
     return _tgPost(botToken, 'sendPhoto', mp.buf, { 'Content-Type': 'multipart/form-data; boundary=' + mp.boundary });
 }
@@ -466,10 +480,14 @@ async function sendPhoto(botToken, chatId, imgPath, caption) {
  * 앨범(미디어 그룹) 전송 — 2~10장을 하나의 게시물로. 캡션은 첫 장에만.
  *   images: [ '/abs/a.png', '/abs/b.png' ]
  */
-async function sendMediaGroup(botToken, chatId, images, caption) {
+async function sendMediaGroup(botToken, chatId, images, caption, opts) {
+    opts = opts || {};
     var media = images.map(function (_, i) {
         var m = { type: 'photo', media: 'attach://p' + i };
-        if (i === 0 && caption) m.caption = clip(caption, TG_CAPTION_MAX);
+        if (i === 0 && caption) {
+            m.caption = clip(caption, TG_CAPTION_MAX);
+            if (opts.parse_mode) m.parse_mode = opts.parse_mode;   // 앨범은 media 객체 안에 지정
+        }
         return m;
     });
     var files = images.map(function (p, i) { return { name: 'p' + i, filename: 'orgo' + i + '.png', path: p }; });
@@ -551,7 +569,7 @@ function socialThemesCaption(opts) {
 
 module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
-    num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip, orgoLink,
+    num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip, orgoLink, escHtml, htmlLink,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,

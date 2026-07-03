@@ -121,13 +121,13 @@ async function main() {
         extraChips: chips,
     });
 
-    var caption = [
+    // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
+    var caption = tg.escHtml([
         '🗓️ 월간 시장 리포트 · ' + monthLabel,
         '',
         comment,
         '',
-        '👉 대장주 캘린더 보러가기 → ' + tg.orgoLink('/sample2.html', 'monthly'),
-    ].join('\n');
+    ].join('\n')) + '\n' + tg.htmlLink('👉 대장주 캘린더 보러가기', tg.orgoLink('/sample2.html', 'monthly'));
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');
     console.log('테마:', themes.map(function (s) { return s.name; }).join(',') || '-');
@@ -142,7 +142,7 @@ async function main() {
     console.log('이미지:', images.join(', '));
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
-    var r = await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, images, caption);
+    var r = await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, images, caption, { parse_mode: 'HTML' });
     var mid = Array.isArray(r.result) && r.result[0] ? r.result[0].message_id : null;
     console.log('게시 완료 — message_id', mid);
     tg.saveMarker(MARKER, { last: monthKey, message_id: mid, at: new Date().toISOString().slice(0, 19) });

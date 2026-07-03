@@ -63,13 +63,11 @@ function buildCaption(ymd, movers, comment) {
     lines.push('');
     lines.push(comment);
     lines.push('');
-    if (movers[0] && movers[0].ticker) {
-        lines.push('👉 ' + movers[0].name + ' 왜 오르나 보러가기');
-        lines.push(tg.orgoLink('/stock/' + movers[0].ticker, 'intraday'));
-    } else {
-        lines.push('👉 실시간 급등 현황 → ' + tg.orgoLink('/', 'intraday'));
-    }
-    return lines.join('\n');
+    // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
+    var link = (movers[0] && movers[0].ticker)
+        ? tg.htmlLink('👉 ' + movers[0].name + ' 왜 오르나 보러가기', tg.orgoLink('/stock/' + movers[0].ticker, 'intraday'))
+        : tg.htmlLink('👉 실시간 급등 현황 보러가기', tg.orgoLink('/', 'intraday'));
+    return tg.escHtml(lines.join('\n')) + '\n' + link;
 }
 
 // 후킹형 한 줄(첫 줄 재활용) — tg.aiHook 공용 규칙 사용
@@ -115,7 +113,7 @@ async function main() {
     console.log('이미지:', IMG);
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
-    var r = await tg.sendPhoto(BOT_TOKEN, CHAT_ID, IMG, caption);
+    var r = await tg.sendPhoto(BOT_TOKEN, CHAT_ID, IMG, caption, { parse_mode: 'HTML' });
     var mid = r.result && r.result.message_id;
     console.log('게시 완료 — message_id', mid);
     tg.saveMarker(MARKER, { last: today, message_id: mid, at: new Date().toISOString().slice(0, 19) });

@@ -125,13 +125,13 @@ async function main() {
         extraChips: chips,
     });
 
-    var caption = [
+    // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
+    var caption = tg.escHtml([
         '📅 이번 주 시장 리포트 · ' + range,
         '',
         comment,
         '',
-        '👉 주간 흐름 자세히 → ' + tg.orgoLink('/report.html', 'weekly'),
-    ].join('\n');
+    ].join('\n')) + '\n' + tg.htmlLink('👉 주간 흐름 자세히 보기', tg.orgoLink('/report.html', 'weekly'));
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');
     console.log('테마:', themes.map(function (s) { return s.name; }).join(',') || '-');
@@ -143,7 +143,7 @@ async function main() {
     console.log('이미지:', IMG);
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
-    var r = await tg.sendPhoto(BOT_TOKEN, CHAT_ID, IMG, caption);
+    var r = await tg.sendPhoto(BOT_TOKEN, CHAT_ID, IMG, caption, { parse_mode: 'HTML' });
     var mid = r.result && r.result.message_id;
     console.log('게시 완료 — message_id', mid);
     tg.saveMarker(MARKER, { last: weekId, message_id: mid, at: new Date().toISOString().slice(0, 19) });

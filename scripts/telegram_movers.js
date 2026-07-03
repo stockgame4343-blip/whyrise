@@ -47,8 +47,9 @@ function buildThemeCaption(ymd, G, comment) {
     }
     lines.push(comment);
     lines.push('');
-    lines.push('👉 섹터·테마 한눈에 → ' + tg.orgoLink('/leaders2.html', 'movers'));
-    return lines.join('\n');
+    // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
+    return tg.escHtml(lines.join('\n')) + '\n' +
+        tg.htmlLink('👉 섹터·테마 한눈에 보기', tg.orgoLink('/leaders2.html', 'movers'));
 }
 
 // 후킹형 한 줄(첫 줄 재활용) — tg.aiHook 공용 규칙 사용
@@ -97,7 +98,7 @@ async function main() {
     if (!imgs.length) { console.log('핫테마 이미지 렌더 실패 — 스킵'); return; }
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
-    var r = await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, imgs, caption);
+    var r = await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, imgs, caption, { parse_mode: 'HTML' });
     var mid = Array.isArray(r.result) && r.result[0] ? r.result[0].message_id : null;
     console.log('핫테마 게시 완료 — message_id', mid);
     tg.saveMarker(MARKER, { last: today, message_id: mid, at: new Date().toISOString().slice(0, 19) });

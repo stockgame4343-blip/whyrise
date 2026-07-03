@@ -113,14 +113,15 @@ function buildCaption(ymd, L, comment) {
         lines.push('');
     }
     lines.push(comment);
-    // 바로가기 — 대장주 상세(이유·1년 이력)와 전체 리스트로 유입 (utm 으로 효과 측정)
     lines.push('');
+    // 바로가기 — HTML 텍스트 링크(긴 URL 미노출, utm 으로 효과 측정).
+    // 본문은 통째로 이스케이프 후 링크 줄만 붙인다 (parse_mode:'HTML').
+    var links = [];
     if (L.leader && L.leader.ticker) {
-        lines.push('👉 ' + L.leader.name + ' 이유·1년 이력 보러가기');
-        lines.push(tg.orgoLink('/stock/' + L.leader.ticker, 'daily'));
+        links.push(tg.htmlLink('👉 ' + L.leader.name + ' 이유·1년 이력 보러가기', tg.orgoLink('/stock/' + L.leader.ticker, 'daily')));
     }
-    lines.push('오늘 오른 종목 전부 → ' + tg.orgoLink('/rise.html', 'daily'));
-    return lines.join('\n');
+    links.push(tg.htmlLink('👉 오늘 오른 종목 전부 보기', tg.orgoLink('/rise.html', 'daily')));
+    return tg.escHtml(lines.join('\n')) + '\n' + links.join('\n');
 }
 
 // 템플릿 멘트(폴백) — AI 없을 때
@@ -209,6 +210,7 @@ async function sendPhoto(imgPath, caption) {
     }
     field('chat_id', CHAT_ID);
     field('caption', caption);
+    field('parse_mode', 'HTML');   // 캡션의 <a> 텍스트 링크 렌더
     var img = fs.readFileSync(imgPath);
     parts.push(Buffer.from('--' + boundary + '\r\nContent-Disposition: form-data; name="photo"; filename="leader.png"\r\nContent-Type: image/png\r\n\r\n'));
     parts.push(img);
@@ -279,7 +281,7 @@ async function main() {
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
     var album = [OUT_IMG].concat(themeImgs);   // 1 대장카드 + 2 버블 + 3 트리 (실패 시 대장카드만)
     var r = album.length > 1
-        ? await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, album, caption)
+        ? await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, album, caption, { parse_mode: 'HTML' })
         : await sendPhoto(OUT_IMG, caption);
     var mid = Array.isArray(r.result) ? (r.result[0] && r.result[0].message_id) : (r.result && r.result.message_id);
     console.log('게시 완료 — message_id', mid);
