@@ -76,10 +76,11 @@ function buildStatLine(w) {
 async function aiComment(topSector, topTheme) {
     var summary = { 주도섹터: topSector || '없음', 주도테마: topTheme || '없음' };
     var prompt = '아래는 한국 주식시장 이번 주 주도 섹터·테마 요약이야. 텔레그램 채널 주간 리포트 구독자에게 ' +
-        '이번 주 시장 분위기를 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
-        '센스있고 친근하게, 주말 인사 톤 살짝. 숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
+        '이번 주 시장 흐름을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
+        '사실 서술만 — 호들갑·감탄·드라마화 금지, 평범한 주면 평범하게. 주말 인사 한마디는 괜찮아. ' +
+        '숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
         JSON.stringify(summary, null, 2);
-    var fallback = topTheme ? ('이번 주는 ' + topTheme + ' 쪽이 뜨거웠네요. 좋은 주말 보내세요 🙌')
+    var fallback = topTheme ? ('이번 주는 ' + topTheme + ' 쪽 상승이 많았어요. 좋은 주말 보내세요 🙌')
         : '한 주 수고하셨어요. 좋은 주말 보내세요 🙌';
     return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
 }

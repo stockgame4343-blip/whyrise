@@ -76,7 +76,7 @@ async function aiHook(ymd, movers) {
         시각: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중(개장 30분)',
         주도주: movers.slice(0, 5).map(function (m) { return m.name + ' ' + tg.pct(m.rate) + (m.theme ? '(' + m.theme + ')' : ''); }).join(', '),
     };
-    var fallback = movers[0] ? ('개장 30분, ' + (movers[0].theme || movers[0].name) + '이 벌써 판을 흔드네요 🚀') : '오늘 흐름 천천히 지켜보세요 👀';
+    var fallback = movers[0] ? ('개장 30분 기준 ' + (movers[0].theme || movers[0].name) + ' 쪽 강세예요') : '오늘 흐름 천천히 지켜보세요 👀';
     return tg.aiHook('오늘의 주도주 TOP5(장중)', summary, ANTHROPIC_KEY, MODEL, fallback);
 }
 

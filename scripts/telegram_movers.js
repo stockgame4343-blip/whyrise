@@ -59,7 +59,7 @@ async function aiHook(ymd, G) {
         주도섹터: G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate) + '(' + s.count + '종목)'; }).join(', ') || '없음',
         주도테마: G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate) + '(' + t.count + '종목)'; }).join(', ') || '없음',
     };
-    var fallback = (G.themes[0] || G.sectors[0]) ? ('지금 장은 ' + (G.themes[0] || G.sectors[0]).key + ' 쪽으로 쏠리는 중이에요 🔥') : '테마 흐름 지켜보는 중이에요 👀';
+    var fallback = (G.themes[0] || G.sectors[0]) ? ('장 초반 ' + (G.themes[0] || G.sectors[0]).key + ' 쪽 상승이 많아요') : '테마 흐름 지켜보는 중이에요 👀';
     return tg.aiHook('오늘 핫테마(주도 섹터·테마, 장중)', summary, ANTHROPIC_KEY, MODEL, fallback);
 }
 

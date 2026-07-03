@@ -128,8 +128,8 @@ function buildCaption(ymd, L, comment) {
 function templateComment(L) {
     var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name);
     if (!subj) return '오늘도 시장 잘 살펴보세요 👀';
-    // 조사 문제 회피 — '쪽이'는 받침 유무와 무관하게 자연스러움
-    return '오늘은 ' + subj + ' 쪽이 제대로 달렸네요 🚀';
+    // 조사 문제 회피 — '쪽'은 받침 유무와 무관하게 자연스러움
+    return '오늘은 ' + subj + ' 쪽 상승이 많았어요';
 }
 
 // ── AI 멘트 (Claude) ──
@@ -142,8 +142,9 @@ async function aiComment(ymd, L) {
         대장테마: L.theme ? (L.theme.key + ' 평균 ' + pct(L.theme.avgRate)) : '없음',
     };
     var prompt = '아래는 한국 주식시장 그날의 "오늘의 대장" 요약이야. 텔레그램 채널 구독자에게 ' +
-        '오늘 장 마감 분위기를 위트있게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 1개. ' +
-        '센스있고 친근하게, 오늘 뭐가 주인공이었는지 드러나게. 숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
+        '오늘 장 마감을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
+        '사실 서술만 — 호들갑·감탄·드라마화 금지, 평범한 날이면 평범하게. ' +
+        '숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
         JSON.stringify(summary, null, 2);
     try {
         var res = await fetch('https://api.anthropic.com/v1/messages', {
