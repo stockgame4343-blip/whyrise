@@ -45,8 +45,7 @@ function buildThemeCaption(ymd, G, comment) {
         G.themes.forEach(function (g, i) { lines.push((i + 1) + ' ' + g.key + ' ' + tg.pct(g.avgRate) + ' (' + g.count + '종목)'); });
         lines.push('');
     }
-    lines.push(comment);
-    lines.push('');
+    if (comment) { lines.push(comment); lines.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
     // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
     return tg.escHtml(lines.join('\n')) + '\n' +
         tg.htmlLink('👉 섹터·테마 한눈에 보기', tg.orgoLink('/leaders2.html', 'movers'));
@@ -59,7 +58,7 @@ async function aiHook(ymd, G) {
         주도섹터: G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate) + '(' + s.count + '종목)'; }).join(', ') || '없음',
         주도테마: G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate) + '(' + t.count + '종목)'; }).join(', ') || '없음',
     };
-    var fallback = (G.themes[0] || G.sectors[0]) ? ('장 초반 ' + (G.themes[0] || G.sectors[0]).key + ' 쪽 상승이 많아요') : '테마 흐름 지켜보는 중이에요 👀';
+    var fallback = (G.themes[0] || G.sectors[0]) ? ('장 초반 ' + (G.themes[0] || G.sectors[0]).key + ' 쪽 상승이 많아요') : '';
     return tg.aiHook('오늘 핫테마(주도 섹터·테마, 장중)', summary, ANTHROPIC_KEY, MODEL, fallback);
 }
 

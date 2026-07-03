@@ -61,9 +61,10 @@ async function aiComment(topSector, topTheme, monthLabel) {
     var prompt = '아래는 한국 주식시장 최근 한 달 주도 섹터·테마 요약이야. 텔레그램 채널 월간 리포트 구독자에게 ' +
         '지난 한 달 시장 흐름을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
         '사실 서술만 — 호들갑·감탄·드라마화 금지, 평범한 달이면 평범하게. ' +
+        '뚜렷한 흐름이 없어서 딱히 할 말이 없으면 문장 대신 정확히 (생략) 만 출력. ' +
         '숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
         JSON.stringify(summary, null, 2);
-    var fallback = topTheme ? ('지난 한 달은 ' + topTheme + ' 쪽 상승이 잦았어요 📈') : '지난 한 달도 수고 많으셨어요 📈';
+    var fallback = topTheme ? ('지난 한 달은 ' + topTheme + ' 쪽 상승이 잦았어요 📈') : '';
     return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
 }
 
@@ -123,12 +124,10 @@ async function main() {
     });
 
     // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
-    var caption = tg.escHtml([
-        '🗓️ 월간 시장 리포트 · ' + monthLabel,
-        '',
-        comment,
-        '',
-    ].join('\n')) + '\n' + tg.htmlLink('👉 대장주 캘린더 보러가기', tg.orgoLink('/sample2.html', 'monthly'));
+    var head = ['🗓️ 월간 시장 리포트 · ' + monthLabel, ''];
+    if (comment) { head.push(comment); head.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
+    var caption = tg.escHtml(head.join('\n')) + '\n' +
+        tg.htmlLink('👉 대장주 캘린더 보러가기', tg.orgoLink('/sample2.html', 'monthly'));
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');
     console.log('테마:', themes.map(function (s) { return s.name; }).join(',') || '-');

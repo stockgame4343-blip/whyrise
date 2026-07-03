@@ -112,8 +112,7 @@ function buildCaption(ymd, L, comment) {
         lines.push('1위 ' + L.theme.top + ' ' + pct(L.theme.topRate));
         lines.push('');
     }
-    lines.push(comment);
-    lines.push('');
+    if (comment) { lines.push(comment); lines.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
     // 바로가기 — HTML 텍스트 링크(긴 URL 미노출, utm 으로 효과 측정).
     // 본문은 통째로 이스케이프 후 링크 줄만 붙인다 (parse_mode:'HTML').
     var links = [];
@@ -127,7 +126,7 @@ function buildCaption(ymd, L, comment) {
 // 템플릿 멘트(폴백) — AI 없을 때
 function templateComment(L) {
     var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name);
-    if (!subj) return '오늘도 시장 잘 살펴보세요 👀';
+    if (!subj) return '';   // 특이사항 없음 — 멘트 생략
     // 조사 문제 회피 — '쪽'은 받침 유무와 무관하게 자연스러움
     return '오늘은 ' + subj + ' 쪽 상승이 많았어요';
 }
@@ -144,6 +143,7 @@ async function aiComment(ymd, L) {
     var prompt = '아래는 한국 주식시장 그날의 "오늘의 대장" 요약이야. 텔레그램 채널 구독자에게 ' +
         '오늘 장 마감을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
         '사실 서술만 — 호들갑·감탄·드라마화 금지, 평범한 날이면 평범하게. ' +
+        '뚜렷한 쏠림·이슈가 없어서 딱히 할 말이 없으면 문장 대신 정확히 (생략) 만 출력. ' +
         '숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
         JSON.stringify(summary, null, 2);
     try {
@@ -160,6 +160,7 @@ async function aiComment(ymd, L) {
         var j = await res.json();
         var text = (j.content || []).map(function (b) { return b.text || ''; }).join('').trim();
         text = text.replace(/^["'\s]+|["'\s]+$/g, '').split('\n')[0].trim();
+        if (text === '(생략)') return '';   // 특이사항 없음 — 의도적 생략(빈 응답=오류→폴백과 구분)
         return text || templateComment(L);
     } catch (e) {
         console.error('AI 멘트 실패 → 템플릿 폴백:', e.message);

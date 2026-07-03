@@ -509,6 +509,7 @@ async function aiComment(promptText, apiKey, model, fallback) {
         var j = await res.json();
         var text = (j.content || []).map(function (b) { return b.text || ''; }).join('').trim();
         text = text.replace(/^["'\s]+|["'\s]+$/g, '').split('\n')[0].trim();
+        if (text === '(생략)') return '';   // 특이사항 없음 — 의도적 생략(빈 응답=오류→폴백과 구분)
         return text || fallback;
     } catch (e) {
         console.error('AI 멘트 실패 → 폴백:', e.message);
@@ -524,6 +525,7 @@ const HOOK_RULE = [
     '규칙:',
     '- 사실 서술만. "벌써/무려/판을 흔든다/벌어진 일" 같은 호들갑·감탄·드라마화 금지.',
     '- 평범한 날이면 평범하게 써라. 대단한 일처럼 포장하지 마. 구체 숫자는 하나 정도만.',
+    '- 뚜렷한 쏠림·이슈가 없어서 딱히 할 말이 없으면 문장 대신 정확히 (생략) 만 출력.',
     '- 한 문장 45자 내외, 이모지 0~1개.',
     '- 과장·투자권유·목표가·"잡아라/사라"류 금지. 장중이면 미확정 뉘앙스.',
     '- 따옴표·해시태그·링크 없이 문장만 출력.',

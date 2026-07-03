@@ -61,8 +61,7 @@ function buildCaption(ymd, movers, comment) {
         lines.push((i + 1) + ' ' + m.name + ' ' + tg.pct(m.rate) + (m.theme ? ' [' + m.theme + ']' : ''));
     });
     lines.push('');
-    lines.push(comment);
-    lines.push('');
+    if (comment) { lines.push(comment); lines.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
     // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
     var link = (movers[0] && movers[0].ticker)
         ? tg.htmlLink('👉 ' + movers[0].name + ' 왜 오르나 보러가기', tg.orgoLink('/stock/' + movers[0].ticker, 'intraday'))
@@ -76,7 +75,7 @@ async function aiHook(ymd, movers) {
         시각: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중(개장 30분)',
         주도주: movers.slice(0, 5).map(function (m) { return m.name + ' ' + tg.pct(m.rate) + (m.theme ? '(' + m.theme + ')' : ''); }).join(', '),
     };
-    var fallback = movers[0] ? ('개장 30분 기준 ' + (movers[0].theme || movers[0].name) + ' 쪽 강세예요') : '오늘 흐름 천천히 지켜보세요 👀';
+    var fallback = movers[0] ? ('개장 30분 기준 ' + (movers[0].theme || movers[0].name) + ' 쪽 강세예요') : '';
     return tg.aiHook('오늘의 주도주 TOP5(장중)', summary, ANTHROPIC_KEY, MODEL, fallback);
 }
 

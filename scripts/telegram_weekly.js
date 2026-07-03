@@ -78,6 +78,7 @@ async function aiComment(topSector, topTheme) {
     var prompt = '아래는 한국 주식시장 이번 주 주도 섹터·테마 요약이야. 텔레그램 채널 주간 리포트 구독자에게 ' +
         '이번 주 시장 흐름을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
         '사실 서술만 — 호들갑·감탄·드라마화 금지, 평범한 주면 평범하게. 주말 인사 한마디는 괜찮아. ' +
+        '뚜렷한 흐름이 없어서 딱히 할 말이 없으면 문장 대신 정확히 (생략) 만 출력. ' +
         '숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
         JSON.stringify(summary, null, 2);
     var fallback = topTheme ? ('이번 주는 ' + topTheme + ' 쪽 상승이 많았어요. 좋은 주말 보내세요 🙌')
@@ -127,12 +128,10 @@ async function main() {
     });
 
     // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
-    var caption = tg.escHtml([
-        '📅 이번 주 시장 리포트 · ' + range,
-        '',
-        comment,
-        '',
-    ].join('\n')) + '\n' + tg.htmlLink('👉 주간 흐름 자세히 보기', tg.orgoLink('/report.html', 'weekly'));
+    var head = ['📅 이번 주 시장 리포트 · ' + range, ''];
+    if (comment) { head.push(comment); head.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
+    var caption = tg.escHtml(head.join('\n')) + '\n' +
+        tg.htmlLink('👉 주간 흐름 자세히 보기', tg.orgoLink('/report.html', 'weekly'));
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');
     console.log('테마:', themes.map(function (s) { return s.name; }).join(',') || '-');
