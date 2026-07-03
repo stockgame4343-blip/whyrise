@@ -497,7 +497,7 @@ var WhyReport = (function () {
         } else {
             stockTile = '<section class="report-leader-tile report-leader-tile--stock report-leader-tile--empty">' +
                 '<span class="report-leader-tile__label">대장주</span>' +
-                '<strong>해당 없음</strong>' +
+                '<strong>대장주 없음</strong>' +
                 '<span class="report-leader-tile__sub">상승률·거래대금 기준 미달</span>' +
             '</section>';
         }
