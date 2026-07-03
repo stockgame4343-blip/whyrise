@@ -476,24 +476,36 @@ var WhyReport = (function () {
     function renderLeader(row, sectorGroup, themeGroup) {
         var el = $('leaderCard');
         if (!el) return;
-        if (!row) {
+        // 대장주·대장섹터·대장테마는 독립 판정 — 종목 기준 미달이어도 섹터/테마 타일은 그대로 노출
+        if (!row && !sectorGroup && !themeGroup) {
             el.innerHTML = '<div class="report-empty">오늘 기준에 맞는 대장이 없습니다.</div>';
             return;
         }
-        var theme = themeOf(row);
-        var reason = reasonOf(row);
-        var sectorTheme = [row.sector, theme].filter(Boolean).join(' · ');
-        var detailTag = theme || row.sector || '대장';
-        var detailText = '[' + detailTag + '] ' + (reason || sectorTheme || '거래대금 상위 종목');
+        var stockTile;
+        if (row) {
+            var theme = themeOf(row);
+            var reason = reasonOf(row);
+            var sectorTheme = [row.sector, theme].filter(Boolean).join(' · ');
+            var detailTag = theme || row.sector || '대장';
+            var detailText = '[' + detailTag + '] ' + (reason || sectorTheme || '거래대금 상위 종목');
+            stockTile = '<section class="report-leader-tile report-leader-tile--stock">' +
+                '<span class="report-leader-tile__label">대장주</span>' +
+                stockNameHtml(row, 'report-leader-card__name') +
+                '<span class="report-leader-tile__meta"><strong class="cell-change--up">' + pct(row.change_rate) + '</strong> · 거래 ' + fmtAmount(row.trading_value) + '</span>' +
+                '<span class="report-leader-tile__sub">' + esc(detailText) + '</span>' +
+            '</section>';
+        } else {
+            stockTile = '<section class="report-leader-tile report-leader-tile--stock report-leader-tile--empty">' +
+                '<span class="report-leader-tile__label">대장주</span>' +
+                '<strong>해당 없음</strong>' +
+                '<span class="report-leader-tile__sub">상승률·거래대금 기준 미달</span>' +
+            '</section>';
+        }
 
-        el.innerHTML = '<article class="report-leader-card ' + ratingClass(row.ticker) + '" data-ticker="' + esc(row.ticker) + '">' +
+        el.innerHTML = '<article class="report-leader-card' +
+            (row ? ' ' + ratingClass(row.ticker) + '" data-ticker="' + esc(row.ticker) : '') + '">' +
             '<div class="report-leader-grid">' +
-                '<section class="report-leader-tile report-leader-tile--stock">' +
-                    '<span class="report-leader-tile__label">대장주</span>' +
-                    stockNameHtml(row, 'report-leader-card__name') +
-                    '<span class="report-leader-tile__meta"><strong class="cell-change--up">' + pct(row.change_rate) + '</strong> · 거래 ' + fmtAmount(row.trading_value) + '</span>' +
-                    '<span class="report-leader-tile__sub">' + esc(detailText) + '</span>' +
-                '</section>' +
+                stockTile +
                 leaderGroupTile(sectorGroup, 'sector', '대장섹터', '주도 섹터 없음') +
                 leaderGroupTile(themeGroup, 'theme', '대장테마', '핫 테마 없음') +
             '</div>' +
