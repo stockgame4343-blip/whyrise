@@ -346,7 +346,7 @@ function leaderCardHtml(opts) {
             esc(lead.name) + (mm ? '<span class="mk">' + mm + '</span>' : ''),
             '<b class="up">' + pct(lead.rate) + '</b> · 거래 ' + fmtAmount(lead.vol),
             (lead.tag ? '<span class="tag">' + esc(lead.tag) + '</span> ' : '') +
-            esc(lead.reason || (isFb ? '거래대금 1위 (대장 기준 거래대금 3,000억 미달)' : '')));
+            esc(lead.reason || (isFb ? '거래대금 1위 (대장 기준 상승 에너지 미달)' : '')));
     } else {
         s1 = tile('🥇', '대장주', '<span class="none">해당 없음</span>',
             '', '오늘은 대장주 조건(거래대금·상승률)에 맞는 종목이 없었어요');

@@ -7,10 +7,14 @@ var WhyReportCore = (function () {
 
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
     var RISE_CUTOFF = 15;
-    var LEADER_VOLUME_PEER_RATIO = 0.5;
-    var LEADER_VOLUME_TOP_N = 5;
-    var LEADER_MIN_VALUE = 3000 * 1e8;
-    var LEADER_RATE_CAP = 30;
+    // ── 대장주 황금식 (2026-07 개편) ──
+    // 점수(상승 에너지) = 거래대금(원) × 상승률(%, 30캡). 컷 계단(+15% 등) 없이 단일 곱셈으로
+    // "상승에 실린 돈"이 가장 큰 종목이 대장 — 거래대금 2배 = 상승률 2배 등가.
+    // 초대형주(삼성전자·SK하이닉스 등)는 +5~10% 라도 거래대금이 수조원이면 자연히 1등이 되고,
+    // 저거래 급등주는 에너지 미달로 걸러진다. 후보 풀은 급등 랭킹(+10%↑) + marketmap 대형주(+5%↑) 병합.
+    var LEADER_MIN_RATE = 5;          // 후보 최소 상승률(%) — 이 밑은 대장 자격 없음
+    var LEADER_RATE_CAP = 30;         // 비교용 상승률 캡 — 신규상장 등 이벤트성 초과분 왜곡 방지
+    var LEADER_MIN_SCORE = 8e12;      // 최소 상승 에너지(원×%) — 예: 3,000억×+27% ≈ 1조×+8%. 미달이면 그날 대장 없음
     var GROUP_MIN = 3;
 
     function num(value) {
@@ -106,41 +110,44 @@ var WhyReportCore = (function () {
         return { sector: sectorMap, theme: themeMap };
     }
 
-    function pickLeader(rows, sectors, themes) {
-        var candidates = (rows || []).filter(function (row) {
-            return isActiveRow(row, RISE_CUTOFF) && num(row.trading_value) > 0;
-        });
-        if (!candidates.length) return null;
+    // 상승 에너지 — 대장주 점수 그 자체 (원 × %)
+    function leaderEnergy(row) {
+        return num(row && row.trading_value) * capRate(row);
+    }
 
-        var maps = groupMaps(sectors, themes);
-        var maxVolume = Math.max.apply(null, candidates.map(function (row) {
-            return num(row.trading_value);
-        }));
-        var volumeTop = {};
-        candidates.slice().sort(function (a, b) {
-            return num(b.trading_value) - num(a.trading_value) || capRate(b) - capRate(a);
-        }).slice(0, LEADER_VOLUME_TOP_N).forEach(function (row) {
-            volumeTop[row.ticker] = 1;
+    // extraRows: 급등 랭킹 밖 후보(marketmap 대형주 +5%대 등).
+    // ticker 중복 시 상승 에너지 큰 쪽 '숫자'를 신뢰(랭킹 원본의 거래대금 결손 방어),
+    // 상승이유·테마 등 서술 필드는 랭킹 쪽을 유지한다.
+    function pickLeader(rows, sectors, themes, extraRows) {
+        var byTicker = {};
+        var order = [];
+        (rows || []).concat(extraRows || []).forEach(function (row) {
+            if (!row || !row.ticker || BLOCKED_TICKERS[row.ticker]) return;
+            if (!(num(row.change_rate) >= LEADER_MIN_RATE && num(row.trading_value) > 0)) return;
+            var prev = byTicker[row.ticker];
+            if (!prev) { byTicker[row.ticker] = row; order.push(row.ticker); return; }
+            if (leaderEnergy(row) > leaderEnergy(prev)) {
+                byTicker[row.ticker] = Object.assign({}, prev, {
+                    change_rate: row.change_rate,
+                    trading_value: row.trading_value,
+                    close_price: row.close_price != null ? row.close_price : prev.close_price,
+                    market_cap: row.market_cap != null ? row.market_cap : prev.market_cap,
+                });
+            }
         });
-        var peers = candidates.filter(function (row) {
-            return num(row.trading_value) >= maxVolume * LEADER_VOLUME_PEER_RATIO ||
-                volumeTop[row.ticker];
-        });
-        var maxChange = Math.max.apply(null, peers.map(capRate));
-        function score(row) {
-            var volumeScore = maxVolume > 0 ? num(row.trading_value) / maxVolume : 0;
-            var changeScore = maxChange > 0 ? capRate(row) / maxChange : 0;
-            return volumeScore * 70 + changeScore * 30;
-        }
-        peers.sort(function (a, b) {
-            return score(b) - score(a) ||
+        var pool = order.map(function (t) { return byTicker[t]; });
+        if (!pool.length) return null;
+
+        pool.sort(function (a, b) {
+            return leaderEnergy(b) - leaderEnergy(a) ||
                 num(b.trading_value) - num(a.trading_value) ||
                 capRate(b) - capRate(a);
         });
-        if (!peers[0] || num(peers[0].trading_value) < LEADER_MIN_VALUE) return null;
+        if (leaderEnergy(pool[0]) < LEADER_MIN_SCORE) return null;
 
-        var leader = Object.assign({}, peers[0]);
-        leader._leaderScore = score(peers[0]);
+        var maps = groupMaps(sectors, themes);
+        var leader = Object.assign({}, pool[0]);
+        leader._leaderScore = leaderEnergy(pool[0]);
         leader._sectorCount = maps.sector[leader.sector] ? maps.sector[leader.sector].count : 1;
         leader._themeCount = 1;
         themeTags(leader).forEach(function (tag) {
@@ -170,11 +177,13 @@ var WhyReportCore = (function () {
     return {
         constants: {
             riseCutoff: RISE_CUTOFF,
-            leaderMinValue: LEADER_MIN_VALUE,
+            leaderMinRate: LEADER_MIN_RATE,
+            leaderMinScore: LEADER_MIN_SCORE,
             groupMin: GROUP_MIN,
         },
         num: num,
         capRate: capRate,
+        leaderEnergy: leaderEnergy,
         themeTags: themeTags,
         isActiveRow: isActiveRow,
         activeRiseRows: activeRiseRows,

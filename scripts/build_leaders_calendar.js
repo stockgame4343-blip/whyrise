@@ -15,15 +15,17 @@ const https = require('https');
 const RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data';
 const OUT = path.resolve(__dirname, '..', 'public', 'data', 'leaders-calendar.json');
 const RISE_DIR = path.resolve(__dirname, '..', 'public', 'data', 'rise-history');  // 백필 날짜별 (4/13 이전)
+const MM_DIR = path.resolve(__dirname, '..', 'public', 'data', 'marketmap');       // 일자별 대형주 스냅샷 — +5%대 대장 후보 공급
 
-// report.js 와 동일 상수
+// report.js / report-core.js 와 동일 상수
 const BLOCKED = { '003060': 1, '018700': 1, '007460': 1 };
 const RISE_CUTOFF = 15;
-const LEADER_CUTOFF = 15;
-const LEADER_VOLUME_PEER_RATIO = 0.5;
-const LEADER_VOLUME_TOP_N = 5;
-const LEADER_MIN_VALUE = 3000 * 1e8;   // report.js 와 동일 — 대장주 최소 거래대금(원). 못 넘으면 그날은 대장주 없음
-const LEADER_RATE_CAP = 30;            // report.js 와 동일 — 대장주 비교용 상승률 캡(%). +30% 초과(이벤트성)는 비교에서만 캡, 후보는 유지
+// ── 대장주 황금식 (2026-07 개편) ──
+// 점수(상승 에너지) = 거래대금(원) × 상승률(%, 30캡). 컷 계단(+15% 등) 없이 단일 곱셈으로
+// "상승에 실린 돈"이 가장 큰 종목이 대장 — 거래대금 2배 = 상승률 2배 등가.
+const LEADER_MIN_RATE = 5;        // 후보 최소 상승률(%) — 이 밑은 대장 자격 없음
+const LEADER_MIN_SCORE = 8e12;    // 최소 상승 에너지(원×%) — 예: 3,000억×+27% ≈ 1조×+8%. 미달이면 그날 대장 없음
+const LEADER_RATE_CAP = 30;       // 대장주 비교용 상승률 캡(%). +30% 초과(이벤트성)는 비교에서만 캡, 후보는 유지
 const GROUP_MIN = 3;
 
 function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
@@ -71,46 +73,66 @@ function buildGroups(rows, type) {
       });
 }
 
-function pickLeader(rows) {
-    var cands = (rows || []).filter(function (r) {
-        return !BLOCKED[r.ticker] && num(r.change_rate) >= LEADER_CUTOFF && num(r.trading_value) > 0;
+// 상승 에너지 — 대장주 점수 그 자체 (원 × %)
+function leaderEnergy(r) { return num(r && r.trading_value) * capRate(r); }
+
+// extraRows: 급등 랭킹 밖 후보(marketmap 대형주 +5%대 등).
+// ticker 중복 시 상승 에너지 큰 쪽 '숫자'를 신뢰(랭킹 원본의 거래대금 결손 방어 — 예: 20260506 삼성전자
+// 거래대금이 랭킹엔 80억, marketmap 엔 14.1조), 상승이유·테마 등 서술 필드는 랭킹 쪽을 유지한다.
+function pickLeader(rows, extraRows) {
+    var byTicker = {};
+    var order = [];
+    (rows || []).concat(extraRows || []).forEach(function (r) {
+        if (!r || !r.ticker || BLOCKED[r.ticker]) return;
+        if (!(num(r.change_rate) >= LEADER_MIN_RATE && num(r.trading_value) > 0)) return;
+        var prev = byTicker[r.ticker];
+        if (!prev) { byTicker[r.ticker] = r; order.push(r.ticker); return; }
+        if (leaderEnergy(r) > leaderEnergy(prev)) {
+            byTicker[r.ticker] = Object.assign({}, prev, {
+                change_rate: r.change_rate,
+                trading_value: r.trading_value,
+                close_price: r.close_price != null ? r.close_price : prev.close_price,
+                market_cap: r.market_cap != null ? r.market_cap : prev.market_cap,
+            });
+        }
     });
-    if (!cands.length) return null;
-    var maxVol = Math.max.apply(null, cands.map(function (r) { return num(r.trading_value); }));
-    var volumeTop = {};
-    cands.slice().sort(function (a, b) {
-        return num(b.trading_value) - num(a.trading_value) ||
-            capRate(b) - capRate(a);
-    }).slice(0, LEADER_VOLUME_TOP_N).forEach(function (r) {
-        volumeTop[r.ticker] = 1;
-    });
-    var peers = cands.filter(function (r) {
-        return num(r.trading_value) >= maxVol * LEADER_VOLUME_PEER_RATIO ||
-            volumeTop[r.ticker];
-    });
-    // 상승률은 캡값으로 비교 — +500% 이벤트 종목도 +30%로 환산돼 거래대금이 대장을 가른다.
-    var maxChg = Math.max.apply(null, peers.map(capRate));
-    function score(r) {
-        var v = maxVol > 0 ? num(r.trading_value) / maxVol : 0;
-        var c = maxChg > 0 ? capRate(r) / maxChg : 0;
-        return v * 70 + c * 30;
-    }
-    peers.sort(function (a, b) {
-        return score(b) - score(a) ||
+    var pool = order.map(function (t) { return byTicker[t]; });
+    if (!pool.length) return null;
+    // 상승률은 캡값으로 비교 — +500% 이벤트 종목도 +30%로 환산돼 대장 독식 방지.
+    pool.sort(function (a, b) {
+        return leaderEnergy(b) - leaderEnergy(a) ||
             num(b.trading_value) - num(a.trading_value) ||
             capRate(b) - capRate(a);
     });
-    if (num(peers[0].trading_value) < LEADER_MIN_VALUE) return null;   // 거래대금 컷 미달 → 그날은 대장주 없음
-    return peers[0];
+    if (leaderEnergy(pool[0]) < LEADER_MIN_SCORE) return null;   // 에너지 미달 → 그날은 대장주 없음
+    return pool[0];
+}
+
+// 일자별 marketmap 스냅샷 → 대장 후보 행(+4%↑ — 후보 컷 5% 직전까지). 파일 없으면 [] (2025-04 이전 등).
+function loadMarketRows(date) {
+    try {
+        var data = JSON.parse(fs.readFileSync(path.join(MM_DIR, date + '.json'), 'utf8'));
+        return ((data && data.items) || []).filter(function (it) {
+            return it && it.ticker && num(it.change_rate) >= 4;
+        }).map(function (it) {
+            return {
+                ticker: it.ticker, name: it.name, market: it.market || '',
+                sector: it.sector || '', rise_reason: '',
+                change_rate: it.change_rate, close_price: it.close_price,
+                trading_value: it.trading_value,
+                market_cap: num(it.market_cap) * 1e8,   // 억원 → 원
+            };
+        });
+    } catch (e) { return []; }
 }
 
 // rankings 행 배열 → 그날 대장 3종 (stock-rise·rise-history 공통)
-function leadersFromRows(rk) {
+function leadersFromRows(rk, extraRows) {
     rk = rk || [];
     var active = rk.filter(function (r) { return isActive(r, RISE_CUTOFF); });
     var sectors = buildGroups(active, 'sector');
     var themes = buildGroups(active, 'theme');
-    var leader = pickLeader(rk);
+    var leader = pickLeader(rk, extraRows);
     return {
         stock: leader ? {
             ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10,
@@ -148,7 +170,11 @@ async function main() {
     // 매 빌드에서 누적 전체를 다시 받으면 시간이 갈수록 무거워지므로, 이미 가진 옛 날은 건너뛰고
     // (merge 가 보존) 새 날 + 최근 2일(정정·장중갱신 반영)만 fetch 한다. → 시간이 지날수록 1년치에 수렴.
     var existing = {};
-    try { existing = (JSON.parse(fs.readFileSync(OUT, 'utf8')) || {}).days || {}; } catch (e) { existing = {}; }
+    // --rebuild: 누적 캐시 무시하고 전 일자 재계산 — 대장 산출 로직이 바뀐 뒤 1회 실행용
+    const REBUILD = process.argv.includes('--rebuild');
+    if (!REBUILD) {
+        try { existing = (JSON.parse(fs.readFileSync(OUT, 'utf8')) || {}).days || {}; } catch (e) { existing = {}; }
+    }
     const have = new Set(Object.keys(existing));
     const dates = await fetchJson(RAW + '/dates.json');
     if (!Array.isArray(dates) || !dates.length) throw new Error('no dates');
@@ -159,7 +185,7 @@ async function main() {
         if (have.has(d) && !refresh.has(d)) { skipped++; continue; }  // 이미 보유한 옛 날 → fetch 생략(merge 가 유지)
         try {
             const day = await fetchJson(RAW + '/' + d + '.json');
-            days[d] = leadersFromRows(day.rankings || []);
+            days[d] = leadersFromRows(day.rankings || [], loadMarketRows(d));
             console.log(d, '|주:', days[d].stock && days[d].stock.name, '|섹:', days[d].sector && days[d].sector.name, '|테:', days[d].theme && days[d].theme.name);
         } catch (e) {
             console.error('  skip', d, e.message);
@@ -177,7 +203,7 @@ async function main() {
             if (have.has(d) && !refresh.has(d)) { skipped++; continue; }  // 이미 보유 → merge 가 유지
             try {
                 const day = JSON.parse(fs.readFileSync(path.join(RISE_DIR, f), 'utf8'));
-                days[d] = leadersFromRows(day.rankings || []);
+                days[d] = leadersFromRows(day.rankings || [], loadMarketRows(d));
                 backfilled++;
             } catch (e) { console.error('  skip(local)', d, e.message); }
         }
@@ -199,7 +225,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-    leadersFromRows, buildGroups, pickLeader, themeOf, themeTags, isActive,
+    leadersFromRows, buildGroups, pickLeader, loadMarketRows, leaderEnergy, themeOf, themeTags, isActive,
     fetchJson, num, capRate,
-    RISE_CUTOFF, LEADER_CUTOFF, LEADER_MIN_VALUE, GROUP_MIN, RAW,
+    RISE_CUTOFF, LEADER_MIN_RATE, LEADER_MIN_SCORE, GROUP_MIN, RAW,
 };

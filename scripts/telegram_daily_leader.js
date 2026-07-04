@@ -68,8 +68,11 @@ function marketLabel(m) {
 }
 
 // ── 대장 3종 계산 (캘린더 빌드와 동일) + 캡션용 리치 필드 ──
-function computeLeaders(rankings) {
-    var leader = core.pickLeader(rankings);
+// 대장 풀 = 급등 랭킹 + 로컬 marketmap/<date>.json 대형주(+5%대) — 캘린더 빌드와 동일 황금식.
+// (marketmap 은 장중 15분 주기 갱신이라 15:45 시점 로컬 파일이 15:22 시세일 수 있음 —
+//  종가와 ±0.n% 오차 가능하나 삼전·하닉급 후보 판정엔 실질 영향 없음)
+function computeLeaders(rankings, date) {
+    var leader = core.pickLeader(rankings, core.loadMarketRows(date));
     var active = (rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
     var sectors = core.buildGroups(active, 'sector');
     var themes = core.buildGroups(active, 'theme');
@@ -262,7 +265,7 @@ async function main() {
     }
 
     var day = await core.fetchJson(RAW + '/' + today + '.json');
-    var L = computeLeaders(day.rankings || []);
+    var L = computeLeaders(day.rankings || [], today);
     console.log('대장주:', L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate)) : '없음',
         '| 섹터:', L.sector && L.sector.key, '| 테마:', L.theme && L.theme.key);
 

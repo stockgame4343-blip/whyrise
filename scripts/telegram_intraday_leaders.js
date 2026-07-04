@@ -29,19 +29,11 @@ const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 const TOP_N = 5;
 
-// 주도주 TOP5 — pickLeader 와 동일 종합점수(거래대금 70% + 상한상승률 30%). 거래대금 하한 없음.
+// 주도주 TOP5 — 대장주와 동일 '상승 에너지'(거래대금×상한상승률) 순. 거래대금 하한 없음.
 function topMovers(rankings) {
     var cands = (rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF) && core.num(r.trading_value) > 0; });
-    if (!cands.length) return [];
-    var maxVol = Math.max.apply(null, cands.map(function (r) { return core.num(r.trading_value); }));
-    var maxChg = Math.max.apply(null, cands.map(function (r) { return core.capRate(r); }));
-    function score(r) {
-        var v = maxVol > 0 ? core.num(r.trading_value) / maxVol : 0;
-        var c = maxChg > 0 ? core.capRate(r) / maxChg : 0;
-        return v * 70 + c * 30;
-    }
     return cands.slice().sort(function (a, b) {
-        return score(b) - score(a) || core.num(b.trading_value) - core.num(a.trading_value);
+        return core.leaderEnergy(b) - core.leaderEnergy(a) || core.num(b.trading_value) - core.num(a.trading_value);
     }).slice(0, TOP_N);
 }
 

@@ -16,6 +16,7 @@
         liveTimer: null,
         liveFetching: false,
         sectorMap: null,      // ticker → sector (정적 marketmap.json) — 갭 뷰 합성행용
+        mmSnapshot: null,     // { date, items } (정적 marketmap.json) — 라이브 실패 시 대장 후보 폴백
         adoptBusy: false,     // 오늘 빌드 도착 감시 중복 방지
     };
 
@@ -266,12 +267,41 @@
         }).join('');
     }
 
+    // 대장 후보 보강 — 급등 랭킹(+10%↑)에 없는 +5%대 초대형주(삼성전자 등)를 라이브 맵
+    // (없으면 정적 marketmap.json 스냅샷)에서 합류. pickLeader 가 ticker 중복은 랭킹 우선으로 걸러준다.
+    function leaderExtras(live, date) {
+        var out = [];
+        function push(ticker, src, mcapWon) {
+            if (number(src && src.change_rate) < 4) return;   // 후보 컷 5% 직전까지만
+            out.push({
+                ticker: ticker, name: src.name || ticker, market: src.market || '',
+                sector: (state.sectorMap && state.sectorMap[ticker]) || src.sector || '',
+                rise_reason: '', change_rate: src.change_rate, close_price: src.close_price,
+                trading_value: src.trading_value, market_cap: mcapWon,
+            });
+        }
+        if (live && live.map && (!live.date || live.date === date)) {
+            Object.keys(live.map).forEach(function (ticker) {
+                push(ticker, live.map[ticker], number(live.map[ticker].market_cap) * 1e8);
+            });
+            return out;
+        }
+        var snap = state.mmSnapshot;
+        if (snap && snap.date === date) {
+            (snap.items || []).forEach(function (it) {
+                if (it && it.ticker) push(it.ticker, it, number(it.market_cap) * 1e8);
+            });
+        }
+        return out;
+    }
+
     function renderMarket(rows, date, response, live, gapMode) {
         if (!CORE) throw new Error('report-core unavailable');
         var riseRows = CORE.activeRiseRows(rows);
         var sectors = CORE.buildGroups(riseRows, 'sector');
         var themes = CORE.buildGroups(riseRows, 'theme');
-        var leader = CORE.pickLeader(riseRows, sectors, themes);
+        // 대장 풀 = 행 전체(+10%↑ 랭킹/갭 합성행) + 대형주 후보 — riseRows(+15%↑) 아님
+        var leader = CORE.pickLeader(rows, sectors, themes, leaderExtras(live, date));
         var limitCount = riseRows.filter(CORE.isLimitUp).length;
 
         renderStatus(date, response, live, gapMode);
@@ -335,6 +365,8 @@
                     if (it && it.ticker && it.sector) map[it.ticker] = it.sector;
                 });
                 state.sectorMap = map;
+                // 대장 후보 폴백용 스냅샷 — 라이브 실패 시 leaderExtras 가 사용(빌드 날짜 일치할 때만)
+                state.mmSnapshot = { date: String((data && data.date) || ''), items: (data && data.items) || [] };
                 return map;
             })
             .catch(function () {
@@ -625,6 +657,7 @@
         var livePre = (typeof WhyAPI.getLiveMarketmap === 'function' && !isNxtLeadIn())
             ? WhyAPI.getLiveMarketmap().catch(function () { return null; })
             : Promise.resolve(null);
+        loadSectorMap();   // 대장 후보 폴백(mmSnapshot) 선적재 — 라이브 실패해도 +5%대 대형주 후보 유지
         WhyAPI.getDates().then(function (dates) {
             if (!dates || !dates.length) throw new Error('거래일 없음');
             state.date = dates[0];
