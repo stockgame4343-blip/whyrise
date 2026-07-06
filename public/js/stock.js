@@ -879,11 +879,10 @@
     // 홈은 오늘 빌드({date}.json)로 당일 급등주(이유·뉴스)를 바로 보여주지만, 상세는
     // stock-history(주로 마감 후 build-history 생성)만 읽어 '오늘'이 빠진다. → 오늘 빌드에서
     // 이유·뉴스를, 현재가 폴링에서 실시간 등락률을 가져와 타임라인 맨 위에 '오늘(실시간)' 카드를
-    // 주입. 마감 후 build-history가 stock-history에 확정하면(=오늘 날짜 이벤트 존재)
+    // 주입. 컷 미만으로 빠지면 제거(리스트와 동일 동작 — 사용자 확정 2026-07-06).
+    // 마감 후 build-history가 stock-history에 확정하면(=오늘 날짜 이벤트 존재)
     // 주입을 멈추고 그 확정분을 사용(중복 방지·자연 교체).
-    // 이유·뉴스가 붙은 카드는 장중에 컷 밑으로 밀려도 유지(sticky) — 아침 급등 후 오후에
-    // 밀린 종목의 상세에서 그날 이슈가 사라지는 문제 방지(2026-07-06). 시세만 카드는 기존대로 제거.
-    var TODAY_LIVE_CUTOFF = 10;   // 타임라인 기록 기준(+10%)과 일치 — 15→10 완화 (2026-07-06, 기존 15는 2026-06-17 사용자 확정)
+    var TODAY_LIVE_CUTOFF = 10;   // 타임라인 기록 기준(+10%)과 일치 — 15→10 완화 (2026-07-06 사용자 확정, 기존 15는 2026-06-17)
     var _ticker = '';
     var _baseEvents = [];         // stock-history 의 확정 events (타임라인 베이스)
     var _todayEvent = null;       // 합성된 오늘 라이브 이벤트 (없으면 null)
@@ -924,19 +923,9 @@
         // 이미 stock-history(확정)에 오늘 이벤트가 있으면 라이브 주입 안 함(중복 방지)
         var hasToday = _baseEvents.some(function (e) { return _ymd(e.date) === date; });
         var rate = meta ? Number(meta.change_rate) : NaN;
-        if (hasToday) {
+        // 컷 미만이거나 확정분 있으면 today 이벤트 제거(리스트와 동일하게 넣었다 뺐다)
+        if (hasToday || !(rate >= TODAY_LIVE_CUTOFF)) {
             if (_todayEvent) { _todayEvent = null; rerenderTimeline(); }
-            return;
-        }
-        if (!(rate >= TODAY_LIVE_CUTOFF)) {
-            // sticky: 이유·뉴스가 붙은 카드는 컷 밑으로 밀려도 유지 — 등락률·현재가만 실시간 갱신
-            if (_todayEvent && _todayEvent.rise_reason) {
-                if (isFinite(rate)) {
-                    _todayEvent.change_rate = rate;
-                    if (meta && meta.price != null) _todayEvent.close_price = meta.price;
-                    rerenderTimeline();
-                }
-            } else if (_todayEvent) { _todayEvent = null; rerenderTimeline(); }   // 시세만 카드는 제거
             return;
         }
         // 이미 이유·뉴스까지 붙었으면 재조회 없이 숫자만 갱신
