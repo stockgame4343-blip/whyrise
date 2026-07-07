@@ -130,8 +130,8 @@
             '.orgo-tg-cta__icon{flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:#2AABEE;' +
             'color:#fff;display:flex;align-items:center;justify-content:center}' +
             '.orgo-tg-cta__text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}' +
-            '.orgo-tg-cta__text strong{font-size:14.5px;font-weight:700;line-height:1.35}' +
-            '.orgo-tg-cta__text small{font-size:12.5px;opacity:.68;line-height:1.35}' +
+            '.orgo-tg-cta__text strong{font-size:14.5px;font-weight:700;line-height:1.35;word-break:keep-all}' +
+            '.orgo-tg-cta__text small{font-size:12.5px;opacity:.68;line-height:1.35;word-break:keep-all}' +
             '.orgo-tg-cta__btn{flex:0 0 auto;padding:9px 16px;border-radius:999px;background:#2AABEE;' +
             'color:#fff;font-size:13px;font-weight:700;white-space:nowrap}' +
             '@media (max-width:480px){.orgo-tg-cta{gap:10px;padding:12px 13px}' +
@@ -161,7 +161,12 @@
         if (document.querySelector('.orgo-tg-cta')) return;
         var path = location.pathname;
         var spec = null;
-        if (/^\/report(\.html)?$/.test(path)) {
+        if (path === '/' || /^\/index(\.html)?$/.test(path)) {
+            // 홈 — '오늘 오른 종목' 미리보기 리스트 바로 아래(섹션 컨테이너 안 → 프레임 폭 유지)
+            spec = { spot: 'home', anchor: '#home6WhyList',
+                title: '이 브리핑, 매일 마감 후 텔레그램으로',
+                sub: '오늘의 대장 · 주도주 TOP5 · 핫테마 — 무료 채널' };
+        } else if (/^\/report(\.html)?$/.test(path)) {
             spec = { spot: 'report', anchor: '#leaderSection',
                 title: '오늘의 대장, 매일 마감 후 텔레그램으로',
                 sub: '매일 15:45 대장 카드 · 핫테마 정리 발송' };
