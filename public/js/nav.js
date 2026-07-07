@@ -106,6 +106,85 @@
         copy.parentNode.insertBefore(link, copy);
     }
 
+    // ── 본문 텔레그램 CTA — 콘텐츠를 소비한 직후 지점에 구독 유도 카드 주입 ──────────
+    // 상단 아이콘·푸터 링크는 눈에 안 띄어 전환이 약함 → "방금 본 이 정리를 매일 보내준다"는
+    // 맥락형 카드를 페이지별 본문 위치에 넣는다. 클릭은 Vercel Analytics 커스텀 이벤트(tg_cta)로
+    // 집계(성과 측정). 스타일은 CSS 버전 갱신 없이 전 페이지(사전 렌더 종목 상세 포함) 적용되도록
+    // 여기서 <style> 로 주입한다.
+    var TG_URL = 'https://t.me/whyorgo';
+    var TG_ICON =
+        '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">' +
+        '<path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 ' +
+        '3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 ' +
+        '12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>';
+
+    function injectCtaStyles() {
+        if (document.getElementById('orgoTgCtaCss')) return;
+        var st = document.createElement('style');
+        st.id = 'orgoTgCtaCss';
+        st.textContent =
+            '.orgo-tg-cta{display:flex;align-items:center;gap:12px;margin:18px 0;padding:14px 16px;' +
+            'border-radius:14px;background:rgba(42,171,238,.09);border:1px solid rgba(42,171,238,.28);' +
+            'text-decoration:none;color:inherit;transition:background .15s}' +
+            '.orgo-tg-cta:hover{background:rgba(42,171,238,.16)}' +
+            '.orgo-tg-cta__icon{flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:#2AABEE;' +
+            'color:#fff;display:flex;align-items:center;justify-content:center}' +
+            '.orgo-tg-cta__text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}' +
+            '.orgo-tg-cta__text strong{font-size:14.5px;font-weight:700;line-height:1.35}' +
+            '.orgo-tg-cta__text small{font-size:12.5px;opacity:.68;line-height:1.35}' +
+            '.orgo-tg-cta__btn{flex:0 0 auto;padding:9px 16px;border-radius:999px;background:#2AABEE;' +
+            'color:#fff;font-size:13px;font-weight:700;white-space:nowrap}' +
+            '@media (max-width:480px){.orgo-tg-cta{gap:10px;padding:12px 13px}' +
+            '.orgo-tg-cta__btn{padding:8px 13px;font-size:12.5px}}';
+        document.head.appendChild(st);
+    }
+
+    function buildCta(spot, title, sub) {
+        var link = document.createElement('a');
+        link.className = 'orgo-tg-cta';
+        link.href = TG_URL;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.setAttribute('data-spot', spot);
+        link.setAttribute('aria-label', 'ORGO 텔레그램 채널 구독 (새 창에서 열림)');
+        link.innerHTML =
+            '<span class="orgo-tg-cta__icon">' + TG_ICON + '</span>' +
+            '<span class="orgo-tg-cta__text"><strong>' + title + '</strong><small>' + sub + '</small></span>' +
+            '<span class="orgo-tg-cta__btn">무료 구독</span>';
+        link.addEventListener('click', function () {
+            try { window.va && window.va('event', { name: 'tg_cta', data: { spot: spot } }); } catch (e) {}
+        });
+        return link;
+    }
+
+    function injectContentCta() {
+        if (document.querySelector('.orgo-tg-cta')) return;
+        var path = location.pathname;
+        var spec = null;
+        if (/^\/report(\.html)?$/.test(path)) {
+            spec = { spot: 'report', anchor: '#leaderSection',
+                title: '오늘의 대장, 매일 마감 후 텔레그램으로',
+                sub: '매일 15:45 대장 카드 · 핫테마 정리 발송' };
+        } else if (/^\/rise(\.html)?$/.test(path)) {
+            spec = { spot: 'rise', anchor: 'main.layout-main',
+                title: '오늘 오른 이유 정리, 내일도 받아보세요',
+                sub: '매일 마감 후 오늘의 대장 · 주도주 TOP5 · 핫테마' };
+        } else if (/^\/stock\//.test(path) || /^\/stock(\.html)?$/.test(path)) {
+            spec = { spot: 'stock', anchor: '#timeline',
+                title: '이런 급등 이슈, 매일 정리해서 보내드려요',
+                sub: '장 마감 후 오늘의 대장 · 핫테마 브리핑' };
+        } else if (/^\/(sample2|calendar2)(\.html)?$/.test(path)) {
+            spec = { spot: 'calendar', anchor: '.cal-foot',
+                title: '매일의 대장, 마감 직후 텔레그램으로',
+                sub: '15:45 대장 확정 카드 발송' };
+        }
+        if (!spec) return;
+        var anchor = document.querySelector(spec.anchor);
+        if (!anchor || !anchor.parentNode) return;
+        injectCtaStyles();
+        anchor.parentNode.insertBefore(buildCta(spec.spot, spec.title, spec.sub), anchor.nextSibling);
+    }
+
     // '오른종목'(/rise.html) nav 링크 주입 — 홈 링크 바로 뒤. /rise 경로에서 active.
     function injectRiseNav() {
         if (nav.querySelector('[data-nav="rise"]')) return;
@@ -126,6 +205,7 @@
     injectThemeItem();
     injectTelegram();
     injectFooterTelegram();
+    try { injectContentCta(); } catch (e) {}
     updateThemeIcons();
 
     try {
