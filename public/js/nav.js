@@ -143,10 +143,6 @@
             'background:var(--wr-accent-soft,rgba(49,130,246,.14));color:var(--wr-accent,#3182F6);' +
             'font-size:12.5px;font-weight:800;white-space:nowrap;transition:background .15s}' +
             '.orgo-tg-cta:hover .orgo-tg-cta__btn{background:var(--wr-accent-bg,rgba(49,130,246,.18))}' +
-            '.orgo-tg-cta__close{position:absolute;top:2px;right:2px;width:26px;height:26px;border:0;' +
-            'background:transparent;color:var(--text-muted,#8b95a5);opacity:.55;font-size:15px;line-height:1;' +
-            'cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:8px}' +
-            '.orgo-tg-cta__close:hover{opacity:.9}' +
             '@media (max-width:480px){.orgo-tg-cta{gap:10px;padding:12px 13px}' +
             '.orgo-tg-cta__btn{padding:7px 12px;font-size:12px}}';
         document.head.appendChild(st);
@@ -163,23 +159,12 @@
         link.innerHTML =
             '<span class="orgo-tg-cta__icon">' + TG_ICON + '</span>' +
             '<span class="orgo-tg-cta__text"><strong>' + title + '</strong><small>' + sub + '</small></span>' +
-            '<span class="orgo-tg-cta__btn">받아보기</span>' +
-            '<button type="button" class="orgo-tg-cta__close" aria-label="구독 안내 닫기">✕</button>';
-        link.addEventListener('click', function (e) {
-            if (e.target.closest('.orgo-tg-cta__close')) {
-                // 닫기 — 14일 숨김(모든 페이지 공통). 구독 의사 없는 방문자에게 반복 노출 방지.
-                e.preventDefault();
-                e.stopPropagation();
-                try { localStorage.setItem(CTA_HIDE_KEY, String(Date.now() + 14 * 86400000)); } catch (err) {}
-                if (link.parentNode) link.parentNode.removeChild(link);
-                return;
-            }
-            try { window.va && window.va('event', { name: 'tg_cta', data: { spot: spot } }); } catch (e2) {}
+            '<span class="orgo-tg-cta__btn">받아보기</span>';
+        link.addEventListener('click', function () {
+            try { window.va && window.va('event', { name: 'tg_cta', data: { spot: spot } }); } catch (e) {}
         });
         return link;
     }
-
-    var CTA_HIDE_KEY = 'orgoTgCtaHideUntil';   // ✕ 닫은 방문자 — 14일간 전 페이지 미노출
 
     // 홈 — 별도 카드 대신 하단 'START HERE' 마무리 섹션의 액션 줄에 고스트 버튼으로 합류.
     // 페이지 기본 요소라 ✕ 숨김 대상 아님(상단바 아이콘과 동급).
@@ -206,27 +191,20 @@
         actions.appendChild(a);
     }
 
+    // 카드는 딱 두 곳 — 검색 유입 랜딩(종목상세)과 브리핑 소비 완료 지점(리포트).
+    // 전 페이지에 깔면 광고처럼 읽혀서 오른종목·캘린더 카드는 제거(상단바·푸터 링크로 충분).
     function injectContentCta() {
         if (document.querySelector('.orgo-tg-cta')) return;
-        try { if (Number(localStorage.getItem(CTA_HIDE_KEY) || 0) > Date.now()) return; } catch (e) {}
         var path = location.pathname;
         var spec = null;
         if (/^\/report(\.html)?$/.test(path)) {
             spec = { spot: 'report', anchor: '#leaderSection',
                 title: '오늘의 대장, 매일 마감 후 텔레그램으로',
                 sub: '15:45 대장 카드 · 핫테마 정리' };
-        } else if (/^\/rise(\.html)?$/.test(path)) {
-            spec = { spot: 'rise', anchor: 'main.layout-main',
-                title: '오늘 오른 이유, 내일도 받아보세요',
-                sub: '매일 마감 후 · 오늘의 대장 · 핫테마' };
         } else if (/^\/stock\//.test(path) || /^\/stock(\.html)?$/.test(path)) {
             spec = { spot: 'stock', anchor: '#timeline',
                 title: '이런 급등 이슈, 매일 정리해서 보내드려요',
                 sub: '마감 후 오늘의 대장 · 핫테마 브리핑' };
-        } else if (/^\/sample2(\.html)?$/.test(path)) {
-            spec = { spot: 'calendar', anchor: '.cal-foot',
-                title: '오늘의 대장, 마감 직후 텔레그램으로',
-                sub: '15:45 오늘의 대장 카드' };
         }
         if (!spec) return;
         var anchor = document.querySelector(spec.anchor);
