@@ -124,7 +124,7 @@
         st.id = 'orgoTgCtaCss';
         st.textContent =
             // 사이트 글래스 토큰(whyrise.css 전 페이지 로드) 그대로 — 광고배너가 아니라 사이트 카드처럼
-            '.orgo-tg-cta{display:flex;align-items:center;gap:12px;margin:18px 0;padding:14px 16px;' +
+            '.orgo-tg-cta{position:relative;display:flex;align-items:center;gap:12px;margin:18px 0;padding:14px 16px;' +
             'border-radius:14px;background:var(--glass-bg,rgba(255,255,255,.035));' +
             'border:1px solid var(--glass-border,rgba(255,255,255,.08));' +
             'text-decoration:none;color:inherit;transition:background .15s,border-color .15s}' +
@@ -143,6 +143,10 @@
             'background:var(--wr-accent-soft,rgba(49,130,246,.14));color:var(--wr-accent,#3182F6);' +
             'font-size:12.5px;font-weight:800;white-space:nowrap;transition:background .15s}' +
             '.orgo-tg-cta:hover .orgo-tg-cta__btn{background:var(--wr-accent-bg,rgba(49,130,246,.18))}' +
+            '.orgo-tg-cta__close{position:absolute;top:2px;right:2px;width:26px;height:26px;border:0;' +
+            'background:transparent;color:var(--text-muted,#8b95a5);opacity:.55;font-size:15px;line-height:1;' +
+            'cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:8px}' +
+            '.orgo-tg-cta__close:hover{opacity:.9}' +
             '@media (max-width:480px){.orgo-tg-cta{gap:10px;padding:12px 13px}' +
             '.orgo-tg-cta__btn{padding:7px 12px;font-size:12px}}';
         document.head.appendChild(st);
@@ -159,22 +163,35 @@
         link.innerHTML =
             '<span class="orgo-tg-cta__icon">' + TG_ICON + '</span>' +
             '<span class="orgo-tg-cta__text"><strong>' + title + '</strong><small>' + sub + '</small></span>' +
-            '<span class="orgo-tg-cta__btn">받아보기</span>';
-        link.addEventListener('click', function () {
-            try { window.va && window.va('event', { name: 'tg_cta', data: { spot: spot } }); } catch (e) {}
+            '<span class="orgo-tg-cta__btn">받아보기</span>' +
+            '<button type="button" class="orgo-tg-cta__close" aria-label="구독 안내 닫기">✕</button>';
+        link.addEventListener('click', function (e) {
+            if (e.target.closest('.orgo-tg-cta__close')) {
+                // 닫기 — 14일 숨김(모든 페이지 공통). 구독 의사 없는 방문자에게 반복 노출 방지.
+                e.preventDefault();
+                e.stopPropagation();
+                try { localStorage.setItem(CTA_HIDE_KEY, String(Date.now() + 14 * 86400000)); } catch (err) {}
+                if (link.parentNode) link.parentNode.removeChild(link);
+                return;
+            }
+            try { window.va && window.va('event', { name: 'tg_cta', data: { spot: spot } }); } catch (e2) {}
         });
         return link;
     }
 
+    var CTA_HIDE_KEY = 'orgoTgCtaHideUntil';   // ✕ 닫은 방문자 — 14일간 전 페이지 미노출
+
     function injectContentCta() {
         if (document.querySelector('.orgo-tg-cta')) return;
+        try { if (Number(localStorage.getItem(CTA_HIDE_KEY) || 0) > Date.now()) return; } catch (e) {}
         var path = location.pathname;
         var spec = null;
         if (path === '/' || /^\/index(\.html)?$/.test(path)) {
             // 홈 — '오늘 오른 종목' 미리보기 리스트 바로 아래(섹션 컨테이너 안 → 프레임 폭 유지)
-            spec = { spot: 'home', anchor: '#home6WhyList',
-                title: '이 브리핑, 매일 마감 후 텔레그램으로',
-                sub: '오늘의 대장 · 주도주 TOP5 · 핫테마' };
+            // '.home6-why-more'(전체보기 링크) 뒤 — 리스트→전체보기 동선을 CTA 가 끊지 않게
+            spec = { spot: 'home', anchor: '.home6-why-more',
+                title: '이 브리핑, 매일 텔레그램으로',
+                sub: '오늘의 대장 · 핫테마 · 장중 주도주 TOP5' };
         } else if (/^\/report(\.html)?$/.test(path)) {
             spec = { spot: 'report', anchor: '#leaderSection',
                 title: '오늘의 대장, 매일 마감 후 텔레그램으로',
@@ -187,10 +204,10 @@
             spec = { spot: 'stock', anchor: '#timeline',
                 title: '이런 급등 이슈, 매일 정리해서 보내드려요',
                 sub: '마감 후 오늘의 대장 · 핫테마 브리핑' };
-        } else if (/^\/(sample2|calendar2)(\.html)?$/.test(path)) {
+        } else if (/^\/sample2(\.html)?$/.test(path)) {
             spec = { spot: 'calendar', anchor: '.cal-foot',
-                title: '매일의 대장, 마감 직후 텔레그램으로',
-                sub: '15:45 대장 확정 카드' };
+                title: '오늘의 대장, 마감 직후 텔레그램으로',
+                sub: '15:45 오늘의 대장 카드' };
         }
         if (!spec) return;
         var anchor = document.querySelector(spec.anchor);
