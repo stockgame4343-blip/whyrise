@@ -96,4 +96,11 @@
         color: #1768d5;
         background: rgba(49, 130, 246, .09);
     }
+
+    /* 고정 탭바(64px+safe-area)가 페이지 끝을 덮지 않게 — body 패딩 금지 원칙(위 주석) 유지를 위해
+       푸터에만 하단 여백을 더한다. 끝까지 스크롤하면 푸터 전체가 탭바 위로 올라온다.
+       푸터 없는 시각화(treemap/bubbles/flowmap) 페이지는 셀렉터 미적용 → 캡처 치수 불변. */
+    .footer__wrap {
+        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    }
 }
