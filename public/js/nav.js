@@ -181,18 +181,37 @@
 
     var CTA_HIDE_KEY = 'orgoTgCtaHideUntil';   // ✕ 닫은 방문자 — 14일간 전 페이지 미노출
 
+    // 홈 — 별도 카드 대신 하단 'START HERE' 마무리 섹션의 액션 줄에 고스트 버튼으로 합류.
+    // 페이지 기본 요소라 ✕ 숨김 대상 아님(상단바 아이콘과 동급).
+    function injectHomeFinalTg() {
+        var path = location.pathname;
+        if (!(path === '/' || /^\/index(\.html)?$/.test(path))) return;
+        var actions = document.querySelector('.home2-final__actions');
+        if (!actions || actions.querySelector('.orgo-tg-btn')) return;
+        var a = document.createElement('a');
+        a.className = 'home2-btn home2-btn--ghost orgo-tg-btn';
+        a.href = TG_URL;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.setAttribute('aria-label', 'ORGO 텔레그램 채널 (새 창에서 열림)');
+        a.innerHTML =
+            '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">' +
+            '<path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 ' +
+            '3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 ' +
+            '12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>' +
+            '텔레그램으로 받아보기';
+        a.addEventListener('click', function () {
+            try { window.va && window.va('event', { name: 'tg_cta', data: { spot: 'home' } }); } catch (e) {}
+        });
+        actions.appendChild(a);
+    }
+
     function injectContentCta() {
         if (document.querySelector('.orgo-tg-cta')) return;
         try { if (Number(localStorage.getItem(CTA_HIDE_KEY) || 0) > Date.now()) return; } catch (e) {}
         var path = location.pathname;
         var spec = null;
-        if (path === '/' || /^\/index(\.html)?$/.test(path)) {
-            // 홈 — '오늘 오른 종목' 미리보기 리스트 바로 아래(섹션 컨테이너 안 → 프레임 폭 유지)
-            // '.home6-why-more'(전체보기 링크) 뒤 — 리스트→전체보기 동선을 CTA 가 끊지 않게
-            spec = { spot: 'home', anchor: '.home6-why-more',
-                title: '이 브리핑, 매일 텔레그램으로',
-                sub: '오늘의 대장 · 핫테마 · 장중 주도주 TOP5' };
-        } else if (/^\/report(\.html)?$/.test(path)) {
+        if (/^\/report(\.html)?$/.test(path)) {
             spec = { spot: 'report', anchor: '#leaderSection',
                 title: '오늘의 대장, 매일 마감 후 텔레그램으로',
                 sub: '15:45 대장 카드 · 핫테마 정리' };
@@ -237,6 +256,7 @@
     injectTelegram();
     injectFooterTelegram();
     try { injectContentCta(); } catch (e) {}
+    try { injectHomeFinalTg(); } catch (e) {}
     updateThemeIcons();
 
     try {
