@@ -174,23 +174,23 @@
             // 홈 — '오늘 오른 종목' 미리보기 리스트 바로 아래(섹션 컨테이너 안 → 프레임 폭 유지)
             spec = { spot: 'home', anchor: '#home6WhyList',
                 title: '이 브리핑, 매일 마감 후 텔레그램으로',
-                sub: '오늘의 대장 · 주도주 TOP5 · 핫테마 — 무료 채널' };
+                sub: '오늘의 대장 · 주도주 TOP5 · 핫테마' };
         } else if (/^\/report(\.html)?$/.test(path)) {
             spec = { spot: 'report', anchor: '#leaderSection',
                 title: '오늘의 대장, 매일 마감 후 텔레그램으로',
-                sub: '매일 15:45 대장 카드 · 핫테마 정리 발송' };
+                sub: '15:45 대장 카드 · 핫테마 정리' };
         } else if (/^\/rise(\.html)?$/.test(path)) {
             spec = { spot: 'rise', anchor: 'main.layout-main',
-                title: '오늘 오른 이유 정리, 내일도 받아보세요',
-                sub: '매일 마감 후 오늘의 대장 · 주도주 TOP5 · 핫테마' };
+                title: '오늘 오른 이유, 내일도 받아보세요',
+                sub: '매일 마감 후 · 오늘의 대장 · 핫테마' };
         } else if (/^\/stock\//.test(path) || /^\/stock(\.html)?$/.test(path)) {
             spec = { spot: 'stock', anchor: '#timeline',
                 title: '이런 급등 이슈, 매일 정리해서 보내드려요',
-                sub: '장 마감 후 오늘의 대장 · 핫테마 브리핑' };
+                sub: '마감 후 오늘의 대장 · 핫테마 브리핑' };
         } else if (/^\/(sample2|calendar2)(\.html)?$/.test(path)) {
             spec = { spot: 'calendar', anchor: '.cal-foot',
                 title: '매일의 대장, 마감 직후 텔레그램으로',
-                sub: '15:45 대장 확정 카드 발송' };
+                sub: '15:45 대장 확정 카드' };
         }
         if (!spec) return;
         var anchor = document.querySelector(spec.anchor);
