@@ -123,19 +123,28 @@
         var st = document.createElement('style');
         st.id = 'orgoTgCtaCss';
         st.textContent =
+            // 사이트 글래스 토큰(whyrise.css 전 페이지 로드) 그대로 — 광고배너가 아니라 사이트 카드처럼
             '.orgo-tg-cta{display:flex;align-items:center;gap:12px;margin:18px 0;padding:14px 16px;' +
-            'border-radius:14px;background:rgba(42,171,238,.09);border:1px solid rgba(42,171,238,.28);' +
-            'text-decoration:none;color:inherit;transition:background .15s}' +
-            '.orgo-tg-cta:hover{background:rgba(42,171,238,.16)}' +
-            '.orgo-tg-cta__icon{flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:#2AABEE;' +
-            'color:#fff;display:flex;align-items:center;justify-content:center}' +
+            'border-radius:14px;background:var(--glass-bg,rgba(255,255,255,.035));' +
+            'border:1px solid var(--glass-border,rgba(255,255,255,.08));' +
+            'text-decoration:none;color:inherit;transition:background .15s,border-color .15s}' +
+            '.orgo-tg-cta:hover{background:var(--glass-bg-strong,rgba(255,255,255,.06));' +
+            'border-color:var(--glass-border-strong,rgba(255,255,255,.14))}' +
+            '.orgo-tg-cta__icon{flex:0 0 auto;width:34px;height:34px;border-radius:10px;' +
+            'background:var(--wr-accent-soft,rgba(49,130,246,.14));color:var(--wr-accent,#3182F6);' +
+            'display:flex;align-items:center;justify-content:center}' +
+            '.orgo-tg-cta__icon svg{width:17px;height:17px}' +
             '.orgo-tg-cta__text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}' +
-            '.orgo-tg-cta__text strong{font-size:14.5px;font-weight:700;line-height:1.35;word-break:keep-all}' +
-            '.orgo-tg-cta__text small{font-size:12.5px;opacity:.68;line-height:1.35;word-break:keep-all}' +
-            '.orgo-tg-cta__btn{flex:0 0 auto;padding:9px 16px;border-radius:999px;background:#2AABEE;' +
-            'color:#fff;font-size:13px;font-weight:700;white-space:nowrap}' +
+            '.orgo-tg-cta__text strong{font-size:13.5px;font-weight:750;line-height:1.4;word-break:keep-all;' +
+            'color:var(--text-primary,inherit)}' +
+            '.orgo-tg-cta__text small{font-size:12px;font-weight:500;line-height:1.4;word-break:keep-all;' +
+            'color:var(--text-muted,#8b95a5)}' +
+            '.orgo-tg-cta__btn{flex:0 0 auto;padding:8px 14px;border-radius:10px;' +
+            'background:var(--wr-accent-soft,rgba(49,130,246,.14));color:var(--wr-accent,#3182F6);' +
+            'font-size:12.5px;font-weight:800;white-space:nowrap;transition:background .15s}' +
+            '.orgo-tg-cta:hover .orgo-tg-cta__btn{background:var(--wr-accent-bg,rgba(49,130,246,.18))}' +
             '@media (max-width:480px){.orgo-tg-cta{gap:10px;padding:12px 13px}' +
-            '.orgo-tg-cta__btn{padding:8px 13px;font-size:12.5px}}';
+            '.orgo-tg-cta__btn{padding:7px 12px;font-size:12px}}';
         document.head.appendChild(st);
     }
 
@@ -150,7 +159,7 @@
         link.innerHTML =
             '<span class="orgo-tg-cta__icon">' + TG_ICON + '</span>' +
             '<span class="orgo-tg-cta__text"><strong>' + title + '</strong><small>' + sub + '</small></span>' +
-            '<span class="orgo-tg-cta__btn">무료 구독</span>';
+            '<span class="orgo-tg-cta__btn">받아보기</span>';
         link.addEventListener('click', function () {
             try { window.va && window.va('event', { name: 'tg_cta', data: { spot: spot } }); } catch (e) {}
         });
