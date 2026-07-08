@@ -17,10 +17,9 @@ on:
         default: false
   repository_dispatch:
     types: [tg-morning]      # 외부 cron-job.org → GitHub dispatch (GitHub 크론 누락 대비 이중화)
-  # 샘플 승인 후 활성화(첫 실행 baseline 원칙) — 활성화 시 아래 주석 해제
-  # schedule:
-  #   - cron: '30 23 * * 0-4'   # 평일 KST 08:30 — 미국 마감(05~06시) 후, 개장 전
-  #   - cron: '0 0 * * 1-5'     # 평일 KST 09:00 — 백업(첫 크론 누락 대비, 마커로 중복 방지)
+  schedule:
+    - cron: '30 23 * * 0-4'   # 평일 KST 08:30 — 미국 마감(05~06시) 후, 개장 전
+    - cron: '0 0 * * 1-5'     # 평일 KST 09:00 — 백업(첫 크론 누락 대비, 마커로 중복 방지)
 
 env:
   TZ: Asia/Seoul
