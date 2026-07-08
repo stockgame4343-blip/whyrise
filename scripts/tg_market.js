@@ -18,6 +18,7 @@ const UA = 'Mozilla/5.0 (compatible; whyrise-telegram)';
 const NAVER_POLLING_INDEX = 'https://polling.finance.naver.com/api/realtime/domestic/index/';
 const NAVER_STOCK_LIST = 'https://m.stock.naver.com/api/stocks/';   // {up|down}/{KOSPI|KOSDAQ}
 const YAHOO_CHART = 'https://query1.finance.yahoo.com/v8/finance/chart/';
+const GOOGLE_NEWS_RSS = 'https://news.google.com/rss/search?hl=ko&gl=KR&ceid=KR:ko&q=';
 
 // 장전 브리핑에 싣는 해외 심볼(순서 = 표시 순서)
 const GLOBAL_SYMBOLS = [
@@ -31,7 +32,7 @@ const FX_SYMBOL = { symbol: 'KRW=X', label: '원/달러' };
 
 function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
 
-async function fetchJsonRetry(url) {
+async function fetchRetry(url, kind) {
     var lastErr;
     for (var i = 0; i < FETCH_RETRIES; i++) {
         try {
@@ -40,13 +41,22 @@ async function fetchJsonRetry(url) {
                 signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
             });
             if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + url);
-            return await res.json();
+            return kind === 'text' ? await res.text() : await res.json();
         } catch (e) {
             lastErr = e;
             if (i < FETCH_RETRIES - 1) await sleep(RETRY_DELAY_MS);
         }
     }
     throw lastErr;
+}
+function fetchJsonRetry(url) { return fetchRetry(url, 'json'); }
+function fetchTextRetry(url) { return fetchRetry(url, 'text'); }
+
+function decodeEntities(s) {
+    return String(s == null ? '' : s)
+        .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'").replace(/&apos;/g, "'").replace(/&#(\d+);/g, function (_, n) { return String.fromCharCode(+n); })
+        .replace(/&amp;/g, '&');
 }
 
 // "7,246.79" / "42,465,431백만" 류 콤마·단위 문자열 → number
@@ -129,8 +139,60 @@ async function fetchGlobalQuotes(items) {
     return out;
 }
 
+// 사이드카 방향 — 제목에 매수/매도 명시 우선, 없으면 급락/급등 어휘로 추정.
+function sidecarDirection(title) {
+    if (title.indexOf('매수') >= 0) return '매수';
+    if (title.indexOf('매도') >= 0) return '매도';
+    if (/급락|폭락|하락|급락장|낙폭/.test(title)) return '매도';
+    if (/급등|폭등|상승|급등장/.test(title)) return '매수';
+    return '';
+}
+
+/**
+ * 사이드카 발동 속보 감지 — Google 뉴스 RSS(키 불필요, 최신순).
+ * KRX가 사이드카를 발동하면 연합뉴스 등이 초 단위로 [속보] 송고 → 그 제목을 잡는다.
+ * 선물 실시간 시세로 역산하는 대신 "실제 발동됐다"는 사실을 감지하는 방식.
+ *   withinMin: 이 분(minute) 내 발행 기사만(오래된 해설·과거 발동 배제). Infinity 면 무시(데모).
+ * → 시장(코스피/코스닥) 단위 이벤트 배열. 한 발동이 여러 헤드라인(코스피만/둘다/방향유무)으로
+ *   흩어져도 **시장 단위 signature 로 1건**으로 합친다(같은 코스피 사이드카에 중복 알림 방지).
+ *   [{ title, pubEpoch, market:'코스피'|'코스닥', direction:'매수'|'매도'|'', signature:'사이드카|<시장>' }]
+ */
+async function fetchSidecarEvents(withinMin) {
+    var xml = await fetchTextRetry(GOOGLE_NEWS_RSS + encodeURIComponent('사이드카 발동'));
+    var blocks = xml.split('<item>').slice(1);
+    var now = Date.now();
+    var rows = [];
+    for (var i = 0; i < blocks.length; i++) {
+        var b = blocks[i];
+        var title = decodeEntities((b.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '').trim();
+        var pub = (b.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || [])[1] || '';
+        if (title.indexOf('사이드카') < 0 || title.indexOf('발동') < 0) continue;
+        if (title.indexOf('해제') >= 0) continue;                 // 발동만(해제 기사 제외)
+        var pubEpoch = Date.parse(pub);
+        if (!isFinite(pubEpoch)) continue;
+        var ageMin = (now - pubEpoch) / 60000;
+        if (withinMin !== Infinity && !(ageMin >= -5 && ageMin <= withinMin)) continue;   // 신선도(-5분=시계 오차 여유)
+        var dir = sidecarDirection(title);
+        var mkts = [];
+        if (title.indexOf('코스피') >= 0) mkts.push('코스피');
+        if (title.indexOf('코스닥') >= 0) mkts.push('코스닥');
+        if (!mkts.length) continue;                               // 국내 지수 명시된 것만(미국장 등 배제)
+        for (var m = 0; m < mkts.length; m++) {
+            rows.push({ title: title, pubEpoch: pubEpoch, market: mkts[m], direction: dir, signature: '사이드카|' + mkts[m] });
+        }
+    }
+    rows.sort(function (a, b) { return b.pubEpoch - a.pubEpoch; });   // 최신 먼저
+    var seen = {}, out = [];
+    for (var j = 0; j < rows.length; j++) {                          // 시장 단위 dedup — 최신 기사 것 유지
+        if (seen[rows[j].signature]) continue;
+        seen[rows[j].signature] = 1;
+        out.push(rows[j]);
+    }
+    return out;
+}
+
 module.exports = {
     GLOBAL_SYMBOLS, FX_SYMBOL,
-    fetchJsonRetry, fetchKrIndex, fetchUpDownCount, fetchKrMarketSummary,
-    fetchGlobalQuote, fetchGlobalQuotes,
+    fetchJsonRetry, fetchTextRetry, decodeEntities, fetchKrIndex, fetchUpDownCount, fetchKrMarketSummary,
+    fetchGlobalQuote, fetchGlobalQuotes, fetchSidecarEvents,
 };
