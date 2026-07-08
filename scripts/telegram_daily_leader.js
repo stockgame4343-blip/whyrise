@@ -22,6 +22,7 @@ const http = require('http');
 const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const market = require('./tg_market.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -83,11 +84,20 @@ function detailTag(leader) {
     return core.themeOf(leader) || String(leader.sector || '').trim() || '대장';
 }
 
+// 지수 레벨 표기 — 소수 2자리 고정
+function idxNum(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
 // ── 캡션(구조 텍스트) ──
-function buildCaption(ymd, L, comment) {
+function buildCaption(ymd, L, comment, M) {
     var lines = [];
     lines.push('🔥 오늘의 대장 (' + dateLabel(ymd) + ')');
     lines.push('');
+    if (M) {   // 시장 요약 — 시세일이 캡션 날짜와 다르거나 조회 실패면 통째로 생략
+        lines.push('📊 시장');
+        lines.push('코스피 ' + idxNum(M.kospi.price) + ' (' + pct(M.kospi.changePct) + ') · 코스닥 ' + idxNum(M.kosdaq.price) + ' (' + pct(M.kosdaq.changePct) + ')');
+        lines.push('상승 ' + M.upCount.toLocaleString('ko-KR') + ' · 하락 ' + M.downCount.toLocaleString('ko-KR') + ' · 거래대금 ' + fmtAmount(M.tradingValueWon));
+        lines.push('');
+    }
     if (L.leader) {
         var mk = marketLabel(L.leader.market);
         lines.push('🥇 대장주');
@@ -135,13 +145,14 @@ function templateComment(L) {
 }
 
 // ── AI 멘트 (Claude) ──
-async function aiComment(ymd, L) {
+async function aiComment(ymd, L, M) {
     if (!ANTHROPIC_KEY) return templateComment(L);
     var summary = {
         date: dateLabel(ymd),
         대장주: L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate) + ' / ' + detailTag(L.leader) + ' / ' + (L.leader.rise_reason || '')) : '없음',
         대장섹터: L.sector ? (L.sector.key + ' 평균 ' + pct(L.sector.avgRate)) : '없음',
         대장테마: L.theme ? (L.theme.key + ' 평균 ' + pct(L.theme.avgRate)) : '없음',
+        시장: M ? ('코스피 ' + pct(M.kospi.changePct) + ' 코스닥 ' + pct(M.kosdaq.changePct) + ' (상승 ' + M.upCount + '·하락 ' + M.downCount + ')') : '',
     };
     var prompt = '아래는 한국 주식시장 그날의 "오늘의 대장" 요약이야. 텔레그램 채널 구독자에게 ' +
         '오늘 장 마감을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
@@ -269,8 +280,17 @@ async function main() {
     console.log('대장주:', L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate)) : '없음',
         '| 섹터:', L.sector && L.sector.key, '| 테마:', L.theme && L.theme.key);
 
-    var comment = await aiComment(today, L);
-    var caption = buildCaption(today, L, comment);
+    // 시장 요약(지수·상승하락·거래대금) — 시세 거래일이 캡션 날짜와 일치할 때만 싣는다.
+    // (--date 과거 샘플이나 휴장일엔 오늘 시세가 붙는 사고 방지. 실패 시 블록 생략, 게시는 계속.)
+    var M = null;
+    try {
+        var summary = await market.fetchKrMarketSummary();
+        if (summary.tradedYmd === today) M = summary;
+        else console.log('시장 요약 거래일(' + summary.tradedYmd + ') ≠ 캡션 날짜(' + today + ') — 블록 생략');
+    } catch (e) { console.error('시장 요약 실패(블록 생략):', e.message); }
+
+    var comment = await aiComment(today, L, M);
+    var caption = buildCaption(today, L, comment, M);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
     await renderImage(today, L);
