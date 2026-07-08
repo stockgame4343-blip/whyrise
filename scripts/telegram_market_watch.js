@@ -7,12 +7,13 @@
  *   node scripts/telegram_market_watch.js --demo=alert  # 급변 알림 캡션 강제 산출(검증)
  *
  * 두 가지를 한 워크플로에서 처리(15분 주기 실행):
- *   ① 점심 점검  — KST 12:25~12:45 창의 첫 실행에서 1회. 오전장 시장 요약.
- *   ② 시장 급변  — 코스피/코스닥 절대 등락이 임계 밴드를 "상향 돌파"할 때만. 하루 상한.
+ *   ① 점심 점검     — KST 12:25~12:45 창의 첫 실행에서 1회. 오전장 시장 요약.
+ *   ② 서킷브레이커  — 코스피/코스닥 현물 지수가 전일比 -8/-15/-20% 기준 도달 시. 하락만, 단계 심화 시에만.
  * 시장 관련만 다룬다(개별 급등 종목 포착은 범위 밖 — 사용자 지시).
+ * ⚠️ 사이드카(선물 ±5/6%, 5분 지속)는 15분 폴링·선물 시세 부재로 미지원. VIX/환율은 공적 기준 없어 제외.
  *
  * 중복/스팸 방지: public/data/_telegram-market.json 마커
- *   { date, lunchPosted, alertBand, alertCount }  — 날짜 바뀌면 리셋.
+ *   { date, lunchPosted, cbStage }  — 날짜 바뀌면 리셋. cbStage=발동한 최고 단계 %(0/8/15/20).
  * 필요한 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID / ANTHROPIC_API_KEY(선택)
  */
 'use strict';
@@ -30,8 +31,9 @@ const MARKER = path.resolve(PUBLIC, 'data', '_telegram-market.json');
 // ── 튜닝 상수 ──
 const LUNCH_START_MIN = 12 * 60 + 25;   // 12:25 KST
 const LUNCH_END_MIN = 12 * 60 + 45;     // 12:45 KST — 이 창의 첫 실행이 점심 점검 게시
-const ALERT_BANDS = [2, 3, 5, 7];       // 절대 등락(%) 밴드 — 상향 돌파 시에만 알림
-const ALERT_MAX_PER_DAY = 5;            // 하루 급변 알림 상한(스팸 방지)
+// 서킷브레이커 발동 기준(한국거래소): 코스피/코스닥 현물 지수 전일比 하락. 하락만.
+const CB_LEVELS = [8, 15, 20];          // -8%(1단계)/-15%(2단계)/-20%(3단계)
+const CB_STAGE = { 8: '1단계', 15: '2단계', 20: '3단계' };
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
@@ -42,12 +44,14 @@ function idxNum(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionD
 function fxNum(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
 function kstMinutes() { var hm = tg.hmKst(); return (+hm.slice(0, 2)) * 60 + (+hm.slice(3, 5)); }
 
-// 절대 등락 → 밴드(넘어선 최고 임계). 2% 미만이면 0.
-function bandOf(absPct) {
+// 하락폭(양수 %) → 도달한 최고 서킷브레이커 단계 기준(%). -8% 미만 하락이면 0.
+function cbLevelOf(dropPct) {
     var b = 0;
-    for (var i = 0; i < ALERT_BANDS.length; i++) if (absPct >= ALERT_BANDS[i]) b = ALERT_BANDS[i];
+    for (var i = 0; i < CB_LEVELS.length; i++) if (dropPct >= CB_LEVELS[i]) b = CB_LEVELS[i];
     return b;
 }
+// 두 지수 중 가장 큰 하락폭(양수). 둘 다 상승이면 0.
+function worstDrop(M) { return Math.max(0, -M.kospi.changePct, -M.kosdaq.changePct); }
 
 // stock-rise raw 에서 오늘 오전 급등 폭(시장 브레드스) — 개별 종목명은 싣지 않는다.
 async function fetchTodayBreadth(today) {
@@ -78,12 +82,10 @@ function lunchCaption(today, M, breadth, comment) {
     return tg.escHtml(lines.join('\n')) + tg.htmlLink('👉 지금 오르는 종목 보러가기', tg.orgoLink('/rise.html', 'lunch'));
 }
 
-// ── 급변 알림 캡션 ──
-function alertCaption(today, M, band, comment) {
-    var worst = Math.abs(M.kospi.changePct) >= Math.abs(M.kosdaq.changePct) ? M.kospi : M.kosdaq;
-    var dir = worst.changePct < 0 ? '📉 급락' : '📈 급등';
+// ── 서킷브레이커 알림 캡션 ──
+function alertCaption(today, M, level, comment) {
     var lines = [];
-    lines.push('⚠️ 시장 급변 · ' + dir + ' (' + tg.hmKst() + ' KST)');
+    lines.push('🚨 서킷브레이커 ' + CB_STAGE[level] + ' 기준 도달 (-' + level + '%, ' + tg.hmKst() + ' KST)');
     lines.push('');
     lines.push('코스피 ' + idxNum(M.kospi.price) + ' (' + tg.pct(M.kospi.changePct) + ')');
     lines.push('코스닥 ' + idxNum(M.kosdaq.price) + ' (' + tg.pct(M.kosdaq.changePct) + ')');
@@ -121,7 +123,7 @@ async function main() {
     }
 
     var mk = tg.loadMarker(MARKER);
-    if (mk.date !== today) mk = { date: today, lunchPosted: false, alertBand: 0, alertCount: 0 };  // 날짜 리셋
+    if (mk.date !== today) mk = { date: today, lunchPosted: false, cbStage: 0 };  // 날짜 리셋
 
     // ── DEMO: 강제 캡션 산출(마커·시각 무시) ──
     if (DEMO === 'lunch') {
@@ -131,9 +133,10 @@ async function main() {
         return;
     }
     if (DEMO === 'alert') {
-        var band = bandOf(Math.max(Math.abs(M.kospi.changePct), Math.abs(M.kosdaq.changePct))) || ALERT_BANDS[0];
-        var ca = await tg.aiHook('시장 급변 알림(지수 급변동)', { 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct), 밴드: band + '%' }, ANTHROPIC_KEY, MODEL, '');
-        await sendText(alertCaption(today, M, band, ca));
+        // 실제 -8% 발동일이 아닌 날의 포맷 미리보기 — 합성 -8.x% 수치로 자기일관성 있게 렌더.
+        var demoM = { kospi: { price: M.kospi.price, changePct: -8.3 }, kosdaq: { price: M.kosdaq.price, changePct: -9.1 }, upCount: 210, downCount: 3600 };
+        var ca = await tg.aiHook('서킷브레이커 발동 기준 도달(지수 -8% 급락)', { 코스피: tg.pct(demoM.kospi.changePct), 코스닥: tg.pct(demoM.kosdaq.changePct), 단계: '1단계(-8%)' }, ANTHROPIC_KEY, MODEL, '');
+        await sendText(alertCaption(today, demoM, CB_LEVELS[0], ca));
         return;
     }
 
@@ -151,22 +154,20 @@ async function main() {
         changed = true;
     }
 
-    // ② 시장 급변 — 밴드 상향 돌파 시에만, 하루 상한 내
-    var curBand = bandOf(Math.max(Math.abs(M.kospi.changePct), Math.abs(M.kosdaq.changePct)));
-    if (curBand > mk.alertBand && mk.alertCount < ALERT_MAX_PER_DAY) {
-        var acomment = await tg.aiHook('시장 급변 알림(지수 급변동)',
-            { 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct), 밴드: curBand + '%' },
+    // ② 서킷브레이커 — 코스피/코스닥 현물 -8/-15/-20% 기준 도달 시, 단계 심화 때만(1→2→3)
+    var curStage = cbLevelOf(worstDrop(M));
+    if (curStage > mk.cbStage) {
+        var acomment = await tg.aiHook('서킷브레이커 발동 기준 도달(지수 -' + curStage + '% 급락)',
+            { 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct), 단계: CB_STAGE[curStage] + '(-' + curStage + '%)' },
             ANTHROPIC_KEY, MODEL, '');
-        await sendText(alertCaption(today, M, curBand, acomment));
-        mk.alertCount += 1;
+        await sendText(alertCaption(today, M, curStage, acomment));
+        mk.cbStage = curStage;   // 단계는 심화 때만 오른다(반등해도 안 내림 → 같은 급락 재알림 방지)
         changed = true;
     }
-    // 밴드는 완화돼도 내리지 않는다(같은 급락에서 등락 반복 시 재알림 방지). 상향만 갱신.
-    if (curBand > mk.alertBand) mk.alertBand = curBand;
 
     // 게시가 없으면 마커도 안 건드린다(빈 실행마다 커밋 churn 방지). changed 일 때만 저장.
     if (changed) { if (!DRY) tg.saveMarker(MARKER, mk); }
-    else { console.log('게시 조건 미충족(코스피 ' + tg.pct(M.kospi.changePct) + ' 코스닥 ' + tg.pct(M.kosdaq.changePct) + ', 밴드 ' + curBand + ', 점심게시 ' + mk.lunchPosted + ') — no-op'); }
+    else { console.log('게시 조건 미충족(코스피 ' + tg.pct(M.kospi.changePct) + ' 코스닥 ' + tg.pct(M.kosdaq.changePct) + ', 최대하락 ' + worstDrop(M).toFixed(1) + '%, CB단계 ' + (curStage || '없음') + ', 점심게시 ' + mk.lunchPosted + ') — no-op'); }
 }
 
 main().catch(function (e) { console.error(e); process.exit(1); });
