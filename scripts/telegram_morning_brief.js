@@ -82,11 +82,8 @@ function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
         lines.push('');
     }
     if (comment) { lines.push(comment); lines.push(''); }
-    var links = [
-        tg.htmlLink('👉 오늘 시장 브리핑 보러가기', tg.orgoLink('/', 'morning')),
-        tg.htmlLink('👉 어제 오른 종목 전부 보기', tg.orgoLink('/rise.html', 'morning')),
-    ];
-    return tg.escHtml(lines.join('\n')) + links.join('\n');
+    var link = tg.htmlLink('👉 오늘 오른 종목 보러가기', tg.orgoLink('/', 'morning'));
+    return tg.escHtml(lines.join('\n')) + link;
 }
 
 async function main() {
