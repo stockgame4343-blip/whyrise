@@ -1,0 +1,74 @@
+name: 장중 시장 워치 텔레그램 자동 게시
+
+# 평일 장중 15분 주기. 한 스크립트가 두 가지를 판단:
+#   ① 점심 점검  — KST 12:25~12:45 창 첫 실행 1회(오전장 시장 요약)
+#   ② 시장 급변  — 코스피/코스닥 절대 등락이 임계 밴드 상향 돌파 시만(하루 상한)
+# 시장 관련만 — 개별 급등 종목 포착은 범위 밖. 이미지·Chromium 불필요(텍스트 전용).
+# 중복/스팸 방지는 public/data/_telegram-market.json 마커.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '전송 안 하고 판단 로그만'
+        type: boolean
+        default: false
+      demo:
+        description: '캡션 강제 산출: lunch | alert (검증용)'
+        type: string
+        default: ''
+  repository_dispatch:
+    types: [tg-market]       # 외부 cron-job.org → GitHub dispatch (GitHub 크론 누락 대비 이중화)
+  schedule:
+    - cron: '*/15 0-6 * * 1-5'   # 평일 KST 09:00~15:45 — 15분 주기(build-history 와 동일 케이던스)
+
+env:
+  TZ: Asia/Seoul
+
+concurrency:
+  group: telegram-market
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Post to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          [ -n "${{ inputs.demo }}" ] && ARGS="$ARGS --demo=${{ inputs.demo }}"
+          node scripts/telegram_market_watch.js $ARGS
+
+      # 마커 커밋 — 게시됐을 때만 변경됨(no-op 실행은 변경 없음 → 커밋 스킵).
+      - name: Commit marker
+        if: ${{ inputs.dry_run != true && inputs.demo == '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/_telegram-market.json 2>/dev/null || true
+          git diff --staged --quiet && echo "게시 안 됨/변경 없음 — 커밋 스킵" && exit 0
+          git commit -m "chore: 장중 시장 워치 마커 ($(date +%Y%m%d-%H%M))"
+          BRANCH="${GITHUB_REF_NAME}"
+          for attempt in 1 2 3; do
+            git fetch origin "$BRANCH"
+            if git -c rebase.autoStash=true rebase "origin/$BRANCH"; then
+              git push origin "HEAD:$BRANCH" && echo "마커 push 성공" && exit 0
+            else
+              git rebase --abort || true
+            fi
+            sleep 5
+          done
+          echo "마커 push 실패(비치명적) — 다음 실행이 마커 재확인" && exit 0
