@@ -828,7 +828,7 @@
         var logoW = meas.measureText('ORGO').width;
         meas.font = '600 12.5px ' + fontStack;
         var infoW = meas.measureText(ctxStr).width;
-        meas.font = '600 20px ' + fontStack;
+        meas.font = '600 18px ' + fontStack;
         var domainW = meas.measureText('orgo.kr').width;
         var oneLine = PAD_X + logoW + 10 + domainW + 32 + infoW + PAD_X <= w;
         var HEAD_H = oneLine ? 46 : 68;
@@ -849,7 +849,7 @@
         // 헤더 워터마크 — 좌: 로고+도메인, 우(좁으면 둘째 줄): 차트 정보. 캔버스로 그린다.
         var headerSpecs = [
             { text: 'ORGO', x: PAD_X, y: 28, size: 16, weight: '800', fill: fgColor, anchor: 'start' },
-            { text: 'orgo.kr', x: PAD_X + logoW + 10, y: 28, size: 20, weight: '600', fill: fgDim, anchor: 'start' },
+            { text: 'orgo.kr', x: PAD_X + logoW + 10, y: 28, size: 18, weight: '600', fill: fgDim, anchor: 'start' },
             oneLine
                 ? { text: ctxStr, x: w - PAD_X, y: 28, size: 12.5, weight: '600', fill: fgColor, anchor: 'end' }
                 : { text: ctxStr, x: PAD_X, y: 52, size: 12.5, weight: '600', fill: fgColor, anchor: 'start' }
