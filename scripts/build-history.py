@@ -479,24 +479,23 @@ def _parse_int(v):
 
 def build_sitemap(stock_history_dir: Path, public_dir: Path,
                   site: str = 'https://orgo.kr') -> None:
-    """sitemap.xml — 정적 + 종목별 페이지 (검색 인덱스의 ticker 들)."""
+    """sitemap.xml — 정적 페이지 + 종목 페이지 (stock-history 기준, 프리렌더와 동일 소스).
+
+    이벤트 0건 종목은 프리렌더가 noindex 로 내보내므로 여기서도 제외한다
+    (sitemap 제출 + noindex 동시면 서치콘솔 경고). 종목 lastmod 는 최근 이벤트
+    날짜라 데이터가 바뀐 종목만 diff — 재생성해도 출력이 결정적이다.
+    sample2.html(대장캘린더)은 noindex 라 정적 목록에 넣지 않는다.
+    """
     today = date.today().strftime('%Y-%m-%d')
     static = [
         (f'{site}/', '1.0', 'daily'),
+        (f'{site}/rise.html', '0.9', 'daily'),
         (f'{site}/report.html', '0.8', 'daily'),
-        (f'{site}/treemap.html', '0.8', 'daily'),
-        (f'{site}/bubbles2.html', '0.8', 'daily'),
+        (f'{site}/leaders2.html', '0.8', 'daily'),
+        (f'{site}/screening.html', '0.8', 'daily'),
+        (f'{site}/treemap.html', '0.6', 'daily'),
+        (f'{site}/bubbles2.html', '0.6', 'daily'),
     ]
-    # 종목 페이지
-    idx_path = stock_history_dir / 'index.json'
-    tickers: list[str] = []
-    if idx_path.exists():
-        try:
-            idx = json.loads(idx_path.read_text(encoding='utf-8'))
-            tickers = sorted(idx.keys())
-        except Exception:
-            pass
-
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -504,14 +503,30 @@ def build_sitemap(stock_history_dir: Path, public_dir: Path,
     for url, prio, freq in static:
         parts.append(f'  <url><loc>{url}</loc><lastmod>{today}</lastmod>'
                      f'<changefreq>{freq}</changefreq><priority>{prio}</priority></url>')
-    for t in tickers:
-        parts.append(f'  <url><loc>{site}/stock/{t}</loc>'
-                     f'<lastmod>{today}</lastmod>'
+
+    listed = skipped_empty = 0
+    for f in sorted(stock_history_dir.glob('*.json')):
+        if f.name == 'index.json':
+            continue
+        try:
+            history = json.loads(f.read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        events = history.get('events') or []
+        if not events:
+            skipped_empty += 1
+            continue
+        ticker = history.get('ticker') or f.stem
+        latest = str(events[0].get('date') or '')
+        lastmod = (f'<lastmod>{latest[:4]}-{latest[4:6]}-{latest[6:8]}</lastmod>'
+                   if len(latest) == 8 and latest.isdigit() else '')
+        parts.append(f'  <url><loc>{site}/stock/{ticker}</loc>{lastmod}'
                      '<changefreq>weekly</changefreq><priority>0.6</priority></url>')
+        listed += 1
     parts.append('</urlset>')
 
     (public_dir / 'sitemap.xml').write_text('\n'.join(parts), encoding='utf-8')
-    print(f'  sitemap.xml: {len(tickers) + len(static)} URL')
+    print(f'  sitemap.xml: 정적 {len(static)} + 종목 {listed} URL (이벤트 0건 {skipped_empty} 제외)')
 
 
 # ── 리포트 집계 ─────────────────────────────────────────

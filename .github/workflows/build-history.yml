@@ -338,8 +338,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 빌드 산출물 stage (public/data/)
-          git add public/data/
+          # 빌드 산출물 stage — sitemap·종목 프리렌더도 빌드 산출물
+          # (git add 가 아래 checkout/clean 보다 먼저라 stage 분은 보존됨)
+          git add public/data/ public/sitemap.xml public/stock/
           # 추가 unstaged 변경 (예: pip cache·기타) 도 stage 또는 버림
           git checkout -- . || true   # 추적 중인 다른 파일 변경 복원
           git clean -fd -e 'public/data/_cache' || true  # 추적 안 되는 파일 제거 (cache 디렉토리는 보존)
