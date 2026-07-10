@@ -21,7 +21,7 @@ from http.server import BaseHTTPRequestHandler
 ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '').strip()
 SESSION_SECRET = (os.environ.get('SESSION_SECRET', '').strip() or ADMIN_TOKEN)
 COOKIE_NAME = 'wr_admin'
-COOKIE_MAX_AGE = 86400  # 24h
+COOKIE_MAX_AGE = 600  # 10분 — sliding 연장 없음, 만료 시 /admin 재로그인
 
 
 def _sign():
