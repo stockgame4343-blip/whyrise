@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 import time
 from collections import defaultdict
@@ -60,6 +61,8 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = Non
     p = _OHLC_CACHE_DIR / f'{ticker}.json'
     now = time.time()
     ttl = ttl_s if ttl_s is not None else _OHLC_CACHE_TTL_S
+    miss_counted = False
+    cached: tuple[str, str, list[dict], float] | None = None
     if p.exists():
         try:
             blob = json.loads(p.read_text(encoding='utf-8'))
@@ -67,12 +70,69 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = Non
             cs = str(blob.get('start') or '')
             ce = str(blob.get('end') or '')
             rows = blob.get('rows') or []
-            if rows and age < ttl and cs <= start and ce >= end:
-                _ohlc_cache_stats['hit'] += 1
-                return rows
+            if cs and ce and isinstance(rows, list) and rows:
+                cached = (cs, ce, rows, age)
         except Exception:
             pass
-    _ohlc_cache_stats['miss'] += 1
+
+    if cached is not None:
+        cs, ce, cached_rows, age = cached
+        today_str = date.today().strftime('%Y%m%d')
+        complete = cs <= start and ce >= end
+        historical = end < today_str
+        if complete and (age < ttl or historical):
+            _ohlc_cache_stats['hit'] += 1
+            return cached_rows
+
+        # 요청 범위와 캐시가 겹치면 전체를 다시 받지 않고 부족한 head/tail 만 보강한다.
+        # 전날 500일 cache → 오늘 460일 요청은 (전날~오늘) 꼬리만 받고,
+        # 같은 run의 490일 cache → 500일 marketmap 요청은 앞쪽 10일만 받는다.
+        if not (ce < start or cs > end):
+            segments: list[tuple[str, str]] = []
+            if cs > start:
+                segments.append((start, min(cs, end)))
+            if ce < end:
+                segments.append((max(start, ce), end))
+            elif end >= today_str and age >= ttl:
+                # 범위는 완전하지만 장중 TTL 만료 — 마지막 행만 다시 받아 오늘 값을 갱신.
+                segments.append((end, end))
+
+            if segments:
+                _ohlc_cache_stats['miss'] += 1
+                miss_counted = True
+                groups = [cached_rows]
+                partial_ok = True
+                for seg_start, seg_end in segments:
+                    part = naver_client.fetch_ohlc_daily(ticker, seg_start, seg_end) or []
+                    if not part:
+                        # 영업일 일시 장애를 '범위 완성'으로 기록하면 같은 날 재시도가 막힌다.
+                        # 전체 요청으로 한 번 더 확인하고, 그것도 비면 아래에서 캐시를 갱신하지 않는다.
+                        partial_ok = False
+                        break
+                    groups.append(part)
+                if not partial_ok:
+                    groups = []
+                if groups:
+                    by_date: dict[str, dict] = {}
+                    for group in groups:
+                        for row in group:
+                            if isinstance(row, dict) and row.get('localDate'):
+                                by_date[row['localDate']] = row
+                    merged = [by_date[d] for d in sorted(by_date)]
+                    if merged:
+                        try:
+                            p.write_text(json.dumps({
+                                'ticker': ticker,
+                                'start': min(cs, start), 'end': max(ce, end),
+                                'fetched_at': now,
+                                'rows': merged,
+                            }, ensure_ascii=False), encoding='utf-8')
+                        except Exception:
+                            pass
+                    return merged
+
+    if not miss_counted:
+        _ohlc_cache_stats['miss'] += 1
     rows = naver_client.fetch_ohlc_daily(ticker, start, end)
     if rows:
         try:
@@ -89,6 +149,15 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = Non
 DEFAULT_CUTOFF = 10.0   # 인덱스에 저장할 최저 컷 (클라 토글 +10/15/20/29.9 호환)
 DEFAULT_DAYS = 365
 
+# ── 52주 신고가 판정 윈도우 ──────────────────────────────
+# 직전 HIGH_52W_TRADING_DAYS 거래일이 전부 있어야 True/False, 미달이면 None(unknown).
+HIGH_52W_TRADING_DAYS = 252
+# 이벤트 출력 윈도우 여유(기존 +30일)와 신고가 계산용 OHLC lookback 을 분리 —
+# 이벤트 출력 범위는 그대로 두고 OHLC 조회 '기간'만 과거로 연장한다.
+# (네이버 OHLC 는 기간 무관 요청 1회 → 추가 네트워크 요청 없음, 응답 행 수만 증가)
+EVENT_WINDOW_MARGIN_DAYS = 30
+OHLC_LOOKBACK_CAL_DAYS = 400   # 252 거래일 ≈ 365 달력일 + 휴장·주말 마진
+
 # 최근 이벤트 뉴스 풀 보강 — 오늘/최근 급등은 사이트의 핵심이라, stock-rise 뉴스가 얇아도
 # 네이버 종목 뉴스(당일 타깃)로 풀을 채워 상세페이지 카드가 더 자주 '이유 기사'를 갖게 한다.
 RECENT_SUPPLEMENT_DAYS = 14   # 이벤트가 앵커(오늘)로부터 N일 이내면 보강 대상
@@ -100,6 +169,16 @@ RECENT_NEWS_MAX = 12          # 보강 후 이벤트당 뉴스 풀 상한
 
 def _yyyymmdd(d: date) -> str:
     return d.strftime('%Y%m%d')
+
+
+def _parse_yyyymmdd(s: str) -> date | None:
+    """YYYYMMDD 문자열 → date. 형식·달력 오류면 None."""
+    if not isinstance(s, str) or len(s) != 8 or not s.isdigit():
+        return None
+    try:
+        return date(int(s[0:4]), int(s[4:6]), int(s[6:8]))
+    except ValueError:
+        return None
 
 
 def _date_range_strs(start: date, end: date) -> list[str]:
@@ -158,15 +237,23 @@ def build_stockrise_lookup(dates: list[str]) -> dict[tuple[str, str], dict]:
 
 # ── overrides ───────────────────────────────────────────
 
+# 빌드 1회 동안 override 파일은 불변 — 이벤트마다 재읽기 방지 메모 캐시
+_overrides_memo: dict[str, dict] = {}
+
+
 def load_overrides_for(date_str: str) -> dict[str, dict]:
-    """public/data/overrides/{date}.json 로컬 파일 읽기."""
+    """public/data/overrides/{date}.json 로컬 파일 읽기 (메모 캐시)."""
+    if date_str in _overrides_memo:
+        return _overrides_memo[date_str]
     p = OVERRIDES_DIR / f'{date_str}.json'
-    if not p.exists():
-        return {}
-    try:
-        return json.loads(p.read_text(encoding='utf-8'))
-    except Exception:
-        return {}
+    data: dict[str, dict] = {}
+    if p.exists():
+        try:
+            data = json.loads(p.read_text(encoding='utf-8'))
+        except Exception:
+            data = {}
+    _overrides_memo[date_str] = data
+    return data
 
 
 # ── 메인 빌드 ───────────────────────────────────────────
@@ -220,16 +307,36 @@ def calc_change_rate(prev_close: float, cur_close: float) -> float:
     return round((cur_close - prev_close) / prev_close * 100, 2)
 
 
-def is_52w_high(ohlc: list[dict], idx: int) -> bool:
-    """ohlc[idx] 의 highPrice 가 직전 252일 내 최고치 경신했는지."""
-    if idx < 1:
-        return False
-    cur = ohlc[idx].get('highPrice') or 0
-    prior = ohlc[max(0, idx - 252):idx]
-    if not prior:
-        return False
-    prior_max = max(p.get('highPrice', 0) or 0 for p in prior)
-    return cur >= prior_max and cur > 0
+def is_52w_high(ohlc: list[dict], idx: int) -> bool | None:
+    """ohlc[idx] 의 highPrice 가 직전 252거래일 내 최고치 경신했는지.
+
+    직전 HIGH_52W_TRADING_DAYS(252) 거래일이 '모두' 있을 때만 True/False.
+    데이터 부족(상장 1년 미만·조회 윈도우 짧음)이나 고가 결측이면 None(unknown)
+    — 부분 윈도우로 True 를 내던 과대 판정을 없앤다. downstream 집계는
+    bool(None)=False 라 unknown 이 신고가로 세어지지 않는다.
+    """
+    if idx < HIGH_52W_TRADING_DAYS:
+        return None
+    def _positive_finite_high(row: dict) -> float | None:
+        raw = row.get('highPrice')
+        if isinstance(raw, bool):
+            return None
+        try:
+            value = float(raw)
+        except (TypeError, ValueError, OverflowError):
+            return None
+        return value if math.isfinite(value) and value > 0 else None
+
+    cur = _positive_finite_high(ohlc[idx])
+    if cur is None:
+        return None
+    prior = ohlc[idx - HIGH_52W_TRADING_DAYS:idx]
+    prior_highs = [_positive_finite_high(p) for p in prior]
+    # 행 수뿐 아니라 각 거래일 고가도 전부 유효해야 완전한 252일 윈도우다.
+    if any(v is None for v in prior_highs):
+        return None
+    prior_max = max(prior_highs)
+    return cur >= prior_max
 
 
 def _days_from_anchor(date_str: str, anchor_str: str) -> int | None:
@@ -272,10 +379,13 @@ def build_events_for_ticker(
     meta: dict | None = None,
     supplement_news_fn=None,
     anchor_str: str = '',
+    event_start: str = '',
 ) -> list[dict]:
     """1년치 OHLC → 컷 이상 사건 events.
 
     fetch_news_fn(ticker, date_str) -> news_items_normalized (list of {title, link, source, date})
+    event_start(YYYYMMDD): 이벤트 출력 하한 — 그 이전 OHLC 행은 신고가 계산용
+    lookback 으로만 쓰고 이벤트로 만들지 않는다 (merge 보존 정책 유지).
     """
     if len(ohlc) < 2:
         return []
@@ -293,6 +403,8 @@ def build_events_for_ticker(
         d = ohlc_sorted[i].get('localDate', '')
         if not d:
             continue
+        if event_start and d < event_start:
+            continue   # lookback 전용 구간 — 이벤트 미생성
         vol = ohlc_sorted[i].get('accumulatedTradingVolume') or 0
         tval = int(vol * cur)   # 거래대금 근사 (원)
         is_high = is_52w_high(ohlc_sorted, i)
@@ -356,12 +468,45 @@ def build_events_for_ticker(
     return events
 
 
+# override bake 시 백업·원복하는 원본 필드 (note 포함 — 부재까지 복원 대상)
+_PRE_OVERRIDE_FIELDS = ('rise_reason', 'reason_confidence', 'reason_source',
+                        'reason_status', 'theme_tag', 'note')
+
+
+def _restore_pre_override(ev: dict, backup: dict) -> None:
+    """백업 원복 — 백업에 없는 필드(원본에 없던 note 등)는 '부재' 자체를 복원(키 삭제)."""
+    for k in _PRE_OVERRIDE_FIELDS:
+        if k in backup:
+            ev[k] = backup[k]
+        else:
+            ev.pop(k, None)
+
+
 def apply_overrides(events: list[dict], ticker: str) -> list[dict]:
-    """events 의 각 date 에 대해 overrides/{date}.json[ticker] 머지."""
+    """events 의 각 date 에 대해 overrides/{date}.json[ticker] 를 replace 시맨틱으로 bake.
+
+    최초 bake 전 원본 필드를 pre_override 로 백업하고, 재저장 시엔 이전 admin 기여를
+    그 백업으로 원복한 뒤 최신 override 의 비어있지 않은 기여만 적용한다 — 나중 저장에서
+    theme_tag/note 를 지우면(키 생략) 이전 admin 값이 아니라 원본 값/부재가 드러난다.
+    백업은 항상 최초 원본 그대로 유지되고(재저장이 덮어쓰지 않음), override 가 삭제된
+    이벤트는 백업으로 원복 후 백업을 제거한다. 백업이 없는 과거 bake(이 구조 이전분,
+    reason_source=admin)는 백업을 새로 만들지 않는다(admin 값으로 원본 오염 방지) —
+    재빌드 윈도우 안이면 소스 재계산으로, 밖이면 원복 불가(잔존)로 남는다.
+    """
     for ev in events:
         ov = load_overrides_for(ev['date']).get(ticker)
+        backup = ev.get('pre_override')
+        if not isinstance(backup, dict):
+            backup = None
         if not ov:
+            if backup is not None:
+                ev.pop('pre_override')
+                _restore_pre_override(ev, backup)
             continue
+        if backup is not None:
+            _restore_pre_override(ev, backup)   # replace — 백업 자체는 유지
+        elif ev.get('reason_source') != 'admin':
+            ev['pre_override'] = {k: ev[k] for k in _PRE_OVERRIDE_FIELDS if k in ev}
         if ov.get('rise_reason'):
             ev['rise_reason'] = ov['rise_reason']
             ev['reason_confidence'] = 'high'
@@ -369,6 +514,8 @@ def apply_overrides(events: list[dict], ticker: str) -> list[dict]:
             ev['reason_status'] = 'edited'
         if ov.get('theme_tag'):
             ev['theme_tag'] = ov['theme_tag']
+        if ov.get('note'):
+            ev['note'] = ov['note']
     return events
 
 
@@ -929,7 +1076,7 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
             d = e.get('date')
             if not d:
                 continue
-            by_date.setdefault(d, []).append({
+            row = {
                 'ticker': ticker,
                 'name': name,
                 'market': market,
@@ -943,10 +1090,17 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
                 'reason_source': e.get('reason_source') or '',
                 'reason_status': e.get('reason_status') or '',
                 'theme_tag': e.get('theme_tag') or '',
+                'note': e.get('note') or '',
                 'sector': e.get('sector') or '',
                 'news': e.get('news') or [],
-                'is_52w_high': bool(e.get('is_52w_high')),
-            })
+                # 3-상태 보존: True/False/None(unknown) — 소비자는 truthy 판정만 하므로 null 안전
+                'is_52w_high': (None if e.get('is_52w_high') is None
+                                else bool(e.get('is_52w_high'))),
+            }
+            if isinstance(e.get('pre_override'), dict):
+                # 과거 fallback 일별 화면도 override 삭제/재저장 때 원본을 즉시 복원할 수 있게 한다.
+                row['pre_override'] = dict(e['pre_override'])
+            by_date.setdefault(d, []).append(row)
     out_dir.mkdir(parents=True, exist_ok=True)
     for d, rows in by_date.items():
         rows.sort(key=lambda r: (r.get('change_rate') or 0), reverse=True)
@@ -1436,12 +1590,17 @@ def build_full(args) -> int:
 
     incremental = getattr(args, 'incremental', False)
     today = date.today()
-    start = today - timedelta(days=days + 30)  # 52주 신고가 계산 위해 여유
+    # 이벤트 윈도우(출력 범위·merge 권위 경계)와 OHLC 조회 윈도우(신고가 lookback) 분리 —
+    # 이벤트 출력은 기존과 동일(days+30), OHLC 만 400일 더 과거부터 조회해
+    # 윈도우 내 모든 이벤트가 직전 252거래일 완비 상태로 신고가 판정을 받는다.
+    event_start_d = today - timedelta(days=days + EVENT_WINDOW_MARGIN_DAYS)
+    ohlc_start_d = event_start_d - timedelta(days=OHLC_LOOKBACK_CAL_DAYS)
     end = today
-    window_start = _yyyymmdd(start)
+    window_start = _yyyymmdd(event_start_d)
 
     print(f'== build-history {"incremental" if incremental else "full"}: days={days} cutoff={cutoff} ==')
-    print(f'  기간: {window_start} ~ {_yyyymmdd(end)}', flush=True)
+    print(f'  이벤트 기간: {window_start} ~ {_yyyymmdd(end)} '
+          f'(OHLC lookback {_yyyymmdd(ohlc_start_d)}~)', flush=True)
 
     # 1. ticker universe (전종목 메타 — OHLC fetch 아님, 가벼움)
     universe = fetch_ticker_universe(stock_only=True)
@@ -1510,7 +1669,7 @@ def build_full(args) -> int:
     total = len(universe)
     success = 0
     skipped = 0
-    start_str = _yyyymmdd(start)
+    ohlc_start_str = _yyyymmdd(ohlc_start_d)
     end_str = _yyyymmdd(end)
     t_start = time.time()
 
@@ -1526,7 +1685,10 @@ def build_full(args) -> int:
             eta = (elapsed / max(1, i + 1)) * (total - i - 1)
             print(f'  [{i + 1}/{total}] {ticker} {name} (elapsed {elapsed:.0f}s, ETA {eta:.0f}s)')
         try:
-            ohlc = naver_client.fetch_ohlc_daily(ticker, start_str, end_str)
+            # marketmap 빌드가 같은 종목의 500일 OHLC 캐시를 이미 채운다.
+            # 기본 full(days=60)/incremental(days=30)의 490/460일 요청은 그 캐시로
+            # 그대로 충족돼, 52주 lookback 확대로 응답량이 늘어도 반복 전송을 피한다.
+            ohlc = fetch_ohlc_cached(ticker, ohlc_start_str, end_str)
         except Exception as e:
             print(f'    OHLC fail {ticker}: {e}')
             skipped += 1
@@ -1545,12 +1707,15 @@ def build_full(args) -> int:
                   'theme_tag': theme_by_ticker.get(ticker, {}).get('theme_tag', '')},
             supplement_news_fn=supplement_news_fn,
             anchor_str=today.strftime('%Y%m%d'),
+            event_start=window_start,
         )
-        events = apply_overrides(events, ticker)
-        # 무한 누적: 이번 윈도우(start_str~) 밖 과거 이벤트는 기존 파일에서 보존.
+        # 무한 누적: 이벤트 윈도우(window_start~) 밖 과거 이벤트는 기존 파일에서 보존.
         # → 증분 빌드가 백필한 과거를 덮어쓰지 않음.
         old_events = load_existing_events(ticker, output_dir)
-        events = merge_ticker_events(old_events, events, start_str)
+        events = merge_ticker_events(old_events, events, window_start)
+        # override bake/원복은 병합 '후' 전체 이벤트에 적용 — 윈도우 밖 보존 이벤트에
+        # 남은 삭제된 override 잔존도 pre_override 백업으로 함께 원복된다.
+        events = apply_overrides(events, ticker)
         # events 비어도 stock-history 빌드 — 종목 페이지가 "기록 없음" 안내라도 보여주도록.
         # 검색 자동완성·sitemap 도 모든 종목 포함.
         write_ticker_history(ticker, name, market, events, output_dir)
@@ -1655,6 +1820,266 @@ def build_estimate_only(args) -> int:
     build_sitemap(output_dir, output_dir.parent.parent)
     build_stock_prerender(output_dir, output_dir.parent.parent)
     build_screening_index(output_dir, output_dir.parent / 'screening.json')
+    return 0
+
+
+# ── override-sync (단일 날짜 정밀 동기화) ────────────────────
+
+# _reconstruct_target_event 결과 상태
+_RECON_EVENT = 'event'                # 재구성 성공 — 원본 이벤트 반환
+_RECON_NO_EVENT = 'no_event'          # 소스 기준 컷 미달 — 그 날짜엔 이벤트가 없어야 정상
+_RECON_INSUFFICIENT = 'insufficient'  # 소스 데이터 부족 — 안전 중단 (기존 파일 유지)
+
+
+def _replace_event_at_date(events: list[dict], target_date: str,
+                           new_ev: dict | None) -> list[dict]:
+    """target_date 이벤트만 교체/제거 — 다른 이벤트는 객체·값·순서 그대로.
+
+    new_ev=None 이면 제거. 기존에 없던 날짜면 내림차순 위치에 삽입.
+    """
+    out: list[dict] = []
+    replaced = False
+    for e in events:
+        if e.get('date') == target_date:
+            if new_ev is not None and not replaced:
+                out.append(new_ev)
+                replaced = True
+            continue
+        out.append(e)
+    if new_ev is not None and not replaced:
+        pos = next((i for i, e in enumerate(out)
+                    if (e.get('date') or '') < target_date), len(out))
+        out.insert(pos, new_ev)
+    return out
+
+
+def _merge_reconstructed_origin(existing: dict | None, rebuilt: dict) -> dict:
+    """재구성한 'override 대상 필드'만 기존 이벤트에 이식한다.
+
+    레거시 admin bake 원복 때문에 대상 날짜를 소스에서 다시 만들더라도 override 와 무관한
+    news/sector/거래량/거래대금/is_52w_high/확장 필드는 기존 이벤트의 검증·보강 결과를
+    그대로 보존해야 한다. 기존 이벤트가 아예 없을 때만 재구성 객체 전체를 사용한다.
+    """
+    if existing is None:
+        return rebuilt
+    merged = dict(existing)
+    for key in _PRE_OVERRIDE_FIELDS:
+        if key in rebuilt:
+            merged[key] = rebuilt[key]
+        else:
+            merged.pop(key, None)
+    # 재구성본이 원본 역할을 하므로 과거의 오염된/낡은 백업은 폐기하고 다시 bake 한다.
+    merged.pop('pre_override', None)
+    return merged
+
+
+def _reconstruct_target_event(ticker: str, name: str, market: str,
+                              target_date: str, cutoff: float,
+                              fallback_meta: dict) -> tuple[str, dict | None]:
+    """target_date 하루만 소스(네이버 OHLC + stock-rise + 뉴스)에서 원본 이벤트로 재구성.
+
+    OHLC 는 target_date 에서 '끝나는' lookback 요청(직전 종가 + 252거래일 신고가 판정) —
+    오늘까지 받지 않으므로 다른 날짜를 다시 만들 재료 자체가 없다.
+    """
+    target_d = _parse_yyyymmdd(target_date)
+    if target_d is None:
+        return _RECON_INSUFFICIENT, None
+    ohlc_start = _yyyymmdd(target_d - timedelta(days=OHLC_LOOKBACK_CAL_DAYS))
+    try:
+        ohlc = fetch_ohlc_cached(ticker, ohlc_start, target_date)
+    except Exception as e:
+        print(f'  OHLC fetch 실패: {e}')
+        return _RECON_INSUFFICIENT, None
+    # 방어: 소스가 요청 범위 밖(target 이후) 행을 줘도 이벤트 재료로 쓰지 않는다
+    rows = sorted((r for r in (ohlc or []) if (r.get('localDate') or '') <= target_date),
+                  key=lambda r: r.get('localDate', ''))
+    idx = next((i for i, r in enumerate(rows) if r.get('localDate') == target_date), None)
+    if idx is None or idx == 0:
+        print(f'  소스 부족: {target_date} OHLC 행 또는 직전 종가 없음 (rows={len(rows)})')
+        return _RECON_INSUFFICIENT, None
+    prev = rows[idx - 1].get('closePrice') or 0
+    cur = rows[idx].get('closePrice') or 0
+    if prev <= 0 or cur <= 0:
+        print(f'  소스 부족: {target_date} 종가 결측 (prev={prev}, cur={cur})')
+        return _RECON_INSUFFICIENT, None
+    if calc_change_rate(prev, cur) < cutoff:
+        return _RECON_NO_EVENT, None
+
+    # stock-rise 정답 — target 하루치만 fetch
+    sr_lookup: dict[tuple[str, str], dict] = {}
+    meta = {'sector': (fallback_meta or {}).get('sector', ''),
+            'theme_tag': (fallback_meta or {}).get('theme_tag', '')}
+    if target_date in set(load_stockrise_dates() or []):
+        data = load_stockrise_day(target_date)
+        for r in (data or {}).get('rankings', []):
+            if r.get('ticker') == ticker:
+                sr_lookup[(target_date, ticker)] = r
+                if r.get('sector'):
+                    meta['sector'] = r['sector']
+                if r.get('theme_tag'):
+                    meta['theme_tag'] = r['theme_tag']
+                break
+
+    # 뉴스 — 이 종목 1회 fetch 캐시 (build_full 과 동일 패턴; 과거 일자는 자연히 빈 결과)
+    _news_raw: dict[str, list] = {}
+
+    def _raw_news(t: str) -> list[dict]:
+        if t not in _news_raw:
+            try:
+                _news_raw[t] = naver_client.fetch_stock_news(t, page_size=40)
+            except Exception as e:
+                print(f'    news fetch fail {t}: {e}')
+                _news_raw[t] = []
+        return _news_raw[t]
+
+    def _news_within(t: str, date_str: str, span: int) -> list[dict]:
+        target = int(date_str)
+        return [it for it in _raw_news(t)
+                if (it.get('datetime') or '')[:8].isdigit()
+                and abs(int((it.get('datetime') or '')[:8]) - target) <= span]
+
+    def fetch_news_fn(t: str, date_str: str) -> list[dict]:
+        return _news_within(t, date_str, 1)[:5]
+
+    def supplement_news_fn(t: str, date_str: str) -> list[dict]:
+        return [naver_client.normalize_news_item(it)
+                for it in _news_within(t, date_str, RECENT_NEWS_SPAN)]
+
+    events = build_events_for_ticker(
+        ticker=ticker, name=name, market=market,
+        ohlc=rows, cutoff=cutoff,
+        stockrise_lookup=sr_lookup,
+        fetch_news_fn=fetch_news_fn,
+        meta=meta,
+        supplement_news_fn=supplement_news_fn,
+        anchor_str=_yyyymmdd(date.today()),
+        event_start=target_date,   # rows 가 target 에서 끝나므로 이벤트는 target 하루뿐
+    )
+    ev = next((e for e in events if e.get('date') == target_date), None)
+    if ev is None:
+        print(f'  소스 부족: {target_date} 이벤트 재구성 실패')
+        return _RECON_INSUFFICIENT, None
+    return _RECON_EVENT, ev
+
+
+def _sync_ticker_events(events: list[dict], ticker: str, target_date: str,
+                        reconstruct_fn) -> tuple[list[dict] | None, str]:
+    """override 저장/삭제를 target_date 한 이벤트에만 반영 + 종목 전체 override 수렴.
+
+    소스 재구성은 '올바른 pre_override 를 로컬에서 만들 수 없을 때'만:
+      저장 — target 이벤트가 없거나, 레거시 bake(reason_source=admin, 백업 없음)라
+             백업을 만들면 admin 값으로 오염되는 경우 → 원본을 소스에서 복원 후 bake.
+      삭제 — 레거시 bake 라 백업 원복이 불가능한 경우 → 원본을 소스에서 복원.
+    그 외에는 apply_overrides 의 replace 시맨틱(백업 원복→최신 기여 적용)이 로컬에서
+    처리해, 파일에 이미 있는 LLM 정제·enrich 원본이 소스 재추정으로 퇴화하지 않는다.
+    마지막에 apply_overrides 를 종목 '전체' 이벤트에 돌려, concurrency 코얼레싱으로
+    payload 가 유실된 다른 날짜의 저장/백업-원복 삭제도 이번 실행에서 함께 수렴한다.
+
+    반환 (new_events, 메시지). new_events=None 이면 소스 부족 — 파일을 쓰면 안 된다.
+    """
+    ov = load_overrides_for(target_date).get(ticker)
+    target_ev = next((e for e in events if e.get('date') == target_date), None)
+    has_backup = isinstance((target_ev or {}).get('pre_override'), dict)
+    legacy_admin = (target_ev is not None and not has_backup
+                    and target_ev.get('reason_source') == 'admin')
+    needs_source = (target_ev is None or legacy_admin) if ov else legacy_admin
+
+    out = list(events)
+    if needs_source:
+        status, rebuilt = reconstruct_fn()
+        if status == _RECON_INSUFFICIENT:
+            return None, f'{target_date} 소스 재구성 불가 — 안전 중단 (기존 파일 유지)'
+        if status == _RECON_EVENT and rebuilt is not None:
+            repaired = _merge_reconstructed_origin(target_ev, rebuilt)
+            out = _replace_event_at_date(out, target_date, repaired)
+            action = '소스 재구성 후 교체'
+        else:
+            out = _replace_event_at_date(out, target_date, None)
+            action = '소스 기준 컷 미달 — 이벤트 없음/제거'
+    else:
+        action = '로컬 백업/원본으로 처리 (소스 재구성 불필요)'
+    return apply_overrides(out, ticker), f'{target_date} {action}'
+
+
+def build_override_sync(args) -> int:
+    """admin override 저장/삭제 반영 — --ticker/--date 대상 이벤트만 정밀 동기화.
+
+    repository_dispatch(override-saved, client_payload={date,ticker}) 전용 모드.
+    대상 날짜 하나만 필요 시 소스에서 재구성하고(레거시 삭제 원복·신규 백업 생성),
+    나머지 이벤트는 객체·값·순서를 보존한 채 apply_overrides 만 종목 전체에 돌려
+    현재 override 상태로 수렴시킨다. 산출물은 stock-history/{ticker}.json 1개뿐 —
+    공유 파생물(report/rise-history/pref-themes/screening/index/prerender/sitemap)은
+    건드리지 않아 종목별 동시 실행이 안전하다 (일별 화면은 override 를 클라에서 머지,
+    파생물은 정기 incremental/full 빌드가 갱신).
+    """
+    ticker = (getattr(args, 'ticker', '') or '').strip()
+    if len(ticker) != 6 or not ticker.isdigit():
+        print(f'override-sync: --ticker 형식 오류({ticker!r}) - 6자리 종목코드 필요')
+        return 1
+    target_date = (getattr(args, 'date', '') or '').strip()
+    if _parse_yyyymmdd(target_date) is None:
+        print(f'override-sync: --date 형식 오류({target_date!r}) - YYYYMMDD 필요')
+        return 1
+    print(f'== override-sync: {ticker} @ {target_date} ==', flush=True)
+
+    # 종목 메타 — 기존 stock-history 파일 우선 (네트워크 회피), 없으면 universe 조회
+    name = market = ''
+    events: list[dict] = []
+    existing_path = OUTPUT_DIR / f'{ticker}.json'
+    if existing_path.exists():
+        try:
+            h = json.loads(existing_path.read_text(encoding='utf-8'))
+            name = h.get('name') or ''
+            market = h.get('market') or ''
+            events = h.get('events') or []
+        except Exception:
+            pass
+    if not name:
+        for it in fetch_ticker_universe(stock_only=True):
+            if (it.get('itemCode') or '') == ticker:
+                name = it.get('stockName') or ticker
+                market = 'KOSPI' if (it.get('sosok') == 'KOSPI' or
+                                     it.get('stockExchangeType', {}).get('code') == 'KS') else 'KOSDAQ'
+                break
+    if not name:
+        print(f'  종목 메타 조회 실패: {ticker}')
+        return 1
+
+    fallback_meta = {'sector': '', 'theme_tag': ''}
+    original_events = json.loads(json.dumps(events, ensure_ascii=False))
+    target_ev = next((e for e in events if e.get('date') == target_date), None)
+    target_ov = load_overrides_for(target_date).get(ticker)
+    for e in events:
+        if not fallback_meta['sector'] and e.get('sector'):
+            fallback_meta['sector'] = e['sector']
+        if fallback_meta['theme_tag']:
+            continue
+        backup = e.get('pre_override') if isinstance(e.get('pre_override'), dict) else None
+        if backup is not None:
+            candidate_theme = backup.get('theme_tag') or ''
+        else:
+            candidate_theme = e.get('theme_tag') or ''
+            # 대상 이벤트의 레거시 admin 값은 '원본 theme' 폴백으로 재사용하지 않는다.
+            target_theme_is_override = (
+                e is target_ev and target_ov and target_ov.get('theme_tag')
+                and candidate_theme == target_ov.get('theme_tag'))
+            if e.get('reason_source') == 'admin' or target_theme_is_override:
+                candidate_theme = ''
+        if candidate_theme:
+            fallback_meta['theme_tag'] = candidate_theme
+
+    synced, msg = _sync_ticker_events(
+        events, ticker, target_date,
+        lambda: _reconstruct_target_event(ticker, name, market, target_date,
+                                          args.cutoff, fallback_meta))
+    print(f'  {msg}')
+    if synced is None:
+        return 1
+    if synced == original_events:
+        print(f'  {ticker} {name}: 논리 변경 없음 - 파일/배포 갱신 생략')
+        return 0
+    write_ticker_history(ticker, name, market, synced, OUTPUT_DIR)
+    print(f'  {ticker} {name}: events {len(synced)} — stock-history/{ticker}.json 만 갱신')
     return 0
 
 
@@ -2291,6 +2716,11 @@ def main() -> None:
                         'index.json 은 기존과 병합. 파생물은 전 디렉토리 기반이라 영향 없음.')
     p.add_argument('--estimate-only', action='store_true',
                    help='인덱스 missing 만 재추정')
+    p.add_argument('--override-sync', action='store_true',
+                   help='admin override 저장/삭제 반영 — --ticker/--date 대상 이벤트만 동기화 '
+                        '(stock-history/{ticker}.json 1개만 갱신, 파생물 미생성)')
+    p.add_argument('--ticker', type=str, default='',
+                   help='--override-sync 대상 종목코드 (6자리)')
     p.add_argument('--marketmap-only', action='store_true',
                    help='전종목 OHLC 1년치 + union → marketmap.json (5~15분, rates 다 갱신)')
     p.add_argument('--marketmap-intraday', action='store_true',
@@ -2320,7 +2750,8 @@ def main() -> None:
     p.add_argument('--llm-backfill', action='store_true',
                    help='뉴스 보유 저신뢰 과거 이벤트 사유를 Claude 로 일괄 정제 (--limit)')
     p.add_argument('--date', type=str, default='',
-                   help='--llm-refine 대상 일자(YYYYMMDD, 기본=rise-history 최신)')
+                   help='--llm-refine 대상 일자(YYYYMMDD, 기본=rise-history 최신) / '
+                        '--override-sync 대상 override 일자(YYYYMMDD, 필수)')
     p.add_argument('--dry-run', action='store_true',
                    help='--llm-refine/backfill: 데이터 미변경, 전후 대조표만 출력')
     args = p.parse_args()
@@ -2333,6 +2764,8 @@ def main() -> None:
         sys.exit(build_llm_refine(args))
     if args.llm_backfill:
         sys.exit(build_llm_backfill(args))
+    if args.override_sync:
+        sys.exit(build_override_sync(args))
     if args.estimate_only:
         sys.exit(build_estimate_only(args))
     if args.enrich_meta:

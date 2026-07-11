@@ -8,6 +8,7 @@
     var LIVE_POLL_MS = 15 * 1000;
     var LIVE_RETRY_MS = 30 * 1000;
     var STATUS_RECHECK_MS = 5 * 60 * 1000;
+    var NXT_LEADIN_RECHECK_MS = 60 * 1000;
 
     var state = {
         date: '',
@@ -16,6 +17,7 @@
         liveTimer: null,
         liveFetching: false,
         sectorMap: null,      // ticker → sector (정적 marketmap.json) — 갭 뷰 합성행용
+        sectorMapPromise: null, // 진행 중 fetch 메모 — 선적재·갭 뷰 동시 호출 시 중복 요청 방지
         mmSnapshot: null,     // { date, items } (정적 marketmap.json) — 라이브 실패 시 대장 후보 폴백
         adoptBusy: false,     // 오늘 빌드 도착 감시 중복 방지
     };
@@ -354,7 +356,8 @@
     // 전일 마감을 오늘처럼 보여주는 대신 라이브 시세로 '오늘 잠정 뷰'를 만든다.
     function loadSectorMap() {
         if (state.sectorMap) return Promise.resolve(state.sectorMap);
-        return fetch('/data/marketmap.json', { cache: 'no-cache' })
+        if (state.sectorMapPromise) return state.sectorMapPromise;
+        state.sectorMapPromise = fetch('/data/marketmap.json', { cache: 'no-cache' })
             .then(function (res) {
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 return res.json();
@@ -374,6 +377,7 @@
                 state.sectorMap = {};
                 return state.sectorMap;
             });
+        return state.sectorMapPromise;
     }
 
     function buildGapRows(live, sectorMap) {
@@ -436,19 +440,27 @@
     function refreshLive() {
         clearTimeout(state.liveTimer);
         state.liveTimer = null;
-        if (!state.date || state.liveFetching || typeof WhyAPI.getLiveMarketmap !== 'function') return;
+        // state.response 미도착(공식 rankings 미준비) 상태에선 라이브를 절대 얹지 않는다
+        if (!state.date || !state.response || state.liveFetching ||
+            typeof WhyAPI.getLiveMarketmap !== 'function') return;
         if (document.visibilityState === 'hidden') {
             scheduleLive(LIVE_POLL_MS);
             return;
         }
         if (isNxtLeadIn()) {
-            scheduleLive(60 * 1000);
+            scheduleLive(NXT_LEADIN_RECHECK_MS);
             return;
         }
 
         state.liveFetching = true;
         WhyAPI.getLiveMarketmap().then(function (live) {
             state.liveFetching = false;
+            // 요청 사이 08~09시 NXT 리드인 진입(예: 07:59 요청이 08:00 이후 도착) —
+            // 응답을 버리고 리드인 종료 후 재확인 (리드인 중 라이브 미사용 정책 유지)
+            if (isNxtLeadIn()) {
+                scheduleLive(NXT_LEADIN_RECHECK_MS);
+                return;
+            }
             if (live && live.date === state.date) {
                 var overlaid = CORE.overlayRankings(state.baseRows, live.map);
                 renderMarket(overlaid, state.date, state.response, live);
@@ -647,16 +659,57 @@
         }, 3600);
     }
 
+    // 라이브(/api/marketmap) 결과를 이미 렌더된 빌드 화면 위에 비동기 overlay.
+    // 어떤 실패도 초기 화면을 지우지 않는다 — 실패 시 기존 폴링 경로로 재시도만.
+    function applyLiveOverlay(livePromise) {
+        livePromise.then(function (live) {
+            // 공식 rankings 미준비 상태에선 라이브를 렌더하지 않는다 (loadMarket 이 도착 후 호출하지만 방어)
+            if (!state.response) return;
+            // 응답 적용 시점에 08~09시 NXT 리드인이면(예: 07:59 요청이 08:00 이후 도착)
+            // 응답을 버리고 리드인 종료 후 재확인
+            if (isNxtLeadIn()) {
+                scheduleLive(NXT_LEADIN_RECHECK_MS);
+                return;
+            }
+            if (live && state.date && live.date > state.date) {
+                // 라이브 거래일이 빌드보다 새로움 = 장초반 갭 — 잠정 뷰 + 오늘 빌드 감시
+                renderGapView(live);
+                adoptTodayBuild(live.date);
+            } else if (live && live.date === state.date) {
+                renderMarket(CORE.overlayRankings(state.baseRows, live.map), state.date, state.response, live);
+            } else {
+                // 선조회 실패(null)/구일자 — 빌드 화면 유지. getLiveMarketmap 이 내부에서 이미
+                // 1회 재시도했으므로 즉시 재호출하지 않고 재시도 지연 후 폴링 경로로 복귀
+                if (isRegularMarketWindow()) scheduleLive(LIVE_RETRY_MS);
+                return;
+            }
+            if (isRegularMarketWindow()) scheduleLive(LIVE_POLL_MS);
+        }).catch(function () {
+            if (isRegularMarketWindow()) scheduleLive(LIVE_RETRY_MS);
+        });
+    }
+
     function loadMarket() {
         if (!CORE || typeof WhyAPI === 'undefined') {
             renderFailure();
             return;
         }
-        // 라이브를 빌드와 병렬로 선조회 — 장초반 갭에 '어제 마감' 화면이 먼저 번쩍이지 않고
-        // 첫 페인트부터 오늘 잠정 뷰가 뜬다. (NXT 리드인 08~09시는 기존 정책대로 라이브 미사용)
-        var livePre = (typeof WhyAPI.getLiveMarketmap === 'function' && !isNxtLeadIn())
-            ? WhyAPI.getLiveMarketmap().catch(function () { return null; })
-            : Promise.resolve(null);
+        // 라이브를 빌드와 병렬로 선조회하되 렌더는 기다리지 않는다.
+        // (NXT 리드인 08~09시는 기존 정책대로 라이브 미사용)
+        // 선조회도 refreshLive 와 같은 단일 비행(liveFetching) — 선조회가 미정착인 동안
+        // visibilitychange 가 두 번째 /api/marketmap 호출을 시작하지 못한다
+        var livePre;
+        if (typeof WhyAPI.getLiveMarketmap === 'function' && !isNxtLeadIn()) {
+            state.liveFetching = true;
+            livePre = WhyAPI.getLiveMarketmap()
+                .catch(function () { return null; })
+                .then(function (live) {
+                    state.liveFetching = false;
+                    return live;
+                });
+        } else {
+            livePre = Promise.resolve(null);
+        }
         loadSectorMap();   // 대장 후보 폴백(mmSnapshot) 선적재 — 라이브 실패해도 +5%대 대형주 후보 유지
         WhyAPI.getDates().then(function (dates) {
             if (!dates || !dates.length) throw new Error('거래일 없음');
@@ -665,20 +718,11 @@
         }).then(function (response) {
             state.response = response || {};
             state.baseRows = Array.isArray(state.response.rankings) ? state.response.rankings : [];
-            return livePre;
-        }).then(function (live) {
-            if (live && state.date && live.date > state.date) {
-                renderGapView(live);
-                adoptTodayBuild(live.date);
-            } else if (live && live.date === state.date) {
-                renderMarket(CORE.overlayRankings(state.baseRows, live.map), state.date, state.response, live);
-            } else {
-                // 라이브 선조회 실패 — 빌드값 먼저 렌더 후 기존 경로로 재시도
-                renderMarket(state.baseRows, state.date, state.response, null);
-                refreshLive();
-                return;
-            }
-            if (isRegularMarketWindow()) scheduleLive(LIVE_POLL_MS);
+            // 공식 rankings 도착 즉시 렌더 — /api/marketmap 이 느리거나(콜드 ~30s×2)
+            // 실패해도 초기 화면이 로딩 상태로 남지 않는다. 라이브가 도착하면
+            // applyLiveOverlay 가 같은 화면을 overlay 로 갱신(장초반 갭 뷰 포함).
+            renderMarket(state.baseRows, state.date, state.response, null);
+            applyLiveOverlay(livePre);
         }).catch(renderFailure);
     }
 
@@ -727,7 +771,10 @@
         rotateHeadlineStocks();
         loadMarket();
         document.addEventListener('visibilitychange', function () {
-            if (document.visibilityState === 'visible' && state.date && !state.liveTimer) refreshLive();
+            // 공식 rankings(response) 준비 전엔 라이브 갱신을 시작하지 않는다 —
+            // 미정착 선조회와의 중복은 refreshLive 의 liveFetching 가드가 추가로 막는다
+            if (document.visibilityState === 'visible' && state.date && state.response &&
+                !state.liveTimer) refreshLive();
         });
     });
 })();

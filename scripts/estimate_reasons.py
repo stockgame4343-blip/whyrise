@@ -42,8 +42,12 @@ def reason_from_news(news_items: list[dict]) -> tuple[str, str, str] | None:
     return (label, confidence_from_priority(prio), 'news')
 
 
-def reason_from_pattern(change_rate: float, is_52w_high: bool) -> tuple[str, str, str] | None:
-    """가격 패턴 단독 — 키워드 매칭 모두 실패 시 fallback."""
+def reason_from_pattern(change_rate: float, is_52w_high: bool | None) -> tuple[str, str, str] | None:
+    """가격 패턴 단독 — 키워드 매칭 모두 실패 시 fallback.
+
+    is_52w_high 는 3-상태(True/False/None=unknown) — unknown 은 falsy 라
+    '52주 신고가 도달' 사유로 승격되지 않는다.
+    """
     if is_52w_high:
         return ('52주 신고가 도달', 'mid', 'pattern')
     if change_rate >= 29.9:
@@ -78,7 +82,7 @@ def reason_from_theme(meta: dict) -> tuple[str, str, str] | None:
 def estimate_reason(
     news_items: list[dict] | None,
     change_rate: float,
-    is_52w_high: bool = False,
+    is_52w_high: bool | None = False,
     meta: dict | None = None,
 ) -> dict:
     """모든 소스 결합 — 가장 좋은 추정 반환.

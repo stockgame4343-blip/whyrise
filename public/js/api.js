@@ -26,24 +26,123 @@ var WhyAPI = (function () {
         });
     }
 
-    // overrides 는 404(파일 없음)가 흔해 _cachedFetch(성공만 캐시)를 못 씀 — 결과(빈 객체 포함)를 5분 캐시.
-    // 없으면 장중 15초 폴링마다 /data/overrides/{date}.json 네트워크 요청이 반복된다.
+    // overrides 는 404(파일 없음)가 흔해 _cachedFetch(성공만 캐시)를 못 씀 — 404 도 '확정 빈 셋'으로
+    // 5분 캐시한다. 없으면 장중 15초 폴링마다 /data/overrides/{date}.json 네트워크 요청이 반복된다.
+    // 단, 404 외 HTTP 실패·네트워크 오류·JSON 파싱 실패는 reject 하고 캐시하지 않는다 —
+    // 일시 장애를 '확정 빈 셋'으로 오캐시하면 실제 override 가 5분간 숨는다.
     var _ovCache = {};
+    var _ovEpoch = 0;
+    var _ovGeneration = {};
+    var _ovLocalPatches = {};
+    var OV_LOCAL_PATCH_MAX_MS = 15 * 60 * 1000;
+
+    function _overridePatchMatches(entry, serverEntry) {
+        if (!entry) return !serverEntry;
+        if (!serverEntry) return false;
+        return ['rise_reason', 'theme_tag', 'note'].every(function (key) {
+            return (entry[key] || '') === (serverEntry[key] || '');
+        });
+    }
+
+    function _applyOverridePatches(date, data, allowAck) {
+        var next = Object.assign({}, data || {});
+        var patches = _ovLocalPatches[date] || {};
+        Object.keys(patches).forEach(function (ticker) {
+            var patch = patches[ticker];
+            var entry = patch.entry;
+            // 정적 파일이 방금 저장값을 확인(ack)했거나 안전 상한을 넘기면 로컬 우선권 해제.
+            if (Date.now() >= patch.expiresAt ||
+                (allowAck && _overridePatchMatches(entry, next[ticker]))) {
+                delete patches[ticker];
+                return;
+            }
+            if (entry) next[ticker] = entry;
+            else delete next[ticker];
+        });
+        if (!Object.keys(patches).length) delete _ovLocalPatches[date];
+        return next;
+    }
+
+    function _requestOverrides(date) {
+        return fetch('/data/overrides/' + date + '.json')
+            .then(function (res) {
+                if (res.status === 404) return {};   // 파일 없음 = override 없음 (유효한 확정 값)
+                if (!res.ok) throw new Error('HTTP ' + res.status + ' for overrides/' + date);
+                return res.json();
+            });
+    }
 
     function _fetchOverrides(date) {
         var now = Date.now();
         var hit = _ovCache[date];
         if (hit && (now - hit.t) < _cacheTtlMs) return Promise.resolve(hit.data);
-        return fetch('/data/overrides/' + date + '.json')
-            .then(function (res) {
-                if (!res.ok) return {};
-                return res.json();
-            })
-            .catch(function () { return {}; })
+        var epoch = _ovEpoch;
+        var generation = _ovGeneration[date] || 0;
+        return _requestOverrides(date)
             .then(function (data) {
-                _ovCache[date] = { t: now, data: data };
-                return data;
+                data = _applyOverridePatches(date, data, true);
+                // admin 낙관 반영/무효화 뒤 늦게 끝난 과거 요청은 캐시를 덮지 못한다.
+                if (epoch === _ovEpoch && generation === (_ovGeneration[date] || 0)) {
+                    _ovCache[date] = { t: now, data: data, hydrated: true };
+                    return data;
+                }
+                var latest = _ovCache[date];
+                return latest ? latest.data : data;
             });
+    }
+
+    /** override 캐시 명시적 무효화 — admin 저장/삭제 직후 5분 캐시 stale 방지. date 생략 시 전체. */
+    function invalidateOverrides(date) {
+        if (date) {
+            delete _ovCache[date];
+            delete _ovLocalPatches[date];
+            _ovGeneration[date] = (_ovGeneration[date] || 0) + 1;
+        } else {
+            _ovCache = {};
+            _ovGeneration = {};
+            _ovLocalPatches = {};
+            _ovEpoch += 1;
+        }
+    }
+
+    /**
+     * admin 저장/삭제 낙관 반영 — 정적 /data/overrides 는 커밋→재배포 후에나 갱신되므로,
+     * 이 클라이언트의 캐시에 확정 값을 먼저 심는다 (entry=null 이면 삭제).
+     * 기존 캐시(같은 날짜 다른 종목 override)는 보존하고 해당 ticker 만 갱신.
+     */
+    function applyLocalOverride(date, ticker, entry) {
+        var cached = _ovCache[date];
+        var hit = cached && (Date.now() - cached.t) < _cacheTtlMs ? cached : null;
+        var epoch = _ovEpoch;
+        var generation = (_ovGeneration[date] || 0) + 1;
+        _ovGeneration[date] = generation;
+        var patches = _ovLocalPatches[date] || {};
+        patches[ticker] = { entry: entry || null,
+            expiresAt: Date.now() + OV_LOCAL_PATCH_MAX_MS };
+        _ovLocalPatches[date] = patches;
+
+        function storeIfCurrent(data) {
+            if (epoch !== _ovEpoch || generation !== (_ovGeneration[date] || 0)) {
+                var latest = _ovCache[date];
+                return latest ? latest.data : data;
+            }
+            _ovCache[date] = { t: Date.now(), data: data, hydrated: true };
+            return data;
+        }
+
+        // 방금 저장한 값은 네트워크를 기다리지 않고 즉시 노출한다.
+        var optimistic = _applyOverridePatches(date, hit ? hit.data : {}, false);
+        _ovCache[date] = { t: Date.now(), data: optimistic,
+            hydrated: !!(hit && hit.hydrated) };
+        if (!hit || !hit.hydrated) {
+            // 다른 ticker 값은 백그라운드에서 복구하되, 대상 ticker에는 최신 낙관 값을
+            // 포함한 이 날짜의 모든 로컬 패치를 다시 적용한다. 세대 가드가 이전/동시
+            // 요청의 stale 덮어쓰기를 막고, 연속 편집도 다른 ticker 값을 잃지 않는다.
+            _requestOverrides(date).then(function (base) {
+                storeIfCurrent(_applyOverridePatches(date, base, true));
+            }).catch(function () {});
+        }
+        return Promise.resolve(optimistic);
     }
 
     /**
@@ -97,10 +196,19 @@ var WhyAPI = (function () {
             var pt = prefThemes[r.ticker];
             var cor = corrections[r.ticker];
             var ov = overrides[r.ticker];
+            var pre = r.pre_override;
             // 우선주는 보통주 테마/섹터로 보정, 수동 보정맵(theme-corrections) 적용,
             // stock-rise '분야' placeholder 제거, admin override(최우선) 적용
-            if (!pt && !cor && !ov && r.theme_tag !== '분야') return r;
+            if (!pt && !cor && !ov && !pre && r.theme_tag !== '분야') return r;
             var merged = Object.assign({}, r);
+            if (pre) {
+                ['rise_reason', 'reason_confidence', 'reason_source', 'reason_status',
+                    'theme_tag', 'note'].forEach(function (key) {
+                    if (Object.prototype.hasOwnProperty.call(pre, key)) merged[key] = pre[key];
+                    else delete merged[key];
+                });
+                delete merged.pre_override;
+            }
             if (pt) {
                 if (pt.theme_tag) merged.theme_tag = pt.theme_tag;
                 if (pt.sector) merged.sector = pt.sector;
@@ -111,8 +219,10 @@ var WhyAPI = (function () {
             }
             if ((merged.theme_tag || '') === '분야') merged.theme_tag = '';
             if (ov) {
-                if (ov.rise_reason != null) merged.rise_reason = ov.rise_reason;
-                if (ov.theme_tag != null) merged.theme_tag = ov.theme_tag;
+                // 최신 override 의 비어있지 않은 기여만 적용 — 빈 값/키 생략(지움)은
+                // 원본(빌드) 값이 그대로 노출된다 (replace 시맨틱)
+                if (ov.rise_reason) merged.rise_reason = ov.rise_reason;
+                if (ov.theme_tag) merged.theme_tag = ov.theme_tag;
                 merged._edited = true;
                 merged._edit_note = ov.note || '';
             }
@@ -142,7 +252,9 @@ var WhyAPI = (function () {
             })
             .then(function (data) {
                 return Promise.all([
-                    _fetchOverrides(date),
+                    // override 만의 일시 실패는 base 랭킹으로 fail-open — reject 라
+                    // '확정 빈 셋'과 혼동되지 않고, 캐시도 안 남아 다음 호출이 재시도한다.
+                    _fetchOverrides(date).catch(function () { return {}; }),
                     _cachedFetch('/data/pref-themes.json').catch(function () { return {}; }),
                     _cachedFetch('/data/theme-corrections.json').catch(function () { return {}; }),
                 ]).then(function (res) {
@@ -295,6 +407,9 @@ var WhyAPI = (function () {
     return {
         getDates: getDates,
         getRankings: getRankings,
+        getOverrides: _fetchOverrides,
+        invalidateOverrides: invalidateOverrides,
+        applyLocalOverride: applyLocalOverride,
         getStockHistory: getStockHistory,
         getStockIndex: getStockIndex,
         getCurrentPrice: getCurrentPrice,

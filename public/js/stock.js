@@ -975,6 +975,58 @@
         $tl.innerHTML = html;
     }
 
+    // ── admin override 즉시 반영 (현재 관리자 세션 한정) ─────────────────
+    // stock-history 는 빌드 시점에 override 가 bake 되는 정적 구조다. 저장/삭제 직후엔
+    // override-sync 재빌드·재배포 전까지 배포본이 잠깐 stale 할 수 있지만, 그 간극을
+    // 방문자 전원의 /data/overrides/{date}.json 날짜별 fan-out fetch(과거 최대 24요청/방문)로
+    // 메우지 않는다. 대신:
+    //   · 지금 편집한 관리자 세션 — bindAdminEdit 콜백이 applyOverrideToEvent 로 즉시 반영
+    //   · 그 외 방문자 — override-sync 빌드가 stock-history 에 bake 하면 자연 수렴
+    // 트레이드오프: 재배포 전에 새로고침하면 관리자도 직전 배포본(stale)을 잠시 본다 — 수용.
+    //#region override-pure — 순수 함수 영역(DOM 비의존). scripts/test_api_overrides.js 가 추출해 검증.
+    var PRE_OVERRIDE_FIELDS = ['rise_reason', 'reason_confidence',
+        'reason_source', 'reason_status', 'theme_tag', 'note'];
+
+    // 백업 원복 — 백업에 없는 필드(원본에 없던 note 등)는 '부재' 자체를 복원(키 삭제)
+    function restorePreOverride(ev, backup) {
+        PRE_OVERRIDE_FIELDS.forEach(function (k) {
+            if (Object.prototype.hasOwnProperty.call(backup, k)) ev[k] = backup[k];
+            else delete ev[k];
+        });
+    }
+
+    // replace 시맨틱 (빌드 apply_overrides 와 동일 규칙) — 이전 admin 기여를 백업(최초
+    // 원본)으로 되돌린 뒤 최신 entry 의 비어있지 않은 기여만 적용한다. 나중 저장에서
+    // theme_tag/note 를 지우면 이전 admin 값이 아니라 원본 값/부재가 드러난다.
+    // ov=null 은 삭제 — 백업 원복 후 백업 제거.
+    function applyOverrideToEvent(ev, ov) {
+        if (ov) {
+            if (ev.pre_override) {
+                restorePreOverride(ev, ev.pre_override);   // 백업(최초 원본)은 유지 — 오염 금지
+            } else if (ev.reason_source !== 'admin') {
+                var backup = {};
+                PRE_OVERRIDE_FIELDS.forEach(function (k) {
+                    if (Object.prototype.hasOwnProperty.call(ev, k)) backup[k] = ev[k];
+                });
+                ev.pre_override = backup;
+            }
+            // 구버전 bake(reason_source=admin, 백업 없음)는 원본 미상 — 원복 없이 덧적용만.
+            if (ov.rise_reason) {
+                ev.rise_reason = ov.rise_reason;
+                ev.reason_confidence = 'high';
+                ev.reason_source = 'admin';
+                ev.reason_status = 'edited';
+            }
+            if (ov.theme_tag) ev.theme_tag = ov.theme_tag;
+            if (ov.note) ev.note = ov.note;
+        } else if (ev.pre_override) {
+            // override 삭제됐는데 빌드에 bake 잔존 — 백업으로 원복
+            restorePreOverride(ev, ev.pre_override);
+            delete ev.pre_override;
+        }
+    }
+    //#endregion override-pure
+
     function bindThemeToggle() {
         var $btn = document.getElementById('themeToggle');
         if (!$btn) return;
@@ -988,11 +1040,28 @@
     }
 
     function bindAdminEdit(history) {
-        var modal = Admin.bindEditModal(function () {
-            // 편집 후: 페이지 새로고침이 가장 단순 (인덱스 재빌드 후 반영되는 구조)
-            // overrides 는 즉시 반영되지만 stock-history 인덱스는 cron 후 갱신.
-            // 일단 단순히 reload — 다음 인덱스 빌드까지는 일자별 페이지에서만 보임.
-            location.reload();
+        var modal = Admin.bindEditModal(function (ctx, payload) {
+            // 저장/삭제 즉시 반영 — 재빌드(override-sync)·재배포를 기다리지 않고
+            // 이벤트에 직접 머지해 다시 그린다. (admin.js 가 WhyAPI 캐시도 동기화함)
+            var ev = _baseEvents.find(function (x) { return x.date === ctx.date; });
+            if (!ev) { location.reload(); return; }
+            if (payload) {
+                // 지움은 명시적 빈 문자열로 전달 — applyOverrideToEvent(replace)가
+                // 백업 원복으로 원본 값/부재를 드러낸다
+                applyOverrideToEvent(ev, {
+                    rise_reason: payload.rise_reason || '',
+                    theme_tag: payload.theme_tag || '',
+                    note: payload.note || '',
+                });
+            } else if (ev.pre_override || ev.reason_source !== 'admin') {
+                applyOverrideToEvent(ev, null);   // 백업 원복 (백업 없으면 원본 그대로)
+            } else {
+                // 구버전 bake(백업 없음) — 즉시 원복 불가. override-sync 재빌드가
+                // 원본을 복원하므로 새로고침으로 배포분 재확인.
+                location.reload();
+                return;
+            }
+            rerenderTimeline();
         });
         document.addEventListener('click', function (e) {
             var btn = e.target.closest('[data-action="admin-edit"]');
@@ -1278,6 +1347,8 @@
             rerenderTimeline();          // 베이스 타임라인 즉시 렌더(오늘 라이브 이벤트는 폴링이 주입)
             startPricePolling(ticker);   // 현재가 폴링 + 오늘(실시간) 급등 이벤트 주입/갱신
             bindAdminEdit(history);
+            // override 런타임 머지는 하지 않는다 — 빌드 bake 본을 그대로 신뢰.
+            // (저장 직후~재배포 전 새로고침은 잠시 stale — 상단 override-pure 주석 참조)
         }).catch(function (err) {
             $loading.style.display = 'none';
             $msg.textContent = '로딩 실패: ' + err.message;

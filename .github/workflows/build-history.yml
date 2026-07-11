@@ -46,16 +46,22 @@ on:
 env:
   TZ: Asia/Seoul
 
-concurrency:
-  group: build-history
-  cancel-in-progress: false
+# concurrency 는 job 단위 — build(전역 직렬) / override-sync(종목별 직렬, 종목 간 병렬).
+# 한 그룹에 running 1 + pending 1 만 유지되고 새 dispatch 가 pending 을 교체하므로,
+# 서로 다른 종목의 admin 저장이 같은 그룹에서 서로를 밀어내지 않게 그룹을 분리한다.
 
 jobs:
   build:
+    # override-saved + ticker payload 는 아래 override-sync job 전담 — 여기서 제외.
+    # (payload 없는 구버전 override-saved / rebuild-history 는 기존대로 estimate-only 흡수)
+    if: ${{ !(github.event_name == 'repository_dispatch' && github.event.action == 'override-saved' && github.event.client_payload.ticker != '') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
     timeout-minutes: 350      # 풀빌드 ~3시간 여유
+    concurrency:
+      group: build-history
+      cancel-in-progress: false
 
     steps:
       - uses: actions/checkout@v4
@@ -63,17 +69,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      # OHLC 디스크 캐시 — 백필이 중간 실패해도 다음 실행은 즉시 hit.
-      # save-always: true 로 job 실패해도 캐시 저장.
-      - name: Restore OHLC cache
-        uses: actions/cache@v4
-        with:
-          path: public/data/_cache/ohlc
-          key: ohlc-cache-v1-${{ github.run_id }}
-          restore-keys: |
-            ohlc-cache-v1-
-          save-always: true
 
       - name: Install dependencies
         run: |
@@ -100,13 +95,14 @@ jobs:
               *)              MODE="marketmap-intraday" ;;
             esac
           elif [ "$EVENT" = "repository_dispatch" ]; then
-            # stock-rise cron-trigger(외부 cron-job.org)의 cross-repo dispatch — type 으로 분기
+            # stock-rise cron-trigger(외부 cron-job.org)의 cross-repo dispatch — type 으로 분기.
+            # override-saved + ticker payload 는 job 조건에서 override-sync job 으로 빠진다.
             if [ "${{ github.event.action }}" = "marketmap-intraday" ]; then
               MODE="marketmap-intraday"
             elif [ "${{ github.event.action }}" = "incremental-build" ]; then
               MODE="incremental"     # 외부 cron-job.org 마감후 데이터 빌드 트리거(이중화)
             else
-              MODE="estimate-only"
+              MODE="estimate-only"   # payload 없는 구버전 override-saved / rebuild-history
             fi
           else
             MODE="incremental"
@@ -136,6 +132,18 @@ jobs:
           echo "mode=$MODE" >> $GITHUB_OUTPUT
           echo "escalated=$ESCALATED" >> $GITHUB_OUTPUT
           echo "결정 모드: $MODE (event=$EVENT, escalated=$ESCALATED)"
+
+      # OHLC 를 실제 쓰는 모드만 대용량 cache 를 복원/저장한다.
+      # 15분 marketmap-intraday 는 라이브 API 전용이라 전종목 500일 archive churn 불필요.
+      - name: Restore OHLC cache
+        if: steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'marketmap-only'
+        uses: actions/cache@v4
+        with:
+          path: public/data/_cache/ohlc
+          key: ohlc-cache-v1-${{ github.run_id }}
+          restore-keys: |
+            ohlc-cache-v1-
+          save-always: true
 
       - name: Holiday gate
         id: gate
@@ -352,16 +360,96 @@ jobs:
           echo "push 대상 브랜치: $BRANCH"
           for attempt in 1 2 3; do
             git fetch origin "$BRANCH"
+            REBASE_OK=false
             if git -c rebase.autoStash=true rebase "origin/$BRANCH"; then
+              REBASE_OK=true
+            else
+              # override-sync 는 종목 파일 1개만 최신 원격에서 재생성해 push한다.
+              # 전역 빌드와 그 파일만 충돌하면 원격(override 반영본)을 보존하고,
+              # 그 외 충돌은 자동 판단하지 않고 기존 재시도/실패 경로로 넘긴다.
+              CONFLICTS=$(git diff --name-only --diff-filter=U)
+              BAD=$(printf '%s\n' "$CONFLICTS" | grep -Ev '^public/data/stock-history/[0-9]{6}\.json$' || true)
+              if [ -n "$CONFLICTS" ] && [ -z "$BAD" ]; then
+                echo "override-sync 종목 파일 충돌 - 최신 원격본 보존"
+                while IFS= read -r file; do
+                  [ -z "$file" ] && continue
+                  # rebase 중 --ours = 새 upstream(origin/$BRANCH).
+                  git checkout --ours -- "$file"
+                  git add "$file"
+                done <<< "$CONFLICTS"
+                if GIT_EDITOR=true git rebase --continue; then
+                  REBASE_OK=true
+                fi
+              fi
+            fi
+            if [ "$REBASE_OK" = "true" ]; then
               if git push origin "HEAD:$BRANCH"; then
                 echo "push 성공 (시도 $attempt, branch=$BRANCH)"
                 exit 0
               fi
             else
-              echo "rebase 충돌 — abort 후 재시도"
+              echo "rebase 충돌 - abort 후 재시도"
               git rebase --abort || true
             fi
             sleep 5
           done
           echo "::error::push 3회 실패"
+          exit 1
+
+  # admin override 저장/삭제 전용 경량 job — 대상 종목 파일 1개만 갱신.
+  # concurrency 를 종목+날짜별로 분리: 다른 종목/날짜 dispatch 가 pending 교체로 유실되지 않는다.
+  # 같은 종목+날짜의 연속 저장은 최신 상태 하나로 코얼레싱해도 결과가 같고, 서로 다른 날짜가
+  # 같은 종목 파일을 동시에 갱신하면 아래 '최신 원격에서 재생성' 루프가 직렬 수렴시킨다.
+  # 산출물이 stock-history/{ticker}.json 1개뿐이라 전역 build job 과 공유 파생물 경합이 없고,
+  # Telegram·artifact·대장캘린더 등 부수효과 스텝도 타지 않는다.
+  override-sync:
+    if: ${{ github.event_name == 'repository_dispatch' && github.event.action == 'override-saved' && github.event.client_payload.ticker != '' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 30
+    concurrency:
+      group: build-history-override-${{ github.event.client_payload.ticker }}-${{ github.event.client_payload.date }}
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Sync & push (재생성 재시도)
+        env:
+          OV_TICKER: ${{ github.event.client_payload.ticker }}
+          OV_DATE: ${{ github.event.client_payload.date }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH="${GITHUB_REF_NAME}"
+          TARGET="public/data/stock-history/${OV_TICKER}.json"
+          # push 가 전역 빌드/다른 override push 와 경합하면 rebase 대신 '최신 원격에서 재계산'으로
+          # 재시도 — 이 job 은 대상 1파일만 다시 만들므로 재계산이 곧 안전한 충돌 해소다.
+          for attempt in 1 2 3; do
+            git fetch origin "$BRANCH"
+            git reset --hard FETCH_HEAD
+            if ! timeout -k 30 600 python3 -u scripts/build-history.py --override-sync --ticker "$OV_TICKER" --date "$OV_DATE"; then
+              echo "override-sync 빌드 실패 (시도 $attempt)"
+              sleep 5
+              continue
+            fi
+            git add "$TARGET"
+            if git diff --staged --quiet; then
+              echo "변경 없음 — 완료 (시도 $attempt)"
+              exit 0
+            fi
+            git commit -m "build: override-sync ${OV_TICKER} @ ${OV_DATE}"
+            if git push origin "HEAD:$BRANCH"; then
+              echo "push 성공 (시도 $attempt)"
+              exit 0
+            fi
+            echo "push 경합 (시도 $attempt) — 최신 상태에서 재생성"
+            sleep 5
+          done
+          echo "::error::override-sync 3회 실패 (${OV_TICKER} @ ${OV_DATE})"
           exit 1

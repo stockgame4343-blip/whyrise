@@ -93,6 +93,12 @@
             if ($stats) { $stats.style.display = 'block'; loadStats(); }
         }
 
+        function escHtml(s) {
+            return String(s == null ? '' : s)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
         function fmtDur(s) {
             s = Math.round(s || 0);
             if (s < 60) return s + '초';
@@ -135,7 +141,8 @@
                         '<th>신규</th><th>PV</th><th>평균체류</th></tr></thead><tbody>' + rows + '</tbody></table>';
                     var refs = (j.referrers || []).length
                         ? '<ul class="admin-stats__refs">' + j.referrers.map(function (x) {
-                            return '<li><span>' + x.host + '</span><b>' + x.count + '</b></li>';
+                            // host 는 방문자 referrer 유래(외부 입력) — 반드시 escape 후 삽입
+                            return '<li><span>' + escHtml(x.host) + '</span><b>' + (Number(x.count) || 0) + '</b></li>';
                         }).join('') + '</ul>'
                         : '<p class="admin-card__desc">최근 7일 외부 유입 없음(또는 직접 방문).</p>';
                     $b.innerHTML = top +
