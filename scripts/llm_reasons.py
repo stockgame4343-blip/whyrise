@@ -114,12 +114,17 @@ def _target_from_event(ticker: str, name: str, ev: dict) -> dict | None:
 def collect_day_targets(day_path: Path, min_rate: float = MIN_RATE) -> list[dict]:
     """rise-history/{date}.json 의 당일 랭킹 → 정제 대상 목록."""
     data = json.loads(day_path.read_text(encoding='utf-8'))
+    # 랭킹 항목엔 date 필드가 없다(파일 단위가 곧 날짜) — 비면 파일 날짜로 채워야
+    # apply 단계의 stock-history 이벤트 매칭이 성립한다 (없으면 전건 무매칭 no-op).
+    day_date = str(data.get('date') or day_path.stem)
     out = []
     for r in data.get('rankings') or []:
         if (r.get('change_rate') or 0) < min_rate or not r.get('ticker'):
             continue
         t = _target_from_event(r['ticker'], r.get('name') or r['ticker'], r)
         if t:
+            if not t['date']:
+                t['date'] = day_date
             out.append(t)
     return out
 
