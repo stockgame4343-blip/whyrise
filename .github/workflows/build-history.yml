@@ -23,7 +23,11 @@ on:
         required: false
         default: 'incremental'
         type: choice
-        options: [full, incremental, estimate-only, enrich-meta, enrich-news, enrich-ohlc, marketmap-only, marketmap-intraday, llm-refine-dry]
+        options: [full, incremental, estimate-only, enrich-meta, enrich-news, enrich-ohlc, marketmap-only, marketmap-intraday, llm-refine-dry, llm-refine]
+      date:
+        description: 'llm-refine(-dry) 대상 일자 YYYYMMDD (빈값 = rise-history 최신)'
+        required: false
+        default: ''
       days:
         description: '풀빌드 기간 (full mode)'
         required: false
@@ -202,8 +206,8 @@ jobs:
           elif [ "$MODE" = "enrich-ohlc" ]; then
             # 이벤트에 거래량·거래대금·시총(역산) 채움 — OHLC 재수집 (전종목, limit=0)
             python3 scripts/build-history.py --enrich-ohlc --limit "$LIMIT"
-          elif [ "$MODE" = "llm-refine-dry" ]; then
-            echo "llm-refine dry-run 전용 — 본빌드 스킵 (아래 LLM 스텝에서 --dry-run 실행)"
+          elif [ "$MODE" = "llm-refine-dry" ] || [ "$MODE" = "llm-refine" ]; then
+            echo "llm-refine 전용 — 본빌드 스킵 (아래 LLM 스텝에서 실행, dry 는 --dry-run)"
           elif [ "$MODE" = "marketmap-intraday" ]; then
             # 장중 빠른 갱신 — 라이브 API 만, ~30s. hang 가드 10분.
             timeout -k 30 600 python3 scripts/build-history.py --marketmap-intraday
@@ -229,14 +233,16 @@ jobs:
       # continue-on-error: LLM 이 죽어도 빌드·커밋은 정상 진행 (사이트는 LLM 비의존).
       # llm-refine-dry(수동 dispatch)는 데이터 미변경 검증용 — 대조표만 로그로 출력.
       - name: LLM reason refinement
-        if: steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'llm-refine-dry')
+        if: steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'llm-refine-dry' || steps.mode.outputs.mode == 'llm-refine')
         continue-on-error: true
         timeout-minutes: 10
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          REFINE_DATE: ${{ github.event.inputs.date }}
         run: |
           EXTRA=""
           if [ "${{ steps.mode.outputs.mode }}" = "llm-refine-dry" ]; then EXTRA="--dry-run"; fi
+          if [ -n "$REFINE_DATE" ]; then EXTRA="$EXTRA --date $REFINE_DATE"; fi
           python3 -u scripts/build-history.py --llm-refine $EXTRA
 
       # 오늘의 대장 캘린더(샘플2) — stock-rise 일별 대장 3종을 누적 계산. 비핵심이라 실패해도 본빌드 유지.
@@ -279,9 +285,11 @@ jobs:
       # 의존하지 않고, '신뢰도 높은 외부 디스패치(marketmap-intraday) 포함 마감후 모든 실행'에
       # 게시 기회를 준다. 마커(_telegram-posted.json)로 하루 1회만 실제 게시(중복 방지).
       # 어떤 트리거가 살아있든 하나만 15:45 이후 돌면 게시됨 → 크론 누락에 강함.
+      # llm-refine(-dry) 수동 dispatch 는 게시 편승 제외 — 주말·저녁 백필이 마커 상태에 따라
+      # 대장 게시를 오발사하는 것 방지 (오늘자 데이터 부재 가드에만 기대지 않는다)
       - name: Telegram gate
         id: tg
-        if: steps.gate.outputs.skip != 'true'
+        if: steps.gate.outputs.skip != 'true' && steps.mode.outputs.mode != 'llm-refine-dry' && steps.mode.outputs.mode != 'llm-refine'
         env:
           TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
