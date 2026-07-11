@@ -86,18 +86,12 @@
       "close_price": 23200.0,
       "trading_volume": 1236760,
       "trading_value": 28692832000,
-      "rise_reason": "인수 관련 뉴스",
+      "rise_reason": "유럽 LNG 기업 인수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
-        {
-          "title": "[미코 줌인]④ 세라믹 기술로 반도체·에너지 확장...소부장 제국 포석",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000085137&office_id=293&code=059090&page=&sm=",
-          "source": "블로터",
-          "date": "2026.05.22"
-        },
         {
           "title": "M&A로 큰 미코, 유럽 'LNG 100년 기업' 인수",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005293760&office_id=015&code=059090&page=&sm=",
@@ -109,6 +103,12 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005293759&office_id=015&code=059090&page=&sm=",
           "source": "한국경제",
           "date": "2026.06.01"
+        },
+        {
+          "title": "[미코 줌인]④ 세라믹 기술로 반도체·에너지 확장...소부장 제국 포석",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000085137&office_id=293&code=059090&page=&sm=",
+          "source": "블로터",
+          "date": "2026.05.22"
         },
         {
           "title": "미리캐피탈 매니지먼트, 미코 지분 7.53%로 확대",
@@ -163,12 +163,18 @@
       "close_price": 26100.0,
       "trading_volume": 2538964,
       "trading_value": 66266960400,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "미코하이테크 흡수합병",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
+        {
+          "title": "미코, 자회사 미코하이테크 흡수합병 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006269287&office_id=018&code=059090&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.29"
+        },
         {
           "title": "[미코 줌인]③ 전선규 대표 복귀...지배력 유지·재무 전략 '시험대'",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000082706&office_id=293&code=059090&page=&sm=",
@@ -186,12 +192,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000082557&office_id=293&code=059090&page=&sm=",
           "source": "블로터",
           "date": "2026.04.10"
-        },
-        {
-          "title": "미코, 자회사 미코하이테크 흡수합병 결정",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006269287&office_id=018&code=059090&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.04.29"
         },
         {
           "title": "브릭스톤PE, '미코 CB' 장외 블록딜로 150억원 회수 완료 [fn...",
@@ -455,5 +455,5 @@
     "count_recent": 1,
     "avg_rate": 16.09
   },
-  "built_at": "2026-07-10T16:23:42"
+  "built_at": "2026-07-12T02:49:00"
 }

@@ -210,9 +210,9 @@
       "close_price": 9400.0,
       "trading_volume": 854453,
       "trading_value": 8031858200,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "동전주 병합 기대 부각",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -263,9 +263,9 @@
       "close_price": 8250.0,
       "trading_volume": 1987387,
       "trading_value": 16395942750,
-      "rise_reason": "국내 상장 중국기업 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "동전주 병합 기대 부각",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -328,12 +328,18 @@
       "close_price": 6650.0,
       "trading_volume": 837668,
       "trading_value": 5570492200,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "동전주 병합 기대 부각",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
+        {
+          "title": "&quot;동전주 상폐&quot;…상장사 주식병합 올해 157건, 2143% '급증'",
+          "link": "https://n.news.naver.com/mnews/article/421/0008878856",
+          "source": "뉴스1",
+          "date": "2026-04-09"
+        },
         {
           "title": "[서울데이터랩]금일 코스닥 거래량 1위 대한광통신 거래대금 무려 1조...",
           "link": "https://n.news.naver.com/mnews/article/081/0003634195",
@@ -350,12 +356,6 @@
           "title": "[서울데이터랩]금일 코스닥 거래량 1위 위지트 거래대금 무려 433억 돌...",
           "link": "https://n.news.naver.com/mnews/article/081/0003633831",
           "source": "서울신문",
-          "date": "2026-04-09"
-        },
-        {
-          "title": "&quot;동전주 상폐&quot;…상장사 주식병합 올해 157건, 2143% '급증'",
-          "link": "https://n.news.naver.com/mnews/article/421/0008878856",
-          "source": "뉴스1",
           "date": "2026-04-09"
         }
       ],
@@ -443,22 +443,22 @@
       "date": "20251030",
       "change_rate": 29.87,
       "close_price": 487.0,
-      "rise_reason": "52주 신고가",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "시진핑 방한에 中 소비주 부각",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
-          "title": "[머니줌인] 미, '3500억달러+α' 압박…한미협상 막판 진통",
-          "link": "https://n.news.naver.com/mnews/article/374/0000472131",
-          "source": "SBS Biz",
-          "date": "2025-10-31"
-        },
-        {
           "title": "시진핑 방한에 화장품株↑·희토류株↓'희비'",
           "link": "https://n.news.naver.com/mnews/article/003/0013571556",
           "source": "뉴시스",
+          "date": "2025-10-31"
+        },
+        {
+          "title": "[머니줌인] 미, '3500억달러+α' 압박…한미협상 막판 진통",
+          "link": "https://n.news.naver.com/mnews/article/374/0000472131",
+          "source": "SBS Biz",
           "date": "2025-10-31"
         },
         {
@@ -606,5 +606,5 @@
     "count_recent": 1,
     "avg_rate": 24.55
   },
-  "built_at": "2026-07-11T22:51:55"
+  "built_at": "2026-07-12T02:48:59"
 }

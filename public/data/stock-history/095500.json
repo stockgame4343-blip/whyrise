@@ -9,9 +9,9 @@
       "close_price": 8950.0,
       "trading_volume": 4304251,
       "trading_value": 38523046450,
-      "rise_reason": "리튬 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전고체 배터리 기술 확보",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -102,9 +102,9 @@
       "close_price": 9030.0,
       "trading_volume": 55298,
       "trading_value": 499340940,
-      "rise_reason": "리튬 관련 뉴스",
+      "rise_reason": "전고체 배터리 기술 확보",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -301,15 +301,21 @@
       "date": "20250718",
       "change_rate": 21.53,
       "close_price": 9880.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "中 감산·리튬 가격 반등 수혜",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
         {
           "title": "中 감산 나서자 리튬株 급등",
           "link": "https://n.news.naver.com/mnews/article/015/0005159818",
+          "source": "한국경제",
+          "date": "2025-07-18"
+        },
+        {
+          "title": "中 기업 멈추자 상한가 '급등'…이차전지 소재기업들 '반색'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005159754",
           "source": "한국경제",
           "date": "2025-07-18"
         },
@@ -323,12 +329,6 @@
           "title": "[서울데이터랩]리튬포어스 29.97% 상한가…금일 증시 상승률 1위로 마...",
           "link": "https://n.news.naver.com/mnews/article/081/0003558992",
           "source": "서울신문",
-          "date": "2025-07-18"
-        },
-        {
-          "title": "中 기업 멈추자 상한가 '급등'…이차전지 소재기업들 '반색'",
-          "link": "https://n.news.naver.com/mnews/article/015/0005159754",
-          "source": "한국경제",
           "date": "2025-07-18"
         }
       ],
@@ -348,5 +348,5 @@
     "count_recent": 3,
     "avg_rate": 18.2
   },
-  "built_at": "2026-07-10T16:28:21"
+  "built_at": "2026-07-12T02:48:59"
 }

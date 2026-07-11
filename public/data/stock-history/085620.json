@@ -163,9 +163,9 @@
       "close_price": 29350.0,
       "trading_volume": 6186618,
       "trading_value": 181577238300,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건강보험 체질 개선 부각",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "생명보험",
       "news": [
@@ -176,15 +176,15 @@
           "date": "2026.06.10"
         },
         {
-          "title": "미래에셋생명, 초장기채·ALM 고도화…듀레이션 갭 '0.62년'의 함의",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086020&office_id=293&code=085620&page=&sm=",
-          "source": "블로터",
-          "date": "2026.06.09"
-        },
-        {
           "title": "미래에셋생명, 생성형 AI 언더라이팅 'AI-FIT' 첫 도입",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005532616&office_id=014&code=085620&page=&sm=",
           "source": "파이낸셜뉴스",
+          "date": "2026.06.09"
+        },
+        {
+          "title": "미래에셋생명, 초장기채·ALM 고도화…듀레이션 갭 '0.62년'의 함의",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086020&office_id=293&code=085620&page=&sm=",
+          "source": "블로터",
           "date": "2026.06.09"
         },
         {
@@ -582,12 +582,18 @@
       "date": "20260316",
       "change_rate": 30.0,
       "close_price": 17160.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "자사주 소각 기대 보험주 폭등",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "생명보험",
       "news": [
+        {
+          "title": "자사주 소각 기대감…생명보험주 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005330871",
+          "source": "머니투데이",
+          "date": "2026-03-17"
+        },
         {
           "title": "[애프터마켓 브리핑] 오후 국제 유가 재상승…코스피 상승폭 축소",
           "link": "https://n.news.naver.com/mnews/article/374/0000498531",
@@ -610,12 +616,6 @@
           "title": "[서울데이터랩]개장 직후 인기 검색 종목 20選",
           "link": "https://n.news.naver.com/mnews/article/081/0003626529",
           "source": "서울신문",
-          "date": "2026-03-17"
-        },
-        {
-          "title": "자사주 소각 기대감…생명보험주 강세",
-          "link": "https://n.news.naver.com/mnews/article/008/0005330871",
-          "source": "머니투데이",
           "date": "2026-03-17"
         }
       ],
@@ -703,5 +703,5 @@
     "count_recent": 3,
     "avg_rate": 20.48
   },
-  "built_at": "2026-07-10T16:09:54"
+  "built_at": "2026-07-12T02:49:00"
 }

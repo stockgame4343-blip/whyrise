@@ -98,9 +98,9 @@
       "close_price": 148700.0,
       "trading_volume": 1312771,
       "trading_value": 195209047700,
-      "rise_reason": "메가프로젝트 수혜",
+      "rise_reason": "국민성장펀드 200억 유치",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -187,9 +187,9 @@
       "close_price": 133300.0,
       "trading_volume": 2402891,
       "trading_value": 320305370300,
-      "rise_reason": "목표가 상향",
+      "rise_reason": "소캠 우려 완화 급반등",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -258,9 +258,9 @@
       "close_price": 115100.0,
       "trading_volume": 935079,
       "trading_value": 107627592900,
-      "rise_reason": "강세에 전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "소캠 우려 완화 반등",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -534,12 +534,18 @@
       "date": "20251023",
       "change_rate": 15.55,
       "close_price": 58700.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "엔비디아 '소캠2' 기판 퀄 통과",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
+        {
+          "title": "심텍, 엔비디아 '소캠2' 기판 맡는다…메모리 3사 '퀄' 통과",
+          "link": "https://n.news.naver.com/mnews/article/030/0003362129",
+          "source": "전자신문",
+          "date": "2025-10-23"
+        },
         {
           "title": "9만전자·50만닉스 놓쳤다면 …'K반도체 명품조연' 5총사 주목",
           "link": "https://n.news.naver.com/mnews/article/009/0005578662",
@@ -562,12 +568,6 @@
           "title": "[서울데이터랩]케이이엠텍 29.99% 상승…금일 증시 상승률 1위로 마감",
           "link": "https://n.news.naver.com/mnews/article/081/0003584740",
           "source": "서울신문",
-          "date": "2025-10-23"
-        },
-        {
-          "title": "심텍, 엔비디아 '소캠2' 기판 맡는다…메모리 3사 '퀄' 통과",
-          "link": "https://n.news.naver.com/mnews/article/030/0003362129",
-          "source": "전자신문",
           "date": "2025-10-23"
         }
       ],
@@ -664,18 +664,12 @@
       "date": "20250808",
       "change_rate": 18.01,
       "close_price": 27850.0,
-      "rise_reason": "실적 호조",
+      "rise_reason": "하반기 수익성 개선 전망 부각",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
-        {
-          "title": "형님 뛰자 소부장도 '줄상승'…삼성전자, 1.84% 상승[핫종목]",
-          "link": "https://n.news.naver.com/mnews/article/421/0008419026",
-          "source": "뉴스1",
-          "date": "2025-08-08"
-        },
         {
           "title": "심텍, '하반기 이익률 개선세 가속화' 증권가 전망에 10%↑[특징주]",
           "link": "https://n.news.naver.com/mnews/article/018/0006084797",
@@ -686,6 +680,12 @@
           "title": "IBK투자證 &quot;심텍, 하반기 수익성 개선 기대…목표가↑&quot;",
           "link": "https://n.news.naver.com/mnews/article/003/0013410812",
           "source": "뉴시스",
+          "date": "2025-08-08"
+        },
+        {
+          "title": "형님 뛰자 소부장도 '줄상승'…삼성전자, 1.84% 상승[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0008419026",
+          "source": "뉴스1",
           "date": "2025-08-08"
         },
         {
@@ -782,5 +782,5 @@
     "count_recent": 3,
     "avg_rate": 14.99
   },
-  "built_at": "2026-07-10T16:19:59"
+  "built_at": "2026-07-12T02:48:59"
 }

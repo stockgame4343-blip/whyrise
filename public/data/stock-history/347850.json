@@ -98,9 +98,9 @@
       "close_price": 92500.0,
       "trading_volume": 1991638,
       "trading_value": 184226515000,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "MASH 신약 기대 부각",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -187,9 +187,9 @@
       "close_price": 108100.0,
       "trading_volume": 5394527,
       "trading_value": 583148368700,
-      "rise_reason": "신약 공동 개발 계약",
+      "rise_reason": "LG와 AI 신약 공동개발",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -495,12 +495,18 @@
       "close_price": 98800.0,
       "trading_volume": 3485551,
       "trading_value": 344372438800,
-      "rise_reason": "임상 관련 뉴스",
+      "rise_reason": "MASH 2상 핵심지표 충족",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
+        {
+          "title": "디앤디파마텍, MASH 치료제 임상 2상 핵심지표 충족…장중 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001167394&office_id=366&code=347850&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.27"
+        },
         {
           "title": "디앤디파마텍 MASH 치료제, 임상 2상서 유효성 확인",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0001253481&office_id=215&code=347850&page=&sm=",
@@ -511,12 +517,6 @@
           "title": "디앤디파마텍 “MASH 신약, 임상서 조직생검 지표 개선”",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000100923&office_id=296&code=347850&page=&sm=",
           "source": "코메디닷컴",
-          "date": "2026.05.27"
-        },
-        {
-          "title": "디앤디파마텍, MASH 치료제 임상 2상 핵심지표 충족…장중 상한가",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001167394&office_id=366&code=347850&page=&sm=",
-          "source": "조선비즈",
           "date": "2026.05.27"
         },
         {
@@ -663,23 +663,23 @@
       "date": "20260313",
       "change_rate": 15.38,
       "close_price": 92300.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "바이오 ETF 수급 부각",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
-        {
-          "title": "더블호재 &quot;종목 장세 전망…반도체 소부장·바이오주 관심&quot; [한경스타...",
-          "link": "https://n.news.naver.com/mnews/article/015/0005262247",
-          "source": "한국경제",
-          "date": "2026-03-14"
-        },
         {
           "title": "TIGER가 콕 찍은 코스닥 바이오…먼저 사들이는 외국인",
           "link": "https://n.news.naver.com/mnews/article/215/0001245119",
           "source": "한국경제TV",
           "date": "2026-03-13"
+        },
+        {
+          "title": "더블호재 &quot;종목 장세 전망…반도체 소부장·바이오주 관심&quot; [한경스타...",
+          "link": "https://n.news.naver.com/mnews/article/015/0005262247",
+          "source": "한국경제",
+          "date": "2026-03-14"
         }
       ],
       "sector": "생물공학",
@@ -693,9 +693,9 @@
       "date": "20260305",
       "change_rate": 17.43,
       "close_price": 82200.0,
-      "rise_reason": "바이오",
+      "rise_reason": "NLY02 유럽 특허 확보",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -706,16 +706,16 @@
           "date": "2026-03-06"
         },
         {
-          "title": "[바이오스냅] 파마리서치, 나노 항암제 'PRD-101' 조성물 국내 특허 등...",
-          "link": "https://n.news.naver.com/mnews/article/001/0015941881",
-          "source": "연합뉴스",
-          "date": "2026-03-06"
-        },
-        {
           "title": "위고비가 흔든 MASH 판…디앤디·한미약품엔 기회일까 위기일까",
           "link": "https://n.news.naver.com/mnews/article/018/0006228737",
           "source": "이데일리",
           "date": "2026-03-05"
+        },
+        {
+          "title": "[바이오스냅] 파마리서치, 나노 항암제 'PRD-101' 조성물 국내 특허 등...",
+          "link": "https://n.news.naver.com/mnews/article/001/0015941881",
+          "source": "연합뉴스",
+          "date": "2026-03-06"
         }
       ],
       "sector": "생물공학",
@@ -921,5 +921,5 @@
     "count_recent": 4,
     "avg_rate": 16.22
   },
-  "built_at": "2026-07-10T16:20:06"
+  "built_at": "2026-07-12T02:49:00"
 }

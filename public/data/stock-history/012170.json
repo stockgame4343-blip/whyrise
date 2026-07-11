@@ -270,9 +270,9 @@
       "close_price": 1572.0,
       "trading_volume": 6815854,
       "trading_value": 10714522488,
-      "rise_reason": "영화 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "드라마 제작 기대 연일 급등",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "영화",
       "news": [
@@ -329,9 +329,9 @@
       "close_price": 1327.0,
       "trading_volume": 2253018,
       "trading_value": 2989754886,
-      "rise_reason": "영화 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "드라마 공동제작 계약 부각",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "영화",
       "news": [
@@ -380,12 +380,18 @@
       "date": "20260116",
       "change_rate": 29.76,
       "close_price": 2350.0,
-      "rise_reason": "영화 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "신임 대표이사 선임",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "영화",
       "news": [
+        {
+          "title": "아센디오, 신민규 대표이사 선임",
+          "link": "https://n.news.naver.com/mnews/article/293/0000077849",
+          "source": "블로터",
+          "date": "2026-01-15"
+        },
         {
           "title": "[서울데이터랩]‘한화갤러리아’ 25.18% 폭등…실시간 상승률 1위",
           "link": "https://n.news.naver.com/mnews/article/081/0003609311",
@@ -396,12 +402,6 @@
           "title": "[서울데이터랩]한화갤러리아우 30.00% 상한가…금일 증시 상승률 1위로...",
           "link": "https://n.news.naver.com/mnews/article/081/0003609113",
           "source": "서울신문",
-          "date": "2026-01-15"
-        },
-        {
-          "title": "아센디오, 신민규 대표이사 선임",
-          "link": "https://n.news.naver.com/mnews/article/293/0000077849",
-          "source": "블로터",
           "date": "2026-01-15"
         }
       ],
@@ -524,18 +524,12 @@
       "date": "20250819",
       "change_rate": 29.85,
       "close_price": 3980.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "한한령 완화 기대 콘텐츠주 부각",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "영화",
       "news": [
-        {
-          "title": "[DD퇴근길] &quot;아마존도 찜했다&quot;…AI 스타트업 업스테이지, 620억 투자 유...",
-          "link": "https://n.news.naver.com/mnews/article/138/0002203086",
-          "source": "디지털데일리",
-          "date": "2025-08-20"
-        },
         {
           "title": "[오늘의 급등주] ‘한한령 완화’ 기대에 상한가 이어 또 급등한 아센...",
           "link": "https://n.news.naver.com/mnews/article/037/0000036836",
@@ -546,6 +540,12 @@
           "title": "한한령 해제 기대감 확산…국내 콘텐츠株 부각",
           "link": "https://n.news.naver.com/mnews/article/003/0013431314",
           "source": "뉴시스",
+          "date": "2025-08-20"
+        },
+        {
+          "title": "[DD퇴근길] &quot;아마존도 찜했다&quot;…AI 스타트업 업스테이지, 620억 투자 유...",
+          "link": "https://n.news.naver.com/mnews/article/138/0002203086",
+          "source": "디지털데일리",
           "date": "2025-08-20"
         }
       ],
@@ -599,5 +599,5 @@
     "count_recent": 3,
     "avg_rate": 22.02
   },
-  "built_at": "2026-07-10T16:18:58"
+  "built_at": "2026-07-12T02:48:59"
 }

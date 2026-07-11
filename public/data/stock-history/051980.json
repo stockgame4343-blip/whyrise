@@ -80,9 +80,9 @@
       "close_price": 1116.0,
       "trading_volume": 3967345,
       "trading_value": 4427557020,
-      "rise_reason": "리튬 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 폭등 리튬주 급등",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -91,6 +91,12 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006268055&office_id=018&code=051980&page=&sm=",
           "source": "이데일리",
           "date": "2026.04.28"
+        },
+        {
+          "title": "[이 시각 시황] 리튬 가격 상승에 관련주 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000505886&office_id=374&code=051980&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.04.22"
         },
         {
           "title": "[클리니컬 히스토리] 팜젠사이언스, 조영제 IND 눈앞…외부검증망 보....",
@@ -109,12 +115,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000512651&office_id=374&code=051980&page=&sm=",
           "source": "SBS Biz",
           "date": "2026.05.28"
-        },
-        {
-          "title": "[이 시각 시황] 리튬 가격 상승에 관련주 강세",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000505886&office_id=374&code=051980&page=&sm=",
-          "source": "SBS Biz",
-          "date": "2026.04.22"
         },
         {
           "title": "2차전지·MLCC 훈풍 알겠는데…“매출 0원이 상한가?” [투자360]",
@@ -262,12 +262,18 @@
       "date": "20260122",
       "change_rate": 29.91,
       "close_price": 2780.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "리튬 가격 고공행진 수혜",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
+        {
+          "title": "[ET특징주] 리튬 가격 고공행진에… 하이드로리튬 주가 '상한가'",
+          "link": "https://n.news.naver.com/mnews/article/030/0003392380",
+          "source": "전자신문",
+          "date": "2026-01-22"
+        },
         {
           "title": "[서울데이터랩]금일 코스닥 거래량 1위 휴림로봇 거래대금 무려 1252억...",
           "link": "https://n.news.naver.com/mnews/article/081/0003611264",
@@ -284,12 +290,6 @@
           "title": "[서울데이터랩]인트로메딕 97.67% 상승…금일 증시 상승률 1위로 마감",
           "link": "https://n.news.naver.com/mnews/article/081/0003610926",
           "source": "서울신문",
-          "date": "2026-01-22"
-        },
-        {
-          "title": "[ET특징주] 리튬 가격 고공행진에… 하이드로리튬 주가 '상한가'",
-          "link": "https://n.news.naver.com/mnews/article/030/0003392380",
-          "source": "전자신문",
           "date": "2026-01-22"
         },
         {
@@ -310,22 +310,22 @@
       "date": "20251024",
       "change_rate": 29.98,
       "close_price": 3880.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "테슬라 급등에 이차전지주 부각",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
         {
-          "title": "[서울데이터랩]나노캠텍 30.00% 상한가 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003585091",
-          "source": "서울신문",
-          "date": "2025-10-24"
-        },
-        {
           "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
           "link": "https://n.news.naver.com/mnews/article/417/0001108758",
           "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        },
+        {
+          "title": "[서울데이터랩]나노캠텍 30.00% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003585091",
+          "source": "서울신문",
           "date": "2025-10-24"
         },
         {
@@ -352,12 +352,18 @@
       "date": "20251016",
       "change_rate": 17.34,
       "close_price": 3045.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "엔켐 지배구조 재편 수혜 부각",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
+        {
+          "title": "엔켐, 지배구조 재편…'글로벌 핵심 역량 강화' 승부수",
+          "link": "https://n.news.naver.com/mnews/article/014/0005419783",
+          "source": "파이낸셜뉴스",
+          "date": "2025-10-15"
+        },
         {
           "title": "[서울데이터랩]금일 코스닥 거래량 1위 휴림로봇 거래대금 2,952억원 돌...",
           "link": "https://n.news.naver.com/mnews/article/081/0003583043",
@@ -369,12 +375,6 @@
           "link": "https://n.news.naver.com/mnews/article/081/0003582720",
           "source": "서울신문",
           "date": "2025-10-16"
-        },
-        {
-          "title": "엔켐, 지배구조 재편…'글로벌 핵심 역량 강화' 승부수",
-          "link": "https://n.news.naver.com/mnews/article/014/0005419783",
-          "source": "파이낸셜뉴스",
-          "date": "2025-10-15"
         }
       ],
       "sector": "통신장비",
@@ -388,9 +388,9 @@
       "date": "20250724",
       "change_rate": 26.19,
       "close_price": 3590.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "中 리튬 생산 중단, 가격 인상 수혜",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -412,21 +412,21 @@
       "date": "20250721",
       "change_rate": 22.71,
       "close_price": 2810.0,
-      "rise_reason": "이차전지 테마",
+      "rise_reason": "리튬주 강세 3거래일째 급등",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
         {
-          "title": "가격 반등에 리튬株 강세…리튬포어스 사흘째 上[핫스탁](종합)",
-          "link": "https://n.news.naver.com/mnews/article/003/0013378032",
+          "title": "중앙첨단소재, 리튬株 강세 속 3거래일째 급등…장중 14%↑",
+          "link": "https://n.news.naver.com/mnews/article/003/0013377750",
           "source": "뉴시스",
           "date": "2025-07-22"
         },
         {
-          "title": "중앙첨단소재, 리튬株 강세 속 3거래일째 급등…장중 14%↑",
-          "link": "https://n.news.naver.com/mnews/article/003/0013377750",
+          "title": "가격 반등에 리튬株 강세…리튬포어스 사흘째 上[핫스탁](종합)",
+          "link": "https://n.news.naver.com/mnews/article/003/0013378032",
           "source": "뉴시스",
           "date": "2025-07-22"
         },
@@ -482,5 +482,5 @@
     "count_recent": 2,
     "avg_rate": 25.02
   },
-  "built_at": "2026-07-10T16:33:59"
+  "built_at": "2026-07-12T02:48:59"
 }

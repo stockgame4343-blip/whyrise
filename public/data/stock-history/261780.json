@@ -281,9 +281,9 @@
       "close_price": 3960.0,
       "trading_volume": 21237156,
       "trading_value": 84099137760,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "아리바이오랩 변경상장 임박",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -494,12 +494,18 @@
       "close_price": 3710.0,
       "trading_volume": 4704445,
       "trading_value": 17453490950,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "아리바이오 기술수출 훈풍",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
+        {
+          "title": "“합병 전 실탄 확보”...소룩스 250억 CB 발행, 아리바이오도 추...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001164122&office_id=366&code=261780&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.14"
+        },
         {
           "title": "차백신연구소, 28억 규모 아리바이오 전환사채 취득 결정",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006273277&office_id=018&code=261780&page=&sm=",
@@ -523,12 +529,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000082725&office_id=293&code=261780&page=&sm=",
           "source": "블로터",
           "date": "2026.04.14"
-        },
-        {
-          "title": "“합병 전 실탄 확보”...소룩스 250억 CB 발행, 아리바이오도 추...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001164122&office_id=366&code=261780&page=&sm=",
-          "source": "조선비즈",
-          "date": "2026.05.14"
         },
         {
           "title": "차바이오텍, 차헬스케어 지분 매각…차원태표 'BD 재편' 실험 연장선",
@@ -592,12 +592,24 @@
       "date": "20260323",
       "change_rate": 29.9,
       "close_price": 5300.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "그룹 사업 재편 기대 지속",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
+        {
+          "title": "차백신연구소, 사업 재편 기대감에 상한가 [Why 바이오]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004602432",
+          "source": "서울경제",
+          "date": "2026-03-23"
+        },
+        {
+          "title": "차바이오텍, '비핵심 자산' 잇달아 매각…추가 자산 매각 가능성은",
+          "link": "https://n.news.naver.com/mnews/article/008/0005333887",
+          "source": "머니투데이",
+          "date": "2026-03-23"
+        },
         {
           "title": "[서울데이터랩]마감 직후 인기 검색 종목 20選",
           "link": "https://n.news.naver.com/mnews/article/081/0003628888",
@@ -615,18 +627,6 @@
           "link": "https://n.news.naver.com/mnews/article/081/0003628775",
           "source": "서울신문",
           "date": "2026-03-24"
-        },
-        {
-          "title": "차바이오텍, '비핵심 자산' 잇달아 매각…추가 자산 매각 가능성은",
-          "link": "https://n.news.naver.com/mnews/article/008/0005333887",
-          "source": "머니투데이",
-          "date": "2026-03-23"
-        },
-        {
-          "title": "차백신연구소, 사업 재편 기대감에 상한가 [Why 바이오]",
-          "link": "https://n.news.naver.com/mnews/article/011/0004602432",
-          "source": "서울경제",
-          "date": "2026-03-23"
         }
       ],
       "sector": "제약",
@@ -640,23 +640,23 @@
       "date": "20260319",
       "change_rate": 29.89,
       "close_price": 4085.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "소룩스 그룹 바이오 재편 부각",
+      "reason_confidence": "low",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
-        {
-          "title": "차바이오그룹 비핵심 계열사 정리…“3대 사업 집중”",
-          "link": "https://n.news.naver.com/mnews/article/011/0004601427",
-          "source": "서울경제",
-          "date": "2026-03-20"
-        },
         {
           "title": "아리바이오 이어 차백신硏 확보... ‘바이오 존재감’ 키우는 소룩스",
           "link": "https://n.news.naver.com/mnews/article/296/0000098701",
           "source": "코메디닷컴",
           "date": "2026-03-19"
+        },
+        {
+          "title": "차바이오그룹 비핵심 계열사 정리…“3대 사업 집중”",
+          "link": "https://n.news.naver.com/mnews/article/011/0004601427",
+          "source": "서울경제",
+          "date": "2026-03-20"
         },
         {
           "title": "[특징주] 차백신연구소, 차바이오텍 지분 매각 소식에 급락 뒤 상한가...",
@@ -710,5 +710,5 @@
     "count_recent": 4,
     "avg_rate": 16.99
   },
-  "built_at": "2026-07-10T16:37:07"
+  "built_at": "2026-07-12T02:49:00"
 }

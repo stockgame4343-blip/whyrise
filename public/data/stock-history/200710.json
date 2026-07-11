@@ -98,24 +98,12 @@
       "close_price": 29800.0,
       "trading_volume": 225799,
       "trading_value": 6728810200,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "삼성 2나노 CPU 구현 부각",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
-        {
-          "title": "에이디테크놀로지, 설계 엔지니어 50명 채용…공채 규모 67% 늘려",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001033127&office_id=031&code=200710&page=&sm=",
-          "source": "아이뉴스24",
-          "date": "2026.06.05"
-        },
-        {
-          "title": "에이디테크놀로지, 설계 엔지니어 전년 比 67% 채용 확대",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003434605&office_id=030&code=200710&page=&sm=",
-          "source": "전자신문",
-          "date": "2026.06.05"
-        },
         {
           "title": "에이디테크놀로지, 삼성 2나노 기반 '3.695GHz' 돌파",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0002424630&office_id=092&code=200710&page=&sm=",
@@ -127,6 +115,18 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0001031672&office_id=031&code=200710&page=&sm=",
           "source": "아이뉴스24",
           "date": "2026.05.29"
+        },
+        {
+          "title": "에이디테크놀로지, 설계 엔지니어 50명 채용…공채 규모 67% 늘려",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001033127&office_id=031&code=200710&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2026.06.05"
+        },
+        {
+          "title": "에이디테크놀로지, 설계 엔지니어 전년 比 67% 채용 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003434605&office_id=030&code=200710&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.05"
         },
         {
           "title": "[디자인하우스 특수] 에이디테크, 2나노 투자 '하이리스크 하이리턴'",
@@ -459,22 +459,22 @@
       "close_price": 56300.0,
       "trading_volume": 474890,
       "trading_value": 26736307000,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "美 2나노 칩렛 개발 협력",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
-          "title": "[서울데이터랩]한국첨단소재 30.00% 상한가 금일 증시 상승률 1위로 마...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003632312",
-          "source": "서울신문",
-          "date": "2026-04-03"
-        },
-        {
           "title": "에이디테크놀로지, 美 케니와 2나노 칩렛 SoC 개발 협력",
           "link": "https://n.news.naver.com/mnews/article/138/0002223196",
           "source": "디지털데일리",
+          "date": "2026-04-03"
+        },
+        {
+          "title": "[서울데이터랩]한국첨단소재 30.00% 상한가 금일 증시 상승률 1위로 마...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003632312",
+          "source": "서울신문",
           "date": "2026-04-03"
         },
         {
@@ -670,9 +670,9 @@
       "date": "20251128",
       "change_rate": 15.59,
       "close_price": 27800.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "삼성 DSP 전환 기대 부각",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -723,12 +723,24 @@
       "date": "20250728",
       "change_rate": 26.63,
       "close_price": 25200.0,
-      "rise_reason": "조선/해운",
+      "rise_reason": "삼성 파운드리 22조 수주 수혜",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
+        {
+          "title": "삼성전자 22조원 수주에 ··· 삼전 파운드리 디자인하우스 에이디테...",
+          "link": "https://n.news.naver.com/mnews/article/009/0005532116",
+          "source": "매일경제",
+          "date": "2025-07-28"
+        },
+        {
+          "title": "[종목리포트] 삼성전자 22조원 규모 수주···협력사 동반 상승",
+          "link": "https://n.news.naver.com/mnews/article/374/0000454273",
+          "source": "SBS Biz",
+          "date": "2025-07-28"
+        },
         {
           "title": "[애프터마켓 리뷰] 삼성전자, 22조원 규모 반도체 위탁생산 계약 수주",
           "link": "https://n.news.naver.com/mnews/article/374/0000454377",
@@ -739,18 +751,6 @@
           "title": "코스피, 관세 협상 기대 외인·기관 '쌍끌이 매수'에 13p↑...'3200 재탈...",
           "link": "https://n.news.naver.com/mnews/article/123/0002364702",
           "source": "조세일보",
-          "date": "2025-07-28"
-        },
-        {
-          "title": "[종목리포트] 삼성전자 22조원 규모 수주···협력사 동반 상승",
-          "link": "https://n.news.naver.com/mnews/article/374/0000454273",
-          "source": "SBS Biz",
-          "date": "2025-07-28"
-        },
-        {
-          "title": "삼성전자 22조원 수주에 ··· 삼전 파운드리 디자인하우스 에이디테...",
-          "link": "https://n.news.naver.com/mnews/article/009/0005532116",
-          "source": "매일경제",
           "date": "2025-07-28"
         },
         {
@@ -810,5 +810,5 @@
     "count_recent": 2,
     "avg_rate": 14.99
   },
-  "built_at": "2026-07-10T16:24:40"
+  "built_at": "2026-07-12T02:48:59"
 }
