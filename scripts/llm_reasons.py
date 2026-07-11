@@ -6,7 +6,8 @@
 
 정렬 규칙 (build-history.py 의 reason 체계와 합의):
   - reason_source == 'admin' / reason_status == 'edited' 는 불가침 (수집 자체를 안 함)
-  - stock-rise 의 구체 사유(제네릭 아님)는 교체 금지 — 의미반전 flag 만 허용
+  - stock-rise 의 구체 사유(제네릭 아님)는 고신뢰 교체만 허용 — confidence=high
+    (종목명 포함 근거 2건 이상) 미달이면 keep, 의미반전은 flag 로그
   - 교체 시 reason_source='llm', reason_status='filled', confidence 는 근거 수로 캡
 """
 from __future__ import annotations
@@ -31,8 +32,12 @@ MIN_RATE = 15.0                # 정제 대상 최저 등락률
 NEWS_PER_ITEM = 10             # 종목당 뉴스 제목 입력 상한
 REASON_MAX_LEN = 30
 
-# 제네릭 판정 — estimate_reasons/enrich 가 만드는 비구체 라벨들
-GENERIC_RE = re.compile(r'^(시장 관심 증가|상한가 — 사유 미수집|.{0,24}(테마 )?(강세|상한가))$')
+# 제네릭 판정 — estimate_reasons/enrich 의 비구체 라벨 + stock-rise scorer 의
+# 키워드 라벨("X 관련 뉴스"·"X 이슈"형)도 포함해 교체 대상으로 끌어들인다.
+GENERIC_RE = re.compile(r'^(시장 관심 증가|상한가 — 사유 미수집|.{0,24}(테마 )?(강세|상한가)'
+                        r'|.{0,24}관련 (뉴스|이슈|소식)|.{0,24}이슈)$')
+# verify_only(stock-rise 구체 사유) 교체 허용 최저 신뢰도 — 종목명 포함 근거 2건 이상
+VERIFY_REPLACE_MIN_CONF = 'high'
 # 투자조언성 표현 — 응답에 섞이면 해당 건 폐기 (유사투자자문 리스크 차단)
 FORBIDDEN_RE = re.compile(r'매수|매도|추천|목표가|손절|익절|사세요|팔')
 
@@ -210,7 +215,9 @@ def _validate(res: dict, target: dict) -> dict | None:
     if not evidence and confidence == 'high':
         confidence = 'mid'   # 근거 없는 high 금지
     if action == 'replace':
-        if target.get('verify_only'):
+        # stock-rise 구체 사유는 고신뢰 판정만 교체 — 저신뢰 제안은 버리지 않고 keep 처리
+        # (confidence=high 는 근거 없으면 위에서 mid 로 강등되므로 evidence 보장됨)
+        if target.get('verify_only') and confidence != VERIFY_REPLACE_MIN_CONF:
             return {'action': 'keep', 'note': 'verify_only'}
         if (not reason or len(reason) > REASON_MAX_LEN or FORBIDDEN_RE.search(reason)
                 or reason == target['rise_reason']):
