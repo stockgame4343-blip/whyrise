@@ -245,8 +245,31 @@ var WhyAPI = (function () {
      * stock-rise 에 없는 과거 백필 일자(4/13 이전)는 자체 /data/rise-history/{date}.json 폴백.
      * @returns { rankings, collected_at, is_final, mode }
      */
+    // 자체 rise-history 의 LLM 정제 사유를 상류(stock-rise raw) 랭킹에 오버레이.
+    // 상세(stock-history)는 정제 사유가 반영되는데 리스트는 상류 raw 를 읽어 제네릭
+    // 사유("계약 체결" 등)로 어긋나던 문제 해소 (2026-07-12 사용자 리포트).
+    // 캐시 객체를 제자리 수정하지만 멱등이라 반복 적용 무해. admin override 는
+    // _shapeRankings 가 이 뒤에 적용하므로 여전히 최우선.
+    function _overlayRefinedReasons(data, date) {
+        return _cachedFetch('/data/rise-history/' + date + '.json').then(function (own) {
+            var m = {};
+            ((own && own.rankings) || []).forEach(function (r) {
+                if (r && r.ticker && r.reason_source === 'llm' && r.rise_reason) m[r.ticker] = r;
+            });
+            (data.rankings || []).forEach(function (r) {
+                var o = m[r.ticker];
+                if (!o) return;
+                r.rise_reason = o.rise_reason;
+                r.reason_source = 'llm';
+                if (o.reason_confidence) r.reason_confidence = o.reason_confidence;
+            });
+            return data;
+        }).catch(function () { return data; });
+    }
+
     function getRankings(date, market) {
         return _cachedFetch(STOCK_RISE_RAW + '/' + date + '.json')
+            .then(function (data) { return _overlayRefinedReasons(data, date); })
             .catch(function () {
                 return _cachedFetch('/data/rise-history/' + date + '.json');
             })

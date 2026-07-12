@@ -296,7 +296,10 @@ var WhyTable = (function () {
         if (t && rTheme.indexOf(t) === 0 && (afterT === '' || /[\s·,]/.test(afterT))) {
             var d = rTheme.slice(t.length).replace(/^[\s·,]+/, '').trim();
             var dFiller = !d || d === '관련' || /^(관련\s*)?(뉴스|이슈|소식)$/.test(d);
-            if (!dFiller && d.indexOf(' ') >= 0) r = d;
+            // 과축약 방지 — 테마를 뗀 나머지가 충분히 구체적일 때만 뗀다. 필러(관련/뉴스/이슈/소식)
+            // 빼고 6자 미만이면 "M&A 이슈"·"흑자 전환"처럼 빈약해지므로 원문 유지 (2026-07-12 사용자 요청).
+            var dCore = d.replace(/관련|뉴스|이슈|소식/g, '').replace(/\s/g, '');
+            if (!dFiller && d.indexOf(' ') >= 0 && dCore.length >= 6) r = d;
         }
         // 뉴스 다수에 확정 공시(무상증자 등)가 있는데 빌드 reason 이 그걸 안 담았으면 그걸 우선.
         var corp = dominantCorpAction(news, ev);

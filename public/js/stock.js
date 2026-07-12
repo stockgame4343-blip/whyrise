@@ -262,7 +262,10 @@
         if (t && rTheme.indexOf(t) === 0 && (afterT === '' || /[\s·,]/.test(afterT))) {
             var d = rTheme.slice(t.length).replace(/^[\s·,]+/, '').trim();
             var dFiller = !d || d === '관련' || /^(관련\s*)?(뉴스|이슈|소식)$/.test(d);
-            if (!dFiller && d.indexOf(' ') >= 0) r = d;
+            // 과축약 방지 — 테마를 뗀 나머지가 충분히 구체적일 때만 뗀다. 필러(관련/뉴스/이슈/소식)
+            // 빼고 6자 미만이면 "M&A 이슈"·"흑자 전환"처럼 빈약해지므로 원문 유지 (2026-07-12 사용자 요청).
+            var dCore = d.replace(/관련|뉴스|이슈|소식/g, '').replace(/\s/g, '');
+            if (!dFiller && d.indexOf(' ') >= 0 && dCore.length >= 6) r = d;
         }
         // 뉴스 다수에 확정 공시(무상증자 등)가 있는데 빌드 reason 이 그걸 안 담았으면 그걸 우선.
         var corp = dominantCorpAction(news, eventDate);
@@ -936,23 +939,22 @@
             return;
         }
         var price = meta ? meta.price : null;
-        // 오늘 빌드에서 이유·뉴스 — getDates()[0]==오늘 이어야 오늘 빌드 존재(아니면 시세만)
+        // 오늘 빌드(getDates()[0]==오늘)가 있어야만 주입 — 시세 API는 휴장일(주말·공휴일)에도
+        // 마지막 거래일 등락률을 그대로 반환하므로 rate 만으로는 '오늘 급등'을 확정할 수 없다.
+        // (토요일에 금요일 +10% 종목이 '오늘' 날짜 카드로 뜨던 오류 — 2026-07-12 사용자 리포트)
+        // 트레이드오프: 거래일 아침 첫 빌드 전엔 카드가 안 뜬다 — 리스트(오늘 빌드 기준)와 동일 동작.
+        function clearToday() {
+            if (_todayEvent) { _todayEvent = null; rerenderTimeline(); }
+        }
         WhyAPI.getDates().then(function (dts) {
             var latest = (Array.isArray(dts) ? dts[0] : (dts && dts.dates && dts.dates[0])) || '';
-            if (latest !== date) {
-                _todayEvent = makeTodayEvent(date, rate, price, null);
-                rerenderTimeline();
-                return;
-            }
+            if (latest !== date) { clearToday(); return; }
             return WhyAPI.getRankings(date).then(function (data) {
                 var row = ((data && data.rankings) || []).find(function (r) { return r.ticker === _ticker; });
                 _todayEvent = makeTodayEvent(date, rate, price, row || null);
                 rerenderTimeline();
             });
-        }).catch(function () {
-            _todayEvent = makeTodayEvent(date, rate, price, null);
-            rerenderTimeline();
-        });
+        }).catch(clearToday);
     }
 
     function renderEvents(events, ticker) {
