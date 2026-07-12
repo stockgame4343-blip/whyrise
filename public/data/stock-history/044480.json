@@ -25,12 +25,18 @@
       "close_price": 1135.0,
       "trading_volume": 443522,
       "trading_value": 503397470,
-      "rise_reason": "스페이스X 벤더 지분 부각",
-      "reason_confidence": "mid",
-      "reason_source": "llm",
+      "rise_reason": "엔터테인먼트 인수 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
+        {
+          "title": "[메자닌 투자파일] 빌리언스, 250억 CB·유증…엔터사업 재편 속도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000081403&office_id=293&code=044480&page=&sm=",
+          "source": "블로터",
+          "date": "2026.03.23"
+        },
         {
           "title": "빌리언스, '글로벌 민간 우주항공사' 벤더 트리스 지분 인수",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005768473&office_id=277&code=044480&page=&sm=",
@@ -42,12 +48,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005363555&office_id=008&code=044480&page=&sm=",
           "source": "머니투데이",
           "date": "2026.05.27"
-        },
-        {
-          "title": "[메자닌 투자파일] 빌리언스, 250억 CB·유증…엔터사업 재편 속도",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000081403&office_id=293&code=044480&page=&sm=",
-          "source": "블로터",
-          "date": "2026.03.23"
         },
         {
           "title": "빌리언스, 박종진 단독 대표 체제로 변경",
@@ -78,9 +78,9 @@
       "close_price": 2225.0,
       "trading_volume": 2538465,
       "trading_value": 5648084625,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "엔터테인먼트 테마 강세",
+      "reason_confidence": "low",
+      "reason_source": "theme",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
@@ -92,7 +92,7 @@
         }
       ],
       "sector": "방송과엔터테인먼트",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "estimated"
     },
     {
@@ -427,5 +427,5 @@
     "count_recent": 2,
     "avg_rate": 20.39
   },
-  "built_at": "2026-07-12T02:48:59"
+  "built_at": "2026-07-12T07:40:44"
 }

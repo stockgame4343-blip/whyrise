@@ -83,7 +83,7 @@
         }
       ],
       "sector": "가구",
-      "is_52w_high": false,
+      "is_52w_high": null,
       "source": "stockrise"
     },
     {
@@ -166,7 +166,7 @@
         }
       ],
       "sector": "가구",
-      "is_52w_high": false,
+      "is_52w_high": null,
       "source": "stockrise"
     },
     {
@@ -243,7 +243,7 @@
         }
       ],
       "sector": "가구",
-      "is_52w_high": false,
+      "is_52w_high": null,
       "source": "stockrise"
     },
     {
@@ -252,9 +252,9 @@
       "close_price": 3650.0,
       "trading_volume": 45550,
       "trading_value": 166257500,
-      "rise_reason": "주식병합 후 거래 재개 폭등",
+      "rise_reason": "흑자 전환",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "리모델링/인테리어",
       "news": [
@@ -320,7 +320,7 @@
         }
       ],
       "sector": "가구",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -329,18 +329,12 @@
       "close_price": 2810.0,
       "trading_volume": 963907,
       "trading_value": 2708578670,
-      "rise_reason": "1분기 가구 매출 두자릿수 성장",
+      "rise_reason": "매출 관련 뉴스",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "리모델링/인테리어",
       "news": [
-        {
-          "title": "조이웍스앤코 \"1분기 가구사업 매출 두자리수 성장\"",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013910633&office_id=003&code=309930&page=&sm=",
-          "source": "뉴시스",
-          "date": "2026.04.27"
-        },
         {
           "title": "조이웍스앤코, 1분기 가구사업 호조…\"주요 라인업 고른 성장\"",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005349600&office_id=008&code=309930&page=&sm=",
@@ -357,6 +351,12 @@
           "title": "조이웍스앤코, 1분기 가구사업 호조...\"주요 라인업 고른 성장\"",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006267234&office_id=018&code=309930&page=&sm=",
           "source": "이데일리",
+          "date": "2026.04.27"
+        },
+        {
+          "title": "조이웍스앤코 \"1분기 가구사업 매출 두자리수 성장\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013910633&office_id=003&code=309930&page=&sm=",
+          "source": "뉴시스",
           "date": "2026.04.27"
         },
         {
@@ -397,7 +397,7 @@
         }
       ],
       "sector": "가구",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -406,9 +406,9 @@
       "close_price": 1912.0,
       "trading_volume": 843178,
       "trading_value": 1612156336,
-      "rise_reason": "1주당 3주 무상증자 결정",
+      "rise_reason": "리모델링/인테리어 테마 강세",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "리모델링/인테리어",
       "news": [
@@ -474,7 +474,7 @@
         }
       ],
       "sector": "가구",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -587,5 +587,5 @@
     "count_recent": 3,
     "avg_rate": 17.14
   },
-  "built_at": "2026-07-12T02:49:00"
+  "built_at": "2026-07-12T07:46:32"
 }

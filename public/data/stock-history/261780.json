@@ -281,9 +281,9 @@
       "close_price": 3960.0,
       "trading_volume": 21237156,
       "trading_value": 84099137760,
-      "rise_reason": "아리바이오랩 변경상장 임박",
-      "reason_confidence": "mid",
-      "reason_source": "llm",
+      "rise_reason": "합병 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -485,7 +485,7 @@
         }
       ],
       "sector": "제약",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -494,18 +494,12 @@
       "close_price": 3710.0,
       "trading_volume": 4704445,
       "trading_value": 17453490950,
-      "rise_reason": "아리바이오 기술수출 훈풍",
-      "reason_confidence": "mid",
-      "reason_source": "llm",
+      "rise_reason": "합병 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
-        {
-          "title": "“합병 전 실탄 확보”...소룩스 250억 CB 발행, 아리바이오도 추...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001164122&office_id=366&code=261780&page=&sm=",
-          "source": "조선비즈",
-          "date": "2026.05.14"
-        },
         {
           "title": "차백신연구소, 28억 규모 아리바이오 전환사채 취득 결정",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006273277&office_id=018&code=261780&page=&sm=",
@@ -529,6 +523,12 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000082725&office_id=293&code=261780&page=&sm=",
           "source": "블로터",
           "date": "2026.04.14"
+        },
+        {
+          "title": "“합병 전 실탄 확보”...소룩스 250억 CB 발행, 아리바이오도 추...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001164122&office_id=366&code=261780&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.14"
         },
         {
           "title": "차바이오텍, 차헬스케어 지분 매각…차원태표 'BD 재편' 실험 연장선",
@@ -562,7 +562,7 @@
         }
       ],
       "sector": "제약",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -585,7 +585,7 @@
         }
       ],
       "sector": "제약",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "estimated"
     },
     {
@@ -710,5 +710,5 @@
     "count_recent": 4,
     "avg_rate": 16.99
   },
-  "built_at": "2026-07-12T02:49:00"
+  "built_at": "2026-07-12T07:31:15"
 }

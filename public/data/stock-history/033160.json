@@ -92,9 +92,9 @@
       "close_price": 28000.0,
       "trading_volume": 3497037,
       "trading_value": 97917036000,
-      "rise_reason": "LPDDR 와이어 수요 확대",
+      "rise_reason": "상장 이슈",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -269,24 +269,12 @@
       "close_price": 34000.0,
       "trading_volume": 2827420,
       "trading_value": 96132280000,
-      "rise_reason": "소캠 수혜·호실적 부각",
-      "reason_confidence": "mid",
-      "reason_source": "llm",
+      "rise_reason": "소캠 실적 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
-        {
-          "title": "엠케이전자, AI 메모리 수요 확대 수혜 기대…목표가↑-현대차",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006284065&office_id=018&code=033160&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.05.18"
-        },
-        {
-          "title": "엠케이전자, 반도체 소재 성장에 1Q 영업익 132% 급증",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005763562&office_id=277&code=033160&page=&sm=",
-          "source": "아시아경제",
-          "date": "2026.05.15"
-        },
         {
           "title": "엠케이전자, 1분기 호실적 기대에 '52주 신고가'…12%↑[특징주]",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263997&office_id=018&code=033160&page=&sm=",
@@ -294,9 +282,21 @@
           "date": "2026.04.23"
         },
         {
+          "title": "엠케이전자, AI 메모리 수요 확대 수혜 기대…목표가↑-현대차",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006284065&office_id=018&code=033160&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.18"
+        },
+        {
           "title": "엠케이전자, 1분기 반도체 소재 부문 호조…\"한국·중국법인 동반 성.....",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005358403&office_id=008&code=033160&page=&sm=",
           "source": "머니투데이",
+          "date": "2026.05.15"
+        },
+        {
+          "title": "엠케이전자, 반도체 소재 성장에 1Q 영업익 132% 급증",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005763562&office_id=277&code=033160&page=&sm=",
+          "source": "아시아경제",
           "date": "2026.05.15"
         },
         {
@@ -346,24 +346,12 @@
       "close_price": 32100.0,
       "trading_volume": 2755980,
       "trading_value": 88466958000,
-      "rise_reason": "1분기 영업익 132% 급증",
+      "rise_reason": "실적 관련 뉴스",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
-        {
-          "title": "엠케이전자, 반도체 소재 성장에 1Q 영업익 132% 급증",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005763562&office_id=277&code=033160&page=&sm=",
-          "source": "아시아경제",
-          "date": "2026.05.15"
-        },
-        {
-          "title": "엠케이전자, 1분기 반도체 소재 부문 호조…\"한국·중국법인 동반 성.....",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005358403&office_id=008&code=033160&page=&sm=",
-          "source": "머니투데이",
-          "date": "2026.05.15"
-        },
         {
           "title": "엠케이전자, 1분기 호실적 기대에 '52주 신고가'…12%↑[특징주]",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263997&office_id=018&code=033160&page=&sm=",
@@ -375,6 +363,18 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006284065&office_id=018&code=033160&page=&sm=",
           "source": "이데일리",
           "date": "2026.05.18"
+        },
+        {
+          "title": "엠케이전자, 1분기 반도체 소재 부문 호조…\"한국·중국법인 동반 성.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005358403&office_id=008&code=033160&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.15"
+        },
+        {
+          "title": "엠케이전자, 반도체 소재 성장에 1Q 영업익 132% 급증",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005763562&office_id=277&code=033160&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.05.15"
         },
         {
           "title": "엠케이전자, 1분기 깜짝 실적 기대…목표가↑-현대차",
@@ -479,7 +479,7 @@
         }
       ],
       "sector": "반도체와반도체장비",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -553,17 +553,12 @@
       "close_price": 24100.0,
       "trading_volume": 4373267,
       "trading_value": 105395734700,
-      "rise_reason": "소캠 수혜 신고가 랠리",
-      "reason_confidence": "mid",
-      "reason_source": "llm",
+      "rise_reason": "항공 테마 강세",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
-        {
-          "title": "[특징주] 엠케이전자 12%대 상승…52주 신고가 경신",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005747678&office_id=277&code=033160&page=&sm=",
-          "source": "아시아경제"
-        },
         {
           "title": "[서울데이터랩]루멘스 30.00% 상한가 금일 증시 상승률 1위로 마감",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0003635249&office_id=081&code=033160&page=&sm=",
@@ -578,6 +573,11 @@
           "title": "[단독]반도체 소부장, 법인세 계상액 11% 증가…DB하이텍 726억 ...",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0002381199&office_id=123&code=033160&page=&sm=",
           "source": "조세일보"
+        },
+        {
+          "title": "[특징주] 엠케이전자 12%대 상승…52주 신고가 경신",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005747678&office_id=277&code=033160&page=&sm=",
+          "source": "아시아경제"
         },
         {
           "title": "휴전 소식에 줄줄이 '상한가' 직행…'종전 수혜주' 뭐길래",
@@ -837,8 +837,8 @@
     "count_15": 9,
     "count_20": 6,
     "count_limit": 0,
-    "count_recent": 2,
+    "count_recent": 1,
     "avg_rate": 17.55
   },
-  "built_at": "2026-07-12T02:49:00"
+  "built_at": "2026-07-12T07:16:33"
 }

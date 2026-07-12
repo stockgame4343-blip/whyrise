@@ -98,24 +98,12 @@
       "close_price": 37000.0,
       "trading_volume": 402584,
       "trading_value": 14895608000,
-      "rise_reason": "AI 서버 장비 500억 계약",
+      "rise_reason": "흑자 전환",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
-        {
-          "title": "코세스, 500억 규모 AI 서버용 전극셀 자동화 장비 공급계약",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005277107&office_id=015&code=089890&page=&sm=",
-          "source": "한국경제",
-          "date": "2026.04.20"
-        },
-        {
-          "title": "코세스, 501억 규모 AI 서버용 전극셀 자동화 장비 공급계약",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006261943&office_id=018&code=089890&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.04.20"
-        },
         {
           "title": "부천시, 강소기업 최종 선정…코스닥 상장사 코세스·로컬광고기업 스...",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000747540&office_id=396&code=089890&page=&sm=",
@@ -127,6 +115,18 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000099480&office_id=243&code=089890&page=&sm=",
           "source": "이코노미스트",
           "date": "2026.06.22"
+        },
+        {
+          "title": "코세스, 500억 규모 AI 서버용 전극셀 자동화 장비 공급계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005277107&office_id=015&code=089890&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.04.20"
+        },
+        {
+          "title": "코세스, 501억 규모 AI 서버용 전극셀 자동화 장비 공급계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006261943&office_id=018&code=089890&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.20"
         },
         {
           "title": "코세스, 지난해 영업익 177억…흑자전환",
@@ -175,9 +175,9 @@
       "close_price": 35900.0,
       "trading_volume": 213199,
       "trading_value": 7653844100,
-      "rise_reason": "500억 AI서버 장비 수주",
+      "rise_reason": "흑자 전환",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -317,14 +317,14 @@
       "close_price": 26800.0,
       "trading_volume": 778675,
       "trading_value": 20868490000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 장비 테마 강세",
+      "reason_confidence": "low",
+      "reason_source": "theme",
       "reason_status": "filled",
-      "theme_tag": "고체산화물 연료전지(SOFC)",
+      "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "estimated"
     },
     {
@@ -585,12 +585,12 @@
     }
   ],
   "stats": {
-    "count_10": 17,
+    "count_10": 16,
     "count_15": 7,
     "count_20": 2,
     "count_limit": 0,
     "count_recent": 2,
-    "avg_rate": 15.45
+    "avg_rate": 15.69
   },
-  "built_at": "2026-07-12T02:48:59"
+  "built_at": "2026-07-12T07:14:54"
 }

@@ -187,9 +187,9 @@
       "close_price": 5730.0,
       "trading_volume": 473145,
       "trading_value": 2711120850,
-      "rise_reason": "CPO 검사장비 개발 부각",
-      "reason_confidence": "low",
-      "reason_source": "llm",
+      "rise_reason": "수출 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "LED장비",
       "news": [
@@ -276,18 +276,12 @@
       "close_price": 4855.0,
       "trading_volume": 476547,
       "trading_value": 2313635685,
-      "rise_reason": "CPO 검사장비 첫 양산 수주",
+      "rise_reason": "양산 보도",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
-        {
-          "title": "레이저쎌 면 레이저 본딩, 글로벌 CPO 제조사 뚫었다…\"양산용 첫 수...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002421589&office_id=092&code=412350&page=&sm=",
-          "source": "지디넷코리아",
-          "date": "2026.05.07"
-        },
         {
           "title": "이노메트리-레이저쎌, AI 광반도체용 CPO 검사장비 공동개발 맞손",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0003432233&office_id=030&code=412350&page=&sm=",
@@ -311,6 +305,12 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0002649035&office_id=016&code=412350&page=&sm=",
           "source": "헤럴드경제",
           "date": "2026.05.28"
+        },
+        {
+          "title": "레이저쎌 면 레이저 본딩, 글로벌 CPO 제조사 뚫었다…\"양산용 첫 수...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002421589&office_id=092&code=412350&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.05.07"
         },
         {
           "title": "반도체 중소형株 장초반 강세…수출 역대치 기록",
@@ -459,12 +459,18 @@
       "close_price": 10240.0,
       "trading_volume": 4504090,
       "trading_value": 46121881600,
-      "rise_reason": "글로벌 CPO 양산 첫 수주",
+      "rise_reason": "반도체 장비 계약 체결",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
+        {
+          "title": "[유상증자 모니터] '적자' 레이저쎌, 80억 수혈…양산 대응 승부수",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000082261&office_id=293&code=412350&page=&sm=",
+          "source": "블로터",
+          "date": "2026.04.06"
+        },
         {
           "title": "레이저쎌 면 레이저 본딩, 글로벌 CPO 제조사 뚫었다…\"양산용 첫 수...",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0002421589&office_id=092&code=412350&page=&sm=",
@@ -476,12 +482,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006265617&office_id=018&code=412350&page=&sm=",
           "source": "이데일리",
           "date": "2026.04.24"
-        },
-        {
-          "title": "[유상증자 모니터] '적자' 레이저쎌, 80억 수혈…양산 대응 승부수",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000082261&office_id=293&code=412350&page=&sm=",
-          "source": "블로터",
-          "date": "2026.04.06"
         },
         {
           "title": "[이 시각 시황] 온디바이스 AI, 인공지능 산업의 필수 인프라 주목",
@@ -509,7 +509,7 @@
         }
       ],
       "sector": "반도체와반도체장비",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -1058,5 +1058,5 @@
     "count_recent": 4,
     "avg_rate": 21.37
   },
-  "built_at": "2026-07-12T02:48:59"
+  "built_at": "2026-07-12T07:29:11"
 }

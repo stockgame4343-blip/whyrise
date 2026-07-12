@@ -80,9 +80,9 @@
       "close_price": 1116.0,
       "trading_volume": 3967345,
       "trading_value": 4427557020,
-      "rise_reason": "2차전지 폭등 리튬주 급등",
-      "reason_confidence": "low",
-      "reason_source": "llm",
+      "rise_reason": "리튬 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -91,12 +91,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006268055&office_id=018&code=051980&page=&sm=",
           "source": "이데일리",
           "date": "2026.04.28"
-        },
-        {
-          "title": "[이 시각 시황] 리튬 가격 상승에 관련주 강세",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000505886&office_id=374&code=051980&page=&sm=",
-          "source": "SBS Biz",
-          "date": "2026.04.22"
         },
         {
           "title": "[클리니컬 히스토리] 팜젠사이언스, 조영제 IND 눈앞…외부검증망 보....",
@@ -115,6 +109,12 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000512651&office_id=374&code=051980&page=&sm=",
           "source": "SBS Biz",
           "date": "2026.05.28"
+        },
+        {
+          "title": "[이 시각 시황] 리튬 가격 상승에 관련주 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000505886&office_id=374&code=051980&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.04.22"
         },
         {
           "title": "2차전지·MLCC 훈풍 알겠는데…“매출 0원이 상한가?” [투자360]",
@@ -225,7 +225,7 @@
         }
       ],
       "sector": "통신장비",
-      "is_52w_high": true,
+      "is_52w_high": false,
       "source": "stockrise"
     },
     {
@@ -482,5 +482,5 @@
     "count_recent": 2,
     "avg_rate": 25.02
   },
-  "built_at": "2026-07-12T02:48:59"
+  "built_at": "2026-07-12T07:26:52"
 }
