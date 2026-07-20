@@ -53,6 +53,35 @@ function marketLabel(m) {
 }
 function clip(s, n) { s = String(s == null ? '' : s); return s.length > n ? s.slice(0, n - 1) + '…' : s; }
 
+// ── LLM 정제 사유 오버레이 (사이트 api.js _overlayRefinedReasons 와 동일 규칙) ──
+// stock-rise raw 사유는 제네릭("OO 관련 뉴스")이 섞이므로, whyrise rise-history 의
+// reason_source='llm' 행을 ticker→사유 맵으로 받아 캡션에서 우선 사용한다.
+// 실패/파일없음은 빈 맵 — 캡션은 raw 사유로 폴백(게시 자체는 막지 않음).
+const WHY_RAW_DATA = 'https://raw.githubusercontent.com/stockgame4343-blip/whyrise/master/public/data';
+async function fetchRefinedReasons(date) {
+    for (var attempt = 0; attempt < 2; attempt++) {
+        try {
+            var ctl = new AbortController();
+            var timer = setTimeout(function () { ctl.abort(); }, 10000);
+            var res = await fetch(WHY_RAW_DATA + '/rise-history/' + date + '.json', { signal: ctl.signal });
+            clearTimeout(timer);
+            if (res.status === 404) return {};
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            var own = await res.json();
+            var m = {};
+            ((own && own.rankings) || []).forEach(function (r) {
+                if (r && r.ticker && r.reason_source === 'llm' && r.rise_reason) {
+                    m[r.ticker] = String(r.rise_reason).trim();
+                }
+            });
+            return m;
+        } catch (e) {
+            if (attempt) { console.error('정제 사유 오버레이 실패(폴백: raw 사유):', e.message); return {}; }
+        }
+    }
+    return {};
+}
+
 // utm 딥링크 — 캠페인별 유입을 admin 유입경로 패널에서 구분(visitor.js 가 utm 을 ref 로 승격)
 function orgoLink(path, campaign) {
     return 'https://orgo.kr' + path +
@@ -573,6 +602,7 @@ function socialThemesCaption(opts) {
 module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip, orgoLink, escHtml, htmlLink,
+    fetchRefinedReasons,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,

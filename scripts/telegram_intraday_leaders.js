@@ -47,18 +47,36 @@ function toMovers(rows) {
     });
 }
 
-function buildCaption(ymd, movers, comment) {
-    var lines = ['🚀 오늘의 주도주 TOP5 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst(), ''];
+// 종목 한 줄 꼬리 — 이유(LLM 정제 우선) 있으면 '— 이유', 없으면 '[테마]' 폴백
+var REASON_CLIP = 30;   // 캡션 이유 표시 상한(자) — LLM 정제 사유 상한과 동일
+function reasonTail(m, refined) {
+    var r = String((refined && refined[m.ticker]) || m.reason || '').trim();
+    if (r) return ' — ' + tg.clip(r, REASON_CLIP);
+    return m.theme ? ' [' + tg.clip(m.theme, 12) + ']' : '';
+}
+
+// 캡션 — 종목마다 '이름(딥링크) +% — 이유' 한 줄. 채널 안에서 이유까지 읽히고,
+// 이력·차트가 궁금하면 이름 탭 → 종목 상세(utm 측정)로 넘어가는 구조.
+function buildCaption(ymd, movers, comment, refined) {
+    var parts = [tg.escHtml('🚀 오늘의 주도주 TOP5 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst()), ''];
     movers.forEach(function (m, i) {
-        lines.push((i + 1) + ' ' + m.name + ' ' + tg.pct(m.rate) + (m.theme ? ' [' + m.theme + ']' : ''));
+        parts.push(tg.escHtml((i + 1) + ' ') +
+            tg.htmlLink(m.name, tg.orgoLink('/stock/' + m.ticker, 'intraday')) +
+            tg.escHtml(' ' + tg.pct(m.rate) + reasonTail(m, refined)));
     });
-    lines.push('');
-    if (comment) { lines.push(comment); lines.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
-    // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
-    var link = (movers[0] && movers[0].ticker)
-        ? tg.htmlLink('👉 ' + movers[0].name + ' 왜 오르나 보러가기', tg.orgoLink('/stock/' + movers[0].ticker, 'intraday'))
-        : tg.htmlLink('👉 실시간 급등 현황 보러가기', tg.orgoLink('/', 'intraday'));
-    return tg.escHtml(lines.join('\n')) + '\n' + link;
+    if (comment) { parts.push(''); parts.push(tg.escHtml(comment)); }   // 특이사항 없으면 멘트 줄 자체를 생략
+    parts.push('');
+    parts.push(tg.htmlLink('👉 오늘 오른 종목 전부 보기', tg.orgoLink('/rise.html', 'intraday')));
+    var html = parts.join('\n');
+    // sendPhoto 캡션 상한 방어 — HTML 원문이 상한을 넘으면 태그가 중간에 잘려 API 400 이 나므로
+    // 종목 딥링크 없는 짧은 포맷으로 폴백(하단 링크 1개만 유지).
+    if (html.length > tg.TG_CAPTION_MAX) {
+        var plain = ['🚀 오늘의 주도주 TOP5 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst(), ''];
+        movers.forEach(function (m, i) { plain.push((i + 1) + ' ' + m.name + ' ' + tg.pct(m.rate) + reasonTail(m, refined)); });
+        if (comment) { plain.push(''); plain.push(comment); }
+        html = tg.escHtml(plain.join('\n')) + '\n\n' + tg.htmlLink('👉 오늘 오른 종목 전부 보기', tg.orgoLink('/rise.html', 'intraday'));
+    }
+    return html;
 }
 
 // 후킹형 한 줄(첫 줄 재활용) — tg.aiHook 공용 규칙 사용
@@ -93,8 +111,9 @@ async function main() {
     if (!movers.length) { console.log('오늘 급등(>=' + core.RISE_CUTOFF + '%) 종목 없음 — 스킵'); return; }
     console.log('주도주:', movers.map(function (m) { return m.name + ' ' + tg.pct(m.rate); }).join(' / '));
 
+    var refined = await tg.fetchRefinedReasons(today);   // LLM 정제 사유 우선(없으면 raw 폴백)
     var comment = await aiHook(today, movers);
-    var caption = buildCaption(today, movers, comment);
+    var caption = buildCaption(today, movers, comment, refined);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
 
     var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });

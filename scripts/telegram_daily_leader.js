@@ -87,8 +87,17 @@ function detailTag(leader) {
 // 지수 레벨 표기 — 소수 2자리 고정
 function idxNum(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
 
+// 그룹 1위 종목의 사유 꼬리 — LLM 정제 우선, raw 폴백. 이유 없으면 빈 문자열.
+var TOP_REASON_CLIP = 26;
+function topReasonTail(topName, rankings, refined) {
+    var row = (rankings || []).find(function (r) { return r && r.name === topName; });
+    if (!row) return '';
+    var r = String((refined && refined[row.ticker]) || row.rise_reason || '').trim();
+    return r ? ' — ' + tg.clip(r, TOP_REASON_CLIP) : '';
+}
+
 // ── 캡션(구조 텍스트) ──
-function buildCaption(ymd, L, comment, M) {
+function buildCaption(ymd, L, comment, M, refined, rankings) {
     var lines = [];
     lines.push('🔥 오늘의 대장 (' + dateLabel(ymd) + ')');
     lines.push('');
@@ -103,7 +112,8 @@ function buildCaption(ymd, L, comment, M) {
         lines.push('🥇 대장주');
         lines.push(L.leader.name + (mk ? '(' + mk + ')' : ''));
         lines.push(pct(L.leader.change_rate) + ' · 거래대금 ' + fmtAmount(L.leader.trading_value));
-        var reason = String(L.leader.rise_reason || '').trim();
+        // 사유는 LLM 정제본 우선(제네릭 "OO 관련 뉴스" 회피), 없으면 raw
+        var reason = String((refined && refined[L.leader.ticker]) || L.leader.rise_reason || '').trim();
         lines.push('[' + detailTag(L.leader) + ']' + (reason ? ' ' + reason : ''));
         lines.push('');
     } else {
@@ -115,14 +125,14 @@ function buildCaption(ymd, L, comment, M) {
         lines.push('🏢 대장섹터');
         lines.push(L.sector.key + ' ' + L.sector.count + '종목');
         lines.push('평균 ' + pct(L.sector.avgRate) + ' · 거래 ' + fmtAmount(L.sector.totalVolume));
-        lines.push('1위 ' + L.sector.top + ' ' + pct(L.sector.topRate));
+        lines.push('1위 ' + L.sector.top + ' ' + pct(L.sector.topRate) + topReasonTail(L.sector.top, rankings, refined));
         lines.push('');
     }
     if (L.theme) {
         lines.push('🏷️ 대장테마');
         lines.push(L.theme.key + ' ' + L.theme.count + '종목');
         lines.push('평균 ' + pct(L.theme.avgRate) + ' · 거래 ' + fmtAmount(L.theme.totalVolume));
-        lines.push('1위 ' + L.theme.top + ' ' + pct(L.theme.topRate));
+        lines.push('1위 ' + L.theme.top + ' ' + pct(L.theme.topRate) + topReasonTail(L.theme.top, rankings, refined));
         lines.push('');
     }
     if (comment) { lines.push(comment); lines.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
@@ -289,8 +299,9 @@ async function main() {
         else console.log('시장 요약 거래일(' + summary.tradedYmd + ') ≠ 캡션 날짜(' + today + ') — 블록 생략');
     } catch (e) { console.error('시장 요약 실패(블록 생략):', e.message); }
 
+    var refined = await tg.fetchRefinedReasons(today);   // LLM 정제 사유 우선(없으면 raw 폴백)
     var comment = await aiComment(today, L, M);
-    var caption = buildCaption(today, L, comment, M);
+    var caption = buildCaption(today, L, comment, M, refined, day.rankings || []);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
     await renderImage(today, L);
