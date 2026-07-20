@@ -13,6 +13,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const market = require('./tg_market.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -47,10 +48,11 @@ function toMovers(rows) {
     });
 }
 
-// 종목 한 줄 꼬리 — 이유(LLM 정제 우선) 있으면 '— 이유', 없으면 '[테마]' 폴백
+// 종목 한 줄 꼬리 — 구체적 이유(LLM 정제 우선)만 '— 이유'로, 애매하면 '[테마]' 폴백
+// (제네릭 "OO 관련 뉴스"류를 쓰느니 생략 — 2026-07-20 사용자 요청)
 var REASON_CLIP = 30;   // 캡션 이유 표시 상한(자) — LLM 정제 사유 상한과 동일
 function reasonTail(m, refined) {
-    var r = String((refined && refined[m.ticker]) || m.reason || '').trim();
+    var r = tg.specificReason((refined && refined[m.ticker]) || m.reason);
     if (r) return ' — ' + tg.clip(r, REASON_CLIP);
     return m.theme ? ' [' + tg.clip(m.theme, 12) + ']' : '';
 }
@@ -96,7 +98,12 @@ async function main() {
     }
 
     var today = DATE_ARG || tg.ymdKst();
-    if (!DATE_ARG) {
+    if (!DATE_ARG && !FORCE) {
+        // 휴장일 2중 가드 — 캘린더(공휴일) + 네이버 실측(임시휴장). 휴장일에 상류가
+        // 전 거래일 복제 파일을 만들어도(2026-07-17 사고) 여기서 막힌다.
+        if (!tg.isKrTradingDay(today)) { console.log('휴장일(' + today + ', 캘린더) — 스킵'); return; }
+        var traded = await market.isKrTradedToday(today);
+        if (!traded.ok) { console.log('휴장일(실측 거래일=' + traded.tradedYmd + ') — 스킵'); return; }
         var dates = await core.fetchJson(RAW + '/dates.json');
         var latest = Array.isArray(dates) && dates.length ? dates.slice().sort().slice(-1)[0] : '';
         if (latest !== today) { console.log('오늘(' + today + ') 장중 데이터 없음(최신=' + latest + ') — 스킵'); return; }

@@ -1,7 +1,8 @@
 """한국 거래소(KRX) 휴장일 캘린더.
 
 토·일은 별도 처리, 본 모듈은 평일 공휴일·임시휴장일만 다룬다.
-연도별 갱신 필요 — KRX 공식 캘린더 참고:
+날짜 목록은 kr_holidays.json 이 단일 소스 — JS(scripts/tg_common.js)와 공용이므로
+갱신은 반드시 JSON 쪽에서 한다. 연도별 갱신 필요 — KRX 공식 캘린더 참고:
   https://open.krx.co.kr/contents/MKD/01/0110/01100305/MKD01100305.jsp
 
 사용법:
@@ -9,30 +10,19 @@
     if is_kr_holiday("20260501"):
         skip()
 """
+import json
 from datetime import date
+from pathlib import Path
 
-# YYYYMMDD 문자열 set
-KR_HOLIDAYS = {
-    # 2026
-    "20260101",  # 신정
-    "20260216",  # 설날 연휴
-    "20260217",  # 설날
-    "20260218",  # 설날 연휴
-    "20260302",  # 삼일절 대체(3/1 일)
-    "20260501",  # 근로자의 날
-    "20260505",  # 어린이날
-    "20260525",  # 부처님오신날 대체(5/24 일)
-    "20260817",  # 광복절 대체(8/15 토)
-    "20260924",  # 추석 연휴
-    "20260925",  # 추석
-    "20260928",  # 추석 대체(9/26 토)
-    "20261005",  # 개천절 대체(10/3 토)
-    "20261009",  # 한글날
-    "20261225",  # 성탄절
-    "20261231",  # 연말 휴장
-    # 2027 (필요 시 추가)
-    "20270101",  # 신정
-}
+# YYYYMMDD 문자열 set — kr_holidays.json(단일 소스)에서 로드.
+# 로드 실패 시 빈 set(공휴일 미반영)으로 동작하되 경고를 남긴다 — 조용한 오차단 방지.
+try:
+    KR_HOLIDAYS = set(json.loads(
+        Path(__file__).with_name('kr_holidays.json').read_text(encoding='utf-8')
+    )['holidays'].keys())
+except Exception as _e:  # noqa: N816
+    print(f'[kr_holidays] kr_holidays.json 로드 실패({_e}) — 공휴일 미반영으로 동작')
+    KR_HOLIDAYS = set()
 
 
 def is_kr_holiday(date_input):

@@ -92,7 +92,8 @@ var TOP_REASON_CLIP = 26;
 function topReasonTail(topName, rankings, refined) {
     var row = (rankings || []).find(function (r) { return r && r.name === topName; });
     if (!row) return '';
-    var r = String((refined && refined[row.ticker]) || row.rise_reason || '').trim();
+    // 구체적 사유만 노출 — 애매한 "OO 관련 뉴스"류는 생략 (2026-07-20 사용자 요청)
+    var r = tg.specificReason((refined && refined[row.ticker]) || row.rise_reason);
     return r ? ' — ' + tg.clip(r, TOP_REASON_CLIP) : '';
 }
 
@@ -112,8 +113,8 @@ function buildCaption(ymd, L, comment, M, refined, rankings) {
         lines.push('🥇 대장주');
         lines.push(L.leader.name + (mk ? '(' + mk + ')' : ''));
         lines.push(pct(L.leader.change_rate) + ' · 거래대금 ' + fmtAmount(L.leader.trading_value));
-        // 사유는 LLM 정제본 우선(제네릭 "OO 관련 뉴스" 회피), 없으면 raw
-        var reason = String((refined && refined[L.leader.ticker]) || L.leader.rise_reason || '').trim();
+        // 사유는 LLM 정제본 우선 + 구체적일 때만 — 애매하면 [태그]만 남긴다
+        var reason = tg.specificReason((refined && refined[L.leader.ticker]) || L.leader.rise_reason);
         lines.push('[' + detailTag(L.leader) + ']' + (reason ? ' ' + reason : ''));
         lines.push('');
     } else {
@@ -259,7 +260,12 @@ async function main() {
     }
 
     var today = DATE_ARG || ymdKst();
-    if (!DATE_ARG) {   // 샘플(--date) 이 아니면 오늘 거래일 데이터 있어야 함
+    if (!DATE_ARG && !FORCE) {   // 샘플(--date)·강제(--force) 가 아니면 거래일+데이터 가드
+        // 휴장일 2중 가드 — 캘린더(공휴일) + 네이버 실측(임시휴장). 휴장일에 상류가
+        // 전 거래일 복제 파일을 만들어도(2026-07-17 사고) 여기서 막힌다.
+        if (!tg.isKrTradingDay(today)) { console.log('휴장일(' + today + ', 캘린더) — 게시 스킵'); return; }
+        var traded = await market.isKrTradedToday(today);
+        if (!traded.ok) { console.log('휴장일(실측 거래일=' + traded.tradedYmd + ') — 게시 스킵'); return; }
         var dates = await core.fetchJson(RAW + '/dates.json');
         var latest = Array.isArray(dates) && dates.length ? dates.slice().sort().slice(-1)[0] : '';
         if (latest !== today) {

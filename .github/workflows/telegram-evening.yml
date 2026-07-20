@@ -1,0 +1,80 @@
+name: 저녁 마감 복기 텔레그램 자동 게시
+
+# 평일 저녁, 마감 복기(상한가·2일 연속·1년 급등 단골)를 텍스트로 채널에 게시.
+#   - 데이터: stock-rise raw + whyrise rise-history(LLM 정제 사유) + 로컬 stock-history
+#   - 휴장일 가드: 스크립트가 캘린더(kr_holidays.json) + 네이버 실측 2중 차단
+#   - 이미지 없음(텍스트 전용) — Playwright 불필요
+# 중복 게시는 public/data/_telegram-evening.json 마커로 방지(크론 이중 발동 안전).
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '전송 안 하고 캡션만 산출(검증)'
+        type: boolean
+        default: false
+      force:
+        description: '마커·휴장일 가드 무시하고 강제 게시'
+        type: boolean
+        default: false
+      date:
+        description: '샘플용 과거 날짜 YYYYMMDD (비우면 오늘)'
+        type: string
+        default: ''
+  repository_dispatch:
+    types: [tg-evening]      # 외부 cron-job.org → GitHub dispatch (GitHub 크론 누락 대비 이중화)
+  schedule:
+    - cron: '0 10 * * 1-5'   # 평일 KST 19:00
+    - cron: '30 10 * * 1-5'  # 평일 KST 19:30 — 백업(첫 크론 누락 대비, 마커로 중복 방지)
+
+env:
+  TZ: Asia/Seoul
+
+concurrency:
+  group: telegram-evening
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Post to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
+          [ -n "${{ inputs.date }}" ] && ARGS="$ARGS --date=${{ inputs.date }}"
+          node scripts/telegram_evening_recap.js $ARGS
+
+      # 중복 방지 마커 커밋(게시됐을 때만 변경됨). dry-run/스킵이면 변경 없음 → no-op.
+      - name: Commit marker
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/_telegram-evening.json 2>/dev/null || true
+          git diff --staged --quiet && echo "게시 안 됨/변경 없음 — 커밋 스킵" && exit 0
+          git commit -m "chore: 저녁 복기 텔레그램 게시 마커 ($(date +%Y%m%d))"
+          BRANCH="${GITHUB_REF_NAME}"
+          for attempt in 1 2 3; do
+            git fetch origin "$BRANCH"
+            if git -c rebase.autoStash=true rebase "origin/$BRANCH"; then
+              git push origin "HEAD:$BRANCH" && echo "마커 push 성공" && exit 0
+            else
+              git rebase --abort || true
+            fi
+            sleep 5
+          done
+          echo "마커 push 실패(비치명적) — 다음 실행이 마커 없이도 스킵 로직 재확인" && exit 0

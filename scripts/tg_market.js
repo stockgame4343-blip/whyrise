@@ -112,6 +112,22 @@ async function fetchKrMarketSummary() {
 }
 
 /**
+ * 실측 거래일 가드 — 네이버 KOSPI 시세의 거래일(tradedYmd)이 오늘과 다르면 휴장일.
+ * 정적 캘린더(kr_holidays.json)가 못 잡는 임시휴장(2026-07-17 사례) 방어.
+ * 개장(09:00) 이후에만 유효 — 장전엔 항상 전 거래일이 나오므로 쓰지 말 것(장전 브리핑 제외).
+ * 네이버 실패 시 fail-open(ok:true) — 일시 장애가 정상 거래일 게시를 막지 않게 한다.
+ */
+async function isKrTradedToday(todayYmd) {
+    try {
+        var k = await fetchKrIndex('KOSPI');
+        return { ok: k.tradedYmd === String(todayYmd), tradedYmd: k.tradedYmd };
+    } catch (e) {
+        console.error('거래일 실측 실패(fail-open):', e.message);
+        return { ok: true, tradedYmd: '' };
+    }
+}
+
+/**
  * 해외 지수/환율 1종 — Yahoo v8 chart. range=1d 라 meta.chartPreviousClose 가 직전 종가.
  * → { symbol, label, price, changePct }
  */
@@ -194,5 +210,6 @@ async function fetchSidecarEvents(withinMin) {
 module.exports = {
     GLOBAL_SYMBOLS, FX_SYMBOL,
     fetchJsonRetry, fetchTextRetry, decodeEntities, fetchKrIndex, fetchUpDownCount, fetchKrMarketSummary,
+    isKrTradedToday,
     fetchGlobalQuote, fetchGlobalQuotes, fetchSidecarEvents,
 };

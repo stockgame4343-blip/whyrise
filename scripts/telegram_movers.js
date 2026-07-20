@@ -12,6 +12,7 @@
 const path = require('path');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const market = require('./tg_market.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -69,7 +70,11 @@ async function main() {
     }
 
     var today = DATE_ARG || tg.ymdKst();
-    if (!DATE_ARG) {
+    if (!DATE_ARG && !FORCE) {
+        // 휴장일 2중 가드 — 캘린더(공휴일) + 네이버 실측(임시휴장, 2026-07-17 사고 방어)
+        if (!tg.isKrTradingDay(today)) { console.log('휴장일(' + today + ', 캘린더) — 스킵'); return; }
+        var traded = await market.isKrTradedToday(today);
+        if (!traded.ok) { console.log('휴장일(실측 거래일=' + traded.tradedYmd + ') — 스킵'); return; }
         var dates = await core.fetchJson(RAW + '/dates.json');
         var latest = Array.isArray(dates) && dates.length ? dates.slice().sort().slice(-1)[0] : '';
         if (latest !== today) { console.log('오늘(' + today + ') 장중 데이터 없음(최신=' + latest + ') — 스킵'); return; }

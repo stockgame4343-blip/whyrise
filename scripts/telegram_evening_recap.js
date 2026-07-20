@@ -21,6 +21,7 @@ const fs = require('fs');
 const path = require('path');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const market = require('./tg_market.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -44,8 +45,9 @@ const REGULAR_MAX = 3;          // 급등 단골 최대 표시 수
 const REGULAR_SCAN = 10;        // 단골 후보로 살펴볼 오늘 상승률 상위 종목 수
 const REASON_CLIP = 30;         // 이유 표시 상한(자) — LLM 정제 사유 상한과 동일
 
+// 구체적 사유만 — 애매한 "OO 관련 뉴스"류는 생략하고 이름·등락률만 (2026-07-20 사용자 요청)
 function reasonOf(row, refined) {
-    return String((refined && refined[row.ticker]) || row.rise_reason || '').trim();
+    return tg.specificReason((refined && refined[row.ticker]) || row.rise_reason);
 }
 
 // 로컬 stock-history 에서 1년 +10% 누적 횟수 — 파일 없으면 null (섹션에서 제외)
@@ -141,7 +143,11 @@ async function main() {
     var today = DATE_ARG || tg.ymdKst();
     var dates = await core.fetchJson(RAW + '/dates.json');
     var sorted = Array.isArray(dates) ? dates.slice().sort() : [];
-    if (!DATE_ARG) {
+    if (!DATE_ARG && !FORCE) {
+        // 휴장일 2중 가드 — 캘린더(공휴일) + 네이버 실측(임시휴장, 2026-07-17 사고 방어)
+        if (!tg.isKrTradingDay(today)) { console.log('휴장일(' + today + ', 캘린더) — 스킵'); return; }
+        var traded = await market.isKrTradedToday(today);
+        if (!traded.ok) { console.log('휴장일(실측 거래일=' + traded.tradedYmd + ') — 스킵'); return; }
         var latest = sorted.length ? sorted[sorted.length - 1] : '';
         if (latest !== today) { console.log('오늘(' + today + ') 마감 데이터 없음(최신=' + latest + ') — 스킵'); return; }
     }
@@ -150,12 +156,27 @@ async function main() {
         if (mk && mk.last === today) { console.log('이미 오늘(' + today + ') 저녁 복기 게시함 — 스킵'); return; }
     }
 
-    var prevYmd = sorted.filter(function (d) { return d < today; }).slice(-1)[0] || '';
+    var prevCands = sorted.filter(function (d) { return d < today; });
     var day = await core.fetchJson(RAW + '/' + today + '.json');
+    // '어제' = 직전 거래일 — 휴장일 복제 파일(2026-07-17=07-16 사례)이면 한 단계 더 과거로.
     var prevDay = null;
+    var prevYmd = prevCands.slice(-1)[0] || '';
     if (prevYmd) {
-        try { prevDay = await core.fetchJson(RAW + '/' + prevYmd + '.json'); }
-        catch (e) { console.error('전일 데이터 실패(연속 섹션 생략):', e.message); }
+        try {
+            prevDay = await core.fetchJson(RAW + '/' + prevYmd + '.json');
+            if (tg.isDuplicateDayData(day, prevDay)) {
+                console.log('오늘 데이터가 전일(' + prevYmd + ') 복제본 — 가짜 거래일로 보고 스킵');
+                return;
+            }
+            var prev2Ymd = prevCands.slice(-2)[0] || '';
+            if (prev2Ymd && prev2Ymd !== prevYmd) {
+                var prev2Day = await core.fetchJson(RAW + '/' + prev2Ymd + '.json');
+                if (tg.isDuplicateDayData(prevDay, prev2Day)) {
+                    console.log('전일(' + prevYmd + ')이 복제 데이터 — 연속 비교 기준을 ' + prev2Ymd + ' 로 대체');
+                    prevDay = prev2Day;
+                }
+            }
+        } catch (e) { console.error('전일 데이터 실패(연속 섹션 생략):', e.message); prevDay = null; }
     }
 
     var S = buildSections(day, prevDay);

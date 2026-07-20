@@ -53,6 +53,58 @@ function marketLabel(m) {
 }
 function clip(s, n) { s = String(s == null ? '' : s); return s.length > n ? s.slice(0, n - 1) + '…' : s; }
 
+// ── 휴장일 판정 (collector/kr_holidays.json — python 과 공용 단일 소스) ──
+// 임시휴장은 테이블에 없을 수 있으므로(2026-07-17 사고) 09:00 이후 게시물은
+// tg_market.isKrTradedToday(네이버 실측)를 이 캘린더와 함께 쓴다.
+var _KR_HOLIDAYS = null;
+function _krHolidays() {
+    if (_KR_HOLIDAYS) return _KR_HOLIDAYS;
+    try {
+        var j = JSON.parse(fs.readFileSync(
+            path.resolve(__dirname, '..', 'collector', 'kr_holidays.json'), 'utf8'));
+        _KR_HOLIDAYS = j.holidays || {};
+    } catch (e) {
+        console.error('[tg_common] kr_holidays.json 로드 실패(공휴일 미반영):', e.message);
+        _KR_HOLIDAYS = {};
+    }
+    return _KR_HOLIDAYS;
+}
+function isKrTradingDay(ymd) {
+    ymd = String(ymd || '');
+    if (ymd.length !== 8) return false;
+    var dow = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8))).getUTCDay();
+    if (dow === 0 || dow === 6) return false;
+    return !_krHolidays()[ymd];
+}
+
+// ── 휴장일 복제 파일 판정 — 두 날짜 랭킹의 등락률이 사실상 전부 동일하면 같은 데이터 ──
+// (휴장일에 수집이 돌면 전 거래일 시세가 그대로 저장됨 — 2026-07-17=07-16 100% 일치 사례.
+//  복기류 게시물이 가짜 거래일을 진짜처럼 다루지 않도록 이 판정으로 직전 거래일로 대체한다.)
+var DUP_DAY_MATCH_RATIO = 0.9;
+function isDuplicateDayData(dayA, dayB) {
+    var a = (dayA && dayA.rankings) || [], b = (dayB && dayB.rankings) || [];
+    if (!a.length || a.length !== b.length) return false;
+    var rb = {};
+    b.forEach(function (r) { if (r && r.ticker) rb[r.ticker] = r.change_rate; });
+    var same = 0;
+    a.forEach(function (r) { if (r && r.ticker && rb[r.ticker] === r.change_rate) same++; });
+    return same / a.length >= DUP_DAY_MATCH_RATIO;
+}
+
+// ── 애매한(제네릭) 사유 판별 — 캡션에선 어설픈 사유를 쓰느니 생략 (2026-07-20 사용자 요청) ──
+// "OO 관련 뉴스"·"~강세"·"시장 관심 증가"류는 정보가 없으므로 빈 문자열을 돌려주고,
+// 호출부가 테마 폴백/생략을 결정한다. 끝의 '보도'는 떼고 남은 알맹이로 판정.
+var GENERIC_REASON_RE = new RegExp(
+    '^(시장 관심 증가|투자심리 개선.*|증권사 리포트.*|수급 .*|테마)$' +
+    '|관련\\s*(뉴스|이슈|소식)$|(뉴스|소식|이슈)$|(테마\\s*)?(강세|급등)$|^52주|상한가');
+var SPECIFIC_REASON_MIN = 4;   // 공백 제거 후 최소 글자수 — "양산"·"M&A" 단독은 애매로 간주
+function specificReason(raw) {
+    var r = String(raw == null ? '' : raw).trim().replace(/\s*보도$/, '').trim();
+    if (!r || GENERIC_REASON_RE.test(r)) return '';
+    if (r.replace(/\s/g, '').length < SPECIFIC_REASON_MIN) return '';
+    return r;
+}
+
 // ── LLM 정제 사유 오버레이 (사이트 api.js _overlayRefinedReasons 와 동일 규칙) ──
 // stock-rise raw 사유는 제네릭("OO 관련 뉴스")이 섞이므로, whyrise rise-history 의
 // reason_source='llm' 행을 ticker→사유 맵으로 받아 캡션에서 우선 사용한다.
@@ -602,7 +654,7 @@ function socialThemesCaption(opts) {
 module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip, orgoLink, escHtml, htmlLink,
-    fetchRefinedReasons,
+    fetchRefinedReasons, isKrTradingDay, isDuplicateDayData, specificReason,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,

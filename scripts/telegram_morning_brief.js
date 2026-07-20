@@ -37,8 +37,22 @@ function arrow(p) { return p > 0 ? '🔺' : p < 0 ? '🔻' : '⏸'; }
 async function fetchYesterdayRecap() {
     var dates = await core.fetchJson(core.RAW + '/dates.json');
     if (!Array.isArray(dates) || !dates.length) return null;
-    var last = dates.slice().sort().slice(-1)[0];
+    var sorted = dates.slice().sort();
+    var last = sorted[sorted.length - 1];
     var day = await core.fetchJson(core.RAW + '/' + last + '.json');
+    // 휴장일 복제 파일 가드 — 최신 파일이 직전 거래일과 사실상 동일하면(휴장일 수집 사고,
+    // 2026-07-17=07-16 사례) 가짜 거래일로 보고 그 직전 거래일을 복기한다.
+    var prevYmd = sorted[sorted.length - 2] || '';
+    if (prevYmd) {
+        try {
+            var prevDay = await core.fetchJson(core.RAW + '/' + prevYmd + '.json');
+            if (tg.isDuplicateDayData(day, prevDay)) {
+                console.log('복제 데이터 감지(' + last + '=' + prevYmd + ') — ' + prevYmd + ' 기준으로 복기');
+                last = prevYmd;
+                day = prevDay;
+            }
+        } catch (e) { /* 직전 파일 실패 — 최신 파일 그대로 복기 */ }
+    }
     var rows = day.rankings || [];
     var active = rows.filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
     var limitUps = active.filter(function (r) { return core.num(r.change_rate) >= LIMIT_UP_CUTOFF; });
@@ -92,9 +106,10 @@ async function main() {
         return;
     }
     var today = tg.ymdKst();
-    var dow = new Date(Date.now() + 9 * 3600000).getUTCDay();
-    if (!DRY && !FORCE && (dow === 0 || dow === 6)) {
-        console.log('주말(' + today + ') — 게시 스킵');
+    // 주말+공휴일 캘린더 가드 — 장전(07:30)엔 네이버 실측 거래일 확인이 불가능(항상 전 거래일이
+    // 나옴)해서 캘린더(kr_holidays.json)가 유일한 가드다. 임시휴장은 공지 즉시 JSON에 추가할 것.
+    if (!DRY && !FORCE && !tg.isKrTradingDay(today)) {
+        console.log('휴장일(' + today + ') — 게시 스킵');
         return;
     }
     if (!DRY && !FORCE) {
