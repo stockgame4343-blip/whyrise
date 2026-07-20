@@ -28,7 +28,7 @@ REQUEST_TIMEOUT_S = 180
 RETRIES = 2                    # 429/5xx/네트워크 — SDK 기본과 동일한 2회
 BATCH_SIZE = 20                # 종목 수/요청
 MAX_ITEMS_PER_RUN = 400        # 비용 폭주 가드 (일간 ~170 대비 여유)
-MIN_RATE = 15.0                # 정제 대상 최저 등락률
+MIN_RATE = 10.0                # 정제 대상 최저 등락률 — 타임라인·상세 노출 기준(+10%)과 일치 (2026-07-20, 기존 15)
 NEWS_PER_ITEM = 10             # 종목당 뉴스 제목 입력 상한
 REASON_MAX_LEN = 30
 

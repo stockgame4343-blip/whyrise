@@ -78,6 +78,7 @@ var WhyTable = (function () {
 
     function polishIssuePhrase(s) {
         var r = compactSpaces(s)
+            .replace(/\s*[\(（][^)）]*[\)）]/g, ' ')
             .replace(/^[,，·:;\-\s]+/, '')
             .replace(/^(거래소|공시|단독|특징주)\s*/, '')
             .replace(/^(증가|급증|급감|확대|상승|하락|호조|개선|성장|둔화)\s+/, '')
@@ -96,6 +97,9 @@ var WhyTable = (function () {
         }
         return r;
     }
+
+    // 의미 반전(해지·무산 등) 제목 조각 — 호재 키워드가 있어도 상승 이유 추출 금지
+    var ISSUE_REVERSAL_RE = /해지|취소|철회|무산|결렬|중단|보류|연기|파기|불발/;
 
     function extractIssueFromTitle(title, stockName, themeShort) {
         var cleaned = cleanupNewsTitle(title, stockName);
@@ -129,12 +133,17 @@ var WhyTable = (function () {
             /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:공장|라인|양산)\s*(?:본격\s*)?(?:가동|착공|증설))/,
             /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:매출|영업이익)\s*[0-9,]+\s*억)/,
             /([A-Za-z0-9가-힣·+\-/ ]{0,16}원천기술\s*확보)/,
-            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:승인|선정|체결|공시|소각|상장|선임|사임|공개|출시|참가|논의|검토|추진|확대|호조|개선|서프라이즈|공략|전환|채비|등록))/
+            /((?:FDA|EMA|식약처|질병관리청|MFDS|CE)\s*[^,，.]{0,26}?(?:승인|허가|확인|통과|인증|지정|등록|획득|신청))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:품목|판매|사용|조건부)\s*허가(?:\s*(?:신청|획득|승인|권고))?)/,
+            /(임상\s*[0-9]?[상차]?\s*(?:성공|승인|신청|결과|돌입|개시|완료|톱라인))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:기술\s*(?:수출|이전)|라이선스\s*(?:아웃|계약)))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:승인|선정|체결|공시|소각|상장|선임|사임|공개|출시|참가|논의|검토|추진|확대|호조|개선|서프라이즈|공략|전환|채비|등록|허가|인증|통과|획득|지정|수출|계약|수주|합의|재개))/
         ];
 
         for (var i = 0; i < parts.length; i++) {
             var part = compactSpaces(parts[i]);
-            if (!part) continue;
+            // 의미 반전 조각 차단 — "계약 해지"에서 '계약'만 뽑혀 호재로 둔갑하는 오추출 방지
+            if (!part || ISSUE_REVERSAL_RE.test(part)) continue;
             for (var j = 0; j < patterns.length; j++) {
                 var m = patterns[j].exec(part);
                 if (!m) continue;

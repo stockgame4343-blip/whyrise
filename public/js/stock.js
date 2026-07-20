@@ -68,6 +68,7 @@
 
     function polishIssuePhrase(s) {
         var r = compactSpaces(s)
+            .replace(/\s*[\(（][^)）]*[\)）]/g, ' ')
             .replace(/^[,，·:;\-\s]+/, '')
             .replace(/^(거래소|공시|단독)\s*/, '')
             .replace(/^(서|에서)\s+/, '')
@@ -84,6 +85,9 @@
         }
         return r;
     }
+
+    // 의미 반전(해지·무산 등) 제목 조각 — 호재 키워드가 있어도 상승 이유 추출 금지
+    var ISSUE_REVERSAL_RE = /해지|취소|철회|무산|결렬|중단|보류|연기|파기|불발/;
 
     function extractIssueFromTitle(title, stockName, themeShort) {
         var cleaned = cleanupIssueTitle(title, stockName);
@@ -113,12 +117,17 @@
             /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:데이터|기술|제품|신제품|플랫폼|서비스)\s*공개)/,
             /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:대표이사|대표집행임원|대표)\s*(?:선임|사임))/,
             /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:유증|CB|전환사채|대여금)\s*(?:병행|발행|출자전환))/,
-            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:승인|선정|체결|공시|소각|상장|선임|사임|공개|출시|참가|논의|검토|추진|확대|호조|개선|서프라이즈|공략|전환|채비|등록))/
+            /((?:FDA|EMA|식약처|질병관리청|MFDS|CE)\s*[^,，.]{0,26}?(?:승인|허가|확인|통과|인증|지정|등록|획득|신청))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:품목|판매|사용|조건부)\s*허가(?:\s*(?:신청|획득|승인|권고))?)/,
+            /(임상\s*[0-9]?[상차]?\s*(?:성공|승인|신청|결과|돌입|개시|완료|톱라인))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:기술\s*(?:수출|이전)|라이선스\s*(?:아웃|계약)))/,
+            /([A-Za-z0-9가-힣·+\-/ ]{0,16}(?:승인|선정|체결|공시|소각|상장|선임|사임|공개|출시|참가|논의|검토|추진|확대|호조|개선|서프라이즈|공략|전환|채비|등록|허가|인증|통과|획득|지정|수출|계약|수주|합의|재개))/
         ];
 
         for (var i = 0; i < parts.length; i++) {
             var part = compactSpaces(parts[i]);
-            if (!part) continue;
+            // 의미 반전 조각 차단 — "계약 해지"에서 '계약'만 뽑혀 호재로 둔갑하는 오추출 방지
+            if (!part || ISSUE_REVERSAL_RE.test(part)) continue;
             for (var j = 0; j < patterns.length; j++) {
                 var m = patterns[j].exec(part);
                 if (!m) continue;
@@ -883,12 +892,18 @@
     // stock-history(주로 마감 후 build-history 생성)만 읽어 '오늘'이 빠진다. → 오늘 빌드에서
     // 이유·뉴스를, 현재가 폴링에서 실시간 등락률을 가져와 타임라인 맨 위에 '오늘(실시간)' 카드를
     // 주입. 컷 미만으로 빠지면 제거(리스트와 동일 동작 — 사용자 확정 2026-07-06).
+    // 오늘 빌드 도착 전(장전 NXT·아침 첫 빌드 전)은 홈 합성행과 같은 경로로 폴백 —
+    // 라이브 marketmap 이 '오늘'을 거래일로 확인할 때만 /api/stock-reason 뉴스·업종으로
+    // 합성 주입(2026-07-20, 홈엔 뜨는데 상세엔 오늘이 없던 간극 해소). 빌드 도착 시 자연 교체.
     // 마감 후 build-history가 stock-history에 확정하면(=오늘 날짜 이벤트 존재)
     // 주입을 멈추고 그 확정분을 사용(중복 방지·자연 교체).
     var TODAY_LIVE_CUTOFF = 10;   // 타임라인 기록 기준(+10%)과 일치 — 15→10 완화 (2026-07-06 사용자 확정, 기존 15는 2026-06-17)
+    var LIVE_GATE_TTL_MS = 5 * 60 * 1000;   // 프리빌드 라이브 게이트(marketmap 거래일 판정) 재확인 주기
     var _ticker = '';
     var _baseEvents = [];         // stock-history 의 확정 events (타임라인 베이스)
     var _todayEvent = null;       // 합성된 오늘 라이브 이벤트 (없으면 null)
+    var _liveGate = { t: 0, date: '', name: '' };            // marketmap 거래일 판정 캐시
+    var _todayReason = { date: '', tried: false, row: null }; // stock-reason 합성 row 캐시 (세션 1회)
 
     function _ymd(s) { return String(s || '').replace(/[^0-9]/g, '').slice(0, 8); }
     function _todayKST() {
@@ -931,30 +946,82 @@
             if (_todayEvent) { _todayEvent = null; rerenderTimeline(); }
             return;
         }
-        // 이미 이유·뉴스까지 붙었으면 재조회 없이 숫자만 갱신
-        if (_todayEvent && _todayEvent.rise_reason) {
+        // 이미 이유·뉴스까지 붙었으면 재조회 없이 숫자만 갱신 — 단 합성(프리빌드) 카드는
+        // 오늘 빌드가 도착하면 정식 행(LLM 정제 사유 포함)으로 업그레이드해야 하므로 계속 재평가.
+        if (_todayEvent && _todayEvent.rise_reason && !_todayEvent._synthetic) {
             _todayEvent.change_rate = rate;
             if (meta && meta.price != null) _todayEvent.close_price = meta.price;
             rerenderTimeline();
             return;
         }
         var price = meta ? meta.price : null;
-        // 오늘 빌드(getDates()[0]==오늘)가 있어야만 주입 — 시세 API는 휴장일(주말·공휴일)에도
-        // 마지막 거래일 등락률을 그대로 반환하므로 rate 만으로는 '오늘 급등'을 확정할 수 없다.
-        // (토요일에 금요일 +10% 종목이 '오늘' 날짜 카드로 뜨던 오류 — 2026-07-12 사용자 리포트)
-        // 트레이드오프: 거래일 아침 첫 빌드 전엔 카드가 안 뜬다 — 리스트(오늘 빌드 기준)와 동일 동작.
+        // 휴장일 오주입 차단 — 시세 API는 휴장일(주말·공휴일)에도 마지막 거래일 등락률을 그대로
+        // 반환하므로 rate 만으로는 '오늘 급등'을 확정할 수 없다 (2026-07-12 사용자 리포트).
+        // 1순위: 오늘 빌드(getDates()[0]==오늘) → 정식 행(이유·뉴스).
+        // 2순위: 빌드 미도착이면 라이브 marketmap 의 거래일 판정(date==오늘, 휴장일엔 직전
+        //        거래일이라 구조적으로 차단)을 게이트로 /api/stock-reason 합성 주입 — 홈 합성행과 동일.
         function clearToday() {
             if (_todayEvent) { _todayEvent = null; rerenderTimeline(); }
         }
         WhyAPI.getDates().then(function (dts) {
             var latest = (Array.isArray(dts) ? dts[0] : (dts && dts.dates && dts.dates[0])) || '';
-            if (latest !== date) { clearToday(); return; }
-            return WhyAPI.getRankings(date).then(function (data) {
-                var row = ((data && data.rankings) || []).find(function (r) { return r.ticker === _ticker; });
-                _todayEvent = makeTodayEvent(date, rate, price, row || null);
-                rerenderTimeline();
+            if (latest === date) {
+                return WhyAPI.getRankings(date).then(function (data) {
+                    var row = ((data && data.rankings) || []).find(function (r) { return r.ticker === _ticker; });
+                    if (row) {
+                        _todayEvent = makeTodayEvent(date, rate, price, row);
+                        rerenderTimeline();
+                        return;
+                    }
+                    // 빌드는 도착했지만 TOP_N(100) 밖 — 홈 합성행처럼 stock-reason 으로 보강
+                    return _synthTodayRow(date).then(function (srow) {
+                        _todayEvent = makeTodayEvent(date, rate, price, srow);
+                        _todayEvent._synthetic = true;   // 이후 빌드에 정식 행이 생기면 교체
+                        rerenderTimeline();
+                    });
+                });
+            }
+            return _liveGateToday(date).then(function (gate) {
+                if (!gate) { clearToday(); return; }
+                return _synthTodayRow(date).then(function (row) {
+                    _todayEvent = makeTodayEvent(date, rate, price, row);
+                    _todayEvent._synthetic = true;   // 빌드 도착 시 정식 행으로 교체 허용 표식
+                    rerenderTimeline();
+                });
             });
         }).catch(clearToday);
+    }
+
+    // 프리빌드 게이트 — marketmap 이 보고하는 '오늘 거래일'(홈 maybeAdvanceLiveDate 와 동일 신호).
+    // 5분 캐시로 60초 폴링마다의 재호출을 막는다.
+    function _liveGateToday(date) {
+        if (_liveGate.t && (Date.now() - _liveGate.t) < LIVE_GATE_TTL_MS) {
+            return Promise.resolve(_liveGate.date === date ? _liveGate : null);
+        }
+        return WhyAPI.getLiveMarketmap().then(function (res) {
+            var lv = (res && res.map && res.map[_ticker]) || {};
+            _liveGate = { t: Date.now(), date: (res && res.date) || '', name: lv.name || '' };
+            return _liveGate.date === date ? _liveGate : null;
+        });
+    }
+
+    // 프리빌드 합성 row — 홈 합성행(_liveRowReason)과 같은 규칙. 표시 문구는 만들지 않고
+    // 뉴스·업종만 받아 weak text 로 두면 cleanReasonText 가 기사 제목에서 구체 이슈를 뽑는다.
+    function _synthTodayRow(date) {
+        if (_todayReason.date === date && _todayReason.tried) return Promise.resolve(_todayReason.row);
+        return WhyAPI.getStockReason(_ticker, _stockName || _liveGate.name || '', date)
+            .catch(function () { return null; })
+            .then(function (rc) {
+                var theme = (rc && rc.theme_tag) || '';
+                var news = (rc && rc.news) || [];
+                _todayReason = { date: date, tried: true, row: {
+                    rise_reason: theme ? (theme + ' 관련 뉴스') : (news.length ? '관련 뉴스' : ''),
+                    theme_tag: theme,
+                    sector: theme,
+                    news: news,
+                } };
+                return _todayReason.row;
+            });
     }
 
     function renderEvents(events, ticker) {
