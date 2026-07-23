@@ -4,17 +4,39 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20260723",
+      "change_rate": 10.22,
+      "close_price": 69000.0,
+      "trading_volume": 104979,
+      "trading_value": 7243551000,
+      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_confidence": "low",
+      "reason_source": "theme",
+      "reason_status": "filled",
+      "theme_tag": "고체산화물 연료전지(SOFC)",
+      "news": [],
+      "sector": "전기장비",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
       "date": "20260722",
       "change_rate": 12.19,
       "close_price": 62600.0,
       "trading_volume": 173761,
       "trading_value": 10877438600,
-      "rise_reason": "383억 데이터센터용 슈퍼커패시터 공급계약",
+      "rise_reason": "수주 공시",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
+        {
+          "title": "증권가 \"실적 성장 본격화\" 비나텍 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006319692&office_id=018&code=126340&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.01"
+        },
         {
           "title": "비나텍, 383억 규모 데이터센터용 슈퍼커패시터 공급계약 체결",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006329138&office_id=018&code=126340&page=&sm=",
@@ -28,22 +50,16 @@
           "date": "2026.07.06"
         },
         {
-          "title": "비나텍, 400억원대 데이터센터용 시스템 수주 소식에 상한가",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379776&office_id=008&code=126340&page=&sm=",
-          "source": "머니투데이",
-          "date": "2026.07.01"
-        },
-        {
-          "title": "증권가 \"실적 성장 본격화\" 비나텍 상한가[특징주]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006319692&office_id=018&code=126340&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.07.01"
-        },
-        {
           "title": "비나텍, 131억 규모 데이터센터용 슈퍼커패시터 공급계약",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0002666405&office_id=016&code=126340&page=&sm=",
           "source": "헤럴드경제",
           "date": "2026.07.06"
+        },
+        {
+          "title": "비나텍, 400억원대 데이터센터용 시스템 수주 소식에 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379776&office_id=008&code=126340&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.01"
         },
         {
           "title": "비나텍, 시스템 수주 시작…실적 성장 본격화-메리츠",
@@ -916,12 +932,12 @@
     }
   ],
   "stats": {
-    "count_10": 23,
+    "count_10": 24,
     "count_15": 7,
     "count_20": 2,
     "count_limit": 2,
-    "count_recent": 2,
-    "avg_rate": 14.69
+    "count_recent": 3,
+    "avg_rate": 14.5
   },
-  "built_at": "2026-07-22T19:08:27"
+  "built_at": "2026-07-23T18:02:16"
 }
