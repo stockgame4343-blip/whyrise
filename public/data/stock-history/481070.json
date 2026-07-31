@@ -4,17 +4,51 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20260731",
+      "change_rate": 11.32,
+      "close_price": 18590.0,
+      "trading_volume": 53449,
+      "trading_value": 993616910,
+      "rise_reason": "패션/의류 테마 강세",
+      "reason_confidence": "low",
+      "reason_source": "theme",
+      "reason_status": "filled",
+      "theme_tag": "패션/의류",
+      "news": [],
+      "sector": "섬유,의류,신발,호화품",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
       "date": "20260730",
       "change_rate": 10.52,
       "close_price": 16700.0,
       "trading_volume": 28629,
       "trading_value": 478104300,
-      "rise_reason": "1분기 매출 136% 증가 해외성장",
+      "rise_reason": "영업이익 공시",
       "reason_confidence": "high",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
+        {
+          "title": "에이유브랜즈, 티몰 618 신발 판매 1위…中온·오프라인 동반 성장",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006301249&office_id=018&code=481070&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.09"
+        },
+        {
+          "title": "에이유브랜즈, 아시아 통합 플랫폼 전략 선언…\"올해 글로벌 핵심 거.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006295500&office_id=018&code=481070&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.01"
+        },
+        {
+          "title": "'상장 1년차' 에이유브랜즈, 고성장 지속…경영진 지분 확대도 눈길",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006285336&office_id=018&code=481070&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.19"
+        },
         {
           "title": "에이유브랜즈, 1분기 매출 185억 원…전년 대비 136% 증가",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005286478&office_id=015&code=481070&page=&sm=",
@@ -44,24 +78,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0001163947&office_id=366&code=481070&page=&sm=",
           "source": "조선비즈",
           "date": "2026.05.13"
-        },
-        {
-          "title": "에이유브랜즈, 티몰 618 신발 판매 1위…中온·오프라인 동반 성장",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006301249&office_id=018&code=481070&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.06.09"
-        },
-        {
-          "title": "에이유브랜즈, 아시아 통합 플랫폼 전략 선언…\"올해 글로벌 핵심 거.....",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006295500&office_id=018&code=481070&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.06.01"
-        },
-        {
-          "title": "'상장 1년차' 에이유브랜즈, 고성장 지속…경영진 지분 확대도 눈길",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006285336&office_id=018&code=481070&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.05.19"
         },
         {
           "title": "에이유브랜즈, 메리제인·스니커즈 성장 힘입어 1분기 최대 실적 달성",
@@ -266,12 +282,12 @@
     }
   ],
   "stats": {
-    "count_10": 7,
+    "count_10": 8,
     "count_15": 4,
     "count_20": 0,
     "count_limit": 0,
-    "count_recent": 2,
-    "avg_rate": 14.36
+    "count_recent": 3,
+    "avg_rate": 13.98
   },
-  "built_at": "2026-07-30T19:10:26"
+  "built_at": "2026-07-31T16:30:24"
 }
