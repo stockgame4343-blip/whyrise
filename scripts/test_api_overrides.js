@@ -44,7 +44,7 @@ function fetchStub(url) {
     });
 }
 
-const context = { fetch: fetchStub, console: console, Date: FakeDate };
+const context = { fetch: fetchStub, console: console, Date: FakeDate, setTimeout, clearTimeout, AbortController };
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(ROOT, 'public', 'js', 'api.js'), 'utf8'), context);
 const WhyAPI = context.WhyAPI;
@@ -310,7 +310,44 @@ assert.ok(typeof WhyAPI.applyLocalOverride === 'function', 'applyLocalOverride �
     assert.strictEqual(oldDayEdited.rankings[0].theme_tag, '원본테마',
         '과거 재저장 theme 지움도 원본 복원 후 적용');
 
-    console.log('test_api_overrides: OK (fetch ' + fetchLog.length + '회)');
+    // 지연된 상류와 독립 자료를 동시에 시작하고, 같은 정적 요청은 하나로 합친다.
+    const timers = new Map();
+    let nextTimer = 0;
+    let upstreamAttempts = 0;
+    const parallelLog = [];
+    const localSnapshot = { rankings: [{ ticker: '005930', name: '삼성전자', rise_reason: '자체 이유' }] };
+    const speedContext = {
+        console, Date, AbortController,
+        setTimeout: (fn) => { const id = ++nextTimer; timers.set(id, fn); return id; },
+        clearTimeout: (id) => timers.delete(id),
+        fetch: (url) => {
+            parallelLog.push(url);
+            if (url.includes('raw.githubusercontent.com')) {
+                upstreamAttempts++;
+                return new Promise(() => {});
+            }
+            return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve(
+                url.includes('/rise-history/') ? localSnapshot : {}) });
+        },
+    };
+    vm.createContext(speedContext);
+    vm.runInContext(fs.readFileSync(path.join(ROOT, 'public', 'js', 'api.js'), 'utf8'), speedContext);
+    const firstPending = speedContext.WhyAPI.getRankings('20260904', 'ALL');
+    const secondPending = speedContext.WhyAPI.getRankings('20260904', 'KOSPI');
+    assert.strictEqual(upstreamAttempts, 1, '동시 조회의 상류 요청 합치기');
+    assert.ok(parallelLog.some(u => u.includes('/rise-history/')), '상류 완료 전 자체 데이터 요청');
+    assert.ok(parallelLog.some(u => u.includes('/overrides/')), '상류 완료 전 편집 데이터 요청');
+    for (let i = 0; i < 12; i++) await Promise.resolve();
+    for (const fn of Array.from(timers.values())) fn();
+    const settled = await Promise.all([firstPending, secondPending]);
+    assert.strictEqual(settled[0].rankings[0].rise_reason, '자체 이유', '시간 제한 후 자체 스냅샷 표시');
+    const retry = speedContext.WhyAPI.getRankings('20260904', 'ALL');
+    assert.strictEqual(upstreamAttempts, 2, '시간 초과는 캐시하지 않고 다음 조회 재시도');
+    for (let i = 0; i < 12; i++) await Promise.resolve();
+    for (const fn of Array.from(timers.values())) fn();
+    await retry;
+
+    console.log('test_api_overrides: OK (fetch ' + fetchLog.length + '회; 병렬/시간초과/재시도 검증)');
 })().catch(function (err) {
     console.error(err);
     process.exit(1);

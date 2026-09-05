@@ -47,7 +47,7 @@ const REASON_CLIP = 30;         // 이유 표시 상한(자) — LLM 정제 사�
 
 // 구체적 사유만 — 애매한 "OO 관련 뉴스"류는 생략하고 이름·등락률만 (2026-07-20 사용자 요청)
 function reasonOf(row, refined) {
-    return tg.specificReason((refined && refined[row.ticker]) || row.rise_reason);
+    return tg.specificReason(refined && refined[row.ticker]);
 }
 
 // 로컬 stock-history 에서 1년 +10% 누적 횟수 — 파일 없으면 null (섹션에서 제외)
@@ -185,7 +185,7 @@ async function main() {
         return;
     }
 
-    var refined = await tg.fetchRefinedReasons(today);   // LLM 정제 사유 우선(없으면 raw 폴백)
+    var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
     var comment = await aiLine(today, S);
     var caption = buildCaption(today, S, refined, comment);
     console.log('----- 캡션 -----\n' + caption + '\n----------------');

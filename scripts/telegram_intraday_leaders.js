@@ -52,7 +52,7 @@ function toMovers(rows) {
 // (제네릭 "OO 관련 뉴스"류를 쓰느니 생략 — 2026-07-20 사용자 요청)
 var REASON_CLIP = 30;   // 캡션 이유 표시 상한(자) — LLM 정제 사유 상한과 동일
 function reasonTail(m, refined) {
-    var r = tg.specificReason((refined && refined[m.ticker]) || m.reason);
+    var r = tg.specificReason(refined && refined[m.ticker]);
     if (r) return ' — ' + tg.clip(r, REASON_CLIP);
     return m.theme ? ' [' + tg.clip(m.theme, 12) + ']' : '';
 }
@@ -121,7 +121,8 @@ async function main() {
     if (!movers.length) { console.log('오늘 급등(>=' + core.RISE_CUTOFF + '%) 종목 없음 — 스킵'); return; }
     console.log('주도주:', movers.map(function (m) { return m.name + ' ' + tg.pct(m.rate); }).join(' / '));
 
-    var refined = await tg.fetchRefinedReasons(today);   // LLM 정제 사유 우선(없으면 raw 폴백)
+    var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
+    movers.forEach(function (m) { m.reason = tg.specificReason(refined[m.ticker]); });
     var comment = await aiHook(today, movers);
     var caption = buildCaption(today, movers, comment, refined);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');

@@ -58,8 +58,40 @@ class ReasonQualityTest(unittest.TestCase):
     def test_day_date_applied_before_news_filter(self):
         with tempfile.TemporaryDirectory() as tmp:
             p=Path(tmp)/'20260904.json'
-            p.write_text(json.dumps({'date':'20260904','rankings':[{'ticker':'005930','name':'삼성전자','change_rate':20,'news':[{'title':'삼성전자 계약','date':'2026.09.04'}]}]}),encoding='utf8')
+            p.write_text(json.dumps({'date':'20260904','rankings':[{'ticker':'005930','name':'삼성전자','change_rate':20,'news':[{'title':'삼성전자 계약','date':'2026.09.04','link':'https://example.com/a'}]}]}),encoding='utf8')
             self.assertEqual(len(llm.collect_day_targets(p)[0]['news']),1)
+
+    def test_same_article_url_and_unverifiable_links_are_not_evidence(self):
+        target=llm._target_from_event('005930','삼성전자',{'date':'20260904','news':[
+            {'title':'삼성전자 계약','date':'2026.09.04','link':'https://example.com/a'},
+            {'title':'삼성전자 계약 수정 제목','date':'2026.09.04','link':'https://example.com/a#headline'},
+            {'title':'삼성전자 링크 없음','date':'2026.09.04'},
+            {'title':'삼성전자 잘못된 링크','date':'2026.09.04','link':'javascript:alert(1)'},
+        ]})
+        self.assertEqual([n['i'] for n in target['news']],[0])
+
+    def test_unrelated_articles_cannot_replace_or_reverse_reason(self):
+        target=self.target()
+        target['news']=[{'i':1,'title':'미국 시장 주요 지수 상승','date':'2026.09.04'}]
+        for action in ('replace','flag_reversal'):
+            self.assertEqual(llm._validate({'action':action,'reason':'신규 계약','evidence':[1]},target)['action'],'no_evidence')
+
+    def test_fallback_preserves_existing_specific_reason(self):
+        target=dict(self.target(),verify_only=True,rise_reason='신규 공급계약 체결',reason_source='stockrise')
+        with patch.object(llm,'_call_batch',side_effect=RuntimeError('credit exhausted')):
+            verdicts,_=llm.refine([target],'test')
+        self.assertEqual(verdicts[('005930','20260904')]['action'],'keep')
+
+    def test_named_news_survives_broad_news_limit(self):
+        news=[{'title':f'시장 동향 {i}','date':'2026.09.04','link':f'https://example.com/{i}'} for i in range(12)]
+        news.append({'title':'삼성전자 공급 계약','date':'2026.09.03','link':'https://example.com/contract'})
+        target=llm._target_from_event('005930','삼성전자',{'date':'20260904','news':news})
+        self.assertEqual(target['news'][0]['i'],12)
+        self.assertEqual(llm.headline_fallback(target)['evidence'],[12])
+
+    def test_malformed_evidence_fails_closed(self):
+        for evidence in (1, '1', {'index':1}):
+            self.assertEqual(llm._validate({'action':'replace','reason':'신규 계약','evidence':evidence},self.target())['action'],'no_evidence')
 
     def test_news_api_filters_before_limit(self):
         def row(title,day):

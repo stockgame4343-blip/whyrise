@@ -16,7 +16,28 @@ async function request(url,token,method='GET',data) {
 // held for reconciliation, never automatically resent on a later workflow run.
 const {Ledger}=require('./delivery_ledger');
 
-async function publishChannel(d,channel,env,ledger,api=request) {
+async function checkAssets(d,channel) {
+    try {
+        const r=await fetch(`https://orgo.kr/marketing/${d.date}/assets.json`,{cache:'no-store',signal:AbortSignal.timeout(10000)});
+        if(!r.ok)return null;
+        const manifest=await r.json();
+        if(manifest.date!==d.date||manifest.content_hash!==d.content_hash)return null;
+        const urls=[];
+        for(const image of d.posts[channel].images||[]) {
+            const name=image.split('/').pop(),asset=manifest.assets[name];
+            if(!asset||!/^[a-z-]+\.[a-f0-9]{12}\.jpg$/.test(asset.file||''))return null;
+            const url=`https://orgo.kr/marketing/${d.date}/${asset.file}`;
+            const img=await fetch(url,{signal:AbortSignal.timeout(10000)});
+            if(!img.ok||!String(img.headers.get('content-type')).includes('image/jpeg'))return null;
+            const bytes=Buffer.from(await img.arrayBuffer());
+            if(require('crypto').createHash('sha256').update(bytes).digest('hex')!==asset.sha256)return null;
+            urls.push(url);
+        }
+        return urls.length>=1&&urls.length<=2?urls:null;
+    }catch(e){return null;}
+}
+async function publishChannel(d,channel,env,ledger,api=request,assetsReady=checkAssets) {
+    if(!['threads','instagram'].includes(channel))throw Error('Unsupported automatic channel');
     const token=channel==='threads'?env.THREADS_ACCESS_TOKEN:env.INSTAGRAM_ACCESS_TOKEN;
     const user=channel==='threads'?env.THREADS_USER_ID:env.INSTAGRAM_USER_ID;
     if(!token||!user) return {status:'needs_connection'};
@@ -28,35 +49,45 @@ async function publishChannel(d,channel,env,ledger,api=request) {
     if(channel==='instagram'&&!/^v\d+\.\d+$/.test(version||'')) return {status:'needs_api_version'};
     const base=channel==='threads'?'https://graph.threads.net/v1.0':`https://graph.instagram.com/${version}`;
     let state={...rec.state,date:d.date,channel,content_hash:d.content_hash};
-    if(state.content_hash!==rec.state.content_hash&&rec.state.container_id) throw new Error('Digest changed after container creation; reconcile first');
+    if(rec.state.content_hash&&d.content_hash!==rec.state.content_hash&&(rec.state.container_id||rec.state.children?.length))throw Error('Digest changed after media creation; reconcile first');
+    if(!state.images){const images=await assetsReady(d,channel);if(!images)return {status:'awaiting_image'};state.images=images;}
+    const endpoint=`${base}/${user}/${channel==='threads'?'threads':'media'}`;
+    const statusField=channel==='threads'?'status':'status_code';
+    async function ready(id) {
+        const result=await api(`${base}/${id}?fields=${statusField}`,token);
+        if(['ERROR','EXPIRED','PUBLISHED'].includes(result[statusField]))throw Error('Media container '+result[statusField]);
+        return result[statusField]==='FINISHED';
+    }
+    async function create(fields) {
+        state.status='creating';await ledger.save(rec,state);
+        const result=await api(endpoint,token,'POST',fields);
+        if(!result.id)throw Error('Missing container ID');
+        return result.id;
+    }
     try {
         if(!state.container_id) {
-            if(channel==='instagram') {
-                // Public JPEG must exist before Meta attempts to fetch it.
-                const img=`https://orgo.kr/marketing/${d.date}/card.jpg`;
-                const r=await fetch(img,{method:'HEAD',signal:AbortSignal.timeout(10000)});
-                if(!r.ok||!String(r.headers.get('content-type')).includes('image/jpeg')) return {status:'awaiting_image'};
-            }
-            state.status='creating';await ledger.save(rec,state);
-            const fields=channel==='threads'?{media_type:'TEXT',text:d.posts.threads.text}:{image_url:`https://orgo.kr/marketing/${d.date}/card.jpg`,caption:d.posts.instagram.text};
-            const created=await api(`${base}/${user}/${channel==='threads'?'threads':'media'}`,token,'POST',fields);
-            if(!created.id) throw new Error('Missing container ID');
-            state={...state,container_id:created.id,status:'created'};await ledger.save(rec,state);
+            const caption=channel==='threads'?{text:d.posts[channel].text}:{caption:d.posts[channel].text};
+            if(state.images.length>1) {
+                state.children=state.children||[];
+                for(let i=state.children.length;i<state.images.length;i++) {
+                    const id=await create({...(channel==='threads'?{media_type:'IMAGE'}:{}),image_url:state.images[i],is_carousel_item:'true'});
+                    state.children.push(id);state.status='created';await ledger.save(rec,state);
+                }
+                for(const id of state.children)if(!await ready(id))return {...state,status:'created'};
+                state.container_id=await create({media_type:'CAROUSEL',children:state.children.join(','),...caption});
+            }else state.container_id=await create({...(channel==='threads'?{media_type:'IMAGE'}:{}),image_url:state.images[0],...caption});
+            state.status='created';await ledger.save(rec,state);
         }
-        let ready=channel==='threads';
-        if(!ready) {
-            const result=await api(`${base}/${state.container_id}?fields=status_code`,token);
-            ready=result.status_code==='FINISHED';
-            if(result.status_code==='ERROR'||result.status_code==='EXPIRED') throw new Error('Media container '+result.status_code);
-            if(!ready) return {...state,status:'created'};
-        }
+        if(!await ready(state.container_id))return {...state,status:'created'};
         state.status='publishing';await ledger.save(rec,state);
         const result=await api(`${base}/${user}/${channel==='threads'?'threads_publish':'media_publish'}`,token,'POST',{creation_id:state.container_id});
         if(!result.id) throw new Error('Missing published ID');
         state={...state,status:'published',post_id:result.id,published_at:new Date().toISOString()};await ledger.save(rec,state);
         return state;
     } catch(e) {
-        const failed={...state,status:'uncertain',requires_action:true,error:e.message};
+        // GET status failures are safe to retry. An unresolved external write is not.
+        const failed={...state,status:['creating','publishing'].includes(state.status)?'uncertain':state.status,error:e.message};
+        if(failed.status==='uncertain'||e.message.startsWith('Media container'))failed.requires_action=true;
         await ledger.save(rec,failed);
         return failed;
     }
@@ -72,11 +103,16 @@ async function main(env=process.env) {
         if(channel==='kakao'||channel==='toss') {status.channels[channel]={status:'manual_ready'};continue;}
         if(!enabled.has(channel)) {status.channels[channel]={status:'prepared'};continue;}
         if(!env.GH_TOKEN) throw new Error('Durable publication requires GH_TOKEN');
-        status.channels[channel]=await publishChannel(d,channel,env,new Ledger(env.GITHUB_REPOSITORY,env.GH_TOKEN));
+        const ledger=new Ledger(env.GITHUB_REPOSITORY,env.GH_TOKEN);
+        for(let attempt=0;attempt<18;attempt++){
+            const result=await publishChannel(d,channel,env,ledger);status.channels[channel]=result;
+            if(result.requires_action||!['awaiting_image','created'].includes(result.status))break;
+            if(attempt<17)await new Promise(r=>setTimeout(r,10000));
+        }
     }
     fs.writeFileSync(path.join(ROOT,'public/marketing/status.json'),JSON.stringify(status,null,2)+'\n');
     console.log(JSON.stringify(status));
-    if(Object.values(status.channels).some(s=>s.requires_action||s.status.startsWith('needs_'))) process.exitCode=1;
+    if(Object.values(status.channels).some(s=>s.requires_action||s.status.startsWith('needs_')||['awaiting_image','created'].includes(s.status))) process.exitCode=1;
 }
 if(require.main===module) main().catch(e=>{console.error(e.message);process.exitCode=1;});
-module.exports={publishChannel,Ledger};
+module.exports={publishChannel,Ledger,checkAssets};

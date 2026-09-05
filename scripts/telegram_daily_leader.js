@@ -93,7 +93,7 @@ function topReasonTail(topName, rankings, refined) {
     var row = (rankings || []).find(function (r) { return r && r.name === topName; });
     if (!row) return '';
     // 구체적 사유만 노출 — 애매한 "OO 관련 뉴스"류는 생략 (2026-07-20 사용자 요청)
-    var r = tg.specificReason((refined && refined[row.ticker]) || row.rise_reason);
+    var r = tg.specificReason(refined && refined[row.ticker]);
     return r ? ' — ' + tg.clip(r, TOP_REASON_CLIP) : '';
 }
 
@@ -114,7 +114,7 @@ function buildCaption(ymd, L, comment, M, refined, rankings) {
         lines.push(L.leader.name + (mk ? '(' + mk + ')' : ''));
         lines.push(pct(L.leader.change_rate) + ' · 거래대금 ' + fmtAmount(L.leader.trading_value));
         // 사유는 LLM 정제본 우선 + 구체적일 때만 — 애매하면 [태그]만 남긴다
-        var reason = tg.specificReason((refined && refined[L.leader.ticker]) || L.leader.rise_reason);
+        var reason = tg.specificReason(refined && refined[L.leader.ticker]);
         lines.push('[' + detailTag(L.leader) + ']' + (reason ? ' ' + reason : ''));
         lines.push('');
     } else {
@@ -156,11 +156,11 @@ function templateComment(L) {
 }
 
 // ── AI 멘트 (Claude) ──
-async function aiComment(ymd, L, M) {
+async function aiComment(ymd, L, M, refined) {
     if (!ANTHROPIC_KEY) return templateComment(L);
     var summary = {
         date: dateLabel(ymd),
-        대장주: L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate) + ' / ' + detailTag(L.leader) + ' / ' + (L.leader.rise_reason || '')) : '없음',
+        대장주: L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate) + ' / ' + detailTag(L.leader) + ' / ' + ((refined && refined[L.leader.ticker]) || '')) : '없음',
         대장섹터: L.sector ? (L.sector.key + ' 평균 ' + pct(L.sector.avgRate)) : '없음',
         대장테마: L.theme ? (L.theme.key + ' 평균 ' + pct(L.theme.avgRate)) : '없음',
         시장: M ? ('코스피 ' + pct(M.kospi.changePct) + ' 코스닥 ' + pct(M.kosdaq.changePct) + ' (상승 ' + M.upCount + '·하락 ' + M.downCount + ')') : '',
@@ -174,6 +174,7 @@ async function aiComment(ymd, L, M) {
     try {
         var res = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
+            signal: AbortSignal.timeout(15000),
             headers: {
                 'x-api-key': ANTHROPIC_KEY,
                 'anthropic-version': '2023-06-01',
@@ -213,9 +214,9 @@ function servePublic() {
     });
 }
 
-async function renderImage(ymd, L) {
+async function renderImage(ymd, L, refined) {
     function grp(g) { return g ? { name: g.key, count: g.count, avgRate: g.avgRate, top: g.top, topRate: g.topRate, vol: g.totalVolume } : null; }
-    function ld(x) { return x ? { name: x.name, market: x.market, rate: x.change_rate, vol: x.trading_value, tag: detailTag(x), reason: String(x.rise_reason || '').trim() } : null; }
+    function ld(x) { return x ? { name: x.name, market: x.market, rate: x.change_rate, vol: x.trading_value, tag: detailTag(x), reason: tg.specificReason(refined && refined[x.ticker]) } : null; }
     var html = tg.leaderCardHtml({
         dateRange: dateLabel(ymd),
         leader: ld(L.leader),
@@ -285,19 +286,19 @@ async function main() {
         else console.log('시장 요약 거래일(' + summary.tradedYmd + ') ≠ 캡션 날짜(' + today + ') — 블록 생략');
     } catch (e) { console.error('시장 요약 실패(블록 생략):', e.message); }
 
-    var refined = await tg.fetchRefinedReasons(today);   // LLM 정제 사유 우선(없으면 raw 폴백)
-    var comment = await aiComment(today, L, M);
+    var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
+    var comment = await aiComment(today, L, M, refined);
     var caption = buildCaption(today, L, comment, M, refined, day.rankings || []);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
-    await renderImage(today, L);
+    await renderImage(today, L, refined);
     console.log('대장 카드:', OUT_IMG);
 
     // 장마감 핫테마(종가) 버블·트리 — 대장 카드 뒤에 붙여 "장마감 핫테마 정리" 앨범 구성
     var themeImgs = await tg.captureFlowmaps(PUBLIC, [
         { mode: 'theme', view: 'bubble', out: IMG_TB },
         { mode: 'theme', view: 'tree', out: IMG_TT },
-    ]);
+    ], { date: today, day: day });
     console.log('핫테마 이미지:', themeImgs.join(', ') || '(실패 → 대장 카드만 발송)');
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }

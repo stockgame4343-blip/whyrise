@@ -33,15 +33,16 @@ function supportedReason(row, date) {
     return { text: supported ? reason : news.length ? '관련 보도: ' + tg.clip(news[0].title, 65) : UNKNOWN, news,
         status: supported ? (editorial ? 'edited' : 'supported') : news.length ? 'related_news' : 'unverified' };
 }
-function link(channel, date, ticker) {
-    const url = new URL(ticker ? '/stock/' + ticker : '/report.html', 'https://orgo.kr');
-    url.searchParams.set('date', date);
-    url.searchParams.set('utm_source', channel);
-    url.searchParams.set('utm_medium', 'social');
-    url.searchParams.set('utm_campaign', 'daily_close');
-    return url.toString();
+function hasTheme(rows) {
+    const counts=new Map(),blocked=new Set(['003060','018700','007460']);
+    for(const r of rows) {
+        if(!r.ticker||blocked.has(r.ticker)||!(r.change_rate>0))continue;
+        const tags=Array.isArray(r.theme_tags)&&r.theme_tags.length?r.theme_tags:r.theme_tag?[r.theme_tag]:[];
+        for(const tag of tags)if(tag)counts.set(tag,(counts.get(tag)||0)+1);
+    }
+    return [...counts.values()].some(n=>n>=3);
 }
-function buildDigest(day, marketmap, now = new Date()) {
+function buildDigest(day, marketmap, now = new Date(), calendar = null) {
     const date = ymd(day.date);
     if (!/^\d{8}$/.test(date) || !Array.isArray(day.rankings) || day.is_final !== true) throw new Error('Final dated rankings required');
     if (!tg.isKrTradingDay(date)) throw new Error('Not a trading day');
@@ -49,50 +50,71 @@ function buildDigest(day, marketmap, now = new Date()) {
     for (const r of day.rankings) {
         if (/^[0-9A-Z]{6}$/.test(r.ticker || '') && r.name && Number.isFinite(r.change_rate) && r.change_rate >= 10) rows.set(r.ticker, {...r});
     }
-    const sameSnapshot = marketmap && ymd(marketmap.date) === date && Array.isArray(marketmap.items);
+    const sameSnapshot = marketmap && ymd(marketmap.date) === date && Array.isArray(marketmap.items) && marketmap.items.some(r=>/^[0-9A-Z]{6}$/.test(r.ticker||'')&&r.name&&Number.isFinite(r.change_rate));
     if (sameSnapshot) for (const r of marketmap.items) {
         if (!/^[0-9A-Z]{6}$/.test(r.ticker || '') || !r.name || !Number.isFinite(r.change_rate) || r.change_rate < 10) continue;
         if (!rows.has(r.ticker)) rows.set(r.ticker, {...r, news: [], rise_reason: '', reason_source: 'missing'});
     }
     const all = [...rows.values()].sort((a,b) => b.change_rate - a.change_rate || a.ticker.localeCompare(b.ticker));
-    if (!all.length) throw new Error('No usable movers; do not publish an empty market report');
     const movers = all.map(r => ({ticker:r.ticker, name:r.name, rate:r.change_rate, sector:r.sector || '', ...supportedReason(r,date)}));
-    const top = movers.slice(0, 3);
     const covered = movers.filter(r => r.status === 'supported' || r.status === 'edited').length;
     const reported = movers.filter(r => r.status === 'related_news').length;
-    const overview = `ORGO 수집 종목 중 +15% 이상 ${all.filter(r=>r.change_rate>=15).length}개 · +10% 이상 ${all.length}개`;
-    const head = `${date.slice(4,6)}/${date.slice(6,8)} 장 마감 | ORGO`;
-    const lines = top.map(r=>`${r.name} ${tg.pct(r.rate)}\n${r.text}`);
-    const base = [head, overview, '', ...lines, '', '공개자료 기반 시장 기록 · 투자 권유 아님'];
-    const threads = [head, overview, '', ...top.slice(0,2).map(r=>`${r.name} ${tg.pct(r.rate)} · ${tg.clip(r.text,40)}`), '', '종목별 뉴스와 흐름은 ORGO에서 확인할 수 있어요.', link('threads',date)].join('\n');
-    const lead = top.find(r=>r.news.length) || top[0];
-    const toss = [`${lead.name} ${date.slice(4,6)}/${date.slice(6,8)} 마감 기록`, '', `등락률: ${tg.pct(lead.rate)}`, `상승 촉매: ${lead.text}`, '',
-        '관련 공개자료 (동시 발생이 인과관계를 확정하지는 않습니다)', ...lead.news.map(n=>`${n.date} ${n.source || ''}\n${n.title}\n${n.link}`), '',
-        '추가 확인할 점: 공시 원문, 기사 발표 시점과 가격 반응, 업종 동반 움직임.', 'ORGO 운영자가 공개자료를 정리했습니다. 종목 추천이나 매매 제안이 아닙니다.'].join('\n');
-    const texts = {threads, instagram:base.concat(['', '원문과 전체 종목은 프로필의 orgo.kr', '#ORGO #국내주식 #오늘의시황']).join('\n'),
-        kakao:base.concat(['',link('kakao',date)]).join('\n'), toss,
-        telegram:base.concat(['',`이유 확인 ${covered}/${all.length}종목 · 미확인 ${all.length-covered}종목`,link('telegram',date)]).join('\n')};
-    for (const [channel, text] of Object.entries(texts)) if (Array.from(text).length > LIMITS[channel]) throw new Error(`${channel} text exceeds limit`);
-    const digest = {version:1, date, generated_at:now.toISOString(), is_final:true, scope:'ORGO 수집 종목 기준 (전체 시장 전수 통계 아님)',
-        coverage:{total:all.length, supported:covered, related_news:reported, unresolved:all.length-covered-reported, snapshot_merged:!!sameSnapshot, supplemented:all.filter(r=>r.reason_source==='missing').length},
-        overview, movers, posts:Object.fromEntries(Object.entries(texts).map(([channel,text])=>[channel,{text, status:'prepared', ...(channel==='toss'?{ticker:lead.ticker}:{})}]))};
-    digest.content_hash=crypto.createHash('sha256').update(JSON.stringify({date, movers,texts})).digest('hex');
+    const calendarDays = Object.fromEntries(Object.entries(calendar?.days || {}).filter(([key]) => /^\d{8}$/.test(key) && key <= date && key.startsWith(date.slice(0,6))));
+    const leader = calendarDays[date] || null;
+    const monthDays = Object.entries(calendarDays).filter(([key]) => key.startsWith(date.slice(0,6)));
+    const base = `/marketing/${date}/`;
+    const themeAvailable=hasTheme(day.rankings);
+    const assets = themeAvailable?[{id:'theme-bubble',label:'테마 버블맵',file:'theme-bubble.jpg',source:'/flowmap.html',alt:`${date} 급등주 테마별 버블맵`}]:[];
+    if(sameSnapshot) assets.push(
+        {id:'market-tree',label:'시장 트리맵',file:'market-tree.jpg',source:'/treemap.html',alt:`${date} ORGO 수집 종목 등락률 트리맵`},
+        {id:'market-bubble',label:'시장 버블맵',file:'market-bubble.jpg',source:'/bubbles2.html',alt:`${date} ORGO 수집 종목 등락률 버블맵`});
+    if(leader) assets.push({id:'calendar',label:'대장 캘린더',file:'calendar.jpg',source:'/sample2.html',alt:`${date.slice(0,6)} 대장주 캘린더 · ${date}까지`},
+        {id:'leader',label:'오늘의 대장',file:'leader.jpg',source:'/sample2.html',alt:`${date} 대장주 · 대장 섹터 · 대장 테마`});
+    const theme = leader?.theme;
+    const themeCaption = theme?.name ? `오늘은 ${theme.name.replace(/\([^)]*\)/g,'').trim()} 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.` : `오늘 급등주를 테마별로 모아봤어요.\n+15% 이상 오른 종목은 ${all.filter(r=>r.change_rate>=15).length}개네요.`;
+    const stories = themeAvailable?[{id:'theme',label:'오늘의 테마',note:'어디로 모였을까',caption:themeCaption,assets:['theme-bubble',...(sameSnapshot?['market-tree']:[])],facts:[theme?.name ? `대장 테마: ${theme.name} · 조건 충족 ${theme.count}종목` : `ORGO 집계 +15% 이상 ${all.filter(r=>r.change_rate>=15).length}종목`]}]:[];
+    let breadth = null;
+    if(sameSnapshot) {
+        const items = [...new Map(marketmap.items.filter(r=>/^[0-9A-Z]{6}$/.test(r.ticker||'')&&r.name&&Number.isFinite(r.change_rate)).map(r=>[r.ticker,r])).values()];
+        breadth = {total:items.length,up:items.filter(r=>r.change_rate>0).length,down:items.filter(r=>r.change_rate<0).length,flat:items.filter(r=>r.change_rate===0).length};
+        const mood = breadth.up>breadth.down ? '빨간 종목이 더 많네요.' : breadth.down>breadth.up ? '파란 종목이 더 많네요.' : '오른 종목과 내린 종목 수가 같네요.';
+        stories.push({id:'market',label:'오늘의 온도',note:'시장을 한눈에',caption:`오늘은 ${mood}\nORGO 수집 ${breadth.total}종목 중 상승 ${breadth.up} · 하락 ${breadth.down}.`,assets:['market-bubble','market-tree'],facts:[`상승 ${breadth.up} · 하락 ${breadth.down} · 보합 ${breadth.flat}`,`전체 시장 전수 통계가 아닌 ORGO 수집 ${breadth.total}종목 기준`]});
+    }
+    if(leader) {
+        const stock = leader.stock;
+        const repeats = stock ? monthDays.filter(([,v])=>v.stock?.ticker===stock.ticker).length : 0;
+        stories.push({id:'calendar',label:'대장 캘린더',note:'하루씩 쌓인 흐름',caption:stock ? (repeats>1 ? `이번 달 ${stock.name}, 벌써 ${repeats}번째 대장이네요.\n캘린더로 보니까 더 잘 보입니다.` : `오늘 대장은 ${stock.name}.\n이번 달 대장들을 달력에 모아봤어요.`) : '오늘은 대장 조건을 채운 종목이 없네요.\n이번 달 흐름은 캘린더에 남겨둡니다.',assets:['calendar'],facts:[`${date.slice(0,4)}년 ${+date.slice(4,6)}월 · ${monthDays.length}거래일 집계`,`${date} 이후 데이터 제외`,...(stock?[`${stock.name} 이번 달 대장 ${repeats}회`]:['해당 거래일 대장주 없음'])]},
+            {id:'leader',label:'오늘의 대장',note:'주도주 · 섹터 · 테마',caption:stock ? `오늘 대장은 ${stock.name}이네요.\n섹터와 테마까지 한 장으로 남겨봅니다.` : '오늘은 대장 조건을 채운 종목이 없네요.\n이런 날도 기록해둡니다.',assets:['leader'],facts:[stock?`대장주 ${stock.name} ${tg.pct(stock.rate)}`:'거래대금·상승률 대장 조건 충족 종목 없음']});
+    }
+    // Friday / month-end: accumulated calendar; otherwise lead with the day's visual flow.
+    const weekday = new Date(utcDay(date)).getUTCDay();
+    if(!stories.length)throw Error('No exportable dated visuals');
+    const defaultStory = leader && ((weekday===5 && monthDays.length>=8) || +date.slice(6)>=28) ? 'calendar' : themeAvailable?'theme':sameSnapshot?'market':'calendar';
+    for(const story of stories) {
+        story.posts = Object.fromEntries(Object.keys(LIMITS).map(channel=> {
+            const text = story.caption + (channel==='instagram'?'\n\n#국내주식 #시황':channel==='kakao'||channel==='telegram'?'\n\norgo.kr':'');
+            if(Array.from(text).length>LIMITS[channel]) throw Error(`${channel} text exceeds limit`);
+            return [channel,{text,images:story.assets.map(id=>base+assets.find(a=>a.id===id).file),status:'prepared'}];
+        }));
+    }
+    const selected=stories.find(s=>s.id===defaultStory);
+    const digest={version:2,date,generated_at:now.toISOString(),is_final:true,scope:'ORGO 수집 종목 기준 (전체 시장 전수 통계 아님)',
+        coverage:{total:all.length,supported:covered,related_news:reported,unresolved:all.length-covered-reported,snapshot_merged:!!sameSnapshot,supplemented:all.filter(r=>r.reason_source==='missing').length},
+        overview:`+15% 이상 ${all.filter(r=>r.change_rate>=15).length}종목`,movers,breadth,leader,calendar_days:calendarDays,assets,stories,default_story:defaultStory,posts:selected.posts};
+    digest.input_hash=crypto.createHash('sha256').update(JSON.stringify({day,marketmap:sameSnapshot?marketmap:null})).digest('hex');
+    digest.content_hash=crypto.createHash('sha256').update(JSON.stringify({date,input_hash:digest.input_hash,movers,breadth,leader,calendarDays,stories})).digest('hex');
     return digest;
-}
-function cardHtml(digest) {
-    const e=tg.escHtml;
-    return `<!doctype html><html lang="ko"><meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;background:#10151b;color:#f2f5f7;font-family:'Malgun Gothic','Noto Sans CJK KR',sans-serif}#card{width:1080px;height:1350px;padding:72px;display:flex;flex-direction:column}header{color:#9aefcd;font-weight:800;font-size:36px;letter-spacing:4px}h1{font-size:66px;line-height:1.2;margin:54px 0 22px}.date{color:#a6b4c0;font-size:28px}.overview{font-size:29px;line-height:1.6;margin:34px 0}.row{padding:30px 0;border-top:1px solid #34404a}.name{display:flex;justify-content:space-between;gap:20px;font-size:38px;font-weight:700}.rate{color:#ff9294;white-space:nowrap}.reason{font-size:27px;color:#a6b4c0;margin-top:16px;line-height:1.5}footer{margin-top:auto;font-size:23px;color:#a6b4c0;line-height:1.6}</style><div id="card"><header>ORGO / MARKET DAILY</header><h1>오늘 오른 종목,<br>무슨 일이 있었을까?</h1><div class="date">${e(digest.date)} · 장 마감 기준</div><div class="overview">${e(digest.overview)}</div>${digest.movers.slice(0,3).map(r=>`<div class="row"><div class="name"><span>${e(r.name)}</span><span class="rate">${e(tg.pct(r.rate))}</span></div><div class="reason">${e(r.text)}</div></div>`).join('')}<footer>공개자료 기반 시장 기록 · 투자 권유 아님<br>종목별 뉴스와 시장 흐름 → orgo.kr</footer></div></html>`;
 }
 function generate(date) {
     if (!/^\d{8}$/.test(date)) throw new Error('Expected YYYYMMDD');
     const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
     const day=read(path.join(ROOT,'public/data/rise-history',date+'.json'));
-    let snapshot=null;
-    try { snapshot=read(path.join(ROOT,'public/data/marketmap',date+'.json')); } catch(e) { /* coverage labels disclose missing snapshot */ }
-    const digest=buildDigest(day,snapshot);
+    let snapshot=null,calendar=null;
+    try { snapshot=read(path.join(ROOT,'public/data/marketmap',date+'.json')); } catch(e) {}
+    try { calendar=read(path.join(ROOT,'public/data/leaders-calendar.json')); } catch(e) {}
+    const digest=buildDigest(day,snapshot,new Date(),calendar);
     const dir=path.join(ROOT,'public/marketing',date); fs.mkdirSync(dir,{recursive:true});
     fs.writeFileSync(path.join(dir,'digest.json'),JSON.stringify(digest,null,2)+'\n');
-    fs.writeFileSync(path.join(dir,'card.html'),cardHtml(digest));
     for(const [channel,post] of Object.entries(digest.posts)) fs.writeFileSync(path.join(dir,channel+'.txt'),post.text+'\n');
     const latestPath=path.join(ROOT,'public/marketing/latest.json');
     let latest=null;try{latest=read(latestPath);}catch(e){}
@@ -103,5 +125,5 @@ function generate(date) {
     if(!status||status.date!==date) fs.writeFileSync(statusPath,JSON.stringify({date,channels:{threads:{status:'prepared'},instagram:{status:'prepared'},kakao:{status:'manual_ready'},toss:{status:'manual_ready'}}},null,2)+'\n');
     return digest;
 }
-if(require.main===module) { try {const d=generate(process.argv[2]||tg.ymdKst());console.log(JSON.stringify({date:d.date,coverage:d.coverage}));}catch(e){console.error(e.message);process.exitCode=1;} }
-module.exports={buildDigest,cardHtml,generate,evidence,supportedReason};
+if(require.main===module) { try {const d=generate(process.argv[2]||tg.ymdKst());console.log(JSON.stringify({date:d.date,coverage:d.coverage,default_story:d.default_story}));}catch(e){console.error(e.message);process.exitCode=1;} }
+module.exports={buildDigest,generate,evidence,supportedReason,hasTheme};

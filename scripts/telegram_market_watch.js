@@ -113,9 +113,9 @@ function sidecarCaption(today, M, ev, comment) {
     return tg.escHtml(lines.join('\n')) + tg.htmlLink('👉 지금 시장 보러가기', tg.orgoLink('/', 'sidecar'));
 }
 
-async function sendText(caption) {
+async function sendText(caption, deliveryKey) {
     if (DRY || DEMO) { console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n'); return null; }
-    var r = await tg.sendMessage(BOT_TOKEN, CHAT_ID, caption, { parse_mode: 'HTML' });
+    var r = await tg.sendMessage(BOT_TOKEN, CHAT_ID, caption, { parse_mode: 'HTML', delivery_key: deliveryKey });
     console.log('게시 완료 — message_id', r.result && r.result.message_id);
     return r;
 }
@@ -177,7 +177,7 @@ async function main() {
         var comment = await tg.aiHook('점심 점검(오전장 시장 요약)',
             { 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct), 상승: M.upCount, 하락: M.downCount },
             ANTHROPIC_KEY, MODEL, '');
-        await sendText(lunchCaption(today, M, breadth, comment));
+        await sendText(lunchCaption(today, M, breadth, comment), 'lunch');
         mk.lunchPosted = true;
         changed = true;
     }
@@ -188,7 +188,7 @@ async function main() {
         var acomment = await tg.aiHook('서킷브레이커 발동 기준 도달(지수 -' + curStage + '% 급락)',
             { 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct), 단계: CB_STAGE[curStage] + '(-' + curStage + '%)' },
             ANTHROPIC_KEY, MODEL, '');
-        await sendText(alertCaption(today, M, curStage, acomment));
+        await sendText(alertCaption(today, M, curStage, acomment), 'cb:' + curStage);
         mk.cbStage = curStage;   // 단계는 심화 때만 오른다(반등해도 안 내림 → 같은 급락 재알림 방지)
         changed = true;
     }
@@ -203,7 +203,7 @@ async function main() {
             var scomment = await tg.aiHook('사이드카 발동(' + ev.market + ' ' + ev.direction + ')',
                 { 시장: ev.market, 방향: ev.direction, 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct) },
                 ANTHROPIC_KEY, MODEL, '');
-            await sendText(sidecarCaption(today, M, ev, scomment));
+            await sendText(sidecarCaption(today, M, ev, scomment), 'sidecar:' + ev.signature);
             mk.sidecarKeys.push(ev.signature);
             changed = true;
         }

@@ -53,12 +53,12 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`run=${!!run}\ndate=${date}\nlive=${date===tg.ymdKst()}\n`);
           if(!run)console.log('No current final trading data / outside window: skipped');
           JS
-      - name: Generate channel copy
+      - name: Generate short captions and visual topics
         if: steps.gate.outputs.run == 'true'
         env:
           DATE: ${{ steps.gate.outputs.date }}
         run: node scripts/marketing_digest.js "$DATE"
-      - name: Render Instagram card
+      - name: Export native ORGO charts and calendar
         if: steps.gate.outputs.run == 'true'
         env:
           DATE: ${{ steps.gate.outputs.date }}
@@ -67,6 +67,23 @@ jobs:
           npx playwright install --with-deps chromium
           sudo apt-get install -y fonts-noto-cjk
           node scripts/marketing_render.js "$DATE"
+          node scripts/test_marketing_ui.js
+      - name: Deploy images before publication
+        id: deploy
+        if: success() && steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public/marketing/
+          git diff --staged --quiet && exit 0
+          git commit -m 'build: ORGO daily marketing'
+          for attempt in 1 2 3; do
+            git fetch origin master
+            git rebase origin/master && git push origin HEAD:master && exit 0
+            git rebase --abort || true
+            sleep 3
+          done
+          exit 1
       - name: Publish configured channels
         if: steps.gate.outputs.run == 'true' && steps.gate.outputs.live == 'true' && (github.event_name != 'workflow_dispatch' || inputs.publish)
         env:
@@ -79,12 +96,12 @@ jobs:
           INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
         run: node scripts/marketing_publish.js "$DATE"
-      - name: Save generated posts and status
-        if: always() && steps.gate.outputs.run == 'true'
+      - name: Save publication status
+        if: always() && steps.deploy.outcome == 'success'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add public/marketing/
+          git add public/marketing/status.json
           git diff --staged --quiet && exit 0
           git commit -m 'build: ORGO daily marketing'
           for attempt in 1 2 3; do

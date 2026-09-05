@@ -19,6 +19,7 @@ import time
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -99,25 +100,35 @@ def _target_from_event(ticker: str, name: str, ev: dict) -> dict | None:
         return None
     news = []
     seen = set()
+    seen_links = set()
     try:
         event_date = datetime.strptime(re.sub(r'\D', '', ev.get('date') or '')[:8], '%Y%m%d')
     except ValueError:
         event_date = None
     for i, n in enumerate(ev.get('news') or []):
         title = (n.get('title') or '').strip()
+        link = str(n.get('link') or '').strip()
+        parsed = urllib.parse.urlparse(link)
+        if parsed.scheme not in ('http', 'https') or not parsed.netloc or parsed.username or parsed.password:
+            continue
+        # URL fragments do not identify a different article.
+        article_link = parsed._replace(fragment='').geturl()
         try:
             article_date = datetime.strptime(re.sub(r'\D', '', n.get('date') or '')[:8], '%Y%m%d')
         except ValueError:
             continue
         if not event_date or not 0 <= (event_date - article_date).days <= EVIDENCE_MAX_AGE_DAYS:
             continue
-        if not title or title in seen:
+        if not title or title in seen or article_link in seen_links:
             continue
         seen.add(title)
+        seen_links.add(article_link)
         # Keep the original index so evidence still points to the stored article.
         news.append({'i': i, 'title': title, 'date': n.get('date') or ''})
-        if len(news) >= NEWS_PER_ITEM:
-            break
+    # Broad market headlines must not crowd a directly named article out of the batch.
+    news.sort(key=lambda n: (bool(name) and name in n['title'],
+                            re.sub(r'\D', '', n['date'])[:8]), reverse=True)
+    news = news[:NEWS_PER_ITEM]
     reason = str(ev.get('rise_reason') or '').strip()
     return {
         'ticker': ticker,
@@ -239,14 +250,17 @@ def _validate(res: dict, target: dict) -> dict | None:
     reason = str(res.get('reason') or '').strip()
     confidence = res.get('confidence') if res.get('confidence') in ('high', 'mid', 'low') else 'low'
     articles = {n['i']: n for n in target['news']}
-    evidence = list(dict.fromkeys(i for i in (res.get('evidence') or [])
+    raw_evidence = res.get('evidence')
+    if not isinstance(raw_evidence, list):
+        raw_evidence = []
+    evidence = list(dict.fromkeys(i for i in raw_evidence
                                 if type(i) is int and i in articles))
     named = sum(bool(target.get('name')) and target['name'] in articles[i]['title'] for i in evidence)
     cap = 'high' if named >= 2 else 'mid' if named == 1 else 'low'
     levels = ['low', 'mid', 'high']
     confidence = levels[min(levels.index(confidence), levels.index(cap))]
     if action == 'replace':
-        if not evidence:
+        if not evidence or not named:
             return {'action': 'no_evidence'}
         # stock-rise 구체 사유는 고신뢰 판정만 교체 — 저신뢰 제안은 버리지 않고 keep 처리
         # (confidence=high 는 근거 없으면 위에서 mid 로 강등되므로 evidence 보장됨)
@@ -258,6 +272,8 @@ def _validate(res: dict, target: dict) -> dict | None:
         return {'action': 'replace', 'reason': reason, 'confidence': confidence,
                 'evidence': evidence}
     if action == 'flag_reversal':
+        if not evidence or not named:
+            return {'action': 'no_evidence'}
         return {'action': 'flag_reversal', 'confidence': 'low', 'evidence': evidence}
     if action in ('keep', 'no_evidence'):
         if action == 'keep' and evidence and named and not is_generic(target['rise_reason']):
@@ -268,7 +284,9 @@ def _validate(res: dict, target: dict) -> dict | None:
 
 def headline_fallback(target: dict) -> dict:
     """Quote a dated, named headline; never invent a causal explanation."""
-    articles = sorted(target['news'], key=lambda n: n['date'], reverse=True)
+    if target.get('verify_only'):
+        return {'action': 'keep', 'note': 'verify_only'}
+    articles = sorted(target['news'], key=lambda n: re.sub(r'\D', '', n['date'])[:8], reverse=True)
     for article in articles:
         if target['name'] and target['name'] in article['title']:
             text = re.sub(r'^\[[^\]]+\]\s*', '', article['title']).strip()

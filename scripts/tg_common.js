@@ -21,6 +21,8 @@ const { Ledger } = require('./delivery_ledger');
 const TG_API = 'https://api.telegram.org/bot';
 const TG_CAPTION_MAX = 1024;   // sendPhoto/sendMediaGroup 캡션 상한(텍스트 메시지는 4096)
 const TG_TEXT_MAX = 4096;
+const FLOWMAP_EXPORT_WIDTH = 1100;
+const FLOWMAP_EXPORT_HEIGHT = 650;
 const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
 
 // ── 포맷 헬퍼 (report.js / telegram_daily_leader.js 와 동일 톤) ──
@@ -107,30 +109,56 @@ function specificReason(raw) {
     return r;
 }
 
-// ── LLM 정제 사유 오버레이 (사이트 api.js _overlayRefinedReasons 와 동일 규칙) ──
-// stock-rise raw 사유는 제네릭("OO 관련 뉴스")이 섞이므로, whyrise rise-history 의
-// reason_source='llm' 행을 ticker→사유 맵으로 받아 캡션에서 우선 사용한다.
-// 실패/파일없음은 빈 맵 — 캡션은 raw 사유로 폴백(게시 자체는 막지 않음).
+// 캡션과 이미지에서 같은 날짜의 근거 있는 이유만 사용한다.
 const WHY_RAW_DATA = 'https://raw.githubusercontent.com/stockgame4343-blip/whyrise/master/public/data';
+const REASON_NEWS_MAX_AGE_DAYS = 3;
+function reasonDate(value) {
+    var s = String(value || '').replace(/\D/g, '').slice(0, 8);
+    if (!/^\d{8}$/.test(s)) return NaN;
+    var ms = Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8));
+    return new Date(ms).toISOString().slice(0, 10).replace(/-/g, '') === s ? ms : NaN;
+}
+function verifiedReason(row, date) {
+    if (!row || !Number.isFinite(reasonDate(date))) return '';
+    var reason = specificReason(row.rise_reason);
+    if (row.reason_source === 'admin' || row.reason_status === 'edited') return reason;
+    function recentNamed(n) {
+        if (!n || !row.name || !String(n.title || '').includes(row.name)) return false;
+        var age = (reasonDate(date) - reasonDate(n.date)) / 86400000;
+        try { if (new URL(n.link).protocol !== 'https:') return false; } catch (_) { return false; }
+        return age >= 0 && age <= REASON_NEWS_MAX_AGE_DAYS;
+    }
+    var evidence = Array.isArray(row.reason_evidence) ? row.reason_evidence.filter(recentNamed) : [];
+    if (row.reason_source === 'llm' && row.reason_confidence !== 'low' && evidence.length && reason) return reason;
+    var news = (Array.isArray(row.news) ? row.news : []).filter(recentNamed);
+    if (news.length) return '관련 보도: ' + clip(news[0].title, 65);
+    return '';
+}
+function refinedReasonsFromDay(day, date) {
+    var out = {};
+    if (!day || !Number.isFinite(reasonDate(date)) || reasonDate(day.date) !== reasonDate(date)) return out;
+    (Array.isArray(day.rankings) ? day.rankings : []).forEach(function (row) {
+        var reason = verifiedReason(row, date);
+        if (row && row.ticker && reason) out[row.ticker] = reason;
+    });
+    return out;
+}
 async function fetchRefinedReasons(date) {
+    if (!Number.isFinite(reasonDate(date))) return {};
+    // Actions checkout already contains this snapshot; avoid two remote waits per post.
+    try {
+        var local = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'public', 'data', 'rise-history', String(date) + '.json'), 'utf8'));
+        if (reasonDate(local.date) === reasonDate(date)) return refinedReasonsFromDay(local, date);
+    } catch (_) { /* Snapshot absent locally: read the published source. */ }
     for (var attempt = 0; attempt < 2; attempt++) {
         try {
-            var ctl = new AbortController();
-            var timer = setTimeout(function () { ctl.abort(); }, 10000);
-            var res = await fetch(WHY_RAW_DATA + '/rise-history/' + date + '.json', { signal: ctl.signal });
-            clearTimeout(timer);
+            var res = await fetch(WHY_RAW_DATA + '/rise-history/' + date + '.json', { signal: AbortSignal.timeout(10000) });
             if (res.status === 404) return {};
             if (!res.ok) throw new Error('HTTP ' + res.status);
             var own = await res.json();
-            var m = {};
-            ((own && own.rankings) || []).forEach(function (r) {
-                if (r && r.ticker && (r.reason_source === 'llm' || r.reason_source === 'news_headline') && r.rise_reason) {
-                    m[r.ticker] = String(r.rise_reason).trim();
-                }
-            });
-            return m;
+            return refinedReasonsFromDay(own, date);
         } catch (e) {
-            if (attempt) { console.error('정제 사유 오버레이 실패(폴백: raw 사유):', e.message); return {}; }
+            if (attempt) { console.error('정제 사유 조회 실패(미확인 사유 생략):', e.message); return {}; }
         }
     }
     return {};
@@ -271,22 +299,42 @@ async function saveViaBridge(page, outPath, opts) {
 }
 
 /**
- * flowmap.html(급등주 흐름맵)을 모바일 뷰포트에서 mode×view 별로 '이미지 저장' 다운로드 캡쳐.
+ * flowmap.html(급등주 흐름맵)의 기존 이미지 저장 기능을 가로형 캡처에 사용.
  *   configs: [{ mode: 'theme'|'rise'|'sector', view: 'bubble'|'tree', out: '/abs.png' }]
+ *   opts: { date: 'YYYYMMDD', day: caption에 사용한 날짜별 rankings snapshot }
  * flowmap 브릿지(WhyRiseTmapBridge.setMode/setView/save) 사용. 반환: 성공한 out 경로 배열.
  */
-async function captureFlowmaps(publicDir, configs) {
+async function captureFlowmaps(publicDir, configs, opts) {
+    opts = opts || {};
+    var snapshot = opts.day;
+    if (opts.date) {
+        if (!Number.isFinite(reasonDate(opts.date))) throw new Error('Invalid flowmap snapshot date');
+        if (!snapshot) snapshot = JSON.parse(fs.readFileSync(path.join(publicDir, 'data', 'rise-history', opts.date + '.json'), 'utf8'));
+        if (reasonDate(snapshot.date) !== reasonDate(opts.date) || !Array.isArray(snapshot.rankings)) throw new Error('Matching flowmap snapshot required');
+    }
     var srv = await servePublic(publicDir);
     var port = srv.address().port;
     var browser = await require('playwright').chromium.launch({ headless: true, args: ['--no-sandbox'] });
     var done = [];
     try {
         var ctx = await browser.newContext({
-            viewport: { width: 430, height: 932 }, deviceScaleFactor: 2,
-            isMobile: true, hasTouch: true, acceptDownloads: true,
+            viewport: { width: FLOWMAP_EXPORT_WIDTH, height: 900 }, deviceScaleFactor: 1,
+            acceptDownloads: true,
         });
         var page = await ctx.newPage();
         await page.addInitScript(function () { try { localStorage.setItem('theme', 'dark'); } catch (e) {} });
+        if (opts.date) {
+            await page.route('**/*', async function (route) {
+                var u = new URL(route.request().url());
+                if (u.pathname === '/js/api.js') return route.fulfill({contentType:'application/javascript',body:
+                    'window.WhyAPI={getDates:async()=>'+JSON.stringify([opts.date])+',getRankings:async()=>('+JSON.stringify(snapshot)+'),getLiveMarketmap:async()=>({map:{},date:'+JSON.stringify(opts.date)+',market_status:"CLOSE"})};'});
+                if (u.pathname.endsWith('.json') || u.pathname.startsWith('/api/')) return route.fulfill({status:404,body:'Unavailable in dated export'});
+                return route.continue();
+            });
+            if (opts.date < ymdKst() || snapshot.is_final === true) {
+                await page.clock.setFixedTime(new Date(reasonDate(opts.date) + 15 * 3600000));
+            }
+        }
         for (var i = 0; i < configs.length; i++) {
             var c = configs[i];
             try {
@@ -295,9 +343,17 @@ async function captureFlowmaps(publicDir, configs) {
                     return window.WhyRiseTmapBridge && typeof window.WhyRiseTmapBridge.setMode === 'function'
                         && document.querySelectorAll('#tmapSvg g, #tmapSvg rect, #tmapSvg circle').length >= 2;
                 }, null, { timeout: 45000 });
+                if (opts.date) await page.waitForFunction(function (date) { return window.WhyRiseTmapBridge.getCurrentDate() === date; }, opts.date);
                 await page.evaluate(function (a) { window.WhyRiseTmapBridge.setView(a.v); window.WhyRiseTmapBridge.setMode(a.m); }, { v: c.view, m: c.mode });
+                await page.addStyleTag({content:'#tmapStage{height:'+FLOWMAP_EXPORT_HEIGHT+'px!important;min-height:'+FLOWMAP_EXPORT_HEIGHT+'px!important;max-height:'+FLOWMAP_EXPORT_HEIGHT+'px!important}'});
+                await page.evaluate(function () { window.dispatchEvent(new Event('resize')); });
+                await page.waitForFunction(function () {
+                    var svg = document.querySelector('#tmapSvg'), vb = svg.viewBox.baseVal;
+                    return Math.abs(vb.width - svg.clientWidth) < 2 && Math.abs(vb.height - svg.clientHeight) < 2;
+                });
                 await page.waitForTimeout(1800);   // 모드 전환 렌더/트랜지션 안정
                 await saveViaBridge(page, c.out, { settle: 600 });
+                if (opts.date && await page.evaluate(function () { return window.WhyRiseTmapBridge.getCurrentDate(); }) !== opts.date) throw new Error('Flowmap date changed during capture');
                 done.push(c.out);
             } catch (e) {
                 console.error('flowmap 캡쳐 실패(' + c.mode + '/' + c.view + '):', e.message);
@@ -524,12 +580,13 @@ function topMoversCardHtml(opts) {
 // ── Telegram Bot API ──
 var _deliverySeq = 0;
 var _deliveryBlocked = false;
-async function _tgPost(botToken, method, bodyBuf, headers) {
+async function _tgPost(botToken, method, bodyBuf, headers, deliveryKey) {
     if (_deliveryBlocked) throw new Error('telegram: unresolved earlier delivery; inspect channel');
     var ledger, record;
     var receipt;
     if (process.env.TG_DELIVERY_TOKEN && process.env.GITHUB_REPOSITORY) {
-        var scope = (process.env.GITHUB_WORKFLOW || 'telegram') + ':' + (++_deliverySeq);
+        // Recurring watchers need event identity, since each run starts at sequence 1.
+        var scope = (process.env.GITHUB_WORKFLOW || 'telegram') + ':' + (deliveryKey ? 'event:' + deliveryKey : ++_deliverySeq);
         var key = 'tg-' + crypto.createHash('sha256').update(scope).digest('hex').slice(0, 20);
         ledger = new Ledger(process.env.GITHUB_REPOSITORY, process.env.TG_DELIVERY_TOKEN, process.env.GITHUB_REF_NAME || 'master');
         record = await ledger.load(ymdKst(), key);
@@ -611,7 +668,7 @@ async function sendMessage(botToken, chatId, text, opts) {
     var payload = { chat_id: chatId, text: messageText(text, TG_TEXT_MAX, opts), disable_web_page_preview: true };
     if (opts.reply_markup) payload.reply_markup = opts.reply_markup;
     if (opts.parse_mode) payload.parse_mode = opts.parse_mode;
-    return _tgPost(botToken, 'sendMessage', JSON.stringify(payload), { 'Content-Type': 'application/json' });
+    return _tgPost(botToken, 'sendMessage', JSON.stringify(payload), { 'Content-Type': 'application/json' }, opts.delivery_key);
 }
 
 async function sendPhoto(botToken, chatId, imgPath, caption, opts) {
@@ -620,7 +677,7 @@ async function sendPhoto(botToken, chatId, imgPath, caption, opts) {
     if (opts.parse_mode) fields.parse_mode = opts.parse_mode;
     var mp = _multipart(fields,
         [{ name: 'photo', filename: 'orgo.png', path: imgPath }]);
-    return _tgPost(botToken, 'sendPhoto', mp.buf, { 'Content-Type': 'multipart/form-data; boundary=' + mp.boundary });
+    return _tgPost(botToken, 'sendPhoto', mp.buf, { 'Content-Type': 'multipart/form-data; boundary=' + mp.boundary }, opts.delivery_key);
 }
 
 /**
@@ -642,7 +699,7 @@ async function sendMediaGroup(botToken, chatId, images, caption, opts) {
     });
     var files = images.map(function (p, i) { return { name: 'p' + i, filename: 'orgo' + i + '.png', path: p }; });
     var mp = _multipart({ __seq: ++_seq, chat_id: chatId, media: JSON.stringify(media) }, files);
-    return _tgPost(botToken, 'sendMediaGroup', mp.buf, { 'Content-Type': 'multipart/form-data; boundary=' + mp.boundary });
+    return _tgPost(botToken, 'sendMediaGroup', mp.buf, { 'Content-Type': 'multipart/form-data; boundary=' + mp.boundary }, opts.delivery_key);
 }
 
 // ── AI 한줄 멘트 (Claude, 실패/미설정 시 fallback 문자열) ──
@@ -724,7 +781,7 @@ function socialThemesCaption(opts) {
 module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip, orgoLink, escHtml, htmlLink,
-    fetchRefinedReasons, isKrTradingDay, isDuplicateDayData, specificReason,
+    fetchRefinedReasons, refinedReasonsFromDay, verifiedReason, isKrTradingDay, isDuplicateDayData, specificReason,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,

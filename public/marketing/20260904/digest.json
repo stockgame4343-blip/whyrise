@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "date": "20260904",
-  "generated_at": "2026-09-05T09:56:10.614Z",
+  "generated_at": "2026-09-05T13:39:57.364Z",
   "is_final": true,
   "scope": "ORGO 수집 종목 기준 (전체 시장 전수 통계 아님)",
   "coverage": {
@@ -12,7 +12,7 @@
     "snapshot_merged": true,
     "supplemented": 0
   },
-  "overview": "ORGO 수집 종목 중 +15% 이상 20개 · +10% 이상 50개",
+  "overview": "+15% 이상 20종목",
   "movers": [
     {
       "ticker": "048770",
@@ -688,28 +688,392 @@
       "status": "unverified"
     }
   ],
+  "breadth": {
+    "total": 401,
+    "up": 335,
+    "down": 58,
+    "flat": 8
+  },
+  "leader": {
+    "stock": {
+      "ticker": "386380",
+      "name": "스카이랩스",
+      "rate": 135,
+      "market": "KOSDAQ",
+      "sector": "건강관리기술",
+      "theme": "2026 하반기 신규상장",
+      "vol": 1676467000000,
+      "reason": "거래량 증가"
+    },
+    "sector": {
+      "name": "기계",
+      "count": 3,
+      "avgRate": 22.9,
+      "top": "TPC로보틱스",
+      "vol": 447770000000
+    },
+    "theme": {
+      "name": "로봇(산업용/협동로봇 등)",
+      "count": 4,
+      "avgRate": 24.6,
+      "top": "TPC로보틱스",
+      "vol": 592722000000
+    }
+  },
+  "calendar_days": {
+    "20260901": {
+      "stock": null,
+      "sector": {
+        "name": "제약",
+        "count": 5,
+        "avgRate": 26.7,
+        "top": "JW신약",
+        "vol": 313233000000
+      },
+      "theme": {
+        "name": "탈모 치료",
+        "count": 4,
+        "avgRate": 28,
+        "top": "JW신약",
+        "vol": 349290000000
+      }
+    },
+    "20260902": {
+      "stock": null,
+      "sector": null,
+      "theme": {
+        "name": "남북경협",
+        "count": 3,
+        "avgRate": 22.8,
+        "top": "좋은사람들",
+        "vol": 75040000000
+      }
+    },
+    "20260903": {
+      "stock": null,
+      "sector": null,
+      "theme": null
+    },
+    "20260904": {
+      "stock": {
+        "ticker": "386380",
+        "name": "스카이랩스",
+        "rate": 135,
+        "market": "KOSDAQ",
+        "sector": "건강관리기술",
+        "theme": "2026 하반기 신규상장",
+        "vol": 1676467000000,
+        "reason": "거래량 증가"
+      },
+      "sector": {
+        "name": "기계",
+        "count": 3,
+        "avgRate": 22.9,
+        "top": "TPC로보틱스",
+        "vol": 447770000000
+      },
+      "theme": {
+        "name": "로봇(산업용/협동로봇 등)",
+        "count": 4,
+        "avgRate": 24.6,
+        "top": "TPC로보틱스",
+        "vol": 592722000000
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "theme-bubble",
+      "label": "테마 버블맵",
+      "file": "theme-bubble.jpg",
+      "source": "/flowmap.html",
+      "alt": "20260904 급등주 테마별 버블맵"
+    },
+    {
+      "id": "market-tree",
+      "label": "시장 트리맵",
+      "file": "market-tree.jpg",
+      "source": "/treemap.html",
+      "alt": "20260904 ORGO 수집 종목 등락률 트리맵"
+    },
+    {
+      "id": "market-bubble",
+      "label": "시장 버블맵",
+      "file": "market-bubble.jpg",
+      "source": "/bubbles2.html",
+      "alt": "20260904 ORGO 수집 종목 등락률 버블맵"
+    },
+    {
+      "id": "calendar",
+      "label": "대장 캘린더",
+      "file": "calendar.jpg",
+      "source": "/sample2.html",
+      "alt": "202609 대장주 캘린더 · 20260904까지"
+    },
+    {
+      "id": "leader",
+      "label": "오늘의 대장",
+      "file": "leader.jpg",
+      "source": "/sample2.html",
+      "alt": "20260904 대장주 · 대장 섹터 · 대장 테마"
+    }
+  ],
+  "stories": [
+    {
+      "id": "theme",
+      "label": "오늘의 테마",
+      "note": "어디로 모였을까",
+      "caption": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.",
+      "assets": [
+        "theme-bubble",
+        "market-tree"
+      ],
+      "facts": [
+        "대장 테마: 로봇(산업용/협동로봇 등) · 조건 충족 4종목"
+      ],
+      "posts": {
+        "threads": {
+          "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.",
+          "images": [
+            "/marketing/20260904/theme-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        },
+        "instagram": {
+          "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.\n\n#국내주식 #시황",
+          "images": [
+            "/marketing/20260904/theme-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        },
+        "kakao": {
+          "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.\n\norgo.kr",
+          "images": [
+            "/marketing/20260904/theme-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        },
+        "toss": {
+          "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.",
+          "images": [
+            "/marketing/20260904/theme-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        },
+        "telegram": {
+          "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.\n\norgo.kr",
+          "images": [
+            "/marketing/20260904/theme-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "id": "market",
+      "label": "오늘의 온도",
+      "note": "시장을 한눈에",
+      "caption": "오늘은 빨간 종목이 더 많네요.\nORGO 수집 401종목 중 상승 335 · 하락 58.",
+      "assets": [
+        "market-bubble",
+        "market-tree"
+      ],
+      "facts": [
+        "상승 335 · 하락 58 · 보합 8",
+        "전체 시장 전수 통계가 아닌 ORGO 수집 401종목 기준"
+      ],
+      "posts": {
+        "threads": {
+          "text": "오늘은 빨간 종목이 더 많네요.\nORGO 수집 401종목 중 상승 335 · 하락 58.",
+          "images": [
+            "/marketing/20260904/market-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        },
+        "instagram": {
+          "text": "오늘은 빨간 종목이 더 많네요.\nORGO 수집 401종목 중 상승 335 · 하락 58.\n\n#국내주식 #시황",
+          "images": [
+            "/marketing/20260904/market-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        },
+        "kakao": {
+          "text": "오늘은 빨간 종목이 더 많네요.\nORGO 수집 401종목 중 상승 335 · 하락 58.\n\norgo.kr",
+          "images": [
+            "/marketing/20260904/market-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        },
+        "toss": {
+          "text": "오늘은 빨간 종목이 더 많네요.\nORGO 수집 401종목 중 상승 335 · 하락 58.",
+          "images": [
+            "/marketing/20260904/market-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        },
+        "telegram": {
+          "text": "오늘은 빨간 종목이 더 많네요.\nORGO 수집 401종목 중 상승 335 · 하락 58.\n\norgo.kr",
+          "images": [
+            "/marketing/20260904/market-bubble.jpg",
+            "/marketing/20260904/market-tree.jpg"
+          ],
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "id": "calendar",
+      "label": "대장 캘린더",
+      "note": "하루씩 쌓인 흐름",
+      "caption": "오늘 대장은 스카이랩스.\n이번 달 대장들을 달력에 모아봤어요.",
+      "assets": [
+        "calendar"
+      ],
+      "facts": [
+        "2026년 9월 · 4거래일 집계",
+        "20260904 이후 데이터 제외",
+        "스카이랩스 이번 달 대장 1회"
+      ],
+      "posts": {
+        "threads": {
+          "text": "오늘 대장은 스카이랩스.\n이번 달 대장들을 달력에 모아봤어요.",
+          "images": [
+            "/marketing/20260904/calendar.jpg"
+          ],
+          "status": "prepared"
+        },
+        "instagram": {
+          "text": "오늘 대장은 스카이랩스.\n이번 달 대장들을 달력에 모아봤어요.\n\n#국내주식 #시황",
+          "images": [
+            "/marketing/20260904/calendar.jpg"
+          ],
+          "status": "prepared"
+        },
+        "kakao": {
+          "text": "오늘 대장은 스카이랩스.\n이번 달 대장들을 달력에 모아봤어요.\n\norgo.kr",
+          "images": [
+            "/marketing/20260904/calendar.jpg"
+          ],
+          "status": "prepared"
+        },
+        "toss": {
+          "text": "오늘 대장은 스카이랩스.\n이번 달 대장들을 달력에 모아봤어요.",
+          "images": [
+            "/marketing/20260904/calendar.jpg"
+          ],
+          "status": "prepared"
+        },
+        "telegram": {
+          "text": "오늘 대장은 스카이랩스.\n이번 달 대장들을 달력에 모아봤어요.\n\norgo.kr",
+          "images": [
+            "/marketing/20260904/calendar.jpg"
+          ],
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "id": "leader",
+      "label": "오늘의 대장",
+      "note": "주도주 · 섹터 · 테마",
+      "caption": "오늘 대장은 스카이랩스이네요.\n섹터와 테마까지 한 장으로 남겨봅니다.",
+      "assets": [
+        "leader"
+      ],
+      "facts": [
+        "대장주 스카이랩스 +135.0%"
+      ],
+      "posts": {
+        "threads": {
+          "text": "오늘 대장은 스카이랩스이네요.\n섹터와 테마까지 한 장으로 남겨봅니다.",
+          "images": [
+            "/marketing/20260904/leader.jpg"
+          ],
+          "status": "prepared"
+        },
+        "instagram": {
+          "text": "오늘 대장은 스카이랩스이네요.\n섹터와 테마까지 한 장으로 남겨봅니다.\n\n#국내주식 #시황",
+          "images": [
+            "/marketing/20260904/leader.jpg"
+          ],
+          "status": "prepared"
+        },
+        "kakao": {
+          "text": "오늘 대장은 스카이랩스이네요.\n섹터와 테마까지 한 장으로 남겨봅니다.\n\norgo.kr",
+          "images": [
+            "/marketing/20260904/leader.jpg"
+          ],
+          "status": "prepared"
+        },
+        "toss": {
+          "text": "오늘 대장은 스카이랩스이네요.\n섹터와 테마까지 한 장으로 남겨봅니다.",
+          "images": [
+            "/marketing/20260904/leader.jpg"
+          ],
+          "status": "prepared"
+        },
+        "telegram": {
+          "text": "오늘 대장은 스카이랩스이네요.\n섹터와 테마까지 한 장으로 남겨봅니다.\n\norgo.kr",
+          "images": [
+            "/marketing/20260904/leader.jpg"
+          ],
+          "status": "prepared"
+        }
+      }
+    }
+  ],
+  "default_story": "theme",
   "posts": {
     "threads": {
-      "text": "09/04 장 마감 | ORGO\nORGO 수집 종목 중 +15% 이상 20개 · +10% 이상 50개\n\nTPC로보틱스 +30.0% · 관련 보도: TPC로보틱스, 휴머노이드 로봇용 자체 브랜드 액추에이터 …\nE8 +30.0% · 관련 보도: E8, 유상증자 납입일 단축…\"자본 확충 조기 마무리\"\n\n종목별 뉴스와 흐름은 ORGO에서 확인할 수 있어요.\nhttps://orgo.kr/report.html?date=20260904&utm_source=threads&utm_medium=social&utm_campaign=daily_close",
+      "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.",
+      "images": [
+        "/marketing/20260904/theme-bubble.jpg",
+        "/marketing/20260904/market-tree.jpg"
+      ],
       "status": "prepared"
     },
     "instagram": {
-      "text": "09/04 장 마감 | ORGO\nORGO 수집 종목 중 +15% 이상 20개 · +10% 이상 50개\n\nTPC로보틱스 +30.0%\n관련 보도: TPC로보틱스, 휴머노이드 로봇용 자체 브랜드 액추에이터 라인업 출시\nE8 +30.0%\n관련 보도: E8, 유상증자 납입일 단축…\"자본 확충 조기 마무리\"\nKS인더스트리 +29.9%\n직접 상승 촉매 확인 중\n\n공개자료 기반 시장 기록 · 투자 권유 아님\n\n원문과 전체 종목은 프로필의 orgo.kr\n#ORGO #국내주식 #오늘의시황",
+      "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.\n\n#국내주식 #시황",
+      "images": [
+        "/marketing/20260904/theme-bubble.jpg",
+        "/marketing/20260904/market-tree.jpg"
+      ],
       "status": "prepared"
     },
     "kakao": {
-      "text": "09/04 장 마감 | ORGO\nORGO 수집 종목 중 +15% 이상 20개 · +10% 이상 50개\n\nTPC로보틱스 +30.0%\n관련 보도: TPC로보틱스, 휴머노이드 로봇용 자체 브랜드 액추에이터 라인업 출시\nE8 +30.0%\n관련 보도: E8, 유상증자 납입일 단축…\"자본 확충 조기 마무리\"\nKS인더스트리 +29.9%\n직접 상승 촉매 확인 중\n\n공개자료 기반 시장 기록 · 투자 권유 아님\n\nhttps://orgo.kr/report.html?date=20260904&utm_source=kakao&utm_medium=social&utm_campaign=daily_close",
+      "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.\n\norgo.kr",
+      "images": [
+        "/marketing/20260904/theme-bubble.jpg",
+        "/marketing/20260904/market-tree.jpg"
+      ],
       "status": "prepared"
     },
     "toss": {
-      "text": "TPC로보틱스 09/04 마감 기록\n\n등락률: +30.0%\n상승 촉매: 관련 보도: TPC로보틱스, 휴머노이드 로봇용 자체 브랜드 액추에이터 라인업 출시\n\n관련 공개자료 (동시 발생이 인과관계를 확정하지는 않습니다)\n2026.09.02 이데일리\nTPC로보틱스, 휴머노이드 로봇용 자체 브랜드 액추에이터 라인업 출시\nhttps://finance.naver.com/item/news_read.naver?article_id=0006362255&office_id=018&code=048770&page=&sm=\n2026.09.02 아시아경제\nTPC로보틱스, 휴머노이드용 액추에이터 7종 출시…하반기 실적 반등 ...\nhttps://finance.naver.com/item/news_read.naver?article_id=0005810647&office_id=277&code=048770&page=&sm=\n\n추가 확인할 점: 공시 원문, 기사 발표 시점과 가격 반응, 업종 동반 움직임.\nORGO 운영자가 공개자료를 정리했습니다. 종목 추천이나 매매 제안이 아닙니다.",
-      "status": "prepared",
-      "ticker": "048770"
+      "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.",
+      "images": [
+        "/marketing/20260904/theme-bubble.jpg",
+        "/marketing/20260904/market-tree.jpg"
+      ],
+      "status": "prepared"
     },
     "telegram": {
-      "text": "09/04 장 마감 | ORGO\nORGO 수집 종목 중 +15% 이상 20개 · +10% 이상 50개\n\nTPC로보틱스 +30.0%\n관련 보도: TPC로보틱스, 휴머노이드 로봇용 자체 브랜드 액추에이터 라인업 출시\nE8 +30.0%\n관련 보도: E8, 유상증자 납입일 단축…\"자본 확충 조기 마무리\"\nKS인더스트리 +29.9%\n직접 상승 촉매 확인 중\n\n공개자료 기반 시장 기록 · 투자 권유 아님\n\n이유 확인 0/50종목 · 미확인 50종목\nhttps://orgo.kr/report.html?date=20260904&utm_source=telegram&utm_medium=social&utm_campaign=daily_close",
+      "text": "오늘은 로봇 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.\n\norgo.kr",
+      "images": [
+        "/marketing/20260904/theme-bubble.jpg",
+        "/marketing/20260904/market-tree.jpg"
+      ],
       "status": "prepared"
     }
   },
-  "content_hash": "782223cd218129f06f61f3d3b2c2fcda7b2cbf5131b5553558ad1562fc0aa988"
+  "input_hash": "e30a36cc16e197d091c8c2dd28805c15c7ab8cdcaaee9763cd4c8a027f131e1d",
+  "content_hash": "578f75d0d09a32ec99310313d681b7ba0f45d0c39f653f8086593ffa6cf830e7"
 }

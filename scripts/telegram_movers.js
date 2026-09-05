@@ -97,7 +97,7 @@ async function main() {
     var imgs = await tg.captureFlowmaps(PUBLIC, [
         { mode: 'theme', view: 'bubble', out: IMG_TB },
         { mode: 'theme', view: 'tree', out: IMG_TT },
-    ]);
+    ], { date: today, day: day });
     console.log('핫테마 이미지:', imgs.join(', ') || '(실패)');
     if (!imgs.length) { console.log('핫테마 이미지 렌더 실패 — 스킵'); return; }
 

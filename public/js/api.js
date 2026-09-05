@@ -11,19 +11,37 @@ var WhyAPI = (function () {
 
     // 클라이언트 캐시 — 5분
     var _cache = {};
+    var _pending = {};
     var _cacheTtlMs = 5 * 60 * 1000;
+    var STATIC_TIMEOUT_MS = 6000;
+
+    function _jsonWithDeadline(url, allowMissing) {
+        var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        var timer;
+        var timeout = new Promise(function (_, reject) {
+            timer = setTimeout(function () {
+                if (ctl) ctl.abort();
+                reject(new Error('timeout for ' + url));
+            }, STATIC_TIMEOUT_MS);
+        });
+        var request = fetch(url, ctl ? { signal: ctl.signal } : {}).then(function (res) {
+            if (allowMissing && res.status === 404) return {};
+            if (!res.ok) throw new Error('HTTP ' + res.status + ' for ' + url);
+            return res.json();
+        });
+        return Promise.race([request, timeout]).finally(function () { clearTimeout(timer); });
+    }
 
     function _cachedFetch(url) {
         var now = Date.now();
         var hit = _cache[url];
         if (hit && (now - hit.t) < _cacheTtlMs) return Promise.resolve(hit.data);
-        return fetch(url).then(function (res) {
-            if (!res.ok) throw new Error('HTTP ' + res.status + ' for ' + url);
-            return res.json();
-        }).then(function (data) {
-            _cache[url] = { t: now, data: data };
+        if (_pending[url]) return _pending[url];
+        _pending[url] = _jsonWithDeadline(url, false).then(function (data) {
+            _cache[url] = { t: Date.now(), data: data };
             return data;
-        });
+        }).finally(function () { delete _pending[url]; });
+        return _pending[url];
     }
 
     // overrides 는 404(파일 없음)가 흔해 _cachedFetch(성공만 캐시)를 못 씀 — 404 도 '확정 빈 셋'으로
@@ -64,12 +82,7 @@ var WhyAPI = (function () {
     }
 
     function _requestOverrides(date) {
-        return fetch('/data/overrides/' + date + '.json')
-            .then(function (res) {
-                if (res.status === 404) return {};   // 파일 없음 = override 없음 (유효한 확정 값)
-                if (!res.ok) throw new Error('HTTP ' + res.status + ' for overrides/' + date);
-                return res.json();
-            });
+        return _jsonWithDeadline('/data/overrides/' + date + '.json', true);
     }
 
     function _fetchOverrides(date) {
@@ -248,44 +261,39 @@ var WhyAPI = (function () {
     // 자체 rise-history 의 LLM 정제 사유를 상류(stock-rise raw) 랭킹에 오버레이.
     // 상세(stock-history)는 정제 사유가 반영되는데 리스트는 상류 raw 를 읽어 제네릭
     // 사유("계약 체결" 등)로 어긋나던 문제 해소 (2026-07-12 사용자 리포트).
-    // 캐시 객체를 제자리 수정하지만 멱등이라 반복 적용 무해. admin override 는
-    // _shapeRankings 가 이 뒤에 적용하므로 여전히 최우선.
-    function _overlayRefinedReasons(data, date) {
-        return _cachedFetch('/data/rise-history/' + date + '.json').then(function (own) {
-            var m = {};
-            ((own && own.rankings) || []).forEach(function (r) {
-                if (r && r.ticker && (r.reason_source === 'llm' || r.reason_source === 'news_headline') && r.rise_reason) m[r.ticker] = r;
-            });
-            (data.rankings || []).forEach(function (r) {
-                var o = m[r.ticker];
-                if (!o) return;
-                r.rise_reason = o.rise_reason;
-                r.reason_source = o.reason_source;
-                r.reason_evidence = o.reason_evidence || [];
-                if (o.news) r.news = o.news;
-                if (o.reason_confidence) r.reason_confidence = o.reason_confidence;
-            });
-            return data;
-        }).catch(function () { return data; });
+    // 원본 캐시를 보존해 보강 사유가 갱신/삭제된 뒤에도 이전 값이 남지 않게 한다.
+    function _overlayRefinedReasons(data, own) {
+        var m = {};
+        ((own && own.rankings) || []).forEach(function (r) {
+            if (r && r.ticker && (r.reason_source === 'llm' || r.reason_source === 'news_headline') && r.rise_reason) m[r.ticker] = r;
+        });
+        var rankings = (data.rankings || []).map(function (r) {
+            var o = m[r.ticker];
+            if (!o) return r;
+            r = Object.assign({}, r);
+            r.rise_reason = o.rise_reason;
+            r.reason_source = o.reason_source;
+            r.reason_evidence = o.reason_evidence || [];
+            if (o.news) r.news = o.news;
+            if (o.reason_confidence) r.reason_confidence = o.reason_confidence;
+            return r;
+        });
+        return Object.assign({}, data, { rankings: rankings });
     }
 
     function getRankings(date, market) {
-        return _cachedFetch(STOCK_RISE_RAW + '/' + date + '.json')
-            .then(function (data) { return _overlayRefinedReasons(data, date); })
-            .catch(function () {
-                return _cachedFetch('/data/rise-history/' + date + '.json');
-            })
-            .then(function (data) {
-                return Promise.all([
-                    // override 만의 일시 실패는 base 랭킹으로 fail-open — reject 라
-                    // '확정 빈 셋'과 혼동되지 않고, 캐시도 안 남아 다음 호출이 재시도한다.
-                    _fetchOverrides(date).catch(function () { return {}; }),
-                    _cachedFetch('/data/pref-themes.json').catch(function () { return {}; }),
-                    _cachedFetch('/data/theme-corrections.json').catch(function () { return {}; }),
-                ]).then(function (res) {
-                    return _shapeRankings(data, res[0], market, res[1], res[2]);
-                });
-            });
+        // 독립 자료는 함께 요청한다. 상류 지연 중에도 자체 스냅샷은 미리 준비된다.
+        return Promise.all([
+            _cachedFetch(STOCK_RISE_RAW + '/' + date + '.json').catch(function () { return null; }),
+            _cachedFetch('/data/rise-history/' + date + '.json').catch(function () { return null; }),
+            _fetchOverrides(date).catch(function () { return {}; }),
+            _cachedFetch('/data/pref-themes.json').catch(function () { return {}; }),
+            _cachedFetch('/data/theme-corrections.json').catch(function () { return {}; }),
+        ]).then(function (res) {
+            var data = res[0] ? _overlayRefinedReasons(res[0], res[1]) : res[1];
+            if (!data) throw new Error('순위 데이터를 불러오지 못했습니다.');
+            return _shapeRankings(data, res[2], market, res[3], res[4]);
+        });
     }
 
     /** 종목별 인덱스 (이 사이트 자체 빌드본) */
