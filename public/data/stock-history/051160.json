@@ -9,9 +9,9 @@
       "close_price": 10860.0,
       "trading_volume": 284539,
       "trading_value": 3090093540,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 자사주 소각 결정에 하락세",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "모바일솔루션(스마트폰)",
       "news": [
@@ -90,7 +90,16 @@
       ],
       "sector": "판매업체",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]지어소프트, 자사주 소각 결정에 하락세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003463120&office_id=030&code=051160&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.03"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -202,5 +211,5 @@
     "count_recent": 1,
     "avg_rate": 12.74
   },
-  "built_at": "2026-09-04T20:51:38"
+  "built_at": "2026-09-05T13:10:52"
 }

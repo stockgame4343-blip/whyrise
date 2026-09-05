@@ -254,13 +254,15 @@ var WhyAPI = (function () {
         return _cachedFetch('/data/rise-history/' + date + '.json').then(function (own) {
             var m = {};
             ((own && own.rankings) || []).forEach(function (r) {
-                if (r && r.ticker && r.reason_source === 'llm' && r.rise_reason) m[r.ticker] = r;
+                if (r && r.ticker && (r.reason_source === 'llm' || r.reason_source === 'news_headline') && r.rise_reason) m[r.ticker] = r;
             });
             (data.rankings || []).forEach(function (r) {
                 var o = m[r.ticker];
                 if (!o) return;
                 r.rise_reason = o.rise_reason;
-                r.reason_source = 'llm';
+                r.reason_source = o.reason_source;
+                r.reason_evidence = o.reason_evidence || [];
+                if (o.news) r.news = o.news;
                 if (o.reason_confidence) r.reason_confidence = o.reason_confidence;
             });
             return data;

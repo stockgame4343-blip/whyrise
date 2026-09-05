@@ -1,0 +1,102 @@
+name: ORGO daily marketing
+on:
+  schedule:
+    - cron: '37 7,8 * * 1-5' # KST 16:37, 17:37 backup
+  workflow_run:
+    workflows: ["종목 인덱스 빌드 (1년치)"]
+    types: [completed]
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'YYYYMMDD, blank = today. Historical dates generate previews only.'
+        default: ''
+        type: string
+      publish:
+        description: 'Publish to configured channels (today only)'
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: orgo-marketing-daily
+  cancel-in-progress: false
+env:
+  TZ: Asia/Seoul
+jobs:
+  daily:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate date and final data
+        id: gate
+        env:
+          REQUESTED_DATE: ${{ inputs.date }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          node - <<'JS'
+          const fs=require('fs'),tg=require('./scripts/tg_common');
+          const date=process.env.REQUESTED_DATE||tg.ymdKst();
+          if(!/^\d{8}$/.test(date))throw Error('Invalid date');
+          const manual=process.env.EVENT_NAME==='workflow_dispatch';
+          const inWindow=tg.hmKst()>='16:20'&&tg.hmKst()<='22:00';
+          const p=`public/data/rise-history/${date}.json`;
+          const day=fs.existsSync(p)?JSON.parse(fs.readFileSync(p)):null;
+          const run=tg.isKrTradingDay(date)&&(manual||inWindow)&&day&&day.is_final===true;
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`run=${!!run}\ndate=${date}\nlive=${date===tg.ymdKst()}\n`);
+          if(!run)console.log('No current final trading data / outside window: skipped');
+          JS
+      - name: Generate channel copy
+        if: steps.gate.outputs.run == 'true'
+        env:
+          DATE: ${{ steps.gate.outputs.date }}
+        run: node scripts/marketing_digest.js "$DATE"
+      - name: Render Instagram card
+        if: steps.gate.outputs.run == 'true'
+        env:
+          DATE: ${{ steps.gate.outputs.date }}
+        run: |
+          npm install --no-save --package-lock=false playwright@1.56.1
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          node scripts/marketing_render.js "$DATE"
+      - name: Publish configured channels
+        if: steps.gate.outputs.run == 'true' && steps.gate.outputs.live == 'true' && (github.event_name != 'workflow_dispatch' || inputs.publish)
+        env:
+          DATE: ${{ steps.gate.outputs.date }}
+          GH_TOKEN: ${{ github.token }}
+          MARKETING_ENABLED_CHANNELS: ${{ vars.MARKETING_ENABLED_CHANNELS }}
+          THREADS_USER_ID: ${{ vars.THREADS_USER_ID }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ vars.INSTAGRAM_USER_ID }}
+          INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: node scripts/marketing_publish.js "$DATE"
+      - name: Save generated posts and status
+        if: always() && steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public/marketing/
+          git diff --staged --quiet && exit 0
+          git commit -m 'build: ORGO daily marketing'
+          for attempt in 1 2 3; do
+            git fetch origin master
+            git rebase origin/master && git push origin HEAD:master && exit 0
+            git rebase --abort || true
+            sleep 3
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.gate.outputs.run == 'true'
+        with:
+          name: orgo-marketing-${{ steps.gate.outputs.date }}
+          path: public/marketing/
+          retention-days: 14

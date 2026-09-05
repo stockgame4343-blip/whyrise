@@ -16,7 +16,9 @@ var WhyApp = (function () {
     // 모든 메뉴에서 가려야 할 종목 — 에이프로젠바이오로직스, 졸스, 에이프로젠
     var BLOCKED_TICKERS = { '003060': 1, '018700': 1, '007460': 1 };
     // 합성행(빌드 TOP_N=100 밖 급등주) 상승이유 보강
-    var REASON_SS_PREFIX = 'wr:reason:';   // sessionStorage 키: wr:reason:{date}:{ticker}
+    var REASON_SS_PREFIX = 'wr:reason:v2:';
+    var REASON_CACHE_MS = 5 * 60 * 1000;
+    var REASON_RETRY_MS = 30000;
     var REASON_MAX_CONCURRENT = 4;         // 동시 보강 fetch 상한 (네이버/Vercel 부하 가드)
     // 라이브 숫자 오버레이 주기 15s — /api/marketmap 에서 주가/상승률/거래대금/시총만 받아
     // 1시간 빌드(getRankings) 행 위에 ticker 단위로 덮어씀. 세부필드(섹터/테마/뉴스)는 빌드 그대로.
@@ -440,11 +442,11 @@ var WhyApp = (function () {
     // 표시 문구는 만들지 않고 news/테마만 채워 table.js cleanReasonText 가 구체 이슈를 뽑게 한다.
     function _reasonSSKey(date, tk) { return REASON_SS_PREFIX + date + ':' + tk; }
     function _reasonFromSS(date, tk) {
-        try { var v = sessionStorage.getItem(_reasonSSKey(date, tk)); return v ? JSON.parse(v) : undefined; }
+        try { var v = JSON.parse(sessionStorage.getItem(_reasonSSKey(date, tk)) || 'null'); return v && Date.now() - v.at < REASON_CACHE_MS ? v.value : undefined; }
         catch (e) { return undefined; }
     }
     function _reasonToSS(date, tk, val) {
-        try { sessionStorage.setItem(_reasonSSKey(date, tk), JSON.stringify(val)); } catch (e) {}
+        try { sessionStorage.setItem(_reasonSSKey(date, tk), JSON.stringify({at: Date.now(), value: val})); } catch (e) {}
     }
 
     // 합성행 표시 이유 — 도착 전 '이유 분석 대기중', 도착 후엔 weak text 로 둬
@@ -483,6 +485,7 @@ var WhyApp = (function () {
     }
 
     function _pumpReasonQueue(date) {
+        if (date !== (state.dates[state.currentDateIdx] || state.virtualDate || '')) return;
         while (state._reasonActive < REASON_MAX_CONCURRENT && state._reasonQueue.length) {
             var tk = state._reasonQueue.shift();
             if (state.reasonCache.hasOwnProperty(tk)) continue;
@@ -491,20 +494,29 @@ var WhyApp = (function () {
                 state._reasonActive++;
                 var lv = (_overlayMap() || {})[tk] || {};
                 WhyAPI.getStockReason(tk, lv.name || '', date).then(function (res) {
+                    if (date !== (state.dates[state.currentDateIdx] || state.virtualDate || '')) return;
                     state.reasonCache[tk] = { theme_tag: (res && res.theme_tag) || '', news: (res && res.news) || [] };
                     _reasonToSS(date, tk, state.reasonCache[tk]);
                 }).catch(function () {
-                    state.reasonCache[tk] = null;   // 실패 — 이 세션 재시도 안 함
+                    if (date !== (state.dates[state.currentDateIdx] || state.virtualDate || '')) return;
+                    state.reasonCache[tk] = null;
+                    setTimeout(function () {
+                        if (date !== (state.dates[state.currentDateIdx] || state.virtualDate || '')) return;
+                        delete state.reasonCache[tk];
+                        _enqueueReasonFetch();
+                    }, REASON_RETRY_MS);
                 }).then(function () {
                     state._reasonActive--;
                     _scheduleReasonRerender();
-                    _pumpReasonQueue(date);
+                    _pumpReasonQueue(state.dates[state.currentDateIdx] || state.virtualDate || '');
                 });
             })(tk);
         }
     }
 
     function loadDate(date) {
+        state.reasonCache = {};
+        state._reasonQueue = [];
         var $loading = document.getElementById('loading');
         var $msg = document.getElementById('message');
         if ($loading) $loading.style.display = 'block';
@@ -522,6 +534,7 @@ var WhyApp = (function () {
             }
             throw err;
         }).then(function (data) {
+            if (date !== (state.dates[state.currentDateIdx] || state.virtualDate || '')) return;
             state.rankings = (data.rankings || []).filter(function (r) {
                 return !BLOCKED_TICKERS[r.ticker];
             });
@@ -530,11 +543,13 @@ var WhyApp = (function () {
             applyCutoffAndRender();
             refreshLiveLabel();
         }).catch(function (err) {
+            if (date !== (state.dates[state.currentDateIdx] || state.virtualDate || '')) return;
             if ($msg) {
                 $msg.textContent = '데이터 로딩 실패: ' + err.message;
                 $msg.style.display = 'block';
             }
         }).finally(function () {
+            if (date !== (state.dates[state.currentDateIdx] || state.virtualDate || '')) return;
             if ($loading) $loading.style.display = 'none';
         });
     }

@@ -29,6 +29,7 @@ on:
 
 env:
   TZ: Asia/Seoul
+  TG_DELIVERY_TOKEN: ${{ github.token }}
 
 concurrency:
   group: telegram-evening
@@ -41,6 +42,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-node@v4
         with:
@@ -77,4 +80,4 @@ jobs:
             fi
             sleep 5
           done
-          echo "마커 push 실패(비치명적) — 다음 실행이 마커 없이도 스킵 로직 재확인" && exit 0
+          echo "::error::마커 push 실패 — 재실행 전 채널 확인 필요"; exit 1

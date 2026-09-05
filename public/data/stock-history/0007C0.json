@@ -9,9 +9,9 @@
       "close_price": 16400.0,
       "trading_volume": 192580,
       "trading_value": 3158312000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 국가 의료AI 사업 잇단 수주…아크릴 11%↑[특징주]",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -90,7 +90,16 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_evidence": [
+        {
+          "title": "국가 의료AI 사업 잇단 수주…아크릴 11%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363575&office_id=018&code=0007C0&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260901",
@@ -806,5 +815,5 @@
     "count_recent": 3,
     "avg_rate": 16.03
   },
-  "built_at": "2026-09-04T20:52:21"
+  "built_at": "2026-09-05T13:10:52"
 }

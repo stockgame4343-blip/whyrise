@@ -19,6 +19,7 @@ on:
 
 env:
   TZ: Asia/Seoul
+  TG_DELIVERY_TOKEN: ${{ github.token }}
 
 concurrency:
   group: telegram-movers
@@ -31,6 +32,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Secret gate
         id: gate

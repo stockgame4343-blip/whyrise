@@ -9,9 +9,9 @@
       "close_price": 21850.0,
       "trading_volume": 2926725,
       "trading_value": 63948941250,
-      "rise_reason": "외국인·기관 순매수",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 애플 폴더블폰 공개 앞두고 20.7% 상승(종합)",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -90,7 +90,16 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인·기관 순매수",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 비에이치, 애플 폴더블폰 공개 앞두고 20.7% 상승(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016283266&office_id=001&code=090460&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.09.01"
+        }
+      ]
     },
     {
       "date": "20260901",
@@ -607,5 +616,5 @@
     "count_recent": 3,
     "avg_rate": 17.23
   },
-  "built_at": "2026-09-04T20:45:10"
+  "built_at": "2026-09-05T13:10:52"
 }

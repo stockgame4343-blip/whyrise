@@ -9,9 +9,9 @@
       "close_price": 23050.0,
       "trading_volume": 658970,
       "trading_value": 15189258500,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 1016억 주주배정 유상증자?\"이중 페이로드 ADC에 투자\"",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -90,7 +90,16 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_evidence": [
+        {
+          "title": "큐리언트, 1016억 주주배정 유상증자?\"이중 페이로드 ADC에 투자\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001055636&office_id=031&code=115180&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -725,5 +734,5 @@
     "count_recent": 2,
     "avg_rate": 17.12
   },
-  "built_at": "2026-09-04T20:48:19"
+  "built_at": "2026-09-05T13:10:52"
 }

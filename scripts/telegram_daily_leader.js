@@ -230,27 +230,7 @@ async function renderImage(ymd, L) {
 
 // ── Telegram sendPhoto (multipart) ──
 async function sendPhoto(imgPath, caption) {
-    var boundary = '----wr' + Date.now();
-    var parts = [];
-    function field(name, value) {
-        parts.push(Buffer.from('--' + boundary + '\r\nContent-Disposition: form-data; name="' + name + '"\r\n\r\n' + value + '\r\n'));
-    }
-    field('chat_id', CHAT_ID);
-    field('caption', caption);
-    field('parse_mode', 'HTML');   // 캡션의 <a> 텍스트 링크 렌더
-    var img = fs.readFileSync(imgPath);
-    parts.push(Buffer.from('--' + boundary + '\r\nContent-Disposition: form-data; name="photo"; filename="leader.png"\r\nContent-Type: image/png\r\n\r\n'));
-    parts.push(img);
-    parts.push(Buffer.from('\r\n--' + boundary + '--\r\n'));
-    var bodyBuf = Buffer.concat(parts);
-    var res = await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', {
-        method: 'POST',
-        headers: { 'Content-Type': 'multipart/form-data; boundary=' + boundary },
-        body: bodyBuf,
-    });
-    var j = await res.json().catch(function () { return {}; });
-    if (!res.ok || !j.ok) throw new Error('telegram HTTP ' + res.status + ' ' + JSON.stringify(j).slice(0, 300));
-    return j;
+    return tg.sendPhoto(BOT_TOKEN, CHAT_ID, imgPath, caption, { parse_mode: 'HTML' });
 }
 
 async function main() {

@@ -9,9 +9,9 @@
       "close_price": 25400.0,
       "trading_volume": 59706,
       "trading_value": 1516532400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 3D프린팅 첫 '소부장 으뜸기업' 선정…우주·방산 양산 공...",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "3D 프린터",
       "news": [
@@ -84,7 +84,16 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_evidence": [
+        {
+          "title": "링크솔루션, 3D프린팅 첫 '소부장 으뜸기업' 선정…우주·방산 양산 공...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005409626&office_id=008&code=474650&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -699,5 +708,5 @@
     "count_recent": 2,
     "avg_rate": 17.05
   },
-  "built_at": "2026-09-04T20:52:07"
+  "built_at": "2026-09-05T13:10:52"
 }

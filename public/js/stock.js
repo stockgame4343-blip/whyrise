@@ -239,6 +239,7 @@
 
     // 상승이유 표시 정리 — 홈처럼 약한 "관련 뉴스"류를 짧은 이슈 문구로 바꾼다.
     function cleanReasonText(reason, theme, news, stockName, eventDate) {
+        if (String(reason || '').indexOf('관련 보도: ') === 0) return String(reason);
         var orig = String(reason == null ? '' : reason).trim();
         var t = stripThemeParen(theme);
         var tShort = t.split('/')[0].trim();
@@ -474,11 +475,12 @@
         // 배지 = "이 사유는 근거가 확인됨" 신호로만 사용 — 테마/패턴(기본 추정 경로)은 배지 없음.
         // 이유 텍스트 뒤에 인라인으로 붙는다 (2026-07-03 카드 2행 정리).
         var labels = {
-            'stockrise': { text: '검증', cls: 'badge--filled' },
+            'stockrise': { text: '수집', cls: 'badge--filled' },
             'admin':     { text: '관리자', cls: 'badge--admin' },
             'news':      { text: '뉴스', cls: 'badge--news' },
             'naver':     { text: '뉴스', cls: 'badge--news' },
             'llm':       { text: 'AI', cls: 'badge--news' },
+            'news_headline': { text: '관련 보도', cls: 'badge--news' },
         };
         var info = labels[source];
         if (!info) return '';

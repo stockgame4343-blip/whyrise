@@ -16,6 +16,8 @@ import json
 import os
 import re
 import time
+from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -27,6 +29,8 @@ MAX_TOKENS = 8000
 REQUEST_TIMEOUT_S = 180
 RETRIES = 2                    # 429/5xx/네트워크 — SDK 기본과 동일한 2회
 BATCH_SIZE = 20                # 종목 수/요청
+BATCH_WORKERS = 3
+EVIDENCE_MAX_AGE_DAYS = 3
 MAX_ITEMS_PER_RUN = 400        # 비용 폭주 가드 (일간 ~170 대비 여유)
 MIN_RATE = 10.0                # 정제 대상 최저 등락률 — 타임라인·상세 노출 기준(+10%)과 일치 (2026-07-20, 기존 15)
 NEWS_PER_ITEM = 10             # 종목당 뉴스 제목 입력 상한
@@ -93,7 +97,27 @@ def is_generic(reason: str) -> bool:
 def _target_from_event(ticker: str, name: str, ev: dict) -> dict | None:
     if ev.get('reason_source') == 'admin' or ev.get('reason_status') == 'edited':
         return None
-    news = [n for n in (ev.get('news') or []) if (n.get('title') or '').strip()]
+    news = []
+    seen = set()
+    try:
+        event_date = datetime.strptime(re.sub(r'\D', '', ev.get('date') or '')[:8], '%Y%m%d')
+    except ValueError:
+        event_date = None
+    for i, n in enumerate(ev.get('news') or []):
+        title = (n.get('title') or '').strip()
+        try:
+            article_date = datetime.strptime(re.sub(r'\D', '', n.get('date') or '')[:8], '%Y%m%d')
+        except ValueError:
+            continue
+        if not event_date or not 0 <= (event_date - article_date).days <= EVIDENCE_MAX_AGE_DAYS:
+            continue
+        if not title or title in seen:
+            continue
+        seen.add(title)
+        # Keep the original index so evidence still points to the stored article.
+        news.append({'i': i, 'title': title, 'date': n.get('date') or ''})
+        if len(news) >= NEWS_PER_ITEM:
+            break
     reason = str(ev.get('rise_reason') or '').strip()
     return {
         'ticker': ticker,
@@ -106,8 +130,7 @@ def _target_from_event(ticker: str, name: str, ev: dict) -> dict | None:
         'reason_source': ev.get('reason_source') or '',
         # stock-rise 구체 사유는 검증만(교체 금지) — 확정 데이터 보호
         'verify_only': ev.get('reason_source') == 'stockrise' and not is_generic(reason),
-        'news': [{'i': i, 'title': n.get('title') or '', 'date': n.get('date') or ''}
-                 for i, n in enumerate(news[:NEWS_PER_ITEM])],
+        'news': news,
     }
 
 
@@ -121,7 +144,7 @@ def collect_day_targets(day_path: Path, min_rate: float = MIN_RATE) -> list[dict
     for r in data.get('rankings') or []:
         if (r.get('change_rate') or 0) < min_rate or not r.get('ticker'):
             continue
-        t = _target_from_event(r['ticker'], r.get('name') or r['ticker'], r)
+        t = _target_from_event(r['ticker'], r.get('name') or r['ticker'], r | {'date': r.get('date') or day_date})
         if t:
             if not t['date']:
                 t['date'] = day_date
@@ -215,11 +238,16 @@ def _validate(res: dict, target: dict) -> dict | None:
     action = res.get('action')
     reason = str(res.get('reason') or '').strip()
     confidence = res.get('confidence') if res.get('confidence') in ('high', 'mid', 'low') else 'low'
-    evidence = [i for i in (res.get('evidence') or [])
-                if isinstance(i, int) and 0 <= i < len(target['news'])]
-    if not evidence and confidence == 'high':
-        confidence = 'mid'   # 근거 없는 high 금지
+    articles = {n['i']: n for n in target['news']}
+    evidence = list(dict.fromkeys(i for i in (res.get('evidence') or [])
+                                if type(i) is int and i in articles))
+    named = sum(bool(target.get('name')) and target['name'] in articles[i]['title'] for i in evidence)
+    cap = 'high' if named >= 2 else 'mid' if named == 1 else 'low'
+    levels = ['low', 'mid', 'high']
+    confidence = levels[min(levels.index(confidence), levels.index(cap))]
     if action == 'replace':
+        if not evidence:
+            return {'action': 'no_evidence'}
         # stock-rise 구체 사유는 고신뢰 판정만 교체 — 저신뢰 제안은 버리지 않고 keep 처리
         # (confidence=high 는 근거 없으면 위에서 mid 로 강등되므로 evidence 보장됨)
         if target.get('verify_only') and confidence != VERIFY_REPLACE_MIN_CONF:
@@ -232,8 +260,25 @@ def _validate(res: dict, target: dict) -> dict | None:
     if action == 'flag_reversal':
         return {'action': 'flag_reversal', 'confidence': 'low', 'evidence': evidence}
     if action in ('keep', 'no_evidence'):
+        if action == 'keep' and evidence and named and not is_generic(target['rise_reason']):
+            return {'action': 'replace', 'reason': target['rise_reason'], 'confidence': confidence, 'evidence': evidence}
         return {'action': action}
     return None
+
+
+def headline_fallback(target: dict) -> dict:
+    """Quote a dated, named headline; never invent a causal explanation."""
+    articles = sorted(target['news'], key=lambda n: n['date'], reverse=True)
+    for article in articles:
+        if target['name'] and target['name'] in article['title']:
+            text = re.sub(r'^\[[^\]]+\]\s*', '', article['title']).strip()
+            if text.startswith(target['name']):
+                text = text[len(target['name']):].lstrip(' ,·:')
+            if not text:
+                continue
+            return {'action': 'replace', 'reason': '관련 보도: ' + text[:80],
+                    'confidence': 'mid', 'source': 'news_headline', 'evidence': [article['i']]}
+    return {'action': 'no_evidence'}
 
 
 def refine(targets: list[dict], api_key: str) -> tuple[dict, dict]:
@@ -247,28 +292,45 @@ def refine(targets: list[dict], api_key: str) -> tuple[dict, dict]:
             stats['skipped_no_news'] += 1
         else:
             sendable.append(t)
-    for i in range(0, len(sendable), BATCH_SIZE):
-        batch = sendable[i:i + BATCH_SIZE]
-        by_ticker = {t['ticker']: t for t in batch}
-        payload_items = [{k: t[k] for k in
-                          ('ticker', 'name', 'date', 'change_rate', 'theme_tag', 'sector', 'news')}
-                         | {'current_reason': t['rise_reason'],
-                            'current_source': t['reason_source']}
-                         for t in batch]
+    # A ticker may have several historical dates. Never put those in one response map.
+    batches = []
+    for t in sendable:
+        if not batches or len(batches[-1]) >= BATCH_SIZE or any(x['ticker'] == t['ticker'] for x in batches[-1]):
+            batches.append([])
+        batches[-1].append(t)
+    def run_batch(batch):
+        if not api_key:
+            return [], None
+        payload = [{k: t[k] for k in ('ticker', 'name', 'date', 'change_rate', 'theme_tag', 'sector', 'news')}
+                   | {'current_reason': t['rise_reason'], 'current_source': t['reason_source']} for t in batch]
         try:
-            results = _call_batch(payload_items, api_key)
-        except Exception as e:
-            print(f'  llm batch {i // BATCH_SIZE + 1} 실패: {e}')
+            return _call_batch(payload, api_key), None
+        except Exception as exc:
+            return [], exc
+    with ThreadPoolExecutor(max_workers=BATCH_WORKERS) as pool:
+        responses = list(pool.map(run_batch, batches))
+    for batch, (results, error) in zip(batches, responses):
+        by_ticker = {t['ticker']: t for t in batch}
+        if error:
+            print(f'  llm batch 실패: {error}')
             stats['batch_errors'] += 1
-            continue
-        stats['sent'] += len(batch)
+        if not error and api_key:
+            stats['sent'] += len(batch)
+        seen_results = set()
         for res in results:
+            if not isinstance(res, dict) or res.get('ticker') in seen_results:
+                continue
+            seen_results.add(res.get('ticker'))
             t = by_ticker.get(res.get('ticker'))
             if not t:
                 continue
             v = _validate(res, t)
             if v:
                 verdicts[(t['ticker'], t['date'])] = v
+        for t in batch:
+            key = (t['ticker'], t['date'])
+            if key not in verdicts:
+                verdicts[key] = headline_fallback(t)
     return verdicts, stats
 
 
@@ -306,9 +368,11 @@ def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
             if not ev or ev.get('reason_source') == 'admin' or ev.get('reason_status') == 'edited':
                 continue
             if v['action'] == 'replace':
+                if ev.get('rise_reason') != v['reason']:
+                    ev['reason_previous'] = ev.get('rise_reason') or ''
                 ev['rise_reason'] = v['reason']
                 ev['reason_confidence'] = v['confidence']
-                ev['reason_source'] = 'llm'
+                ev['reason_source'] = v.get('source', 'llm')
                 ev['reason_status'] = 'filled'
                 _reorder_news(ev, v.get('evidence') or [])
                 counts['replaced'] += 1
@@ -338,7 +402,8 @@ def _reorder_news(ev: dict, evidence: list[int]) -> None:
     news = ev.get('news') or []
     if not evidence or not news:
         return
-    head = [news[i] for i in evidence if 0 <= i < min(len(news), NEWS_PER_ITEM)]
+    head = [news[i] for i in evidence if 0 <= i < len(news)]
+    ev['reason_evidence'] = [dict(n) for n in head]
     rest = [n for n in news if n not in head]
     ev['news'] = head + rest
 

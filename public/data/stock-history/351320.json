@@ -9,9 +9,9 @@
       "close_price": 3725.0,
       "trading_volume": 2245370,
       "trading_value": 8364003250,
-      "rise_reason": "화장품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: AI 데이터센터·HPC 진출…SK하이닉스 출신 임원 영...",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -90,7 +90,16 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 관련 뉴스",
+      "reason_evidence": [
+        {
+          "title": "넥사다이내믹스, AI 데이터센터·HPC 진출…SK하이닉스 출신 임원 영...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005407891&office_id=008&code=351320&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.09.01"
+        }
+      ]
     },
     {
       "date": "20260831",
@@ -873,5 +882,5 @@
     "count_recent": 7,
     "avg_rate": 17.4
   },
-  "built_at": "2026-09-04T20:53:01"
+  "built_at": "2026-09-05T13:10:52"
 }

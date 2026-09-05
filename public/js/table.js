@@ -265,6 +265,7 @@ var WhyTable = (function () {
     // 상승이유 표시 정리 — 이유 칸을 절대 비우지 않는다(빈칸=오류처럼 보임).
     // 약한 "관련 뉴스"류는 뉴스 제목에서 명확한 사건을 뽑고, 실패하면 "OO 이슈"로 말끝을 닫는다.
     function cleanReasonText(reason, theme, news, stockName, eventDate, relaxDate) {
+        if (String(reason || '').indexOf('관련 보도: ') === 0) return String(reason);
         var orig = String(reason == null ? '' : reason).trim();
         var t = stripThemeParen(theme);
         var tShort = t.split('/')[0].trim();

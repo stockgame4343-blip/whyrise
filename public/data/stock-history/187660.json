@@ -9,9 +9,9 @@
       "close_price": 5850.0,
       "trading_volume": 3940194,
       "trading_value": 23050134900,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 신약 후보물질 미국 임상 2a상 승인",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "전립선암",
       "news": [
@@ -90,7 +90,16 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_evidence": [
+        {
+          "title": "페니트리움바이오, 신약 후보물질 미국 임상 2a상 승인",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016289490&office_id=001&code=187660&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260831",
@@ -1360,5 +1369,5 @@
     "count_recent": 4,
     "avg_rate": 18.33
   },
-  "built_at": "2026-09-04T20:49:45"
+  "built_at": "2026-09-05T13:10:52"
 }

@@ -20,6 +20,7 @@ import re
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timedelta, timezone
 from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler
 
@@ -32,7 +33,8 @@ MAIN_URL = 'https://finance.naver.com/item/main.naver?code={ticker}'
 
 TICKER_RE = re.compile(r'^[0-9A-Z]{6}$')   # current-price.py 와 동일 — 영문 신코드 포함
 MAX_ARTICLES = 6
-FETCH_TIMEOUT = 6        # 개별 네이버 호출 타임아웃(초) — Vercel ~10s 안에 2회 병렬+재시도 여유
+FETCH_TIMEOUT = 3        # Two attempts fit the client's eight-second deadline.
+NEWS_MAX_AGE_DAYS = 3
 # 뉴스는 자주 안 바뀜 → edge 캐시 길게(종목당 1회로 네이버 호출 절감). 오류·빈응답은 캐시 안 함.
 CACHE_OK = 's-maxage=600, stale-while-revalidate=1200'
 
@@ -90,12 +92,19 @@ def _priority(title, name):
     return p
 
 
-def _parse_news(html, name):
+def _parse_news(html, name, as_of=None):
     if not html:
         return []
     seen = set()
     out = []
     for link, title, info, date in ROW_RE.findall(html):
+        if as_of:
+            try:
+                published = datetime.strptime(date[:10], '%Y.%m.%d').date()
+            except ValueError:
+                continue
+            if not 0 <= (as_of - published).days <= NEWS_MAX_AGE_DAYS:
+                continue
         title = _clean(title)
         if not title or title in seen or SPAM_TITLE.search(title):
             continue
@@ -131,6 +140,14 @@ class handler(BaseHTTPRequestHandler):
             q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
             ticker = (q.get('ticker', [''])[0] or '').upper()
             name = (q.get('name', [''])[0] or '').strip()
+            requested = q.get('date', [''])[0]
+            try:
+                if requested and not re.fullmatch(r'\d{8}', requested):
+                    raise ValueError('date format')
+                as_of = datetime.strptime(requested, '%Y%m%d').date() if requested else datetime.now(timezone(timedelta(hours=9))).date()
+            except ValueError:
+                self._respond(400, {'error': 'invalid date'})
+                return
             if not TICKER_RE.match(ticker):
                 self._respond(400, {'error': 'invalid ticker'})
                 return
@@ -140,13 +157,18 @@ class handler(BaseHTTPRequestHandler):
                 f_main = ex.submit(_fetch_retry, MAIN_URL.format(ticker=ticker))
                 news_html = f_news.result()
                 main_html = f_main.result()
-            news = _parse_news(news_html, name)
+            if news_html is None:
+                self._respond(502, {'error': 'news source unavailable', 'retryable': True})
+                return
+            news = _parse_news(news_html, name, as_of)
             theme = _parse_theme(main_html)
             # 뉴스가 있으면 길게 캐시, 없으면 캐시 안 함(나중에 생길 수 있어 재요청 허용)
             self._respond(200, {
                 'ticker': ticker,
                 'theme_tag': theme,
                 'news': news,
+                'date': as_of.strftime('%Y%m%d'),
+                'status': 'available' if news else 'no_recent_news',
             }, cache=(CACHE_OK if news else None))
         except urllib.error.HTTPError as e:
             self._respond(502, {'error': 'naver %d' % e.code})
@@ -157,7 +179,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
-        if cache:
-            self.send_header('Cache-Control', cache)
+        self.send_header('Cache-Control', cache or 'no-store')
         self.end_headers()
         self.wfile.write(json.dumps(body, ensure_ascii=False).encode('utf-8'))

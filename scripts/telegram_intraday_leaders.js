@@ -98,6 +98,9 @@ async function main() {
     }
 
     var today = DATE_ARG || tg.ymdKst();
+    if (!DRY && !DATE_ARG && !FORCE && (tg.hmKst() < '09:30' || tg.hmKst() >= '11:00')) {
+        console.log('장중 주도 게시 시간 밖 — 스킵'); return;
+    }
     if (!DATE_ARG && !FORCE) {
         // 휴장일 2중 가드 — 캘린더(공휴일) + 네이버 실측(임시휴장). 휴장일에 상류가
         // 전 거래일 복제 파일을 만들어도(2026-07-17 사고) 여기서 막힌다.

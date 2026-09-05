@@ -9,12 +9,18 @@
       "close_price": 1547.0,
       "trading_volume": 549103,
       "trading_value": 849462341,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: \"자동차·방산 넘어 로보틱스로 사업 확대\"",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
+        {
+          "title": "디와이씨 \"자동차·방산 넘어 로보틱스로 사업 확대\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363619&office_id=018&code=310870&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.04"
+        },
         {
           "title": "디와이씨, 방산 성장 모멘텀 부각에 8%대 강세[특징주]",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006335203&office_id=018&code=310870&page=&sm=",
@@ -26,12 +32,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005793372&office_id=277&code=310870&page=&sm=",
           "source": "아시아경제",
           "date": "2026.07.23"
-        },
-        {
-          "title": "디와이씨 \"자동차·방산 넘어 로보틱스로 사업 확대\"",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363619&office_id=018&code=310870&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.09.04"
         },
         {
           "title": "디와이씨, 자동차·방산 넘어 로봇까지…정밀부품 사업 외연 확장",
@@ -90,7 +90,16 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_evidence": [
+        {
+          "title": "디와이씨 \"자동차·방산 넘어 로보틱스로 사업 확대\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363619&office_id=018&code=310870&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -392,5 +401,5 @@
     "count_recent": 1,
     "avg_rate": 17.4
   },
-  "built_at": "2026-09-04T20:55:49"
+  "built_at": "2026-09-05T13:10:52"
 }

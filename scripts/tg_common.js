@@ -15,6 +15,8 @@
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
+const crypto = require('crypto');
+const { Ledger } = require('./delivery_ledger');
 
 const TG_API = 'https://api.telegram.org/bot';
 const TG_CAPTION_MAX = 1024;   // sendPhoto/sendMediaGroup 캡션 상한(텍스트 메시지는 4096)
@@ -51,7 +53,7 @@ function marketLabel(m) {
     if (m.indexOf('KOSPI') >= 0 || m.indexOf('KRX') >= 0) return 'KOSPI';
     return m || '';
 }
-function clip(s, n) { s = String(s == null ? '' : s); return s.length > n ? s.slice(0, n - 1) + '…' : s; }
+function clip(s, n) { s = Array.from(String(s == null ? '' : s)); return s.length > n ? s.slice(0, n - 1).join('') + '…' : s.join(''); }
 
 // ── 휴장일 판정 (collector/kr_holidays.json — python 과 공용 단일 소스) ──
 // 임시휴장은 테이블에 없을 수 있으므로(2026-07-17 사고) 09:00 이후 게시물은
@@ -122,7 +124,7 @@ async function fetchRefinedReasons(date) {
             var own = await res.json();
             var m = {};
             ((own && own.rankings) || []).forEach(function (r) {
-                if (r && r.ticker && r.reason_source === 'llm' && r.rise_reason) {
+                if (r && r.ticker && (r.reason_source === 'llm' || r.reason_source === 'news_headline') && r.rise_reason) {
                     m[r.ticker] = String(r.rise_reason).trim();
                 }
             });
@@ -157,7 +159,10 @@ function loadMarker(markerPath) {
     try { return JSON.parse(fs.readFileSync(markerPath, 'utf8')) || {}; } catch (e) { return {}; }
 }
 function saveMarker(markerPath, obj) {
-    fs.writeFileSync(markerPath, JSON.stringify(obj) + '\n', 'utf8');
+    fs.mkdirSync(path.dirname(markerPath), { recursive: true });
+    var tmp = markerPath + '.tmp';
+    fs.writeFileSync(tmp, JSON.stringify(obj) + '\n', 'utf8');
+    fs.renameSync(tmp, markerPath);
 }
 
 // ── 로컬 정적 서버 (public/ 서빙 — /api/* 는 없으니 페이지가 /data/*.json 폴백) ──
@@ -517,11 +522,69 @@ function topMoversCardHtml(opts) {
 }
 
 // ── Telegram Bot API ──
+var _deliverySeq = 0;
+var _deliveryBlocked = false;
 async function _tgPost(botToken, method, bodyBuf, headers) {
-    var res = await fetch(TG_API + botToken + '/' + method, { method: 'POST', headers: headers, body: bodyBuf });
-    var j = await res.json().catch(function () { return {}; });
-    if (!res.ok || !j.ok) throw new Error('telegram ' + method + ' HTTP ' + res.status + ' ' + JSON.stringify(j).slice(0, 300));
-    return j;
+    if (_deliveryBlocked) throw new Error('telegram: unresolved earlier delivery; inspect channel');
+    var ledger, record;
+    var receipt;
+    if (process.env.TG_DELIVERY_TOKEN && process.env.GITHUB_REPOSITORY) {
+        var scope = (process.env.GITHUB_WORKFLOW || 'telegram') + ':' + (++_deliverySeq);
+        var key = 'tg-' + crypto.createHash('sha256').update(scope).digest('hex').slice(0, 20);
+        ledger = new Ledger(process.env.GITHUB_REPOSITORY, process.env.TG_DELIVERY_TOKEN, process.env.GITHUB_REF_NAME || 'master');
+        record = await ledger.load(ymdKst(), key);
+        if (record.state.status === 'published') return record.state.receipt;
+        if (record.state.status === 'sending' || record.state.status === 'uncertain') {
+            _deliveryBlocked = true;
+            throw new Error('telegram: delivery needs reconciliation; automatic resend blocked');
+        }
+        await ledger.save(record, {status:'sending', method:method, started_at:new Date().toISOString()});
+    }
+    try {
+        receipt = await _tgRequest(botToken, method, bodyBuf, headers);
+    } catch (e) {
+        _deliveryBlocked = true;
+        if (ledger) await ledger.save(record, {status:'uncertain', method:method, error:e.message});
+        throw e;
+    }
+    if (ledger) {
+        var slim = {ok:true,result:Array.isArray(receipt.result) ? receipt.result.map(r=>({message_id:r.message_id})) : {message_id:receipt.result.message_id}};
+        await ledger.save(record, {status:'published', method:method, receipt:slim});
+    }
+    return receipt;
+}
+async function _tgRequest(botToken, method, bodyBuf, headers) {
+    for (var attempt = 0; attempt < 3; attempt++) {
+        var res;
+        var j;
+        try {
+            res = await fetch(TG_API + botToken + '/' + method, {
+                method: 'POST', headers: headers, body: bodyBuf, signal: AbortSignal.timeout(20000),
+            });
+            j = await res.json();
+        } catch (e) {
+            // Telegram has no idempotency key: do not blindly resend an ambiguous write.
+            throw new Error('telegram ' + method + ': delivery uncertain; inspect channel before retry');
+        }
+        if (res.ok && j.ok) return j;
+        var retryAfter = Number(j.parameters && j.parameters.retry_after);
+        if ((res.status === 429 || j.error_code === 429) && attempt < 2 && retryAfter > 0 && retryAfter <= 60) {
+            await new Promise(function (resolve) { setTimeout(resolve, retryAfter * 1000); });
+            continue;
+        }
+        throw new Error('telegram ' + method + ' HTTP ' + res.status + ' code=' + (j.error_code || 'unknown'));
+    }
+}
+
+function messageText(text, max, opts) {
+    text = String(text || '');
+    if (opts.parse_mode === 'HTML' && text.length > max) {
+        // A sliced <a> tag/entity invalidates the whole caption. Preserve links as text.
+        text = text.replace(/<a href="([^"]*)">(.*?)<\/a>/g, '$2 ($1)').replace(/<[^>]*>/g, '')
+            .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+        delete opts.parse_mode;
+    }
+    return clip(text, max);
 }
 
 function _multipart(fields, files) {
@@ -542,15 +605,16 @@ function _multipart(fields, files) {
 
 var _seq = 0;
 async function sendMessage(botToken, chatId, text, opts) {
-    opts = opts || {};
-    var payload = { chat_id: chatId, text: clip(text, TG_TEXT_MAX), disable_web_page_preview: true };
+    opts = Object.assign({}, opts);
+    var payload = { chat_id: chatId, text: messageText(text, TG_TEXT_MAX, opts), disable_web_page_preview: true };
+    if (opts.reply_markup) payload.reply_markup = opts.reply_markup;
     if (opts.parse_mode) payload.parse_mode = opts.parse_mode;
     return _tgPost(botToken, 'sendMessage', JSON.stringify(payload), { 'Content-Type': 'application/json' });
 }
 
 async function sendPhoto(botToken, chatId, imgPath, caption, opts) {
-    opts = opts || {};
-    var fields = { __seq: ++_seq, chat_id: chatId, caption: clip(caption, TG_CAPTION_MAX) };
+    opts = Object.assign({}, opts);
+    var fields = { __seq: ++_seq, chat_id: chatId, caption: messageText(caption, TG_CAPTION_MAX, opts) };
     if (opts.parse_mode) fields.parse_mode = opts.parse_mode;
     var mp = _multipart(fields,
         [{ name: 'photo', filename: 'orgo.png', path: imgPath }]);
@@ -562,7 +626,10 @@ async function sendPhoto(botToken, chatId, imgPath, caption, opts) {
  *   images: [ '/abs/a.png', '/abs/b.png' ]
  */
 async function sendMediaGroup(botToken, chatId, images, caption, opts) {
-    opts = opts || {};
+    opts = Object.assign({}, opts);
+    if (!images.length || images.length > 10) throw new Error('media group requires 1-10 images');
+    if (images.length === 1) return sendPhoto(botToken, chatId, images[0], caption, opts);
+    caption = messageText(caption, TG_CAPTION_MAX, opts);
     var media = images.map(function (_, i) {
         var m = { type: 'photo', media: 'attach://p' + i };
         if (i === 0 && caption) {
@@ -581,6 +648,7 @@ async function aiComment(promptText, apiKey, model, fallback) {
     if (!apiKey) return fallback;
     try {
         var res = await fetch('https://api.anthropic.com/v1/messages', {
+            signal: AbortSignal.timeout(15000),
             method: 'POST',
             headers: { 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
             // thinking 비활성 — 한 줄 멘트에 사고 불필요(소넷5 등은 미지정 시 적응형 사고가 켜져 max_tokens 잠식→문장 잘림). max_tokens 여유.

@@ -25,6 +25,7 @@ on:
 
 env:
   TZ: Asia/Seoul
+  TG_DELIVERY_TOKEN: ${{ github.token }}
 
 concurrency:
   group: telegram-market
@@ -37,6 +38,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-node@v4
         with:

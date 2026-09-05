@@ -9,9 +9,9 @@
       "close_price": 3965.0,
       "trading_volume": 1859689,
       "trading_value": 7373666885,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 휴머노이드 로봇용 자체 브랜드 액추에이터 라인업 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -90,7 +90,16 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_evidence": [
+        {
+          "title": "TPC로보틱스, 휴머노이드 로봇용 자체 브랜드 액추에이터 라인업 출시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006362255&office_id=018&code=048770&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -882,5 +891,5 @@
     "count_recent": 2,
     "avg_rate": 18.87
   },
-  "built_at": "2026-09-04T20:54:41"
+  "built_at": "2026-09-05T13:10:52"
 }

@@ -1097,6 +1097,8 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
                 'is_52w_high': (None if e.get('is_52w_high') is None
                                 else bool(e.get('is_52w_high'))),
             }
+            if e.get('reason_evidence'):
+                row['reason_evidence'] = e['reason_evidence']
             if isinstance(e.get('pre_override'), dict):
                 # 과거 fallback 일별 화면도 override 삭제/재저장 때 원본을 즉시 복원할 수 있게 한다.
                 row['pre_override'] = dict(e['pre_override'])
@@ -2106,7 +2108,7 @@ def _llm_apply_and_regen(targets, verdicts, stats, dry_run: bool, title: str) ->
         build_stock_prerender(OUTPUT_DIR, OUTPUT_DIR.parent.parent)
         build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
     llm_reasons.write_step_summary(title, counts, table)
-    return 0
+    return 1 if stats.get('batch_errors') else 0
 
 
 def build_llm_refine(args) -> int:
@@ -2129,8 +2131,7 @@ def build_llm_refine(args) -> int:
         return 0
     api_key = _llm_api_key()
     if not api_key:
-        print('llm-refine: ANTHROPIC_API_KEY 미설정 — 스킵')
-        return 0
+        print('llm-refine: API key unavailable — dated headline fallback')
     verdicts, stats = llm_reasons.refine(targets, api_key)
     return _llm_apply_and_regen(targets, verdicts, stats, args.dry_run, f'llm-refine {date}')
 

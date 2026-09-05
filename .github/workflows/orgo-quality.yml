@@ -1,0 +1,27 @@
+name: ORGO regression checks
+on:
+  push:
+    paths: ['scripts/**', 'api/**', 'public/js/**', '.github/workflows/**']
+  pull_request:
+    paths: ['scripts/**', 'api/**', 'public/js/**', '.github/workflows/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python scripts/test_reason_quality.py
+      - run: python scripts/test_build_history.py
+      - run: node --test scripts/test_marketing.js
+      - run: node --test scripts/test_tg_delivery.js
+      - run: node scripts/test_api_overrides.js
+      - run: node scripts/test_home_nonblocking.js
