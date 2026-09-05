@@ -22,9 +22,16 @@ test('telegram receipt survives a process restart and ambiguity blocks resending
         assert.equal(state.status,'uncertain');const before=calls;
         await assert.rejects(restart().sendMessage('token','channel','new'),/reconciliation/);
         assert.equal(calls,before);
+        state={};global.fetch=async()=>{calls++;return {ok:false,status:429,json:async()=>({ok:false,error_code:429})};};
+        await assert.rejects(restart().sendMessage('token','channel','limited'),/429/);
+        assert.equal(state.status,'retryable');
+        global.fetch=async()=>{calls++;return {ok:true,status:200,json:async()=>({ok:true,result:{message_id:43}})};};
+        await restart().sendMessage('token','channel','limited');
+        assert.equal(state.status,'published');
+        const afterRetry=calls;
         state={};Ledger.prototype.save=async()=>{throw Error('ledger unavailable');};
         await assert.rejects(restart().sendMessage('token','channel','new'),/ledger unavailable/);
-        assert.equal(calls,before);
+        assert.equal(calls,afterRetry);
     }finally{
         global.fetch=originalFetch;Ledger.prototype.load=load;Ledger.prototype.save=save;
         for(const k of keys){if(old[k]===undefined)delete process.env[k];else process.env[k]=old[k];}

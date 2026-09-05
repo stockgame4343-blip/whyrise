@@ -544,7 +544,7 @@ async function _tgPost(botToken, method, bodyBuf, headers) {
         receipt = await _tgRequest(botToken, method, bodyBuf, headers);
     } catch (e) {
         _deliveryBlocked = true;
-        if (ledger) await ledger.save(record, {status:'uncertain', method:method, error:e.message});
+        if (ledger) await ledger.save(record, {status:e.safeToRetry ? 'retryable' : 'uncertain', method:method, error:e.message});
         throw e;
     }
     if (ledger) {
@@ -572,7 +572,9 @@ async function _tgRequest(botToken, method, bodyBuf, headers) {
             await new Promise(function (resolve) { setTimeout(resolve, retryAfter * 1000); });
             continue;
         }
-        throw new Error('telegram ' + method + ' HTTP ' + res.status + ' code=' + (j.error_code || 'unknown'));
+        var err = new Error('telegram ' + method + ' HTTP ' + res.status + ' code=' + (j.error_code || 'unknown'));
+        err.safeToRetry = res.status >= 400 && res.status < 500 && j.ok === false;
+        throw err;
     }
 }
 
