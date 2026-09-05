@@ -52,3 +52,53 @@ OpenAI API로 이유 정제를 대체할 수 있지만 API 키·별도 사용료
 - 새 재현 테스트를 회귀 워크플로에 포함. API 테스트는 외부 연결을 차단하고 영문 종목 수정/복원은 임시 디렉터리에서 검증.
 
 날짜 경쟁조건 테스트는 변경 전 실제 함수에서 실패하고 수정 후 통과했다. 운영 배포와 원격 실행 결과는 아래에 기록한다.
+
+
+## 운영 검증 완료
+
+- 변경 커밋: `4fc37208e6` — Vercel 배포 성공.
+- Python 114개 + Node 28개 = 142개 테스트 통과. 날짜 경쟁조건·홈·API·관리자·발행실 브라우저 검사도 통과.
+- 운영 주요 8개 페이지 HTTP 200, 브라우저 예외 0, 가로 넘침 없음. 수정한 차트 4개 파일의 운영 바이트가 커밋과 일치.
+- 운영 marketmap HTTP 200, 20260904 CLOSE, 395개 항목 확인.
+- [서버 회귀 검사 성공](https://github.com/stockgame4343-blip/whyrise/actions/runs/33971083860)
+- [마감 Telegram dry-run 성공](https://github.com/stockgame4343-blip/whyrise/actions/runs/33971095370): 대장 카드와 버블 이미지 생성, 실제 전송 생략.
+- [저녁 Telegram dry-run 성공](https://github.com/stockgame4343-blip/whyrise/actions/runs/33971098234): 비교일 9/3의 9개 → 9/4의 20개, 재등장 1개·신규 19개 확인, 실제 전송 생략.
+
+## 변경 파일
+
+- `.github/workflows/build-history.yml`
+- `.github/workflows/orgo-quality.yml`
+- `.github/workflows/telegram-daily.yml`
+- `.github/workflows/telegram-evening.yml`
+- `.github/workflows/telegram-intraday.yml`
+- `.github/workflows/telegram-market.yml`
+- `.github/workflows/telegram-monthly.yml`
+- `.github/workflows/telegram-morning.yml`
+- `.github/workflows/telegram-movers.yml`
+- `.github/workflows/telegram-weekly.yml`
+- `ORGO_REVIEW_20260905.md`
+- `api/_auth.py`
+- `api/admin-login.py`
+- `api/admin-override.py`
+- `api/marketmap.py`
+- `api/ratings.py`
+- `public/js/bubbles2.js`
+- `public/js/flowmap.js`
+- `public/js/report.js`
+- `public/js/treemap.js`
+- `scripts/build-history.py`
+- `scripts/telegram_daily_leader.js`
+- `scripts/telegram_evening_recap.js`
+- `scripts/telegram_intraday_leaders.js`
+- `scripts/telegram_market_watch.js`
+- `scripts/telegram_monthly.js`
+- `scripts/telegram_morning_brief.js`
+- `scripts/telegram_movers.js`
+- `scripts/telegram_weekly.js`
+- `scripts/test_api_stability.py`
+- `scripts/test_build_history.py`
+- `scripts/test_date_navigation.js`
+- `scripts/test_tg_delivery.js`
+- `scripts/test_tg_market_editorial.js`
+- `scripts/tg_common.js`
+- `scripts/tg_editorial.js`

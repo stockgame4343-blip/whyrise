@@ -83,3 +83,8 @@ Threads/Instagram 연결 시 이미지 1장이면 IMAGE, 2장이면 CAROUSEL로 
 추가 검증: Python 이유 17 + history 40, Node 마케팅/Telegram 21, API 동시성/지연/재시도, 홈 6시나리오. 정상일 20260904와 무테마일 20260813의 실제 이미지 저장을 확인했고, 발행실 모든 주제/5채널/다운로드/편집/모바일 가로 넘침을 검증했다. `node scripts/test_marketing_ui.js`는 이미지 생성 후 CI에서도 실행한다.
 
 공식 형식 확인: [Threads 캐러셀](https://www.postman.com/meta/threads/folder/34203612-c0bbd675-45cc-4a8e-b5b7-0d4d5d8600fe), [Instagram 캐러셀 생성](https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api?entity=request-23987686-ab559ffb-8e2c-4b0a-b43a-5737b6d2f672).
+
+
+## 후속 안정화·Telegram 편집
+
+[2026-09-05 검토·검증 기록](ORGO_REVIEW_20260905.md)에 화면/API 재현 수정, 시간대별 편집과 이미지 개선, 회귀 테스트와 실제 배포 결과를 정리했다. 정기 Telegram과 시장 감시의 문구 생성에는 유료 LLM 호출을 하지 않으며 사이트 이유 정제 연결은 별도로 유지한다. 새 플랫폼 계정 연결은 사용자가 나중에 진행하기로 했다.
