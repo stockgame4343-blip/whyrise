@@ -958,6 +958,7 @@ var WhyReport = (function () {
     }
 
     function loadDate(date) {
+        var requestId = state.dateRequestId = (state.dateRequestId || 0) + 1;
         var loading = $('loading');
         var content = $('reportContent');
         if (loading) loading.style.display = 'block';
@@ -965,12 +966,14 @@ var WhyReport = (function () {
         showMessage('');
         state.liveOnce = false;   // 날짜 변경 시 재무장 — 최신일로 돌아오면 실제 종가 1회 재확보
         return WhyAPI.getRankings(date).then(function (data) {
+            if (requestId !== state.dateRequestId) return;
             state.day = data || {};
             setUpdatedAt(data && data.collected_at);
             applyDay();
             if (loading) loading.style.display = 'none';
             if (content) content.style.display = 'block';
         }).catch(function (err) {
+            if (requestId !== state.dateRequestId) return;
             if (loading) loading.style.display = 'none';
             setUpdatedAt('');
             showMessage('리포트 로딩 실패: ' + (err && err.message ? err.message : err));

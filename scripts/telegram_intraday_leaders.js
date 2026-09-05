@@ -13,6 +13,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const editorial = require('./tg_editorial.js');
 const market = require('./tg_market.js');
 
 const DRY = process.argv.includes('--dry-run');
@@ -25,8 +26,6 @@ const RAW = core.RAW;
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
-const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 const TOP_N = 5;
 
@@ -46,49 +45,6 @@ function toMovers(rows) {
             vol: core.num(r.trading_value), theme: core.themeOf(r), reason: String(r.rise_reason || '').trim(),
         };
     });
-}
-
-// 종목 한 줄 꼬리 — 구체적 이유(LLM 정제 우선)만 '— 이유'로, 애매하면 '[테마]' 폴백
-// (제네릭 "OO 관련 뉴스"류를 쓰느니 생략 — 2026-07-20 사용자 요청)
-var REASON_CLIP = 30;   // 캡션 이유 표시 상한(자) — LLM 정제 사유 상한과 동일
-function reasonTail(m, refined) {
-    var r = tg.specificReason(refined && refined[m.ticker]);
-    if (r) return ' — ' + tg.clip(r, REASON_CLIP);
-    return m.theme ? ' [' + tg.clip(m.theme, 12) + ']' : '';
-}
-
-// 캡션 — 종목마다 '이름(딥링크) +% — 이유' 한 줄. 채널 안에서 이유까지 읽히고,
-// 이력·차트가 궁금하면 이름 탭 → 종목 상세(utm 측정)로 넘어가는 구조.
-function buildCaption(ymd, movers, comment, refined) {
-    var parts = [tg.escHtml('🚀 오늘의 주도주 TOP5 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst()), ''];
-    movers.forEach(function (m, i) {
-        parts.push(tg.escHtml((i + 1) + ' ') +
-            tg.htmlLink(m.name, tg.orgoLink('/stock/' + m.ticker, 'intraday')) +
-            tg.escHtml(' ' + tg.pct(m.rate) + reasonTail(m, refined)));
-    });
-    if (comment) { parts.push(''); parts.push(tg.escHtml(comment)); }   // 특이사항 없으면 멘트 줄 자체를 생략
-    parts.push('');
-    parts.push(tg.htmlLink('👉 오늘 오른 종목 전부 보기', tg.orgoLink('/rise.html', 'intraday')));
-    var html = parts.join('\n');
-    // sendPhoto 캡션 상한 방어 — HTML 원문이 상한을 넘으면 태그가 중간에 잘려 API 400 이 나므로
-    // 종목 딥링크 없는 짧은 포맷으로 폴백(하단 링크 1개만 유지).
-    if (html.length > tg.TG_CAPTION_MAX) {
-        var plain = ['🚀 오늘의 주도주 TOP5 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst(), ''];
-        movers.forEach(function (m, i) { plain.push((i + 1) + ' ' + m.name + ' ' + tg.pct(m.rate) + reasonTail(m, refined)); });
-        if (comment) { plain.push(''); plain.push(comment); }
-        html = tg.escHtml(plain.join('\n')) + '\n\n' + tg.htmlLink('👉 오늘 오른 종목 전부 보기', tg.orgoLink('/rise.html', 'intraday'));
-    }
-    return html;
-}
-
-// 후킹형 한 줄(첫 줄 재활용) — tg.aiHook 공용 규칙 사용
-async function aiHook(ymd, movers) {
-    var summary = {
-        시각: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중(개장 30분)',
-        주도주: movers.slice(0, 5).map(function (m) { return m.name + ' ' + tg.pct(m.rate) + (m.theme ? '(' + m.theme + ')' : ''); }).join(', '),
-    };
-    var fallback = movers[0] ? ('개장 30분 기준 ' + (movers[0].theme || movers[0].name) + ' 쪽 강세예요') : '';
-    return tg.aiHook('오늘의 주도주 TOP5(장중)', summary, ANTHROPIC_KEY, MODEL, fallback);
 }
 
 async function main() {
@@ -123,8 +79,7 @@ async function main() {
 
     var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
     movers.forEach(function (m) { m.reason = tg.specificReason(refined[m.ticker]); });
-    var comment = await aiHook(today, movers);
-    var caption = buildCaption(today, movers, comment, refined);
+    var caption = editorial.intraday(today, movers, refined);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
 
     var browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });

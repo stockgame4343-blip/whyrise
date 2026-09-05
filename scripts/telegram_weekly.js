@@ -10,7 +10,7 @@
  *       ③ ORGO 리포트 카드 1장 렌더(자체 HTML, 헤드리스 Chromium)
  *       ④ Telegram sendPhoto 게시
  *
- * 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID / ANTHROPIC_API_KEY(선택) / TELEGRAM_MODEL(선택)
+ * 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID
  * 시크릿 미설정 시 조용히 no-op.
  */
 'use strict';
@@ -19,6 +19,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const editorial = require('./tg_editorial.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -30,8 +31,6 @@ const RAW_REPORT = 'https://orgo.kr/data/report-summary.json';
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
-const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 // 로컬 우선(빌드 직후 최신), 실패 시 라이브 fetch
 async function loadReport() {
@@ -58,7 +57,7 @@ function weekDates(ymd) {
 }
 
 function toRows(list) {
-    return (list || []).slice(0, 5).map(function (it) {
+    return (list || []).slice(0, 3).map(function (it) {
         var name = it.sector || it.theme || '';
         var n = it.tickers || it.count || 0;
         return { name: name, sub: n + '종목 · ' + tg.pct(it.avg_rate) };
@@ -71,19 +70,6 @@ function buildStatLine(w) {
     if (w.total_limit_count) parts.push('상한가 ' + w.total_limit_count);
     if (w.total_52w_count) parts.push('신고가 ' + w.total_52w_count);
     return parts.join(' · ');
-}
-
-async function aiComment(topSector, topTheme) {
-    var summary = { 주도섹터: topSector || '없음', 주도테마: topTheme || '없음' };
-    var prompt = '아래는 한국 주식시장 이번 주 주도 섹터·테마 요약이야. 텔레그램 채널 주간 리포트 구독자에게 ' +
-        '이번 주 시장 흐름을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
-        '사실 서술만 — 호들갑·감탄·드라마화 금지, 평범한 주면 평범하게. 주말 인사 한마디는 괜찮아. ' +
-        '뚜렷한 흐름이 없어서 딱히 할 말이 없으면 문장 대신 정확히 (생략) 만 출력. ' +
-        '숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
-        JSON.stringify(summary, null, 2);
-    var fallback = topTheme ? ('이번 주는 ' + topTheme + ' 쪽 상승이 많았어요. 좋은 주말 보내세요 🙌')
-        : '한 주 수고하셨어요. 좋은 주말 보내세요 🙌';
-    return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
 }
 
 async function main() {
@@ -110,17 +96,19 @@ async function main() {
     var WD = ['월', '화', '수', '목', '금'];
     var chips = wk.map(function (d, i) {
         var e = cal[d];
-        if (!e || !e.stock) return null;
+        if (d > today || !e) return null;
+        if (!e.stock) return { k: WD[i], v: '대장 없음' };
         return { k: WD[i], v: e.stock.name + ' ' + tg.pct(e.stock.rate) };
     }).filter(Boolean);
 
-    var range = tg.mdLabel(wk[0]) + '~' + tg.mdLabel(wk[4]);
-    var comment = await aiComment(sectors[0] && sectors[0].name, themes[0] && themes[0].name);
+    var end = today < wk[4] ? today : wk[4];
+    var range = tg.mdLabel(wk[0]) + '~' + tg.mdLabel(end);
+    var comment = editorial.calendarObservation(cal, wk[0], end) + '\n순위 카드는 최신 기록 기준 최근 7일, 대장 기록은 위 날짜 범위예요.\n다음 주 확인: 같은 대장이 반복되는지, 새로운 이름이 등장하는지.';
 
     var html = tg.rankCardHtml({
         title: '주간 리포트',
         dateRange: range,
-        statLine: '이번 주 ' + buildStatLine(w),
+        statLine: '최근 7일 ' + buildStatLine(w),
         sectors: sectors,
         themes: themes,
         extraLabel: '⭐ 이번 주 대장 (일별)',

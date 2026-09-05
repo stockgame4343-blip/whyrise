@@ -6,15 +6,16 @@
  *
  * 구성: ① 간밤 미국 마감(S&P·나스닥·다우·SOX·VIX) + 원/달러 — Yahoo chart API
  *       ② 전 거래일 국내 복기 — stock-rise raw(급등 종목수·상한가·대장주·핫테마, 캘린더 로직 재사용)
- *       ③ AI 한 줄(담백 규칙, 실패/특이사항 없음 시 생략)
+ *       ③ 전일 흐름을 기준으로 개장 후 확인점
  *
- * 필요한 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID / ANTHROPIC_API_KEY(선택)
+ * 필요한 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID
  */
 'use strict';
 const fs = require('fs');
 const path = require('path');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const editorial = require('./tg_editorial.js');
 const market = require('./tg_market.js');
 
 const DRY = process.argv.includes('--dry-run');
@@ -25,8 +26,6 @@ const LIMIT_UP_CUTOFF = 29.5;   // 상한가 간주 기준(%) — report-core �
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
-const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 // 소수 지수 표기 — 지수는 소수 2자리, 환율은 1자리
 function idx(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
@@ -34,29 +33,14 @@ function fx(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigit
 function arrow(p) { return p > 0 ? '🔺' : p < 0 ? '🔻' : '⏸'; }
 
 // ── 전 거래일 국내 복기 (stock-rise raw) ──
-async function fetchYesterdayRecap() {
-    var dates = await core.fetchJson(core.RAW + '/dates.json');
-    if (!Array.isArray(dates) || !dates.length) return null;
-    var sorted = dates.slice().sort();
-    var last = sorted[sorted.length - 1];
-    var day = await core.fetchJson(core.RAW + '/' + last + '.json');
-    // 휴장일 복제 파일 가드 — 최신 파일이 직전 거래일과 사실상 동일하면(휴장일 수집 사고,
-    // 2026-07-17=07-16 사례) 가짜 거래일로 보고 그 직전 거래일을 복기한다.
-    var prevYmd = sorted[sorted.length - 2] || '';
-    if (prevYmd) {
-        try {
-            var prevDay = await core.fetchJson(core.RAW + '/' + prevYmd + '.json');
-            if (tg.isDuplicateDayData(day, prevDay)) {
-                console.log('복제 데이터 감지(' + last + '=' + prevYmd + ') — ' + prevYmd + ' 기준으로 복기');
-                last = prevYmd;
-                day = prevDay;
-            }
-        } catch (e) { /* 직전 파일 실패 — 최신 파일 그대로 복기 */ }
-    }
+async function fetchYesterdayRecap(today) {
+    var day = editorial.previousSnapshot(PUBLIC, { date: today, is_final: true, rankings: [] });
+    if (!day) return null;
+    var last = day.date;
     var rows = day.rankings || [];
     var active = rows.filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
     var limitUps = active.filter(function (r) { return core.num(r.change_rate) >= LIMIT_UP_CUTOFF; });
-    var leader = core.pickLeader(rows);
+    var leader = editorial.calendarLeaders(PUBLIC, last, day).leader;
     var themes = core.buildGroups(active, 'theme');
     return {
         ymd: last,
@@ -73,7 +57,7 @@ function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
     lines.push('🌅 장전 브리핑 (' + tg.dateLabel(todayYmd) + ')');
     lines.push('');
     if (quotes.length) {
-        lines.push('🇺🇸 간밤 미국 마감');
+        lines.push('🇺🇸 해외 지수 조회');
         quotes.forEach(function (q) {
             lines.push(arrow(q.changePct) + ' ' + q.label + ' ' + idx(q.price) + ' (' + tg.pct(q.changePct) + ')');
         });
@@ -84,8 +68,8 @@ function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
         lines.push('');
     }
     if (recap) {
-        lines.push('📌 전 거래일 국내 (' + tg.mdLabel(recap.ymd) + ')');
-        lines.push('급등(+' + core.RISE_CUTOFF + '%↑) ' + recap.riseCount + '종목 · 상한가 ' + recap.limitUpCount + '종목');
+        lines.push('📌 최근 확정 국내 (' + tg.mdLabel(recap.ymd) + ')');
+        lines.push('ORGO 수집 종목 중 급등(+' + core.RISE_CUTOFF + '%↑) ' + recap.riseCount + '종목 · +29.5% 이상 ' + recap.limitUpCount + '종목');
         if (recap.leader) {
             var t = core.themeOf(recap.leader) || String(recap.leader.sector || '').trim();
             lines.push('대장주 ' + recap.leader.name + ' ' + tg.pct(recap.leader.change_rate) + (t ? ' [' + t + ']' : ''));
@@ -96,7 +80,7 @@ function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
         lines.push('');
     }
     if (comment) { lines.push(comment); lines.push(''); }
-    var link = tg.htmlLink('👉 오늘 오른 종목 보러가기', tg.orgoLink('/', 'morning'));
+    var link = tg.htmlLink('대장 캘린더', tg.orgoLink('/sample2.html', 'morning'));
     return tg.escHtml(lines.join('\n')) + link;
 }
 
@@ -126,16 +110,10 @@ async function main() {
 
     // ② 전 거래일 복기 — 실패해도 브리핑은 발송(블록 생략)
     var recap = null;
-    try { recap = await fetchYesterdayRecap(); }
+    try { recap = await fetchYesterdayRecap(today); }
     catch (e) { console.error('국내 복기 실패(블록 생략):', e.message); }
 
-    // ③ AI 한 줄 — 특이사항 없으면 생략
-    var summary = {
-        미국: quotes.map(function (q) { return q.label + ' ' + tg.pct(q.changePct); }).join(', '),
-        환율: fxQuote ? (fx(fxQuote.price) + '원 ' + tg.pct(fxQuote.changePct)) : '',
-        전거래일: recap ? ('급등 ' + recap.riseCount + '종목' + (recap.leader ? ', 대장주 ' + recap.leader.name : '')) : '',
-    };
-    var comment = await tg.aiHook('장전 브리핑(개장 전, 간밤 해외 마감 + 전 거래일 복기)', summary, ANTHROPIC_KEY, MODEL, '');
+    var comment = editorial.morningCheck(recap);
 
     var caption = buildCaption(today, quotes, fxQuote, recap, comment);
     console.log('----- 캡션 -----\n' + caption + '\n----------------');

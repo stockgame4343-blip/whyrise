@@ -25,3 +25,9 @@ jobs:
       - run: node --test scripts/test_tg_delivery.js
       - run: node scripts/test_api_overrides.js
       - run: node scripts/test_home_nonblocking.js
+      - run: python scripts/test_api_stability.py
+      - run: python scripts/test_track_api.py
+      - run: python scripts/test_admin_override_api.py
+      - run: node scripts/test_date_navigation.js
+      - run: node scripts/test_admin_escape.js
+      - run: node --test scripts/test_tg_market_editorial.js

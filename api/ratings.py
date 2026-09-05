@@ -93,7 +93,7 @@ class handler(BaseHTTPRequestHandler):
             ['GET', ratings_key],
             ['GET', meta_key],
         ])
-        if not results:
+        if not isinstance(results, list) or len(results) != 2 or any(not isinstance(r, dict) or 'error' in r or 'result' not in r for r in results):
             self._respond(502, {'ok': False, 'reason': 'kv_error'})
             return
 
@@ -136,6 +136,9 @@ class handler(BaseHTTPRequestHandler):
             self._respond(400, {'ok': False, 'reason': 'invalid_json'})
             return
 
+        if not isinstance(body, dict):
+            self._respond(400, {'ok': False, 'reason': 'body_not_object'})
+            return
         ratings = body.get('ratings')
         if not isinstance(ratings, dict):
             self._respond(400, {'ok': False, 'reason': 'ratings_not_object'})
@@ -149,7 +152,7 @@ class handler(BaseHTTPRequestHandler):
             if not isinstance(v, dict):
                 continue
             entry = {}
-            if isinstance(v.get('stars'), (int, float)):
+            if type(v.get('stars')) in (int, float) and 0 <= v['stars'] < 6:
                 s = int(v['stars'])
                 if 0 <= s <= 5:
                     entry['stars'] = s
@@ -167,7 +170,7 @@ class handler(BaseHTTPRequestHandler):
             ['SET', ratings_key, payload],
             ['SET', meta_key, str(now)],
         ])
-        if not results:
+        if not isinstance(results, list) or len(results) != 2 or any(not isinstance(r, dict) or r.get('result') != 'OK' or 'error' in r for r in results):
             self._respond(502, {'ok': False, 'reason': 'kv_write_failed'})
             return
 

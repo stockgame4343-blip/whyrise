@@ -423,16 +423,16 @@ function rankCardHtml(opts) {
         '.hd .title{font-size:27px;font-weight:700;color:#c3cad8}' +
         '.hd .range{font-size:24px;font-weight:700;color:#8a93a6;white-space:nowrap}' +
         '.stat{font-size:22px;font-weight:600;color:#9aa3b5;margin-top:-14px}' +
-        '.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}' +
-        '.col{display:flex;flex-direction:column;gap:16px}' +
+        '.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}' +
+        '.col{display:flex;flex-direction:column;gap:16px;min-width:0}' +
         '.col h3{font-size:26px;font-weight:800;color:#e9edf5}' +
-        '.row{display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:18px;' +
+        '.row{display:grid;grid-template-columns:36px minmax(0,1fr);align-items:center;column-gap:14px;row-gap:6px;padding:16px 20px;border-radius:18px;' +
         'background:rgba(255,86,102,.07);border:1px solid rgba(255,86,102,.22)}' +
         '.row.empty{justify-content:center;color:#8a93a6;background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}' +
-        '.rk{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);' +
+        '.rk{grid-row:span 2;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);' +
         'color:#cfd6e4;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center}' +
-        '.nm{flex:1;font-size:27px;font-weight:700;color:#f5f7fa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
-        '.sub{flex:0 0 auto;font-size:22px;font-weight:700;color:' + UP + '}' +
+        '.nm{font-size:25px;font-weight:700;color:#f5f7fa;word-break:keep-all;overflow-wrap:anywhere}' +
+        '.sub{grid-column:2;font-size:21px;font-weight:700;color:' + UP + '}' +
         '.xlabel{font-size:24px;font-weight:800;color:#e9edf5;margin-top:6px}' +
         '.chips{display:flex;flex-wrap:wrap;gap:13px;margin-top:-12px}' +
         '.chip{font-size:22px;font-weight:600;color:#e3e8f1;background:rgba(255,255,255,.06);' +

@@ -5,13 +5,14 @@
  *   node scripts/telegram_movers.js [--dry-run|--force|--date=YYYYMMDD]
  *
  * 동작: flowmap mode=theme 의 버블·트리 2장(사이트 다운로드 워터마크 재사용)을 앨범으로,
- *       캡션은 상류 랭킹 buildGroups 기반 주도 섹터·테마 순위 + AI(소넷5) 한 줄.
+ *       캡션은 상류 랭킹 buildGroups 기반 주도 섹터·테마 데이터 관찰 + 다음 확인점.
  * 시크릿 미설정 시 no-op.
  */
 'use strict';
 const path = require('path');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const editorial = require('./tg_editorial.js');
 const market = require('./tg_market.js');
 
 const DRY = process.argv.includes('--dry-run');
@@ -25,42 +26,11 @@ const RAW = core.RAW;
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
-const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 // 주도 섹터·테마 순위(상류 랭킹 buildGroups)
 function leadingGroups(rankings) {
     var active = (rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
     return { sectors: core.buildGroups(active, 'sector').slice(0, 3), themes: core.buildGroups(active, 'theme').slice(0, 3) };
-}
-
-function buildThemeCaption(ymd, G, comment) {
-    var lines = ['🔥 오늘 핫테마 · ' + tg.dateLabel(ymd) + ' ' + tg.hmKst(), ''];
-    if (G.sectors.length) {
-        lines.push('📈 주도 섹터');
-        G.sectors.forEach(function (g, i) { lines.push((i + 1) + ' ' + g.key + ' ' + tg.pct(g.avgRate) + ' (' + g.count + '종목)'); });
-        lines.push('');
-    }
-    if (G.themes.length) {
-        lines.push('🏷️ 주도 테마');
-        G.themes.forEach(function (g, i) { lines.push((i + 1) + ' ' + g.key + ' ' + tg.pct(g.avgRate) + ' (' + g.count + '종목)'); });
-        lines.push('');
-    }
-    if (comment) { lines.push(comment); lines.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
-    // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
-    return tg.escHtml(lines.join('\n')) + '\n' +
-        tg.htmlLink('👉 섹터·테마 한눈에 보기', tg.orgoLink('/leaders2.html', 'movers'));
-}
-
-// 후킹형 한 줄(첫 줄 재활용) — tg.aiHook 공용 규칙 사용
-async function aiHook(ymd, G) {
-    var summary = {
-        시각: tg.dateLabel(ymd) + ' ' + tg.hmKst() + ' 장중(개장 1시간)',
-        주도섹터: G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate) + '(' + s.count + '종목)'; }).join(', ') || '없음',
-        주도테마: G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate) + '(' + t.count + '종목)'; }).join(', ') || '없음',
-    };
-    var fallback = (G.themes[0] || G.sectors[0]) ? ('장 초반 ' + (G.themes[0] || G.sectors[0]).key + ' 쪽 상승이 많아요') : '';
-    return tg.aiHook('오늘 핫테마(주도 섹터·테마, 장중)', summary, ANTHROPIC_KEY, MODEL, fallback);
 }
 
 async function main() {
@@ -90,8 +60,7 @@ async function main() {
     console.log('주도섹터:', G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate); }).join(' / ') || '(없음)');
     console.log('주도테마:', G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate); }).join(' / ') || '(없음)');
 
-    var comment = await aiHook(today, G);
-    var caption = buildThemeCaption(today, G, comment);
+    var caption = editorial.themes(today, G);
     console.log('\n----- 핫테마 캡션 -----\n' + caption + '\n----------------');
 
     var imgs = await tg.captureFlowmaps(PUBLIC, [

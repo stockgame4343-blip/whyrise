@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import sys
 import time
 from collections import defaultdict
@@ -2015,7 +2016,7 @@ def build_override_sync(args) -> int:
     파생물은 정기 incremental/full 빌드가 갱신).
     """
     ticker = (getattr(args, 'ticker', '') or '').strip()
-    if len(ticker) != 6 or not ticker.isdigit():
+    if not re.fullmatch(r'[0-9A-Z]{6}', ticker):
         print(f'override-sync: --ticker 형식 오류({ticker!r}) - 6자리 종목코드 필요')
         return 1
     target_date = (getattr(args, 'date', '') or '').strip()

@@ -2,7 +2,7 @@ name: 오늘 핫테마 버블·트리 텔레그램 자동 게시
 
 # 평일 개장 1시간 후(KST 10:00), '오늘 핫테마'를 flowmap(테마) 버블·트리 2장 앨범으로 whyorgo 채널에 게시.
 #   - 이미지: flowmap.html mode=theme 의 버블·트리(사이트 다운로드 워터마크 재사용)
-#   - 캡션: 상류 랭킹 buildGroups 기반 주도 섹터·테마 순위 + Claude(소넷5) 한 줄
+#   - 캡션: 주도 섹터·테마와 확산 확인점(유료 AI 호출 없음).
 # 중복 게시는 public/data/_telegram-movers-posted.json 마커로 방지. 시크릿 미설정이면 no-op.
 
 on:
@@ -70,7 +70,6 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           ARGS=""
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"

@@ -537,10 +537,12 @@
             && !state.liveItems.length && !_liveTimeout;
     }
     function fetchSnapshot(dateStr) {
+        var requestId = state.snapshotRequestId = (state.snapshotRequestId || 0) + 1;
         var url = dateStr ? ('/data/marketmap/' + dateStr + '.json') : '/data/marketmap.json';
         return fetch(url, { cache: 'no-cache' })
             .then(function (r) { if (!r.ok) throw new Error('스냅샷 없음'); return r.json(); })
             .then(function (data) {
+                if (requestId !== state.snapshotRequestId) return;
                 var items = (data && data.items) || [];
                 items.forEach(function (it) {
                     if (it.ticker && it.sector) state.sectorMap[it.ticker] = it.sector;
@@ -556,7 +558,10 @@
                 updateDateNav();
                 if (isWaitingLive()) return;   // 라이브 도착 대기 중이면 render 보류
                 $loading.style.display = 'none';
-                if (items.length) render();
+                render();   // 빈 날짜도 이전 차트를 지우고 빈 상태를 표시한다.
+            }).catch(function (err) {
+                if (requestId !== state.snapshotRequestId) return;
+                throw err;
             });
     }
     function fetchDateIndex() {
@@ -643,8 +648,13 @@
         if (idx < 0 || idx >= state.availableDates.length) return;
         state.dateIndex = idx;
         var d = state.availableDates[idx];
-        if (idx === 0) fetchSnapshot('');
-        else fetchSnapshot(d);
+        $loading.style.display = '';
+        $message.style.display = 'none';
+        fetchSnapshot(idx === 0 ? '' : d).catch(function (err) {
+            $loading.style.display = 'none';
+            $message.style.display = '';
+            $message.textContent = '데이터 로딩 실패: ' + (err && err.message ? err.message : err);
+        });
         setLiveState(idx === 0 && state.period === '1d' && isMarketOpen());
     }
 

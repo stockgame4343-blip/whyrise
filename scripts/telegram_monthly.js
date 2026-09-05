@@ -11,7 +11,7 @@
  * 게시 조건: '이번 달 마지막 거래일'인지는 워크플로(scripts/is_last_trading_day.py, kr_holidays 반영)가 판정.
  *           스크립트는 월 단위 마커로 중복 방지만 담당. --force 로 마커 무시.
  *
- * 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID / ANTHROPIC_API_KEY(선택) / TELEGRAM_MODEL(선택)
+ * 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID
  * 시크릿 미설정 시 조용히 no-op.
  */
 'use strict';
@@ -20,6 +20,7 @@ const path = require('path');
 const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const editorial = require('./tg_editorial.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -32,8 +33,6 @@ const RAW_REPORT = 'https://orgo.kr/data/report-summary.json';
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
-const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 async function loadReport() {
     try { return JSON.parse(fs.readFileSync(path.join(DATA, 'report-summary.json'), 'utf8')); }
@@ -41,7 +40,7 @@ async function loadReport() {
 }
 
 function toRows(list) {
-    return (list || []).slice(0, 5).map(function (it) {
+    return (list || []).slice(0, 3).map(function (it) {
         var name = it.sector || it.theme || '';
         var n = it.tickers || it.count || 0;
         return { name: name, sub: n + '종목 · ' + tg.pct(it.avg_rate) };
@@ -55,18 +54,6 @@ function buildStatLine(m) {
     return parts.join(' · ');
 }
 function monthLabelOf(ymd) { return ymd.slice(0, 4) + '.' + ymd.slice(4, 6); }   // 해당 월(마지막 거래일 기준)
-
-async function aiComment(topSector, topTheme, monthLabel) {
-    var summary = { 기간: monthLabel, 주도섹터: topSector || '없음', 주도테마: topTheme || '없음' };
-    var prompt = '아래는 한국 주식시장 최근 한 달 주도 섹터·테마 요약이야. 텔레그램 채널 월간 리포트 구독자에게 ' +
-        '지난 한 달 시장 흐름을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
-        '사실 서술만 — 호들갑·감탄·드라마화 금지, 평범한 달이면 평범하게. ' +
-        '뚜렷한 흐름이 없어서 딱히 할 말이 없으면 문장 대신 정확히 (생략) 만 출력. ' +
-        '숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
-        JSON.stringify(summary, null, 2);
-    var fallback = topTheme ? ('지난 한 달은 ' + topTheme + ' 쪽 상승이 잦았어요 📈') : '';
-    return tg.aiComment(prompt, ANTHROPIC_KEY, MODEL, fallback);
-}
 
 // 대장캘린더(sample2.html #calGrid)를 모바일 뷰포트에서 '이미지 저장'(#calSave) 다운로드로 캡쳐
 async function renderCalendar() {
@@ -111,15 +98,15 @@ async function main() {
     });
 
     var monthLabel = monthLabelOf(today);
-    var comment = await aiComment(sectors[0] && sectors[0].name, themes[0] && themes[0].name, monthLabel);
+    var comment = '최근 31일 수집 기록: +' + core.RISE_CUTOFF + '% 급등 ' + (m.total_events_15 || 0) + '건. 동일 종목의 여러 날짜를 각각 집계해요.' + '\n카드는 최근 31일, 캘린더는 ' + monthLabel + '의 일별 대장이에요.';
 
     var html = tg.rankCardHtml({
         title: '월간 리포트',
         dateRange: monthLabel,
-        statLine: '최근 30일 ' + buildStatLine(m),
+        statLine: '최근 31일 ' + buildStatLine(m),
         sectors: sectors,
         themes: themes,
-        extraLabel: '🔁 이달 단골 급등주 (다빈도)',
+        extraLabel: '최근 31일 반복 급등 (날짜별 집계)',
         extraChips: chips,
     });
 

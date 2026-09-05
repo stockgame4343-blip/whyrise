@@ -316,7 +316,7 @@ jobs:
               # 전역 빌드와 그 파일만 충돌하면 원격(override 반영본)을 보존하고,
               # 그 외 충돌은 자동 판단하지 않고 기존 재시도/실패 경로로 넘긴다.
               CONFLICTS=$(git diff --name-only --diff-filter=U)
-              BAD=$(printf '%s\n' "$CONFLICTS" | grep -Ev '^public/data/stock-history/[0-9]{6}\.json$' || true)
+              BAD=$(printf '%s\n' "$CONFLICTS" | grep -Ev '^public/data/stock-history/[0-9A-Z]{6}\.json$' || true)
               if [ -n "$CONFLICTS" ] && [ -z "$BAD" ]; then
                 echo "override-sync 종목 파일 충돌 - 최신 원격본 보존"
                 while IFS= read -r file; do

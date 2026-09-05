@@ -16,7 +16,7 @@
  *
  * 중복/스팸 방지: public/data/_telegram-market.json 마커
  *   { date, lunchPosted, cbStage, sidecarKeys:[] }  — 날짜 바뀌면 리셋.
- * 필요한 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID / ANTHROPIC_API_KEY(선택)
+ * 필요한 환경변수(=GitHub Secrets): TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID
  */
 'use strict';
 const path = require('path');
@@ -41,8 +41,6 @@ const SIDECAR_FRESH_MIN = 60;
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
-const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 function idxNum(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
 function fxNum(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
@@ -71,23 +69,24 @@ async function fetchTodayBreadth(today) {
 }
 
 // ── 점심 점검 캡션 ──
-function lunchCaption(today, M, breadth, comment) {
+function lunchCaption(today, M, breadth) {
     var lines = [];
     lines.push('🕐 점심 점검 (' + tg.dateLabel(today) + ' 12:30)');
     lines.push('');
     lines.push('📊 코스피 ' + idxNum(M.kospi.price) + ' (' + tg.pct(M.kospi.changePct) + ') · 코스닥 ' + idxNum(M.kosdaq.price) + ' (' + tg.pct(M.kosdaq.changePct) + ')');
     lines.push('상승 ' + M.upCount.toLocaleString('ko-KR') + ' · 하락 ' + M.downCount.toLocaleString('ko-KR') + ' · 거래대금 ' + tg.fmtAmount(M.tradingValueWon));
     if (breadth) {
-        lines.push('급등(+' + core.RISE_CUTOFF + '%↑) ' + breadth.riseCount + '종목' +
+        lines.push('ORGO 수집 종목 중 +' + core.RISE_CUTOFF + '% 이상 ' + breadth.riseCount + '종목' +
             (breadth.topTheme ? ' · 주도테마 ' + breadth.topTheme.key + ' 평균 ' + tg.pct(breadth.topTheme.avgRate) : ''));
     }
     lines.push('');
-    if (comment) { lines.push(comment); lines.push(''); }
+    lines.push('오전장 지수와 종목 분포를 함께 확인해보세요.');
+    lines.push('');
     return tg.escHtml(lines.join('\n')) + tg.htmlLink('👉 지금 오르는 종목 보러가기', tg.orgoLink('/rise.html', 'lunch'));
 }
 
 // ── 서킷브레이커 알림 캡션 ──
-function alertCaption(today, M, level, comment) {
+function alertCaption(today, M, level) {
     var lines = [];
     lines.push('🚨 서킷브레이커 ' + CB_STAGE[level] + ' 기준 도달 (-' + level + '%, ' + tg.hmKst() + ' KST)');
     lines.push('');
@@ -95,21 +94,23 @@ function alertCaption(today, M, level, comment) {
     lines.push('코스닥 ' + idxNum(M.kosdaq.price) + ' (' + tg.pct(M.kosdaq.changePct) + ')');
     lines.push('상승 ' + M.upCount.toLocaleString('ko-KR') + ' · 하락 ' + M.downCount.toLocaleString('ko-KR'));
     lines.push('');
-    if (comment) { lines.push(comment); lines.push(''); }
+    lines.push('지수 하락폭 기준을 감지한 알림입니다. 실제 거래소 발동 여부는 별도 확인이 필요합니다.');
+    lines.push('');
     return tg.escHtml(lines.join('\n')) + tg.htmlLink('👉 지금 시장 보러가기', tg.orgoLink('/', 'alert'));
 }
 
 // ── 사이드카 알림 캡션 ── (ev = fetchSidecarEvents 항목)
-function sidecarCaption(today, M, ev, comment) {
+function sidecarCaption(today, M, ev) {
     var dir = ev.direction ? ev.direction + ' ' : '';
     var lines = [];
-    lines.push('🚨 ' + ev.market + ' ' + dir + '사이드카 발동 (' + tg.hmKst() + ' KST)');
+    lines.push('🚨 ' + ev.market + ' ' + dir + '사이드카 발동 보도 (' + tg.hmKst() + ' KST)');
     lines.push('');
     lines.push('코스피 ' + idxNum(M.kospi.price) + ' (' + tg.pct(M.kospi.changePct) + ')');
     lines.push('코스닥 ' + idxNum(M.kosdaq.price) + ' (' + tg.pct(M.kosdaq.changePct) + ')');
     lines.push('상승 ' + M.upCount.toLocaleString('ko-KR') + ' · 하락 ' + M.downCount.toLocaleString('ko-KR'));
     lines.push('');
-    if (comment) { lines.push(comment); lines.push(''); }
+    if (ev.title) lines.push('감지 보도: ' + ev.title);
+    lines.push('');
     return tg.escHtml(lines.join('\n')) + tg.htmlLink('👉 지금 시장 보러가기', tg.orgoLink('/', 'sidecar'));
 }
 
@@ -147,15 +148,13 @@ async function main() {
     // ── DEMO: 강제 캡션 산출(마커·시각 무시) ──
     if (DEMO === 'lunch') {
         var bd = await fetchTodayBreadth(today);
-        var c = await tg.aiHook('점심 점검(오전장 시장 요약)', { 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct), 상승: M.upCount, 하락: M.downCount }, ANTHROPIC_KEY, MODEL, '');
-        await sendText(lunchCaption(today, M, bd, c));
+        await sendText(lunchCaption(today, M, bd));
         return;
     }
     if (DEMO === 'alert') {
         // 실제 -8% 발동일이 아닌 날의 포맷 미리보기 — 합성 -8.x% 수치로 자기일관성 있게 렌더.
         var demoM = { kospi: { price: M.kospi.price, changePct: -8.3 }, kosdaq: { price: M.kosdaq.price, changePct: -9.1 }, upCount: 210, downCount: 3600 };
-        var ca = await tg.aiHook('서킷브레이커 발동 기준 도달(지수 -8% 급락)', { 코스피: tg.pct(demoM.kospi.changePct), 코스닥: tg.pct(demoM.kosdaq.changePct), 단계: '1단계(-8%)' }, ANTHROPIC_KEY, MODEL, '');
-        await sendText(alertCaption(today, demoM, CB_LEVELS[0], ca));
+        await sendText(alertCaption(today, demoM, CB_LEVELS[0]));
         return;
     }
     if (DEMO === 'sidecar') {
@@ -163,8 +162,7 @@ async function main() {
         var evs = await market.fetchSidecarEvents(Infinity);
         var ev = evs[0] || { market: '코스피', direction: '매도', title: '(샘플) 매도 사이드카 발동' };
         console.log('감지 속보:', ev.title);
-        var sc = await tg.aiHook('사이드카 발동(' + ev.market + ' ' + ev.direction + ')', { 시장: ev.market, 방향: ev.direction, 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct) }, ANTHROPIC_KEY, MODEL, '');
-        await sendText(sidecarCaption(today, M, ev, sc));
+        await sendText(sidecarCaption(today, M, ev));
         return;
     }
 
@@ -174,10 +172,7 @@ async function main() {
     // ① 점심 점검 — 창 안 첫 실행 1회
     if (!mk.lunchPosted && nowMin >= LUNCH_START_MIN && nowMin <= LUNCH_END_MIN) {
         var breadth = await fetchTodayBreadth(today);
-        var comment = await tg.aiHook('점심 점검(오전장 시장 요약)',
-            { 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct), 상승: M.upCount, 하락: M.downCount },
-            ANTHROPIC_KEY, MODEL, '');
-        await sendText(lunchCaption(today, M, breadth, comment), 'lunch');
+        await sendText(lunchCaption(today, M, breadth), 'lunch');
         mk.lunchPosted = true;
         changed = true;
     }
@@ -185,10 +180,7 @@ async function main() {
     // ② 서킷브레이커 — 코스피/코스닥 현물 -8/-15/-20% 기준 도달 시, 단계 심화 때만(1→2→3)
     var curStage = cbLevelOf(worstDrop(M));
     if (curStage > mk.cbStage) {
-        var acomment = await tg.aiHook('서킷브레이커 발동 기준 도달(지수 -' + curStage + '% 급락)',
-            { 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct), 단계: CB_STAGE[curStage] + '(-' + curStage + '%)' },
-            ANTHROPIC_KEY, MODEL, '');
-        await sendText(alertCaption(today, M, curStage, acomment), 'cb:' + curStage);
+        await sendText(alertCaption(today, M, curStage), 'cb:' + curStage);
         mk.cbStage = curStage;   // 단계는 심화 때만 오른다(반등해도 안 내림 → 같은 급락 재알림 방지)
         changed = true;
     }
@@ -200,10 +192,7 @@ async function main() {
         for (var e = 0; e < events.length; e++) {
             var ev = events[e];
             if (mk.sidecarKeys.indexOf(ev.signature) >= 0) continue;   // 이미 알린 시장 → 스킵
-            var scomment = await tg.aiHook('사이드카 발동(' + ev.market + ' ' + ev.direction + ')',
-                { 시장: ev.market, 방향: ev.direction, 코스피: tg.pct(M.kospi.changePct), 코스닥: tg.pct(M.kosdaq.changePct) },
-                ANTHROPIC_KEY, MODEL, '');
-            await sendText(sidecarCaption(today, M, ev, scomment), 'sidecar:' + ev.signature);
+            await sendText(sidecarCaption(today, M, ev), 'sidecar:' + ev.signature);
             mk.sidecarKeys.push(ev.signature);
             changed = true;
         }

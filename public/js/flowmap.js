@@ -813,11 +813,15 @@
 
     // ── 데이터 fetch ───────────────────────────────────
     function loadDate(date) {
+        var requestId = state.dateRequestId = (state.dateRequestId || 0) + 1;
         $loading.style.display = '';
+        $message.style.display = 'none';
         return WhyAPI.getRankings(date).then(function (data) {
+            if (requestId !== state.dateRequestId) return;
             if (date === state.virtualDate) state.virtualDate = '';   // 빌드 도착 — 정식 거래일
             return data;
         }).catch(function (err) {
+            if (requestId !== state.dateRequestId) return;
             // 라이브 가상 날짜(오늘 빌드 미도착) — 직전 거래일 빌드를 베이스라인으로.
             // 라이브 오버레이(refreshLive)가 오늘 시세로 덮으므로 화면 날짜는 오늘 유지.
             if (date === state.virtualDate && state.availableDates[1]) {
@@ -825,6 +829,7 @@
             }
             throw err;
         }).then(function (data) {
+            if (requestId !== state.dateRequestId) return;
             state.rankings = (data.rankings || []).map(normalizeRanking);
             state.collectedAt = data.collected_at || '';
             state.currentDate = date;
@@ -833,6 +838,7 @@
             $loading.style.display = 'none';
             render();
         }).catch(function (err) {
+            if (requestId !== state.dateRequestId) return;
             $loading.style.display = 'none';
             $message.style.display = '';
             $message.textContent = '데이터 로딩 실패: ' + (err && err.message ? err.message : err);

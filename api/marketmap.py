@@ -199,14 +199,18 @@ class handler(BaseHTTPRequestHandler):
             ex = _exchange_segment()
             fetched = _fetch_all(_build_urls(ex))
             kospi_pool, k_first = _pool_for('KOSPI', fetched, ex)
-            kosdaq_pool, _ = _pool_for('KOSDAQ', fetched, ex)
+            kosdaq_pool, q_first = _pool_for('KOSDAQ', fetched, ex)
 
             # 시장별로 union TOP n — 어떤 정렬에서도 진짜 TOP 100 보임
             items = _union_top(kospi_pool, TOP_N) + _union_top(kosdaq_pool, TOP_N)
             items.sort(key=lambda x: x['market_cap'], reverse=True)
 
-            market_status = (k_first or {}).get('marketStatus') or 'CLOSE'
-            traded = ((k_first or {}).get('localTradedAt') or '')[:10].replace('-', '')
+            meta = k_first or q_first or {}
+            market_status = meta.get('marketStatus')
+            traded = (meta.get('localTradedAt') or '')[:10].replace('-', '')
+            if not items or market_status not in ('OPEN', 'CLOSE') or len(traded) != 8 or not traded.isdigit():
+                self._respond(502, {'error': '시장 시세를 확인할 수 없습니다. 기존 스냅샷을 유지합니다.'}, cache='no-store')
+                return
 
             self._respond(200, {
                 'date': traded,
@@ -225,7 +229,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
         # 같은 캐시 윈도우 내 다른 사용자 요청은 edge cache 히트. 오류 응답은 캐시 안 함.
-        if cache:
-            self.send_header('Cache-Control', cache)
+        self.send_header('Cache-Control', cache or 'no-store')
         self.end_headers()
         self.wfile.write(json.dumps(body, ensure_ascii=False).encode('utf-8'))

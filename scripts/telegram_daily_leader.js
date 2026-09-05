@@ -4,24 +4,22 @@
  *   node scripts/telegram_daily_leader.js            # 실제 게시
  *   node scripts/telegram_daily_leader.js --dry-run  # 전송 안 함, 이미지+캡션만 산출(검증용)
  *
- * 동작: ① stock-rise 최신일 랭킹으로 대장 3종 계산(캘린더 빌드와 동일 로직 재사용)
+ * 동작: ① ORGO 확정 랭킹 + 날짜별 대장 캘린더
  *       ② 정사각 이미지 렌더(홈 리포트 카드 캡쳐 방식, headless Chromium)
- *       ③ 캡션 생성 + 마지막 한 줄 멘트는 Claude API 로 매일 새로 작성(실패 시 템플릿 폴백)
+ *       ③ 전일 대비 변화와 다음 장 확인점을 데이터로 구성(API 비용 없음)
  *       ④ Telegram Bot API sendPhoto 로 채널 게시
  *
  * 필요한 환경변수(=GitHub Secrets):
  *   TELEGRAM_BOT_TOKEN   BotFather 봇 토큰
  *   TELEGRAM_CHAT_ID     채널 chat_id (또는 @publicchannel)
- *   ANTHROPIC_API_KEY    (선택) AI 멘트용. 없으면 템플릿 멘트.
- *   TELEGRAM_MODEL       (선택) 기본 claude-haiku-4-5-20251001
  */
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const http = require('http');
 const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
+const editorial = require('./tg_editorial.js');
 const market = require('./tg_market.js');
 
 const DRY = process.argv.includes('--dry-run');
@@ -30,27 +28,15 @@ const DATE_ARG = ((process.argv.find(function (a) { return a.indexOf('--date=') 
 const PUBLIC = path.resolve(__dirname, '..', 'public');
 const OUT_IMG = path.resolve(__dirname, '..', 'telegram-daily.png');            // 1번: 대장 카드
 const IMG_TB = path.resolve(__dirname, '..', 'telegram-daily-theme-bubble.png'); // 2번: 장마감 핫테마 버블
-const IMG_TT = path.resolve(__dirname, '..', 'telegram-daily-theme-tree.png');   // 3번: 장마감 핫테마 트리
 const MARKER = path.resolve(PUBLIC, 'data', '_telegram-posted.json');  // 중복 게시 방지(크론 이중 발동)
-const RAW = core.RAW;
 
 const BOT_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const CHAT_ID = (process.env.TELEGRAM_CHAT_ID || '').trim();
-const ANTHROPIC_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
-const MODEL = (process.env.TELEGRAM_MODEL || 'claude-sonnet-5').trim();
 
 const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
 
 function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
 
-// 원 → "1.5조" / "3,164억" (report.js fmtAmount 와 동일 톤)
-function fmtAmount(won) {
-    won = num(won);
-    if (won >= 1e12) return (Math.round(won / 1e11) / 10).toLocaleString('ko-KR') + '조';
-    if (won >= 1e8) return Math.round(won / 1e8).toLocaleString('ko-KR') + '억';
-    if (won > 0) return Math.round(won / 1e4).toLocaleString('ko-KR') + '만';
-    return '-';
-}
 function pct(v) { var n = num(v); return (n >= 0 ? '+' : '') + (Math.round(n * 10) / 10).toFixed(1) + '%'; }
 function ymdKst() {
     var k = new Date(Date.now() + 9 * 3600000);
@@ -61,159 +47,12 @@ function dateLabel(ymd) {
     var dow = WEEKDAY[new Date(+y, +m - 1, +d).getDay()];
     return y + '.' + m + '.' + d + ' ' + dow;
 }
-function marketLabel(m) {
-    m = String(m || '').toUpperCase();
-    if (m.indexOf('KOSDAQ') >= 0) return 'KOSDAQ';
-    if (m.indexOf('KOSPI') >= 0 || m.indexOf('KRX') >= 0) return 'KOSPI';
-    return m || '';
-}
-
-// ── 대장 3종 계산 (캘린더 빌드와 동일) + 캡션용 리치 필드 ──
-// 대장 풀 = 급등 랭킹 + 로컬 marketmap/<date>.json 대형주(+5%대) — 캘린더 빌드와 동일 황금식.
-// (marketmap 은 장중 15분 주기 갱신이라 15:45 시점 로컬 파일이 15:22 시세일 수 있음 —
-//  종가와 ±0.n% 오차 가능하나 삼전·하닉급 후보 판정엔 실질 영향 없음)
-function computeLeaders(rankings, date) {
-    var leader = core.pickLeader(rankings, core.loadMarketRows(date));
-    var active = (rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
-    var sectors = core.buildGroups(active, 'sector');
-    var themes = core.buildGroups(active, 'theme');
-    return { leader: leader, sector: sectors[0] || null, theme: themes[0] || null };
-}
 
 function detailTag(leader) {
     return core.themeOf(leader) || String(leader.sector || '').trim() || '대장';
 }
 
-// 지수 레벨 표기 — 소수 2자리 고정
-function idxNum(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
-
-// 그룹 1위 종목의 사유 꼬리 — LLM 정제 우선, raw 폴백. 이유 없으면 빈 문자열.
-var TOP_REASON_CLIP = 26;
-function topReasonTail(topName, rankings, refined) {
-    var row = (rankings || []).find(function (r) { return r && r.name === topName; });
-    if (!row) return '';
-    // 구체적 사유만 노출 — 애매한 "OO 관련 뉴스"류는 생략 (2026-07-20 사용자 요청)
-    var r = tg.specificReason(refined && refined[row.ticker]);
-    return r ? ' — ' + tg.clip(r, TOP_REASON_CLIP) : '';
-}
-
-// ── 캡션(구조 텍스트) ──
-function buildCaption(ymd, L, comment, M, refined, rankings) {
-    var lines = [];
-    lines.push('🔥 오늘의 대장 (' + dateLabel(ymd) + ')');
-    lines.push('');
-    if (M) {   // 시장 요약 — 시세일이 캡션 날짜와 다르거나 조회 실패면 통째로 생략
-        lines.push('📊 시장');
-        lines.push('코스피 ' + idxNum(M.kospi.price) + ' (' + pct(M.kospi.changePct) + ') · 코스닥 ' + idxNum(M.kosdaq.price) + ' (' + pct(M.kosdaq.changePct) + ')');
-        lines.push('상승 ' + M.upCount.toLocaleString('ko-KR') + ' · 하락 ' + M.downCount.toLocaleString('ko-KR') + ' · 거래대금 ' + fmtAmount(M.tradingValueWon));
-        lines.push('');
-    }
-    if (L.leader) {
-        var mk = marketLabel(L.leader.market);
-        lines.push('🥇 대장주');
-        lines.push(L.leader.name + (mk ? '(' + mk + ')' : ''));
-        lines.push(pct(L.leader.change_rate) + ' · 거래대금 ' + fmtAmount(L.leader.trading_value));
-        // 사유는 LLM 정제본 우선 + 구체적일 때만 — 애매하면 [태그]만 남긴다
-        var reason = tg.specificReason(refined && refined[L.leader.ticker]);
-        lines.push('[' + detailTag(L.leader) + ']' + (reason ? ' ' + reason : ''));
-        lines.push('');
-    } else {
-        lines.push('🥇 대장주');
-        lines.push('해당 없음 — 오늘은 대장주 조건에 맞는 종목이 없었어요');
-        lines.push('');
-    }
-    if (L.sector) {
-        lines.push('🏢 대장섹터');
-        lines.push(L.sector.key + ' ' + L.sector.count + '종목');
-        lines.push('평균 ' + pct(L.sector.avgRate) + ' · 거래 ' + fmtAmount(L.sector.totalVolume));
-        lines.push('1위 ' + L.sector.top + ' ' + pct(L.sector.topRate) + topReasonTail(L.sector.top, rankings, refined));
-        lines.push('');
-    }
-    if (L.theme) {
-        lines.push('🏷️ 대장테마');
-        lines.push(L.theme.key + ' ' + L.theme.count + '종목');
-        lines.push('평균 ' + pct(L.theme.avgRate) + ' · 거래 ' + fmtAmount(L.theme.totalVolume));
-        lines.push('1위 ' + L.theme.top + ' ' + pct(L.theme.topRate) + topReasonTail(L.theme.top, rankings, refined));
-        lines.push('');
-    }
-    if (comment) { lines.push(comment); lines.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
-    // 바로가기 — HTML 텍스트 링크(긴 URL 미노출, utm 으로 효과 측정).
-    // 본문은 통째로 이스케이프 후 링크 줄만 붙인다 (parse_mode:'HTML').
-    var links = [];
-    if (L.leader && L.leader.ticker) {
-        links.push(tg.htmlLink('👉 ' + L.leader.name + ' 이유·1년 이력 보러가기', tg.orgoLink('/stock/' + L.leader.ticker, 'daily')));
-    }
-    links.push(tg.htmlLink('👉 오늘 오른 종목 전부 보기', tg.orgoLink('/rise.html', 'daily')));
-    return tg.escHtml(lines.join('\n')) + '\n' + links.join('\n');
-}
-
-// 템플릿 멘트(폴백) — AI 없을 때
-function templateComment(L) {
-    var subj = (L.theme && L.theme.key) || (L.sector && L.sector.key) || (L.leader && L.leader.name);
-    if (!subj) return '';   // 특이사항 없음 — 멘트 생략
-    // 조사 문제 회피 — '쪽'은 받침 유무와 무관하게 자연스러움
-    return '오늘은 ' + subj + ' 쪽 상승이 많았어요';
-}
-
-// ── AI 멘트 (Claude) ──
-async function aiComment(ymd, L, M, refined) {
-    if (!ANTHROPIC_KEY) return templateComment(L);
-    var summary = {
-        date: dateLabel(ymd),
-        대장주: L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate) + ' / ' + detailTag(L.leader) + ' / ' + ((refined && refined[L.leader.ticker]) || '')) : '없음',
-        대장섹터: L.sector ? (L.sector.key + ' 평균 ' + pct(L.sector.avgRate)) : '없음',
-        대장테마: L.theme ? (L.theme.key + ' 평균 ' + pct(L.theme.avgRate)) : '없음',
-        시장: M ? ('코스피 ' + pct(M.kospi.changePct) + ' 코스닥 ' + pct(M.kosdaq.changePct) + ' (상승 ' + M.upCount + '·하락 ' + M.downCount + ')') : '',
-    };
-    var prompt = '아래는 한국 주식시장 그날의 "오늘의 대장" 요약이야. 텔레그램 채널 구독자에게 ' +
-        '오늘 장 마감을 담백하게 한 줄로 정리해줘. 한 문장 45자 내외, 이모지 0~1개. ' +
-        '사실 서술만 — 호들갑·감탄·드라마화 금지, 평범한 날이면 평범하게. ' +
-        '뚜렷한 쏠림·이슈가 없어서 딱히 할 말이 없으면 문장 대신 정확히 (생략) 만 출력. ' +
-        '숫자 나열 금지, 과장·투자권유·목표가 금지. 따옴표 없이 문장만.\n\n' +
-        JSON.stringify(summary, null, 2);
-    try {
-        var res = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            signal: AbortSignal.timeout(15000),
-            headers: {
-                'x-api-key': ANTHROPIC_KEY,
-                'anthropic-version': '2023-06-01',
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify({ model: MODEL, max_tokens: 200, thinking: { type: 'disabled' }, messages: [{ role: 'user', content: prompt }] }),
-        });
-        if (!res.ok) throw new Error('anthropic HTTP ' + res.status + ' ' + (await res.text()).slice(0, 200));
-        var j = await res.json();
-        var text = (j.content || []).map(function (b) { return b.text || ''; }).join('').trim();
-        text = text.replace(/^["'\s]+|["'\s]+$/g, '').split('\n')[0].trim();
-        if (text === '(생략)') return '';   // 특이사항 없음 — 의도적 생략(빈 응답=오류→폴백과 구분)
-        return text || templateComment(L);
-    } catch (e) {
-        console.error('AI 멘트 실패 → 템플릿 폴백:', e.message);
-        return templateComment(L);
-    }
-}
-
 // ── 정사각 이미지 렌더 (홈 리포트 카드 캡쳐 방식) ──
-function servePublic() {
-    return new Promise(function (resolve) {
-        var srv = http.createServer(function (req, res) {
-            var p = decodeURIComponent(req.url.split('?')[0]);
-            if (p === '/') p = '/index.html';
-            var fp = path.join(PUBLIC, p);
-            if (!fp.startsWith(PUBLIC) || !fs.existsSync(fp) || fs.statSync(fp).isDirectory()) {
-                res.statusCode = 404; return res.end('nf');
-            }
-            var ext = path.extname(fp).toLowerCase();
-            var ct = ext === '.js' ? 'application/javascript' : ext === '.css' ? 'text/css'
-                : ext === '.json' ? 'application/json' : ext === '.html' ? 'text/html' : 'application/octet-stream';
-            res.setHeader('Content-Type', ct);
-            fs.createReadStream(fp).pipe(res);
-        });
-        srv.listen(0, '127.0.0.1', function () { resolve(srv); });
-    });
-}
-
 async function renderImage(ymd, L, refined) {
     function grp(g) { return g ? { name: g.key, count: g.count, avgRate: g.avgRate, top: g.top, topRate: g.topRate, vol: g.totalVolume } : null; }
     function ld(x) { return x ? { name: x.name, market: x.market, rate: x.change_rate, vol: x.trading_value, tag: detailTag(x), reason: tg.specificReason(refined && refined[x.ticker]) } : null; }
@@ -247,12 +86,6 @@ async function main() {
         if (!tg.isKrTradingDay(today)) { console.log('휴장일(' + today + ', 캘린더) — 게시 스킵'); return; }
         var traded = await market.isKrTradedToday(today);
         if (!traded.ok) { console.log('휴장일(실측 거래일=' + traded.tradedYmd + ') — 게시 스킵'); return; }
-        var dates = await core.fetchJson(RAW + '/dates.json');
-        var latest = Array.isArray(dates) && dates.length ? dates.slice().sort().slice(-1)[0] : '';
-        if (latest !== today) {
-            console.log('오늘(' + today + ') 거래일 데이터 없음(최신=' + latest + ') — 게시 스킵');
-            return;
-        }
     }
     // 장 마감(종가 확정) 전 트리거 차단 — 마감 전엔 대장이 장중값으로 나가 마커를 선점(→진짜 15:45 종가 대장 스킵)하는 사고 방지.
     // 실발송에만 적용: --dry-run(검증)/--force/--date(샘플) 는 예외.
@@ -272,8 +105,8 @@ async function main() {
         } catch (e) { /* 마커 없음 → 첫 게시 */ }
     }
 
-    var day = await core.fetchJson(RAW + '/' + today + '.json');
-    var L = computeLeaders(day.rankings || [], today);
+    var day = editorial.finalSnapshot(PUBLIC, today);
+    var L = editorial.calendarLeaders(PUBLIC, today, day);
     console.log('대장주:', L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate)) : '없음',
         '| 섹터:', L.sector && L.sector.key, '| 테마:', L.theme && L.theme.key);
 
@@ -287,22 +120,22 @@ async function main() {
     } catch (e) { console.error('시장 요약 실패(블록 생략):', e.message); }
 
     var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
-    var comment = await aiComment(today, L, M, refined);
-    var caption = buildCaption(today, L, comment, M, refined, day.rankings || []);
+    if (L.leader && !day.rankings.some(function (r) { return r.ticker === L.leader.ticker && r.name === L.leader.name; })) delete refined[L.leader.ticker];
+    var previous = editorial.previousSnapshot(PUBLIC, day);
+    var caption = editorial.daily(today, L, M, refined, day, previous);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
     await renderImage(today, L, refined);
     console.log('대장 카드:', OUT_IMG);
 
-    // 장마감 핫테마(종가) 버블·트리 — 대장 카드 뒤에 붙여 "장마감 핫테마 정리" 앨범 구성
+    // 장마감 핫테마(종가) 버블 — 대장 카드 뒤에 붙여 "장마감 핫테마 정리" 앨범 구성
     var themeImgs = await tg.captureFlowmaps(PUBLIC, [
         { mode: 'theme', view: 'bubble', out: IMG_TB },
-        { mode: 'theme', view: 'tree', out: IMG_TT },
     ], { date: today, day: day });
     console.log('핫테마 이미지:', themeImgs.join(', ') || '(실패 → 대장 카드만 발송)');
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }
-    var album = [OUT_IMG].concat(themeImgs);   // 1 대장카드 + 2 버블 + 3 트리 (실패 시 대장카드만)
+    var album = [OUT_IMG].concat(themeImgs);   // 대장카드 + 버블 (실패 시 대장카드만)
     var r = album.length > 1
         ? await tg.sendMediaGroup(BOT_TOKEN, CHAT_ID, album, caption, { parse_mode: 'HTML' })
         : await sendPhoto(OUT_IMG, caption);

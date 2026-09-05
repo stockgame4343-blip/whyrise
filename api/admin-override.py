@@ -23,12 +23,12 @@ from http.server import BaseHTTPRequestHandler
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN', '')
 REPO = os.environ.get('GITHUB_REPO', 'stockgame4343-blip/whyrise')
 BRANCH = os.environ.get('GITHUB_BRANCH', 'master')
-ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '')
-SESSION_SECRET = os.environ.get('SESSION_SECRET', ADMIN_TOKEN)
+ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', '').strip()
+SESSION_SECRET = os.environ.get('SESSION_SECRET', '').strip() or ADMIN_TOKEN
 COOKIE_NAME = 'wr_admin'
 
 DATE_RE = re.compile(r'^[0-9]{8}$')
-TICKER_RE = re.compile(r'^[0-9]{6}$')
+TICKER_RE = re.compile(r'^[0-9A-Z]{6}$')
 
 # 입력 필드 최대 길이
 REASON_MAXLEN = 500
@@ -85,14 +85,17 @@ def _is_authed(headers):
     raw = headers.get('Cookie', '') or ''
     if not raw:
         return False
-    cookie.load(raw)
+    try:
+        cookie.load(raw)
+    except Exception:
+        return False
     val = cookie.get(COOKIE_NAME)
     if not val:
         return False
     expected = _sign()
     if not expected:
         return False
-    return hmac.compare_digest(val.value, expected)
+    return hmac.compare_digest(val.value.encode('utf-8'), expected.encode('utf-8'))
 
 
 def _gh(method, path, data=None):
@@ -105,7 +108,8 @@ def _gh(method, path, data=None):
     body = json.dumps(data).encode('utf-8') if data else None
     req = urllib.request.Request(url, data=body, headers=headers, method=method)
     with urllib.request.urlopen(req, timeout=10) as resp:
-        return json.loads(resp.read().decode('utf-8'))
+        raw = resp.read().decode('utf-8')
+        return json.loads(raw) if raw.strip() else None
 
 
 def _get_overrides(date):

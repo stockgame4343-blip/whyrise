@@ -40,14 +40,17 @@ def _is_authed(headers):
     raw = headers.get('Cookie', '') or ''
     if not raw:
         return False
-    cookie.load(raw)
+    try:
+        cookie.load(raw)
+    except Exception:
+        return False
     val = cookie.get(COOKIE_NAME)
     if not val:
         return False
     expected = _sign()
     if not expected:
         return False
-    return hmac.compare_digest(val.value, expected)
+    return hmac.compare_digest(val.value.encode('utf-8'), expected.encode('utf-8'))
 
 
 class handler(BaseHTTPRequestHandler):
@@ -63,11 +66,18 @@ class handler(BaseHTTPRequestHandler):
             self._respond(400, {'error': '잘못된 요청 본문'})
             return
 
+        if not isinstance(body, dict) or ('token' in body and not isinstance(body['token'], str)):
+            self._respond(400, {'error': '잘못된 요청 본문'})
+            return
         token = (body.get('token') or '').strip()
         if not ADMIN_TOKEN:
             self._respond(500, {'error': 'ADMIN_TOKEN 환경변수 미설정'})
             return
-        if not token or not hmac.compare_digest(token, ADMIN_TOKEN):
+        try:
+            valid_token = bool(token) and hmac.compare_digest(token.encode('utf-8'), ADMIN_TOKEN.encode('utf-8'))
+        except UnicodeError:
+            valid_token = False
+        if not valid_token:
             self._respond(401, {'error': '토큰이 올바르지 않습니다'})
             return
 

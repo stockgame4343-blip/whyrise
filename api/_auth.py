@@ -58,6 +58,8 @@ def redirect_uri(headers):
 
 
 def safe_next(value):
+    if not isinstance(value, str) or '\\' in value or re.search(r'[\x00-\x1f\x7f]', value):
+        return '/'
     value = (value or '/').strip()
     if not value.startswith('/') or value.startswith('//'):
         return '/'
@@ -121,16 +123,18 @@ def sign_session(user):
 
 
 def verify_session(token):
-    if not token or not AUTH_SECRET or '.' not in token:
+    if not isinstance(token, str) or not AUTH_SECRET or '.' not in token:
         return None
     body, sig = token.rsplit('.', 1)
+    if not re.fullmatch(r'[A-Za-z0-9_-]+', body) or not re.fullmatch(r'[0-9a-f]{64}', sig):
+        return None
     if not hmac.compare_digest(_signature(body), sig):
         return None
     try:
         payload = json.loads(_b64d(body).decode('utf-8'))
-    except Exception:
-        return None
-    if int(payload.get('exp') or 0) < int(time.time()):
+        if not isinstance(payload, dict) or int(payload.get('exp') or 0) <= int(time.time()):
+            return None
+    except (ValueError, TypeError, OverflowError):
         return None
     if not payload.get('sub'):
         return None

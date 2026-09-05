@@ -3,7 +3,7 @@ name: 오늘의 대장 텔레그램 자동 게시
 # 매일 장 마감후, '오늘의 대장' 정사각 이미지 + 캡션을 텔레그램 채널에 자동 게시.
 #   - 대장 계산은 build_leaders_calendar.js 로직 재사용(사이트와 동일)
 #   - 이미지: 홈 리포트 카드 캡쳐(headless Chromium)
-#   - 캡션 마지막 멘트: Claude API(선택). 미설정 시 템플릿.
+#   - 캡션: 확정 데이터·기존 캘린더 기반 관찰 문장(유료 AI 호출 없음).
 # 중복 게시는 public/data/_telegram-posted.json 마커로 방지(크론 이중 발동 안전).
 
 on:
@@ -85,7 +85,6 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           ARGS=""
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"

@@ -86,3 +86,49 @@ test('dated flowmap capture rejects wrong-day data before starting a browser',as
     await assert.rejects(tg.captureFlowmaps('.',[],{date:'20260904',day:{date:'20260903',rankings:[]}}),/Matching flowmap snapshot/);
     await assert.rejects(tg.captureFlowmaps('.',[],{date:'20260231',day:{date:'20260231',rankings:[]}}),/Invalid flowmap snapshot date/);
 });
+
+test('editorial comparisons count distinct qualifying stocks without future or partial comparisons',()=>{
+    const e=require('./tg_editorial');
+    const stock=(ticker,rate)=>({ticker,name:'종목'+ticker,change_rate:rate,trading_value:1e10});
+    const day={date:'20260904',is_final:true,rankings:[stock('000001',20),stock('000001',20),stock('000002',16),stock('000003',10)]};
+    const previous={date:'20260903',is_final:true,rankings:[stock('000001',15),stock('000004',18)]};
+    const c=e.comparison(day,previous);
+    assert.equal(c.count,2);assert.equal(c.previousCount,2);assert.equal(c.continuing.length,1);assert.equal(c.newCount,1);
+    assert.equal(e.comparison(day,{...previous,date:'20260905'}),null);
+    assert.equal(e.comparison(day,{...previous,is_final:false}),null);
+    assert.equal(e.comparison(day,{...previous,rankings:day.rankings}),null);
+    assert.match(e.countLine(day,null),/ORGO 수집 종목/);
+    assert.doesNotMatch(e.countLine(day,null),/증가|감소/);
+});
+
+test('slot captions answer distinct questions and keep follow-up observations factual',()=>{
+    const e=require('./tg_editorial');
+    const row={ticker:'000001',name:'검증전자',change_rate:20,trading_value:1e10};
+    const day={date:'20260904',is_final:true,rankings:[row]};
+    const texts=[e.daily(day.date,{leader:row,theme:null},null,{},day,null),e.intraday(day.date,[{...row,rate:20,vol:1e10}],{}),e.themes(day.date,{themes:[{key:'반도체',count:3,avgRate:18}],sectors:[]}),e.evening(day.date,day,null,{})];
+    for(const text of texts){assert.ok(text.length<800);assert.equal((text.match(/<a href/g)||[]).length,1);assert.doesNotMatch(text,/목표가|매수|매도|확실|최초/);}
+    assert.match(texts[0],/오늘의 대장/);assert.match(texts[1],/개별 주도주/);assert.match(texts[2],/테마 확산/);assert.match(texts[3],/저녁 복기/);
+    assert.match(e.daily(day.date,{leader:null},null,{},day,null),/대장 조건을 충족한 종목이 없어요/);
+});
+
+test('calendar commentary includes explicit no-leader days and excludes future records',()=>{
+    const e=require('./tg_editorial');
+    const cal={'20260901':{stock:{ticker:'000001',name:'가전자'}},'20260902':{stock:null},'20260903':{stock:{ticker:'000001',name:'가전자'}},'20260904':{stock:{ticker:'000002',name:'나전자'}},'20260907':{stock:{ticker:'000002',name:'나전자'}}};
+    const text=e.calendarObservation(cal,'20260901','20260903');
+    assert.match(text,/3거래일/);assert.match(text,/가전자 대장 2일/);assert.match(text,/대장 없는 날은 1일/);assert.doesNotMatch(text,/나전자/);
+    assert.match(e.calendarObservation({'20260902':{stock:null}},'20260901','20260903'),/모두 대장 조건/);
+});
+
+test('closing editorial requires final dated rankings and reuses the published calendar leader',()=>{
+    const e=require('./tg_editorial'),fs=require('fs');
+    const originalRead=fs.readFileSync;
+    let day={date:'20260904',is_final:true,rankings:[]};
+    fs.readFileSync=file=>String(file).endsWith('leaders-calendar.json') ? JSON.stringify({days:{'20260904':{stock:{ticker:'000001',name:'캘린더대장',rate:40,vol:1e12}}}}) : JSON.stringify(day);
+    try {
+        assert.equal(e.finalSnapshot('fixture','20260904').is_final,true);
+        assert.equal(e.calendarLeaders('fixture','20260904',day).leader.name,'캘린더대장');
+        day={...day,is_final:false};assert.throws(()=>e.finalSnapshot('fixture','20260904'),/Final matching/);
+        day={...day,is_final:true,date:'20260903'};assert.throws(()=>e.finalSnapshot('fixture','20260904'),/Final matching/);
+        assert.throws(()=>e.calendarLeaders('fixture','20260903',day),/calendar entry/);
+    }finally{fs.readFileSync=originalRead;}
+});

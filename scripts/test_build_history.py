@@ -12,6 +12,7 @@ import re
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -502,7 +503,34 @@ class OverrideSyncValidationTest(unittest.TestCase):
                 self.assertEqual(bh.build_override_sync(self._args(date=bad)), 1)
 
     def test_invalid_ticker_fails(self):
-        self.assertEqual(bh.build_override_sync(self._args(ticker='00001')), 1)
+        for ticker in ('00001', '0126z0', '../abc', '0000012', '１２３４５６'):
+            with self.subTest(ticker=ticker), patch.object(bh, 'fetch_ticker_universe', side_effect=AssertionError('network')):
+                self.assertEqual(bh.build_override_sync(self._args(ticker=ticker)), 1)
+
+    def test_alphanumeric_override_saves_and_restores_only_target_history(self):
+        # 0126Z0 is an existing six-character security code in our stock index.
+        for ticker in ('0126Z0', '00680K', '005930'):
+            with self.subTest(ticker=ticker), tempfile.TemporaryDirectory() as tmp:
+                output = Path(tmp)
+                original = {'date':'20990101', 'change_rate':15, 'rise_reason':'공급 계약', 'reason_source':'stockrise'}
+                bh.write_ticker_history(ticker, '검증 종목', 'KOSPI', [original], output)
+                sentinel = output / '999999.json'
+                sentinel.write_text('{"untouched":true}', encoding='utf8')
+                overrides = {ticker: {'rise_reason':'수정된 계약 내용'}}
+                with patch.object(bh, 'OUTPUT_DIR', output), \
+                     patch.object(bh, 'load_overrides_for', side_effect=lambda _: overrides), \
+                     patch.object(bh, 'fetch_ticker_universe', side_effect=AssertionError('network')), \
+                     patch.object(bh, '_reconstruct_target_event', side_effect=AssertionError('unnecessary rebuild')):
+                    self.assertEqual(bh.build_override_sync(self._args(ticker=ticker)), 0)
+                    saved = json.loads((output / f'{ticker}.json').read_text(encoding='utf8'))
+                    self.assertEqual(saved['events'][0]['rise_reason'], '수정된 계약 내용')
+                    self.assertEqual(saved['events'][0]['pre_override']['rise_reason'], '공급 계약')
+                    overrides.clear()
+                    self.assertEqual(bh.build_override_sync(self._args(ticker=ticker)), 0)
+                    restored = json.loads((output / f'{ticker}.json').read_text(encoding='utf8'))
+                    self.assertEqual(restored['events'][0], original)
+                self.assertEqual(sentinel.read_text(encoding='utf8'), '{"untouched":true}')
+                self.assertEqual(sorted(p.name for p in output.iterdir()), sorted([f'{ticker}.json', '999999.json']))
 
     def test_parse_yyyymmdd(self):
         self.assertEqual(bh._parse_yyyymmdd('20260711'), date(2026, 7, 11))
@@ -556,7 +584,7 @@ class WorkflowInvariantsTest(unittest.TestCase):
                       "github.event.action == 'override-saved' && "
                       "github.event.client_payload.ticker != '')", block,
                       'ticker payload override dispatch 는 build job 에서 제외')
-        self.assertIn("grep -Ev '^public/data/stock-history/[0-9]{6}\\.json$'", block,
+        self.assertIn("grep -Ev '^public/data/stock-history/[0-9A-Z]{6}\\.json$'", block,
                       '전역 빌드와 fast override 종목 파일만 충돌할 때 구분')
         self.assertIn('git checkout --ours -- "$file"', block,
                       'rebase 시 최신 원격 override 종목 파일 보존')
@@ -568,6 +596,18 @@ class WorkflowInvariantsTest(unittest.TestCase):
     def test_override_sync_flag_only_in_override_job(self):
         self.assertNotIn('--override-sync', self._job_block('build'))
         self.assertIn('--override-sync', self._job_block('override-sync'))
+
+    def test_conflict_allowlist_accepts_alphanumeric_history_only(self):
+        block = self._job_block('build')
+        pattern = re.search(r"grep -Ev '([^']+)'", block).group(1)
+        for ticker in ('0126Z0', '00680K', '005930'):
+            self.assertIsNotNone(re.fullmatch(pattern, f'public/data/stock-history/{ticker}.json'))
+        for invalid in ('public/data/stock-history/index.json',
+                        'public/data/stock-history/../0126Z0.json',
+                        'public/data/stock-history/0126z0.json',
+                        'public/data/stock-history/0126Z0.json/extra',
+                        'scripts/0126Z0.json'):
+            self.assertIsNone(re.fullmatch(pattern, invalid))
 
     def test_override_job_minimal_side_effects(self):
         block = self._job_block('override-sync')
