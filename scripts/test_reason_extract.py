@@ -108,6 +108,16 @@ class ContextTest(unittest.TestCase):
         # 수개월 전 상장주(반기 태그)는 '상장 첫날'로 단정하지 않는다
         self.assertIsNone(R.explain(rows[6], '20261001', ctx))
 
+    def test_specific_reason_not_overwritten_by_co_move(self):
+        sector = {'reason': '반도체주 동반 강세 — 마이크론·수출 호조', 'kind': 'sector'}
+        named = {'reason': '삼성전자에 153억 반도체 검사장비 공급', 'kind': 'catalyst'}
+        self.assertFalse(R.should_replace('전력반도체 MOU 체결', sector))
+        self.assertTrue(R.should_replace('전력반도체 MOU 체결', named))
+        self.assertTrue(R.should_replace('수주 공시', sector))
+        self.assertTrue(R.should_replace('52주 신고가 도달', sector))
+        self.assertTrue(R.should_replace('반도체 테마 강세', {'reason': 'x', 'kind': 'theme'}))
+        self.assertFalse(R.should_replace('수주 공시', None))
+
     def test_template_detection(self):
         for r in ('수주 공시', '정책 관련 뉴스', '양산 보도', '상장 이슈', '거래량 증가', '흑자 전환', '외국인·기관 순매수'):
             self.assertTrue(R.is_template_reason(r), r)

@@ -326,6 +326,8 @@ def headline_fallback(target: dict, ctx: dict | None = None) -> dict:
     row = {'name': target.get('name') or '', 'news': target.get('raw_news') or [],
            'theme_tag': target.get('theme_tag') or '', 'sector': target.get('sector') or ''}
     ex = rx.explain(row, target.get('date') or '', ctx or {})
+    if ex and not rx.should_replace(target.get('rise_reason') or '', ex):
+        return {'action': 'keep', 'note': 'specific'}
     if ex:
         return {'action': 'replace', 'reason': ex['reason'], 'confidence': ex['confidence'],
                 'source': 'news_extract', 'kind': ex.get('kind', ''),

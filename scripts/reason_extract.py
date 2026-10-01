@@ -362,16 +362,35 @@ def pick_reason(name: str, news: list[dict], event_date: str, theme_tag: str = '
 
 # 상류(stock-rise) 키워드 템플릿 사유 — 뉴스 키워드만 보고 만든 문구라 종목과 무관한 경우가 많다.
 TEMPLATE_RE = re.compile(
-    r'(?:관련\s*(?:뉴스|이슈|소식)|뉴스|보도|이슈|공시|발표|언급|관련|기록|급증|증가)$'
+    r'(?:관련\s*(?:뉴스|이슈|소식)|뉴스|보도|이슈|공시|발표|언급|관련|기록|급증|증가|테마\s*강세)$'
     r'|^(?:MOU 체결|계약 체결|공급 계약 체결|납품 계약 체결|라이선스 계약|흑자 전환|자사주 매입|자사주 소각|'
     r'특허 취득|임상 3상 진입|실실적 서프라이즈|실적 서프라이즈|경영진 교체|자본 구조 변경|주주환원 정책|'
     r'테마 대장주|테마 관련주|관세 정책 관련|국책사업 관련|보조금 관련|정부 정책 관련|증권사 리포트 공개|'
-    r'외국인·기관 순매수|기관 순매수|외국인 순매수)$')
+    r'외국인·기관 순매수|기관 순매수|외국인 순매수|상한가 — 사유 미수집|이유 분석 대기중|관련 뉴스 없음|'
+    r'투자심리 개선 영향|바이오)$')
 
 
 def is_template_reason(reason: str) -> bool:
     r = str(reason or '').strip()
     return (not r) or r == '-' or bool(TEMPLATE_RE.search(r))
+
+
+WEAK_KINDS = ('sector', 'theme', 'related')
+
+
+def should_replace(current: str, ex: dict | None) -> bool:
+    """기존 사유를 기사 근거 결과(ex)로 바꿀지.
+
+    키워드 템플릿·'52주 신고가' 같은 비(非)이유는 무엇으로든 교체하고, 이미 구체적인 사유
+    ('전력반도체 MOU 체결')는 종목 자체 기사가 있을 때만 교체한다 — 업종·테마 동반이나
+    '관련 보도'로 구체 사유를 덮지 않는다.
+    """
+    if not ex:
+        return False
+    cur = str(current or '').strip()
+    if is_template_reason(cur) or re.match(r'^52주 신고가', cur):
+        return True
+    return ex.get('kind') not in WEAK_KINDS
 
 
 # ── 하루 단위 맥락: 업종 동반 상승 기사 · 테마 동반 상승 ─────────────────────
