@@ -15,6 +15,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+try:
+    from scripts.reason_extract import display as rx_display
+except ImportError:  # pragma: no cover — scripts/ 단독 실행
+    from reason_extract import display as rx_display
+
 SITE = 'https://orgo.kr'
 MAX_EVENTS = 60          # 스냅샷에 넣을 최근 이벤트 상한 (파일 크기 가드)
 GENERIC_SUMMARY = {'52주 신고가 도달', '상한가 — 사유 미수집', '시장 관심 증가', '-', ''}
@@ -61,9 +66,10 @@ def _summary(events: list[dict]) -> str:
     """stock.js buildSummary 의 축약판 — 최빈 테마 · 최빈 구체 사유."""
     filled = [e for e in events if e.get('reason_status') in ('filled', 'edited')] or events
     theme = _top_freq(filled, lambda e: (e.get('theme_tag') or '').strip())
-    reason = _top_freq(filled, lambda e: (
-        '' if (e.get('rise_reason') or '').strip() in GENERIC_SUMMARY
-        else (e.get('rise_reason') or '').strip()))
+    def _known(e):
+        d = rx_display(e)
+        return '' if d['unknown'] or d['kind'] in ('sector', 'theme') else d['text']
+    reason = _top_freq(filled, _known)
     parts = [p for p in (theme, reason) if p]
     if not parts:
         sector = _top_freq(events, lambda e: (e.get('sector') or '').strip())
@@ -78,7 +84,7 @@ def _timeline_html(events: list[dict], day_pages: set | None = None) -> str:
     for e in events[:MAX_EVENTS]:
         rate = e.get('change_rate')
         rate_s = f'+{rate:.1f}%' if isinstance(rate, (int, float)) else ''
-        reason = (e.get('rise_reason') or '').strip() or '이유 수집 중'
+        reason = rx_display(e)['text']
         theme = (e.get('theme_tag') or '').strip()
         date_html = f'<time class="prerender-date">{_fmt_date(e.get("date") or "")}</time>'
         if day_pages and e.get('date') in day_pages:
@@ -131,7 +137,7 @@ def _render_one(template: str, ticker: str, history: dict, day_pages: set | None
     if latest:
         desc = (f'{name} 최근 1년 급등 {n}회. 최근 {_fmt_date(latest.get("date") or "")} '
                 f'{latest.get("change_rate", 0):+.1f}% — '
-                f'{(latest.get("rise_reason") or "이유 수집 중").strip()}')
+                f'{rx_display(latest)["text"]}')
     else:
         desc = f'{name}의 최근 1년 급등 이력과 이유를 확인하세요.'
     desc = desc[:150]

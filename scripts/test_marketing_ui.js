@@ -18,7 +18,9 @@ async function main(){
             for(const a of downloads){const response=await page.request.get(new URL(await a.getAttribute('href'),page.url()).href);assert.ok(response.ok());assert.equal((await response.body()).subarray(0,2).toString('hex'),'ffd8');}
             for(const channel of await page.locator('.channel').all()){
                 await channel.click();assert.equal(await page.locator('#caption').textContent(),await page.locator('#copyText').inputValue());
-                assert.ok((await page.locator('#caption').textContent()).length<180);
+                // 쓰레드는 '왜 올랐나' 3줄 요약(≤500), 나머지 채널은 이미지 중심 짧은 캡션
+                const ch=await channel.getAttribute('data-channel');
+                assert.ok((await page.locator('#caption').textContent()).length<(ch==='threads'?500:180));
             }
             if(await page.locator('[aria-label="다음 이미지"]').count()){
                 await page.locator('[aria-label="다음 이미지"]').click();assert.match(await page.locator('#imageCount').textContent(),/^2/);
@@ -37,7 +39,14 @@ async function main(){
         if(await page.locator('[data-story="market"]').count())await page.locator('[data-story="market"]').click();
         await page.waitForFunction(()=>document.querySelector('#images img').complete&&document.querySelector('#images img').naturalWidth>0);
         if(out)await page.screenshot({path:path.join(out,'mobile-market.png'),fullPage:true});
-        assert.deepEqual(errors,[]);console.log('Marketing UI: topics, 5 channels, downloads, editing, image navigation and mobile overflow passed');
+        // 네이버 블로그 원고 블록: 제목·태그·미리보기·서식 복사 버튼
+        await page.setViewportSize({width:1380,height:1000});
+        await page.locator('#blog[aria-busy="false"]').waitFor();
+        assert.match(await page.locator('#blogTitle').textContent(),/급등주|상한가/);
+        assert.ok((await page.locator('#blogTags').textContent()).includes('#급등주'));
+        assert.ok(await page.locator('#blogCopyHtml').isEnabled());
+        assert.equal(await page.locator('#blogFrame').getAttribute('src'),'/marketing/'+JSON.parse(fs.readFileSync(path.resolve(__dirname,'../public/marketing/latest.json'),'utf8')).date+'/naver-blog.html');
+        assert.deepEqual(errors,[]);console.log('Marketing UI: topics, channels, downloads, editing, image navigation, mobile overflow and blog draft passed');
     }finally{await browser.close();server.close();}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

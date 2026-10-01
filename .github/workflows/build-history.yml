@@ -23,9 +23,9 @@ on:
         required: false
         default: 'incremental'
         type: choice
-        options: [full, incremental, estimate-only, enrich-meta, enrich-news, enrich-ohlc, marketmap-only, marketmap-intraday, llm-refine-dry, llm-refine]
+        options: [full, incremental, estimate-only, enrich-meta, enrich-news, enrich-ohlc, marketmap-only, marketmap-intraday, llm-refine-dry, llm-refine, reason-backfill]
       date:
-        description: 'llm-refine(-dry) 대상 일자 YYYYMMDD (빈값 = rise-history 최신)'
+        description: 'llm-refine(-dry) 대상 일자 YYYYMMDD (빈값 = rise-history 최신) / reason-backfill 시작 일자(빈값 = 전체)'
         required: false
         default: ''
       days:
@@ -210,6 +210,9 @@ jobs:
             python3 scripts/build-history.py --enrich-ohlc --limit "$LIMIT"
           elif [ "$MODE" = "llm-refine-dry" ] || [ "$MODE" = "llm-refine" ]; then
             echo "llm-refine 전용 — 본빌드 스킵 (아래 LLM 스텝에서 실행, dry 는 --dry-run)"
+          elif [ "$MODE" = "reason-backfill" ]; then
+            # 과거 전 일자 사유를 '같은 날 기사 근거' 규칙으로 재정리 (LLM 미사용 — 비용 0)
+            python3 -u scripts/build-history.py --reason-backfill --date "${{ github.event.inputs.date }}"
           elif [ "$MODE" = "marketmap-intraday" ]; then
             # 장중 빠른 갱신 — 라이브 API 만, ~30s. hang 가드 10분.
             timeout -k 30 600 python3 scripts/build-history.py --marketmap-intraday
@@ -252,14 +255,14 @@ jobs:
       #   대장캘린더는 stock-rise 상류를 직접 읽으므로 whyrise 증분 성공과 무관하게 최신화 가능.
       #   (marketmap 실패가 캘린더 동결로 번지던 결합 해제)
       - name: Build leaders calendar
-        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental') }}
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'reason-backfill') }}
         continue-on-error: true
         run: node scripts/build_leaders_calendar.js
 
       # 날짜별 급등주 정적 페이지(/day/YYYYMMDD) — 대장캘린더 갱신 뒤에 만들어 '오늘의 대장'까지 반영.
       # 검색 유입용 SEO 페이지라 실패해도 본 빌드·커밋은 진행.
       - name: Prerender day pages (SEO)
-        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental') }}
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'reason-backfill') }}
         continue-on-error: true
         run: python3 scripts/prerender_days.py
 

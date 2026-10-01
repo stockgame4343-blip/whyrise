@@ -32,56 +32,70 @@ function idx(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigi
 function fx(n) { return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
 function arrow(p) { return p > 0 ? '🔺' : p < 0 ? '🔻' : '⏸'; }
 
-// ── 전 거래일 국내 복기 (stock-rise raw) ──
+// ── 전 거래일 국내 복기 — 자체 확정 스냅샷, 없으면(빌드 지연) 상류 stock-rise 확정본 ──
+function prevTradingDay(today) {
+    var d = new Date(Date.UTC(+today.slice(0, 4), +today.slice(4, 6) - 1, +today.slice(6, 8)));
+    for (var i = 0; i < 10; i++) {
+        d.setUTCDate(d.getUTCDate() - 1);
+        var ymd = d.toISOString().slice(0, 10).replace(/-/g, '');
+        if (tg.isKrTradingDay(ymd)) return ymd;
+    }
+    return '';
+}
 async function fetchYesterdayRecap(today) {
-    var day = editorial.previousSnapshot(PUBLIC, { date: today, is_final: true, rankings: [] });
+    var want = prevTradingDay(today);
+    var day = null;
+    try {
+        var own = JSON.parse(fs.readFileSync(path.join(PUBLIC, 'data', 'rise-history', want + '.json'), 'utf8'));
+        if (own.date === want && own.is_final === true) day = own;
+    } catch (_) { /* 자체 스냅샷 없음 */ }
+    if (!day && want) {
+        try {
+            var up = await core.fetchJson(core.RAW + '/' + want + '.json');
+            if (up && Array.isArray(up.rankings)) day = { date: want, is_final: true, rankings: up.rankings };
+        } catch (e) { console.error('상류 전일 데이터 실패:', e.message); }
+    }
+    if (!day) day = editorial.previousSnapshot(PUBLIC, { date: today, is_final: true, rankings: [] });
     if (!day) return null;
     var last = day.date;
-    var rows = day.rankings || [];
-    var active = rows.filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
-    var limitUps = active.filter(function (r) { return core.num(r.change_rate) >= LIMIT_UP_CUTOFF; });
-    var leader = editorial.calendarLeaders(PUBLIC, last, day).leader;
-    var themes = core.buildGroups(active, 'theme');
-    return {
-        ymd: last,
-        riseCount: active.length,
-        limitUpCount: limitUps.length,
-        leader: leader,
-        topTheme: themes[0] || null,
-    };
+    var rows = editorial.activeRows(day).sort(function (a, b) { return b.change_rate - a.change_rate; });
+    var limitUps = rows.filter(function (r) { return core.num(r.change_rate) >= LIMIT_UP_CUTOFF; });
+    var leader = null;
+    try { leader = editorial.calendarLeaders(PUBLIC, last, day).leader; } catch (_) { /* 캘린더 미반영 */ }
+    var themes = core.buildGroups(rows, 'theme').filter(function (g) { return !editorial.isNewListing(g.key) && !/^거래(량|대금)$/.test(g.key); });
+    var refined = tg.reasonsFromRows(day.rankings, last);
+    var explained = editorial.explainedFirst(rows, refined, 3).filter(function (r) { return refined[r.ticker]; });
+    return { ymd: last, riseCount: rows.length, limitUpCount: limitUps.length, leader: leader,
+        topTheme: themes[0] || null, explained: explained, refined: refined };
 }
 
-// ── 캡션 ──
+// ── 캡션 ── 해외는 한 줄 요약, 핵심은 '어제 왜 올랐나'
 function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
-    var lines = [];
-    lines.push('🌅 장전 브리핑 (' + tg.dateLabel(todayYmd) + ')');
-    lines.push('');
-    if (quotes.length) {
-        lines.push('🇺🇸 해외 지수 조회');
-        quotes.forEach(function (q) {
-            lines.push(arrow(q.changePct) + ' ' + q.label + ' ' + idx(q.price) + ' (' + tg.pct(q.changePct) + ')');
-        });
-        lines.push('');
-    }
-    if (fxQuote) {
-        lines.push('💱 ' + fxQuote.label + ' ' + fx(fxQuote.price) + '원 (' + tg.pct(fxQuote.changePct) + ')');
-        lines.push('');
-    }
+    var e = tg.escHtml;
+    var lines = ['<b>' + e('🌅 ' + (+todayYmd.slice(4,6)) + '/' + (+todayYmd.slice(6)) + ' 장전 브리핑') + '</b>', ''];
+    var by = {};
+    quotes.forEach(function (q) { by[q.label] = q; });
+    var us = ['S&P 500', '나스닥', '반도체(SOX)'].filter(function (k) { return by[k]; })
+        .map(function (k) { return k.replace(' 500', '') + ' ' + tg.pct(by[k].changePct); });
+    if (us.length) lines.push(e('🇺🇸 간밤 ' + us.join(' · ')));
+    var extra = [];
+    if (by.VIX) extra.push('VIX ' + idx(by.VIX.price));
+    if (fxQuote) extra.push('원/달러 ' + fx(fxQuote.price) + '원');
+    if (extra.length) lines.push(e('   ' + extra.join(' · ')));
     if (recap) {
-        lines.push('📌 최근 확정 국내 (' + tg.mdLabel(recap.ymd) + ')');
-        lines.push('ORGO 수집 종목 중 급등(+' + core.RISE_CUTOFF + '%↑) ' + recap.riseCount + '종목 · +29.5% 이상 ' + recap.limitUpCount + '종목');
-        if (recap.leader) {
-            var t = core.themeOf(recap.leader) || String(recap.leader.sector || '').trim();
-            lines.push('대장주 ' + recap.leader.name + ' ' + tg.pct(recap.leader.change_rate) + (t ? ' [' + t + ']' : ''));
-        }
-        if (recap.topTheme) {
-            lines.push('핫테마 ' + recap.topTheme.key + ' 평균 ' + tg.pct(recap.topTheme.avgRate));
-        }
         lines.push('');
+        lines.push('<b>' + e('📌 어제(' + (+recap.ymd.slice(4,6)) + '/' + (+recap.ymd.slice(6)) + ') 국내') + '</b>');
+        lines.push(e('+' + core.RISE_CUTOFF + '% 이상 ' + recap.riseCount + '종목 · 상한가 근접 ' + recap.limitUpCount + '종목'));
+        if (recap.leader) lines.push(e('대장 ' + recap.leader.name + editorial.ipoMark(recap.leader) + ' ' + tg.pct(recap.leader.change_rate)));
+        if (recap.explained.length) {
+            lines.push('', '<b>' + e('어제 왜 올랐나') + '</b>');
+            lines.push.apply(lines, editorial.stockLines(recap.explained, recap.refined));
+        }
     }
-    if (comment) { lines.push(comment); lines.push(''); }
-    var link = tg.htmlLink('대장 캘린더', tg.orgoLink('/sample2.html', 'morning'));
-    return tg.escHtml(lines.join('\n')) + link;
+    if (comment) { lines.push(''); lines.push(e(comment)); }
+    var link = recap ? tg.htmlLink('어제 오른 종목·이유 전체', tg.orgoLink('/day/' + recap.ymd, 'morning'))
+        : tg.htmlLink('대장 캘린더', tg.orgoLink('/sample2.html', 'morning'));
+    return lines.join('\n') + '\n\n' + link;
 }
 
 async function main() {

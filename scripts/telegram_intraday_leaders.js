@@ -77,7 +77,7 @@ async function main() {
     if (!movers.length) { console.log('오늘 급등(>=' + core.RISE_CUTOFF + '%) 종목 없음 — 스킵'); return; }
     console.log('주도주:', movers.map(function (m) { return m.name + ' ' + tg.pct(m.rate); }).join(' / '));
 
-    var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
+    var refined = await tg.fetchRefinedReasons(today, day.rankings || []);   // 장중엔 상류 기사 근거 사유
     movers.forEach(function (m) { m.reason = tg.specificReason(refined[m.ticker]); });
     var caption = editorial.intraday(today, movers, refined);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');

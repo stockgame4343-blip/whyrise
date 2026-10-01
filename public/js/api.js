@@ -265,7 +265,9 @@ var WhyAPI = (function () {
     function _overlayRefinedReasons(data, own) {
         var m = {};
         ((own && own.rankings) || []).forEach(function (r) {
-            if (r && r.ticker && (r.reason_source === 'llm' || r.reason_source === 'news_headline') && r.rise_reason) m[r.ticker] = r;
+            // 기사 근거 정제(news_extract)는 '근거 없음 → 빈 사유'도 덮어쓴다(틀린 템플릿 사유 제거).
+            if (r && r.ticker && (r.reason_source === 'llm' || r.reason_source === 'news_headline' ||
+                r.reason_source === 'news_extract') && (r.rise_reason || r.reason_source === 'news_extract')) m[r.ticker] = r;
         });
         var rankings = (data.rankings || []).map(function (r) {
             var o = m[r.ticker];
@@ -276,6 +278,8 @@ var WhyAPI = (function () {
             r.reason_evidence = o.reason_evidence || [];
             if (o.news) r.news = o.news;
             if (o.reason_confidence) r.reason_confidence = o.reason_confidence;
+            r.reason_kind = o.reason_kind || '';
+            if (o.reason_status) r.reason_status = o.reason_status;
             return r;
         });
         return Object.assign({}, data, { rankings: rankings });

@@ -90,6 +90,9 @@ OUTPUT_SCHEMA = {
 }
 
 
+REFINED_SOURCES = ('llm', 'news_headline', 'news_extract')
+
+
 def is_generic(reason: str) -> bool:
     r = (reason or '').strip()
     return (not r) or bool(GENERIC_RE.match(r))
@@ -142,7 +145,11 @@ def _target_from_event(ticker: str, name: str, ev: dict) -> dict | None:
         'rise_reason': reason,
         'reason_source': ev.get('reason_source') or '',
         # stock-rise 구체 사유는 검증만(교체 금지) — 확정 데이터 보호
-        'verify_only': ev.get('reason_source') == 'stockrise' and not is_generic(reason),
+        # 상류 사유 중 Toss AI·기사 근거만 보존. 키워드 템플릿(rule)·'거래량 증가'(fallback)는 재검증
+        'verify_only': ev.get('reason_source') == 'stockrise' and (
+            ev.get('reason_origin') in ('toss', 'news') or (
+                not ev.get('reason_origin') and not is_generic(reason) and not rx.is_template_reason(reason))),
+        'raw_news': [dict(n) for n in (ev.get('news') or []) if isinstance(n, dict)],
         'news': news,
     }
 
@@ -284,93 +291,67 @@ def _validate(res: dict, target: dict) -> dict | None:
     return None
 
 
-_THEME_STOP = {'중소형', '대형', '관련주', '테마', '업체', '소재', '부품', '장비', '기타', '신규상장',
-               '상반기', '하반기', '거래량', '거래대금', '산업', '관련', '국내', '해외', '기업'}
-# 업종·테마 동반 상승을 다룬 기사 제목 신호 — 시장 전체 시황 한 줄과 구분
-_GROUP_MOVE_RE = re.compile(r'특징주|株|주(가)?\s*(등\s*)?(강세|급등|상승|들썩|훨훨|상한가)|관련주|수혜주|테마')
+try:  # scripts 패키지/단독 실행 양쪽 지원
+    from scripts import reason_extract as rx
+except ImportError:  # pragma: no cover
+    import reason_extract as rx
 
 
-def _theme_tokens(theme_tag: str, sector: str = '') -> list[str]:
-    """'강관업체(Steel pipe)' → ['강관업체', '강관', 'Steel', 'pipe'] (불용어·1글자 제외)."""
-    out: list[str] = []
-    for raw in (theme_tag or '', sector or ''):
-        text = re.sub(r'[()/·,\[\]]', ' ', raw)
-        for w in text.split():
-            w = w.strip()
-            if len(w) < 2 or w in _THEME_STOP or re.fullmatch(r'\d+', w):
-                continue
-            out.append(w)
-            # 4글자 이상 한글 복합어는 앞 2글자 핵도 허용 (강관업체→강관, 면역항암제→면역)
-            if len(w) >= 4 and re.fullmatch(r'[가-힣]+', w) and w[:2] not in _THEME_STOP:
-                out.append(w[:2])
-    return list(dict.fromkeys(out))
+def day_context(day_path: Path) -> dict:
+    """그날 rise-history 전 종목 뉴스 → 업종 원인·테마 동반 맥락 (reason_extract.build_day_context)."""
+    try:
+        data = json.loads(day_path.read_text(encoding='utf-8'))
+        return rx.build_day_context(data.get('rankings') or [], str(data.get('date') or day_path.stem))
+    except Exception as e:
+        print(f'  day_context 실패(무시): {e}')
+        return {}
 
 
-def _strip_title(title: str, name: str) -> str:
-    text = re.sub(r'^\[[^\]]+\]\s*', '', title).strip()
-    if name and text.startswith(name):
-        text = text[len(name):].lstrip(' ,·:')
-    return text
+def _evidence_items(items) -> list[dict]:
+    return [{k: (it or {}).get(k, '') for k in ('title', 'link', 'source', 'date')} for it in (items or [])][:2]
 
 
-def _delisting_verdict(target: dict) -> dict | None:
-    """종목명+정리매매 기사가 있으면 LLM 판정과 무관하게 정리매매로 표기."""
-    name = target.get('name') or ''
-    for article in target.get('news') or []:
-        if name and name in article['title'] and '정리매매' in article['title']:
-            return {'action': 'replace', 'reason': '정리매매 기간 (상장폐지 절차)',
-                    'confidence': 'high', 'source': 'news_headline', 'evidence': [article['i']]}
-    return None
+def headline_fallback(target: dict, ctx: dict | None = None) -> dict:
+    """LLM 판정이 없을 때 — 같은 날 기사 근거 규칙(reason_extract.explain).
 
-
-def headline_fallback(target: dict) -> dict:
-    """Quote a dated headline; never invent a causal explanation.
-
-    우선순위: ① 종목명이 들어간 기사(정리매매는 별도 표기) ② 같은 테마·업종의
-    동반 상승 기사(종목명 없음 → confidence low). 둘 다 없으면 no_evidence.
+    - 상류 사유가 Toss AI·기사 근거(verify_only)면 유지
+    - 근거가 잡히면 교체(source=news_extract, kind·confidence·근거 기사 저장)
+    - 근거가 없고 현재 사유가 키워드 템플릿이면 'unverified' — 틀릴 수 있는 문구 대신 '확인 중'
     """
     if target.get('verify_only'):
         return {'action': 'keep', 'note': 'verify_only'}
-    articles = sorted(target['news'], key=lambda n: re.sub(r'\D', '', n['date'])[:8], reverse=True)
-    name = target.get('name') or ''
-    named = [a for a in articles if name and name in a['title']]
-    # 정리매매(상장폐지 절차) 종목의 등락은 '급등 이유'가 아니다 — 사실만 표기해 목록에서 거르게 한다
-    delisting = _delisting_verdict(target)
-    if delisting:
-        return delisting
-    for article in named:
-        text = _strip_title(article['title'], name)
-        if not text:
-            continue
-        return {'action': 'replace', 'reason': '관련 보도: ' + text[:80],
-                'confidence': 'mid', 'source': 'news_headline', 'evidence': [article['i']]}
-    tokens = _theme_tokens(target.get('theme_tag') or '', target.get('sector') or '')
-    if tokens:
-        for article in articles:
-            title = article['title']
-            if not _GROUP_MOVE_RE.search(title):
-                continue
-            if any(tok in title for tok in tokens):
-                text = _strip_title(title, '')
-                if text:
-                    return {'action': 'replace', 'reason': '관련 보도: ' + text[:80],
-                            'confidence': 'low', 'source': 'news_headline', 'evidence': [article['i']]}
+    # 이미 LLM 이 기사로 정제한 사유는 규칙으로 덮어쓰지 않는다 (재실행·백필 시 품질 후퇴 방지)
+    if target.get('reason_source') == 'llm' and (target.get('rise_reason') or '').strip():
+        return {'action': 'keep', 'note': 'llm'}
+    row = {'name': target.get('name') or '', 'news': target.get('raw_news') or [],
+           'theme_tag': target.get('theme_tag') or '', 'sector': target.get('sector') or ''}
+    ex = rx.explain(row, target.get('date') or '', ctx or {})
+    if ex:
+        return {'action': 'replace', 'reason': ex['reason'], 'confidence': ex['confidence'],
+                'source': 'news_extract', 'kind': ex.get('kind', ''),
+                'evidence_items': _evidence_items(ex.get('evidence_items'))}
+    if rx.is_template_reason(target.get('rise_reason') or ''):
+        return {'action': 'unverified'}
     return {'action': 'no_evidence'}
 
 
-def refine(targets: list[dict], api_key: str) -> tuple[dict, dict]:
-    """대상 목록 → {(ticker, date): verdict}. 배치 단위 실패는 건너뛰고 계속."""
+def refine(targets: list[dict], api_key: str, ctx: dict | None = None) -> tuple[dict, dict]:
+    """대상 목록 → {(ticker, date): verdict}. 배치 단위 실패는 건너뛰고 계속.
+
+    LLM 이 없거나 실패한 건은 headline_fallback(기사 근거 규칙)으로 채운다.
+    """
     verdicts: dict = {}
     stats = {'sent': 0, 'skipped_no_news': 0, 'batch_errors': 0}
     sendable = []
     for t in targets[:MAX_ITEMS_PER_RUN]:
-        delisting = _delisting_verdict(t)
-        if delisting:
-            verdicts[(t['ticker'], t['date'])] = delisting
+        first = headline_fallback(t, ctx)
+        if first.get('action') == 'replace' and first.get('kind') == 'delisting':
+            verdicts[(t['ticker'], t['date'])] = first      # 정리매매는 LLM 판단과 무관
             continue
-        if not t['news']:
-            verdicts[(t['ticker'], t['date'])] = {'action': 'no_evidence'}
-            stats['skipped_no_news'] += 1
+        if not t['news'] or not api_key:
+            verdicts[(t['ticker'], t['date'])] = first
+            if not t['news']:
+                stats['skipped_no_news'] += 1
         else:
             sendable.append(t)
     # A ticker may have several historical dates. Never put those in one response map.
@@ -411,7 +392,7 @@ def refine(targets: list[dict], api_key: str) -> tuple[dict, dict]:
         for t in batch:
             key = (t['ticker'], t['date'])
             if key not in verdicts:
-                verdicts[key] = headline_fallback(t)
+                verdicts[key] = headline_fallback(t, ctx)
     return verdicts, stats
 
 
@@ -430,7 +411,7 @@ def _reversal_fallback(ev: dict) -> str:
 def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
     """verdict 를 stock-history/{ticker}.json 이벤트에 반영. 반환: 액션별 카운트."""
     from datetime import datetime
-    counts = {'replaced': 0, 'flagged': 0, 'kept': 0, 'no_evidence': 0}
+    counts = {'replaced': 0, 'flagged': 0, 'kept': 0, 'no_evidence': 0, 'unverified': 0}
     by_ticker: dict[str, list] = {}
     for (ticker, date), v in verdicts.items():
         by_ticker.setdefault(ticker, []).append((date, v))
@@ -451,15 +432,36 @@ def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
             if v['action'] == 'replace':
                 # 정제 전 '원 사유'는 최초 1회만 기록 — 재정제 시에도 상류 원 사유를 유지해야
                 # build-history 의 carry_refined_reasons 가 다음 빌드에서 정제값을 이월한다.
-                already_refined = ev.get('reason_source') in ('llm', 'news_headline') and 'reason_previous' in ev
+                already_refined = ev.get('reason_source') in REFINED_SOURCES and 'reason_previous' in ev
                 if ev.get('rise_reason') != v['reason'] and not already_refined:
                     ev['reason_previous'] = ev.get('rise_reason') or ''
                 ev['rise_reason'] = v['reason']
                 ev['reason_confidence'] = v['confidence']
                 ev['reason_source'] = v.get('source', 'llm')
                 ev['reason_status'] = 'filled'
-                _reorder_news(ev, v.get('evidence') or [])
+                if v.get('kind'):
+                    ev['reason_kind'] = v['kind']
+                else:
+                    ev.pop('reason_kind', None)
+                if v.get('evidence_items') is not None:
+                    ev['reason_evidence'] = v['evidence_items']
+                    if not v['evidence_items']:
+                        ev.pop('reason_evidence', None)
+                else:
+                    _reorder_news(ev, v.get('evidence') or [])
                 counts['replaced'] += 1
+                changed = True
+            elif v['action'] == 'unverified':
+                # 근거 없는 키워드 템플릿 사유('수주 공시' 등) — 틀린 이유를 보여주느니 '확인 중'
+                if ev.get('reason_source') not in REFINED_SOURCES or 'reason_previous' not in ev:
+                    ev['reason_previous'] = ev.get('rise_reason') or ''
+                ev['rise_reason'] = ''
+                ev['reason_confidence'] = 'low'
+                ev['reason_source'] = 'news_extract'
+                ev['reason_status'] = 'missing'
+                ev['reason_kind'] = 'none'
+                ev.pop('reason_evidence', None)
+                counts['unverified'] = counts.get('unverified', 0) + 1
                 changed = True
             elif v['action'] == 'flag_reversal':
                 # 반전 감지 — stock-rise 확정 사유는 로그만, 추정 계열은 제네릭으로 강등

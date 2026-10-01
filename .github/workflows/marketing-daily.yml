@@ -95,11 +95,9 @@ jobs:
           INSTAGRAM_USER_ID: ${{ vars.INSTAGRAM_USER_ID }}
           INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-          # X: developer.x.com 앱의 API Key/Secret + 본인 계정 Access Token/Secret (Read and write)
-          X_API_KEY: ${{ secrets.X_API_KEY }}
-          X_API_SECRET: ${{ secrets.X_API_SECRET }}
-          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          # 선택: 블로그 원고 준비 알림을 받을 운영자 텔레그램 chat id (봇에게 먼저 /start)
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
         run: node scripts/marketing_publish.js "$DATE"
       - name: Save publication status
         if: always() && steps.deploy.outcome == 'success'

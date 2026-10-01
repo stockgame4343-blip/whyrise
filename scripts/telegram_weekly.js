@@ -103,7 +103,9 @@ async function main() {
 
     var end = today < wk[4] ? today : wk[4];
     var range = tg.mdLabel(wk[0]) + '~' + tg.mdLabel(end);
-    var comment = editorial.calendarObservation(cal, wk[0], end) + '\n순위 카드는 최신 기록 기준 최근 7일, 대장 기록은 위 날짜 범위예요.\n다음 주 확인: 같은 대장이 반복되는지, 새로운 이름이 등장하는지.';
+    var topNames = sectors.slice(0, 2).map(function (r) { return r.name; }).concat(themes.slice(0, 1).map(function (r) { return r.name; }));
+    var comment = (topNames.length ? '이번 주 돈이 몰린 곳: ' + topNames.join(' · ') + '\n' : '') +
+        editorial.calendarObservation(cal, wk[0], end) + '\n👀 다음 주 체크: 이번 주 대장이 다시 등장하는지';
 
     var html = tg.rankCardHtml({
         title: '주간 리포트',
@@ -116,10 +118,11 @@ async function main() {
     });
 
     // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
-    var head = ['📅 이번 주 시장 리포트 · ' + range, ''];
+    var head = ['📅 ' + range + ' 이번 주 급등주 정리', ''];
     if (comment) { head.push(comment); head.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
-    var caption = tg.escHtml(head.join('\n')) + '\n' +
-        tg.htmlLink('👉 주간 흐름 자세히 보기', tg.orgoLink('/report.html', 'weekly'));
+    var caption = '<b>' + tg.escHtml(head[0]) + '</b>\n' + tg.escHtml(head.slice(1).join('\n')) + '\n' +
+        tg.htmlLink('날짜별 급등주 기록', tg.orgoLink('/day/', 'weekly')) + '  ·  ' +
+        tg.htmlLink('📲 공유', 'https://t.me/share/url?url=' + encodeURIComponent('https://t.me/whyorgo'));
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');
     console.log('테마:', themes.map(function (s) { return s.name; }).join(',') || '-');

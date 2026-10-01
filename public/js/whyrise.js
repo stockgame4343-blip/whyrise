@@ -342,6 +342,9 @@ var WhyApp = (function () {
                 sector: (rc && rc.theme_tag) || '',
                 theme_tag: (rc && rc.theme_tag) || '',
                 rise_reason: _liveRowReason(rc),
+                reason_origin: (rc && rc.reason_origin) || '',
+                reason_kind: (rc && rc.reason_kind) || '',
+                reason_evidence: (rc && rc.reason_evidence) || [],
                 news: (rc && rc.news) || [],
                 _liveNew: true,
             });
@@ -452,10 +455,9 @@ var WhyApp = (function () {
     // 합성행 표시 이유 — 도착 전 '이유 분석 대기중', 도착 후엔 weak text 로 둬
     // table.js cleanReasonText 가 뉴스/테마에서 구체 이슈를 뽑게 한다(단정 문구 생성 안 함).
     function _liveRowReason(rc) {
-        if (!rc) return '이유 분석 대기중';                     // 미도착 또는 fetch 실패
-        if (rc.theme_tag) return rc.theme_tag + ' 관련 뉴스';   // → 뉴스로 구체화
-        if (rc.news && rc.news.length) return '관련 뉴스';      // 테마 없음 → 종목명 매칭으로 구체화
-        return '관련 뉴스 없음';                                // 시도했으나 뉴스 없음(대기중 무한표시 방지)
+        // 상류가 기사 근거로 만든 사유(reason_origin=news/toss)는 그대로, 아니면 '확인 중'(reason.js 규칙)
+        if (rc && rc.rise_reason && (rc.reason_origin === 'news' || rc.reason_origin === 'toss')) return rc.rise_reason;
+        return '';
     }
 
     var _reasonRerenderTimer = null;

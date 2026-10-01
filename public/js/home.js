@@ -84,8 +84,9 @@
     }
 
     function reasonOf(row) {
+        if (window.OrgoReason && row && row.rise_reason !== undefined) return window.OrgoReason.display(row).text;
         return String(row && (row.rise_reason || row.reason || row.latest_reason) || '').trim() ||
-            '상승 이유 분석 중';
+            '상승 이유 확인 중';
     }
 
     function detailUrl(row) {

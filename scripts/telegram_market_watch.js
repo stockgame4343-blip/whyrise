@@ -55,34 +55,40 @@ function cbLevelOf(dropPct) {
 // 두 지수 중 가장 큰 하락폭(양수). 둘 다 상승이면 0.
 function worstDrop(M) { return Math.max(0, -M.kospi.changePct, -M.kosdaq.changePct); }
 
-// stock-rise raw 에서 오늘 오전 급등 폭(시장 브레드스) — 개별 종목명은 싣지 않는다.
+// stock-rise raw 에서 오늘 오전 급등 폭과 이유가 확인된 상위 종목(상류 기사 근거 사유)
 async function fetchTodayBreadth(today) {
     try {
         var dates = await core.fetchJson(core.RAW + '/dates.json');
         var last = Array.isArray(dates) && dates.length ? dates.slice().sort().slice(-1)[0] : '';
         if (last !== today) return null;   // 아직 오늘 장중 파일 없음 → 생략
         var day = await core.fetchJson(core.RAW + '/' + today + '.json');
-        var active = (day.rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); });
-        var themes = core.buildGroups(active, 'theme');
-        return { riseCount: active.length, topTheme: themes[0] || null };
+        var active = (day.rankings || []).filter(function (r) { return core.isActive(r, core.RISE_CUTOFF); })
+            .sort(function (a, b) { return (b.change_rate || 0) - (a.change_rate || 0); });
+        var themes = core.buildGroups(active, 'theme').filter(function (g) { return !/신규\s*상장|^거래(량|대금)$/.test(g.key || ''); });
+        var refined = tg.reasonsFromRows ? tg.reasonsFromRows(day.rankings || [], today) : {};
+        var explained = active.filter(function (r) { return refined[r.ticker]; }).slice(0, 2)
+            .map(function (r) { return { name: r.name, change_rate: r.change_rate, why: refined[r.ticker] }; });
+        return { riseCount: active.length, topTheme: themes[0] || null, explained: explained };
     } catch (e) { console.error('오늘 브레드스 실패(생략):', e.message); return null; }
 }
 
-// ── 점심 점검 캡션 ──
+// ── 점심 점검 캡션 ── 첫 줄에 '오전 분위기' 판정(상승/하락 종목 수 비교, 사실 기반)
 function lunchCaption(today, M, breadth) {
-    var lines = [];
-    lines.push('🕐 점심 점검 (' + tg.dateLabel(today) + ' 12:30)');
-    lines.push('');
-    lines.push('📊 코스피 ' + idxNum(M.kospi.price) + ' (' + tg.pct(M.kospi.changePct) + ') · 코스닥 ' + idxNum(M.kosdaq.price) + ' (' + tg.pct(M.kosdaq.changePct) + ')');
-    lines.push('상승 ' + M.upCount.toLocaleString('ko-KR') + ' · 하락 ' + M.downCount.toLocaleString('ko-KR') + ' · 거래대금 ' + tg.fmtAmount(M.tradingValueWon));
+    var e = tg.escHtml;
+    var up = M.upCount, down = M.downCount;
+    var mood = up > down * 1.3 ? '오른 종목이 더 많은 오전' : down > up * 1.3 ? '내린 종목이 더 많은 오전' : '오른 종목과 내린 종목이 비슷한 오전';
+    var lines = ['<b>' + e('🕐 ' + (+today.slice(4,6)) + '/' + (+today.slice(6)) + ' 점심 점검 · ' + mood) + '</b>', ''];
+    lines.push(e('📊 코스피 ' + idxNum(M.kospi.price) + ' (' + tg.pct(M.kospi.changePct) + ') · 코스닥 ' + idxNum(M.kosdaq.price) + ' (' + tg.pct(M.kosdaq.changePct) + ')'));
+    lines.push(e('상승 ' + up.toLocaleString('ko-KR') + ' · 하락 ' + down.toLocaleString('ko-KR') + ' · 거래대금 ' + tg.fmtAmount(M.tradingValueWon)));
     if (breadth) {
-        lines.push('ORGO 수집 종목 중 +' + core.RISE_CUTOFF + '% 이상 ' + breadth.riseCount + '종목' +
-            (breadth.topTheme ? ' · 주도테마 ' + breadth.topTheme.key + ' 평균 ' + tg.pct(breadth.topTheme.avgRate) : ''));
+        lines.push(e('ORGO 수집 종목 중 +' + core.RISE_CUTOFF + '% 이상 ' + breadth.riseCount + '종목' +
+            (breadth.topTheme ? ' · 주도테마 ' + breadth.topTheme.key + ' 평균 ' + tg.pct(breadth.topTheme.avgRate) : '')));
+        (breadth.explained || []).forEach(function (r) {
+            lines.push('• <b>' + e(r.name) + '</b> ' + e(tg.pct(r.change_rate)));
+            lines.push('   └ ' + e(tg.clip(String(r.why).replace(/^관련 보도:\s*/, '📰 '), 50)));
+        });
     }
-    lines.push('');
-    lines.push('오전장 지수와 종목 분포를 함께 확인해보세요.');
-    lines.push('');
-    return tg.escHtml(lines.join('\n')) + tg.htmlLink('👉 지금 오르는 종목 보러가기', tg.orgoLink('/rise.html', 'lunch'));
+    return lines.join('\n') + '\n\n' + tg.htmlLink('지금 오르는 종목·이유 보기', tg.orgoLink('/rise.html', 'lunch'));
 }
 
 // ── 서킷브레이커 알림 캡션 ──

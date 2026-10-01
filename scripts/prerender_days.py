@@ -21,7 +21,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from scripts.llm_reasons import is_generic  # noqa: E402
+from scripts.llm_reasons import is_generic  # noqa: E402,F401
+from scripts.reason_extract import display as rx_display  # noqa: E402
 
 SITE = 'https://orgo.kr'
 PUBLIC = ROOT / 'public'
@@ -78,10 +79,8 @@ def is_new_listing(row: dict) -> bool:
 
 
 def display_reason(row: dict) -> str:
-    reason = str(row.get('rise_reason') or '').strip()
-    if not reason or is_generic(reason):
-        return ''
-    return reason
+    d = rx_display(row)
+    return '' if d['unknown'] else d['text']
 
 
 def _named_news(row: dict) -> dict | None:
@@ -227,7 +226,7 @@ HEAD = '''<!DOCTYPE html>
     <meta name="twitter:image" content="{og_image}">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="/css/style.css?v=20260702a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20260703c">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20261002a">
     <link rel="stylesheet" href="/css/app-shell.css?v=20260702c">
     <link rel="stylesheet" href="/css/day.css?v={css_ver}">
     {json_ld}
@@ -285,7 +284,7 @@ def render_day(ymd: str, day: dict, calendar_day: dict | None, prev_ymd: str, ne
     cards = [('+15% 이상', f'{len(hot)}종목'),
              ('상한가 근접(+29.5%↑)', f'{sum(1 for r in rows if r["change_rate"] >= LIMIT_RATE)}종목')]
     if leader and leader.get('name'):
-        ipo = ' (신규상장)' if '신규상장' in str(leader.get('theme') or '') else ''
+        ipo = ' (상장 첫날)' if leader.get('listing_day') else ''
         cards.append(('오늘의 대장', f'{leader["name"]}{ipo} +{float(leader.get("rate") or 0):.1f}%'))
     if groups:
         cards.append(('많이 오른 테마', f'{groups[0]["name"]} {groups[0]["count"]}종목'))
@@ -302,21 +301,26 @@ def render_day(ymd: str, day: dict, calendar_day: dict | None, prev_ymd: str, ne
         parts.append('        <h2>오른 종목과 이유</h2>')
         trs = []
         for r in rows[:MAX_ROWS]:
-            reason = display_reason(r)
-            news = _named_news(r) if not reason.startswith('관련 보도') else None
+            d = rx_display(r)
+            if d['unknown'] and leader and leader.get('listing_day') and leader.get('ticker') == r.get('ticker'):
+                # 상장 첫날 대장 — rise-history(OHLC 기반)엔 없고 스냅샷으로만 들어오는 종목
+                d = dict(d, text='상장 첫날 (공모가 대비)', unknown=False, label='신규상장', link='')
             tags = ''
             if is_new_listing(r):
                 tags += '<span class="day-tag">신규상장</span>'
             theme = str(r.get('theme_tag') or '').strip()
             if theme and theme not in JUNK_THEMES and '신규상장' not in theme:
                 tags += f'<span class="day-tag">{_esc(theme)}</span>'
-            if reason:
-                why = f'<span class="day-reason">{_esc(reason)}</span>'
-            elif news:
-                why = (f'<span class="day-reason">관련 보도: <a href="{_esc(news["link"])}" rel="nofollow noopener" '
-                       f'target="_blank">{_esc(news["title"])}</a></span>')
-            else:
+            if d['unknown']:
                 why = '<span class="day-reason day-reason--none">직접적인 상승 이유 확인 중</span>'
+            else:
+                src = ''
+                if d['label'] and d['link']:
+                    src = (f' <a class="reason-src" href="{_esc(d["link"])}" rel="nofollow noopener" target="_blank" '
+                           f'title="{_esc(d["title"])}">{_esc(d["label"])} ↗</a>')
+                elif d['label']:
+                    src = f' <span class="reason-src">{_esc(d["label"])}</span>'
+                why = f'<span class="day-reason">{_esc(d["text"])}{src}</span>'
             trs.append(
                 f'<tr><td><a href="/stock/{r["ticker"]}">{_esc(r["name"])}</a>{tags}{why}</td>'
                 f'<td class="r">+{r["change_rate"]:.1f}%</td>'

@@ -419,14 +419,14 @@ def build_events_for_ticker(
             sr_news = sr.get('news') or []
             if recent:
                 sr_news = _merge_news(sr_news, supplement_news_fn(ticker, d))
-            events.append({
+            ev_sr = {
                 'date': d,
                 'change_rate': rate,
                 'close_price': cur,
                 'trading_volume': int(vol),
                 'trading_value': tval,
                 'rise_reason': sr.get('rise_reason') or '',
-                'reason_confidence': 'high',
+                'reason_confidence': sr.get('reason_confidence') or 'high',
                 'reason_source': 'stockrise',
                 'reason_status': 'filled' if sr.get('rise_reason') else 'missing',
                 'theme_tag': sr.get('theme_tag') or '',
@@ -434,7 +434,14 @@ def build_events_for_ticker(
                 'sector': sr.get('sector') or (meta or {}).get('sector', ''),
                 'is_52w_high': is_high,
                 'source': 'stockrise',
-            })
+            }
+            # 상류 사유 출처(toss/news/rule/fallback) — llm-refine 이 rule/fallback 만 재검증한다
+            for k in ('reason_origin', 'reason_kind'):
+                if sr.get(k):
+                    ev_sr[k] = sr[k]
+            if sr.get('reason_evidence'):
+                ev_sr['reason_evidence'] = sr['reason_evidence']
+            events.append(ev_sr)
             continue
 
         # 2) 네이버 뉴스 + 추정 (estimate_reason 입력은 ±1 그대로 — 사유 추정 회귀 방지)
@@ -587,9 +594,9 @@ def merge_ticker_events(old: list[dict], new: list[dict], window_start: str) -> 
 
 
 # llm-refine/헤드라인 폴백이 정제한 사유 — 다음 빌드가 stock-rise 원 사유로 되돌리지 않게 보존.
-_REFINED_SOURCES = ('llm', 'news_headline')
+_REFINED_SOURCES = ('llm', 'news_headline', 'news_extract')
 _REFINED_FIELDS = ('rise_reason', 'reason_confidence', 'reason_source', 'reason_status',
-                   'reason_previous', 'reason_evidence')
+                   'reason_previous', 'reason_evidence', 'reason_kind')
 
 
 def carry_refined_reasons(old: list[dict], new: list[dict]) -> int:
@@ -1144,6 +1151,9 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
             }
             if e.get('reason_evidence'):
                 row['reason_evidence'] = e['reason_evidence']
+            for k in ('reason_origin', 'reason_kind'):
+                if e.get(k):
+                    row[k] = e[k]
             if isinstance(e.get('pre_override'), dict):
                 # 과거 fallback 일별 화면도 override 삭제/재저장 때 원본을 즉시 복원할 수 있게 한다.
                 row['pre_override'] = dict(e['pre_override'])
@@ -2176,9 +2186,40 @@ def build_llm_refine(args) -> int:
         return 0
     api_key = _llm_api_key()
     if not api_key:
-        print('llm-refine: API key unavailable — dated headline fallback')
-    verdicts, stats = llm_reasons.refine(targets, api_key)
+        print('llm-refine: API key unavailable — 기사 근거 규칙만 적용')
+    day_ctx = llm_reasons.day_context(day_path)
+    verdicts, stats = llm_reasons.refine(targets, api_key, day_ctx)
     return _llm_apply_and_regen(targets, verdicts, stats, args.dry_run, f'llm-refine {date}')
+
+
+def build_reason_backfill(args) -> int:
+    """과거 전 일자 — 같은 날 기사 근거 규칙(reason_extract)으로 사유 재정리 (LLM 미사용, 무료).
+
+    날짜별로 그날 전 종목 뉴스 맥락(업종 동반 강세·테마 동반)을 만들어 적용한다.
+    LLM·관리자 사유는 건드리지 않고, 근거 없는 키워드 템플릿 사유는 '확인 중'으로 내린다.
+    """
+    rise_dir = OUTPUT_DIR.parent / 'rise-history'
+    since = re.sub(r'\D', '', getattr(args, 'date', '') or '')[:8]
+    try:
+        dates = json.loads((rise_dir / 'dates.json').read_text(encoding='utf-8'))
+    except Exception:
+        dates = sorted(p.stem for p in rise_dir.glob('2*.json'))
+    dates = [d for d in dates if not since or d >= since]
+    all_targets, verdicts = [], {}
+    for d in dates:
+        day_path = rise_dir / f'{d}.json'
+        if not day_path.exists():
+            continue
+        targets = llm_reasons.collect_day_targets(day_path)
+        if not targets:
+            continue
+        v, _ = llm_reasons.refine(targets, '', llm_reasons.day_context(day_path))
+        all_targets.extend(targets)
+        verdicts.update(v)
+    print(f'== reason-backfill: {len(dates)}일, 대상 {len(all_targets)}건 ==')
+    if not all_targets:
+        return 0
+    return _llm_apply_and_regen(all_targets, verdicts, {}, args.dry_run, 'reason-backfill')
 
 
 def build_llm_backfill(args) -> int:
@@ -2795,6 +2836,8 @@ def main() -> None:
                    help='당일 급등(>=15%%) 제네릭 사유를 Claude 로 정제 (뉴스 제목 근거)')
     p.add_argument('--llm-backfill', action='store_true',
                    help='뉴스 보유 저신뢰 과거 이벤트 사유를 Claude 로 일괄 정제 (--limit)')
+    p.add_argument('--reason-backfill', action='store_true',
+                   help='과거 전 일자 사유를 기사 근거 규칙으로 재정리 (LLM 미사용, --date 이후만)')
     p.add_argument('--date', type=str, default='',
                    help='--llm-refine 대상 일자(YYYYMMDD, 기본=rise-history 최신) / '
                         '--override-sync 대상 override 일자(YYYYMMDD, 필수)')
@@ -2810,6 +2853,8 @@ def main() -> None:
         sys.exit(build_llm_refine(args))
     if args.llm_backfill:
         sys.exit(build_llm_backfill(args))
+    if args.reason_backfill:
+        sys.exit(build_reason_backfill(args))
     if args.override_sync:
         sys.exit(build_override_sync(args))
     if args.estimate_only:

@@ -118,8 +118,14 @@ function reasonDate(value) {
     var ms = Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8));
     return new Date(ms).toISOString().slice(0, 10).replace(/-/g, '') === s ? ms : NaN;
 }
+// 표시 규칙은 사이트와 동일(public/js/reason.js): 기사 근거·Toss AI·관리자 수정만, 키워드 템플릿은 제외
+const ReasonRule = require(path.resolve(__dirname, '..', 'public', 'js', 'reason.js'));
 function verifiedReason(row, date) {
     if (!row || !Number.isFinite(reasonDate(date))) return '';
+    if (row.reason_source === 'news_extract' || row.reason_origin === 'news' || row.reason_origin === 'toss') {
+        const d = ReasonRule.display(row);
+        return d.unknown ? '' : d.text;
+    }
     var reason = specificReason(row.rise_reason);
     if (row.reason_source === 'admin' || row.reason_status === 'edited') return reason;
     function recentNamed(n) {
@@ -143,8 +149,17 @@ function refinedReasonsFromDay(day, date) {
     });
     return out;
 }
-async function fetchRefinedReasons(date) {
+// 장중(자체 rise-history 가 아직 없을 때)은 상류 랭킹(reason_origin 포함)으로 대체
+function reasonsFromRows(rows, date) {
+    return refinedReasonsFromDay({ date: date, rankings: rows || [] }, date);
+}
+async function fetchRefinedReasons(date, fallbackRows) {
     if (!Number.isFinite(reasonDate(date))) return {};
+    if (fallbackRows && fallbackRows.length) {
+        try {
+            fs.accessSync(path.resolve(__dirname, '..', 'public', 'data', 'rise-history', String(date) + '.json'));
+        } catch (_) { return reasonsFromRows(fallbackRows, date); }
+    }
     // Actions checkout already contains this snapshot; avoid two remote waits per post.
     try {
         var local = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'public', 'data', 'rise-history', String(date) + '.json'), 'utf8'));
@@ -779,6 +794,7 @@ function socialThemesCaption(opts) {
 }
 
 module.exports = {
+    reasonsFromRows,
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip, orgoLink, escHtml, htmlLink,
     fetchRefinedReasons, refinedReasonsFromDay, verifiedReason, isKrTradingDay, isDuplicateDayData, specificReason,

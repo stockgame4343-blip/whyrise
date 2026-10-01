@@ -87,7 +87,9 @@ class ReasonQualityTest(unittest.TestCase):
         news.append({'title':'삼성전자 공급 계약','date':'2026.09.03','link':'https://example.com/contract'})
         target=llm._target_from_event('005930','삼성전자',{'date':'20260904','news':news})
         self.assertEqual(target['news'][0]['i'],12)
-        self.assertEqual(llm.headline_fallback(target)['evidence'],[12])
+        v=llm.headline_fallback(target)
+        self.assertEqual(v['evidence_items'][0]['link'],'https://example.com/contract')
+        self.assertEqual(v['reason'],'공급 계약')
 
     def test_malformed_evidence_fails_closed(self):
         for evidence in (1, '1', {'index':1}):
@@ -104,15 +106,17 @@ class ReasonQualityTest(unittest.TestCase):
         with patch.object(llm,'_call_batch',side_effect=AssertionError('No paid call allowed')):
             verdicts,stats=llm.refine([target],'')
         v=verdicts[('005930','20260904')]
-        self.assertEqual(v['source'],'news_headline')
-        self.assertTrue(v['reason'].startswith('관련 보도: '))
+        self.assertEqual(v['source'],'news_extract')
+        # 사유는 날짜가 맞는 종목 기사 제목 안의 구절이어야 한다 (지어내기 금지)
+        self.assertIn(v['reason'],'삼성전자 공급계약')
+        self.assertEqual(v['evidence_items'][0]['link'],'https://example.com/a')
         self.assertEqual(stats['sent'],0)
 
     def test_api_error_uses_fallback_and_reports_failure(self):
         with patch.object(llm,'_call_batch',side_effect=RuntimeError('credit exhausted')):
             verdicts,stats=llm.refine([self.target()],'test')
         self.assertEqual(stats['batch_errors'],1)
-        self.assertEqual(verdicts[('005930','20260904')]['source'],'news_headline')
+        self.assertEqual(verdicts[('005930','20260904')]['source'],'news_extract')
 
     def test_api_source_failure_is_not_successful_empty_news(self):
         handler=object.__new__(api.handler);handler.path='/?ticker=005930&date=20260904'
@@ -134,13 +138,14 @@ class ReasonQualityTest(unittest.TestCase):
                 {'title':"[특징주] '韓 LNG 대미투자' 전망에 철강주 등 강세(종합)",'date':'2026-09-30','link':'https://n.news.naver.com/a'}]})
         self.assertFalse(t['verify_only'])
         v=llm.headline_fallback(t)
-        self.assertEqual((v['action'],v['confidence']),('replace','low'))
-        self.assertTrue(v['reason'].startswith('관련 보도: '))
+        self.assertEqual((v['action'],v['confidence'],v['kind']),('replace','low','sector'))
+        self.assertEqual(v['reason'],'철강주 동반 강세 — 韓 LNG 대미투자 전망')
 
     def test_theme_headline_requires_group_move_wording(self):
         t=llm._target_from_event('008970','KBI동양철관',{'date':'20260930','rise_reason':'거래량 증가','theme_tag':'철강 중소형',
             'news':[{'title':'철강 업계 노사 협상 타결','date':'2026-09-30','link':'https://n.news.naver.com/a'}]})
-        self.assertEqual(llm.headline_fallback(t)['action'],'no_evidence')
+        # 근거 없는 '거래량 증가'는 지어낸 이유 대신 '확인 중'(unverified)으로 내린다
+        self.assertEqual(llm.headline_fallback(t)['action'],'unverified')
 
     def test_delisting_trade_is_labelled_even_with_llm(self):
         t=llm._target_from_event('100120','부산주공',{'date':'20260930','rise_reason':'거래량 증가','news':[

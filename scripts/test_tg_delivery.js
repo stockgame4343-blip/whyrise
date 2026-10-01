@@ -106,9 +106,19 @@ test('slot captions answer distinct questions and keep follow-up observations fa
     const row={ticker:'000001',name:'검증전자',change_rate:20,trading_value:1e10};
     const day={date:'20260904',is_final:true,rankings:[row]};
     const texts=[e.daily(day.date,{leader:row,theme:null},null,{},day,null),e.intraday(day.date,[{...row,rate:20,vol:1e10}],{}),e.themes(day.date,{themes:[{key:'반도체',count:3,avgRate:18}],sectors:[]}),e.evening(day.date,day,null,{})];
-    for(const text of texts){assert.ok(text.length<800);assert.equal((text.match(/<a href/g)||[]).length,1);assert.doesNotMatch(text,/목표가|매수|매도|확실|최초/);}
-    assert.match(texts[0],/오늘의 대장/);assert.match(texts[1],/개별 주도주/);assert.match(texts[2],/테마 확산/);assert.match(texts[3],/저녁 복기/);
+    for(const text of texts){
+        assert.ok(text.length<900);
+        // 본문 링크 1개 + (마감·저녁만) 공유 링크 1개
+        assert.ok((text.match(/<a href/g)||[]).length<=2);
+        assert.doesNotMatch(text,/목표가|매수|매도|확실|최초/);
+        assert.doesNotMatch(text,/지도는 전체 수집 종목, 위 통계는/);   // 반복 방법론 문구 제거
+    }
+    assert.match(texts[0],/오늘의 대장/);assert.match(texts[1],/개별 주도주/);assert.match(texts[2],/테마 확산/);assert.match(texts[3],/오늘 왜 올랐나/);
+    assert.match(texts[0],/orgo\.kr\/day\/20260904/);assert.match(texts[3],/t\.me\/share\/url/);
     assert.match(e.daily(day.date,{leader:null},null,{},day,null),/대장 조건을 충족한 종목이 없어요/);
+    // 이유가 있는 종목은 이름 아래에 '왜'가 붙는다
+    const withWhy=e.evening(day.date,day,null,{'000001':'국방부 드론에 카메라 모듈 공급'});
+    assert.match(withWhy,/<b>검증전자<\/b> \+20\.0%\n   └ 국방부 드론에 카메라 모듈 공급/);
 });
 
 test('calendar commentary includes explicit no-leader days and excludes future records',()=>{

@@ -92,61 +92,49 @@ async function publishChannel(d,channel,env,ledger,api=request,assetsReady=check
         return failed;
     }
 }
-// ── X(트위터) — OAuth 1.0a 사용자 컨텍스트(만료 없는 액세스 토큰)로 이미지 1장 + 문구 게시 ──
-// 요금: 2026-02 이후 종량제(일반 게시 ≈$0.015, 링크 포함 ≈$0.20). 하루 1회 링크 게시 ≈ 월 $4~5.
-function pct(s) { return encodeURIComponent(s).replace(/[!'()*]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase()); }
-function oauth1Header(method, url, env, nonce=require('crypto').randomBytes(16).toString('hex'), ts=Math.floor(Date.now()/1000)) {
-    const o = {oauth_consumer_key:env.X_API_KEY,oauth_nonce:nonce,oauth_signature_method:'HMAC-SHA1',oauth_timestamp:String(ts),oauth_token:env.X_ACCESS_TOKEN,oauth_version:'1.0'};
-    const u = new URL(url);
-    const params = [...Object.entries(o), ...u.searchParams.entries()].map(([k,v]) => [pct(k), pct(v)]).sort((a,b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : a[1] < b[1] ? -1 : 1);
-    const base = [method.toUpperCase(), pct(u.origin + u.pathname), pct(params.map(([k,v]) => k + '=' + v).join('&'))].join('&');
-    const key = pct(env.X_API_SECRET) + '&' + pct(env.X_ACCESS_TOKEN_SECRET);
-    o.oauth_signature = require('crypto').createHmac('sha1', key).update(base).digest('base64');
-    return 'OAuth ' + Object.entries(o).map(([k,v]) => pct(k) + '="' + pct(v) + '"').join(', ');
-}
-async function xRequest(url, env, body) {
-    let response;
-    try {
-        response = await fetch(url, {method:'POST', signal:AbortSignal.timeout(30000),
-            headers:{Authorization:oauth1Header('POST', url, env), 'Content-Type':'application/json'}, body:JSON.stringify(body)});
-        const result = await response.json().catch(() => ({}));
-        if (!response.ok || result.errors) throw new Error('X HTTP ' + response.status + ' ' + (result.title || result.detail || ''));
-        return result;
-    } catch (e) { throw new Error(response ? 'X request failed (HTTP ' + response.status + ')' : 'X response uncertain'); }
-}
-async function publishX(d, env, ledger, api=xRequest, assetsReady=checkAssets, fetchImage=async url => Buffer.from(await (await fetch(url, {signal:AbortSignal.timeout(20000)})).arrayBuffer())) {
-    if (!env.X_API_KEY || !env.X_API_SECRET || !env.X_ACCESS_TOKEN || !env.X_ACCESS_TOKEN_SECRET) return {status:'needs_connection'};
-    const post = d.posts.x;
-    if (!post?.text) return {status:'no_x_text'};
-    const rec = await ledger.load(d.date, 'x');
+// 쓰레드 본문 링크는 도달을 떨어뜨리므로 링크는 '첫 댓글'로 단다. 본문 게시가 확정된 뒤에만.
+// 결과가 불명확하면(uncertain) 재전송하지 않는다 — 본문과 같은 중복 방지 원칙.
+async function publishThreadsReply(d, env, ledger, api=request) {
+    const reply = d.posts?.threads?.reply;
+    if (!reply) return {status:'no_reply'};
+    const main = await ledger.load(d.date, 'threads');
+    if (main.state.status !== 'published' || !main.state.post_id) return {status:'awaiting_post'};
+    const rec = await ledger.load(d.date, 'threads-reply');
     if (rec.state.status === 'published') return rec.state;
-    if (['uploading','publishing','uncertain'].includes(rec.state.status)) return {...rec.state, requires_action:true};
-    let state = {...rec.state, date:d.date, channel:'x', content_hash:d.content_hash};
+    if (['creating', 'publishing', 'uncertain'].includes(rec.state.status)) return {...rec.state, requires_action:true};
+    const base = 'https://graph.threads.net/v1.0', user = env.THREADS_USER_ID, token = env.THREADS_ACCESS_TOKEN;
+    let state = {...rec.state, date:d.date, channel:'threads-reply', reply_to:main.state.post_id};
     try {
-        if (!state.media_id) {
-            const images = await assetsReady(d, 'x');
-            if (!images) return {status:'awaiting_image'};
-            const bytes = await fetchImage(images[0]);
-            state.status = 'uploading'; await ledger.save(rec, state);
-            // 업로드는 게시 전 단계 — 실패해도 공개 게시물은 생기지 않는다.
-            const up = await api('https://api.x.com/2/media/upload', env, {media:bytes.toString('base64'), media_category:'tweet_image'});
-            if (!up?.data?.id) throw new Error('Missing media id');
-            state = {...state, media_id:up.data.id, status:'uploaded'}; await ledger.save(rec, state);
+        if (!state.container_id) {
+            state.status = 'creating'; await ledger.save(rec, state);
+            const c = await api(`${base}/${user}/threads`, token, 'POST', {media_type:'TEXT', text:reply, reply_to_id:main.state.post_id});
+            if (!c.id) throw Error('Missing container ID');
+            state = {...state, container_id:c.id, status:'created'}; await ledger.save(rec, state);
         }
         state.status = 'publishing'; await ledger.save(rec, state);
-        const res = await api('https://api.x.com/2/tweets', env, {text:post.text, media:{media_ids:[state.media_id]}});
-        if (!res?.data?.id) throw new Error('Missing post id');
-        state = {...state, status:'published', post_id:res.data.id, published_at:new Date().toISOString()}; await ledger.save(rec, state);
+        const r = await api(`${base}/${user}/threads_publish`, token, 'POST', {creation_id:state.container_id});
+        if (!r.id) throw Error('Missing published ID');
+        state = {...state, status:'published', post_id:r.id, published_at:new Date().toISOString()}; await ledger.save(rec, state);
         return state;
     } catch (e) {
-        // 게시 호출 결과가 불명확하면 재전송하지 않는다(중복 게시 방지). 업로드 단계 실패는 다음 실행에서 재시도.
-        const failed = {...state, status: state.status === 'publishing' ? 'uncertain' : state.status === 'uploading' ? 'retryable' : state.status, error:e.message};
+        const failed = {...state, status:['creating','publishing'].includes(state.status)?'uncertain':state.status, error:e.message};
         if (failed.status === 'uncertain') failed.requires_action = true;
-        if (failed.status === 'retryable') delete failed.media_id;
         await ledger.save(rec, failed);
         return failed;
     }
 }
+function adminNote(d,status) {
+    const e=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    const blog=d.naver_blog||{};
+    const th=status.channels.threads||{};
+    const thLabel=th.status==='published'?'게시 완료':th.status==='prepared'?'계정 연결 전':th.status||'-';
+    return [`📝 <b>${+d.date.slice(4,6)}/${+d.date.slice(6)} 블로그 원고 준비 완료</b>`,
+        blog.title?e(blog.title):'',
+        '발행실에서 제목·본문·태그 복사 → 네이버 블로그 글쓰기에 붙여넣기',
+        'https://orgo.kr/marketing.html#blog',
+        `쓰레드: ${e(thLabel)}`].filter(Boolean).join('\n');
+}
+
 async function main(env=process.env) {
     const date=process.argv[2]||tg.ymdKst();
     if(!/^\d{8}$/.test(date)) throw new Error('Expected YYYYMMDD');
@@ -154,28 +142,34 @@ async function main(env=process.env) {
     if(date!==tg.ymdKst()||d.date!==date||d.is_final!==true||!tg.isKrTradingDay(date)) throw new Error('Live publication requires today\'s final trading data');
     const enabled=new Set((env.MARKETING_ENABLED_CHANNELS||'').split(',').map(s=>s.trim()));
     const status={date,checked_at:new Date().toISOString(),channels:{}};
-    for(const channel of ['threads','instagram','x','kakao','toss']) {
+    for(const channel of ['threads','instagram','kakao','toss']) {
         if(channel==='kakao'||channel==='toss') {status.channels[channel]={status:'manual_ready'};continue;}
         if(!enabled.has(channel)) {status.channels[channel]={status:'prepared'};continue;}
         if(!env.GH_TOKEN) throw new Error('Durable publication requires GH_TOKEN');
         const ledger=new Ledger(env.GITHUB_REPOSITORY,env.GH_TOKEN);
-        if(channel==='x') {
-            for(let attempt=0;attempt<18;attempt++){
-                const result=await publishX(d,env,ledger);status.channels.x=result;
-                if(result.status!=='awaiting_image')break;
-                if(attempt<17)await new Promise(r=>setTimeout(r,10000));
-            }
-            continue;
-        }
+
         for(let attempt=0;attempt<18;attempt++){
             const result=await publishChannel(d,channel,env,ledger);status.channels[channel]=result;
             if(result.requires_action||!['awaiting_image','created'].includes(result.status))break;
             if(attempt<17)await new Promise(r=>setTimeout(r,10000));
         }
+        if(channel==='threads'&&status.channels.threads?.status==='published') {
+            // Meta 권장: 컨테이너 생성 후 게시 전 잠깐 대기
+            await new Promise(r=>setTimeout(r,5000));
+            status.channels['threads-reply']=await publishThreadsReply(d,env,ledger);
+        }
+    }
+    // 네이버 블로그는 쓰기 API가 없어(2020 종료) 발행실 원고를 붙여넣는 방식 — 준비 완료를 운영자에게 알린다
+    status.channels.naver_blog={status:'manual_ready'};
+    if(env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_ADMIN_CHAT_ID) {
+        try {
+            await tg.sendMessage(env.TELEGRAM_BOT_TOKEN,env.TELEGRAM_ADMIN_CHAT_ID,adminNote(d,status),{parse_mode:'HTML'});
+            status.channels.naver_blog.notified=true;
+        } catch(e) {console.log('운영자 알림 실패(무시): '+e.message);}
     }
     fs.writeFileSync(path.join(ROOT,'public/marketing/status.json'),JSON.stringify(status,null,2)+'\n');
     console.log(JSON.stringify(status));
-    if(Object.values(status.channels).some(s=>s.requires_action||s.status.startsWith('needs_')||['awaiting_image','created','retryable'].includes(s.status))) process.exitCode=1;
+    if(Object.values(status.channels).some(s=>s.requires_action||s.status.startsWith('needs_')||['awaiting_image','created'].includes(s.status))) process.exitCode=1;
 }
 if(require.main===module) main().catch(e=>{console.error(e.message);process.exitCode=1;});
-module.exports={publishChannel,publishX,oauth1Header,Ledger,checkAssets};
+module.exports={publishChannel,publishThreadsReply,Ledger,checkAssets,adminNote};

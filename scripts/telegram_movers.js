@@ -60,7 +60,8 @@ async function main() {
     console.log('주도섹터:', G.sectors.map(function (s) { return s.key + ' ' + tg.pct(s.avgRate); }).join(' / ') || '(없음)');
     console.log('주도테마:', G.themes.map(function (t) { return t.key + ' ' + tg.pct(t.avgRate); }).join(' / ') || '(없음)');
 
-    var caption = editorial.themes(today, G);
+    var refined = await tg.fetchRefinedReasons(today, day.rankings || []);
+    var caption = editorial.themes(today, G, refined, day.rankings || []);
     console.log('\n----- 핫테마 캡션 -----\n' + caption + '\n----------------');
 
     var imgs = await tg.captureFlowmaps(PUBLIC, [

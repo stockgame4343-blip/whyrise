@@ -854,18 +854,21 @@
         var rate = (ev.change_rate || 0);
         var rateLabel = (rate >= 29.9) ? '<span class="event-card__limit">상한가</span>' : '';
         var hi52w = ev.is_52w_high ? '<span class="event-card__highflag">52주 신고가</span>' : '';
-        var reasonText = (ev.reason_status === 'missing') ? '' :
-            cleanReasonText(ev.rise_reason, ev.theme_tag, ev.news, _stockName, ev.date);
+        // 표시 규칙은 reason.js 공통 — 기사 근거는 출처 링크와 함께, 근거 없는 템플릿은 '이유 확인 중'
+        var rd = window.OrgoReason ? window.OrgoReason.display(ev) : null;
+        var reasonText = rd ? rd.text : ((ev.reason_status === 'missing') ? '' :
+            cleanReasonText(ev.rise_reason, ev.theme_tag, ev.news, _stockName, ev.date));
         // 2행 구조: 1행 = 날짜·등락률·종가·이벤트태그(상한가/52주) / 2행 = 테마태그 + 이유 + 출처배지
         var themeHtml = ev.theme_tag
             ? '<a class="event-card__theme" href="/screening.html?theme=' + encodeURIComponent(ev.theme_tag) + '" style="text-decoration:none" title="' + esc(ev.theme_tag) + ' 스크리닝">' + esc(ev.theme_tag) + '</a>'
             : '';
         var reasonHtml = reasonText
-            ? '<span class="' + reasonClass(ev.reason_status, ev.reason_confidence) + '">' + esc(reasonText) + '</span>'
+            ? '<span class="' + (rd && rd.unknown ? 'event-card__reason event-card__reason--missing'
+                : reasonClass(ev.reason_status, ev.reason_confidence)) + '">' + esc(reasonText) + '</span>'
             : '';
+        var badgeHtml = rd ? window.OrgoReason.sourceHtml(rd) : sourceBadge(ev.reason_source, ev.reason_confidence);
         var reasonRow = (themeHtml || reasonHtml)
-            ? '<div class="event-card__reason-row">' + themeHtml + reasonHtml +
-              sourceBadge(ev.reason_source, ev.reason_confidence) + '</div>'
+            ? '<div class="event-card__reason-row">' + themeHtml + reasonHtml + badgeHtml + '</div>'
             : '';
         // 라이브 카드는 미확정이라 편집 버튼 숨김(확정 후 일반 카드에서 편집)
         var editBtn = ev._live ? '' :

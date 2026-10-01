@@ -141,6 +141,8 @@ function leadersFromRows(rk, extraRows) {
             market: String(leader.market || '').trim(),
             sector: String(leader.sector || '').trim(), theme: themeOf(leader),
             vol: Math.round(num(leader.trading_value)), reason: String(leader.rise_reason || '').trim(),
+            // 상장 첫날 — 가격제한폭(±30%) 밖 상승 + 신규상장 태그 (텔레그램·발행실 '(상장 첫날)' 표기)
+            listing_day: num(leader.change_rate) > 30.5 && themeTags(leader).some(function (t) { return /신규\s*상장/.test(t); }),
         } : null,
         sector: sectors[0] ? {
             name: sectors[0].key, count: sectors[0].count,

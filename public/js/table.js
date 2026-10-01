@@ -547,7 +547,10 @@ var WhyTable = (function () {
             var eventDate = opts.watchlistMode ? (r._historyDate || r.date || '') : '';
             var reasonDate = eventDate || date;
             // 이유는 항상 채움(빈칸=오류처럼 보임). 약한 "관련 뉴스"류는 짧은 이슈 문구로 표시.
-            var reason = cleanReasonText(r.rise_reason, rawTag, r.news, r.name, reasonDate, r._liveNew) || '-';
+            // 이유 표시 규칙은 reason.js 공통 — 기사 근거 사유는 그대로, 옛 키워드 템플릿은 '이유 확인 중'
+            var rd = window.OrgoReason ? window.OrgoReason.display(r)
+                : { text: cleanReasonText(r.rise_reason, rawTag, r.news, r.name, reasonDate, r._liveNew) || '-', unknown: false, label: '' };
+            var reason = rd.text;
             var editDate = eventDate || date;
             var editBtn = '<button class="admin-edit-btn" data-action="admin-edit" data-ticker="' + tEsc +
                 '" data-date="' + esc(editDate) + '" title="이유 편집">✏️</button>';
@@ -555,7 +558,8 @@ var WhyTable = (function () {
             html += '<td class="cell-reason">' +
                 '<div class="cell-reason__inline">' +
                 (displayTag ? '<a class="theme-tag" href="/screening.html?theme=' + encodeURIComponent(rawTag) + '" style="text-decoration:none" title="' + esc(rawTag) + ' 스크리닝">' + esc(displayTag) + '</a>' : '') +
-                '<a class="cell-reason__text" href="' + detailUrl + '" data-ticker="' + tEsc + '" style="color:inherit;text-decoration:none" title="' + esc(reason) + '">' + esc(reason) + '</a>' +
+                '<a class="cell-reason__text' + (rd.unknown ? ' cell-reason__text--unknown' : '') + '" href="' + detailUrl + '" data-ticker="' + tEsc + '" style="color:inherit;text-decoration:none" title="' + esc(reason) + '">' + esc(reason) + '</a>' +
+                (window.OrgoReason ? window.OrgoReason.sourceHtml(rd) : '') +
                 editBtn +
                 '</div></td>';
             // 상승률

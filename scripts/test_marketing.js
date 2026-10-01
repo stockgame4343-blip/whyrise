@@ -142,40 +142,66 @@ test('corrected visual inputs invalidate cached images even when captions and br
     assert.notEqual(d.content_hash,buildDigest({...day,rankings:day.rankings.map(r=>({...r,trading_value:123}))},map).content_hash);
 });
 
-// ── X(트위터) 자동 게시 — 2026-10 ──
-const {publishX,oauth1Header}=require('./marketing_publish');
-const {xWeightedLength}=require('./marketing_digest');
-const xEnv={X_API_KEY:'k',X_API_SECRET:'s',X_ACCESS_TOKEN:'t',X_ACCESS_TOKEN_SECRET:'ts'};
-const img=async()=>Buffer.from('jpeg');
-test('X caption fits weighted 280 and links the dated SEO page',()=>{
+// ── 쓰레드 링크 댓글 · 네이버 블로그 원고 — 2026-10 ──
+const {publishThreadsReply}=require('./marketing_publish');
+const Copy=require('./marketing_copy');
+function multiLedger(){const store={};return {store,async load(date,ch){const k=date+':'+ch;return {k,state:store[k]||{}};},async save(rec,state){store[rec.k]={...state};rec.state=store[rec.k];}};}
+test('threads post keeps the link out of the body and in the first reply',()=>{
     const d=buildDigest(day,null);
-    assert.ok(xWeightedLength(d.posts.x.text)<=280);
-    assert.ok(d.posts.x.text.includes('https://orgo.kr/day/20260904?utm_source=x'));
-    assert.ok(d.posts.threads.text.includes('https://orgo.kr/day/20260904?utm_source=threads'));
-    assert.equal(xWeightedLength('가a https://example.com/very/long/path'),2+1+1+23);
+    assert.doesNotMatch(d.posts.threads.text,/https?:\/\//);
+    assert.match(d.posts.threads.reply,/https:\/\/orgo\.kr\/day\/20260904\?utm_source=threads/);
+    assert.ok(Array.from(d.posts.threads.text).length<=500);
 });
-test('X publish uploads once, posts once, and never resends after success',async()=>{
-    const l=ledger(),calls=[];const api=async(url,e,body)=>{calls.push({url,body});return {data:{id:url.endsWith('/upload')?'m1':'p1'}};};
-    const d=buildDigest(day,null);
-    const r=await publishX(d,xEnv,l,api,readyAssets,img);
-    assert.equal(r.status,'published');assert.equal(r.post_id,'p1');
-    assert.deepEqual(calls[1].body.media,{media_ids:['m1']});assert.equal(calls[0].body.media_category,'tweet_image');
-    await publishX(d,xEnv,l,api,readyAssets,img);assert.equal(calls.length,2);
+test('threads reply waits for the main post and is never resent',async()=>{
+    const d=buildDigest(day,null),l=multiLedger(),calls=[];
+    const api=async(url,token,method,fields)=>{calls.push({url,fields});return {id:'r'+calls.length};};
+    const env={THREADS_USER_ID:'123',THREADS_ACCESS_TOKEN:'t'};
+    assert.equal((await publishThreadsReply(d,env,l,api)).status,'awaiting_post');
+    l.store['20260904:threads']={status:'published',post_id:'p1'};
+    const r=await publishThreadsReply(d,env,l,api);
+    assert.equal(r.status,'published');assert.equal(calls[0].fields.reply_to_id,'p1');assert.equal(calls[0].fields.media_type,'TEXT');
+    await publishThreadsReply(d,env,l,api);assert.equal(calls.length,2);
 });
-test('X ambiguous post is held; failed upload is retryable without a public post',async()=>{
-    const d=buildDigest(day,null);
-    let l=ledger(),n=0;
-    let api=async(url)=>{n++;if(url.endsWith('/tweets'))throw Error('timeout');return {data:{id:'m1'}};};
-    assert.equal((await publishX(d,xEnv,l,api,readyAssets,img)).status,'uncertain');
-    assert.equal((await publishX(d,xEnv,l,api,readyAssets,img)).requires_action,true);assert.equal(n,2);
-    l=ledger();n=0;api=async()=>{n++;throw Error('HTTP 503');};
-    const r=await publishX(d,xEnv,l,api,readyAssets,img);assert.equal(r.status,'retryable');assert.equal(r.media_id,undefined);
+test('naver blog draft: SEO title, facts only, link and disclaimer, no advisory words',()=>{
+    const d=buildDigest(day,null),b=d.naver_blog;
+    assert.match(b.title,/9월 4일/);assert.ok(Array.from(b.title).length<=70);
+    assert.match(b.html,/orgo\.kr\/day\/20260904\?utm_source=naver_blog/);
+    assert.match(b.html,/투자 권유가 아닙니다/);
+    assert.doesNotMatch(b.html.replace(/투자 권유가 아닙니다/g,''),/매수|매도|추천|목표가|급등 예상/);
+    assert.ok(b.tags.length>=8&&b.tags.length<=30);assert.ok(b.tags.every(t=>!/\s/.test(t)));
+    assert.match(b.html,/장비 공급계약 체결/);   // 근거 있는 이유는 본문에 실린다
 });
-test('X without credentials does not call anything',async()=>{
-    assert.equal((await publishX(buildDigest(day,null),{},null)).status,'needs_connection');
+test('analyst target-price reasons are not repeated on external channels',()=>{
+    const r={...row,ticker:'000777',name:'리포트전자',rise_reason:'증권사 목표가 19만원 상향 (iM)',reason_source:'news_extract',reason_kind:'analyst'};
+    const m=Copy.material({date:'20260904',rows:[row,r],leader:null,breadth:null,market:null});
+    assert.ok(m.unknown.some(it=>it.row.name==='리포트전자'));
+    assert.doesNotMatch(Copy.naverBlog(m,[]).html,/목표가/);
 });
-test('OAuth 1.0a signature matches the published reference vector',()=>{
-    const env={X_API_KEY:'xvz1evFS4wEEPTGEFPHBog',X_API_SECRET:'kAcSOqF21Fu85e7zjz7ZN2U4ZRhfV3WpwPAoE3Z7kBw',X_ACCESS_TOKEN:'370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb',X_ACCESS_TOKEN_SECRET:'LswwdoUaIvS8ltyTt5jkRh4J50vUPVVHtR2YPi5kE'};
-    const h=oauth1Header('POST','https://api.twitter.com/1.1/statuses/update.json?include_entities=true&status='+encodeURIComponent('Hello Ladies + Gentlemen, a signed OAuth request!'),env,'kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg',1318622958);
-    assert.equal(decodeURIComponent(h.match(/oauth_signature="([^"]+)"/)[1]),'hCtSmYh+iHYCEqBWrE7C7hYmtUk=');
+test('blog intro and section titles vary by date (no identical daily template)',()=>{
+    const titles=new Set(['20260901','20260902','20260903','20260904','20260907'].map(dt=>{
+        const m=Copy.material({date:dt,rows:[row],leader:null,breadth:null,market:null});return Copy.naverBlog(m,[]).html.split('\n')[0];}));
+    assert.ok(titles.size>=2);
+});
+test('operator blog alert names the post and the 발행실 link (HTML-escaped)',()=>{
+    const {adminNote}=require('./marketing_publish');
+    const note=adminNote({date:'20261001',naver_blog:{title:'10월 1일 급등주 <정리>'}},{channels:{threads:{status:'prepared'}}});
+    assert.match(note,/10\/1 블로그 원고 준비 완료/);
+    assert.match(note,/&lt;정리&gt;/);
+    assert.match(note,/orgo\.kr\/marketing\.html#blog/);
+    assert.match(note,/쓰레드: 계정 연결 전/);
+});
+test('threads hook names the day top mover incl. listing-day leader missing from rows',()=>{
+    const rows=[{ticker:'000001',name:'가나',change_rate:30,rise_reason:'신규 수주 공급 계약',reason_source:'news_extract',reason_kind:'catalyst'}];
+    const m=Copy.material({date:'20261001',rows,leader:{ticker:'468670',name:'브릴스',rate:59.5,listing_day:true},breadth:null,market:null});
+    const t=Copy.threads(m).text;
+    assert.match(t,/1위는 브릴스 \+59\.5% \(상장 첫날\)/);
+    assert.match(t,/가나 \+30\.0%/);
+    assert.ok(Array.from(t).length<=500);
+});
+test('weak "관련 보도" reasons are not used as reasons in external copy',()=>{
+    const rows=[{ticker:'000002',name:'다라',change_rate:20,rise_reason:'관련 보도: 대표 인터뷰',reason_source:'news_extract',reason_kind:'related'}];
+    const m=Copy.material({date:'20261001',rows,leader:null,breadth:null,market:null});
+    assert.equal(m.solo.length,0);
+    assert.equal(m.unknown.length,1);
+    assert.doesNotMatch(Copy.naverBlog(m,[]).text,/관련 보도/);
 });

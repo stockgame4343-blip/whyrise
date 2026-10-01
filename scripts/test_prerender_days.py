@@ -36,8 +36,16 @@ class DayPageTest(unittest.TestCase):
         self.assertIn('<span class="day-tag">신규상장</span>', html)
         self.assertNotIn('작은상승', html)            # +10% 미만 제외
         self.assertIn('href="/day/20260929"', html)
-        self.assertIn('덕산넵코어스 (신규상장) +23.1%', html)
+        # 반기 '신규상장' 태그만으로 상장 첫날이라 단정하지 않는다
+        self.assertIn('덕산넵코어스 +23.1%', html)
+        self.assertNotIn('덕산넵코어스 (', html)
         self.assertIn('<link rel="canonical" href="https://orgo.kr/day/20260930">', html)
+
+    def test_listing_day_leader_gets_ipo_reason(self):
+        cal = {'stock': {'ticker': '0035S0', 'name': '빅웨이브로보틱스', 'rate': 43.6, 'listing_day': True}}
+        html = pd.render_day('20260930', self.day(), cal, '', '')
+        self.assertIn('빅웨이브로보틱스 (상장 첫날) +43.6%', html)
+        self.assertIn('상장 첫날 (공모가 대비)', html)
 
     def test_theme_groups_skip_junk_and_ipo_tags(self):
         rows, _ = pd.page_rows(self.day())

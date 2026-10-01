@@ -98,7 +98,11 @@ async function main() {
     });
 
     var monthLabel = monthLabelOf(today);
-    var comment = '최근 31일 수집 기록: +' + core.RISE_CUTOFF + '% 급등 ' + (m.total_events_15 || 0) + '건. 동일 종목의 여러 날짜를 각각 집계해요.' + '\n카드는 최근 31일, 캘린더는 ' + monthLabel + '의 일별 대장이에요.';
+    var repeat = (m.frequent_top || [])[0];
+    var comment = '한 달 동안 +' + core.RISE_CUTOFF + '% 급등 ' + (m.total_events_15 || 0) + '건' +
+        (sectors[0] ? ' · 가장 많이 오른 업종 ' + sectors[0].name : '') +
+        (repeat ? '\n가장 자주 급등한 종목: ' + repeat.name + ' ' + (repeat.count || 0) + '회' : '') +
+        '\n캘린더에서 날짜별 대장을 한눈에 볼 수 있어요.';
 
     var html = tg.rankCardHtml({
         title: '월간 리포트',
@@ -111,10 +115,11 @@ async function main() {
     });
 
     // 바로가기 — HTML 텍스트 링크(긴 URL 미노출). 본문은 통째로 이스케이프 후 링크만 붙인다.
-    var head = ['🗓️ 월간 시장 리포트 · ' + monthLabel, ''];
+    var head = ['🗓️ ' + monthLabel + ' 한 달 급등주 결산', ''];
     if (comment) { head.push(comment); head.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
-    var caption = tg.escHtml(head.join('\n')) + '\n' +
-        tg.htmlLink('👉 대장주 캘린더 보러가기', tg.orgoLink('/sample2.html', 'monthly'));
+    var caption = '<b>' + tg.escHtml(head[0]) + '</b>\n' + tg.escHtml(head.slice(1).join('\n')) + '\n' +
+        tg.htmlLink('대장주 캘린더', tg.orgoLink('/sample2.html', 'monthly')) + '  ·  ' +
+        tg.htmlLink('📲 공유', 'https://t.me/share/url?url=' + encodeURIComponent('https://t.me/whyorgo'));
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');
     console.log('테마:', themes.map(function (s) { return s.name; }).join(',') || '-');
