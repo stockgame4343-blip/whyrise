@@ -5,7 +5,28 @@ const crypto = require('crypto');
 const tg = require('./tg_common');
 const ROOT = path.resolve(__dirname, '..');
 const MAX_NEWS_AGE = 3;
-const LIMITS = { threads: 500, instagram: 2200, kakao: 1000, toss: 4000, telegram: 4096 };
+const LIMITS = { threads: 500, instagram: 2200, kakao: 1000, toss: 4000, telegram: 4096, x: 280 };
+// X 는 가중 글자수(한글·CJK 2, URL 23)로 280 제한 — https://docs.x.com/fundamentals/counting-characters
+function xWeightedLength(text) {
+    let n = 0;
+    const s = String(text).replace(/https?:\/\/\S+/g, () => { n += 23; return ''; });
+    for (const ch of Array.from(s)) {
+        const c = ch.codePointAt(0);
+        n += (c <= 0x10FF || (c >= 0x2000 && c <= 0x200D) || (c >= 0x2010 && c <= 0x201F) || (c >= 0x2032 && c <= 0x2037)) ? 1 : 2;
+    }
+    return n;
+}
+// 외부 채널 → 날짜별 정적 페이지(검색 색인 대상)로 유입 — utm 으로 채널별 성과 구분
+function dayLink(date, channel) { return `https://orgo.kr/day/${date}?utm_source=${channel}&utm_medium=social&utm_campaign=daily`; }
+// 오늘의 한 줄 훅: 테마 + 가장 많이 오른 2종목 (사실 나열만 — 전망·권유 표현 금지)
+function xHook(date, all, leader) {
+    const md = `${+date.slice(4,6)}/${+date.slice(6)}`;
+    const top = all.filter(r => !/신규상장/.test(r.theme_tag || '') && !/^정리매매/.test(r.rise_reason || '')).slice(0, 2)
+        .map(r => `${r.name} ${tg.pct(r.change_rate)}`).join(', ');
+    const theme = leader?.theme?.name ? leader.theme.name.replace(/\([^)]*\)/g, '').trim() : '';
+    const hot = all.filter(r => r.change_rate >= 15 && !/^정리매매/.test(r.rise_reason || '')).length;
+    return `${md} 급등주${theme ? ' · ' + theme + ' 강세' : ''}\n${top}${top ? ' 등 ' : ''}+15% 이상 ${hot}종목`;
+}
 const UNKNOWN = '직접 상승 촉매 확인 중';
 function ymd(value) { return String(value || '').replace(/\D/g, '').slice(0, 8); }
 function utcDay(value) {
@@ -92,8 +113,10 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null) {
     const defaultStory = leader && ((weekday===5 && monthDays.length>=8) || +date.slice(6)>=28) ? 'calendar' : themeAvailable?'theme':sameSnapshot?'market':'calendar';
     for(const story of stories) {
         story.posts = Object.fromEntries(Object.keys(LIMITS).map(channel=> {
-            const text = story.caption + (channel==='instagram'?'\n\n#국내주식 #시황':channel==='kakao'||channel==='telegram'?'\n\norgo.kr':'');
-            if(Array.from(text).length>LIMITS[channel]) throw Error(`${channel} text exceeds limit`);
+            let text = story.caption + (channel==='instagram'?'\n\n#국내주식 #시황':channel==='kakao'||channel==='telegram'?'\n\norgo.kr':'');
+            if(channel==='threads') text = story.caption + '\n\n종목별 이유 ▶ ' + dayLink(date, 'threads');
+            if(channel==='x') text = xHook(date, all, leader) + '\n왜 올랐는지 ▶ ' + dayLink(date, 'x');
+            if(channel==='x' ? xWeightedLength(text)>LIMITS.x : Array.from(text).length>LIMITS[channel]) throw Error(`${channel} text exceeds limit`);
             return [channel,{text,images:story.assets.map(id=>base+assets.find(a=>a.id===id).file),status:'prepared'}];
         }));
     }
@@ -126,4 +149,4 @@ function generate(date) {
     return digest;
 }
 if(require.main===module) { try {const d=generate(process.argv[2]||tg.ymdKst());console.log(JSON.stringify({date:d.date,coverage:d.coverage,default_story:d.default_story}));}catch(e){console.error(e.message);process.exitCode=1;} }
-module.exports={buildDigest,generate,evidence,supportedReason,hasTheme};
+module.exports={buildDigest,generate,evidence,supportedReason,hasTheme,xWeightedLength,dayLink};

@@ -635,5 +635,27 @@ class DownstreamNoneTest(unittest.TestCase):
         self.assertNotEqual(est['rise_reason'], '52주 신고가 도달')
 
 
+
+class CarryRefinedReasonsTest(unittest.TestCase):
+    """정제 사유가 15분 주기 재빌드에서 stock-rise 원 사유로 되돌아가지 않아야 한다."""
+    def test_refined_reason_survives_rebuild_when_upstream_unchanged(self):
+        old = [{'date': '20260930', 'rise_reason': '관련 보도: X', 'reason_source': 'news_headline',
+                'reason_confidence': 'low', 'reason_status': 'filled', 'reason_previous': '거래량 증가',
+                'reason_evidence': [{'title': 'X'}]}]
+        new = [{'date': '20260930', 'rise_reason': '거래량 증가', 'reason_source': 'stockrise', 'reason_status': 'filled'}]
+        merged = bh.merge_ticker_events(old, new, '20260901')
+        self.assertEqual(merged[0]['rise_reason'], '관련 보도: X')
+        self.assertEqual(merged[0]['reason_evidence'], [{'title': 'X'}])
+
+    def test_new_upstream_reason_wins(self):
+        old = [{'date': '20260930', 'rise_reason': '관련 보도: X', 'reason_source': 'news_headline', 'reason_previous': '거래량 증가'}]
+        new = [{'date': '20260930', 'rise_reason': '수주 공시', 'reason_source': 'stockrise'}]
+        self.assertEqual(bh.merge_ticker_events(old, new, '20260901')[0]['rise_reason'], '수주 공시')
+
+    def test_admin_edit_is_never_overwritten(self):
+        old = [{'date': '20260930', 'rise_reason': '관련 보도: X', 'reason_source': 'llm', 'reason_previous': '거래량 증가'}]
+        new = [{'date': '20260930', 'rise_reason': '거래량 증가', 'reason_source': 'admin', 'reason_status': 'edited'}]
+        self.assertEqual(bh.merge_ticker_events(old, new, '20260901')[0]['reason_source'], 'admin')
+
 if __name__ == '__main__':
     unittest.main()

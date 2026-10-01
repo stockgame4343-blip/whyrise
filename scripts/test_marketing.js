@@ -141,3 +141,41 @@ test('corrected visual inputs invalidate cached images even when captions and br
     assert.notEqual(d.input_hash,corrected.input_hash);assert.notEqual(d.content_hash,corrected.content_hash);
     assert.notEqual(d.content_hash,buildDigest({...day,rankings:day.rankings.map(r=>({...r,trading_value:123}))},map).content_hash);
 });
+
+// ── X(트위터) 자동 게시 — 2026-10 ──
+const {publishX,oauth1Header}=require('./marketing_publish');
+const {xWeightedLength}=require('./marketing_digest');
+const xEnv={X_API_KEY:'k',X_API_SECRET:'s',X_ACCESS_TOKEN:'t',X_ACCESS_TOKEN_SECRET:'ts'};
+const img=async()=>Buffer.from('jpeg');
+test('X caption fits weighted 280 and links the dated SEO page',()=>{
+    const d=buildDigest(day,null);
+    assert.ok(xWeightedLength(d.posts.x.text)<=280);
+    assert.ok(d.posts.x.text.includes('https://orgo.kr/day/20260904?utm_source=x'));
+    assert.ok(d.posts.threads.text.includes('https://orgo.kr/day/20260904?utm_source=threads'));
+    assert.equal(xWeightedLength('가a https://example.com/very/long/path'),2+1+1+23);
+});
+test('X publish uploads once, posts once, and never resends after success',async()=>{
+    const l=ledger(),calls=[];const api=async(url,e,body)=>{calls.push({url,body});return {data:{id:url.endsWith('/upload')?'m1':'p1'}};};
+    const d=buildDigest(day,null);
+    const r=await publishX(d,xEnv,l,api,readyAssets,img);
+    assert.equal(r.status,'published');assert.equal(r.post_id,'p1');
+    assert.deepEqual(calls[1].body.media,{media_ids:['m1']});assert.equal(calls[0].body.media_category,'tweet_image');
+    await publishX(d,xEnv,l,api,readyAssets,img);assert.equal(calls.length,2);
+});
+test('X ambiguous post is held; failed upload is retryable without a public post',async()=>{
+    const d=buildDigest(day,null);
+    let l=ledger(),n=0;
+    let api=async(url)=>{n++;if(url.endsWith('/tweets'))throw Error('timeout');return {data:{id:'m1'}};};
+    assert.equal((await publishX(d,xEnv,l,api,readyAssets,img)).status,'uncertain');
+    assert.equal((await publishX(d,xEnv,l,api,readyAssets,img)).requires_action,true);assert.equal(n,2);
+    l=ledger();n=0;api=async()=>{n++;throw Error('HTTP 503');};
+    const r=await publishX(d,xEnv,l,api,readyAssets,img);assert.equal(r.status,'retryable');assert.equal(r.media_id,undefined);
+});
+test('X without credentials does not call anything',async()=>{
+    assert.equal((await publishX(buildDigest(day,null),{},null)).status,'needs_connection');
+});
+test('OAuth 1.0a signature matches the published reference vector',()=>{
+    const env={X_API_KEY:'xvz1evFS4wEEPTGEFPHBog',X_API_SECRET:'kAcSOqF21Fu85e7zjz7ZN2U4ZRhfV3WpwPAoE3Z7kBw',X_ACCESS_TOKEN:'370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb',X_ACCESS_TOKEN_SECRET:'LswwdoUaIvS8ltyTt5jkRh4J50vUPVVHtR2YPi5kE'};
+    const h=oauth1Header('POST','https://api.twitter.com/1.1/statuses/update.json?include_entities=true&status='+encodeURIComponent('Hello Ladies + Gentlemen, a signed OAuth request!'),env,'kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg',1318622958);
+    assert.equal(decodeURIComponent(h.match(/oauth_signature="([^"]+)"/)[1]),'hCtSmYh+iHYCEqBWrE7C7hYmtUk=');
+});

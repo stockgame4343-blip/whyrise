@@ -95,6 +95,11 @@ jobs:
           INSTAGRAM_USER_ID: ${{ vars.INSTAGRAM_USER_ID }}
           INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          # X: developer.x.com 앱의 API Key/Secret + 본인 계정 Access Token/Secret (Read and write)
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
         run: node scripts/marketing_publish.js "$DATE"
       - name: Save publication status
         if: always() && steps.deploy.outcome == 'success'

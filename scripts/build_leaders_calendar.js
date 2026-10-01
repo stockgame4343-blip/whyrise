@@ -32,9 +32,11 @@ function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
 // 대장주 비교 전용: 상승률을 LEADER_RATE_CAP(=30%)로 상한 (report.js capRate 와 동일).
 function capRate(r) { return Math.min(num(r && r.change_rate), LEADER_RATE_CAP); }
 
+// 상류 폴백 사유('거래량 증가')에서 잘못 뽑힌 비-테마 태그 — 테마 집계·텔레그램에서 제외
+const JUNK_THEME_TAGS = { '거래량': 1, '거래대금': 1 };
 function themeTags(row) {
     var out = [], seen = {};
-    function add(v) { v = String(v || '').trim(); if (!v || seen[v]) return; seen[v] = 1; out.push(v); }
+    function add(v) { v = String(v || '').trim(); if (!v || seen[v] || JUNK_THEME_TAGS[v]) return; seen[v] = 1; out.push(v); }
     if (Array.isArray(row && row.theme_tags)) row.theme_tags.forEach(add);
     add(row && row.theme_tag);
     return out;

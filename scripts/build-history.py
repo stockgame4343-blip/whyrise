@@ -581,8 +581,37 @@ def merge_ticker_events(old: list[dict], new: list[dict], window_start: str) -> 
     그 이전(<) 과거 이벤트는 이번 빌드 윈도우 밖이므로 기존 파일에서 보존
     → 증분(--days 30)이 백필한 과거를 지우지 않음.
     """
+    carry_refined_reasons(old, new)
     kept_old = [e for e in old if (e.get('date') or '') < window_start]
     return sorted(new + kept_old, key=lambda e: e.get('date', ''), reverse=True)
+
+
+# llm-refine/헤드라인 폴백이 정제한 사유 — 다음 빌드가 stock-rise 원 사유로 되돌리지 않게 보존.
+_REFINED_SOURCES = ('llm', 'news_headline')
+_REFINED_FIELDS = ('rise_reason', 'reason_confidence', 'reason_source', 'reason_status',
+                   'reason_previous', 'reason_evidence')
+
+
+def carry_refined_reasons(old: list[dict], new: list[dict]) -> int:
+    """같은 날짜 이벤트의 정제 사유를 new 로 이월.
+
+    조건: 이전 이벤트가 정제 소스이고, 정제 전 원 사유(reason_previous)가 이번 빌드의
+    원 사유와 같을 때만 — 상류(stock-rise) 사유가 바뀌었으면 새 원 사유를 존중해 재정제를 기다린다.
+    admin 수정은 override bake 경로가 따로 보존하므로 건드리지 않는다.
+    """
+    by_date = {e.get('date'): e for e in old if e.get('reason_source') in _REFINED_SOURCES}
+    carried = 0
+    for e in new:
+        prev = by_date.get(e.get('date'))
+        if not prev or e.get('reason_source') == 'admin' or e.get('reason_status') == 'edited':
+            continue
+        if (prev.get('reason_previous') or '') != (e.get('rise_reason') or ''):
+            continue
+        for k in _REFINED_FIELDS:
+            if k in prev:
+                e[k] = prev[k]
+        carried += 1
+    return carried
 
 
 def write_ticker_history(ticker: str, name: str, market: str,
@@ -671,10 +700,25 @@ def build_sitemap(stock_history_dir: Path, public_dir: Path,
         parts.append(f'  <url><loc>{site}/stock/{ticker}</loc>{lastmod}'
                      '<changefreq>weekly</changefreq><priority>0.6</priority></url>')
         listed += 1
+    # 날짜별 급등주 정적 페이지(scripts/prerender_days.py) — rise-history 날짜가 원천
+    days_listed = 0
+    try:
+        from scripts.prerender_days import publishable_dates
+        day_dates = publishable_dates()
+    except Exception as e:
+        print(f'  sitemap: 날짜 페이지 목록 실패 {e}')
+        day_dates = []
+    if day_dates:
+        parts.append(f'  <url><loc>{site}/day/</loc><lastmod>{today}</lastmod>'
+                     '<changefreq>daily</changefreq><priority>0.8</priority></url>')
+        for d in sorted(day_dates, reverse=True):
+            parts.append(f'  <url><loc>{site}/day/{d}</loc><lastmod>{d[:4]}-{d[4:6]}-{d[6:]}</lastmod>'
+                         '<changefreq>monthly</changefreq><priority>0.7</priority></url>')
+            days_listed += 1
     parts.append('</urlset>')
 
     (public_dir / 'sitemap.xml').write_text('\n'.join(parts), encoding='utf-8')
-    print(f'  sitemap.xml: 정적 {len(static)} + 종목 {listed} URL (이벤트 0건 {skipped_empty} 제외)')
+    print(f'  sitemap.xml: 정적 {len(static)} + 종목 {listed} + 날짜 {days_listed} URL (이벤트 0건 {skipped_empty} 제외)')
 
 
 # ── 리포트 집계 ─────────────────────────────────────────

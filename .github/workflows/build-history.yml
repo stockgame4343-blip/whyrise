@@ -256,6 +256,13 @@ jobs:
         continue-on-error: true
         run: node scripts/build_leaders_calendar.js
 
+      # 날짜별 급등주 정적 페이지(/day/YYYYMMDD) — 대장캘린더 갱신 뒤에 만들어 '오늘의 대장'까지 반영.
+      # 검색 유입용 SEO 페이지라 실패해도 본 빌드·커밋은 진행.
+      - name: Prerender day pages (SEO)
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental') }}
+        continue-on-error: true
+        run: python3 scripts/prerender_days.py
+
       - name: Diff guard (full only)
         if: steps.gate.outputs.skip != 'true' && steps.mode.outputs.mode == 'full'
         run: |
@@ -296,7 +303,9 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # 빌드 산출물 stage — sitemap·종목 프리렌더도 빌드 산출물
           # (git add 가 아래 checkout/clean 보다 먼저라 stage 분은 보존됨)
-          git add public/data/ public/sitemap.xml public/stock/
+          git add public/data/ public/sitemap.xml public/stock/ public/day/
+          # IndexNow 핑 대상(바뀐 종목·날짜 페이지) — 커밋 전에 기록
+          git diff --staged --name-only > "$RUNNER_TEMP/orgo-changed.txt" || true
           # 추가 unstaged 변경 (예: pip cache·기타) 도 stage 또는 버림
           git checkout -- . || true   # 추적 중인 다른 파일 변경 복원
           git clean -fd -e 'public/data/_cache' || true  # 추적 안 되는 파일 제거 (cache 디렉토리는 보존)
@@ -343,6 +352,16 @@ jobs:
           done
           echo "::error::push 3회 실패"
           exit 1
+
+      # 바뀐 종목·날짜 페이지를 네이버(서치어드바이저)·Bing 에 즉시 알림. 배포 반영 확인 후 전송.
+      - name: IndexNow ping
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental') }}
+        continue-on-error: true
+        timeout-minutes: 8
+        run: |
+          if [ ! -s "$RUNNER_TEMP/orgo-changed.txt" ]; then echo "변경 없음"; exit 0; fi
+          sleep 60   # Vercel 프로덕션 배포 반영 대기
+          python3 scripts/indexnow_ping.py --wait-live 240 < "$RUNNER_TEMP/orgo-changed.txt"
 
   # admin override 저장/삭제 전용 경량 job — 대상 종목 파일 1개만 갱신.
   # concurrency 를 종목+날짜별로 분리: 다른 종목/날짜 dispatch 가 pending 교체로 유실되지 않는다.

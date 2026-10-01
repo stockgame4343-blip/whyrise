@@ -12,6 +12,7 @@
 """
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -39,7 +40,8 @@ REASON_MAX_LEN = 30
 
 # 제네릭 판정 — estimate_reasons/enrich 의 비구체 라벨 + stock-rise scorer 의
 # 키워드 라벨("X 관련 뉴스"·"X 이슈"형)도 포함해 교체 대상으로 끌어들인다.
-GENERIC_RE = re.compile(r'^(시장 관심 증가|상한가 — 사유 미수집|.{0,24}(테마 )?(강세|상한가)'
+GENERIC_RE = re.compile(r'^(시장 관심 증가|상한가 — 사유 미수집|거래량 (증가|급증)|거래대금 증가'
+                        r'|.{0,24}(테마 )?(강세|상한가)'
                         r'|.{0,24}관련 (뉴스|이슈|소식)|.{0,24}이슈)$')
 # verify_only(stock-rise 구체 사유) 교체 허용 최저 신뢰도 — 종목명 포함 근거 2건 이상
 VERIFY_REPLACE_MIN_CONF = 'high'
@@ -106,7 +108,7 @@ def _target_from_event(ticker: str, name: str, ev: dict) -> dict | None:
     except ValueError:
         event_date = None
     for i, n in enumerate(ev.get('news') or []):
-        title = (n.get('title') or '').strip()
+        title = html.unescape(n.get('title') or '').strip()
         link = str(n.get('link') or '').strip()
         parsed = urllib.parse.urlparse(link)
         if parsed.scheme not in ('http', 'https') or not parsed.netloc or parsed.username or parsed.password:
@@ -282,20 +284,77 @@ def _validate(res: dict, target: dict) -> dict | None:
     return None
 
 
+_THEME_STOP = {'중소형', '대형', '관련주', '테마', '업체', '소재', '부품', '장비', '기타', '신규상장',
+               '상반기', '하반기', '거래량', '거래대금', '산업', '관련', '국내', '해외', '기업'}
+# 업종·테마 동반 상승을 다룬 기사 제목 신호 — 시장 전체 시황 한 줄과 구분
+_GROUP_MOVE_RE = re.compile(r'특징주|株|주(가)?\s*(등\s*)?(강세|급등|상승|들썩|훨훨|상한가)|관련주|수혜주|테마')
+
+
+def _theme_tokens(theme_tag: str, sector: str = '') -> list[str]:
+    """'강관업체(Steel pipe)' → ['강관업체', '강관', 'Steel', 'pipe'] (불용어·1글자 제외)."""
+    out: list[str] = []
+    for raw in (theme_tag or '', sector or ''):
+        text = re.sub(r'[()/·,\[\]]', ' ', raw)
+        for w in text.split():
+            w = w.strip()
+            if len(w) < 2 or w in _THEME_STOP or re.fullmatch(r'\d+', w):
+                continue
+            out.append(w)
+            # 4글자 이상 한글 복합어는 앞 2글자 핵도 허용 (강관업체→강관, 면역항암제→면역)
+            if len(w) >= 4 and re.fullmatch(r'[가-힣]+', w) and w[:2] not in _THEME_STOP:
+                out.append(w[:2])
+    return list(dict.fromkeys(out))
+
+
+def _strip_title(title: str, name: str) -> str:
+    text = re.sub(r'^\[[^\]]+\]\s*', '', title).strip()
+    if name and text.startswith(name):
+        text = text[len(name):].lstrip(' ,·:')
+    return text
+
+
+def _delisting_verdict(target: dict) -> dict | None:
+    """종목명+정리매매 기사가 있으면 LLM 판정과 무관하게 정리매매로 표기."""
+    name = target.get('name') or ''
+    for article in target.get('news') or []:
+        if name and name in article['title'] and '정리매매' in article['title']:
+            return {'action': 'replace', 'reason': '정리매매 기간 (상장폐지 절차)',
+                    'confidence': 'high', 'source': 'news_headline', 'evidence': [article['i']]}
+    return None
+
+
 def headline_fallback(target: dict) -> dict:
-    """Quote a dated, named headline; never invent a causal explanation."""
+    """Quote a dated headline; never invent a causal explanation.
+
+    우선순위: ① 종목명이 들어간 기사(정리매매는 별도 표기) ② 같은 테마·업종의
+    동반 상승 기사(종목명 없음 → confidence low). 둘 다 없으면 no_evidence.
+    """
     if target.get('verify_only'):
         return {'action': 'keep', 'note': 'verify_only'}
     articles = sorted(target['news'], key=lambda n: re.sub(r'\D', '', n['date'])[:8], reverse=True)
-    for article in articles:
-        if target['name'] and target['name'] in article['title']:
-            text = re.sub(r'^\[[^\]]+\]\s*', '', article['title']).strip()
-            if text.startswith(target['name']):
-                text = text[len(target['name']):].lstrip(' ,·:')
-            if not text:
+    name = target.get('name') or ''
+    named = [a for a in articles if name and name in a['title']]
+    # 정리매매(상장폐지 절차) 종목의 등락은 '급등 이유'가 아니다 — 사실만 표기해 목록에서 거르게 한다
+    delisting = _delisting_verdict(target)
+    if delisting:
+        return delisting
+    for article in named:
+        text = _strip_title(article['title'], name)
+        if not text:
+            continue
+        return {'action': 'replace', 'reason': '관련 보도: ' + text[:80],
+                'confidence': 'mid', 'source': 'news_headline', 'evidence': [article['i']]}
+    tokens = _theme_tokens(target.get('theme_tag') or '', target.get('sector') or '')
+    if tokens:
+        for article in articles:
+            title = article['title']
+            if not _GROUP_MOVE_RE.search(title):
                 continue
-            return {'action': 'replace', 'reason': '관련 보도: ' + text[:80],
-                    'confidence': 'mid', 'source': 'news_headline', 'evidence': [article['i']]}
+            if any(tok in title for tok in tokens):
+                text = _strip_title(title, '')
+                if text:
+                    return {'action': 'replace', 'reason': '관련 보도: ' + text[:80],
+                            'confidence': 'low', 'source': 'news_headline', 'evidence': [article['i']]}
     return {'action': 'no_evidence'}
 
 
@@ -305,6 +364,10 @@ def refine(targets: list[dict], api_key: str) -> tuple[dict, dict]:
     stats = {'sent': 0, 'skipped_no_news': 0, 'batch_errors': 0}
     sendable = []
     for t in targets[:MAX_ITEMS_PER_RUN]:
+        delisting = _delisting_verdict(t)
+        if delisting:
+            verdicts[(t['ticker'], t['date'])] = delisting
+            continue
         if not t['news']:
             verdicts[(t['ticker'], t['date'])] = {'action': 'no_evidence'}
             stats['skipped_no_news'] += 1
@@ -386,7 +449,10 @@ def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
             if not ev or ev.get('reason_source') == 'admin' or ev.get('reason_status') == 'edited':
                 continue
             if v['action'] == 'replace':
-                if ev.get('rise_reason') != v['reason']:
+                # 정제 전 '원 사유'는 최초 1회만 기록 — 재정제 시에도 상류 원 사유를 유지해야
+                # build-history 의 carry_refined_reasons 가 다음 빌드에서 정제값을 이월한다.
+                already_refined = ev.get('reason_source') in ('llm', 'news_headline') and 'reason_previous' in ev
+                if ev.get('rise_reason') != v['reason'] and not already_refined:
                     ev['reason_previous'] = ev.get('rise_reason') or ''
                 ev['rise_reason'] = v['reason']
                 ev['reason_confidence'] = v['confidence']

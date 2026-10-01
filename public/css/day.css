@@ -1,0 +1,35 @@
+/* 날짜별 급등주 정적 페이지 (scripts/prerender_days.py) */
+.day-page{padding:24px 0 48px;max-width:960px}
+.day-crumb{font-size:13px;color:var(--text-muted);margin:0 0 10px}
+.day-crumb a{color:inherit}
+.day-page h1{font-size:clamp(24px,5vw,34px);line-height:1.25;margin:0 0 10px;letter-spacing:-.02em}
+.day-lead{color:var(--text-secondary);margin:0 0 20px;font-size:15px;line-height:1.6}
+.day-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:0 0 24px}
+.day-card{background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:12px;padding:12px 14px}
+.day-card b{display:block;font-size:12px;color:var(--text-muted);font-weight:600;margin-bottom:4px}
+.day-card span{font-size:15px;font-weight:700}
+.day-page h2{font-size:18px;margin:28px 0 10px}
+.day-table{width:100%;border-collapse:collapse;font-size:14px}
+.day-table th,.day-table td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--border-subtle);vertical-align:top}
+.day-table th{font-size:12px;color:var(--text-muted);font-weight:600}
+.day-table .r{color:var(--rise);font-weight:700;white-space:nowrap;text-align:right}
+.day-table .v{color:var(--text-muted);white-space:nowrap;text-align:right}
+.day-table a{color:var(--text-primary);font-weight:600}
+.day-reason{color:var(--text-secondary);display:block;margin-top:3px;font-size:13px;line-height:1.5}
+.day-reason--none{color:var(--text-muted)}
+.day-tag{display:inline-block;font-size:11px;color:var(--text-muted);border:1px solid var(--border);border-radius:999px;padding:0 7px;margin-left:4px;white-space:nowrap}
+.day-nav{display:flex;justify-content:space-between;gap:12px;margin:28px 0 0;font-size:14px}
+.day-nav a{color:var(--accent)}
+.day-cta{margin:24px 0 0;padding:14px 16px;border-radius:12px;background:var(--bg-secondary);border:1px solid var(--border-subtle);font-size:14px;line-height:1.6}
+.day-cta a{color:var(--accent);font-weight:700}
+.day-month{margin:0 0 18px}
+.day-month ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px 16px}
+.day-month li{font-size:14px;padding:4px 0;border-bottom:1px solid var(--border-subtle)}
+.day-month li a{color:var(--text-primary);font-weight:600}
+.day-month li span{color:var(--text-muted);font-size:13px}
+@media (max-width:640px){.day-table .hide-sm{display:none}}
+.day-groups{margin:0;padding-left:18px;line-height:1.8;font-size:14px;color:var(--text-secondary)}
+.day-groups strong{color:var(--text-primary)}
+.day-groups a{color:var(--text-primary);font-weight:600}
+.day-table th.r{color:var(--text-muted)}
+@media (max-width:640px){.day-page{padding-left:16px;padding-right:16px}.day-cards{grid-template-columns:1fr 1fr}.day-card span{font-size:14px}}

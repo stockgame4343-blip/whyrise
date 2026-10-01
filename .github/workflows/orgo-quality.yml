@@ -21,6 +21,7 @@ jobs:
           node-version: '22'
       - run: python scripts/test_reason_quality.py
       - run: python scripts/test_build_history.py
+      - run: python scripts/test_prerender_days.py
       - run: node --test scripts/test_marketing.js
       - run: node --test scripts/test_tg_delivery.js
       - run: node scripts/test_api_overrides.js

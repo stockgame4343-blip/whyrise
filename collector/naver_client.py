@@ -12,6 +12,7 @@ throttle / retry 일관 처리.
 """
 from __future__ import annotations
 
+import html
 import json
 import time
 import urllib.error
@@ -258,7 +259,8 @@ def normalize_news_item(it: dict) -> dict:
     if len(dt_raw) >= 8 and dt_raw[:8].isdigit():
         date = f'{dt_raw[:4]}-{dt_raw[4:6]}-{dt_raw[6:8]}'
     return {
-        'title': it.get('title') or '',
+        # API 제목에 &quot; 같은 HTML 엔티티가 섞여 온다 — 저장 전 복원(프리렌더가 다시 이스케이프)
+        'title': html.unescape(it.get('title') or ''),
         'link': link,
         'source': it.get('officeName') or '',
         'date': date,

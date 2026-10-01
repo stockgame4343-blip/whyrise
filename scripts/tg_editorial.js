@@ -19,9 +19,14 @@ function calendarLeaders(publicDir, date, day) {
     return {leader:stock ? {ticker:stock.ticker,name:stock.name,change_rate:stock.rate,trading_value:stock.vol,theme:stock.theme,sector:stock.sector,market:stock.market} : null,sector:group(entry.sector),theme:group(entry.theme)};
 }
 
+// 정리매매(상장폐지 절차) 종목의 등락은 급등 집계·설명 대상이 아니다.
+function isDelisting(r) { return /^정리매매/.test(String(r?.rise_reason || '')); }
+// 신규상장주는 상장 초기 가격제한폭(최대 4배)이 달라 '주도주'와 구분해 표기한다.
+function isNewListing(theme) { return /신규상장/.test(String(theme || '')); }
+function ipoMark(theme) { return isNewListing(theme) ? ' (신규상장)' : ''; }
 function activeRows(day) {
     const rows = new Map();
-    for (const r of day?.rankings || []) if (r?.ticker && r.name && core.isActive(r, core.RISE_CUTOFF)) rows.set(r.ticker, r);
+    for (const r of day?.rankings || []) if (r?.ticker && r.name && !isDelisting(r) && core.isActive(r, core.RISE_CUTOFF)) rows.set(r.ticker, r);
     return [...rows.values()];
 }
 function comparison(day, previous) {
@@ -58,7 +63,7 @@ function daily(date, leaders, market, refined, day, previous) {
     const lines = ['마감 · ' + tg.dateLabel(date), '', countLine(day, previous)];
     if (market) lines.push('코스피 ' + tg.pct(market.kospi.changePct) + ' · 코스닥 ' + tg.pct(market.kosdaq.changePct));
     const stock = leaders.leader;
-    lines.push('', stock ? '오늘의 대장 ' + stock.name + ' ' + tg.pct(stock.change_rate) + ' · 거래 ' + tg.fmtAmount(stock.trading_value) : '오늘은 대장 조건을 충족한 종목이 없어요.');
+    lines.push('', stock ? '오늘의 대장 ' + stock.name + ipoMark(stock.theme) + ' ' + tg.pct(stock.change_rate) + ' · 거래 ' + tg.fmtAmount(stock.trading_value) : '오늘은 대장 조건을 충족한 종목이 없어요.');
     const reason = stock && refined?.[stock.ticker];
     if (reason) lines.push(tg.clip(reason, 70));
     if (leaders.theme) lines.push('+' + core.RISE_CUTOFF + '% 테마 집계: ' + leaders.theme.key + ' ' + leaders.theme.count + '종목 · 평균 ' + tg.pct(leaders.theme.avgRate));
@@ -68,7 +73,7 @@ function daily(date, leaders, market, refined, day, previous) {
 }
 function intraday(date, movers, refined) {
     const lines = ['장중 · 개별 주도주 / ' + tg.dateLabel(date), '', '거래대금×상승률(최대 30% 반영) 기준 상위 종목이에요.'];
-    movers.slice(0, TOP_CAPTION_ROWS).forEach((m, i) => lines.push((i + 1) + '. ' + m.name + ' ' + tg.pct(m.rate) + ' · ' + tg.fmtAmount(m.vol)));
+    movers.slice(0, TOP_CAPTION_ROWS).forEach((m, i) => lines.push((i + 1) + '. ' + m.name + ipoMark(m.theme) + ' ' + tg.pct(m.rate) + ' · ' + tg.fmtAmount(m.vol)));
     const reason = movers[0] && refined?.[movers[0].ticker];
     if (reason) lines.push(tg.clip(reason, 70));
     lines.push('', '다음 확인: 한 종목의 상승이 같은 테마로 확산되는지.');
@@ -76,7 +81,10 @@ function intraday(date, movers, refined) {
 }
 function themes(date, groups) {
     const lines = ['장중 · 테마 확산 / ' + tg.dateLabel(date), '', 'ORGO 수집 종목 중 +' + core.RISE_CUTOFF + '% 이상 기준'];
-    const chosen = groups.themes.length ? groups.themes : groups.sectors;
+    // 신규상장 묶음·'거래량' 같은 비-테마 태그는 '테마 확산'이 아니다
+    const realThemes = (groups.themes || []).filter(g => !isNewListing(g.key) && !/^거래(량|대금)$/.test(String(g.key || '')));
+    const chosen = realThemes.length ? realThemes : groups.sectors;
+    if (!chosen.length) lines.push('오늘은 3종목 이상 함께 오른 테마가 없어요.');
     chosen.slice(0, 2).forEach(g => lines.push(g.key + ' ' + g.count + '종목 · 평균 ' + tg.pct(g.avgRate)));
     lines.push('지도는 전체 수집 종목, 위 통계는 +15% 이상 기준이에요.');
     lines.push('', '버블로 테마를, 트리맵으로 구성 종목을 볼 수 있어요.', '다음 확인: 상승 종목 수가 늘어나는지, 한두 종목에 그치는지.');
@@ -95,7 +103,8 @@ function evening(date, day, previous, refined) {
         supported.forEach(r => lines.push(r.name + ' — ' + tg.clip(refined[r.ticker], 65)));
     }
     lines.push('', '다음 장 확인: 새로 들어온 종목이 남는지, 오늘 주도 테마가 이어지는지.');
-    return finish(lines, '날짜별 리포트', '/report.html', 'evening', date);
+    // 정적 날짜 페이지(/day/) — 텔레그램 인앱 브라우저에서 바로 열리고 검색 색인 대상이다.
+    return finish(lines, '오늘 오른 종목·이유 전체', '/day/' + date, 'evening', '');
 }
 function morningCheck(recap) {
     if (!recap) return '개장 후 확인: 첫 주도주와 테마에 상승 종목이 함께 모이는지.';
@@ -115,4 +124,4 @@ function calendarObservation(days, start, end) {
     if (!top) return '기록된 ' + entries.length + '거래일 모두 대장 조건을 충족한 종목이 없었어요.';
     return '기록된 ' + entries.length + '거래일 · ' + top.name + ' 대장 ' + top.count + '일.' + (empty ? ' 대장 없는 날은 ' + empty + '일.' : '');
 }
-module.exports = {finalSnapshot, calendarLeaders, activeRows, comparison, previousSnapshot, countLine, daily, intraday, themes, evening, morningCheck, calendarObservation};
+module.exports = {isDelisting, isNewListing, ipoMark, finalSnapshot, calendarLeaders, activeRows, comparison, previousSnapshot, countLine, daily, intraday, themes, evening, morningCheck, calendarObservation};

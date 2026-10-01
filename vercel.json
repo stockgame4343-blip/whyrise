@@ -3,49 +3,81 @@
   "redirects": [
     {
       "source": "/:path((?!api/).*)",
-      "has": [{ "type": "host", "value": "whyrise.vercel.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "whyrise.vercel.app"
+        }
+      ],
       "destination": "https://orgo.kr/:path",
       "permanent": true
     },
     {
       "source": "/:path((?!api/).*)",
-      "has": [{ "type": "host", "value": "www.orgo.kr" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.orgo.kr"
+        }
+      ],
       "destination": "https://orgo.kr/:path",
       "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/stock/:ticker", "destination": "/stock/:ticker.html" }
+    {
+      "source": "/stock/:ticker",
+      "destination": "/stock/:ticker.html"
+    },
+    {
+      "source": "/day/:date(\\d{8})",
+      "destination": "/day/:date.html"
+    }
   ],
   "headers": [
     {
       "source": "/sw.js",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/data/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=60, stale-while-revalidate=300" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, s-maxage=60, stale-while-revalidate=300"
+        }
       ]
     },
     {
       "source": "/(.*)\\.html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(css|js)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     }
   ]

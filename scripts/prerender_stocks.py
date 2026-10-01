@@ -71,7 +71,7 @@ def _summary(events: list[dict]) -> str:
     return ' · '.join(parts)
 
 
-def _timeline_html(events: list[dict]) -> str:
+def _timeline_html(events: list[dict], day_pages: set | None = None) -> str:
     if not events:
         return '<div class="event-empty">최근 1년간 +10% 이상 기록이 없습니다.</div>'
     rows = []
@@ -80,9 +80,12 @@ def _timeline_html(events: list[dict]) -> str:
         rate_s = f'+{rate:.1f}%' if isinstance(rate, (int, float)) else ''
         reason = (e.get('rise_reason') or '').strip() or '이유 수집 중'
         theme = (e.get('theme_tag') or '').strip()
+        date_html = f'<time class="prerender-date">{_fmt_date(e.get("date") or "")}</time>'
+        if day_pages and e.get('date') in day_pages:
+            date_html = f'<a class="prerender-day" href="/day/{e.get("date")}">{date_html}</a>'
         rows.append(
             '<li class="prerender-item">'
-            f'<time class="prerender-date">{_fmt_date(e.get("date") or "")}</time> '
+            f'{date_html} '
             f'<b class="prerender-rate">{rate_s}</b> — {_esc(reason)}'
             + (f' <em class="prerender-theme">[{_esc(theme)}]</em>' if theme else '')
             + '</li>')
@@ -114,10 +117,10 @@ def _json_ld(ticker: str, name: str, desc: str) -> str:
         ],
     }
     return ('<script type="application/ld+json">'
-            + json.dumps(data, ensure_ascii=False) + '</script>\n')
+            + json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026') + '</script>\n')
 
 
-def _render_one(template: str, ticker: str, history: dict) -> str:
+def _render_one(template: str, ticker: str, history: dict, day_pages: set | None = None) -> str:
     name = history.get('name') or ticker
     market = history.get('market') or ''
     events = history.get('events') or []
@@ -160,7 +163,7 @@ def _render_one(template: str, ticker: str, history: dict) -> str:
                           f'<p class="stock-header__summary" id="stockSummary">{_esc(summary)}</p>')
     out = out.replace(ANCHORS['timeline'],
                       '<section class="timeline" id="timeline">'
-                      + _timeline_html(events) + '</section>')
+                      + _timeline_html(events, day_pages) + '</section>')
     return out
 
 
@@ -174,6 +177,12 @@ def build_stock_prerender(stock_history_dir: Path, public_dir: Path) -> dict:
 
     out_dir = public_dir / 'stock'
     out_dir.mkdir(parents=True, exist_ok=True)
+    # 날짜 → /day/{date} 내부 링크 (scripts/prerender_days.py 가 만드는 페이지만)
+    try:
+        from scripts.prerender_days import publishable_dates
+        day_pages = set(publishable_dates())
+    except Exception:
+        day_pages = set()
     written = skipped = errors = 0
     for f in sorted(stock_history_dir.glob('*.json')):
         if f.name == 'index.json':
@@ -184,7 +193,7 @@ def build_stock_prerender(stock_history_dir: Path, public_dir: Path) -> dict:
             errors += 1
             continue
         ticker = history.get('ticker') or f.stem
-        html = _render_one(template, ticker, history)
+        html = _render_one(template, ticker, history, day_pages)
         out_path = out_dir / f'{ticker}.html'
         try:
             if out_path.exists() and out_path.read_text(encoding='utf-8') == html:

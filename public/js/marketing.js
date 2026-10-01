@@ -1,9 +1,9 @@
 (async function(){
     'use strict';
     const $=id=>document.getElementById(id);
-    const labels={threads:'Threads',instagram:'인스타',kakao:'카톡',toss:'토스',telegram:'텔레그램'};
-    const limits={threads:500,instagram:2200,kakao:1000,toss:4000,telegram:4096};
-    const states={prepared:'계정 연결 전 · 원고 준비',manual_ready:'수동 게시용 준비',needs_connection:'계정 연결 필요',published:'게시 완료',uncertain:'전송 결과 확인 필요',creating:'전송 확인 필요',publishing:'전송 확인 필요',created:'이미지 처리 중',awaiting_image:'이미지 배포 대기',needs_api_version:'API 설정 필요'};
+    const labels={threads:'Threads',x:'X',instagram:'인스타',kakao:'카톡',toss:'토스',telegram:'텔레그램'};
+    const limits={threads:500,x:280,instagram:2200,kakao:1000,toss:4000,telegram:4096};
+    const states={prepared:'계정 연결 전 · 원고 준비',uploading:'전송 확인 필요',uploaded:'이미지 업로드됨',retryable:'다음 실행에서 재시도',manual_ready:'수동 게시용 준비',needs_connection:'계정 연결 필요',published:'게시 완료',uncertain:'전송 결과 확인 필요',creating:'전송 확인 필요',publishing:'전송 확인 필요',created:'이미지 처리 중',awaiting_image:'이미지 배포 대기',needs_api_version:'API 설정 필요'};
     const symbols={theme:'◉',market:'▥',calendar:'▦',leader:'♜'};
     const get=async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();};
     try {
@@ -39,7 +39,7 @@
         }
         function choose(){
             const s=story();imageIndex=0;
-            $('copyText').value=edits[selected+':'+channel]??s.posts[channel].text;
+            $('copyText').value=edits[selected+':'+channel]??(s.posts[channel]?.text||'');
             $('channelHint').textContent=channel==='toss'?'시황·관련 종목 게시판용':channel==='instagram'?'이미지 먼저 · 짧은 캡션':'이미지와 함께 올려주세요';
             document.querySelectorAll('.story').forEach(b=>{b.classList.toggle('active',b.dataset.story===selected);b.setAttribute('aria-pressed',String(b.dataset.story===selected));});
             document.querySelectorAll('.channel').forEach(b=>{b.classList.toggle('active',b.dataset.channel===channel);b.setAttribute('aria-pressed',String(b.dataset.channel===channel));});
@@ -52,9 +52,9 @@
             $('feedback').textContent='';syncCaption();drawImage();
         }
         d.stories.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='story';b.dataset.story=s.id;const icon=document.createElement('span');icon.className='symbol';icon.textContent=symbols[s.id]||'◉';icon.setAttribute('aria-hidden','true');const div=document.createElement('div'),strong=document.createElement('b'),small=document.createElement('small');strong.textContent=s.label;small.textContent=s.note;div.append(strong,small);b.append(icon,div);b.onclick=()=>{selected=s.id;choose();};$('stories').append(b);});
-        Object.entries(labels).forEach(([key,label])=>{const b=document.createElement('button');b.type='button';b.className='channel';b.dataset.channel=key;b.textContent=label;b.onclick=()=>{channel=key;choose();};$('channels').append(b);});
+        Object.entries(labels).filter(([key])=>key==='telegram'||d.posts?.[key]).forEach(([key,label])=>{const b=document.createElement('button');b.type='button';b.className='channel';b.dataset.channel=key;b.textContent=label;b.onclick=()=>{channel=key;choose();};$('channels').append(b);});
         $('copyText').oninput=()=>{edits[selected+':'+channel]=$('copyText').value;syncCaption();};
-        $('reset').onclick=()=>{delete edits[selected+':'+channel];$('copyText').value=story().posts[channel].text;syncCaption();};
+        $('reset').onclick=()=>{delete edits[selected+':'+channel];$('copyText').value=story().posts[channel]?.text||'';syncCaption();};
         $('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('copyText').value);$('feedback').textContent='복사했어요. 이미지와 함께 올려주세요.';}catch(e){$('copyText').focus();$('copyText').select();$('feedback').textContent='본문을 선택했습니다. 직접 복사해 주세요.';}};
         choose();$('studio').setAttribute('aria-busy','false');
         const status=await get('/marketing/status.json').catch(()=>null);

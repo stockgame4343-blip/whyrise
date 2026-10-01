@@ -126,4 +126,31 @@ class ReasonQualityTest(unittest.TestCase):
         with patch.object(api,'_fetch_retry',side_effect=AssertionError('network')): handler.do_GET()
         self.assertEqual(result[0][0],400)
 
+    # ── 2026-10: 상류 뉴스 단절 후 '거래량 증가' 일색 복구 ──
+    def test_volume_label_is_generic_and_replaceable(self):
+        self.assertTrue(llm.is_generic('거래량 증가'))
+        t=llm._target_from_event('008970','KBI동양철관',{'date':'20260930','rise_reason':'거래량 증가','reason_source':'stockrise',
+            'theme_tag':'강관업체(Steel pipe)','sector':'철강','news':[
+                {'title':"[특징주] '韓 LNG 대미투자' 전망에 철강주 등 강세(종합)",'date':'2026-09-30','link':'https://n.news.naver.com/a'}]})
+        self.assertFalse(t['verify_only'])
+        v=llm.headline_fallback(t)
+        self.assertEqual((v['action'],v['confidence']),('replace','low'))
+        self.assertTrue(v['reason'].startswith('관련 보도: '))
+
+    def test_theme_headline_requires_group_move_wording(self):
+        t=llm._target_from_event('008970','KBI동양철관',{'date':'20260930','rise_reason':'거래량 증가','theme_tag':'철강 중소형',
+            'news':[{'title':'철강 업계 노사 협상 타결','date':'2026-09-30','link':'https://n.news.naver.com/a'}]})
+        self.assertEqual(llm.headline_fallback(t)['action'],'no_evidence')
+
+    def test_delisting_trade_is_labelled_even_with_llm(self):
+        t=llm._target_from_event('100120','부산주공',{'date':'20260930','rise_reason':'거래량 증가','news':[
+            {'title':'부산주공, 정리매매 첫날 91% 급락…주가 40원으로','date':'2026-09-30','link':'https://n.news.naver.com/b'}]})
+        with patch.object(llm,'_call_batch',side_effect=AssertionError('must not be sent')):
+            verdicts,_=llm.refine([t],'key')
+        self.assertEqual(verdicts[('100120','20260930')]['reason'],'정리매매 기간 (상장폐지 절차)')
+
+    def test_html_entities_in_titles_are_decoded(self):
+        t=llm._target_from_event('1','A사',{'date':'20260930','news':[{'title':'&quot;A사&quot; 계약','date':'2026-09-30','link':'https://x.com/1'}]})
+        self.assertEqual(t['news'][0]['title'],'"A사" 계약')
+
 if __name__=='__main__': unittest.main()
