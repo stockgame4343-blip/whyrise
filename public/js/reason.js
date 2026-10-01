@@ -36,11 +36,21 @@
         return null;
     }
 
+    // 상장 첫날: 가격제한폭(±30%)을 넘는 상승은 신규상장 첫날뿐 (정리매매 제외)
+    function listingDay(row) {
+        if (!row || Number(row.change_rate) <= 30.5 || /^정리매매/.test(String(row.rise_reason || ''))) return false;
+        var tags = [row.theme_tag].concat(row.theme_tags || []).join(' ');
+        return /신규\s*상장/.test(tags);
+    }
+
     /** row → { text, unknown, label, link, linkTitle } */
     function display(row) {
         var reason = String((row && row.rise_reason) || '').trim();
         if (!trusted(row) && (!reason || reason === '-' || TEMPLATE_RE.test(reason))) reason = '';
         if (reason.indexOf('전일 사유 · ') === 0 && TEMPLATE_RE.test(reason.slice(8))) reason = '';
+        if (!reason && listingDay(row)) {
+            return { text: '상장 첫날 (공모가 대비)', unknown: false, label: '신규상장', link: '', linkTitle: '' };
+        }
         var ev = reason ? evidence(row) : null;
         var label = '';
         if (reason) {

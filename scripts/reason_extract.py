@@ -550,6 +550,11 @@ def display(row: dict) -> dict:
                or row.get('reason_origin') in ('news', 'toss'))
     if not trusted and (reason in ('', '-') or is_template_reason(reason) or re.search(r'테마\s*강세$|^바이오$', reason)):
         reason = ''
+    if not reason and (row.get('change_rate') or 0) > 30.5 and not str(row.get('rise_reason') or '').startswith('정리매매') \
+            and IPO_RE.search(' '.join([str(row.get('theme_tag') or '')] + [str(t) for t in row.get('theme_tags') or []])):
+        # 가격제한폭(±30%)을 넘는 상승은 신규상장 첫날뿐
+        return {'text': '상장 첫날 (공모가 대비)', 'unknown': False, 'label': '신규상장', 'link': '', 'title': '',
+                'kind': 'ipo', 'confidence': 'high'}
     ev = None
     if reason:
         for it in row.get('reason_evidence') or []:
