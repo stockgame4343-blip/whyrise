@@ -1,0 +1,33 @@
+name: IndexNow 전체 색인 요청
+# 사이트맵 전체 URL(종목·날짜 페이지)을 네이버·Bing 에 IndexNow 로 한 번에 알린다.
+# 평소에는 build-history 의 'IndexNow ping' 스텝이 바뀐 페이지만 보낸다.
+# 이 워크플로는 대량 변경(페이지 신설·템플릿 변경) 직후 1회 수동 실행용.
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths: ['.github/workflows/indexnow-bulk.yml']
+permissions:
+  contents: read
+concurrency:
+  group: indexnow-bulk
+  cancel-in-progress: false
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ping all sitemap URLs
+        run: |
+          python3 - <<'EOF' > urls.txt
+          import re
+          xml = open('public/sitemap.xml', encoding='utf-8').read()
+          for u in re.findall(r'<loc>(https://orgo\.kr/[^<]*)</loc>', xml):
+              print(u)
+          EOF
+          echo "URL $(wc -l < urls.txt)개"
+          python3 scripts/indexnow_ping.py --wait-live 300 --urls $(head -n 10000 urls.txt | tr '\n' ' ')
