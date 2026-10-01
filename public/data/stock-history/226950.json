@@ -5,26 +5,47 @@
   "events": [
     {
       "date": "20261001",
-      "change_rate": 12.67,
-      "close_price": 115600.0,
-      "trading_volume": 438012,
-      "trading_value": 50634187200,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "change_rate": 12.09,
+      "close_price": 115000.0,
+      "trading_volume": 439309,
+      "trading_value": 50520535000,
+      "rise_reason": "관련 보도: FDA·DIA 콘퍼런스서 황반변성 RNAi 개발 성과 발표",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
         {
+          "title": "올릭스, FDA·DIA 콘퍼런스서 황반변성 RNAi 개발 성과 발표",
+          "link": "https://n.news.naver.com/mnews/article/018/0006377198",
+          "source": "이데일리",
+          "date": "2026.09.29"
+        },
+        {
           "title": "'저평가 매력' 바이오로 번진 온기…한올바이오 10%·삼성에피스 8%↑...",
           "link": "https://n.news.naver.com/mnews/article/421/0009204623",
           "source": "뉴스1",
-          "date": "2026-10-01"
+          "date": "2026.10.01"
+        },
+        {
+          "title": "거래소, 내달 6~7일 '코스닥 데이' 개최…현안·투자 정보 제공",
+          "link": "https://n.news.naver.com/mnews/article/422/0000908778",
+          "source": "연합뉴스TV",
+          "date": "2026.09.22"
         }
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_evidence": [
+        {
+          "title": "올릭스, FDA·DIA 콘퍼런스서 황반변성 RNAi 개발 성과 발표",
+          "link": "https://n.news.naver.com/mnews/article/018/0006377198",
+          "source": "이데일리",
+          "date": "2026.09.29"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -838,7 +859,7 @@
     "count_20": 2,
     "count_limit": 0,
     "count_recent": 1,
-    "avg_rate": 14.27
+    "avg_rate": 14.23
   },
-  "built_at": "2026-10-01T18:07:26"
+  "built_at": "2026-10-01T20:08:38"
 }
