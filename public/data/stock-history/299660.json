@@ -9,12 +9,18 @@
       "close_price": 2885.0,
       "trading_volume": 1991482,
       "trading_value": 5745425570,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 30억원 규모 제3자배정 유상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
+        {
+          "title": "셀리드, 30억원 규모 제3자배정 유상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/277/0005820141",
+          "source": "아시아경제",
+          "date": "2026-09-22"
+        },
         {
           "title": "셀리드·블루엠텍, 경영권 매각 소식에 들썩…인벤테라 상승[바이오 ...",
           "link": "https://n.news.naver.com/mnews/article/018/0006375241",
@@ -28,12 +34,6 @@
           "date": "2026-09-23"
         },
         {
-          "title": "셀리드, 30억원 규모 제3자배정 유상증자 결정",
-          "link": "https://n.news.naver.com/mnews/article/277/0005820141",
-          "source": "아시아경제",
-          "date": "2026-09-22"
-        },
-        {
           "title": "셀리드, 휴니버스글로벌에 경영권 넘긴다…100억원 유증",
           "link": "https://n.news.naver.com/mnews/article/018/0006374531",
           "source": "이데일리",
@@ -42,7 +42,16 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "셀리드, 30억원 규모 제3자배정 유상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/277/0005820141",
+          "source": "아시아경제",
+          "date": "2026-09-22"
+        }
+      ]
     },
     {
       "date": "20260831",
@@ -643,5 +652,5 @@
     "count_recent": 2,
     "avg_rate": 22.21
   },
-  "built_at": "2026-09-30T22:04:11"
+  "built_at": "2026-10-01T16:32:47"
 }

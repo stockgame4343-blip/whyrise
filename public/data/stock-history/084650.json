@@ -9,22 +9,22 @@
       "close_price": 2925.0,
       "trading_volume": 789606,
       "trading_value": 2309597550,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: \"국내외 사업구조, '수익성 중심' 재편\"",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "마이크로바이옴",
       "news": [
         {
-          "title": "멀티운용으로 M&amp;A한파 돌파하는 스틱",
-          "link": "https://n.news.naver.com/mnews/article/016/0002701327",
-          "source": "헤럴드경제",
-          "date": "2026-09-23"
-        },
-        {
           "title": "랩지노믹스 &quot;국내외 사업구조, '수익성 중심' 재편&quot;",
           "link": "https://n.news.naver.com/mnews/article/003/0014209750",
           "source": "뉴시스",
+          "date": "2026-09-23"
+        },
+        {
+          "title": "멀티운용으로 M&amp;A한파 돌파하는 스틱",
+          "link": "https://n.news.naver.com/mnews/article/016/0002701327",
+          "source": "헤럴드경제",
           "date": "2026-09-23"
         },
         {
@@ -42,7 +42,16 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "랩지노믹스 &quot;국내외 사업구조, '수익성 중심' 재편&quot;",
+          "link": "https://n.news.naver.com/mnews/article/003/0014209750",
+          "source": "뉴시스",
+          "date": "2026-09-23"
+        }
+      ]
     },
     {
       "date": "20260807",
@@ -526,5 +535,5 @@
     "count_recent": 1,
     "avg_rate": 19.07
   },
-  "built_at": "2026-09-30T22:04:52"
+  "built_at": "2026-10-01T16:32:49"
 }

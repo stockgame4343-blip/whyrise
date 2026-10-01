@@ -9,12 +9,18 @@
       "close_price": 2795.0,
       "trading_volume": 1217690,
       "trading_value": 3403443550,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
+        {
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        },
         {
           "title": "[마감시황]코스닥, 836.27로 1.11% 상승 마감…반도체 장비 강세·개인...",
           "link": "https://n.news.naver.com/mnews/article/081/0003683059",
@@ -34,12 +40,6 @@
           "date": "2026-09-21"
         },
         {
-          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
-          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
-          "source": "뉴스1",
-          "date": "2026-09-21"
-        },
-        {
           "title": "美반도체 훈풍 번진 ‘소부장株’…하나마이크론 14%대 ‘급등’[마켓...",
           "link": "https://n.news.naver.com/mnews/article/011/0004664059",
           "source": "서울경제",
@@ -54,7 +54,16 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260914",
@@ -640,5 +649,5 @@
     "count_recent": 2,
     "avg_rate": 17.87
   },
-  "built_at": "2026-09-30T22:04:44"
+  "built_at": "2026-10-01T16:32:45"
 }

@@ -9,22 +9,22 @@
       "close_price": 16730.0,
       "trading_volume": 110321,
       "trading_value": 1845670330,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: '범LG家' 구미현 인수 효과…씨싸이트, 한주새 150% 급등",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
         {
-          "title": "'3,400원→1만6,000원'…확 달라진 주가 일주일새 150% 뛰었다",
-          "link": "https://n.news.naver.com/mnews/article/215/0001267621",
-          "source": "한국경제TV",
-          "date": "2026-09-29"
-        },
-        {
           "title": "'범LG家' 구미현 인수 효과…씨싸이트, 한주새 150% 급등",
           "link": "https://n.news.naver.com/mnews/article/015/0005337276",
           "source": "한국경제",
+          "date": "2026-09-29"
+        },
+        {
+          "title": "'3,400원→1만6,000원'…확 달라진 주가 일주일새 150% 뛰었다",
+          "link": "https://n.news.naver.com/mnews/article/215/0001267621",
+          "source": "한국경제TV",
           "date": "2026-09-29"
         },
         {
@@ -66,7 +66,16 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "'범LG家' 구미현 인수 효과…씨싸이트, 한주새 150% 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005337276",
+          "source": "한국경제",
+          "date": "2026-09-29"
+        }
+      ]
     },
     {
       "date": "20260928",
@@ -74,12 +83,18 @@
       "close_price": 12870.0,
       "trading_volume": 37055,
       "trading_value": 476897850,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "관련 보도: 범LG가 구미현, 의류 제조 ‘씨싸이트’ 인수 [시그널]",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
+        {
+          "title": "범LG가 구미현, 의류 제조 ‘씨싸이트’ 인수 [시그널]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004666051",
+          "source": "서울경제",
+          "date": "2026-09-28"
+        },
         {
           "title": "'3,400원→1만6,000원'…확 달라진 주가 일주일새 150% 뛰었다",
           "link": "https://n.news.naver.com/mnews/article/215/0001267621",
@@ -111,12 +126,6 @@
           "date": "2026-09-29"
         },
         {
-          "title": "범LG가 구미현, 의류 제조 ‘씨싸이트’ 인수 [시그널]",
-          "link": "https://n.news.naver.com/mnews/article/011/0004666051",
-          "source": "서울경제",
-          "date": "2026-09-28"
-        },
-        {
           "title": "HLB 상한가·에코프로비엠 6% 급등… 반도체 장비주는 약세",
           "link": "https://n.news.naver.com/mnews/article/081/0003684055",
           "source": "서울신문",
@@ -131,7 +140,16 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_evidence": [
+        {
+          "title": "범LG가 구미현, 의류 제조 ‘씨싸이트’ 인수 [시그널]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004666051",
+          "source": "서울경제",
+          "date": "2026-09-28"
+        }
+      ]
     },
     {
       "date": "20260923",
@@ -139,9 +157,9 @@
       "close_price": 11400.0,
       "trading_volume": 898662,
       "trading_value": 10244746800,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 구미현 외 5인과 최대주주 변경 주식양수도 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -154,7 +172,16 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "씨싸이트, 구미현 외 5인과 최대주주 변경 주식양수도 계약",
+          "link": "https://n.news.naver.com/mnews/article/003/0014211394",
+          "source": "뉴시스",
+          "date": "2026-09-23"
+        }
+      ]
     },
     {
       "date": "20260922",
@@ -686,5 +713,5 @@
     "count_recent": 7,
     "avg_rate": 19.27
   },
-  "built_at": "2026-09-30T22:03:38"
+  "built_at": "2026-10-01T16:32:54"
 }

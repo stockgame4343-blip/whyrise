@@ -9,12 +9,18 @@
       "close_price": 35500.0,
       "trading_volume": 1924378,
       "trading_value": 68315419000,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 반도체 장비株 장초반 강세, 디아이 11% 이상 급등",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
+        {
+          "title": "반도체 장비株 장초반 강세, 디아이 11% 이상 급등",
+          "link": "https://n.news.naver.com/mnews/article/014/0005578780",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-21"
+        },
         {
           "title": "한화운용 &quot;반도체 퓨어 플레이어 ETF 3종에 투자하라&quot;",
           "link": "https://n.news.naver.com/mnews/article/417/0001159170",
@@ -46,12 +52,6 @@
           "date": "2026-09-21"
         },
         {
-          "title": "반도체 장비株 장초반 강세, 디아이 11% 이상 급등",
-          "link": "https://n.news.naver.com/mnews/article/014/0005578780",
-          "source": "파이낸셜뉴스",
-          "date": "2026-09-21"
-        },
-        {
           "title": "반도체 ‘조연’의 반전...“후공정 장비 재평가 기대”",
           "link": "https://n.news.naver.com/mnews/article/024/0000108327",
           "source": "매경이코노미",
@@ -66,7 +66,16 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "반도체 장비株 장초반 강세, 디아이 11% 이상 급등",
+          "link": "https://n.news.naver.com/mnews/article/014/0005578780",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -767,5 +776,5 @@
     "count_recent": 3,
     "avg_rate": 15.7
   },
-  "built_at": "2026-09-30T21:59:35"
+  "built_at": "2026-10-01T16:32:45"
 }

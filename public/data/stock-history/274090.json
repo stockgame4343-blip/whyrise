@@ -9,12 +9,18 @@
       "close_price": 12880.0,
       "trading_volume": 5797940,
       "trading_value": 74677467200,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 스페이스X 궤도비행 임박에… 우주항공株 날았다",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
+        {
+          "title": "스페이스X 궤도비행 임박에… 우주항공株 날았다",
+          "link": "https://n.news.naver.com/mnews/article/014/0005577617",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-17"
+        },
         {
           "title": "켄코아에어로스페이스, 튀르키예 휴르제트 사업 참여",
           "link": "https://n.news.naver.com/mnews/article/277/0005819371",
@@ -32,12 +38,6 @@
           "link": "https://n.news.naver.com/mnews/article/003/0014198820",
           "source": "뉴시스",
           "date": "2026-09-18"
-        },
-        {
-          "title": "스페이스X 궤도비행 임박에… 우주항공株 날았다",
-          "link": "https://n.news.naver.com/mnews/article/014/0005577617",
-          "source": "파이낸셜뉴스",
-          "date": "2026-09-17"
         },
         {
           "title": "스페이스X, 우주선 시험 비행 소식에 관련주 급등…센서뷰 26%대↑",
@@ -66,7 +66,16 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "스페이스X 궤도비행 임박에… 우주항공株 날았다",
+          "link": "https://n.news.naver.com/mnews/article/014/0005577617",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-17"
+        }
+      ]
     },
     {
       "date": "20260917",
@@ -751,5 +760,5 @@
     "count_recent": 2,
     "avg_rate": 17.43
   },
-  "built_at": "2026-09-30T22:02:49"
+  "built_at": "2026-10-01T16:32:41"
 }

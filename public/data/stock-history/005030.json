@@ -9,12 +9,18 @@
       "close_price": 44.0,
       "trading_volume": 26482549,
       "trading_value": 1165232156,
-      "rise_reason": "거래량 증가",
+      "rise_reason": "정리매매 기간 (상장폐지 절차)",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "거래량",
       "news": [
+        {
+          "title": "부산주공, 정리매매 첫날 91% 급락…주가 40원으로[종목 NOW]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005582281",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-29"
+        },
         {
           "title": "코스피 거래상위 차별화… 철강·소재 급등, 반도체 대형주 혼조",
           "link": "https://n.news.naver.com/mnews/article/081/0003684751",
@@ -26,12 +32,6 @@
           "link": "https://n.news.naver.com/mnews/article/081/0003684660",
           "source": "서울신문",
           "date": "2026-09-30"
-        },
-        {
-          "title": "부산주공, 정리매매 첫날 91% 급락…주가 40원으로[종목 NOW]",
-          "link": "https://n.news.naver.com/mnews/article/014/0005582281",
-          "source": "파이낸셜뉴스",
-          "date": "2026-09-29"
         },
         {
           "title": "부산주공 정리매매 첫 날 91% 급락… 코스피 거래상위 종목 희비 엇갈...",
@@ -48,7 +48,16 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "부산주공, 정리매매 첫날 91% 급락…주가 40원으로[종목 NOW]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005582281",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-29"
+        }
+      ]
     }
   ],
   "stats": {
@@ -59,5 +68,5 @@
     "count_recent": 1,
     "avg_rate": 18.92
   },
-  "built_at": "2026-09-30T22:00:21"
+  "built_at": "2026-10-01T16:32:56"
 }

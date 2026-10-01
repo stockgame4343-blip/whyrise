@@ -38,28 +38,37 @@
       "close_price": 8130.0,
       "trading_volume": 1935189,
       "trading_value": 15733086570,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 美반도체 훈풍 번진 ‘소부장株’…하나마이크론 14%대 ‘급등’[마켓...",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
+        {
+          "title": "美반도체 훈풍 번진 ‘소부장株’…하나마이크론 14%대 ‘급등’[마켓...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004664059",
+          "source": "서울경제",
+          "date": "2026-09-21"
+        },
         {
           "title": "‘AI 속도조절론’에도 삼성전자 5% 강세…코스피 ‘7000선’ 재탈환",
           "link": "https://n.news.naver.com/mnews/article/018/0006373801",
           "source": "이데일리",
           "date": "2026-09-21"
-        },
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
         {
           "title": "美반도체 훈풍 번진 ‘소부장株’…하나마이크론 14%대 ‘급등’[마켓...",
           "link": "https://n.news.naver.com/mnews/article/011/0004664059",
           "source": "서울경제",
           "date": "2026-09-21"
         }
-      ],
-      "sector": "반도체와반도체장비",
-      "is_52w_high": false,
-      "source": "stockrise"
+      ]
     },
     {
       "date": "20260917",
@@ -927,5 +936,5 @@
     "count_recent": 3,
     "avg_rate": 15.07
   },
-  "built_at": "2026-09-30T22:01:42"
+  "built_at": "2026-10-01T16:32:45"
 }

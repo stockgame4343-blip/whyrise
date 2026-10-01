@@ -9,9 +9,9 @@
       "close_price": 4355.0,
       "trading_volume": 8754616,
       "trading_value": 38126352680,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 美 기업과 반도체 검사장비 공급계약에 상한가 [종목 NOW]",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -36,7 +36,16 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "테라뷰, 美 기업과 반도체 검사장비 공급계약에 상한가 [종목 NOW]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005582282",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-29"
+        }
+      ]
     },
     {
       "date": "20260921",
@@ -44,9 +53,9 @@
       "close_price": 3515.0,
       "trading_volume": 3231638,
       "trading_value": 11359207570,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -59,7 +68,16 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260910",
@@ -393,5 +411,5 @@
     "count_recent": 4,
     "avg_rate": 20.57
   },
-  "built_at": "2026-09-30T22:03:06"
+  "built_at": "2026-10-01T16:32:54"
 }

@@ -9,12 +9,18 @@
       "close_price": 12120.0,
       "trading_volume": 7090222,
       "trading_value": 85933490640,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: \"AI 발전할수록 양자암호 중요\"…엑스게이트 17%·우리넷 10%↑[핫종목...",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
+        {
+          "title": "&quot;AI 발전할수록 양자암호 중요&quot;…엑스게이트 17%·우리넷 10%↑[핫종목...",
+          "link": "https://n.news.naver.com/mnews/article/421/0009188181",
+          "source": "뉴스1",
+          "date": "2026-09-23"
+        },
         {
           "title": "28만전자, 180만닉스, 7천피인데…거래대금은 6월의 '반토막' [주간 증...",
           "link": "https://n.news.naver.com/mnews/article/665/0000008233",
@@ -28,12 +34,6 @@
           "date": "2026-09-23"
         },
         {
-          "title": "&quot;AI 발전할수록 양자암호 중요&quot;…엑스게이트 17%·우리넷 10%↑[핫종목...",
-          "link": "https://n.news.naver.com/mnews/article/421/0009188181",
-          "source": "뉴스1",
-          "date": "2026-09-23"
-        },
-        {
           "title": "[특징주] 양자암호·컴퓨터株, 장 초반 강세… 증권가 “AI 보안 필수...",
           "link": "https://n.news.naver.com/mnews/article/366/0001194118",
           "source": "조선비즈",
@@ -42,7 +42,16 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "&quot;AI 발전할수록 양자암호 중요&quot;…엑스게이트 17%·우리넷 10%↑[핫종목...",
+          "link": "https://n.news.naver.com/mnews/article/421/0009188181",
+          "source": "뉴스1",
+          "date": "2026-09-23"
+        }
+      ]
     },
     {
       "date": "20260916",
@@ -582,5 +591,5 @@
     "count_recent": 3,
     "avg_rate": 17.55
   },
-  "built_at": "2026-09-30T22:03:20"
+  "built_at": "2026-10-01T16:32:49"
 }

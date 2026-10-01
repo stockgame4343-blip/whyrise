@@ -9,9 +9,9 @@
       "close_price": 802.0,
       "trading_volume": 11965734,
       "trading_value": 9596518668,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 코스닥 거래상위, 통신·광부품주 강세…대한광통신 거...",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -24,7 +24,16 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]코스닥 거래상위, 통신·광부품주 강세…대한광통신 거...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003680784",
+          "source": "서울신문",
+          "date": "2026-09-16"
+        }
+      ]
     },
     {
       "date": "20260805",
@@ -1260,5 +1269,5 @@
     "count_recent": 1,
     "avg_rate": 23.3
   },
-  "built_at": "2026-09-30T22:05:21"
+  "built_at": "2026-10-01T16:32:41"
 }

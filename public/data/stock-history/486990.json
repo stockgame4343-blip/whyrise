@@ -9,9 +9,9 @@
       "close_price": 22550.0,
       "trading_volume": 2447794,
       "trading_value": 55197754700,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: \"고성능 GPU나 외부서버 없어도 된다\"…노타, 로봇팔 작업 3배↑",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -24,7 +24,16 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "&quot;고성능 GPU나 외부서버 없어도 된다&quot;…노타, 로봇팔 작업 3배↑",
+          "link": "https://n.news.naver.com/mnews/article/008/0005417470",
+          "source": "머니투데이",
+          "date": "2026-09-22"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -816,5 +825,5 @@
     "count_recent": 1,
     "avg_rate": 17.84
   },
-  "built_at": "2026-09-30T22:01:41"
+  "built_at": "2026-10-01T16:32:47"
 }

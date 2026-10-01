@@ -9,12 +9,18 @@
       "close_price": 106.0,
       "trading_volume": 5506283,
       "trading_value": 583665998,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 상폐 앞두고 널뛴 에이에프더블류…20% 급등→16% 급락 마감(종합)",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "거래량",
       "news": [
+        {
+          "title": "상폐 앞두고 널뛴 에이에프더블류…20% 급등→16% 급락 마감(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0009184207",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        },
         {
           "title": "충청권도 시작된 '증시 퇴출'…높아진 시총 문턱",
           "link": "https://n.news.naver.com/mnews/article/656/0000187850",
@@ -52,12 +58,6 @@
           "date": "2026-09-22"
         },
         {
-          "title": "상폐 앞두고 널뛴 에이에프더블류…20% 급등→16% 급락 마감(종합)",
-          "link": "https://n.news.naver.com/mnews/article/421/0009184207",
-          "source": "뉴스1",
-          "date": "2026-09-21"
-        },
-        {
           "title": "[마감시황]코스닥, 836.27로 1.11% 상승 마감…반도체 장비 강세·개인...",
           "link": "https://n.news.naver.com/mnews/article/081/0003682336",
           "source": "서울신문",
@@ -66,7 +66,16 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "상폐 앞두고 널뛴 에이에프더블류…20% 급등→16% 급락 마감(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0009184207",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260828",
@@ -428,5 +437,5 @@
     "count_recent": 1,
     "avg_rate": 22.69
   },
-  "built_at": "2026-09-30T22:06:00"
+  "built_at": "2026-10-01T16:32:49"
 }

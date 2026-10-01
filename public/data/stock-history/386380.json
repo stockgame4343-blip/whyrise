@@ -9,12 +9,18 @@
       "close_price": 25250.0,
       "trading_volume": 8906938,
       "trading_value": 224900184500,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 한국 의료기기기업 유일 美 타임 ‘세계 최고 헬스테크 ...",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
+        {
+          "title": "스카이랩스, 한국 의료기기기업 유일 美 타임 ‘세계 최고 헬스테크 ...",
+          "link": "https://n.news.naver.com/mnews/article/015/0005334513",
+          "source": "한국경제",
+          "date": "2026-09-21"
+        },
         {
           "title": "“추석 용돈 굴린다면 반도체·배당에”…5대 운용사 ETF 추천",
           "link": "https://n.news.naver.com/mnews/article/011/0004665167",
@@ -70,12 +76,6 @@
           "date": "2026-09-21"
         },
         {
-          "title": "스카이랩스, 한국 의료기기기업 유일 美 타임 ‘세계 최고 헬스테크 ...",
-          "link": "https://n.news.naver.com/mnews/article/015/0005334513",
-          "source": "한국경제",
-          "date": "2026-09-21"
-        },
-        {
           "title": "[이 시각 시황] 코스피 7천피 재도전…로봇·의료AI株 강세",
           "link": "https://n.news.naver.com/mnews/article/374/0000534004",
           "source": "SBS Biz",
@@ -90,7 +90,16 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "스카이랩스, 한국 의료기기기업 유일 美 타임 ‘세계 최고 헬스테크 ...",
+          "link": "https://n.news.naver.com/mnews/article/015/0005334513",
+          "source": "한국경제",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -117,5 +126,5 @@
     "count_recent": 2,
     "avg_rate": 29.61
   },
-  "built_at": "2026-09-30T22:01:53"
+  "built_at": "2026-10-01T16:32:45"
 }

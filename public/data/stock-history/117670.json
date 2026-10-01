@@ -9,9 +9,9 @@
       "close_price": 11900.0,
       "trading_volume": 734896,
       "trading_value": 8745262400,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: \"광통신·광센서 IC 신제품 개발 추진…연내 출하\"",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -24,7 +24,16 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "알파칩스 &quot;광통신·광센서 IC 신제품 개발 추진…연내 출하&quot;",
+          "link": "https://n.news.naver.com/mnews/article/003/0014199861",
+          "source": "뉴시스",
+          "date": "2026-09-18"
+        }
+      ]
     },
     {
       "date": "20260911",
@@ -631,5 +640,5 @@
     "count_recent": 3,
     "avg_rate": 17.44
   },
-  "built_at": "2026-09-30T22:04:15"
+  "built_at": "2026-10-01T16:32:41"
 }

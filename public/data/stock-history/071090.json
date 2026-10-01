@@ -9,12 +9,18 @@
       "close_price": 4105.0,
       "trading_volume": 9093180,
       "trading_value": 37327503900,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 美알래스카 LNG 투자 기대…하이스틸·세아제강 강세[핫종목]",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "강관업체(Steel pipe)",
       "news": [
+        {
+          "title": "美알래스카 LNG 투자 기대…하이스틸·세아제강 강세[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009199764",
+          "source": "뉴스1",
+          "date": "2026-09-30"
+        },
         {
           "title": "[특징주] '韓 LNG 대미투자' 전망에 철강주 등 강세(종합)",
           "link": "https://n.news.naver.com/mnews/article/001/0016347847",
@@ -38,17 +44,20 @@
           "link": "https://n.news.naver.com/mnews/article/030/0003471127",
           "source": "전자신문",
           "date": "2026-09-30"
-        },
+        }
+      ],
+      "sector": "철강",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
         {
           "title": "美알래스카 LNG 투자 기대…하이스틸·세아제강 강세[핫종목]",
           "link": "https://n.news.naver.com/mnews/article/421/0009199764",
           "source": "뉴스1",
           "date": "2026-09-30"
         }
-      ],
-      "sector": "철강",
-      "is_52w_high": false,
-      "source": "stockrise"
+      ]
     },
     {
       "date": "20260428",
@@ -349,5 +358,5 @@
     "count_recent": 1,
     "avg_rate": 16.06
   },
-  "built_at": "2026-09-30T21:59:57"
+  "built_at": "2026-10-01T16:32:56"
 }

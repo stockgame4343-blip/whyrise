@@ -9,12 +9,18 @@
       "close_price": 17730.0,
       "trading_volume": 657295,
       "trading_value": 11653840350,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 자사주 300억 태운다…주주환원 확대",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
+        {
+          "title": "한섬, 자사주 300억 태운다…주주환원 확대",
+          "link": "https://n.news.naver.com/mnews/article/031/0001059789",
+          "source": "아이뉴스24",
+          "date": "2026-09-18"
+        },
         {
           "title": "&quot;매년 '100억' 줄입니다&quot;…'2만8천원→3만6천원' 목표가 뛴 종목 [주식...",
           "link": "https://n.news.naver.com/mnews/article/215/0001266940",
@@ -76,12 +82,6 @@
           "date": "2026-09-19"
         },
         {
-          "title": "한섬, 자사주 300억 태운다…주주환원 확대",
-          "link": "https://n.news.naver.com/mnews/article/031/0001059789",
-          "source": "아이뉴스24",
-          "date": "2026-09-18"
-        },
-        {
           "title": "한섬, 3년간 300억 자사주 소각...배당도 늘린다",
           "link": "https://n.news.naver.com/mnews/article/014/0005578081",
           "source": "파이낸셜뉴스",
@@ -90,7 +90,16 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "한섬, 자사주 300억 태운다…주주환원 확대",
+          "link": "https://n.news.naver.com/mnews/article/031/0001059789",
+          "source": "아이뉴스24",
+          "date": "2026-09-18"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -274,5 +283,5 @@
     "count_recent": 1,
     "avg_rate": 12.02
   },
-  "built_at": "2026-09-30T21:59:44"
+  "built_at": "2026-10-01T16:32:41"
 }

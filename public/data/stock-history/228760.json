@@ -25,23 +25,23 @@
       "close_price": 11600.0,
       "trading_volume": 545932,
       "trading_value": 6332811200,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 대장암 진단키트 中 NMPA 허가",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단키트)",
       "news": [
-        {
-          "title": "강성민 피플바이오 대표 “美서 LDT·진단키트 사업 본격화… 내년부...",
-          "link": "https://n.news.naver.com/mnews/article/018/0006372378",
-          "source": "이데일리",
-          "date": "2026-09-19"
-        },
         {
           "title": "[단독]지노믹트리, 대장암 진단키트 中 NMPA 허가",
           "link": "https://n.news.naver.com/mnews/article/018/0006372255",
           "source": "이데일리",
           "date": "2026-09-18"
+        },
+        {
+          "title": "강성민 피플바이오 대표 “美서 LDT·진단키트 사업 본격화… 내년부...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006372378",
+          "source": "이데일리",
+          "date": "2026-09-19"
         },
         {
           "title": "지노믹트리, 뇌·척수에 mRNA 전달하는 LNP 기술 개발",
@@ -52,7 +52,16 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "[단독]지노믹트리, 대장암 진단키트 中 NMPA 허가",
+          "link": "https://n.news.naver.com/mnews/article/018/0006372255",
+          "source": "이데일리",
+          "date": "2026-09-18"
+        }
+      ]
     },
     {
       "date": "20260811",
@@ -268,5 +277,5 @@
     "count_recent": 2,
     "avg_rate": 12.54
   },
-  "built_at": "2026-09-30T22:02:06"
+  "built_at": "2026-10-01T16:32:41"
 }

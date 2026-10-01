@@ -9,12 +9,18 @@
       "close_price": 6120.0,
       "trading_volume": 14000922,
       "trading_value": 85685642640,
-      "rise_reason": "가상자산주 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 비트코인 8만달러 탈환에 국내 가상화폐 관련주 강세(종합)",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
+        {
+          "title": "[특징주] 비트코인 8만달러 탈환에 국내 가상화폐 관련주 강세(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016326895",
+          "source": "연합뉴스",
+          "date": "2026-09-21"
+        },
         {
           "title": "가상자산 세금 또 미뤄지나…정치권 '유예론'에 코인株 촉각",
           "link": "https://n.news.naver.com/mnews/article/629/0000536538",
@@ -52,12 +58,6 @@
           "date": "2026-09-21"
         },
         {
-          "title": "[특징주] 비트코인 8만달러 탈환에 국내 가상화폐 관련주 강세(종합)",
-          "link": "https://n.news.naver.com/mnews/article/001/0016326895",
-          "source": "연합뉴스",
-          "date": "2026-09-21"
-        },
-        {
           "title": "비트코인 1.1억원 되찾자 가상화폐株 급등…비트플래닛 '上'",
           "link": "https://n.news.naver.com/mnews/article/003/0014203744",
           "source": "뉴시스",
@@ -90,7 +90,16 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "가상자산주 강세",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 비트코인 8만달러 탈환에 국내 가상화폐 관련주 강세(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016326895",
+          "source": "연합뉴스",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260825",
@@ -512,5 +521,5 @@
     "count_recent": 1,
     "avg_rate": 12.97
   },
-  "built_at": "2026-09-30T22:01:34"
+  "built_at": "2026-10-01T16:32:45"
 }

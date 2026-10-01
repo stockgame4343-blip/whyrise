@@ -9,9 +9,9 @@
       "close_price": 2955.0,
       "trading_volume": 8424767,
       "trading_value": 24895186485,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 한국콜마, 블루엠텍 인수…‘AI·데이터’ 기반 유통부터 HK이노엔 시...",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -24,7 +24,16 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "한국콜마, 블루엠텍 인수…‘AI·데이터’ 기반 유통부터 HK이노엔 시...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006377404",
+          "source": "이데일리",
+          "date": "2026-09-30"
+        }
+      ]
     },
     {
       "date": "20260915",
@@ -198,5 +207,5 @@
     "count_recent": 3,
     "avg_rate": 10.98
   },
-  "built_at": "2026-09-30T22:03:34"
+  "built_at": "2026-10-01T16:32:56"
 }

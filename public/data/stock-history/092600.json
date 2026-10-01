@@ -9,9 +9,9 @@
       "close_price": 3440.0,
       "trading_volume": 503556,
       "trading_value": 1732232640,
-      "rise_reason": "인수합병",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 비투엔, 앤씨앤 경영권 인수…차량용 영상·반도체로 사업 확장",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -24,7 +24,16 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "인수합병",
+      "reason_evidence": [
+        {
+          "title": "비투엔, 앤씨앤 경영권 인수…차량용 영상·반도체로 사업 확장",
+          "link": "https://n.news.naver.com/mnews/article/293/0000090972",
+          "source": "블로터",
+          "date": "2026-09-28"
+        }
+      ]
     },
     {
       "date": "20260918",
@@ -32,12 +41,18 @@
       "close_price": 3670.0,
       "trading_volume": 53180,
       "trading_value": 195170600,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 비투엔 피인수 소식에 상승세",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
+        {
+          "title": "[ET특징주]앤씨앤, 비투엔 피인수 소식에 상승세",
+          "link": "https://n.news.naver.com/mnews/article/030/0003468255",
+          "source": "전자신문",
+          "date": "2026-09-18"
+        },
         {
           "title": "손대는 종목마다 상폐 위기인데… 사무엘 황, 투자 재개",
           "link": "https://n.news.naver.com/mnews/article/366/0001193510",
@@ -49,12 +64,6 @@
           "link": "https://n.news.naver.com/mnews/article/011/0004663804",
           "source": "서울경제",
           "date": "2026-09-20"
-        },
-        {
-          "title": "[ET특징주]앤씨앤, 비투엔 피인수 소식에 상승세",
-          "link": "https://n.news.naver.com/mnews/article/030/0003468255",
-          "source": "전자신문",
-          "date": "2026-09-18"
         },
         {
           "title": "[ET특징주] 앤씨앤, 비투엔에 피인수… 주가 上",
@@ -83,7 +92,16 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]앤씨앤, 비투엔 피인수 소식에 상승세",
+          "link": "https://n.news.naver.com/mnews/article/030/0003468255",
+          "source": "전자신문",
+          "date": "2026-09-18"
+        }
+      ]
     },
     {
       "date": "20260917",
@@ -824,5 +842,5 @@
     "count_recent": 5,
     "avg_rate": 22.41
   },
-  "built_at": "2026-09-30T22:05:51"
+  "built_at": "2026-10-01T16:32:52"
 }

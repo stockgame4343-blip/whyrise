@@ -9,9 +9,9 @@
       "close_price": 44600.0,
       "trading_volume": 2484354,
       "trading_value": 110802188400,
-      "rise_reason": "AI 서버 기판 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 美 CPU주 급등에 '기판주' 불붙었다…코리아써키트 22%↑[핫종목]",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -24,7 +24,16 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "AI 서버 기판 강세",
+      "reason_evidence": [
+        {
+          "title": "美 CPU주 급등에 '기판주' 불붙었다…코리아써키트 22%↑[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009185280",
+          "source": "뉴스1",
+          "date": "2026-09-22"
+        }
+      ]
     },
     {
       "date": "20260825",
@@ -850,5 +859,5 @@
     "count_recent": 1,
     "avg_rate": 14.85
   },
-  "built_at": "2026-09-30T22:00:58"
+  "built_at": "2026-10-01T16:32:47"
 }

@@ -9,9 +9,9 @@
       "close_price": 4370.0,
       "trading_volume": 5142042,
       "trading_value": 22470723540,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: '韓 LNG 대미투자' 전망에 철강주 등 강세(종합)",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "강관업체(Steel pipe)",
       "news": [
@@ -54,7 +54,16 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "[특징주] '韓 LNG 대미투자' 전망에 철강주 등 강세(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016347847",
+          "source": "연합뉴스",
+          "date": "2026-09-30"
+        }
+      ]
     },
     {
       "date": "20260428",
@@ -142,5 +151,5 @@
     "count_recent": 1,
     "avg_rate": 15.29
   },
-  "built_at": "2026-09-30T21:59:51"
+  "built_at": "2026-10-01T16:32:56"
 }

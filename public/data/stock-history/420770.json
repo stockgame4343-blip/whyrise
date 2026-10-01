@@ -9,12 +9,18 @@
       "close_price": 112100.0,
       "trading_volume": 361958,
       "trading_value": 40575491800,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 외국인 돌아왔다…코스피 급등, 반도체株 질주",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
+        {
+          "title": "[이 시각 시황] 외국인 돌아왔다…코스피 급등, 반도체株 질주",
+          "link": "https://n.news.naver.com/mnews/article/374/0000533662",
+          "source": "SBS Biz",
+          "date": "2026-09-18"
+        },
         {
           "title": "美 CPU주 급등에 '기판주' 불붙었다…코리아써키트 22%↑[핫종목]",
           "link": "https://n.news.naver.com/mnews/article/421/0009185280",
@@ -26,17 +32,20 @@
           "link": "https://n.news.naver.com/mnews/article/015/0005333897",
           "source": "한국경제",
           "date": "2026-09-18"
-        },
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
         {
           "title": "[이 시각 시황] 외국인 돌아왔다…코스피 급등, 반도체株 질주",
           "link": "https://n.news.naver.com/mnews/article/374/0000533662",
           "source": "SBS Biz",
           "date": "2026-09-18"
         }
-      ],
-      "sector": "반도체와반도체장비",
-      "is_52w_high": false,
-      "source": "stockrise"
+      ]
     },
     {
       "date": "20260803",
@@ -817,5 +826,5 @@
     "count_recent": 1,
     "avg_rate": 14.4
   },
-  "built_at": "2026-09-30T22:00:50"
+  "built_at": "2026-10-01T16:32:41"
 }

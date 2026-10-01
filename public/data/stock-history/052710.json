@@ -9,23 +9,23 @@
       "close_price": 19370.0,
       "trading_volume": 2837584,
       "trading_value": 54964002080,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 범용 MLCC도 ‘귀한 몸’…삼화콘덴서·아모텍 급등 [오늘, 이 종목]",
+      "reason_confidence": "mid",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "전자파",
       "news": [
-        {
-          "title": "[기업이슈] 미 CPU주 급등에 '기판주' 불붙었다",
-          "link": "https://n.news.naver.com/mnews/article/374/0000534513",
-          "source": "SBS Biz",
-          "date": "2026-09-23"
-        },
         {
           "title": "범용 MLCC도 ‘귀한 몸’…삼화콘덴서·아모텍 급등 [오늘, 이 종목]",
           "link": "https://n.news.naver.com/mnews/article/024/0000108403",
           "source": "매경이코노미",
           "date": "2026-09-22"
+        },
+        {
+          "title": "[기업이슈] 미 CPU주 급등에 '기판주' 불붙었다",
+          "link": "https://n.news.naver.com/mnews/article/374/0000534513",
+          "source": "SBS Biz",
+          "date": "2026-09-23"
         },
         {
           "title": "초고수, 삼성전자 대신 삼성전기…MLCC 공급부족에 순매수 1위 [주식 ...",
@@ -54,7 +54,16 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "범용 MLCC도 ‘귀한 몸’…삼화콘덴서·아모텍 급등 [오늘, 이 종목]",
+          "link": "https://n.news.naver.com/mnews/article/024/0000108403",
+          "source": "매경이코노미",
+          "date": "2026-09-22"
+        }
+      ]
     },
     {
       "date": "20260911",
@@ -1032,5 +1041,5 @@
     "count_recent": 2,
     "avg_rate": 19.02
   },
-  "built_at": "2026-09-30T22:01:52"
+  "built_at": "2026-10-01T16:32:47"
 }

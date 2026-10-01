@@ -9,22 +9,22 @@
       "close_price": 14630.0,
       "trading_volume": 2084870,
       "trading_value": 30501648100,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 트럼프, 알래스카 LNG 사업 韓 투자 발표 가능성에… 강관...",
+      "reason_confidence": "low",
+      "reason_source": "news_headline",
       "reason_status": "filled",
       "theme_tag": "강관업체(Steel pipe)",
       "news": [
         {
-          "title": "코스피 거래상위 차별화… 철강·소재 급등, 반도체 대형주 혼조",
-          "link": "https://n.news.naver.com/mnews/article/081/0003684751",
-          "source": "서울신문",
-          "date": "2026-09-30"
-        },
-        {
           "title": "[ET특징주] 트럼프, 알래스카 LNG 사업 韓 투자 발표 가능성에… 강관...",
           "link": "https://n.news.naver.com/mnews/article/030/0003471127",
           "source": "전자신문",
+          "date": "2026-09-30"
+        },
+        {
+          "title": "코스피 거래상위 차별화… 철강·소재 급등, 반도체 대형주 혼조",
+          "link": "https://n.news.naver.com/mnews/article/081/0003684751",
+          "source": "서울신문",
           "date": "2026-09-30"
         },
         {
@@ -36,7 +36,16 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 트럼프, 알래스카 LNG 사업 韓 투자 발표 가능성에… 강관...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003471127",
+          "source": "전자신문",
+          "date": "2026-09-30"
+        }
+      ]
     },
     {
       "date": "20260515",
@@ -508,5 +517,5 @@
     "count_recent": 1,
     "avg_rate": 16.33
   },
-  "built_at": "2026-09-30T21:59:46"
+  "built_at": "2026-10-01T16:32:56"
 }
