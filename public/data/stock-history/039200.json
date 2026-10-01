@@ -9,15 +9,17 @@
       "close_price": 34600.0,
       "trading_volume": 259788,
       "trading_value": 8988664800,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "면역항암제 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260313",
@@ -113,10 +115,10 @@
       "date": "20260126",
       "change_rate": 12.17,
       "close_price": 49300.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -124,7 +126,9 @@
       "source": "estimated",
       "trading_volume": 1059090,
       "trading_value": 52213137000,
-      "market_cap": 1886139703903
+      "market_cap": 1886139703903,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251126",
@@ -147,10 +151,10 @@
       "date": "20251120",
       "change_rate": 10.14,
       "close_price": 54300.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -158,7 +162,9 @@
       "source": "estimated",
       "trading_volume": 678599,
       "trading_value": 36847925700,
-      "market_cap": 2077431763122
+      "market_cap": 2077431763122,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
@@ -203,5 +209,5 @@
     "count_recent": 0,
     "avg_rate": 12.47
   },
-  "built_at": "2026-10-01T22:54:16"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 6180.0,
       "trading_volume": 1733302,
       "trading_value": 10711806360,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260821",
@@ -86,10 +88,10 @@
       "close_price": 5030.0,
       "trading_volume": 1218529,
       "trading_value": 6129200870,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -163,15 +167,17 @@
       "close_price": 5490.0,
       "trading_volume": 229778,
       "trading_value": 1261481220,
-      "rise_reason": "의료기기 테마 강세",
+      "rise_reason": "의료기기 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "의료기기 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -179,9 +185,9 @@
       "close_price": 4860.0,
       "trading_volume": 480063,
       "trading_value": 2333106180,
-      "rise_reason": "의료기기 테마 강세",
+      "rise_reason": "의료기기 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -194,15 +200,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "의료기기 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 13.38,
       "close_price": 9150.0,
-      "rise_reason": "파트너십",
-      "reason_confidence": "low",
-      "reason_source": "news",
+      "rise_reason": "260억 규모 MOU 체결 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -218,7 +226,17 @@
       "source": "estimated",
       "trading_volume": 529462,
       "trading_value": 4844577300,
-      "market_cap": 341099352051
+      "market_cap": 341099352051,
+      "reason_previous": "파트너십",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "제테마, 260억 규모 MOU 체결 소식에 9%대 강세[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006228802",
+          "source": "이데일리",
+          "date": "2026-03-05"
+        }
+      ]
     },
     {
       "date": "20260129",
@@ -258,10 +276,10 @@
       "date": "20251222",
       "change_rate": 10.6,
       "close_price": 6470.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -269,16 +287,18 @@
       "source": "estimated",
       "trading_volume": 616565,
       "trading_value": 3989175550,
-      "market_cap": 241192656587
+      "market_cap": 241192656587,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250630",
       "change_rate": 10.16,
       "close_price": 6830.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -286,7 +306,9 @@
       "source": "estimated",
       "trading_volume": 354359,
       "trading_value": 2420271970,
-      "market_cap": 254612958963
+      "market_cap": 254612958963,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -297,5 +319,5 @@
     "count_recent": 1,
     "avg_rate": 15.05
   },
-  "built_at": "2026-10-01T22:56:17"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 2790.0,
       "trading_volume": 11677976,
       "trading_value": 32581553040,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음식료업종",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -89,5 +91,5 @@
     "count_recent": 0,
     "avg_rate": 10.06
   },
-  "built_at": "2026-09-27T09:53:57"
+  "built_at": "2026-10-02T05:15:57"
 }

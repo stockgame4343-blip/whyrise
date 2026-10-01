@@ -9,9 +9,9 @@
       "close_price": 96900.0,
       "trading_volume": 756290,
       "trading_value": 73284501000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 주가누르기 방지 역부족…되레 롯데· 등 저PBR기업에 면죄부",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "정유",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "\"주가누르기 방지 역부족…되레 롯데·GS 등 저PBR기업에 면죄부\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000892259&office_id=422&code=078930&page=&sm=",
+          "source": "연합뉴스TV",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -138,5 +148,5 @@
     "count_recent": 0,
     "avg_rate": 11.9
   },
-  "built_at": "2026-10-01T22:52:11"
+  "built_at": "2026-10-02T05:15:56"
 }

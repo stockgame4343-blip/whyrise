@@ -9,9 +9,9 @@
       "close_price": 247000.0,
       "trading_volume": 1127069,
       "trading_value": 278386043000,
-      "rise_reason": "매출 관련 뉴스",
+      "rise_reason": "역대 최대 실적",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "달바글로벌 13%대 급등…'역대 최대 실적'에 매수세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013939806&office_id=003&code=483650&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20250707",
@@ -118,9 +128,9 @@
       "date": "20250612",
       "change_rate": 11.59,
       "close_price": 164600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "화장품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [],
@@ -129,7 +139,9 @@
       "source": "estimated",
       "trading_volume": 1040195,
       "trading_value": 171216097000,
-      "market_cap": 2052423551401
+      "market_cap": 2052423551401,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250526",
@@ -157,5 +169,5 @@
     "count_recent": 0,
     "avg_rate": 13.04
   },
-  "built_at": "2026-10-01T22:52:26"
+  "built_at": "2026-10-02T05:15:57"
 }

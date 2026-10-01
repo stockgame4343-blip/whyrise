@@ -9,15 +9,17 @@
       "close_price": 12060.0,
       "trading_volume": 51673,
       "trading_value": 623176380,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "유리 기판 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -54,15 +56,17 @@
       "close_price": 14670.0,
       "trading_volume": 92901,
       "trading_value": 1362857670,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260506",
@@ -239,9 +243,9 @@
       "date": "20251226",
       "change_rate": 10.21,
       "close_price": 16940.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -250,7 +254,17 @@
       "source": "estimated",
       "trading_volume": 626515,
       "trading_value": 10613164100,
-      "market_cap": 164711142654
+      "market_cap": 164711142654,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
+          "source": "SBS Biz",
+          "date": "2025-12-26"
+        }
+      ]
     },
     {
       "date": "20250925",
@@ -285,5 +299,5 @@
     "count_recent": 0,
     "avg_rate": 12.99
   },
-  "built_at": "2026-09-29T16:14:28"
+  "built_at": "2026-10-02T05:15:57"
 }

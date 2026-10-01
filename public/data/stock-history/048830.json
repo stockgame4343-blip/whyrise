@@ -9,10 +9,10 @@
       "close_price": 935.0,
       "trading_volume": 260047,
       "trading_value": 243143945,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "아스콘(아스팔트 콘크리트)",
       "news": [
         {
@@ -78,16 +78,18 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260326",
       "change_rate": 18.65,
       "close_price": 1069.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -95,7 +97,9 @@
       "source": "estimated",
       "trading_volume": 4163781,
       "trading_value": 4451081889,
-      "market_cap": 20076341463
+      "market_cap": 20076341463,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -106,5 +110,5 @@
     "count_recent": 0,
     "avg_rate": 15.18
   },
-  "built_at": "2026-10-01T22:59:50"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 53600.0,
       "trading_volume": 545691,
       "trading_value": 29249037600,
-      "rise_reason": "관련 보도: 빅파마 3사 에이비엘바이오 택한 이유…그랩바디-B의 확장성",
+      "rise_reason": "수사에 파트너사 변수까지",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -82,12 +82,13 @@
       "reason_previous": "FDA 관련 뉴스",
       "reason_evidence": [
         {
-          "title": "빅파마 3사 에이비엘바이오 택한 이유…그랩바디-B의 확장성",
-          "link": "https://n.news.naver.com/mnews/article/293/0000091090",
-          "source": "블로터",
-          "date": "2026.09.30"
+          "title": "수사에 파트너사 변수까지…에이비엘바이오, 후속 파이프라인이 반등...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001194619",
+          "source": "조선비즈",
+          "date": "2026.09.28"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260804",
@@ -95,9 +96,9 @@
       "close_price": 80400.0,
       "trading_volume": 637605,
       "trading_value": 51263442000,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -164,7 +165,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -172,9 +175,9 @@
       "close_price": 106600.0,
       "trading_volume": 881386,
       "trading_value": 93955747600,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -241,16 +244,26 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 15.83,
       "close_price": 177100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -258,7 +271,9 @@
       "source": "estimated",
       "trading_volume": 896432,
       "trading_value": 158758107200,
-      "market_cap": 9915455499495
+      "market_cap": 9915455499495,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260126",
@@ -281,10 +296,10 @@
       "date": "20260123",
       "change_rate": 10.24,
       "close_price": 198000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -292,7 +307,9 @@
       "source": "estimated",
       "trading_volume": 1714340,
       "trading_value": 339439320000,
-      "market_cap": 11085602421796
+      "market_cap": 11085602421796,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251113",
@@ -332,10 +349,10 @@
       "date": "20251027",
       "change_rate": 11.32,
       "close_price": 94400.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -343,7 +360,9 @@
       "source": "estimated",
       "trading_volume": 1325081,
       "trading_value": 125087646400,
-      "market_cap": 5285256912209
+      "market_cap": 5285256912209,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250724",
@@ -366,10 +385,10 @@
       "date": "20250715",
       "change_rate": 10.41,
       "close_price": 72100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -377,7 +396,9 @@
       "source": "estimated",
       "trading_volume": 1727315,
       "trading_value": 124539411500,
-      "market_cap": 4036726942482
+      "market_cap": 4036726942482,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
@@ -405,5 +426,5 @@
     "count_recent": 1,
     "avg_rate": 17.98
   },
-  "built_at": "2026-10-01T23:45:00"
+  "built_at": "2026-10-02T05:15:56"
 }

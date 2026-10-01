@@ -9,15 +9,17 @@
       "close_price": 1884.0,
       "trading_volume": 36461754,
       "trading_value": 68693944536,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260813",
@@ -25,9 +27,9 @@
       "close_price": 1838.0,
       "trading_volume": 21980454,
       "trading_value": 40400074452,
-      "rise_reason": "특허 취득",
+      "rise_reason": "상반기 역대 최대 매출",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -82,7 +84,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼기에너지솔루션즈, 상반기 역대 최대 매출…전년比 117%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005802789&office_id=277&code=419050&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.13"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -90,9 +102,9 @@
       "close_price": 1449.0,
       "trading_volume": 2924580,
       "trading_value": 4237716420,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "美 FF-PCB 특허 등록 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -141,7 +153,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼기에너지솔루션즈, 美 FF-PCB 특허 등록 완료",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005395399&office_id=008&code=419050&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260702",
@@ -208,10 +230,10 @@
       "close_price": 1887.0,
       "trading_volume": 23155424,
       "trading_value": 43694285088,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
         {
@@ -271,7 +293,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -531,5 +555,5 @@
     "count_recent": 1,
     "avg_rate": 21.78
   },
-  "built_at": "2026-10-01T22:57:34"
+  "built_at": "2026-10-02T05:15:56"
 }

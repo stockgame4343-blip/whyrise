@@ -9,9 +9,9 @@
       "close_price": 6120.0,
       "trading_volume": 3290989,
       "trading_value": 20140852680,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "달러주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 비트코인 8만 달러 돌파에 관련주 강세(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016290665&office_id=001&code=094480&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260821",
@@ -86,9 +96,9 @@
       "close_price": 6160.0,
       "trading_volume": 13795475,
       "trading_value": 84980126000,
-      "rise_reason": "주주환원 정책",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "올해 영업익 사상 최대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "독립리서치 아리스 “갤럭시아머니트리, 올해 영업익 사상 최대 실적...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001187585&office_id=366&code=094480&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.21"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -163,9 +183,9 @@
       "close_price": 5470.0,
       "trading_volume": 710958,
       "trading_value": 3888940260,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "상반기 영업익 102억원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "STO(토큰증권 발행)",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "갤럭시아머니트리, 상반기 영업익 102억원… 첫 100억원 돌파",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001186883&office_id=366&code=094480&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -272,24 +302,26 @@
       "close_price": 5360.0,
       "trading_volume": 153270,
       "trading_value": 821527200,
-      "rise_reason": "지역화폐 테마 강세",
+      "rise_reason": "지역화폐 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지역화폐",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "지역화폐 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 13.99,
       "close_price": 8800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -310,16 +342,18 @@
       "source": "estimated",
       "trading_volume": 691894,
       "trading_value": 6088667200,
-      "market_cap": 345206463195
+      "market_cap": 345206463195,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260123",
       "change_rate": 19.41,
       "close_price": 10950.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -327,16 +361,18 @@
       "source": "estimated",
       "trading_volume": 5622481,
       "trading_value": 61566166950,
-      "market_cap": 429546678635
+      "market_cap": 429546678635,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
       "change_rate": 17.04,
       "close_price": 10440.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -344,7 +380,9 @@
       "source": "estimated",
       "trading_volume": 3935651,
       "trading_value": 41088196440,
-      "market_cap": 409540394973
+      "market_cap": 409540394973,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
@@ -372,5 +410,5 @@
     "count_recent": 1,
     "avg_rate": 13.24
   },
-  "built_at": "2026-10-01T22:56:16"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 95700.0,
       "trading_volume": 787960,
       "trading_value": 75407772000,
-      "rise_reason": "관련 보도: 반도체 밸류체인 구축 … 두산그룹株 잘나가네",
+      "rise_reason": "반도체주 동반 강세 — 반도체 수출 259% 급증",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -58,12 +58,13 @@
       "reason_previous": "반도체주 강세",
       "reason_evidence": [
         {
-          "title": "반도체 밸류체인 구축 … 두산그룹株 잘나가네",
-          "link": "https://n.news.naver.com/mnews/article/009/0005737463",
-          "source": "매일경제",
-          "date": "2026-09-18"
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260907",
@@ -71,9 +72,9 @@
       "close_price": 82700.0,
       "trading_volume": 398307,
       "trading_value": 32939988900,
-      "rise_reason": "승인 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 오픈AI 아스트라가 깨운 AI 랠리",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -140,7 +141,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "승인 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "오픈AI '아스트라'가 깨운 AI 랠리…반도체株 일제히 '불기둥'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001027039&office_id=088&code=000990&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.09.07"
+        }
+      ]
     },
     {
       "date": "20260812",
@@ -148,10 +159,10 @@
       "close_price": 84400.0,
       "trading_volume": 616837,
       "trading_value": 52061042800,
-      "rise_reason": "시스템반도체 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -217,7 +228,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "시스템반도체 인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -225,9 +238,9 @@
       "close_price": 70200.0,
       "trading_volume": 237554,
       "trading_value": 16676290800,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -240,7 +253,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -248,9 +263,9 @@
       "close_price": 64100.0,
       "trading_volume": 518039,
       "trading_value": 33206299900,
-      "rise_reason": "시스템반도체 투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 17종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -317,7 +332,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "시스템반도체 투자 확대 발표",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -325,15 +342,17 @@
       "close_price": 96700.0,
       "trading_volume": 212930,
       "trading_value": 20590331000,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -341,15 +360,17 @@
       "close_price": 99900.0,
       "trading_volume": 254016,
       "trading_value": 25376198400,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -357,9 +378,9 @@
       "close_price": 175000.0,
       "trading_volume": 742371,
       "trading_value": 129914925000,
-      "rise_reason": "시스템반도체 투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 스몰인사이트 , 구조적 성장 본격화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -426,7 +447,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "시스템반도체 투자 확대 발표",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "스몰인사이트 \"두산테스나, 구조적 성장 본격화\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013997286&office_id=003&code=131970&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.10"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -434,9 +465,9 @@
       "close_price": 152200.0,
       "trading_volume": 706498,
       "trading_value": 107528995600,
-      "rise_reason": "시스템반도체 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 스몰인사이트 , 구조적 성장 본격화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -503,7 +534,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "시스템반도체 인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "스몰인사이트 \"두산테스나, 구조적 성장 본격화\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013997286&office_id=003&code=131970&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.10"
+        }
+      ]
     },
     {
       "date": "20260513",
@@ -889,9 +930,9 @@
       "date": "20260305",
       "change_rate": 13.63,
       "close_price": 61700.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -900,15 +941,17 @@
       "source": "estimated",
       "trading_volume": 330290,
       "trading_value": 20378893000,
-      "market_cap": 1192499404761
+      "market_cap": 1192499404761,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260128",
       "change_rate": 12.81,
       "close_price": 68700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -917,7 +960,9 @@
       "source": "estimated",
       "trading_volume": 861418,
       "trading_value": 59179416600,
-      "market_cap": 1327791071428
+      "market_cap": 1327791071428,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251015",
@@ -971,9 +1016,9 @@
       "date": "20250728",
       "change_rate": 29.96,
       "close_price": 35350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "시스템반도체 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -982,7 +1027,9 @@
       "source": "estimated",
       "trading_volume": 6432661,
       "trading_value": 227394566350,
-      "market_cap": 683222916666
+      "market_cap": 683222916666,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250717",
@@ -1027,5 +1074,5 @@
     "count_recent": 2,
     "avg_rate": 13.85
   },
-  "built_at": "2026-10-01T22:54:05"
+  "built_at": "2026-10-02T05:15:56"
 }

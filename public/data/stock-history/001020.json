@@ -9,10 +9,10 @@
       "close_price": 2495.0,
       "trading_volume": 193222,
       "trading_value": 482088890,
-      "rise_reason": "제지 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제지",
       "news": [
         {
@@ -54,7 +54,9 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제지 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260609",
@@ -85,9 +87,9 @@
       "close_price": 3650.0,
       "trading_volume": 451791,
       "trading_value": 1649037150,
-      "rise_reason": "제지 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "제지주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제지",
       "news": [
@@ -154,7 +156,17 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제지 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제지株 급등…‘쿠팡’ 종이봉투 가능성에 제지사들 숨통 트일까[중기...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002628976&office_id=016&code=001020&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.04.13"
+        }
+      ]
     },
     {
       "date": "20260227",
@@ -182,5 +194,5 @@
     "count_recent": 0,
     "avg_rate": 14.92
   },
-  "built_at": "2026-10-01T22:53:10"
+  "built_at": "2026-10-02T05:15:57"
 }

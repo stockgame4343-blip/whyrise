@@ -9,9 +9,9 @@
       "close_price": 8150.0,
       "trading_volume": 378365,
       "trading_value": 3083674750,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주주 동반 강세 — 스페이스X 스타십 궤도 비행 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -90,7 +90,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 우주항공株, 스페이스X 스타십 궤도 비행 소식에 일제히 강...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001192947&office_id=366&code=478340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.09.17"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -98,15 +108,17 @@
       "close_price": 7450.0,
       "trading_volume": 61441,
       "trading_value": 457735450,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260622",
@@ -114,10 +126,10 @@
       "close_price": 11110.0,
       "trading_volume": 212028,
       "trading_value": 2355631080,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
         {
@@ -171,7 +183,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -179,10 +193,10 @@
       "close_price": 14250.0,
       "trading_volume": 579697,
       "trading_value": 8260682250,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
         {
@@ -248,7 +262,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260611",
@@ -256,10 +272,10 @@
       "close_price": 12270.0,
       "trading_volume": 513638,
       "trading_value": 6302338260,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
         {
@@ -325,7 +341,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -336,5 +354,5 @@
     "count_recent": 1,
     "avg_rate": 13.71
   },
-  "built_at": "2026-10-01T22:58:42"
+  "built_at": "2026-10-02T05:15:56"
 }

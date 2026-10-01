@@ -9,24 +9,26 @@
       "close_price": 22300.0,
       "trading_volume": 60085,
       "trading_value": 1339895500,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
       "change_rate": 10.35,
       "close_price": 39450.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -34,15 +36,17 @@
       "source": "estimated",
       "trading_volume": 357837,
       "trading_value": 14116669650,
-      "market_cap": 936562416107
+      "market_cap": 936562416107,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260205",
       "change_rate": 14.08,
       "close_price": 43350.0,
-      "rise_reason": "실적 호조",
+      "rise_reason": "깜짝 실적, 중국 비롯 해외 사업 기대감",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -82,7 +86,17 @@
       "source": "estimated",
       "trading_volume": 1837915,
       "trading_value": 79673615250,
-      "market_cap": 1029150335570
+      "market_cap": 1029150335570,
+      "reason_previous": "실적 호조",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'깜짝 실적' 디어유, 중국 비롯 해외 사업 기대감에 '급등'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005247120",
+          "source": "한국경제",
+          "date": "2026-02-05"
+        }
+      ]
     },
     {
       "date": "20250708",
@@ -140,5 +154,5 @@
     "count_recent": 0,
     "avg_rate": 12.87
   },
-  "built_at": "2026-10-01T22:55:16"
+  "built_at": "2026-10-02T05:15:57"
 }

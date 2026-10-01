@@ -9,9 +9,9 @@
       "close_price": 259500.0,
       "trading_volume": 33884,
       "trading_value": 8792898000,
-      "rise_reason": "배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2Q 영업익 23% 증가 전망",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LPG(액화석유가스)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "가스유틸리티",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "SK가스, 2Q 영업익 23% 증가 전망…\"LPG 트레이딩·울산GPS ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014076826&office_id=003&code=018670&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260303",
@@ -137,5 +147,5 @@
     "count_recent": 0,
     "avg_rate": 13.24
   },
-  "built_at": "2026-09-27T08:34:23"
+  "built_at": "2026-10-02T05:15:57"
 }

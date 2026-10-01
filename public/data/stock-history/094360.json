@@ -9,15 +9,25 @@
       "close_price": 11950.0,
       "trading_volume": 353876,
       "trading_value": 4228818200,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 반도체 수출 259% 급증",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -25,15 +35,17 @@
       "close_price": 9810.0,
       "trading_volume": 116542,
       "trading_value": 1143277020,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 17종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260702",
@@ -116,10 +128,10 @@
       "date": "20260305",
       "change_rate": 13.33,
       "close_price": 16490.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -127,7 +139,9 @@
       "source": "estimated",
       "trading_volume": 185751,
       "trading_value": 3063033990,
-      "market_cap": 352145144927
+      "market_cap": 352145144927,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251205",
@@ -163,9 +177,9 @@
       "date": "20250707",
       "change_rate": 13.6,
       "close_price": 18960.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 차세대 비디오 코덱 APV IP 상용화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -199,7 +213,17 @@
       "source": "estimated",
       "trading_volume": 2072275,
       "trading_value": 39290334000,
-      "market_cap": 404892173913
+      "market_cap": 404892173913,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "칩스앤미디어, 차세대 비디오 코덱 'APV' IP 상용화",
+          "link": "https://n.news.naver.com/mnews/article/030/0003328930",
+          "source": "전자신문",
+          "date": "2025-07-07"
+        }
+      ]
     }
   ],
   "stats": {
@@ -210,5 +234,5 @@
     "count_recent": 1,
     "avg_rate": 16.51
   },
-  "built_at": "2026-10-01T22:56:00"
+  "built_at": "2026-10-02T05:15:56"
 }

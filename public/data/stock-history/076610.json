@@ -9,10 +9,10 @@
       "close_price": 1376.0,
       "trading_volume": 7529314,
       "trading_value": 10360336064,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260723",
@@ -86,10 +88,10 @@
       "close_price": 1279.0,
       "trading_volume": 8435786,
       "trading_value": 10789370294,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -163,10 +167,10 @@
       "close_price": 1039.0,
       "trading_volume": 1775644,
       "trading_value": 1844894116,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -240,15 +246,25 @@
       "close_price": 1119.0,
       "trading_volume": 836087,
       "trading_value": 935581353,
-      "rise_reason": "바이오인식(생체인식) 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오인식(생체인식)",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오인식(생체인식) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260508",
@@ -256,9 +272,9 @@
       "close_price": 2785.0,
       "trading_volume": 28236465,
       "trading_value": 78638555025,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 현저한 시황변동 관련 공시할 주요 정보 없어",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "카메라모듈/부품",
       "news": [
@@ -289,7 +305,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "해성옵틱스 \"현저한 시황변동 관련 공시할 주요 정보 없어\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275238&office_id=018&code=076610&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.07"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -297,10 +323,10 @@
       "close_price": 2450.0,
       "trading_volume": 24501602,
       "trading_value": 60028924900,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
         {
@@ -324,7 +350,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260430",
@@ -332,10 +360,10 @@
       "close_price": 1739.0,
       "trading_volume": 35020611,
       "trading_value": 60900842529,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -365,7 +393,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260324",
@@ -759,9 +789,9 @@
       "date": "20260119",
       "change_rate": 29.96,
       "close_price": 898.0,
-      "rise_reason": "카메라모듈/부품 테마 상한가",
+      "rise_reason": "카메라모듈 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "카메라모듈/부품",
       "news": [],
@@ -770,7 +800,9 @@
       "source": "estimated",
       "trading_volume": 4889138,
       "trading_value": 4390445924,
-      "market_cap": 50566231505
+      "market_cap": 50566231505,
+      "reason_previous": "카메라모듈/부품 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260115",
@@ -849,5 +881,5 @@
     "count_recent": 0,
     "avg_rate": 24.09
   },
-  "built_at": "2026-10-01T22:58:20"
+  "built_at": "2026-10-02T05:15:56"
 }

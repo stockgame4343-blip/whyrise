@@ -44,10 +44,10 @@
       "close_price": 14010.0,
       "trading_volume": 1509879,
       "trading_value": 21153404790,
-      "rise_reason": "착공 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "부동산 보유 자산주",
       "news": [
         {
@@ -113,7 +113,9 @@
       ],
       "sector": "호텔,레스토랑,레저",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "착공 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260130",
@@ -305,5 +307,5 @@
     "count_recent": 0,
     "avg_rate": 14.54
   },
-  "built_at": "2026-10-01T22:54:45"
+  "built_at": "2026-10-02T05:15:57"
 }

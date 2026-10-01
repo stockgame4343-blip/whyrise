@@ -9,9 +9,9 @@
       "close_price": 3805.0,
       "trading_volume": 2443974,
       "trading_value": 9299321070,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 22종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260119",
@@ -140,5 +142,5 @@
     "count_recent": 0,
     "avg_rate": 17.13
   },
-  "built_at": "2026-10-01T22:57:30"
+  "built_at": "2026-10-02T05:15:57"
 }

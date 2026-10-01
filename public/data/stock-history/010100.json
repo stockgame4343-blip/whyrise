@@ -9,9 +9,9 @@
       "close_price": 5180.0,
       "trading_volume": 9808418,
       "trading_value": 50807605240,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -36,15 +36,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 13.4,
       "close_price": 4740.0,
-      "rise_reason": "자동차부품 테마 강세",
+      "rise_reason": "자동차부품 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [],
@@ -53,15 +55,17 @@
       "source": "estimated",
       "trading_volume": 622780,
       "trading_value": 2951977200,
-      "market_cap": 144304205607
+      "market_cap": 144304205607,
+      "reason_previous": "자동차부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260119",
       "change_rate": 29.94,
       "close_price": 6770.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "자동차부품 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -101,7 +105,9 @@
       "source": "estimated",
       "trading_volume": 12160646,
       "trading_value": 82327573420,
-      "market_cap": 206105373831
+      "market_cap": 206105373831,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20251205",
@@ -159,5 +165,5 @@
     "count_recent": 0,
     "avg_rate": 18.23
   },
-  "built_at": "2026-09-27T08:55:48"
+  "built_at": "2026-10-02T05:15:57"
 }

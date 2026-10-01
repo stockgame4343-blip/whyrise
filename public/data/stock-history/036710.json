@@ -9,9 +9,9 @@
       "close_price": 4400.0,
       "trading_volume": 2456803,
       "trading_value": 10809933200,
-      "rise_reason": "강세에 배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주항공·반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "강세에 배당 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피·코스닥 동반 반등…우주항공·반도체주 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000526463&office_id=374&code=036710&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,15 +96,17 @@
       "close_price": 3060.0,
       "trading_volume": 480573,
       "trading_value": 1470553380,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체 기판 테마 14종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -102,9 +114,9 @@
       "close_price": 4120.0,
       "trading_volume": 728135,
       "trading_value": 2999916200,
-      "rise_reason": "강세에 배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -171,7 +183,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "강세에 배당 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260630",
@@ -179,9 +193,9 @@
       "close_price": 4365.0,
       "trading_volume": 611376,
       "trading_value": 2668656240,
-      "rise_reason": "강세에 배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -248,7 +262,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "강세에 배당 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -256,9 +280,9 @@
       "close_price": 4975.0,
       "trading_volume": 1181473,
       "trading_value": 5877828175,
-      "rise_reason": "강세에 배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -325,7 +349,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "강세에 배당 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -333,9 +359,9 @@
       "close_price": 4750.0,
       "trading_volume": 398298,
       "trading_value": 1891915500,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -354,7 +380,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -362,9 +390,9 @@
       "close_price": 6140.0,
       "trading_volume": 5186262,
       "trading_value": 31843648680,
-      "rise_reason": "배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -431,7 +459,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260521",
@@ -439,9 +469,9 @@
       "close_price": 5100.0,
       "trading_volume": 2212988,
       "trading_value": 11286238800,
-      "rise_reason": "배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -508,7 +538,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260511",
@@ -516,10 +548,10 @@
       "close_price": 5790.0,
       "trading_volume": 3127613,
       "trading_value": 18108879270,
-      "rise_reason": "배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
         {
@@ -585,7 +617,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -593,10 +627,10 @@
       "close_price": 5060.0,
       "trading_volume": 3467140,
       "trading_value": 17543728400,
-      "rise_reason": "배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
         {
@@ -662,7 +696,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260422",
@@ -747,15 +783,17 @@
       "close_price": 2910.0,
       "trading_volume": 1562549,
       "trading_value": 4547017590,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 기판 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260128",
@@ -942,5 +980,5 @@
     "count_recent": 0,
     "avg_rate": 15.99
   },
-  "built_at": "2026-10-01T22:56:10"
+  "built_at": "2026-10-02T05:15:56"
 }

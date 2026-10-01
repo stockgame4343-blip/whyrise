@@ -9,10 +9,10 @@
       "close_price": 2395.0,
       "trading_volume": 323407,
       "trading_value": 774559765,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -42,7 +42,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260714",
@@ -50,10 +52,10 @@
       "close_price": 2085.0,
       "trading_volume": 176590,
       "trading_value": 368190150,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -83,7 +85,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260708",
@@ -91,10 +95,10 @@
       "close_price": 2130.0,
       "trading_volume": 1371565,
       "trading_value": 2921433450,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -124,7 +128,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260706",
@@ -132,9 +138,9 @@
       "close_price": 1610.0,
       "trading_volume": 105743,
       "trading_value": 170246230,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -171,7 +177,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "theme"
     },
     {
       "date": "20260223",
@@ -219,10 +227,10 @@
       "date": "20260220",
       "change_rate": 11.07,
       "close_price": 622.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -230,16 +238,18 @@
       "source": "estimated",
       "trading_volume": 2952164,
       "trading_value": 1836246008,
-      "market_cap": 48635106382
+      "market_cap": 48635106382,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251015",
       "change_rate": 11.54,
       "close_price": 609.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -266,15 +276,17 @@
       "source": "estimated",
       "trading_volume": 5732793,
       "trading_value": 3491270937,
-      "market_cap": 47618617021
+      "market_cap": 47618617021,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250829",
       "change_rate": 10.0,
       "close_price": 605.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "실시간 상승률 1위",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -296,7 +308,17 @@
       "source": "estimated",
       "trading_volume": 9478129,
       "trading_value": 5734268045,
-      "market_cap": 47305851063
+      "market_cap": 47305851063,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]영흥 12.91% 급등…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003569977",
+          "source": "서울신문",
+          "date": "2025-08-29"
+        }
+      ]
     }
   ],
   "stats": {
@@ -307,5 +329,5 @@
     "count_recent": 0,
     "avg_rate": 13.22
   },
-  "built_at": "2026-10-01T22:53:27"
+  "built_at": "2026-10-02T05:15:57"
 }

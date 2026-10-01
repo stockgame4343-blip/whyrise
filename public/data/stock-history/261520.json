@@ -9,9 +9,9 @@
       "close_price": 4725.0,
       "trading_volume": 1744684,
       "trading_value": 8243631900,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 엔비디아 옴니버스·자체 디지털 트윈 OS 연동 완료",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -78,16 +78,26 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이지스, 엔비디아 옴니버스·자체 디지털 트윈 OS 연동 완료",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014080294&office_id=003&code=261520&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260312",
       "change_rate": 16.01,
       "close_price": 10290.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -95,7 +105,9 @@
       "source": "estimated",
       "trading_volume": 2460704,
       "trading_value": 25320644160,
-      "market_cap": 105711475409
+      "market_cap": 105711475409,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -155,10 +167,10 @@
       "date": "20260204",
       "change_rate": 11.83,
       "close_price": 11340.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -179,16 +191,18 @@
       "source": "estimated",
       "trading_volume": 1430256,
       "trading_value": 16219103040,
-      "market_cap": 116498360655
+      "market_cap": 116498360655,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260106",
       "change_rate": 10.78,
       "close_price": 11820.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -196,7 +210,9 @@
       "source": "estimated",
       "trading_volume": 2690334,
       "trading_value": 31799747880,
-      "market_cap": 121429508196
+      "market_cap": 121429508196,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -207,5 +223,5 @@
     "count_recent": 0,
     "avg_rate": 14.57
   },
-  "built_at": "2026-10-01T22:58:36"
+  "built_at": "2026-10-02T05:15:57"
 }

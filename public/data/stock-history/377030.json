@@ -9,9 +9,9 @@
       "close_price": 1986.0,
       "trading_volume": 178522,
       "trading_value": 354544692,
-      "rise_reason": "관련 보도: 비트코인 8.1만달러 회복에 가상화폐株 강세…비트플래닛 '上'[핫종목...",
+      "rise_reason": "가상화폐주 동반 강세 — 비트코인 8.1만달러 회복",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -51,7 +51,8 @@
           "source": "뉴스1",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260828",
@@ -59,9 +60,9 @@
       "close_price": 1800.0,
       "trading_volume": 369064,
       "trading_value": 664315200,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련주 동반 강세 — 코인 띄워 금리인하?",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -128,7 +129,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프, 코인 띄워 금리인하?...가상자산 관련주 줄줄이 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005404168&office_id=008&code=377030&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -136,10 +147,10 @@
       "close_price": 1412.0,
       "trading_volume": 93240,
       "trading_value": 131654880,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증강현실(AR)",
       "news": [
         {
@@ -205,7 +216,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260616",
@@ -213,10 +226,10 @@
       "close_price": 1924.0,
       "trading_volume": 746942,
       "trading_value": 1437116408,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
         {
@@ -282,7 +295,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260527",
@@ -290,10 +305,10 @@
       "close_price": 2585.0,
       "trading_volume": 1006506,
       "trading_value": 2601818010,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
         {
@@ -359,7 +374,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -367,10 +384,10 @@
       "close_price": 3295.0,
       "trading_volume": 785273,
       "trading_value": 2587474535,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증강현실(AR)",
       "news": [
         {
@@ -436,7 +453,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260430",
@@ -444,9 +463,9 @@
       "close_price": 3430.0,
       "trading_volume": 398353,
       "trading_value": 1366350790,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 50억 규모 제3자배정 유상증자 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증강현실(AR)",
       "news": [
@@ -513,7 +532,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "비트맥스, 50억 규모 제3자배정 유상증자 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006268461&office_id=018&code=377030&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -673,9 +702,9 @@
       "date": "20250714",
       "change_rate": 10.0,
       "close_price": 23658.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "비트코인 사상 첫 12만달러 돌파",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증강현실(AR)",
       "news": [
@@ -709,15 +738,25 @@
       "source": "estimated",
       "trading_volume": 1639244,
       "trading_value": 38781234552,
-      "market_cap": 252822805970
+      "market_cap": 252822805970,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]비트맥스, 비트코인 사상 첫 12만달러 돌파에 강세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005622121",
+          "source": "아시아경제",
+          "date": "2025-07-14"
+        }
+      ]
     },
     {
       "date": "20250626",
       "change_rate": 11.6,
       "close_price": 30026.0,
-      "rise_reason": "가상자산/블록체인",
+      "rise_reason": "비트코인 보유량 300개 돌파",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증강현실(AR)",
       "news": [
@@ -757,7 +796,17 @@
       "source": "estimated",
       "trading_volume": 1090608,
       "trading_value": 32746595808,
-      "market_cap": 320874865671
+      "market_cap": 320874865671,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "비트맥스, 비트코인 보유량 300개 돌파…국내 상장사 최대",
+          "link": "https://n.news.naver.com/mnews/article/215/0001213959",
+          "source": "한국경제TV",
+          "date": "2025-06-25"
+        }
+      ]
     },
     {
       "date": "20250620",
@@ -904,5 +953,5 @@
     "count_recent": 1,
     "avg_rate": 16.29
   },
-  "built_at": "2026-10-01T22:59:24"
+  "built_at": "2026-10-02T05:15:56"
 }

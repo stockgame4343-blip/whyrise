@@ -9,10 +9,10 @@
       "close_price": 1414.0,
       "trading_volume": 913538,
       "trading_value": 1291742732,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "DMZ 평화공원",
       "news": [
         {
@@ -54,7 +54,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260722",
@@ -62,10 +64,10 @@
       "close_price": 1352.0,
       "trading_volume": 567223,
       "trading_value": 766885496,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "DMZ 평화공원",
       "news": [
         {
@@ -95,7 +97,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260716",
@@ -103,10 +107,10 @@
       "close_price": 1290.0,
       "trading_volume": 693224,
       "trading_value": 894258960,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "DMZ 평화공원",
       "news": [
         {
@@ -130,7 +134,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -176,10 +182,10 @@
       "date": "20260120",
       "change_rate": 14.11,
       "close_price": 2385.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -187,7 +193,9 @@
       "source": "estimated",
       "trading_volume": 1540537,
       "trading_value": 3674180745,
-      "market_cap": 34276678141
+      "market_cap": 34276678141,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
@@ -239,5 +247,5 @@
     "count_recent": 0,
     "avg_rate": 16.47
   },
-  "built_at": "2026-10-01T22:59:58"
+  "built_at": "2026-10-02T05:15:56"
 }

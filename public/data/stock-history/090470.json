@@ -9,10 +9,10 @@
       "close_price": 4800.0,
       "trading_volume": 121814,
       "trading_value": 584707200,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -86,9 +88,9 @@
       "close_price": 6040.0,
       "trading_volume": 82643,
       "trading_value": 499163720,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "임직원 보상 위해 6억 규모 자사주 처분 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "제이스로보틱스, 임직원 보상 위해 6억 규모 자사주 처분 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006301600&office_id=018&code=090470&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -163,9 +175,9 @@
       "close_price": 9200.0,
       "trading_volume": 89394,
       "trading_value": 822424800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -178,15 +190,25 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260224",
       "change_rate": 10.72,
       "close_price": 7230.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -202,15 +224,25 @@
       "source": "estimated",
       "trading_volume": 336915,
       "trading_value": 2435895450,
-      "market_cap": 126384883720
+      "market_cap": 126384883720,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "20만전자·100만닉스 끌고, 소부장 밀고…반도체주 '강세'(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0008790759",
+          "source": "뉴스1",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20260219",
       "change_rate": 11.96,
       "close_price": 6740.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -219,7 +251,9 @@
       "source": "estimated",
       "trading_volume": 541673,
       "trading_value": 3650876020,
-      "market_cap": 117819379844
+      "market_cap": 117819379844,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251208",
@@ -367,5 +401,5 @@
     "count_recent": 0,
     "avg_rate": 12.53
   },
-  "built_at": "2026-10-01T22:58:14"
+  "built_at": "2026-10-02T05:15:56"
 }

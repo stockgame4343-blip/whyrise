@@ -9,9 +9,9 @@
       "close_price": 14100.0,
       "trading_volume": 446369,
       "trading_value": 6293802900,
-      "rise_reason": "양자컴퓨터 해외 진출 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -72,7 +72,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양자컴퓨터 해외 진출 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260413",
@@ -80,15 +82,17 @@
       "close_price": 20400.0,
       "trading_volume": 1740132,
       "trading_value": 35498692800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260410",
@@ -96,15 +100,17 @@
       "close_price": 17690.0,
       "trading_volume": 1993883,
       "trading_value": 35271790270,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260407",
@@ -141,9 +147,9 @@
       "close_price": 12880.0,
       "trading_volume": 759568,
       "trading_value": 9783235840,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -156,7 +162,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
@@ -198,9 +206,9 @@
       "date": "20260311",
       "change_rate": 22.37,
       "close_price": 10940.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
@@ -209,7 +217,9 @@
       "source": "estimated",
       "trading_volume": 1662508,
       "trading_value": 18187837520,
-      "market_cap": 61601668404
+      "market_cap": 61601668404,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -220,5 +230,5 @@
     "count_recent": 0,
     "avg_rate": 18.26
   },
-  "built_at": "2026-10-01T22:58:44"
+  "built_at": "2026-10-02T05:15:57"
 }

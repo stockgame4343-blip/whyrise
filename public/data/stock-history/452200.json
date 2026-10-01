@@ -9,9 +9,9 @@
       "close_price": 1447.0,
       "trading_volume": 621801,
       "trading_value": 899746047,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 계속되는 순환매",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "계속되는 순환매…2차전지 관련주 상승세 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003119310&office_id=119&code=025900&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.07"
+        }
+      ]
     },
     {
       "date": "20260803",
@@ -86,10 +96,10 @@
       "close_price": 1295.0,
       "trading_volume": 113128,
       "trading_value": 146500760,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -179,9 +191,9 @@
       "close_price": 2085.0,
       "trading_volume": 745561,
       "trading_value": 1554494685,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "109억원 규모 반도체 자동검사장비 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -248,7 +260,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "민테크, 109억원 규모 반도체 자동검사장비 공급계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006320989&office_id=018&code=452200&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -256,15 +278,17 @@
       "close_price": 1710.0,
       "trading_volume": 149252,
       "trading_value": 255220920,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "2차전지 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260511",
@@ -272,10 +296,10 @@
       "close_price": 4485.0,
       "trading_volume": 13876345,
       "trading_value": 62235407325,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -341,7 +365,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -349,10 +375,10 @@
       "close_price": 3450.0,
       "trading_volume": 5835607,
       "trading_value": 20132844150,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
         {
@@ -418,7 +444,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -471,5 +499,5 @@
     "count_recent": 0,
     "avg_rate": 18.07
   },
-  "built_at": "2026-10-01T22:59:03"
+  "built_at": "2026-10-02T05:15:56"
 }

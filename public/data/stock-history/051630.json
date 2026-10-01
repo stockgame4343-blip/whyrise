@@ -9,10 +9,10 @@
       "close_price": 1775.0,
       "trading_volume": 4478564,
       "trading_value": 7949451100,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "때문",
       "news": [
         {
@@ -54,7 +54,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -62,10 +64,10 @@
       "close_price": 1410.0,
       "trading_volume": 863924,
       "trading_value": 1218132840,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "때문",
       "news": [
         {
@@ -95,7 +97,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260827",
@@ -103,10 +107,10 @@
       "close_price": 1252.0,
       "trading_volume": 917079,
       "trading_value": 1148182908,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "때문",
       "news": [
         {
@@ -142,7 +146,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260611",
@@ -150,10 +156,10 @@
       "close_price": 2270.0,
       "trading_volume": 3072795,
       "trading_value": 6975244650,
-      "rise_reason": "오세훈 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오세훈",
       "news": [
         {
@@ -219,7 +225,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "오세훈 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260610",
@@ -227,9 +235,9 @@
       "close_price": 2015.0,
       "trading_volume": 4805601,
       "trading_value": 9683286015,
-      "rise_reason": "오세훈 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "오세훈 테마주 단골손님",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "오세훈",
       "news": [
@@ -296,7 +304,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "오세훈 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "오세훈 테마주 단골손님 '진양화학'[급등주 지금은]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013991253&office_id=003&code=051630&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.07"
+        }
+      ]
     },
     {
       "date": "20260604",
@@ -304,9 +322,9 @@
       "close_price": 2045.0,
       "trading_volume": 5263845,
       "trading_value": 10764563025,
-      "rise_reason": "오세훈 관련 뉴스",
+      "rise_reason": "5선세훈 테마주 직행",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "오세훈",
       "news": [
@@ -373,7 +391,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "오세훈 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "‘5선세훈 테마주’ 진양화학 상한가 직행…정원오 에스제이그룹은 하.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005689171&office_id=009&code=051630&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -381,10 +409,10 @@
       "close_price": 2105.0,
       "trading_volume": 687295,
       "trading_value": 1446755975,
-      "rise_reason": "오세훈 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오세훈",
       "news": [
         {
@@ -426,15 +454,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "오세훈 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
       "change_rate": 17.89,
       "close_price": 2405.0,
-      "rise_reason": "오세훈 테마 강세",
+      "rise_reason": "관련 보도: 17.89% 상승…금일 증시 상승률 1위로 마감",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "오세훈",
       "news": [
@@ -456,7 +486,17 @@
       "source": "estimated",
       "trading_volume": 518240,
       "trading_value": 1246367200,
-      "market_cap": 50950370370
+      "market_cap": 50950370370,
+      "reason_previous": "오세훈 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]진양화학 17.89% 상승…금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003624597",
+          "source": "서울신문",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260219",
@@ -548,5 +588,5 @@
     "count_recent": 1,
     "avg_rate": 15.74
   },
-  "built_at": "2026-10-01T22:53:28"
+  "built_at": "2026-10-02T05:15:56"
 }

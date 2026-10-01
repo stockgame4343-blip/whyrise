@@ -25,9 +25,9 @@
       "close_price": 14100.0,
       "trading_volume": 409868,
       "trading_value": 5779138800,
-      "rise_reason": "2차전지 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 벤츠 한국 기업과 파트너십 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "벤츠 \"한국 기업과 파트너십 확대\"…2차전지주 급등세 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003082813&office_id=119&code=222080&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.04.21"
+        }
+      ]
     },
     {
       "date": "20260306",
@@ -134,9 +144,9 @@
       "date": "20260209",
       "change_rate": 14.55,
       "close_price": 16850.0,
-      "rise_reason": "2차전지 테마 강세",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -145,7 +155,9 @@
       "source": "estimated",
       "trading_volume": 250038,
       "trading_value": 4213140300,
-      "market_cap": 158187882496
+      "market_cap": 158187882496,
+      "reason_previous": "2차전지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260204",
@@ -175,9 +187,9 @@
       "date": "20260203",
       "change_rate": 29.93,
       "close_price": 13630.0,
-      "rise_reason": "2차전지 테마 상한가",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -193,15 +205,17 @@
       "source": "estimated",
       "trading_volume": 1275372,
       "trading_value": 17383320360,
-      "market_cap": 127958506731
+      "market_cap": 127958506731,
+      "reason_previous": "2차전지 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20251024",
       "change_rate": 10.09,
       "close_price": 11780.0,
-      "rise_reason": "2차전지 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -210,7 +224,17 @@
       "source": "estimated",
       "trading_volume": 170920,
       "trading_value": 2013437600,
-      "market_cap": 110590697674
+      "market_cap": 110590697674,
+      "reason_previous": "2차전지 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     },
     {
       "date": "20250714",
@@ -262,5 +286,5 @@
     "count_recent": 0,
     "avg_rate": 13.72
   },
-  "built_at": "2026-10-01T22:58:07"
+  "built_at": "2026-10-02T05:15:57"
 }

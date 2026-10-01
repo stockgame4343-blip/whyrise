@@ -25,9 +25,9 @@
       "close_price": 29600.0,
       "trading_volume": 350560,
       "trading_value": 10376576000,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "100억 규모 자사주 취득 신탁계약 체결 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "태광, 100억 규모 자사주 취득 신탁계약 체결 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002654705&office_id=016&code=023160&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.06.10"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -136,10 +146,10 @@
       "date": "20260312",
       "change_rate": 13.78,
       "close_price": 32200.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [
         {
@@ -178,7 +188,9 @@
       "source": "estimated",
       "trading_volume": 1522025,
       "trading_value": 49009205000,
-      "market_cap": 832891938250
+      "market_cap": 832891938250,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "none"
     },
     {
       "date": "20260309",
@@ -201,9 +213,9 @@
       "date": "20260112",
       "change_rate": 14.47,
       "close_price": 26100.0,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원전주 동반 강세 — 더 오르기 전에 지금 사두자",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
@@ -212,15 +224,25 @@
       "source": "estimated",
       "trading_volume": 1835054,
       "trading_value": 47894909400,
-      "market_cap": 675108061749
+      "market_cap": 675108061749,
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;더 오르기 전에 지금 사두자&quot;…국내 원전주 줄줄이 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005235774",
+          "source": "한국경제",
+          "date": "2026-01-12"
+        }
+      ]
     },
     {
       "date": "20250812",
       "change_rate": 12.11,
       "close_price": 25000.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "동종업계 내 지나친 저평가, 증권가 전망",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -260,7 +282,17 @@
       "source": "estimated",
       "trading_volume": 2780711,
       "trading_value": 69517775000,
-      "market_cap": 646655231560
+      "market_cap": 646655231560,
+      "reason_previous": "조선/해운",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] “동종업계 내 지나친 저평가” 태광, 증권가 전망에 15% 급등",
+          "link": "https://n.news.naver.com/mnews/article/029/0002974786",
+          "source": "디지털타임스",
+          "date": "2025-08-12"
+        }
+      ]
     },
     {
       "date": "20250605",
@@ -288,5 +320,5 @@
     "count_recent": 0,
     "avg_rate": 15.27
   },
-  "built_at": "2026-10-01T22:54:41"
+  "built_at": "2026-10-02T05:15:57"
 }

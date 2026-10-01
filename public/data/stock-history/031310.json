@@ -9,9 +9,9 @@
       "close_price": 1000.0,
       "trading_volume": 249774,
       "trading_value": 249774000,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "과기정통부 알뜰폰 2.0 정책 수혜 기대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이즈비전, 과기정통부 '알뜰폰 2.0' 정책 수혜 기대… 질적 성장 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005394743&office_id=008&code=031310&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -109,9 +119,9 @@
       "close_price": 2490.0,
       "trading_volume": 21184249,
       "trading_value": 52748780010,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 4회차 CB 전환가액 2246원으로 상향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -130,7 +140,17 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아이즈비전, 4회차 CB 전환가액 2246원으로 상향",
+          "link": "https://n.news.naver.com/mnews/article/293/0000082684",
+          "source": "블로터",
+          "date": "2026-04-13"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -188,10 +208,10 @@
       "date": "20260324",
       "change_rate": 11.45,
       "close_price": 1625.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -199,7 +219,9 @@
       "source": "estimated",
       "trading_volume": 2354424,
       "trading_value": 3825939000,
-      "market_cap": 48390342052
+      "market_cap": 48390342052,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -210,5 +232,5 @@
     "count_recent": 0,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-01T22:59:26"
+  "built_at": "2026-10-02T05:15:56"
 }

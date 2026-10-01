@@ -41,9 +41,9 @@
       "close_price": 3035.0,
       "trading_volume": 1691126,
       "trading_value": 5132567410,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 챗봇 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -110,7 +110,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260526",
@@ -118,10 +120,10 @@
       "close_price": 5370.0,
       "trading_volume": 6496884,
       "trading_value": 34888267080,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
         {
@@ -187,7 +189,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -211,10 +215,10 @@
       "close_price": 4155.0,
       "trading_volume": 3810111,
       "trading_value": 15831011205,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
         {
@@ -280,7 +284,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -667,5 +673,5 @@
     "count_recent": 0,
     "avg_rate": 17.69
   },
-  "built_at": "2026-10-01T22:57:41"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -98,10 +98,10 @@
       "close_price": 23050.0,
       "trading_volume": 3122804,
       "trading_value": 71980632200,
-      "rise_reason": "공급망 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공급망",
       "news": [
         {
@@ -155,7 +155,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급망 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -163,9 +165,9 @@
       "close_price": 19690.0,
       "trading_volume": 3538155,
       "trading_value": 69666271950,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 공급망 부각에 8배 뛴",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -220,7 +222,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'스페이스X 공급망' 부각에 8배 뛴 스피어, 지금은 70%↓[급등주 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014102795&office_id=003&code=347700&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.02"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -228,15 +240,17 @@
       "close_price": 15400.0,
       "trading_volume": 998575,
       "trading_value": 15378055000,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -244,10 +258,10 @@
       "close_price": 21800.0,
       "trading_volume": 1347133,
       "trading_value": 29367499400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -307,7 +321,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -315,10 +331,10 @@
       "close_price": 28050.0,
       "trading_volume": 6517028,
       "trading_value": 182802635400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -384,7 +400,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -469,9 +487,9 @@
       "close_price": 20350.0,
       "trading_volume": 1459749,
       "trading_value": 29705892150,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -538,7 +556,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -844,15 +864,17 @@
       "close_price": 45500.0,
       "trading_volume": 1510112,
       "trading_value": 68710096000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "스페이스X 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -874,9 +896,9 @@
       "date": "20260305",
       "change_rate": 29.89,
       "close_price": 45850.0,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "의료AI 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [],
@@ -885,7 +907,9 @@
       "source": "estimated",
       "trading_volume": 2478723,
       "trading_value": 113649449550,
-      "market_cap": 2363136237623
+      "market_cap": 2363136237623,
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260213",
@@ -938,9 +962,9 @@
       "date": "20260129",
       "change_rate": 14.92,
       "close_price": 25800.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 72억 규모 자회사 주식 취득 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -968,7 +992,17 @@
       "source": "estimated",
       "trading_volume": 5402422,
       "trading_value": 139382487600,
-      "market_cap": 1329747326732
+      "market_cap": 1329747326732,
+      "reason_previous": "유상증자",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "스피어, 72억 규모 자회사 주식 취득 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006209701",
+          "source": "이데일리",
+          "date": "2026-01-29"
+        }
+      ]
     },
     {
       "date": "20260123",
@@ -1169,9 +1203,9 @@
       "date": "20251112",
       "change_rate": 10.0,
       "close_price": 8140.0,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "의료AI 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [],
@@ -1180,7 +1214,9 @@
       "source": "estimated",
       "trading_volume": 292264,
       "trading_value": 2379028960,
-      "market_cap": 419540435643
+      "market_cap": 419540435643,
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250801",
@@ -1263,5 +1299,5 @@
     "count_recent": 1,
     "avg_rate": 18.22
   },
-  "built_at": "2026-10-01T22:54:21"
+  "built_at": "2026-10-02T05:15:56"
 }

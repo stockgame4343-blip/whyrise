@@ -25,10 +25,10 @@
       "close_price": 995.0,
       "trading_volume": 134877,
       "trading_value": 134202615,
-      "rise_reason": "정원오 지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자율주행차",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정원오 지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
@@ -117,10 +119,10 @@
       "date": "20260116",
       "change_rate": 10.87,
       "close_price": 1448.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -128,7 +130,9 @@
       "source": "estimated",
       "trading_volume": 135916,
       "trading_value": 196806368,
-      "market_cap": 49150862068
+      "market_cap": 49150862068,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -139,5 +143,5 @@
     "count_recent": 1,
     "avg_rate": 204.59
   },
-  "built_at": "2026-10-01T22:59:18"
+  "built_at": "2026-10-02T05:15:56"
 }

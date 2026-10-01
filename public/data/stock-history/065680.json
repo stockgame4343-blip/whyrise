@@ -9,15 +9,17 @@
       "close_price": 25300.0,
       "trading_volume": 147693,
       "trading_value": 3736632900,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기판",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260827",
@@ -25,10 +27,10 @@
       "close_price": 26800.0,
       "trading_volume": 43139,
       "trading_value": 1156125200,
-      "rise_reason": "기판 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기판",
       "news": [
         {
@@ -58,7 +60,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기판 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -82,10 +86,10 @@
       "close_price": 47600.0,
       "trading_volume": 257570,
       "trading_value": 12260332000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리포트",
       "news": [
         {
@@ -109,7 +113,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260416",
@@ -117,10 +123,10 @@
       "close_price": 32250.0,
       "trading_volume": 108108,
       "trading_value": 3486483000,
-      "rise_reason": "거래 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -144,7 +150,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래 급증",
+      "reason_kind": "none"
     },
     {
       "date": "20260209",
@@ -206,5 +214,5 @@
     "count_recent": 1,
     "avg_rate": 14.01
   },
-  "built_at": "2026-10-01T22:56:13"
+  "built_at": "2026-10-02T05:15:56"
 }

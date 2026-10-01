@@ -9,9 +9,9 @@
       "close_price": 8250.0,
       "trading_volume": 172620,
       "trading_value": 1424115000,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주주 동반 강세 — 제2우주센터 건립 소식",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 제2우주센터 건립 소식에…우주항공株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001185201&office_id=366&code=488900&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -32,15 +42,17 @@
       "close_price": 6700.0,
       "trading_volume": 78624,
       "trading_value": 526780800,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -87,9 +99,9 @@
       "close_price": 19070.0,
       "trading_volume": 385347,
       "trading_value": 7348567290,
-      "rise_reason": "우주/위성",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 위성 데이터 수신부터 처리·분석까지…우주기업 , 제주 ASP 개장",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -114,15 +126,25 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주/위성",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "&quot;위성 데이터 수신부터 처리·분석까지&quot;…우주기업 컨텍, 제주 ASP 개장",
+          "link": "https://n.news.naver.com/mnews/article/421/0008863790",
+          "source": "뉴스1",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260324",
       "change_rate": 14.68,
       "close_price": 18750.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "군정찰위성 해외지상국 활용 서비스 사업 계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -144,16 +166,26 @@
       "source": "estimated",
       "trading_volume": 1490126,
       "trading_value": 27939862500,
-      "market_cap": 309542410714
+      "market_cap": 309542410714,
+      "reason_previous": "대형 수주",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "컨텍, 군정찰위성 해외지상국 활용 서비스 사업 계약 체결",
+          "link": "https://n.news.naver.com/mnews/article/215/0001246365",
+          "source": "한국경제TV",
+          "date": "2026-03-24"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 15.3,
       "close_price": 16200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -161,16 +193,18 @@
       "source": "estimated",
       "trading_volume": 431357,
       "trading_value": 6987983400,
-      "market_cap": 267444642857
+      "market_cap": 267444642857,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260206",
       "change_rate": 11.83,
       "close_price": 20800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -178,15 +212,17 @@
       "source": "estimated",
       "trading_volume": 2112998,
       "trading_value": 43950358400,
-      "market_cap": 343385714285
+      "market_cap": 343385714285,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
       "change_rate": 12.71,
       "close_price": 20400.0,
-      "rise_reason": "우주/위성",
+      "rise_reason": "레오스페이스, AP위성으로부터 전략적 투자 유치",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -220,7 +256,17 @@
       "source": "estimated",
       "trading_volume": 6844103,
       "trading_value": 139619701200,
-      "market_cap": 336782142857
+      "market_cap": 336782142857,
+      "reason_previous": "우주/위성",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "레오스페이스, 컨텍·AP위성으로부터 전략적 투자 유치",
+          "link": "https://n.news.naver.com/mnews/article/018/0006205685",
+          "source": "이데일리",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20260120",
@@ -295,5 +341,5 @@
     "count_recent": 0,
     "avg_rate": 14.5
   },
-  "built_at": "2026-10-01T22:57:09"
+  "built_at": "2026-10-02T05:15:56"
 }

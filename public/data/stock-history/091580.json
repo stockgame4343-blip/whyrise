@@ -9,9 +9,9 @@
       "close_price": 22450.0,
       "trading_volume": 862040,
       "trading_value": 19352798000,
-      "rise_reason": "전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전환사채 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260824",
@@ -86,9 +88,9 @@
       "close_price": 18840.0,
       "trading_volume": 330010,
       "trading_value": 6217388400,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI, 투자재원 확보",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성SDI, 투자재원 확보에 8%대 급등…이차전지주 동반 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005565381&office_id=014&code=066970&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -163,10 +175,10 @@
       "close_price": 18330.0,
       "trading_volume": 387903,
       "trading_value": 7110261990,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리비안(RIVIAN)",
       "news": [
         {
@@ -232,7 +244,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -240,9 +254,9 @@
       "close_price": 17880.0,
       "trading_volume": 301602,
       "trading_value": 5392643760,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -309,7 +323,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260807",
@@ -317,9 +333,9 @@
       "close_price": 15840.0,
       "trading_volume": 268841,
       "trading_value": 4258441440,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 계속되는 순환매",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -386,7 +402,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "계속되는 순환매…2차전지 관련주 상승세 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003119310&office_id=119&code=025900&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.07"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -394,15 +420,17 @@
       "close_price": 14050.0,
       "trading_volume": 115147,
       "trading_value": 1617815350,
-      "rise_reason": "2차전지(소재/부품) 테마 강세",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(소재/부품) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -410,10 +438,10 @@
       "close_price": 15630.0,
       "trading_volume": 107879,
       "trading_value": 1686148770,
-      "rise_reason": "2차전지 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지",
       "news": [
         {
@@ -479,7 +507,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -487,15 +517,17 @@
       "close_price": 16510.0,
       "trading_volume": 225774,
       "trading_value": 3727528740,
-      "rise_reason": "2차전지(소재/부품) 테마 강세",
+      "rise_reason": "2차전지 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(소재/부품) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -671,9 +703,9 @@
       "date": "20260317",
       "change_rate": 10.59,
       "close_price": 17850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -682,7 +714,9 @@
       "source": "estimated",
       "trading_volume": 1456748,
       "trading_value": 26002951800,
-      "market_cap": 237900833333
+      "market_cap": 237900833333,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -770,9 +804,9 @@
       "date": "20251024",
       "change_rate": 11.58,
       "close_price": 12910.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -781,7 +815,17 @@
       "source": "estimated",
       "trading_volume": 544606,
       "trading_value": 7030863460,
-      "market_cap": 172061611111
+      "market_cap": 172061611111,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     }
   ],
   "stats": {
@@ -792,5 +836,5 @@
     "count_recent": 0,
     "avg_rate": 12.99
   },
-  "built_at": "2026-10-01T22:55:52"
+  "built_at": "2026-10-02T05:15:56"
 }

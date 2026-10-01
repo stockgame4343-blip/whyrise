@@ -121,9 +121,9 @@
       "close_price": 96400.0,
       "trading_volume": 235805,
       "trading_value": 22731602000,
-      "rise_reason": "납품 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — 두산로보틱스",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -190,7 +190,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "납품 계약 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 젠슨 황 방한 기대감에 로봇주 급등…두산로보틱스 26% ↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001168459&office_id=366&code=090360&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.01"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -198,9 +208,9 @@
       "close_price": 97700.0,
       "trading_volume": 59534,
       "trading_value": 5816471800,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇 테마 15종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -213,7 +223,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -291,9 +303,9 @@
       "date": "20250826",
       "change_rate": 10.34,
       "close_price": 73600.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -333,7 +345,9 @@
       "source": "estimated",
       "trading_volume": 386047,
       "trading_value": 28413059200,
-      "market_cap": 867126436781
+      "market_cap": 867126436781,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -344,5 +358,5 @@
     "count_recent": 0,
     "avg_rate": 15.32
   },
-  "built_at": "2026-10-01T22:54:34"
+  "built_at": "2026-10-02T05:15:57"
 }

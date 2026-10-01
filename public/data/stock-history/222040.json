@@ -9,9 +9,9 @@
       "close_price": 10700.0,
       "trading_volume": 2719979,
       "trading_value": 29103775300,
-      "rise_reason": "건강기능식품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건강기능식품 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건강기능식품 수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260806",
@@ -86,10 +88,10 @@
       "close_price": 9000.0,
       "trading_volume": 918709,
       "trading_value": 8268381000,
-      "rise_reason": "건강기능식품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건강기능식품",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건강기능식품 수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260709",
@@ -163,10 +167,10 @@
       "close_price": 7930.0,
       "trading_volume": 469197,
       "trading_value": 3720732210,
-      "rise_reason": "건강기능식품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건강기능식품",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건강기능식품 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -333,10 +339,10 @@
       "close_price": 8030.0,
       "trading_volume": 917125,
       "trading_value": 7364513750,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음식료업종",
       "news": [
         {
@@ -402,7 +408,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -410,9 +418,9 @@
       "close_price": 7570.0,
       "trading_volume": 3101777,
       "trading_value": 23480451890,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "형제주 동반 강세 — 화장품만? 이젠 건강기능식품까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "음식료업종",
       "news": [
@@ -479,7 +487,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "화장품만? 이젠 건강기능식품까지… 코스맥스 형제주 동반 급등 [중기.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002640519&office_id=016&code=222040&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260508",
@@ -487,9 +505,9 @@
       "close_price": 6790.0,
       "trading_volume": 346169,
       "trading_value": 2350487510,
-      "rise_reason": "자사주 매입",
+      "rise_reason": "1분기 영업익 103억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "음식료업종",
       "news": [
@@ -556,7 +574,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "코스맥스엔비티, 1분기 영업익 103억…전년비 1080%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275252&office_id=018&code=222040&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.07"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -735,5 +763,5 @@
     "count_recent": 0,
     "avg_rate": 14.4
   },
-  "built_at": "2026-10-01T22:57:07"
+  "built_at": "2026-10-02T05:15:56"
 }

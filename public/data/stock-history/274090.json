@@ -9,9 +9,9 @@
       "close_price": 12880.0,
       "trading_volume": 5797940,
       "trading_value": 74677467200,
-      "rise_reason": "관련 보도: 스페이스X 궤도비행 임박에… 우주항공株 날았다",
+      "rise_reason": "우주항공주 동반 강세 — 스페이스X 첫 궤도 시험비행 임박",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -70,12 +70,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "스페이스X 궤도비행 임박에… 우주항공株 날았다",
-          "link": "https://n.news.naver.com/mnews/article/014/0005577617",
-          "source": "파이낸셜뉴스",
-          "date": "2026-09-17"
+          "title": "'스페이스X' 첫 궤도 시험비행 임박…우주항공주 '들썩'",
+          "link": "https://n.news.naver.com/mnews/article/003/0014198820",
+          "source": "뉴시스",
+          "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260917",
@@ -83,9 +84,9 @@
       "close_price": 11430.0,
       "trading_volume": 2578948,
       "trading_value": 29477375640,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주항공주 동반 강세 — 스페이스X 스타십 궤도 비행 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -164,7 +165,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 우주항공株, 스페이스X 스타십 궤도 비행 소식에 일제히 강...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001192947&office_id=366&code=274090&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.09.17"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -172,15 +183,17 @@
       "close_price": 11390.0,
       "trading_volume": 398088,
       "trading_value": 4534222320,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -188,15 +201,17 @@
       "close_price": 8570.0,
       "trading_volume": 167549,
       "trading_value": 1435894930,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260526",
@@ -204,9 +219,9 @@
       "close_price": 34250.0,
       "trading_volume": 5624301,
       "trading_value": 192632309250,
-      "rise_reason": "국내서도 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련주 동반 강세 — 내달로 다가온 스페이스X IPO",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -273,7 +288,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "국내서도 상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 내달로 다가온 스페이스X IPO…국내서도 관련주 강세(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016099908&office_id=001&code=274090&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -281,9 +306,9 @@
       "close_price": 28500.0,
       "trading_volume": 2782940,
       "trading_value": 79313790000,
-      "rise_reason": "우주항공 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주항공주 동반 강세 — 저점 매수 타이밍?",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -350,7 +375,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "우주항공 상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "저점 매수 타이밍?...\"다시 불 뿜는다\" 우주항공株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005359799&office_id=008&code=274090&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260518",
@@ -358,9 +393,9 @@
       "close_price": 25950.0,
       "trading_volume": 2915874,
       "trading_value": 75666930300,
-      "rise_reason": "HBM 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -427,7 +462,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "HBM 상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260414",
@@ -502,9 +539,9 @@
       "close_price": 20400.0,
       "trading_volume": 417956,
       "trading_value": 8526302400,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "스페이스X 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -523,7 +560,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
@@ -760,5 +799,5 @@
     "count_recent": 2,
     "avg_rate": 17.43
   },
-  "built_at": "2026-10-01T22:56:39"
+  "built_at": "2026-10-02T05:15:56"
 }

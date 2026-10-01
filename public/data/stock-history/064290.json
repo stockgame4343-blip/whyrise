@@ -9,9 +9,9 @@
       "close_price": 56100.0,
       "trading_volume": 695711,
       "trading_value": 39029387100,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 美반도체 훈풍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -48,7 +48,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美반도체 훈풍에…삼성전기·LG이노텍 등 반도체 기판주 '들썩'[종목 ...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005579557",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-22"
+        }
+      ]
     },
     {
       "date": "20260916",
@@ -56,10 +66,10 @@
       "close_price": 50300.0,
       "trading_volume": 488996,
       "trading_value": 24596498800,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
         {
@@ -125,7 +135,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260904",
@@ -133,9 +145,9 @@
       "close_price": 40150.0,
       "trading_volume": 687362,
       "trading_value": 27597584300,
-      "rise_reason": "반도체 장비 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -202,7 +214,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260818",
@@ -210,10 +224,10 @@
       "close_price": 36250.0,
       "trading_volume": 813293,
       "trading_value": 29481871250,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
         {
@@ -273,7 +287,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260811",
@@ -281,9 +297,9 @@
       "close_price": 33500.0,
       "trading_volume": 476336,
       "trading_value": 15957256000,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -344,7 +360,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -352,9 +370,9 @@
       "close_price": 27600.0,
       "trading_volume": 428294,
       "trading_value": 11820914400,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 14종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -415,7 +433,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -423,9 +443,9 @@
       "close_price": 45000.0,
       "trading_volume": 438959,
       "trading_value": 19753155000,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 29종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -492,7 +512,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260703",
@@ -500,9 +522,9 @@
       "close_price": 51800.0,
       "trading_volume": 1074167,
       "trading_value": 55641850600,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "대만 기업과 85억원 규모 반도체 검사장비 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -569,7 +591,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "인텍플러스, 대만 기업과 85억원 규모 반도체 검사장비 공급계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006321002&office_id=018&code=064290&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -577,9 +609,9 @@
       "close_price": 47000.0,
       "trading_volume": 271055,
       "trading_value": 12739585000,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -640,7 +672,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260618",
@@ -648,9 +690,9 @@
       "close_price": 48100.0,
       "trading_volume": 1341192,
       "trading_value": 64511335200,
-      "rise_reason": "2차전지 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 3D 검사 기술이 첨단 패...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -717,7 +759,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[테크데이, '판'이 바뀐다] 인텍플러스, “3D 검사 기술이 첨단 패...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003438665&office_id=030&code=064290&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -725,9 +777,9 @@
       "close_price": 44000.0,
       "trading_volume": 642691,
       "trading_value": 28278404000,
-      "rise_reason": "소캠 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -794,7 +846,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소캠 실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -802,9 +856,9 @@
       "close_price": 38050.0,
       "trading_volume": 445616,
       "trading_value": 16955688800,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -823,7 +877,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "theme"
     },
     {
       "date": "20260526",
@@ -831,9 +887,9 @@
       "close_price": 42500.0,
       "trading_volume": 2002329,
       "trading_value": 85098982500,
-      "rise_reason": "관세 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -900,7 +956,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관세 정책 관련",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -908,9 +974,9 @@
       "close_price": 35850.0,
       "trading_volume": 1659908,
       "trading_value": 59507701800,
-      "rise_reason": "관세 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -977,7 +1043,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관세 정책 관련",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=064290&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -985,9 +1061,9 @@
       "close_price": 28300.0,
       "trading_volume": 610957,
       "trading_value": 17290083100,
-      "rise_reason": "관세 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -1054,7 +1130,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관세 정책 관련",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=064290&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -1085,9 +1171,9 @@
       "close_price": 21000.0,
       "trading_volume": 1311050,
       "trading_value": 27532050000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -1106,7 +1192,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260319",
@@ -1216,5 +1312,5 @@
     "count_recent": 3,
     "avg_rate": 15.86
   },
-  "built_at": "2026-10-01T22:54:41"
+  "built_at": "2026-10-02T05:15:56"
 }

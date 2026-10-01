@@ -38,9 +38,9 @@
       "close_price": 1680.0,
       "trading_volume": 3821052,
       "trading_value": 6419367360,
-      "rise_reason": "M&A 관련 뉴스",
+      "rise_reason": "최대주주 대상 150억 유증",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -71,7 +71,17 @@
       ],
       "sector": "해운사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "주성코퍼레이션, 최대주주 대상 150억 유증에 20%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014058264&office_id=003&code=109070&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.10"
+        }
+      ]
     },
     {
       "date": "20260601",
@@ -79,10 +89,10 @@
       "close_price": 1632.0,
       "trading_volume": 4917179,
       "trading_value": 8024836128,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -100,7 +110,9 @@
       ],
       "sector": "해운사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -108,9 +120,9 @@
       "close_price": 1860.0,
       "trading_volume": 5092530,
       "trading_value": 9472105800,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -129,7 +141,9 @@
       ],
       "sector": "해운사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260414",
@@ -204,9 +218,9 @@
       "close_price": 1778.0,
       "trading_volume": 4811487,
       "trading_value": 8554823886,
-      "rise_reason": "연료전지 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -263,7 +277,9 @@
       ],
       "sector": "해운사",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "연료전지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260410",
@@ -271,9 +287,9 @@
       "close_price": 1368.0,
       "trading_volume": 4282044,
       "trading_value": 5857836192,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "통신장비 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -286,7 +302,9 @@
       ],
       "sector": "해운사",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선/해운",
+      "reason_kind": "theme"
     },
     {
       "date": "20260323",
@@ -410,5 +428,5 @@
     "count_recent": 1,
     "avg_rate": 54.51
   },
-  "built_at": "2026-10-01T22:53:10"
+  "built_at": "2026-10-02T05:15:56"
 }

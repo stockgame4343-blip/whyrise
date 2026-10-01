@@ -9,10 +9,10 @@
       "close_price": 2780.0,
       "trading_volume": 468934,
       "trading_value": 1303636520,
-      "rise_reason": "배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "PCB(FPCB 등)",
       "news": [
         {
@@ -66,16 +66,18 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
       "change_rate": 13.47,
       "close_price": 3665.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -83,7 +85,9 @@
       "source": "estimated",
       "trading_volume": 4196084,
       "trading_value": 15378647860,
-      "market_cap": 73862980030
+      "market_cap": 73862980030,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251106",
@@ -111,5 +115,5 @@
     "count_recent": 0,
     "avg_rate": 14.9
   },
-  "built_at": "2026-10-01T22:58:47"
+  "built_at": "2026-10-02T05:15:56"
 }

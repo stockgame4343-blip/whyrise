@@ -9,9 +9,9 @@
       "close_price": 11700.0,
       "trading_volume": 522867,
       "trading_value": 6117543900,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -86,9 +88,9 @@
       "close_price": 9280.0,
       "trading_volume": 140652,
       "trading_value": 1305250560,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "면역항암제 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -101,7 +103,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -125,15 +129,25 @@
       "close_price": 11670.0,
       "trading_volume": 182725,
       "trading_value": 2132400750,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -141,9 +155,9 @@
       "close_price": 13500.0,
       "trading_volume": 246041,
       "trading_value": 3321553500,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1.6조 기술이전 성과",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -210,7 +224,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[아침밥]IBK증권 \"큐라클, 1.6조 기술이전 성과…후속 계약 가능성...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001147223&office_id=417&code=365270&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -293,9 +317,9 @@
       "date": "20260305",
       "change_rate": 15.62,
       "close_price": 16430.0,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "면역항암제 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -311,7 +335,9 @@
       "source": "estimated",
       "trading_volume": 514682,
       "trading_value": 8456225260,
-      "market_cap": 362632750174
+      "market_cap": 362632750174,
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260225",
@@ -606,9 +632,9 @@
       "date": "20250908",
       "change_rate": 12.95,
       "close_price": 4665.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 219억원 규모 유상증자 청약 완료",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -630,7 +656,17 @@
       "source": "estimated",
       "trading_volume": 608772,
       "trading_value": 2839921380,
-      "market_cap": 102962981105
+      "market_cap": 102962981105,
+      "reason_previous": "유상증자",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "큐라클, 219억원 규모 유상증자 청약 완료",
+          "link": "https://n.news.naver.com/mnews/article/119/0003000163",
+          "source": "데일리안",
+          "date": "2025-09-08"
+        }
+      ]
     }
   ],
   "stats": {
@@ -641,5 +677,5 @@
     "count_recent": 0,
     "avg_rate": 13.72
   },
-  "built_at": "2026-10-01T22:56:16"
+  "built_at": "2026-10-02T05:15:56"
 }

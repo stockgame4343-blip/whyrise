@@ -9,10 +9,10 @@
       "close_price": 1330.0,
       "trading_volume": 13645706,
       "trading_value": 18148788980,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -78,15 +78,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
       "change_rate": 12.71,
       "close_price": 1774.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "400억 자사주 공개매수 효과",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -126,7 +128,17 @@
       "source": "estimated",
       "trading_volume": 39533742,
       "trading_value": 70132858308,
-      "market_cap": 136779683597
+      "market_cap": 136779683597,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아남전자, 19.57% 급등…400억 자사주 공개매수 효과",
+          "link": "https://n.news.naver.com/mnews/article/003/0013834195",
+          "source": "뉴시스",
+          "date": "2026-03-20"
+        }
+      ]
     },
     {
       "date": "20260319",
@@ -185,5 +197,5 @@
     "count_recent": 0,
     "avg_rate": 17.72
   },
-  "built_at": "2026-09-27T08:56:20"
+  "built_at": "2026-10-02T05:15:57"
 }

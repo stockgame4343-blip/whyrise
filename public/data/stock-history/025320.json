@@ -9,9 +9,9 @@
       "close_price": 4625.0,
       "trading_volume": 4828400,
       "trading_value": 22331350000,
-      "rise_reason": "허가 관련 뉴스",
+      "rise_reason": "인공신장기 식약처 허가 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "수자원(양적/질적 개선)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 시노펙스, 인공신장기 식약처 허가 소식에 14% 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001185455&office_id=366&code=025320&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -102,10 +112,10 @@
       "close_price": 6030.0,
       "trading_volume": 5092003,
       "trading_value": 30704778090,
-      "rise_reason": "해외 진출 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "PCB(FPCB 등)",
       "news": [
         {
@@ -171,7 +181,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -208,9 +220,9 @@
       "close_price": 4985.0,
       "trading_volume": 1450514,
       "trading_value": 7230812290,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -277,15 +289,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260128",
       "change_rate": 13.0,
       "close_price": 7560.0,
-      "rise_reason": "무상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "배당 없는 주주환원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -325,7 +339,17 @@
       "source": "estimated",
       "trading_volume": 4550539,
       "trading_value": 34402074840,
-      "market_cap": 696827303754
+      "market_cap": 696827303754,
+      "reason_previous": "무상증자",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[밸류업 진단] 배당 없는 주주환원…시노펙스 무상증자의 그늘",
+          "link": "https://n.news.naver.com/mnews/article/293/0000078525",
+          "source": "블로터",
+          "date": "2026-01-28"
+        }
+      ]
     }
   ],
   "stats": {
@@ -336,5 +360,5 @@
     "count_recent": 0,
     "avg_rate": 13.68
   },
-  "built_at": "2026-10-01T22:55:30"
+  "built_at": "2026-10-02T05:15:56"
 }

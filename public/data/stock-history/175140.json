@@ -9,9 +9,9 @@
       "close_price": 2390.0,
       "trading_volume": 84856,
       "trading_value": 202805840,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260319",
@@ -108,10 +110,10 @@
       "date": "20251020",
       "change_rate": 10.27,
       "close_price": 5420.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -126,16 +128,18 @@
       "source": "estimated",
       "trading_volume": 293983,
       "trading_value": 1593387860,
-      "market_cap": 135270338983
+      "market_cap": 135270338983,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250902",
       "change_rate": 12.45,
       "close_price": 5510.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -143,7 +147,9 @@
       "source": "estimated",
       "trading_volume": 278857,
       "trading_value": 1536502070,
-      "market_cap": 137516525423
+      "market_cap": 137516525423,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250724",
@@ -166,10 +172,10 @@
       "date": "20250721",
       "change_rate": 10.57,
       "close_price": 5650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -177,7 +183,9 @@
       "source": "estimated",
       "trading_volume": 610672,
       "trading_value": 3450296800,
-      "market_cap": 141010593220
+      "market_cap": 141010593220,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -188,5 +196,5 @@
     "count_recent": 0,
     "avg_rate": 11.43
   },
-  "built_at": "2026-10-01T22:58:36"
+  "built_at": "2026-10-02T05:15:56"
 }

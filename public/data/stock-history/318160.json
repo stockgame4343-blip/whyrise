@@ -7,10 +7,10 @@
       "date": "20251203",
       "change_rate": 11.08,
       "close_price": 9420.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -18,16 +18,18 @@
       "source": "estimated",
       "trading_volume": 152218,
       "trading_value": 1433893560,
-      "market_cap": 87898456260
+      "market_cap": 87898456260,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251125",
       "change_rate": 12.59,
       "close_price": 8230.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -42,15 +44,17 @@
       "source": "estimated",
       "trading_volume": 189087,
       "trading_value": 1556186010,
-      "market_cap": 76794511149
+      "market_cap": 76794511149,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250829",
       "change_rate": 12.35,
       "close_price": 10460.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "10억 규모 자사주 취득 신탁계약 해지 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -66,7 +70,17 @@
       "source": "estimated",
       "trading_volume": 376245,
       "trading_value": 3935522700,
-      "market_cap": 97602744425
+      "market_cap": 97602744425,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "셀바이오휴먼텍, 10억 규모 자사주 취득 신탁계약 해지 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006100778",
+          "source": "이데일리",
+          "date": "2025-08-28"
+        }
+      ]
     },
     {
       "date": "20250818",
@@ -124,5 +138,5 @@
     "count_recent": 0,
     "avg_rate": 11.84
   },
-  "built_at": "2026-10-01T22:58:29"
+  "built_at": "2026-10-02T05:15:57"
 }

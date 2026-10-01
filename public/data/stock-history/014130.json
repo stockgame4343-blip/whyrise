@@ -32,9 +32,9 @@
       "close_price": 2445.0,
       "trading_volume": 170123,
       "trading_value": 415950735,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "9억 규모 자사주 취득",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "종합 물류",
       "news": [
@@ -101,7 +101,17 @@
       ],
       "sector": "항공화물운송과물류",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한익스프레스, 9억 규모 자사주 취득…\"주주가치 제고·자본효율성 향.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001958918&office_id=057&code=014130&page=&sm=",
+          "source": "MBN",
+          "date": "2026.07.16"
+        }
+      ]
     }
   ],
   "stats": {
@@ -112,5 +122,5 @@
     "count_recent": 0,
     "avg_rate": 10.79
   },
-  "built_at": "2026-10-01T22:53:28"
+  "built_at": "2026-10-02T05:15:57"
 }

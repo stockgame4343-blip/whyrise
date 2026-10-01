@@ -9,10 +9,10 @@
       "close_price": 6580.0,
       "trading_volume": 6544969,
       "trading_value": 43065896020,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -68,9 +70,9 @@
       "close_price": 5250.0,
       "trading_volume": 839389,
       "trading_value": 4406792250,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 자동차 변속기·감속기 전문기업 창립 50돌",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -119,7 +121,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "자동차 변속기·감속기 전문기업 '디아이씨' '창립 50돌'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000891958&office_id=422&code=092200&page=&sm=",
+          "source": "연합뉴스TV",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -150,9 +162,9 @@
       "close_price": 4900.0,
       "trading_volume": 1229620,
       "trading_value": 6025138000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "뉴로메카, 자동차 기어 가공 자동화 설비 공급사 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -189,7 +201,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴로메카, 디아이씨 자동차 기어 가공 자동화 설비 공급사 선정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334350&office_id=018&code=092200&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -197,15 +219,17 @@
       "close_price": 4510.0,
       "trading_volume": 624207,
       "trading_value": 2815173570,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260602",
@@ -213,10 +237,10 @@
       "close_price": 9600.0,
       "trading_volume": 2721870,
       "trading_value": 26129952000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -246,7 +270,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -254,9 +280,9 @@
       "close_price": 9110.0,
       "trading_volume": 5872290,
       "trading_value": 53496561900,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -287,7 +313,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260521",
@@ -295,9 +323,9 @@
       "close_price": 7380.0,
       "trading_volume": 1052505,
       "trading_value": 7767486900,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 15종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -328,7 +356,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260512",
@@ -336,10 +366,10 @@
       "close_price": 8750.0,
       "trading_volume": 4047706,
       "trading_value": 35417427500,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -363,7 +393,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -416,9 +448,9 @@
       "date": "20251208",
       "change_rate": 14.95,
       "close_price": 12840.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 금일 코스피 거래량 1위 거래대금 1,961억원 돌...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
@@ -458,7 +490,17 @@
       "source": "estimated",
       "trading_volume": 17949644,
       "trading_value": 230473428960,
-      "market_cap": 499399078341
+      "market_cap": 499399078341,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스피 거래량 1위 디아이씨 거래대금 1,961억원 돌...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003598929",
+          "source": "서울신문",
+          "date": "2025-12-08"
+        }
+      ]
     },
     {
       "date": "20251128",
@@ -590,9 +632,9 @@
       "date": "20251105",
       "change_rate": 10.08,
       "close_price": 6990.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: ㈜, UNIST에 1억 쾌척…AI 인재, 울산서 키우자",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
@@ -626,7 +668,17 @@
       "source": "estimated",
       "trading_volume": 27553293,
       "trading_value": 192597518070,
-      "market_cap": 271869124423
+      "market_cap": 271869124423,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "㈜디아이씨, UNIST에 1억 쾌척…“AI 인재, 울산서 키우자”",
+          "link": "https://n.news.naver.com/mnews/article/016/0002552487",
+          "source": "헤럴드경제",
+          "date": "2025-11-04"
+        }
+      ]
     },
     {
       "date": "20251103",
@@ -685,5 +737,5 @@
     "count_recent": 0,
     "avg_rate": 16.29
   },
-  "built_at": "2026-10-01T22:52:58"
+  "built_at": "2026-10-02T05:15:56"
 }

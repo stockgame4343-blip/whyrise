@@ -9,9 +9,9 @@
       "close_price": 23550.0,
       "trading_volume": 307319,
       "trading_value": 7237362450,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "흑자전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이직랜드 상반기 영익 50억원…흑자전환",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003457529&office_id=030&code=445090&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,15 +96,17 @@
       "close_price": 17520.0,
       "trading_volume": 79281,
       "trading_value": 1389003120,
-      "rise_reason": "뉴로모픽 반도체 테마 강세",
+      "rise_reason": "뉴로모픽 반도체 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "뉴로모픽 반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -102,9 +114,9 @@
       "close_price": 23950.0,
       "trading_volume": 189749,
       "trading_value": 4544488550,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "삼성 파운드리 흑자 전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -171,7 +183,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[오늘장 탑픽] 삼성 파운드리 흑자 전환…가온칩스·에이직랜드 주목",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000521782&office_id=374&code=445090&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -179,9 +201,9 @@
       "close_price": 25000.0,
       "trading_volume": 524456,
       "trading_value": 13111400000,
-      "rise_reason": "수주 공시",
+      "rise_reason": "SK하이닉스 eSSD 양산 기대감에 16%",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -248,7 +270,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 에이직랜드, SK하이닉스 eSSD 양산 기대감에 16% 급...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001177866&office_id=366&code=445090&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.09"
+        }
+      ]
     },
     {
       "date": "20260709",
@@ -256,9 +288,9 @@
       "close_price": 21400.0,
       "trading_volume": 981065,
       "trading_value": 20994791000,
-      "rise_reason": "수주 공시",
+      "rise_reason": "SK하이닉스 eSSD 양산 기대감에 16%",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -325,7 +357,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 에이직랜드, SK하이닉스 eSSD 양산 기대감에 16% 급...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001177866&office_id=366&code=445090&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.09"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -333,9 +375,9 @@
       "close_price": 27000.0,
       "trading_volume": 202336,
       "trading_value": 5463072000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SK하이닉스 차세대 eSSD 개발 참여",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -402,7 +444,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이직랜드, SK하이닉스 차세대 eSSD 개발 참여…319억 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001038258&office_id=031&code=445090&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -525,9 +577,9 @@
       "date": "20251125",
       "change_rate": 11.78,
       "close_price": 28000.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "AI 버블 우려 불식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -555,7 +607,17 @@
       "source": "estimated",
       "trading_volume": 80220,
       "trading_value": 2246160000,
-      "market_cap": 305901279707
+      "market_cap": 305901279707,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'주문형 반도체' 에이직랜드, AI 버블 우려 불식에 10%↑ [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006171003",
+          "source": "이데일리",
+          "date": "2025-11-25"
+        }
+      ]
     }
   ],
   "stats": {
@@ -566,5 +628,5 @@
     "count_recent": 0,
     "avg_rate": 16.75
   },
-  "built_at": "2026-10-01T22:56:11"
+  "built_at": "2026-10-02T05:15:56"
 }

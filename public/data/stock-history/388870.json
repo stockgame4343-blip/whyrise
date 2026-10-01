@@ -61,9 +61,9 @@
       "close_price": 7000.0,
       "trading_volume": 413414,
       "trading_value": 2893898000,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "글로벌 빅파마와 기술이전 논의",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -130,7 +130,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]\"파로스아이바이오, 글로벌 빅파마와 기술이전 논의 본격...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005777338&office_id=277&code=388870&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260605",
@@ -138,9 +148,9 @@
       "close_price": 7820.0,
       "trading_volume": 606999,
       "trading_value": 4746732180,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자사주 매입",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -207,7 +217,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파로스아이바이오 대표, 자사주 매입…\"책임 경영\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013987757&office_id=003&code=388870&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260316",
@@ -255,9 +275,9 @@
       "date": "20260305",
       "change_rate": 14.13,
       "close_price": 8560.0,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "의료AI 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [],
@@ -266,7 +286,9 @@
       "source": "estimated",
       "trading_volume": 148829,
       "trading_value": 1273976240,
-      "market_cap": 110760383386
+      "market_cap": 110760383386,
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260113",
@@ -380,9 +402,9 @@
       "date": "20251204",
       "change_rate": 16.31,
       "close_price": 10980.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 190억원 규모 전환사채 발행",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -422,7 +444,17 @@
       "source": "estimated",
       "trading_volume": 3958530,
       "trading_value": 43464659400,
-      "market_cap": 142073482428
+      "market_cap": 142073482428,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "파로스아이바이오, 190억원 규모 전환사채 발행",
+          "link": "https://n.news.naver.com/mnews/article/366/0001128147",
+          "source": "조선비즈",
+          "date": "2025-12-04"
+        }
+      ]
     },
     {
       "date": "20251201",
@@ -505,9 +537,9 @@
       "date": "20251119",
       "change_rate": 14.57,
       "close_price": 6840.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: PHI-101, 다수 제약사가 기술도입 검토중[바이오맥...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -535,7 +567,17 @@
       "source": "estimated",
       "trading_volume": 6230129,
       "trading_value": 42614082360,
-      "market_cap": 88504792332
+      "market_cap": 88504792332,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "파로스아이바이오 &quot;PHI-101, 다수 제약사가 기술도입 검토중&quot;[바이오맥...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006167265",
+          "source": "이데일리",
+          "date": "2025-11-19"
+        }
+      ]
     },
     {
       "date": "20251111",
@@ -583,9 +625,9 @@
       "date": "20251028",
       "change_rate": 10.54,
       "close_price": 5400.0,
-      "rise_reason": "바이오",
+      "rise_reason": "기술이전 논의",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -619,7 +661,17 @@
       "source": "estimated",
       "trading_volume": 429933,
       "trading_value": 2321638200,
-      "market_cap": 69872204472
+      "market_cap": 69872204472,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파로스아이바이오, ‘바이오 유럽 2025’ 참가…기술이전 논의",
+          "link": "https://n.news.naver.com/mnews/article/029/0002989697",
+          "source": "디지털타임스",
+          "date": "2025-10-28"
+        }
+      ]
     }
   ],
   "stats": {
@@ -630,5 +682,5 @@
     "count_recent": 1,
     "avg_rate": 16.63
   },
-  "built_at": "2026-10-01T22:58:06"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,15 +9,17 @@
       "close_price": 41300.0,
       "trading_volume": 217733,
       "trading_value": 8992372900,
-      "rise_reason": "전력설비 테마 강세",
+      "rise_reason": "전력설비 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전력설비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -25,9 +27,9 @@
       "close_price": 47200.0,
       "trading_volume": 225822,
       "trading_value": 10658798400,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "전력설비 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -40,7 +42,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -48,9 +52,9 @@
       "close_price": 91500.0,
       "trading_volume": 2662605,
       "trading_value": 243628357500,
-      "rise_reason": "전력설비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력설비 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -117,7 +121,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력설비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260429",
@@ -125,9 +131,9 @@
       "close_price": 66100.0,
       "trading_volume": 1240314,
       "trading_value": 81984755400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -194,7 +200,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -202,9 +218,9 @@
       "close_price": 61000.0,
       "trading_volume": 1254989,
       "trading_value": 76554329000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력설비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -271,7 +287,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -337,9 +355,9 @@
       "date": "20250616",
       "change_rate": 12.75,
       "close_price": 39800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전력설비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [],
@@ -348,7 +366,9 @@
       "source": "estimated",
       "trading_volume": 1637956,
       "trading_value": 65190648800,
-      "market_cap": 639282651072
+      "market_cap": 639282651072,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -359,5 +379,5 @@
     "count_recent": 0,
     "avg_rate": 16.6
   },
-  "built_at": "2026-09-27T09:16:22"
+  "built_at": "2026-10-02T05:15:57"
 }

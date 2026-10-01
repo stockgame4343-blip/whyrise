@@ -9,9 +9,9 @@
       "close_price": 18300.0,
       "trading_volume": 1314238,
       "trading_value": 24050555400,
-      "rise_reason": "수주 공시",
+      "rise_reason": "150억 자사주 취득·소각",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 엠앤씨솔루션, 150억 자사주 취득·소각에 26% 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001053672&office_id=031&code=484870&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2026.08.31"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -109,15 +119,17 @@
       "close_price": 15020.0,
       "trading_volume": 145118,
       "trading_value": 2179672360,
-      "rise_reason": "방위산업/전쟁 및 테러 테마 강세",
+      "rise_reason": "방위산업 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방위산업/전쟁 및 테러 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260706",
@@ -125,10 +137,10 @@
       "close_price": 35600.0,
       "trading_volume": 237839,
       "trading_value": 8467068400,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
         {
@@ -188,7 +200,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -196,9 +210,9 @@
       "close_price": 27050.0,
       "trading_volume": 87655,
       "trading_value": 2371067750,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 2026 지속가능경영보고서 발간",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -265,7 +279,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "엠앤씨솔루션, 2026 지속가능경영보고서 발간",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000939424&office_id=469&code=484870&page=&sm=",
+          "source": "한국일보",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -273,9 +297,9 @@
       "close_price": 26550.0,
       "trading_volume": 87626,
       "trading_value": 2326470300,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "방위산업 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -342,7 +366,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -350,9 +376,9 @@
       "close_price": 29833.0,
       "trading_volume": 446388,
       "trading_value": 13317093204,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "한국투자파트너스와 매각 협의 중",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -419,15 +445,25 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엠앤씨솔루션 \"최대주주, 한국투자파트너스와 매각 협의 중…아직 미...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014003441&office_id=003&code=484870&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260209",
       "change_rate": 11.02,
       "close_price": 129000.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "방산주 동반 강세 — 한-사우디 국방장관회담",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -443,15 +479,25 @@
       "source": "estimated",
       "trading_volume": 90668,
       "trading_value": 11696172000,
-      "market_cap": 1180811254396
+      "market_cap": 1180811254396,
+      "reason_previous": "방산",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "한-사우디 국방장관회담…방산株 장초반 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005315791",
+          "source": "머니투데이",
+          "date": "2026-02-09"
+        }
+      ]
     },
     {
       "date": "20260109",
       "change_rate": 12.4,
       "close_price": 171300.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "방산주 동반 강세 — 트럼프 美 내년 국방비 2000조원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -491,7 +537,17 @@
       "source": "estimated",
       "trading_volume": 90292,
       "trading_value": 15467019600,
-      "market_cap": 1568007502930
+      "market_cap": 1568007502930,
+      "reason_previous": "방산",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 트럼프 &quot;美 내년 국방비 2000조원&quot;…방산주 상승 랠리",
+          "link": "https://n.news.naver.com/mnews/article/374/0000485312",
+          "source": "SBS Biz",
+          "date": "2026-01-09"
+        }
+      ]
     },
     {
       "date": "20260106",
@@ -536,5 +592,5 @@
     "count_recent": 0,
     "avg_rate": 17.57
   },
-  "built_at": "2026-10-01T22:52:46"
+  "built_at": "2026-10-02T05:15:56"
 }

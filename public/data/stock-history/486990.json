@@ -9,9 +9,9 @@
       "close_price": 22550.0,
       "trading_volume": 2447794,
       "trading_value": 55197754700,
-      "rise_reason": "관련 보도: \"고성능 GPU나 외부서버 없어도 된다\"…노타, 로봇팔 작업 3배↑",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "고성능 GPU나 외부서버 없어도 된다",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -28,12 +28,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "&quot;고성능 GPU나 외부서버 없어도 된다&quot;…노타, 로봇팔 작업 3배↑",
+          "title": "\"고성능 GPU나 외부서버 없어도 된다\"…노타, 로봇팔 작업 3배↑",
           "link": "https://n.news.naver.com/mnews/article/008/0005417470",
           "source": "머니투데이",
           "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260804",
@@ -41,15 +42,25 @@
       "close_price": 20350.0,
       "trading_volume": 295520,
       "trading_value": 6013832000,
-      "rise_reason": "온디바이스 AI 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 정부 활성화 정책·美공급망 확대 기대",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "온디바이스 AI 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "에너지장비株 강세…정부 활성화 정책·美공급망 확대 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005395232&office_id=008&code=475150&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -57,15 +68,17 @@
       "close_price": 18560.0,
       "trading_volume": 319499,
       "trading_value": 5929901440,
-      "rise_reason": "온디바이스 AI 테마 강세",
+      "rise_reason": "온디바이스 AI 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "온디바이스 AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -73,10 +86,10 @@
       "close_price": 18800.0,
       "trading_volume": 510797,
       "trading_value": 9602983600,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -142,7 +155,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -304,9 +319,9 @@
       "close_price": 34600.0,
       "trading_volume": 303336,
       "trading_value": 10495425600,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 직무발명제도 우수사례 최우수상…지식재산처장 표창",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -373,7 +388,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "노타, 직무발명제도 우수사례 최우수상…지식재산처장 표창",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006292055&office_id=018&code=486990&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.28"
+        }
+      ]
     },
     {
       "date": "20260312",
@@ -415,9 +440,9 @@
       "date": "20260311",
       "change_rate": 10.68,
       "close_price": 37300.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "대전시 차세대 디지털 선도기업 3년 연속 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -457,7 +482,17 @@
       "source": "estimated",
       "trading_volume": 536604,
       "trading_value": 20015329200,
-      "market_cap": 796162068965
+      "market_cap": 796162068965,
+      "reason_previous": "대형 수주",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "노타, '대전시 차세대 디지털 선도기업' 3년 연속 선정",
+          "link": "https://n.news.naver.com/mnews/article/003/0013816315",
+          "source": "뉴시스",
+          "date": "2026-03-11"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -646,9 +681,9 @@
       "date": "20251120",
       "change_rate": 11.51,
       "close_price": 33900.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 대통령 UAE 순방 유일 AI 스타트업 동행…중동 시장 공략",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -670,15 +705,25 @@
       "source": "estimated",
       "trading_volume": 3673455,
       "trading_value": 124530124500,
-      "market_cap": 723589655172
+      "market_cap": 723589655172,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "노타, 대통령 UAE 순방 '유일' AI 스타트업 동행…중동 시장 공략",
+          "link": "https://n.news.naver.com/mnews/article/008/0005280963",
+          "source": "머니투데이",
+          "date": "2025-11-20"
+        }
+      ]
     },
     {
       "date": "20251107",
       "change_rate": 11.36,
       "close_price": 55400.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "AI 기술로 2027년 흑자 목표",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -718,7 +763,17 @@
       "source": "estimated",
       "trading_volume": 22522053,
       "trading_value": 1247721736200,
-      "market_cap": 1182503448275
+      "market_cap": 1182503448275,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "노타 7배 뛰자 '매도'…AI 기술로 2027년 흑자 목표 [마켓딥다이브]",
+          "link": "https://n.news.naver.com/mnews/article/215/0001229866",
+          "source": "한국경제TV",
+          "date": "2025-11-06"
+        }
+      ]
     },
     {
       "date": "20251105",
@@ -825,5 +880,5 @@
     "count_recent": 1,
     "avg_rate": 17.84
   },
-  "built_at": "2026-10-01T22:55:18"
+  "built_at": "2026-10-02T05:15:56"
 }

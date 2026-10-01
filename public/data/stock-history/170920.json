@@ -9,9 +9,9 @@
       "close_price": 41200.0,
       "trading_volume": 302473,
       "trading_value": 12461887600,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 14종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -86,9 +88,9 @@
       "close_price": 34550.0,
       "trading_volume": 307322,
       "trading_value": 10617975100,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "고체산화물 연료전지 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -163,9 +167,9 @@
       "close_price": 50300.0,
       "trading_volume": 366923,
       "trading_value": 18456226900,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 20종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -232,7 +236,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260703",
@@ -240,10 +246,10 @@
       "close_price": 54100.0,
       "trading_volume": 440671,
       "trading_value": 23840301100,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -309,7 +315,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -317,9 +325,9 @@
       "close_price": 51600.0,
       "trading_volume": 336443,
       "trading_value": 17360458800,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -386,7 +394,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -394,15 +412,17 @@
       "close_price": 46300.0,
       "trading_volume": 318518,
       "trading_value": 14747383400,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260622",
@@ -410,9 +430,9 @@
       "close_price": 56000.0,
       "trading_volume": 565447,
       "trading_value": 31665032000,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -479,7 +499,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -487,9 +509,9 @@
       "close_price": 57800.0,
       "trading_volume": 723713,
       "trading_value": 41830611400,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 12종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -556,7 +578,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -564,9 +588,9 @@
       "close_price": 51000.0,
       "trading_volume": 631000,
       "trading_value": 32181000000,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 22종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -633,7 +657,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -641,9 +667,9 @@
       "close_price": 47400.0,
       "trading_volume": 913408,
       "trading_value": 43295539200,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -710,7 +736,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 쉬어가자 반도체 장비株 강세…원익IPS '上' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008985149&office_id=421&code=084370&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260423",
@@ -1116,5 +1152,5 @@
     "count_recent": 0,
     "avg_rate": 14.48
   },
-  "built_at": "2026-10-01T22:55:11"
+  "built_at": "2026-10-02T05:15:56"
 }

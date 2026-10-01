@@ -9,15 +9,17 @@
       "close_price": 6590.0,
       "trading_volume": 1432697,
       "trading_value": 9441473230,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260904",
@@ -25,10 +27,10 @@
       "close_price": 5510.0,
       "trading_volume": 288293,
       "trading_value": 1588494430,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -94,7 +96,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260814",
@@ -102,10 +106,10 @@
       "close_price": 6960.0,
       "trading_volume": 1276297,
       "trading_value": 8883027120,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -171,7 +175,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -179,15 +185,17 @@
       "close_price": 5360.0,
       "trading_volume": 205609,
       "trading_value": 1102064240,
-      "rise_reason": "자동차부품 테마 강세",
+      "rise_reason": "자동차부품 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자동차부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -195,15 +203,17 @@
       "close_price": 7870.0,
       "trading_volume": 148135,
       "trading_value": 1165822450,
-      "rise_reason": "자동차부품 테마 강세",
+      "rise_reason": "자동차부품 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자동차부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260615",
@@ -211,9 +221,9 @@
       "close_price": 11600.0,
       "trading_volume": 1892259,
       "trading_value": 21950204400,
-      "rise_reason": "양산 보도",
+      "rise_reason": "실적 개선 전망",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -280,7 +290,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]엔비알모션, 실적 개선 전망에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003437580&office_id=030&code=0004V0&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -288,10 +308,10 @@
       "close_price": 24000.0,
       "trading_volume": 1594441,
       "trading_value": 38266584000,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -357,7 +377,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -365,9 +387,9 @@
       "close_price": 19850.0,
       "trading_volume": 2756523,
       "trading_value": 54716981550,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -424,7 +446,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260326",
@@ -466,9 +490,9 @@
       "date": "20260227",
       "change_rate": 14.21,
       "close_price": 22100.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "자동차부품 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -484,7 +508,9 @@
       "source": "estimated",
       "trading_volume": 3303141,
       "trading_value": 72999416100,
-      "market_cap": 229991434689
+      "market_cap": 229991434689,
+      "reason_previous": "실적 호조",
+      "reason_kind": "theme"
     },
     {
       "date": "20260225",
@@ -538,9 +564,9 @@
       "date": "20260119",
       "change_rate": 15.75,
       "close_price": 24250.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "자동차부품 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [],
@@ -549,7 +575,9 @@
       "source": "estimated",
       "trading_volume": 8602738,
       "trading_value": 208616396500,
-      "market_cap": 252366167023
+      "market_cap": 252366167023,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260115",
@@ -608,5 +636,5 @@
     "count_recent": 2,
     "avg_rate": 15.75
   },
-  "built_at": "2026-10-01T22:58:18"
+  "built_at": "2026-10-02T05:15:56"
 }

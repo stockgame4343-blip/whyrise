@@ -9,9 +9,9 @@
       "close_price": 8920.0,
       "trading_volume": 1624283,
       "trading_value": 14488604360,
-      "rise_reason": "승인 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호·보안주 동반 강세 — AI 속도조절론",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "승인 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'AI 속도조절론'에 양자암호·보안주 급등…아톤·한컴위드 '上'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014191750&office_id=003&code=0015S0&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.15"
+        }
+      ]
     },
     {
       "date": "20260911",
@@ -86,9 +96,9 @@
       "close_price": 7900.0,
       "trading_volume": 780731,
       "trading_value": 6167774900,
-      "rise_reason": "승인 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -155,7 +165,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "승인 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260810",
@@ -163,9 +175,9 @@
       "close_price": 7410.0,
       "trading_volume": 95341,
       "trading_value": 706476810,
-      "rise_reason": "승인 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -232,7 +244,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "승인 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -240,15 +254,17 @@
       "close_price": 5870.0,
       "trading_volume": 32516,
       "trading_value": 190868920,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -286,10 +302,10 @@
       "date": "20260211",
       "change_rate": 11.01,
       "close_price": 24200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -297,16 +313,18 @@
       "source": "estimated",
       "trading_volume": 1618771,
       "trading_value": 39174258200,
-      "market_cap": 238808791208
+      "market_cap": 238808791208,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
       "change_rate": 10.26,
       "close_price": 25800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -314,7 +332,9 @@
       "source": "estimated",
       "trading_volume": 6688036,
       "trading_value": 172551328800,
-      "market_cap": 254597802197
+      "market_cap": 254597802197,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
@@ -380,10 +400,10 @@
       "date": "20251212",
       "change_rate": 11.88,
       "close_price": 24950.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -410,7 +430,9 @@
       "source": "estimated",
       "trading_volume": 5003595,
       "trading_value": 124839695250,
-      "market_cap": 246209890109
+      "market_cap": 246209890109,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -421,5 +443,5 @@
     "count_recent": 2,
     "avg_rate": 14.19
   },
-  "built_at": "2026-10-01T22:58:03"
+  "built_at": "2026-10-02T05:15:56"
 }

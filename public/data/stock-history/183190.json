@@ -9,9 +9,9 @@
       "close_price": 10370.0,
       "trading_volume": 662884,
       "trading_value": 6874107080,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시멘트 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -72,7 +72,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -83,5 +85,5 @@
     "count_recent": 0,
     "avg_rate": 19.75
   },
-  "built_at": "2026-09-27T08:44:03"
+  "built_at": "2026-10-02T05:15:57"
 }

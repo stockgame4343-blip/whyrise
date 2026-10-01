@@ -9,9 +9,9 @@
       "close_price": 4295.0,
       "trading_volume": 532013,
       "trading_value": 2284995835,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "10억원 규모 자사주 추가 매수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "김호선 감성코퍼레이션 대표, 10억원 규모 자사주 추가 매수",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000518082&office_id=629&code=036620&page=&sm=",
+          "source": "더팩트",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -100,10 +110,10 @@
       "date": "20260325",
       "change_rate": 11.84,
       "close_price": 5950.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -111,7 +121,9 @@
       "source": "estimated",
       "trading_volume": 873141,
       "trading_value": 5195188950,
-      "market_cap": 538510226049
+      "market_cap": 538510226049,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260210",
@@ -173,5 +185,5 @@
     "count_recent": 0,
     "avg_rate": 11.88
   },
-  "built_at": "2026-09-27T09:25:16"
+  "built_at": "2026-10-02T05:15:57"
 }

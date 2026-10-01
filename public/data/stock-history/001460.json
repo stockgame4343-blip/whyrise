@@ -7,9 +7,9 @@
       "date": "20260320",
       "change_rate": 16.49,
       "close_price": 53700.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 강아지의 날 반려견과 함께 입을 개리야스 맨투맨 제안",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -31,15 +31,25 @@
       "source": "estimated",
       "trading_volume": 34762,
       "trading_value": 1866719400,
-      "market_cap": 335430434782
+      "market_cap": 335430434782,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "BYC, 강아지의 날 반려견과 함께 입을 '개리야스 맨투맨' 제안",
+          "link": "https://n.news.naver.com/mnews/article/015/0005264362",
+          "source": "한국경제",
+          "date": "2026-03-19"
+        }
+      ]
     },
     {
       "date": "20260210",
       "change_rate": 13.66,
       "close_price": 54100.0,
-      "rise_reason": "신제품 출시",
-      "reason_confidence": "low",
-      "reason_source": "news",
+      "rise_reason": "유아복 코코모메 설 선물용 제품 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -61,7 +71,17 @@
       "source": "estimated",
       "trading_volume": 33582,
       "trading_value": 1816786200,
-      "market_cap": 337928985507
+      "market_cap": 337928985507,
+      "reason_previous": "신제품 출시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "BYC, 유아복 '코코모메' 설 선물용 제품 출시",
+          "link": "https://n.news.naver.com/mnews/article/421/0008764442",
+          "source": "뉴스1",
+          "date": "2026-02-10"
+        }
+      ]
     },
     {
       "date": "20260205",
@@ -115,10 +135,10 @@
       "date": "20260204",
       "change_rate": 10.12,
       "close_price": 48950.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -145,7 +165,9 @@
       "source": "estimated",
       "trading_volume": 13014,
       "trading_value": 637035300,
-      "market_cap": 305760144927
+      "market_cap": 305760144927,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -156,5 +178,5 @@
     "count_recent": 0,
     "avg_rate": 13.56
   },
-  "built_at": "2026-10-01T22:52:57"
+  "built_at": "2026-10-02T05:15:57"
 }

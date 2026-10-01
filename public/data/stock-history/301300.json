@@ -9,10 +9,10 @@
       "close_price": 2605.0,
       "trading_volume": 186021,
       "trading_value": 484584705,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260911",
@@ -86,10 +88,10 @@
       "close_price": 2360.0,
       "trading_volume": 116095,
       "trading_value": 273984200,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260811",
@@ -163,10 +167,10 @@
       "close_price": 2270.0,
       "trading_volume": 65868,
       "trading_value": 149520360,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -240,9 +246,9 @@
       "close_price": 2470.0,
       "trading_volume": 540601,
       "trading_value": 1335284470,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -309,7 +315,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260803",
@@ -317,9 +325,9 @@
       "close_price": 2075.0,
       "trading_volume": 491958,
       "trading_value": 1020812850,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -386,7 +394,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -394,9 +404,9 @@
       "close_price": 1821.0,
       "trading_volume": 172440,
       "trading_value": 314013240,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: AI 지식관리시스템 GS인증 1등급 획득",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -415,7 +425,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "바이브컴퍼니, AI 지식관리시스템 GS인증 1등급 획득",
+          "link": "https://n.news.naver.com/mnews/article/003/0014097126",
+          "source": "뉴시스",
+          "date": "2026-07-30"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -423,9 +443,9 @@
       "close_price": 1690.0,
       "trading_volume": 116037,
       "trading_value": 196102530,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이브 에이전트 플랫폼 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -492,7 +512,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "?바이브컴퍼니, ‘바이브 에이전트 플랫폼’ 출시… 맞춤형 에이전트.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454879&office_id=032&code=301300&page=&sm=",
+          "source": "경향신문",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -500,9 +530,9 @@
       "close_price": 1300.0,
       "trading_volume": 170822,
       "trading_value": 222068600,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이브 에이전트 플랫폼 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -569,7 +599,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "?바이브컴퍼니, ‘바이브 에이전트 플랫폼’ 출시… 맞춤형 에이전트.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454879&office_id=032&code=301300&page=&sm=",
+          "source": "경향신문",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -651,5 +691,5 @@
     "count_recent": 2,
     "avg_rate": 18.25
   },
-  "built_at": "2026-10-01T22:59:50"
+  "built_at": "2026-10-02T05:15:56"
 }

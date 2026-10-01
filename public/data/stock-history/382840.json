@@ -25,9 +25,9 @@
       "close_price": 10040.0,
       "trading_volume": 3351679,
       "trading_value": 33650857160,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "MLCC 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -46,7 +46,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -54,23 +56,25 @@
       "close_price": 8660.0,
       "trading_volume": 1070634,
       "trading_value": 9271690440,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "rise_reason": "MLCC 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 13.49,
       "close_price": 9000.0,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "rise_reason": "MLCC 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [],
@@ -79,7 +83,9 @@
       "source": "estimated",
       "trading_volume": 173610,
       "trading_value": 1562490000,
-      "market_cap": 137500000000
+      "market_cap": 137500000000,
+      "reason_previous": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260126",
@@ -114,5 +120,5 @@
     "count_recent": 0,
     "avg_rate": 15.09
   },
-  "built_at": "2026-09-27T09:58:07"
+  "built_at": "2026-10-02T05:15:57"
 }

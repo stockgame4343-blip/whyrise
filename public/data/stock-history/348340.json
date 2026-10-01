@@ -9,9 +9,9 @@
       "close_price": 23600.0,
       "trading_volume": 1121169,
       "trading_value": 26459588400,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — LG-엔비디아 협력 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 피지컬 AI·로봇주 강세…LG-엔비디아 협력 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000527464&office_id=374&code=125490&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -86,9 +96,9 @@
       "close_price": 21000.0,
       "trading_volume": 957493,
       "trading_value": 20107353000,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "781억원 조달 확정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴로메카, 유상증자 청약 절차 완료…781억원 조달 확정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000521290&office_id=629&code=348340&page=&sm=",
+          "source": "더팩트",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -163,15 +183,17 @@
       "close_price": 17433.0,
       "trading_volume": 299679,
       "trading_value": 5224304007,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 22종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -179,15 +201,17 @@
       "close_price": 25300.0,
       "trading_volume": 186823,
       "trading_value": 4726621900,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 20종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260521",
@@ -195,9 +219,9 @@
       "close_price": 42118.0,
       "trading_volume": 653506,
       "trading_value": 27524365708,
-      "rise_reason": "국책사업 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 수술로봇 국가 R&D 과제 공동 연구기관 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -264,7 +288,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "국책사업 관련",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴로메카, AI 수술로봇 국가 R&D 과제 공동 연구기관 선정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013958712&office_id=003&code=348340&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -272,9 +306,9 @@
       "close_price": 72134.0,
       "trading_volume": 3959249,
       "trading_value": 285596467366,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -341,7 +375,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260414",
@@ -349,9 +385,9 @@
       "close_price": 61367.0,
       "trading_volume": 799571,
       "trading_value": 49067273557,
-      "rise_reason": "지분 투자 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "피지컬 AI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -408,7 +444,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 투자 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -450,9 +488,9 @@
       "date": "20260121",
       "change_rate": 23.13,
       "close_price": 109584.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇주 동반 강세 — 현대차 질주",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -492,7 +530,17 @@
       "source": "estimated",
       "trading_volume": 6059721,
       "trading_value": 664048466064,
-      "market_cap": 1359855093641
+      "market_cap": 1359855093641,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "현대차 질주에…로봇 SW·부품株 '불기둥'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005240295",
+          "source": "한국경제",
+          "date": "2026-01-21"
+        }
+      ]
     },
     {
       "date": "20260119",
@@ -689,9 +737,9 @@
       "date": "20251128",
       "change_rate": 11.82,
       "close_price": 29301.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -700,15 +748,17 @@
       "source": "estimated",
       "trading_volume": 527073,
       "trading_value": 15443765973,
-      "market_cap": 363603391907
+      "market_cap": 363603391907,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251031",
       "change_rate": 20.15,
       "close_price": 30397.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇주 동반 강세 — 젠슨 황 로봇 관련 좋은 소식 있을 것",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -717,7 +767,17 @@
       "source": "estimated",
       "trading_volume": 2477537,
       "trading_value": 75309692189,
-      "market_cap": 377203928323
+      "market_cap": 377203928323,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "젠슨 황 &quot;로봇 관련 좋은 소식 있을 것&quot;…로봇주 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005204998",
+          "source": "한국경제",
+          "date": "2025-10-31"
+        }
+      ]
     }
   ],
   "stats": {
@@ -728,5 +788,5 @@
     "count_recent": 0,
     "avg_rate": 17.87
   },
-  "built_at": "2026-10-01T22:55:07"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,15 +9,17 @@
       "close_price": 7080.0,
       "trading_volume": 73954,
       "trading_value": 523594320,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "의료AI 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [],
       "sector": "건강관리기술",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -25,9 +27,9 @@
       "close_price": 10850.0,
       "trading_volume": 148289,
       "trading_value": 1608935650,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "의료AI 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -46,7 +48,9 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -54,9 +58,9 @@
       "close_price": 12530.0,
       "trading_volume": 179546,
       "trading_value": 2249711380,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "서울대병원 등 4개 상급종합병원에 치매 치료제 모니터링",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -75,16 +79,26 @@
       ],
       "sector": "",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴로핏, 서울대병원 등 4개 상급종합병원에 치매 치료제 모니터링 소...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001170566",
+          "source": "조선비즈",
+          "date": "2026-06-09"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 15.65,
       "close_price": 23650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -92,15 +106,17 @@
       "source": "estimated",
       "trading_volume": 867560,
       "trading_value": 20517794000,
-      "market_cap": 288575282854
+      "market_cap": 288575282854,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260210",
       "change_rate": 13.7,
       "close_price": 30700.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "美에 아쿠아· 스케일 펫 첫 공급",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -140,7 +156,17 @@
       "source": "estimated",
       "trading_volume": 3938568,
       "trading_value": 120914037600,
-      "market_cap": 374598781549
+      "market_cap": 374598781549,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴로핏, 美에 ‘뉴로핏 아쿠아·뉴로핏 스케일 펫’ 첫 공급",
+          "link": "https://n.news.naver.com/mnews/article/029/0003010291",
+          "source": "디지털타임스",
+          "date": "2026-02-10"
+        }
+      ]
     },
     {
       "date": "20260202",
@@ -194,10 +220,10 @@
       "date": "20260130",
       "change_rate": 29.89,
       "close_price": 28250.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -205,15 +231,17 @@
       "source": "estimated",
       "trading_volume": 549054,
       "trading_value": 15510775500,
-      "market_cap": 344704090513
+      "market_cap": 344704090513,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251204",
       "change_rate": 11.84,
       "close_price": 32600.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "글로벌 제약사와 협업 기대감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -247,15 +275,25 @@
       "source": "estimated",
       "trading_volume": 13993141,
       "trading_value": 456176396600,
-      "market_cap": 397782419495
+      "market_cap": 397782419495,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] “글로벌 제약사와 협업 기대감”… 뉴로핏, 증권사 호평에...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001127971",
+          "source": "조선비즈",
+          "date": "2025-12-04"
+        }
+      ]
     },
     {
       "date": "20251203",
       "change_rate": 11.05,
       "close_price": 29150.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 경쟁사 코텍스AI 출신 조시 코헨 영입…북미 공략 가속",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -295,16 +333,26 @@
       "source": "estimated",
       "trading_volume": 5049182,
       "trading_value": 147183655300,
-      "market_cap": 355685813751
+      "market_cap": 355685813751,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "뉴로핏, 경쟁사 코텍스AI 출신 조시 코헨 영입…&quot;북미 공략 가속&quot;",
+          "link": "https://n.news.naver.com/mnews/article/011/0004562641",
+          "source": "서울경제",
+          "date": "2025-12-02"
+        }
+      ]
     },
     {
       "date": "20251128",
       "change_rate": 15.37,
       "close_price": 24400.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -312,7 +360,9 @@
       "source": "estimated",
       "trading_volume": 3149091,
       "trading_value": 76837820400,
-      "market_cap": 297726718885
+      "market_cap": 297726718885,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251104",
@@ -354,9 +404,9 @@
       "date": "20250924",
       "change_rate": 11.53,
       "close_price": 22050.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 글로벌 의료기기 단일 심사 프로그램 MDSAP 인증 획득",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -396,7 +446,17 @@
       "source": "estimated",
       "trading_volume": 16889757,
       "trading_value": 372419141850,
-      "market_cap": 269052219321
+      "market_cap": 269052219321,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "뉴로핏, 글로벌 의료기기 단일 심사 프로그램 MDSAP 인증 획득",
+          "link": "https://n.news.naver.com/mnews/article/011/0004536651",
+          "source": "서울경제",
+          "date": "2025-09-23"
+        }
+      ]
     },
     {
       "date": "20250922",
@@ -551,5 +611,5 @@
     "count_recent": 0,
     "avg_rate": 16.37
   },
-  "built_at": "2026-10-01T22:57:41"
+  "built_at": "2026-10-02T05:15:57"
 }

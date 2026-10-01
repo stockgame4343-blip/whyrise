@@ -9,9 +9,9 @@
       "close_price": 14230.0,
       "trading_volume": 1717610,
       "trading_value": 24441590300,
-      "rise_reason": "화장품 영업이익 공시",
+      "rise_reason": "어닝 서프라이즈",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "K뷰티株 클리오, '어닝 서프라이즈'에 24%대 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005320850&office_id=015&code=237880&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260707",
@@ -182,5 +192,5 @@
     "count_recent": 0,
     "avg_rate": 15.56
   },
-  "built_at": "2026-10-01T22:56:20"
+  "built_at": "2026-10-02T05:15:56"
 }

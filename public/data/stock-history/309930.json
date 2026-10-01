@@ -9,10 +9,10 @@
       "close_price": 1103.0,
       "trading_volume": 1313314,
       "trading_value": 1448585342,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리모델링/인테리어",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "가구",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260708",
@@ -80,10 +82,10 @@
       "close_price": 947.0,
       "trading_volume": 493962,
       "trading_value": 467782014,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리모델링/인테리어",
       "news": [
         {
@@ -149,7 +151,9 @@
       ],
       "sector": "가구",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260706",
@@ -157,10 +161,10 @@
       "close_price": 761.0,
       "trading_volume": 904045,
       "trading_value": 687978245,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리모델링/인테리어",
       "news": [
         {
@@ -226,7 +230,9 @@
       ],
       "sector": "가구",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260702",
@@ -234,10 +240,10 @@
       "close_price": 722.0,
       "trading_volume": 1431846,
       "trading_value": 1033792812,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리모델링/인테리어",
       "news": [
         {
@@ -303,7 +309,9 @@
       ],
       "sector": "가구",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260527",
@@ -311,9 +319,9 @@
       "close_price": 3650.0,
       "trading_volume": 45550,
       "trading_value": 166257500,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "주식병합 후 거래재개",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리모델링/인테리어",
       "news": [
@@ -380,7 +388,17 @@
       ],
       "sector": "가구",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "주식병합 후 거래재개…조이웍스앤코 상한가 직행[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006291263&office_id=018&code=309930&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.27"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -388,10 +406,10 @@
       "close_price": 2810.0,
       "trading_volume": 963907,
       "trading_value": 2708578670,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리모델링/인테리어",
       "news": [
         {
@@ -457,7 +475,9 @@
       ],
       "sector": "가구",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260417",
@@ -465,9 +485,9 @@
       "close_price": 1912.0,
       "trading_volume": 843178,
       "trading_value": 1612156336,
-      "rise_reason": "리모델링/인테리어 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "무상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리모델링/인테리어",
       "news": [
@@ -534,7 +554,17 @@
       ],
       "sector": "가구",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "리모델링/인테리어 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "조이웍스앤코, 무상증자 결정…1주당 3주 배정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000082945&office_id=293&code=309930&page=&sm=",
+          "source": "블로터",
+          "date": "2026.04.17"
+        }
+      ]
     },
     {
       "date": "20260409",
@@ -646,5 +676,5 @@
     "count_recent": 0,
     "avg_rate": 18.65
   },
-  "built_at": "2026-10-01T23:00:02"
+  "built_at": "2026-10-02T05:15:56"
 }

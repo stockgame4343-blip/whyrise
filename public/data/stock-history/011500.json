@@ -25,15 +25,17 @@
       "close_price": 14560.0,
       "trading_volume": 126495,
       "trading_value": 1841767200,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "2차전지 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -116,9 +118,9 @@
       "date": "20260305",
       "change_rate": 15.6,
       "close_price": 22600.0,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "2차전지 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
@@ -127,15 +129,17 @@
       "source": "estimated",
       "trading_volume": 704019,
       "trading_value": 15910829400,
-      "market_cap": 353376590330
+      "market_cap": 353376590330,
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260224",
       "change_rate": 10.83,
       "close_price": 26100.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지주 동반 강세 — K-배터리 반사이익 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -169,15 +173,25 @@
       "source": "estimated",
       "trading_volume": 5865983,
       "trading_value": 153102156300,
-      "market_cap": 408103053435
+      "market_cap": 408103053435,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] K-배터리 '반사이익' 기대감…2차전지주 상승세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000493942",
+          "source": "SBS Biz",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20260122",
       "change_rate": 29.83,
       "close_price": 22850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -217,7 +231,17 @@
       "source": "estimated",
       "trading_volume": 3265325,
       "trading_value": 74612676250,
-      "market_cap": 357285623409
+      "market_cap": 357285623409,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20260119",
@@ -247,9 +271,9 @@
       "date": "20251024",
       "change_rate": 13.03,
       "close_price": 17260.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -271,7 +295,17 @@
       "source": "estimated",
       "trading_volume": 4201091,
       "trading_value": 72510830660,
-      "market_cap": 269879643765
+      "market_cap": 269879643765,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     }
   ],
   "stats": {
@@ -282,5 +316,5 @@
     "count_recent": 0,
     "avg_rate": 14.8
   },
-  "built_at": "2026-10-01T22:52:57"
+  "built_at": "2026-10-02T05:15:57"
 }

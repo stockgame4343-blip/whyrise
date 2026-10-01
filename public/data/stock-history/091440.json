@@ -9,9 +9,9 @@
       "close_price": 3030.0,
       "trading_volume": 1367573,
       "trading_value": 4143746190,
-      "rise_reason": "양산 보도",
+      "rise_reason": "반도체 소재 제품 생산 임박",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]한울소재과학, 반도체 소재 제품 생산 임박에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003447073&office_id=030&code=091440&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.13"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -86,9 +96,9 @@
       "close_price": 2655.0,
       "trading_volume": 462963,
       "trading_value": 1229166765,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "KISTI 양자보안 기술 이전받아",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한울소재과학, KISTI 양자보안 기술 이전받아…\"상용화 속도\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001149815&office_id=417&code=091440&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260622",
@@ -163,10 +183,10 @@
       "close_price": 2730.0,
       "trading_volume": 2313503,
       "trading_value": 6315863190,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
         {
@@ -232,7 +252,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260415",
@@ -425,5 +447,5 @@
     "count_recent": 0,
     "avg_rate": 15.59
   },
-  "built_at": "2026-09-27T09:47:07"
+  "built_at": "2026-10-02T05:15:57"
 }

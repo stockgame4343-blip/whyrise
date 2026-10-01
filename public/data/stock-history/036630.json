@@ -9,10 +9,10 @@
       "close_price": 10630.0,
       "trading_volume": 62701,
       "trading_value": 666511630,
-      "rise_reason": "정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이데이터",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "다각화된통신서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정부 정책 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20260707",
@@ -86,9 +88,9 @@
       "close_price": 8200.0,
       "trading_volume": 10875,
       "trading_value": 89175000,
-      "rise_reason": "유상증자 공시",
+      "rise_reason": "최대주주 대상 280억 유상증자 결정",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "재택근무/스마트워크",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "다각화된통신서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 세종텔레콤, 최대주주 대상 280억 유상증자 결정에 ‘上’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001177206&office_id=366&code=036630&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.07"
+        }
+      ]
     },
     {
       "date": "20260608",
@@ -163,10 +175,10 @@
       "close_price": 12560.0,
       "trading_volume": 125945,
       "trading_value": 1581869200,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이데이터",
       "news": [
         {
@@ -232,7 +244,9 @@
       ],
       "sector": "다각화된통신서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260601",
@@ -240,10 +254,10 @@
       "close_price": 12500.0,
       "trading_volume": 76150,
       "trading_value": 951875000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "재택근무/스마트워크",
       "news": [
         {
@@ -309,7 +323,9 @@
       ],
       "sector": "다각화된통신서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260402",
@@ -609,5 +625,5 @@
     "count_recent": 1,
     "avg_rate": 18.34
   },
-  "built_at": "2026-10-01T22:57:28"
+  "built_at": "2026-10-02T05:15:56"
 }

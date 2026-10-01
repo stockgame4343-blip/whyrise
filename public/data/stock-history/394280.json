@@ -9,15 +9,17 @@
       "close_price": 9100.0,
       "trading_volume": 118547,
       "trading_value": 1078777700,
-      "rise_reason": "뉴로모픽 반도체 테마 강세",
+      "rise_reason": "뉴로모픽 반도체 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "뉴로모픽 반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -135,9 +137,9 @@
       "date": "20260311",
       "change_rate": 10.66,
       "close_price": 15570.0,
-      "rise_reason": "온디바이스 AI 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 내후년까지 빅사이클 진입",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -153,7 +155,17 @@
       "source": "estimated",
       "trading_volume": 466593,
       "trading_value": 7264853010,
-      "market_cap": 410168473282
+      "market_cap": 410168473282,
+      "reason_previous": "온디바이스 AI 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;내후년까지 빅사이클 진입&quot;…통신장비주 상한가 쏟아져",
+          "link": "https://n.news.naver.com/mnews/article/015/0005261092",
+          "source": "한국경제",
+          "date": "2026-03-11"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -183,9 +195,9 @@
       "date": "20260209",
       "change_rate": 13.33,
       "close_price": 16150.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "온디바이스 AI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -201,15 +213,17 @@
       "source": "estimated",
       "trading_volume": 948805,
       "trading_value": 15323200750,
-      "market_cap": 425447709923
+      "market_cap": 425447709923,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20251226",
       "change_rate": 22.59,
       "close_price": 14760.0,
-      "rise_reason": "온디바이스 AI 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -225,7 +239,17 @@
       "source": "estimated",
       "trading_volume": 2449796,
       "trading_value": 36158988960,
-      "market_cap": 388830229007
+      "market_cap": 388830229007,
+      "reason_previous": "온디바이스 AI 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
+          "source": "SBS Biz",
+          "date": "2025-12-26"
+        }
+      ]
     },
     {
       "date": "20250604",
@@ -253,5 +277,5 @@
     "count_recent": 0,
     "avg_rate": 13.65
   },
-  "built_at": "2026-09-27T09:28:52"
+  "built_at": "2026-10-02T05:15:57"
 }

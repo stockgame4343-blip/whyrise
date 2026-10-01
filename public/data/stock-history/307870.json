@@ -9,10 +9,10 @@
       "close_price": 1159.0,
       "trading_volume": 4048388,
       "trading_value": 4692081692,
-      "rise_reason": "관세 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관세 정책 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -102,9 +104,9 @@
       "close_price": 1050.0,
       "trading_volume": 3950387,
       "trading_value": 4147906350,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: EDB--오두, 오픈소스 전환 공동 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
@@ -171,7 +173,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "EDB-비투엔-오두, '오픈소스 전환' 공동 추진",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003439876&office_id=030&code=307870&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.22"
+        }
+      ]
     },
     {
       "date": "20260518",
@@ -179,10 +191,10 @@
       "close_price": 1140.0,
       "trading_volume": 1387696,
       "trading_value": 1581973440,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
         {
@@ -248,7 +260,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260417",
@@ -331,9 +345,9 @@
       "date": "20260320",
       "change_rate": 13.11,
       "close_price": 1191.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 150억원 규모 전환사채권 발행 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
@@ -361,7 +375,17 @@
       "source": "estimated",
       "trading_volume": 4458967,
       "trading_value": 5310629697,
-      "market_cap": 88506659619
+      "market_cap": 88506659619,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "비투엔, 150억원 규모 전환사채권 발행 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006239641",
+          "source": "이데일리",
+          "date": "2026-03-20"
+        }
+      ]
     },
     {
       "date": "20260318",
@@ -408,9 +432,9 @@
       "date": "20260312",
       "change_rate": 29.9,
       "close_price": 1047.0,
-      "rise_reason": "클라우드 컴퓨팅 테마 상한가",
+      "rise_reason": "관련 보도: 작년 영업손실 67억...적자 폭 확대",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
@@ -444,7 +468,17 @@
       "source": "estimated",
       "trading_volume": 9409389,
       "trading_value": 9851630283,
-      "market_cap": 77805602536
+      "market_cap": 77805602536,
+      "reason_previous": "클라우드 컴퓨팅 테마 상한가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "비투엔, 작년 영업손실 67억...적자 폭 확대",
+          "link": "https://n.news.naver.com/mnews/article/018/0006233603",
+          "source": "이데일리",
+          "date": "2026-03-12"
+        }
+      ]
     },
     {
       "date": "20260311",
@@ -492,9 +526,9 @@
       "date": "20260122",
       "change_rate": 14.47,
       "close_price": 1226.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 매트릭스랩스와 WORLD3 기반 웹3 AI 통합 솔루션 서비스 확대...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
@@ -516,7 +550,17 @@
       "source": "estimated",
       "trading_volume": 938201,
       "trading_value": 1150234426,
-      "market_cap": 91107610993
+      "market_cap": 91107610993,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "비투엔, 매트릭스랩스와 WORLD3 기반 웹3 AI 통합 솔루션 서비스 확대...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003392072",
+          "source": "전자신문",
+          "date": "2026-01-21"
+        }
+      ]
     },
     {
       "date": "20260106",
@@ -580,9 +624,9 @@
       "date": "20250717",
       "change_rate": 12.04,
       "close_price": 1740.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 40억 규모 전환사채 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
@@ -622,7 +666,17 @@
       "source": "estimated",
       "trading_volume": 9332217,
       "trading_value": 16238057580,
-      "market_cap": 129304439746
+      "market_cap": 129304439746,
+      "reason_previous": "대형 수주",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "비투엔, 40억 규모 전환사채 매도",
+          "link": "https://n.news.naver.com/mnews/article/018/0006068085",
+          "source": "이데일리",
+          "date": "2025-07-17"
+        }
+      ]
     },
     {
       "date": "20250716",
@@ -722,5 +776,5 @@
     "count_recent": 0,
     "avg_rate": 17.94
   },
-  "built_at": "2026-10-01T22:57:46"
+  "built_at": "2026-10-02T05:15:56"
 }

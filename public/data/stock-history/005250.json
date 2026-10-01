@@ -9,9 +9,9 @@
       "close_price": 11350.0,
       "trading_volume": 1021652,
       "trading_value": 11595750200,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "원격진료 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260513",
@@ -166,5 +168,5 @@
     "count_recent": 0,
     "avg_rate": 12.94
   },
-  "built_at": "2026-09-27T08:42:40"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 2850.0,
       "trading_volume": 1525905,
       "trading_value": 4348829250,
-      "rise_reason": "면역항암제 기술이전 뉴스",
+      "rise_reason": "美기업 기술 수출",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 네오이뮨텍, '美기업 기술 수출'에 이틀 연속 상한가(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016264057&office_id=001&code=950220&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.08.21"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -86,9 +96,9 @@
       "close_price": 2195.0,
       "trading_volume": 396741,
       "trading_value": 870846495,
-      "rise_reason": "기술이전 뉴스",
+      "rise_reason": "상장 후 첫 기술이전 성과",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]네오이뮨텍, 상장 후 첫 기술이전 성과에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003458859&office_id=030&code=950220&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260807",
@@ -163,10 +183,10 @@
       "close_price": 1529.0,
       "trading_volume": 2314423,
       "trading_value": 3538752767,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [
         {
@@ -214,7 +234,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -222,10 +244,10 @@
       "close_price": 1700.0,
       "trading_volume": 2582359,
       "trading_value": 4390010300,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [
         {
@@ -261,7 +283,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -269,9 +293,9 @@
       "close_price": 2830.0,
       "trading_volume": 9651608,
       "trading_value": 27314050640,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "희소 유전질환치료제 엔다리 美 판매 라이선스 최종",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -332,7 +356,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "네오이뮨텍, 희소 유전질환치료제 '엔다리' 美 판매 라이선스 최종 획....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005285805&office_id=015&code=950220&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -340,9 +374,9 @@
       "close_price": 2495.0,
       "trading_volume": 1075815,
       "trading_value": 2684158425,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "희소 유전질환치료제 엔다리 美 판매 라이선스 최종",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -403,7 +437,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "네오이뮨텍, 희소 유전질환치료제 '엔다리' 美 판매 라이선스 최종 획....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005285805&office_id=015&code=950220&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20251209",
@@ -527,5 +571,5 @@
     "count_recent": 0,
     "avg_rate": 23.02
   },
-  "built_at": "2026-10-01T22:58:18"
+  "built_at": "2026-10-02T05:15:56"
 }

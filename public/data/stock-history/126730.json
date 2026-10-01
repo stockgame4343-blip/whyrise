@@ -9,9 +9,9 @@
       "close_price": 21300.0,
       "trading_volume": 2224113,
       "trading_value": 47373606900,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "MLCC주 동반 강세 — 전장·AI 수요 확대 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -66,7 +66,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] MLCC株, 전장·AI 수요 확대 기대감에 장 초반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001191727&office_id=366&code=126730&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.09.11"
+        }
+      ]
     },
     {
       "date": "20260811",
@@ -74,10 +84,10 @@
       "close_price": 20000.0,
       "trading_volume": 3787634,
       "trading_value": 75752680000,
-      "rise_reason": "2차전지 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지",
       "news": [
         {
@@ -125,7 +135,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260807",
@@ -133,9 +145,9 @@
       "close_price": 14690.0,
       "trading_volume": 2118758,
       "trading_value": 31124555020,
-      "rise_reason": "2차전지 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 계속되는 순환매",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -184,7 +196,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "계속되는 순환매…2차전지 관련주 상승세 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003119310&office_id=119&code=025900&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.07"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -192,15 +214,17 @@
       "close_price": 11680.0,
       "trading_volume": 208695,
       "trading_value": 2437557600,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "rise_reason": "MLCC 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260618",
@@ -208,10 +232,10 @@
       "close_price": 25700.0,
       "trading_volume": 5139677,
       "trading_value": 132089698900,
-      "rise_reason": "2차전지 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지",
       "news": [
         {
@@ -259,7 +283,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260528",
@@ -267,9 +293,9 @@
       "close_price": 30800.0,
       "trading_volume": 4380090,
       "trading_value": 134906772000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "MLCC 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -330,7 +356,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260520",
@@ -338,10 +366,10 @@
       "close_price": 20200.0,
       "trading_volume": 2349016,
       "trading_value": 47450123200,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -401,15 +429,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 15.59,
       "close_price": 18610.0,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "rise_reason": "MLCC 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [],
@@ -418,7 +448,9 @@
       "source": "estimated",
       "trading_volume": 132116,
       "trading_value": 2458678760,
-      "market_cap": 163177453027
+      "market_cap": 163177453027,
+      "reason_previous": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260223",
@@ -472,9 +504,9 @@
       "date": "20251203",
       "change_rate": 29.98,
       "close_price": 18210.0,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 테마 상한가",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "29.98% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -490,7 +522,17 @@
       "source": "estimated",
       "trading_volume": 3261071,
       "trading_value": 59384102910,
-      "market_cap": 159670146137
+      "market_cap": 159670146137,
+      "reason_previous": "MLCC(적층세라믹콘덴서) 테마 상한가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]코칩 29.98% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003597830",
+          "source": "서울신문",
+          "date": "2025-12-03"
+        }
+      ]
     },
     {
       "date": "20251202",
@@ -520,9 +562,9 @@
       "date": "20251002",
       "change_rate": 12.31,
       "close_price": 16060.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "삼성·오픈AI 700조 스타게이트 동맹에 MLCC 공급",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -544,7 +586,17 @@
       "source": "estimated",
       "trading_volume": 3645790,
       "trading_value": 58551387400,
-      "market_cap": 140818371607
+      "market_cap": 140818371607,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 코칩, 삼성·오픈AI 700조 스타게이트 동맹에 MLCC 공급 부각...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005661275",
+          "source": "아시아경제",
+          "date": "2025-10-02"
+        }
+      ]
     },
     {
       "date": "20250911",
@@ -656,5 +708,5 @@
     "count_recent": 1,
     "avg_rate": 19.41
   },
-  "built_at": "2026-10-01T22:56:23"
+  "built_at": "2026-10-02T05:15:56"
 }

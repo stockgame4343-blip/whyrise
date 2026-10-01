@@ -9,9 +9,9 @@
       "close_price": 1452.0,
       "trading_volume": 2301374,
       "trading_value": 3341595048,
-      "rise_reason": "임상 3상 진입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 진행성핵상마비 국내 2b·3상 계획제출",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -60,7 +60,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 3상 진입",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "삼성제약 \"진행성핵상마비 국내 2b·3상 계획제출\"",
+          "link": "https://n.news.naver.com/mnews/article/003/0014218746",
+          "source": "뉴시스",
+          "date": "2026.09.28"
+        }
+      ]
     },
     {
       "date": "20260423",
@@ -261,5 +271,5 @@
     "count_recent": 1,
     "avg_rate": 15.67
   },
-  "built_at": "2026-10-01T22:53:01"
+  "built_at": "2026-10-02T05:15:56"
 }

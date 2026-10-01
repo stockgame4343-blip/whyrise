@@ -9,15 +9,17 @@
       "close_price": 1730.0,
       "trading_volume": 2338573,
       "trading_value": 4045731290,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -25,10 +27,10 @@
       "close_price": 1517.0,
       "trading_volume": 543553,
       "trading_value": 824569901,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "M&A",
       "news": [
         {
@@ -88,7 +90,9 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -117,9 +121,9 @@
       "date": "20260320",
       "change_rate": 10.69,
       "close_price": 1708.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "20억 규모 자사주 취득 신탁계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -159,15 +163,25 @@
       "source": "estimated",
       "trading_volume": 520919,
       "trading_value": 889729652,
-      "market_cap": 27752022315
+      "market_cap": 27752022315,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오션인더블유, 20억 규모 자사주 취득 신탁계약 체결…주주가치 제고",
+          "link": "https://n.news.naver.com/mnews/article/018/0006238811",
+          "source": "이데일리",
+          "date": "2026-03-19"
+        }
+      ]
     },
     {
       "date": "20260319",
       "change_rate": 11.89,
       "close_price": 1543.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "20억 규모 자사주 취득 신탁계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -207,16 +221,26 @@
       "source": "estimated",
       "trading_volume": 897174,
       "trading_value": 1384339482,
-      "market_cap": 25071059972
+      "market_cap": 25071059972,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오션인더블유, 20억 규모 자사주 취득 신탁계약 체결…주주가치 제고",
+          "link": "https://n.news.naver.com/mnews/article/018/0006238811",
+          "source": "이데일리",
+          "date": "2026-03-19"
+        }
+      ]
     },
     {
       "date": "20260205",
       "change_rate": 11.59,
       "close_price": 1974.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -224,7 +248,9 @@
       "source": "estimated",
       "trading_volume": 789374,
       "trading_value": 1558224276,
-      "market_cap": 32074058577
+      "market_cap": 32074058577,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250620",
@@ -286,5 +312,5 @@
     "count_recent": 1,
     "avg_rate": 12.36
   },
-  "built_at": "2026-10-01T22:59:35"
+  "built_at": "2026-10-02T05:15:56"
 }

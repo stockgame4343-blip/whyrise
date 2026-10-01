@@ -25,10 +25,10 @@
       "close_price": 4585.0,
       "trading_volume": 2093647,
       "trading_value": 9599371495,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폴더블폰",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -194,5 +196,5 @@
     "count_recent": 0,
     "avg_rate": 15.4
   },
-  "built_at": "2026-09-27T10:24:47"
+  "built_at": "2026-10-02T05:15:57"
 }

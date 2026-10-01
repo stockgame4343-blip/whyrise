@@ -9,10 +9,10 @@
       "close_price": 1115.0,
       "trading_volume": 1930621,
       "trading_value": 2152642415,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260720",
@@ -86,10 +88,10 @@
       "close_price": 1352.0,
       "trading_volume": 180079,
       "trading_value": 243466808,
-      "rise_reason": "애국 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "애국 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260716",
@@ -163,10 +167,10 @@
       "close_price": 1040.0,
       "trading_volume": 437394,
       "trading_value": 454889760,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -254,10 +260,10 @@
       "date": "20260311",
       "change_rate": 10.53,
       "close_price": 1785.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -272,7 +278,9 @@
       "source": "estimated",
       "trading_volume": 208195,
       "trading_value": 371628075,
-      "market_cap": 23010804769
+      "market_cap": 23010804769,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250710",
@@ -325,5 +333,5 @@
     "count_recent": 0,
     "avg_rate": 20.16
   },
-  "built_at": "2026-10-01T22:53:31"
+  "built_at": "2026-10-02T05:15:56"
 }

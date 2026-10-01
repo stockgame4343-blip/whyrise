@@ -9,10 +9,10 @@
       "close_price": 36700.0,
       "trading_volume": 637233,
       "trading_value": 23386451100,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -44,10 +46,10 @@
       "close_price": 41400.0,
       "trading_volume": 302856,
       "trading_value": 12538238400,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -113,7 +115,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -121,9 +125,9 @@
       "close_price": 37450.0,
       "trading_volume": 235551,
       "trading_value": 8821384950,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료기기 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -190,7 +194,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -198,10 +204,10 @@
       "close_price": 42250.0,
       "trading_volume": 279628,
       "trading_value": 11814283000,
-      "rise_reason": "의료기기 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -267,7 +273,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "의료기기 양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -275,9 +283,9 @@
       "close_price": 39500.0,
       "trading_volume": 256502,
       "trading_value": 10131829000,
-      "rise_reason": "의료기기 허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료기기 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -344,7 +352,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "의료기기 허가 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260520",
@@ -352,9 +362,9 @@
       "close_price": 63000.0,
       "trading_volume": 506877,
       "trading_value": 31933251000,
-      "rise_reason": "의료기기 허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "수술 로봇 스타크 공개 임박",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -421,7 +431,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "의료기기 허가 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "리브스메드, 수술 로봇 '스타크' 공개 임박…특허 1000건이 뒷받침",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006285688&office_id=018&code=491000&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -429,9 +449,9 @@
       "close_price": 67900.0,
       "trading_volume": 662334,
       "trading_value": 44972478600,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 복강경 수술로봇 스타크 글로벌 게임체인저될 것",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -498,7 +518,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "리브스메드 \"복강경 수술로봇 '스타크' 글로벌 게임체인저될 것\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006267640&office_id=018&code=491000&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260306",
@@ -521,9 +551,9 @@
       "date": "20260305",
       "change_rate": 16.96,
       "close_price": 78600.0,
-      "rise_reason": "의료기기 테마 강세",
+      "rise_reason": "의료기기 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [],
@@ -532,15 +562,17 @@
       "source": "estimated",
       "trading_volume": 581127,
       "trading_value": 45676582200,
-      "market_cap": 1965395969773
+      "market_cap": 1965395969773,
+      "reason_previous": "의료기기 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260219",
       "change_rate": 11.63,
       "close_price": 85400.0,
-      "rise_reason": "의료기기 테마 강세",
+      "rise_reason": "의료기기 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [],
@@ -549,7 +581,9 @@
       "source": "estimated",
       "trading_volume": 971966,
       "trading_value": 83005896400,
-      "market_cap": 2135430226700
+      "market_cap": 2135430226700,
+      "reason_previous": "의료기기 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260204",
@@ -675,9 +709,9 @@
       "date": "20260112",
       "change_rate": 11.11,
       "close_price": 60000.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "美플렉스덱스 기술자산 인수",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -717,7 +751,17 @@
       "source": "estimated",
       "trading_volume": 4888882,
       "trading_value": 293332920000,
-      "market_cap": 1500302267002
+      "market_cap": 1500302267002,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "&quot;독점 강화&quot;…리브스메드, 美플렉스덱스 기술자산 인수",
+          "link": "https://n.news.naver.com/mnews/article/003/0013705191",
+          "source": "뉴시스",
+          "date": "2026-01-12"
+        }
+      ]
     },
     {
       "date": "20251230",
@@ -745,5 +789,5 @@
     "count_recent": 1,
     "avg_rate": 15.84
   },
-  "built_at": "2026-10-01T22:54:26"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 2895.0,
       "trading_volume": 984038,
       "trading_value": 2848790010,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: GenAI로 비즈니스 생산성 기준 제시..., IASF20...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "\"GenAI로 비즈니스 생산성 기준 제시\"...모니터랩, ‘IASF20...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002436856&office_id=092&code=434480&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.09.09"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -86,9 +96,9 @@
       "close_price": 2310.0,
       "trading_volume": 149010,
       "trading_value": 344213100,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "관련 보도: WAAP에 시큐레터 CDR 결합",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -101,7 +111,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "모니터랩 WAAP에 시큐레터 CDR 결합",
+          "link": "https://n.news.naver.com/mnews/article/029/0003040694",
+          "source": "디지털타임스",
+          "date": "2026-08-04"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -286,5 +306,5 @@
     "count_recent": 1,
     "avg_rate": 12.55
   },
-  "built_at": "2026-10-01T22:59:11"
+  "built_at": "2026-10-02T05:15:56"
 }

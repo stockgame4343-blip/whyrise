@@ -59,10 +59,10 @@
       "close_price": 1410.0,
       "trading_volume": 5121861,
       "trading_value": 7221824010,
-      "rise_reason": "거래량 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
         {
@@ -80,7 +80,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 급증",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -88,10 +90,10 @@
       "close_price": 1248.0,
       "trading_volume": 681321,
       "trading_value": 850288608,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
         {
@@ -127,7 +129,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260730",
@@ -135,10 +139,10 @@
       "close_price": 960.0,
       "trading_volume": 2155799,
       "trading_value": 2069567040,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
         {
@@ -186,7 +190,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260615",
@@ -194,9 +200,9 @@
       "close_price": 1722.0,
       "trading_volume": 3077794,
       "trading_value": 5299961268,
-      "rise_reason": "테마 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "미국-이란 종전 기대감에 항공주 다시 난다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -251,7 +257,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "테마 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "미국-이란 종전 기대감에 항공주 다시 난다…티웨이홀딩스 12%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005370943&office_id=008&code=004870&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260604",
@@ -259,10 +275,10 @@
       "close_price": 1507.0,
       "trading_volume": 993555,
       "trading_value": 1497287385,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
         {
@@ -304,7 +320,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -312,9 +330,9 @@
       "close_price": 2240.0,
       "trading_volume": 17542340,
       "trading_value": 39294841600,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "트리니티항공 사명 변경 기대감",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -363,7 +381,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]티웨이홀딩스, '트리니티항공' 사명 변경 기대감에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003429609&office_id=030&code=004870&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260520",
@@ -371,9 +399,9 @@
       "close_price": 1902.0,
       "trading_volume": 2807590,
       "trading_value": 5340036180,
-      "rise_reason": "무상감자 공시",
+      "rise_reason": "트리니티항공 사명 변경 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -440,7 +468,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "무상감자 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]티웨이홀딩스, '트리니티항공' 사명 변경 기대감에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003429609&office_id=030&code=004870&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260519",
@@ -448,10 +486,10 @@
       "close_price": 1465.0,
       "trading_volume": 703288,
       "trading_value": 1030316920,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
         {
@@ -517,7 +555,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -528,5 +568,5 @@
     "count_recent": 1,
     "avg_rate": 24.59
   },
-  "built_at": "2026-10-01T22:53:29"
+  "built_at": "2026-10-02T05:15:56"
 }

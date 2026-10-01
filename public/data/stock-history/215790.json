@@ -9,9 +9,9 @@
       "close_price": 802.0,
       "trading_volume": 11965734,
       "trading_value": 9596518668,
-      "rise_reason": "관련 보도: 코스닥 거래상위, 통신·광부품주 강세…대한광통신 거...",
+      "rise_reason": "통신·광부품주 동반 강세",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -33,7 +33,8 @@
           "source": "서울신문",
           "date": "2026-09-16"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260805",
@@ -41,9 +42,9 @@
       "close_price": 988.0,
       "trading_volume": 11068292,
       "trading_value": 10935472496,
-      "rise_reason": "홀린 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -98,7 +99,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "홀린 실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260722",
@@ -106,10 +109,10 @@
       "close_price": 969.0,
       "trading_volume": 4295125,
       "trading_value": 4161976125,
-      "rise_reason": "홀린 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -169,7 +172,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "홀린 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -177,15 +182,17 @@
       "close_price": 895.0,
       "trading_volume": 3581001,
       "trading_value": 3204995895,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -193,9 +200,9 @@
       "close_price": 939.0,
       "trading_volume": 13505134,
       "trading_value": 12681320826,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -208,7 +215,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260703",
@@ -216,10 +225,10 @@
       "close_price": 944.0,
       "trading_volume": 1628414,
       "trading_value": 1537222816,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -273,7 +282,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260609",
@@ -281,10 +292,10 @@
       "close_price": 1584.0,
       "trading_volume": 19309153,
       "trading_value": 30585698352,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
         {
@@ -338,7 +349,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -346,10 +359,10 @@
       "close_price": 1625.0,
       "trading_volume": 25118211,
       "trading_value": 40817092875,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -403,7 +416,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260520",
@@ -411,10 +426,10 @@
       "close_price": 2265.0,
       "trading_volume": 49915341,
       "trading_value": 113058247365,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -456,7 +471,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260512",
@@ -464,10 +481,10 @@
       "close_price": 2305.0,
       "trading_volume": 58396696,
       "trading_value": 134604384280,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -509,7 +526,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -517,9 +536,9 @@
       "close_price": 1987.0,
       "trading_volume": 13316842,
       "trading_value": 26460565054,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -562,7 +581,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260427",
@@ -570,10 +591,10 @@
       "close_price": 2255.0,
       "trading_volume": 15552184,
       "trading_value": 35070174920,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -609,7 +630,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260415",
@@ -640,9 +663,9 @@
       "close_price": 3340.0,
       "trading_volume": 43620938,
       "trading_value": 145693932920,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -655,7 +678,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260410",
@@ -663,9 +688,9 @@
       "close_price": 2925.0,
       "trading_volume": 52852496,
       "trading_value": 154593550800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -702,7 +727,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260409",
@@ -1269,5 +1296,5 @@
     "count_recent": 1,
     "avg_rate": 23.3
   },
-  "built_at": "2026-10-01T22:59:37"
+  "built_at": "2026-10-02T05:15:56"
 }

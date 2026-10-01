@@ -9,9 +9,9 @@
       "close_price": 4615.0,
       "trading_volume": 495578,
       "trading_value": 2287092470,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260513",
@@ -86,9 +88,9 @@
       "close_price": 7150.0,
       "trading_volume": 1576868,
       "trading_value": 11274606200,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 핵심부품 SiC링 자동외관 검사장비 개발·수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "브이원텍, 반도체 핵심부품 SiC링 자동외관 검사장비 개발·수주",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005285847&office_id=015&code=251630&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260121",
@@ -191,9 +203,9 @@
       "date": "20260112",
       "change_rate": 10.09,
       "close_price": 6110.0,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -202,15 +214,17 @@
       "source": "estimated",
       "trading_volume": 349936,
       "trading_value": 2138108960,
-      "market_cap": 97399261992
+      "market_cap": 97399261992,
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251202",
       "change_rate": 14.74,
       "close_price": 6070.0,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -226,15 +240,17 @@
       "source": "estimated",
       "trading_volume": 1758508,
       "trading_value": 10674143560,
-      "market_cap": 96761623616
+      "market_cap": 96761623616,
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251128",
       "change_rate": 12.01,
       "close_price": 5270.0,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -243,15 +259,17 @@
       "source": "estimated",
       "trading_volume": 148108,
       "trading_value": 780529160,
-      "market_cap": 84008856088
+      "market_cap": 84008856088,
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251020",
       "change_rate": 10.36,
       "close_price": 6180.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "국내 디스플레이 제조사 모듈라인 전체 공정 수주",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -267,7 +285,17 @@
       "source": "estimated",
       "trading_volume": 2517867,
       "trading_value": 15560418060,
-      "market_cap": 98515129151
+      "market_cap": 98515129151,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "브이원텍, 국내 디스플레이 제조사 모듈라인 '전체 공정' 수주",
+          "link": "https://n.news.naver.com/mnews/article/015/0005199136",
+          "source": "한국경제",
+          "date": "2025-10-20"
+        }
+      ]
     },
     {
       "date": "20250526",
@@ -295,5 +323,5 @@
     "count_recent": 0,
     "avg_rate": 18.13
   },
-  "built_at": "2026-09-27T10:06:57"
+  "built_at": "2026-10-02T05:15:57"
 }

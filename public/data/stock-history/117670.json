@@ -9,9 +9,9 @@
       "close_price": 11900.0,
       "trading_volume": 734896,
       "trading_value": 8745262400,
-      "rise_reason": "관련 보도: \"광통신·광센서 IC 신제품 개발 추진…연내 출하\"",
+      "rise_reason": "광통신·광센서 IC 신제품 개발 추진",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -28,12 +28,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "알파칩스 &quot;광통신·광센서 IC 신제품 개발 추진…연내 출하&quot;",
+          "title": "알파칩스 \"광통신·광센서 IC 신제품 개발 추진…연내 출하\"",
           "link": "https://n.news.naver.com/mnews/article/003/0014199861",
           "source": "뉴시스",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260911",
@@ -41,9 +42,9 @@
       "close_price": 13580.0,
       "trading_volume": 370768,
       "trading_value": 5035029440,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "CPO 핵심부품 양산 채비",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -110,7 +111,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "알파칩스 관계사 포스텍, CPO 핵심부품 양산 채비…2027년 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006366873&office_id=018&code=117670&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260910",
@@ -118,9 +129,9 @@
       "close_price": 10450.0,
       "trading_volume": 251138,
       "trading_value": 2624392100,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "CPO 핵심부품 양산 채비",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -187,7 +198,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "알파칩스 관계사 포스텍, CPO 핵심부품 양산 채비…2027년 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006366873&office_id=018&code=117670&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -211,9 +232,9 @@
       "close_price": 10180.0,
       "trading_volume": 32051,
       "trading_value": 326279180,
-      "rise_reason": "시스템반도체 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -280,7 +301,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "시스템반도체 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260702",
@@ -365,10 +388,10 @@
       "close_price": 17650.0,
       "trading_volume": 90826,
       "trading_value": 1603078900,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -434,7 +457,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260403",
@@ -551,9 +576,9 @@
       "date": "20260113",
       "change_rate": 11.4,
       "close_price": 12410.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 삼성전자 출신 전문가 영입…반도체 사업 강화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -575,7 +600,17 @@
       "source": "estimated",
       "trading_volume": 82218,
       "trading_value": 1020325380,
-      "market_cap": 82695727272
+      "market_cap": 82695727272,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "알파칩스, 삼성전자 출신 전문가 영입…반도체 사업 강화",
+          "link": "https://n.news.naver.com/mnews/article/003/0013704487",
+          "source": "뉴시스",
+          "date": "2026-01-12"
+        }
+      ]
     },
     {
       "date": "20260106",
@@ -640,5 +675,5 @@
     "count_recent": 3,
     "avg_rate": 17.44
   },
-  "built_at": "2026-10-01T22:58:14"
+  "built_at": "2026-10-02T05:15:56"
 }

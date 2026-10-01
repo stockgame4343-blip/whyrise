@@ -9,10 +9,10 @@
       "close_price": 6400.0,
       "trading_volume": 229067,
       "trading_value": 1466028800,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260723",
@@ -86,10 +88,10 @@
       "close_price": 4635.0,
       "trading_volume": 132372,
       "trading_value": 613544220,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -179,10 +183,10 @@
       "close_price": 6430.0,
       "trading_volume": 1276983,
       "trading_value": 8211000690,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
         {
@@ -248,7 +252,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -270,9 +276,9 @@
       "date": "20260305",
       "change_rate": 13.83,
       "close_price": 5760.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "31억원 규모 디스플레이 리페어 장비 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
@@ -294,15 +300,25 @@
       "source": "estimated",
       "trading_volume": 141453,
       "trading_value": 814769280,
-      "market_cap": 61562653562
+      "market_cap": 61562653562,
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔젯, 31억원 규모 디스플레이 리페어 장비 공급계약",
+          "link": "https://n.news.naver.com/mnews/article/018/0006228357",
+          "source": "이데일리",
+          "date": "2026-03-04"
+        }
+      ]
     },
     {
       "date": "20260107",
       "change_rate": 10.03,
       "close_price": 10970.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "830톤 규모 희토류·PCB 리사이클링 원재료 확보",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
@@ -318,15 +334,25 @@
       "source": "estimated",
       "trading_volume": 5392442,
       "trading_value": 59155088740,
-      "market_cap": 117246928746
+      "market_cap": 117246928746,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔젯, 830톤 규모 희토류·PCB 리사이클링 원재료 확보",
+          "link": "https://n.news.naver.com/mnews/article/018/0006196207",
+          "source": "이데일리",
+          "date": "2026-01-07"
+        }
+      ]
     },
     {
       "date": "20260102",
       "change_rate": 11.03,
       "close_price": 9060.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "새해 희토류 확보전쟁",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
@@ -348,7 +374,17 @@
       "source": "estimated",
       "trading_volume": 4545909,
       "trading_value": 41185935540,
-      "market_cap": 96832923832
+      "market_cap": 96832923832,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]엔젯, 새해 희토류 확보전쟁…세계 최초 PCB 순환 생태계 구축",
+          "link": "https://n.news.naver.com/mnews/article/277/0005701306",
+          "source": "아시아경제",
+          "date": "2026-01-02"
+        }
+      ]
     },
     {
       "date": "20251224",
@@ -484,5 +520,5 @@
     "count_recent": 0,
     "avg_rate": 14.6
   },
-  "built_at": "2026-10-01T22:58:44"
+  "built_at": "2026-10-02T05:15:56"
 }

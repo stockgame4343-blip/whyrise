@@ -25,9 +25,9 @@
       "close_price": 90300.0,
       "trading_volume": 344662,
       "trading_value": 31122978600,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차 대표주 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차 대표주",
       "news": [
@@ -94,15 +94,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 16.07,
       "close_price": 91000.0,
-      "rise_reason": "자동차 대표주 테마 강세",
+      "rise_reason": "자동차 대표주 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차 대표주",
       "news": [],
@@ -111,7 +113,9 @@
       "source": "estimated",
       "trading_volume": 577539,
       "trading_value": 52556049000,
-      "market_cap": 2474725651577
+      "market_cap": 2474725651577,
+      "reason_previous": "자동차 대표주 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -122,5 +126,5 @@
     "count_recent": 0,
     "avg_rate": 14.59
   },
-  "built_at": "2026-09-27T08:36:26"
+  "built_at": "2026-10-02T05:15:57"
 }

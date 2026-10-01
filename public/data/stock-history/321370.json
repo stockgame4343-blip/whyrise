@@ -92,9 +92,9 @@
       "close_price": 1372.0,
       "trading_volume": 24584922,
       "trading_value": 33730512984,
-      "rise_reason": "외국인 순매수",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -131,7 +131,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수",
+      "reason_kind": "theme"
     },
     {
       "date": "20260819",
@@ -139,9 +141,9 @@
       "close_price": 1558.0,
       "trading_volume": 19358656,
       "trading_value": 30160786048,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 젠슨 황이 주목한 AI 인터커넥트… , 차세대 전송망 정조준",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -190,7 +192,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "젠슨 황이 주목한 'AI 인터커넥트'… 센서뷰, 차세대 전송망 정조준",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005401282&office_id=008&code=321370&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -198,9 +210,9 @@
       "close_price": 1513.0,
       "trading_volume": 12712642,
       "trading_value": 19234227346,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지상레이더용 특수복합커넥터 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -267,7 +279,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "센서뷰, 지상레이더용 특수복합커넥터 공급계약…매출액 5.6% 규모",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006346879&office_id=018&code=321370&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.07"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -275,15 +297,17 @@
       "close_price": 1160.0,
       "trading_volume": 1051139,
       "trading_value": 1219321240,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -291,15 +315,17 @@
       "close_price": 1703.0,
       "trading_volume": 595665,
       "trading_value": 1014417495,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260703",
@@ -307,10 +333,10 @@
       "close_price": 1813.0,
       "trading_volume": 2214953,
       "trading_value": 4015709789,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -358,7 +384,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -366,10 +394,10 @@
       "close_price": 2722.0,
       "trading_volume": 4456252,
       "trading_value": 12129917944,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -429,7 +457,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -437,9 +467,9 @@
       "close_price": 3606.0,
       "trading_volume": 23399688,
       "trading_value": 84379274928,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -500,7 +530,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260521",
@@ -508,9 +540,9 @@
       "close_price": 3357.0,
       "trading_volume": 7067658,
       "trading_value": 23726127906,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주테마주 동반 강세 — 스페이스X 조기 IPO 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -571,7 +603,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "스페이스X 조기 IPO 기대에 우주테마株 급등…미래에셋벤처 23%↑[이...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004622199&office_id=011&code=321370&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260518",
@@ -579,9 +621,9 @@
       "close_price": 3343.0,
       "trading_volume": 19871252,
       "trading_value": 66429595436,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -648,7 +690,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -656,10 +700,10 @@
       "close_price": 3234.0,
       "trading_volume": 15520616,
       "trading_value": 50193672144,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -725,7 +769,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -733,9 +779,9 @@
       "close_price": 3766.0,
       "trading_volume": 13517643,
       "trading_value": 50907443538,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "스페이스X 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -748,7 +794,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
@@ -897,9 +945,9 @@
       "date": "20260305",
       "change_rate": 14.99,
       "close_price": 2133.0,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
@@ -908,7 +956,9 @@
       "source": "estimated",
       "trading_volume": 4058756,
       "trading_value": 8657326548,
-      "market_cap": 110235646551
+      "market_cap": 110235646551,
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260224",
@@ -931,9 +981,9 @@
       "date": "20260128",
       "change_rate": 13.76,
       "close_price": 3869.0,
-      "rise_reason": "파트너십",
-      "reason_confidence": "low",
-      "reason_source": "news",
+      "rise_reason": "美서부 거점 글로벌 솔루션 기업과 공급 파트너십 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -955,7 +1005,17 @@
       "source": "estimated",
       "trading_volume": 14386862,
       "trading_value": 55662769078,
-      "market_cap": 199953922413
+      "market_cap": 199953922413,
+      "reason_previous": "파트너십",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "센서뷰, 美서부 거점 글로벌 솔루션 기업과 공급 파트너십 체결",
+          "link": "https://n.news.naver.com/mnews/article/018/0006208593",
+          "source": "이데일리",
+          "date": "2026-01-28"
+        }
+      ]
     },
     {
       "date": "20260121",
@@ -1105,9 +1165,9 @@
       "date": "20260115",
       "change_rate": 12.64,
       "close_price": 2478.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 양자과학기술 플래그십 과제 참여…핵심 부품 국산화 속도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -1129,7 +1189,17 @@
       "source": "estimated",
       "trading_volume": 10965778,
       "trading_value": 27173197884,
-      "market_cap": 128065603448
+      "market_cap": 128065603448,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "센서뷰, 양자과학기술 플래그십 과제 참여…핵심 부품 국산화 속도",
+          "link": "https://n.news.naver.com/mnews/article/018/0006201463",
+          "source": "이데일리",
+          "date": "2026-01-15"
+        }
+      ]
     },
     {
       "date": "20260112",
@@ -1244,9 +1314,9 @@
       "date": "20250626",
       "change_rate": 12.14,
       "close_price": 1626.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "방산 시장서 새 성장 동력 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -1286,15 +1356,25 @@
       "source": "estimated",
       "trading_volume": 22732912,
       "trading_value": 36963714912,
-      "market_cap": 84033362068
+      "market_cap": 84033362068,
+      "reason_previous": "대형 수주",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "센서뷰 &quot;방산 시장서 새 성장 동력 확보…수주잔고 본격 증가&quot;",
+          "link": "https://n.news.naver.com/mnews/article/018/0006048638",
+          "source": "이데일리",
+          "date": "2025-06-25"
+        }
+      ]
     },
     {
       "date": "20250625",
       "change_rate": 11.88,
       "close_price": 1450.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "방산 시장서 새 성장 동력 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -1334,7 +1414,17 @@
       "source": "estimated",
       "trading_volume": 9675594,
       "trading_value": 14029611300,
-      "market_cap": 74937500000
+      "market_cap": 74937500000,
+      "reason_previous": "대형 수주",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "센서뷰 &quot;방산 시장서 새 성장 동력 확보…수주잔고 본격 증가&quot;",
+          "link": "https://n.news.naver.com/mnews/article/018/0006048638",
+          "source": "이데일리",
+          "date": "2025-06-25"
+        }
+      ]
     }
   ],
   "stats": {
@@ -1345,5 +1435,5 @@
     "count_recent": 2,
     "avg_rate": 17.01
   },
-  "built_at": "2026-10-01T22:57:20"
+  "built_at": "2026-10-02T05:15:56"
 }

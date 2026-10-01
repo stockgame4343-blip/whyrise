@@ -9,9 +9,9 @@
       "close_price": 172000.0,
       "trading_volume": 346512,
       "trading_value": 59600064000,
-      "rise_reason": "백화점 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "백화점주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 인수 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] '불장'에 부의 효과? 백화점주 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016119009&office_id=001&code=023530&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260416",
@@ -183,5 +193,5 @@
     "count_recent": 0,
     "avg_rate": 13.27
   },
-  "built_at": "2026-10-01T22:52:23"
+  "built_at": "2026-10-02T05:15:57"
 }

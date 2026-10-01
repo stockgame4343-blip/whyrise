@@ -9,9 +9,9 @@
       "close_price": 11330.0,
       "trading_volume": 147153,
       "trading_value": 1667243490,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -86,9 +88,9 @@
       "close_price": 10170.0,
       "trading_volume": 104732,
       "trading_value": 1065124440,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260803",
@@ -163,10 +167,10 @@
       "close_price": 9000.0,
       "trading_volume": 61931,
       "trading_value": 557379000,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -309,10 +315,10 @@
       "date": "20260305",
       "change_rate": 13.97,
       "close_price": 22850.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -327,15 +333,17 @@
       "source": "estimated",
       "trading_volume": 202155,
       "trading_value": 4619241750,
-      "market_cap": 351101356443
+      "market_cap": 351101356443,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260107",
       "change_rate": 12.8,
       "close_price": 26000.0,
-      "rise_reason": "바이오",
+      "rise_reason": "우시바이오와 면역항암제 CDMO 계약",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -351,7 +359,17 @@
       "source": "estimated",
       "trading_volume": 306110,
       "trading_value": 7958860000,
-      "market_cap": 399502637528
+      "market_cap": 399502637528,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "와이바이오로직스, 우시바이오와 면역항암제 CDMO 계약",
+          "link": "https://n.news.naver.com/mnews/article/011/0004575934",
+          "source": "서울경제",
+          "date": "2026-01-07"
+        }
+      ]
     },
     {
       "date": "20251204",
@@ -411,9 +429,9 @@
       "date": "20251031",
       "change_rate": 14.94,
       "close_price": 22850.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 中 이노벤트 초대형 딜에 삼중항체에 쏠리는 눈",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -441,15 +459,25 @@
       "source": "estimated",
       "trading_volume": 1389061,
       "trading_value": 31740043850,
-      "market_cap": 351101356443
+      "market_cap": 351101356443,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "中 이노벤트 초대형 딜에 와이바이오로직스 삼중항체에 쏠리는 눈",
+          "link": "https://n.news.naver.com/mnews/article/018/0006152188",
+          "source": "이데일리",
+          "date": "2025-10-31"
+        }
+      ]
     },
     {
       "date": "20251021",
       "change_rate": 12.87,
       "close_price": 17720.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 스몰인사이트 , 넥스트 키트루다 도전",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -465,7 +493,17 @@
       "source": "estimated",
       "trading_volume": 1322323,
       "trading_value": 23431563560,
-      "market_cap": 272276412961
+      "market_cap": 272276412961,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "스몰인사이트 &quot;와이바이오로직스, '넥스트 키트루다' 도전&quot;",
+          "link": "https://n.news.naver.com/mnews/article/003/0013547071",
+          "source": "뉴시스",
+          "date": "2025-10-21"
+        }
+      ]
     },
     {
       "date": "20251010",
@@ -488,10 +526,10 @@
       "date": "20250616",
       "change_rate": 10.66,
       "close_price": 10800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -499,7 +537,9 @@
       "source": "estimated",
       "trading_volume": 265428,
       "trading_value": 2866622400,
-      "market_cap": 165947249434
+      "market_cap": 165947249434,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
@@ -544,5 +584,5 @@
     "count_recent": 0,
     "avg_rate": 13.21
   },
-  "built_at": "2026-10-01T22:57:14"
+  "built_at": "2026-10-02T05:15:56"
 }

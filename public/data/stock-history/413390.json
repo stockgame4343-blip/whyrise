@@ -9,15 +9,17 @@
       "close_price": 6180.0,
       "trading_volume": 33271,
       "trading_value": 205614780,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "2차전지 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -41,9 +43,9 @@
       "close_price": 6180.0,
       "trading_volume": 54499,
       "trading_value": 336803820,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "30억 규모 자사주 취득 신탁계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -110,7 +112,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엠오티, 30억 규모 자사주 취득 신탁계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014034279&office_id=003&code=413390&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -167,10 +179,10 @@
       "date": "20260105",
       "change_rate": 12.41,
       "close_price": 7700.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -178,16 +190,18 @@
       "source": "estimated",
       "trading_volume": 1957382,
       "trading_value": 15071841400,
-      "market_cap": 89202852614
+      "market_cap": 89202852614,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251229",
       "change_rate": 14.37,
       "close_price": 7480.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -202,7 +216,9 @@
       "source": "estimated",
       "trading_volume": 588530,
       "trading_value": 4402204400,
-      "market_cap": 86654199683
+      "market_cap": 86654199683,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251028",
@@ -249,5 +265,5 @@
     "count_recent": 0,
     "avg_rate": 13.85
   },
-  "built_at": "2026-09-27T10:01:02"
+  "built_at": "2026-10-02T05:15:57"
 }

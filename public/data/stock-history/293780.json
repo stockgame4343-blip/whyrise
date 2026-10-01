@@ -9,15 +9,17 @@
       "close_price": 6180.0,
       "trading_volume": 128728,
       "trading_value": 795539040,
-      "rise_reason": "건강기능식품 테마 강세",
+      "rise_reason": "건강기능식품 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "건강기능식품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -25,9 +27,9 @@
       "close_price": 4915.0,
       "trading_volume": 570381,
       "trading_value": 2803422615,
-      "rise_reason": "면역항암제 임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "아이수지낙시브 글로벌 임상 2상 추적관찰 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "압타바이오, '아이수지낙시브' 글로벌 임상 2상 추적관찰 완료",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001259679&office_id=215&code=293780&page=&sm=",
+          "source": "한국경제TV",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -102,9 +114,9 @@
       "close_price": 4975.0,
       "trading_volume": 197798,
       "trading_value": 984045050,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -171,7 +183,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -218,10 +240,10 @@
       "date": "20251211",
       "change_rate": 12.28,
       "close_price": 10420.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -229,15 +251,17 @@
       "source": "estimated",
       "trading_volume": 1712106,
       "trading_value": 17840144520,
-      "market_cap": 292686222222
+      "market_cap": 292686222222,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251209",
       "change_rate": 14.39,
       "close_price": 9620.0,
-      "rise_reason": "바이오",
+      "rise_reason": "당뇨병성 신장질환 치료제, 내년 임상 2b상",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -259,15 +283,25 @@
       "source": "estimated",
       "trading_volume": 1597023,
       "trading_value": 15363361260,
-      "market_cap": 270215111111
+      "market_cap": 270215111111,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "압타바이오 &quot;당뇨병성 신장질환 치료제, 내년 임상 2b상 중간데이터 ...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006180261",
+          "source": "이데일리",
+          "date": "2025-12-09"
+        }
+      ]
     },
     {
       "date": "20251126",
       "change_rate": 12.05,
       "close_price": 8180.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 콜드튜머 깨뜨린 APX-343A…시장평가 5억달러",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -283,15 +317,25 @@
       "source": "estimated",
       "trading_volume": 1192508,
       "trading_value": 9754715440,
-      "market_cap": 229767111111
+      "market_cap": 229767111111,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "콜드튜머 깨뜨린 압타바이오 APX-343A…&quot;시장평가 5억달러&quot;",
+          "link": "https://n.news.naver.com/mnews/article/018/0006171681",
+          "source": "이데일리",
+          "date": "2025-11-26"
+        }
+      ]
     },
     {
       "date": "20250716",
       "change_rate": 10.0,
       "close_price": 10120.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "후보물질 패키지딜 추진 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -331,15 +375,25 @@
       "source": "estimated",
       "trading_volume": 6748755,
       "trading_value": 68297400600,
-      "market_cap": 284259555555
+      "market_cap": 284259555555,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "압타바이오, 후보물질 패키지딜 추진 소식에 10%↑[Why 바이오]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004509854",
+          "source": "서울경제",
+          "date": "2025-07-16"
+        }
+      ]
     },
     {
       "date": "20250630",
       "change_rate": 14.12,
       "close_price": 8650.0,
-      "rise_reason": "바이오",
+      "rise_reason": "美서 희소의약품 지정",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -379,7 +433,17 @@
       "source": "estimated",
       "trading_volume": 1845515,
       "trading_value": 15963704750,
-      "market_cap": 242968888888
+      "market_cap": 242968888888,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "압타바이오 항암 신약, 美서 희소의약품 지정",
+          "link": "https://n.news.naver.com/mnews/article/015/0005151582",
+          "source": "한국경제",
+          "date": "2025-06-30"
+        }
+      ]
     }
   ],
   "stats": {
@@ -390,5 +454,5 @@
     "count_recent": 0,
     "avg_rate": 14.43
   },
-  "built_at": "2026-10-01T22:56:23"
+  "built_at": "2026-10-02T05:15:56"
 }

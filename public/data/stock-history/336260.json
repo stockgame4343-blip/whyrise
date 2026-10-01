@@ -9,9 +9,9 @@
       "close_price": 51900.0,
       "trading_volume": 1983282,
       "trading_value": 102932335800,
-      "rise_reason": "외국인·기관 순매수",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "3222억원 연료전지 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인·기관 순매수",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "두산퓨얼셀, 3222억원 연료전지 수주…올 수주 1조원 돌파",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004662064&office_id=011&code=336260&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.09.15"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -163,10 +173,10 @@
       "close_price": 43850.0,
       "trading_volume": 1429271,
       "trading_value": 62673533350,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
         {
@@ -226,7 +236,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -311,15 +323,17 @@
       "close_price": 28600.0,
       "trading_volume": 692507,
       "trading_value": 19805700200,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "고체산화물 연료전지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -327,10 +341,10 @@
       "close_price": 24550.0,
       "trading_volume": 1755895,
       "trading_value": 43107222250,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "수소에너지(수소차/연료전지 등)",
       "news": [
         {
@@ -384,7 +398,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260723",
@@ -392,9 +408,9 @@
       "close_price": 45950.0,
       "trading_volume": 355375,
       "trading_value": 16329481250,
-      "rise_reason": "고체산화물 연료전지(SOFC) 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "고체산화물 연료전지 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -461,7 +477,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "고체산화물 연료전지(SOFC) 수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -546,10 +564,10 @@
       "close_price": 96700.0,
       "trading_volume": 2282288,
       "trading_value": 220697249600,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "수소에너지(수소차/연료전지 등)",
       "news": [
         {
@@ -615,7 +633,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -984,9 +1004,9 @@
       "date": "20260312",
       "change_rate": 12.53,
       "close_price": 46250.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "고체산화물 연료전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -1020,7 +1040,9 @@
       "source": "estimated",
       "trading_volume": 3652651,
       "trading_value": 168935108750,
-      "market_cap": 3029090384615
+      "market_cap": 3029090384615,
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "theme"
     },
     {
       "date": "20260310",
@@ -1043,9 +1065,9 @@
       "date": "20260305",
       "change_rate": 16.18,
       "close_price": 38050.0,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "고체산화물 연료전지 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
@@ -1054,7 +1076,9 @@
       "source": "estimated",
       "trading_volume": 827002,
       "trading_value": 31467426100,
-      "market_cap": 2492040846153
+      "market_cap": 2492040846153,
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251205",
@@ -1077,9 +1101,9 @@
       "date": "20251028",
       "change_rate": 29.94,
       "close_price": 40800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "고체산화물 연료전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
@@ -1088,15 +1112,17 @@
       "source": "estimated",
       "trading_volume": 18098700,
       "trading_value": 738426960000,
-      "market_cap": 2672148923076
+      "market_cap": 2672148923076,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250911",
       "change_rate": 15.82,
       "close_price": 30750.0,
-      "rise_reason": "수소/연료전지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "고체산화물 연료전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -1136,15 +1162,17 @@
       "source": "estimated",
       "trading_volume": 11242390,
       "trading_value": 345703492500,
-      "market_cap": 2013935769230
+      "market_cap": 2013935769230,
+      "reason_previous": "수소/연료전지",
+      "reason_kind": "theme"
     },
     {
       "date": "20250620",
       "change_rate": 20.88,
       "close_price": 23450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "고체산화물 연료전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
@@ -1153,7 +1181,9 @@
       "source": "estimated",
       "trading_volume": 8128265,
       "trading_value": 190607814250,
-      "market_cap": 1535830692307
+      "market_cap": 1535830692307,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -1164,5 +1194,5 @@
     "count_recent": 3,
     "avg_rate": 16.05
   },
-  "built_at": "2026-10-01T22:52:23"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -30,10 +30,10 @@
       "date": "20260305",
       "change_rate": 15.07,
       "close_price": 21300.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -41,7 +41,9 @@
       "source": "estimated",
       "trading_volume": 556891,
       "trading_value": 11861778300,
-      "market_cap": 276798502382
+      "market_cap": 276798502382,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260209",
@@ -101,10 +103,10 @@
       "date": "20260123",
       "change_rate": 10.13,
       "close_price": 16850.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -112,15 +114,17 @@
       "source": "estimated",
       "trading_volume": 648988,
       "trading_value": 10935447800,
-      "market_cap": 218969707283
+      "market_cap": 218969707283,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250910",
       "change_rate": 13.4,
       "close_price": 18110.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "스테이블코인 신성장동력 확보-유안타證",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -160,7 +164,17 @@
       "source": "estimated",
       "trading_volume": 345239,
       "trading_value": 6252278290,
-      "market_cap": 235343703199
+      "market_cap": 235343703199,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "&quot;헥토이노베이션, 스테이블코인 신성장동력 확보&quot;-유안타證",
+          "link": "https://n.news.naver.com/mnews/article/008/0005248176",
+          "source": "머니투데이",
+          "date": "2025-09-10"
+        }
+      ]
     },
     {
       "date": "20250616",
@@ -205,5 +219,5 @@
     "count_recent": 0,
     "avg_rate": 14.36
   },
-  "built_at": "2026-09-27T09:35:17"
+  "built_at": "2026-10-02T05:15:57"
 }

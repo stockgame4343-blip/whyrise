@@ -9,9 +9,9 @@
       "close_price": 8250.0,
       "trading_volume": 2954836,
       "trading_value": 24377397000,
-      "rise_reason": "관련 보도: 14% 급등…\"K뷰티 타고 ODM 확대 신소재 성장\"",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "K뷰티 타고 ODM 확대 신소재 성장",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -40,12 +40,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "엔에프씨, 14% 급등…&quot;K뷰티 타고 ODM 확대 신소재 성장&quot;",
+          "title": "엔에프씨, 14% 급등…\"K뷰티 타고 ODM 확대 신소재 성장\"",
           "link": "https://n.news.naver.com/mnews/article/015/0005333756",
           "source": "한국경제",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260825",
@@ -53,9 +54,9 @@
       "close_price": 7250.0,
       "trading_volume": 1262792,
       "trading_value": 9155242000,
-      "rise_reason": "화장품 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -122,7 +123,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -130,24 +133,26 @@
       "close_price": 6030.0,
       "trading_volume": 194167,
       "trading_value": 1170827010,
-      "rise_reason": "화장품 테마 강세",
+      "rise_reason": "화장품 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "화장품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260320",
       "change_rate": 10.97,
       "close_price": 9000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -155,7 +160,9 @@
       "source": "estimated",
       "trading_volume": 410138,
       "trading_value": 3691242000,
-      "market_cap": 160782918149
+      "market_cap": 160782918149,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -254,10 +261,10 @@
       "date": "20251022",
       "change_rate": 10.62,
       "close_price": 6040.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -272,7 +279,9 @@
       "source": "estimated",
       "trading_volume": 375643,
       "trading_value": 2268883720,
-      "market_cap": 107903202846
+      "market_cap": 107903202846,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250905",
@@ -342,9 +351,9 @@
       "date": "20250805",
       "change_rate": 12.03,
       "close_price": 5915.0,
-      "rise_reason": "무상증자",
+      "rise_reason": "무상증자 소식",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -384,16 +393,26 @@
       "source": "estimated",
       "trading_volume": 3811694,
       "trading_value": 22546170010,
-      "market_cap": 105670106761
+      "market_cap": 105670106761,
+      "reason_previous": "무상증자",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]엔에프씨, 무상증자 소식에 17%↑ 신고가",
+          "link": "https://n.news.naver.com/mnews/article/277/0005632707",
+          "source": "아시아경제",
+          "date": "2025-08-05"
+        }
+      ]
     },
     {
       "date": "20250731",
       "change_rate": 12.83,
       "close_price": 5630.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -401,7 +420,9 @@
       "source": "estimated",
       "trading_volume": 1129062,
       "trading_value": 6356619060,
-      "market_cap": 100578647686
+      "market_cap": 100578647686,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250708",
@@ -482,5 +503,5 @@
     "count_recent": 1,
     "avg_rate": 16.39
   },
-  "built_at": "2026-10-01T22:57:13"
+  "built_at": "2026-10-02T05:15:56"
 }

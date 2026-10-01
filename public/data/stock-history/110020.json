@@ -9,10 +9,10 @@
       "close_price": 2220.0,
       "trading_volume": 80969,
       "trading_value": 179751180,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "아프리카 돼지열병(ASF)",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "가정용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260723",
@@ -68,9 +70,9 @@
       "close_price": 2250.0,
       "trading_volume": 106711,
       "trading_value": 240099750,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "홈케어 신제품 공급 확대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "아프리카 돼지열병(ASF)",
       "news": [
@@ -119,7 +121,17 @@
       ],
       "sector": "가정용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "전진바이오팜 \"홈케어 신제품 공급 확대…글로벌 시장 공략\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334643&office_id=018&code=110020&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260528",
@@ -127,10 +139,10 @@
       "close_price": 2075.0,
       "trading_volume": 871474,
       "trading_value": 1808308550,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "아프리카 돼지열병(ASF)",
       "news": [
         {
@@ -172,7 +184,9 @@
       ],
       "sector": "가정용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260403",
@@ -283,9 +297,9 @@
       "date": "20250813",
       "change_rate": 13.39,
       "close_price": 3895.0,
-      "rise_reason": "바이오",
+      "rise_reason": "경영권 분쟁에 주가만 출렁",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "아프리카 돼지열병(ASF)",
       "news": [
@@ -301,7 +315,17 @@
       "source": "estimated",
       "trading_volume": 226908,
       "trading_value": 883806660,
-      "market_cap": 35326214160
+      "market_cap": 35326214160,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "전진바이오팜, 경영권 분쟁에 주가만 출렁…주총 가처분 결과 '촉각'",
+          "link": "https://n.news.naver.com/mnews/article/018/0006089211",
+          "source": "이데일리",
+          "date": "2025-08-13"
+        }
+      ]
     },
     {
       "date": "20250605",
@@ -346,5 +370,5 @@
     "count_recent": 0,
     "avg_rate": 16.97
   },
-  "built_at": "2026-10-01T22:59:52"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -23,9 +23,9 @@
       "date": "20251222",
       "change_rate": 11.89,
       "close_price": 10160.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "셀트리온 양산라인 공급 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -47,16 +47,26 @@
       "source": "estimated",
       "trading_volume": 677967,
       "trading_value": 6888144720,
-      "market_cap": 189385964912
+      "market_cap": 189385964912,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "마이크로디지탈, 셀트리온 양산라인 공급 소식에 12%대↑[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006187718",
+          "source": "이데일리",
+          "date": "2025-12-22"
+        }
+      ]
     },
     {
       "date": "20251124",
       "change_rate": 10.16,
       "close_price": 7810.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -71,7 +81,9 @@
       "source": "estimated",
       "trading_volume": 157781,
       "trading_value": 1232269610,
-      "market_cap": 145581140350
+      "market_cap": 145581140350,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -82,5 +94,5 @@
     "count_recent": 0,
     "avg_rate": 11.11
   },
-  "built_at": "2026-09-29T00:08:25"
+  "built_at": "2026-10-02T05:15:57"
 }

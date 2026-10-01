@@ -86,9 +86,9 @@
       "close_price": 1439000.0,
       "trading_volume": 184368,
       "trading_value": 265305552000,
-      "rise_reason": "실적 서프라이즈",
+      "rise_reason": "역대 최대 1분기 실적",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코리아 밸류업 지수(Korea Value-up Index)",
       "news": [
@@ -155,7 +155,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼양식품, 역대 최대 1분기 실적에 11% 급등(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016077694&office_id=001&code=003230&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.14"
+        }
+      ]
     }
   ],
   "stats": {
@@ -166,5 +176,5 @@
     "count_recent": 0,
     "avg_rate": 11.2
   },
-  "built_at": "2026-10-01T22:52:12"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -25,9 +25,9 @@
       "close_price": 67000.0,
       "trading_volume": 275052,
       "trading_value": 18428484000,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건강기능식품 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -88,7 +88,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260514",
@@ -96,10 +98,10 @@
       "close_price": 57800.0,
       "trading_volume": 83564,
       "trading_value": 4829999200,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음식료업종",
       "news": [
         {
@@ -159,7 +161,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20251218",
@@ -217,5 +221,5 @@
     "count_recent": 0,
     "avg_rate": 15.39
   },
-  "built_at": "2026-10-01T22:56:38"
+  "built_at": "2026-10-02T05:15:57"
 }

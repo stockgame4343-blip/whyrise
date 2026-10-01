@@ -465,9 +465,9 @@
       "close_price": 184900.0,
       "trading_volume": 10296997,
       "trading_value": 1903914745300,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "폰 대신 잡은 이 사업 덕봤다",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "IT 대표주",
       "news": [
@@ -534,7 +534,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "18% 나홀로 불기둥 찍은 LG전자…폰 대신 잡은 ‘이 사업’ 덕봤다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005679070&office_id=009&code=066570&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260226",
@@ -579,5 +589,5 @@
     "count_recent": 0,
     "avg_rate": 19.74
   },
-  "built_at": "2026-10-01T22:52:03"
+  "built_at": "2026-10-02T05:15:56"
 }

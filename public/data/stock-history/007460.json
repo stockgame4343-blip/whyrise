@@ -32,9 +32,9 @@
       "close_price": 6760.0,
       "trading_volume": 6455988,
       "trading_value": 43642478880,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "퇴행성관절염 신약 승인 기대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -101,7 +101,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이프로젠, 퇴행성관절염 신약 승인 기대…8월초 환자 투약 예정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001142760&office_id=417&code=007460&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -109,9 +119,9 @@
       "close_price": 5200.0,
       "trading_volume": 6372793,
       "trading_value": 33138523600,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "퇴행성관절염 신약 승인 기대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -178,7 +188,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이프로젠, 퇴행성관절염 신약 승인 기대…8월초 환자 투약 예정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001142760&office_id=417&code=007460&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260508",
@@ -186,9 +206,9 @@
       "close_price": 4530.0,
       "trading_volume": 1717289,
       "trading_value": 7779319170,
-      "rise_reason": "방산",
+      "rise_reason": "FDA·EMA 동시 임상 3상 패스 확인",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -213,7 +233,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방산",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이프로젠, FDA·EMA 동시 '임상 3상 패스' 확인…13조 시장 상업화 지...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005354621",
+          "source": "머니투데이",
+          "date": "2026-05-08"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -345,9 +375,9 @@
       "date": "20251113",
       "change_rate": 17.48,
       "close_price": 766.0,
-      "rise_reason": "바이오시밀러(복제 바이오의약품) 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 美헬스케어 훈풍에 에이비엘 효과",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [],
@@ -356,7 +386,17 @@
       "source": "estimated",
       "trading_volume": 44319035,
       "trading_value": 33948380810,
-      "market_cap": 18060608228
+      "market_cap": 18060608228,
+      "reason_previous": "바이오시밀러(복제 바이오의약품) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美헬스케어 훈풍에 에이비엘 효과…바이오주 ‘불기둥’[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006163190",
+          "source": "이데일리",
+          "date": "2025-11-13"
+        }
+      ]
     }
   ],
   "stats": {
@@ -367,5 +407,5 @@
     "count_recent": 0,
     "avg_rate": 198.87
   },
-  "built_at": "2026-10-01T22:53:18"
+  "built_at": "2026-10-02T05:15:57"
 }

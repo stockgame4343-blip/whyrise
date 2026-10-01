@@ -9,9 +9,9 @@
       "close_price": 7130.0,
       "trading_volume": 1217113,
       "trading_value": 8678015690,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "LED 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED",
       "news": [
@@ -42,7 +42,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260825",
@@ -50,10 +52,10 @@
       "close_price": 8550.0,
       "trading_volume": 1046161,
       "trading_value": 8944676550,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
         {
@@ -83,7 +85,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260708",
@@ -91,10 +95,10 @@
       "close_price": 9030.0,
       "trading_volume": 578745,
       "trading_value": 5226067350,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -124,7 +128,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -132,10 +138,10 @@
       "close_price": 9234.0,
       "trading_volume": 73832,
       "trading_value": 681764688,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -171,7 +177,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -182,5 +190,5 @@
     "count_recent": 1,
     "avg_rate": 23.32
   },
-  "built_at": "2026-10-01T22:53:10"
+  "built_at": "2026-10-02T05:15:56"
 }

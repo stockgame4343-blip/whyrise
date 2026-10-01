@@ -38,10 +38,10 @@
       "close_price": 7590.0,
       "trading_volume": 21669,
       "trading_value": 164467710,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(진단키트)",
       "news": [
         {
@@ -107,7 +107,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260602",
@@ -115,10 +117,10 @@
       "close_price": 7530.0,
       "trading_volume": 46220,
       "trading_value": 348036600,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -184,7 +186,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260528",
@@ -192,10 +196,10 @@
       "close_price": 8080.0,
       "trading_volume": 257513,
       "trading_value": 2080705040,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
         {
@@ -261,7 +265,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251027",
@@ -297,9 +303,9 @@
       "date": "20250813",
       "change_rate": 14.29,
       "close_price": 11040.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "당국 우려",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -327,7 +333,17 @@
       "source": "estimated",
       "trading_volume": 507314,
       "trading_value": 5600746560,
-      "market_cap": 110894328358
+      "market_cap": 110894328358,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 인바이오젠 등 코로나 관련주, 당국 우려에 급등세",
+          "link": "https://n.news.naver.com/mnews/article/629/0000416494",
+          "source": "더팩트",
+          "date": "2025-08-13"
+        }
+      ]
     },
     {
       "date": "20250612",
@@ -372,5 +388,5 @@
     "count_recent": 0,
     "avg_rate": 15.82
   },
-  "built_at": "2026-09-27T09:02:19"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 1389.0,
       "trading_volume": 2194522,
       "trading_value": 3048191058,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "국내 상장 중국기업 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260626",
@@ -86,9 +88,9 @@
       "close_price": 1497.0,
       "trading_volume": 5478319,
       "trading_value": 8201043543,
-      "rise_reason": "그래핀 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 토큰 통합 플랫폼 5개 대학 공동 테스트 개시",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "그래핀",
       "news": [
@@ -143,7 +145,17 @@
       ],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "그래핀 수주 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "크리스탈신소재, '토큰 통합 플랫폼' 5개 대학 공동 테스트 개시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001256424&office_id=215&code=900250&page=&sm=",
+          "source": "한국경제TV",
+          "date": "2026.06.24"
+        }
+      ]
     },
     {
       "date": "20260526",
@@ -151,9 +163,9 @@
       "close_price": 2657.0,
       "trading_volume": 2358972,
       "trading_value": 6267788604,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "베이징대·차이나유니콤과 AI플랫폼 개발 MOU",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -220,7 +232,17 @@
       ],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "크리스탈신소재, 베이징대·차이나유니콤과 AI플랫폼 개발 MOU",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013966451&office_id=003&code=900250&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -271,5 +293,5 @@
     "count_recent": 0,
     "avg_rate": 21.28
   },
-  "built_at": "2026-10-01T22:58:57"
+  "built_at": "2026-10-02T05:15:56"
 }

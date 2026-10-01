@@ -9,9 +9,9 @@
       "close_price": 4130.0,
       "trading_volume": 6561976,
       "trading_value": 27100960880,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 로봇 스킨으로 사업 확장…, 휴머노이드 글로벌 기업과 협...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -78,15 +78,25 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "로봇 스킨으로 사업 확장…디케이앤디, 휴머노이드 글로벌 기업과 협...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005280602&office_id=015&code=263020&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260311",
       "change_rate": 12.17,
       "close_price": 3180.0,
-      "rise_reason": "마스크 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "지난해 연결 영업이익 122억2746만원",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -120,7 +130,17 @@
       "source": "estimated",
       "trading_volume": 698035,
       "trading_value": 2219751300,
-      "market_cap": 43997989949
+      "market_cap": 43997989949,
+      "reason_previous": "마스크 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "디케이앤디, 지난해 연결 영업이익 122억2746만원…전년비 44.4%↑",
+          "link": "https://n.news.naver.com/mnews/article/018/0006232517",
+          "source": "이데일리",
+          "date": "2026-03-11"
+        }
+      ]
     }
   ],
   "stats": {
@@ -131,5 +151,5 @@
     "count_recent": 0,
     "avg_rate": 21.02
   },
-  "built_at": "2026-09-27T10:14:31"
+  "built_at": "2026-10-02T05:15:57"
 }

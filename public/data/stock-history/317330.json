@@ -9,9 +9,9 @@
       "close_price": 13570.0,
       "trading_volume": 620263,
       "trading_value": 8416968910,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "일반주주에 지분 5% 현물배당",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "덕산테코피아, 덕산일렉테라 상장 추진…일반주주에 지분 5% 현물배당",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003464397&office_id=030&code=317330&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.07"
+        }
+      ]
     },
     {
       "date": "20260831",
@@ -179,15 +189,17 @@
       "close_price": 12840.0,
       "trading_volume": 96032,
       "trading_value": 1233050880,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "2차전지 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260507",
@@ -195,9 +207,9 @@
       "close_price": 31250.0,
       "trading_volume": 996405,
       "trading_value": 31137656250,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "OLED 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -264,7 +276,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260416",
@@ -424,9 +438,9 @@
       "date": "20260305",
       "change_rate": 15.49,
       "close_price": 16550.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 33종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -435,7 +449,9 @@
       "source": "estimated",
       "trading_volume": 164447,
       "trading_value": 2721597850,
-      "market_cap": 338902455661
+      "market_cap": 338902455661,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251128",
@@ -535,5 +551,5 @@
     "count_recent": 1,
     "avg_rate": 15.73
   },
-  "built_at": "2026-10-01T22:56:06"
+  "built_at": "2026-10-02T05:15:56"
 }

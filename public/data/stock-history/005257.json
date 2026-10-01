@@ -9,9 +9,9 @@
       "close_price": 18300.0,
       "trading_volume": 4183,
       "trading_value": 76548900,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 셀리드",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19",
       "news": [
@@ -42,7 +42,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "코로나19 재유행 우려에 제약주 급등…셀리드 '上'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014143455&office_id=003&code=299660&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260520",
@@ -50,10 +60,10 @@
       "close_price": 28750.0,
       "trading_volume": 16458,
       "trading_value": 473167500,
-      "rise_reason": "진단키트 정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19",
       "news": [
         {
@@ -107,7 +117,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "진단키트 정부 정책 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -115,10 +127,10 @@
       "close_price": 28500.0,
       "trading_volume": 37697,
       "trading_value": 1074364500,
-      "rise_reason": "진단키트 정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방산",
       "news": [
         {
@@ -172,15 +184,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "진단키트 정부 정책 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20250624",
       "change_rate": 29.97,
       "close_price": 47700.0,
-      "rise_reason": "방산 테마 상한가",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "실시간 상승률 1위",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
@@ -196,7 +210,17 @@
       "source": "estimated",
       "trading_volume": 16632,
       "trading_value": 793346400,
-      "market_cap": 40313259109
+      "market_cap": 40313259109,
+      "reason_previous": "방산 테마 상한가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]‘녹십자홀딩스2우’ 13.08% 급등…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003551836",
+          "source": "서울신문",
+          "date": "2025-06-24"
+        }
+      ]
     },
     {
       "date": "20250617",
@@ -309,5 +333,5 @@
     "count_recent": 0,
     "avg_rate": 15.02
   },
-  "built_at": "2026-10-01T22:53:30"
+  "built_at": "2026-10-02T05:15:56"
 }

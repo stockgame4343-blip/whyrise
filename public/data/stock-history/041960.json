@@ -25,10 +25,10 @@
       "close_price": 8330.0,
       "trading_volume": 1113506,
       "trading_value": 9275504980,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260417",
@@ -188,9 +190,9 @@
       "date": "20260213",
       "change_rate": 13.02,
       "close_price": 9550.0,
-      "rise_reason": "바이오",
+      "rise_reason": "아프리카돼지열병 유행",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -212,7 +214,17 @@
       "source": "estimated",
       "trading_volume": 1885146,
       "trading_value": 18003144300,
-      "market_cap": 705658612143
+      "market_cap": 705658612143,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아프리카돼지열병 유행에 코미팜↑…'로슈 파트너' 바이오다인도 주목...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006217948",
+          "source": "이데일리",
+          "date": "2026-02-12"
+        }
+      ]
     },
     {
       "date": "20260204",
@@ -240,5 +252,5 @@
     "count_recent": 0,
     "avg_rate": 13.51
   },
-  "built_at": "2026-10-01T22:54:42"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 2620.0,
       "trading_volume": 3349325,
       "trading_value": 8775231500,
-      "rise_reason": "게임 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: AI 메타버스 플랫폼 스테이지 창작자 모집",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "게임",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "게임 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[AI픽] 넥써쓰, AI 메타버스 플랫폼 '스테이지' 창작자 모집",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016138582&office_id=001&code=205500&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260601",
@@ -86,9 +96,9 @@
       "close_price": 2170.0,
       "trading_volume": 2126615,
       "trading_value": 4614754550,
-      "rise_reason": "게임 흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "비개발자가 AI로 직접 제작",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "게임",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "게임 흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"비개발자가 AI로 직접 제작\"…넥써쓰 페이지 개편, AI·블록체인 게...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002424703&office_id=092&code=205500&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.05.29"
+        }
+      ]
     },
     {
       "date": "20260526",
@@ -163,9 +183,9 @@
       "close_price": 1878.0,
       "trading_volume": 3761387,
       "trading_value": 7063884786,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 프로스트 킹덤 CBT…토크노믹스 시험대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "넥써쓰 '프로스트 킹덤' CBT…토크노믹스 시험대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016099690&office_id=001&code=205500&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -361,5 +391,5 @@
     "count_recent": 0,
     "avg_rate": 13.57
   },
-  "built_at": "2026-09-27T09:40:27"
+  "built_at": "2026-10-02T05:15:57"
 }

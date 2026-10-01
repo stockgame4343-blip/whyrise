@@ -179,10 +179,10 @@
       "close_price": 355000.0,
       "trading_volume": 436740,
       "trading_value": 155042700000,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "생명보험",
       "news": [
         {
@@ -248,7 +248,9 @@
       ],
       "sector": "생명보험",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -256,9 +258,9 @@
       "close_price": 298000.0,
       "trading_volume": 787419,
       "trading_value": 234650862000,
-      "rise_reason": "생명보험 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "내일의 개발자들과 라이프놀로지 랩 워크숍 개최",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "생명보험",
       "news": [
@@ -325,7 +327,17 @@
       ],
       "sector": "생명보험",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "생명보험 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼성생명, 내일의 개발자들과 '라이프놀로지 랩' 워크숍 개최",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008927791&office_id=421&code=032830&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20250605",
@@ -353,5 +365,5 @@
     "count_recent": 0,
     "avg_rate": 14.38
   },
-  "built_at": "2026-10-01T22:52:03"
+  "built_at": "2026-10-02T05:15:56"
 }

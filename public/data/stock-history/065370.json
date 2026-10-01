@@ -9,10 +9,10 @@
       "close_price": 3200.0,
       "trading_volume": 13723,
       "trading_value": 43913600,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -86,9 +88,9 @@
       "close_price": 5220.0,
       "trading_volume": 79735,
       "trading_value": 416216700,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "4개년 제조 품질 AI 국책과제 성공적 완수",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -113,16 +115,26 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "위세아이텍, 4개년 제조 품질 AI 국책과제 성공적 완수…제조 AX 시장...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003416766",
+          "source": "전자신문",
+          "date": "2026-04-10"
+        }
+      ]
     },
     {
       "date": "20250618",
       "change_rate": 10.13,
       "close_price": 9570.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -130,7 +142,9 @@
       "source": "estimated",
       "trading_volume": 461922,
       "trading_value": 4420593540,
-      "market_cap": 70662209302
+      "market_cap": 70662209302,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250610",
@@ -175,5 +189,5 @@
     "count_recent": 0,
     "avg_rate": 11.07
   },
-  "built_at": "2026-09-27T10:31:15"
+  "built_at": "2026-10-02T05:15:57"
 }

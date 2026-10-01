@@ -25,9 +25,9 @@
       "close_price": 2720.0,
       "trading_volume": 536854,
       "trading_value": 1460242880,
-      "rise_reason": "골프 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자체 개발 APL 기술로 국내 30배",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "골프",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "골프 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]\"브이씨, 자체 개발 APL 기술로 국내 30배 美골프...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005778122&office_id=277&code=365900&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.18"
+        }
+      ]
     },
     {
       "date": "20250729",
@@ -129,5 +139,5 @@
     "count_recent": 0,
     "avg_rate": 13.66
   },
-  "built_at": "2026-09-27T10:34:14"
+  "built_at": "2026-10-02T05:15:57"
 }

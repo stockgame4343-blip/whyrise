@@ -9,9 +9,9 @@
       "close_price": 2085.0,
       "trading_volume": 9382922,
       "trading_value": 19563392370,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "KX그룹, 경영권 흔든다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "안철수",
       "news": [
@@ -48,7 +48,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "저가주·낮은 지분율 노렸나…KX그룹, 써니전자 경영권 흔든다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005328213&office_id=015&code=004770&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.09.03"
+        }
+      ]
     },
     {
       "date": "20260831",
@@ -56,10 +66,10 @@
       "close_price": 2370.0,
       "trading_volume": 18891253,
       "trading_value": 44772269610,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "안철수",
       "news": [
         {
@@ -71,7 +81,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -79,10 +91,10 @@
       "close_price": 1945.0,
       "trading_volume": 2128031,
       "trading_value": 4139020295,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "안철수",
       "news": [
         {
@@ -94,7 +106,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -105,5 +119,5 @@
     "count_recent": 1,
     "avg_rate": 14.66
   },
-  "built_at": "2026-10-01T22:53:12"
+  "built_at": "2026-10-02T05:15:56"
 }

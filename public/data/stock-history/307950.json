@@ -327,9 +327,9 @@
       "close_price": 592000.0,
       "trading_volume": 1144257,
       "trading_value": 677400144000,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "기계체조 동작 선보인 아틀라스 개발형 모델",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -396,7 +396,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "기계체조 동작 선보인 아틀라스 개발형 모델에…현대오토에버 ‘上’...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004618783&office_id=011&code=307950&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -418,9 +428,9 @@
       "date": "20260225",
       "change_rate": 14.45,
       "close_price": 495000.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -429,15 +439,17 @@
       "source": "estimated",
       "trading_volume": 1270989,
       "trading_value": 629139555000,
-      "market_cap": 13574888972809
+      "market_cap": 13574888972809,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260109",
       "change_rate": 19.37,
       "close_price": 471500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "피지컬 AI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -446,7 +458,9 @@
       "source": "estimated",
       "trading_volume": 1496947,
       "trading_value": 705810510500,
-      "market_cap": 12930424546827
+      "market_cap": 12930424546827,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260107",
@@ -486,9 +500,9 @@
       "date": "20251204",
       "change_rate": 27.19,
       "close_price": 283000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇주 동반 강세 — 현대오토에버 52주 최고가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -497,7 +511,17 @@
       "source": "estimated",
       "trading_volume": 1443665,
       "trading_value": 408557195000,
-      "market_cap": 7760997129909
+      "market_cap": 7760997129909,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;트럼프가 밀어준대&quot; 로봇주 불기둥…현대오토에버 52주 최고가",
+          "link": "https://n.news.naver.com/mnews/article/008/0005287308",
+          "source": "머니투데이",
+          "date": "2025-12-04"
+        }
+      ]
     },
     {
       "date": "20251202",
@@ -520,9 +544,9 @@
       "date": "20251103",
       "change_rate": 10.57,
       "close_price": 225000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇주 동반 강세 — 젠슨 황 효과 계",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -531,15 +555,25 @@
       "source": "estimated",
       "trading_volume": 687913,
       "trading_value": 154780425000,
-      "market_cap": 6170404078549
+      "market_cap": 6170404078549,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주]'젠슨 황 효과' 계속…로보티즈 등 로봇주 급등",
+          "link": "https://n.news.naver.com/mnews/article/277/0005673501",
+          "source": "아시아경제",
+          "date": "2025-11-03"
+        }
+      ]
     },
     {
       "date": "20251031",
       "change_rate": 26.08,
       "close_price": 203500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇주 동반 강세 — 젠슨 황 로봇 관련 좋은 소식 있을 것",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -548,7 +582,17 @@
       "source": "estimated",
       "trading_volume": 1417312,
       "trading_value": 288422992000,
-      "market_cap": 5580787688821
+      "market_cap": 5580787688821,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "젠슨 황 &quot;로봇 관련 좋은 소식 있을 것&quot;…로봇주 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005204998",
+          "source": "한국경제",
+          "date": "2025-10-31"
+        }
+      ]
     },
     {
       "date": "20250624",
@@ -576,5 +620,5 @@
     "count_recent": 0,
     "avg_rate": 19.34
   },
-  "built_at": "2026-10-01T22:52:10"
+  "built_at": "2026-10-02T05:15:57"
 }

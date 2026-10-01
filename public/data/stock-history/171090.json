@@ -9,9 +9,9 @@
       "close_price": 59300.0,
       "trading_volume": 95231,
       "trading_value": 5647198300,
-      "rise_reason": "우주태양광(페로브스카이트 등) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "국책은행 A+ 신용등급 획득",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주태양광(페로브스카이트 등)",
       "news": [
@@ -48,7 +48,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주태양광(페로브스카이트 등) 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "선익시스템, 국책은행 ‘A+’ 신용등급 획득…협력업체 금융지원 확대",
+          "link": "https://n.news.naver.com/mnews/article/366/0001183497",
+          "source": "조선비즈",
+          "date": "2026-07-31"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -56,10 +66,10 @@
       "close_price": 94900.0,
       "trading_volume": 225317,
       "trading_value": 21382583300,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주태양광(페로브스카이트 등)",
       "news": [
         {
@@ -125,7 +135,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260421",
@@ -292,9 +304,9 @@
       "date": "20260206",
       "change_rate": 15.13,
       "close_price": 91300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "우주태양광 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주태양광(페로브스카이트 등)",
       "news": [],
@@ -303,15 +315,17 @@
       "source": "estimated",
       "trading_volume": 1009455,
       "trading_value": 92163241500,
-      "market_cap": 922398529411
+      "market_cap": 922398529411,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260204",
       "change_rate": 30.0,
       "close_price": 76700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "우주태양광 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주태양광(페로브스카이트 등)",
       "news": [],
@@ -320,7 +334,9 @@
       "source": "estimated",
       "trading_volume": 1373905,
       "trading_value": 105378513500,
-      "market_cap": 774895588235
+      "market_cap": 774895588235,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250709",
@@ -348,5 +364,5 @@
     "count_recent": 0,
     "avg_rate": 19.87
   },
-  "built_at": "2026-10-01T22:54:41"
+  "built_at": "2026-10-02T05:15:57"
 }

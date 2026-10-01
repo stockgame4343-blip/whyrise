@@ -9,9 +9,9 @@
       "close_price": 6250.0,
       "trading_volume": 8360214,
       "trading_value": 52251337500,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: GPU 보급 확대에 AI 고속도로 확충",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "NI(네트워크통합)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "링네트, GPU 보급 확대에 AI 고속도로 확충",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003421940&office_id=030&code=042500&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -86,9 +96,9 @@
       "close_price": 5470.0,
       "trading_volume": 6786844,
       "trading_value": 37124036680,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 모두투어, 비토즈··전북은행과 스테이블코인 결제 인프라 구...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "NI(네트워크통합)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "모두투어, 비토즈·링네트·전북은행과 스테이블코인 결제 인프라 구...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001021728&office_id=031&code=042500&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2026.04.13"
+        }
+      ]
     }
   ],
   "stats": {
@@ -166,5 +186,5 @@
     "count_recent": 0,
     "avg_rate": 23.87
   },
-  "built_at": "2026-10-01T22:57:44"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 81400.0,
       "trading_volume": 1278892,
       "trading_value": 104101808800,
-      "rise_reason": "관련 보도: AI '뮤즈' 흥행에 메타 협력사 파두, 이틀새 20%대 급등[핫종목]",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "하이퍼스케일러 공급 확대 기대 평가",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -58,12 +58,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "AI '뮤즈' 흥행에 메타 협력사 파두, 이틀새 20%대 급등[핫종목]",
-          "link": "https://n.news.naver.com/mnews/article/421/0009189255",
-          "source": "뉴스1",
+          "title": "[특징주] 파두, 하이퍼스케일러 공급 확대 기대 평가에 8% 상승",
+          "link": "https://n.news.naver.com/mnews/article/366/0001194121",
+          "source": "조선비즈",
           "date": "2026-09-23"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260922",
@@ -71,9 +72,9 @@
       "close_price": 72300.0,
       "trading_volume": 638496,
       "trading_value": 46163260800,
-      "rise_reason": "관련 보도: 'Gen6'로 AI 스토리지 승부수",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "반도체주 동반 강세 — 美반도체 훈풍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -120,12 +121,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "[AI 대전환 리딩 전략] 파두, 'Gen6'로 AI 스토리지 승부수",
-          "link": "https://n.news.naver.com/mnews/article/293/0000090699",
-          "source": "블로터",
-          "date": "2026-09-20"
+          "title": "美반도체 훈풍에…삼성전기·LG이노텍 등 반도체 기판주 '들썩'[종목 ...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005579557",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260731",
@@ -133,9 +135,9 @@
       "close_price": 63400.0,
       "trading_volume": 886678,
       "trading_value": 56215385200,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "美 FMS 2026서 차세대 Gen6 SSD 실물 최초 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -202,7 +204,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파두, 美 'FMS 2026'서 차세대 Gen6 SSD 실물 최초 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001046243&office_id=031&code=440110&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -210,15 +222,17 @@
       "close_price": 79900.0,
       "trading_volume": 717573,
       "trading_value": 57334082700,
-      "rise_reason": "CXL(컴퓨트익스프레스링크) 테마 강세",
+      "rise_reason": "CXL 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "CXL(컴퓨트익스프레스링크) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260709",
@@ -226,10 +240,10 @@
       "close_price": 71800.0,
       "trading_volume": 927272,
       "trading_value": 66578129600,
-      "rise_reason": "납품 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
         {
@@ -253,7 +267,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "납품 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260622",
@@ -261,9 +277,9 @@
       "close_price": 115900.0,
       "trading_volume": 1796555,
       "trading_value": 208220724500,
-      "rise_reason": "수출 관련 뉴스",
+      "rise_reason": "삼전닉스·수출액 훈풍에 코스닥 반도체도 방긋",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -306,7 +322,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스·수출액 훈풍에 코스닥 반도체도 '방긋'…파두 15%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005375123&office_id=008&code=440110&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.22"
+        }
+      ]
     },
     {
       "date": "20260508",
@@ -314,9 +340,9 @@
       "close_price": 92400.0,
       "trading_volume": 2339320,
       "trading_value": 216153168000,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 해외 낸드플래시 제조사와 500억원 규모 SSD 컨트롤러 공급 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -383,7 +409,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "파두, 해외 낸드플래시 제조사와 500억원 규모 SSD 컨트롤러 공급 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006274086&office_id=018&code=440110&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -391,9 +427,9 @@
       "close_price": 81300.0,
       "trading_volume": 2551853,
       "trading_value": 207465648900,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "AI 훈풍 타고 첫 흑자",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -460,7 +496,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "파두, AI 훈풍 타고 첫 흑자…실적 반등 신호탄",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000046625&office_id=648&code=440110&page=&sm=",
+          "source": "비즈워치",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -468,15 +514,17 @@
       "close_price": 57000.0,
       "trading_volume": 2098814,
       "trading_value": 119632398000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "시스템반도체 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -484,15 +532,25 @@
       "close_price": 53000.0,
       "trading_volume": 1277759,
       "trading_value": 67721227000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -749,5 +807,5 @@
     "count_recent": 2,
     "avg_rate": 17.6
   },
-  "built_at": "2026-10-01T22:53:49"
+  "built_at": "2026-10-02T05:15:56"
 }

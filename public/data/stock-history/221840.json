@@ -24,9 +24,9 @@
       "date": "20260223",
       "change_rate": 11.15,
       "close_price": 3040.0,
-      "rise_reason": "대형 수주",
+      "rise_reason": "한국항공우주산업과 연장계약",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -66,7 +66,17 @@
       "source": "estimated",
       "trading_volume": 541420,
       "trading_value": 1645916800,
-      "market_cap": 56902564102
+      "market_cap": 56902564102,
+      "reason_previous": "대형 수주",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "한국항공우주산업과 연장계약…하이즈항공, 7% 급등[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006222538",
+          "source": "이데일리",
+          "date": "2026-02-23"
+        }
+      ]
     },
     {
       "date": "20260203",
@@ -89,10 +99,10 @@
       "date": "20250814",
       "change_rate": 10.88,
       "close_price": 2395.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -100,7 +110,9 @@
       "source": "estimated",
       "trading_volume": 3758360,
       "trading_value": 9001272200,
-      "market_cap": 44829487179
+      "market_cap": 44829487179,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250725",
@@ -171,5 +183,5 @@
     "count_recent": 0,
     "avg_rate": 17.59
   },
-  "built_at": "2026-09-27T10:16:14"
+  "built_at": "2026-10-02T05:15:57"
 }

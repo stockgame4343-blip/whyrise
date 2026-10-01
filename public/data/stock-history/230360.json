@@ -89,9 +89,9 @@
       "date": "20250811",
       "change_rate": 13.11,
       "close_price": 12600.0,
-      "rise_reason": "실적 개선",
+      "rise_reason": "2분기 영업익 194억",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -131,15 +131,25 @@
       "source": "estimated",
       "trading_volume": 653383,
       "trading_value": 8232625800,
-      "market_cap": 390600000000
+      "market_cap": 390600000000,
+      "reason_previous": "실적 개선",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "에코마케팅, 2분기 영업익 194억…전년비 23.3% ↑",
+          "link": "https://n.news.naver.com/mnews/article/016/0002512761",
+          "source": "헤럴드경제",
+          "date": "2025-08-11"
+        }
+      ]
     },
     {
       "date": "20250716",
       "change_rate": 13.97,
       "close_price": 10440.0,
-      "rise_reason": "자사주 매입",
+      "rise_reason": "50억 규모 자사주 취득",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -179,7 +189,17 @@
       "source": "estimated",
       "trading_volume": 1318773,
       "trading_value": 13767990120,
-      "market_cap": 323640000000
+      "market_cap": 323640000000,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 에코마케팅 14% 급등…50억 규모 자사주 취득",
+          "link": "https://n.news.naver.com/mnews/article/119/0002979993",
+          "source": "데일리안",
+          "date": "2025-07-16"
+        }
+      ]
     }
   ],
   "stats": {
@@ -190,5 +210,5 @@
     "count_recent": 0,
     "avg_rate": 17.36
   },
-  "built_at": "2026-07-12T02:48:59"
+  "built_at": "2026-10-02T05:15:57"
 }

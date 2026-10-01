@@ -9,10 +9,10 @@
       "close_price": 2800.0,
       "trading_volume": 458629,
       "trading_value": 1284161200,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260527",
@@ -86,10 +88,10 @@
       "close_price": 3235.0,
       "trading_volume": 942680,
       "trading_value": 3049569800,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "아이폰",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -163,9 +167,9 @@
       "close_price": 3800.0,
       "trading_volume": 692950,
       "trading_value": 2633210000,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: ? 사모펀드 투자 속 낮은 자본효율 | ?",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "갤럭시 부품주",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "?[저평가 리포트] 사모펀드 투자 속 낮은 자본효율 | 앤디포스?②",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000084035&office_id=293&code=238090&page=&sm=",
+          "source": "블로터",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -371,5 +385,5 @@
     "count_recent": 0,
     "avg_rate": 15.05
   },
-  "built_at": "2026-10-01T22:58:42"
+  "built_at": "2026-10-02T05:15:57"
 }

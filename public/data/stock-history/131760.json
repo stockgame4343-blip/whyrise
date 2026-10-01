@@ -9,9 +9,9 @@
       "close_price": 2340.0,
       "trading_volume": 1674207,
       "trading_value": 3917644380,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "195억 규모 OLED 제조장비 공급 계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파인텍, 195억 규모 OLED 제조장비 공급 계약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006336201&office_id=018&code=131760&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.24"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -86,10 +96,10 @@
       "close_price": 1800.0,
       "trading_volume": 253085,
       "trading_value": 455553000,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -163,9 +175,9 @@
       "close_price": 5580.0,
       "trading_volume": 2369046,
       "trading_value": 13219276680,
-      "rise_reason": "양자 정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -226,7 +238,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양자 정책 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -305,9 +319,9 @@
       "close_price": 7865.0,
       "trading_volume": 1099182,
       "trading_value": 8645066430,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "양자 테마 훈풍 지",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -362,7 +376,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'양자 테마' 훈풍 지속…파인텍·케이씨에스 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006261606&office_id=018&code=131760&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.20"
+        }
+      ]
     },
     {
       "date": "20260417",
@@ -638,5 +662,5 @@
     "count_recent": 0,
     "avg_rate": 22.35
   },
-  "built_at": "2026-10-01T23:00:09"
+  "built_at": "2026-10-02T05:15:57"
 }

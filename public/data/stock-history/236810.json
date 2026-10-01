@@ -9,9 +9,9 @@
       "close_price": 1381.0,
       "trading_volume": 546541,
       "trading_value": 754773121,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "웹툰 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "웹툰",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260730",
@@ -86,9 +88,9 @@
       "close_price": 1223.0,
       "trading_volume": 849473,
       "trading_value": 1038905479,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2분기 영업이익 5억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "토스(toss)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔비티, 2분기 영업이익 5억…전년比 흑자 전환",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014097037&office_id=003&code=236810&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.30"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -163,9 +175,9 @@
       "close_price": 1197.0,
       "trading_volume": 66010,
       "trading_value": 79013970,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "올해 흑자 전환·주주환원으로 기업가치 정상화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "토스(toss)",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔비티 \"올해 흑자 전환·주주환원으로 기업가치 정상화\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014037027&office_id=003&code=236810&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260602",
@@ -240,9 +262,9 @@
       "close_price": 1399.0,
       "trading_volume": 150584,
       "trading_value": 210667016,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "하반기 실적 회복 속도",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "토스(toss)",
       "news": [
@@ -309,15 +331,25 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔비티, 하반기 실적 회복 속도…연간 흑자 전환 가능성",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013982086&office_id=003&code=236810&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.02"
+        }
+      ]
     },
     {
       "date": "20260116",
       "change_rate": 11.42,
       "close_price": 2195.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "스테이블 코인 정책 구체화 기대감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "토스(toss)",
       "news": [
@@ -345,7 +377,17 @@
       "source": "estimated",
       "trading_volume": 5836717,
       "trading_value": 12811593815,
-      "market_cap": 37176256077
+      "market_cap": 37176256077,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]엔비티, 스테이블 코인 정책 구체화 기대감에 '급등'",
+          "link": "https://n.news.naver.com/mnews/article/277/0005707766",
+          "source": "아시아경제",
+          "date": "2026-01-16"
+        }
+      ]
     },
     {
       "date": "20250925",
@@ -469,5 +511,5 @@
     "count_recent": 0,
     "avg_rate": 15.05
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 2465.0,
       "trading_volume": 1644398,
       "trading_value": 4053441070,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
@@ -89,5 +91,5 @@
     "count_recent": 0,
     "avg_rate": 21.45
   },
-  "built_at": "2026-09-27T09:06:25"
+  "built_at": "2026-10-02T05:15:57"
 }

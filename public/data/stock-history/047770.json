@@ -9,9 +9,9 @@
       "close_price": 3950.0,
       "trading_volume": 16135727,
       "trading_value": 63736121650,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "남북경협 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260818",
@@ -86,9 +88,9 @@
       "close_price": 3510.0,
       "trading_volume": 957949,
       "trading_value": 3362400990,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "남북경협주 동반 강세 — 트럼프 김정은, 대화 요청에 응답",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프 \"김정은, 대화 요청에 응답\"…남북경협주 '불기둥' [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003122514&office_id=119&code=047770&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -163,9 +175,9 @@
       "close_price": 3585.0,
       "trading_volume": 5458138,
       "trading_value": 19567424730,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "남북경협주 동반 강세 — 김정은과 산책 사진 공유하자",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프, 김정은과 산책 사진 공유하자…남북경협주 '들썩'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005298701&office_id=015&code=047770&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -256,10 +278,10 @@
       "close_price": 5280.0,
       "trading_volume": 4170547,
       "trading_value": 22020488160,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남북경협",
       "news": [
         {
@@ -325,7 +347,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -394,9 +418,9 @@
       "date": "20260213",
       "change_rate": 10.01,
       "close_price": 4395.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "남북경협주 동반 강세 — 김여정 정동영 무인기 유감 표명 다행",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -436,15 +460,25 @@
       "source": "estimated",
       "trading_volume": 24802323,
       "trading_value": 109006209585,
-      "market_cap": 166354029850
+      "market_cap": 166354029850,
+      "reason_previous": "바이오",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "김여정 &quot;정동영 무인기 유감 표명 다행&quot;…남북경협주 '상승'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005251130",
+          "source": "한국경제",
+          "date": "2026-02-13"
+        }
+      ]
     },
     {
       "date": "20260206",
       "change_rate": 29.95,
       "close_price": 3970.0,
-      "rise_reason": "남북/통일",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "남북경협 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -484,7 +518,9 @@
       "source": "estimated",
       "trading_volume": 31678976,
       "trading_value": 125765534720,
-      "market_cap": 150267462686
+      "market_cap": 150267462686,
+      "reason_previous": "남북/통일",
+      "reason_kind": "theme"
     },
     {
       "date": "20260102",
@@ -555,9 +591,9 @@
       "date": "20251027",
       "change_rate": 14.41,
       "close_price": 4090.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "경협주 동반 강세 — 트럼프·김정은 깜짝 회동 가능성",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -597,15 +633,25 @@
       "source": "estimated",
       "trading_volume": 48420408,
       "trading_value": 198039468720,
-      "market_cap": 154809552238
+      "market_cap": 154809552238,
+      "reason_previous": "바이오",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프·김정은 ‘깜짝 회동’ 가능성에…남북 경협株 강세 [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/119/0003017083",
+          "source": "데일리안",
+          "date": "2025-10-27"
+        }
+      ]
     },
     {
       "date": "20251021",
       "change_rate": 14.29,
       "close_price": 3480.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "남북경협주 동반 강세 — 트럼프·김정은 회동 논의 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -645,15 +691,25 @@
       "source": "estimated",
       "trading_volume": 56102246,
       "trading_value": 195235816080,
-      "market_cap": 131720597014
+      "market_cap": 131720597014,
+      "reason_previous": "방산",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "“트럼프·김정은 회동 논의” 소식에…‘남북경협주’ 줄줄이 상승세",
+          "link": "https://n.news.naver.com/mnews/article/009/0005575507",
+          "source": "매일경제",
+          "date": "2025-10-20"
+        }
+      ]
     },
     {
       "date": "20251020",
       "change_rate": 14.91,
       "close_price": 3045.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "남북경협주 동반 강세 — 트럼프·김정은 회동 논의 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -693,7 +749,17 @@
       "source": "estimated",
       "trading_volume": 23729186,
       "trading_value": 72255371370,
-      "market_cap": 115255522388
+      "market_cap": 115255522388,
+      "reason_previous": "방산",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "“트럼프·김정은 회동 논의” 소식에…‘남북경협주’ 줄줄이 상승세",
+          "link": "https://n.news.naver.com/mnews/article/009/0005575507",
+          "source": "매일경제",
+          "date": "2025-10-20"
+        }
+      ]
     },
     {
       "date": "20251014",
@@ -794,9 +860,9 @@
       "date": "20250731",
       "change_rate": 11.76,
       "close_price": 1919.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "남북경협주 동반 강세 — 제이에스티나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -836,7 +902,17 @@
       "source": "estimated",
       "trading_volume": 11783278,
       "trading_value": 22612110482,
-      "market_cap": 72635582089
+      "market_cap": 72635582089,
+      "reason_previous": "대형 수주",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제이에스티나 上…남북경협株 들썩",
+          "link": "https://n.news.naver.com/mnews/article/015/0005165390",
+          "source": "한국경제",
+          "date": "2025-07-31"
+        }
+      ]
     }
   ],
   "stats": {
@@ -847,5 +923,5 @@
     "count_recent": 1,
     "avg_rate": 16.45
   },
-  "built_at": "2026-10-01T22:57:10"
+  "built_at": "2026-10-02T05:15:56"
 }

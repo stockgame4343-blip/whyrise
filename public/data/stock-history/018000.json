@@ -9,9 +9,9 @@
       "close_price": 1000.0,
       "trading_volume": 10291460,
       "trading_value": 10291460000,
-      "rise_reason": "풍력에너지 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 비그림파워코리아, 지분매입…풍력 연합전선 강.....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "풍력에너지 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[전력 온에어]비그림파워코리아, 유니슨 지분매입…\"풍력 연합전선 강.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000089072&office_id=293&code=018000&page=&sm=",
+          "source": "블로터",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -86,10 +96,10 @@
       "close_price": 1137.0,
       "trading_volume": 16756309,
       "trading_value": 19051923333,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [
         {
@@ -143,7 +153,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -151,9 +163,9 @@
       "close_price": 1083.0,
       "trading_volume": 15574819,
       "trading_value": 16867528977,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 해외 의존 줄여야 산다…, 초대형 터빈 청사진 제시",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -220,7 +232,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "\"해외 의존 줄여야 산다\"…유니슨, 초대형 터빈 청사진 제시[현장+]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086393&office_id=293&code=018000&page=&sm=",
+          "source": "블로터",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260403",
@@ -228,9 +250,9 @@
       "close_price": 1682.0,
       "trading_volume": 29484074,
       "trading_value": 49592212468,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "풍력에너지 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -243,7 +265,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260320",
@@ -467,5 +491,5 @@
     "count_recent": 0,
     "avg_rate": 14.95
   },
-  "built_at": "2026-10-01T22:55:39"
+  "built_at": "2026-10-02T05:15:56"
 }

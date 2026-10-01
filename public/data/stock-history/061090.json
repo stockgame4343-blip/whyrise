@@ -48,9 +48,9 @@
       "close_price": 45550.0,
       "trading_volume": 250858,
       "trading_value": 11426581900,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "2분기 영업이익 127% 증가",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -117,7 +117,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]세나테크놀로지, 2분기 영업이익 127% 증가에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003446532&office_id=030&code=061090&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.10"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -141,9 +151,9 @@
       "close_price": 48400.0,
       "trading_volume": 189158,
       "trading_value": 9155247200,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신 기술로 피지컬 AI 확대 기대 (하나증권)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -210,7 +220,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "하나증권 \"세나테크놀로지, 통신 기술로 피지컬 AI 확대 기대\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001145296&office_id=417&code=061090&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.05.29"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -218,10 +238,10 @@
       "close_price": 47100.0,
       "trading_volume": 76947,
       "trading_value": 3624203700,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -287,7 +307,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -295,9 +317,9 @@
       "close_price": 51900.0,
       "trading_volume": 62402,
       "trading_value": 3238663800,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 하나증권 로봇 군집통신 기술 잠재력 충분.....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -364,7 +386,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[아침밥] 하나증권 \"세나테크놀로지 로봇 군집통신 기술 잠재력 충분.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001142198&office_id=417&code=061090&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -416,5 +448,5 @@
     "count_recent": 1,
     "avg_rate": 15.71
   },
-  "built_at": "2026-10-01T22:56:20"
+  "built_at": "2026-10-02T05:15:56"
 }

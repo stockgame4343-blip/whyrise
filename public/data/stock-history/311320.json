@@ -9,10 +9,10 @@
       "close_price": 7980.0,
       "trading_volume": 379265,
       "trading_value": 3026534700,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -86,15 +88,17 @@
       "close_price": 6490.0,
       "trading_volume": 92668,
       "trading_value": 601415320,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 32종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -102,9 +106,9 @@
       "close_price": 10580.0,
       "trading_volume": 167059,
       "trading_value": 1767484220,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 20종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -171,7 +175,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260619",
@@ -179,10 +185,10 @@
       "close_price": 10270.0,
       "trading_volume": 1253727,
       "trading_value": 12875776290,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -248,7 +254,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260615",
@@ -256,10 +264,10 @@
       "close_price": 8880.0,
       "trading_volume": 438586,
       "trading_value": 3894643680,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -325,7 +333,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -333,9 +343,9 @@
       "close_price": 10490.0,
       "trading_volume": 1280534,
       "trading_value": 13432801660,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 호황에 1분기 영업이익 173% 급증",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -402,7 +412,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "지오엘리먼트, 반도체 호황에 1분기 영업이익 173% 급증",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008938109&office_id=421&code=311320&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -447,5 +467,5 @@
     "count_recent": 0,
     "avg_rate": 16.34
   },
-  "built_at": "2026-10-01T22:57:23"
+  "built_at": "2026-10-02T05:15:56"
 }

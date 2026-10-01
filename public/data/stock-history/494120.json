@@ -25,9 +25,9 @@
       "close_price": 15420.0,
       "trading_volume": 489936,
       "trading_value": 7554813120,
-      "rise_reason": "공급 계약 체결",
+      "rise_reason": "독일 머크와 공급 계약 체결",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "큐리오시스, 독일 머크와 공급 계약 체결…15%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006330528&office_id=018&code=494120&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260707",
@@ -102,10 +112,10 @@
       "close_price": 13905.0,
       "trading_volume": 302865,
       "trading_value": 4211337825,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -171,7 +181,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -179,9 +191,9 @@
       "close_price": 14530.0,
       "trading_volume": 140251,
       "trading_value": 2037847030,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료기기 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -248,7 +260,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260623",
@@ -256,10 +270,10 @@
       "close_price": 12830.0,
       "trading_volume": 325508,
       "trading_value": 4176267640,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -325,7 +339,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -333,9 +349,9 @@
       "close_price": 16656.0,
       "trading_volume": 389829,
       "trading_value": 6492991824,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료기기 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -402,7 +418,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260616",
@@ -410,10 +428,10 @@
       "close_price": 14980.0,
       "trading_volume": 322035,
       "trading_value": 4824084300,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -479,7 +497,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260420",
@@ -711,9 +731,9 @@
       "date": "20260123",
       "change_rate": 14.62,
       "close_price": 64300.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "22억원 규모 콜로니피커 시스템 ODM 공급 계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -729,7 +749,17 @@
       "source": "estimated",
       "trading_volume": 515387,
       "trading_value": 33139384100,
-      "market_cap": 490491976516
+      "market_cap": 490491976516,
+      "reason_previous": "대형 수주",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "큐리오시스, 22억원 규모 콜로니피커 시스템 ODM 공급 계약 체결",
+          "link": "https://n.news.naver.com/mnews/article/018/0006206251",
+          "source": "이데일리",
+          "date": "2026-01-23"
+        }
+      ]
     },
     {
       "date": "20260120",
@@ -776,9 +806,9 @@
       "date": "20251204",
       "change_rate": 11.87,
       "close_price": 78200.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 코스닥 새내기 , 제2의 씨어스테크놀로지될까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -806,7 +836,17 @@
       "source": "estimated",
       "trading_volume": 2429654,
       "trading_value": 189998942800,
-      "market_cap": 596523679060
+      "market_cap": 596523679060,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "코스닥 새내기 큐리오시스, 제2의 씨어스테크놀로지될까",
+          "link": "https://n.news.naver.com/mnews/article/018/0006177800",
+          "source": "이데일리",
+          "date": "2025-12-04"
+        }
+      ]
     },
     {
       "date": "20251203",
@@ -949,5 +989,5 @@
     "count_recent": 0,
     "avg_rate": 13.53
   },
-  "built_at": "2026-10-01T22:56:52"
+  "built_at": "2026-10-02T05:15:57"
 }

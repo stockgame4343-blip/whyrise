@@ -9,9 +9,9 @@
       "close_price": 3945.0,
       "trading_volume": 282426,
       "trading_value": 1114170570,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "1분기 영업이익 31억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "덴티스, 1분기 영업이익 31억…전년대비 3배↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006279830&office_id=018&code=261200&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.13"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 13.53
   },
-  "built_at": "2026-10-01T22:59:00"
+  "built_at": "2026-10-02T05:15:57"
 }

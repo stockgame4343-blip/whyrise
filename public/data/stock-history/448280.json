@@ -9,9 +9,9 @@
       "close_price": 8500.0,
       "trading_volume": 96741,
       "trading_value": 822298500,
-      "rise_reason": "매출 관련 뉴스",
+      "rise_reason": "2분기 매출 178억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "에코아이, 2분기 매출 178억…전년비 199.7%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014127393&office_id=003&code=448280&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -102,10 +112,10 @@
       "close_price": 8010.0,
       "trading_volume": 40379,
       "trading_value": 323435790,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
         {
@@ -171,15 +181,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20250904",
       "change_rate": 10.24,
       "close_price": 14860.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 기후미래직업 청년일자리 전문교육 인턴십 운영",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -201,7 +213,17 @@
       "source": "estimated",
       "trading_volume": 268403,
       "trading_value": 3988468580,
-      "market_cap": 440227500000
+      "market_cap": 440227500000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에코아이, 기후미래직업 청년일자리 전문교육 인턴십 운영",
+          "link": "https://n.news.naver.com/mnews/article/018/0006105528",
+          "source": "이데일리",
+          "date": "2025-09-03"
+        }
+      ]
     },
     {
       "date": "20250623",
@@ -231,10 +253,10 @@
       "date": "20250605",
       "change_rate": 13.65,
       "close_price": 12320.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -242,7 +264,9 @@
       "source": "estimated",
       "trading_volume": 4351487,
       "trading_value": 53610319840,
-      "market_cap": 364980000000
+      "market_cap": 364980000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -253,5 +277,5 @@
     "count_recent": 0,
     "avg_rate": 11.22
   },
-  "built_at": "2026-10-01T22:55:55"
+  "built_at": "2026-10-02T05:15:56"
 }

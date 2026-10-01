@@ -9,10 +9,10 @@
       "close_price": 13100.0,
       "trading_volume": 9507151,
       "trading_value": 124543678100,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260910",
@@ -86,10 +88,10 @@
       "close_price": 11700.0,
       "trading_volume": 5819509,
       "trading_value": 68088255300,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260908",
@@ -163,10 +167,10 @@
       "close_price": 11110.0,
       "trading_volume": 464881,
       "trading_value": 5164827910,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -256,10 +262,10 @@
       "close_price": 9770.0,
       "trading_volume": 179012,
       "trading_value": 1748947240,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -325,7 +331,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -333,9 +341,9 @@
       "close_price": 9970.0,
       "trading_volume": 61774,
       "trading_value": 615886780,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "제이스로보틱스와 76억원 규모 ESS 배터리 장비 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "카메라모듈/부품",
       "news": [
@@ -360,7 +368,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "액스비스, 제이스로보틱스와 76억원 규모 ESS 배터리 장비 공급계약",
+          "link": "https://n.news.naver.com/mnews/article/018/0006330695",
+          "source": "이데일리",
+          "date": "2026-07-15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -413,9 +431,9 @@
       "close_price": 20850.0,
       "trading_volume": 346665,
       "trading_value": 7227965250,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전기차 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -482,7 +500,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260420",
@@ -490,9 +510,9 @@
       "close_price": 25550.0,
       "trading_volume": 1243027,
       "trading_value": 31759339850,
-      "rise_reason": "2차전지 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -553,7 +573,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260331",
@@ -594,9 +616,9 @@
       "date": "20260317",
       "change_rate": 14.96,
       "close_price": 32650.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -636,7 +658,9 @@
       "source": "estimated",
       "trading_volume": 3183300,
       "trading_value": 103934745000,
-      "market_cap": 304645564516
+      "market_cap": 304645564516,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -647,5 +671,5 @@
     "count_recent": 3,
     "avg_rate": 14.33
   },
-  "built_at": "2026-10-01T22:57:27"
+  "built_at": "2026-10-02T05:15:56"
 }

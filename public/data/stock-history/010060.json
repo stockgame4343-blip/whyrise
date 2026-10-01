@@ -252,9 +252,9 @@
       "close_price": 247000.0,
       "trading_volume": 478314,
       "trading_value": 118143558000,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "2분기 흑자전환 기대",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -321,7 +321,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] OCI홀딩스, 2분기 흑자전환 기대에 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016210305&office_id=001&code=010060&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -345,10 +355,10 @@
       "close_price": 240000.0,
       "trading_volume": 258991,
       "trading_value": 62157840000,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -408,7 +418,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -894,15 +906,17 @@
       "close_price": 229500.0,
       "trading_volume": 499507,
       "trading_value": 114636856500,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "태양광에너지 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260318",
@@ -925,9 +939,9 @@
       "date": "20260312",
       "change_rate": 13.02,
       "close_price": 165800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "태양광에너지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
@@ -936,15 +950,17 @@
       "source": "estimated",
       "trading_volume": 635702,
       "trading_value": 105399391600,
-      "market_cap": 3095515087719
+      "market_cap": 3095515087719,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260306",
       "change_rate": 15.38,
       "close_price": 151500.0,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
@@ -953,15 +969,17 @@
       "source": "estimated",
       "trading_volume": 298630,
       "trading_value": 45242445000,
-      "market_cap": 2828531578947
+      "market_cap": 2828531578947,
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260204",
       "change_rate": 28.05,
       "close_price": 151100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "태양광에너지 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
@@ -970,7 +988,9 @@
       "source": "estimated",
       "trading_volume": 1296454,
       "trading_value": 195894199400,
-      "market_cap": 2821063508771
+      "market_cap": 2821063508771,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251112",
@@ -993,9 +1013,9 @@
       "date": "20251103",
       "change_rate": 12.61,
       "close_price": 128600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "태양광에너지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
@@ -1004,7 +1024,9 @@
       "source": "estimated",
       "trading_volume": 420640,
       "trading_value": 54094304000,
-      "market_cap": 2400984561403
+      "market_cap": 2400984561403,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250711",
@@ -1032,5 +1054,5 @@
     "count_recent": 1,
     "avg_rate": 16.06
   },
-  "built_at": "2026-10-01T22:52:21"
+  "built_at": "2026-10-02T05:15:56"
 }

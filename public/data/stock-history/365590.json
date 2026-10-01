@@ -9,10 +9,10 @@
       "close_price": 2174.0,
       "trading_volume": 1297415,
       "trading_value": 2820580210,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "후보",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260729",
@@ -68,9 +70,9 @@
       "close_price": 1840.0,
       "trading_volume": 2759490,
       "trading_value": 5077461600,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 기술적 시도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "후보",
       "news": [
@@ -119,7 +121,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 기술적 반등 시도…로봇·반도체주 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000524287&office_id=374&code=455900&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.29"
+        }
+      ]
     },
     {
       "date": "20260716",
@@ -127,10 +139,10 @@
       "close_price": 2136.0,
       "trading_volume": 62380,
       "trading_value": 133243680,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "후보",
       "news": [
         {
@@ -178,7 +190,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260708",
@@ -186,10 +200,10 @@
       "close_price": 2060.0,
       "trading_volume": 157370,
       "trading_value": 324182200,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "후보",
       "news": [
         {
@@ -237,7 +251,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -245,10 +261,10 @@
       "close_price": 2050.0,
       "trading_volume": 86905,
       "trading_value": 178155250,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "후보",
       "news": [
         {
@@ -296,7 +312,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -304,9 +322,9 @@
       "close_price": 1482.0,
       "trading_volume": 164326,
       "trading_value": 243531132,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 65억 규모 3자배정 유증 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "정원오",
       "news": [
@@ -337,7 +355,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "하이딥, 65억 규모 3자배정 유증 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006302398&office_id=018&code=365590&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.10"
+        }
+      ]
     },
     {
       "date": "20260209",
@@ -467,9 +495,9 @@
       "date": "20251023",
       "change_rate": 29.79,
       "close_price": 2653.0,
-      "rise_reason": "정원오 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "29.8% 실시간 상승률 1위",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "정원오",
       "news": [
@@ -497,7 +525,17 @@
       "source": "estimated",
       "trading_volume": 1257732,
       "trading_value": 3336762996,
-      "market_cap": 82211892797
+      "market_cap": 82211892797,
+      "reason_previous": "정원오 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]하이딥 29.8% 폭등 실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003584584",
+          "source": "서울신문",
+          "date": "2025-10-23"
+        }
+      ]
     }
   ],
   "stats": {
@@ -508,5 +546,5 @@
     "count_recent": 0,
     "avg_rate": 18.57
   },
-  "built_at": "2026-10-01T22:59:41"
+  "built_at": "2026-10-02T05:15:56"
 }

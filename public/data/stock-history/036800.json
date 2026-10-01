@@ -9,9 +9,9 @@
       "close_price": 5820.0,
       "trading_volume": 409770,
       "trading_value": 2384861400,
-      "rise_reason": "자사주 소각",
+      "rise_reason": "KIS정보통신 인수 효과 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "애플페이",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]나이스정보통신, KIS정보통신 인수 효과 기대감에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003434393&office_id=030&code=036800&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -200,5 +210,5 @@
     "count_recent": 0,
     "avg_rate": 15.39
   },
-  "built_at": "2026-10-01T22:55:30"
+  "built_at": "2026-10-02T05:15:57"
 }

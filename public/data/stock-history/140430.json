@@ -9,10 +9,10 @@
       "close_price": 3190.0,
       "trading_volume": 9688253,
       "trading_value": 30905527070,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260914",
@@ -86,9 +88,9 @@
       "close_price": 3005.0,
       "trading_volume": 520455,
       "trading_value": 1563967275,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 데이터센터 수혜 본격화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(물리)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "카티스, AI 데이터센터 수혜 본격화…높은 수주잔고 바탕 하반기 반등....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002696071&office_id=016&code=140430&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.09.11"
+        }
+      ]
     },
     {
       "date": "20260911",
@@ -163,9 +175,9 @@
       "close_price": 2315.0,
       "trading_volume": 469863,
       "trading_value": 1087732845,
-      "rise_reason": "수주 공시",
+      "rise_reason": "AI 데이터센터 수혜 본격화",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(물리)",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "카티스, AI 데이터센터 수혜 본격화…높은 수주잔고 바탕 하반기 반등....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002696071&office_id=016&code=140430&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.09.11"
+        }
+      ]
     },
     {
       "date": "20260803",
@@ -240,10 +262,10 @@
       "close_price": 1800.0,
       "trading_volume": 88600,
       "trading_value": 159480000,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(물리)",
       "news": [
         {
@@ -303,7 +325,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260722",
@@ -311,10 +335,10 @@
       "close_price": 2125.0,
       "trading_volume": 464783,
       "trading_value": 987663875,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
         {
@@ -374,7 +398,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -398,10 +424,10 @@
       "close_price": 2430.0,
       "trading_volume": 102931,
       "trading_value": 250122330,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(물리)",
       "news": [
         {
@@ -461,7 +487,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260415",
@@ -868,5 +896,5 @@
     "count_recent": 3,
     "avg_rate": 22.69
   },
-  "built_at": "2026-10-01T22:59:33"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 1001.0,
       "trading_volume": 1566608,
       "trading_value": 1568174608,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "최대주주 측 62만9957주 장내매수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -60,7 +60,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "다보링크, 최대주주 측 62만9957주 장내매수…AI·로봇 사업 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000088657&office_id=293&code=340360&page=&sm=",
+          "source": "블로터",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -68,9 +78,9 @@
       "close_price": 838.0,
       "trading_volume": 839676,
       "trading_value": 703648488,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "CCTV 보안시장 진출",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -125,7 +135,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "다보링크, CCTV 보안시장 진출…\"해킹 걱정 없는 서비스 제공\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005385279&office_id=008&code=340360&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.13"
+        }
+      ]
     },
     {
       "date": "20260529",
@@ -133,9 +153,9 @@
       "close_price": 1584.0,
       "trading_volume": 1277963,
       "trading_value": 2024293392,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 100억 규모 3자배정 유증 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -202,7 +222,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "다보링크, 100억 규모 3자배정 유증 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006292507&office_id=018&code=340360&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.28"
+        }
+      ]
     },
     {
       "date": "20260518",
@@ -210,10 +240,10 @@
       "close_price": 1609.0,
       "trading_volume": 1591641,
       "trading_value": 2560950369,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -279,7 +309,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260319",
@@ -309,9 +341,9 @@
       "date": "20260313",
       "change_rate": 11.68,
       "close_price": 1836.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "관련 보도: 미국發 통신 인프라 투자 탄력받나… , 민간 ORION 인증 눈길...",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -333,7 +365,17 @@
       "source": "estimated",
       "trading_volume": 3563886,
       "trading_value": 6543294696,
-      "market_cap": 95527218045
+      "market_cap": 95527218045,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "미국發 통신 인프라 투자 탄력받나… 다보링크, 민간 ORION 인증 '눈길...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005490608",
+          "source": "파이낸셜뉴스",
+          "date": "2026-03-12"
+        }
+      ]
     },
     {
       "date": "20260203",
@@ -356,9 +398,9 @@
       "date": "20260106",
       "change_rate": 12.37,
       "close_price": 1553.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -374,7 +416,9 @@
       "source": "estimated",
       "trading_volume": 1171610,
       "trading_value": 1819510330,
-      "market_cap": 80802706766
+      "market_cap": 80802706766,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251201",
@@ -414,9 +458,9 @@
       "date": "20250911",
       "change_rate": 10.87,
       "close_price": 1846.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "AI 인프라 핵심 파트너 비전 제시",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -438,7 +482,17 @@
       "source": "estimated",
       "trading_volume": 1964443,
       "trading_value": 3626361778,
-      "market_cap": 96047518796
+      "market_cap": 96047518796,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "다보링크, ‘AI 인프라 핵심 파트너’ 비전 제시",
+          "link": "https://n.news.naver.com/mnews/article/014/0005405440",
+          "source": "파이낸셜뉴스",
+          "date": "2025-09-11"
+        }
+      ]
     },
     {
       "date": "20250805",
@@ -466,5 +520,5 @@
     "count_recent": 0,
     "avg_rate": 12.95
   },
-  "built_at": "2026-10-01T22:58:51"
+  "built_at": "2026-10-02T05:15:56"
 }

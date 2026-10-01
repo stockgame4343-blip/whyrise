@@ -9,9 +9,9 @@
       "close_price": 1764.0,
       "trading_volume": 3236042,
       "trading_value": 5708378088,
-      "rise_reason": "관련 보도: 트럼프, 알래스카 LNG 韓 투자 발표 가능성…강관·철강株 급등",
+      "rise_reason": "철강주 동반 강세 — 알래스카 LNG 韓 투자 발표 가능성",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -51,7 +51,8 @@
           "source": "매일신문",
           "date": "2026-09-30"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260907",
@@ -59,10 +60,10 @@
       "close_price": 1604.0,
       "trading_volume": 4918493,
       "trading_value": 7889262772,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -128,7 +129,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260903",
@@ -136,9 +139,9 @@
       "close_price": 1451.0,
       "trading_volume": 7137670,
       "trading_value": 10356759170,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 트럼프 韓日 알래스카 간다 한마디",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -205,7 +208,17 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프 “韓日 알래스카 간다” 한마디에…철강주 ‘불기둥’[특징주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006362886&office_id=018&code=162300&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.03"
+        }
+      ]
     },
     {
       "date": "20260814",
@@ -213,10 +226,10 @@
       "close_price": 1546.0,
       "trading_volume": 1707927,
       "trading_value": 2640455142,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -258,7 +271,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260721",
@@ -301,10 +316,10 @@
       "close_price": 1583.0,
       "trading_volume": 5360240,
       "trading_value": 8485259920,
-      "rise_reason": "조선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선",
       "news": [
         {
@@ -340,7 +355,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "조선 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260622",
@@ -348,9 +365,9 @@
       "close_price": 1610.0,
       "trading_volume": 6442315,
       "trading_value": 10372127150,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강 중소형 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -399,7 +416,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260617",
@@ -407,9 +426,9 @@
       "close_price": 1523.0,
       "trading_volume": 2448144,
       "trading_value": 3728523312,
-      "rise_reason": "조선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 454조 이란 재건 수혜 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선",
       "news": [
@@ -476,7 +495,17 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "조선 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 철강주 동반 급등…‘454조 이란 재건’ 수혜 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001172334&office_id=366&code=023790&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260422",
@@ -1012,5 +1041,5 @@
     "count_recent": 3,
     "avg_rate": 20.87
   },
-  "built_at": "2026-10-01T22:59:48"
+  "built_at": "2026-10-02T05:15:56"
 }

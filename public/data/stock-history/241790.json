@@ -9,9 +9,9 @@
       "close_price": 6500.0,
       "trading_volume": 3549628,
       "trading_value": 23072582000,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "252억 규모 Chemical 공급장치 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "티이엠씨씨엔에스, 252억 규모 Chemical 공급장치 공급계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002662114&office_id=016&code=241790&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.06.26"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 30.0
   },
-  "built_at": "2026-10-01T22:58:25"
+  "built_at": "2026-10-02T05:15:57"
 }

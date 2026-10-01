@@ -9,9 +9,9 @@
       "close_price": 11570.0,
       "trading_volume": 5506473,
       "trading_value": 63709892610,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "딥페이크 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260828",
@@ -86,9 +88,9 @@
       "close_price": 9480.0,
       "trading_volume": 2350012,
       "trading_value": 22278113760,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "에이전틱AI 보안 전략 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "라온시큐어, 9월 '시큐업&해커톤' 개최…에이전틱AI 보안 전략 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003460250&office_id=030&code=042510&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -179,9 +191,9 @@
       "close_price": 13220.0,
       "trading_volume": 1643436,
       "trading_value": 21726223920,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 옴니원 CX로 금융권 디지털 인증 시장 공략",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -248,7 +260,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "라온시큐어, ‘옴니원 CX’로 금융권 디지털 인증 시장 공략",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001167192&office_id=366&code=042510&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -333,9 +355,9 @@
       "close_price": 15410.0,
       "trading_volume": 6625329,
       "trading_value": 102096319890,
-      "rise_reason": "보안주(정보) 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -402,7 +424,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260415",
@@ -410,9 +434,9 @@
       "close_price": 11860.0,
       "trading_volume": 2305173,
       "trading_value": 27339351780,
-      "rise_reason": "확산되면 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "공개 채용에 2600여명 몰려 경쟁률 130대 1",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -479,15 +503,25 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "확산되면 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "라온시큐어, 공개 채용에 2600여명 몰려 경쟁률 130대 1…“AI...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004610873&office_id=011&code=042510&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.04.15"
+        }
+      ]
     },
     {
       "date": "20250611",
       "change_rate": 15.35,
       "close_price": 11650.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -496,7 +530,9 @@
       "source": "estimated",
       "trading_volume": 5045831,
       "trading_value": 58783931150,
-      "market_cap": 129332301980
+      "market_cap": 129332301980,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -507,5 +543,5 @@
     "count_recent": 1,
     "avg_rate": 20.0
   },
-  "built_at": "2026-10-01T22:57:19"
+  "built_at": "2026-10-02T05:15:56"
 }

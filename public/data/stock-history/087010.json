@@ -9,9 +9,9 @@
       "close_price": 166100.0,
       "trading_volume": 265443,
       "trading_value": 44090082300,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "비만치료제 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -66,7 +66,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260728",
@@ -281,9 +283,9 @@
       "close_price": 199800.0,
       "trading_volume": 251223,
       "trading_value": 50194355400,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -338,7 +340,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260624",
@@ -346,9 +358,9 @@
       "close_price": 216000.0,
       "trading_volume": 305876,
       "trading_value": 66069216000,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스위스 디바이오팜과 ADC 공동연구 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -415,7 +427,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "펩트론, 스위스 디바이오팜과 ADC 공동연구 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005780949&office_id=277&code=087010&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.24"
+        }
+      ]
     },
     {
       "date": "20260528",
@@ -563,9 +585,9 @@
       "date": "20260305",
       "change_rate": 18.41,
       "close_price": 260500.0,
-      "rise_reason": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "rise_reason": "코로나19 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
@@ -574,7 +596,9 @@
       "source": "estimated",
       "trading_volume": 341580,
       "trading_value": 88981590000,
-      "market_cap": 6074172127139
+      "market_cap": 6074172127139,
+      "reason_previous": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260219",
@@ -597,9 +621,9 @@
       "date": "20260128",
       "change_rate": 10.28,
       "close_price": 316500.0,
-      "rise_reason": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "rise_reason": "코로나19 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
@@ -608,7 +632,9 @@
       "source": "estimated",
       "trading_volume": 558376,
       "trading_value": 176726004000,
-      "market_cap": 7379944254278
+      "market_cap": 7379944254278,
+      "reason_previous": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260126",
@@ -806,5 +832,5 @@
     "count_recent": 0,
     "avg_rate": 14.13
   },
-  "built_at": "2026-10-01T22:53:54"
+  "built_at": "2026-10-02T05:15:56"
 }

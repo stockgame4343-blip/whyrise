@@ -9,10 +9,10 @@
       "close_price": 8040.0,
       "trading_volume": 16310,
       "trading_value": 131132400,
-      "rise_reason": "거래량 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "핵심",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "식품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 급증",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -44,10 +46,10 @@
       "close_price": 7520.0,
       "trading_volume": 18844,
       "trading_value": 141706880,
-      "rise_reason": "거래량 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "핵심",
       "news": [
         {
@@ -71,7 +73,9 @@
       ],
       "sector": "식품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 급증",
+      "reason_kind": "none"
     },
     {
       "date": "20260730",
@@ -79,10 +83,10 @@
       "close_price": 6520.0,
       "trading_volume": 18246,
       "trading_value": 118963920,
-      "rise_reason": "거래량 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "핵심",
       "news": [
         {
@@ -106,7 +110,9 @@
       ],
       "sector": "식품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 급증",
+      "reason_kind": "none"
     },
     {
       "date": "20260728",
@@ -114,10 +120,10 @@
       "close_price": 6920.0,
       "trading_volume": 17398,
       "trading_value": 120394160,
-      "rise_reason": "거래량 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "핵심",
       "news": [
         {
@@ -141,7 +147,9 @@
       ],
       "sector": "식품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 급증",
+      "reason_kind": "none"
     },
     {
       "date": "20260724",
@@ -149,10 +157,10 @@
       "close_price": 6780.0,
       "trading_volume": 31875,
       "trading_value": 216112500,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "핵심",
       "news": [
         {
@@ -212,7 +220,9 @@
       ],
       "sector": "식품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260723",
@@ -220,10 +230,10 @@
       "close_price": 5220.0,
       "trading_volume": 10388,
       "trading_value": 54225360,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "핵심",
       "news": [
         {
@@ -289,16 +299,18 @@
       ],
       "sector": "식품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260317",
       "change_rate": 12.81,
       "close_price": 15680.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -313,15 +325,17 @@
       "source": "estimated",
       "trading_volume": 3815,
       "trading_value": 59819200,
-      "market_cap": 3179509071
+      "market_cap": 3179509071,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251224",
       "change_rate": 30.0,
       "close_price": 18590.0,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "30.00% 금일 증시 상승률 1위로",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -361,7 +375,17 @@
       "source": "estimated",
       "trading_volume": 24887,
       "trading_value": 462649330,
-      "market_cap": 3769583778
+      "market_cap": 3769583778,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]CJ씨푸드1우 30.00% 상한가 금일 증시 상승률 1위로 마...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003603738",
+          "source": "서울신문",
+          "date": "2025-12-24"
+        }
+      ]
     }
   ],
   "stats": {
@@ -372,5 +396,5 @@
     "count_recent": 0,
     "avg_rate": 25.36
   },
-  "built_at": "2026-10-01T22:53:36"
+  "built_at": "2026-10-02T05:15:56"
 }

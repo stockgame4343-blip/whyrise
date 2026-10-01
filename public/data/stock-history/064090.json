@@ -7,10 +7,10 @@
       "date": "20260122",
       "change_rate": 11.92,
       "close_price": 1540.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -25,15 +25,17 @@
       "source": "estimated",
       "trading_volume": 2534048,
       "trading_value": 3902433920,
-      "market_cap": 76614035087
+      "market_cap": 76614035087,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251215",
       "change_rate": 10.7,
       "close_price": 1480.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 누트라코스, 연말 브랜드 행사 개최 고객 소통 강화...",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -55,7 +57,17 @@
       "source": "estimated",
       "trading_volume": 557846,
       "trading_value": 825612080,
-      "market_cap": 73629072681
+      "market_cap": 73629072681,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "인크레더블버즈 누트라코스, 연말 브랜드 행사 개최 '고객 소통 강화...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005292017",
+          "source": "머니투데이",
+          "date": "2025-12-15"
+        }
+      ]
     },
     {
       "date": "20251204",
@@ -157,10 +169,10 @@
       "date": "20250703",
       "change_rate": 12.7,
       "close_price": 2210.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -168,7 +180,9 @@
       "source": "estimated",
       "trading_volume": 561589,
       "trading_value": 1241111690,
-      "market_cap": 109946115288
+      "market_cap": 109946115288,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -179,5 +193,5 @@
     "count_recent": 0,
     "avg_rate": 13.12
   },
-  "built_at": "2026-09-27T10:15:56"
+  "built_at": "2026-10-02T05:15:57"
 }

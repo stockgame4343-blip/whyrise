@@ -9,9 +9,9 @@
       "close_price": 30550.0,
       "trading_volume": 644484,
       "trading_value": 19688986200,
-      "rise_reason": "지역화폐 영업이익 공시",
+      "rise_reason": "지역화폐 예산 확대 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지역화폐",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지역화폐 영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]쿠콘, 지역화폐 예산 확대 소식에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003463550&office_id=030&code=294570&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260828",
@@ -86,10 +96,10 @@
       "close_price": 30900.0,
       "trading_volume": 1238750,
       "trading_value": 38277375000,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지역화폐",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260821",
@@ -240,9 +252,9 @@
       "close_price": 20400.0,
       "trading_volume": 227400,
       "trading_value": 4638960000,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "데이터 신사업 발굴 맞손",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지역화폐",
       "news": [
@@ -309,7 +321,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "쿠콘·NICE평가정보, 데이터 신사업 발굴 맞손",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014107788&office_id=003&code=294570&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -397,10 +419,10 @@
       "date": "20250926",
       "change_rate": 15.91,
       "close_price": 44800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -408,16 +430,18 @@
       "source": "estimated",
       "trading_volume": 3394443,
       "trading_value": 152071046400,
-      "market_cap": 452063007159
+      "market_cap": 452063007159,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250925",
       "change_rate": 11.06,
       "close_price": 38650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -425,7 +449,9 @@
       "source": "estimated",
       "trading_volume": 833768,
       "trading_value": 32225133200,
-      "market_cap": 390005250596
+      "market_cap": 390005250596,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250716",
@@ -566,5 +592,5 @@
     "count_recent": 1,
     "avg_rate": 17.64
   },
-  "built_at": "2026-10-01T22:56:01"
+  "built_at": "2026-10-02T05:15:56"
 }

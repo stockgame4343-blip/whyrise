@@ -9,9 +9,9 @@
       "close_price": 6890.0,
       "trading_volume": 433053,
       "trading_value": 2983735170,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1분기 매출 37억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "팬젠, 1분기 매출 37억…\"바이오 수출 확대 영향\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013945741&office_id=003&code=222110&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.14"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -86,9 +96,9 @@
       "close_price": 6500.0,
       "trading_volume": 568919,
       "trading_value": 3697973500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오시밀러 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -155,7 +165,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260416",
@@ -384,5 +396,5 @@
     "count_recent": 0,
     "avg_rate": 12.22
   },
-  "built_at": "2026-09-27T10:02:49"
+  "built_at": "2026-10-02T05:15:57"
 }

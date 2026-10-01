@@ -163,10 +163,10 @@
       "close_price": 1526.0,
       "trading_volume": 3375516,
       "trading_value": 5151037416,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -232,15 +232,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20251226",
       "change_rate": 10.31,
       "close_price": 2075.0,
-      "rise_reason": "탈모 치료 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "스킨부스터필 中포브스 뷰티산업 100대 브랜드 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -256,7 +258,17 @@
       "source": "estimated",
       "trading_volume": 962839,
       "trading_value": 1997890925,
-      "market_cap": 24957044673
+      "market_cap": 24957044673,
+      "reason_previous": "탈모 치료 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이노진, 스킨부스터필 中포브스 뷰티산업 100대 브랜드 선정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006189777",
+          "source": "이데일리",
+          "date": "2025-12-25"
+        }
+      ]
     },
     {
       "date": "20251217",
@@ -315,5 +327,5 @@
     "count_recent": 0,
     "avg_rate": 15.14
   },
-  "built_at": "2026-10-01T22:59:48"
+  "built_at": "2026-10-02T05:15:56"
 }

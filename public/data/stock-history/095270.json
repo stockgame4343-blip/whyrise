@@ -9,9 +9,9 @@
       "close_price": 10150.0,
       "trading_volume": 7495809,
       "trading_value": 76082461350,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "방위산업 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -30,7 +30,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260410",
@@ -61,9 +63,9 @@
       "close_price": 5850.0,
       "trading_volume": 649784,
       "trading_value": 3801236400,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 각자대표 체제로 변경",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -82,7 +84,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "웨이브일렉트로, 각자대표 체제로 변경",
+          "link": "https://n.news.naver.com/mnews/article/018/0006249448",
+          "source": "이데일리",
+          "date": "2026-04-03"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -90,15 +102,17 @@
       "close_price": 5300.0,
       "trading_volume": 306397,
       "trading_value": 1623904100,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "방위산업 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260316",
@@ -242,9 +256,9 @@
       "date": "20250910",
       "change_rate": 10.2,
       "close_price": 5940.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "70억 규모 자사주 처분",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -278,16 +292,26 @@
       "source": "estimated",
       "trading_volume": 530933,
       "trading_value": 3153742020,
-      "market_cap": 85392378449
+      "market_cap": 85392378449,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "웨이브일렉트로, 70억 규모 자사주 처분",
+          "link": "https://n.news.naver.com/mnews/article/018/0006111946",
+          "source": "이데일리",
+          "date": "2025-09-10"
+        }
+      ]
     },
     {
       "date": "20250902",
       "change_rate": 10.11,
       "close_price": 5230.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -295,7 +319,9 @@
       "source": "estimated",
       "trading_volume": 88291,
       "trading_value": 461761930,
-      "market_cap": 75185545335
+      "market_cap": 75185545335,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -306,5 +332,5 @@
     "count_recent": 0,
     "avg_rate": 19.2
   },
-  "built_at": "2026-09-27T10:05:08"
+  "built_at": "2026-10-02T05:15:57"
 }

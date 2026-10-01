@@ -175,15 +175,17 @@
       "close_price": 83100.0,
       "trading_volume": 849510,
       "trading_value": 70594281000,
-      "rise_reason": "반도체 대표주(생산) 테마 강세",
+      "rise_reason": "반도체 대표주 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 대표주(생산) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260622",
@@ -191,10 +193,10 @@
       "close_price": 174000.0,
       "trading_volume": 1099286,
       "trading_value": 191275764000,
-      "rise_reason": "외국인 순매수",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 대표주(생산)",
       "news": [
         {
@@ -260,7 +262,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -438,9 +442,9 @@
       "close_price": 185600.0,
       "trading_volume": 958991,
       "trading_value": 177988729600,
-      "rise_reason": "핵심 정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 절대강자 떠난 8인치 파운드리 가동률 98%까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [
@@ -507,7 +511,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "핵심 정부 정책 관련",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "절대강자 떠난 8인치 파운드리 DB하이텍 “가동률 98%까지”",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002642160&office_id=016&code=000990&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -515,10 +529,10 @@
       "close_price": 186700.0,
       "trading_volume": 1307405,
       "trading_value": 244092513500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 대표주(생산)",
       "news": [
         {
@@ -584,7 +598,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260424",
@@ -738,9 +754,9 @@
       "date": "20260305",
       "change_rate": 22.9,
       "close_price": 95000.0,
-      "rise_reason": "반도체 대표주(생산) 테마 강세",
+      "rise_reason": "반도체 대표주 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
@@ -749,7 +765,9 @@
       "source": "estimated",
       "trading_volume": 535924,
       "trading_value": 50912780000,
-      "market_cap": 4132956438180
+      "market_cap": 4132956438180,
+      "reason_previous": "반도체 대표주(생산) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251111",
@@ -794,5 +812,5 @@
     "count_recent": 2,
     "avg_rate": 14.41
   },
-  "built_at": "2026-10-01T22:52:16"
+  "built_at": "2026-10-02T05:15:56"
 }

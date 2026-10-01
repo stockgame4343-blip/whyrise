@@ -9,9 +9,9 @@
       "close_price": 8050.0,
       "trading_volume": 337807,
       "trading_value": 2719346350,
-      "rise_reason": "배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "공개 매수 0주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "골프존홀딩스 상폐 추진 제동…\"공개 매수 0주\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014173231&office_id=003&code=121440&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.07"
+        }
+      ]
     },
     {
       "date": "20260819",
@@ -86,10 +96,10 @@
       "close_price": 7990.0,
       "trading_volume": 496155,
       "trading_value": 3964278450,
-      "rise_reason": "골프 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "골프",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "골프 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -163,9 +175,9 @@
       "close_price": 6630.0,
       "trading_volume": 4856037,
       "trading_value": 32195525310,
-      "rise_reason": "골프 관련 뉴스",
+      "rise_reason": "자진상폐 공개매수가 근접",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "골프",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "골프 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "골프존홀딩스 연이틀 급등…자진상폐 공개매수가 근접",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379023&office_id=008&code=121440&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -240,9 +262,9 @@
       "close_price": 5530.0,
       "trading_volume": 118013,
       "trading_value": 652611890,
-      "rise_reason": "골프 관련 뉴스",
+      "rise_reason": "1000억원 공개매수 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "골프",
       "news": [
@@ -309,7 +331,17 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "골프 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 골프존홀딩스, 1000억원 공개매수 소식에 ‘상한가’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001175115&office_id=366&code=121440&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -343,5 +375,5 @@
     "count_recent": 1,
     "avg_rate": 17.79
   },
-  "built_at": "2026-10-01T22:55:39"
+  "built_at": "2026-10-02T05:15:56"
 }

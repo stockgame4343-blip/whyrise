@@ -9,9 +9,9 @@
       "close_price": 13330.0,
       "trading_volume": 260679,
       "trading_value": 3474851070,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료기기 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -131,9 +133,9 @@
       "close_price": 15580.0,
       "trading_volume": 279674,
       "trading_value": 4357320920,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료기기 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -200,7 +202,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260528",
@@ -208,9 +212,9 @@
       "close_price": 28500.0,
       "trading_volume": 844832,
       "trading_value": 24077712000,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "차세대 제품 제조허가",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -277,7 +281,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "메쥬, 차세대 제품 제조허가…실적 개선 기대감에 ‘급등’ [Why 바이...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004625404&office_id=011&code=0088M0&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.05.28"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -285,10 +299,10 @@
       "close_price": 48000.0,
       "trading_volume": 913072,
       "trading_value": 43827456000,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -354,7 +368,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260423",
@@ -362,10 +378,10 @@
       "close_price": 41600.0,
       "trading_volume": 900969,
       "trading_value": 37480310400,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -431,7 +447,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260415",
@@ -439,10 +457,10 @@
       "close_price": 34450.0,
       "trading_volume": 554985,
       "trading_value": 19119233250,
-      "rise_reason": "바이오 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -508,7 +526,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "바이오 상장 이슈",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -519,5 +539,5 @@
     "count_recent": 0,
     "avg_rate": 14.08
   },
-  "built_at": "2026-10-01T22:57:02"
+  "built_at": "2026-10-02T05:15:56"
 }

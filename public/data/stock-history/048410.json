@@ -9,10 +9,10 @@
       "close_price": 7130.0,
       "trading_volume": 10090029,
       "trading_value": 71941906770,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -125,15 +127,17 @@
       "close_price": 8460.0,
       "trading_volume": 1077875,
       "trading_value": 9118822500,
-      "rise_reason": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "rise_reason": "코로나19 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -141,9 +145,9 @@
       "close_price": 13450.0,
       "trading_volume": 9459140,
       "trading_value": 127225433000,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "에볼라·한타 확산시 항바이러스제 공급 가능",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -210,7 +214,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "현대바이오 \"에볼라·한타 확산시 항바이러스제 공급 가능\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016086671&office_id=001&code=048410&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -323,9 +337,9 @@
       "date": "20260224",
       "change_rate": 12.55,
       "close_price": 20000.0,
-      "rise_reason": "바이오",
+      "rise_reason": "+29.99% 금일 증시 상승률 1위로",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -365,15 +379,25 @@
       "source": "estimated",
       "trading_volume": 22906485,
       "trading_value": 458129700000,
-      "market_cap": 1930158730158
+      "market_cap": 1930158730158,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]현대바이오 +29.99% 상한가 금일 증시 상승률 1위로 마...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003619997",
+          "source": "서울신문",
+          "date": "2026-02-23"
+        }
+      ]
     },
     {
       "date": "20260223",
       "change_rate": 29.99,
       "close_price": 17770.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "+29.99% 금일 증시 상승률 1위로",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -413,7 +437,17 @@
       "source": "estimated",
       "trading_volume": 12217245,
       "trading_value": 217100443650,
-      "market_cap": 1714946031746
+      "market_cap": 1714946031746,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]현대바이오 +29.99% 상한가 금일 증시 상승률 1위로 마...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003619997",
+          "source": "서울신문",
+          "date": "2026-02-23"
+        }
+      ]
     },
     {
       "date": "20260219",
@@ -539,9 +573,9 @@
       "date": "20260128",
       "change_rate": 14.67,
       "close_price": 9300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "코로나19 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
@@ -550,7 +584,9 @@
       "source": "estimated",
       "trading_volume": 13411374,
       "trading_value": 124725778200,
-      "market_cap": 897523809523
+      "market_cap": 897523809523,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260127",
@@ -573,9 +609,9 @@
       "date": "20260116",
       "change_rate": 10.51,
       "close_price": 5890.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 서울대병원과 전립선암 가짜내성 규명 임...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -597,7 +633,17 @@
       "source": "estimated",
       "trading_volume": 3469715,
       "trading_value": 20436621350,
-      "market_cap": 568431746031
+      "market_cap": 568431746031,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[바이오스냅] 현대바이오, 서울대병원과 '전립선암 가짜내성' 규명 임...",
+          "link": "https://n.news.naver.com/mnews/article/001/0015851277",
+          "source": "연합뉴스",
+          "date": "2026-01-16"
+        }
+      ]
     },
     {
       "date": "20250828",
@@ -752,5 +798,5 @@
     "count_recent": 1,
     "avg_rate": 15.88
   },
-  "built_at": "2026-10-01T22:54:48"
+  "built_at": "2026-10-02T05:15:56"
 }

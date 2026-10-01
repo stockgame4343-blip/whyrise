@@ -9,10 +9,10 @@
       "close_price": 229000.0,
       "trading_volume": 156827,
       "trading_value": 35913383000,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED장비",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -86,9 +88,9 @@
       "close_price": 202000.0,
       "trading_volume": 93841,
       "trading_value": 18955882000,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "LED장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED장비",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -163,15 +167,17 @@
       "close_price": 165500.0,
       "trading_volume": 88495,
       "trading_value": 14645922500,
-      "rise_reason": "LED장비 테마 강세",
+      "rise_reason": "LED장비 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "LED장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260416",
@@ -320,9 +326,9 @@
       "date": "20260128",
       "change_rate": 14.0,
       "close_price": 228000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -331,15 +337,17 @@
       "source": "estimated",
       "trading_volume": 189275,
       "trading_value": 43154700000,
-      "market_cap": 2548925338491
+      "market_cap": 2548925338491,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260126",
       "change_rate": 10.26,
       "close_price": 199900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "낸드플래시 고단화·가동률 회복 기대감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -355,15 +363,25 @@
       "source": "estimated",
       "trading_volume": 187569,
       "trading_value": 37495043100,
-      "market_cap": 2234781470019
+      "market_cap": 2234781470019,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]티씨케이, 낸드플래시 고단화·가동률 회복 기대감에 8%대 ↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005711965",
+          "source": "아시아경제",
+          "date": "2026-01-26"
+        }
+      ]
     },
     {
       "date": "20250912",
       "change_rate": 14.25,
       "close_price": 137100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -379,7 +397,9 @@
       "source": "estimated",
       "trading_volume": 233556,
       "trading_value": 32020527600,
-      "market_cap": 1532709052224
+      "market_cap": 1532709052224,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250729",
@@ -414,5 +434,5 @@
     "count_recent": 0,
     "avg_rate": 15.47
   },
-  "built_at": "2026-10-01T22:53:51"
+  "built_at": "2026-10-02T05:15:56"
 }

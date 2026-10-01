@@ -410,15 +410,25 @@
       "close_price": 14000.0,
       "trading_volume": 359436,
       "trading_value": 5032104000,
-      "rise_reason": "미국 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미국",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "미국 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -448,10 +458,10 @@
       "date": "20260313",
       "change_rate": 16.19,
       "close_price": 26200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -459,7 +469,9 @@
       "source": "estimated",
       "trading_volume": 4192500,
       "trading_value": 109843500000,
-      "market_cap": 1189653113087
+      "market_cap": 1189653113087,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -560,10 +572,10 @@
       "date": "20251128",
       "change_rate": 16.9,
       "close_price": 20750.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -571,16 +583,18 @@
       "source": "estimated",
       "trading_volume": 11964071,
       "trading_value": 248254473250,
-      "market_cap": 942187102922
+      "market_cap": 942187102922,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251127",
       "change_rate": 13.49,
       "close_price": 17750.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -588,7 +602,9 @@
       "source": "estimated",
       "trading_volume": 10724821,
       "trading_value": 190365572750,
-      "market_cap": 805967280813
+      "market_cap": 805967280813,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251010",
@@ -645,10 +661,10 @@
       "date": "20250919",
       "change_rate": 10.68,
       "close_price": 11275.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -656,7 +672,9 @@
       "source": "estimated",
       "trading_volume": 15336512,
       "trading_value": 172919172800,
-      "market_cap": 511959498094
+      "market_cap": 511959498094,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250917",
@@ -718,5 +736,5 @@
     "count_recent": 0,
     "avg_rate": 17.81
   },
-  "built_at": "2026-10-01T22:54:43"
+  "built_at": "2026-10-02T05:15:56"
 }

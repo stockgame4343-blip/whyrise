@@ -9,23 +9,25 @@
       "close_price": 1609.0,
       "trading_volume": 2300746,
       "trading_value": 3701900314,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
       "change_rate": 14.68,
       "close_price": 2140.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "모다이노칩 흡수합병 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -41,7 +43,17 @@
       "source": "estimated",
       "trading_volume": 1763990,
       "trading_value": 3774938600,
-      "market_cap": 120241249999
+      "market_cap": 120241249999,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "로젠, 모다이노칩 흡수합병 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006231224",
+          "source": "이데일리",
+          "date": "2026-03-09"
+        }
+      ]
     }
   ],
   "stats": {
@@ -52,5 +64,5 @@
     "count_recent": 0,
     "avg_rate": 12.59
   },
-  "built_at": "2026-09-27T09:54:10"
+  "built_at": "2026-10-02T05:15:57"
 }

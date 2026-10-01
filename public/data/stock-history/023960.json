@@ -9,9 +9,9 @@
       "close_price": 1380.0,
       "trading_volume": 1481097,
       "trading_value": 2043913860,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "279억 규모 반도체 프로젝트 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우크라이나 재건",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에쓰씨엔지니어링, 279억 규모 반도체 프로젝트 수주",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013929893&office_id=003&code=023960&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.07"
+        }
+      ]
     },
     {
       "date": "20260119",
@@ -132,9 +142,9 @@
       "date": "20260112",
       "change_rate": 12.06,
       "close_price": 1450.0,
-      "rise_reason": "우크라이나 재건 테마 강세",
+      "rise_reason": "건설주 동반 강세 — 트럼프 2000억달러 주택담보대출채권 매입 지시",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우크라이나 재건",
       "news": [
@@ -162,7 +172,17 @@
       "source": "estimated",
       "trading_volume": 1126973,
       "trading_value": 1634110850,
-      "market_cap": 55086757990
+      "market_cap": 55086757990,
+      "reason_previous": "우크라이나 재건 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프 2000억달러 주택담보대출채권 매입 지시에…건설주 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005303153",
+          "source": "머니투데이",
+          "date": "2026-01-12"
+        }
+      ]
     }
   ],
   "stats": {
@@ -173,5 +193,5 @@
     "count_recent": 0,
     "avg_rate": 17.44
   },
-  "built_at": "2026-10-01T22:53:25"
+  "built_at": "2026-10-02T05:15:57"
 }

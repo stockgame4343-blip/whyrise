@@ -9,15 +9,17 @@
       "close_price": 3490.0,
       "trading_volume": 225838,
       "trading_value": 788174620,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "환율하락 수혜",
       "news": [],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260908",
@@ -25,10 +27,10 @@
       "close_price": 2875.0,
       "trading_volume": 184883,
       "trading_value": 531538625,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "환율하락 수혜",
       "news": [
         {
@@ -94,7 +96,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260812",
@@ -102,9 +106,9 @@
       "close_price": 2795.0,
       "trading_volume": 183976,
       "trading_value": 514212920,
-      "rise_reason": "사료 관련 뉴스",
+      "rise_reason": "최대주주 200만주 장내 매수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -171,7 +175,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "사료 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 한탑, 최대주주 200만주 장내 매수… 이틀째 上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003456695&office_id=030&code=002680&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260811",
@@ -179,10 +193,10 @@
       "close_price": 2150.0,
       "trading_volume": 735613,
       "trading_value": 1581567950,
-      "rise_reason": "사료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "사료",
       "news": [
         {
@@ -248,7 +262,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "사료 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260720",
@@ -256,9 +272,9 @@
       "close_price": 2765.0,
       "trading_volume": 3675358,
       "trading_value": 10162364870,
-      "rise_reason": "사료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "사료 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -325,7 +341,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "사료 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260716",
@@ -333,10 +351,10 @@
       "close_price": 2430.0,
       "trading_volume": 2815839,
       "trading_value": 6842488770,
-      "rise_reason": "사료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "사료",
       "news": [
         {
@@ -402,7 +420,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "사료 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260714",
@@ -410,10 +430,10 @@
       "close_price": 1964.0,
       "trading_volume": 384941,
       "trading_value": 756024124,
-      "rise_reason": "사료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "사료",
       "news": [
         {
@@ -479,7 +499,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "사료 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260609",
@@ -487,10 +509,10 @@
       "close_price": 2345.0,
       "trading_volume": 383098,
       "trading_value": 898364810,
-      "rise_reason": "보조금 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "환율하락 수혜",
       "news": [
         {
@@ -556,7 +578,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "보조금 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20260304",
@@ -632,5 +656,5 @@
     "count_recent": 2,
     "avg_rate": 21.75
   },
-  "built_at": "2026-10-01T22:59:32"
+  "built_at": "2026-10-02T05:15:56"
 }

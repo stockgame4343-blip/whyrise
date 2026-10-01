@@ -9,9 +9,9 @@
       "close_price": 21200.0,
       "trading_volume": 311644,
       "trading_value": 6606852800,
-      "rise_reason": "지분 관련 이슈",
+      "rise_reason": "최대주주 경영권 강화 위한 공개매수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리모델링/인테리어",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼목에스폼, 최대주주 경영권 강화 위한 공개매수에 22%대 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001165127&office_id=366&code=018310&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.18"
+        }
+      ]
     },
     {
       "date": "20250908",
@@ -154,5 +164,5 @@
     "count_recent": 0,
     "avg_rate": 21.84
   },
-  "built_at": "2026-09-27T09:32:13"
+  "built_at": "2026-10-02T05:15:57"
 }

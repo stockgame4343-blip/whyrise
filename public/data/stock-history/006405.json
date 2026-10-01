@@ -100,9 +100,9 @@
       "date": "20260122",
       "change_rate": 16.69,
       "close_price": 210500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(생산)",
       "news": [
@@ -118,15 +118,25 @@
       "source": "estimated",
       "trading_volume": 78727,
       "trading_value": 16572033500,
-      "market_cap": 340532577319
+      "market_cap": 340532577319,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20251024",
       "change_rate": 10.44,
       "close_price": 176700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(생산)",
       "news": [
@@ -142,7 +152,17 @@
       "source": "estimated",
       "trading_volume": 27949,
       "trading_value": 4938588300,
-      "market_cap": 285853237113
+      "market_cap": 285853237113,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     }
   ],
   "stats": {
@@ -153,5 +173,5 @@
     "count_recent": 0,
     "avg_rate": 13.67
   },
-  "built_at": "2026-10-01T22:52:51"
+  "built_at": "2026-10-02T05:15:57"
 }

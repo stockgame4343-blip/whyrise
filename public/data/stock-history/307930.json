@@ -9,10 +9,10 @@
       "close_price": 10400.0,
       "trading_volume": 1241695,
       "trading_value": 12913628000,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "NFT(대체불가토큰)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260504",
@@ -86,10 +88,10 @@
       "close_price": 10660.0,
       "trading_volume": 1458011,
       "trading_value": 15542397260,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "창투사",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -346,5 +350,5 @@
     "count_recent": 0,
     "avg_rate": 15.58
   },
-  "built_at": "2026-09-27T09:50:15"
+  "built_at": "2026-10-02T05:15:57"
 }

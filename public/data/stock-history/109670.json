@@ -9,9 +9,9 @@
       "close_price": 16730.0,
       "trading_volume": 110321,
       "trading_value": 1845670330,
-      "rise_reason": "관련 보도: '범LG家' 구미현 인수 효과…씨싸이트, 한주새 150% 급등",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "범LG家 구미현 인수 효과",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -75,7 +75,8 @@
           "source": "한국경제",
           "date": "2026-09-29"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260928",
@@ -83,9 +84,9 @@
       "close_price": 12870.0,
       "trading_volume": 37055,
       "trading_value": 476897850,
-      "rise_reason": "관련 보도: 범LG가 구미현, 의류 제조 ‘씨싸이트’ 인수 [시그널]",
+      "rise_reason": "범LG가 구미현, 의류 제조 인수",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -149,7 +150,8 @@
           "source": "서울경제",
           "date": "2026-09-28"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260923",
@@ -157,9 +159,9 @@
       "close_price": 11400.0,
       "trading_volume": 898662,
       "trading_value": 10244746800,
-      "rise_reason": "관련 보도: 구미현 외 5인과 최대주주 변경 주식양수도 계약",
+      "rise_reason": "구미현 외 5인과 최대주주 변경 주식양수도 계약",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -181,7 +183,8 @@
           "source": "뉴시스",
           "date": "2026-09-23"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260922",
@@ -189,10 +192,10 @@
       "close_price": 8770.0,
       "trading_volume": 344401,
       "trading_value": 3020396770,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -204,7 +207,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260908",
@@ -212,10 +217,10 @@
       "close_price": 5790.0,
       "trading_volume": 340599,
       "trading_value": 1972068210,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -281,7 +286,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260907",
@@ -289,10 +296,10 @@
       "close_price": 5130.0,
       "trading_volume": 132344,
       "trading_value": 678924720,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -358,7 +365,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260902",
@@ -366,10 +375,10 @@
       "close_price": 4395.0,
       "trading_volume": 31649,
       "trading_value": 139097355,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -435,7 +444,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -443,10 +454,10 @@
       "close_price": 3980.0,
       "trading_volume": 33429,
       "trading_value": 133047420,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -512,7 +523,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260702",
@@ -520,10 +533,10 @@
       "close_price": 4185.0,
       "trading_volume": 54258,
       "trading_value": 227069730,
-      "rise_reason": "경영진 교체",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -577,7 +590,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -585,10 +600,10 @@
       "close_price": 3590.0,
       "trading_volume": 56889,
       "trading_value": 204231510,
-      "rise_reason": "경영진 교체",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -642,7 +657,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "none"
     },
     {
       "date": "20250926",
@@ -678,10 +695,10 @@
       "date": "20250925",
       "change_rate": 22.1,
       "close_price": 7790.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -702,7 +719,9 @@
       "source": "estimated",
       "trading_volume": 4109897,
       "trading_value": 32016097630,
-      "market_cap": 45522812500
+      "market_cap": 45522812500,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -713,5 +732,5 @@
     "count_recent": 7,
     "avg_rate": 19.27
   },
-  "built_at": "2026-10-01T22:57:28"
+  "built_at": "2026-10-02T05:15:56"
 }

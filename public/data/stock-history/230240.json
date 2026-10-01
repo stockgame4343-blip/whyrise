@@ -9,15 +9,17 @@
       "close_price": 14340.0,
       "trading_volume": 164594,
       "trading_value": 2360277960,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -25,9 +27,9 @@
       "close_price": 17520.0,
       "trading_volume": 135125,
       "trading_value": 2367390000,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "현대제철 당진공장에 AI-RAN 공급",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -64,7 +66,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에치에프알 모바일, 현대제철 당진공장에 AI-RAN 공급",
+          "link": "https://n.news.naver.com/mnews/article/030/0003448118",
+          "source": "전자신문",
+          "date": "2026-07-15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -72,9 +84,9 @@
       "close_price": 18000.0,
       "trading_volume": 277305,
       "trading_value": 4991490000,
-      "rise_reason": "투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -141,7 +153,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 확대 발표",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -149,9 +163,9 @@
       "close_price": 36600.0,
       "trading_volume": 2349157,
       "trading_value": 85979146200,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -218,7 +232,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260429",
@@ -226,10 +242,10 @@
       "close_price": 29150.0,
       "trading_volume": 934347,
       "trading_value": 27236215050,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -295,7 +311,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -303,9 +321,9 @@
       "close_price": 29850.0,
       "trading_volume": 1638766,
       "trading_value": 48917165100,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -318,7 +336,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -365,9 +385,9 @@
       "date": "20260325",
       "change_rate": 14.53,
       "close_price": 30350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
@@ -376,7 +396,9 @@
       "source": "estimated",
       "trading_volume": 968930,
       "trading_value": 29407025500,
-      "market_cap": 403918913043
+      "market_cap": 403918913043,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
@@ -599,5 +621,5 @@
     "count_recent": 0,
     "avg_rate": 18.19
   },
-  "built_at": "2026-10-01T22:56:32"
+  "built_at": "2026-10-02T05:15:57"
 }

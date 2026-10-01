@@ -9,9 +9,9 @@
       "close_price": 5910.0,
       "trading_volume": 64568,
       "trading_value": 381596880,
-      "rise_reason": "인수 관련 뉴스",
+      "rise_reason": "美 유연전자 기업 인수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 유니켐, 美 유연전자 기업 인수… 주가 上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454786&office_id=030&code=011330&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.06"
+        }
+      ]
     },
     {
       "date": "20260806",
@@ -86,9 +96,9 @@
       "close_price": 4550.0,
       "trading_volume": 60138,
       "trading_value": 273627900,
-      "rise_reason": "인수 관련 뉴스",
+      "rise_reason": "美 유연전자 기업 인수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 유니켐, 美 유연전자 기업 인수… 주가 上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454786&office_id=030&code=011330&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.06"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -163,10 +183,10 @@
       "close_price": 3660.0,
       "trading_volume": 129600,
       "trading_value": 474336000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -232,7 +252,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260706",
@@ -240,10 +262,10 @@
       "close_price": 3595.0,
       "trading_volume": 180933,
       "trading_value": 650454135,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -309,16 +331,18 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
       "change_rate": 18.53,
       "close_price": 806.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -339,16 +363,18 @@
       "source": "estimated",
       "trading_volume": 13612289,
       "trading_value": 10971504934,
-      "market_cap": 72662121212
+      "market_cap": 72662121212,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250708",
       "change_rate": 14.03,
       "close_price": 1617.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -356,7 +382,9 @@
       "source": "estimated",
       "trading_volume": 2629520,
       "trading_value": 4251933840,
-      "market_cap": 145775000000
+      "market_cap": 145775000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -367,5 +395,5 @@
     "count_recent": 0,
     "avg_rate": 20.84
   },
-  "built_at": "2026-10-01T22:53:24"
+  "built_at": "2026-10-02T05:15:56"
 }

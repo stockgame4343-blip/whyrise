@@ -9,9 +9,9 @@
       "close_price": 10090.0,
       "trading_volume": 3848986,
       "trading_value": 38836268740,
-      "rise_reason": "코로나 관련주 강세",
+      "rise_reason": "코로나株 꿈틀",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단/치료제/백신 개발 등)",
       "news": [
@@ -60,7 +60,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "코로나 관련주 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "코로나株 꿈틀…신풍제약 또 20%대 급등 [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009137486&office_id=421&code=019170&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.08.28"
+        }
+      ]
     },
     {
       "date": "20260824",
@@ -68,9 +78,9 @@
       "close_price": 10550.0,
       "trading_volume": 2074253,
       "trading_value": 21883369150,
-      "rise_reason": "주주환원 정책",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 셀리드",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -125,7 +135,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "코로나19 재유행 우려에 제약주 급등…셀리드 '上'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014143455&office_id=003&code=299660&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260417",
@@ -342,5 +362,5 @@
     "count_recent": 0,
     "avg_rate": 23.52
   },
-  "built_at": "2026-10-01T22:52:45"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 44600.0,
       "trading_volume": 2484354,
       "trading_value": 110802188400,
-      "rise_reason": "관련 보도: 美 CPU주 급등에 '기판주' 불붙었다…코리아써키트 22%↑[핫종목]",
+      "rise_reason": "반도체주 동반 강세 — 美반도체 훈풍",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -28,12 +28,13 @@
       "reason_previous": "AI 서버 기판 강세",
       "reason_evidence": [
         {
-          "title": "美 CPU주 급등에 '기판주' 불붙었다…코리아써키트 22%↑[핫종목]",
-          "link": "https://n.news.naver.com/mnews/article/421/0009185280",
-          "source": "뉴스1",
+          "title": "美반도체 훈풍에…삼성전기·LG이노텍 등 반도체 기판주 '들썩'[종목 ...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005579557",
+          "source": "파이낸셜뉴스",
           "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260825",
@@ -41,9 +42,9 @@
       "close_price": 38700.0,
       "trading_volume": 1331541,
       "trading_value": 51530636700,
-      "rise_reason": "소캠 주문 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "CXL 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -110,7 +111,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소캠 주문 증가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -118,9 +121,9 @@
       "close_price": 26400.0,
       "trading_volume": 433929,
       "trading_value": 11455725600,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 14종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -169,7 +172,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -236,9 +241,9 @@
       "close_price": 62887.0,
       "trading_volume": 539974,
       "trading_value": 33957344938,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -305,7 +310,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -313,9 +328,9 @@
       "close_price": 56641.0,
       "trading_volume": 573713,
       "trading_value": 32495678033,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -382,7 +397,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "theme"
     },
     {
       "date": "20260521",
@@ -390,9 +407,9 @@
       "close_price": 50539.0,
       "trading_volume": 670424,
       "trading_value": 33882558536,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "소캠 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
@@ -459,7 +476,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "theme"
     },
     {
       "date": "20260513",
@@ -467,9 +486,9 @@
       "close_price": 51158.0,
       "trading_volume": 678610,
       "trading_value": 34716330380,
-      "rise_reason": "증설 발표",
+      "rise_reason": "메모리 기판 가격 상승 따른 호실적 흐름",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -536,7 +555,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"티엘비, 메모리 기판 가격 상승 따른 호실적 흐름…목표가↑\"-NH",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005286222&office_id=015&code=356860&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.05.13"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -544,15 +573,25 @@
       "close_price": 68361.0,
       "trading_volume": 457117,
       "trading_value": 31248975237,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260319",
@@ -575,9 +614,9 @@
       "date": "20260318",
       "change_rate": 20.31,
       "close_price": 67413.0,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 외국인·기관 삼전닉스 2.6조 폭풍매수",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
@@ -586,7 +625,17 @@
       "source": "estimated",
       "trading_volume": 1324290,
       "trading_value": 89274361770,
-      "market_cap": 662855622837
+      "market_cap": 662855622837,
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "외국인·기관 삼전닉스 2.6조 폭풍매수…반도체주 불기둥[핫종목](종합...",
+          "link": "https://n.news.naver.com/mnews/article/421/0008834272",
+          "source": "뉴스1",
+          "date": "2026-03-18"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -626,9 +675,9 @@
       "date": "20251117",
       "change_rate": 12.83,
       "close_price": 68361.0,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美 반도체주 ·메모리 호황 전망에 반도체주",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -644,15 +693,25 @@
       "source": "estimated",
       "trading_volume": 699132,
       "trading_value": 47793362652,
-      "market_cap": 672177076124
+      "market_cap": 672177076124,
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 美 반도체주 반등·메모리 호황 전망에 반도체주 '강세...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000475326",
+          "source": "SBS Biz",
+          "date": "2025-11-17"
+        }
+      ]
     },
     {
       "date": "20251111",
       "change_rate": 10.46,
       "close_price": 68077.0,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "가격과 물량의 동반상승 사이클",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -674,15 +733,25 @@
       "source": "estimated",
       "trading_volume": 1144488,
       "trading_value": 77913309576,
-      "market_cap": 669384573241
+      "market_cap": 669384573241,
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "&quot;티엘비, 가격과 물량의 동반상승 사이클…목표가↑&quot;-NH",
+          "link": "https://n.news.naver.com/mnews/article/015/0005209616",
+          "source": "한국경제",
+          "date": "2025-11-11"
+        }
+      ]
     },
     {
       "date": "20251002",
       "change_rate": 13.29,
       "close_price": 63052.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "역대 최고수준 실적",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -710,15 +779,25 @@
       "source": "estimated",
       "trading_volume": 777815,
       "trading_value": 49042791380,
-      "market_cap": 619974971164
+      "market_cap": 619974971164,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]'역대 최고수준 실적' 티엘비, 9%대 상승",
+          "link": "https://n.news.naver.com/mnews/article/277/0005661172",
+          "source": "아시아경제",
+          "date": "2025-10-02"
+        }
+      ]
     },
     {
       "date": "20251001",
       "change_rate": 13.98,
       "close_price": 55656.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -746,7 +825,9 @@
       "source": "estimated",
       "trading_volume": 688666,
       "trading_value": 38328394896,
-      "market_cap": 547251903114
+      "market_cap": 547251903114,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250929",
@@ -859,5 +940,5 @@
     "count_recent": 1,
     "avg_rate": 14.85
   },
-  "built_at": "2026-10-01T22:54:22"
+  "built_at": "2026-10-02T05:15:56"
 }

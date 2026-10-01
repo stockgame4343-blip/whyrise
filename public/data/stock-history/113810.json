@@ -9,10 +9,10 @@
       "close_price": 2870.0,
       "trading_volume": 139301,
       "trading_value": 399793870,
-      "rise_reason": "자동차부품 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -66,7 +66,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자동차부품 영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260811",
@@ -74,10 +76,10 @@
       "close_price": 2380.0,
       "trading_volume": 99781,
       "trading_value": 237478780,
-      "rise_reason": "경영진 교체",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -125,7 +127,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -133,9 +137,9 @@
       "close_price": 3400.0,
       "trading_volume": 428987,
       "trading_value": 1458555800,
-      "rise_reason": "조선 관세 정책 관련",
+      "rise_reason": "689원 터치",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선",
       "news": [
@@ -166,7 +170,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "조선 관세 정책 관련",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "디젠스, 장중 상한가…689원 터치",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013986586&office_id=003&code=113810&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -201,9 +215,9 @@
       "date": "20260227",
       "change_rate": 12.92,
       "close_price": 839.0,
-      "rise_reason": "자동차부품 테마 강세",
+      "rise_reason": "자동차부품 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [],
@@ -212,15 +226,17 @@
       "source": "estimated",
       "trading_volume": 16891746,
       "trading_value": 14172174894,
-      "market_cap": 27440977443
+      "market_cap": 27440977443,
+      "reason_previous": "자동차부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251022",
       "change_rate": 29.97,
       "close_price": 1006.0,
-      "rise_reason": "자동차부품 테마 상한가",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "29.97% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -260,7 +276,17 @@
       "source": "estimated",
       "trading_volume": 13701990,
       "trading_value": 13784201940,
-      "market_cap": 32903007518
+      "market_cap": 32903007518,
+      "reason_previous": "자동차부품 테마 상한가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]디젠스 29.97% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003584367",
+          "source": "서울신문",
+          "date": "2025-10-22"
+        }
+      ]
     }
   ],
   "stats": {
@@ -271,5 +297,5 @@
     "count_recent": 0,
     "avg_rate": 17.62
   },
-  "built_at": "2026-10-01T22:59:50"
+  "built_at": "2026-10-02T05:15:56"
 }

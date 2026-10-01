@@ -9,9 +9,9 @@
       "close_price": 11230.0,
       "trading_volume": 4821459,
       "trading_value": 54144984570,
-      "rise_reason": "관련 보도: 스웨덴 스톡홀름주 유방암 검진 수주",
+      "rise_reason": "스웨덴 스톡홀름주 유방암 검진 수주",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -45,7 +45,8 @@
           "source": "이코노미스트",
           "date": "2026-09-28"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260921",
@@ -118,9 +119,9 @@
       "close_price": 12030.0,
       "trading_volume": 606090,
       "trading_value": 7291262700,
-      "rise_reason": "의료AI 국책사업 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료AI 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -187,7 +188,9 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "의료AI 국책사업 관련",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -195,9 +198,9 @@
       "close_price": 18430.0,
       "trading_volume": 517900,
       "trading_value": 9544897000,
-      "rise_reason": "의료AI 임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "ASCO 2026서 AI 바이오마커 연구 5편 발표",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -264,7 +267,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "의료AI 임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "루닛, ASCO 2026서 AI 바이오마커 연구 5편 발표",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005766619&office_id=277&code=328130&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.05.22"
+        }
+      ]
     },
     {
       "date": "20250623",
@@ -292,5 +305,5 @@
     "count_recent": 2,
     "avg_rate": 15.92
   },
-  "built_at": "2026-10-01T22:54:32"
+  "built_at": "2026-10-02T05:15:56"
 }

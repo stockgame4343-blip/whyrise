@@ -9,10 +9,10 @@
       "close_price": 1859.0,
       "trading_volume": 235816,
       "trading_value": 438381944,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "수자원(양적/질적 개선)",
       "news": [
         {
@@ -48,7 +48,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -56,10 +58,10 @@
       "close_price": 2926.0,
       "trading_volume": 1573656,
       "trading_value": 4604517456,
-      "rise_reason": "화장품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -83,7 +85,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -91,9 +95,9 @@
       "close_price": 2919.0,
       "trading_volume": 703618,
       "trading_value": 2053860942,
-      "rise_reason": "화장품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -124,7 +128,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -132,9 +138,9 @@
       "close_price": 2246.0,
       "trading_volume": 48776,
       "trading_value": 109550896,
-      "rise_reason": "화장품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -177,7 +183,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260610",
@@ -185,10 +193,10 @@
       "close_price": 1729.0,
       "trading_volume": 53336,
       "trading_value": 92217944,
-      "rise_reason": "화장품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -248,7 +256,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -256,9 +266,9 @@
       "close_price": 430.0,
       "trading_volume": 1797937,
       "trading_value": 773112910,
-      "rise_reason": "화장품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품주 동반 강세 — 미국·유럽 수출 호조",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -325,7 +335,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 수출 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 미국·유럽 수출 호조에 화장품株 일제히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159421&office_id=366&code=083660&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -534,9 +554,9 @@
       "date": "20250612",
       "change_rate": 10.98,
       "close_price": 1253.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "화장품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [],
@@ -545,7 +565,9 @@
       "source": "estimated",
       "trading_volume": 1398550,
       "trading_value": 1752383150,
-      "market_cap": 78577966101
+      "market_cap": 78577966101,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250528",
@@ -573,5 +595,5 @@
     "count_recent": 0,
     "avg_rate": 24.76
   },
-  "built_at": "2026-10-01T22:59:35"
+  "built_at": "2026-10-02T05:15:56"
 }

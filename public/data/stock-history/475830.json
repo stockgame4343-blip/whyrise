@@ -9,9 +9,9 @@
       "close_price": 72500.0,
       "trading_volume": 290962,
       "trading_value": 21094745000,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "혈액암 신약 ORM-1153 美 임상 1상 승인",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AML",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오름테라퓨틱, 혈액암 신약 'ORM-1153' 美 임상 1상 승인",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006356799&office_id=018&code=475830&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -86,10 +96,10 @@
       "close_price": 69900.0,
       "trading_volume": 256584,
       "trading_value": 17935221600,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -163,9 +175,9 @@
       "close_price": 57900.0,
       "trading_volume": 310331,
       "trading_value": 17968164900,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "증시 반등",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "증시 반등에 바이오주 동반 강세…오름테라퓨틱은 18% 급등 [바이오맥....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006342239&office_id=018&code=475830&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.02"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -256,10 +278,10 @@
       "close_price": 47700.0,
       "trading_volume": 102461,
       "trading_value": 4887389700,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "BD",
       "news": [
         {
@@ -325,7 +347,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -333,9 +357,9 @@
       "close_price": 62200.0,
       "trading_volume": 308114,
       "trading_value": 19164690800,
-      "rise_reason": "BD 허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "BD",
       "news": [
@@ -402,7 +426,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "BD 허가 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -410,10 +444,10 @@
       "close_price": 71100.0,
       "trading_volume": 1185805,
       "trading_value": 84310735500,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안",
       "news": [
         {
@@ -479,7 +513,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260609",
@@ -487,10 +523,10 @@
       "close_price": 62500.0,
       "trading_volume": 286820,
       "trading_value": 17926250000,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안",
       "news": [
         {
@@ -556,7 +592,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -799,9 +837,9 @@
       "date": "20260105",
       "change_rate": 12.21,
       "close_price": 127700.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 채드 메이 박사 CSO 선임",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안",
       "news": [
@@ -841,7 +879,17 @@
       "source": "estimated",
       "trading_volume": 452630,
       "trading_value": 57800851000,
-      "market_cap": 2747197741935
+      "market_cap": 2747197741935,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "오름테라퓨틱, 채드 메이 박사 CSO 선임",
+          "link": "https://n.news.naver.com/mnews/article/009/0005616780",
+          "source": "매일경제",
+          "date": "2026-01-05"
+        }
+      ]
     },
     {
       "date": "20251219",
@@ -895,9 +943,9 @@
       "date": "20251209",
       "change_rate": 13.74,
       "close_price": 86100.0,
-      "rise_reason": "바이오",
+      "rise_reason": "ASH서 ORM-1153 전임상서 강력한 항종양 효과 확인",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안",
       "news": [
@@ -937,7 +985,17 @@
       "source": "estimated",
       "trading_volume": 773641,
       "trading_value": 66610490100,
-      "market_cap": 1852260967741
+      "market_cap": 1852260967741,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오름테라퓨틱, ASH서 ‘ORM-1153’ 전임상서 강력한 항종양 효과 확인",
+          "link": "https://n.news.naver.com/mnews/article/009/0005603211",
+          "source": "매일경제",
+          "date": "2025-12-09"
+        }
+      ]
     },
     {
       "date": "20251204",
@@ -1081,5 +1139,5 @@
     "count_recent": 0,
     "avg_rate": 14.75
   },
-  "built_at": "2026-10-01T22:55:05"
+  "built_at": "2026-10-02T05:15:56"
 }

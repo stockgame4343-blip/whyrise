@@ -9,10 +9,10 @@
       "close_price": 400500.0,
       "trading_volume": 833095,
       "trading_value": 333654547500,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(생산)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260528",
@@ -277,5 +279,5 @@
     "count_recent": 0,
     "avg_rate": 14.51
   },
-  "built_at": "2026-10-01T22:52:03"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,15 +9,17 @@
       "close_price": 5250.0,
       "trading_volume": 114364,
       "trading_value": 600411000,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 36종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -25,15 +27,17 @@
       "close_price": 5940.0,
       "trading_volume": 88816,
       "trading_value": 527567040,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260506",
@@ -41,9 +45,9 @@
       "close_price": 10590.0,
       "trading_volume": 2372332,
       "trading_value": 25122995880,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 000 돌파",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "냉각시스템(액침냉각 등)",
       "news": [
@@ -110,7 +114,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피, 7,000 돌파…반도체 대표주 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000508330&office_id=374&code=024840&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -168,5 +182,5 @@
     "count_recent": 0,
     "avg_rate": 17.89
   },
-  "built_at": "2026-10-01T22:57:21"
+  "built_at": "2026-10-02T05:15:57"
 }

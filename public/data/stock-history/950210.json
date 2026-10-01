@@ -32,9 +32,9 @@
       "close_price": 6740.0,
       "trading_volume": 91976,
       "trading_value": 619918240,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -47,15 +47,25 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260324",
       "change_rate": 13.49,
       "close_price": 10350.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 아바스틴 시밀러 상용화 초읽기...13조 시장...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -83,15 +93,25 @@
       "source": "estimated",
       "trading_volume": 308317,
       "trading_value": 3191080950,
-      "market_cap": 621942336874
+      "market_cap": 621942336874,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "프레스티지바이오파마, 아바스틴 시밀러 상용화 초읽기...‘13조 시장...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006241559",
+          "source": "이데일리",
+          "date": "2026-03-24"
+        }
+      ]
     },
     {
       "date": "20250814",
       "change_rate": 10.16,
       "close_price": 15720.0,
-      "rise_reason": "바이오",
+      "rise_reason": "사상 최대 연간 매출 기록",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -107,7 +127,17 @@
       "source": "estimated",
       "trading_volume": 409129,
       "trading_value": 6431507880,
-      "market_cap": 944631259484
+      "market_cap": 944631259484,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "프레스티지바이오파마, 사상 최대 연간 매출 기록…&quot;투즈뉴 마일스톤...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004521083",
+          "source": "서울경제",
+          "date": "2025-08-14"
+        }
+      ]
     },
     {
       "date": "20250701",
@@ -219,5 +249,5 @@
     "count_recent": 0,
     "avg_rate": 13.14
   },
-  "built_at": "2026-09-29T22:20:14"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -86,9 +86,9 @@
       "close_price": 23250.0,
       "trading_volume": 537412,
       "trading_value": 12494829000,
-      "rise_reason": "수출 관련 뉴스",
+      "rise_reason": "아리바이오, 7조원 中 기술수출",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제약업체",
       "news": [
@@ -155,7 +155,17 @@
       ],
       "sector": "제약",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아리바이오, '7조원' 中 기술수출…\"국내 판권\" 삼진제약 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005357705&office_id=008&code=005500&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.14"
+        }
+      ]
     }
   ],
   "stats": {
@@ -166,5 +176,5 @@
     "count_recent": 0,
     "avg_rate": 26.88
   },
-  "built_at": "2026-09-27T08:47:54"
+  "built_at": "2026-10-02T05:15:57"
 }

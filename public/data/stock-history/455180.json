@@ -9,9 +9,9 @@
       "close_price": 1697.0,
       "trading_volume": 74061,
       "trading_value": 125681517,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -86,9 +88,9 @@
       "close_price": 1664.0,
       "trading_volume": 139922,
       "trading_value": 232830208,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260722",
@@ -163,10 +167,10 @@
       "close_price": 1459.0,
       "trading_volume": 136078,
       "trading_value": 198537802,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260703",
@@ -240,9 +246,9 @@
       "close_price": 1715.0,
       "trading_volume": 319609,
       "trading_value": 548129435,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 경영진 잇단 장내매수…성장 자신감·책임경영 강화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -309,7 +315,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "케이지에이, 경영진 잇단 장내매수…\"성장 자신감·책임경영 강화\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005543389&office_id=014&code=455180&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.07.03"
+        }
+      ]
     },
     {
       "date": "20260605",
@@ -317,10 +333,10 @@
       "close_price": 1879.0,
       "trading_volume": 276415,
       "trading_value": 519383785,
-      "rise_reason": "2차전지 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지",
       "news": [
         {
@@ -386,7 +402,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -394,10 +412,10 @@
       "close_price": 1661.0,
       "trading_volume": 105123,
       "trading_value": 174609303,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -463,7 +481,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -493,9 +513,9 @@
       "date": "20260126",
       "change_rate": 10.5,
       "close_price": 3840.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "피지컬 AI 특화 레이저 노칭 장비 개발 착수",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -511,7 +531,17 @@
       "source": "estimated",
       "trading_volume": 3184096,
       "trading_value": 12226928640,
-      "market_cap": 53591957421
+      "market_cap": 53591957421,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "케이지에이, 피지컬 AI 특화 ‘레이저 노칭 장비’ 개발 착수",
+          "link": "https://n.news.naver.com/mnews/article/018/0006207234",
+          "source": "이데일리",
+          "date": "2026-01-26"
+        }
+      ]
     },
     {
       "date": "20260119",
@@ -534,9 +564,9 @@
       "date": "20251022",
       "change_rate": 10.61,
       "close_price": 6150.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 코윈테크·탑머티리얼과 합동 IR 진행",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -564,15 +594,25 @@
       "source": "estimated",
       "trading_volume": 2894472,
       "trading_value": 17801002800,
-      "market_cap": 85830869308
+      "market_cap": 85830869308,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "케이지에이, 코윈테크·탑머티리얼과 합동 IR 진행",
+          "link": "https://n.news.naver.com/mnews/article/018/0006143896",
+          "source": "이데일리",
+          "date": "2025-10-22"
+        }
+      ]
     },
     {
       "date": "20251013",
       "change_rate": 13.93,
       "close_price": 5560.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 휴머노이드 확장 전원 솔루션 2차 테스트 완료",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -588,15 +628,25 @@
       "source": "estimated",
       "trading_volume": 8973244,
       "trading_value": 49891236640,
-      "market_cap": 77596688350
+      "market_cap": 77596688350,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "케이지에이, 휴머노이드 확장 전원 솔루션 2차 테스트 완료",
+          "link": "https://n.news.naver.com/mnews/article/018/0006137005",
+          "source": "이데일리",
+          "date": "2025-10-13"
+        }
+      ]
     },
     {
       "date": "20250825",
       "change_rate": 11.61,
       "close_price": 5770.0,
-      "rise_reason": "로봇/자동화",
+      "rise_reason": "실외 자율주행 서비스 로봇 기업 모빈과 MOU",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -618,15 +668,25 @@
       "source": "estimated",
       "trading_volume": 7939079,
       "trading_value": 45808485830,
-      "market_cap": 80527498521
+      "market_cap": 80527498521,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "케이지에이, '실외 자율주행 서비스 로봇 기업' 모빈과 MOU",
+          "link": "https://n.news.naver.com/mnews/article/018/0006098364",
+          "source": "이데일리",
+          "date": "2025-08-25"
+        }
+      ]
     },
     {
       "date": "20250721",
       "change_rate": 15.11,
       "close_price": 6550.0,
-      "rise_reason": "2차전지(장비) 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 리튬 가격도 오른다",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [],
@@ -635,15 +695,25 @@
       "source": "estimated",
       "trading_volume": 8482135,
       "trading_value": 55557984250,
-      "market_cap": 91413364872
+      "market_cap": 91413364872,
+      "reason_previous": "2차전지(장비) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;리튬 가격도 오른다&quot;...포스코·이녹스첨단소재 등 이차전지株 상승...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005380022",
+          "source": "파이낸셜뉴스",
+          "date": "2025-07-21"
+        }
+      ]
     },
     {
       "date": "20250703",
       "change_rate": 12.52,
       "close_price": 5660.0,
-      "rise_reason": "이차전지 테마",
+      "rise_reason": "양극재 수계공정화 신기술·신소재 개발",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -671,7 +741,17 @@
       "source": "estimated",
       "trading_volume": 11714888,
       "trading_value": 66306266080,
-      "market_cap": 78992312241
+      "market_cap": 78992312241,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "케이지에이, 양극재 수계공정화 신기술·신소재 개발",
+          "link": "https://n.news.naver.com/mnews/article/008/0005216458",
+          "source": "머니투데이",
+          "date": "2025-07-03"
+        }
+      ]
     }
   ],
   "stats": {
@@ -682,5 +762,5 @@
     "count_recent": 0,
     "avg_rate": 13.67
   },
-  "built_at": "2026-10-01T22:59:53"
+  "built_at": "2026-10-02T05:15:57"
 }

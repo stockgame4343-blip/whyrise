@@ -9,15 +9,17 @@
       "close_price": 5390.0,
       "trading_volume": 34641,
       "trading_value": 186714990,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260616",
@@ -25,15 +27,17 @@
       "close_price": 5790.0,
       "trading_volume": 112257,
       "trading_value": 649968030,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260520",
@@ -41,15 +45,17 @@
       "close_price": 6420.0,
       "trading_volume": 108286,
       "trading_value": 695196120,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "저유동성",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -57,10 +63,10 @@
       "close_price": 7600.0,
       "trading_volume": 191834,
       "trading_value": 1457938400,
-      "rise_reason": "저유동성 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "저유동성",
       "news": [
         {
@@ -114,7 +120,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "저유동성 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260512",
@@ -122,10 +130,10 @@
       "close_price": 5850.0,
       "trading_volume": 125351,
       "trading_value": 733303350,
-      "rise_reason": "저유동성 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "저유동성",
       "news": [
         {
@@ -179,15 +187,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "저유동성 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260108",
       "change_rate": 21.49,
       "close_price": 6670.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전기차 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -209,15 +219,17 @@
       "source": "estimated",
       "trading_volume": 207157,
       "trading_value": 1381737190,
-      "market_cap": 4013070539
+      "market_cap": 4013070539,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260105",
       "change_rate": 12.99,
       "close_price": 6000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전기차 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -239,7 +251,9 @@
       "source": "estimated",
       "trading_volume": 267083,
       "trading_value": 1602498000,
-      "market_cap": 3609958506
+      "market_cap": 3609958506,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251230",
@@ -322,5 +336,5 @@
     "count_recent": 0,
     "avg_rate": 25.68
   },
-  "built_at": "2026-10-01T22:53:33"
+  "built_at": "2026-10-02T05:15:57"
 }

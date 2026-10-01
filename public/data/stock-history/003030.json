@@ -9,9 +9,9 @@
       "close_price": 112000.0,
       "trading_volume": 48669,
       "trading_value": 5450928000,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "풍력에너지 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260428",
@@ -86,9 +88,9 @@
       "close_price": 250000.0,
       "trading_volume": 109759,
       "trading_value": 27439750000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 미국-이란 종전협상 교착",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 미국-이란 종전협상 교착… 철강株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003422455&office_id=030&code=008420&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260403",
@@ -163,9 +175,9 @@
       "close_price": 253000.0,
       "trading_volume": 113173,
       "trading_value": 28632769000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "풍력에너지 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -184,7 +196,9 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -206,9 +220,9 @@
       "date": "20260320",
       "change_rate": 13.69,
       "close_price": 201000.0,
-      "rise_reason": "풍력에너지 테마 강세",
+      "rise_reason": "풍력에너지 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [],
@@ -217,7 +231,9 @@
       "source": "estimated",
       "trading_volume": 128275,
       "trading_value": 25783275000,
-      "market_cap": 832465774980
+      "market_cap": 832465774980,
+      "reason_previous": "풍력에너지 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -228,5 +244,5 @@
     "count_recent": 0,
     "avg_rate": 13.28
   },
-  "built_at": "2026-09-30T16:10:37"
+  "built_at": "2026-10-02T05:15:57"
 }

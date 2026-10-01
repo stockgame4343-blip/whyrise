@@ -25,9 +25,9 @@
       "close_price": 5500.0,
       "trading_volume": 149341,
       "trading_value": 821375500,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "AI 픽셀 데스크톱 버전 출시",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "퓨리오사AI",
       "news": [
@@ -40,7 +40,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "포바이포, AI 픽셀 데스크톱 버전 출시",
+          "link": "https://n.news.naver.com/mnews/article/277/0005782520",
+          "source": "아시아경제",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260529",
@@ -182,9 +192,9 @@
       "date": "20260211",
       "change_rate": 11.04,
       "close_price": 10360.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련주 동반 강세 — 국산 AI 반도체 쓴다 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "퓨리오사AI",
       "news": [
@@ -218,7 +228,17 @@
       "source": "estimated",
       "trading_volume": 18695449,
       "trading_value": 193684851640,
-      "market_cap": 147823809523
+      "market_cap": 147823809523,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;정부, 국산 AI 반도체 쓴다&quot; 소식에...퓨리오사AI 관련주 상한가",
+          "link": "https://n.news.naver.com/mnews/article/008/0005316539",
+          "source": "머니투데이",
+          "date": "2026-02-10"
+        }
+      ]
     },
     {
       "date": "20260210",
@@ -378,9 +398,9 @@
       "date": "20250609",
       "change_rate": 10.83,
       "close_price": 20000.0,
-      "rise_reason": "퓨리오사AI 테마 강세",
+      "rise_reason": "퓨리오사AI 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "퓨리오사AI",
       "news": [],
@@ -389,7 +409,9 @@
       "source": "estimated",
       "trading_volume": 5891535,
       "trading_value": 117830700000,
-      "market_cap": 285374149659
+      "market_cap": 285374149659,
+      "reason_previous": "퓨리오사AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250528",
@@ -417,5 +439,5 @@
     "count_recent": 0,
     "avg_rate": 17.4
   },
-  "built_at": "2026-09-27T09:56:42"
+  "built_at": "2026-10-02T05:15:57"
 }

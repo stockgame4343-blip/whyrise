@@ -9,9 +9,9 @@
       "close_price": 4970.0,
       "trading_volume": 1227493,
       "trading_value": 6100640210,
-      "rise_reason": "관련 보도: 상장 후 첫 현금배당…50억원 규모",
+      "rise_reason": "상장 후 첫 현금배당",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -45,7 +45,8 @@
           "source": "비즈워치",
           "date": "2026-09-28"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260701",
@@ -53,9 +54,9 @@
       "close_price": 4850.0,
       "trading_volume": 543797,
       "trading_value": 2637415450,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "모바일게임 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모바일게임(스마트폰)",
       "news": [
@@ -122,7 +123,9 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -133,5 +136,5 @@
     "count_recent": 1,
     "avg_rate": 19.32
   },
-  "built_at": "2026-10-01T22:58:47"
+  "built_at": "2026-10-02T05:15:56"
 }

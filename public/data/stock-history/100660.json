@@ -9,9 +9,9 @@
       "close_price": 4420.0,
       "trading_volume": 1045626,
       "trading_value": 4621666920,
-      "rise_reason": "순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "공작기계 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "공작기계",
       "news": [
@@ -42,7 +42,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260622",
@@ -50,10 +52,10 @@
       "close_price": 3710.0,
       "trading_volume": 651137,
       "trading_value": 2415718270,
-      "rise_reason": "순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
         {
@@ -83,7 +85,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -188,5 +192,5 @@
     "count_recent": 0,
     "avg_rate": 18.6
   },
-  "built_at": "2026-10-01T22:59:01"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 2435.0,
       "trading_volume": 3091163,
       "trading_value": 7526981905,
-      "rise_reason": "흑자 전환 보도",
+      "rise_reason": "이란 재건 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "이란 재건 기대감에 철강株 강세…아주스틸 '上' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009007905&office_id=421&code=139990&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260428",
@@ -86,9 +96,9 @@
       "close_price": 4450.0,
       "trading_volume": 1846743,
       "trading_value": 8218006350,
-      "rise_reason": "수출 관련 뉴스",
+      "rise_reason": "철강 슬래브·철판 수출 금지",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"이란, 철강 슬래브·철판 수출 금지\"…아주스틸 상한가[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008915334&office_id=421&code=139990&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.04.28"
+        }
+      ]
     }
   ],
   "stats": {
@@ -166,5 +186,5 @@
     "count_recent": 0,
     "avg_rate": 20.56
   },
-  "built_at": "2026-10-01T22:53:05"
+  "built_at": "2026-10-02T05:15:57"
 }

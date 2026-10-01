@@ -9,9 +9,9 @@
       "close_price": 50000.0,
       "trading_volume": 340008,
       "trading_value": 17000400000,
-      "rise_reason": "흑자 전환 보도",
+      "rise_reason": "2분기 최대 매출",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "석유화학",
       "news": [
@@ -78,15 +78,25 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]SK케미칼, 2분기 최대 매출에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003457451&office_id=030&code=285130&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20251022",
       "change_rate": 13.14,
       "close_price": 68900.0,
-      "rise_reason": "바이오",
+      "rise_reason": "먹는 치매치료제 개발 협력",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -126,7 +136,17 @@
       "source": "estimated",
       "trading_volume": 327905,
       "trading_value": 22592654500,
-      "market_cap": 1191868331441
+      "market_cap": 1191868331441,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "SK케미칼·아리바이오, 먹는 치매치료제 개발 협력",
+          "link": "https://n.news.naver.com/mnews/article/296/0000094022",
+          "source": "코메디닷컴",
+          "date": "2025-10-22"
+        }
+      ]
     },
     {
       "date": "20250620",
@@ -154,5 +174,5 @@
     "count_recent": 0,
     "avg_rate": 13.59
   },
-  "built_at": "2026-10-01T22:52:38"
+  "built_at": "2026-10-02T05:15:56"
 }

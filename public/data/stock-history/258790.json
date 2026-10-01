@@ -9,9 +9,9 @@
       "close_price": 4150.0,
       "trading_volume": 66708,
       "trading_value": 276838200,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 엔키화이트햇 지분 절반 매각…1400% 수익",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "재택근무/스마트워크",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "소프트캠프, 엔키화이트햇 지분 절반 매각…1400% 수익",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003445411&office_id=030&code=258790&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.07"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -238,9 +248,9 @@
       "date": "20251201",
       "change_rate": 29.98,
       "close_price": 8410.0,
-      "rise_reason": "보안주(정보) 테마 상한가",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -249,15 +259,17 @@
       "source": "estimated",
       "trading_volume": 207023,
       "trading_value": 1741063430,
-      "market_cap": 42049999999
+      "market_cap": 42049999999,
+      "reason_previous": "보안주(정보) 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20250929",
       "change_rate": 12.49,
       "close_price": 7655.0,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -266,15 +278,17 @@
       "source": "estimated",
       "trading_volume": 2566513,
       "trading_value": 19646657015,
-      "market_cap": 38275000000
+      "market_cap": 38275000000,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250923",
       "change_rate": 12.69,
       "close_price": 8660.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -283,7 +297,9 @@
       "source": "estimated",
       "trading_volume": 5017888,
       "trading_value": 43454910080,
-      "market_cap": 43300000000
+      "market_cap": 43300000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250922",
@@ -306,9 +322,9 @@
       "date": "20250919",
       "change_rate": 30.0,
       "close_price": 6565.0,
-      "rise_reason": "보안주(정보) 테마 상한가",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -317,15 +333,17 @@
       "source": "estimated",
       "trading_volume": 282560,
       "trading_value": 1855006400,
-      "market_cap": 32825000000
+      "market_cap": 32825000000,
+      "reason_previous": "보안주(정보) 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20250609",
       "change_rate": 12.06,
       "close_price": 6225.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -334,7 +352,9 @@
       "source": "estimated",
       "trading_volume": 214535,
       "trading_value": 1335480375,
-      "market_cap": 31125000000
+      "market_cap": 31125000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -345,5 +365,5 @@
     "count_recent": 0,
     "avg_rate": 21.59
   },
-  "built_at": "2026-10-01T22:59:06"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 66400.0,
       "trading_volume": 230920,
       "trading_value": 15333088000,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 14종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -24,7 +24,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -32,9 +34,9 @@
       "close_price": 69800.0,
       "trading_volume": 333167,
       "trading_value": 23255056600,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 36종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -101,7 +103,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -109,9 +113,9 @@
       "close_price": 104900.0,
       "trading_volume": 385219,
       "trading_value": 40409473100,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -124,7 +128,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -132,9 +138,9 @@
       "close_price": 97400.0,
       "trading_volume": 320377,
       "trading_value": 31204719800,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 29종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -201,7 +207,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260630",
@@ -286,9 +294,9 @@
       "close_price": 94000.0,
       "trading_volume": 295590,
       "trading_value": 27785460000,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "HBM 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -355,7 +363,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -363,9 +373,9 @@
       "close_price": 87100.0,
       "trading_volume": 378572,
       "trading_value": 32973621200,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SOX 3% 빠졌는데 원익IPS",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -432,7 +442,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "SOX 3% 빠졌는데 원익IPS·케이씨텍 급등…무슨 일? [칩칩폭폭]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002384532&office_id=123&code=281820&page=&sm=",
+          "source": "조세일보",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -440,9 +460,9 @@
       "close_price": 76400.0,
       "trading_volume": 436269,
       "trading_value": 33330951600,
-      "rise_reason": "수주 공시",
+      "rise_reason": "SOX 3% 빠졌는데 원익IPS",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -509,7 +529,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "SOX 3% 빠졌는데 원익IPS·케이씨텍 급등…무슨 일? [칩칩폭폭]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002384532&office_id=123&code=281820&page=&sm=",
+          "source": "조세일보",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -517,9 +547,9 @@
       "close_price": 66400.0,
       "trading_volume": 133189,
       "trading_value": 8843749600,
-      "rise_reason": "반도체 장비 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -586,7 +616,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -594,9 +626,9 @@
       "close_price": 67700.0,
       "trading_volume": 320708,
       "trading_value": 21711931600,
-      "rise_reason": "반도체 장비 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -663,7 +695,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 쉬어가자 반도체 장비株 강세…원익IPS '上' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008985149&office_id=421&code=084370&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -671,9 +713,9 @@
       "close_price": 81800.0,
       "trading_volume": 190678,
       "trading_value": 15597460400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -740,15 +782,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260310",
       "change_rate": 10.14,
       "close_price": 45600.0,
-      "rise_reason": "조선/해운",
+      "rise_reason": "SK하이닉스에 698억 반도체장비 공급",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -776,15 +820,25 @@
       "source": "estimated",
       "trading_volume": 214157,
       "trading_value": 9765559200,
-      "market_cap": 902805158264
+      "market_cap": 902805158264,
+      "reason_previous": "조선/해운",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "케이씨텍, SK하이닉스에 698억 반도체장비 공급 [공시pick]",
+          "link": "https://n.news.naver.com/mnews/article/123/0002379170",
+          "source": "조세일보",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 17.62,
       "close_price": 46400.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 33종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -800,15 +854,17 @@
       "source": "estimated",
       "trading_volume": 174401,
       "trading_value": 8092206400,
-      "market_cap": 918643845252
+      "market_cap": 918643845252,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251117",
       "change_rate": 10.66,
       "close_price": 45150.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美 반도체주 ·메모리 호황 전망에 반도체주",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -830,7 +886,17 @@
       "source": "estimated",
       "trading_volume": 277956,
       "trading_value": 12549713400,
-      "market_cap": 893895896834
+      "market_cap": 893895896834,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 美 반도체주 반등·메모리 호황 전망에 반도체주 '강세...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000475326",
+          "source": "SBS Biz",
+          "date": "2025-11-17"
+        }
+      ]
     }
   ],
   "stats": {
@@ -841,5 +907,5 @@
     "count_recent": 0,
     "avg_rate": 14.98
   },
-  "built_at": "2026-10-01T22:52:31"
+  "built_at": "2026-10-02T05:15:56"
 }

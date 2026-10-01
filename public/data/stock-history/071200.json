@@ -9,9 +9,9 @@
       "close_price": 12800.0,
       "trading_volume": 2261895,
       "trading_value": 28952256000,
-      "rise_reason": "배당 공시",
+      "rise_reason": "654억 배당",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]인피니트헬스케어 '654억' 배당에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003466437&office_id=030&code=071200&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.14"
+        }
+      ]
     },
     {
       "date": "20260914",
@@ -86,9 +96,9 @@
       "close_price": 11310.0,
       "trading_volume": 559978,
       "trading_value": 6333351180,
-      "rise_reason": "배당 공시",
+      "rise_reason": "654억 배당",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "배당 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]인피니트헬스케어 '654억' 배당에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003466437&office_id=030&code=071200&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.14"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -163,10 +183,10 @@
       "close_price": 10680.0,
       "trading_volume": 270783,
       "trading_value": 2891962440,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
         {
@@ -232,7 +252,9 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -256,10 +278,10 @@
       "close_price": 8840.0,
       "trading_volume": 962927,
       "trading_value": 8512274680,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
         {
@@ -325,7 +347,9 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260515",
@@ -333,10 +357,10 @@
       "close_price": 7700.0,
       "trading_volume": 788974,
       "trading_value": 6075099800,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
         {
@@ -402,7 +426,9 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
@@ -430,5 +456,5 @@
     "count_recent": 2,
     "avg_rate": 15.87
   },
-  "built_at": "2026-10-01T22:55:52"
+  "built_at": "2026-10-02T05:15:56"
 }

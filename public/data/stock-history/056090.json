@@ -9,9 +9,9 @@
       "close_price": 1618.0,
       "trading_volume": 767089,
       "trading_value": 1241150002,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "코오롱제약 첫 고객사 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "시지메드텍, 코오롱제약 첫 고객사 확보…인체조직 CDMO 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001172212&office_id=366&code=056090&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.16"
+        }
+      ]
     },
     {
       "date": "20260616",
@@ -302,9 +312,9 @@
       "date": "20260219",
       "change_rate": 14.79,
       "close_price": 2165.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "의료기기 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [],
@@ -313,7 +323,9 @@
       "source": "estimated",
       "trading_volume": 6476449,
       "trading_value": 14021512085,
-      "market_cap": 223591779975
+      "market_cap": 223591779975,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260204",
@@ -389,5 +401,5 @@
     "count_recent": 0,
     "avg_rate": 17.12
   },
-  "built_at": "2026-09-27T09:45:25"
+  "built_at": "2026-10-02T05:15:57"
 }

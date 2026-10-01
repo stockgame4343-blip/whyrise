@@ -9,9 +9,9 @@
       "close_price": 8530.0,
       "trading_volume": 410837,
       "trading_value": 3504439610,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자사주 100억 취득",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "DMS, 자사주 100억 취득…주주환원·기업가치 제고 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014076467&office_id=003&code=068790&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -102,9 +112,9 @@
       "close_price": 5270.0,
       "trading_volume": 182419,
       "trading_value": 961348130,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "677억 규모 디스플레이패널 장비 공급 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "플렉서블 디스플레이",
       "news": [
@@ -123,16 +133,26 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "DMS, 677억 규모 디스플레이패널 장비 공급 계약",
+          "link": "https://n.news.naver.com/mnews/article/003/0014033677",
+          "source": "뉴시스",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260310",
       "change_rate": 16.47,
       "close_price": 7920.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -140,7 +160,9 @@
       "source": "estimated",
       "trading_volume": 426573,
       "trading_value": 3378458160,
-      "market_cap": 178744954128
+      "market_cap": 178744954128,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -151,5 +173,5 @@
     "count_recent": 0,
     "avg_rate": 12.72
   },
-  "built_at": "2026-10-01T22:56:34"
+  "built_at": "2026-10-02T05:15:57"
 }

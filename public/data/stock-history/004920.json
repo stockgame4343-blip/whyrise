@@ -9,9 +9,9 @@
       "close_price": 1121.0,
       "trading_volume": 450756,
       "trading_value": 505297476,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "주요 만성질환 예측 AI 헬스케어 신기술 발표",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "키오스크(KIOSK)",
       "news": [
@@ -78,15 +78,25 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨아이테크, 주요 만성질환 예측 AI 헬스케어 신기술 발표",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014000111&office_id=003&code=004920&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20260105",
       "change_rate": 24.55,
       "close_price": 1446.0,
-      "rise_reason": "키오스크(KIOSK) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "24.55% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "키오스크(KIOSK)",
       "news": [
@@ -126,7 +136,17 @@
       "source": "estimated",
       "trading_volume": 18773652,
       "trading_value": 27146700792,
-      "market_cap": 75476359832
+      "market_cap": 75476359832,
+      "reason_previous": "키오스크(KIOSK) 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]씨아이테크 24.55% 폭등 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003606308",
+          "source": "서울신문",
+          "date": "2026-01-05"
+        }
+      ]
     },
     {
       "date": "20250605",
@@ -154,5 +174,5 @@
     "count_recent": 0,
     "avg_rate": 19.47
   },
-  "built_at": "2026-09-27T09:02:39"
+  "built_at": "2026-10-02T05:15:57"
 }

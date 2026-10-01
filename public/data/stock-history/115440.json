@@ -9,9 +9,9 @@
       "close_price": 12120.0,
       "trading_volume": 7090222,
       "trading_value": 85933490640,
-      "rise_reason": "관련 보도: \"AI 발전할수록 양자암호 중요\"…엑스게이트 17%·우리넷 10%↑[핫종목...",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "AI 발전할수록 양자암호 중요",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -46,12 +46,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "&quot;AI 발전할수록 양자암호 중요&quot;…엑스게이트 17%·우리넷 10%↑[핫종목...",
+          "title": "\"AI 발전할수록 양자암호 중요\"…엑스게이트 17%·우리넷 10%↑[핫종목...",
           "link": "https://n.news.naver.com/mnews/article/421/0009188181",
           "source": "뉴스1",
           "date": "2026-09-23"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260916",
@@ -59,9 +60,9 @@
       "close_price": 9660.0,
       "trading_volume": 8527379,
       "trading_value": 82374481140,
-      "rise_reason": "광통신주 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -128,7 +129,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "광통신주 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260909",
@@ -136,9 +139,9 @@
       "close_price": 8200.0,
       "trading_volume": 2545854,
       "trading_value": 20876002800,
-      "rise_reason": "합병 관련 뉴스",
+      "rise_reason": "美 훈풍",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -205,7 +208,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "우리넷, 24% 급등…美 훈풍에 국내 광통신주 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005411260&office_id=008&code=115440&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.09.09"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -213,15 +226,17 @@
       "close_price": 6360.0,
       "trading_volume": 144322,
       "trading_value": 917887920,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "양자암호 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -245,10 +260,10 @@
       "close_price": 11010.0,
       "trading_volume": 599207,
       "trading_value": 6597269070,
-      "rise_reason": "소식에 정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
         {
@@ -314,7 +329,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소식에 정부 정책 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -322,9 +339,9 @@
       "close_price": 15860.0,
       "trading_volume": 1799895,
       "trading_value": 28546334700,
-      "rise_reason": "소식에 정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -379,7 +396,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소식에 정부 정책 관련",
+      "reason_kind": "theme"
     },
     {
       "date": "20260413",
@@ -387,9 +406,9 @@
       "close_price": 16900.0,
       "trading_volume": 12904561,
       "trading_value": 218087080900,
-      "rise_reason": "광통신 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -446,7 +465,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "광통신 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260410",
@@ -454,15 +475,17 @@
       "close_price": 13000.0,
       "trading_volume": 2905245,
       "trading_value": 37768185000,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -470,15 +493,17 @@
       "close_price": 11930.0,
       "trading_volume": 3256208,
       "trading_value": 38846561440,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
@@ -585,5 +610,5 @@
     "count_recent": 3,
     "avg_rate": 17.55
   },
-  "built_at": "2026-10-01T22:57:16"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 9380.0,
       "trading_volume": 1642252,
       "trading_value": 15404323760,
-      "rise_reason": "관련 보도: '글로벌 장비사' 인증 확보…반도체 부품 사업 확장",
+      "rise_reason": "글로벌 장비사 인증 확보",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -33,15 +33,16 @@
           "source": "파이낸셜뉴스",
           "date": "2026-09-28"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20251111",
       "change_rate": 14.48,
       "close_price": 11150.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "3Q 영업익 67억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -75,7 +76,17 @@
       "source": "estimated",
       "trading_volume": 3265976,
       "trading_value": 36415632400,
-      "market_cap": 113384507042
+      "market_cap": 113384507042,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "디케이락, 3Q 영업익 67억…전년比 흑자전환",
+          "link": "https://n.news.naver.com/mnews/article/018/0006161702",
+          "source": "이데일리",
+          "date": "2025-11-11"
+        }
+      ]
     }
   ],
   "stats": {
@@ -86,5 +97,5 @@
     "count_recent": 1,
     "avg_rate": 15.87
   },
-  "built_at": "2026-10-01T22:57:29"
+  "built_at": "2026-10-02T05:15:56"
 }

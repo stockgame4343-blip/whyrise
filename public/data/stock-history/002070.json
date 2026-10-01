@@ -9,10 +9,10 @@
       "close_price": 5750.0,
       "trading_volume": 308350,
       "trading_value": 1773012500,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260904",
@@ -86,10 +88,10 @@
       "close_price": 5180.0,
       "trading_volume": 126643,
       "trading_value": 656010740,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -163,10 +167,10 @@
       "close_price": 6590.0,
       "trading_volume": 335743,
       "trading_value": 2212546370,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -240,9 +246,9 @@
       "close_price": 5070.0,
       "trading_volume": 307722,
       "trading_value": 1560150540,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 국민 속옷 기업의 묵묵한 상생 행보…소외 여성·이웃에 나눔.....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -309,7 +315,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "비비안, 국민 속옷 기업의 묵묵한 상생 행보…소외 여성·이웃에 나눔.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005315216&office_id=015&code=002070&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.07.29"
+        }
+      ]
     },
     {
       "date": "20260724",
@@ -317,9 +333,9 @@
       "close_price": 3960.0,
       "trading_volume": 734100,
       "trading_value": 2907036000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 양평 신망원에 후원금 2000만원 전달… 사랑의 여름나기 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -386,7 +402,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "비비안, 양평 신망원에 후원금 2000만원 전달… '사랑의 여름나기' ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005388371&office_id=008&code=002070&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.21"
+        }
+      ]
     },
     {
       "date": "20260716",
@@ -394,9 +420,9 @@
       "close_price": 6908.0,
       "trading_volume": 152316,
       "trading_value": 1052198928,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "日제품 불매운동 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "日제품 불매운동(수혜)",
       "news": [
@@ -463,7 +489,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -471,10 +499,10 @@
       "close_price": 5316.0,
       "trading_volume": 1442956,
       "trading_value": 7670754096,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -540,7 +568,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260714",
@@ -548,10 +578,10 @@
       "close_price": 4090.0,
       "trading_volume": 235947,
       "trading_value": 965023230,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "日제품 불매운동(수혜)",
       "news": [
         {
@@ -617,7 +647,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260623",
@@ -625,9 +657,9 @@
       "close_price": 5497.0,
       "trading_volume": 115052,
       "trading_value": 632440844,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "250억 제3자배정 유상증자 추가 발표에 2연상",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "日제품 불매운동(수혜)",
       "news": [
@@ -694,7 +726,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "비비안, 250억 제3자배정 유상증자 추가 발표에 '2연상' [핫종목...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009018058&office_id=421&code=002070&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260622",
@@ -702,9 +744,9 @@
       "close_price": 4230.0,
       "trading_volume": 39703,
       "trading_value": 167943690,
-      "rise_reason": "마스크 관련 뉴스",
+      "rise_reason": "재무구조 개선·사업 확대 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -765,7 +807,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마스크 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]비비안, 재무구조 개선·사업 확대 기대감에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003439920&office_id=030&code=002070&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.22"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -792,5 +844,5 @@
     "count_recent": 2,
     "avg_rate": 316.53
   },
-  "built_at": "2026-10-01T22:53:30"
+  "built_at": "2026-10-02T05:15:56"
 }

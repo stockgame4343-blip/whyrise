@@ -9,10 +9,10 @@
       "close_price": 1798.0,
       "trading_volume": 173172,
       "trading_value": 311363256,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "교육/온라인 교육",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "none"
     },
     {
       "date": "20260708",
@@ -86,9 +88,9 @@
       "close_price": 1451.0,
       "trading_volume": 511498,
       "trading_value": 742183598,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "주주가치 제고 위해 10억 규모 자사주 취득 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "교육/온라인 교육",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "NE능률, 주주가치 제고 위해 10억 규모 자사주 취득 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003732430&office_id=020&code=053290&page=&sm=",
+          "source": "동아일보",
+          "date": "2026.07.08"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -182,5 +194,5 @@
     "count_recent": 0,
     "avg_rate": 13.01
   },
-  "built_at": "2026-10-01T22:59:37"
+  "built_at": "2026-10-02T05:15:57"
 }

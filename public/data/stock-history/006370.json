@@ -9,9 +9,9 @@
       "close_price": 4040.0,
       "trading_volume": 446306,
       "trading_value": 1803076240,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "경영권 교체 무산",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소매유통",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "대구백화점, 경영권 교체 무산…\"지분 등 매각 계속 추진\"(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016271972&office_id=001&code=006370&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260713",
@@ -86,9 +96,9 @@
       "close_price": 5320.0,
       "trading_volume": 1060895,
       "trading_value": 5643961400,
-      "rise_reason": "백화점 M&A 관련 뉴스",
+      "rise_reason": "메가 프로젝트 효과?",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -149,7 +159,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 M&A 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "메가 프로젝트 효과? 대구백화점 장초반 13%대 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005384958&office_id=008&code=006370&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.13"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -157,10 +177,10 @@
       "close_price": 4705.0,
       "trading_volume": 326150,
       "trading_value": 1534535750,
-      "rise_reason": "백화점 M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백화점",
       "news": [
         {
@@ -220,7 +240,9 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260702",
@@ -228,9 +250,9 @@
       "close_price": 4285.0,
       "trading_volume": 111252,
       "trading_value": 476714820,
-      "rise_reason": "백화점 M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "백화점주 동반 강세 — 메가 프로젝트 가동",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -297,7 +319,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 M&A 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "메가 프로젝트 가동…지역 백화점株 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005305410&office_id=015&code=006370&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -326,9 +358,9 @@
       "date": "20250822",
       "change_rate": 14.29,
       "close_price": 6640.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "경영권 공개 매각한다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -356,7 +388,17 @@
       "source": "estimated",
       "trading_volume": 188088,
       "trading_value": 1248904320,
-      "market_cap": 71796466431
+      "market_cap": 71796466431,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "대구백화점, 경영권 공개 매각한다 [시그널]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004524064",
+          "source": "서울경제",
+          "date": "2025-08-22"
+        }
+      ]
     }
   ],
   "stats": {
@@ -367,5 +409,5 @@
     "count_recent": 0,
     "avg_rate": 16.03
   },
-  "built_at": "2026-10-01T22:53:27"
+  "built_at": "2026-10-02T05:15:56"
 }

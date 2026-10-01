@@ -9,10 +9,10 @@
       "close_price": 21600.0,
       "trading_volume": 1492784,
       "trading_value": 32244134400,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260922",
@@ -68,9 +70,9 @@
       "close_price": 19370.0,
       "trading_volume": 2837584,
       "trading_value": 54964002080,
-      "rise_reason": "관련 보도: 범용 MLCC도 ‘귀한 몸’…삼화콘덴서·아모텍 급등 [오늘, 이 종목]",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "범용 MLCC도 귀한 몸",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전자파",
       "news": [
@@ -122,7 +124,8 @@
           "source": "매경이코노미",
           "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260911",
@@ -130,9 +133,9 @@
       "close_price": 15130.0,
       "trading_volume": 3398692,
       "trading_value": 51422209960,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "하반기 실적개선 기대감?",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -199,7 +202,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 아모텍, 장 초반 25% 급등…하반기 실적개선 기대감?",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016304003&office_id=001&code=052710&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.09.11"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -207,10 +220,10 @@
       "close_price": 12911.0,
       "trading_volume": 454885,
       "trading_value": 5873020235,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -276,7 +289,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -284,9 +299,9 @@
       "close_price": 12766.0,
       "trading_volume": 435237,
       "trading_value": 5556235542,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유증 발행가액 8700원 확정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -353,7 +368,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아모텍, 유증 발행가액 8700원 확정…“AI MLCC 생산능력 확충 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006340942&office_id=018&code=052710&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -361,9 +386,9 @@
       "close_price": 17376.0,
       "trading_volume": 1020758,
       "trading_value": 17736691008,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 데이터센터용 고성능 MLCC 양산 본격화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -424,7 +449,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 양산 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아모텍, AI 데이터센터용 고성능 MLCC 양산 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003448065&office_id=030&code=052710&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -432,10 +467,10 @@
       "close_price": 22549.0,
       "trading_volume": 1503989,
       "trading_value": 33913447961,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -489,7 +524,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260611",
@@ -497,10 +534,10 @@
       "close_price": 24666.0,
       "trading_volume": 577339,
       "trading_value": 14240643774,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -566,7 +603,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 증설 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -574,10 +613,10 @@
       "close_price": 22124.0,
       "trading_volume": 790816,
       "trading_value": 17496013184,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -643,7 +682,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 증설 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -651,9 +692,9 @@
       "close_price": 26406.0,
       "trading_volume": 4456629,
       "trading_value": 117681745374,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "350억원 규모 유·무상 증자",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -696,7 +737,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 증설 발표",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아모텍, 350억원 규모 유·무상 증자…“증설 투자·모터(MOTOR) ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001253119&office_id=215&code=052710&page=&sm=",
+          "source": "한국경제TV",
+          "date": "2026.05.23"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -960,9 +1011,9 @@
       "date": "20260220",
       "change_rate": 10.92,
       "close_price": 11680.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "AI MLCC 언급",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전자파",
       "news": [
@@ -984,7 +1035,17 @@
       "source": "estimated",
       "trading_volume": 1321542,
       "trading_value": 15435610560,
-      "market_cap": 170685644171
+      "market_cap": 170685644171,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]아모텍, 장 초반 11%대 상승…AI MLCC 언급 속 강세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005723486",
+          "source": "아시아경제",
+          "date": "2026-02-20"
+        }
+      ]
     },
     {
       "date": "20260211",
@@ -1031,9 +1092,9 @@
       "date": "20250731",
       "change_rate": 11.12,
       "close_price": 11690.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "북미 반도체 업체에 AI용 MLCC 첫 공급",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전자파",
       "news": [
@@ -1055,7 +1116,17 @@
       "source": "estimated",
       "trading_volume": 1002126,
       "trading_value": 11714852940,
-      "market_cap": 170831779141
+      "market_cap": 170831779141,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아모텍, 북미 반도체 업체에 AI용 MLCC 첫 공급",
+          "link": "https://n.news.naver.com/mnews/article/030/0003336702",
+          "source": "전자신문",
+          "date": "2025-07-30"
+        }
+      ]
     },
     {
       "date": "20250619",
@@ -1100,5 +1171,5 @@
     "count_recent": 3,
     "avg_rate": 18.9
   },
-  "built_at": "2026-10-01T22:55:23"
+  "built_at": "2026-10-02T05:15:56"
 }

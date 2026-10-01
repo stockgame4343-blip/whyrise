@@ -9,15 +9,17 @@
       "close_price": 13330.0,
       "trading_volume": 23219113,
       "trading_value": 309510776290,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260909",
@@ -25,9 +27,9 @@
       "close_price": 13030.0,
       "trading_volume": 19589402,
       "trading_value": 255249908060,
-      "rise_reason": "건설기계 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "대미투자 1호 기대감",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설기계",
       "news": [
@@ -88,7 +90,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건설기계 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "대미투자 1호 기대감에 가스터빈株 강세…삼미금속 12%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014172926&office_id=003&code=012210&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.07"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -173,10 +185,10 @@
       "close_price": 8210.0,
       "trading_volume": 733471,
       "trading_value": 6021796910,
-      "rise_reason": "원자력발전 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [
         {
@@ -242,7 +254,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "원자력발전 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -250,10 +264,10 @@
       "close_price": 6640.0,
       "trading_volume": 107961,
       "trading_value": 716861040,
-      "rise_reason": "원자력발전 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [
         {
@@ -319,7 +333,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "원자력발전 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -327,15 +343,17 @@
       "close_price": 5500.0,
       "trading_volume": 67275,
       "trading_value": 370012500,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -343,9 +361,9 @@
       "close_price": 8150.0,
       "trading_volume": 153980,
       "trading_value": 1254937000,
-      "rise_reason": "국책사업 관련",
+      "rise_reason": "호남 반도체 투자 기대에 전력 인프라株 부각",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -412,7 +430,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "국책사업 관련",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "호남 반도체 투자 기대에 전력 인프라株 부각…삼미금속 8%대 강세[특....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006317770&office_id=018&code=012210&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -420,9 +448,9 @@
       "close_price": 9620.0,
       "trading_volume": 159174,
       "trading_value": 1531253880,
-      "rise_reason": "건설기계 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "캐터필러 최상위 인증 획득",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설기계",
       "news": [
@@ -435,7 +463,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "건설기계 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]삼미금속, 캐터필러 최상위 인증 획득에 상승세",
+          "link": "https://n.news.naver.com/mnews/article/030/0003437099",
+          "source": "전자신문",
+          "date": "2026-06-12"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -443,10 +481,10 @@
       "close_price": 12180.0,
       "trading_volume": 1622696,
       "trading_value": 19764437280,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [
         {
@@ -512,7 +550,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260504",
@@ -520,9 +560,9 @@
       "close_price": 15450.0,
       "trading_volume": 2860019,
       "trading_value": 44187293550,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 데이터센터·함정 적용 중속엔진 커넥팅로드 공급 확대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -589,7 +629,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼미금속, AI 데이터센터·함정 적용 중속엔진 커넥팅로드 공급 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006272944&office_id=018&code=012210&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260331",
@@ -597,9 +647,9 @@
       "close_price": 13140.0,
       "trading_volume": 1686794,
       "trading_value": 22164473160,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "108억 규모 공급계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설기계",
       "news": [
@@ -624,7 +674,17 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "대형 수주",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼미금속, 108억 규모 공급계약 체결",
+          "link": "https://n.news.naver.com/mnews/article/018/0006246196",
+          "source": "이데일리",
+          "date": "2026-03-31"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -761,9 +821,9 @@
       "date": "20260120",
       "change_rate": 11.65,
       "close_price": 8820.0,
-      "rise_reason": "원자력발전 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "지난해 영업이익 30.4% 증가한 58억원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -779,7 +839,17 @@
       "source": "estimated",
       "trading_volume": 3987731,
       "trading_value": 35171787420,
-      "market_cap": 195736912751
+      "market_cap": 195736912751,
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼미금속, 지난해 영업이익 30.4% 증가한 58억원",
+          "link": "https://n.news.naver.com/mnews/article/018/0006204006",
+          "source": "이데일리",
+          "date": "2026-01-20"
+        }
+      ]
     },
     {
       "date": "20251226",
@@ -802,9 +872,9 @@
       "date": "20251031",
       "change_rate": 13.87,
       "close_price": 11410.0,
-      "rise_reason": "방산",
+      "rise_reason": "해군 함정용 커넥팅로드 1차 개발 완료",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -820,15 +890,25 @@
       "source": "estimated",
       "trading_volume": 15533,
       "trading_value": 177231530,
-      "market_cap": 253215212527
+      "market_cap": 253215212527,
+      "reason_previous": "방산",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼미금속, 해군 함정용 커넥팅로드 1차 개발 완료…방산 시장 공략",
+          "link": "https://n.news.naver.com/mnews/article/003/0013569006",
+          "source": "뉴시스",
+          "date": "2025-10-30"
+        }
+      ]
     },
     {
       "date": "20251030",
       "change_rate": 12.21,
       "close_price": 10020.0,
-      "rise_reason": "방산",
+      "rise_reason": "해군 함정용 커넥팅로드 1차 개발 완료",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -844,7 +924,17 @@
       "source": "estimated",
       "trading_volume": 11084,
       "trading_value": 111061680,
-      "market_cap": 222367785234
+      "market_cap": 222367785234,
+      "reason_previous": "방산",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼미금속, 해군 함정용 커넥팅로드 1차 개발 완료…방산 시장 공략",
+          "link": "https://n.news.naver.com/mnews/article/003/0013569006",
+          "source": "뉴시스",
+          "date": "2025-10-30"
+        }
+      ]
     },
     {
       "date": "20251020",
@@ -884,9 +974,9 @@
       "date": "20251016",
       "change_rate": 14.91,
       "close_price": 7400.0,
-      "rise_reason": "K-콘텐츠/엔터",
+      "rise_reason": "美 PSM에 가스터빈용 핵심 제품 수주",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -908,7 +998,17 @@
       "source": "estimated",
       "trading_volume": 6892,
       "trading_value": 51000800,
-      "market_cap": 164223713646
+      "market_cap": 164223713646,
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼미금속, 美 PSM에 가스터빈용 핵심 제품 수주",
+          "link": "https://n.news.naver.com/mnews/article/003/0013536507",
+          "source": "뉴시스",
+          "date": "2025-10-15"
+        }
+      ]
     },
     {
       "date": "20251010",
@@ -931,9 +1031,9 @@
       "date": "20250926",
       "change_rate": 14.96,
       "close_price": 4725.0,
-      "rise_reason": "원전/SMR",
+      "rise_reason": "스팩합병 절차 본격화",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -967,7 +1067,17 @@
       "source": "estimated",
       "trading_volume": 7420,
       "trading_value": 35059500,
-      "market_cap": 104859060402
+      "market_cap": 104859060402,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼미금속, 코스닥 상장예비심사 통과…스팩합병 절차 본격화",
+          "link": "https://n.news.naver.com/mnews/article/003/0013507060",
+          "source": "뉴시스",
+          "date": "2025-09-26"
+        }
+      ]
     },
     {
       "date": "20250528",
@@ -1029,5 +1139,5 @@
     "count_recent": 3,
     "avg_rate": 15.65
   },
-  "built_at": "2026-10-01T22:55:58"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -98,10 +98,10 @@
       "close_price": 55400.0,
       "trading_volume": 555243,
       "trading_value": 30760462200,
-      "rise_reason": "소캠(SOCAMM) 투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
         {
@@ -167,7 +167,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소캠(SOCAMM) 투자 확대 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -175,15 +177,17 @@
       "close_price": 46450.0,
       "trading_volume": 544933,
       "trading_value": 25312137850,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체 기판 테마 14종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -191,9 +195,9 @@
       "close_price": 77400.0,
       "trading_volume": 361631,
       "trading_value": 27990239400,
-      "rise_reason": "투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "소캠 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
@@ -260,7 +264,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 확대 발표",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -268,9 +274,9 @@
       "close_price": 139200.0,
       "trading_volume": 693561,
       "trading_value": 96543691200,
-      "rise_reason": "강세에 전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -337,7 +343,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "강세에 전환사채 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -345,9 +353,9 @@
       "close_price": 120300.0,
       "trading_volume": 448757,
       "trading_value": 53985467100,
-      "rise_reason": "강세에 전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -414,7 +422,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "강세에 전환사채 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -422,9 +432,9 @@
       "close_price": 122300.0,
       "trading_volume": 561042,
       "trading_value": 68615436600,
-      "rise_reason": "밸류체인 전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
@@ -491,7 +501,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "밸류체인 전환사채 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 쉬어가자 반도체 장비株 강세…원익IPS '上' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008985149&office_id=421&code=084370&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260520",
@@ -499,10 +519,10 @@
       "close_price": 89500.0,
       "trading_volume": 636892,
       "trading_value": 57001834000,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
         {
@@ -568,7 +588,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -643,15 +665,17 @@
       "close_price": 79400.0,
       "trading_volume": 599317,
       "trading_value": 47585769800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 기판 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
@@ -741,9 +765,9 @@
       "date": "20260305",
       "change_rate": 16.19,
       "close_price": 52400.0,
-      "rise_reason": "PCB(FPCB 등) 테마 강세",
+      "rise_reason": "PCB 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "PCB(FPCB 등)",
       "news": [],
@@ -752,15 +776,17 @@
       "source": "estimated",
       "trading_volume": 247917,
       "trading_value": 12990850800,
-      "market_cap": 1256676070528
+      "market_cap": 1256676070528,
+      "reason_previous": "PCB(FPCB 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260115",
       "change_rate": 16.8,
       "close_price": 60500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "PCB 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "PCB(FPCB 등)",
       "news": [],
@@ -769,7 +795,9 @@
       "source": "estimated",
       "trading_volume": 1209913,
       "trading_value": 73199736500,
-      "market_cap": 1450933249370
+      "market_cap": 1450933249370,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251230",
@@ -826,9 +854,9 @@
       "date": "20251117",
       "change_rate": 20.86,
       "close_price": 32150.0,
-      "rise_reason": "실적 개선",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "PCB 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "PCB(FPCB 등)",
       "news": [
@@ -868,7 +896,9 @@
       "source": "estimated",
       "trading_volume": 1822049,
       "trading_value": 58578875350,
-      "market_cap": 771033123425
+      "market_cap": 771033123425,
+      "reason_previous": "실적 개선",
+      "reason_kind": "theme"
     },
     {
       "date": "20251112",
@@ -930,5 +960,5 @@
     "count_recent": 1,
     "avg_rate": 15.86
   },
-  "built_at": "2026-10-01T22:52:29"
+  "built_at": "2026-10-02T05:15:56"
 }

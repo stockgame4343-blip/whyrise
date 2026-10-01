@@ -9,10 +9,10 @@
       "close_price": 28250.0,
       "trading_volume": 609286,
       "trading_value": 17212329500,
-      "rise_reason": "줄기세포 FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [
         {
@@ -54,7 +54,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "줄기세포 FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -62,10 +64,10 @@
       "close_price": 34550.0,
       "trading_volume": 2004213,
       "trading_value": 69245559150,
-      "rise_reason": "줄기세포 FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [
         {
@@ -125,7 +127,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "줄기세포 FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260602",
@@ -133,10 +137,10 @@
       "close_price": 30750.0,
       "trading_volume": 3229311,
       "trading_value": 99301313250,
-      "rise_reason": "줄기세포 FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [
         {
@@ -196,7 +200,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "줄기세포 FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -204,9 +210,9 @@
       "close_price": 29250.0,
       "trading_volume": 79588,
       "trading_value": 2327949000,
-      "rise_reason": "화장품 FDA 관련 뉴스",
+      "rise_reason": "줄기세포 치료제 美 FDA 정식 허가 신청",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -273,7 +279,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 FDA 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]네이처셀, 줄기세포 치료제 美 FDA 정식 허가 신청 가능...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003431231&office_id=030&code=007390&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -281,9 +297,9 @@
       "close_price": 22500.0,
       "trading_volume": 109151,
       "trading_value": 2455897500,
-      "rise_reason": "줄기세포 FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "줄기세포 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "줄기세포",
       "news": [
@@ -350,7 +366,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "줄기세포 FDA 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20251020",
@@ -468,5 +486,5 @@
     "count_recent": 0,
     "avg_rate": 22.39
   },
-  "built_at": "2026-10-01T22:54:13"
+  "built_at": "2026-10-02T05:15:57"
 }

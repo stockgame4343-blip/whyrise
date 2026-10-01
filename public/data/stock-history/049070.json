@@ -32,9 +32,9 @@
       "close_price": 19820.0,
       "trading_volume": 266802,
       "trading_value": 5288015640,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 이런 게 주가조작 이 대통령이 저격한 … 자사주 소각 우회로...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -71,7 +71,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "&quot;이런 게 주가조작&quot; 이 대통령이 저격한 인탑스… 자사주 소각 우회로...",
+          "link": "https://n.news.naver.com/mnews/article/469/0000935299",
+          "source": "한국일보",
+          "date": "2026-06-09"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -79,9 +89,9 @@
       "close_price": 21300.0,
       "trading_volume": 1350732,
       "trading_value": 28770591600,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -148,7 +158,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -231,5 +243,5 @@
     "count_recent": 0,
     "avg_rate": 14.74
   },
-  "built_at": "2026-10-01T22:55:51"
+  "built_at": "2026-10-02T05:15:57"
 }

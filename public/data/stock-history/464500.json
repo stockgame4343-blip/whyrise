@@ -7,10 +7,10 @@
       "date": "20260305",
       "change_rate": 14.87,
       "close_price": 3205.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -18,7 +18,9 @@
       "source": "estimated",
       "trading_volume": 205038,
       "trading_value": 657146790,
-      "market_cap": 44814502164
+      "market_cap": 44814502164,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
@@ -72,10 +74,10 @@
       "date": "20260102",
       "change_rate": 13.5,
       "close_price": 3700.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -83,16 +85,18 @@
       "source": "estimated",
       "trading_volume": 1708361,
       "trading_value": 6320935700,
-      "market_cap": 51735930735
+      "market_cap": 51735930735,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251230",
       "change_rate": 11.07,
       "close_price": 3260.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -107,15 +111,17 @@
       "source": "estimated",
       "trading_volume": 4363638,
       "trading_value": 14225459880,
-      "market_cap": 45583549783
+      "market_cap": 45583549783,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250925",
       "change_rate": 11.52,
       "close_price": 4260.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "PCIM ASIA서 GaN 전력반도체 구동IC 공개",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -137,15 +143,25 @@
       "source": "estimated",
       "trading_volume": 21846855,
       "trading_value": 93067602300,
-      "market_cap": 59566233766
+      "market_cap": 59566233766,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이언디바이스, PCIM ASIA서 'GaN 전력반도체 구동IC' 공개",
+          "link": "https://n.news.naver.com/mnews/article/003/0013504120",
+          "source": "뉴시스",
+          "date": "2025-09-25"
+        }
+      ]
     },
     {
       "date": "20250917",
       "change_rate": 13.01,
       "close_price": 4125.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "K-휴머노이드 연합 신규 참여기업",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -179,7 +195,17 @@
       "source": "estimated",
       "trading_volume": 23885979,
       "trading_value": 98529663375,
-      "market_cap": 57678571428
+      "market_cap": 57678571428,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]아이언디바이스, 'K-휴머노이드 연합' 신규 참여기업 선정에...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005653225",
+          "source": "아시아경제",
+          "date": "2025-09-17"
+        }
+      ]
     },
     {
       "date": "20250916",
@@ -249,5 +275,5 @@
     "count_recent": 0,
     "avg_rate": 17.34
   },
-  "built_at": "2026-10-01T22:59:41"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 7410.0,
       "trading_volume": 150508,
       "trading_value": 1115264280,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 15종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260623",
@@ -86,9 +88,9 @@
       "close_price": 7500.0,
       "trading_volume": 104807,
       "trading_value": 786052500,
-      "rise_reason": "공급 계약 체결",
+      "rise_reason": "526억원 공급계약 체결",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -155,16 +157,26 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]차AI헬스케어, 526억원 공급계약 체결에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003440344&office_id=030&code=025620&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260129",
       "change_rate": 18.82,
       "close_price": 12690.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -191,7 +203,9 @@
       "source": "estimated",
       "trading_volume": 2145081,
       "trading_value": 27221077890,
-      "market_cap": 230979327731
+      "market_cap": 230979327731,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251205",
@@ -233,10 +247,10 @@
       "date": "20251020",
       "change_rate": 10.27,
       "close_price": 16540.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -244,7 +258,9 @@
       "source": "estimated",
       "trading_volume": 396505,
       "trading_value": 6558192700,
-      "market_cap": 301055798319
+      "market_cap": 301055798319,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251001",
@@ -388,10 +404,10 @@
       "date": "20250901",
       "change_rate": 10.53,
       "close_price": 7660.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -399,16 +415,18 @@
       "source": "estimated",
       "trading_volume": 183588,
       "trading_value": 1406284080,
-      "market_cap": 139424873949
+      "market_cap": 139424873949,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250716",
       "change_rate": 15.31,
       "close_price": 8210.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -416,7 +434,9 @@
       "source": "estimated",
       "trading_volume": 347351,
       "trading_value": 2851751710,
-      "market_cap": 149435798319
+      "market_cap": 149435798319,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -427,5 +447,5 @@
     "count_recent": 0,
     "avg_rate": 21.72
   },
-  "built_at": "2026-09-27T08:57:18"
+  "built_at": "2026-10-02T05:15:57"
 }

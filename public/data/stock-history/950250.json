@@ -9,9 +9,9 @@
       "close_price": 4355.0,
       "trading_volume": 8754616,
       "trading_value": 38126352680,
-      "rise_reason": "관련 보도: 美 기업과 반도체 검사장비 공급계약에 상한가 [종목 NOW]",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "美 기업과 반도체 검사장비 공급계약",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -45,7 +45,8 @@
           "source": "파이낸셜뉴스",
           "date": "2026-09-29"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260921",
@@ -53,9 +54,9 @@
       "close_price": 3515.0,
       "trading_volume": 3231638,
       "trading_value": 11359207570,
-      "rise_reason": "관련 보도: 반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+      "rise_reason": "반도체주 동반 강세 — 반도체 수출 259% 급증",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -77,7 +78,8 @@
           "source": "뉴스1",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260910",
@@ -85,10 +87,10 @@
       "close_price": 3660.0,
       "trading_volume": 8134996,
       "trading_value": 29774085360,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -154,7 +156,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260908",
@@ -162,10 +166,10 @@
       "close_price": 3015.0,
       "trading_volume": 3074429,
       "trading_value": 9269403435,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -231,7 +235,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -239,9 +245,9 @@
       "close_price": 2015.0,
       "trading_volume": 251832,
       "trading_value": 507441480,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 36종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -254,7 +260,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -317,10 +325,10 @@
       "date": "20260112",
       "change_rate": 13.32,
       "close_price": 11570.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -335,7 +343,9 @@
       "source": "estimated",
       "trading_volume": 12105792,
       "trading_value": 140064013440,
-      "market_cap": 410764565587
+      "market_cap": 410764565587,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260105",
@@ -389,10 +399,10 @@
       "date": "20260102",
       "change_rate": 29.88,
       "close_price": 9780.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -400,7 +410,9 @@
       "source": "estimated",
       "trading_volume": 9913222,
       "trading_value": 96951311160,
-      "market_cap": 347214991482
+      "market_cap": 347214991482,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -411,5 +423,5 @@
     "count_recent": 4,
     "avg_rate": 20.57
   },
-  "built_at": "2026-10-01T22:57:00"
+  "built_at": "2026-10-02T05:15:56"
 }

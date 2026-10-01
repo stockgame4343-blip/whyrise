@@ -9,10 +9,10 @@
       "close_price": 2285.0,
       "trading_volume": 8097762,
       "trading_value": 18503386170,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "주류업(주정, 에탄올 등)",
       "news": [
         {
@@ -66,7 +66,9 @@
       ],
       "sector": "음료",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -74,9 +76,9 @@
       "close_price": 3950.0,
       "trading_volume": 3290357,
       "trading_value": 12996910150,
-      "rise_reason": "투자 관련 뉴스",
+      "rise_reason": "호남에 반도체 공장 건설",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "주류업(주정, 에탄올 등)",
       "news": [
@@ -137,7 +139,17 @@
       ],
       "sector": "음료",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "호남에 반도체 공장 건설에 '보해양조' 상한가…이유는?",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005376253&office_id=008&code=000890&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.24"
+        }
+      ]
     },
     {
       "date": "20260623",
@@ -145,10 +157,10 @@
       "close_price": 3040.0,
       "trading_volume": 17767767,
       "trading_value": 54014011680,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "주류업(주정, 에탄올 등)",
       "news": [
         {
@@ -202,7 +214,9 @@
       ],
       "sector": "음료",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260619",
@@ -210,10 +224,10 @@
       "close_price": 2130.0,
       "trading_volume": 2384142,
       "trading_value": 5078222460,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "주류업(주정, 에탄올 등)",
       "news": [
         {
@@ -255,7 +269,9 @@
       ],
       "sector": "음료",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260618",
@@ -263,9 +279,9 @@
       "close_price": 1640.0,
       "trading_volume": 3274869,
       "trading_value": 5370785160,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "진격의 거인전 FINAL 협업 한정판 주류 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "주류업(주정, 에탄올 등)",
       "news": [
@@ -332,7 +348,17 @@
       ],
       "sector": "음료",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "보해양조 '진격의 거인전 FINAL' 협업 한정판 주류 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009004019&office_id=421&code=000890&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260212",
@@ -385,5 +411,5 @@
     "count_recent": 0,
     "avg_rate": 25.37
   },
-  "built_at": "2026-10-01T22:53:25"
+  "built_at": "2026-10-02T05:15:57"
 }

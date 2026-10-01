@@ -9,10 +9,10 @@
       "close_price": 5980.0,
       "trading_volume": 13532705,
       "trading_value": 80925575900,
-      "rise_reason": "전력설비 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [
         {
@@ -66,7 +66,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력설비 영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -90,9 +92,9 @@
       "close_price": 4985.0,
       "trading_volume": 11067275,
       "trading_value": 55170365875,
-      "rise_reason": "전력설비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — 팔란티아 깜짝 실적 AI 수익성 안도감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -141,7 +143,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력설비 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "팔란티아 '깜짝 실적' AI 수익성 안도감…전력주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009097921&office_id=421&code=298040&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -149,15 +161,17 @@
       "close_price": 3720.0,
       "trading_volume": 2900321,
       "trading_value": 10789194120,
-      "rise_reason": "전선 테마 강세",
+      "rise_reason": "전선 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전선 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -165,9 +179,9 @@
       "close_price": 4850.0,
       "trading_volume": 6636731,
       "trading_value": 32188145350,
-      "rise_reason": "전력설비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -210,7 +224,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력설비 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "알파벳, AI 투자 계속 간다… 전력설비주 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005389692&office_id=008&code=006340&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -218,10 +242,10 @@
       "close_price": 4940.0,
       "trading_volume": 7241169,
       "trading_value": 35771374860,
-      "rise_reason": "전선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [
         {
@@ -263,7 +287,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -271,9 +297,9 @@
       "close_price": 4825.0,
       "trading_volume": 6062743,
       "trading_value": 29252734975,
-      "rise_reason": "전선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — LS일렉트릭",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -334,7 +360,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'1500조 메가프로젝트'에 전력株 급등…LS일렉트릭 13%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014039102&office_id=003&code=010120&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260617",
@@ -342,9 +378,9 @@
       "close_price": 5530.0,
       "trading_volume": 17887491,
       "trading_value": 98917825230,
-      "rise_reason": "전선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전선 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -375,7 +411,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -383,10 +421,10 @@
       "close_price": 4900.0,
       "trading_volume": 3036387,
       "trading_value": 14878296300,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [
         {
@@ -404,7 +442,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -447,9 +487,9 @@
       "close_price": 6890.0,
       "trading_volume": 3036680,
       "trading_value": 20922725200,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전선 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -474,7 +514,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260506",
@@ -482,9 +524,9 @@
       "close_price": 8610.0,
       "trading_volume": 16035347,
       "trading_value": 138064337670,
-      "rise_reason": "전선 관련 뉴스",
+      "rise_reason": "변압기 사업 진출 기대감에 4연상",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -545,7 +587,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "KBI메탈, 변압기 사업 진출 기대감에 '4연상'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006273831&office_id=018&code=024840&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -553,9 +605,9 @@
       "close_price": 6630.0,
       "trading_volume": 6394005,
       "trading_value": 42392253150,
-      "rise_reason": "전선 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전선 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -616,7 +668,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260430",
@@ -624,9 +678,9 @@
       "close_price": 5100.0,
       "trading_volume": 39234418,
       "trading_value": 200095531800,
-      "rise_reason": "전선 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "변압기사업 신규 진출",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -693,7 +747,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "KBI메탈, 변압기사업 신규 진출",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002636988&office_id=016&code=024840&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260429",
@@ -701,9 +765,9 @@
       "close_price": 3925.0,
       "trading_volume": 6417602,
       "trading_value": 25189087850,
-      "rise_reason": "전선 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "변압기사업 신규 진출",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -764,7 +828,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "KBI메탈, 변압기사업 신규 진출",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002636988&office_id=016&code=024840&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -772,9 +846,9 @@
       "close_price": 3080.0,
       "trading_volume": 16114506,
       "trading_value": 49632678480,
-      "rise_reason": "전선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전선 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -823,7 +897,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260415",
@@ -831,9 +907,9 @@
       "close_price": 2885.0,
       "trading_volume": 18473846,
       "trading_value": 53297045710,
-      "rise_reason": "전선 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — 중동 전쟁 끝나나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -882,7 +958,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "중동 전쟁 끝나나…리스크 해소 기대감에 전선·전력설비주 강세 [매...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005666352&office_id=009&code=042370&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.04.15"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -905,9 +991,9 @@
       "date": "20260223",
       "change_rate": 24.66,
       "close_price": 2300.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "전선 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -935,7 +1021,9 @@
       "source": "estimated",
       "trading_volume": 25186161,
       "trading_value": 57928170300,
-      "market_cap": 95494972067
+      "market_cap": 95494972067,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20250915",
@@ -982,5 +1070,5 @@
     "count_recent": 0,
     "avg_rate": 20.63
   },
-  "built_at": "2026-10-01T22:55:56"
+  "built_at": "2026-10-02T05:15:56"
 }

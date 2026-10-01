@@ -32,9 +32,9 @@
       "close_price": 2020.0,
       "trading_volume": 1493526,
       "trading_value": 3016922520,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 사업 피봇팅…한국 카토그래피 될까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -101,7 +101,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "지니너스 사업 피봇팅…'한국 카토그래피' 될까",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000050526&office_id=648&code=389030&page=&sm=",
+          "source": "비즈워치",
+          "date": "2026.09.07"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -132,15 +142,17 @@
       "close_price": 4015.0,
       "trading_volume": 613243,
       "trading_value": 2462170645,
-      "rise_reason": "유전자 치료제/분석 테마 강세",
+      "rise_reason": "유전자 치료제 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유전자 치료제/분석 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260414",
@@ -148,10 +160,10 @@
       "close_price": 6110.0,
       "trading_volume": 2987777,
       "trading_value": 18255317470,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -207,15 +219,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260309",
       "change_rate": 14.56,
       "close_price": 4840.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "200억 투자 유치",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -255,7 +269,17 @@
       "source": "estimated",
       "trading_volume": 4889264,
       "trading_value": 23664037760,
-      "market_cap": 190690180360
+      "market_cap": 190690180360,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "지니너스, 200억 투자 유치…재무 리스크 해소·AI 신약개발 가속",
+          "link": "https://n.news.naver.com/mnews/article/015/0005259659",
+          "source": "한국경제",
+          "date": "2026-03-09"
+        }
+      ]
     },
     {
       "date": "20260306",
@@ -285,9 +309,9 @@
       "date": "20260305",
       "change_rate": 16.86,
       "close_price": 3500.0,
-      "rise_reason": "유전자 치료제/분석 테마 강세",
+      "rise_reason": "유전자 치료제 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -303,15 +327,17 @@
       "source": "estimated",
       "trading_volume": 1469221,
       "trading_value": 5142273500,
-      "market_cap": 137895791583
+      "market_cap": 137895791583,
+      "reason_previous": "유전자 치료제/분석 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260225",
       "change_rate": 12.54,
       "close_price": 3500.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "박웅양 대표 인텔리메드로 신약개발",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -333,7 +359,17 @@
       "source": "estimated",
       "trading_volume": 1615316,
       "trading_value": 5653606000,
-      "market_cap": 137895791583
+      "market_cap": 137895791583,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[바이오 포럼] 박웅양 지니너스 대표 &quot;인텔리메드로 신약개발 속도↑...",
+          "link": "https://n.news.naver.com/mnews/article/015/0005255137",
+          "source": "한국경제",
+          "date": "2026-02-25"
+        }
+      ]
     },
     {
       "date": "20260122",
@@ -566,5 +602,5 @@
     "count_recent": 2,
     "avg_rate": 15.76
   },
-  "built_at": "2026-10-01T22:57:59"
+  "built_at": "2026-10-02T05:15:56"
 }

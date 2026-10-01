@@ -9,9 +9,9 @@
       "close_price": 19100.0,
       "trading_volume": 1607403,
       "trading_value": 30701397300,
-      "rise_reason": "허가 관련 뉴스",
+      "rise_reason": "모더나 177% 폭등",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "모더나 177% 폭등에 mRNA株 들썩…나이벡 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006354647&office_id=018&code=138610&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -118,9 +128,9 @@
       "close_price": 17700.0,
       "trading_volume": 36180,
       "trading_value": 640386000,
-      "rise_reason": "바이오",
+      "rise_reason": "바이오 USA서 NP-201 글로벌 임상 전략 및 후속 파이프라인",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -139,7 +149,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "나이벡, 바이오 USA서 NP-201 글로벌 임상 전략 및 후속 파이프라인 성...",
+          "link": "https://n.news.naver.com/mnews/article/015/0005303734",
+          "source": "한국경제",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -147,9 +167,9 @@
       "close_price": 28650.0,
       "trading_volume": 287524,
       "trading_value": 8237562600,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "미국 특허청 특허 등록",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -216,7 +236,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "미국 특허청 특허 등록…나이벡 4%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006257649&office_id=018&code=138610&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.15"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -447,5 +477,5 @@
     "count_recent": 0,
     "avg_rate": 12.88
   },
-  "built_at": "2026-10-01T22:56:31"
+  "built_at": "2026-10-02T05:15:56"
 }

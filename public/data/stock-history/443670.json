@@ -9,10 +9,10 @@
       "close_price": 5760.0,
       "trading_volume": 5302461,
       "trading_value": 30542175360,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
         {
@@ -90,7 +90,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260911",
@@ -98,10 +100,10 @@
       "close_price": 4725.0,
       "trading_volume": 9833162,
       "trading_value": 46461690450,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
         {
@@ -167,7 +169,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260902",
@@ -175,10 +179,10 @@
       "close_price": 4350.0,
       "trading_volume": 15702689,
       "trading_value": 68306697150,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
         {
@@ -244,7 +248,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -252,9 +258,9 @@
       "close_price": 3780.0,
       "trading_volume": 2524484,
       "trading_value": 9542549520,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "구글 워크스페이스 파트너 자격 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
@@ -321,7 +327,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스피소프트, 구글 워크스페이스 파트너 자격 확보",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006359535&office_id=018&code=443670&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.28"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -329,9 +345,9 @@
       "close_price": 3015.0,
       "trading_volume": 122808,
       "trading_value": 370266120,
-      "rise_reason": "딥페이크(deepfake) 테마 강세",
+      "rise_reason": "딥페이크 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
@@ -344,7 +360,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "딥페이크(deepfake) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260420",
@@ -539,5 +557,5 @@
     "count_recent": 3,
     "avg_rate": 18.79
   },
-  "built_at": "2026-10-01T22:57:22"
+  "built_at": "2026-10-02T05:15:56"
 }

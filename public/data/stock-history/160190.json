@@ -9,15 +9,17 @@
       "close_price": 30100.0,
       "trading_volume": 776634,
       "trading_value": 23376683400,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260915",
@@ -25,9 +27,9 @@
       "close_price": 25550.0,
       "trading_volume": 1965338,
       "trading_value": 50214385900,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "모터 기술력으로 지능형 엑추에이터 개발",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "모터 기술력으로 지능형 엑추에이터 개발…하이젠알앤엠 ‘로봇 관절...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005735307&office_id=009&code=160190&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.09.15"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -102,10 +114,10 @@
       "close_price": 21800.0,
       "trading_volume": 734282,
       "trading_value": 16007347600,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -171,7 +183,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260904",
@@ -179,9 +193,9 @@
       "close_price": 19180.0,
       "trading_volume": 643475,
       "trading_value": 12341850500,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -248,7 +262,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260810",
@@ -256,9 +272,9 @@
       "close_price": 19220.0,
       "trading_volume": 351324,
       "trading_value": 6752447280,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -325,7 +341,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260805",
@@ -333,9 +351,9 @@
       "close_price": 17650.0,
       "trading_volume": 206014,
       "trading_value": 3636147100,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -402,7 +420,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -410,15 +430,17 @@
       "close_price": 13990.0,
       "trading_volume": 106356,
       "trading_value": 1487920440,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 22종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -426,15 +448,17 @@
       "close_price": 22100.0,
       "trading_volume": 90883,
       "trading_value": 2008514300,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 20종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -715,10 +739,10 @@
       "date": "20250902",
       "change_rate": 13.36,
       "close_price": 38600.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -726,7 +750,9 @@
       "source": "estimated",
       "trading_volume": 2309299,
       "trading_value": 89138941400,
-      "market_cap": 1192328063241
+      "market_cap": 1192328063241,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250825",
@@ -802,5 +828,5 @@
     "count_recent": 4,
     "avg_rate": 15.63
   },
-  "built_at": "2026-10-01T22:54:31"
+  "built_at": "2026-10-02T05:15:56"
 }

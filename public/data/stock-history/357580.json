@@ -9,9 +9,9 @@
       "close_price": 6640.0,
       "trading_volume": 2007708,
       "trading_value": 13331181120,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "고체산화물 연료전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -60,7 +60,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -68,15 +70,17 @@
       "close_price": 5350.0,
       "trading_volume": 101596,
       "trading_value": 543538600,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "고체산화물 연료전지 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260701",
@@ -84,9 +88,9 @@
       "close_price": 8040.0,
       "trading_volume": 380806,
       "trading_value": 3061680240,
-      "rise_reason": "경영진 교체",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전지·전선·위메이드주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -123,7 +127,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스닥 강세…연료전지·전선·위메이드株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000519273&office_id=374&code=357580&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -243,9 +257,9 @@
       "date": "20260325",
       "change_rate": 10.98,
       "close_price": 22750.0,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "관련 보도: 김인응·김병규 각자 대표이사 체제 변경",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -261,15 +275,25 @@
       "source": "estimated",
       "trading_volume": 398696,
       "trading_value": 9070334000,
-      "market_cap": 268085558252
+      "market_cap": 268085558252,
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아모센스, 김인응·김병규 각자 대표이사 체제 변경",
+          "link": "https://n.news.naver.com/mnews/article/018/0006241896",
+          "source": "이데일리",
+          "date": "2026-03-24"
+        }
+      ]
     },
     {
       "date": "20260312",
       "change_rate": 19.95,
       "close_price": 24050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "고체산화물 연료전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -285,7 +309,9 @@
       "source": "estimated",
       "trading_volume": 1685503,
       "trading_value": 40536347150,
-      "market_cap": 283404733009
+      "market_cap": 283404733009,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260311",
@@ -373,9 +399,9 @@
       "date": "20260203",
       "change_rate": 12.83,
       "close_price": 16090.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "블룸에너지發 공급 호재 (한양증권)",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -403,7 +429,17 @@
       "source": "estimated",
       "trading_volume": 533039,
       "trading_value": 8576597510,
-      "market_cap": 189604247572
+      "market_cap": 189604247572,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "한양證 &quot;아모센스, 블룸에너지發 공급 호재...저평가 된 SOFC 수혜주&quot;",
+          "link": "https://n.news.naver.com/mnews/article/014/0005472345",
+          "source": "파이낸셜뉴스",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20251208",
@@ -538,5 +574,5 @@
     "count_recent": 1,
     "avg_rate": 18.05
   },
-  "built_at": "2026-10-01T22:57:44"
+  "built_at": "2026-10-02T05:15:56"
 }

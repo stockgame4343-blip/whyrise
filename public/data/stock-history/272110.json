@@ -9,15 +9,25 @@
       "close_price": 30000.0,
       "trading_volume": 249282,
       "trading_value": 7478460000,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 반도체 수출 259% 급증",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -25,9 +35,9 @@
       "close_price": 24800.0,
       "trading_volume": 113597,
       "trading_value": 2817205600,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 32종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -94,7 +104,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -102,15 +114,17 @@
       "close_price": 28400.0,
       "trading_volume": 85712,
       "trading_value": 2434220800,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 20종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -118,9 +132,9 @@
       "close_price": 35650.0,
       "trading_volume": 205348,
       "trading_value": 7320656200,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "아산사업장 내 Si 단결정 소재 개발 설비 설치 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -187,7 +201,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "케이엔제이, 아산사업장 내 Si 단결정 소재 개발 설비 설치 완료",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006301167&office_id=018&code=272110&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -195,9 +219,9 @@
       "close_price": 33350.0,
       "trading_volume": 150124,
       "trading_value": 5006635400,
-      "rise_reason": "반도체 재료/부품 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "아산사업장 내 Si 단결정 소재 개발 설비 설치 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -210,7 +234,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "케이엔제이, 아산사업장 내 Si 단결정 소재 개발 설비 설치 완료",
+          "link": "https://n.news.naver.com/mnews/article/018/0006301167",
+          "source": "이데일리",
+          "date": "2026-06-09"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -283,9 +317,9 @@
       "date": "20260305",
       "change_rate": 15.89,
       "close_price": 32450.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 33종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -294,15 +328,17 @@
       "source": "estimated",
       "trading_volume": 218286,
       "trading_value": 7083380700,
-      "market_cap": 260465333333
+      "market_cap": 260465333333,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260219",
       "change_rate": 11.37,
       "close_price": 35250.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -318,7 +354,9 @@
       "source": "estimated",
       "trading_volume": 310869,
       "trading_value": 10958132250,
-      "market_cap": 282940000000
+      "market_cap": 282940000000,
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "theme"
     },
     {
       "date": "20260209",
@@ -348,9 +386,9 @@
       "date": "20260206",
       "change_rate": 14.18,
       "close_price": 32200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -366,15 +404,17 @@
       "source": "estimated",
       "trading_volume": 632817,
       "trading_value": 20376707400,
-      "market_cap": 258458666666
+      "market_cap": 258458666666,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260203",
       "change_rate": 12.38,
       "close_price": 29050.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -383,15 +423,17 @@
       "source": "estimated",
       "trading_volume": 362680,
       "trading_value": 10535854000,
-      "market_cap": 233174666666
+      "market_cap": 233174666666,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260127",
       "change_rate": 10.57,
       "close_price": 27200.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -407,15 +449,17 @@
       "source": "estimated",
       "trading_volume": 536260,
       "trading_value": 14586272000,
-      "market_cap": 218325333333
+      "market_cap": 218325333333,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250912",
       "change_rate": 16.29,
       "close_price": 20850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -431,7 +475,9 @@
       "source": "estimated",
       "trading_volume": 736016,
       "trading_value": 15345933600,
-      "market_cap": 167356000000
+      "market_cap": 167356000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -442,5 +488,5 @@
     "count_recent": 1,
     "avg_rate": 13.63
   },
-  "built_at": "2026-10-01T22:56:07"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,23 +9,25 @@
       "close_price": 4520.0,
       "trading_volume": 144429,
       "trading_value": 652819080,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251017",
       "change_rate": 29.88,
       "close_price": 6520.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -53,7 +55,17 @@
       "source": "estimated",
       "trading_volume": 7126723,
       "trading_value": 46466233960,
-      "market_cap": 191242959427
+      "market_cap": 191242959427,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금강공업 29.88% 상한가…금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003583103",
+          "source": "서울신문",
+          "date": "2025-10-17"
+        }
+      ]
     },
     {
       "date": "20250909",
@@ -160,5 +172,5 @@
     "count_recent": 0,
     "avg_rate": 20.13
   },
-  "built_at": "2026-10-01T22:53:01"
+  "built_at": "2026-10-02T05:15:57"
 }

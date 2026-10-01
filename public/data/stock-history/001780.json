@@ -25,10 +25,10 @@
       "close_price": 3445.0,
       "trading_volume": 51047780,
       "trading_value": 175859602100,
-      "rise_reason": "알루미늄 공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비철금속",
       "news": [
         {
@@ -70,7 +70,9 @@
       ],
       "sector": "비철금속",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "알루미늄 공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260413",
@@ -163,5 +165,5 @@
     "count_recent": 0,
     "avg_rate": 18.84
   },
-  "built_at": "2026-09-27T08:52:29"
+  "built_at": "2026-10-02T05:15:57"
 }

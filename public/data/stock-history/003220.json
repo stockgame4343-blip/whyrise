@@ -96,9 +96,9 @@
       "close_price": 11240.0,
       "trading_volume": 69588,
       "trading_value": 782169120,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "4중 비만치료제 전임상 데이터",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -165,7 +165,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[혁신기업] 4중 비만치료제 전임상 데이터… 대원제약, 美당뇨병학회....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003030031&office_id=029&code=003220&page=&sm=",
+          "source": "디지털타임스",
+          "date": "2026.06.04"
+        }
+      ]
     }
   ],
   "stats": {
@@ -176,5 +186,5 @@
     "count_recent": 0,
     "avg_rate": 16.94
   },
-  "built_at": "2026-09-27T08:51:27"
+  "built_at": "2026-10-02T05:15:57"
 }

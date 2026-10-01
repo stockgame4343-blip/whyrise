@@ -86,9 +86,9 @@
       "close_price": 191000.0,
       "trading_volume": 8667890,
       "trading_value": 1655566990000,
-      "rise_reason": "반도체주 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "S7 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "S7(삼성전자/SK하이닉스 등)",
       "news": [
@@ -155,7 +155,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체주 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260703",
@@ -163,10 +165,10 @@
       "close_price": 208000.0,
       "trading_volume": 5356377,
       "trading_value": 1114126416000,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "S7(삼성전자/SK하이닉스 등)",
       "news": [
         {
@@ -226,7 +228,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260625",
@@ -376,9 +380,9 @@
       "close_price": 189300.0,
       "trading_volume": 11334882,
       "trading_value": 2145693162600,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 000 돌파",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "기술",
       "news": [
@@ -445,7 +449,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피, 7,000 돌파…반도체 대표주 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000508330&office_id=374&code=024840&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -453,15 +467,25 @@
       "close_price": 127500.0,
       "trading_volume": 3439425,
       "trading_value": 438526687500,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260310",
@@ -506,5 +530,5 @@
     "count_recent": 0,
     "avg_rate": 12.9
   },
-  "built_at": "2026-10-01T22:52:03"
+  "built_at": "2026-10-02T05:15:56"
 }

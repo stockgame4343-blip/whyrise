@@ -7,10 +7,10 @@
       "date": "20260205",
       "change_rate": 10.8,
       "close_price": 872.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -25,15 +25,17 @@
       "source": "estimated",
       "trading_volume": 6968642,
       "trading_value": 6076655824,
-      "market_cap": 78664107485
+      "market_cap": 78664107485,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
       "change_rate": 11.05,
       "close_price": 794.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "필리핀 니켈 채굴 위한 인허가 최종 단계 진입",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -49,16 +51,26 @@
       "source": "estimated",
       "trading_volume": 4241169,
       "trading_value": 3367488186,
-      "market_cap": 71627639155
+      "market_cap": 71627639155,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "제이스코홀딩스, 필리핀 니켈 채굴 위한 인허가 최종 단계 진입",
+          "link": "https://n.news.naver.com/mnews/article/008/0005310707",
+          "source": "머니투데이",
+          "date": "2026-01-28"
+        }
+      ]
     },
     {
       "date": "20251203",
       "change_rate": 17.13,
       "close_price": 841.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -66,15 +78,17 @@
       "source": "estimated",
       "trading_volume": 3252643,
       "trading_value": 2735472763,
-      "market_cap": 75867562380
+      "market_cap": 75867562380,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250820",
       "change_rate": 11.84,
       "close_price": 1813.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 필리핀 니켈 선적 임박…첫 매출은 중국 국영기업 전...",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -102,7 +116,17 @@
       "source": "estimated",
       "trading_volume": 4492443,
       "trading_value": 8144799159,
-      "market_cap": 163552783109
+      "market_cap": 163552783109,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "제이스코홀딩스, 필리핀 니켈 선적 임박…첫 매출은 중국 국영기업 전...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005238294",
+          "source": "머니투데이",
+          "date": "2025-08-20"
+        }
+      ]
     }
   ],
   "stats": {
@@ -113,5 +137,5 @@
     "count_recent": 0,
     "avg_rate": 12.99
   },
-  "built_at": "2026-09-27T10:12:04"
+  "built_at": "2026-10-02T05:15:57"
 }

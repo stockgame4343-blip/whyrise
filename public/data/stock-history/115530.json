@@ -9,10 +9,10 @@
       "close_price": 3135.0,
       "trading_volume": 46775,
       "trading_value": 146639625,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260921",
@@ -32,15 +34,17 @@
       "close_price": 2995.0,
       "trading_volume": 93121,
       "trading_value": 278897395,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -48,10 +52,10 @@
       "close_price": 2550.0,
       "trading_volume": 101610,
       "trading_value": 259105500,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [
         {
@@ -117,7 +121,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260730",
@@ -125,10 +131,10 @@
       "close_price": 1970.0,
       "trading_volume": 29565,
       "trading_value": 58243050,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -194,7 +200,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260403",
@@ -202,23 +210,25 @@
       "close_price": 3330.0,
       "trading_volume": 650558,
       "trading_value": 2166358140,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260313",
       "change_rate": 10.56,
       "close_price": 3140.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 전환사채 40억 정리…주식 전환·조기 취득 병행",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -246,7 +256,17 @@
       "source": "estimated",
       "trading_volume": 691952,
       "trading_value": 2172729280,
-      "market_cap": 24767601905
+      "market_cap": 24767601905,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "씨엔플러스, 전환사채 40억 정리…주식 전환·조기 취득 병행",
+          "link": "https://n.news.naver.com/mnews/article/366/0001148189",
+          "source": "조선비즈",
+          "date": "2026-03-13"
+        }
+      ]
     },
     {
       "date": "20260225",
@@ -300,10 +320,10 @@
       "date": "20260205",
       "change_rate": 29.84,
       "close_price": 3960.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -324,7 +344,9 @@
       "source": "estimated",
       "trading_volume": 873030,
       "trading_value": 3457198800,
-      "market_cap": 31235574377
+      "market_cap": 31235574377,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -335,5 +357,5 @@
     "count_recent": 2,
     "avg_rate": 15.89
   },
-  "built_at": "2026-10-01T22:59:41"
+  "built_at": "2026-10-02T05:15:56"
 }

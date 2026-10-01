@@ -9,9 +9,9 @@
       "close_price": 1925.0,
       "trading_volume": 2700197,
       "trading_value": 5197879225,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 땡큐 모더나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모더나(MODERNA)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "\"땡큐 모더나..\" mRNA 암백신 3상 성공에 'K-바이오株' 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005563966&office_id=014&code=227950&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260814",
@@ -86,10 +96,10 @@
       "close_price": 1391.0,
       "trading_volume": 1762081,
       "trading_value": 2451054671,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모더나(MODERNA)",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -163,15 +175,25 @@
       "close_price": 1230.0,
       "trading_volume": 99671,
       "trading_value": 122595330,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 정부 활성화 정책·美공급망 확대 기대",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "에너지장비株 강세…정부 활성화 정책·美공급망 확대 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005395232&office_id=008&code=475150&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260709",
@@ -179,9 +201,9 @@
       "close_price": 1321.0,
       "trading_volume": 160596,
       "trading_value": 212147316,
-      "rise_reason": "반도체 장비 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -224,7 +246,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -248,10 +272,10 @@
       "close_price": 3025.0,
       "trading_volume": 3597348,
       "trading_value": 10881977700,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모더나(MODERNA)",
       "news": [
         {
@@ -269,7 +293,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -277,10 +303,10 @@
       "close_price": 2710.0,
       "trading_volume": 2758470,
       "trading_value": 7475453700,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모더나(MODERNA)",
       "news": [
         {
@@ -336,7 +362,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -666,5 +694,5 @@
     "count_recent": 0,
     "avg_rate": 17.42
   },
-  "built_at": "2026-10-01T22:58:57"
+  "built_at": "2026-10-02T05:15:56"
 }

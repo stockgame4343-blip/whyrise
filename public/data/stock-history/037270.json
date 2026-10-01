@@ -9,15 +9,17 @@
       "close_price": 3485.0,
       "trading_volume": 385203,
       "trading_value": 1342432455,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -136,9 +138,9 @@
       "date": "20250709",
       "change_rate": 11.59,
       "close_price": 9920.0,
-      "rise_reason": "K-콘텐츠/엔터",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "블랙핑크 3년 만의 신곡",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -154,7 +156,17 @@
       "source": "estimated",
       "trading_volume": 6987958,
       "trading_value": 69320543360,
-      "market_cap": 631446153846
+      "market_cap": 631446153846,
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "블랙핑크 3년 만의 신곡…YG PLUS 주가 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005155562",
+          "source": "한국경제",
+          "date": "2025-07-09"
+        }
+      ]
     }
   ],
   "stats": {
@@ -165,5 +177,5 @@
     "count_recent": 0,
     "avg_rate": 11.09
   },
-  "built_at": "2026-09-27T08:50:19"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,10 +9,10 @@
       "close_price": 3070.0,
       "trading_volume": 278325,
       "trading_value": 854457750,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미용기기",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260814",
@@ -86,9 +88,9 @@
       "close_price": 2790.0,
       "trading_volume": 447928,
       "trading_value": 1249719120,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "당기순이익 흑자전환",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "레이저옵텍, 상반기 별도 매출 66%↑…당기순이익 흑자전환",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005561770&office_id=014&code=199550&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260318",
@@ -208,9 +220,9 @@
       "date": "20250902",
       "change_rate": 12.53,
       "close_price": 7356.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "10년 먹거리 세계최초 고체형 레이저 출시",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -226,7 +238,17 @@
       "source": "estimated",
       "trading_volume": 4520953,
       "trading_value": 33256130268,
-      "market_cap": 109247524752
+      "market_cap": 109247524752,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]레이저옵텍, '10년 먹거리' 세계최초 고체형 레이저 출시 기대...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005645416",
+          "source": "아시아경제",
+          "date": "2025-09-02"
+        }
+      ]
     }
   ],
   "stats": {
@@ -237,5 +259,5 @@
     "count_recent": 0,
     "avg_rate": 19.77
   },
-  "built_at": "2026-10-01T22:58:52"
+  "built_at": "2026-10-02T05:15:56"
 }

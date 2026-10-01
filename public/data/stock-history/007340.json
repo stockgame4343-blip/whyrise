@@ -9,10 +9,10 @@
       "close_price": 58900.0,
       "trading_volume": 899436,
       "trading_value": 52976780400,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -86,9 +88,9 @@
       "close_price": 41650.0,
       "trading_volume": 479279,
       "trading_value": 19961970350,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "주당 500원 현금배당 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "DN오토모티브, 주당 500원 현금배당 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002670795&office_id=016&code=007340&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260430",
@@ -163,9 +175,9 @@
       "close_price": 48050.0,
       "trading_volume": 606704,
       "trading_value": 29152127200,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -232,7 +244,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260316",
@@ -310,9 +324,9 @@
       "date": "20251205",
       "change_rate": 11.82,
       "close_price": 27900.0,
-      "rise_reason": "자동차부품 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "5억불 수출의 탑 수상",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -334,7 +348,17 @@
       "source": "estimated",
       "trading_volume": 586733,
       "trading_value": 16369850700,
-      "market_cap": 1632465160523
+      "market_cap": 1632465160523,
+      "reason_previous": "자동차부품 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "DN오토모티브, 5억불 수출의 탑 수상",
+          "link": "https://n.news.naver.com/mnews/article/092/0002401071",
+          "source": "지디넷코리아",
+          "date": "2025-12-04"
+        }
+      ]
     }
   ],
   "stats": {
@@ -345,5 +369,5 @@
     "count_recent": 0,
     "avg_rate": 16.38
   },
-  "built_at": "2026-10-01T22:52:23"
+  "built_at": "2026-10-02T05:15:56"
 }

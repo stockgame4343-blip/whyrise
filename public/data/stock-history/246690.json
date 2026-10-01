@@ -32,9 +32,9 @@
       "close_price": 3055.0,
       "trading_volume": 6173173,
       "trading_value": 18859043515,
-      "rise_reason": "퓨리오사AI 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련주 동반 강세 — 국민성장펀드 투자 호재",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "퓨리오사AI",
       "news": [
@@ -101,15 +101,25 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "퓨리오사AI 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 퓨리오사AI 관련주 급등…국민성장펀드 투자 호재(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016108087&office_id=001&code=246690&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.29"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 13.64,
       "close_price": 1850.0,
-      "rise_reason": "퓨리오사AI 테마 강세",
+      "rise_reason": "퓨리오사AI 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "퓨리오사AI",
       "news": [
@@ -125,7 +135,9 @@
       "source": "estimated",
       "trading_volume": 1071373,
       "trading_value": 1982040050,
-      "market_cap": 87934700075
+      "market_cap": 87934700075,
+      "reason_previous": "퓨리오사AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260223",
@@ -173,9 +185,9 @@
       "date": "20260210",
       "change_rate": 29.94,
       "close_price": 1840.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련주 동반 강세 — 국산 AI 반도체 쓴다 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "퓨리오사AI",
       "news": [
@@ -215,7 +227,17 @@
       "source": "estimated",
       "trading_volume": 20907918,
       "trading_value": 38470569120,
-      "market_cap": 87459377372
+      "market_cap": 87459377372,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;정부, 국산 AI 반도체 쓴다&quot; 소식에...퓨리오사AI 관련주 상한가",
+          "link": "https://n.news.naver.com/mnews/article/008/0005316539",
+          "source": "머니투데이",
+          "date": "2026-02-10"
+        }
+      ]
     },
     {
       "date": "20251027",
@@ -251,9 +273,9 @@
       "date": "20250609",
       "change_rate": 20.33,
       "close_price": 1959.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "퓨리오사AI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "퓨리오사AI",
       "news": [],
@@ -262,7 +284,9 @@
       "source": "estimated",
       "trading_volume": 24205470,
       "trading_value": 47418515730,
-      "market_cap": 93115717539
+      "market_cap": 93115717539,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -273,5 +297,5 @@
     "count_recent": 0,
     "avg_rate": 18.94
   },
-  "built_at": "2026-10-01T22:58:45"
+  "built_at": "2026-10-02T05:15:57"
 }

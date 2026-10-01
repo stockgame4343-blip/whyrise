@@ -9,15 +9,17 @@
       "close_price": 32600.0,
       "trading_volume": 75810,
       "trading_value": 2471406000,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "현장",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -25,9 +27,9 @@
       "close_price": 40400.0,
       "trading_volume": 42104,
       "trading_value": 1701001600,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 넥스파우더 PECS 예방 효과 국제학술지 게재",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "현장",
       "news": [
@@ -40,7 +42,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "넥스트바이오메디컬, '넥스파우더 PECS 예방 효과' 국제학술지 게재",
+          "link": "https://n.news.naver.com/mnews/article/018/0006344063",
+          "source": "이데일리",
+          "date": "2026-08-04"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -89,9 +101,9 @@
       "close_price": 47600.0,
       "trading_volume": 212993,
       "trading_value": 10138466800,
-      "rise_reason": "넥스피어에프 FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "월드 베스트 병원 2026 선정 의료기관과",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "넥스피어에프",
       "news": [
@@ -158,15 +170,25 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "넥스피어에프 FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "넥스트바이오메디컬, ‘월드 베스트 병원 2026’ 선정 의료기관과 임....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006297978&office_id=018&code=389650&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.05"
+        }
+      ]
     },
     {
       "date": "20260306",
       "change_rate": 14.01,
       "close_price": 75700.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 이돈행 대표 내년 흑자전환...5년 내 매출 1000억...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "넥스피어에프",
       "news": [
@@ -182,7 +204,17 @@
       "source": "estimated",
       "trading_volume": 130912,
       "trading_value": 9910038400,
-      "market_cap": 626638213399
+      "market_cap": 626638213399,
+      "reason_previous": "실적 호조",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이돈행 넥스트바이오메디컬 대표 &quot;내년 흑자전환...5년 내 매출 1000억...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006229484",
+          "source": "이데일리",
+          "date": "2026-03-06"
+        }
+      ]
     },
     {
       "date": "20260203",
@@ -236,9 +268,9 @@
       "date": "20250821",
       "change_rate": 11.13,
       "close_price": 61900.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 16兆 자궁근종 치료시장 다크호스 찜",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "넥스피어에프",
       "news": [
@@ -278,7 +310,17 @@
       "source": "estimated",
       "trading_volume": 251405,
       "trading_value": 15561969500,
-      "market_cap": 512402977667
+      "market_cap": 512402977667,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "넥스트바이오메디컬 16兆 자궁근종 치료시장 다크호스 '찜'",
+          "link": "https://n.news.naver.com/mnews/article/018/0006094929",
+          "source": "이데일리",
+          "date": "2025-08-21"
+        }
+      ]
     },
     {
       "date": "20250723",
@@ -336,5 +378,5 @@
     "count_recent": 1,
     "avg_rate": 13.18
   },
-  "built_at": "2026-10-01T22:55:59"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 6350.0,
       "trading_volume": 316335,
       "trading_value": 2008727250,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지주사 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -72,7 +72,9 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -83,5 +85,5 @@
     "count_recent": 0,
     "avg_rate": 12.59
   },
-  "built_at": "2026-09-27T09:34:46"
+  "built_at": "2026-10-02T05:15:57"
 }

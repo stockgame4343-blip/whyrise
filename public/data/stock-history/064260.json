@@ -9,10 +9,10 @@
       "close_price": 4635.0,
       "trading_volume": 17419532,
       "trading_value": 80739530820,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자결제(전자화폐)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -86,10 +88,10 @@
       "close_price": 7960.0,
       "trading_volume": 46361548,
       "trading_value": 369037922080,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -101,7 +103,9 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -227,9 +231,9 @@
       "date": "20251210",
       "change_rate": 11.01,
       "close_price": 7160.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 블록체인 기업 슈퍼블록에 전략 투자…스테이블코인 협업",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -269,7 +273,17 @@
       "source": "estimated",
       "trading_volume": 16784362,
       "trading_value": 120176031920,
-      "market_cap": 541569447236
+      "market_cap": 541569447236,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "다날, 블록체인 기업 '슈퍼블록'에 전략 투자…스테이블코인 협업",
+          "link": "https://n.news.naver.com/mnews/article/421/0008653602",
+          "source": "뉴스1",
+          "date": "2025-12-10"
+        }
+      ]
     },
     {
       "date": "20250919",
@@ -374,10 +388,10 @@
       "date": "20250627",
       "change_rate": 10.52,
       "close_price": 6200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -385,7 +399,9 @@
       "source": "estimated",
       "trading_volume": 21915916,
       "trading_value": 135878679200,
-      "market_cap": 468956783919
+      "market_cap": 468956783919,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250624",
@@ -447,5 +463,5 @@
     "count_recent": 0,
     "avg_rate": 16.31
   },
-  "built_at": "2026-10-01T22:55:37"
+  "built_at": "2026-10-02T05:15:57"
 }

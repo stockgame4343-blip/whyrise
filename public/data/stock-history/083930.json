@@ -9,15 +9,17 @@
       "close_price": 12810.0,
       "trading_volume": 152824,
       "trading_value": 1957675440,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -40,9 +42,9 @@
       "date": "20250806",
       "change_rate": 12.24,
       "close_price": 14760.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2분기 영업익 201억",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -70,7 +72,17 @@
       "source": "estimated",
       "trading_volume": 457785,
       "trading_value": 6756906600,
-      "market_cap": 216642452830
+      "market_cap": 216642452830,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아바코, 2분기 영업익 201억…전년비 662%↑",
+          "link": "https://n.news.naver.com/mnews/article/018/0006083129",
+          "source": "이데일리",
+          "date": "2025-08-06"
+        }
+      ]
     }
   ],
   "stats": {
@@ -81,5 +93,5 @@
     "count_recent": 0,
     "avg_rate": 11.68
   },
-  "built_at": "2026-09-27T09:35:50"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,10 +9,10 @@
       "close_price": 23300.0,
       "trading_volume": 211628,
       "trading_value": 4930932400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -68,10 +70,10 @@
       "close_price": 20500.0,
       "trading_volume": 2195,
       "trading_value": 44997500,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -119,7 +121,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -212,5 +216,5 @@
     "count_recent": 0,
     "avg_rate": 17.04
   },
-  "built_at": "2026-10-01T22:56:43"
+  "built_at": "2026-10-02T05:15:56"
 }

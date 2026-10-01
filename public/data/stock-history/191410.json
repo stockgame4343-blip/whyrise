@@ -9,15 +9,17 @@
       "close_price": 1580.0,
       "trading_volume": 176536,
       "trading_value": 278926880,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "디스플레이패널",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260910",
@@ -25,10 +27,10 @@
       "close_price": 2025.0,
       "trading_volume": 661033,
       "trading_value": 1338591825,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -94,7 +96,9 @@
       ],
       "sector": "디스플레이패널",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -102,10 +106,10 @@
       "close_price": 1795.0,
       "trading_volume": 520987,
       "trading_value": 935171665,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -171,7 +175,9 @@
       ],
       "sector": "디스플레이패널",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260827",
@@ -179,10 +185,10 @@
       "close_price": 1585.0,
       "trading_volume": 706432,
       "trading_value": 1119694720,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -248,7 +254,9 @@
       ],
       "sector": "디스플레이패널",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -256,10 +264,10 @@
       "close_price": 1377.0,
       "trading_volume": 247490,
       "trading_value": 340793730,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -319,7 +327,9 @@
       ],
       "sector": "디스플레이패널",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "none"
     },
     {
       "date": "20260713",
@@ -327,10 +337,10 @@
       "close_price": 1588.0,
       "trading_volume": 1082015,
       "trading_value": 1718239820,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -372,7 +382,9 @@
       ],
       "sector": "디스플레이패널",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -380,9 +392,9 @@
       "close_price": 1355.0,
       "trading_volume": 210800,
       "trading_value": 285634000,
-      "rise_reason": "스마트폰 테마 강세",
+      "rise_reason": "관련 보도: 자회사 씨엔에이 지분 전량 매각…신사업 투자·주주...",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -401,7 +413,17 @@
       ],
       "sector": "디스플레이패널",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스마트폰 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "육일씨엔에쓰, 자회사 씨엔에이 지분 전량 매각…&quot;신사업 투자·주주...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006326195",
+          "source": "이데일리",
+          "date": "2026-07-09"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -409,10 +431,10 @@
       "close_price": 1374.0,
       "trading_volume": 448575,
       "trading_value": 616342050,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -460,7 +482,9 @@
       ],
       "sector": "디스플레이패널",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -489,10 +513,10 @@
       "date": "20260305",
       "change_rate": 14.4,
       "close_price": 2900.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -500,7 +524,9 @@
       "source": "estimated",
       "trading_volume": 271026,
       "trading_value": 785975400,
-      "market_cap": 32578723404
+      "market_cap": 32578723404,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260202",
@@ -571,10 +597,10 @@
       "date": "20260116",
       "change_rate": 13.64,
       "close_price": 3000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -582,7 +608,9 @@
       "source": "estimated",
       "trading_volume": 1399408,
       "trading_value": 4198224000,
-      "market_cap": 33702127659
+      "market_cap": 33702127659,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251217",
@@ -684,10 +712,10 @@
       "date": "20251211",
       "change_rate": 29.75,
       "close_price": 2050.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -702,7 +730,9 @@
       "source": "estimated",
       "trading_volume": 5275547,
       "trading_value": 10814871350,
-      "market_cap": 23029787234
+      "market_cap": 23029787234,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251124",
@@ -743,5 +773,5 @@
     "count_recent": 2,
     "avg_rate": 17.9
   },
-  "built_at": "2026-10-01T22:59:39"
+  "built_at": "2026-10-02T05:15:56"
 }

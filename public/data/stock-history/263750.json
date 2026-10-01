@@ -9,9 +9,9 @@
       "close_price": 34500.0,
       "trading_volume": 1059533,
       "trading_value": 36553888500,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "붉은사막 첫 DLC 일정 공개",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -78,16 +78,26 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]펄어비스, '붉은사막' 첫 DLC 일정 공개에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003463551&office_id=030&code=263750&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260327",
       "change_rate": 15.75,
       "close_price": 58800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -95,16 +105,18 @@
       "source": "estimated",
       "trading_volume": 8603118,
       "trading_value": 505863338400,
-      "market_cap": 3777806844106
+      "market_cap": 3777806844106,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260325",
       "change_rate": 23.34,
       "close_price": 50200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -112,7 +124,9 @@
       "source": "estimated",
       "trading_volume": 8287072,
       "trading_value": 416011014400,
-      "market_cap": 3225270468948
+      "market_cap": 3225270468948,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260309",
@@ -174,5 +188,5 @@
     "count_recent": 1,
     "avg_rate": 14.7
   },
-  "built_at": "2026-10-01T22:54:04"
+  "built_at": "2026-10-02T05:15:56"
 }

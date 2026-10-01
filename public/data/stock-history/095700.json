@@ -9,10 +9,10 @@
       "close_price": 3260.0,
       "trading_volume": 3331659,
       "trading_value": 10861208340,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260901",
@@ -86,9 +88,9 @@
       "close_price": 3010.0,
       "trading_volume": 1341470,
       "trading_value": 4037824700,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260821",
@@ -163,10 +167,10 @@
       "close_price": 3325.0,
       "trading_volume": 5293631,
       "trading_value": 17601323075,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260820",
@@ -240,9 +246,9 @@
       "close_price": 3000.0,
       "trading_volume": 3250742,
       "trading_value": 9752226000,
-      "rise_reason": "면역항암제 허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 땡큐 모더나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -309,7 +315,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 허가 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "\"땡큐 모더나..\" mRNA 암백신 3상 성공에 'K-바이오株' 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005563966&office_id=014&code=227950&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -317,15 +333,25 @@
       "close_price": 2650.0,
       "trading_volume": 224586,
       "trading_value": 595152900,
-      "rise_reason": "유전자 치료제/분석 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유전자 치료제/분석 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -408,9 +434,9 @@
       "date": "20250929",
       "change_rate": 12.18,
       "close_price": 5710.0,
-      "rise_reason": "바이오",
+      "rise_reason": "바이오프로탁 기술수출할 것",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -450,7 +476,17 @@
       "source": "estimated",
       "trading_volume": 867391,
       "trading_value": 4952802610,
-      "market_cap": 260053260869
+      "market_cap": 260053260869,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "제넥신 &quot;바이오프로탁 기술수출할 것&quot;",
+          "link": "https://n.news.naver.com/mnews/article/015/0005191675",
+          "source": "한국경제",
+          "date": "2025-09-29"
+        }
+      ]
     },
     {
       "date": "20250717",
@@ -509,5 +545,5 @@
     "count_recent": 2,
     "avg_rate": 17.43
   },
-  "built_at": "2026-10-01T22:57:17"
+  "built_at": "2026-10-02T05:15:56"
 }

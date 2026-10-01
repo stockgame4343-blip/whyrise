@@ -9,9 +9,9 @@
       "close_price": 17620.0,
       "trading_volume": 7968873,
       "trading_value": 140411542260,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 중랑천 생태복원부터 체코 소방차 기증까지…, 사회공헌활동...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "중랑천 생태복원부터 체코 소방차 기증까지…대우건설, 사회공헌활동...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003743186&office_id=020&code=047040&page=&sm=",
+          "source": "동아일보",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -86,9 +96,9 @@
       "close_price": 15200.0,
       "trading_volume": 9728050,
       "trading_value": 147866360000,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "수주 목표 18조→27조원 상향",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 대표주",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "대우건설, 수주 목표 18조→27조원 상향…상반기 영업익 109%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000109305&office_id=050&code=047040&page=&sm=",
+          "source": "한경비즈니스",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -163,15 +183,17 @@
       "close_price": 12780.0,
       "trading_volume": 9751558,
       "trading_value": 124624911240,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260616",
@@ -256,10 +278,10 @@
       "close_price": 32600.0,
       "trading_volume": 15916665,
       "trading_value": 518883279000,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설 대표주",
       "news": [
         {
@@ -325,7 +347,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260428",
@@ -333,9 +357,9 @@
       "close_price": 37150.0,
       "trading_volume": 81046981,
       "trading_value": 3010895344150,
-      "rise_reason": "어닝 서프라이즈 발표",
+      "rise_reason": "영업이익 전년동기比",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 대표주",
       "news": [
@@ -402,7 +426,17 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "어닝 서프라이즈 발표",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "대우건설 영업이익 전년동기比 68.9%↑…어닝 서프라이즈",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004615367&office_id=011&code=047040&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260421",
@@ -564,15 +598,25 @@
       "close_price": 22550.0,
       "trading_volume": 90652757,
       "trading_value": 2044219670350,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 대표주",
       "news": [],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -594,9 +638,9 @@
       "date": "20260320",
       "change_rate": 18.18,
       "close_price": 19110.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 대미 원전 투자 수혜",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
@@ -605,7 +649,17 @@
       "source": "estimated",
       "trading_volume": 96685709,
       "trading_value": 1847663898990,
-      "market_cap": 7852456376470
+      "market_cap": 7852456376470,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "“대미 원전 투자 수혜”…건설주 ‘불기둥’[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006239225",
+          "source": "이데일리",
+          "date": "2026-03-20"
+        }
+      ]
     },
     {
       "date": "20260318",
@@ -628,9 +682,9 @@
       "date": "20260313",
       "change_rate": 17.78,
       "close_price": 12320.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 대미투자특별법 통과에 원자력 수혜",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
@@ -639,7 +693,17 @@
       "source": "estimated",
       "trading_volume": 85920735,
       "trading_value": 1058543455200,
-      "market_cap": 5062389458823
+      "market_cap": 5062389458823,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "대미투자특별법 통과에 원자력 '수혜'…두산에너빌·건설주 상승 [핫...",
+          "link": "https://n.news.naver.com/mnews/article/421/0008825026",
+          "source": "뉴스1",
+          "date": "2026-03-13"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -730,9 +794,9 @@
       "date": "20250821",
       "change_rate": 13.06,
       "close_price": 4155.0,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원전주 동반 강세 — 체코 원전 계약 논란에도 저가",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
@@ -741,7 +805,17 @@
       "source": "estimated",
       "trading_volume": 12983812,
       "trading_value": 53947738860,
-      "market_cap": 1707323717647
+      "market_cap": 1707323717647,
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 원전주, 체코 원전 계약 논란에도 저가 매수세에 강세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000458823",
+          "source": "SBS Biz",
+          "date": "2025-08-21"
+        }
+      ]
     }
   ],
   "stats": {
@@ -752,5 +826,5 @@
     "count_recent": 0,
     "avg_rate": 17.3
   },
-  "built_at": "2026-10-01T22:52:14"
+  "built_at": "2026-10-02T05:15:56"
 }

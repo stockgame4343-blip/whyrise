@@ -55,9 +55,9 @@
       "date": "20260323",
       "change_rate": 29.9,
       "close_price": 3910.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 1160억...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -97,7 +97,17 @@
       "source": "estimated",
       "trading_volume": 30794833,
       "trading_value": 120407797030,
-      "market_cap": 160894252873
+      "market_cap": 160894252873,
+      "reason_previous": "조선/해운",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 에코플라스틱 거래대금 1160억...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003628410",
+          "source": "서울신문",
+          "date": "2026-03-23"
+        }
+      ]
     },
     {
       "date": "20250703",
@@ -125,5 +135,5 @@
     "count_recent": 0,
     "avg_rate": 25.46
   },
-  "built_at": "2026-09-27T09:55:10"
+  "built_at": "2026-10-02T05:15:57"
 }

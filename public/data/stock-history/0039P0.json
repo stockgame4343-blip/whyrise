@@ -38,9 +38,9 @@
       "close_price": 9670.0,
       "trading_volume": 10553478,
       "trading_value": 102052132260,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -101,7 +101,9 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260907",
@@ -109,10 +111,10 @@
       "close_price": 9340.0,
       "trading_volume": 10244859,
       "trading_value": 95686983060,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
         {
@@ -166,7 +168,9 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260901",
@@ -174,9 +178,9 @@
       "close_price": 9180.0,
       "trading_volume": 6996657,
       "trading_value": 64229311260,
-      "rise_reason": "해외 진출 뉴스",
+      "rise_reason": "증권사 기업분석 개시 AI 광고기업 20%",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -231,7 +235,17 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] '증권사 기업분석 개시' AI 광고기업 매드업 20% 상승 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016283260&office_id=001&code=0039P0&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.09.01"
+        }
+      ]
     },
     {
       "date": "20260831",
@@ -239,10 +253,10 @@
       "close_price": 7600.0,
       "trading_volume": 1998228,
       "trading_value": 15186532800,
-      "rise_reason": "광고 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광고",
       "news": [
         {
@@ -278,7 +292,9 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "광고 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260806",
@@ -286,10 +302,10 @@
       "close_price": 9940.0,
       "trading_volume": 13031163,
       "trading_value": 129529760220,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
         {
@@ -331,7 +347,9 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -339,9 +357,9 @@
       "close_price": 7350.0,
       "trading_volume": 11912504,
       "trading_value": 87556904400,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -396,7 +414,9 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260730",
@@ -404,9 +424,9 @@
       "close_price": 6600.0,
       "trading_volume": 18661612,
       "trading_value": 123166639200,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "상반기 실적 호조",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -461,7 +481,17 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "매드업, 상반기 실적 호조에 상한가…'AI 수익성 입증'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006338911&office_id=018&code=0039P0&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.29"
+        }
+      ]
     },
     {
       "date": "20260729",
@@ -469,9 +499,9 @@
       "close_price": 5920.0,
       "trading_volume": 6042678,
       "trading_value": 35772653760,
-      "rise_reason": "자사주 매입",
+      "rise_reason": "상반기 실적 호조",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -526,7 +556,17 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "매드업, 상반기 실적 호조에 상한가…'AI 수익성 입증'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006338911&office_id=018&code=0039P0&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.29"
+        }
+      ]
     }
   ],
   "stats": {
@@ -537,5 +577,5 @@
     "count_recent": 4,
     "avg_rate": 17.28
   },
-  "built_at": "2026-10-01T22:56:57"
+  "built_at": "2026-10-02T05:15:56"
 }

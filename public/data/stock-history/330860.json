@@ -9,15 +9,17 @@
       "close_price": 31700.0,
       "trading_volume": 381375,
       "trading_value": 12089587500,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260917",
@@ -25,9 +27,9 @@
       "close_price": 26400.0,
       "trading_volume": 519946,
       "trading_value": 13726574400,
-      "rise_reason": "뉴로모픽 반도체 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "뉴로모픽 반도체 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -100,7 +102,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "뉴로모픽 반도체 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260805",
@@ -124,9 +128,9 @@
       "close_price": 23600.0,
       "trading_volume": 325302,
       "trading_value": 7677127200,
-      "rise_reason": "뉴로모픽 반도체 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "뉴로모픽 반도체 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -193,7 +197,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "뉴로모픽 반도체 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -201,9 +207,9 @@
       "close_price": 39750.0,
       "trading_volume": 429264,
       "trading_value": 17063244000,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -270,7 +276,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피 나흘 만에 반등…반도체주 일제히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000520734&office_id=374&code=330860&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.09"
+        }
+      ]
     },
     {
       "date": "20260709",
@@ -278,9 +294,9 @@
       "close_price": 34850.0,
       "trading_volume": 220420,
       "trading_value": 7681637000,
-      "rise_reason": "뉴로모픽 반도체 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -347,7 +363,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "뉴로모픽 반도체 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피 나흘 만에 반등…반도체주 일제히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000520734&office_id=374&code=330860&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.09"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -355,10 +381,10 @@
       "close_price": 57700.0,
       "trading_volume": 1681019,
       "trading_value": 96994796300,
-      "rise_reason": "뉴로모픽 반도체 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
         {
@@ -424,7 +450,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "뉴로모픽 반도체 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260611",
@@ -432,9 +460,9 @@
       "close_price": 47000.0,
       "trading_volume": 678673,
       "trading_value": 31897631000,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -501,7 +529,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -509,9 +539,9 @@
       "close_price": 40700.0,
       "trading_volume": 214432,
       "trading_value": 8727382400,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -578,7 +608,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -586,9 +618,9 @@
       "close_price": 40250.0,
       "trading_volume": 304436,
       "trading_value": 12253549000,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -655,7 +687,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 쉬어가자 반도체 장비株 강세…원익IPS '上' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008985149&office_id=421&code=084370&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260526",
@@ -663,9 +705,9 @@
       "close_price": 52000.0,
       "trading_volume": 1544716,
       "trading_value": 80325232000,
-      "rise_reason": "뉴로모픽 반도체 설비 투자 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -732,7 +774,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "뉴로모픽 반도체 설비 투자 발표",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -756,10 +808,10 @@
       "close_price": 51000.0,
       "trading_volume": 1944206,
       "trading_value": 99154506000,
-      "rise_reason": "설비 투자 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
         {
@@ -813,7 +865,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "설비 투자 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -821,10 +875,10 @@
       "close_price": 44150.0,
       "trading_volume": 807459,
       "trading_value": 35649314850,
-      "rise_reason": "설비 투자 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
         {
@@ -878,7 +932,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "설비 투자 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260424",
@@ -1018,9 +1074,9 @@
       "close_price": 25350.0,
       "trading_volume": 463583,
       "trading_value": 11751829050,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -1033,7 +1089,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260323",
@@ -1080,9 +1146,9 @@
       "date": "20260305",
       "change_rate": 15.83,
       "close_price": 18070.0,
-      "rise_reason": "온디바이스 AI 테마 강세",
+      "rise_reason": "온디바이스 AI 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [],
@@ -1091,7 +1157,9 @@
       "source": "estimated",
       "trading_volume": 130635,
       "trading_value": 2360574450,
-      "market_cap": 220180974155
+      "market_cap": 220180974155,
+      "reason_previous": "온디바이스 AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260205",
@@ -1179,5 +1247,5 @@
     "count_recent": 2,
     "avg_rate": 15.67
   },
-  "built_at": "2026-10-01T22:55:26"
+  "built_at": "2026-10-02T05:15:56"
 }

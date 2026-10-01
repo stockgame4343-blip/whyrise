@@ -32,9 +32,9 @@
       "close_price": 441500.0,
       "trading_volume": 473737,
       "trading_value": 209154885500,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -101,7 +101,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260513",
@@ -109,9 +111,9 @@
       "close_price": 476000.0,
       "trading_volume": 72295,
       "trading_value": 34412420000,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -178,7 +180,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -220,9 +224,9 @@
       "date": "20260128",
       "change_rate": 14.27,
       "close_price": 412500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -231,15 +235,17 @@
       "source": "estimated",
       "trading_volume": 172669,
       "trading_value": 71225962500,
-      "market_cap": 3208709016393
+      "market_cap": 3208709016393,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251201",
       "change_rate": 12.79,
       "close_price": 295500.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -267,7 +273,9 @@
       "source": "estimated",
       "trading_volume": 125619,
       "trading_value": 37120414500,
-      "market_cap": 2298602459016
+      "market_cap": 2298602459016,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250728",
@@ -326,5 +334,5 @@
     "count_recent": 0,
     "avg_rate": 17.57
   },
-  "built_at": "2026-10-01T22:53:54"
+  "built_at": "2026-10-02T05:15:57"
 }

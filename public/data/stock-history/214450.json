@@ -25,9 +25,9 @@
       "close_price": 351000.0,
       "trading_volume": 218429,
       "trading_value": 76668579000,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바닥 다졌다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미용기기",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "“바닥 다졌다”… 증권가, 파마리서치 반등 본격화 전망 [Why 바이오...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004619334&office_id=011&code=214450&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -139,5 +149,5 @@
     "count_recent": 0,
     "avg_rate": 11.16
   },
-  "built_at": "2026-10-01T22:53:54"
+  "built_at": "2026-10-02T05:15:57"
 }

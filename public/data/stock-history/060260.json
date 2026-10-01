@@ -9,9 +9,9 @@
       "close_price": 1304.0,
       "trading_volume": 949327,
       "trading_value": 1237922408,
-      "rise_reason": "MOU 체결",
+      "rise_reason": "워터 테크 플랫폼 기업으로 전환 가속화",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "수자원(양적/질적 개선)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"워터 테크 플랫폼 기업으로 전환 가속화\"…뉴보텍 7%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006344861&office_id=018&code=060260&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -86,9 +96,9 @@
       "close_price": 1803.0,
       "trading_volume": 1322823,
       "trading_value": 2385049869,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: SK하이닉스 뚫었다…배관회사 넘어 AI 인프라 기업으로",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "수자원(양적/질적 개선)",
       "news": [
@@ -107,7 +117,17 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "뉴보텍, SK하이닉스 뚫었다…&quot;배관회사 넘어 AI 인프라 기업으로&quot;",
+          "link": "https://n.news.naver.com/mnews/article/018/0006319605",
+          "source": "이데일리",
+          "date": "2026-07-01"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -115,9 +135,9 @@
       "close_price": 1323.0,
       "trading_volume": 426071,
       "trading_value": 563691933,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "14억 규모 자사주 취득 신탁 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태풍 및 장마",
       "news": [
@@ -184,7 +204,17 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴보텍, 14억 규모 자사주 취득 신탁 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013994939&office_id=003&code=060260&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -231,5 +261,5 @@
     "count_recent": 0,
     "avg_rate": 13.16
   },
-  "built_at": "2026-10-01T23:00:07"
+  "built_at": "2026-10-02T05:15:56"
 }

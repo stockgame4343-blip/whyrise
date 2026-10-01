@@ -9,9 +9,9 @@
       "close_price": 1929.0,
       "trading_volume": 13414199,
       "trading_value": 25875989871,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광복 81주년 볼펜 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "日제품 불매운동(수혜)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "문구류",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "모나미, '광복 81주년' 볼펜 출시…독립유공자 후손에 수익금 '전액'...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004177339&office_id=079&code=005360&page=&sm=",
+          "source": "노컷뉴스",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -86,9 +96,9 @@
       "close_price": 3445.0,
       "trading_volume": 4138485,
       "trading_value": 14257080825,
-      "rise_reason": "애국 이슈",
+      "rise_reason": "애국 테마 한성기업 연일",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "日제품 불매운동(수혜)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "문구류",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "애국 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'애국 테마 매수세' 모나미·한성기업 연일 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001019226&office_id=088&code=005360&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260714",
@@ -163,9 +183,9 @@
       "close_price": 2650.0,
       "trading_volume": 4569721,
       "trading_value": 12109760650,
-      "rise_reason": "애국 상장 이슈",
+      "rise_reason": "상폐 막자 애국",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "日제품 불매운동(수혜)",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "문구류",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "애국 상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] “상폐 막자” 애국 매수세에… 모나미·한성기업 주가 강...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003447509&office_id=030&code=005360&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.14"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -240,9 +270,9 @@
       "close_price": 2145.0,
       "trading_volume": 8423833,
       "trading_value": 18069121785,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "서울색 담은 153 시그니처 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "日제품 불매운동(수혜)",
       "news": [
@@ -303,7 +333,17 @@
       ],
       "sector": "문구류",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "모나미, 서울색 담은 '153 시그니처' 출시…공공기관 협업 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006327112&office_id=018&code=005360&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.10"
+        }
+      ]
     },
     {
       "date": "20260709",
@@ -311,10 +351,10 @@
       "close_price": 1707.0,
       "trading_volume": 3969945,
       "trading_value": 6776696115,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔젤산업",
       "news": [
         {
@@ -380,7 +420,9 @@
       ],
       "sector": "문구류",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250826",
@@ -439,5 +481,5 @@
     "count_recent": 0,
     "avg_rate": 25.89
   },
-  "built_at": "2026-10-01T22:53:29"
+  "built_at": "2026-10-02T05:15:56"
 }

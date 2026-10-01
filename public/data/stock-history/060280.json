@@ -9,15 +9,17 @@
       "close_price": 8250.0,
       "trading_volume": 309507,
       "trading_value": 2553432750,
-      "rise_reason": "지능형로봇/인공지능(AI) 테마 강세",
+      "rise_reason": "지능형로봇 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "지능형로봇/인공지능(AI) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260326",
@@ -59,9 +61,9 @@
       "date": "20260305",
       "change_rate": 13.42,
       "close_price": 15380.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "산은인베 700억 추가투자 유치",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -77,7 +79,17 @@
       "source": "estimated",
       "trading_volume": 1088968,
       "trading_value": 16748327840,
-      "market_cap": 634637111334
+      "market_cap": 634637111334,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[단독]큐렉소 美관계사 TSI, 산은인베 700억 추가투자 유치…나스닥 I...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005325082",
+          "source": "머니투데이",
+          "date": "2026-03-04"
+        }
+      ]
     },
     {
       "date": "20260121",
@@ -161,10 +173,10 @@
       "date": "20251128",
       "change_rate": 17.29,
       "close_price": 11940.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -172,7 +184,9 @@
       "source": "estimated",
       "trading_volume": 3847487,
       "trading_value": 45938994780,
-      "market_cap": 492689669007
+      "market_cap": 492689669007,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -183,5 +197,5 @@
     "count_recent": 0,
     "avg_rate": 14.08
   },
-  "built_at": "2026-09-27T09:25:36"
+  "built_at": "2026-10-02T05:15:57"
 }

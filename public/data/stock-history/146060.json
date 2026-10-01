@@ -9,9 +9,9 @@
       "close_price": 1358.0,
       "trading_volume": 10871352,
       "trading_value": 14763296016,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 장녀 이지현 대표 선임…2%p 차 남매경영 체제 본격화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -42,7 +42,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "율촌, 장녀 이지현 대표 선임…'2%p 차' 남매경영 체제 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086349&office_id=293&code=146060&page=&sm=",
+          "source": "블로터",
+          "date": "2026.06.16"
+        }
+      ]
     },
     {
       "date": "20260617",
@@ -50,9 +60,9 @@
       "close_price": 1225.0,
       "trading_volume": 1309710,
       "trading_value": 1604394750,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 454조 이란 재건 수혜 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "강관업체(Steel pipe)",
       "news": [
@@ -83,7 +93,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 철강주 동반 급등…‘454조 이란 재건’ 수혜 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001172334&office_id=366&code=023790&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260202",
@@ -183,5 +203,5 @@
     "count_recent": 0,
     "avg_rate": 22.56
   },
-  "built_at": "2026-10-01T18:25:06"
+  "built_at": "2026-10-02T05:15:57"
 }

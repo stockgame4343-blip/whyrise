@@ -9,10 +9,10 @@
       "close_price": 10330.0,
       "trading_volume": 3092760,
       "trading_value": 31948210800,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -86,9 +88,9 @@
       "close_price": 8750.0,
       "trading_volume": 2860711,
       "trading_value": 25031221250,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260728",
@@ -163,9 +167,9 @@
       "close_price": 9550.0,
       "trading_volume": 1272902,
       "trading_value": 12156214100,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "35억 규모 K-뷰티 AI 개발 나선다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "18.4대 1 뚫은 뉴엔AI…35억 규모 K-뷰티 AI 개발 나선다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005391612&office_id=008&code=463020&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.27"
+        }
+      ]
     },
     {
       "date": "20260727",
@@ -240,9 +254,9 @@
       "close_price": 7350.0,
       "trading_volume": 1145126,
       "trading_value": 8416676100,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "35억원 규모 정부 AI R&D 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -309,7 +323,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴엔AI, 35억원 규모 정부 AI R&D 선정…K뷰티 수출 플랫폼 개...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005391317&office_id=008&code=463020&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.27"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -317,9 +341,9 @@
       "close_price": 6810.0,
       "trading_volume": 971785,
       "trading_value": 6617855850,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 북미 뷰티시장 공략…뷰센스 도입 상담 213건",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -386,7 +410,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "뉴엔AI, 북미 뷰티시장 공략…'뷰센스' 도입 상담 213건",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005389144&office_id=008&code=463020&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -417,10 +451,10 @@
       "close_price": 12210.0,
       "trading_volume": 674847,
       "trading_value": 8239881870,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -486,7 +520,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260616",
@@ -494,10 +530,10 @@
       "close_price": 10460.0,
       "trading_volume": 641105,
       "trading_value": 6705958300,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -563,7 +599,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -571,9 +609,9 @@
       "close_price": 9690.0,
       "trading_volume": 672343,
       "trading_value": 6515003670,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "STK 2026서 온톨로지 기반 AI 기술 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -640,7 +678,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴엔AI, STK 2026서 '온톨로지 기반 AI 기술' 공개…시장 관...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003436972&office_id=030&code=463020&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260410",
@@ -780,5 +828,5 @@
     "count_recent": 0,
     "avg_rate": 16.48
   },
-  "built_at": "2026-10-01T22:58:29"
+  "built_at": "2026-10-02T05:15:56"
 }

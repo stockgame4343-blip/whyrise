@@ -9,9 +9,9 @@
       "close_price": 13980.0,
       "trading_volume": 414886,
       "trading_value": 5800106280,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -86,15 +88,17 @@
       "close_price": 12500.0,
       "trading_volume": 124189,
       "trading_value": 1552362500,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -102,15 +106,17 @@
       "close_price": 11120.0,
       "trading_volume": 154263,
       "trading_value": 1715404560,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 11종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -118,9 +124,9 @@
       "close_price": 13100.0,
       "trading_volume": 175573,
       "trading_value": 2300006300,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "할콘시스템스와 61억원 규모 관성측정장치 공급 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -133,7 +139,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파이버프로, 할콘시스템스와 61억원 규모 관성측정장치 공급 계약",
+          "link": "https://n.news.naver.com/mnews/article/018/0006335599",
+          "source": "이데일리",
+          "date": "2026-07-23"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -141,15 +157,17 @@
       "close_price": 13600.0,
       "trading_volume": 182266,
       "trading_value": 2478817600,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260417",
@@ -157,10 +175,10 @@
       "close_price": 26500.0,
       "trading_volume": 5418221,
       "trading_value": 143582856500,
-      "rise_reason": "광통신(광케이블/광섬유 등) 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
         {
@@ -226,7 +244,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "광통신(광케이블/광섬유 등) 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -250,23 +270,25 @@
       "close_price": 22150.0,
       "trading_volume": 2794605,
       "trading_value": 61900500750,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "우주항공산업 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
       "change_rate": 29.79,
       "close_price": 21350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "광통신 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -282,7 +304,9 @@
       "source": "estimated",
       "trading_volume": 12116131,
       "trading_value": 258679396850,
-      "market_cap": 701414685314
+      "market_cap": 701414685314,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
@@ -471,9 +495,9 @@
       "date": "20251113",
       "change_rate": 12.99,
       "close_price": 6090.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 에세텔로부터 57억 규모 부동산 양수",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -495,7 +519,17 @@
       "source": "estimated",
       "trading_volume": 601511,
       "trading_value": 3663201990,
-      "market_cap": 200075664335
+      "market_cap": 200075664335,
+      "reason_previous": "방산",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "파이버프로, 에세텔로부터 57억 규모 부동산 양수",
+          "link": "https://n.news.naver.com/mnews/article/293/0000074992",
+          "source": "블로터",
+          "date": "2025-11-13"
+        }
+      ]
     }
   ],
   "stats": {
@@ -506,5 +540,5 @@
     "count_recent": 0,
     "avg_rate": 15.19
   },
-  "built_at": "2026-10-01T22:55:15"
+  "built_at": "2026-10-02T05:15:56"
 }

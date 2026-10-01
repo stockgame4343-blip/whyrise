@@ -25,9 +25,9 @@
       "close_price": 2820.0,
       "trading_volume": 1318458,
       "trading_value": 3718051560,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: MBN, 에 40억 원 투자…콘텐츠 사업 협력 강화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
@@ -88,7 +88,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "MBN, 아티스트스튜디오에 40억 원 투자…콘텐츠 사업 협력 강화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001968891&office_id=057&code=200350&page=&sm=",
+          "source": "MBN",
+          "date": "2026.09.14"
+        }
+      ]
     },
     {
       "date": "20260803",
@@ -96,10 +106,10 @@
       "close_price": 2310.0,
       "trading_volume": 340717,
       "trading_value": 787056270,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -165,7 +175,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -173,9 +185,9 @@
       "close_price": 2200.0,
       "trading_volume": 117142,
       "trading_value": 257712400,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "코퍼스코리아 인수로 콘텐츠 제작·배급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "영상콘텐츠",
       "news": [
@@ -242,7 +254,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아티스트스튜디오, 코퍼스코리아 인수로 콘텐츠 제작·배급 수직계열...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086956&office_id=293&code=200350&page=&sm=",
+          "source": "블로터",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -250,10 +272,10 @@
       "close_price": 4685.0,
       "trading_volume": 478057,
       "trading_value": 2239697045,
-      "rise_reason": "엔터테인먼트 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -319,7 +341,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "엔터테인먼트 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260417",
@@ -440,5 +464,5 @@
     "count_recent": 2,
     "avg_rate": 18.52
   },
-  "built_at": "2026-10-01T22:59:26"
+  "built_at": "2026-10-02T05:15:56"
 }

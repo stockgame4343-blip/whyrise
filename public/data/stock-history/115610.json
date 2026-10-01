@@ -9,9 +9,9 @@
       "close_price": 1741.0,
       "trading_volume": 425841,
       "trading_value": 741389181,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -60,7 +60,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260722",
@@ -68,10 +70,10 @@
       "close_price": 1560.0,
       "trading_volume": 1544773,
       "trading_value": 2409845880,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -119,7 +121,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260609",
@@ -204,10 +208,10 @@
       "close_price": 3065.0,
       "trading_volume": 4210238,
       "trading_value": 12904379470,
-      "rise_reason": "경영진 교체",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -273,7 +277,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -281,15 +287,17 @@
       "close_price": 2680.0,
       "trading_volume": 292922,
       "trading_value": 785030960,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "시스템반도체 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260211",
@@ -349,9 +357,9 @@
       "date": "20260130",
       "change_rate": 10.24,
       "close_price": 3468.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -373,15 +381,17 @@
       "source": "estimated",
       "trading_volume": 4615342,
       "trading_value": 16006006056,
-      "market_cap": 41055435401
+      "market_cap": 41055435401,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260128",
       "change_rate": 15.09,
       "close_price": 3234.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -390,7 +400,9 @@
       "source": "estimated",
       "trading_volume": 3294638,
       "trading_value": 10654859292,
-      "market_cap": 38285258964
+      "market_cap": 38285258964,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260121",
@@ -444,9 +456,9 @@
       "date": "20260102",
       "change_rate": 13.06,
       "close_price": 2615.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -455,15 +467,17 @@
       "source": "estimated",
       "trading_volume": 803708,
       "trading_value": 2101696420,
-      "market_cap": 30957313602
+      "market_cap": 30957313602,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251021",
       "change_rate": 13.5,
       "close_price": 2673.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 인하대학교와 AI·센서 융합 반도체 산학협력 체계 구축",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -479,7 +493,17 @@
       "source": "estimated",
       "trading_volume": 4590247,
       "trading_value": 12269730231,
-      "market_cap": 31643938531
+      "market_cap": 31643938531,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이미지스, 인하대학교와 AI·센서 융합 반도체 산학협력 체계 구축",
+          "link": "https://n.news.naver.com/mnews/article/014/0005421558",
+          "source": "파이낸셜뉴스",
+          "date": "2025-10-20"
+        }
+      ]
     },
     {
       "date": "20250922",
@@ -597,5 +621,5 @@
     "count_recent": 0,
     "avg_rate": 17.54
   },
-  "built_at": "2026-10-01T22:59:52"
+  "built_at": "2026-10-02T05:15:56"
 }

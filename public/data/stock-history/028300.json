@@ -98,15 +98,17 @@
       "close_price": 34350.0,
       "trading_volume": 1400943,
       "trading_value": 48122392050,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "면역항암제 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -114,9 +116,9 @@
       "close_price": 34700.0,
       "trading_volume": 1051756,
       "trading_value": 36495933200,
-      "rise_reason": "FDA 관련 뉴스",
+      "rise_reason": "간암 신약 美승인 문제 해소 기대",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -183,7 +185,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] HLB, 간암 신약 美승인 문제 해소 기대에 상한가(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016196831&office_id=001&code=028300&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -240,10 +252,10 @@
       "date": "20251021",
       "change_rate": 11.17,
       "close_price": 45800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -251,7 +263,9 @@
       "source": "estimated",
       "trading_volume": 3225394,
       "trading_value": 147723045200,
-      "market_cap": 6100445738045
+      "market_cap": 6100445738045,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -262,5 +276,5 @@
     "count_recent": 1,
     "avg_rate": 16.38
   },
-  "built_at": "2026-10-01T22:53:45"
+  "built_at": "2026-10-02T05:15:56"
 }

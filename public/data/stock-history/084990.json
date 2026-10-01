@@ -9,15 +9,17 @@
       "close_price": 3805.0,
       "trading_volume": 2204080,
       "trading_value": 8386524400,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -25,15 +27,25 @@
       "close_price": 4180.0,
       "trading_volume": 226843,
       "trading_value": 948203740,
-      "rise_reason": "건강기능식품 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "건강기능식품 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -55,10 +67,10 @@
       "date": "20260327",
       "change_rate": 14.1,
       "close_price": 8010.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -66,16 +78,18 @@
       "source": "estimated",
       "trading_volume": 2607975,
       "trading_value": 20889879750,
-      "market_cap": 369268743286
+      "market_cap": 369268743286,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260326",
       "change_rate": 16.61,
       "close_price": 7020.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -83,7 +97,9 @@
       "source": "estimated",
       "trading_volume": 2187263,
       "trading_value": 15354586260,
-      "market_cap": 323628786251
+      "market_cap": 323628786251,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -106,10 +122,10 @@
       "date": "20260209",
       "change_rate": 10.73,
       "close_price": 6710.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -117,16 +133,18 @@
       "source": "estimated",
       "trading_volume": 1211293,
       "trading_value": 8127776030,
-      "market_cap": 309337486573
+      "market_cap": 309337486573,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
       "change_rate": 10.96,
       "close_price": 6480.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -134,16 +152,18 @@
       "source": "estimated",
       "trading_volume": 1692378,
       "trading_value": 10966609440,
-      "market_cap": 298734264232
+      "market_cap": 298734264232,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260123",
       "change_rate": 10.75,
       "close_price": 6080.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -158,7 +178,9 @@
       "source": "estimated",
       "trading_volume": 468580,
       "trading_value": 2848966400,
-      "market_cap": 280293877551
+      "market_cap": 280293877551,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251202",
@@ -236,10 +258,10 @@
       "date": "20250918",
       "change_rate": 12.0,
       "close_price": 6440.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -247,15 +269,17 @@
       "source": "estimated",
       "trading_volume": 2251961,
       "trading_value": 14502628840,
-      "market_cap": 296890225563
+      "market_cap": 296890225563,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250904",
       "change_rate": 11.64,
       "close_price": 7670.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 창업주 김선영 전 대표, JW홀딩스行…R&BD 자문 위촉",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -295,7 +319,17 @@
       "source": "estimated",
       "trading_volume": 1747468,
       "trading_value": 13403079560,
-      "market_cap": 353594414607
+      "market_cap": 353594414607,
+      "reason_previous": "실적 호조",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "‘헬릭스미스 창업주’ 김선영 전 대표, JW홀딩스行…R&amp;BD 자문 위촉",
+          "link": "https://n.news.naver.com/mnews/article/018/0006106371",
+          "source": "이데일리",
+          "date": "2025-09-04"
+        }
+      ]
     },
     {
       "date": "20250901",
@@ -357,5 +391,5 @@
     "count_recent": 1,
     "avg_rate": 14.84
   },
-  "built_at": "2026-10-01T22:56:38"
+  "built_at": "2026-10-02T05:15:56"
 }

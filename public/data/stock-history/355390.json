@@ -9,9 +9,9 @@
       "close_price": 1544.0,
       "trading_volume": 536785,
       "trading_value": 828796040,
-      "rise_reason": "관련 보도: 모비루스 '농업 자율주행 AI 데이터' 사업 수주",
+      "rise_reason": "모비루스 농업 자율주행 AI 데이터 사업 수주",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -45,7 +45,8 @@
           "source": "전자신문",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260917",
@@ -53,10 +54,10 @@
       "close_price": 1470.0,
       "trading_volume": 3162633,
       "trading_value": 4649070510,
-      "rise_reason": "정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
         {
@@ -134,7 +135,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정부 정책 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -142,9 +145,9 @@
       "close_price": 2115.0,
       "trading_volume": 2257841,
       "trading_value": 4775333715,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI·로봇·광통신주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -211,7 +214,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스닥 3%대 강세…AI·로봇·광통신주 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000525419&office_id=374&code=355390&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -219,9 +232,9 @@
       "close_price": 3110.0,
       "trading_volume": 1723761,
       "trading_value": 5360896710,
-      "rise_reason": "수주 공시",
+      "rise_reason": "피지컬 AI 국책과제 참여 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -288,7 +301,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "크라우드웍스, 피지컬 AI 국책과제 참여 소식에 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006302021&office_id=018&code=355390&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.10"
+        }
+      ]
     },
     {
       "date": "20260601",
@@ -296,9 +319,9 @@
       "close_price": 3305.0,
       "trading_volume": 1501525,
       "trading_value": 4962540125,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — 두산로보틱스",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -359,7 +382,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 젠슨 황 방한 기대감에 로봇주 급등…두산로보틱스 26% ↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001168459&office_id=366&code=090360&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.01"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -512,5 +545,5 @@
     "count_recent": 2,
     "avg_rate": 18.63
   },
-  "built_at": "2026-10-01T22:59:44"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -7,9 +7,9 @@
       "date": "20260223",
       "change_rate": 10.7,
       "close_price": 15420.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 해외서 잘 나가는 K유산균…듀오락 , 지난해 영업익 1...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -25,7 +25,17 @@
       "source": "estimated",
       "trading_volume": 244762,
       "trading_value": 3774230040,
-      "market_cap": 144930058177
+      "market_cap": 144930058177,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "해외서 잘 나가는 K유산균…‘듀오락’ 쎌바이오텍, 지난해 영업익 1...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004592343",
+          "source": "서울경제",
+          "date": "2026-02-23"
+        }
+      ]
     }
   ],
   "stats": {
@@ -36,5 +46,5 @@
     "count_recent": 0,
     "avg_rate": 10.7
   },
-  "built_at": "2026-09-27T09:41:26"
+  "built_at": "2026-10-02T05:15:57"
 }

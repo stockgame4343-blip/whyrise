@@ -9,10 +9,10 @@
       "close_price": 1950.0,
       "trading_volume": 431164,
       "trading_value": 840769800,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -48,7 +48,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -56,10 +58,10 @@
       "close_price": 1700.0,
       "trading_volume": 189886,
       "trading_value": 322806200,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "UAM(도심항공모빌리티)",
       "news": [
         {
@@ -95,7 +97,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260818",
@@ -103,10 +107,10 @@
       "close_price": 1603.0,
       "trading_volume": 1071737,
       "trading_value": 1717994411,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "UAM(도심항공모빌리티)",
       "news": [
         {
@@ -142,7 +146,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -150,10 +156,10 @@
       "close_price": 1400.0,
       "trading_volume": 807025,
       "trading_value": 1129835000,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -189,7 +195,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -213,9 +221,9 @@
       "close_price": 1380.0,
       "trading_volume": 346762,
       "trading_value": 478531560,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "OLED 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -264,7 +272,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260518",
@@ -272,10 +282,10 @@
       "close_price": 1059.0,
       "trading_volume": 1955609,
       "trading_value": 2070989931,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "UAM(도심항공모빌리티)",
       "news": [
         {
@@ -323,7 +333,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260323",
@@ -417,9 +429,9 @@
       "date": "20250905",
       "change_rate": 19.25,
       "close_price": 1530.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "29.99% 금일 증시 상승률 1위로 마감",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "UAM(도심항공모빌리티)",
       "news": [
@@ -435,15 +447,25 @@
       "source": "estimated",
       "trading_volume": 22758677,
       "trading_value": 34820775810,
-      "market_cap": 29966101694
+      "market_cap": 29966101694,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]베셀 29.99% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003571720",
+          "source": "서울신문",
+          "date": "2025-09-04"
+        }
+      ]
     },
     {
       "date": "20250904",
       "change_rate": 29.99,
       "close_price": 1283.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "29.99% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "UAM(도심항공모빌리티)",
       "news": [
@@ -459,7 +481,17 @@
       "source": "estimated",
       "trading_volume": 7596852,
       "trading_value": 9746761116,
-      "market_cap": 25128436911
+      "market_cap": 25128436911,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]베셀 29.99% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003571720",
+          "source": "서울신문",
+          "date": "2025-09-04"
+        }
+      ]
     }
   ],
   "stats": {
@@ -470,5 +502,5 @@
     "count_recent": 0,
     "avg_rate": 20.55
   },
-  "built_at": "2026-10-01T23:00:05"
+  "built_at": "2026-10-02T05:15:56"
 }

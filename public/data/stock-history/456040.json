@@ -25,15 +25,17 @@
       "close_price": 95300.0,
       "trading_volume": 60939,
       "trading_value": 5807486700,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260423",
@@ -112,9 +114,9 @@
       "close_price": 121400.0,
       "trading_volume": 333964,
       "trading_value": 40543229600,
-      "rise_reason": "실적 개선 발표",
+      "rise_reason": "올해 1분기 영업이익 278억원",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -175,15 +177,25 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 개선 발표",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "OCI, 올해 1분기 영업이익 278억원…전년比 171.4%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004613492&office_id=011&code=456040&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.04.22"
+        }
+      ]
     },
     {
       "date": "20260318",
       "change_rate": 10.88,
       "close_price": 95800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 외국인·기관 삼전닉스 2.6조 폭풍매수",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -192,15 +204,25 @@
       "source": "estimated",
       "trading_volume": 137622,
       "trading_value": 13184187600,
-      "market_cap": 857661088709
+      "market_cap": 857661088709,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "외국인·기관 삼전닉스 2.6조 폭풍매수…반도체주 불기둥[핫종목](종합...",
+          "link": "https://n.news.naver.com/mnews/article/421/0008834272",
+          "source": "뉴스1",
+          "date": "2026-03-18"
+        }
+      ]
     },
     {
       "date": "20260114",
       "change_rate": 14.04,
       "close_price": 73100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -222,7 +244,9 @@
       "source": "estimated",
       "trading_volume": 437004,
       "trading_value": 31944992400,
-      "market_cap": 654436592741
+      "market_cap": 654436592741,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260113",
@@ -257,5 +281,5 @@
     "count_recent": 0,
     "avg_rate": 14.33
   },
-  "built_at": "2026-09-27T08:39:40"
+  "built_at": "2026-10-02T05:15:57"
 }

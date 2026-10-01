@@ -9,9 +9,9 @@
       "close_price": 15840.0,
       "trading_volume": 95307,
       "trading_value": 1509662880,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -66,7 +66,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -74,15 +76,17 @@
       "close_price": 13140.0,
       "trading_volume": 34090,
       "trading_value": 447942600,
-      "rise_reason": "2차전지(소재/부품) 테마 강세",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(소재/부품) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260527",
@@ -90,10 +94,10 @@
       "close_price": 20600.0,
       "trading_volume": 554316,
       "trading_value": 11418909600,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -159,7 +163,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260518",
@@ -167,10 +173,10 @@
       "close_price": 21900.0,
       "trading_volume": 333526,
       "trading_value": 7304219400,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -236,7 +242,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20251106",
@@ -301,5 +309,5 @@
     "count_recent": 0,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-01T22:53:09"
+  "built_at": "2026-10-02T05:15:56"
 }

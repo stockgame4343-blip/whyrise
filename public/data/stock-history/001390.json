@@ -9,9 +9,9 @@
       "close_price": 7070.0,
       "trading_volume": 6762066,
       "trading_value": 47807806620,
-      "rise_reason": "비료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 참여이사 제도 도입…투명 경영 강화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비료",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "비료 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "KG케미칼, '참여이사 제도' 도입…\"투명 경영 강화\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003086045&office_id=119&code=001390&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260128",
@@ -123,5 +133,5 @@
     "count_recent": 0,
     "avg_rate": 10.66
   },
-  "built_at": "2026-10-01T22:52:55"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -32,10 +32,10 @@
       "close_price": 1010.0,
       "trading_volume": 1876059,
       "trading_value": 1894819590,
-      "rise_reason": "리튬 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [
         {
@@ -95,7 +95,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "리튬 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -103,9 +105,9 @@
       "close_price": 1116.0,
       "trading_volume": 3967345,
       "trading_value": 4427557020,
-      "rise_reason": "리튬 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "리튬 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -166,7 +168,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "리튬 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -499,5 +503,5 @@
     "count_recent": 0,
     "avg_rate": 23.4
   },
-  "built_at": "2026-10-01T22:57:23"
+  "built_at": "2026-10-02T05:15:56"
 }

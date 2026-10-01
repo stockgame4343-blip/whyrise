@@ -9,9 +9,9 @@
       "close_price": 4100.0,
       "trading_volume": 205301,
       "trading_value": 841734100,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "6억 규모 생체현미경 공급계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이빔테크놀로지, 6억 규모 생체현미경 공급계약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006306817&office_id=018&code=460470&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -317,5 +327,5 @@
     "count_recent": 0,
     "avg_rate": 12.33
   },
-  "built_at": "2026-09-27T10:15:50"
+  "built_at": "2026-10-02T05:15:57"
 }

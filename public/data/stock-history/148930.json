@@ -9,9 +9,9 @@
       "close_price": 2800.0,
       "trading_volume": 334544,
       "trading_value": 936723200,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "50억원 규모 자기주식 취득 신탁계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -60,7 +60,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이치와이티씨, 50억원 규모 자기주식 취득 신탁계약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006298090&office_id=018&code=148930&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.05"
+        }
+      ]
     }
   ],
   "stats": {
@@ -71,5 +81,5 @@
     "count_recent": 0,
     "avg_rate": 18.9
   },
-  "built_at": "2026-10-01T22:59:20"
+  "built_at": "2026-10-02T05:15:57"
 }

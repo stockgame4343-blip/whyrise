@@ -9,9 +9,9 @@
       "close_price": 1475.0,
       "trading_volume": 7516071,
       "trading_value": 11086204725,
-      "rise_reason": "호남 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "신재생에너지 기업 (주) 최대주주 5억원 규모 주식 매수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "호남 상장 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "신재생에너지 기업 (주)파루 최대주주 5억원 규모 주식 매수",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002688832&office_id=016&code=043200&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260827",
@@ -86,9 +96,9 @@
       "close_price": 1331.0,
       "trading_volume": 4193984,
       "trading_value": 5582192704,
-      "rise_reason": "호남 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "신재생에너지 기업 (주) 최대주주 5억원 규모 주식 매수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태풍 및 장마",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "호남 상장 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "신재생에너지 기업 (주)파루 최대주주 5억원 규모 주식 매수",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002688832&office_id=016&code=043200&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260625",
@@ -163,9 +183,9 @@
       "close_price": 1684.0,
       "trading_volume": 1933884,
       "trading_value": 3256660656,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "태양광에너지 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -232,7 +252,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260403",
@@ -240,9 +262,9 @@
       "close_price": 1035.0,
       "trading_volume": 14171288,
       "trading_value": 14667283080,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "에너지주 동반 강세 — 내일 종전해도 에너지 수급 정상화에 시일 걸려",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -255,7 +277,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "내일 종전해도 에너지 수급 정상화에 시일 걸려…에너지株 동반 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005339395",
+          "source": "머니투데이",
+          "date": "2026-04-03"
+        }
+      ]
     },
     {
       "date": "20260306",
@@ -472,5 +504,5 @@
     "count_recent": 0,
     "avg_rate": 20.26
   },
-  "built_at": "2026-10-01T22:59:34"
+  "built_at": "2026-10-02T05:15:56"
 }

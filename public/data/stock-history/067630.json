@@ -98,10 +98,10 @@
       "close_price": 2675.0,
       "trading_volume": 1135816,
       "trading_value": 3038307800,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -119,7 +119,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -127,10 +129,10 @@
       "close_price": 2325.0,
       "trading_volume": 1109621,
       "trading_value": 2579868825,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [
         {
@@ -196,16 +198,18 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 13.47,
       "close_price": 3790.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -213,7 +217,9 @@
       "source": "estimated",
       "trading_volume": 515142,
       "trading_value": 1952388180,
-      "market_cap": 462090687022
+      "market_cap": 462090687022,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251104",
@@ -267,10 +273,10 @@
       "date": "20251024",
       "change_rate": 15.89,
       "close_price": 4485.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -278,16 +284,18 @@
       "source": "estimated",
       "trading_volume": 1977904,
       "trading_value": 8870899440,
-      "market_cap": 546827633587
+      "market_cap": 546827633587,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250711",
       "change_rate": 10.52,
       "close_price": 5150.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -295,7 +303,9 @@
       "source": "estimated",
       "trading_volume": 5001365,
       "trading_value": 25757029750,
-      "market_cap": 627906870229
+      "market_cap": 627906870229,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -306,5 +316,5 @@
     "count_recent": 2,
     "avg_rate": 19.91
   },
-  "built_at": "2026-10-01T22:55:14"
+  "built_at": "2026-10-02T05:15:56"
 }

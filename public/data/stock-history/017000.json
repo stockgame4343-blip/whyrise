@@ -9,9 +9,9 @@
       "close_price": 3190.0,
       "trading_volume": 4813770,
       "trading_value": 15355926300,
-      "rise_reason": "건설 중소형 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 메가 프로젝트 수혜 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -72,7 +72,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건설 중소형 인수 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] ‘메가 프로젝트’ 수혜 기대감에…지역 건설株 ‘불기둥’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001176081&office_id=366&code=013360&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20251211",
@@ -179,5 +189,5 @@
     "count_recent": 0,
     "avg_rate": 29.93
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T05:15:57"
 }

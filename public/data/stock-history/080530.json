@@ -163,9 +163,9 @@
       "close_price": 2315.0,
       "trading_volume": 53268,
       "trading_value": 123315420,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -232,7 +232,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -254,9 +256,9 @@
       "date": "20260211",
       "change_rate": 12.66,
       "close_price": 5650.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "지난해 영업이익 38억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -278,7 +280,17 @@
       "source": "estimated",
       "trading_volume": 601315,
       "trading_value": 3397429750,
-      "market_cap": 62803719008
+      "market_cap": 62803719008,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "코디, 지난해 영업이익 38억…역대 최대",
+          "link": "https://n.news.naver.com/mnews/article/015/0005249285",
+          "source": "한국경제",
+          "date": "2026-02-10"
+        }
+      ]
     },
     {
       "date": "20250529",
@@ -306,5 +318,5 @@
     "count_recent": 0,
     "avg_rate": 11.69
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T05:15:56"
 }

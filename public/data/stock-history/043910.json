@@ -9,10 +9,10 @@
       "close_price": 3700.0,
       "trading_volume": 1997452,
       "trading_value": 7390572400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모듈러주택",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -89,5 +91,5 @@
     "count_recent": 0,
     "avg_rate": 11.61
   },
-  "built_at": "2026-10-01T22:59:08"
+  "built_at": "2026-10-02T05:15:56"
 }

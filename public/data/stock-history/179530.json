@@ -9,9 +9,9 @@
       "close_price": 2500.0,
       "trading_volume": 775703,
       "trading_value": 1939257500,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 신규 이사진 선임 경영 체질 개선…신사업 확장 기대....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "애드바이오텍, 신규 이사진 선임 '경영 체질 개선'…신사업 확장 기대....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005804165&office_id=277&code=179530&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260814",
@@ -86,9 +96,9 @@
       "close_price": 2100.0,
       "trading_volume": 169277,
       "trading_value": 355481700,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 신규 이사진 4명 선임…투자·글로벌·법률·약학 전문...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "애드바이오텍, 신규 이사진 4명 선임…투자·글로벌·법률·약학 전문...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005801703&office_id=277&code=179530&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -179,10 +199,10 @@
       "close_price": 2310.0,
       "trading_volume": 267484,
       "trading_value": 617888040,
-      "rise_reason": "경영진 교체",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "사료",
       "news": [
         {
@@ -248,7 +268,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -256,9 +278,9 @@
       "close_price": 3010.0,
       "trading_volume": 357009,
       "trading_value": 1074597090,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "수의학·임상 전문가 영입",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -325,7 +347,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "애드바이오텍, 수의학·임상 전문가 영입…바이오·헬스케어 사업 확...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005361249&office_id=008&code=179530&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -333,10 +365,10 @@
       "close_price": 2905.0,
       "trading_volume": 749821,
       "trading_value": 2178230005,
-      "rise_reason": "전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "사료",
       "news": [
         {
@@ -402,7 +434,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전환사채 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260403",
@@ -621,9 +655,9 @@
       "date": "20251017",
       "change_rate": 14.15,
       "close_price": 3670.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "美 SMR 열풍",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -645,7 +679,17 @@
       "source": "estimated",
       "trading_volume": 5925372,
       "trading_value": 21746115240,
-      "market_cap": 72242792792
+      "market_cap": 72242792792,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[오늘의 급등주] 원전 기업 변신 애드바이오텍, 美 SMR 열풍에 강세",
+          "link": "https://n.news.naver.com/mnews/article/037/0000037108",
+          "source": "주간동아",
+          "date": "2025-10-17"
+        }
+      ]
     },
     {
       "date": "20250826",
@@ -809,5 +853,5 @@
     "count_recent": 0,
     "avg_rate": 18.09
   },
-  "built_at": "2026-10-01T22:58:38"
+  "built_at": "2026-10-02T05:15:56"
 }

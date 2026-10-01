@@ -25,9 +25,9 @@
       "close_price": 139800.0,
       "trading_volume": 556045,
       "trading_value": 77735091000,
-      "rise_reason": "백화점 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 커피도 콘텐츠로…, 자체 카페 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "커피도 콘텐츠로…현대백화점, 자체 카페 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001032972&office_id=031&code=069960&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -102,9 +112,9 @@
       "close_price": 119800.0,
       "trading_volume": 155227,
       "trading_value": 18596194600,
-      "rise_reason": "백화점 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: GS건설, 목동점서 자이 팝업관 운영",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -171,7 +181,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 영업이익 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "GS건설, 현대백화점 목동점서 ‘자이’ 팝업관 운영",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006287131&office_id=018&code=069960&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -259,5 +279,5 @@
     "count_recent": 0,
     "avg_rate": 14.37
   },
-  "built_at": "2026-09-27T08:34:45"
+  "built_at": "2026-10-02T05:15:57"
 }

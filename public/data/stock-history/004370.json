@@ -9,9 +9,9 @@
       "close_price": 437500.0,
       "trading_volume": 154401,
       "trading_value": 67550437500,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "해외 법인이 실적 견인",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "환율하락 수혜",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"해외 법인이 실적 견인\"…농심, 2분기 영업익 48% ↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002237825&office_id=138&code=004370&page=&sm=",
+          "source": "디지털데일리",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20250911",
@@ -106,5 +116,5 @@
     "count_recent": 0,
     "avg_rate": 12.32
   },
-  "built_at": "2026-10-01T22:52:24"
+  "built_at": "2026-10-02T05:15:56"
 }

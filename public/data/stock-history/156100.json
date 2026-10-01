@@ -9,10 +9,10 @@
       "close_price": 5090.0,
       "trading_volume": 1132584,
       "trading_value": 5764852560,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -102,9 +104,9 @@
       "close_price": 3385.0,
       "trading_volume": 318357,
       "trading_value": 1077638445,
-      "rise_reason": "의료기기 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 팩투스로 美 최상위 병원 공략 계속",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -171,7 +173,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "의료기기 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "엘앤케이바이오, ‘팩투스’로 美 최상위 병원 공략 계속",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006341017&office_id=018&code=156100&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -179,15 +191,17 @@
       "close_price": 4770.0,
       "trading_volume": 136354,
       "trading_value": 650408580,
-      "rise_reason": "의료기기 테마 강세",
+      "rise_reason": "의료기기 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "의료기기 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -252,10 +266,10 @@
       "date": "20251013",
       "change_rate": 11.05,
       "close_price": 9450.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -263,16 +277,18 @@
       "source": "estimated",
       "trading_volume": 826877,
       "trading_value": 7813987650,
-      "market_cap": 211257868020
+      "market_cap": 211257868020,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250912",
       "change_rate": 12.43,
       "close_price": 9860.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -280,7 +296,9 @@
       "source": "estimated",
       "trading_volume": 1156050,
       "trading_value": 11398653000,
-      "market_cap": 220423553299
+      "market_cap": 220423553299,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250908",
@@ -333,5 +351,5 @@
     "count_recent": 1,
     "avg_rate": 13.58
   },
-  "built_at": "2026-10-01T22:57:07"
+  "built_at": "2026-10-02T05:15:56"
 }

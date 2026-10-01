@@ -25,9 +25,9 @@
       "close_price": 8000.0,
       "trading_volume": 1182119,
       "trading_value": 9456952000,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -52,7 +52,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "theme"
     },
     {
       "date": "20260508",
@@ -60,9 +62,9 @@
       "close_price": 7640.0,
       "trading_volume": 782797,
       "trading_value": 5980569080,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -87,15 +89,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "theme"
     },
     {
       "date": "20260112",
       "change_rate": 16.13,
       "close_price": 9430.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -104,7 +108,9 @@
       "source": "estimated",
       "trading_volume": 11209740,
       "trading_value": 105707848200,
-      "market_cap": 140080497925
+      "market_cap": 140080497925,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260107",
@@ -187,5 +193,5 @@
     "count_recent": 0,
     "avg_rate": 15.17
   },
-  "built_at": "2026-09-27T10:03:12"
+  "built_at": "2026-10-02T05:15:57"
 }

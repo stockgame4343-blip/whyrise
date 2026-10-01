@@ -9,10 +9,10 @@
       "close_price": 2090.0,
       "trading_volume": 1183128,
       "trading_value": 2472737520,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -80,9 +82,9 @@
       "close_price": 1815.0,
       "trading_volume": 1250225,
       "trading_value": 2269158375,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -143,7 +145,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260703",
@@ -151,9 +155,9 @@
       "close_price": 1873.0,
       "trading_volume": 100678,
       "trading_value": 188569894,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "미래정보기술 인수 자금 마련",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
@@ -220,7 +224,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "CS, 우리은행과 110억원 대출 약정… 미래정보기술 인수 자금 마련",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001176331&office_id=366&code=065770&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260526",
@@ -228,9 +242,9 @@
       "close_price": 2900.0,
       "trading_volume": 2961988,
       "trading_value": 8589765200,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "5G 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -279,7 +293,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260413",
@@ -287,9 +303,9 @@
       "close_price": 5873.0,
       "trading_volume": 6161500,
       "trading_value": 36186489500,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -302,7 +318,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260407",
@@ -392,9 +410,9 @@
       "close_price": 2451.0,
       "trading_volume": 6445842,
       "trading_value": 15798758742,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -407,15 +425,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
       "change_rate": 14.97,
       "close_price": 1713.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -431,15 +451,17 @@
       "source": "estimated",
       "trading_volume": 5742947,
       "trading_value": 9837668211,
-      "market_cap": 16588339920
+      "market_cap": 16588339920,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
       "change_rate": 10.03,
       "close_price": 1591.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "관련 보도: 2대 1 주식병합 결정",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -455,7 +477,17 @@
       "source": "estimated",
       "trading_volume": 1589475,
       "trading_value": 2528854725,
-      "market_cap": 15406916996
+      "market_cap": 15406916996,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "CS, 2대 1 주식병합 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006233637",
+          "source": "이데일리",
+          "date": "2026-03-12"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -483,5 +515,5 @@
     "count_recent": 0,
     "avg_rate": 20.49
   },
-  "built_at": "2026-09-27T10:39:21"
+  "built_at": "2026-10-02T05:15:57"
 }

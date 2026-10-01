@@ -7,10 +7,10 @@
       "date": "20260310",
       "change_rate": 11.37,
       "close_price": 2840.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -18,15 +18,17 @@
       "source": "estimated",
       "trading_volume": 4061636,
       "trading_value": 11535046240,
-      "market_cap": 311232876712
+      "market_cap": 311232876712,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260206",
       "change_rate": 12.98,
       "close_price": 3350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 우크라 재건청, 韓 정부에 협조 공문 발송",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -48,7 +50,17 @@
       "source": "estimated",
       "trading_volume": 50427397,
       "trading_value": 168931779950,
-      "market_cap": 367123287671
+      "market_cap": 367123287671,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SG “우크라 재건청, 韓 정부에 협조 공문 발송”",
+          "link": "https://n.news.naver.com/mnews/article/366/0001140914",
+          "source": "조선비즈",
+          "date": "2026-02-06"
+        }
+      ]
     },
     {
       "date": "20260203",
@@ -155,5 +167,5 @@
     "count_recent": 0,
     "avg_rate": 15.47
   },
-  "built_at": "2026-10-01T22:56:38"
+  "built_at": "2026-10-02T05:15:57"
 }

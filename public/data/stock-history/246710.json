@@ -32,10 +32,10 @@
       "close_price": 2330.0,
       "trading_volume": 311919,
       "trading_value": 726771270,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "3D 프린터",
       "news": [
         {
@@ -101,7 +101,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -109,9 +111,9 @@
       "close_price": 2100.0,
       "trading_volume": 328757,
       "trading_value": 690389700,
-      "rise_reason": "바이오",
+      "rise_reason": "심장질환 치료용 고순도 심근세포 정제 기술 특허",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "3D 프린터",
       "news": [
@@ -124,7 +126,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "티앤알바이오팹, 심장질환 치료용 고순도 심근세포 정제 기술 특허 확...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005378464",
+          "source": "머니투데이",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -159,10 +171,10 @@
       "date": "20260305",
       "change_rate": 13.41,
       "close_price": 3130.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -170,15 +182,17 @@
       "source": "estimated",
       "trading_volume": 806710,
       "trading_value": 2525002300,
-      "market_cap": 149242028985
+      "market_cap": 149242028985,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260105",
       "change_rate": 12.4,
       "close_price": 4125.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 바이오 3D프린팅으로 신경재생에서 성과 보여",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -194,7 +208,17 @@
       "source": "estimated",
       "trading_volume": 3172007,
       "trading_value": 13084528875,
-      "market_cap": 196684782608
+      "market_cap": 196684782608,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "티앤알바이오팹, 바이오 3D프린팅으로 신경재생에서 성과 보여",
+          "link": "https://n.news.naver.com/mnews/article/015/0005232579",
+          "source": "한국경제",
+          "date": "2026-01-05"
+        }
+      ]
     },
     {
       "date": "20251222",
@@ -217,9 +241,9 @@
       "date": "20251218",
       "change_rate": 11.67,
       "close_price": 3780.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "키움증권 내년 흑자전환 전망",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -241,7 +265,17 @@
       "source": "estimated",
       "trading_volume": 2898365,
       "trading_value": 10955819700,
-      "market_cap": 180234782608
+      "market_cap": 180234782608,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[아침밥] 키움증권 &quot;티앤알바이오팹 내년 흑자전환 전망&quot;",
+          "link": "https://n.news.naver.com/mnews/article/417/0001119953",
+          "source": "동행미디어 시대",
+          "date": "2025-12-18"
+        }
+      ]
     },
     {
       "date": "20251210",
@@ -397,9 +431,9 @@
       "date": "20251028",
       "change_rate": 10.4,
       "close_price": 1954.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 29일 권리락 발생",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -427,15 +461,25 @@
       "source": "estimated",
       "trading_volume": 596870,
       "trading_value": 1166283980,
-      "market_cap": 93168985507
+      "market_cap": 93168985507,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "티앤알바이오팹, 29일 권리락 발생",
+          "link": "https://n.news.naver.com/mnews/article/018/0006149348",
+          "source": "이데일리",
+          "date": "2025-10-28"
+        }
+      ]
     },
     {
       "date": "20251022",
       "change_rate": 12.57,
       "close_price": 1899.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 구주주 유상증자 청약률 102.15%",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -469,7 +513,17 @@
       "source": "estimated",
       "trading_volume": 1927429,
       "trading_value": 3660187671,
-      "market_cap": 90546521739
+      "market_cap": 90546521739,
+      "reason_previous": "유상증자",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "티앤알바이오팹, 구주주 유상증자 청약률 102.15%",
+          "link": "https://n.news.naver.com/mnews/article/018/0006143925",
+          "source": "이데일리",
+          "date": "2025-10-22"
+        }
+      ]
     },
     {
       "date": "20251020",
@@ -533,5 +587,5 @@
     "count_recent": 0,
     "avg_rate": 14.88
   },
-  "built_at": "2026-10-01T22:57:27"
+  "built_at": "2026-10-02T05:15:57"
 }

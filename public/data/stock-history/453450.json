@@ -9,9 +9,9 @@
       "close_price": 15800.0,
       "trading_volume": 122987,
       "trading_value": 1943194600,
-      "rise_reason": "전기차 화재 방지(배터리 열폭주 등) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "히트펌프 구독 기반 DR 전력거래 맞손",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "전기유틸리티",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전기차 화재 방지(배터리 열폭주 등) 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "그리드위즈·모닥불에너지, 히트펌프 구독 기반 'DR 전력거래' 맞손",
+          "link": "https://n.news.naver.com/mnews/article/008/0005389139",
+          "source": "머니투데이",
+          "date": "2026-07-22"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -32,10 +42,10 @@
       "close_price": 14080.0,
       "trading_volume": 568921,
       "trading_value": 8010407680,
-      "rise_reason": "태양광에너지 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -101,7 +111,9 @@
       ],
       "sector": "전기유틸리티",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "태양광에너지 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -153,10 +165,10 @@
       "date": "20260305",
       "change_rate": 15.12,
       "close_price": 18420.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -171,15 +183,17 @@
       "source": "estimated",
       "trading_volume": 143919,
       "trading_value": 2650987980,
-      "market_cap": 146254800000
+      "market_cap": 146254800000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260105",
       "change_rate": 13.99,
       "close_price": 16380.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 김구환 대표 에너지 산업에서 AI는 선택 아닌 필수…AI로...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -201,7 +215,17 @@
       "source": "estimated",
       "trading_volume": 968264,
       "trading_value": 15860164320,
-      "market_cap": 130057200000
+      "market_cap": 130057200000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "김구환 그리드위즈 대표 “에너지 산업에서 AI는 선택 아닌 필수…AI로...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003386501",
+          "source": "전자신문",
+          "date": "2026-01-04"
+        }
+      ]
     }
   ],
   "stats": {
@@ -212,5 +236,5 @@
     "count_recent": 0,
     "avg_rate": 13.27
   },
-  "built_at": "2026-10-01T22:57:34"
+  "built_at": "2026-10-02T05:15:57"
 }

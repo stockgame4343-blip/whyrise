@@ -9,10 +9,10 @@
       "close_price": 3665.0,
       "trading_volume": 499530,
       "trading_value": 1830777450,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -102,9 +104,9 @@
       "close_price": 3500.0,
       "trading_volume": 689458,
       "trading_value": 2413103000,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -171,7 +173,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260508",
@@ -179,9 +183,9 @@
       "close_price": 6590.0,
       "trading_volume": 1382682,
       "trading_value": 9111874380,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -248,7 +252,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -289,9 +295,9 @@
       "date": "20260327",
       "change_rate": 14.34,
       "close_price": 4585.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "5G 인프라·아이게이밍 전략 공개",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -313,7 +319,17 @@
       "source": "estimated",
       "trading_volume": 2094524,
       "trading_value": 9603392540,
-      "market_cap": 115481323372
+      "market_cap": 115481323372,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오늘이엔엠, 4월9일 IR 개최…5G 인프라·아이게이밍 전략 공개",
+          "link": "https://n.news.naver.com/mnews/article/277/0005740627",
+          "source": "아시아경제",
+          "date": "2026-03-26"
+        }
+      ]
     },
     {
       "date": "20260323",
@@ -409,9 +425,9 @@
       "date": "20260226",
       "change_rate": 12.65,
       "close_price": 2325.0,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "통신사업 영업익 29억 흑자 전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -427,7 +443,17 @@
       "source": "estimated",
       "trading_volume": 1635501,
       "trading_value": 3802539825,
-      "market_cap": 58559231590
+      "market_cap": 58559231590,
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오늘이엔엠, 통신사업 영업익 29억 흑자 전환…&quot;글로벌 수출 호조로 매...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006225385",
+          "source": "이데일리",
+          "date": "2026-02-26"
+        }
+      ]
     },
     {
       "date": "20260106",
@@ -522,9 +548,9 @@
       "date": "20250819",
       "change_rate": 13.25,
       "close_price": 3283.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 19억 규모 전환청구권 행사",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -564,7 +590,17 @@
       "source": "estimated",
       "trading_volume": 4695272,
       "trading_value": 15414577976,
-      "market_cap": 82688153681
+      "market_cap": 82688153681,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "오늘이엔엠, 19억 규모 전환청구권 행사",
+          "link": "https://n.news.naver.com/mnews/article/018/0006093773",
+          "source": "이데일리",
+          "date": "2025-08-19"
+        }
+      ]
     },
     {
       "date": "20250804",
@@ -698,5 +734,5 @@
     "count_recent": 0,
     "avg_rate": 19.07
   },
-  "built_at": "2026-10-01T22:57:52"
+  "built_at": "2026-10-02T05:15:57"
 }

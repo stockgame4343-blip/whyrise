@@ -9,9 +9,9 @@
       "close_price": 7300.0,
       "trading_volume": 131695,
       "trading_value": 961373500,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 김덕수 대표 미래 모빌리티 핵심 가치는 신뢰",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "김덕수 아우토크립트 대표 \"미래 모빌리티 핵심 가치는 '신뢰'\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005411469&office_id=008&code=331740&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.09.09"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,9 +96,9 @@
       "close_price": 6070.0,
       "trading_volume": 31117,
       "trading_value": 188880190,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "관련 보도: 일렉트로비트 협력…SDV 통합 솔루션 새 먹거리",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -101,7 +111,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아우토크립트, 일렉트로비트 협력…SDV 통합 솔루션 새 먹거리",
+          "link": "https://n.news.naver.com/mnews/article/293/0000088404",
+          "source": "블로터",
+          "date": "2026-07-31"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -132,9 +152,9 @@
       "close_price": 13240.0,
       "trading_volume": 122118,
       "trading_value": 1616842320,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 자동차 넘어 피지컬 AI 보안으로…로봇·의료 확장",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -201,7 +221,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아우토크립트, 자동차 넘어 '피지컬 AI 보안'으로…로봇·의료 확장",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005361033&office_id=008&code=331740&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260310",
@@ -237,9 +267,9 @@
       "date": "20260305",
       "change_rate": 13.65,
       "close_price": 18070.0,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 17종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -255,7 +285,9 @@
       "source": "estimated",
       "trading_volume": 177215,
       "trading_value": 3202275050,
-      "market_cap": 176261105424
+      "market_cap": 176261105424,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260211",
@@ -409,9 +441,9 @@
       "date": "20251209",
       "change_rate": 11.67,
       "close_price": 17030.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반전 신호 켜졌나",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -451,7 +483,17 @@
       "source": "estimated",
       "trading_volume": 3386225,
       "trading_value": 57667411750,
-      "market_cap": 166116581371
+      "market_cap": 166116581371,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "보안·로봇 테마 타고 주가 급반등…아우토크립트, 반전 신호 켜졌나",
+          "link": "https://n.news.naver.com/mnews/article/018/0006180431",
+          "source": "이데일리",
+          "date": "2025-12-09"
+        }
+      ]
     },
     {
       "date": "20251208",
@@ -505,9 +547,9 @@
       "date": "20251205",
       "change_rate": 13.01,
       "close_price": 12940.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: KCMVP 인증 획득.. 미래 산업 기술주권 체계 구축",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -529,15 +571,25 @@
       "source": "estimated",
       "trading_volume": 1032273,
       "trading_value": 13357612620,
-      "market_cap": 126221289662
+      "market_cap": 126221289662,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아우토크립트, KCMVP 인증 획득.. '미래 산업 기술주권 체계 구축'",
+          "link": "https://n.news.naver.com/mnews/article/008/0005287983",
+          "source": "머니투데이",
+          "date": "2025-12-05"
+        }
+      ]
     },
     {
       "date": "20251031",
       "change_rate": 10.8,
       "close_price": 13850.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "젠슨황·정의선 회동",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -565,7 +617,17 @@
       "source": "estimated",
       "trading_volume": 1661307,
       "trading_value": 23009101950,
-      "market_cap": 135097748208
+      "market_cap": 135097748208,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 젠슨황·정의선 회동…아우토크립트, 현대차·엔비디아 자율...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005672657",
+          "source": "아시아경제",
+          "date": "2025-10-31"
+        }
+      ]
     }
   ],
   "stats": {
@@ -576,5 +638,5 @@
     "count_recent": 1,
     "avg_rate": 14.33
   },
-  "built_at": "2026-10-01T22:58:27"
+  "built_at": "2026-10-02T05:15:56"
 }

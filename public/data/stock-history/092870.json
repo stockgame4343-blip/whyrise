@@ -9,9 +9,9 @@
       "close_price": 43300.0,
       "trading_volume": 1152464,
       "trading_value": 49901691200,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 美 기술주 훈풍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美 기술주 훈풍에…반도체 중소형주 장초반 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005417739",
+          "source": "머니투데이",
+          "date": "2026-09-23"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -32,10 +42,10 @@
       "close_price": 31050.0,
       "trading_volume": 1019544,
       "trading_value": 31656841200,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
         {
@@ -101,7 +111,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260901",
@@ -109,10 +121,10 @@
       "close_price": 27800.0,
       "trading_volume": 586895,
       "trading_value": 16315681000,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
         {
@@ -178,7 +190,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260825",
@@ -186,9 +200,9 @@
       "close_price": 24600.0,
       "trading_volume": 499935,
       "trading_value": 12298401000,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "CXL 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -255,7 +269,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260805",
@@ -263,10 +279,10 @@
       "close_price": 16100.0,
       "trading_volume": 230724,
       "trading_value": 3714656400,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
         {
@@ -332,7 +348,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -340,15 +358,17 @@
       "close_price": 13090.0,
       "trading_volume": 434152,
       "trading_value": 5683049680,
-      "rise_reason": "CXL(컴퓨트익스프레스링크) 테마 강세",
+      "rise_reason": "CXL 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "CXL(컴퓨트익스프레스링크) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -356,9 +376,9 @@
       "close_price": 18260.0,
       "trading_volume": 503318,
       "trading_value": 9190586680,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "CXL 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -425,7 +445,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -433,9 +455,9 @@
       "close_price": 17610.0,
       "trading_volume": 1493105,
       "trading_value": 26293579050,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "삼성전자와 498억원 규모 CLT·SSD 테스터 공급 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -502,7 +524,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엑시콘, 삼성전자와 498억원 규모 CLT·SSD 테스터 공급 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006326987&office_id=018&code=092870&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.10"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -510,9 +542,9 @@
       "close_price": 30800.0,
       "trading_volume": 392567,
       "trading_value": 12091063600,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 17종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -579,7 +611,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -587,9 +621,9 @@
       "close_price": 27650.0,
       "trading_volume": 273143,
       "trading_value": 7552403950,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -656,7 +690,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -664,9 +700,9 @@
       "close_price": 26350.0,
       "trading_volume": 276713,
       "trading_value": 7291387550,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -733,7 +769,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -741,10 +779,10 @@
       "close_price": 35300.0,
       "trading_volume": 529194,
       "trading_value": 18680548200,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
         {
@@ -810,7 +848,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -818,10 +858,10 @@
       "close_price": 30550.0,
       "trading_volume": 505482,
       "trading_value": 15442475100,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -877,15 +917,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 24.08,
       "close_price": 30400.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 28종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -901,7 +943,9 @@
       "source": "estimated",
       "trading_volume": 797891,
       "trading_value": 24255886400,
-      "market_cap": 396786638830
+      "market_cap": 396786638830,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260203",
@@ -931,9 +975,9 @@
       "date": "20260126",
       "change_rate": 15.15,
       "close_price": 20900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 장비 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -942,15 +986,17 @@
       "source": "estimated",
       "trading_volume": 2207107,
       "trading_value": 46128536300,
-      "market_cap": 272790814196
+      "market_cap": 272790814196,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250918",
       "change_rate": 22.75,
       "close_price": 17480.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 장비 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -959,7 +1005,9 @@
       "source": "estimated",
       "trading_volume": 3426762,
       "trading_value": 59899799760,
-      "market_cap": 228152317327
+      "market_cap": 228152317327,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -970,5 +1018,5 @@
     "count_recent": 3,
     "avg_rate": 14.73
   },
-  "built_at": "2026-10-01T22:54:46"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 264000.0,
       "trading_volume": 102684,
       "trading_value": 27108576000,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1분기 영업익 344억원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "타이어",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "HS효성첨단소재, 1분기 영업익 344억원…전년비 29.9%↓",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000105415&office_id=050&code=298050&page=&sm=",
+          "source": "한경비즈니스",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260203",
@@ -106,5 +116,5 @@
     "count_recent": 0,
     "avg_rate": 11.73
   },
-  "built_at": "2026-09-27T08:39:28"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 997.0,
       "trading_volume": 201559,
       "trading_value": 200954323,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "425억 PF 채무인수 면제",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -78,15 +78,25 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"재무구조 개선 기대\"…웰크론한텍, 425억 PF 채무인수 면제",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009033920&office_id=421&code=076080&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260128",
       "change_rate": 13.78,
       "close_price": 1544.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "29.98% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -108,15 +118,25 @@
       "source": "estimated",
       "trading_volume": 10110033,
       "trading_value": 15609890952,
-      "market_cap": 34882962962
+      "market_cap": 34882962962,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]웰크론한텍 29.98% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003612102",
+          "source": "서울신문",
+          "date": "2026-01-27"
+        }
+      ]
     },
     {
       "date": "20260127",
       "change_rate": 29.98,
       "close_price": 1357.0,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "29.98% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -138,7 +158,17 @@
       "source": "estimated",
       "trading_volume": 2194539,
       "trading_value": 2977989423,
-      "market_cap": 30658148148
+      "market_cap": 30658148148,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]웰크론한텍 29.98% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003612102",
+          "source": "서울신문",
+          "date": "2026-01-27"
+        }
+      ]
     },
     {
       "date": "20250611",
@@ -166,5 +196,5 @@
     "count_recent": 0,
     "avg_rate": 19.99
   },
-  "built_at": "2026-10-01T22:59:43"
+  "built_at": "2026-10-02T05:15:57"
 }

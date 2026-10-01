@@ -9,10 +9,10 @@
       "close_price": 2990.0,
       "trading_volume": 37835,
       "trading_value": 113126650,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "창투사",
       "news": [
         {
@@ -54,7 +54,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260422",
@@ -62,10 +64,10 @@
       "close_price": 1045.0,
       "trading_volume": 9159811,
       "trading_value": 9572002495,
-      "rise_reason": "무상감자 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "창투사",
       "news": [
         {
@@ -107,7 +109,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "무상감자 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -115,9 +119,9 @@
       "close_price": 880.0,
       "trading_volume": 7112581,
       "trading_value": 6259071280,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "창투사 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "창투사",
       "news": [
@@ -174,7 +178,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
@@ -376,5 +382,5 @@
     "count_recent": 0,
     "avg_rate": 28.35
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T05:15:56"
 }

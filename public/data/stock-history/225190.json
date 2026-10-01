@@ -9,10 +9,10 @@
       "close_price": 4150.0,
       "trading_volume": 2852525,
       "trading_value": 11837978750,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260928",
@@ -102,10 +104,10 @@
       "close_price": 1010.0,
       "trading_volume": 6558619,
       "trading_value": 6624205190,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
         {
@@ -171,7 +173,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260813",
@@ -179,9 +183,9 @@
       "close_price": 1245.0,
       "trading_volume": 31283851,
       "trading_value": 38948394495,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "국방부 드론에 카메라 모듈 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -248,7 +252,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "LK삼양, 국방부 드론에 카메라 모듈 공급…이틀째 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001023060&office_id=088&code=225190&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260811",
@@ -256,9 +270,9 @@
       "close_price": 1055.0,
       "trading_volume": 8745160,
       "trading_value": 9226143800,
-      "rise_reason": "공급 관련 뉴스",
+      "rise_reason": "국방부 드론에 카메라 모듈 공급",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -325,7 +339,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "LK삼양, 국방부 드론에 카메라 모듈 공급…이틀째 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001023060&office_id=088&code=225190&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -333,9 +357,9 @@
       "close_price": 812.0,
       "trading_volume": 3628947,
       "trading_value": 2946704964,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "제2우주센터 건립 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -402,7 +426,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "제2우주센터 건립 소식에 우주株 강세…LK삼양 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006348559&office_id=018&code=225190&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -410,9 +444,9 @@
       "close_price": 703.0,
       "trading_volume": 1684494,
       "trading_value": 1184199282,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주항공산업 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -479,7 +513,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -487,9 +523,9 @@
       "close_price": 663.0,
       "trading_volume": 4149337,
       "trading_value": 2751010431,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주항공산업 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -556,7 +592,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -564,15 +602,17 @@
       "close_price": 937.0,
       "trading_volume": 519080,
       "trading_value": 486377960,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260417",
@@ -580,10 +620,10 @@
       "close_price": 2230.0,
       "trading_volume": 12389758,
       "trading_value": 27629160340,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
         {
@@ -619,7 +659,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -627,10 +669,10 @@
       "close_price": 2145.0,
       "trading_volume": 9985554,
       "trading_value": 21419013330,
-      "rise_reason": "우주항공 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -686,15 +728,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "우주항공 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 19.13,
       "close_price": 2180.0,
-      "rise_reason": "카메라모듈/부품 테마 강세",
+      "rise_reason": "카메라모듈 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "카메라모듈/부품",
       "news": [],
@@ -703,7 +747,9 @@
       "source": "estimated",
       "trading_volume": 5485774,
       "trading_value": 11958987320,
-      "market_cap": 153705932932
+      "market_cap": 153705932932,
+      "reason_previous": "카메라모듈/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260206",
@@ -858,9 +904,9 @@
       "date": "20251219",
       "change_rate": 13.09,
       "close_price": 1374.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "팔콘9 타고 우주로 간 AI 별추적기",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "카메라모듈/부품",
       "news": [
@@ -882,7 +928,17 @@
       "source": "estimated",
       "trading_volume": 40416091,
       "trading_value": 55531709034,
-      "market_cap": 96877042132
+      "market_cap": 96877042132,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]LK삼양, 팔콘9 타고 우주로 간 AI 별추적기…우주 대항해 시대...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005696017",
+          "source": "아시아경제",
+          "date": "2025-12-19"
+        }
+      ]
     },
     {
       "date": "20251127",
@@ -1000,5 +1056,5 @@
     "count_recent": 2,
     "avg_rate": 40.25
   },
-  "built_at": "2026-10-01T22:58:36"
+  "built_at": "2026-10-02T05:15:56"
 }

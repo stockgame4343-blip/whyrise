@@ -9,10 +9,10 @@
       "close_price": 6910.0,
       "trading_volume": 7060455,
       "trading_value": 48787744050,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -86,9 +88,9 @@
       "close_price": 6980.0,
       "trading_volume": 5911313,
       "trading_value": 41260964740,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -179,9 +183,9 @@
       "close_price": 6540.0,
       "trading_volume": 4556550,
       "trading_value": 29799837000,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "피지컬 AI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -248,7 +252,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260721",
@@ -256,9 +262,9 @@
       "close_price": 5310.0,
       "trading_volume": 3043647,
       "trading_value": 16161765570,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -325,7 +331,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -365,15 +373,17 @@
       "close_price": 10500.0,
       "trading_volume": 892222,
       "trading_value": 9368331000,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -381,9 +391,9 @@
       "close_price": 11580.0,
       "trading_volume": 14213226,
       "trading_value": 164589157080,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -450,7 +460,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 오르자 반도체장비株 강세…오로스테크놀로지 '上'[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008925316&office_id=421&code=322310&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260430",
@@ -458,10 +478,10 @@
       "close_price": 8910.0,
       "trading_volume": 16968905,
       "trading_value": 151192943550,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
         {
@@ -527,15 +547,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260325",
       "change_rate": 11.73,
       "close_price": 8190.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -544,15 +566,17 @@
       "source": "estimated",
       "trading_volume": 774089,
       "trading_value": 6339788910,
-      "market_cap": 149920763358
+      "market_cap": 149920763358,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260310",
       "change_rate": 14.41,
       "close_price": 7780.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련주 동반 강세 — 로봇이 거실 정리하네",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -568,15 +592,25 @@
       "source": "estimated",
       "trading_volume": 610861,
       "trading_value": 4752498580,
-      "market_cap": 142415572519
+      "market_cap": 142415572519,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;로봇이 거실 정리하네&quot;…휴머노이드 관련주 장 초반 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005327629",
+          "source": "머니투데이",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 17.34,
       "close_price": 7310.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -585,15 +619,17 @@
       "source": "estimated",
       "trading_volume": 561461,
       "trading_value": 4104279910,
-      "market_cap": 133812061068
+      "market_cap": 133812061068,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260203",
       "change_rate": 11.57,
       "close_price": 10610.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "작년 영업익 11억원 흑자전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -633,7 +669,17 @@
       "source": "estimated",
       "trading_volume": 2297169,
       "trading_value": 24372963090,
-      "market_cap": 194219694656
+      "market_cap": 194219694656,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아진엑스텍, 작년 영업익 11억원 '흑자전환'",
+          "link": "https://n.news.naver.com/mnews/article/092/0002409030",
+          "source": "지디넷코리아",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20260128",
@@ -669,9 +715,9 @@
       "date": "20260115",
       "change_rate": 11.94,
       "close_price": 8064.0,
-      "rise_reason": "무상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "100% 무상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -699,7 +745,17 @@
       "source": "estimated",
       "trading_volume": 19910996,
       "trading_value": 160562271744,
-      "market_cap": 147614290076
+      "market_cap": 147614290076,
+      "reason_previous": "무상증자",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아진엑스텍, 100% 무상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006200698",
+          "source": "이데일리",
+          "date": "2026-01-14"
+        }
+      ]
     },
     {
       "date": "20260114",
@@ -741,9 +797,9 @@
       "date": "20251128",
       "change_rate": 12.97,
       "close_price": 4572.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "피지컬 AI 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -759,7 +815,9 @@
       "source": "estimated",
       "trading_volume": 2348636,
       "trading_value": 10737963792,
-      "market_cap": 83692030534
+      "market_cap": 83692030534,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20251127",
@@ -794,5 +852,5 @@
     "count_recent": 1,
     "avg_rate": 15.56
   },
-  "built_at": "2026-10-01T22:57:06"
+  "built_at": "2026-10-02T05:15:56"
 }

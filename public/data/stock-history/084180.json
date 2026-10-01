@@ -11,7 +11,7 @@
       "trading_value": 1045488780,
       "rise_reason": "정리매매 기간 (상장폐지 절차)",
       "reason_confidence": "high",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "웹툰",
       "news": [
@@ -69,7 +69,8 @@
           "source": "뉴스1",
           "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "delisting"
     },
     {
       "date": "20260918",
@@ -77,10 +78,10 @@
       "close_price": 165.0,
       "trading_volume": 8132090,
       "trading_value": 1341794850,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "웹툰",
       "news": [
         {
@@ -116,7 +117,9 @@
       ],
       "sector": "출판",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260907",
@@ -278,9 +281,9 @@
       "close_price": 566.0,
       "trading_volume": 109768,
       "trading_value": 62128688,
-      "rise_reason": "웹툰 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "웹툰 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "웹툰",
       "news": [
@@ -341,7 +344,9 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "웹툰 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -349,9 +354,9 @@
       "close_price": 633.0,
       "trading_volume": 1218501,
       "trading_value": 771311133,
-      "rise_reason": "웹툰 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 홍탁완 대표이사 선임",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "웹툰",
       "news": [
@@ -418,7 +423,17 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "웹툰 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "수성웹툰, 홍탁완 대표이사 선임",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334875&office_id=018&code=084180&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260720",
@@ -426,10 +441,10 @@
       "close_price": 614.0,
       "trading_volume": 2029605,
       "trading_value": 1246177470,
-      "rise_reason": "주주환원 정책",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "웹툰",
       "news": [
         {
@@ -495,7 +510,9 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "none"
     },
     {
       "date": "20260716",
@@ -503,10 +520,10 @@
       "close_price": 539.0,
       "trading_volume": 440845,
       "trading_value": 237615455,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "웹툰",
       "news": [
         {
@@ -530,7 +547,9 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -538,10 +557,10 @@
       "close_price": 484.0,
       "trading_volume": 552009,
       "trading_value": 267172356,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "웹툰",
       "news": [
         {
@@ -601,7 +620,9 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260626",
@@ -609,10 +630,10 @@
       "close_price": 515.0,
       "trading_volume": 472639,
       "trading_value": 243409085,
-      "rise_reason": "순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "웹툰",
       "news": [
         {
@@ -672,7 +693,9 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -680,10 +703,10 @@
       "close_price": 531.0,
       "trading_volume": 2614292,
       "trading_value": 1388189052,
-      "rise_reason": "순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "웹툰",
       "news": [
         {
@@ -743,7 +766,9 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260514",
@@ -751,10 +776,10 @@
       "close_price": 1184.0,
       "trading_volume": 575515,
       "trading_value": 681409760,
-      "rise_reason": "순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "웹툰",
       "news": [
         {
@@ -820,7 +845,9 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
@@ -865,5 +892,5 @@
     "count_recent": 3,
     "avg_rate": 18.46
   },
-  "built_at": "2026-10-01T16:32:47"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,15 +9,17 @@
       "close_price": 34650.0,
       "trading_volume": 46849,
       "trading_value": 1623317850,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260805",
@@ -25,9 +27,9 @@
       "close_price": 31850.0,
       "trading_volume": 44618,
       "trading_value": 1421083300,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -70,7 +72,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -94,9 +98,9 @@
       "close_price": 35700.0,
       "trading_volume": 164630,
       "trading_value": 5877291000,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -139,7 +143,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -147,15 +161,17 @@
       "close_price": 30800.0,
       "trading_volume": 29403,
       "trading_value": 905612400,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -207,5 +223,5 @@
     "count_recent": 0,
     "avg_rate": 11.84
   },
-  "built_at": "2026-10-01T22:52:45"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 17520.0,
       "trading_volume": 315717,
       "trading_value": 5531361840,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260922",
@@ -44,10 +46,10 @@
       "close_price": 15910.0,
       "trading_volume": 478429,
       "trading_value": 7611805390,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -71,7 +73,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -102,9 +106,9 @@
       "close_price": 23700.0,
       "trading_volume": 132230,
       "trading_value": 3133851000,
-      "rise_reason": "면역항암제 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -171,7 +175,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 신약 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260624",
@@ -179,9 +193,9 @@
       "close_price": 22900.0,
       "trading_volume": 136966,
       "trading_value": 3136521400,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -248,7 +262,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260514",
@@ -256,9 +272,9 @@
       "close_price": 44250.0,
       "trading_volume": 469114,
       "trading_value": 20758294500,
-      "rise_reason": "순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "신약 개발 본업만으로 1분기 영업익·순익 달성",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -325,7 +341,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이엠바이오로직스, 신약 개발 본업만으로 1분기 영업익·순익 달성",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005286987&office_id=015&code=493280&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.05.14"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -368,5 +394,5 @@
     "count_recent": 2,
     "avg_rate": 14.52
   },
-  "built_at": "2026-10-01T22:56:03"
+  "built_at": "2026-10-02T05:15:56"
 }

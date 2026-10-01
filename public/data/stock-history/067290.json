@@ -9,9 +9,9 @@
       "close_price": 3430.0,
       "trading_volume": 74679078,
       "trading_value": 256149237540,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "탈모 건보 확대 기대감",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제약업체",
       "news": [
@@ -66,7 +66,17 @@
       ],
       "sector": "제약",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "JW신약, 탈모 건보 확대 기대감에 이틀째 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005569783&office_id=014&code=067290&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260901",
@@ -74,9 +84,9 @@
       "close_price": 2990.0,
       "trading_volume": 37241103,
       "trading_value": 111350897970,
-      "rise_reason": "탈모 치료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "탈모 치료 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -107,7 +117,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260806",
@@ -115,10 +127,10 @@
       "close_price": 2330.0,
       "trading_volume": 32081761,
       "trading_value": 74750503130,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -178,7 +190,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260730",
@@ -186,9 +200,9 @@
       "close_price": 1811.0,
       "trading_volume": 22902412,
       "trading_value": 41476268132,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 탈모는 평생 관리…더마코스메틱으로 영토 넓히는",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제약업체",
       "news": [
@@ -243,7 +257,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "탈모는 ‘평생 관리’…더마코스메틱으로 영토 넓히는 JW신약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001182637&office_id=366&code=067290&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.29"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -251,10 +275,10 @@
       "close_price": 1870.0,
       "trading_volume": 29247640,
       "trading_value": 54693086800,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -314,7 +338,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260623",
@@ -322,9 +348,9 @@
       "close_price": 3105.0,
       "trading_volume": 68450029,
       "trading_value": 212537340045,
-      "rise_reason": "신약 관련 뉴스",
+      "rise_reason": "시지메드텍, 최대주주 PE 인수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제약업체",
       "news": [
@@ -361,7 +387,17 @@
       ],
       "sector": "제약",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "시지메드텍, 최대주주 PE 인수에 ‘上’…탈모주 삼익제약·JW신약도↑....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006312666&office_id=018&code=067290&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260622",
@@ -369,10 +405,10 @@
       "close_price": 2730.0,
       "trading_volume": 52483503,
       "trading_value": 143279963190,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -414,7 +450,9 @@
       ],
       "sector": "제약",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260619",
@@ -422,9 +460,9 @@
       "close_price": 2335.0,
       "trading_volume": 63725445,
       "trading_value": 148798914075,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "탈모株의 날",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -467,7 +505,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "“탈모株의 날”…JW신약·현대약품·삼익제약, 정책 모멘텀에 '上' [....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006307823&office_id=018&code=067290&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260617",
@@ -475,9 +523,9 @@
       "close_price": 2335.0,
       "trading_volume": 43883180,
       "trading_value": 102467225300,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
+      "rise_reason": "탈모株의 날",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -538,7 +586,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "“탈모株의 날”…JW신약·현대약품·삼익제약, 정책 모멘텀에 '上' [....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006307823&office_id=018&code=067290&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -546,9 +604,9 @@
       "close_price": 1775.0,
       "trading_volume": 1380562,
       "trading_value": 2450497550,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
+      "rise_reason": "정은경發 탈모 건보 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -615,7 +673,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "정은경發 탈모 건보 기대감에…JW신약·TS트릴리온 ‘상한가’ [Why ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004631189&office_id=011&code=067290&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260120",
@@ -734,9 +802,9 @@
       "date": "20251217",
       "change_rate": 13.93,
       "close_price": 2053.0,
-      "rise_reason": "무상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "탈모주 동반 강세 — 李대통령 탈모약, 건보 적용 검토 발언",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -776,7 +844,17 @@
       "source": "estimated",
       "trading_volume": 48306292,
       "trading_value": 99172817476,
-      "market_cap": 115003169164
+      "market_cap": 115003169164,
+      "reason_previous": "무상증자",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "李대통령 &quot;탈모약, 건보 적용 검토&quot; 발언에 탈모주 강세[Why 바이오]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004568408",
+          "source": "서울경제",
+          "date": "2025-12-17"
+        }
+      ]
     },
     {
       "date": "20251216",
@@ -835,5 +913,5 @@
     "count_recent": 2,
     "avg_rate": 18.21
   },
-  "built_at": "2026-10-01T22:56:44"
+  "built_at": "2026-10-02T05:15:56"
 }

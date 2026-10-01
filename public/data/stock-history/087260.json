@@ -9,10 +9,10 @@
       "close_price": 259.0,
       "trading_volume": 14840220,
       "trading_value": 3843616980,
-      "rise_reason": "경영진 교체",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [
         {
@@ -30,7 +30,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -38,9 +40,9 @@
       "close_price": 378.0,
       "trading_volume": 1555424,
       "trading_value": 587950272,
-      "rise_reason": "경영진 교체",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 최윤근 대표이사 신규 선임",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [
@@ -89,7 +91,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "모바일어플라이언스, 최윤근 대표이사 신규 선임",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006318265&office_id=018&code=087260&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -97,9 +109,9 @@
       "close_price": 609.0,
       "trading_volume": 1303137,
       "trading_value": 793610433,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 최윤근 대표집행임원 자진 사임",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [
@@ -166,7 +178,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "모바일어플라이언스, 최윤근 대표집행임원 자진 사임",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006304467&office_id=018&code=087260&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260316",
@@ -254,5 +276,5 @@
     "count_recent": 0,
     "avg_rate": 19.36
   },
-  "built_at": "2026-09-27T10:40:00"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,15 +9,17 @@
       "close_price": 2675.0,
       "trading_volume": 32251,
       "trading_value": 86271425,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "유리 기판 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -40,10 +42,10 @@
       "date": "20251103",
       "change_rate": 12.15,
       "close_price": 4800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -51,7 +53,9 @@
       "source": "estimated",
       "trading_volume": 2132812,
       "trading_value": 10237497600,
-      "market_cap": 68594323873
+      "market_cap": 68594323873,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
@@ -79,5 +83,5 @@
     "count_recent": 0,
     "avg_rate": 12.21
   },
-  "built_at": "2026-09-27T10:17:43"
+  "built_at": "2026-10-02T05:15:57"
 }

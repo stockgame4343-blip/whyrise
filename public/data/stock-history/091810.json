@@ -9,9 +9,9 @@
       "close_price": 4470.0,
       "trading_volume": 2629867,
       "trading_value": 11755505490,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "항공주 동반 강세 — 美·이란 종전 기대에 유가↓",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "항공사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 항공주 일제히 강세…美·이란 종전 기대에 유가↓",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000516000&office_id=374&code=091810&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.06.15"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 13.31
   },
-  "built_at": "2026-09-27T08:47:14"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,10 +9,10 @@
       "close_price": 40800.0,
       "trading_volume": 114414,
       "trading_value": 4668091200,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -325,9 +327,9 @@
       "date": "20250721",
       "change_rate": 12.35,
       "close_price": 46400.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "미래에셋벤처 천보비엘에스 CB 인수 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -367,7 +369,17 @@
       "source": "estimated",
       "trading_volume": 535669,
       "trading_value": 24855041600,
-      "market_cap": 568494749124
+      "market_cap": 568494749124,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "미래에셋벤처 천보비엘에스 CB 인수 소식에…천보 14% 강세[줍줍 리포...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004511495",
+          "source": "서울경제",
+          "date": "2025-07-21"
+        }
+      ]
     },
     {
       "date": "20250528",
@@ -395,5 +407,5 @@
     "count_recent": 0,
     "avg_rate": 14.48
   },
-  "built_at": "2026-10-01T22:55:14"
+  "built_at": "2026-10-02T05:15:56"
 }

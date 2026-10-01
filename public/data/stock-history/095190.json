@@ -9,24 +9,26 @@
       "close_price": 2415.0,
       "trading_volume": 537301,
       "trading_value": 1297581915,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "방위산업 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260119",
       "change_rate": 12.26,
       "close_price": 2335.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -34,7 +36,9 @@
       "source": "estimated",
       "trading_volume": 1906614,
       "trading_value": 4451943690,
-      "market_cap": 152418598660
+      "market_cap": 152418598660,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -45,5 +49,5 @@
     "count_recent": 0,
     "avg_rate": 11.14
   },
-  "built_at": "2026-10-01T22:57:19"
+  "built_at": "2026-10-02T05:15:57"
 }

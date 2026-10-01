@@ -9,15 +9,17 @@
       "close_price": 34550.0,
       "trading_volume": 3037574,
       "trading_value": 104948181700,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -25,9 +27,9 @@
       "close_price": 83800.0,
       "trading_volume": 20671110,
       "trading_value": 1732239018000,
-      "rise_reason": "거래대금 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "증권 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [
@@ -94,7 +96,9 @@
       ],
       "sector": "증권",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래대금 증가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260414",
@@ -169,23 +173,25 @@
       "close_price": 67700.0,
       "trading_volume": 3421784,
       "trading_value": 231654776800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
       "change_rate": 10.15,
       "close_price": 67300.0,
-      "rise_reason": "밸류업(24년 기업가치 제고계획 발표) 테마 강세",
+      "rise_reason": "밸류업 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [],
@@ -194,7 +200,9 @@
       "source": "estimated",
       "trading_volume": 5318315,
       "trading_value": 357922599500,
-      "market_cap": 37658871179487
+      "market_cap": 37658871179487,
+      "reason_previous": "밸류업(24년 기업가치 제고계획 발표) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260311",
@@ -217,9 +225,9 @@
       "date": "20260305",
       "change_rate": 15.4,
       "close_price": 64918.0,
-      "rise_reason": "밸류업(24년 기업가치 제고계획 발표) 테마 강세",
+      "rise_reason": "밸류업 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [],
@@ -228,15 +236,17 @@
       "source": "estimated",
       "trading_volume": 7128925,
       "trading_value": 462795553150,
-      "market_cap": 36325982157948
+      "market_cap": 36325982157948,
+      "reason_previous": "밸류업(24년 기업가치 제고계획 발표) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260219",
       "change_rate": 14.45,
       "close_price": 70195.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "밸류업 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [],
@@ -245,7 +255,9 @@
       "source": "estimated",
       "trading_volume": 9778624,
       "trading_value": 686410511680,
-      "market_cap": 39278818164102
+      "market_cap": 39278818164102,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260213",
@@ -285,9 +297,9 @@
       "date": "20260203",
       "change_rate": 24.72,
       "close_price": 49734.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "밸류업 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [],
@@ -296,7 +308,9 @@
       "source": "estimated",
       "trading_volume": 19131371,
       "trading_value": 951479605314,
-      "market_cap": 27829514104615
+      "market_cap": 27829514104615,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260129",
@@ -319,9 +333,9 @@
       "date": "20260123",
       "change_rate": 16.58,
       "close_price": 34649.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "밸류업 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [],
@@ -330,7 +344,9 @@
       "source": "estimated",
       "trading_volume": 24067507,
       "trading_value": 833915050043,
-      "market_cap": 19388443202051
+      "market_cap": 19388443202051,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260106",
@@ -353,9 +369,9 @@
       "date": "20251020",
       "change_rate": 17.17,
       "close_price": 25141.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "밸류업 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [],
@@ -364,7 +380,9 @@
       "source": "estimated",
       "trading_volume": 9264276,
       "trading_value": 232913162916,
-      "market_cap": 14068078459487
+      "market_cap": 14068078459487,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250909",
@@ -421,9 +439,9 @@
       "date": "20250529",
       "change_rate": 23.22,
       "close_price": 16488.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "밸류업 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [],
@@ -432,7 +450,9 @@
       "source": "estimated",
       "trading_volume": 13032404,
       "trading_value": 214878277152,
-      "market_cap": 9226143655384
+      "market_cap": 9226143655384,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -443,5 +463,5 @@
     "count_recent": 0,
     "avg_rate": 14.67
   },
-  "built_at": "2026-09-29T22:18:38"
+  "built_at": "2026-10-02T05:15:57"
 }

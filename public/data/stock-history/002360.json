@@ -9,10 +9,10 @@
       "close_price": 3300.0,
       "trading_volume": 541959,
       "trading_value": 1788464700,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "셰일가스(Shale Gas)",
       "news": [
         {
@@ -30,7 +30,9 @@
       ],
       "sector": "화학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260928",
@@ -67,10 +69,10 @@
       "close_price": 2610.0,
       "trading_volume": 1374746,
       "trading_value": 3588087060,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "셰일가스(Shale Gas)",
       "news": [
         {
@@ -88,7 +90,9 @@
       ],
       "sector": "화학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260922",
@@ -96,10 +100,10 @@
       "close_price": 2120.0,
       "trading_volume": 292486,
       "trading_value": 620070320,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "셰일가스(Shale Gas)",
       "news": [
         {
@@ -117,7 +121,9 @@
       ],
       "sector": "화학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260917",
@@ -125,10 +131,10 @@
       "close_price": 1950.0,
       "trading_volume": 202952,
       "trading_value": 395756400,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "셰일가스(Shale Gas)",
       "news": [
         {
@@ -206,16 +212,18 @@
       ],
       "sector": "화학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260319",
       "change_rate": 14.73,
       "close_price": 4440.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -230,7 +238,9 @@
       "source": "estimated",
       "trading_volume": 4796882,
       "trading_value": 21298156080,
-      "market_cap": 49388209121
+      "market_cap": 49388209121,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260304",
@@ -354,5 +364,5 @@
     "count_recent": 5,
     "avg_rate": 18.67
   },
-  "built_at": "2026-10-01T22:53:25"
+  "built_at": "2026-10-02T05:15:56"
 }

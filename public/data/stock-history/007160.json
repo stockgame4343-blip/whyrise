@@ -9,10 +9,10 @@
       "close_price": 48500.0,
       "trading_volume": 44018,
       "trading_value": 2134873000,
-      "rise_reason": "수산 M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "수산",
       "news": [
         {
@@ -78,16 +78,18 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수산 M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
       "change_rate": 11.79,
       "close_price": 56900.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -108,16 +110,18 @@
       "source": "estimated",
       "trading_volume": 36798,
       "trading_value": 2093806200,
-      "market_cap": 284500000000
+      "market_cap": 284500000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260204",
       "change_rate": 11.94,
       "close_price": 72200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -125,16 +129,18 @@
       "source": "estimated",
       "trading_volume": 96616,
       "trading_value": 6975675200,
-      "market_cap": 361000000000
+      "market_cap": 361000000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251203",
       "change_rate": 12.81,
       "close_price": 59000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -149,7 +155,9 @@
       "source": "estimated",
       "trading_volume": 101764,
       "trading_value": 6004076000,
-      "market_cap": 295000000000
+      "market_cap": 295000000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
@@ -177,5 +185,5 @@
     "count_recent": 0,
     "avg_rate": 12.01
   },
-  "built_at": "2026-09-27T08:47:59"
+  "built_at": "2026-10-02T05:15:57"
 }

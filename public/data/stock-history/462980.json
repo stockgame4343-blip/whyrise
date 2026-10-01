@@ -9,10 +9,10 @@
       "close_price": 1536.0,
       "trading_volume": 231231,
       "trading_value": 355170816,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260625",
@@ -86,10 +88,10 @@
       "close_price": 1395.0,
       "trading_volume": 819335,
       "trading_value": 1142972325,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260605",
@@ -163,9 +167,9 @@
       "close_price": 1575.0,
       "trading_volume": 723900,
       "trading_value": 1140142500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보닥 5월 누적 가입자 105만명 돌파",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "공시",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "생명보험",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이지넷, '보닥' 5월 누적 가입자 105만명 돌파",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006295920&office_id=018&code=462980&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.02"
+        }
+      ]
     },
     {
       "date": "20260403",
@@ -254,9 +268,9 @@
       "date": "20260303",
       "change_rate": 10.19,
       "close_price": 2325.0,
-      "rise_reason": "공시 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "2025년 사상 최대 실적",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "공시",
       "news": [
@@ -272,7 +286,17 @@
       "source": "estimated",
       "trading_volume": 1383472,
       "trading_value": 3216572400,
-      "market_cap": 42358299595
+      "market_cap": 42358299595,
+      "reason_previous": "공시 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이지넷, 2025년 사상 최대 실적…영업익 712% 급증",
+          "link": "https://n.news.naver.com/mnews/article/092/0002412658",
+          "source": "지디넷코리아",
+          "date": "2026-03-03"
+        }
+      ]
     }
   ],
   "stats": {
@@ -283,5 +307,5 @@
     "count_recent": 0,
     "avg_rate": 11.65
   },
-  "built_at": "2026-09-27T10:23:12"
+  "built_at": "2026-10-02T05:15:57"
 }

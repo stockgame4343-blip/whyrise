@@ -9,15 +9,17 @@
       "close_price": 15100.0,
       "trading_volume": 176724,
       "trading_value": 2668532400,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 17종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -25,15 +27,17 @@
       "close_price": 18200.0,
       "trading_volume": 113603,
       "trading_value": 2067574600,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -41,9 +45,9 @@
       "close_price": 22250.0,
       "trading_volume": 177918,
       "trading_value": 3958675500,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "HBM 테마 12종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -110,7 +114,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -118,15 +124,17 @@
       "close_price": 27550.0,
       "trading_volume": 334247,
       "trading_value": 9208504850,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260306",
@@ -166,9 +174,9 @@
       "date": "20260224",
       "change_rate": 13.19,
       "close_price": 23600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
@@ -177,7 +185,17 @@
       "source": "estimated",
       "trading_volume": 524781,
       "trading_value": 12384831600,
-      "market_cap": 446045232815
+      "market_cap": 446045232815,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "20만전자·100만닉스 끌고, 소부장 밀고…반도체주 '강세'(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0008790759",
+          "source": "뉴스1",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20260105",
@@ -253,5 +271,5 @@
     "count_recent": 0,
     "avg_rate": 13.89
   },
-  "built_at": "2026-09-27T09:25:05"
+  "built_at": "2026-10-02T05:15:57"
 }

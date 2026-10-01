@@ -102,9 +102,9 @@
       "date": "20251013",
       "change_rate": 12.66,
       "close_price": 22700.0,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "실시간 상승률 1위",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -144,15 +144,25 @@
       "source": "estimated",
       "trading_volume": 1097971,
       "trading_value": 24923941700,
-      "market_cap": 240125277983
+      "market_cap": 240125277983,
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]노바텍 19.11% 급등…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003581522",
+          "source": "서울신문",
+          "date": "2025-10-13"
+        }
+      ]
     },
     {
       "date": "20250716",
       "change_rate": 10.19,
       "close_price": 20650.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "글로벌 희토류 확보 경쟁",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -180,7 +190,17 @@
       "source": "estimated",
       "trading_volume": 679148,
       "trading_value": 14024406200,
-      "market_cap": 218439955522
+      "market_cap": 218439955522,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "글로벌 희토류 확보 경쟁에 노바텍·EG 등 테마주 들썩",
+          "link": "https://n.news.naver.com/mnews/article/015/0005158802",
+          "source": "한국경제",
+          "date": "2025-07-16"
+        }
+      ]
     }
   ],
   "stats": {
@@ -191,5 +211,5 @@
     "count_recent": 0,
     "avg_rate": 14.6
   },
-  "built_at": "2026-09-27T09:43:39"
+  "built_at": "2026-10-02T05:15:57"
 }

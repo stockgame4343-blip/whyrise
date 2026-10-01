@@ -9,9 +9,9 @@
       "close_price": 30350.0,
       "trading_volume": 103272,
       "trading_value": 3134305200,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 22종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260722",
@@ -86,9 +88,9 @@
       "close_price": 34200.0,
       "trading_volume": 486973,
       "trading_value": 16654476600,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — 삼성전자 로봇 승부수에 줄줄이",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "로봇주 '불기둥'…삼성전자 로봇 승부수에 줄줄이 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334418&office_id=018&code=066430&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -163,9 +175,9 @@
       "close_price": 44150.0,
       "trading_volume": 80273,
       "trading_value": 3544052950,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 오토메이트 2026 참가…휴머노이드 구동 솔루션 선봬",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -184,7 +196,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에스비비테크, '오토메이트 2026' 참가…휴머노이드 구동 솔루션 선봬",
+          "link": "https://n.news.naver.com/mnews/article/008/0005378371",
+          "source": "머니투데이",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -192,9 +214,9 @@
       "close_price": 62600.0,
       "trading_volume": 217926,
       "trading_value": 13642167600,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — HL만도, 피지컬 AI 수혜 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -255,7 +277,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "HL만도, 피지컬 AI 수혜 기대감 상한가…로봇주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008999964&office_id=421&code=204320&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -263,9 +295,9 @@
       "close_price": 85100.0,
       "trading_volume": 217369,
       "trading_value": 18498101900,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "12억 규모 휴머노이드 로봇용 정밀 감속기 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -332,7 +364,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스비비테크, 12억 규모 휴머노이드 로봇용 정밀 감속기 공급계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006285315&office_id=018&code=389500&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -340,10 +382,10 @@
       "close_price": 103300.0,
       "trading_volume": 1573386,
       "trading_value": 162530773800,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
         {
@@ -409,7 +451,9 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -417,9 +461,9 @@
       "close_price": 90000.0,
       "trading_volume": 1653607,
       "trading_value": 148824630000,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "하모닉 감속기 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -486,7 +530,17 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"하모닉 감속기 공급\"…에스비비테크, 로봇 타고 반등할까 [줌인e종목....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008932555&office_id=421&code=389500&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -494,9 +548,9 @@
       "close_price": 60800.0,
       "trading_volume": 612186,
       "trading_value": 37220908800,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "피지컬 AI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -553,7 +607,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -561,9 +617,9 @@
       "close_price": 52600.0,
       "trading_volume": 94955,
       "trading_value": 4994633000,
-      "rise_reason": "로봇/자동화",
+      "rise_reason": "휴머노이드 로봇 ETF 편입",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -576,7 +632,17 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스비비테크, 휴머노이드 로봇 ETF 편입",
+          "link": "https://n.news.naver.com/mnews/article/030/0003415928",
+          "source": "전자신문",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -584,23 +650,25 @@
       "close_price": 52700.0,
       "trading_volume": 128234,
       "trading_value": 6757931800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "피지컬 AI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 14.41,
       "close_price": 52800.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -616,15 +684,17 @@
       "source": "estimated",
       "trading_volume": 168746,
       "trading_value": 8909788800,
-      "market_cap": 351858776328
+      "market_cap": 351858776328,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260225",
       "change_rate": 14.36,
       "close_price": 66900.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -633,7 +703,9 @@
       "source": "estimated",
       "trading_volume": 698391,
       "trading_value": 46722357900,
-      "market_cap": 445821063189
+      "market_cap": 445821063189,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260128",
@@ -656,9 +728,9 @@
       "date": "20260121",
       "change_rate": 10.53,
       "close_price": 80800.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇주 동반 강세 — 현대차 질주",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -686,7 +758,17 @@
       "source": "estimated",
       "trading_volume": 1855623,
       "trading_value": 149934338400,
-      "market_cap": 538450551654
+      "market_cap": 538450551654,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "현대차 질주에…로봇 SW·부품株 '불기둥'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005240295",
+          "source": "한국경제",
+          "date": "2026-01-21"
+        }
+      ]
     },
     {
       "date": "20260119",
@@ -758,9 +840,9 @@
       "date": "20260109",
       "change_rate": 12.68,
       "close_price": 46200.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: CES서 로봇 구동부품 전시…글로벌 교류 이어가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -782,7 +864,17 @@
       "source": "estimated",
       "trading_volume": 1336096,
       "trading_value": 61727635200,
-      "market_cap": 307876429287
+      "market_cap": 307876429287,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에스비비테크, CES서 로봇 구동부품 전시…글로벌 교류 이어가",
+          "link": "https://n.news.naver.com/mnews/article/031/0000995604",
+          "source": "아이뉴스24",
+          "date": "2026-01-09"
+        }
+      ]
     },
     {
       "date": "20260107",
@@ -949,9 +1041,9 @@
       "date": "20251015",
       "change_rate": 14.81,
       "close_price": 28300.0,
-      "rise_reason": "조선/해운",
+      "rise_reason": "현대차 모베드 핵심부품 개발 협력",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -979,7 +1071,17 @@
       "source": "estimated",
       "trading_volume": 1084489,
       "trading_value": 30691038700,
-      "market_cap": 188590972918
+      "market_cap": 188590972918,
+      "reason_previous": "조선/해운",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스비비테크, 현대차 '모베드' 핵심부품 개발 협력",
+          "link": "https://n.news.naver.com/mnews/article/092/0002393996",
+          "source": "지디넷코리아",
+          "date": "2025-10-15"
+        }
+      ]
     },
     {
       "date": "20250918",
@@ -1057,9 +1159,9 @@
       "date": "20250825",
       "change_rate": 10.26,
       "close_price": 20950.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇주 동반 강세 — 정부 휴머노이드 3대 강국 전략",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -1093,7 +1195,17 @@
       "source": "estimated",
       "trading_volume": 91423,
       "trading_value": 1915311850,
-      "market_cap": 139610631895
+      "market_cap": 139610631895,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "로봇株, 정부 “휴머노이드 3대 강국” 전략에 동반 강세 [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/119/0002994693",
+          "source": "데일리안",
+          "date": "2025-08-25"
+        }
+      ]
     }
   ],
   "stats": {
@@ -1104,5 +1216,5 @@
     "count_recent": 0,
     "avg_rate": 16.38
   },
-  "built_at": "2026-10-01T22:55:52"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,10 +9,10 @@
       "close_price": 9330.0,
       "trading_volume": 589823,
       "trading_value": 5503048590,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -86,9 +88,9 @@
       "close_price": 6330.0,
       "trading_volume": 47254,
       "trading_value": 299117820,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 차세대 배터리 도전 , 자회사 에코앤솔리드 설립",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -101,7 +103,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "&quot;차세대 배터리 도전&quot; 에코앤드림, 자회사 '에코앤솔리드' 설립",
+          "link": "https://n.news.naver.com/mnews/article/014/0005555199",
+          "source": "파이낸셜뉴스",
+          "date": "2026-07-30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -109,9 +121,9 @@
       "close_price": 9000.0,
       "trading_volume": 100161,
       "trading_value": 901449000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "ESG 성과 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -178,15 +190,25 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에코앤드림, 지속가능경영보고서 발간…ESG 성과 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002428419&office_id=092&code=101360&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 13.59,
       "close_price": 17970.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 인터배터리 첫 참가…전구체 수상 사례 배출",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -202,16 +224,26 @@
       "source": "estimated",
       "trading_volume": 225979,
       "trading_value": 4060842630,
-      "market_cap": 319665537848
+      "market_cap": 319665537848,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에코앤드림, '인터배터리' 첫 참가…전구체 수상 사례 배출",
+          "link": "https://n.news.naver.com/mnews/article/092/0002412739",
+          "source": "지디넷코리아",
+          "date": "2026-03-04"
+        }
+      ]
     },
     {
       "date": "20251024",
       "change_rate": 12.65,
       "close_price": 24050.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -226,16 +258,18 @@
       "source": "estimated",
       "trading_volume": 609059,
       "trading_value": 14647868950,
-      "market_cap": 427821713147
+      "market_cap": 427821713147,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251016",
       "change_rate": 11.08,
       "close_price": 21350.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -243,7 +277,9 @@
       "source": "estimated",
       "trading_volume": 414687,
       "trading_value": 8853567450,
-      "market_cap": 379791832669
+      "market_cap": 379791832669,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -254,5 +290,5 @@
     "count_recent": 0,
     "avg_rate": 14.17
   },
-  "built_at": "2026-10-01T22:56:59"
+  "built_at": "2026-10-02T05:15:56"
 }

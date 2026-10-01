@@ -121,9 +121,9 @@
       "close_price": 62000.0,
       "trading_volume": 13417285,
       "trading_value": 831871670000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "중동긴장·유가급등",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -166,7 +166,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 중동긴장·유가급등에 SK이터닉스 등 신재생주 급등(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016204172&office_id=001&code=475150&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260713",
@@ -174,10 +184,10 @@
       "close_price": 48050.0,
       "trading_volume": 8240685,
       "trading_value": 395964914250,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
         {
@@ -243,7 +253,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -328,15 +340,17 @@
       "close_price": 50000.0,
       "trading_volume": 10525175,
       "trading_value": 526258750000,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260625",
@@ -344,9 +358,9 @@
       "close_price": 49050.0,
       "trading_volume": 8065739,
       "trading_value": 395624497950,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "신재생에너지주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -401,7 +415,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "신재생에너지株 강세…SK이터닉스 27%↑[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009022563&office_id=421&code=475150&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.25"
+        }
+      ]
     },
     {
       "date": "20260616",
@@ -486,10 +510,10 @@
       "close_price": 48850.0,
       "trading_volume": 10820358,
       "trading_value": 528574488300,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [
         {
@@ -555,7 +579,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260610",
@@ -563,9 +589,9 @@
       "close_price": 44350.0,
       "trading_volume": 1971403,
       "trading_value": 87431723050,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "SK그룹 신재생에너지 재편 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -632,7 +658,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] SK그룹 신재생에너지 재편 소식에…SK이터닉스 ‘上’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001170663&office_id=366&code=475150&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.10"
+        }
+      ]
     },
     {
       "date": "20260403",
@@ -640,23 +676,25 @@
       "close_price": 68200.0,
       "trading_volume": 11359132,
       "trading_value": 774692802400,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "태양광에너지 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
       "change_rate": 10.81,
       "close_price": 57400.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "에너지주 동반 강세 — 중동 리스크",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -696,15 +734,25 @@
       "source": "estimated",
       "trading_volume": 3339824,
       "trading_value": 191705897600,
-      "market_cap": 1955453240740
+      "market_cap": 1955453240740,
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "‘중동 리스크’에 에너지株 강세",
+          "link": "https://n.news.naver.com/mnews/article/014/0005497440",
+          "source": "파이낸셜뉴스",
+          "date": "2026-03-25"
+        }
+      ]
     },
     {
       "date": "20260320",
       "change_rate": 11.55,
       "close_price": 59900.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 86%나 올랐다고? 코스피 상승률 1위 …고유가 공포에 신...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -744,7 +792,17 @@
       "source": "estimated",
       "trading_volume": 10474646,
       "trading_value": 627431295400,
-      "market_cap": 2040621064814
+      "market_cap": 2040621064814,
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "“86%나 올랐다고?” 코스피 상승률 1위 SK이터닉스…고유가 공포에 신...",
+          "link": "https://n.news.naver.com/mnews/article/016/0002617085",
+          "source": "헤럴드경제",
+          "date": "2026-03-20"
+        }
+      ]
     },
     {
       "date": "20260319",
@@ -914,9 +972,9 @@
       "date": "20250911",
       "change_rate": 10.07,
       "close_price": 24600.0,
-      "rise_reason": "풍력에너지 테마 강세",
+      "rise_reason": "풍력에너지 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [],
@@ -925,7 +983,9 @@
       "source": "estimated",
       "trading_volume": 3670385,
       "trading_value": 90291471000,
-      "market_cap": 838051388888
+      "market_cap": 838051388888,
+      "reason_previous": "풍력에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250623",
@@ -953,5 +1013,5 @@
     "count_recent": 0,
     "avg_rate": 18.66
   },
-  "built_at": "2026-10-01T22:52:31"
+  "built_at": "2026-10-02T05:15:56"
 }

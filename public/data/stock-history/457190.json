@@ -78,9 +78,9 @@
       "close_price": 73200.0,
       "trading_volume": 294999,
       "trading_value": 21593926800,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -93,7 +93,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -101,9 +103,9 @@
       "close_price": 127000.0,
       "trading_volume": 1542395,
       "trading_value": 195884165000,
-      "rise_reason": "2차전지 업종 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 벤츠 한국 기업과 파트너십 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -170,15 +172,25 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 업종 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "벤츠 \"한국 기업과 파트너십 확대\"…2차전지주 급등세 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003082813&office_id=119&code=222080&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.04.21"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.12,
       "close_price": 97000.0,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "2차전지 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
@@ -187,15 +199,17 @@
       "source": "estimated",
       "trading_volume": 483401,
       "trading_value": 46889897000,
-      "market_cap": 2931203517587
+      "market_cap": 2931203517587,
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260204",
       "change_rate": 13.67,
       "close_price": 122200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
@@ -204,7 +218,9 @@
       "source": "estimated",
       "trading_volume": 1988127,
       "trading_value": 242949119400,
-      "market_cap": 3692712060301
+      "market_cap": 3692712060301,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260122",
@@ -436,9 +452,9 @@
       "date": "20250806",
       "change_rate": 10.61,
       "close_price": 51100.0,
-      "rise_reason": "실적 개선",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "2차전지주 동반 강세 — 업황 회복 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -478,15 +494,25 @@
       "source": "estimated",
       "trading_volume": 1971283,
       "trading_value": 100732561300,
-      "market_cap": 1544170100502
+      "market_cap": 1544170100502,
+      "reason_previous": "실적 개선",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "2차전지주, 업황 회복 기대에 상승세…SK아이이테크 6%↑[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006082746",
+          "source": "이데일리",
+          "date": "2025-08-06"
+        }
+      ]
     },
     {
       "date": "20250718",
       "change_rate": 11.66,
       "close_price": 45950.0,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
@@ -495,7 +521,9 @@
       "source": "estimated",
       "trading_volume": 1876144,
       "trading_value": 86208816800,
-      "market_cap": 1388544346733
+      "market_cap": 1388544346733,
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -506,5 +534,5 @@
     "count_recent": 1,
     "avg_rate": 15.11
   },
-  "built_at": "2026-10-01T22:52:26"
+  "built_at": "2026-10-02T05:15:56"
 }

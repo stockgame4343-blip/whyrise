@@ -9,9 +9,9 @@
       "close_price": 5500.0,
       "trading_volume": 2946395,
       "trading_value": 16205172500,
-      "rise_reason": "전력반도체 양산 보도",
+      "rise_reason": "美 반도체 훈풍",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력반도체",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력반도체 양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "美 반도체 훈풍에 LB세미콘 18%대 급등…퀄컴 호재도 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003122646&office_id=119&code=061970&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260814",
@@ -86,10 +96,10 @@
       "close_price": 4655.0,
       "trading_volume": 1064161,
       "trading_value": 4953669455,
-      "rise_reason": "전력반도체 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력반도체",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력반도체 양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -163,9 +175,9 @@
       "close_price": 4115.0,
       "trading_volume": 1216685,
       "trading_value": 5006658775,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -190,7 +202,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -275,9 +289,9 @@
       "close_price": 6582.0,
       "trading_volume": 5528873,
       "trading_value": 36391042086,
-      "rise_reason": "전력반도체 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "르네사스 전력반도체 제품 양산 본격화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력반도체",
       "news": [
@@ -344,7 +358,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력반도체 양산 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "LB세미콘, 르네사스 전력반도체 제품 양산 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013910773&office_id=003&code=061970&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -352,9 +376,9 @@
       "close_price": 5807.0,
       "trading_volume": 5306954,
       "trading_value": 30817481878,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -421,7 +445,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -497,9 +523,9 @@
       "date": "20250715",
       "change_rate": 12.94,
       "close_price": 3841.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "SK키파운드리, 반도체 패키징 기술 공동개발",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -539,7 +565,17 @@
       "source": "estimated",
       "trading_volume": 8607141,
       "trading_value": 33060028581,
-      "market_cap": 223093698630
+      "market_cap": 223093698630,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "SK키파운드리, LB세미콘과 반도체 패키징 기술 공동개발",
+          "link": "https://n.news.naver.com/mnews/article/374/0000451720",
+          "source": "SBS Biz",
+          "date": "2025-07-15"
+        }
+      ]
     }
   ],
   "stats": {
@@ -550,5 +586,5 @@
     "count_recent": 0,
     "avg_rate": 14.03
   },
-  "built_at": "2026-10-01T22:55:34"
+  "built_at": "2026-10-02T05:15:56"
 }

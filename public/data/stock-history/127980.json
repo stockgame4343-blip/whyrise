@@ -9,10 +9,10 @@
       "close_price": 7010.0,
       "trading_volume": 3504100,
       "trading_value": 24563741000,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "PCB(FPCB 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260421",
@@ -86,10 +88,10 @@
       "close_price": 6830.0,
       "trading_volume": 3842658,
       "trading_value": 26245354140,
-      "rise_reason": "PCB(FPCB 등) 지분 투자 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "PCB(FPCB 등)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "PCB(FPCB 등) 지분 투자 이슈",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -166,5 +170,5 @@
     "count_recent": 0,
     "avg_rate": 23.25
   },
-  "built_at": "2026-09-27T10:21:15"
+  "built_at": "2026-10-02T05:15:57"
 }

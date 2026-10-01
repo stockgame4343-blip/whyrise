@@ -25,15 +25,25 @@
       "close_price": 12980.0,
       "trading_volume": 289839,
       "trading_value": 3762110220,
-      "rise_reason": "치매 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "치매 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -92,10 +102,10 @@
       "date": "20260306",
       "change_rate": 11.52,
       "close_price": 43550.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -103,7 +113,9 @@
       "source": "estimated",
       "trading_volume": 484614,
       "trading_value": 21104939700,
-      "market_cap": 1927892156862
+      "market_cap": 1927892156862,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -156,9 +168,9 @@
       "date": "20260203",
       "change_rate": 13.77,
       "close_price": 43800.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "GV1001 조건부 허가 승부수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -174,16 +186,26 @@
       "source": "estimated",
       "trading_volume": 469958,
       "trading_value": 20584160400,
-      "market_cap": 1938959276018
+      "market_cap": 1938959276018,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "“약 한번 맞아보고 죽고 싶다”…젬백스, GV1001 조건부 허가 승부수",
+          "link": "https://n.news.naver.com/mnews/article/018/0006211971",
+          "source": "이데일리",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20260128",
       "change_rate": 21.82,
       "close_price": 41600.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -198,16 +220,18 @@
       "source": "estimated",
       "trading_volume": 1205481,
       "trading_value": 50148009600,
-      "market_cap": 1841568627450
+      "market_cap": 1841568627450,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260126",
       "change_rate": 29.03,
       "close_price": 34000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -215,15 +239,17 @@
       "source": "estimated",
       "trading_volume": 1585482,
       "trading_value": 53906388000,
-      "market_cap": 1505128205128
+      "market_cap": 1505128205128,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260123",
       "change_rate": 13.09,
       "close_price": 26350.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "루게릭병 치료제 임상 진행 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -245,16 +271,26 @@
       "source": "estimated",
       "trading_volume": 654616,
       "trading_value": 17249131600,
-      "market_cap": 1166474358974
+      "market_cap": 1166474358974,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "젬백스, 루게릭병 치료제 임상 진행 소식에 7% 강세[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006205973",
+          "source": "이데일리",
+          "date": "2026-01-23"
+        }
+      ]
     },
     {
       "date": "20251107",
       "change_rate": 16.2,
       "close_price": 54500.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -262,16 +298,18 @@
       "source": "estimated",
       "trading_volume": 655932,
       "trading_value": 35748294000,
-      "market_cap": 2412631975867
+      "market_cap": 2412631975867,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251031",
       "change_rate": 10.67,
       "close_price": 48250.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -279,7 +317,9 @@
       "source": "estimated",
       "trading_volume": 271357,
       "trading_value": 13092975250,
-      "market_cap": 2135953996983
+      "market_cap": 2135953996983,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250909",
@@ -355,5 +395,5 @@
     "count_recent": 0,
     "avg_rate": 15.33
   },
-  "built_at": "2026-10-01T22:55:05"
+  "built_at": "2026-10-02T05:15:57"
 }

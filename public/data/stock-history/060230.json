@@ -9,10 +9,10 @@
       "close_price": 1360.0,
       "trading_volume": 216542,
       "trading_value": 294497120,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260909",
@@ -86,9 +88,9 @@
       "close_price": 1337.0,
       "trading_volume": 1544702,
       "trading_value": 2065266574,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전기차 화재 방지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260803",
@@ -163,9 +167,9 @@
       "close_price": 1556.0,
       "trading_volume": 162338,
       "trading_value": 252597928,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 대표이사·부대표, 장내 매수로 지분 확대… 주주가치...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "제이케이시냅스 대표이사·부대표, 장내 매수로 지분 확대… 주주가치...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001183375&office_id=366&code=060230&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -240,9 +254,9 @@
       "close_price": 1694.0,
       "trading_volume": 552743,
       "trading_value": 936346642,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "최대주주 휴림로봇으로 바뀐다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -303,7 +317,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "제이케이시냅스 30억원 유증… 최대주주 휴림로봇으로 바뀐다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001180511&office_id=366&code=060230&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.21"
+        }
+      ]
     },
     {
       "date": "20260720",
@@ -311,10 +335,10 @@
       "close_price": 1360.0,
       "trading_volume": 2038573,
       "trading_value": 2772459280,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "삼성페이",
       "news": [
         {
@@ -374,7 +398,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260716",
@@ -382,10 +408,10 @@
       "close_price": 1165.0,
       "trading_volume": 782481,
       "trading_value": 911590365,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "삼성페이",
       "news": [
         {
@@ -445,7 +471,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -453,10 +481,10 @@
       "close_price": 1425.0,
       "trading_volume": 829527,
       "trading_value": 1182075975,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "삼성페이",
       "news": [
         {
@@ -516,7 +544,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260514",
@@ -524,10 +554,10 @@
       "close_price": 2355.0,
       "trading_volume": 3384262,
       "trading_value": 7969937010,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
         {
@@ -581,7 +611,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260420",
@@ -908,5 +940,5 @@
     "count_recent": 2,
     "avg_rate": 18.0
   },
-  "built_at": "2026-10-01T22:59:30"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -41,10 +41,10 @@
       "close_price": 736000.0,
       "trading_volume": 70764,
       "trading_value": 52082304000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기록",
       "news": [
         {
@@ -110,7 +110,9 @@
       ],
       "sector": "복합기업",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260529",
@@ -118,10 +120,10 @@
       "close_price": 659000.0,
       "trading_volume": 48210,
       "trading_value": 31770390000,
-      "rise_reason": "서울고속터미널 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기록",
       "news": [
         {
@@ -187,7 +189,9 @@
       ],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "서울고속터미널 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -195,10 +199,10 @@
       "close_price": 627000.0,
       "trading_volume": 43186,
       "trading_value": 27077622000,
-      "rise_reason": "서울고속터미널 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기록",
       "news": [
         {
@@ -264,7 +268,9 @@
       ],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "서울고속터미널 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -293,9 +299,9 @@
       "date": "20251111",
       "change_rate": 10.95,
       "close_price": 618000.0,
-      "rise_reason": "자사주 소각",
+      "rise_reason": "실시간 상승률 1위",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -335,15 +341,25 @@
       "source": "estimated",
       "trading_volume": 111589,
       "trading_value": 68962002000,
-      "market_cap": 2469817472118
+      "market_cap": 2469817472118,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]두산우 12.21% 급등…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003590129",
+          "source": "서울신문",
+          "date": "2025-11-11"
+        }
+      ]
     },
     {
       "date": "20251103",
       "change_rate": 14.37,
       "close_price": 581000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "지주사 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [],
@@ -352,7 +368,9 @@
       "source": "estimated",
       "trading_volume": 75859,
       "trading_value": 44074079000,
-      "market_cap": 2321948141263
+      "market_cap": 2321948141263,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251029",
@@ -456,5 +474,5 @@
     "count_recent": 0,
     "avg_rate": 14.61
   },
-  "built_at": "2026-10-01T22:52:29"
+  "built_at": "2026-10-02T05:15:57"
 }

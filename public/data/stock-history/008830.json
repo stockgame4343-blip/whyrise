@@ -23,10 +23,10 @@
       "date": "20260305",
       "change_rate": 13.39,
       "close_price": 17460.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -34,15 +34,17 @@
       "source": "estimated",
       "trading_volume": 542432,
       "trading_value": 9470862720,
-      "market_cap": 156978582434
+      "market_cap": 156978582434,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260210",
       "change_rate": 16.0,
       "close_price": 21961.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 전기차·로봇 미래사업 전환 가속페달",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -58,7 +60,17 @@
       "source": "estimated",
       "trading_volume": 13021104,
       "trading_value": 285956464944,
-      "market_cap": 197445970724
+      "market_cap": 197445970724,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "대동기어, 전기차·로봇 미래사업 전환 ‘가속페달’",
+          "link": "https://n.news.naver.com/mnews/article/016/0002598088",
+          "source": "헤럴드경제",
+          "date": "2026-02-09"
+        }
+      ]
     },
     {
       "date": "20260205",
@@ -129,10 +141,10 @@
       "date": "20251229",
       "change_rate": 11.02,
       "close_price": 15348.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -140,7 +152,9 @@
       "source": "estimated",
       "trading_volume": 909326,
       "trading_value": 13956335448,
-      "market_cap": 137990107858
+      "market_cap": 137990107858,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251124",
@@ -194,10 +208,10 @@
       "date": "20251017",
       "change_rate": 10.92,
       "close_price": 14540.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -205,7 +219,9 @@
       "source": "estimated",
       "trading_volume": 502985,
       "trading_value": 7313401900,
-      "market_cap": 130725577812
+      "market_cap": 130725577812,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -216,5 +232,5 @@
     "count_recent": 0,
     "avg_rate": 14.71
   },
-  "built_at": "2026-09-27T09:46:12"
+  "built_at": "2026-10-02T05:15:57"
 }

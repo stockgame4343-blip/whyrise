@@ -9,23 +9,25 @@
       "close_price": 1472.0,
       "trading_volume": 442779,
       "trading_value": 651770688,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260324",
       "change_rate": 12.5,
       "close_price": 2475.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "에브리존 화이트디펜더 日 공급 맡아",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -47,7 +49,17 @@
       "source": "estimated",
       "trading_volume": 12255227,
       "trading_value": 30331686825,
-      "market_cap": 131867264851
+      "market_cap": 131867264851,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "알서포트, 에브리존 ‘화이트디펜더’ 日 공급 맡아",
+          "link": "https://n.news.naver.com/mnews/article/029/0003017579",
+          "source": "디지털타임스",
+          "date": "2026-03-23"
+        }
+      ]
     }
   ],
   "stats": {
@@ -58,5 +70,5 @@
     "count_recent": 0,
     "avg_rate": 13.53
   },
-  "built_at": "2026-09-27T09:57:28"
+  "built_at": "2026-10-02T05:15:57"
 }

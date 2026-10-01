@@ -102,9 +102,9 @@
       "close_price": 17840.0,
       "trading_volume": 150351,
       "trading_value": 2682261840,
-      "rise_reason": "클라우드 컴퓨팅 테마 강세",
+      "rise_reason": "관련 보도: 코오롱인더스트리 차세대 구매포탈 시스템 구축",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
@@ -117,7 +117,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "클라우드 컴퓨팅 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "엠로, 코오롱인더스트리 차세대 구매포탈 시스템 구축",
+          "link": "https://n.news.naver.com/mnews/article/016/0002663117",
+          "source": "헤럴드경제",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260527",
@@ -125,10 +135,10 @@
       "close_price": 28300.0,
       "trading_volume": 446251,
       "trading_value": 12628903300,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
         {
@@ -194,7 +204,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -202,9 +214,9 @@
       "close_price": 24900.0,
       "trading_volume": 88967,
       "trading_value": 2215278300,
-      "rise_reason": "지능형로봇/인공지능(AI) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "가트너 주최 공급망 엑스포 3년 연속 참가",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -223,7 +235,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "지능형로봇/인공지능(AI) 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엠로, 가트너 주최 공급망 엑스포 3년 연속 참가...글로벌 공략 속도",
+          "link": "https://n.news.naver.com/mnews/article/009/0005683823",
+          "source": "매일경제",
+          "date": "2026-05-22"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -231,10 +253,10 @@
       "close_price": 28900.0,
       "trading_volume": 854552,
       "trading_value": 24696552800,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모바일솔루션(스마트폰)",
       "news": [
         {
@@ -300,7 +322,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
@@ -328,5 +352,5 @@
     "count_recent": 0,
     "avg_rate": 12.7
   },
-  "built_at": "2026-10-01T22:56:25"
+  "built_at": "2026-10-02T05:15:56"
 }

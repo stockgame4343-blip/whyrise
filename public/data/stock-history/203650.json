@@ -9,9 +9,9 @@
       "close_price": 2620.0,
       "trading_volume": 51447433,
       "trading_value": 134792274460,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 2026 국제양자산업대전서 PQC 기반 양자 보안 전...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "드림시큐리티, '2026 국제양자산업대전'서 PQC 기반 양자 보안 전...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003465381&office_id=030&code=203650&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -102,9 +112,9 @@
       "close_price": 4615.0,
       "trading_volume": 21300822,
       "trading_value": 98303293530,
-      "rise_reason": "소식에 정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련주 동반 강세 — 포톤 2연상",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -171,7 +181,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소식에 정부 정책 관련",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "양자컴 관련株 동반 강세…포톤 '2연상'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006290442&office_id=018&code=203650&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -179,9 +199,9 @@
       "close_price": 3550.0,
       "trading_volume": 23035960,
       "trading_value": 81777658000,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자주 동반 강세 — 美 정부 양자컴 투자 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -242,7 +262,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美 정부 양자컴 투자 소식에…양자株 ‘불기둥’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001166408&office_id=366&code=203650&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.22"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -250,9 +280,9 @@
       "close_price": 3755.0,
       "trading_volume": 90934945,
       "trading_value": 341460718475,
-      "rise_reason": "정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스테이블코인 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -319,7 +349,9 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정부 정책 관련",
+      "reason_kind": "theme"
     },
     {
       "date": "20260420",
@@ -392,9 +424,9 @@
       "close_price": 3545.0,
       "trading_volume": 24014889,
       "trading_value": 85132781505,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "엔비디아發 훈풍에 양자컴株 질주",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -461,7 +493,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "엔비디아發 훈풍에 양자컴株 질주...드림시큐리티 30% 상한가[줍줍리...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004611227&office_id=011&code=203650&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.04.16"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -469,9 +511,9 @@
       "close_price": 2730.0,
       "trading_volume": 17781397,
       "trading_value": 48543213810,
-      "rise_reason": "양자컴퓨터 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호·보안주 동반 강세 — 앤트로픽 해킹 공포",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -538,7 +580,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양자컴퓨터 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 앤트로픽 해킹 공포에…양자암호·보안주 ‘상한가’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001156957&office_id=366&code=203650&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.15"
+        }
+      ]
     },
     {
       "date": "20260410",
@@ -546,15 +598,17 @@
       "close_price": 1846.0,
       "trading_volume": 18774705,
       "trading_value": 34658105430,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "양자암호 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "상업서비스와공급품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -565,5 +619,5 @@
     "count_recent": 1,
     "avg_rate": 23.43
   },
-  "built_at": "2026-10-01T22:55:53"
+  "built_at": "2026-10-02T05:15:56"
 }

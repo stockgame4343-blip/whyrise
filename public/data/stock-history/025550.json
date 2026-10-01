@@ -25,9 +25,9 @@
       "close_price": 4140.0,
       "trading_volume": 1814583,
       "trading_value": 7512373620,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "해저터널 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "해저터널(지하화/지하도로 등)",
       "news": [
@@ -94,7 +94,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
@@ -156,5 +158,5 @@
     "count_recent": 0,
     "avg_rate": 11.25
   },
-  "built_at": "2026-09-27T10:07:22"
+  "built_at": "2026-10-02T05:15:57"
 }

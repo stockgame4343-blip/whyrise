@@ -9,10 +9,10 @@
       "close_price": 10960.0,
       "trading_volume": 1363280,
       "trading_value": 14941548800,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -118,15 +120,17 @@
       "close_price": 10810.0,
       "trading_volume": 257886,
       "trading_value": 2787747660,
-      "rise_reason": "2차전지(나트륨이온) 테마 강세",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(나트륨이온) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260528",
@@ -134,10 +138,10 @@
       "close_price": 17260.0,
       "trading_volume": 4506349,
       "trading_value": 77779583740,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
         {
@@ -203,7 +207,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260512",
@@ -211,9 +217,9 @@
       "close_price": 17880.0,
       "trading_volume": 2200528,
       "trading_value": 39345440640,
-      "rise_reason": "수주 공시",
+      "rise_reason": "ESS 모멘텀에 실적 개선 전망",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -280,7 +286,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "KB證 \"더블유씨피, ESS 모멘텀에 실적 개선 전망…목표가↑\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016070792&office_id=001&code=393890&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260429",
@@ -288,10 +304,10 @@
       "close_price": 20650.0,
       "trading_volume": 2356024,
       "trading_value": 48651895600,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
         {
@@ -357,7 +373,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260417",
@@ -442,9 +460,9 @@
       "close_price": 15640.0,
       "trading_volume": 5572629,
       "trading_value": 87155917560,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지주 동반 강세 — 글로벌 ESS 시장 확대에 힘받나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -469,7 +487,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "글로벌 ESS 시장 확대에 힘받나…국내 이차전지 관련주 상승 랠리 [매...",
+          "link": "https://n.news.naver.com/mnews/article/009/0005662187",
+          "source": "매일경제",
+          "date": "2026-04-07"
+        }
+      ]
     },
     {
       "date": "20260318",
@@ -595,9 +623,9 @@
       "date": "20260305",
       "change_rate": 14.92,
       "close_price": 9010.0,
-      "rise_reason": "2차전지(나트륨이온) 테마 강세",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -613,15 +641,17 @@
       "source": "estimated",
       "trading_volume": 789991,
       "trading_value": 7117818910,
-      "market_cap": 304942028985
+      "market_cap": 304942028985,
+      "reason_previous": "2차전지(나트륨이온) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260224",
       "change_rate": 10.67,
       "close_price": 10580.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지주 동반 강세 — K-배터리 반사이익 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -643,7 +673,17 @@
       "source": "estimated",
       "trading_volume": 1541118,
       "trading_value": 16305028440,
-      "market_cap": 358078431372
+      "market_cap": 358078431372,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] K-배터리 '반사이익' 기대감…2차전지주 상승세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000493942",
+          "source": "SBS Biz",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20260129",
@@ -703,9 +743,9 @@
       "date": "20251017",
       "change_rate": 18.39,
       "close_price": 8820.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — AI 투자 확대 따른 ESS 수요 증가 전망",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [],
@@ -714,15 +754,25 @@
       "source": "estimated",
       "trading_volume": 4890212,
       "trading_value": 43131669840,
-      "market_cap": 298511508951
+      "market_cap": 298511508951,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주]AI 투자 확대 따른 ESS 수요 증가 전망…2차전지株 강세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005665953",
+          "source": "아시아경제",
+          "date": "2025-10-17"
+        }
+      ]
     },
     {
       "date": "20250528",
       "change_rate": 10.03,
       "close_price": 7790.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [],
@@ -731,7 +781,9 @@
       "source": "estimated",
       "trading_volume": 1946891,
       "trading_value": 15166280890,
-      "market_cap": 263651321398
+      "market_cap": 263651321398,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -742,5 +794,5 @@
     "count_recent": 1,
     "avg_rate": 13.79
   },
-  "built_at": "2026-10-01T22:55:32"
+  "built_at": "2026-10-02T05:15:56"
 }

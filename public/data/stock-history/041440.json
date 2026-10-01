@@ -9,9 +9,9 @@
       "close_price": 10430.0,
       "trading_volume": 12198007,
       "trading_value": 127225213010,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 미·이란 종전 MOU 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설기계",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 미·이란 종전 MOU 기대감에…건설株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001162361&office_id=366&code=028050&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.07"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -171,5 +181,5 @@
     "count_recent": 0,
     "avg_rate": 11.87
   },
-  "built_at": "2026-09-27T09:46:18"
+  "built_at": "2026-10-02T05:15:57"
 }

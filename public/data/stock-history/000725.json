@@ -58,9 +58,9 @@
       "date": "20260305",
       "change_rate": 13.45,
       "close_price": 67500.0,
-      "rise_reason": "원자력발전소 해체 테마 강세",
+      "rise_reason": "원자력발전소 해체 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [
@@ -76,15 +76,17 @@
       "source": "estimated",
       "trading_volume": 27228,
       "trading_value": 1837890000,
-      "market_cap": 71236162361
+      "market_cap": 71236162361,
+      "reason_previous": "원자력발전소 해체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260112",
       "change_rate": 10.05,
       "close_price": 61300.0,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "건설주 동반 강세 — 트럼프 2000억달러 주택담보대출채권 매입 지시",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [
@@ -106,15 +108,25 @@
       "source": "estimated",
       "trading_volume": 80192,
       "trading_value": 4915769600,
-      "market_cap": 64692988929
+      "market_cap": 64692988929,
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프 2000억달러 주택담보대출채권 매입 지시에…건설주 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005303153",
+          "source": "머니투데이",
+          "date": "2026-01-12"
+        }
+      ]
     },
     {
       "date": "20250612",
       "change_rate": 13.21,
       "close_price": 69400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "원자력발전소 해체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [],
@@ -123,7 +135,9 @@
       "source": "estimated",
       "trading_volume": 105063,
       "trading_value": 7291372200,
-      "market_cap": 73241328413
+      "market_cap": 73241328413,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -134,5 +148,5 @@
     "count_recent": 0,
     "avg_rate": 14.32
   },
-  "built_at": "2026-09-27T09:00:46"
+  "built_at": "2026-10-02T05:15:57"
 }

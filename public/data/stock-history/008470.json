@@ -25,9 +25,9 @@
       "close_price": 1805.0,
       "trading_volume": 328090,
       "trading_value": 592202450,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "주당 1주 무상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "겨울",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "부스타, 주당 1주 무상증자 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006324575&office_id=018&code=008470&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.07"
+        }
+      ]
     }
   ],
   "stats": {
@@ -105,5 +115,5 @@
     "count_recent": 0,
     "avg_rate": 12.79
   },
-  "built_at": "2026-09-27T10:23:56"
+  "built_at": "2026-10-02T05:15:57"
 }

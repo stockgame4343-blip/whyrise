@@ -9,9 +9,9 @@
       "close_price": 4540.0,
       "trading_volume": 1137294,
       "trading_value": 5163314760,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "조혈줄기세포계수기 美FDA 냉동 HPC-A 검체 추가 승인",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단키트)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "나노엔텍, 조혈줄기세포계수기 美FDA 냉동 HPC-A 검체 추가 승인",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334503&office_id=018&code=039860&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,9 +96,9 @@
       "close_price": 4045.0,
       "trading_volume": 1091958,
       "trading_value": 4416970110,
-      "rise_reason": "로봇/자동화",
+      "rise_reason": "길리어드 자회사 카이트파마에 자동화 세포분석 로봇 공급",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
@@ -107,7 +117,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "나노엔텍, 길리어드 자회사 카이트파마에 자동화 세포분석 로봇 공급",
+          "link": "https://n.news.naver.com/mnews/article/018/0006317706",
+          "source": "이데일리",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260429",
@@ -115,9 +135,9 @@
       "close_price": 7350.0,
       "trading_volume": 5458065,
       "trading_value": 40116777750,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "세포 대량 분석 자동화 로봇 글로벌 시장 첫 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
@@ -184,7 +204,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "나노엔텍, 세포 대량 분석 자동화 로봇 글로벌 시장 첫 공급",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006268859&office_id=018&code=039860&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -387,5 +417,5 @@
     "count_recent": 0,
     "avg_rate": 24.5
   },
-  "built_at": "2026-10-01T22:56:38"
+  "built_at": "2026-10-02T05:15:57"
 }

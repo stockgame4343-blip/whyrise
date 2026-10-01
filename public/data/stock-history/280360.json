@@ -25,9 +25,9 @@
       "close_price": 116900.0,
       "trading_volume": 105777,
       "trading_value": 12365331300,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "2Q 영업익 647억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "음식료업종",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"해외법인 133% 껑충\"…롯데웰푸드, 2Q 영업익 647억",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003119488&office_id=119&code=280360&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.07"
+        }
+      ]
     }
   ],
   "stats": {
@@ -105,5 +115,5 @@
     "count_recent": 0,
     "avg_rate": 12.19
   },
-  "built_at": "2026-10-01T22:52:35"
+  "built_at": "2026-10-02T05:15:56"
 }

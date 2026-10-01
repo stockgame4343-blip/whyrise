@@ -9,9 +9,9 @@
       "close_price": 53100.0,
       "trading_volume": 625885,
       "trading_value": 33234493500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 마이크론·수출 호조",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "마이크론·수출 호조에…삼전닉스 강세·장비주 '불기둥'[핫종목](종합...",
+          "link": "https://n.news.naver.com/mnews/article/421/0009204527",
+          "source": "뉴스1",
+          "date": "2026.10.01"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,15 +96,17 @@
       "close_price": 40850.0,
       "trading_volume": 383112,
       "trading_value": 15650125200,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 17종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -102,15 +114,17 @@
       "close_price": 47750.0,
       "trading_volume": 245608,
       "trading_value": 11727782000,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -118,9 +132,9 @@
       "close_price": 62000.0,
       "trading_volume": 325062,
       "trading_value": 20153844000,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 22종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -187,7 +201,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260409",
@@ -211,9 +227,9 @@
       "close_price": 90700.0,
       "trading_volume": 462472,
       "trading_value": 41946210400,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -226,15 +242,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 15.64,
       "close_price": 92400.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 재료 테마 33종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -250,15 +268,17 @@
       "source": "estimated",
       "trading_volume": 500215,
       "trading_value": 46219866000,
-      "market_cap": 1971301986754
+      "market_cap": 1971301986754,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20260128",
       "change_rate": 24.06,
       "close_price": 92800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -274,7 +294,9 @@
       "source": "estimated",
       "trading_volume": 1129100,
       "trading_value": 104780480000,
-      "market_cap": 1979835761589
+      "market_cap": 1979835761589,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260119",
@@ -364,9 +386,9 @@
       "date": "20251201",
       "change_rate": 10.84,
       "close_price": 54200.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -375,7 +397,9 @@
       "source": "estimated",
       "trading_volume": 475955,
       "trading_value": 25796761000,
-      "market_cap": 1156326490066
+      "market_cap": 1156326490066,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251013",
@@ -398,9 +422,9 @@
       "date": "20250728",
       "change_rate": 10.82,
       "close_price": 51200.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -434,7 +458,9 @@
       "source": "estimated",
       "trading_volume": 677491,
       "trading_value": 34687539200,
-      "market_cap": 1092323178807
+      "market_cap": 1092323178807,
+      "reason_previous": "전기차",
+      "reason_kind": "theme"
     },
     {
       "date": "20250703",
@@ -493,5 +519,5 @@
     "count_recent": 1,
     "avg_rate": 15.02
   },
-  "built_at": "2026-10-01T22:54:23"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 540000.0,
       "trading_volume": 514563,
       "trading_value": 277864020000,
-      "rise_reason": "기술이전 뉴스",
+      "rise_reason": "3조1892억원 규모 기술이전 계약",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "한미약품, 3조1892억원 규모 기술이전 계약에 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005565484&office_id=014&code=128940&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,9 +96,9 @@
       "close_price": 428000.0,
       "trading_volume": 154148,
       "trading_value": 65975344000,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20251027",
@@ -183,5 +203,5 @@
     "count_recent": 0,
     "avg_rate": 24.38
   },
-  "built_at": "2026-10-01T22:52:15"
+  "built_at": "2026-10-02T05:15:56"
 }

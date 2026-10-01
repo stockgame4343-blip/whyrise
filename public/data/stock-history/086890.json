@@ -9,9 +9,9 @@
       "close_price": 3560.0,
       "trading_volume": 2805722,
       "trading_value": 9988370320,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -54,7 +54,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -105,5 +107,5 @@
     "count_recent": 0,
     "avg_rate": 14.93
   },
-  "built_at": "2026-10-01T22:56:52"
+  "built_at": "2026-10-02T05:15:57"
 }

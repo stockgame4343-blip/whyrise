@@ -9,10 +9,10 @@
       "close_price": 2275.0,
       "trading_volume": 1147852,
       "trading_value": 2611363300,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -42,7 +42,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260420",
@@ -97,9 +99,9 @@
       "close_price": 3780.0,
       "trading_volume": 19693673,
       "trading_value": 74442083940,
-      "rise_reason": "방위산업/전쟁 및 테러 테마 강세",
+      "rise_reason": "방위산업 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -112,7 +114,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방위산업/전쟁 및 테러 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260409",
@@ -231,9 +235,9 @@
       "date": "20260303",
       "change_rate": 15.95,
       "close_price": 2690.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "방산주 동반 강세 — 이번엔 김승연 어서 타! 밈",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -273,15 +277,25 @@
       "source": "estimated",
       "trading_volume": 13289053,
       "trading_value": 35747552570,
-      "market_cap": 88490045248
+      "market_cap": 88490045248,
+      "reason_previous": "방산",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "이번엔 김승연 &quot;어서 타!&quot; 밈…이란 사태에 방산주 '급등'",
+          "link": "https://n.news.naver.com/mnews/article/243/0000093881",
+          "source": "이코노미스트",
+          "date": "2026-03-03"
+        }
+      ]
     },
     {
       "date": "20260109",
       "change_rate": 10.28,
       "close_price": 2360.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "방산주 동반 강세 — 트럼프 美 내년 국방비 2000조원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -303,7 +317,17 @@
       "source": "estimated",
       "trading_volume": 21362377,
       "trading_value": 50415209720,
-      "market_cap": 77634389140
+      "market_cap": 77634389140,
+      "reason_previous": "방산",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 트럼프 &quot;美 내년 국방비 2000조원&quot;…방산주 상승 랠리",
+          "link": "https://n.news.naver.com/mnews/article/374/0000485312",
+          "source": "SBS Biz",
+          "date": "2026-01-09"
+        }
+      ]
     },
     {
       "date": "20250613",
@@ -331,5 +355,5 @@
     "count_recent": 1,
     "avg_rate": 14.98
   },
-  "built_at": "2026-10-01T22:58:10"
+  "built_at": "2026-10-02T05:15:56"
 }

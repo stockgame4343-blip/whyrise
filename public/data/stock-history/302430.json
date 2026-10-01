@@ -9,9 +9,9 @@
       "close_price": 8810.0,
       "trading_volume": 5112020,
       "trading_value": 45036896200,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전기차 화재 방지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260908",
@@ -86,10 +88,10 @@
       "close_price": 7770.0,
       "trading_volume": 2287051,
       "trading_value": 17770386270,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260831",
@@ -163,9 +167,9 @@
       "close_price": 8200.0,
       "trading_volume": 848515,
       "trading_value": 6957823000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "차세대 배터리 CT 검사 장비 양산라인 공급 추진",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이노메트리, 차세대 배터리 CT 검사 장비 양산라인 공급 추진",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002435421&office_id=092&code=302430&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.08.28"
+        }
+      ]
     },
     {
       "date": "20260825",
@@ -240,9 +254,9 @@
       "close_price": 7700.0,
       "trading_volume": 2217131,
       "trading_value": 17071908700,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 대규모 채용 개시…배터리 검사 장비 사업 회복세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -309,7 +323,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이노메트리, 대규모 채용 개시…\"배터리 검사 장비 사업 회복세\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002434936&office_id=092&code=302430&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260821",
@@ -317,9 +341,9 @@
       "close_price": 6650.0,
       "trading_volume": 1400019,
       "trading_value": 9310126350,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "추가 수주 협의",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [
@@ -386,7 +410,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이노메트리, 46파이 배터리 CT·이물검사장비 첫 출하…추가 수주 협의",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003459006&office_id=030&code=302430&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -410,9 +444,9 @@
       "close_price": 10180.0,
       "trading_volume": 1072693,
       "trading_value": 10920014740,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유리 기판 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -479,7 +513,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20251210",
@@ -538,5 +574,5 @@
     "count_recent": 2,
     "avg_rate": 16.92
   },
-  "built_at": "2026-10-01T22:58:07"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -41,10 +41,10 @@
       "close_price": 4845.0,
       "trading_volume": 19457897,
       "trading_value": 94273510965,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -62,7 +62,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260430",
@@ -70,10 +72,10 @@
       "close_price": 4010.0,
       "trading_volume": 20037980,
       "trading_value": 80352299800,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -91,7 +93,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -99,9 +103,9 @@
       "close_price": 4475.0,
       "trading_volume": 58084933,
       "trading_value": 259930075175,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "경영권 안정화 성공",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -132,7 +136,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "유엔젤, 이루온 주식 투자로 247% 수익률 달성… 경영권 안정화 성공",
+          "link": "https://n.news.naver.com/mnews/article/018/0006253520",
+          "source": "이데일리",
+          "date": "2026-04-09"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -175,9 +189,9 @@
       "close_price": 2730.0,
       "trading_volume": 9456227,
       "trading_value": 25815499710,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "30.00% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -202,15 +216,25 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]이루온 30.00% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003631470",
+          "source": "서울신문",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260316",
       "change_rate": 10.43,
       "close_price": 2435.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [],
@@ -219,15 +243,17 @@
       "source": "estimated",
       "trading_volume": 7136613,
       "trading_value": 17377652655,
-      "market_cap": 66372073578
+      "market_cap": 66372073578,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
       "change_rate": 29.88,
       "close_price": 2195.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "+30.00% 금일 증시 상승률 1위로 마감",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -261,15 +287,25 @@
       "source": "estimated",
       "trading_volume": 10548450,
       "trading_value": 23153847750,
-      "market_cap": 59830267558
+      "market_cap": 59830267558,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]이루온 +30.00% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003624964",
+          "source": "서울신문",
+          "date": "2026-03-11"
+        }
+      ]
     },
     {
       "date": "20260311",
       "change_rate": 30.0,
       "close_price": 1690.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 상한가",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "+30.00% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -297,7 +333,17 @@
       "source": "estimated",
       "trading_volume": 2942362,
       "trading_value": 4972591780,
-      "market_cap": 46065217391
+      "market_cap": 46065217391,
+      "reason_previous": "5G(5세대 이동통신) 테마 상한가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]이루온 +30.00% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003624964",
+          "source": "서울신문",
+          "date": "2026-03-11"
+        }
+      ]
     },
     {
       "date": "20251112",
@@ -327,9 +373,9 @@
       "date": "20251029",
       "change_rate": 20.2,
       "close_price": 1910.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "5G 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -345,7 +391,9 @@
       "source": "estimated",
       "trading_volume": 18765198,
       "trading_value": 35841528180,
-      "market_cap": 52061872909
+      "market_cap": 52061872909,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20250619",
@@ -373,5 +421,5 @@
     "count_recent": 0,
     "avg_rate": 19.93
   },
-  "built_at": "2026-09-27T10:15:53"
+  "built_at": "2026-10-02T05:15:57"
 }

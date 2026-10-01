@@ -9,10 +9,10 @@
       "close_price": 3460.0,
       "trading_volume": 401002,
       "trading_value": 1387466920,
-      "rise_reason": "조선기자재 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -48,7 +48,9 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "조선기자재 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -56,10 +58,10 @@
       "close_price": 6000.0,
       "trading_volume": 6139676,
       "trading_value": 36838056000,
-      "rise_reason": "조선기자재 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -95,15 +97,17 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "조선기자재 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
       "change_rate": 11.34,
       "close_price": 5400.0,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "조선기자재 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [],
@@ -112,15 +116,17 @@
       "source": "estimated",
       "trading_volume": 363729,
       "trading_value": 1964136600,
-      "market_cap": 75555555555
+      "market_cap": 75555555555,
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 15.73,
       "close_price": 5150.0,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "조선기자재 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [],
@@ -129,15 +135,17 @@
       "source": "estimated",
       "trading_volume": 202328,
       "trading_value": 1041989200,
-      "market_cap": 72057613168
+      "market_cap": 72057613168,
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260130",
       "change_rate": 10.65,
       "close_price": 5920.0,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "조선기자재 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [],
@@ -146,15 +154,17 @@
       "source": "estimated",
       "trading_volume": 1497694,
       "trading_value": 8866348480,
-      "market_cap": 82831275720
+      "market_cap": 82831275720,
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251021",
       "change_rate": 13.35,
       "close_price": 6030.0,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "조선기자재 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [],
@@ -163,7 +173,9 @@
       "source": "estimated",
       "trading_volume": 5976438,
       "trading_value": 36037921140,
-      "market_cap": 84370370370
+      "market_cap": 84370370370,
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251016",
@@ -246,5 +258,5 @@
     "count_recent": 0,
     "avg_rate": 13.48
   },
-  "built_at": "2026-10-01T22:58:58"
+  "built_at": "2026-10-02T05:15:56"
 }

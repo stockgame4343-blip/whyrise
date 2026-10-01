@@ -9,10 +9,10 @@
       "close_price": 2765.0,
       "trading_volume": 38987365,
       "trading_value": 107800064225,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260908",
@@ -86,10 +88,10 @@
       "close_price": 2470.0,
       "trading_volume": 26698351,
       "trading_value": 65944926970,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260903",
@@ -163,9 +167,9 @@
       "close_price": 2105.0,
       "trading_volume": 5459238,
       "trading_value": 11491695990,
-      "rise_reason": "지분 관련 이슈",
+      "rise_reason": "트럼프 LNG 프로젝트 언급",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "트럼프 LNG 프로젝트 언급에 철강주 급등…신스틸 上 [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009148287&office_id=421&code=162300&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.09.03"
+        }
+      ]
     },
     {
       "date": "20260807",
@@ -240,10 +254,10 @@
       "close_price": 1852.0,
       "trading_volume": 5043305,
       "trading_value": 9340200860,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -309,7 +323,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260428",
@@ -317,9 +333,9 @@
       "close_price": 2210.0,
       "trading_volume": 5624418,
       "trading_value": 12429963780,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 미국-이란 종전협상 교착",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -386,7 +402,17 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 미국-이란 종전협상 교착… 철강株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003422455&office_id=030&code=008420&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.04.28"
+        }
+      ]
     }
   ],
   "stats": {
@@ -397,5 +423,5 @@
     "count_recent": 3,
     "avg_rate": 20.13
   },
-  "built_at": "2026-10-01T22:57:56"
+  "built_at": "2026-10-02T05:15:56"
 }

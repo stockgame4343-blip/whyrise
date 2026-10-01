@@ -9,9 +9,9 @@
       "close_price": 7800.0,
       "trading_volume": 230733,
       "trading_value": 1799717400,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260416",
@@ -161,9 +163,9 @@
       "date": "20260305",
       "change_rate": 14.06,
       "close_price": 9900.0,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 17종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -172,7 +174,9 @@
       "source": "estimated",
       "trading_volume": 115625,
       "trading_value": 1144687500,
-      "market_cap": 69984905660
+      "market_cap": 69984905660,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250725",
@@ -195,9 +199,9 @@
       "date": "20250611",
       "change_rate": 29.95,
       "close_price": 12930.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -206,7 +210,9 @@
       "source": "estimated",
       "trading_volume": 1680480,
       "trading_value": 21728606400,
-      "market_cap": 91404528301
+      "market_cap": 91404528301,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -217,5 +223,5 @@
     "count_recent": 1,
     "avg_rate": 18.23
   },
-  "built_at": "2026-10-01T22:58:36"
+  "built_at": "2026-10-02T05:15:56"
 }

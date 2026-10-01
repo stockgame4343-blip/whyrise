@@ -86,15 +86,17 @@
       "close_price": 62500.0,
       "trading_volume": 837168,
       "trading_value": 52323000000,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -102,9 +104,9 @@
       "close_price": 69700.0,
       "trading_volume": 718115,
       "trading_value": 50052615500,
-      "rise_reason": "납품 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: LIG D&A·, 국방 AI 사업 놓고 맞대결… 승부처는 데이...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -171,7 +173,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "납품 계약 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "LIG D&A·한화시스템, 국방 AI 사업 놓고 맞대결… 승부처는 데이...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002235050&office_id=138&code=272210&page=&sm=",
+          "source": "디지털데일리",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -179,15 +191,17 @@
       "close_price": 71700.0,
       "trading_volume": 860423,
       "trading_value": 61692329100,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -195,15 +209,17 @@
       "close_price": 128800.0,
       "trading_volume": 2789138,
       "trading_value": 359240974400,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "방위산업 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -294,10 +310,10 @@
       "date": "20251219",
       "change_rate": 10.93,
       "close_price": 54300.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -305,16 +321,18 @@
       "source": "estimated",
       "trading_volume": 5415165,
       "trading_value": 294043459500,
-      "market_cap": 10258348847420
+      "market_cap": 10258348847420,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251212",
       "change_rate": 10.51,
       "close_price": 53100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -322,16 +340,18 @@
       "source": "estimated",
       "trading_volume": 7435911,
       "trading_value": 394846874100,
-      "market_cap": 10031645005488
+      "market_cap": 10031645005488,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251030",
       "change_rate": 14.55,
       "close_price": 63000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -339,7 +359,9 @@
       "source": "estimated",
       "trading_volume": 10259297,
       "trading_value": 646335711000,
-      "market_cap": 11901951701427
+      "market_cap": 11901951701427,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250616",
@@ -384,5 +406,5 @@
     "count_recent": 1,
     "avg_rate": 17.75
   },
-  "built_at": "2026-10-01T22:52:08"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 118100.0,
       "trading_volume": 1455368,
       "trading_value": 171878960800,
-      "rise_reason": "상장 이슈",
+      "rise_reason": "인적분할 후 재상장 첫날",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "한화, 인적분할 후 재상장 첫날…22% 급등·신설법인 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006357515&office_id=018&code=000880&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -118,10 +128,10 @@
       "date": "20251027",
       "change_rate": 13.08,
       "close_price": 107200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -129,7 +139,9 @@
       "source": "estimated",
       "trading_volume": 1200889,
       "trading_value": 128735300800,
-      "market_cap": 7558437500000
+      "market_cap": 7558437500000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250701",
@@ -225,5 +237,5 @@
     "count_recent": 0,
     "avg_rate": 17.14
   },
-  "built_at": "2026-10-01T22:52:15"
+  "built_at": "2026-10-02T05:15:56"
 }

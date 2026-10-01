@@ -9,10 +9,10 @@
       "close_price": 202000.0,
       "trading_volume": 141351,
       "trading_value": 28552902000,
-      "rise_reason": "관련주 언급",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "도로와철도운송",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관련주 언급",
+      "reason_kind": "none"
     },
     {
       "date": "20260515",
@@ -86,9 +88,9 @@
       "close_price": 330500.0,
       "trading_volume": 653873,
       "trading_value": 216105026500,
-      "rise_reason": "기관 순매수 보도",
+      "rise_reason": "다시 고개드는 서울고터 재개발 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "도로와철도운송",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 다시 고개드는 서울고터 재개발 기대감…동양·천일고속 사...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003427994&office_id=030&code=000650&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.15"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -163,9 +175,9 @@
       "close_price": 295000.0,
       "trading_volume": 45246,
       "trading_value": 13347570000,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "서울고속버스터미널 재개발 수혜 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
@@ -220,7 +232,9 @@
       ],
       "sector": "도로와철도운송",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260513",
@@ -228,10 +242,10 @@
       "close_price": 227000.0,
       "trading_volume": 10997,
       "trading_value": 2496319000,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
         {
@@ -291,7 +305,9 @@
       ],
       "sector": "도로와철도운송",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -859,5 +875,5 @@
     "count_recent": 0,
     "avg_rate": 26.54
   },
-  "built_at": "2026-09-27T08:49:50"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -25,10 +25,10 @@
       "close_price": 26950.0,
       "trading_volume": 303870,
       "trading_value": 8189296500,
-      "rise_reason": "전선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -102,15 +104,17 @@
       "close_price": 26200.0,
       "trading_volume": 202592,
       "trading_value": 5307910400,
-      "rise_reason": "전선 테마 강세",
+      "rise_reason": "전선 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전선 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -118,9 +122,9 @@
       "close_price": 49550.0,
       "trading_volume": 3068829,
       "trading_value": 152060476950,
-      "rise_reason": "전선 수주 공시",
+      "rise_reason": "AI 수혜, 반도체 이어 인프라로",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -187,7 +191,17 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "AI 수혜, 반도체 이어 인프라로…LS마린솔루션 27%↑ [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003087013&office_id=119&code=060370&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260423",
@@ -270,9 +284,9 @@
       "date": "20260313",
       "change_rate": 13.01,
       "close_price": 33000.0,
-      "rise_reason": "전선 테마 강세",
+      "rise_reason": "건설주 동반 강세 — 대미투자특별법 통과에 원자력 수혜",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [],
@@ -281,7 +295,17 @@
       "source": "estimated",
       "trading_volume": 1043231,
       "trading_value": 34426623000,
-      "market_cap": 1723865284974
+      "market_cap": 1723865284974,
+      "reason_previous": "전선 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "대미투자특별법 통과에 원자력 '수혜'…두산에너빌·건설주 상승 [핫...",
+          "link": "https://n.news.naver.com/mnews/article/421/0008825026",
+          "source": "뉴스1",
+          "date": "2026-03-13"
+        }
+      ]
     },
     {
       "date": "20251212",
@@ -304,9 +328,9 @@
       "date": "20251028",
       "change_rate": 13.71,
       "close_price": 28200.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 정부, 해상풍력 육성 본격화…LS전선· 주목",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -346,7 +370,17 @@
       "source": "estimated",
       "trading_volume": 3276648,
       "trading_value": 92401473600,
-      "market_cap": 1473121243523
+      "market_cap": 1473121243523,
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "정부, 해상풍력 육성 본격화…LS전선·LS마린솔루션 주목",
+          "link": "https://n.news.naver.com/mnews/article/277/0005669656",
+          "source": "아시아경제",
+          "date": "2025-10-27"
+        }
+      ]
     },
     {
       "date": "20250609",
@@ -374,5 +408,5 @@
     "count_recent": 0,
     "avg_rate": 16.6
   },
-  "built_at": "2026-09-29T22:22:19"
+  "built_at": "2026-10-02T05:15:57"
 }

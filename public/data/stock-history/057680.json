@@ -9,9 +9,9 @@
       "close_price": 1960.0,
       "trading_volume": 1167589,
       "trading_value": 2288474440,
-      "rise_reason": "가상자산 지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "비트코인·로봇주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "가상자산 지분 관련 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 양대 지수 동반 상승…비트코인·로봇주 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000531167&office_id=374&code=057680&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260824",
@@ -86,9 +96,9 @@
       "close_price": 1740.0,
       "trading_volume": 902690,
       "trading_value": 1570680600,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "가상화폐주 동반 강세 — 비트코인 7만 달러 돌파",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 비트코인 7만 달러 돌파에… 국내 가상화폐 관련주 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001187487&office_id=366&code=057680&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.21"
+        }
+      ]
     },
     {
       "date": "20260513",
@@ -163,10 +183,10 @@
       "close_price": 2665.0,
       "trading_volume": 272001,
       "trading_value": 724882665,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -232,7 +252,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -255,9 +277,9 @@
       "date": "20250929",
       "change_rate": 11.49,
       "close_price": 6775.0,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -266,7 +288,9 @@
       "source": "estimated",
       "trading_volume": 331842,
       "trading_value": 2248229550,
-      "market_cap": 96538559754
+      "market_cap": 96538559754,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250620",
@@ -289,9 +313,9 @@
       "date": "20250611",
       "change_rate": 21.05,
       "close_price": 6066.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -300,7 +324,9 @@
       "source": "estimated",
       "trading_volume": 3628119,
       "trading_value": 22008169854,
-      "market_cap": 86435852911
+      "market_cap": 86435852911,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -311,5 +337,5 @@
     "count_recent": 1,
     "avg_rate": 11.91
   },
-  "built_at": "2026-10-01T22:59:27"
+  "built_at": "2026-10-02T05:15:56"
 }

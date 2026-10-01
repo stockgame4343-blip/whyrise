@@ -9,9 +9,9 @@
       "close_price": 13500.0,
       "trading_volume": 5099771,
       "trading_value": 68846908500,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 반도체 수출 259% 급증",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -32,9 +42,9 @@
       "close_price": 14650.0,
       "trading_volume": 6219487,
       "trading_value": 91115484550,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 오픈AI 아스트라가 깨운 AI 랠리",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -101,7 +111,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "오픈AI '아스트라'가 깨운 AI 랠리…반도체株 일제히 '불기둥'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001027039&office_id=088&code=000990&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.09.07"
+        }
+      ]
     },
     {
       "date": "20260827",
@@ -109,15 +129,25 @@
       "close_price": 16850.0,
       "trading_volume": 11145899,
       "trading_value": 187808398150,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 땡큐 젠슨 황",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "\"땡큐 젠슨 황\"…엔비디아 훈풍에 국내 반도체株 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001025451&office_id=088&code=222800&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.27"
+        }
+      ]
     }
   ],
   "stats": {
@@ -128,5 +158,5 @@
     "count_recent": 2,
     "avg_rate": 17.4
   },
-  "built_at": "2026-10-01T22:58:22"
+  "built_at": "2026-10-02T05:15:56"
 }

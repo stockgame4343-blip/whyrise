@@ -9,9 +9,9 @@
       "close_price": 240500.0,
       "trading_volume": 272287,
       "trading_value": 65485023500,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "롯데 합병 법인",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "주유소",
       "news": [
@@ -78,16 +78,26 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "HD현대·롯데 합병 법인…'석화 구조조정' 1호 출범",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005730660&office_id=009&code=267250&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260112",
       "change_rate": 11.22,
       "close_price": 228000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -95,7 +105,9 @@
       "source": "estimated",
       "trading_volume": 426434,
       "trading_value": 97226952000,
-      "market_cap": 18010417353579
+      "market_cap": 18010417353579,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251027",
@@ -191,5 +203,5 @@
     "count_recent": 1,
     "avg_rate": 13.63
   },
-  "built_at": "2026-10-01T22:52:07"
+  "built_at": "2026-10-02T05:15:56"
 }

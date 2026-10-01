@@ -9,9 +9,9 @@
       "close_price": 13620.0,
       "trading_volume": 212544,
       "trading_value": 2894849280,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "HBM 테마 17종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -86,15 +88,17 @@
       "close_price": 19890.0,
       "trading_volume": 112428,
       "trading_value": 2236192920,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -102,15 +106,17 @@
       "close_price": 18850.0,
       "trading_volume": 92365,
       "trading_value": 1741080250,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -118,15 +124,17 @@
       "close_price": 22050.0,
       "trading_volume": 119824,
       "trading_value": 2642119200,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -134,9 +142,9 @@
       "close_price": 28200.0,
       "trading_volume": 401074,
       "trading_value": 11310286800,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "HBM 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -203,7 +211,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -211,15 +221,17 @@
       "close_price": 26450.0,
       "trading_volume": 218451,
       "trading_value": 5778028950,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 12종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -227,9 +239,9 @@
       "close_price": 27500.0,
       "trading_volume": 400382,
       "trading_value": 11010505000,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -296,7 +308,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 쉬어가자 반도체 장비株 강세…원익IPS '上' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008985149&office_id=421&code=084370&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -304,9 +326,9 @@
       "close_price": 28850.0,
       "trading_volume": 310075,
       "trading_value": 8945663750,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -319,7 +341,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -327,9 +351,9 @@
       "close_price": 44850.0,
       "trading_volume": 1784579,
       "trading_value": 80038368150,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -396,7 +420,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 오르자 반도체장비株 강세…오로스테크놀로지 '上'[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008925316&office_id=421&code=322310&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -404,23 +438,25 @@
       "close_price": 33550.0,
       "trading_volume": 235756,
       "trading_value": 7909613800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "HBM 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
       "change_rate": 15.62,
       "close_price": 35150.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -429,7 +465,9 @@
       "source": "estimated",
       "trading_volume": 843118,
       "trading_value": 29635597700,
-      "market_cap": 329212862318
+      "market_cap": 329212862318,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
@@ -452,9 +490,9 @@
       "date": "20260305",
       "change_rate": 19.96,
       "close_price": 28250.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 장비 테마 28종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -482,7 +520,9 @@
       "source": "estimated",
       "trading_volume": 518788,
       "trading_value": 14655761000,
-      "market_cap": 264587862318
+      "market_cap": 264587862318,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "theme"
     },
     {
       "date": "20260226",
@@ -564,5 +604,5 @@
     "count_recent": 0,
     "avg_rate": 14.88
   },
-  "built_at": "2026-09-29T22:27:21"
+  "built_at": "2026-10-02T05:15:57"
 }

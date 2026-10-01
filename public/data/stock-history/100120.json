@@ -9,9 +9,9 @@
       "close_price": 24200.0,
       "trading_volume": 78024,
       "trading_value": 1888180800,
-      "rise_reason": "수출 관련 뉴스",
+      "rise_reason": "2분기 영업익 107억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "뷰웍스, 2분기 영업익 107억…전년비 63.8% ↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002678844&office_id=016&code=100120&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -230,5 +240,5 @@
     "count_recent": 0,
     "avg_rate": 14.75
   },
-  "built_at": "2026-10-01T22:56:10"
+  "built_at": "2026-10-02T05:15:56"
 }

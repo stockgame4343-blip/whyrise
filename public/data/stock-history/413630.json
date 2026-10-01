@@ -86,9 +86,9 @@
       "close_price": 3980.0,
       "trading_volume": 12177283,
       "trading_value": 48465586340,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "100억 규모 투자 유치",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -149,7 +149,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨피시스템, 100억 규모 투자 유치…전액 제2공장 투입",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006358339&office_id=018&code=413630&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260727",
@@ -157,9 +167,9 @@
       "close_price": 4065.0,
       "trading_volume": 18404296,
       "trading_value": 74813463240,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -226,7 +236,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260716",
@@ -234,10 +246,10 @@
       "close_price": 3360.0,
       "trading_volume": 22023957,
       "trading_value": 74000495520,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -303,7 +315,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -311,9 +325,9 @@
       "close_price": 2990.0,
       "trading_volume": 4684127,
       "trading_value": 14005539730,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 12종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -380,7 +394,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260713",
@@ -388,10 +404,10 @@
       "close_price": 2400.0,
       "trading_volume": 8448959,
       "trading_value": 20277501600,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -457,7 +473,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -465,9 +483,9 @@
       "close_price": 3520.0,
       "trading_volume": 10983302,
       "trading_value": 38661223040,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -534,7 +552,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260619",
@@ -542,9 +562,9 @@
       "close_price": 3195.0,
       "trading_volume": 2661787,
       "trading_value": 8504409465,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "美 인텔 장비 밸류체인 진입 발표",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -611,15 +631,25 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 씨피시스템, 美 인텔 장비 밸류체인 진입 발표에… 주가 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003439333&office_id=030&code=413630&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.19"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 13.97,
       "close_price": 3915.0,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "조선기자재 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [],
@@ -628,7 +658,9 @@
       "source": "estimated",
       "trading_volume": 668470,
       "trading_value": 2617060050,
-      "market_cap": 142630985915
+      "market_cap": 142630985915,
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260120",
@@ -682,9 +714,9 @@
       "date": "20260115",
       "change_rate": 11.79,
       "close_price": 4410.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 레인보우로보틱스향 로봇 전력케이블보호 솔루션 시제품...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -706,7 +738,17 @@
       "source": "estimated",
       "trading_volume": 13170153,
       "trading_value": 58080374730,
-      "market_cap": 160664788732
+      "market_cap": 160664788732,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "씨피시스템, 레인보우로보틱스향 로봇 전력케이블보호 솔루션 시제품...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006201416",
+          "source": "이데일리",
+          "date": "2026-01-15"
+        }
+      ]
     },
     {
       "date": "20251201",
@@ -820,9 +862,9 @@
       "date": "20251027",
       "change_rate": 16.45,
       "close_price": 4425.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "조선주 동반 강세 — 다가온 APEC 정상회의",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -844,15 +886,25 @@
       "source": "estimated",
       "trading_volume": 38640481,
       "trading_value": 170984128425,
-      "market_cap": 161211267605
+      "market_cap": 161211267605,
+      "reason_previous": "바이오",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 다가온 APEC 정상회의…조선주 '들썩'",
+          "link": "https://n.news.naver.com/mnews/article/374/0000470733",
+          "source": "SBS Biz",
+          "date": "2025-10-27"
+        }
+      ]
     },
     {
       "date": "20251022",
       "change_rate": 12.45,
       "close_price": 3885.0,
-      "rise_reason": "로봇/자동화",
+      "rise_reason": "로봇 케이블 보호 시스템 공급 지속 확대",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -892,7 +944,17 @@
       "source": "estimated",
       "trading_volume": 35752342,
       "trading_value": 138897848670,
-      "market_cap": 141538028169
+      "market_cap": 141538028169,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨피시스템 &quot;로봇 케이블 보호 시스템 공급 지속 확대&quot;",
+          "link": "https://n.news.naver.com/mnews/article/003/0013547121",
+          "source": "뉴시스",
+          "date": "2025-10-21"
+        }
+      ]
     },
     {
       "date": "20251021",
@@ -1041,9 +1103,9 @@
       "date": "20250827",
       "change_rate": 10.36,
       "close_price": 1864.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "조선주 동반 강세 — HD현대중공업, 20조 규모 캐나다 잠수함 수주 도전",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [],
@@ -1052,7 +1114,17 @@
       "source": "estimated",
       "trading_volume": 35600082,
       "trading_value": 66358552848,
-      "market_cap": 67909107981
+      "market_cap": 67909107981,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "HD현대중공업, 20조 규모 캐나다 잠수함 수주 도전...조선주 강세 [특...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005397305",
+          "source": "파이낸셜뉴스",
+          "date": "2025-08-27"
+        }
+      ]
     }
   ],
   "stats": {
@@ -1063,5 +1135,5 @@
     "count_recent": 1,
     "avg_rate": 19.74
   },
-  "built_at": "2026-10-01T22:56:54"
+  "built_at": "2026-10-02T05:15:56"
 }

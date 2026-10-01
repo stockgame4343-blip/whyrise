@@ -9,10 +9,10 @@
       "close_price": 2070.0,
       "trading_volume": 18049546,
       "trading_value": 37362560220,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -86,15 +88,17 @@
       "close_price": 1849.0,
       "trading_volume": 670357,
       "trading_value": 1239490093,
-      "rise_reason": "전후 재건(우크라/중동 전쟁 등) 테마 강세",
+      "rise_reason": "전후 재건 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전후 재건(우크라/중동 전쟁 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -102,9 +106,9 @@
       "close_price": 2300.0,
       "trading_volume": 633940,
       "trading_value": 1458062000,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "재건주 동반 강세 — 전진건설로봇",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
@@ -117,7 +121,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;전쟁 끝나나&quot; 전후 재건주 급등…전진건설로봇 9.7%↑",
+          "link": "https://n.news.naver.com/mnews/article/003/0014002776",
+          "source": "뉴시스",
+          "date": "2026-06-12"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -125,24 +139,34 @@
       "close_price": 3830.0,
       "trading_volume": 3855262,
       "trading_value": 14765653460,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우크라이나 재건",
       "news": [],
       "sector": "건축자재",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260203",
       "change_rate": 16.15,
       "close_price": 4100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -150,7 +174,9 @@
       "source": "estimated",
       "trading_volume": 19981325,
       "trading_value": 81923432500,
-      "market_cap": 205694915254
+      "market_cap": 205694915254,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250808",
@@ -257,5 +283,5 @@
     "count_recent": 0,
     "avg_rate": 12.65
   },
-  "built_at": "2026-10-01T22:57:58"
+  "built_at": "2026-10-02T05:15:57"
 }

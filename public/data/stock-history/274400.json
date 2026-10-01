@@ -9,23 +9,25 @@
       "close_price": 2280.0,
       "trading_volume": 44862,
       "trading_value": 102285360,
-      "rise_reason": "가상현실(VR) 테마 강세",
+      "rise_reason": "가상현실 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상현실(VR)",
       "news": [],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "가상현실(VR) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260317",
       "change_rate": 10.06,
       "close_price": 3775.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 윈드터널 기술기업 에어로디움과 국방·XR 사업 협...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -47,7 +49,17 @@
       "source": "estimated",
       "trading_volume": 273434,
       "trading_value": 1032213350,
-      "market_cap": 34281081081
+      "market_cap": 34281081081,
+      "reason_previous": "대형 수주",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이노시뮬레이션, 윈드터널 기술기업 '에어로디움'과 국방·XR 사업 협...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005330897",
+          "source": "머니투데이",
+          "date": "2026-03-17"
+        }
+      ]
     }
   ],
   "stats": {
@@ -58,5 +70,5 @@
     "count_recent": 0,
     "avg_rate": 12.23
   },
-  "built_at": "2026-09-27T10:33:13"
+  "built_at": "2026-10-02T05:15:57"
 }

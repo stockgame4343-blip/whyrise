@@ -9,9 +9,9 @@
       "close_price": 3900.0,
       "trading_volume": 195566,
       "trading_value": 762707400,
-      "rise_reason": "통신장비 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "2분기 영업익 79억",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -30,7 +30,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "가온그룹, 2분기 영업익 79억…전년비 434.3% ↑",
+          "link": "https://n.news.naver.com/mnews/article/016/0002677965",
+          "source": "헤럴드경제",
+          "date": "2026-07-31"
+        }
+      ]
     },
     {
       "date": "20260519",
@@ -38,9 +48,9 @@
       "close_price": 9600.0,
       "trading_volume": 7535218,
       "trading_value": 72338092800,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 광통신·로봇으로 확장…이익이 증명한 저평.....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -107,7 +117,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]\"가온그룹, 광통신·로봇으로 확장…이익이 증명한 저평.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005764683&office_id=277&code=078890&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -115,9 +135,9 @@
       "close_price": 10390.0,
       "trading_volume": 4961933,
       "trading_value": 51554483870,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -184,7 +204,9 @@
       ],
       "sector": "전자제품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260506",
@@ -192,10 +214,10 @@
       "close_price": 7640.0,
       "trading_volume": 2114873,
       "trading_value": 16157629720,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증강현실(AR)",
       "news": [
         {
@@ -261,7 +283,9 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -334,9 +358,9 @@
       "date": "20260210",
       "change_rate": 10.36,
       "close_price": 5750.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "지난해 연결 영업이익 125억2575만원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -358,15 +382,25 @@
       "source": "estimated",
       "trading_volume": 1342780,
       "trading_value": 7720985000,
-      "market_cap": 105974426807
+      "market_cap": 105974426807,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "가온그룹, 지난해 연결 영업이익 125억2575만원…흑자전환",
+          "link": "https://n.news.naver.com/mnews/article/018/0006216705",
+          "source": "이데일리",
+          "date": "2026-02-10"
+        }
+      ]
     },
     {
       "date": "20260116",
       "change_rate": 10.46,
       "close_price": 6440.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "온디바이스AI주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -388,7 +422,17 @@
       "source": "estimated",
       "trading_volume": 1608622,
       "trading_value": 10359525680,
-      "market_cap": 118691358024
+      "market_cap": 118691358024,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 뉴욕증시, 반도체 훈풍…온디바이스AI주 강세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000486792",
+          "source": "SBS Biz",
+          "date": "2026-01-16"
+        }
+      ]
     },
     {
       "date": "20260112",
@@ -467,5 +511,5 @@
     "count_recent": 0,
     "avg_rate": 15.27
   },
-  "built_at": "2026-09-27T09:55:24"
+  "built_at": "2026-10-02T05:15:57"
 }

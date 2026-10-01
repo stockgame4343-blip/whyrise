@@ -9,9 +9,9 @@
       "close_price": 51900.0,
       "trading_volume": 264729,
       "trading_value": 13739435100,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "영업이익 2565억원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "DL, 영업이익 2565억원…분기 기준 역대 최대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005316995&office_id=015&code=000210&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -86,9 +96,9 @@
       "close_price": 50900.0,
       "trading_volume": 172517,
       "trading_value": 8781115300,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 여수, 롯데·한화· 석화 합작사 출범",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -125,7 +135,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "여수, 롯데·한화·DL 석화 합작사 출범",
+          "link": "https://n.news.naver.com/mnews/article/015/0005312713",
+          "source": "한국경제",
+          "date": "2026-07-22"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -195,10 +215,10 @@
       "date": "20260318",
       "change_rate": 11.15,
       "close_price": 49850.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -213,7 +233,9 @@
       "source": "estimated",
       "trading_volume": 158171,
       "trading_value": 7884824350,
-      "market_cap": 1044686982845
+      "market_cap": 1044686982845,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
@@ -241,5 +263,5 @@
     "count_recent": 0,
     "avg_rate": 14.31
   },
-  "built_at": "2026-10-01T22:52:35"
+  "built_at": "2026-10-02T05:15:56"
 }

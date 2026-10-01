@@ -9,15 +9,17 @@
       "close_price": 206500.0,
       "trading_volume": 277001,
       "trading_value": 57200706500,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -25,9 +27,9 @@
       "close_price": 291500.0,
       "trading_volume": 799445,
       "trading_value": 233038217500,
-      "rise_reason": "증권 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "증권 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [
@@ -88,7 +90,9 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -96,15 +100,17 @@
       "close_price": 239000.0,
       "trading_volume": 363231,
       "trading_value": 86812209000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -143,9 +149,9 @@
       "date": "20260219",
       "change_rate": 10.1,
       "close_price": 283500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -154,15 +160,17 @@
       "source": "estimated",
       "trading_volume": 534815,
       "trading_value": 151620052500,
-      "market_cap": 15798313636363
+      "market_cap": 15798313636363,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251020",
       "change_rate": 14.02,
       "close_price": 175700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -171,7 +179,9 @@
       "source": "estimated",
       "trading_volume": 777159,
       "trading_value": 136546836300,
-      "market_cap": 9791053636363
+      "market_cap": 9791053636363,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250624",
@@ -199,5 +209,5 @@
     "count_recent": 0,
     "avg_rate": 11.93
   },
-  "built_at": "2026-09-29T22:18:48"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,15 +9,17 @@
       "close_price": 14100.0,
       "trading_volume": 308185,
       "trading_value": 4345408500,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 36종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -25,15 +27,17 @@
       "close_price": 17350.0,
       "trading_volume": 237269,
       "trading_value": 4116617150,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 29종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260615",
@@ -41,9 +45,9 @@
       "close_price": 23500.0,
       "trading_volume": 854132,
       "trading_value": 20072102000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 인도 스털링 앤 윌슨과 반도체·배터리 등 제조 시설용 클....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
@@ -110,7 +114,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "신성이엔지, 인도 스털링 앤 윌슨과 반도체·배터리 등 제조 시설용 클....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005535076&office_id=014&code=011930&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -181,15 +195,25 @@
       "close_price": 34450.0,
       "trading_volume": 19357365,
       "trading_value": 666861224250,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G상용화·광통신 기술 활용 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "통신장비株, 6G상용화·광통신 기술 활용 기대감에 장초반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005339366",
+          "source": "머니투데이",
+          "date": "2026-04-03"
+        }
+      ]
     },
     {
       "date": "20260317",
@@ -243,9 +267,9 @@
       "date": "20260311",
       "change_rate": 11.95,
       "close_price": 24350.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "50억 규모 자사주 소각 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "두나무(Dunamu)",
       "news": [
@@ -279,7 +303,17 @@
       "source": "estimated",
       "trading_volume": 3361827,
       "trading_value": 81860487450,
-      "market_cap": 494473762376
+      "market_cap": 494473762376,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "신성이엔지, 50억 규모 자사주 소각 결정",
+          "link": "https://n.news.naver.com/mnews/article/277/0005732763",
+          "source": "아시아경제",
+          "date": "2026-03-11"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -333,9 +367,9 @@
       "date": "20260227",
       "change_rate": 14.75,
       "close_price": 24500.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 호황 속 실적 기대",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "두나무(Dunamu)",
       "news": [
@@ -375,15 +409,25 @@
       "source": "estimated",
       "trading_volume": 8427424,
       "trading_value": 206471888000,
-      "market_cap": 497519801980
+      "market_cap": 497519801980,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "키움證, 신성이엔지 &quot;반도체 호황 속 실적 기대…목표가↑&quot;",
+          "link": "https://n.news.naver.com/mnews/article/001/0015928151",
+          "source": "연합뉴스",
+          "date": "2026-02-27"
+        }
+      ]
     },
     {
       "date": "20250710",
       "change_rate": 12.06,
       "close_price": 17000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 엔비디아 시총 4조 달러 돌파",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "두나무(Dunamu)",
       "news": [],
@@ -392,7 +436,17 @@
       "source": "estimated",
       "trading_volume": 11490081,
       "trading_value": 195331377000,
-      "market_cap": 345217821782
+      "market_cap": 345217821782,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 엔비디아 시총 4조 달러 돌파···반도체주 동반 상승",
+          "link": "https://n.news.naver.com/mnews/article/374/0000450857",
+          "source": "SBS Biz",
+          "date": "2025-07-10"
+        }
+      ]
     }
   ],
   "stats": {
@@ -403,5 +457,5 @@
     "count_recent": 0,
     "avg_rate": 16.86
   },
-  "built_at": "2026-10-01T22:52:47"
+  "built_at": "2026-10-02T05:15:57"
 }

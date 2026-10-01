@@ -9,9 +9,9 @@
       "close_price": 93000.0,
       "trading_volume": 676405,
       "trading_value": 62905665000,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주주 동반 강세 — 제2우주센터 건립 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 제2우주센터 건립 소식에…우주항공株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001185201&office_id=366&code=488900&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -394,10 +404,10 @@
       "close_price": 161400.0,
       "trading_volume": 7161525,
       "trading_value": 1155870135000,
-      "rise_reason": "AI 서버 기판 수요 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "PCB(FPCB 등)",
       "news": [
         {
@@ -463,7 +473,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "AI 서버 기판 수요 급증",
+      "reason_kind": "none"
     },
     {
       "date": "20260420",
@@ -643,9 +655,9 @@
       "date": "20251117",
       "change_rate": 18.36,
       "close_price": 131500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "PCB 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "PCB(FPCB 등)",
       "news": [],
@@ -654,7 +666,9 @@
       "source": "estimated",
       "trading_volume": 4773764,
       "trading_value": 627749966000,
-      "market_cap": 9653311033883
+      "market_cap": 9653311033883,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251110",
@@ -699,5 +713,5 @@
     "count_recent": 0,
     "avg_rate": 14.96
   },
-  "built_at": "2026-10-01T22:52:12"
+  "built_at": "2026-10-02T05:15:56"
 }

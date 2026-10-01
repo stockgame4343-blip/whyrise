@@ -9,10 +9,10 @@
       "close_price": 1817.0,
       "trading_volume": 67294,
       "trading_value": 122273198,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -86,10 +88,10 @@
       "close_price": 1780.0,
       "trading_volume": 3421,
       "trading_value": 6089380,
-      "rise_reason": "투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [
         {
@@ -137,7 +139,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 확대 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260430",
@@ -145,10 +149,10 @@
       "close_price": 4220.0,
       "trading_volume": 104873,
       "trading_value": 442564060,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [
         {
@@ -214,7 +218,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260225",
@@ -254,9 +260,9 @@
       "date": "20251114",
       "change_rate": 29.96,
       "close_price": 6160.0,
-      "rise_reason": "치매 테마 상한가",
+      "rise_reason": "치매 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [],
@@ -265,7 +271,9 @@
       "source": "estimated",
       "trading_volume": 113602,
       "trading_value": 699788320,
-      "market_cap": 67479999999
+      "market_cap": 67479999999,
+      "reason_previous": "치매 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20250711",
@@ -492,5 +500,5 @@
     "count_recent": 1,
     "avg_rate": 14.47
   },
-  "built_at": "2026-10-01T23:00:03"
+  "built_at": "2026-10-02T05:15:56"
 }

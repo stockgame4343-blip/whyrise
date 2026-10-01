@@ -9,10 +9,10 @@
       "close_price": 6610.0,
       "trading_volume": 95471,
       "trading_value": 631063310,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -274,9 +276,9 @@
       "date": "20251219",
       "change_rate": 13.13,
       "close_price": 8100.0,
-      "rise_reason": "자사주 매입",
+      "rise_reason": "상장 4개월만에 자사주 취득한",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -292,15 +294,25 @@
       "source": "estimated",
       "trading_volume": 220696,
       "trading_value": 1787637600,
-      "market_cap": 41741379310
+      "market_cap": 41741379310,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "상장 4개월만에 자사주 취득한 애드포러스, 7%↑[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006186557",
+          "source": "이데일리",
+          "date": "2025-12-19"
+        }
+      ]
     },
     {
       "date": "20250917",
       "change_rate": 11.95,
       "close_price": 12180.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 미·중 틱톡 합의에 틱톡 플랫폼 계약...",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -328,7 +340,17 @@
       "source": "estimated",
       "trading_volume": 5227370,
       "trading_value": 63669366600,
-      "market_cap": 62766666666
+      "market_cap": 62766666666,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[e종목돋보기] 애드포러스, 미·중 '틱톡' 합의에 '틱톡 플랫폼 계약'...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006116715",
+          "source": "이데일리",
+          "date": "2025-09-16"
+        }
+      ]
     }
   ],
   "stats": {
@@ -339,5 +361,5 @@
     "count_recent": 0,
     "avg_rate": 17.49
   },
-  "built_at": "2026-10-01T22:59:10"
+  "built_at": "2026-10-02T05:15:56"
 }

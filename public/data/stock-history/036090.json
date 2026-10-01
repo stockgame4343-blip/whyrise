@@ -9,9 +9,9 @@
       "close_price": 1930.0,
       "trading_volume": 15481450,
       "trading_value": 29879198500,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 반도체 소부장 기업으로 재평가…자회사 지분가...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -66,7 +66,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]\"위지트, 반도체 소부장 기업으로 재평가…자회사 지분가...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005779922&office_id=277&code=036090&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260623",
@@ -74,9 +84,9 @@
       "close_price": 1742.0,
       "trading_volume": 1572516,
       "trading_value": 2739322872,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 반도체 소부장 기업으로 재평가…자회사 지분가...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -131,7 +141,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]\"위지트, 반도체 소부장 기업으로 재평가…자회사 지분가...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005779922&office_id=277&code=036090&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -206,9 +226,9 @@
       "close_price": 2145.0,
       "trading_volume": 26824019,
       "trading_value": 57537520755,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 무려 433억 돌...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -233,7 +253,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 위지트 거래대금 무려 433억 돌...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003633831",
+          "source": "서울신문",
+          "date": "2026-04-09"
+        }
+      ]
     }
   ],
   "stats": {
@@ -244,5 +274,5 @@
     "count_recent": 0,
     "avg_rate": 18.38
   },
-  "built_at": "2026-10-01T22:58:33"
+  "built_at": "2026-10-02T05:15:57"
 }

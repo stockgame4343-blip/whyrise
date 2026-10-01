@@ -25,10 +25,10 @@
       "close_price": 19530.0,
       "trading_volume": 122231,
       "trading_value": 2387171430,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -88,7 +88,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260403",
@@ -96,9 +98,9 @@
       "close_price": 47050.0,
       "trading_volume": 141673,
       "trading_value": 6665714650,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "개발 알로스템 日 정식 판매허가 획득",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -123,7 +125,17 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[단독] 안트로젠 개발 '알로스템' 日 정식 판매허가 획득",
+          "link": "https://n.news.naver.com/mnews/article/015/0005270691",
+          "source": "한국경제",
+          "date": "2026-04-03"
+        }
+      ]
     },
     {
       "date": "20260310",
@@ -201,10 +213,10 @@
       "date": "20260303",
       "change_rate": 19.78,
       "close_price": 43000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -231,7 +243,9 @@
       "source": "estimated",
       "trading_volume": 150111,
       "trading_value": 6454773000,
-      "market_cap": 430344000000
+      "market_cap": 430344000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251204",
@@ -267,10 +281,10 @@
       "date": "20251202",
       "change_rate": 13.18,
       "close_price": 29200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -291,16 +305,18 @@
       "source": "estimated",
       "trading_volume": 206937,
       "trading_value": 6042560400,
-      "market_cap": 292233600000
+      "market_cap": 292233600000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251201",
       "change_rate": 13.66,
       "close_price": 25800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -321,7 +337,9 @@
       "source": "estimated",
       "trading_volume": 188681,
       "trading_value": 4867969800,
-      "market_cap": 258206400000
+      "market_cap": 258206400000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250708",
@@ -374,5 +392,5 @@
     "count_recent": 0,
     "avg_rate": 18.22
   },
-  "built_at": "2026-09-27T09:40:49"
+  "built_at": "2026-10-02T05:15:57"
 }

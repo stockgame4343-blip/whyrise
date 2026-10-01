@@ -41,10 +41,10 @@
       "close_price": 20250.0,
       "trading_volume": 3583774,
       "trading_value": 72571423500,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
         {
@@ -110,7 +110,9 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -340,9 +342,9 @@
       "date": "20251029",
       "change_rate": 13.17,
       "close_price": 18560.0,
-      "rise_reason": "수주 공시",
+      "rise_reason": "전자 소재 공급계약",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -382,16 +384,26 @@
       "source": "estimated",
       "trading_volume": 14634027,
       "trading_value": 271607541120,
-      "market_cap": 1113737992565
+      "market_cap": 1113737992565,
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]파미셀, 전자 소재 공급계약에↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005671157",
+          "source": "아시아경제",
+          "date": "2025-10-29"
+        }
+      ]
     },
     {
       "date": "20251027",
       "change_rate": 12.34,
       "close_price": 16660.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
         {
@@ -430,7 +442,9 @@
       "source": "estimated",
       "trading_volume": 13907012,
       "trading_value": 231690819920,
-      "market_cap": 999723866171
+      "market_cap": 999723866171,
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20250915",
@@ -475,5 +489,5 @@
     "count_recent": 0,
     "avg_rate": 12.2
   },
-  "built_at": "2026-10-01T22:52:38"
+  "built_at": "2026-10-02T05:15:57"
 }

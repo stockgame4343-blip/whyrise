@@ -9,10 +9,10 @@
       "close_price": 5190.0,
       "trading_volume": 43167,
       "trading_value": 224036730,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260807",
@@ -86,10 +88,10 @@
       "close_price": 5590.0,
       "trading_volume": 113392,
       "trading_value": 633861280,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260707",
@@ -163,9 +167,9 @@
       "close_price": 6000.0,
       "trading_volume": 35607,
       "trading_value": 213642000,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 뉴온, 190억원 유상증자…에 제3자배정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "뉴온, 190억원 유상증자…케이피엠테크에 제3자배정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000520196&office_id=374&code=042040&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.06"
+        }
+      ]
     },
     {
       "date": "20260706",
@@ -240,9 +254,9 @@
       "close_price": 4620.0,
       "trading_volume": 19688,
       "trading_value": 90958560,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 225억원 규모 제3자배정 유상증자 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -309,16 +323,26 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "케이피엠테크, 225억원 규모 제3자배정 유상증자 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006321880&office_id=018&code=042040&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.03"
+        }
+      ]
     },
     {
       "date": "20260311",
       "change_rate": 15.06,
       "close_price": 1910.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -326,16 +350,18 @@
       "source": "estimated",
       "trading_volume": 872782,
       "trading_value": 1667013620,
-      "market_cap": 47176234979
+      "market_cap": 47176234979,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
       "change_rate": 13.37,
       "close_price": 2290.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -350,7 +376,9 @@
       "source": "estimated",
       "trading_volume": 1054345,
       "trading_value": 2414450050,
-      "market_cap": 56562082777
+      "market_cap": 56562082777,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250624",
@@ -397,5 +425,5 @@
     "count_recent": 1,
     "avg_rate": 21.38
   },
-  "built_at": "2026-10-01T22:59:00"
+  "built_at": "2026-10-02T05:15:56"
 }

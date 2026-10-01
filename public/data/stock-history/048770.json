@@ -9,9 +9,9 @@
       "close_price": 4375.0,
       "trading_volume": 9164275,
       "trading_value": 40093703125,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "비트코인·로봇주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 양대 지수 동반 상승…비트코인·로봇주 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000531167&office_id=374&code=048770&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260904",
@@ -86,9 +96,9 @@
       "close_price": 3965.0,
       "trading_volume": 1859780,
       "trading_value": 7374027700,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "휴머노이드용 액추에이터 7종 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "TPC로보틱스, 휴머노이드용 액추에이터 7종 출시…하반기 실적 반등 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005810647&office_id=277&code=048770&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -163,9 +183,9 @@
       "close_price": 3200.0,
       "trading_volume": 2741011,
       "trading_value": 8771235200,
-      "rise_reason": "자사주 매입",
+      "rise_reason": "휴머노이드용 액추에이터 7종 출시",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트팩토리(스마트공장)",
       "news": [
@@ -226,7 +246,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "TPC로보틱스, 휴머노이드용 액추에이터 7종 출시…하반기 실적 반등 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005810647&office_id=277&code=048770&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -266,9 +296,9 @@
       "close_price": 6020.0,
       "trading_volume": 2830848,
       "trading_value": 17041704960,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇 테마 15종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -281,7 +311,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "theme"
     },
     {
       "date": "20260514",
@@ -289,10 +321,10 @@
       "close_price": 9370.0,
       "trading_volume": 1706662,
       "trading_value": 15991422940,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -358,7 +390,9 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -366,9 +400,9 @@
       "close_price": 7210.0,
       "trading_volume": 8005602,
       "trading_value": 57720390420,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -435,7 +469,9 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260512",
@@ -443,9 +479,9 @@
       "close_price": 5550.0,
       "trading_volume": 9389740,
       "trading_value": 52113057000,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -512,7 +548,9 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260508",
@@ -520,9 +558,9 @@
       "close_price": 4665.0,
       "trading_volume": 4636644,
       "trading_value": 21629944260,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 中휴머노이드 로봇 기업과 전략적 협력…기술이전·공동.....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -589,7 +627,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "TPC로보틱스, 中휴머노이드 로봇 기업과 전략적 협력…기술이전·공동.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005758748&office_id=277&code=048770&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260417",
@@ -929,5 +977,5 @@
     "count_recent": 3,
     "avg_rate": 17.89
   },
-  "built_at": "2026-10-01T22:58:29"
+  "built_at": "2026-10-02T05:15:56"
 }

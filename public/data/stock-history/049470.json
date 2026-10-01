@@ -9,9 +9,9 @@
       "close_price": 3065.0,
       "trading_volume": 4410725,
       "trading_value": 13518872125,
-      "rise_reason": "관련 보도: 비트코인 1.1억원 되찾자 가상화폐株 급등…비트플래닛 '上'",
+      "rise_reason": "비트코인 8.1만달러 회복",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -94,12 +94,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "비트코인 1.1억원 되찾자 가상화폐株 급등…비트플래닛 '上'",
-          "link": "https://n.news.naver.com/mnews/article/003/0014203744",
-          "source": "뉴시스",
+          "title": "비트코인 8.1만달러 회복에 가상화폐株 강세…비트플래닛 '上'[핫종목...",
+          "link": "https://n.news.naver.com/mnews/article/421/0009182520",
+          "source": "뉴스1",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260921",
@@ -107,9 +108,9 @@
       "close_price": 2755.0,
       "trading_volume": 358791,
       "trading_value": 988469205,
-      "rise_reason": "관련 보도: 비트코인 1.1억원 되찾자 가상화폐株 급등…비트플래닛 '上'",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "비트코인 8.1만달러 회복",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -192,12 +193,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "비트코인 1.1억원 되찾자 가상화폐株 급등…비트플래닛 '上'",
-          "link": "https://n.news.naver.com/mnews/article/003/0014203744",
-          "source": "뉴시스",
+          "title": "비트코인 8.1만달러 회복에 가상화폐株 강세…비트플래닛 '上'[핫종목...",
+          "link": "https://n.news.naver.com/mnews/article/421/0009182520",
+          "source": "뉴스1",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260825",
@@ -205,9 +207,9 @@
       "close_price": 2795.0,
       "trading_volume": 1194871,
       "trading_value": 3339664445,
-      "rise_reason": "주주환원 정책",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "가상자산주 동반 강세 — 비트코인 8만 달러 눈앞",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -274,7 +276,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "비트코인 '8만 달러' 눈앞…트럼프發 훈풍에 가상자산株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001025025&office_id=088&code=049470&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260821",
@@ -282,9 +294,9 @@
       "close_price": 2335.0,
       "trading_volume": 1755734,
       "trading_value": 4099638890,
-      "rise_reason": "주주환원 정책",
+      "rise_reason": "비트코인 1억 돌파",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -351,7 +363,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "비트코인 1억 돌파…비트플래닛 등 가상자산株 동반 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014140071&office_id=003&code=049470&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.21"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -359,10 +381,10 @@
       "close_price": 2020.0,
       "trading_volume": 270658,
       "trading_value": 546729160,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
         {
@@ -428,7 +450,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -436,9 +460,9 @@
       "close_price": 1876.0,
       "trading_volume": 127627,
       "trading_value": 239428252,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -505,7 +529,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260806",
@@ -513,10 +539,10 @@
       "close_price": 1679.0,
       "trading_volume": 65422,
       "trading_value": 109843538,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "교육/온라인 교육",
       "news": [
         {
@@ -582,7 +608,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -590,10 +618,10 @@
       "close_price": 1464.0,
       "trading_volume": 104762,
       "trading_value": 153371568,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -659,7 +687,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -667,10 +697,10 @@
       "close_price": 1500.0,
       "trading_volume": 98881,
       "trading_value": 148321500,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -736,7 +766,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260416",
@@ -744,9 +776,9 @@
       "close_price": 3620.0,
       "trading_volume": 1309137,
       "trading_value": 4739075940,
-      "rise_reason": "보안주(정보) 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -813,7 +845,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260320",
@@ -836,9 +870,9 @@
       "date": "20260305",
       "change_rate": 14.56,
       "close_price": 3265.0,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 17종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -847,7 +881,9 @@
       "source": "estimated",
       "trading_volume": 142659,
       "trading_value": 465781635,
-      "market_cap": 76947198969
+      "market_cap": 76947198969,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260114",
@@ -931,9 +967,9 @@
       "date": "20250910",
       "change_rate": 15.72,
       "close_price": 18400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -942,7 +978,9 @@
       "source": "estimated",
       "trading_volume": 3371352,
       "trading_value": 62032876800,
-      "market_cap": 433638119768
+      "market_cap": 433638119768,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250908",
@@ -1351,9 +1389,9 @@
       "date": "20250611",
       "change_rate": 10.81,
       "close_price": 2050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -1362,7 +1400,9 @@
       "source": "estimated",
       "trading_volume": 2173331,
       "trading_value": 4455328550,
-      "market_cap": 48312942691
+      "market_cap": 48312942691,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -1373,5 +1413,5 @@
     "count_recent": 2,
     "avg_rate": 18.65
   },
-  "built_at": "2026-10-01T22:58:28"
+  "built_at": "2026-10-02T05:15:56"
 }

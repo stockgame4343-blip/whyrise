@@ -175,9 +175,9 @@
       "close_price": 18880.0,
       "trading_volume": 5424566,
       "trading_value": 102415806080,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -244,7 +244,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260909",
@@ -252,9 +254,9 @@
       "close_price": 18440.0,
       "trading_volume": 5914470,
       "trading_value": 109062826800,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비·광통신주 동반 강세 — AI 데이터센터 초고속망 수요 폭증",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -321,7 +323,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] AI 데이터센터 초고속망 수요 폭증… 통신장비·광통신株 강....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001191215&office_id=366&code=043260&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.09.09"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -329,9 +341,9 @@
       "close_price": 20650.0,
       "trading_volume": 5763409,
       "trading_value": 119014395850,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신주 동반 강세 — 美 중국산 광트랜시버 규제 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -398,7 +410,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美 중국산 광트랜시버 규제 추진에 광통신株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001022947&office_id=088&code=043260&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260805",
@@ -406,9 +428,9 @@
       "close_price": 19000.0,
       "trading_volume": 5755458,
       "trading_value": 109353702000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자회사 에이디에스테크, 美 상장사로부터 235억 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "챗봇",
       "news": [
@@ -475,7 +497,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "성호전자 자회사 에이디에스테크, 美 상장사로부터 235억 수주",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004648831&office_id=011&code=043260&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -483,9 +515,9 @@
       "close_price": 14940.0,
       "trading_volume": 1638819,
       "trading_value": 24483955860,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 주식담보대출 상환 속도…책임경영도 강화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -546,7 +578,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "성호전자, 주식담보대출 상환 속도…책임경영도 강화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004647359&office_id=011&code=043260&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -554,15 +596,17 @@
       "close_price": 22150.0,
       "trading_volume": 2269845,
       "trading_value": 50277066750,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -570,9 +614,9 @@
       "close_price": 45550.0,
       "trading_volume": 6251438,
       "trading_value": 284753000900,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "젠슨황 방한·코닝 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -639,7 +683,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "젠슨황 방한·코닝 계약에 광통신주 급등…성호전자 19%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013995301&office_id=003&code=043260&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -647,9 +701,9 @@
       "close_price": 47300.0,
       "trading_volume": 7077634,
       "trading_value": 334772088200,
-      "rise_reason": "공급 계약 체결",
+      "rise_reason": "젠슨황 방한·코닝 계약",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -704,7 +758,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "젠슨황 방한·코닝 계약에 광통신주 급등…성호전자 19%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013995301&office_id=003&code=043260&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260602",
@@ -866,9 +930,9 @@
       "close_price": 39400.0,
       "trading_volume": 3629369,
       "trading_value": 142997138600,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "최대주주 1.4만주 장내매수 ADS테크 성장 확신",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -935,7 +999,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "성호전자, 최대주주 1.4만주 장내매수 \"ADS테크 성장 확신\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005360498&office_id=008&code=043260&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -1010,15 +1084,17 @@
       "close_price": 47400.0,
       "trading_volume": 2675663,
       "trading_value": 126826426200,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "광통신 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
@@ -1058,10 +1134,10 @@
       "date": "20260310",
       "change_rate": 28.31,
       "close_price": 49400.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -1100,7 +1176,9 @@
       "source": "estimated",
       "trading_volume": 6654875,
       "trading_value": 328750825000,
-      "market_cap": 3503580078636
+      "market_cap": 3503580078636,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -1123,9 +1201,9 @@
       "date": "20260305",
       "change_rate": 20.47,
       "close_price": 30900.0,
-      "rise_reason": "전기차 테마 강세",
+      "rise_reason": "전기차 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [],
@@ -1134,7 +1212,9 @@
       "source": "estimated",
       "trading_volume": 2376911,
       "trading_value": 73446549900,
-      "market_cap": 2191510615989
+      "market_cap": 2191510615989,
+      "reason_previous": "전기차 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260209",
@@ -1242,9 +1322,9 @@
       "date": "20260105",
       "change_rate": 15.65,
       "close_price": 12490.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전기차 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [],
@@ -1253,15 +1333,17 @@
       "source": "estimated",
       "trading_volume": 3048924,
       "trading_value": 38081060760,
-      "market_cap": 885824193971
+      "market_cap": 885824193971,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260102",
       "change_rate": 16.88,
       "close_price": 10800.0,
-      "rise_reason": "전기차 테마 강세",
+      "rise_reason": "전기차 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [],
@@ -1270,15 +1352,17 @@
       "source": "estimated",
       "trading_volume": 1740394,
       "trading_value": 18796255200,
-      "market_cap": 765964875491
+      "market_cap": 765964875491,
+      "reason_previous": "전기차 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251229",
       "change_rate": 19.87,
       "close_price": 9410.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전기차 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [],
@@ -1287,15 +1371,17 @@
       "source": "estimated",
       "trading_volume": 5800554,
       "trading_value": 54583213140,
-      "market_cap": 667382359108
+      "market_cap": 667382359108,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251219",
       "change_rate": 15.05,
       "close_price": 7340.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전기차 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [],
@@ -1304,7 +1390,9 @@
       "source": "estimated",
       "trading_volume": 3844698,
       "trading_value": 28220083320,
-      "market_cap": 520572424639
+      "market_cap": 520572424639,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251217",
@@ -1565,5 +1653,5 @@
     "count_recent": 4,
     "avg_rate": 17.53
   },
-  "built_at": "2026-10-01T22:54:04"
+  "built_at": "2026-10-02T05:15:56"
 }

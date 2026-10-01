@@ -9,9 +9,9 @@
       "close_price": 17260.0,
       "trading_volume": 12477284,
       "trading_value": 215357921840,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "부채비율 40% M&A 원천",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[K조선 공급망] SK오션플랜트, '부채비율 40%' M&A 원천",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000087807&office_id=293&code=100090&page=&sm=",
+          "source": "블로터",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260625",
@@ -315,9 +325,9 @@
       "date": "20260326",
       "change_rate": 14.57,
       "close_price": 28700.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 해상풍력특별법 시행에 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -357,7 +367,17 @@
       "source": "estimated",
       "trading_volume": 14732074,
       "trading_value": 422810523800,
-      "market_cap": 1793176000000
+      "market_cap": 1793176000000,
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SK오션플랜트, 해상풍력특별법 시행에 '기대감'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005267320",
+          "source": "한국경제",
+          "date": "2026-03-26"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -435,9 +455,9 @@
       "date": "20250911",
       "change_rate": 22.01,
       "close_price": 29100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "풍력에너지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [],
@@ -446,7 +466,9 @@
       "source": "estimated",
       "trading_volume": 21045561,
       "trading_value": 612425825100,
-      "market_cap": 1818168000000
+      "market_cap": 1818168000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250905",
@@ -508,5 +530,5 @@
     "count_recent": 0,
     "avg_rate": 19.38
   },
-  "built_at": "2026-10-01T22:52:38"
+  "built_at": "2026-10-02T05:15:57"
 }

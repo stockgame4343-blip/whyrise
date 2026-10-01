@@ -9,9 +9,9 @@
       "close_price": 2615.0,
       "trading_volume": 4449368,
       "trading_value": 11635097320,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "남북경협주 동반 강세 — 북미정상회담 열리나 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "\"북미정상회담 열리나\" 기대감에…남북경협주 일제히 '불기둥'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014164228&office_id=003&code=026040&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260818",
@@ -86,9 +96,9 @@
       "close_price": 2165.0,
       "trading_volume": 4334304,
       "trading_value": 9383768160,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "남북경협주 동반 강세 — 트럼프 김정은, 대화 요청에 응답",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -149,7 +159,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프 \"김정은, 대화 요청에 응답\"…남북경협주 '불기둥' [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003122514&office_id=119&code=026040&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -157,9 +177,9 @@
       "close_price": 2265.0,
       "trading_volume": 193987,
       "trading_value": 439380555,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "남북경협 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -226,15 +246,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260206",
       "change_rate": 10.81,
       "close_price": 3280.0,
-      "rise_reason": "남북/통일",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "남북경협주 동반 강세 — 대북 인도적 지원 재개될까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -268,7 +290,17 @@
       "source": "estimated",
       "trading_volume": 2500917,
       "trading_value": 8203007760,
-      "market_cap": 54131468531
+      "market_cap": 54131468531,
+      "reason_previous": "남북/통일",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "대북 인도적 지원 재개될까…남북경협주 일제히 '들썩'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005247905",
+          "source": "한국경제",
+          "date": "2026-02-06"
+        }
+      ]
     },
     {
       "date": "20250922",
@@ -395,5 +427,5 @@
     "count_recent": 1,
     "avg_rate": 14.08
   },
-  "built_at": "2026-10-01T22:59:08"
+  "built_at": "2026-10-02T05:15:56"
 }

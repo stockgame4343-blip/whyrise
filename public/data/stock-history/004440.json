@@ -25,10 +25,10 @@
       "close_price": 7500.0,
       "trading_volume": 1393616,
       "trading_value": 10452120000,
-      "rise_reason": "MLCC 계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철도",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC 계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -102,10 +104,10 @@
       "close_price": 6420.0,
       "trading_volume": 1030283,
       "trading_value": 6614416860,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "재난/안전(지진/화재 등)",
       "news": [
         {
@@ -171,7 +173,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260626",
@@ -179,9 +183,9 @@
       "close_price": 5550.0,
       "trading_volume": 1420121,
       "trading_value": 7881671550,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "재난 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "재난/안전(지진/화재 등)",
       "news": [
@@ -248,15 +252,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260326",
       "change_rate": 10.8,
       "close_price": 9950.0,
-      "rise_reason": "수주 공시",
+      "rise_reason": "885억원대 해상풍력발전 공급계약",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -278,7 +284,17 @@
       "source": "estimated",
       "trading_volume": 2489764,
       "trading_value": 24773151800,
-      "market_cap": 126676211453
+      "market_cap": 126676211453,
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼일씨엔에스, 885억원대 해상풍력발전 공급계약에 상한가",
+          "link": "https://n.news.naver.com/mnews/article/008/0005334727",
+          "source": "머니투데이",
+          "date": "2026-03-25"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -356,10 +372,10 @@
       "date": "20251205",
       "change_rate": 17.45,
       "close_price": 4745.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -374,7 +390,9 @@
       "source": "estimated",
       "trading_volume": 2272440,
       "trading_value": 10782727800,
-      "market_cap": 60409911894
+      "market_cap": 60409911894,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -385,5 +403,5 @@
     "count_recent": 0,
     "avg_rate": 17.95
   },
-  "built_at": "2026-10-01T22:53:12"
+  "built_at": "2026-10-02T05:15:57"
 }

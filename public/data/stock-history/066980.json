@@ -9,10 +9,10 @@
       "close_price": 1749.0,
       "trading_volume": 3265278,
       "trading_value": 5710971222,
-      "rise_reason": "투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "메가프로젝트",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 확대 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260709",
@@ -86,10 +88,10 @@
       "close_price": 2110.0,
       "trading_volume": 4579011,
       "trading_value": 9661713210,
-      "rise_reason": "반도체 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -163,9 +167,9 @@
       "close_price": 2485.0,
       "trading_volume": 14556137,
       "trading_value": 36172000445,
-      "rise_reason": "반도체 수주 공시",
+      "rise_reason": "호남 반도체 투자 수혜 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 한성크린텍, 호남 반도체 투자 수혜 기대감에 28%대 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001175404&office_id=366&code=066980&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -240,9 +254,9 @@
       "close_price": 1914.0,
       "trading_volume": 6200387,
       "trading_value": 11867540718,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "호남 반도체 공장 추진 등 AI 반도체 투자 확대 수혜",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "공시",
       "news": [
@@ -309,7 +323,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한성크린텍, 호남 반도체 공장 추진 등 AI 반도체 투자 확대 수혜 기...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005782516&office_id=277&code=066980&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -333,10 +357,10 @@
       "close_price": 2355.0,
       "trading_volume": 10672425,
       "trading_value": 25133560875,
-      "rise_reason": "반도체 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체",
       "news": [
         {
@@ -402,7 +426,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -410,9 +436,9 @@
       "close_price": 2250.0,
       "trading_volume": 9600990,
       "trading_value": 21602227500,
-      "rise_reason": "반도체 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [
@@ -479,7 +505,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260520",
@@ -487,9 +523,9 @@
       "close_price": 1890.0,
       "trading_volume": 14300695,
       "trading_value": 27028313550,
-      "rise_reason": "반도체 수주 공시",
+      "rise_reason": "삼전·하닉 수주 러브콜",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [
@@ -556,7 +592,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] ‘삼전·하닉 수주 러브콜’…한성크린텍, 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001165725&office_id=366&code=066980&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -564,9 +610,9 @@
       "close_price": 1403.0,
       "trading_volume": 670153,
       "trading_value": 940224659,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [
@@ -579,7 +625,17 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -602,9 +658,9 @@
       "date": "20251113",
       "change_rate": 11.34,
       "close_price": 1699.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: AI 반도체 물길 잡았다…초순수 전략적 가치 부각",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [
@@ -632,7 +688,17 @@
       "source": "estimated",
       "trading_volume": 37307892,
       "trading_value": 63386108508,
-      "market_cap": 88207416750
+      "market_cap": 88207416750,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "한성크린텍, AI 반도체 ’물길’ 잡았다…초순수 전략적 가치 부각",
+          "link": "https://n.news.naver.com/mnews/article/015/0005210188",
+          "source": "한국경제",
+          "date": "2025-11-12"
+        }
+      ]
     },
     {
       "date": "20251111",
@@ -721,5 +787,5 @@
     "count_recent": 0,
     "avg_rate": 18.46
   },
-  "built_at": "2026-10-01T22:57:59"
+  "built_at": "2026-10-02T05:15:56"
 }

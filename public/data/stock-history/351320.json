@@ -9,10 +9,10 @@
       "close_price": 4650.0,
       "trading_volume": 836619,
       "trading_value": 3890278350,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260908",
@@ -32,10 +34,10 @@
       "close_price": 5000.0,
       "trading_volume": 1580270,
       "trading_value": 7901350000,
-      "rise_reason": "화장품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -101,7 +103,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260907",
@@ -109,10 +113,10 @@
       "close_price": 4335.0,
       "trading_volume": 1604885,
       "trading_value": 6957176475,
-      "rise_reason": "화장품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -178,7 +182,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260904",
@@ -186,9 +192,9 @@
       "close_price": 3725.0,
       "trading_volume": 2252585,
       "trading_value": 8390879125,
-      "rise_reason": "화장품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 데이터센터·HPC 진출",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -255,7 +261,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "넥사다이내믹스, AI 데이터센터·HPC 진출…SK하이닉스 출신 임원 영...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005407891&office_id=008&code=351320&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.09.01"
+        }
+      ]
     },
     {
       "date": "20260831",
@@ -263,10 +279,10 @@
       "close_price": 2935.0,
       "trading_volume": 1685505,
       "trading_value": 4946957175,
-      "rise_reason": "화장품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -332,7 +348,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260827",
@@ -340,9 +358,9 @@
       "close_price": 2550.0,
       "trading_volume": 3309839,
       "trading_value": 8440089450,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 150억원 유상증자…시원이노텍 등에 3자 배정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -409,7 +427,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "넥사다이내믹스, 150억원 유상증자…시원이노텍 등에 3자 배정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000529110&office_id=374&code=351320&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260826",
@@ -417,9 +445,9 @@
       "close_price": 1963.0,
       "trading_volume": 2822032,
       "trading_value": 5539648816,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 150억원 유상증자…시원이노텍 등에 3자 배정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -486,7 +514,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "넥사다이내믹스, 150억원 유상증자…시원이노텍 등에 3자 배정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000529110&office_id=374&code=351320&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260824",
@@ -494,10 +532,10 @@
       "close_price": 1575.0,
       "trading_volume": 2599312,
       "trading_value": 4093916400,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -563,7 +601,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260819",
@@ -571,10 +611,10 @@
       "close_price": 1168.0,
       "trading_volume": 198231,
       "trading_value": 231533808,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -640,7 +680,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260812",
@@ -648,9 +690,9 @@
       "close_price": 1080.0,
       "trading_volume": 595958,
       "trading_value": 643634640,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -717,7 +759,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -725,15 +769,17 @@
       "close_price": 1163.0,
       "trading_volume": 601711,
       "trading_value": 699789893,
-      "rise_reason": "화장품 테마 강세",
+      "rise_reason": "화장품 테마 15종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "화장품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260618",
@@ -741,9 +787,9 @@
       "close_price": 1278.0,
       "trading_volume": 1339286,
       "trading_value": 1711607508,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 부당한 CB 발행 효력정지 가처분, 적극 대응할 것",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -810,7 +856,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "넥사다이내믹스 \"부당한 CB 발행 효력정지 가처분, 적극 대응할 것\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005371718&office_id=008&code=351320&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260507",
@@ -818,9 +874,9 @@
       "close_price": 1491.0,
       "trading_volume": 1814114,
       "trading_value": 2704843974,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 해외 유통 사업 잇단 수주 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -887,15 +943,25 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "넥사다이내믹스, 화장품 해외 유통 사업 잇단 수주 확보",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013930443&office_id=003&code=351320&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.07"
+        }
+      ]
     },
     {
       "date": "20260306",
       "change_rate": 16.82,
       "close_price": 1125.0,
-      "rise_reason": "OLED(유기 발광 다이오드) 테마 강세",
+      "rise_reason": "OLED 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [],
@@ -904,7 +970,9 @@
       "source": "estimated",
       "trading_volume": 221445,
       "trading_value": 249125625,
-      "market_cap": 33368644067
+      "market_cap": 33368644067,
+      "reason_previous": "OLED(유기 발광 다이오드) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -990,5 +1058,5 @@
     "count_recent": 4,
     "avg_rate": 17.57
   },
-  "built_at": "2026-10-01T22:57:04"
+  "built_at": "2026-10-02T05:15:56"
 }

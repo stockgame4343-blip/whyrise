@@ -9,9 +9,9 @@
       "close_price": 11530.0,
       "trading_volume": 198320,
       "trading_value": 2286629600,
-      "rise_reason": "광고 영업이익 공시",
+      "rise_reason": "2분기 역대 최대 매출",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광고",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "광고 영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "KT나스미디어, 2분기 역대 최대 매출…영업이익 200%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003119200&office_id=119&code=089600&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.06"
+        }
+      ]
     },
     {
       "date": "20250609",
@@ -106,5 +116,5 @@
     "count_recent": 0,
     "avg_rate": 11.94
   },
-  "built_at": "2026-10-01T22:57:08"
+  "built_at": "2026-10-02T05:15:56"
 }

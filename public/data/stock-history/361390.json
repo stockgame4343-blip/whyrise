@@ -9,9 +9,9 @@
       "close_price": 13210.0,
       "trading_volume": 108193,
       "trading_value": 1429229530,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주주 동반 강세 — 스페이스X 스타십 궤도 비행 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 우주항공株, 스페이스X 스타십 궤도 비행 소식에 일제히 강...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001192947&office_id=366&code=478340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.09.17"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,15 +96,17 @@
       "close_price": 11440.0,
       "trading_volume": 34442,
       "trading_value": 394016480,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -102,24 +114,26 @@
       "close_price": 14070.0,
       "trading_volume": 112546,
       "trading_value": 1583522220,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
       "change_rate": 12.09,
       "close_price": 31050.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -127,16 +141,18 @@
       "source": "estimated",
       "trading_volume": 737686,
       "trading_value": 22905150300,
-      "market_cap": 302355737704
+      "market_cap": 302355737704,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 17.2,
       "close_price": 25550.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -144,7 +160,9 @@
       "source": "estimated",
       "trading_volume": 331286,
       "trading_value": 8464357300,
-      "market_cap": 248798360655
+      "market_cap": 248798360655,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260108",
@@ -198,10 +216,10 @@
       "date": "20251222",
       "change_rate": 10.49,
       "close_price": 18110.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -209,7 +227,9 @@
       "source": "estimated",
       "trading_volume": 298159,
       "trading_value": 5399659490,
-      "market_cap": 176349836065
+      "market_cap": 176349836065,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -220,5 +240,5 @@
     "count_recent": 1,
     "avg_rate": 13.27
   },
-  "built_at": "2026-10-01T22:57:15"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 426000.0,
       "trading_volume": 74005,
       "trading_value": 31526130000,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오시밀러 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260415",
@@ -251,5 +253,5 @@
     "count_recent": 0,
     "avg_rate": 15.2
   },
-  "built_at": "2026-09-27T08:30:24"
+  "built_at": "2026-10-02T05:15:57"
 }

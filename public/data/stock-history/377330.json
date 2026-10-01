@@ -9,9 +9,9 @@
       "close_price": 3630.0,
       "trading_volume": 334685,
       "trading_value": 1214906550,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "5G 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -142,5 +144,5 @@
     "count_recent": 0,
     "avg_rate": 12.47
   },
-  "built_at": "2026-10-01T22:59:44"
+  "built_at": "2026-10-02T05:15:57"
 }

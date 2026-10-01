@@ -9,10 +9,10 @@
       "close_price": 1792.0,
       "trading_volume": 826014,
       "trading_value": 1480217088,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "황사/미세먼지",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260529",
@@ -86,9 +88,9 @@
       "close_price": 2155.0,
       "trading_volume": 278404,
       "trading_value": 599960620,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 데이터센터 면진 설비 수혜 기대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "황사/미세먼지",
       "news": [
@@ -155,15 +157,25 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]\"누리플랜, AI 데이터센터 면진 설비 수혜 기대…자회사...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005769315&office_id=277&code=069140&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.05.29"
+        }
+      ]
     },
     {
       "date": "20260206",
       "change_rate": 10.27,
       "close_price": 3060.0,
-      "rise_reason": "황사/미세먼지 테마 강세",
+      "rise_reason": "관련 보도: 8억 규모 전환청구권 행사",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "황사/미세먼지",
       "news": [
@@ -179,7 +191,17 @@
       "source": "estimated",
       "trading_volume": 1656517,
       "trading_value": 5068942020,
-      "market_cap": 46171044593
+      "market_cap": 46171044593,
+      "reason_previous": "황사/미세먼지 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "누리플랜, 8억 규모 전환청구권 행사",
+          "link": "https://n.news.naver.com/mnews/article/018/0006214858",
+          "source": "이데일리",
+          "date": "2026-02-06"
+        }
+      ]
     },
     {
       "date": "20251219",
@@ -275,5 +297,5 @@
     "count_recent": 0,
     "avg_rate": 14.58
   },
-  "built_at": "2026-09-27T10:27:00"
+  "built_at": "2026-10-02T05:15:57"
 }

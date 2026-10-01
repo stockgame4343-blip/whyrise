@@ -25,10 +25,10 @@
       "close_price": 10230.0,
       "trading_volume": 277718,
       "trading_value": 2841055140,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공작기계",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -172,5 +174,5 @@
     "count_recent": 0,
     "avg_rate": 11.8
   },
-  "built_at": "2026-09-27T08:52:16"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 2430.0,
       "trading_volume": 6238874,
       "trading_value": 15160463820,
-      "rise_reason": "양산 보도",
+      "rise_reason": "앤씨앤 최대주주로",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -90,7 +90,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "비투엔, 앤씨앤 최대주주로…넥스트칩과 車반도체 시너지↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005577106&office_id=014&code=396270&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.09.17"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -98,10 +108,10 @@
       "close_price": 6900.0,
       "trading_volume": 2773993,
       "trading_value": 19140551700,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -161,7 +171,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -169,10 +181,10 @@
       "close_price": 5950.0,
       "trading_volume": 2604662,
       "trading_value": 15497738900,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자율주행차",
       "news": [
         {
@@ -232,7 +244,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -240,15 +254,17 @@
       "close_price": 4515.0,
       "trading_volume": 2641179,
       "trading_value": 11924923185,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "자율주행차 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -256,9 +272,9 @@
       "close_price": 4040.0,
       "trading_volume": 1194883,
       "trading_value": 4827327320,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 피지컬 AI 적용 넓혀 , APACHE6 로봇 확장",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [
@@ -271,7 +287,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "&quot;피지컬 AI 적용 넓혀&quot; 넥스트칩, 'APACHE6' 로봇 확장",
+          "link": "https://n.news.naver.com/mnews/article/014/0005504495",
+          "source": "파이낸셜뉴스",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -570,9 +596,9 @@
       "date": "20251030",
       "change_rate": 13.95,
       "close_price": 3145.0,
-      "rise_reason": "자율주행",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 기능안전·사이버보안 국제인증 획득",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [
@@ -606,7 +632,17 @@
       "source": "estimated",
       "trading_volume": 1270300,
       "trading_value": 3995093500,
-      "market_cap": 103435555555
+      "market_cap": 103435555555,
+      "reason_previous": "자율주행",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "넥스트칩, 기능안전·사이버보안 국제인증 획득",
+          "link": "https://n.news.naver.com/mnews/article/014/0005426751",
+          "source": "파이낸셜뉴스",
+          "date": "2025-10-30"
+        }
+      ]
     },
     {
       "date": "20251021",
@@ -779,9 +815,9 @@
       "date": "20250805",
       "change_rate": 11.88,
       "close_price": 4181.0,
-      "rise_reason": "유상증자",
+      "rise_reason": "방산용 비전센서칩 개발",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [
@@ -821,15 +857,25 @@
       "source": "estimated",
       "trading_volume": 3578912,
       "trading_value": 14963431072,
-      "market_cap": 137508444444
+      "market_cap": 137508444444,
+      "reason_previous": "유상증자",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "넥스트칩, 방산용 비전센서칩 개발...글로벌 기술 협력 추진↑ [특징주...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005387396",
+          "source": "파이낸셜뉴스",
+          "date": "2025-08-05"
+        }
+      ]
     },
     {
       "date": "20250710",
       "change_rate": 15.53,
       "close_price": 5111.0,
-      "rise_reason": "자율주행차 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 엔비디아 시총 4조 달러 돌파",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [],
@@ -838,7 +884,17 @@
       "source": "estimated",
       "trading_volume": 1194800,
       "trading_value": 6106622800,
-      "market_cap": 168095111111
+      "market_cap": 168095111111,
+      "reason_previous": "자율주행차 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 엔비디아 시총 4조 달러 돌파···반도체주 동반 상승",
+          "link": "https://n.news.naver.com/mnews/article/374/0000450857",
+          "source": "SBS Biz",
+          "date": "2025-07-10"
+        }
+      ]
     }
   ],
   "stats": {
@@ -849,5 +905,5 @@
     "count_recent": 1,
     "avg_rate": 16.1
   },
-  "built_at": "2026-10-01T22:58:02"
+  "built_at": "2026-10-02T05:15:56"
 }

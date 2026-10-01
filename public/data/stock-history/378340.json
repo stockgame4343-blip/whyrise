@@ -9,15 +9,17 @@
       "close_price": 8900.0,
       "trading_volume": 43032,
       "trading_value": 382984800,
-      "rise_reason": "2차전지 테마 강세",
+      "rise_reason": "2차전지 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -25,15 +27,17 @@
       "close_price": 11820.0,
       "trading_volume": 51555,
       "trading_value": 609380100,
-      "rise_reason": "2차전지 테마 강세",
+      "rise_reason": "2차전지 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260422",
@@ -210,9 +214,9 @@
       "date": "20260122",
       "change_rate": 20.37,
       "close_price": 15130.0,
-      "rise_reason": "2차전지 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -221,7 +225,17 @@
       "source": "estimated",
       "trading_volume": 1990386,
       "trading_value": 30114540180,
-      "market_cap": 327482540919
+      "market_cap": 327482540919,
+      "reason_previous": "2차전지 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     }
   ],
   "stats": {
@@ -232,5 +246,5 @@
     "count_recent": 0,
     "avg_rate": 14.98
   },
-  "built_at": "2026-09-27T09:29:22"
+  "built_at": "2026-10-02T05:15:57"
 }

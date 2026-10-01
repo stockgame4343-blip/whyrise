@@ -9,15 +9,17 @@
       "close_price": 2725.0,
       "trading_volume": 93045,
       "trading_value": 253547625,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -25,10 +27,10 @@
       "close_price": 2510.0,
       "trading_volume": 122433,
       "trading_value": 307306830,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -40,7 +42,9 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260107",
@@ -130,9 +134,9 @@
       "date": "20250625",
       "change_rate": 12.08,
       "close_price": 7470.0,
-      "rise_reason": "로봇/자동화",
+      "rise_reason": "북미 로보택시용 핵심 공조 부품 공급에 연이틀",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -172,7 +176,17 @@
       "source": "estimated",
       "trading_volume": 14413421,
       "trading_value": 107668254870,
-      "market_cap": 108983955223
+      "market_cap": 108983955223,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "폴라리스세원, 북미 로보택시용 핵심 공조 부품 공급에 연이틀 상승....",
+          "link": "https://n.news.naver.com/mnews/article/014/0005368016",
+          "source": "파이낸셜뉴스",
+          "date": "2025-06-25"
+        }
+      ]
     },
     {
       "date": "20250624",
@@ -231,5 +245,5 @@
     "count_recent": 0,
     "avg_rate": 19.46
   },
-  "built_at": "2026-09-27T10:15:41"
+  "built_at": "2026-10-02T05:15:57"
 }

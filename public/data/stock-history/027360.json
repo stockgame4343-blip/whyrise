@@ -9,9 +9,9 @@
       "close_price": 4585.0,
       "trading_volume": 7163335,
       "trading_value": 32843890975,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 기대감 반영",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -72,7 +72,17 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "미래에셋벤처·아주IB투자 등 강세…스페이스X 기대감 반영 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003120065&office_id=119&code=027360&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -80,9 +90,9 @@
       "close_price": 3625.0,
       "trading_volume": 12811626,
       "trading_value": 46442144250,
-      "rise_reason": "투자 관련 뉴스",
+      "rise_reason": "스페이스X 기대감 반영",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -149,7 +159,17 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "미래에셋벤처·아주IB투자 등 강세…스페이스X 기대감 반영 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003120065&office_id=119&code=027360&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -157,9 +177,9 @@
       "close_price": 2985.0,
       "trading_volume": 1255104,
       "trading_value": 3746485440,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -184,7 +204,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260518",
@@ -192,9 +214,9 @@
       "close_price": 17010.0,
       "trading_volume": 44010177,
       "trading_value": 748613110770,
-      "rise_reason": "상장 이슈",
+      "rise_reason": "스페이스X 상장 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -261,7 +283,17 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "스페이스X 상장 기대감에…아주IB투자 20% 급등 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003091441&office_id=119&code=027360&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.05.18"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -269,9 +301,9 @@
       "close_price": 17600.0,
       "trading_volume": 33987220,
       "trading_value": 598175072000,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -338,7 +370,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "theme"
     },
     {
       "date": "20260424",
@@ -346,9 +380,9 @@
       "close_price": 18720.0,
       "trading_volume": 37202942,
       "trading_value": 696439074240,
-      "rise_reason": "스페이스X 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -415,7 +449,17 @@
       ],
       "sector": "창업투자",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스페이스X 상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "미래에셋벤처투자·아주IB투자, 스페이스X 관련주 급등세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263238&office_id=018&code=027360&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.22"
+        }
+      ]
     },
     {
       "date": "20260422",
@@ -500,9 +544,9 @@
       "close_price": 11330.0,
       "trading_volume": 32019309,
       "trading_value": 362778770970,
-      "rise_reason": "우주항공 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "창투사 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "창투사",
       "news": [
@@ -559,7 +603,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "우주항공 상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -567,15 +613,17 @@
       "close_price": 9370.0,
       "trading_volume": 16606562,
       "trading_value": 155603485940,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
@@ -809,9 +857,9 @@
       "date": "20260203",
       "change_rate": 14.19,
       "close_price": 5110.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 188억 돌...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "창투사",
       "news": [
@@ -851,7 +899,17 @@
       "source": "estimated",
       "trading_volume": 44812999,
       "trading_value": 228994424890,
-      "market_cap": 619063934426
+      "market_cap": 619063934426,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 아주IB투자 거래대금 188억 돌...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003614003",
+          "source": "서울신문",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20260129",
@@ -943,5 +1001,5 @@
     "count_recent": 0,
     "avg_rate": 20.88
   },
-  "built_at": "2026-10-01T22:55:10"
+  "built_at": "2026-10-02T05:15:56"
 }

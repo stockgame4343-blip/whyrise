@@ -9,10 +9,10 @@
       "close_price": 4290.0,
       "trading_volume": 2358312,
       "trading_value": 10117158480,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "그래핀",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260714",
@@ -86,9 +88,9 @@
       "close_price": 4275.0,
       "trading_volume": 2171229,
       "trading_value": 9282003975,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "삼전 평택캠퍼스 890억 공사 수주",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "그래핀",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼전 평택캠퍼스 890억 공사 수주…엑사이엔씨 27%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006329683&office_id=018&code=054940&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.14"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -179,9 +191,9 @@
       "close_price": 865.0,
       "trading_volume": 8191573,
       "trading_value": 7085710645,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "그래핀",
       "news": [
@@ -248,7 +260,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 오르자 반도체장비株 강세…오로스테크놀로지 '上'[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008925316&office_id=421&code=322310&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260219",
@@ -271,9 +293,9 @@
       "date": "20250924",
       "change_rate": 11.87,
       "close_price": 801.0,
-      "rise_reason": "대형 수주",
+      "rise_reason": "삼성물산과 631억원 공사 계약",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "그래핀",
       "news": [
@@ -313,7 +335,17 @@
       "source": "estimated",
       "trading_volume": 46200628,
       "trading_value": 37006703028,
-      "market_cap": 26615103338
+      "market_cap": 26615103338,
+      "reason_previous": "대형 수주",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 엑사이엔씨, 삼성물산과 631억원 공사 계약… 주가 23%↑",
+          "link": "https://n.news.naver.com/mnews/article/030/0003354024",
+          "source": "전자신문",
+          "date": "2025-09-24"
+        }
+      ]
     },
     {
       "date": "20250529",
@@ -341,5 +373,5 @@
     "count_recent": 0,
     "avg_rate": 19.59
   },
-  "built_at": "2026-10-01T22:59:43"
+  "built_at": "2026-10-02T05:15:56"
 }

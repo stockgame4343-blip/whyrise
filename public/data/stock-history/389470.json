@@ -9,9 +9,9 @@
       "close_price": 28850.0,
       "trading_volume": 203543,
       "trading_value": 5872215550,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "초고농도 항체 피하주사 플랫폼 국제특허 출원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -48,7 +48,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "인벤티지랩, 초고농도 항체 피하주사 플랫폼 국제특허 출원",
+          "link": "https://n.news.naver.com/mnews/article/030/0003470750",
+          "source": "전자신문",
+          "date": "2026.09.29"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -120,15 +130,17 @@
       "close_price": 39750.0,
       "trading_volume": 72269,
       "trading_value": 2872692750,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260609",
@@ -136,15 +148,17 @@
       "close_price": 45950.0,
       "trading_volume": 74388,
       "trading_value": 3418128600,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -192,9 +206,9 @@
       "date": "20260227",
       "change_rate": 13.04,
       "close_price": 93600.0,
-      "rise_reason": "바이오",
+      "rise_reason": "탈모치료제 후보물질 IVL3001, 호주에서 임상 2상 승인",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -234,7 +248,17 @@
       "source": "estimated",
       "trading_volume": 818387,
       "trading_value": 76601023200,
-      "market_cap": 1245565957446
+      "market_cap": 1245565957446,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "인벤티지랩 탈모치료제 후보물질 IVL3001, 호주에서 임상 2상 승인",
+          "link": "https://n.news.naver.com/mnews/article/015/0005256402",
+          "source": "한국경제",
+          "date": "2026-02-27"
+        }
+      ]
     },
     {
       "date": "20251229",
@@ -413,9 +437,9 @@
       "date": "20251027",
       "change_rate": 11.22,
       "close_price": 46600.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 균일한 미립구 기술로 파이프라인 가치 상승 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -449,16 +473,26 @@
       "source": "estimated",
       "trading_volume": 660494,
       "trading_value": 30779020400,
-      "market_cap": 620121513002
+      "market_cap": 620121513002,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[하우머니] 인벤티지랩 균일한 미립구 기술로 파이프라인 가치 상승 ...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000470737",
+          "source": "SBS Biz",
+          "date": "2025-10-27"
+        }
+      ]
     },
     {
       "date": "20250915",
       "change_rate": 10.23,
       "close_price": 47400.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -466,7 +500,9 @@
       "source": "estimated",
       "trading_volume": 591979,
       "trading_value": 28059804600,
-      "market_cap": 630767375886
+      "market_cap": 630767375886,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250827",
@@ -489,10 +525,10 @@
       "date": "20250825",
       "change_rate": 15.59,
       "close_price": 35950.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -500,16 +536,18 @@
       "source": "estimated",
       "trading_volume": 502804,
       "trading_value": 18075803800,
-      "market_cap": 478398463356
+      "market_cap": 478398463356,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250813",
       "change_rate": 13.54,
       "close_price": 34800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -517,16 +555,18 @@
       "source": "estimated",
       "trading_volume": 351903,
       "trading_value": 12246224400,
-      "market_cap": 463095035460
+      "market_cap": 463095035460,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250717",
       "change_rate": 10.37,
       "close_price": 35650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -534,7 +574,9 @@
       "source": "estimated",
       "trading_volume": 784898,
       "trading_value": 27981613700,
-      "market_cap": 474406264775
+      "market_cap": 474406264775,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
@@ -562,5 +604,5 @@
     "count_recent": 1,
     "avg_rate": 13.26
   },
-  "built_at": "2026-10-01T22:55:28"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 1925.0,
       "trading_volume": 2596957,
       "trading_value": 4999142225,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 10MWh급 선박용 ESS 사업화 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "그래핀",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "디와이덕양, 10MWh급 선박용 ESS 사업화 추진",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006370414&office_id=018&code=024900&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.16"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 1,
     "avg_rate": 14.04
   },
-  "built_at": "2026-10-01T22:53:10"
+  "built_at": "2026-10-02T05:15:56"
 }

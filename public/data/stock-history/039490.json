@@ -9,15 +9,17 @@
       "close_price": 293500.0,
       "trading_volume": 126320,
       "trading_value": 37074920000,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -25,9 +27,9 @@
       "close_price": 410000.0,
       "trading_volume": 190662,
       "trading_value": 78171420000,
-      "rise_reason": "증권 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "삼성전자·SK하이닉스 기초자산 ELS 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "키움증권, 삼성전자·SK하이닉스 기초자산 ELS 출시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003429914&office_id=030&code=039490&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -102,9 +114,9 @@
       "close_price": 484500.0,
       "trading_volume": 580954,
       "trading_value": 281472213000,
-      "rise_reason": "거래대금 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 이종형 센터장 기업 거버넌스 개혁이 코리아 디스카운트 해.....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [
@@ -171,7 +183,17 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래대금 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이종형 키움증권 센터장 \"기업 거버넌스 개혁이 코리아 디스카운트 해.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001141929&office_id=417&code=039490&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -179,23 +201,25 @@
       "close_price": 459500.0,
       "trading_volume": 173896,
       "trading_value": 79905212000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 18.39,
       "close_price": 441000.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "증권 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -204,15 +228,17 @@
       "source": "estimated",
       "trading_volume": 218730,
       "trading_value": 96459930000,
-      "market_cap": 11566690751445
+      "market_cap": 11566690751445,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251020",
       "change_rate": 12.1,
       "close_price": 278000.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "증권 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -221,7 +247,9 @@
       "source": "estimated",
       "trading_volume": 234864,
       "trading_value": 65292192000,
-      "market_cap": 7291473988439
+      "market_cap": 7291473988439,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -232,5 +260,5 @@
     "count_recent": 0,
     "avg_rate": 13.95
   },
-  "built_at": "2026-09-29T22:18:55"
+  "built_at": "2026-10-02T05:15:57"
 }

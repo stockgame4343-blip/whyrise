@@ -9,9 +9,9 @@
       "close_price": 2730.0,
       "trading_volume": 1446334,
       "trading_value": 3948491820,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "30.00% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -30,7 +30,17 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]글로본 30.00% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003633142",
+          "source": "서울신문",
+          "date": "2026-04-07"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -52,10 +62,10 @@
       "date": "20251020",
       "change_rate": 11.51,
       "close_price": 2955.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -63,7 +73,9 @@
       "source": "estimated",
       "trading_volume": 442925,
       "trading_value": 1308843375,
-      "market_cap": 41264281592
+      "market_cap": 41264281592,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -74,5 +86,5 @@
     "count_recent": 0,
     "avg_rate": 18.36
   },
-  "built_at": "2026-09-27T10:32:18"
+  "built_at": "2026-10-02T05:15:57"
 }

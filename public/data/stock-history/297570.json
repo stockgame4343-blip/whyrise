@@ -9,10 +9,10 @@
       "close_price": 6265.0,
       "trading_volume": 118059,
       "trading_value": 739639635,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "쿠팡(coupang)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260528",
@@ -86,10 +88,10 @@
       "close_price": 1532.0,
       "trading_volume": 3392903,
       "trading_value": 5197927396,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
@@ -190,5 +194,5 @@
     "count_recent": 0,
     "avg_rate": 24.06
   },
-  "built_at": "2026-10-01T22:59:35"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -173,9 +173,9 @@
       "close_price": 239000.0,
       "trading_volume": 66772,
       "trading_value": 15958508000,
-      "rise_reason": "FDA 관련 뉴스",
+      "rise_reason": "美 FDA 개발 절차 확인",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -242,7 +242,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼천당제약, 美 FDA 개발 절차 확인에 '상한가'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001019719&office_id=088&code=000250&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -250,15 +260,25 @@
       "close_price": 238500.0,
       "trading_volume": 157983,
       "trading_value": 37678945500,
-      "rise_reason": "비만치료제 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "비만치료제 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -298,10 +318,10 @@
       "date": "20260305",
       "change_rate": 23.41,
       "close_price": 796000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -309,7 +329,9 @@
       "source": "estimated",
       "trading_volume": 441740,
       "trading_value": 351625040000,
-      "market_cap": 18672244575936
+      "market_cap": 18672244575936,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260226",
@@ -434,10 +456,10 @@
       "date": "20251027",
       "change_rate": 13.45,
       "close_price": 226000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -445,7 +467,9 @@
       "source": "estimated",
       "trading_volume": 324419,
       "trading_value": 73318694000,
-      "market_cap": 5301416173570
+      "market_cap": 5301416173570,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250922",
@@ -490,5 +514,5 @@
     "count_recent": 1,
     "avg_rate": 16.78
   },
-  "built_at": "2026-10-01T22:53:48"
+  "built_at": "2026-10-02T05:15:56"
 }

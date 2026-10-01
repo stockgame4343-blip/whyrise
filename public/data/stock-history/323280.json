@@ -32,10 +32,10 @@
       "close_price": 45650.0,
       "trading_volume": 436116,
       "trading_value": 19908695400,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
         {
@@ -101,7 +101,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -109,9 +111,9 @@
       "close_price": 44800.0,
       "trading_volume": 494447,
       "trading_value": 22151225600,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -178,7 +180,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260803",
@@ -186,9 +190,9 @@
       "close_price": 37750.0,
       "trading_volume": 852532,
       "trading_value": 32183083000,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유리 기판 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -255,7 +259,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -263,9 +269,9 @@
       "close_price": 31250.0,
       "trading_volume": 527893,
       "trading_value": 16496656250,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 14종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -332,7 +338,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -340,15 +348,17 @@
       "close_price": 35000.0,
       "trading_volume": 281442,
       "trading_value": 9850470000,
-      "rise_reason": "전기차 화재 방지(배터리 열폭주 등) 테마 강세",
+      "rise_reason": "전기차 화재 방지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차 화재 방지(배터리 열폭주 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전기차 화재 방지(배터리 열폭주 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -456,9 +466,9 @@
       "close_price": 89700.0,
       "trading_volume": 1829712,
       "trading_value": 164125166400,
-      "rise_reason": "공급 계약 체결",
+      "rise_reason": "실적 개선 기대 반도체 장비",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -525,7 +535,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "실적 개선 기대 반도체 장비…한미반도체·태성 신고가 경신 [매경 자.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005671763&office_id=009&code=323280&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260422",
@@ -687,15 +707,17 @@
       "close_price": 58100.0,
       "trading_volume": 362007,
       "trading_value": 21032606700,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 기판 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -703,23 +725,33 @@
       "close_price": 56400.0,
       "trading_volume": 314198,
       "trading_value": 17720767200,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 25.0,
       "close_price": 74500.0,
-      "rise_reason": "PCB(FPCB 등) 테마 강세",
+      "rise_reason": "PCB 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "PCB(FPCB 등)",
       "news": [
@@ -735,7 +767,9 @@
       "source": "estimated",
       "trading_volume": 839022,
       "trading_value": 62507139000,
-      "market_cap": 2275083792723
+      "market_cap": 2275083792723,
+      "reason_previous": "PCB(FPCB 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260227",
@@ -935,5 +969,5 @@
     "count_recent": 1,
     "avg_rate": 15.73
   },
-  "built_at": "2026-10-01T22:54:07"
+  "built_at": "2026-10-02T05:15:56"
 }

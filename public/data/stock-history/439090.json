@@ -9,9 +9,9 @@
       "close_price": 19130.0,
       "trading_volume": 2072060,
       "trading_value": 39638507800,
-      "rise_reason": "화장품주 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품주 동반 강세 — 수출 호조 지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품주 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 화장품주, 수출 호조 지속에 상승(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016245256&office_id=001&code=241710&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -163,15 +173,17 @@
       "close_price": 15070.0,
       "trading_volume": 241150,
       "trading_value": 3634130500,
-      "rise_reason": "화장품 테마 강세",
+      "rise_reason": "화장품 테마 15종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "화장품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260625",
@@ -256,9 +268,9 @@
       "close_price": 17710.0,
       "trading_volume": 849798,
       "trading_value": 15049922580,
-      "rise_reason": "화장품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1Q 연결 영업익 60억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -325,7 +337,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "마녀공장, 1Q 연결 영업익 60억…전년비 326%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006276055&office_id=018&code=439090&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -430,5 +452,5 @@
     "count_recent": 0,
     "avg_rate": 14.43
   },
-  "built_at": "2026-10-01T22:56:11"
+  "built_at": "2026-10-02T05:15:56"
 }

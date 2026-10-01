@@ -216,23 +216,25 @@
       "close_price": 3635.0,
       "trading_volume": 100763,
       "trading_value": 366273505,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 14.07,
       "close_price": 4865.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -241,7 +243,9 @@
       "source": "estimated",
       "trading_volume": 223728,
       "trading_value": 1088436720,
-      "market_cap": 127981459854
+      "market_cap": 127981459854,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260209",
@@ -264,9 +268,9 @@
       "date": "20251226",
       "change_rate": 22.86,
       "close_price": 6180.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -282,7 +286,17 @@
       "source": "estimated",
       "trading_volume": 1775495,
       "trading_value": 10972559100,
-      "market_cap": 162574598540
+      "market_cap": 162574598540,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
+          "source": "SBS Biz",
+          "date": "2025-12-26"
+        }
+      ]
     },
     {
       "date": "20251031",
@@ -322,9 +336,9 @@
       "date": "20250915",
       "change_rate": 10.58,
       "close_price": 7000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "시스템반도체 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -333,15 +347,17 @@
       "source": "estimated",
       "trading_volume": 1497698,
       "trading_value": 10483886000,
-      "market_cap": 184145985401
+      "market_cap": 184145985401,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250829",
       "change_rate": 12.05,
       "close_price": 5950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — AI 붐 계속된다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -350,7 +366,17 @@
       "source": "estimated",
       "trading_volume": 1623854,
       "trading_value": 9661931300,
-      "market_cap": 156524087591
+      "market_cap": 156524087591,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;AI 붐 계속된다&quot;…반도체 소부장株 강세[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0008455910",
+          "source": "뉴스1",
+          "date": "2025-08-29"
+        }
+      ]
     },
     {
       "date": "20250728",
@@ -414,5 +440,5 @@
     "count_recent": 0,
     "avg_rate": 15.66
   },
-  "built_at": "2026-10-01T22:57:35"
+  "built_at": "2026-10-02T05:15:56"
 }

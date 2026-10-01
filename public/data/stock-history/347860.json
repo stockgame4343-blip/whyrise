@@ -25,9 +25,9 @@
       "close_price": 3100.0,
       "trading_volume": 5273646,
       "trading_value": 16348302600,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: ?, 휴머노이드·제조 데이터 사업 확장",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "?알체라, 휴머노이드·제조 데이터 사업 확장",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002226064&office_id=138&code=347860&page=&sm=",
+          "source": "디지털데일리",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -102,9 +112,9 @@
       "close_price": 2490.0,
       "trading_volume": 6813525,
       "trading_value": 16965677250,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "NIPA AX 원스톱 바우처 지원사업 공급기업 선정",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -123,7 +133,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "알체라, NIPA ‘AX 원스톱 바우처 지원사업’ 공급기업 선정",
+          "link": "https://n.news.naver.com/mnews/article/022/0004120432",
+          "source": "세계일보",
+          "date": "2026-04-13"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -249,5 +269,5 @@
     "count_recent": 0,
     "avg_rate": 16.2
   },
-  "built_at": "2026-09-27T10:05:25"
+  "built_at": "2026-10-02T05:15:57"
 }

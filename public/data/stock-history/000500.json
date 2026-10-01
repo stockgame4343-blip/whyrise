@@ -329,15 +329,17 @@
       "close_price": 134200.0,
       "trading_volume": 436905,
       "trading_value": 58632651000,
-      "rise_reason": "전선 테마 강세",
+      "rise_reason": "전선 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전선 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260722",
@@ -487,9 +489,9 @@
       "close_price": 233500.0,
       "trading_volume": 374339,
       "trading_value": 87408156500,
-      "rise_reason": "전선 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "연이은 빅테크 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -550,7 +552,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "연이은 가온전선 '빅테크 수주'…버스덕트가 뜬다, 왜?",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379307&office_id=008&code=000500&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260626",
@@ -712,9 +724,9 @@
       "close_price": 189488.0,
       "trading_volume": 727231,
       "trading_value": 137801547728,
-      "rise_reason": "전선 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "무상증자 전격 단행",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -781,7 +793,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[전력 온에어] 가온전선, 무상증자 전격 단행…AI 결실 주주와 나눈...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086376&office_id=293&code=000500&page=&sm=",
+          "source": "블로터",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -937,9 +959,9 @@
       "close_price": 227275.0,
       "trading_volume": 391874,
       "trading_value": 89063163350,
-      "rise_reason": "전선 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전선 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -1000,7 +1022,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260518",
@@ -1085,10 +1109,10 @@
       "close_price": 313406.0,
       "trading_volume": 809924,
       "trading_value": 253835041144,
-      "rise_reason": "전선 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [
         {
@@ -1154,7 +1178,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -1162,9 +1188,9 @@
       "close_price": 265061.0,
       "trading_volume": 557997,
       "trading_value": 147903242817,
-      "rise_reason": "전선 관련 뉴스",
+      "rise_reason": "AI 데이터센터 투자확대에 전선株 역주행",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -1231,7 +1257,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "AI 데이터센터 투자확대에 전선株 '역주행'…가온전선 25% 급등[특징...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275566&office_id=018&code=000500&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -1239,9 +1275,9 @@
       "close_price": 203936.0,
       "trading_volume": 489739,
       "trading_value": 99875412704,
-      "rise_reason": "전선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — 반도체 넘어 인프라까지 AI 수혜",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -1308,7 +1344,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 반도체 넘어 인프라까지 AI 수혜…전선株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001162097&office_id=366&code=000500&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -1316,9 +1362,9 @@
       "close_price": 160315.0,
       "trading_volume": 405812,
       "trading_value": 65057750780,
-      "rise_reason": "전선 투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전선 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -1385,7 +1431,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 투자 확대 발표",
+      "reason_kind": "theme"
     },
     {
       "date": "20260430",
@@ -1393,9 +1441,9 @@
       "close_price": 134197.0,
       "trading_volume": 266897,
       "trading_value": 35816776709,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전선 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -1462,7 +1510,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260423",
@@ -1863,5 +1913,5 @@
     "count_recent": 3,
     "avg_rate": 18.28
   },
-  "built_at": "2026-10-01T22:52:11"
+  "built_at": "2026-10-02T05:15:56"
 }

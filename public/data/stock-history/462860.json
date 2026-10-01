@@ -9,9 +9,9 @@
       "close_price": 3270.0,
       "trading_volume": 19678197,
       "trading_value": 64347704190,
-      "rise_reason": "관련 보도: 카이아·더즌, 아시아 스테이블코인 정산망 구축",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "관련 보도: 카이아·, 아시아 스테이블코인 정산망 구축",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -33,7 +33,8 @@
           "source": "전자신문",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "related"
     },
     {
       "date": "20260901",
@@ -41,10 +42,10 @@
       "close_price": 3260.0,
       "trading_volume": 6796694,
       "trading_value": 22157222440,
-      "rise_reason": "스테이블코인 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스테이블코인",
       "news": [
         {
@@ -110,7 +111,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260824",
@@ -118,10 +121,10 @@
       "close_price": 2825.0,
       "trading_volume": 16734951,
       "trading_value": 47276236575,
-      "rise_reason": "스테이블코인 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스테이블코인",
       "news": [
         {
@@ -187,7 +190,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260820",
@@ -195,10 +200,10 @@
       "close_price": 2395.0,
       "trading_volume": 11251989,
       "trading_value": 26948513655,
-      "rise_reason": "스테이블코인 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스테이블코인",
       "news": [
         {
@@ -264,7 +269,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -334,10 +341,10 @@
       "date": "20260305",
       "change_rate": 13.7,
       "close_price": 3860.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -352,16 +359,18 @@
       "source": "estimated",
       "trading_volume": 1076262,
       "trading_value": 4154371320,
-      "market_cap": 277060385438
+      "market_cap": 277060385438,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
       "change_rate": 10.3,
       "close_price": 5300.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -376,7 +385,9 @@
       "source": "estimated",
       "trading_volume": 11249172,
       "trading_value": 59620611600,
-      "market_cap": 380419700214
+      "market_cap": 380419700214,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260123",
@@ -538,9 +549,9 @@
       "date": "20250709",
       "change_rate": 10.37,
       "close_price": 5270.0,
-      "rise_reason": "가상자산/블록체인",
+      "rise_reason": "주당 10원 중간배당 결정",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -580,7 +591,17 @@
       "source": "estimated",
       "trading_volume": 35875571,
       "trading_value": 189064259170,
-      "market_cap": 378266381156
+      "market_cap": 378266381156,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "더즌, 주당 10원 중간배당 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006060428",
+          "source": "이데일리",
+          "date": "2025-07-08"
+        }
+      ]
     },
     {
       "date": "20250701",
@@ -690,5 +711,5 @@
     "count_recent": 2,
     "avg_rate": 14.89
   },
-  "built_at": "2026-10-01T22:56:25"
+  "built_at": "2026-10-02T05:15:56"
 }

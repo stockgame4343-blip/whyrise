@@ -9,10 +9,10 @@
       "close_price": 32850.0,
       "trading_volume": 4342968,
       "trading_value": 142666498800,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -86,9 +88,9 @@
       "close_price": 29800.0,
       "trading_volume": 4593593,
       "trading_value": 136889071400,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: HD한조양 용접 로봇에 AI 이상 탐지 기술 적용",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "마키나락스, HD한조양 용접 로봇에 AI 이상 탐지 기술 적용",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001261120&office_id=215&code=477850&page=&sm=",
+          "source": "한국경제TV",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -163,9 +175,9 @@
       "close_price": 22950.0,
       "trading_volume": 2616171,
       "trading_value": 60041124450,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: HD한조양 용접 로봇에 AI 이상 탐지 기술 적용",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "마키나락스, HD한조양 용접 로봇에 AI 이상 탐지 기술 적용",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001261120&office_id=215&code=477850&page=&sm=",
+          "source": "한국경제TV",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260727",
@@ -240,9 +262,9 @@
       "close_price": 26750.0,
       "trading_volume": 3198983,
       "trading_value": 85572795250,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "에너토크와 AI 네이티브 팩토리 구축 맞손",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -309,7 +331,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "마키나락스, 에너토크와 'AI 네이티브 팩토리' 구축 맞손",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006336240&office_id=018&code=477850&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.24"
+        }
+      ]
     },
     {
       "date": "20260722",
@@ -317,9 +349,9 @@
       "close_price": 22600.0,
       "trading_volume": 4456026,
       "trading_value": 100706187600,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 외형 성장·수익성 개선 본격화…보호예수 해제는 기회-...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -380,7 +412,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "마키나락스, 외형 성장·수익성 개선 본격화…보호예수 해제는 기회-...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006333532&office_id=018&code=477850&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.21"
+        }
+      ]
     },
     {
       "date": "20260714",
@@ -388,10 +430,10 @@
       "close_price": 27950.0,
       "trading_volume": 3696021,
       "trading_value": 103303786950,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -457,7 +499,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260708",
@@ -465,9 +509,9 @@
       "close_price": 27100.0,
       "trading_volume": 7894689,
       "trading_value": 213946071900,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AWS와 국방 AI 사업 확장 MOU",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -522,7 +566,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "마키나락스, AWS와 국방 AI 사업 확장 MOU",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014050421&office_id=003&code=477850&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.07"
+        }
+      ]
     },
     {
       "date": "20260706",
@@ -530,10 +584,10 @@
       "close_price": 30400.0,
       "trading_volume": 6599131,
       "trading_value": 200613582400,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -587,7 +641,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260702",
@@ -595,9 +651,9 @@
       "close_price": 21300.0,
       "trading_volume": 4276080,
       "trading_value": 91080504000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "상반기 200억원 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -664,7 +720,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "마키나락스, 상반기 200억원 수주…삼성·현대차·두산 AI 사업 확보",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003443837&office_id=030&code=477850&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260626",
@@ -672,9 +738,9 @@
       "close_price": 18400.0,
       "trading_volume": 3333062,
       "trading_value": 61328340800,
-      "rise_reason": "수주 공시",
+      "rise_reason": "해외 수주 2배 늘어난",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -741,7 +807,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "해외 수주 2배 늘어난 마키나락스, 이틀 연속 강세…6%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006315326&office_id=018&code=477850&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.26"
+        }
+      ]
     },
     {
       "date": "20260625",
@@ -749,9 +825,9 @@
       "close_price": 16430.0,
       "trading_volume": 1843177,
       "trading_value": 30283398110,
-      "rise_reason": "수주 공시",
+      "rise_reason": "상반기 해외 수주 30억원 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -818,7 +894,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 마키나락스, 상반기 해외 수주 30억원 소식에 17%↑(종합...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016159805&office_id=001&code=477850&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.25"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -826,10 +912,10 @@
       "close_price": 22100.0,
       "trading_volume": 3112387,
       "trading_value": 68783752700,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -895,7 +981,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -903,15 +991,17 @@
       "close_price": 78000.0,
       "trading_volume": 1337436,
       "trading_value": 104320008000,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -922,5 +1012,5 @@
     "count_recent": 0,
     "avg_rate": 18.67
   },
-  "built_at": "2026-10-01T22:55:24"
+  "built_at": "2026-10-02T05:15:56"
 }

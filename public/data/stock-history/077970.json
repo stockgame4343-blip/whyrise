@@ -9,9 +9,9 @@
       "close_price": 28100.0,
       "trading_volume": 364669,
       "trading_value": 10247198900,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "조선기자재 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -86,9 +88,9 @@
       "close_price": 23050.0,
       "trading_volume": 307771,
       "trading_value": 7094121550,
-      "rise_reason": "K-콘텐츠/엔터",
+      "rise_reason": "머스크에 컨선 엔진 공급",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -107,7 +109,17 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "STX엔진, 머스크에 컨선 엔진 공급",
+          "link": "https://n.news.naver.com/mnews/article/015/0005315829",
+          "source": "한국경제",
+          "date": "2026-07-30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -115,15 +127,17 @@
       "close_price": 30050.0,
       "trading_volume": 300839,
       "trading_value": 9040211950,
-      "rise_reason": "방위산업/전쟁 및 테러 테마 강세",
+      "rise_reason": "방위산업 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방위산업/전쟁 및 테러 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260615",
@@ -131,9 +145,9 @@
       "close_price": 36650.0,
       "trading_volume": 588576,
       "trading_value": 21571310400,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "조선기자재 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -200,7 +214,9 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -208,9 +224,9 @@
       "close_price": 49850.0,
       "trading_volume": 1448618,
       "trading_value": 72213607300,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "관련 보도: 유암코, 펀드 해산…7년만에 매각 나서나",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -229,7 +245,17 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "유암코, STX엔진 펀드 해산…7년만에 매각 나서나[시그널]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004623040",
+          "source": "서울경제",
+          "date": "2026-05-21"
+        }
+      ]
     },
     {
       "date": "20260429",
@@ -237,9 +263,9 @@
       "close_price": 66500.0,
       "trading_volume": 1972492,
       "trading_value": 131170718000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 전력주로 급부상",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -306,7 +332,17 @@
       ],
       "sector": "조선",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "STX엔진 급등…AI 전력주로 '급부상'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005279698&office_id=015&code=077970&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.04.26"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -482,9 +518,9 @@
       "date": "20260305",
       "change_rate": 14.18,
       "close_price": 29800.0,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "조선기자재 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [],
@@ -493,7 +529,9 @@
       "source": "estimated",
       "trading_volume": 227803,
       "trading_value": 6788529400,
-      "market_cap": 1196414814814
+      "market_cap": 1196414814814,
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260220",
@@ -516,9 +554,9 @@
       "date": "20260109",
       "change_rate": 12.46,
       "close_price": 38800.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "한화오션과 443억 규모 발전기엔진 공급계약 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -558,7 +596,17 @@
       "source": "estimated",
       "trading_volume": 1215097,
       "trading_value": 47145763600,
-      "market_cap": 1557748148148
+      "market_cap": 1557748148148,
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "STX엔진, 한화오션과 443억 규모 발전기엔진 공급계약 수주",
+          "link": "https://n.news.naver.com/mnews/article/293/0000077580",
+          "source": "블로터",
+          "date": "2026-01-09"
+        }
+      ]
     },
     {
       "date": "20250828",
@@ -603,5 +651,5 @@
     "count_recent": 0,
     "avg_rate": 14.08
   },
-  "built_at": "2026-10-01T22:52:38"
+  "built_at": "2026-10-02T05:15:56"
 }

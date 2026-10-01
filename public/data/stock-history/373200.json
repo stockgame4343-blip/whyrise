@@ -9,9 +9,9 @@
       "close_price": 1863.0,
       "trading_volume": 89973,
       "trading_value": 167619699,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 곳간에 현금 3억뿐인 … CB 롤오버했지만, 물량 폭탄 우...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "애플페이",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "곳간에 ‘현금 3억’뿐인 엑스플러스… CB 롤오버했지만, 물량 폭탄 우...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001194631",
+          "source": "조선비즈",
+          "date": "2026-09-28"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -32,10 +42,10 @@
       "close_price": 1905.0,
       "trading_volume": 688412,
       "trading_value": 1311424860,
-      "rise_reason": "스마트폰 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -101,7 +111,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스마트폰 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260824",
@@ -109,10 +121,10 @@
       "close_price": 1885.0,
       "trading_volume": 152475,
       "trading_value": 287415375,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "애플페이",
       "news": [
         {
@@ -178,7 +190,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260727",
@@ -186,10 +200,10 @@
       "close_price": 1590.0,
       "trading_volume": 372008,
       "trading_value": 591492720,
-      "rise_reason": "해외 진출 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "애플페이",
       "news": [
         {
@@ -255,7 +269,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -263,10 +279,10 @@
       "close_price": 3005.0,
       "trading_volume": 246963,
       "trading_value": 742123815,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "애플페이",
       "news": [
         {
@@ -320,7 +336,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -414,9 +432,9 @@
       "date": "20260209",
       "change_rate": 14.03,
       "close_price": 3210.0,
-      "rise_reason": "애플페이 테마 강세",
+      "rise_reason": "관련 보도: 작년 적자 지속…성장 기반 구축 집중",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "애플페이",
       "news": [
@@ -432,7 +450,17 @@
       "source": "estimated",
       "trading_volume": 708447,
       "trading_value": 2274114870,
-      "market_cap": 80333448873
+      "market_cap": 80333448873,
+      "reason_previous": "애플페이 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "엑스플러스, 작년 적자 지속…&quot;성장 기반 구축 집중&quot;",
+          "link": "https://n.news.naver.com/mnews/article/031/0001004299",
+          "source": "아이뉴스24",
+          "date": "2026-02-09"
+        }
+      ]
     },
     {
       "date": "20260107",
@@ -501,5 +529,5 @@
     "count_recent": 2,
     "avg_rate": 13.61
   },
-  "built_at": "2026-10-01T22:58:56"
+  "built_at": "2026-10-02T05:15:56"
 }

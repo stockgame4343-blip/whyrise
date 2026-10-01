@@ -9,10 +9,10 @@
       "close_price": 9220.0,
       "trading_volume": 7024688,
       "trading_value": 64767623360,
-      "rise_reason": "폴더블폰 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폴더블폰",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "폴더블폰 양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260827",
@@ -86,10 +88,10 @@
       "close_price": 8080.0,
       "trading_volume": 1049193,
       "trading_value": 8477479440,
-      "rise_reason": "폴더블폰 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폴더블폰",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "폴더블폰 양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -163,9 +167,9 @@
       "close_price": 7060.0,
       "trading_volume": 346563,
       "trading_value": 2446734780,
-      "rise_reason": "폴더블폰 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "부품 엄체 수혜 기대감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -184,7 +188,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "폴더블폰 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼성 Z폴드8 흥행에…부품 엄체 파인엠텍 수혜 기대감 ↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005797248",
+          "source": "아시아경제",
+          "date": "2026-07-31"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -437,9 +451,9 @@
       "date": "20260313",
       "change_rate": 11.09,
       "close_price": 11020.0,
-      "rise_reason": "폴더블폰 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "폴더블 시즌2 핵심 수혜주 (메리츠증권)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -467,15 +481,25 @@
       "source": "estimated",
       "trading_volume": 3580167,
       "trading_value": 39453440340,
-      "market_cap": 463286756756
+      "market_cap": 463286756756,
+      "reason_previous": "폴더블폰 테마 강세",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "메리츠證 &quot;파인엠텍, 폴더블 시즌2 핵심 수혜주...매수“",
+          "link": "https://n.news.naver.com/mnews/article/014/0005490164",
+          "source": "파이낸셜뉴스",
+          "date": "2026-03-12"
+        }
+      ]
     },
     {
       "date": "20260311",
       "change_rate": 13.1,
       "close_price": 10190.0,
-      "rise_reason": "폴더블폰 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "애플 폴더블 아이폰 초기 물량 20% 증산",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -503,15 +527,25 @@
       "source": "estimated",
       "trading_volume": 1613760,
       "trading_value": 16444214400,
-      "market_cap": 428393108108
+      "market_cap": 428393108108,
+      "reason_previous": "폴더블폰 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]파인엠텍, 애플 '폴더블 아이폰' 초기 물량 20% 증산 소식에 ...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005731899",
+          "source": "아시아경제",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260310",
       "change_rate": 12.62,
       "close_price": 9010.0,
-      "rise_reason": "폴더블폰 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "애플 폴더블 아이폰 초기 물량 20% 증산",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -527,7 +561,17 @@
       "source": "estimated",
       "trading_volume": 386350,
       "trading_value": 3481013500,
-      "market_cap": 378785270270
+      "market_cap": 378785270270,
+      "reason_previous": "폴더블폰 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]파인엠텍, 애플 '폴더블 아이폰' 초기 물량 20% 증산 소식에 ...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005731899",
+          "source": "아시아경제",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260203",
@@ -733,5 +777,5 @@
     "count_recent": 1,
     "avg_rate": 14.51
   },
-  "built_at": "2026-10-01T22:55:25"
+  "built_at": "2026-10-02T05:15:56"
 }

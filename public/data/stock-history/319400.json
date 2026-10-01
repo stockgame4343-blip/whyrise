@@ -9,9 +9,9 @@
       "close_price": 28000.0,
       "trading_volume": 9773083,
       "trading_value": 273646324000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — LG-엔비디아 협력 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 피지컬 AI·로봇주 강세…LG-엔비디아 협력 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000527464&office_id=374&code=125490&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -102,9 +112,9 @@
       "close_price": 23450.0,
       "trading_volume": 7577519,
       "trading_value": 177692820550,
-      "rise_reason": "국책사업 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "조선소 자율운반 국책사업 주관",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -171,7 +181,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "국책사업 관련",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "현대무벡스,조선소 자율운반 국책사업 주관… 190억원 지원",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001182546&office_id=366&code=319400&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.28"
+        }
+      ]
     },
     {
       "date": "20260727",
@@ -179,9 +199,9 @@
       "close_price": 21850.0,
       "trading_volume": 6549867,
       "trading_value": 143114593950,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -242,7 +262,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -250,10 +272,10 @@
       "close_price": 40800.0,
       "trading_volume": 7620238,
       "trading_value": 310905710400,
-      "rise_reason": "외국인 순매수",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -313,7 +335,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -321,9 +345,9 @@
       "close_price": 38500.0,
       "trading_volume": 4112472,
       "trading_value": 158330172000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 환경·안전보건·품질·부패방지·규범준수 등 5개 부문 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -390,7 +414,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "현대무벡스, 환경·안전보건·품질·부패방지·규범준수 등 5개 부문 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004406780&office_id=076&code=319400&page=&sm=",
+          "source": "스포츠조선",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260508",
@@ -633,9 +667,9 @@
       "date": "20260120",
       "change_rate": 11.44,
       "close_price": 38950.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇주 동반 강세 — 관련주 연일",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -675,15 +709,25 @@
       "source": "estimated",
       "trading_volume": 11354864,
       "trading_value": 442271952800,
-      "market_cap": 4338048678071
+      "market_cap": 4338048678071,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체 주춤하자 로봇주 껑충…관련주 연일 강세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000487422",
+          "source": "SBS Biz",
+          "date": "2026-01-20"
+        }
+      ]
     },
     {
       "date": "20260119",
       "change_rate": 20.52,
       "close_price": 34950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -692,15 +736,17 @@
       "source": "estimated",
       "trading_volume": 10076505,
       "trading_value": 352173849750,
-      "market_cap": 3892549455676
+      "market_cap": 3892549455676,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260115",
       "change_rate": 13.85,
       "close_price": 27950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇주 동반 강세 — 형님 뛰니 아우 달린다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -709,7 +755,17 @@
       "source": "estimated",
       "trading_volume": 10909690,
       "trading_value": 304925835500,
-      "market_cap": 3112925816485
+      "market_cap": 3112925816485,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "형님 뛰니 아우 달린다…현대차 훈풍에 로봇株 급등[줍줍리포트]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004579138",
+          "source": "서울경제",
+          "date": "2026-01-15"
+        }
+      ]
     },
     {
       "date": "20260102",
@@ -732,9 +788,9 @@
       "date": "20251222",
       "change_rate": 18.6,
       "close_price": 16130.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -743,15 +799,17 @@
       "source": "estimated",
       "trading_volume": 62782957,
       "trading_value": 1012689096410,
-      "market_cap": 1796475614307
+      "market_cap": 1796475614307,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251208",
       "change_rate": 10.39,
       "close_price": 10940.0,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -760,15 +818,17 @@
       "source": "estimated",
       "trading_volume": 20244588,
       "trading_value": 221475792720,
-      "market_cap": 1218440373250
+      "market_cap": 1218440373250,
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251015",
       "change_rate": 22.72,
       "close_price": 12800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇주 동반 강세 — 하이젠알앤엠",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -777,15 +837,25 @@
       "source": "estimated",
       "trading_volume": 37373204,
       "trading_value": 478377011200,
-      "market_cap": 1425597511664
+      "market_cap": 1425597511664,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 하이젠알앤엠 25.7% 급등… 로봇주 상승세 편승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001106621",
+          "source": "동행미디어 시대",
+          "date": "2025-10-15"
+        }
+      ]
     },
     {
       "date": "20251014",
       "change_rate": 19.2,
       "close_price": 10430.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -794,7 +864,9 @@
       "source": "estimated",
       "trading_volume": 30391189,
       "trading_value": 316980101270,
-      "market_cap": 1161639222395
+      "market_cap": 1161639222395,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250910",
@@ -834,9 +906,9 @@
       "date": "20250825",
       "change_rate": 11.78,
       "close_price": 5030.0,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇주 동반 강세 — 정부 휴머노이드 3대 강국 전략",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -845,7 +917,17 @@
       "source": "estimated",
       "trading_volume": 4417034,
       "trading_value": 22217681020,
-      "market_cap": 560215272161
+      "market_cap": 560215272161,
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "로봇株, 정부 “휴머노이드 3대 강국” 전략에 동반 강세 [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/119/0002994693",
+          "source": "데일리안",
+          "date": "2025-08-25"
+        }
+      ]
     },
     {
       "date": "20250619",
@@ -873,5 +955,5 @@
     "count_recent": 0,
     "avg_rate": 17.2
   },
-  "built_at": "2026-10-01T22:54:01"
+  "built_at": "2026-10-02T05:15:56"
 }

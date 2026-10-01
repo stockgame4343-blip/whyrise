@@ -23,10 +23,10 @@
       "date": "20260305",
       "change_rate": 19.69,
       "close_price": 19880.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -41,15 +41,17 @@
       "source": "estimated",
       "trading_volume": 2013364,
       "trading_value": 40025676320,
-      "market_cap": 798435951875
+      "market_cap": 798435951875,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
       "change_rate": 10.0,
       "close_price": 23650.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 비벗, 창업 지원 비범한 프로젝트 시즌2 성료",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -71,7 +73,17 @@
       "source": "estimated",
       "trading_volume": 6214832,
       "trading_value": 146980776800,
-      "market_cap": 949849610757
+      "market_cap": 949849610757,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "NHN KCP 비벗, 창업 지원 '비범한 프로젝트' 시즌2 성료",
+          "link": "https://n.news.naver.com/mnews/article/030/0003394026",
+          "source": "전자신문",
+          "date": "2026-01-28"
+        }
+      ]
     },
     {
       "date": "20260127",
@@ -353,9 +365,9 @@
       "date": "20250711",
       "change_rate": 11.96,
       "close_price": 17780.0,
-      "rise_reason": "가상자산/블록체인",
+      "rise_reason": "스테이블코인 대장주 분석",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -395,7 +407,17 @@
       "source": "estimated",
       "trading_volume": 19932535,
       "trading_value": 354400472300,
-      "market_cap": 714094125973
+      "market_cap": 714094125973,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "&quot;스테이블코인 대장주&quot; 분석…사흘간 40% 오른 NHN KCP, 또 강세",
+          "link": "https://n.news.naver.com/mnews/article/015/0005155977",
+          "source": "한국경제",
+          "date": "2025-07-10"
+        }
+      ]
     },
     {
       "date": "20250709",
@@ -488,5 +510,5 @@
     "count_recent": 0,
     "avg_rate": 15.64
   },
-  "built_at": "2026-10-01T22:55:00"
+  "built_at": "2026-10-02T05:15:57"
 }

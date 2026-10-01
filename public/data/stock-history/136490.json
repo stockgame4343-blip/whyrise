@@ -9,10 +9,10 @@
       "close_price": 11600.0,
       "trading_volume": 666394,
       "trading_value": 7730170400,
-      "rise_reason": "정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "사료",
       "news": [
         {
@@ -78,15 +78,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정부 정책 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
       "change_rate": 22.82,
       "close_price": 13240.0,
-      "rise_reason": "사료 테마 강세",
+      "rise_reason": "관련 보도: 금융당국·정치권, 코스피 5000 자축… 자본시장 안착 위해 노력...",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -108,7 +110,17 @@
       "source": "estimated",
       "trading_volume": 2560433,
       "trading_value": 33900132920,
-      "market_cap": 314775929978
+      "market_cap": 314775929978,
+      "reason_previous": "사료 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "금융당국·정치권, 코스피 5000 자축… &quot;선진 자본시장 안착 위해 노력...",
+          "link": "https://n.news.naver.com/mnews/article/417/0001127918",
+          "source": "동행미디어 시대",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20250717",
@@ -153,5 +165,5 @@
     "count_recent": 0,
     "avg_rate": 18.55
   },
-  "built_at": "2026-10-01T22:52:57"
+  "built_at": "2026-10-02T05:15:57"
 }

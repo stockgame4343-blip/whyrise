@@ -9,9 +9,9 @@
       "close_price": 6480.0,
       "trading_volume": 111933,
       "trading_value": 725325840,
-      "rise_reason": "매출 관련 뉴스",
+      "rise_reason": "AX 성장 타고 반기 최대 실적",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "이노에이엑스, AX 성장 타고 반기 최대 실적…영업익 38%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002238104&office_id=138&code=296640&page=&sm=",
+          "source": "디지털데일리",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260814",
@@ -86,10 +96,10 @@
       "close_price": 5880.0,
       "trading_volume": 97064,
       "trading_value": 570736320,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "M&A",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260730",
@@ -163,9 +175,9 @@
       "close_price": 4120.0,
       "trading_volume": 31420,
       "trading_value": 129450400,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 삼성생명·, 보험요율 산출 자동화 시스템 살펴보니",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CB",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "삼성생명·이노에이엑스, 보험요율 산출 자동화 시스템 살펴보니",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002387418&office_id=123&code=296640&page=&sm=",
+          "source": "조세일보",
+          "date": "2026.07.29"
+        }
+      ]
     },
     {
       "date": "20260311",
@@ -285,10 +307,10 @@
       "date": "20260303",
       "change_rate": 14.18,
       "close_price": 6360.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -309,7 +331,9 @@
       "source": "estimated",
       "trading_volume": 391732,
       "trading_value": 2491415520,
-      "market_cap": 32908013937
+      "market_cap": 32908013937,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
@@ -337,5 +361,5 @@
     "count_recent": 0,
     "avg_rate": 14.83
   },
-  "built_at": "2026-10-01T22:59:20"
+  "built_at": "2026-10-02T05:15:56"
 }

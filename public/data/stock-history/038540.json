@@ -9,9 +9,9 @@
       "close_price": 2265.0,
       "trading_volume": 2375310,
       "trading_value": 5380077150,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: SH수협은행 폼에 안길까…證 매각 협의 진행중 [fn마켓워치...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "선복",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "기타금융",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SH수협은행 폼에 안길까…상상인證 \"매각 협의 진행중\" [fn마켓워치...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005558131&office_id=014&code=038540&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.06"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -113,5 +123,5 @@
     "count_recent": 0,
     "avg_rate": 10.78
   },
-  "built_at": "2026-10-01T22:57:27"
+  "built_at": "2026-10-02T05:15:56"
 }

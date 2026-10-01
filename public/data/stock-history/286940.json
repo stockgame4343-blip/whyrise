@@ -9,9 +9,9 @@
       "close_price": 22450.0,
       "trading_volume": 250585,
       "trading_value": 5625633250,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: EVSIS, 전기차 충전기 지능정보 제품 검증 취득…...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "SI(시스템통합)",
       "news": [
@@ -78,15 +78,25 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "롯데이노베이트 EVSIS, 전기차 충전기 ‘지능정보 제품 검증’ 취득…...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002649899&office_id=016&code=286940&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.05.29"
+        }
+      ]
     },
     {
       "date": "20250616",
       "change_rate": 29.78,
       "close_price": 25100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "SI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "SI(시스템통합)",
       "news": [],
@@ -95,7 +105,9 @@
       "source": "estimated",
       "trading_volume": 861508,
       "trading_value": 21623850800,
-      "market_cap": 379694061505
+      "market_cap": 379694061505,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -106,5 +118,5 @@
     "count_recent": 0,
     "avg_rate": 12.25
   },
-  "built_at": "2026-09-28T23:32:46"
+  "built_at": "2026-10-02T05:15:57"
 }

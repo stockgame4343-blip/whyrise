@@ -25,10 +25,10 @@
       "close_price": 3330.0,
       "trading_volume": 2227016,
       "trading_value": 7415963280,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "플렉서블 디스플레이",
       "news": [
         {
@@ -40,7 +40,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -48,9 +50,9 @@
       "close_price": 3030.0,
       "trading_volume": 668384,
       "trading_value": 2025203520,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "플렉서블 디스플레이 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "플렉서블 디스플레이",
       "news": [
@@ -63,7 +65,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260427",
@@ -71,10 +75,10 @@
       "close_price": 2590.0,
       "trading_volume": 2893469,
       "trading_value": 7494084710,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "플렉서블 디스플레이",
       "news": [
         {
@@ -86,7 +90,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260323",
@@ -181,5 +187,5 @@
     "count_recent": 0,
     "avg_rate": 15.09
   },
-  "built_at": "2026-09-27T10:27:38"
+  "built_at": "2026-10-02T05:15:57"
 }

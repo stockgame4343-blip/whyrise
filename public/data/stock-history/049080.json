@@ -9,10 +9,10 @@
       "close_price": 10990.0,
       "trading_volume": 2708100,
       "trading_value": 29762019000,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED장비",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260827",
@@ -86,10 +88,10 @@
       "close_price": 8800.0,
       "trading_volume": 2992000,
       "trading_value": 26329600000,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED장비",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -163,9 +167,9 @@
       "close_price": 10990.0,
       "trading_volume": 3223718,
       "trading_value": 35428660820,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -232,7 +236,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -240,9 +246,9 @@
       "close_price": 9020.0,
       "trading_volume": 3239501,
       "trading_value": 29220299020,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -309,7 +315,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260730",
@@ -317,10 +325,10 @@
       "close_price": 7150.0,
       "trading_volume": 1689875,
       "trading_value": 12082606250,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [
         {
@@ -386,7 +394,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260720",
@@ -394,9 +404,9 @@
       "close_price": 12990.0,
       "trading_volume": 5909709,
       "trading_value": 76767119910,
-      "rise_reason": "수주 공시",
+      "rise_reason": "한국항공우주연구원과 계약 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -463,7 +473,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]기가레인, 한국항공우주연구원과 계약 소식에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003449047&office_id=030&code=049080&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -471,9 +491,9 @@
       "close_price": 11730.0,
       "trading_volume": 2970944,
       "trading_value": 34849173120,
-      "rise_reason": "반도체 장비 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 12종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -540,7 +560,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260714",
@@ -548,10 +570,10 @@
       "close_price": 9030.0,
       "trading_volume": 4562151,
       "trading_value": 41196223530,
-      "rise_reason": "홀린 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED장비",
       "news": [
         {
@@ -617,7 +639,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "홀린 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260713",
@@ -625,10 +649,10 @@
       "close_price": 7760.0,
       "trading_volume": 2850984,
       "trading_value": 22123635840,
-      "rise_reason": "홀린 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED장비",
       "news": [
         {
@@ -694,7 +718,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "홀린 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -702,9 +728,9 @@
       "close_price": 5970.0,
       "trading_volume": 354727,
       "trading_value": 2117720190,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "LED장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED장비",
       "news": [
@@ -771,7 +797,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260511",
@@ -856,9 +884,9 @@
       "close_price": 25700.0,
       "trading_volume": 4660778,
       "trading_value": 119781994600,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "4개년 중장기 프로젝트 국책과제 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED장비",
       "news": [
@@ -919,7 +947,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "기가레인, 4개년 중장기 프로젝트 국책과제 선정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263927&office_id=018&code=049080&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.23"
+        }
+      ]
     },
     {
       "date": "20260417",
@@ -1248,9 +1286,9 @@
       "date": "20260226",
       "change_rate": 12.33,
       "close_price": 492.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: O-RAN Alliance O-RAN Certificate 공식 등재",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "갤럭시 부품주",
       "news": [
@@ -1272,7 +1310,17 @@
       "source": "estimated",
       "trading_volume": 3635831,
       "trading_value": 1788828852,
-      "market_cap": 41767975830
+      "market_cap": 41767975830,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "기가레인, O-RAN Alliance ‘O-RAN Certificate’ 공식 등재",
+          "link": "https://n.news.naver.com/mnews/article/018/0006224930",
+          "source": "이데일리",
+          "date": "2026-02-26"
+        }
+      ]
     },
     {
       "date": "20260224",
@@ -1336,9 +1384,9 @@
       "date": "20251029",
       "change_rate": 10.76,
       "close_price": 556.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "통신장비주 동반 강세 — 젠슨황 차세대 네트워크 장비 개발 발표",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "갤럭시 부품주",
       "news": [
@@ -1378,7 +1426,17 @@
       "source": "estimated",
       "trading_volume": 18843866,
       "trading_value": 10477189496,
-      "market_cap": 47201208459
+      "market_cap": 47201208459,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "통신장비株, 젠슨황 '차세대 네트워크 장비 개발' 발표에 동반 강세[특...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006149722",
+          "source": "이데일리",
+          "date": "2025-10-29"
+        }
+      ]
     }
   ],
   "stats": {
@@ -1389,5 +1447,5 @@
     "count_recent": 1,
     "avg_rate": 20.96
   },
-  "built_at": "2026-10-01T22:57:59"
+  "built_at": "2026-10-02T05:15:56"
 }

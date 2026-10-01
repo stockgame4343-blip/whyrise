@@ -9,15 +9,17 @@
       "close_price": 44150.0,
       "trading_volume": 170530,
       "trading_value": 7528899500,
-      "rise_reason": "음원/음반 테마 강세",
+      "rise_reason": "음원 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "음원/음반",
       "news": [],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "음원/음반 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -25,10 +27,10 @@
       "close_price": 44500.0,
       "trading_volume": 286722,
       "trading_value": 12759129000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음원/음반",
       "news": [
         {
@@ -94,7 +96,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20250811",
@@ -122,5 +126,5 @@
     "count_recent": 0,
     "avg_rate": 11.46
   },
-  "built_at": "2026-09-27T09:16:07"
+  "built_at": "2026-10-02T05:15:57"
 }

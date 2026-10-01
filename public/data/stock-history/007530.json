@@ -9,23 +9,25 @@
       "close_price": 1771.0,
       "trading_volume": 661875,
       "trading_value": 1172180625,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250627",
       "change_rate": 12.8,
       "close_price": 2600.0,
-      "rise_reason": "자사주 매입",
+      "rise_reason": "저평가 극복 50억 자사주 매입",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -59,7 +61,17 @@
       "source": "estimated",
       "trading_volume": 673681,
       "trading_value": 1751570600,
-      "market_cap": 57806451612
+      "market_cap": 57806451612,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]와이엠, '저평가 극복' 50억 자사주 매입에 강세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005614165",
+          "source": "아시아경제",
+          "date": "2025-06-27"
+        }
+      ]
     }
   ],
   "stats": {
@@ -70,5 +82,5 @@
     "count_recent": 1,
     "avg_rate": 19.34
   },
-  "built_at": "2026-10-01T22:59:04"
+  "built_at": "2026-10-02T05:15:56"
 }

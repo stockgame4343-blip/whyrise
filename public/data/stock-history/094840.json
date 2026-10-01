@@ -25,9 +25,9 @@
       "close_price": 10300.0,
       "trading_volume": 885877,
       "trading_value": 9124533100,
-      "rise_reason": "계약 체결",
+      "rise_reason": "주주환원 계획 발표",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
@@ -94,15 +94,25 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "슈프리마에이치큐, 주주환원 계획 발표…12%대 급등[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263184&office_id=018&code=094840&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.22"
+        }
+      ]
     },
     {
       "date": "20260123",
       "change_rate": 10.53,
       "close_price": 7350.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "35억 자사주 신생 재단에 무상 출연한 사연",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
@@ -124,7 +134,17 @@
       "source": "estimated",
       "trading_volume": 4195822,
       "trading_value": 30839291700,
-      "market_cap": 72057476635
+      "market_cap": 72057476635,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "슈프리마에이치큐, 35억 자사주 신생 재단에 무상 출연한 사연 [진영기...",
+          "link": "https://n.news.naver.com/mnews/article/015/0005240808",
+          "source": "한국경제",
+          "date": "2026-01-22"
+        }
+      ]
     }
   ],
   "stats": {
@@ -135,5 +155,5 @@
     "count_recent": 0,
     "avg_rate": 11.93
   },
-  "built_at": "2026-09-28T23:52:42"
+  "built_at": "2026-10-02T05:15:57"
 }

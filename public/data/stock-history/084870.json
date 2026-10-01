@@ -9,9 +9,9 @@
       "close_price": 2390.0,
       "trading_volume": 284246,
       "trading_value": 679347940,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "타임아웃 1차 라인업 확정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "TBH글로벌, ‘타임아웃’ 1차 라인업 확정…11월 글로벌 론칭",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006355692&office_id=018&code=084870&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.21"
+        }
+      ]
     },
     {
       "date": "20260226",
@@ -197,5 +207,5 @@
     "count_recent": 0,
     "avg_rate": 14.28
   },
-  "built_at": "2026-10-01T22:53:21"
+  "built_at": "2026-10-02T05:15:56"
 }

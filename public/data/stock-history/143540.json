@@ -25,9 +25,9 @@
       "close_price": 1435.0,
       "trading_volume": 1777593,
       "trading_value": 2550845955,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1분기 영업이익 35억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "영우디에스피, 1분기 영업이익 35억…성장 흐름 지속",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013914676&office_id=003&code=143540&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260324",
@@ -146,5 +156,5 @@
     "count_recent": 0,
     "avg_rate": 11.54
   },
-  "built_at": "2026-10-01T22:58:54"
+  "built_at": "2026-10-02T05:15:57"
 }

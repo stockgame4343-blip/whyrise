@@ -9,9 +9,9 @@
       "close_price": 58200.0,
       "trading_volume": 243012,
       "trading_value": 14143298400,
-      "rise_reason": "화장품 증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "포장재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 증설 발표",
+      "reason_kind": "theme"
     },
     {
       "date": "20260812",
@@ -86,9 +88,9 @@
       "close_price": 58900.0,
       "trading_volume": 281830,
       "trading_value": 16599787000,
-      "rise_reason": "화장품 영업이익 공시",
+      "rise_reason": "2분기 실적 기대치 웃돌아",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "포장재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "다올증권 \"펌텍코리아, 2분기 실적 기대치 웃돌아…목표가↑\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016245996&office_id=001&code=251970&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260727",
@@ -163,10 +175,10 @@
       "close_price": 48600.0,
       "trading_volume": 152119,
       "trading_value": 7392983400,
-      "rise_reason": "화장품 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -232,7 +244,9 @@
       ],
       "sector": "포장재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260703",
@@ -317,24 +331,26 @@
       "close_price": 38000.0,
       "trading_volume": 72797,
       "trading_value": 2766286000,
-      "rise_reason": "화장품 테마 강세",
+      "rise_reason": "화장품 테마 15종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [],
       "sector": "포장재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "화장품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260122",
       "change_rate": 10.39,
       "close_price": 59500.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -342,7 +358,9 @@
       "source": "estimated",
       "trading_volume": 193498,
       "trading_value": 11513131000,
-      "market_cap": 737800000000
+      "market_cap": 737800000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -353,5 +371,5 @@
     "count_recent": 1,
     "avg_rate": 12.35
   },
-  "built_at": "2026-10-01T22:54:37"
+  "built_at": "2026-10-02T05:15:56"
 }

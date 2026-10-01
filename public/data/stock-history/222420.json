@@ -9,10 +9,10 @@
       "close_price": 936.0,
       "trading_volume": 1559147,
       "trading_value": 1459361592,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -86,15 +88,17 @@
       "close_price": 897.0,
       "trading_volume": 611854,
       "trading_value": 548833038,
-      "rise_reason": "2차전지(소재/부품) 테마 강세",
+      "rise_reason": "2차전지 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(소재/부품) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -102,15 +106,17 @@
       "close_price": 1034.0,
       "trading_volume": 146845,
       "trading_value": 151837730,
-      "rise_reason": "2차전지(소재/부품) 테마 강세",
+      "rise_reason": "2차전지 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(소재/부품) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260529",
@@ -118,9 +124,9 @@
       "close_price": 1475.0,
       "trading_volume": 1307940,
       "trading_value": 1929211500,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "호주 광산업체와 41억원 규모 공급계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
@@ -187,7 +193,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "쎄노텍, 호주 광산업체와 41억원 규모 공급계약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005768033&office_id=277&code=222420&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.05.27"
+        }
+      ]
     },
     {
       "date": "20260421",
@@ -294,9 +310,9 @@
       "date": "20260129",
       "change_rate": 21.04,
       "close_price": 1743.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 15억 규모 전환청구권 행사",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -330,7 +346,17 @@
       "source": "estimated",
       "trading_volume": 21693788,
       "trading_value": 37812272484,
-      "market_cap": 84323926380
+      "market_cap": 84323926380,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "쎄노텍, 15억 규모 전환청구권 행사",
+          "link": "https://n.news.naver.com/mnews/article/018/0006209718",
+          "source": "이데일리",
+          "date": "2026-01-29"
+        }
+      ]
     },
     {
       "date": "20260126",
@@ -384,9 +410,9 @@
       "date": "20260122",
       "change_rate": 26.23,
       "close_price": 1150.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -402,7 +428,17 @@
       "source": "estimated",
       "trading_volume": 10787640,
       "trading_value": 12405786000,
-      "market_cap": 55635407537
+      "market_cap": 55635407537,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20260120",
@@ -461,5 +497,5 @@
     "count_recent": 1,
     "avg_rate": 16.42
   },
-  "built_at": "2026-10-01T22:58:53"
+  "built_at": "2026-10-02T05:15:56"
 }

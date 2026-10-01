@@ -9,10 +9,10 @@
       "close_price": 35000.0,
       "trading_volume": 113891,
       "trading_value": 3986185000,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -394,9 +396,9 @@
       "close_price": 33000.0,
       "trading_volume": 91300,
       "trading_value": 3012900000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "美빅테크와 레도스 백플레인 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증강현실(AR)",
       "news": [
@@ -433,15 +435,25 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "사피엔반도체, 美빅테크와 레도스 백플레인 공급계약...23억원",
+          "link": "https://n.news.naver.com/mnews/article/092/0002417792",
+          "source": "지디넷코리아",
+          "date": "2026-04-07"
+        }
+      ]
     },
     {
       "date": "20260311",
       "change_rate": 13.75,
       "close_price": 34750.0,
-      "rise_reason": "마이크로 LED 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 내후년까지 빅사이클 진입",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이크로 LED",
       "news": [],
@@ -450,15 +462,25 @@
       "source": "estimated",
       "trading_volume": 202704,
       "trading_value": 7043964000,
-      "market_cap": 286883458646
+      "market_cap": 286883458646,
+      "reason_previous": "마이크로 LED 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;내후년까지 빅사이클 진입&quot;…통신장비주 상한가 쏟아져",
+          "link": "https://n.news.naver.com/mnews/article/015/0005261092",
+          "source": "한국경제",
+          "date": "2026-03-11"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 13.76,
       "close_price": 31000.0,
-      "rise_reason": "마이크로 LED 테마 강세",
+      "rise_reason": "관련 보도: 품질 부문 국제표준 인증 획득",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이크로 LED",
       "news": [
@@ -480,7 +502,17 @@
       "source": "estimated",
       "trading_volume": 70534,
       "trading_value": 2186554000,
-      "market_cap": 255924812030
+      "market_cap": 255924812030,
+      "reason_previous": "마이크로 LED 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "사피엔반도체, 품질 부문 국제표준 인증 획득",
+          "link": "https://n.news.naver.com/mnews/article/030/0003404122",
+          "source": "전자신문",
+          "date": "2026-03-04"
+        }
+      ]
     },
     {
       "date": "20251126",
@@ -572,5 +604,5 @@
     "count_recent": 1,
     "avg_rate": 16.26
   },
-  "built_at": "2026-10-01T22:55:44"
+  "built_at": "2026-10-02T05:15:56"
 }

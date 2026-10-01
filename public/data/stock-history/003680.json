@@ -9,9 +9,9 @@
       "close_price": 14520.0,
       "trading_volume": 5763837,
       "trading_value": 83690913240,
-      "rise_reason": "애국 이슈",
+      "rise_reason": "애국 테마 모나미· 연일",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "김밥(냉동김밥 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "식품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "애국 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'애국 테마 매수세' 모나미·한성기업 연일 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001019226&office_id=088&code=003680&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260714",
@@ -163,9 +173,9 @@
       "close_price": 8460.0,
       "trading_volume": 1528228,
       "trading_value": 12928808880,
-      "rise_reason": "애국 상장 이슈",
+      "rise_reason": "애국기업 돈쭐에 로 직행",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "김밥(냉동김밥 등)",
       "news": [
@@ -232,7 +242,17 @@
       ],
       "sector": "식품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "애국 상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'애국기업' 한성기업 '돈쭐'에 이틀 연속 상한가로 직행[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006326901&office_id=018&code=003680&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.10"
+        }
+      ]
     },
     {
       "date": "20260709",
@@ -240,9 +260,9 @@
       "close_price": 6510.0,
       "trading_volume": 3176522,
       "trading_value": 20679158220,
-      "rise_reason": "애국 상장 이슈",
+      "rise_reason": "애국기업에 돈쭐 내주자",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "김밥(냉동김밥 등)",
       "news": [
@@ -309,15 +329,25 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "애국 상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] “애국기업에 '돈쭐' 내주자”… 한성기업, 상폐위기→상...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003446178&office_id=030&code=003680&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.09"
+        }
+      ]
     },
     {
       "date": "20251120",
       "change_rate": 10.52,
       "close_price": 7040.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "30% 금일 증시 상승률 1위로 마감",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -357,7 +387,17 @@
       "source": "estimated",
       "trading_volume": 12533215,
       "trading_value": 88233833600,
-      "market_cap": 43669757174
+      "market_cap": 43669757174,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]한성기업 30% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003593539",
+          "source": "서울신문",
+          "date": "2025-11-19"
+        }
+      ]
     },
     {
       "date": "20251119",
@@ -416,5 +456,5 @@
     "count_recent": 0,
     "avg_rate": 25.08
   },
-  "built_at": "2026-09-27T09:05:54"
+  "built_at": "2026-10-02T05:15:57"
 }

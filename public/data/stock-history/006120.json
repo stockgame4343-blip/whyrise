@@ -44,10 +44,10 @@
       "close_price": 54200.0,
       "trading_volume": 122543,
       "trading_value": 6641830600,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -113,7 +113,9 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260625",
@@ -121,9 +123,9 @@
       "close_price": 49550.0,
       "trading_volume": 163729,
       "trading_value": 8112771950,
-      "rise_reason": "지주사 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지주사 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -190,7 +192,9 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지주사 인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260506",
@@ -198,10 +202,10 @@
       "close_price": 62900.0,
       "trading_volume": 124118,
       "trading_value": 7807022200,
-      "rise_reason": "해외 진출 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -267,7 +271,9 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -278,5 +284,5 @@
     "count_recent": 0,
     "avg_rate": 12.09
   },
-  "built_at": "2026-10-01T22:52:34"
+  "built_at": "2026-10-02T05:15:57"
 }

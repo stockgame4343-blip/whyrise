@@ -86,9 +86,9 @@
       "close_price": 2780.0,
       "trading_volume": 497514,
       "trading_value": 1383088920,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "흑자경영 본격화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "카메라모듈/부품",
       "news": [
@@ -155,7 +155,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "라온피플, 흑자경영 본격화…수출·수주잔고 동반 성장",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006358349&office_id=018&code=300120&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -237,9 +247,9 @@
       "date": "20251202",
       "change_rate": 12.19,
       "close_price": 1399.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇 통합제어 솔루션 개발 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -261,7 +271,17 @@
       "source": "estimated",
       "trading_volume": 2999924,
       "trading_value": 4196893676,
-      "market_cap": 69298696461
+      "market_cap": 69298696461,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "라온피플, 로봇 통합제어 솔루션 개발 소식에 8%↑[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006176023",
+          "source": "이데일리",
+          "date": "2025-12-02"
+        }
+      ]
     }
   ],
   "stats": {
@@ -272,5 +292,5 @@
     "count_recent": 1,
     "avg_rate": 17.26
   },
-  "built_at": "2026-10-01T22:59:26"
+  "built_at": "2026-10-02T05:15:56"
 }

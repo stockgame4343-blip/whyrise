@@ -9,10 +9,10 @@
       "close_price": 4295.0,
       "trading_volume": 112203,
       "trading_value": 481911885,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "NFT(대체불가토큰)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260420",
@@ -178,9 +180,9 @@
       "date": "20250909",
       "change_rate": 14.99,
       "close_price": 7210.0,
-      "rise_reason": "K-콘텐츠/엔터",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 티엔엔터테인먼트 지배지분 64.31%로 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "NFT(대체불가토큰)",
       "news": [
@@ -202,7 +204,17 @@
       "source": "estimated",
       "trading_volume": 1623324,
       "trading_value": 11704166040,
-      "market_cap": 176387500000
+      "market_cap": 176387500000,
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "초록뱀미디어, 티엔엔터테인먼트 지배지분 64.31%로 확대",
+          "link": "https://n.news.naver.com/mnews/article/293/0000072248",
+          "source": "블로터",
+          "date": "2025-09-09"
+        }
+      ]
     }
   ],
   "stats": {
@@ -213,5 +225,5 @@
     "count_recent": 0,
     "avg_rate": 13.6
   },
-  "built_at": "2026-09-27T09:56:29"
+  "built_at": "2026-10-02T05:15:57"
 }

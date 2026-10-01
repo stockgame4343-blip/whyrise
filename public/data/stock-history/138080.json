@@ -9,9 +9,9 @@
       "close_price": 24000.0,
       "trading_volume": 775527,
       "trading_value": 18612648000,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "장비주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "‘AI 광통신 공급난’ 부각에 코스닥 네트워크 장비주 ‘훨훨 [줍줍리....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004659995&office_id=011&code=138080&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.09.09"
+        }
+      ]
     },
     {
       "date": "20260807",
@@ -86,9 +96,9 @@
       "close_price": 26550.0,
       "trading_volume": 1658625,
       "trading_value": 44036493750,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "中 부품 수입 금지법 추진",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 美 정부, 中 부품 수입 금지법 추진… 오이솔루션 등 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454468&office_id=030&code=138080&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260805",
@@ -163,9 +183,9 @@
       "close_price": 25150.0,
       "trading_volume": 153694,
       "trading_value": 3865404100,
-      "rise_reason": "정책 관련 뉴스",
+      "rise_reason": "中 부품 수입 금지법 추진",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 美 정부, 中 부품 수입 금지법 추진… 오이솔루션 등 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454468&office_id=030&code=138080&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -240,9 +270,9 @@
       "close_price": 19370.0,
       "trading_volume": 233663,
       "trading_value": 4526052310,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "통신장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -279,7 +309,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260803",
@@ -287,10 +319,10 @@
       "close_price": 17520.0,
       "trading_volume": 243583,
       "trading_value": 4267574160,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -356,7 +388,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -364,15 +398,17 @@
       "close_price": 15700.0,
       "trading_volume": 236373,
       "trading_value": 3711056100,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -380,15 +416,17 @@
       "close_price": 21600.0,
       "trading_volume": 133269,
       "trading_value": 2878610400,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -396,15 +434,17 @@
       "close_price": 22700.0,
       "trading_volume": 219143,
       "trading_value": 4974546100,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -412,10 +452,10 @@
       "close_price": 39400.0,
       "trading_volume": 1376716,
       "trading_value": 54242610400,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -481,7 +521,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260507",
@@ -489,9 +531,9 @@
       "close_price": 54000.0,
       "trading_volume": 5420661,
       "trading_value": 292715694000,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI EXPO 2026서 차세대 광통신 기술 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -558,7 +600,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오이솔루션, AI EXPO 2026서 차세대 광통신 기술 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005758978&office_id=277&code=138080&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -566,9 +618,9 @@
       "close_price": 45050.0,
       "trading_volume": 2567127,
       "trading_value": 115649071350,
-      "rise_reason": "통신장비 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -629,7 +681,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -718,9 +772,9 @@
       "date": "20260313",
       "change_rate": 11.86,
       "close_price": 35850.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "美통신장비 수주 기대",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -760,7 +814,17 @@
       "source": "estimated",
       "trading_volume": 2959949,
       "trading_value": 106114171650,
-      "market_cap": 443708695652
+      "market_cap": 443708695652,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 오이솔루션, 美통신장비 수주 기대에 장중 신고가(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0015955461",
+          "source": "연합뉴스",
+          "date": "2026-03-12"
+        }
+      ]
     },
     {
       "date": "20260311",
@@ -862,9 +926,9 @@
       "date": "20260305",
       "change_rate": 16.86,
       "close_price": 20450.0,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
@@ -873,7 +937,9 @@
       "source": "estimated",
       "trading_volume": 689754,
       "trading_value": 14105469300,
-      "market_cap": 253105797101
+      "market_cap": 253105797101,
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260102",
@@ -993,5 +1059,5 @@
     "count_recent": 1,
     "avg_rate": 17.32
   },
-  "built_at": "2026-10-01T22:55:29"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -50,9 +50,9 @@
       "close_price": 7240.0,
       "trading_volume": 1719271,
       "trading_value": 12447522040,
-      "rise_reason": "관련 보도: 中 궈룬과 2년간 하이난성에 ‘DeepCARS’ 독점 판매계약",
+      "rise_reason": "中 궈룬과 2년간 하이난성에 DeepCARS 독점 판매계약",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -92,7 +92,8 @@
           "source": "지디넷코리아",
           "date": "2026-09-28"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260921",
@@ -100,9 +101,9 @@
       "close_price": 5440.0,
       "trading_volume": 379363,
       "trading_value": 2063734720,
-      "rise_reason": "관련 보도: \"소아 AI 경보시스템 기대\"…뷰노, 심포지엄 성료",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "관련 보도: 소아 AI 경보시스템 기대…, 심포지엄 성료",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -149,12 +150,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "&quot;소아 AI 경보시스템 기대&quot;…뷰노, 심포지엄 성료",
+          "title": "\"소아 AI 경보시스템 기대\"…뷰노, 심포지엄 성료",
           "link": "https://n.news.naver.com/mnews/article/003/0014203930",
           "source": "뉴시스",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "related"
     },
     {
       "date": "20260918",
@@ -162,9 +164,9 @@
       "close_price": 4880.0,
       "trading_volume": 418963,
       "trading_value": 2044539440,
-      "rise_reason": "관련 보도: \"정상 심전도인데 한달 뒤 심방세동\"…뷰노 AI가 미리 찾는다",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "관련 보도: 정상 심전도인데 한달 뒤 심방세동… AI가 미리 찾는다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -217,12 +219,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "&quot;정상 심전도인데 한달 뒤 심방세동&quot;…뷰노 AI가 미리 찾는다",
+          "title": "\"정상 심전도인데 한달 뒤 심방세동\"…뷰노 AI가 미리 찾는다",
           "link": "https://n.news.naver.com/mnews/article/421/0009179032",
           "source": "뉴스1",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "related"
     },
     {
       "date": "20260731",
@@ -246,9 +249,9 @@
       "close_price": 7740.0,
       "trading_volume": 47507,
       "trading_value": 367704180,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "의료AI 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -261,7 +264,9 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -269,9 +274,9 @@
       "close_price": 9300.0,
       "trading_volume": 513625,
       "trading_value": 4776712500,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 메디아나, 통합 모니터링 플랫폼에 심정지 예측 AI 탑재",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -338,15 +343,25 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "메디아나, 통합 모니터링 플랫폼에 뷰노 심정지 예측 AI 탑재",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005371027&office_id=008&code=338220&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 13.67,
       "close_price": 17300.0,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "의료AI 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [],
@@ -355,15 +370,17 @@
       "source": "estimated",
       "trading_volume": 108404,
       "trading_value": 1875389200,
-      "market_cap": 242199999999
+      "market_cap": 242199999999,
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251128",
       "change_rate": 14.86,
       "close_price": 27050.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "씨어스 영업흑자 비결은",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -385,7 +402,17 @@
       "source": "estimated",
       "trading_volume": 877669,
       "trading_value": 23740946450,
-      "market_cap": 378700000000
+      "market_cap": 378700000000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "AI 의료 기업 수익 구간 돌입...뷰노·씨어스 영업흑자 비결은",
+          "link": "https://n.news.naver.com/mnews/article/018/0006173673",
+          "source": "이데일리",
+          "date": "2025-11-28"
+        }
+      ]
     },
     {
       "date": "20251001",
@@ -421,9 +448,9 @@
       "date": "20250902",
       "change_rate": 13.57,
       "close_price": 22600.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "상반기 실적보니",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -457,15 +484,25 @@
       "source": "estimated",
       "trading_volume": 531686,
       "trading_value": 12016103600,
-      "market_cap": 316400000000
+      "market_cap": 316400000000,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "루닛·뷰노·딥노이드, 상반기 실적보니…'흑자전환' 기대감",
+          "link": "https://n.news.naver.com/mnews/article/003/0013452675",
+          "source": "뉴시스",
+          "date": "2025-09-01"
+        }
+      ]
     },
     {
       "date": "20250822",
       "change_rate": 10.49,
       "close_price": 20850.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 힘 못 쓰는 주가… 증권가는 오를 수 있다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -487,7 +524,17 @@
       "source": "estimated",
       "trading_volume": 197203,
       "trading_value": 4111682550,
-      "market_cap": 291900000000
+      "market_cap": 291900000000,
+      "reason_previous": "실적 호조",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[S리포트] ③힘 못 쓰는 뷰노 주가… 증권가는 &quot;오를 수 있다&quot;",
+          "link": "https://n.news.naver.com/mnews/article/417/0001096632",
+          "source": "동행미디어 시대",
+          "date": "2025-08-21"
+        }
+      ]
     }
   ],
   "stats": {
@@ -498,5 +545,5 @@
     "count_recent": 4,
     "avg_rate": 14.61
   },
-  "built_at": "2026-10-01T22:57:21"
+  "built_at": "2026-10-02T05:15:56"
 }

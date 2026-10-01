@@ -9,9 +9,9 @@
       "close_price": 40250.0,
       "trading_volume": 11264,
       "trading_value": 453376000,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "5억 규모 자사주 취득 신탁계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -24,15 +24,25 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "석경에이티, 5억 규모 자사주 취득 신탁계약 체결",
+          "link": "https://n.news.naver.com/mnews/article/018/0006318267",
+          "source": "이데일리",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260204",
       "change_rate": 11.29,
       "close_price": 63100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 도쿄 나노텍 2026 참가…핵심 나노소재 기술력 선봬",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -48,7 +58,17 @@
       "source": "estimated",
       "trading_volume": 37631,
       "trading_value": 2374516100,
-      "market_cap": 344275967174
+      "market_cap": 344275967174,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "석경에이티, '도쿄 나노텍 2026' 참가…핵심 나노소재 기술력 선봬",
+          "link": "https://n.news.naver.com/mnews/article/018/0006211957",
+          "source": "이데일리",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20251203",
@@ -78,9 +98,9 @@
       "date": "20251121",
       "change_rate": 10.63,
       "close_price": 51000.0,
-      "rise_reason": "실적 개선",
+      "rise_reason": "호실적 기대감",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -120,7 +140,17 @@
       "source": "estimated",
       "trading_volume": 253217,
       "trading_value": 12914067000,
-      "market_cap": 278257913247
+      "market_cap": 278257913247,
+      "reason_previous": "실적 개선",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 석경에이티, 호실적 기대감에 13% 상승",
+          "link": "https://n.news.naver.com/mnews/article/366/0001124927",
+          "source": "조선비즈",
+          "date": "2025-11-21"
+        }
+      ]
     }
   ],
   "stats": {
@@ -131,5 +161,5 @@
     "count_recent": 0,
     "avg_rate": 13.93
   },
-  "built_at": "2026-09-27T09:36:59"
+  "built_at": "2026-10-02T05:15:57"
 }

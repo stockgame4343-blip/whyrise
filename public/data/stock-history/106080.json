@@ -7,10 +7,10 @@
       "date": "20260311",
       "change_rate": 10.0,
       "close_price": 1650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -18,15 +18,17 @@
       "source": "estimated",
       "trading_volume": 663199,
       "trading_value": 1094278350,
-      "market_cap": 9500000000
+      "market_cap": 9500000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
       "change_rate": 10.76,
       "close_price": 7260.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 기술유출 혐의 , 정부 국가핵심기술 아냐 판정 담긴 공...",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -54,7 +56,17 @@
       "source": "estimated",
       "trading_volume": 2928679,
       "trading_value": 21262209540,
-      "market_cap": 41800000000
+      "market_cap": 41800000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "'기술유출 혐의' 케이이엠텍, 정부 '국가핵심기술 아냐' 판정 담긴 공...",
+          "link": "https://n.news.naver.com/mnews/article/015/0005210253",
+          "source": "한국경제",
+          "date": "2025-11-12"
+        }
+      ]
     },
     {
       "date": "20251104",
@@ -144,10 +156,10 @@
       "date": "20250903",
       "change_rate": 10.94,
       "close_price": 9075.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -155,16 +167,18 @@
       "source": "estimated",
       "trading_volume": 114699,
       "trading_value": 1040893425,
-      "market_cap": 52250000000
+      "market_cap": 52250000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250626",
       "change_rate": 11.59,
       "close_price": 11550.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -172,7 +186,9 @@
       "source": "estimated",
       "trading_volume": 116802,
       "trading_value": 1349063100,
-      "market_cap": 66500000000
+      "market_cap": 66500000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -183,5 +199,5 @@
     "count_recent": 0,
     "avg_rate": 20.17
   },
-  "built_at": "2026-09-27T10:39:19"
+  "built_at": "2026-10-02T05:15:57"
 }

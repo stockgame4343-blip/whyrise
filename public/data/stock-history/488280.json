@@ -9,10 +9,10 @@
       "close_price": 15980.0,
       "trading_volume": 1051258,
       "trading_value": 16799102840,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260911",
@@ -44,9 +46,9 @@
       "close_price": 14850.0,
       "trading_volume": 3412259,
       "trading_value": 50672046150,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자율형 수사 AI 에이전트 DRI 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -113,7 +115,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[테크스냅] 에스투더블유, 자율형 수사 AI 에이전트 'DRI' 출시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016296707&office_id=001&code=488280&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.09.08"
+        }
+      ]
     },
     {
       "date": "20260910",
@@ -121,9 +133,9 @@
       "close_price": 11750.0,
       "trading_volume": 897565,
       "trading_value": 10546388750,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자율형 수사 AI 에이전트 DRI 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -190,7 +202,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스투더블유, 자율형 수사 AI 에이전트 ‘DRI’ 출시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001136946&office_id=144&code=488280&page=&sm=",
+          "source": "스포츠경향",
+          "date": "2026.09.09"
+        }
+      ]
     },
     {
       "date": "20260827",
@@ -198,10 +220,10 @@
       "close_price": 10810.0,
       "trading_volume": 321388,
       "trading_value": 3474204280,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -267,7 +289,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -275,9 +299,9 @@
       "close_price": 11090.0,
       "trading_volume": 346772,
       "trading_value": 3845701480,
-      "rise_reason": "정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -344,7 +368,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정부 정책 관련",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -352,9 +378,9 @@
       "close_price": 9150.0,
       "trading_volume": 142848,
       "trading_value": 1307059200,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: AI 서비스 취약점 진단 사업 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -373,7 +399,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에스투더블유, AI 서비스 취약점 진단 사업 확대",
+          "link": "https://n.news.naver.com/mnews/article/144/0001129153",
+          "source": "스포츠경향",
+          "date": "2026-07-31"
+        }
+      ]
     },
     {
       "date": "20260605",
@@ -381,9 +417,9 @@
       "close_price": 19120.0,
       "trading_volume": 505965,
       "trading_value": 9674050800,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: CSAP 인증 취득",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -450,7 +486,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에스투더블유, CSAP 인증 취득",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001118585&office_id=144&code=488280&page=&sm=",
+          "source": "스포츠경향",
+          "date": "2026.06.02"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -458,9 +504,9 @@
       "close_price": 23500.0,
       "trading_volume": 251106,
       "trading_value": 5900991000,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "지능형로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -473,7 +519,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방산",
+      "reason_kind": "theme"
     },
     {
       "date": "20260513",
@@ -481,9 +529,9 @@
       "close_price": 29750.0,
       "trading_volume": 937245,
       "trading_value": 27883038750,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 온톨로지 기반 의사결정 시스템 웨비나 개최",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -550,7 +598,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에스투더블유, ‘온톨로지 기반 의사결정 시스템’ 웨비나 개최",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001114752&office_id=144&code=488280&page=&sm=",
+          "source": "스포츠경향",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260429",
@@ -558,9 +616,9 @@
       "close_price": 26100.0,
       "trading_volume": 2653748,
       "trading_value": 69262822800,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "텔레픽스와 안보 인텔리전스 고도화 위한 MOU 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -627,7 +685,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스투더블유, 텔레픽스와 안보 인텔리전스 고도화 위한 MOU 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001112609&office_id=144&code=488280&page=&sm=",
+          "source": "스포츠경향",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260416",
@@ -712,9 +780,9 @@
       "close_price": 18160.0,
       "trading_volume": 457791,
       "trading_value": 8313484560,
-      "rise_reason": "지분 투자 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -771,15 +839,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 투자 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 13.8,
       "close_price": 17070.0,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 17종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -788,7 +858,9 @@
       "source": "estimated",
       "trading_volume": 114035,
       "trading_value": 1946577450,
-      "market_cap": 184443775372
+      "market_cap": 184443775372,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251222",
@@ -842,9 +914,9 @@
       "date": "20251219",
       "change_rate": 12.36,
       "close_price": 34100.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "그리스 정부기관에 보안 AI 솔루션 퀘이사 공급",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -872,7 +944,17 @@
       "source": "estimated",
       "trading_volume": 3113651,
       "trading_value": 106175499100,
-      "market_cap": 368455345060
+      "market_cap": 368455345060,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스투더블유, 그리스 정부기관에 보안 AI 솔루션 ‘퀘이사’ 공급",
+          "link": "https://n.news.naver.com/mnews/article/018/0006185895",
+          "source": "이데일리",
+          "date": "2025-12-18"
+        }
+      ]
     },
     {
       "date": "20251125",
@@ -912,9 +994,9 @@
       "date": "20251022",
       "change_rate": 10.1,
       "close_price": 21250.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 아태지역 대표 사이버보안 행사 거브웨어 2025 참가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -948,7 +1030,17 @@
       "source": "estimated",
       "trading_volume": 3560102,
       "trading_value": 75652167500,
-      "market_cap": 229609269282
+      "market_cap": 229609269282,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에스투더블유, 아태지역 대표 사이버보안 행사 ‘거브웨어 2025’ 참가",
+          "link": "https://n.news.naver.com/mnews/article/144/0001074764",
+          "source": "스포츠경향",
+          "date": "2025-10-22"
+        }
+      ]
     },
     {
       "date": "20250924",
@@ -971,9 +1063,9 @@
       "date": "20250923",
       "change_rate": 29.98,
       "close_price": 29700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -982,7 +1074,9 @@
       "source": "estimated",
       "trading_volume": 8576651,
       "trading_value": 254726534700,
-      "market_cap": 320912719891
+      "market_cap": 320912719891,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -993,5 +1087,5 @@
     "count_recent": 3,
     "avg_rate": 14.95
   },
-  "built_at": "2026-10-01T22:56:48"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 3180.0,
       "trading_volume": 22288,
       "trading_value": 70875840,
-      "rise_reason": "태양광/재생에너지",
+      "rise_reason": "VPP 플랫폼 EmpoGRID 출시",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이데이터",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이티아이즈, VPP 플랫폼 'EmpoGRID' 출시…재생에너지 전력거래 시장...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003458003",
+          "source": "전자신문",
+          "date": "2026-08-18"
+        }
+      ]
     },
     {
       "date": "20260703",
@@ -32,9 +42,9 @@
       "close_price": 2880.0,
       "trading_volume": 210857,
       "trading_value": 607268160,
-      "rise_reason": "신약 관련 뉴스",
+      "rise_reason": "차세대 신약개발 협력 본격화",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "STO(토큰증권 발행)",
       "news": [
@@ -101,7 +111,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "차세대 신약개발 협력 본격화…아이티아이즈 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006320558&office_id=018&code=372800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260702",
@@ -109,9 +129,9 @@
       "close_price": 2530.0,
       "trading_volume": 1326667,
       "trading_value": 3356467510,
-      "rise_reason": "마이데이터 신약 관련 뉴스",
+      "rise_reason": "차세대 신약개발 협력 본격화",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이데이터",
       "news": [
@@ -178,7 +198,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마이데이터 신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "차세대 신약개발 협력 본격화…아이티아이즈 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006320558&office_id=018&code=372800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -186,9 +216,9 @@
       "close_price": 2140.0,
       "trading_volume": 591003,
       "trading_value": 1264746420,
-      "rise_reason": "마이데이터 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 기반 차세대 신약개발 협력 본격화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이데이터",
       "news": [
@@ -255,16 +285,26 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마이데이터 신약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이티아이즈-박셀바이오, AI 기반 차세대 신약개발 협력 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003443466&office_id=030&code=372800&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260126",
       "change_rate": 29.84,
       "close_price": 7180.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -285,16 +325,18 @@
       "source": "estimated",
       "trading_volume": 640808,
       "trading_value": 4601001440,
-      "market_cap": 50454054054
+      "market_cap": 50454054054,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260123",
       "change_rate": 29.81,
       "close_price": 5530.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -309,7 +351,9 @@
       "source": "estimated",
       "trading_volume": 369152,
       "trading_value": 2041410560,
-      "market_cap": 38859459459
+      "market_cap": 38859459459,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -320,5 +364,5 @@
     "count_recent": 0,
     "avg_rate": 22.14
   },
-  "built_at": "2026-10-01T22:59:50"
+  "built_at": "2026-10-02T05:15:56"
 }

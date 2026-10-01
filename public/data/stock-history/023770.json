@@ -9,9 +9,9 @@
       "close_price": 2590.0,
       "trading_volume": 324734,
       "trading_value": 841061060,
-      "rise_reason": "해외 진출 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "씰M2 출시 준비 박차",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모바일게임(스마트폰)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "플레이위드, 씰 IP 글로벌 확장 본격...씰M2 출시 준비 박차",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002435602&office_id=092&code=023770&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.08.31"
+        }
+      ]
     },
     {
       "date": "20251002",
@@ -101,10 +111,10 @@
       "date": "20250930",
       "change_rate": 15.89,
       "close_price": 6200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -112,7 +122,9 @@
       "source": "estimated",
       "trading_volume": 765174,
       "trading_value": 4744078800,
-      "market_cap": 55393442622
+      "market_cap": 55393442622,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250922",
@@ -135,9 +147,9 @@
       "date": "20250916",
       "change_rate": 14.9,
       "close_price": 5050.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "블록체인 게임 로한2 글로벌 기대감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -159,7 +171,17 @@
       "source": "estimated",
       "trading_volume": 445172,
       "trading_value": 2248118600,
-      "market_cap": 45118852459
+      "market_cap": 45118852459,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "플레이위드, 블록체인 게임 ‘로한2 글로벌’ 기대감에 14.9%↑",
+          "link": "https://n.news.naver.com/mnews/article/009/0005559485",
+          "source": "매일경제",
+          "date": "2025-09-16"
+        }
+      ]
     }
   ],
   "stats": {
@@ -170,5 +192,5 @@
     "count_recent": 1,
     "avg_rate": 20.79
   },
-  "built_at": "2026-10-01T22:59:43"
+  "built_at": "2026-10-02T05:15:56"
 }

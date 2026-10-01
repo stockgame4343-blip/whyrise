@@ -9,15 +9,17 @@
       "close_price": 2580.0,
       "trading_volume": 111036,
       "trading_value": 286472880,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "웹툰",
       "news": [],
       "sector": "증권",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260806",
@@ -25,9 +27,9 @@
       "close_price": 4640.0,
       "trading_volume": 524434,
       "trading_value": 2433373760,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI·로봇·광통신주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스닥 3%대 강세…AI·로봇·광통신주 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000525419&office_id=374&code=239340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -102,9 +114,9 @@
       "close_price": 3775.0,
       "trading_volume": 60995,
       "trading_value": 230256125,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI·로봇·광통신주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -171,7 +183,17 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스닥 3%대 강세…AI·로봇·광통신주 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000525419&office_id=374&code=239340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -195,9 +217,9 @@
       "close_price": 3200.0,
       "trading_volume": 231204,
       "trading_value": 739852800,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 챗GPT·제미나이가 알아서 퍼간다 이글루스, AI봇 방...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -264,7 +286,17 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "\"챗GPT·제미나이가 알아서 퍼간다\" 이스트에이드 이글루스, AI봇 방...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005388672&office_id=008&code=239340&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.21"
+        }
+      ]
     },
     {
       "date": "20260714",
@@ -272,9 +304,9 @@
       "close_price": 3500.0,
       "trading_volume": 15720,
       "trading_value": 55020000,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 5대 1 주식병합 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -341,7 +373,17 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이스트에이드, 5대 1 주식병합 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006330080&office_id=018&code=239340&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.14"
+        }
+      ]
     },
     {
       "date": "20260116",
@@ -472,5 +514,5 @@
     "count_recent": 1,
     "avg_rate": 20.52
   },
-  "built_at": "2026-10-01T23:00:05"
+  "built_at": "2026-10-02T05:15:56"
 }

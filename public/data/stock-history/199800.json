@@ -25,9 +25,9 @@
       "close_price": 42683.0,
       "trading_volume": 67127,
       "trading_value": 2865181741,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "주주 달래는 특허소송 승리 보여주겠다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "주주 달래는 툴젠 \"특허소송 승리 보여주겠다\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000048795&office_id=648&code=199800&page=&sm=",
+          "source": "비즈워치",
+          "date": "2026.07.10"
+        }
+      ]
     },
     {
       "date": "20260617",
@@ -102,10 +112,10 @@
       "close_price": 48984.0,
       "trading_volume": 155012,
       "trading_value": 7593107808,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -171,7 +181,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -179,10 +191,10 @@
       "close_price": 137000.0,
       "trading_volume": 80575,
       "trading_value": 11038775000,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -248,7 +260,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "none"
     },
     {
       "date": "20260507",
@@ -256,10 +270,10 @@
       "close_price": 118500.0,
       "trading_volume": 108881,
       "trading_value": 12902398500,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -325,7 +339,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "none"
     },
     {
       "date": "20260504",
@@ -333,10 +349,10 @@
       "close_price": 92500.0,
       "trading_volume": 56806,
       "trading_value": 5254555000,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -402,7 +418,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "none"
     },
     {
       "date": "20260416",
@@ -846,5 +864,5 @@
     "count_recent": 0,
     "avg_rate": 14.34
   },
-  "built_at": "2026-09-30T16:21:33"
+  "built_at": "2026-10-02T05:15:57"
 }

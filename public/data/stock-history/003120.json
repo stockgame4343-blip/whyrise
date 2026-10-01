@@ -55,10 +55,10 @@
       "date": "20250709",
       "change_rate": 13.35,
       "close_price": 28450.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -97,16 +97,18 @@
       "source": "estimated",
       "trading_volume": 449557,
       "trading_value": 12789896650,
-      "market_cap": 378352637021
+      "market_cap": 378352637021,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20250701",
       "change_rate": 11.7,
       "close_price": 25300.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -133,7 +135,9 @@
       "source": "estimated",
       "trading_volume": 108832,
       "trading_value": 2753449600,
-      "market_cap": 336461220268
+      "market_cap": 336461220268,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -144,5 +148,5 @@
     "count_recent": 0,
     "avg_rate": 10.5
   },
-  "built_at": "2026-09-27T08:46:32"
+  "built_at": "2026-10-02T05:15:57"
 }

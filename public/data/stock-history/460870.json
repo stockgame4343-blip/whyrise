@@ -9,15 +9,17 @@
       "close_price": 3045.0,
       "trading_volume": 256764,
       "trading_value": 781846380,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "포장재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -25,24 +27,26 @@
       "close_price": 2170.0,
       "trading_volume": 62604,
       "trading_value": 135850680,
-      "rise_reason": "화장품 테마 강세",
+      "rise_reason": "화장품 테마 15종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [],
       "sector": "포장재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "화장품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260326",
       "change_rate": 10.46,
       "close_price": 4065.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -50,7 +54,9 @@
       "source": "estimated",
       "trading_volume": 1148638,
       "trading_value": 4669213470,
-      "market_cap": 81681690140
+      "market_cap": 81681690140,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -163,5 +169,5 @@
     "count_recent": 1,
     "avg_rate": 11.07
   },
-  "built_at": "2026-10-01T22:58:32"
+  "built_at": "2026-10-02T05:15:56"
 }

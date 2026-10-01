@@ -41,9 +41,9 @@
       "close_price": 13850.0,
       "trading_volume": 1850615,
       "trading_value": 25631017750,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력설비 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -110,7 +110,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -138,5 +140,5 @@
     "count_recent": 0,
     "avg_rate": 13.97
   },
-  "built_at": "2026-10-01T22:58:54"
+  "built_at": "2026-10-02T05:15:57"
 }

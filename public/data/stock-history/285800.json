@@ -9,10 +9,10 @@
       "close_price": 4905.0,
       "trading_volume": 937765,
       "trading_value": 4599737325,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -90,7 +90,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260911",
@@ -98,10 +100,10 @@
       "close_price": 4760.0,
       "trading_volume": 156535,
       "trading_value": 745106600,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -167,7 +169,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260720",
@@ -175,9 +179,9 @@
       "close_price": 7100.0,
       "trading_volume": 392336,
       "trading_value": 2785585600,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "美·이란 확전",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
@@ -238,7 +242,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "美·이란 확전에 탈플라스틱株 강세…진영 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006332925&office_id=018&code=285800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260716",
@@ -246,9 +260,9 @@
       "close_price": 5465.0,
       "trading_volume": 653910,
       "trading_value": 3573618150,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 5억 규모 제3자배정 유상증자 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
@@ -303,7 +317,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "진영, 5억 규모 제3자배정 유상증자 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006331789&office_id=018&code=285800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.16"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -311,10 +335,10 @@
       "close_price": 4605.0,
       "trading_volume": 601942,
       "trading_value": 2771942910,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -356,7 +380,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -364,9 +390,9 @@
       "close_price": 4505.0,
       "trading_volume": 277032,
       "trading_value": 1248029160,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 5대 1 주식병합 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
@@ -409,7 +435,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "진영, 5대 1 주식병합 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006318218&office_id=018&code=285800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -417,9 +453,9 @@
       "close_price": 2360.0,
       "trading_volume": 11820435,
       "trading_value": 27896226600,
-      "rise_reason": "탈 플라스틱(친환경/생분해성 등) 테마 강세",
+      "rise_reason": "탈플라스틱주 동반 강세 — 종전 협상 결렬",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
@@ -438,7 +474,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "탈 플라스틱(친환경/생분해성 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "종전 협상 결렬에…탈플라스틱株 동반 강세[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006256024",
+          "source": "이데일리",
+          "date": "2026-04-13"
+        }
+      ]
     },
     {
       "date": "20260326",
@@ -474,10 +520,10 @@
       "date": "20260323",
       "change_rate": 13.78,
       "close_price": 1684.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -485,7 +531,9 @@
       "source": "estimated",
       "trading_volume": 6192401,
       "trading_value": 10428003284,
-      "market_cap": 29470000000
+      "market_cap": 29470000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -496,5 +544,5 @@
     "count_recent": 2,
     "avg_rate": 22.68
   },
-  "built_at": "2026-10-01T23:00:02"
+  "built_at": "2026-10-02T05:15:56"
 }

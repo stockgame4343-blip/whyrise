@@ -9,9 +9,9 @@
       "close_price": 25950.0,
       "trading_volume": 9961088,
       "trading_value": 258490233600,
-      "rise_reason": "로봇주 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — 2035년 휴머노이드 650만대 출하",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -66,7 +66,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "로봇주 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "\"2035년 휴머노이드 650만대 출하\"…로봇주 '불기둥'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014191920&office_id=003&code=160190&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.15"
+        }
+      ]
     },
     {
       "date": "20260904",
@@ -74,9 +84,9 @@
       "close_price": 22500.0,
       "trading_volume": 7144949,
       "trading_value": 160761352500,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -119,7 +129,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260810",
@@ -127,9 +139,9 @@
       "close_price": 21000.0,
       "trading_volume": 1328991,
       "trading_value": 27908811000,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -142,7 +154,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "theme"
     },
     {
       "date": "20260803",
@@ -150,10 +164,10 @@
       "close_price": 19860.0,
       "trading_volume": 4036150,
       "trading_value": 80157939000,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -207,7 +221,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -215,15 +231,17 @@
       "close_price": 15280.0,
       "trading_volume": 879411,
       "trading_value": 13437400080,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 22종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -231,15 +249,17 @@
       "close_price": 18580.0,
       "trading_volume": 443527,
       "trading_value": 8240731660,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -247,15 +267,17 @@
       "close_price": 18790.0,
       "trading_volume": 617020,
       "trading_value": 11593805800,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -263,9 +285,9 @@
       "close_price": 28550.0,
       "trading_volume": 4487549,
       "trading_value": 128119523950,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -332,7 +354,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -340,9 +364,9 @@
       "close_price": 25100.0,
       "trading_volume": 1085069,
       "trading_value": 27235231900,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -409,7 +433,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260526",
@@ -417,9 +443,9 @@
       "close_price": 31650.0,
       "trading_volume": 2292260,
       "trading_value": 72550029000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -486,7 +512,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -494,9 +530,9 @@
       "close_price": 27600.0,
       "trading_volume": 831277,
       "trading_value": 22943245200,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -515,7 +551,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260427",
@@ -600,10 +638,10 @@
       "close_price": 31050.0,
       "trading_volume": 3474405,
       "trading_value": 107880275250,
-      "rise_reason": "납품 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -659,7 +697,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "납품 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -667,9 +707,9 @@
       "close_price": 29350.0,
       "trading_volume": 944587,
       "trading_value": 27723628450,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -682,7 +722,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -690,9 +732,9 @@
       "close_price": 29550.0,
       "trading_volume": 759723,
       "trading_value": 22449814650,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -705,15 +747,25 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 16.76,
       "close_price": 31000.0,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 20종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -722,7 +774,9 @@
       "source": "estimated",
       "trading_volume": 2111773,
       "trading_value": 65464963000,
-      "market_cap": 2394345381526
+      "market_cap": 2394345381526,
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260113",
@@ -793,9 +847,9 @@
       "date": "20251226",
       "change_rate": 11.08,
       "close_price": 40100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -804,7 +858,17 @@
       "source": "estimated",
       "trading_volume": 19425740,
       "trading_value": 778972174000,
-      "market_cap": 3097201606425
+      "market_cap": 3097201606425,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
+          "source": "SBS Biz",
+          "date": "2025-12-26"
+        }
+      ]
     },
     {
       "date": "20251215",
@@ -959,9 +1023,9 @@
       "date": "20251020",
       "change_rate": 16.11,
       "close_price": 25950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -970,7 +1034,9 @@
       "source": "estimated",
       "trading_volume": 6937326,
       "trading_value": 180023609700,
-      "market_cap": 2004298795180
+      "market_cap": 2004298795180,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251013",
@@ -993,9 +1059,9 @@
       "date": "20251010",
       "change_rate": 29.99,
       "close_price": 19070.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -1004,15 +1070,17 @@
       "source": "estimated",
       "trading_volume": 11075633,
       "trading_value": 211212321310,
-      "market_cap": 1472908594377
+      "market_cap": 1472908594377,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250909",
       "change_rate": 20.77,
       "close_price": 11280.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -1021,7 +1089,9 @@
       "source": "estimated",
       "trading_volume": 19876268,
       "trading_value": 224204303040,
-      "market_cap": 871232771084
+      "market_cap": 871232771084,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250828",
@@ -1044,9 +1114,9 @@
       "date": "20250826",
       "change_rate": 16.54,
       "close_price": 7540.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -1055,15 +1125,17 @@
       "source": "estimated",
       "trading_volume": 25991098,
       "trading_value": 195972878920,
-      "market_cap": 582366586345
+      "market_cap": 582366586345,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250825",
       "change_rate": 13.51,
       "close_price": 6470.0,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇주 동반 강세 — 정부 휴머노이드 3대 강국 전략",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -1072,7 +1144,17 @@
       "source": "estimated",
       "trading_volume": 9444031,
       "trading_value": 61102880570,
-      "market_cap": 499723052208
+      "market_cap": 499723052208,
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "로봇株, 정부 “휴머노이드 3대 강국” 전략에 동반 강세 [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/119/0002994693",
+          "source": "데일리안",
+          "date": "2025-08-25"
+        }
+      ]
     },
     {
       "date": "20250804",
@@ -1134,5 +1216,5 @@
     "count_recent": 2,
     "avg_rate": 16.2
   },
-  "built_at": "2026-10-01T22:54:03"
+  "built_at": "2026-10-02T05:15:56"
 }

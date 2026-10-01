@@ -86,15 +86,25 @@
       "close_price": 25900.0,
       "trading_volume": 1907543,
       "trading_value": 49405363700,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선",
       "news": [],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -116,9 +126,9 @@
       "date": "20260305",
       "change_rate": 17.11,
       "close_price": 22650.0,
-      "rise_reason": "조선 테마 강세",
+      "rise_reason": "조선 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선",
       "news": [],
@@ -127,7 +137,9 @@
       "source": "estimated",
       "trading_volume": 1652494,
       "trading_value": 37428989100,
-      "market_cap": 2045203587443
+      "market_cap": 2045203587443,
+      "reason_previous": "조선 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260107",
@@ -150,9 +162,9 @@
       "date": "20251027",
       "change_rate": 11.48,
       "close_price": 31550.0,
-      "rise_reason": "조선 테마 강세",
+      "rise_reason": "조선주 동반 강세 — 다가온 APEC 정상회의",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선",
       "news": [],
@@ -161,7 +173,17 @@
       "source": "estimated",
       "trading_volume": 19069062,
       "trading_value": 601628906100,
-      "market_cap": 2848837668161
+      "market_cap": 2848837668161,
+      "reason_previous": "조선 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 다가온 APEC 정상회의…조선주 '들썩'",
+          "link": "https://n.news.naver.com/mnews/article/374/0000470733",
+          "source": "SBS Biz",
+          "date": "2025-10-27"
+        }
+      ]
     },
     {
       "date": "20250910",
@@ -308,5 +330,5 @@
     "count_recent": 0,
     "avg_rate": 11.88
   },
-  "built_at": "2026-09-27T08:36:43"
+  "built_at": "2026-10-02T05:15:57"
 }

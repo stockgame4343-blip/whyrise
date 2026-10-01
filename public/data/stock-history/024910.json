@@ -7,10 +7,10 @@
       "date": "20260323",
       "change_rate": 17.29,
       "close_price": 2300.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -25,7 +25,9 @@
       "source": "estimated",
       "trading_volume": 6800137,
       "trading_value": 15640315100,
-      "market_cap": 82404907975
+      "market_cap": 82404907975,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -48,10 +50,10 @@
       "date": "20260129",
       "change_rate": 13.03,
       "close_price": 2385.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -78,7 +80,9 @@
       "source": "estimated",
       "trading_volume": 13540303,
       "trading_value": 32293622655,
-      "market_cap": 85450306748
+      "market_cap": 85450306748,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260106",
@@ -132,9 +136,9 @@
       "date": "20260105",
       "change_rate": 29.97,
       "close_price": 1969.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "실시간 상승률 1위",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -174,7 +178,17 @@
       "source": "estimated",
       "trading_volume": 3071881,
       "trading_value": 6048533689,
-      "market_cap": 70545766871
+      "market_cap": 70545766871,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]‘경창산업’ 29.97% 상한가…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003606172",
+          "source": "서울신문",
+          "date": "2026-01-05"
+        }
+      ]
     }
   ],
   "stats": {
@@ -185,5 +199,5 @@
     "count_recent": 0,
     "avg_rate": 17.32
   },
-  "built_at": "2026-10-01T22:58:42"
+  "built_at": "2026-10-02T05:15:57"
 }

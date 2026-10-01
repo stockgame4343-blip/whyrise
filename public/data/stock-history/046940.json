@@ -9,9 +9,9 @@
       "close_price": 3805.0,
       "trading_volume": 8787845,
       "trading_value": 33437750225,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 메가 프로젝트 수혜 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] ‘메가 프로젝트’ 수혜 기대감에…지역 건설株 ‘불기둥’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001176081&office_id=366&code=013360&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -86,9 +96,9 @@
       "close_price": 3285.0,
       "trading_volume": 770610,
       "trading_value": 2531453850,
-      "rise_reason": "건설 중소형 테마 강세",
+      "rise_reason": "건설 중소형 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -107,7 +117,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "건설 중소형 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -115,15 +127,17 @@
       "close_price": 3145.0,
       "trading_volume": 202469,
       "trading_value": 636765005,
-      "rise_reason": "건설 중소형 테마 강세",
+      "rise_reason": "건설 중소형 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "건설 중소형 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -131,9 +145,9 @@
       "close_price": 4695.0,
       "trading_volume": 476813,
       "trading_value": 2238637035,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -152,16 +166,26 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260320",
       "change_rate": 12.02,
       "close_price": 4985.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -169,15 +193,17 @@
       "source": "estimated",
       "trading_volume": 1020211,
       "trading_value": 5085751835,
-      "market_cap": 90107413249
+      "market_cap": 90107413249,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
       "change_rate": 10.99,
       "close_price": 5000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "지난해 영업익 664억",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -199,7 +225,17 @@
       "source": "estimated",
       "trading_volume": 1078571,
       "trading_value": 5392855000,
-      "market_cap": 90378548895
+      "market_cap": 90378548895,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "우원개발, 지난해 영업익 664억…전년比 2248.5%↑",
+          "link": "https://n.news.naver.com/mnews/article/003/0013783073",
+          "source": "뉴시스",
+          "date": "2026-02-23"
+        }
+      ]
     },
     {
       "date": "20260120",
@@ -227,5 +263,5 @@
     "count_recent": 0,
     "avg_rate": 12.2
   },
-  "built_at": "2026-09-27T10:10:52"
+  "built_at": "2026-10-02T05:15:57"
 }

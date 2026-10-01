@@ -9,9 +9,9 @@
       "close_price": 2150.0,
       "trading_volume": 9610294,
       "trading_value": 20662132100,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: F5와 AI 보안 세미나 오픈베이스 무비 데이 개최",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탄소나노튜브(CNT)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "오픈베이스, F5와 AI 보안 세미나 ‘오픈베이스 무비 데이’ 개최",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003731862&office_id=020&code=049480&page=&sm=",
+          "source": "동아일보",
+          "date": "2026.07.06"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -86,10 +96,10 @@
       "close_price": 3485.0,
       "trading_volume": 21068594,
       "trading_value": 73424050090,
-      "rise_reason": "탄소나노튜브(CNT) 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탄소나노튜브(CNT)",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탄소나노튜브(CNT) 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260416",
@@ -163,10 +175,10 @@
       "close_price": 3135.0,
       "trading_volume": 19081617,
       "trading_value": 59820869295,
-      "rise_reason": "NI(네트워크통합) 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "NI(네트워크통합)",
       "news": [
         {
@@ -232,7 +244,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "NI(네트워크통합) 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20250620",
@@ -260,5 +274,5 @@
     "count_recent": 0,
     "avg_rate": 18.16
   },
-  "built_at": "2026-09-27T10:05:53"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 3640.0,
       "trading_volume": 756061,
       "trading_value": 2752062040,
-      "rise_reason": "순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "연매출 1조2000억 돌파",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -30,7 +30,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "GRT, 연매출 1조2000억 돌파…순이익 28% 증가",
+          "link": "https://n.news.naver.com/mnews/article/277/0005823518",
+          "source": "아시아경제",
+          "date": "2026.10.01"
+        }
+      ]
     },
     {
       "date": "20260824",
@@ -38,10 +48,10 @@
       "close_price": 4005.0,
       "trading_volume": 713745,
       "trading_value": 2858548725,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -65,7 +75,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -73,10 +85,10 @@
       "close_price": 3355.0,
       "trading_volume": 736822,
       "trading_value": 2472037810,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -94,7 +106,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260727",
@@ -102,10 +116,10 @@
       "close_price": 2870.0,
       "trading_volume": 1256812,
       "trading_value": 3607050440,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -123,7 +137,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -252,5 +268,5 @@
     "count_recent": 1,
     "avg_rate": 13.67
   },
-  "built_at": "2026-10-01T22:55:35"
+  "built_at": "2026-10-02T05:15:56"
 }

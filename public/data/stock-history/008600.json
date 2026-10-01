@@ -7,9 +7,9 @@
       "date": "20260204",
       "change_rate": 11.59,
       "close_price": 3785.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "사옥·유형자산 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -25,7 +25,17 @@
       "source": "estimated",
       "trading_volume": 919608,
       "trading_value": 3480716280,
-      "market_cap": 25425954198
+      "market_cap": 25425954198,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "윌비스, 서울 가락동 토지 230억원에 취득…사옥·유형자산 확보",
+          "link": "https://n.news.naver.com/mnews/article/293/0000078929",
+          "source": "블로터",
+          "date": "2026-02-04"
+        }
+      ]
     },
     {
       "date": "20260127",
@@ -79,9 +89,9 @@
       "date": "20260126",
       "change_rate": 30.0,
       "close_price": 3454.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "관련 보도: 29.96% 상승…금일 증시 상승률 1위로 마감",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -121,16 +131,26 @@
       "source": "estimated",
       "trading_volume": 272083,
       "trading_value": 939774682,
-      "market_cap": 23202442748
+      "market_cap": 23202442748,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]윌비스 29.96% 상승…금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003611742",
+          "source": "서울신문",
+          "date": "2026-01-26"
+        }
+      ]
     },
     {
       "date": "20250605",
       "change_rate": 10.04,
       "close_price": 5109.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -138,7 +158,9 @@
       "source": "estimated",
       "trading_volume": 1133816,
       "trading_value": 5792665944,
-      "market_cap": 34320000000
+      "market_cap": 34320000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -149,5 +171,5 @@
     "count_recent": 0,
     "avg_rate": 23.84
   },
-  "built_at": "2026-09-27T09:07:25"
+  "built_at": "2026-10-02T05:15:57"
 }

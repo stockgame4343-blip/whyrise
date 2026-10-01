@@ -38,15 +38,17 @@
       "close_price": 2275.0,
       "trading_volume": 462123,
       "trading_value": 1051329825,
-      "rise_reason": "2차전지(나트륨이온) 테마 강세",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(나트륨이온) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260506",
@@ -54,10 +56,10 @@
       "close_price": 3940.0,
       "trading_volume": 35956677,
       "trading_value": 141669307380,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
         {
@@ -123,7 +125,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -201,9 +205,9 @@
       "date": "20260122",
       "change_rate": 12.2,
       "close_price": 3310.0,
-      "rise_reason": "2차전지(나트륨이온) 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -219,7 +223,17 @@
       "source": "estimated",
       "trading_volume": 12025582,
       "trading_value": 39804676420,
-      "market_cap": 190011177644
+      "market_cap": 190011177644,
+      "reason_previous": "2차전지(나트륨이온) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20251015",
@@ -242,9 +256,9 @@
       "date": "20250626",
       "change_rate": 12.14,
       "close_price": 4850.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지주 동반 강세 — 애경케미칼·이수화학 등",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -278,7 +292,17 @@
       "source": "estimated",
       "trading_volume": 19219043,
       "trading_value": 93212358550,
-      "market_cap": 278415169660
+      "market_cap": 278415169660,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 2차전지주 '불기둥'…애경케미칼·이수화학 등 급등",
+          "link": "https://n.news.naver.com/mnews/article/417/0001085550",
+          "source": "동행미디어 시대",
+          "date": "2025-06-26"
+        }
+      ]
     },
     {
       "date": "20250624",
@@ -371,5 +395,5 @@
     "count_recent": 1,
     "avg_rate": 15.18
   },
-  "built_at": "2026-10-01T22:56:51"
+  "built_at": "2026-10-02T05:15:56"
 }

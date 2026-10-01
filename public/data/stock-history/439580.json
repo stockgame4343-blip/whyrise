@@ -25,10 +25,10 @@
       "close_price": 2260.0,
       "trading_volume": 713985,
       "trading_value": 1613606100,
-      "rise_reason": "비만치료제 흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비만치료제",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "비만치료제 흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -117,10 +119,10 @@
       "date": "20250813",
       "change_rate": 12.94,
       "close_price": 6110.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -128,7 +130,9 @@
       "source": "estimated",
       "trading_volume": 35821398,
       "trading_value": 218868741780,
-      "market_cap": 206843119266
+      "market_cap": 206843119266,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250805",
@@ -175,5 +179,5 @@
     "count_recent": 2,
     "avg_rate": 11.15
   },
-  "built_at": "2026-10-01T22:57:38"
+  "built_at": "2026-10-02T05:15:56"
 }

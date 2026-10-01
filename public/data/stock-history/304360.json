@@ -9,10 +9,10 @@
       "close_price": 21950.0,
       "trading_volume": 83013,
       "trading_value": 1822135350,
-      "rise_reason": "줄기세포 허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "줄기세포 허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -86,10 +88,10 @@
       "close_price": 22400.0,
       "trading_volume": 55168,
       "trading_value": 1235763200,
-      "rise_reason": "줄기세포 FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "줄기세포 FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260609",
@@ -179,9 +183,9 @@
       "close_price": 34100.0,
       "trading_volume": 266216,
       "trading_value": 9077965600,
-      "rise_reason": "줄기세포 임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "줄기세포 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "줄기세포",
       "news": [
@@ -248,7 +252,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "줄기세포 임상 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260414",
@@ -408,9 +414,9 @@
       "date": "20251113",
       "change_rate": 13.17,
       "close_price": 26200.0,
-      "rise_reason": "줄기세포 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 美헬스케어 훈풍에 에이비엘 효과",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "줄기세포",
       "news": [
@@ -426,7 +432,17 @@
       "source": "estimated",
       "trading_volume": 635838,
       "trading_value": 16658955600,
-      "market_cap": 324449315068
+      "market_cap": 324449315068,
+      "reason_previous": "줄기세포 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美헬스케어 훈풍에 에이비엘 효과…바이오주 ‘불기둥’[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006163190",
+          "source": "이데일리",
+          "date": "2025-11-13"
+        }
+      ]
     },
     {
       "date": "20251023",
@@ -471,5 +487,5 @@
     "count_recent": 1,
     "avg_rate": 13.75
   },
-  "built_at": "2026-10-01T22:56:01"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 1316.0,
       "trading_volume": 6821640,
       "trading_value": 8977278240,
-      "rise_reason": "매출 관련 뉴스",
+      "rise_reason": "재조합 콜라겐 독점권 확보",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "재조합 콜라겐 독점권 확보…엑셀세라퓨틱스 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006358124&office_id=018&code=373110&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260528",
@@ -414,5 +424,5 @@
     "count_recent": 0,
     "avg_rate": 18.22
   },
-  "built_at": "2026-10-01T22:59:59"
+  "built_at": "2026-10-02T05:15:56"
 }

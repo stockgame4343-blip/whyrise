@@ -9,9 +9,9 @@
       "close_price": 10700.0,
       "trading_volume": 4167178,
       "trading_value": 44588804600,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설 중소형 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -42,7 +42,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260702",
@@ -50,9 +52,9 @@
       "close_price": 11420.0,
       "trading_volume": 791022,
       "trading_value": 9033471240,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 메가 프로젝트 수혜 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -101,7 +103,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] ‘메가 프로젝트’ 수혜 기대감에…지역 건설株 ‘불기둥’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001176081&office_id=366&code=013360&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -109,9 +121,9 @@
       "close_price": 8790.0,
       "trading_volume": 499121,
       "trading_value": 4387273590,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설 중소형 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -172,7 +184,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260427",
@@ -180,10 +194,10 @@
       "close_price": 1327.0,
       "trading_volume": 37563127,
       "trading_value": 49846269529,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설 중소형",
       "news": [
         {
@@ -249,15 +263,17 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
       "change_rate": 10.05,
       "close_price": 1150.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 대미 원전 투자 수혜",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [],
@@ -266,7 +282,17 @@
       "source": "estimated",
       "trading_volume": 94107865,
       "trading_value": 108224044750,
-      "market_cap": 167321637426
+      "market_cap": 167321637426,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "“대미 원전 투자 수혜”…건설주 ‘불기둥’[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006239225",
+          "source": "이데일리",
+          "date": "2026-03-20"
+        }
+      ]
     },
     {
       "date": "20260319",
@@ -311,5 +337,5 @@
     "count_recent": 0,
     "avg_rate": 20.5
   },
-  "built_at": "2026-09-27T08:56:08"
+  "built_at": "2026-10-02T05:15:57"
 }

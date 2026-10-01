@@ -9,9 +9,9 @@
       "close_price": 2885.0,
       "trading_volume": 1991482,
       "trading_value": 5745425570,
-      "rise_reason": "관련 보도: 30억원 규모 제3자배정 유상증자 결정",
+      "rise_reason": "휴니버스글로벌에 경영권 넘긴다",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -46,12 +46,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "셀리드, 30억원 규모 제3자배정 유상증자 결정",
-          "link": "https://n.news.naver.com/mnews/article/277/0005820141",
-          "source": "아시아경제",
+          "title": "셀리드, 휴니버스글로벌에 경영권 넘긴다…100억원 유증",
+          "link": "https://n.news.naver.com/mnews/article/018/0006374531",
+          "source": "이데일리",
           "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260831",
@@ -59,10 +60,10 @@
       "close_price": 2740.0,
       "trading_volume": 9615217,
       "trading_value": 26345694580,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -98,7 +99,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260824",
@@ -106,9 +109,9 @@
       "close_price": 2285.0,
       "trading_volume": 4601595,
       "trading_value": 10514644575,
-      "rise_reason": "임상 관련 뉴스",
+      "rise_reason": "코로나 재확산 우려",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -151,7 +154,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "셀리드, 코로나 재확산 우려에 22%대 강세…백신주 부각[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006356847&office_id=018&code=299660&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -159,9 +172,9 @@
       "close_price": 1885.0,
       "trading_volume": 3221896,
       "trading_value": 6073273960,
-      "rise_reason": "임상 3상 진입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 땡큐 모더나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -198,7 +211,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 3상 진입",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "\"땡큐 모더나..\" mRNA 암백신 3상 성공에 'K-바이오株' 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005563966&office_id=014&code=227950&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260811",
@@ -206,10 +229,10 @@
       "close_price": 1920.0,
       "trading_volume": 2951457,
       "trading_value": 5666797440,
-      "rise_reason": "임상 3상 진입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(진단/치료제/백신 개발 등)",
       "news": [
         {
@@ -245,7 +268,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 3상 진입",
+      "reason_kind": "none"
     },
     {
       "date": "20260728",
@@ -253,10 +278,10 @@
       "close_price": 1777.0,
       "trading_volume": 1886952,
       "trading_value": 3353113704,
-      "rise_reason": "임상 3상 진입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -304,7 +329,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 3상 진입",
+      "reason_kind": "none"
     },
     {
       "date": "20260727",
@@ -312,10 +339,10 @@
       "close_price": 1367.0,
       "trading_volume": 716768,
       "trading_value": 979821856,
-      "rise_reason": "임상 3상 진입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -369,7 +396,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 3상 진입",
+      "reason_kind": "none"
     },
     {
       "date": "20260626",
@@ -377,10 +406,10 @@
       "close_price": 2785.0,
       "trading_volume": 605344,
       "trading_value": 1685883040,
-      "rise_reason": "코로나 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -446,7 +475,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "코로나 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -454,10 +485,10 @@
       "close_price": 3450.0,
       "trading_volume": 8210857,
       "trading_value": 28327456650,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -517,7 +548,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260417",
@@ -600,9 +633,9 @@
       "date": "20260128",
       "change_rate": 29.92,
       "close_price": 3430.0,
-      "rise_reason": "코로나19(치료제/백신 개발 등) 테마 상한가",
+      "rise_reason": "코로나19 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -624,7 +657,9 @@
       "source": "estimated",
       "trading_volume": 4284757,
       "trading_value": 14696716510,
-      "market_cap": 101160144927
+      "market_cap": 101160144927,
+      "reason_previous": "코로나19(치료제/백신 개발 등) 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20250527",
@@ -652,5 +687,5 @@
     "count_recent": 1,
     "avg_rate": 22.21
   },
-  "built_at": "2026-10-01T22:58:13"
+  "built_at": "2026-10-02T05:15:56"
 }

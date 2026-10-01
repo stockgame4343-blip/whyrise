@@ -9,10 +9,10 @@
       "close_price": 11730.0,
       "trading_volume": 651509,
       "trading_value": 7642200570,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -89,5 +91,5 @@
     "count_recent": 0,
     "avg_rate": 10.14
   },
-  "built_at": "2026-09-27T08:50:44"
+  "built_at": "2026-10-02T05:15:57"
 }

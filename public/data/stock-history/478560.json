@@ -9,9 +9,9 @@
       "close_price": 3170.0,
       "trading_volume": 3711098,
       "trading_value": 11764180660,
-      "rise_reason": "매출 관련 뉴스",
+      "rise_reason": "상반기 역대 최대 실적",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]블랙야크아이앤씨, 상반기 역대 최대 실적에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003460913&office_id=030&code=478560&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.27"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 17.84
   },
-  "built_at": "2026-10-01T22:57:56"
+  "built_at": "2026-10-02T05:15:56"
 }

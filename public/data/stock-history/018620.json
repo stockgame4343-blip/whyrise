@@ -9,9 +9,9 @@
       "close_price": 2885.0,
       "trading_volume": 111137,
       "trading_value": 320630245,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "상반기 영업익 역대 최대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "우진비앤지, 상반기 영업익 역대 최대…수출·고부가 백신으로 '턴어...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005803956&office_id=277&code=018620&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260729",
@@ -86,9 +96,9 @@
       "close_price": 2880.0,
       "trading_volume": 144695,
       "trading_value": 416721600,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "인도네시아서 이리도바이러스 백신 현지 임상 착수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "구제역/광우병 수혜",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "우진비앤지, 인도네시아서 이리도바이러스 백신 현지 임상 착수",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005314075&office_id=015&code=018620&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.07.27"
+        }
+      ]
     },
     {
       "date": "20260709",
@@ -163,10 +183,10 @@
       "close_price": 2830.0,
       "trading_volume": 116800,
       "trading_value": 330544000,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "구제역/광우병 수혜",
       "news": [
         {
@@ -232,7 +252,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -243,5 +265,5 @@
     "count_recent": 0,
     "avg_rate": 13.55
   },
-  "built_at": "2026-10-01T22:59:53"
+  "built_at": "2026-10-02T05:15:56"
 }

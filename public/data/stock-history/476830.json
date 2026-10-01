@@ -9,9 +9,9 @@
       "close_price": 29100.0,
       "trading_volume": 859188,
       "trading_value": 25002370800,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "순수 RNA 교정 플랫폼 공동개발",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -60,7 +60,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "알지노믹스·라이보텍, ‘순수 RNA’ 교정 플랫폼 공동개발",
+          "link": "https://n.news.naver.com/mnews/article/296/0000105402",
+          "source": "코메디닷컴",
+          "date": "2026.09.30"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -68,9 +78,9 @@
       "close_price": 36850.0,
       "trading_volume": 1794452,
       "trading_value": 66125556200,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "매출 반영 시작",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -137,7 +147,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "알지노믹스, 릴리 공동연구 가시화…매출 반영 시작",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000049887&office_id=648&code=476830&page=&sm=",
+          "source": "비즈워치",
+          "date": "2026.08.17"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -145,9 +165,9 @@
       "close_price": 36900.0,
       "trading_volume": 493598,
       "trading_value": 18213766200,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "치매 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -214,7 +234,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -222,10 +244,10 @@
       "close_price": 31500.0,
       "trading_volume": 856457,
       "trading_value": 26978395500,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -291,7 +313,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -299,9 +323,9 @@
       "close_price": 24150.0,
       "trading_volume": 314331,
       "trading_value": 7591093650,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "유전자 치료제 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -320,7 +344,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -328,9 +354,9 @@
       "close_price": 32000.0,
       "trading_volume": 208973,
       "trading_value": 6687136000,
-      "rise_reason": "유전자 치료제/분석 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "로킷헬스케어 맞손",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -349,7 +375,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유전자 치료제/분석 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "&quot;항노화 연구&quot;…알지노믹스·로킷헬스케어 '맞손'",
+          "link": "https://n.news.naver.com/mnews/article/003/0014069258",
+          "source": "뉴시스",
+          "date": "2026-07-15"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -373,9 +409,9 @@
       "close_price": 45150.0,
       "trading_volume": 467416,
       "trading_value": 21103832400,
-      "rise_reason": "치매 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "알츠하이머 치료제 RZ-003 미국 특허 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -442,7 +478,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "치매 신약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "알지노믹스, 알츠하이머 치료제 ‘RZ-003’ 미국 특허 확보",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000101868&office_id=296&code=476830&page=&sm=",
+          "source": "코메디닷컴",
+          "date": "2026.06.24"
+        }
+      ]
     },
     {
       "date": "20260616",
@@ -450,9 +496,9 @@
       "close_price": 50750.0,
       "trading_volume": 1180342,
       "trading_value": 59902356500,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보통주 1주당 1주 무상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -519,7 +565,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "알지노믹스, 보통주 1주당 1주 무상증자 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006306940&office_id=018&code=476830&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -527,9 +583,9 @@
       "close_price": 72750.0,
       "trading_volume": 814228,
       "trading_value": 59235087000,
-      "rise_reason": "투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "美리제네론 유전자 치료제 초고속 승인",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -596,7 +652,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 확대 발표",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "美리제네론 유전자 치료제 초고속 승인...알지노믹스에 호재?악재?[용....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006285605&office_id=018&code=476830&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -618,9 +684,9 @@
       "date": "20260305",
       "change_rate": 29.92,
       "close_price": 151100.0,
-      "rise_reason": "유전자 치료제/분석 테마 상한가",
+      "rise_reason": "유전자 치료제 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
@@ -629,7 +695,9 @@
       "source": "estimated",
       "trading_volume": 498376,
       "trading_value": 75304613600,
-      "market_cap": 2105470098576
+      "market_cap": 2105470098576,
+      "reason_previous": "유전자 치료제/분석 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260109",
@@ -691,5 +759,5 @@
     "count_recent": 1,
     "avg_rate": 18.29
   },
-  "built_at": "2026-10-01T22:54:34"
+  "built_at": "2026-10-02T05:15:56"
 }

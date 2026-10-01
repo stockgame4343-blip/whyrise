@@ -9,9 +9,9 @@
       "close_price": 2225.0,
       "trading_volume": 687136,
       "trading_value": 1528877600,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "결제 후 리워드 플랫폼 사업 진출",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -72,7 +72,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "서울전자통신, '결제 후 리워드' 플랫폼 사업 진출…POS 인프라 기반...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005799251&office_id=277&code=027040&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260805",
@@ -80,9 +90,9 @@
       "close_price": 1967.0,
       "trading_volume": 771502,
       "trading_value": 1517544434,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "결제 후 리워드 플랫폼 사업 진출",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -143,7 +153,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "서울전자통신, '결제 후 리워드' 플랫폼 사업 진출…POS 인프라 기반...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005799251&office_id=277&code=027040&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260528",
@@ -151,10 +171,10 @@
       "close_price": 3120.0,
       "trading_volume": 8089223,
       "trading_value": 25238375760,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "주식병합",
       "news": [
         {
@@ -220,7 +240,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260415",
@@ -305,10 +327,10 @@
       "close_price": 3775.0,
       "trading_volume": 362984,
       "trading_value": 1370264600,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -364,7 +386,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260413",
@@ -372,10 +396,10 @@
       "close_price": 2905.0,
       "trading_volume": 1217985,
       "trading_value": 3538246425,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -431,7 +455,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260317",
@@ -523,5 +549,5 @@
     "count_recent": 0,
     "avg_rate": 23.17
   },
-  "built_at": "2026-10-01T22:59:40"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 11930.0,
       "trading_volume": 918076,
       "trading_value": 10952646680,
-      "rise_reason": "소식에 계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "45억 규모 차세대발사체 메탄엔진 시험설비 설계 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -90,7 +90,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소식에 계약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "비츠로넥스텍, 45억 규모 차세대발사체 메탄엔진 시험설비 설계 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014192020&office_id=003&code=488900&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.15"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -98,9 +108,9 @@
       "close_price": 11590.0,
       "trading_volume": 974774,
       "trading_value": 11297630660,
-      "rise_reason": "국책사업 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "한화에어로와 535억 규모 누리호 엔진 부품 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -167,7 +177,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "국책사업 관련",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "비츠로넥스텍, 한화에어로와 535억 규모 누리호 엔진 부품 공급계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006346873&office_id=018&code=488900&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.07"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -175,9 +195,9 @@
       "close_price": 8760.0,
       "trading_volume": 153581,
       "trading_value": 1345369560,
-      "rise_reason": "국책사업 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 국산 80MW급 클라이스트론 본 설비 1시간 연속운전 검...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -244,7 +264,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "국책사업 관련",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "비츠로넥스텍, 국산 80MW급 클라이스트론 본 설비 1시간 연속운전 검...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334373&office_id=018&code=488900&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -268,15 +298,17 @@
       "close_price": 8020.0,
       "trading_volume": 81213,
       "trading_value": 651328260,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -284,9 +316,9 @@
       "close_price": 8690.0,
       "trading_volume": 90497,
       "trading_value": 786418930,
-      "rise_reason": "우주/위성",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "우주항공산업 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -305,7 +337,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주/위성",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -313,9 +347,9 @@
       "close_price": 19130.0,
       "trading_volume": 281377,
       "trading_value": 5382742010,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "우주항공산업 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -328,15 +362,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260310",
       "change_rate": 10.6,
       "close_price": 17530.0,
-      "rise_reason": "우주/위성",
+      "rise_reason": "45억 발사체 부품 수주",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -370,16 +406,26 @@
       "source": "estimated",
       "trading_volume": 368114,
       "trading_value": 6453038420,
-      "market_cap": 507969612711
+      "market_cap": 507969612711,
+      "reason_previous": "우주/위성",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "&quot;달 탐사 로켓 만든다&quot;…비츠로넥스텍, 45억 발사체 부품 수주",
+          "link": "https://n.news.naver.com/mnews/article/015/0005260506",
+          "source": "한국경제",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 16.63,
       "close_price": 17250.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -387,7 +433,9 @@
       "source": "estimated",
       "trading_volume": 259897,
       "trading_value": 4483223250,
-      "market_cap": 499856007944
+      "market_cap": 499856007944,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260130",
@@ -728,5 +776,5 @@
     "count_recent": 1,
     "avg_rate": 15.87
   },
-  "built_at": "2026-10-01T22:55:47"
+  "built_at": "2026-10-02T05:15:56"
 }

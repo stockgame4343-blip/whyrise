@@ -25,9 +25,9 @@
       "close_price": 6280.0,
       "trading_volume": 28832557,
       "trading_value": 181068457960,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "올해 IPO 주관 실적 기지개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "STO(토큰증권 발행)",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "증권",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "유진투자증권, 연이은 대표 주관…올해 IPO 주관 실적 '기지개'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005280658&office_id=015&code=001200&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -173,5 +183,5 @@
     "count_recent": 0,
     "avg_rate": 14.87
   },
-  "built_at": "2026-09-27T08:43:33"
+  "built_at": "2026-10-02T05:15:57"
 }

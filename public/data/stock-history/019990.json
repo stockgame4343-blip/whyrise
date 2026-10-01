@@ -9,9 +9,9 @@
       "close_price": 5500.0,
       "trading_volume": 1236542,
       "trading_value": 6800981000,
-      "rise_reason": "원자력발전 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "원전주 동반 강세 — 미국에 원전 8기 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "원자력발전 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "미국에 원전 8기 기대감…원전주 일제히 급등 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003130162&office_id=119&code=019990&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.09.08"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,9 +96,9 @@
       "close_price": 5480.0,
       "trading_volume": 60459,
       "trading_value": 331315320,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 14종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -107,16 +117,18 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 15.07,
       "close_price": 8170.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -124,16 +136,18 @@
       "source": "estimated",
       "trading_volume": 263381,
       "trading_value": 2151822770,
-      "market_cap": 79657500000
+      "market_cap": 79657500000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260120",
       "change_rate": 10.12,
       "close_price": 8920.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -141,16 +155,18 @@
       "source": "estimated",
       "trading_volume": 6493912,
       "trading_value": 57925695040,
-      "market_cap": 86970000000
+      "market_cap": 86970000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251024",
       "change_rate": 13.62,
       "close_price": 9010.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -171,7 +187,9 @@
       "source": "estimated",
       "trading_volume": 9552119,
       "trading_value": 86064592190,
-      "market_cap": 87847500000
+      "market_cap": 87847500000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250924",
@@ -213,10 +231,10 @@
       "date": "20250616",
       "change_rate": 11.61,
       "close_price": 8650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -224,7 +242,9 @@
       "source": "estimated",
       "trading_volume": 8750018,
       "trading_value": 75687655700,
-      "market_cap": 84337500000
+      "market_cap": 84337500000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
@@ -252,5 +272,5 @@
     "count_recent": 1,
     "avg_rate": 12.79
   },
-  "built_at": "2026-10-01T22:58:49"
+  "built_at": "2026-10-02T05:15:56"
 }

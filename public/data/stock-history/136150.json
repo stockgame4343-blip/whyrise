@@ -9,9 +9,9 @@
       "close_price": 10850.0,
       "trading_volume": 176894,
       "trading_value": 1919299900,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "원전주 동반 강세 — 1200억달러 투자해 美 대형 원전 8기 건설 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [
@@ -48,7 +48,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 1200억달러 투자해 美 대형 원전 8기 건설 소식에…원전주 강...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001195509",
+          "source": "조선비즈",
+          "date": "2026.10.01"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -56,15 +66,17 @@
       "close_price": 6440.0,
       "trading_volume": 16596,
       "trading_value": 106878240,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -72,15 +84,17 @@
       "close_price": 10590.0,
       "trading_volume": 25479,
       "trading_value": 269822610,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 14종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -108,5 +122,5 @@
     "count_recent": 1,
     "avg_rate": 16.44
   },
-  "built_at": "2026-10-01T22:57:48"
+  "built_at": "2026-10-02T05:15:56"
 }

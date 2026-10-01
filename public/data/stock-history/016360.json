@@ -177,9 +177,9 @@
       "date": "20260219",
       "change_rate": 10.4,
       "close_price": 111500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -188,15 +188,17 @@
       "source": "estimated",
       "trading_volume": 1295860,
       "trading_value": 144488390000,
-      "market_cap": 9956978132884
+      "market_cap": 9956978132884,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260203",
       "change_rate": 11.11,
       "close_price": 93000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -205,7 +207,9 @@
       "source": "estimated",
       "trading_volume": 823970,
       "trading_value": 76629210000,
-      "market_cap": 8304923465096
+      "market_cap": 8304923465096,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -216,5 +220,5 @@
     "count_recent": 0,
     "avg_rate": 14.14
   },
-  "built_at": "2026-10-01T22:52:12"
+  "built_at": "2026-10-02T05:15:57"
 }

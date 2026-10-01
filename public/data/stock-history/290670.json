@@ -9,10 +9,10 @@
       "close_price": 5880.0,
       "trading_volume": 122304,
       "trading_value": 719147520,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -84,7 +84,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -92,10 +94,10 @@
       "close_price": 5630.0,
       "trading_volume": 22219,
       "trading_value": 125092970,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -149,7 +151,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -157,9 +161,9 @@
       "close_price": 5590.0,
       "trading_volume": 57735,
       "trading_value": 322738650,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "리튬 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -208,7 +212,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -216,9 +222,9 @@
       "close_price": 13190.0,
       "trading_volume": 445777,
       "trading_value": 5879798630,
-      "rise_reason": "리튬 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 벤츠 한국 기업과 파트너십 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -267,7 +273,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "리튬 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "벤츠 \"한국 기업과 파트너십 확대\"…2차전지주 급등세 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003082813&office_id=119&code=222080&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.04.21"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -329,5 +345,5 @@
     "count_recent": 1,
     "avg_rate": 16.31
   },
-  "built_at": "2026-10-01T22:59:00"
+  "built_at": "2026-10-02T05:15:56"
 }

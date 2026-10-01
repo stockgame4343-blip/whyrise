@@ -139,9 +139,9 @@
       "close_price": 117.0,
       "trading_volume": 5526331,
       "trading_value": 646580727,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -214,7 +214,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     }
   ],
   "stats": {
@@ -225,5 +235,5 @@
     "count_recent": 3,
     "avg_rate": 27.03
   },
-  "built_at": "2026-07-12T02:49:00"
+  "built_at": "2026-10-02T05:15:57"
 }

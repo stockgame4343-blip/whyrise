@@ -9,10 +9,10 @@
       "close_price": 1584.0,
       "trading_volume": 2218628,
       "trading_value": 3514306752,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -86,9 +88,9 @@
       "close_price": 1326.0,
       "trading_volume": 997526,
       "trading_value": 1322719476,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 데이터센터용 PC 소재 양산 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스폴리텍, AI 데이터센터용 PC 소재 양산 공급…\"글로벌 시장 공략...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006318715&office_id=018&code=050760&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260326",
@@ -207,5 +219,5 @@
     "count_recent": 0,
     "avg_rate": 24.65
   },
-  "built_at": "2026-10-01T22:59:52"
+  "built_at": "2026-10-02T05:15:57"
 }

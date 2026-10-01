@@ -9,9 +9,9 @@
       "close_price": 4130.0,
       "trading_volume": 393743,
       "trading_value": 1626158590,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 두산건설 장기보유로 가닥…컨티뉴에이션 펀드 이관",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "창투사",
       "news": [
@@ -72,7 +72,17 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "큐캐피탈, 두산건설 장기보유로 가닥…'컨티뉴에이션 펀드' 이관",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086040&office_id=293&code=016600&page=&sm=",
+          "source": "블로터",
+          "date": "2026.06.10"
+        }
+      ]
     },
     {
       "date": "20260205",
@@ -100,5 +110,5 @@
     "count_recent": 0,
     "avg_rate": 25.12
   },
-  "built_at": "2026-09-27T10:19:49"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,15 +9,17 @@
       "close_price": 11200.0,
       "trading_volume": 165662,
       "trading_value": 1855414400,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 32종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -25,9 +27,9 @@
       "close_price": 14570.0,
       "trading_volume": 66531,
       "trading_value": 969356670,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -40,7 +42,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피 나흘 만에 반등…반도체주 일제히 강세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000520734",
+          "source": "SBS Biz",
+          "date": "2026-07-09"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -64,9 +76,9 @@
       "close_price": 18300.0,
       "trading_volume": 239095,
       "trading_value": 4375438500,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 22종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -133,7 +145,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260519",
@@ -141,10 +155,10 @@
       "close_price": 22100.0,
       "trading_volume": 1303186,
       "trading_value": 28800410600,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -210,7 +224,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260514",
@@ -218,9 +234,9 @@
       "close_price": 21300.0,
       "trading_volume": 900690,
       "trading_value": 19184697000,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -287,7 +303,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -295,23 +313,25 @@
       "close_price": 16990.0,
       "trading_volume": 226279,
       "trading_value": 3844480210,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
       "change_rate": 14.43,
       "close_price": 18640.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -320,7 +340,9 @@
       "source": "estimated",
       "trading_volume": 620307,
       "trading_value": 11562522480,
-      "market_cap": 154864991624
+      "market_cap": 154864991624,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -343,9 +365,9 @@
       "date": "20251127",
       "change_rate": 13.18,
       "close_price": 16490.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -385,15 +407,25 @@
       "source": "estimated",
       "trading_volume": 2227968,
       "trading_value": 36739192320,
-      "market_cap": 137002345058
+      "market_cap": 137002345058,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 구글 TPU로 AI 살아나자 반도체주 '강세'",
+          "link": "https://n.news.naver.com/mnews/article/374/0000477465",
+          "source": "SBS Biz",
+          "date": "2025-11-27"
+        }
+      ]
     },
     {
       "date": "20251002",
       "change_rate": 11.62,
       "close_price": 15370.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -402,7 +434,9 @@
       "source": "estimated",
       "trading_volume": 3240266,
       "trading_value": 49802888420,
-      "market_cap": 127697152428
+      "market_cap": 127697152428,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250930",
@@ -437,5 +471,5 @@
     "count_recent": 0,
     "avg_rate": 13.61
   },
-  "built_at": "2026-09-27T09:50:06"
+  "built_at": "2026-10-02T05:15:57"
 }

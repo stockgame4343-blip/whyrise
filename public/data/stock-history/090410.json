@@ -9,9 +9,9 @@
       "close_price": 5330.0,
       "trading_volume": 2609627,
       "trading_value": 13909311910,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 후공정 기업 엠코그룹에 데크플레이트 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모듈러주택",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "덕신이피씨, 반도체 후공정 기업 엠코그룹에 데크플레이트 공급",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005304524&office_id=015&code=090410&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -86,9 +96,9 @@
       "close_price": 4620.0,
       "trading_volume": 1192906,
       "trading_value": 5511225720,
-      "rise_reason": "미국 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 후공정 기업 엠코그룹에 데크플레이트 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미국",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "미국 수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "덕신이피씨, 반도체 후공정 기업 엠코그룹에 데크플레이트 공급",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005304524&office_id=015&code=090410&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -163,10 +183,10 @@
       "close_price": 3555.0,
       "trading_volume": 169065,
       "trading_value": 601026075,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모듈러주택",
       "news": [
         {
@@ -232,7 +252,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260211",
@@ -291,5 +313,5 @@
     "count_recent": 0,
     "avg_rate": 21.88
   },
-  "built_at": "2026-09-27T10:21:12"
+  "built_at": "2026-10-02T05:15:57"
 }

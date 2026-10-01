@@ -9,15 +9,17 @@
       "close_price": 5350.0,
       "trading_volume": 56799,
       "trading_value": 303874650,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 36종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -25,9 +27,9 @@
       "close_price": 6250.0,
       "trading_volume": 193725,
       "trading_value": 1210781250,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -94,7 +96,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260520",
@@ -102,10 +106,10 @@
       "close_price": 10860.0,
       "trading_volume": 1916275,
       "trading_value": 20810746500,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -171,7 +175,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -193,9 +199,9 @@
       "date": "20260305",
       "change_rate": 15.39,
       "close_price": 12520.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 28종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -204,15 +210,17 @@
       "source": "estimated",
       "trading_volume": 262453,
       "trading_value": 3285911560,
-      "market_cap": 110470588235
+      "market_cap": 110470588235,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260129",
       "change_rate": 12.53,
       "close_price": 16800.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "관련 보도: 2월 10일 기업설명회 개최",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -228,7 +236,17 @@
       "source": "estimated",
       "trading_volume": 1942355,
       "trading_value": 32631564000,
-      "market_cap": 148235294117
+      "market_cap": 148235294117,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "쎄크, 2월 10일 기업설명회 개최",
+          "link": "https://n.news.naver.com/mnews/article/008/0005310456",
+          "source": "머니투데이",
+          "date": "2026-01-28"
+        }
+      ]
     },
     {
       "date": "20251229",
@@ -294,9 +312,9 @@
       "date": "20251125",
       "change_rate": 11.76,
       "close_price": 12640.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -312,7 +330,9 @@
       "source": "estimated",
       "trading_volume": 10315018,
       "trading_value": 130381827520,
-      "market_cap": 111529411764
+      "market_cap": 111529411764,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20251124",
@@ -378,9 +398,9 @@
       "date": "20251117",
       "change_rate": 26.25,
       "close_price": 9620.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美 반도체주 ·메모리 호황 전망에 반도체주",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -408,7 +428,17 @@
       "source": "estimated",
       "trading_volume": 2582025,
       "trading_value": 24839080500,
-      "market_cap": 84882352941
+      "market_cap": 84882352941,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 美 반도체주 반등·메모리 호황 전망에 반도체주 '강세...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000475326",
+          "source": "SBS Biz",
+          "date": "2025-11-17"
+        }
+      ]
     }
   ],
   "stats": {
@@ -419,5 +449,5 @@
     "count_recent": 0,
     "avg_rate": 17.21
   },
-  "built_at": "2026-10-01T22:58:36"
+  "built_at": "2026-10-02T05:15:57"
 }

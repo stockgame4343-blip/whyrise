@@ -9,9 +9,9 @@
       "close_price": 9550.0,
       "trading_volume": 8416318,
       "trading_value": 80375836900,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "50억 규모 자사주 소각 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -54,7 +54,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "PS일렉트로닉스, 50억 규모 자사주 소각 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014134115&office_id=003&code=332570&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.19"
+        }
+      ]
     },
     {
       "date": "20260813",
@@ -62,10 +72,10 @@
       "close_price": 11160.0,
       "trading_volume": 19378277,
       "trading_value": 216261571320,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [
         {
@@ -101,7 +111,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -109,10 +121,10 @@
       "close_price": 9400.0,
       "trading_volume": 6800898,
       "trading_value": 63928441200,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -148,7 +160,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -156,15 +170,17 @@
       "close_price": 7270.0,
       "trading_volume": 3878151,
       "trading_value": 28194157770,
-      "rise_reason": "스마트폰 테마 강세",
+      "rise_reason": "스마트폰 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스마트폰 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260721",
@@ -172,9 +188,9 @@
       "close_price": 6650.0,
       "trading_volume": 6970631,
       "trading_value": 46354696150,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "현 주가 조정은 중장기 매수 기회 (신한)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "갤럭시 부품주",
       "news": [
@@ -199,7 +215,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "PS일렉트로닉스, 현 주가 조정은 중장기 매수 기회-신한",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006333523&office_id=018&code=332570&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.21"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -207,9 +233,9 @@
       "close_price": 5680.0,
       "trading_volume": 6411064,
       "trading_value": 36414843520,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "50억 규모 자사주 취득 신탁계약 체결 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -276,7 +302,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "PS일렉트로닉스, 50억 규모 자사주 취득 신탁계약 체결 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006324021&office_id=018&code=332570&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.06"
+        }
+      ]
     },
     {
       "date": "20260513",
@@ -284,10 +320,10 @@
       "close_price": 14180.0,
       "trading_volume": 24878411,
       "trading_value": 352775867980,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -353,7 +389,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260504",
@@ -361,10 +399,10 @@
       "close_price": 10470.0,
       "trading_volume": 12765625,
       "trading_value": 133656093750,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -430,7 +468,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260420",
@@ -517,9 +557,9 @@
       "date": "20260305",
       "change_rate": 13.9,
       "close_price": 5040.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [],
@@ -528,15 +568,17 @@
       "source": "estimated",
       "trading_volume": 1252405,
       "trading_value": 6312121200,
-      "market_cap": 235424000000
+      "market_cap": 235424000000,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260121",
       "change_rate": 11.2,
       "close_price": 8040.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "관련 보도: 주주가치 제고 위해 자사주 56만3174주 소각 결정",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -558,15 +600,25 @@
       "source": "estimated",
       "trading_volume": 9972598,
       "trading_value": 80179687920,
-      "market_cap": 375557333333
+      "market_cap": 375557333333,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "PS일렉트로닉스 “주주가치 제고 위해 자사주 56만3174주 소각 결정”",
+          "link": "https://n.news.naver.com/mnews/article/018/0006204772",
+          "source": "이데일리",
+          "date": "2026-01-21"
+        }
+      ]
     },
     {
       "date": "20260106",
       "change_rate": 14.13,
       "close_price": 8160.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "5G 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -600,7 +652,9 @@
       "source": "estimated",
       "trading_volume": 13444215,
       "trading_value": 109704794400,
-      "market_cap": 381162666666
+      "market_cap": 381162666666,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251128",
@@ -723,5 +777,5 @@
     "count_recent": 0,
     "avg_rate": 17.82
   },
-  "built_at": "2026-10-01T22:55:20"
+  "built_at": "2026-10-02T05:15:56"
 }

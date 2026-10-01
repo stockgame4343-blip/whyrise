@@ -9,9 +9,9 @@
       "close_price": 12600.0,
       "trading_volume": 73245,
       "trading_value": 922887000,
-      "rise_reason": "바이오",
+      "rise_reason": "머크와 키트루다 병용임상 착수",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "셀비온, 머크와 키트루다 병용임상 착수...기업가치 더 커진다",
+          "link": "https://n.news.naver.com/mnews/article/018/0006339665",
+          "source": "이데일리",
+          "date": "2026-07-30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -32,15 +42,17 @@
       "close_price": 17210.0,
       "trading_volume": 35087,
       "trading_value": 603847270,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -48,9 +60,9 @@
       "close_price": 31600.0,
       "trading_volume": 103722,
       "trading_value": 3277615200,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: R&D·GMP 통합 센터 가동 준비 완료...원스톱 체제 완성",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -63,16 +75,26 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "셀비온, R&amp;D·GMP 통합 센터 가동 준비 완료...‘원스톱 체제 완성’",
+          "link": "https://n.news.naver.com/mnews/article/018/0006252594",
+          "source": "이데일리",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260320",
       "change_rate": 15.08,
       "close_price": 30900.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -80,16 +102,18 @@
       "source": "estimated",
       "trading_volume": 358806,
       "trading_value": 11087105400,
-      "market_cap": 398834126040
+      "market_cap": 398834126040,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 13.67,
       "close_price": 26200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -97,7 +121,9 @@
       "source": "estimated",
       "trading_volume": 114914,
       "trading_value": 3010746800,
-      "market_cap": 338170035671
+      "market_cap": 338170035671,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
@@ -193,10 +219,10 @@
       "date": "20250813",
       "change_rate": 11.75,
       "close_price": 28050.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -204,15 +230,17 @@
       "source": "estimated",
       "trading_volume": 275120,
       "trading_value": 7717116000,
-      "market_cap": 362048454221
+      "market_cap": 362048454221,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250703",
       "change_rate": 13.93,
       "close_price": 25350.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "머크 키트루다 유일한 방사성의약품 파트너",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -246,7 +274,17 @@
       "source": "estimated",
       "trading_volume": 925328,
       "trading_value": 23457064800,
-      "market_cap": 327198870392
+      "market_cap": 327198870392,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]셀비온, 머크 키트루다 유일한 방사성의약품 파트너…임상2상...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005617241",
+          "source": "아시아경제",
+          "date": "2025-07-03"
+        }
+      ]
     }
   ],
   "stats": {
@@ -257,5 +295,5 @@
     "count_recent": 0,
     "avg_rate": 15.78
   },
-  "built_at": "2026-09-27T09:34:27"
+  "built_at": "2026-10-02T05:15:57"
 }

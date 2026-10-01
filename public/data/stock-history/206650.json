@@ -9,10 +9,10 @@
       "close_price": 10830.0,
       "trading_volume": 1481681,
       "trading_value": 16046605230,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -156,9 +158,9 @@
       "date": "20260203",
       "change_rate": 10.56,
       "close_price": 13820.0,
-      "rise_reason": "실적 개선",
+      "rise_reason": "호실적·신규 시설 투자에 1년 내 최고가",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
@@ -198,7 +200,17 @@
       "source": "estimated",
       "trading_volume": 2510479,
       "trading_value": 34694819780,
-      "market_cap": 507478748651
+      "market_cap": 507478748651,
+      "reason_previous": "실적 개선",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 유바이오로직스, 호실적·신규 시설 투자에 1년 내 최고가",
+          "link": "https://n.news.naver.com/mnews/article/366/0001140148",
+          "source": "조선비즈",
+          "date": "2026-02-03"
+        }
+      ]
     }
   ],
   "stats": {
@@ -209,5 +221,5 @@
     "count_recent": 0,
     "avg_rate": 12.52
   },
-  "built_at": "2026-10-01T22:55:47"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -56,9 +56,9 @@
       "close_price": 142600.0,
       "trading_volume": 2238809,
       "trading_value": 319254163400,
-      "rise_reason": "수출 관련 뉴스",
+      "rise_reason": "美원전 건설 기대",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [
@@ -125,7 +125,17 @@
       ],
       "sector": "전기유틸리티",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美원전 건설 기대에 한전기술 등 원전주 급등(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016297843&office_id=001&code=052690&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.09.08"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -133,10 +143,10 @@
       "close_price": 122300.0,
       "trading_volume": 912549,
       "trading_value": 111604742700,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전소 해체",
       "news": [
         {
@@ -202,7 +212,9 @@
       ],
       "sector": "전기유틸리티",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260826",
@@ -535,9 +547,9 @@
       "date": "20260204",
       "change_rate": 12.19,
       "close_price": 148200.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "원전주 동반 강세 — 한미 협력 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [
@@ -577,7 +589,17 @@
       "source": "estimated",
       "trading_volume": 2216229,
       "trading_value": 328445137800,
-      "market_cap": 5664187227162
+      "market_cap": 5664187227162,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주]원전株, 한미 협력 기대감에 일제히 상승세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005716762",
+          "source": "아시아경제",
+          "date": "2026-02-04"
+        }
+      ]
     },
     {
       "date": "20260116",
@@ -624,9 +646,9 @@
       "date": "20250821",
       "change_rate": 15.29,
       "close_price": 100300.0,
-      "rise_reason": "원자력발전소 해체 테마 강세",
+      "rise_reason": "원전주 동반 강세 — 체코 원전 계약 논란에도 저가",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [],
@@ -635,7 +657,17 @@
       "source": "estimated",
       "trading_volume": 2297020,
       "trading_value": 230391106000,
-      "market_cap": 3833454648342
+      "market_cap": 3833454648342,
+      "reason_previous": "원자력발전소 해체 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 원전주, 체코 원전 계약 논란에도 저가 매수세에 강세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000458823",
+          "source": "SBS Biz",
+          "date": "2025-08-21"
+        }
+      ]
     },
     {
       "date": "20250613",
@@ -658,9 +690,9 @@
       "date": "20250612",
       "change_rate": 25.63,
       "close_price": 89700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "원자력발전소 해체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [],
@@ -669,7 +701,9 @@
       "source": "estimated",
       "trading_volume": 7718221,
       "trading_value": 692324423700,
-      "market_cap": 3428323848019
+      "market_cap": 3428323848019,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250605",
@@ -697,5 +731,5 @@
     "count_recent": 3,
     "avg_rate": 13.95
   },
-  "built_at": "2026-10-01T22:52:18"
+  "built_at": "2026-10-02T05:15:56"
 }

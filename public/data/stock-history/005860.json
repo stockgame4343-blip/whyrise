@@ -9,9 +9,9 @@
       "close_price": 2770.0,
       "trading_volume": 25704483,
       "trading_value": 71201417910,
-      "rise_reason": "사료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "사료 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -54,7 +54,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "사료 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260313",
@@ -198,10 +200,10 @@
       "date": "20260303",
       "change_rate": 17.29,
       "close_price": 3595.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -240,7 +242,9 @@
       "source": "estimated",
       "trading_volume": 21798007,
       "trading_value": 78363835165,
-      "market_cap": 141689727463
+      "market_cap": 141689727463,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -251,5 +255,5 @@
     "count_recent": 0,
     "avg_rate": 14.68
   },
-  "built_at": "2026-09-27T09:52:19"
+  "built_at": "2026-10-02T05:15:57"
 }

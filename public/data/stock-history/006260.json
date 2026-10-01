@@ -9,15 +9,17 @@
       "close_price": 300500.0,
       "trading_volume": 168198,
       "trading_value": 50543499000,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -25,15 +27,17 @@
       "close_price": 267000.0,
       "trading_volume": 193549,
       "trading_value": 51677583000,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 11종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -41,9 +45,9 @@
       "close_price": 321500.0,
       "trading_volume": 170807,
       "trading_value": 54914450500,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -110,7 +114,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "알파벳, AI 투자 계속 간다… 전력설비주 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005389692&office_id=008&code=006340&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260518",
@@ -352,5 +366,5 @@
     "count_recent": 0,
     "avg_rate": 13.43
   },
-  "built_at": "2026-10-01T22:52:12"
+  "built_at": "2026-10-02T05:15:56"
 }

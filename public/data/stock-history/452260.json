@@ -25,10 +25,10 @@
       "close_price": 3640.0,
       "trading_volume": 49413071,
       "trading_value": 179863578440,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백화점",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260424",
@@ -102,9 +104,9 @@
       "close_price": 3340.0,
       "trading_volume": 46852330,
       "trading_value": 156486782200,
-      "rise_reason": "백화점 테마 강세",
+      "rise_reason": "신설법인 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -171,7 +173,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 한화갤러리아, 신설법인 기대감에 상한가(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016041578&office_id=001&code=452260&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260220",
@@ -267,5 +279,5 @@
     "count_recent": 0,
     "avg_rate": 23.2
   },
-  "built_at": "2026-10-01T22:52:44"
+  "built_at": "2026-10-02T05:15:57"
 }

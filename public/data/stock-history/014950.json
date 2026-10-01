@@ -109,9 +109,9 @@
       "close_price": 9480.0,
       "trading_volume": 16132692,
       "trading_value": 152937920160,
-      "rise_reason": "신약 관련 뉴스",
+      "rise_reason": "면역조절제 월 1회 투여 특허",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -178,7 +178,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "면역조절제 월 1회 투여 특허에 삼익제약 18% 급등[종목NOW]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005575242&office_id=014&code=014950&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.09.14"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -186,9 +196,9 @@
       "close_price": 8780.0,
       "trading_volume": 4267743,
       "trading_value": 37470783540,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 상장 첫날 스카이랩스 존재감 증명… ·페니트리움바이오도...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -237,7 +247,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "상장 첫날 스카이랩스 존재감 증명… 삼익제약·페니트리움바이오도...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006364654&office_id=018&code=014950&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.07"
+        }
+      ]
     },
     {
       "date": "20260904",
@@ -245,9 +265,9 @@
       "close_price": 6760.0,
       "trading_volume": 8849150,
       "trading_value": 59820254000,
-      "rise_reason": "탈모 치료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련주 동반 강세 — 탈모 치료 아직 멀었는데",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -296,7 +316,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "탈모 치료 아직 멀었는데…탈모 관련株 줄줄이 상한가 [이런국장 저런....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004657618&office_id=011&code=014950&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260901",
@@ -304,9 +334,9 @@
       "close_price": 6830.0,
       "trading_volume": 6253571,
       "trading_value": 42711889930,
-      "rise_reason": "탈모 치료 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "탈모 치료 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -343,7 +373,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260805",
@@ -351,10 +383,10 @@
       "close_price": 5350.0,
       "trading_volume": 1916055,
       "trading_value": 10250894250,
-      "rise_reason": "탈모 치료 합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -390,7 +422,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260720",
@@ -398,10 +432,10 @@
       "close_price": 6260.0,
       "trading_volume": 11245413,
       "trading_value": 70396285380,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -431,7 +465,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260716",
@@ -439,10 +475,10 @@
       "close_price": 5570.0,
       "trading_volume": 3095521,
       "trading_value": 17242051970,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -472,7 +508,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -496,9 +534,9 @@
       "close_price": 8600.0,
       "trading_volume": 9907838,
       "trading_value": 85207406800,
-      "rise_reason": "탈모 치료 신약 관련 뉴스",
+      "rise_reason": "시지메드텍, 최대주주 PE 인수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -529,7 +567,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "탈모 치료 신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "시지메드텍, 최대주주 PE 인수에 ‘上’…탈모주 삼익제약·JW신약도↑....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006312666&office_id=018&code=014950&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260619",
@@ -537,9 +585,9 @@
       "close_price": 8410.0,
       "trading_volume": 6615284,
       "trading_value": 55634538440,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "탈모株의 날",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제약업체",
       "news": [
@@ -606,7 +654,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "“탈모株의 날”…JW신약·현대약품·삼익제약, 정책 모멘텀에 '上' [....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006307823&office_id=018&code=014950&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -614,10 +672,10 @@
       "close_price": 7700.0,
       "trading_volume": 504828,
       "trading_value": 3887175600,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -683,7 +741,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -706,9 +766,9 @@
       "date": "20260116",
       "change_rate": 12.97,
       "close_price": 19340.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "장기지속형 주사 새해에도 힘받는다",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제약업체",
       "news": [
@@ -730,7 +790,17 @@
       "source": "estimated",
       "trading_volume": 9840505,
       "trading_value": 190315366700,
-      "market_cap": 193629964328
+      "market_cap": 193629964328,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "장기지속형 주사 새해에도 힘받는다...지투지바이오·삼익제약 ↑ [바...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006201771",
+          "source": "이데일리",
+          "date": "2026-01-16"
+        }
+      ]
     },
     {
       "date": "20260108",
@@ -1065,5 +1135,5 @@
     "count_recent": 6,
     "avg_rate": 21.02
   },
-  "built_at": "2026-10-01T22:57:56"
+  "built_at": "2026-10-02T05:15:56"
 }

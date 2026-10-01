@@ -9,9 +9,9 @@
       "close_price": 16150.0,
       "trading_volume": 781638,
       "trading_value": 12623453700,
-      "rise_reason": "관련 보도: 권상훈 대표, 자사주 매입…책임 경영 강화",
+      "rise_reason": "자사주 매입",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -39,7 +39,8 @@
           "source": "블로터",
           "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260812",
@@ -47,9 +48,9 @@
       "close_price": 22150.0,
       "trading_volume": 429417,
       "trading_value": 9511586550,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -116,7 +117,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -124,9 +127,9 @@
       "close_price": 15850.0,
       "trading_volume": 181725,
       "trading_value": 2880341250,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자사주 1만3500주 추가 매입",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -193,7 +196,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "권상훈 네오티스 대표, 자사주 1만3500주 추가 매입",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014098253&office_id=003&code=085910&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.30"
+        }
+      ]
     },
     {
       "date": "20260720",
@@ -201,10 +214,10 @@
       "close_price": 18070.0,
       "trading_volume": 852461,
       "trading_value": 15403970270,
-      "rise_reason": "소캠 전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
         {
@@ -270,7 +283,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소캠 전환사채 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -278,9 +293,9 @@
       "close_price": 17960.0,
       "trading_volume": 407391,
       "trading_value": 7316742360,
-      "rise_reason": "소캠 전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -347,7 +362,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소캠 전환사채 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -371,9 +388,9 @@
       "close_price": 33750.0,
       "trading_volume": 370234,
       "trading_value": 12495397500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "증권가 수익성 개선 기대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -440,7 +457,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "증권가 \"수익성 개선 기대\"…네오티스 13%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006295058&office_id=018&code=085910&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.01"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -523,9 +550,9 @@
       "date": "20260318",
       "change_rate": 17.03,
       "close_price": 19650.0,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 외국인·기관 삼전닉스 2.6조 폭풍매수",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
@@ -534,7 +561,17 @@
       "source": "estimated",
       "trading_volume": 537045,
       "trading_value": 10552934250,
-      "market_cap": 271039766081
+      "market_cap": 271039766081,
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "외국인·기관 삼전닉스 2.6조 폭풍매수…반도체주 불기둥[핫종목](종합...",
+          "link": "https://n.news.naver.com/mnews/article/421/0008834272",
+          "source": "뉴스1",
+          "date": "2026-03-18"
+        }
+      ]
     },
     {
       "date": "20260227",
@@ -658,9 +695,9 @@
       "date": "20251222",
       "change_rate": 13.72,
       "close_price": 8950.0,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 업황·정책 겹훈풍",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
@@ -669,7 +706,17 @@
       "source": "estimated",
       "trading_volume": 732975,
       "trading_value": 6560126250,
-      "market_cap": 123450682261
+      "market_cap": 123450682261,
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "업황·정책 '겹훈풍'에…반도체 소부장株 들썩",
+          "link": "https://n.news.naver.com/mnews/article/011/0004570305",
+          "source": "서울경제",
+          "date": "2025-12-22"
+        }
+      ]
     },
     {
       "date": "20251205",
@@ -699,9 +746,9 @@
       "date": "20251117",
       "change_rate": 14.93,
       "close_price": 4965.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 美 반도체주 ·메모리 호황 전망에 반도체주",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -717,15 +764,25 @@
       "source": "estimated",
       "trading_volume": 4754679,
       "trading_value": 23606981235,
-      "market_cap": 68484093567
+      "market_cap": 68484093567,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 美 반도체주 반등·메모리 호황 전망에 반도체주 '강세...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000475326",
+          "source": "SBS Biz",
+          "date": "2025-11-17"
+        }
+      ]
     },
     {
       "date": "20251001",
       "change_rate": 10.06,
       "close_price": 4540.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -741,7 +798,9 @@
       "source": "estimated",
       "trading_volume": 1104214,
       "trading_value": 5013131560,
-      "market_cap": 62621910331
+      "market_cap": 62621910331,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250925",
@@ -782,5 +841,5 @@
     "count_recent": 1,
     "avg_rate": 15.41
   },
-  "built_at": "2026-10-01T22:56:12"
+  "built_at": "2026-10-02T05:15:56"
 }

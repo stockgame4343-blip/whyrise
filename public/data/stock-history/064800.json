@@ -9,10 +9,10 @@
       "close_price": 2725.0,
       "trading_volume": 380119,
       "trading_value": 1035824275,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증강현실(AR)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전문소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260602",
@@ -86,9 +88,9 @@
       "close_price": 3025.0,
       "trading_volume": 187549,
       "trading_value": 567335725,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "패션 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -149,7 +151,9 @@
       ],
       "sector": "전문소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260526",
@@ -157,10 +161,10 @@
       "close_price": 3125.0,
       "trading_volume": 205760,
       "trading_value": 643000000,
-      "rise_reason": "자율주행차 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자율주행차",
       "news": [
         {
@@ -220,7 +224,9 @@
       ],
       "sector": "전문소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자율주행차 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -228,9 +234,9 @@
       "close_price": 2805.0,
       "trading_volume": 209105,
       "trading_value": 586539525,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 레벨4 로보택시 사업 순항...6만km 무사고 행진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
@@ -291,7 +297,17 @@
       ],
       "sector": "전문소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "포니링크, 레벨4 로보택시 사업 순항...\"6만km 무사고 행진\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006284991&office_id=018&code=064800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260423",
@@ -437,5 +453,5 @@
     "count_recent": 0,
     "avg_rate": 14.26
   },
-  "built_at": "2026-10-01T22:58:44"
+  "built_at": "2026-10-02T05:15:56"
 }

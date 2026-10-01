@@ -9,9 +9,9 @@
       "close_price": 550.0,
       "trading_volume": 1890112,
       "trading_value": 1039561600,
-      "rise_reason": "화장품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -48,7 +48,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260907",
@@ -56,9 +58,9 @@
       "close_price": 590.0,
       "trading_volume": 4975517,
       "trading_value": 2935555030,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건강기능식품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -107,7 +109,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260831",
@@ -115,9 +119,9 @@
       "close_price": 907.0,
       "trading_volume": 610796,
       "trading_value": 553991972,
-      "rise_reason": "상장 이슈",
+      "rise_reason": "액면병합 후 첫 거래",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -184,7 +188,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "액면병합 후 첫 거래…모아라이프플러스 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006360763&office_id=018&code=142760&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.31"
+        }
+      ]
     },
     {
       "date": "20260803",
@@ -192,10 +206,10 @@
       "close_price": 924.0,
       "trading_volume": 818335,
       "trading_value": 756141540,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
         {
@@ -261,7 +275,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260514",
@@ -269,9 +285,9 @@
       "close_price": 803.0,
       "trading_volume": 849340,
       "trading_value": 682020020,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "백신 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
@@ -338,15 +354,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260121",
       "change_rate": 14.36,
       "close_price": 1760.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 스톤브이스튜디오와 실사 기반 AI 영상 기술 협력",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
@@ -368,7 +386,17 @@
       "source": "estimated",
       "trading_volume": 1925767,
       "trading_value": 3389349920,
-      "market_cap": 74277966101
+      "market_cap": 74277966101,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "모아라이프플러스, 스톤브이스튜디오와 실사 기반 AI 영상 기술 협력",
+          "link": "https://n.news.naver.com/mnews/article/057/0001931318",
+          "source": "MBN",
+          "date": "2026-01-21"
+        }
+      ]
     },
     {
       "date": "20250624",
@@ -461,5 +489,5 @@
     "count_recent": 2,
     "avg_rate": 16.71
   },
-  "built_at": "2026-10-01T23:00:09"
+  "built_at": "2026-10-02T05:15:56"
 }

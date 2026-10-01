@@ -9,9 +9,9 @@
       "close_price": 1284.0,
       "trading_volume": 34492383,
       "trading_value": 44288219772,
-      "rise_reason": "제습기 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "제습기주 동반 강세 — 7월 장마 시작",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제습기",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제습기 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "7월 장마 시작에 제습기株 동반 상승…파세코 19%대 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005381020&office_id=008&code=002700&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.03"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -105,5 +115,5 @@
     "count_recent": 0,
     "avg_rate": 11.61
   },
-  "built_at": "2026-09-27T09:00:00"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 5380.0,
       "trading_volume": 1498032,
       "trading_value": 8059412160,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "일자리 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "일자리(취업)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -86,9 +88,9 @@
       "close_price": 5170.0,
       "trading_volume": 110365,
       "trading_value": 570587050,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 턴어라운드 , 19억 원 규모 자기주식 취득",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "일자리(취업)",
       "news": [
@@ -101,7 +103,17 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "‘턴어라운드’ 데이원컴퍼니, 19억 원 규모 자기주식 취득",
+          "link": "https://n.news.naver.com/mnews/article/011/0004606020",
+          "source": "서울경제",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260316",
@@ -136,5 +148,5 @@
     "count_recent": 0,
     "avg_rate": 10.7
   },
-  "built_at": "2026-09-27T10:13:41"
+  "built_at": "2026-10-02T05:15:57"
 }

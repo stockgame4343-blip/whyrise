@@ -9,9 +9,9 @@
       "close_price": 45150.0,
       "trading_volume": 6513845,
       "trading_value": 294100101750,
-      "rise_reason": "관련 보도: 美반도체 훈풍 번진 ‘소부장株’…하나마이크론 14%대 ‘급등’[마켓...",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "美반도체 훈풍 번진 소부장株",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -99,7 +99,8 @@
           "source": "서울경제",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260810",
@@ -107,9 +108,9 @@
       "close_price": 33850.0,
       "trading_volume": 1698089,
       "trading_value": 57480312650,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "IMM크레딧이 인수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -176,7 +177,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "하나마이크론株 EB, IMM크레딧이 인수",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005319170&office_id=015&code=067310&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -184,15 +195,17 @@
       "close_price": 29700.0,
       "trading_volume": 2990292,
       "trading_value": 88811672400,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 32종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -200,9 +213,9 @@
       "close_price": 39750.0,
       "trading_volume": 1628791,
       "trading_value": 64744442250,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 29종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -269,7 +282,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260622",
@@ -277,9 +292,9 @@
       "close_price": 56800.0,
       "trading_volume": 7277423,
       "trading_value": 413357626400,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -340,7 +355,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -348,9 +365,9 @@
       "close_price": 47950.0,
       "trading_volume": 4339824,
       "trading_value": 208094560800,
-      "rise_reason": "강세에 지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 12종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -417,7 +434,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "강세에 지분 관련 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -425,9 +444,9 @@
       "close_price": 43250.0,
       "trading_volume": 2367682,
       "trading_value": 102402246500,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -494,7 +513,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260521",
@@ -502,9 +523,9 @@
       "close_price": 54500.0,
       "trading_volume": 6184634,
       "trading_value": 337062553000,
-      "rise_reason": "반도체 장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -559,7 +580,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260515",
@@ -567,9 +590,9 @@
       "close_price": 52900.0,
       "trading_volume": 13222883,
       "trading_value": 699490510700,
-      "rise_reason": "상장 이슈",
+      "rise_reason": "1분기 영업익 514% 급증",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(25년 기업가치 제고계획 발표)",
       "news": [
@@ -630,7 +653,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "하나마이크론, 1분기 영업익 514% 급증…12%대 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006281940&office_id=018&code=067310&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.15"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -791,5 +824,5 @@
     "count_recent": 1,
     "avg_rate": 15.11
   },
-  "built_at": "2026-10-01T22:53:53"
+  "built_at": "2026-10-02T05:15:56"
 }

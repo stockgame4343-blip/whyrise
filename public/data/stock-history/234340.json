@@ -9,10 +9,10 @@
       "close_price": 25250.0,
       "trading_volume": 2846977,
       "trading_value": 71886169250,
-      "rise_reason": "스테이블코인 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자결제(전자화폐)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -86,9 +88,9 @@
       "close_price": 23400.0,
       "trading_volume": 2493990,
       "trading_value": 58359366000,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "아시아 대표 핀테크 30개사 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전자결제(전자화폐)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "헥토파이낸셜, 아시아 대표 핀테크 30개사 선정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003461348&office_id=030&code=234340&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.28"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -163,9 +175,9 @@
       "close_price": 21450.0,
       "trading_volume": 1443996,
       "trading_value": 30973714200,
-      "rise_reason": "스테이블코인 관련 뉴스",
+      "rise_reason": "간편결제 쑥쑥",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "간편결제 '쑥쑥'…헥토파이낸셜 수익성 '껑충'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000049982&office_id=648&code=234340&page=&sm=",
+          "source": "비즈워치",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -240,9 +262,9 @@
       "close_price": 20750.0,
       "trading_volume": 1090074,
       "trading_value": 22619035500,
-      "rise_reason": "스테이블코인 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "3분기 연속 500억원대 매출 달성 전망",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -309,7 +331,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"헥토파이낸셜, 3분기 연속 500억원대 매출 달성 전망\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005800980&office_id=277&code=234340&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -317,9 +349,9 @@
       "close_price": 39700.0,
       "trading_volume": 1938436,
       "trading_value": 76955909200,
-      "rise_reason": "스테이블코인 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "매출도 이익도 서프라이즈",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -386,7 +418,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "헥토파이낸셜, 매출도 이익도 ‘서프라이즈’…“간편현금결제 고성...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275476&office_id=018&code=234340&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -818,5 +860,5 @@
     "count_recent": 1,
     "avg_rate": 18.5
   },
-  "built_at": "2026-10-01T22:55:42"
+  "built_at": "2026-10-02T05:15:56"
 }

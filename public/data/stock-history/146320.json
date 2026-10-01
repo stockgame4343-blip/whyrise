@@ -9,9 +9,9 @@
       "close_price": 9470.0,
       "trading_volume": 321555,
       "trading_value": 3045125850,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "美 고객사 최첨단 공정에 실리콘 부품 세트 공급 개시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "비씨엔씨, 美 고객사 최첨단 공정에 실리콘 부품 세트 공급 개시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002432833&office_id=092&code=146320&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,15 +96,17 @@
       "close_price": 8560.0,
       "trading_volume": 35451,
       "trading_value": 303460560,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 32종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -102,9 +114,9 @@
       "close_price": 15150.0,
       "trading_volume": 127235,
       "trading_value": 1927610250,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -171,7 +183,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -179,15 +193,17 @@
       "close_price": 12930.0,
       "trading_volume": 53875,
       "trading_value": 696603750,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 22종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260424",
@@ -195,9 +211,9 @@
       "close_price": 17750.0,
       "trading_volume": 309416,
       "trading_value": 5492134000,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자회사 머터리얼즈 흡수합병 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -264,7 +280,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "비씨엔씨, 자회사 비씨엔씨머터리얼즈 흡수합병 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263445&office_id=018&code=146320&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.22"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -292,5 +318,5 @@
     "count_recent": 0,
     "avg_rate": 12.19
   },
-  "built_at": "2026-10-01T22:57:06"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 2300.0,
       "trading_volume": 79768,
       "trading_value": 183466400,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "동전주 상폐 위기인데 자사주 처분?",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "'동전주' 상폐 위기인데 자사주 처분?… 대교, 임직원 포상에 주주들....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006349663&office_id=018&code=019680&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.11"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 11.65
   },
-  "built_at": "2026-10-01T22:53:13"
+  "built_at": "2026-10-02T05:15:56"
 }

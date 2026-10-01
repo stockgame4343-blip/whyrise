@@ -9,10 +9,10 @@
       "close_price": 7508.0,
       "trading_volume": 80380,
       "trading_value": 603493040,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -127,15 +129,25 @@
       "close_price": 8260.0,
       "trading_volume": 119245,
       "trading_value": 984963700,
-      "rise_reason": "치매 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "치매 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -143,9 +155,9 @@
       "close_price": 16639.0,
       "trading_volume": 129998,
       "trading_value": 2163036722,
-      "rise_reason": "고령화 사회(노인복지) 테마 강세",
+      "rise_reason": "관련 보도: 세계 1위 방사성의약품 플루빅토 넘보는 …진단·치료 투...",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
@@ -158,7 +170,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "고령화 사회(노인복지) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "세계 1위 방사성의약품 ‘플루빅토’ 넘보는 퓨쳐켐…진단·치료 ‘투...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001166357",
+          "source": "조선비즈",
+          "date": "2026-05-22"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -166,9 +188,9 @@
       "close_price": 19747.0,
       "trading_volume": 565932,
       "trading_value": 11175459204,
-      "rise_reason": "허가 관련 뉴스",
+      "rise_reason": "전립선암 진단제 허가",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -235,15 +257,25 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "퓨쳐켐, 전립선암 진단제 허가에 16%대 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006272859&office_id=018&code=220100&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20251114",
       "change_rate": 14.78,
       "close_price": 29900.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "치매 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -259,7 +291,9 @@
       "source": "estimated",
       "trading_volume": 5949301,
       "trading_value": 177884099900,
-      "market_cap": 670679177837
+      "market_cap": 670679177837,
+      "reason_previous": "조선/해운",
+      "reason_kind": "theme"
     },
     {
       "date": "20251112",
@@ -282,9 +316,9 @@
       "date": "20250904",
       "change_rate": 13.18,
       "close_price": 22750.0,
-      "rise_reason": "바이오",
+      "rise_reason": "국내 최초 방사선 치료제 5년 내 1000억 매출 찍는다",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -324,7 +358,17 @@
       "source": "estimated",
       "trading_volume": 4031304,
       "trading_value": 91712166000,
-      "market_cap": 510299374441
+      "market_cap": 510299374441,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "퓨쳐켐, 국내 최초 방사선 치료제 5년 내 1000억 매출 찍는다",
+          "link": "https://n.news.naver.com/mnews/article/018/0006106486",
+          "source": "이데일리",
+          "date": "2025-09-04"
+        }
+      ]
     }
   ],
   "stats": {
@@ -335,5 +379,5 @@
     "count_recent": 0,
     "avg_rate": 12.61
   },
-  "built_at": "2026-10-01T22:56:30"
+  "built_at": "2026-10-02T05:15:56"
 }

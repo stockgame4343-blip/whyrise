@@ -9,9 +9,9 @@
       "close_price": 2375.0,
       "trading_volume": 383296,
       "trading_value": 910328000,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "30억 규모 자사주 취득 신탁계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "재택근무/스마트워크",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이씨에스, 30억 규모 자사주 취득 신탁계약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002685513&office_id=016&code=067010&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.08.19"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 11.5
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 1115.0,
       "trading_volume": 2071609,
       "trading_value": 2309844035,
-      "rise_reason": "거래량 급증",
+      "rise_reason": "최대주주 공개매수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "쿠팡(coupang)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 급증",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "상폐 기로 아이스크림에듀, 최대주주 공개매수에 24% 급등[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009162296&office_id=421&code=289010&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260826",
@@ -86,10 +96,10 @@
       "close_price": 1009.0,
       "trading_volume": 391762,
       "trading_value": 395287858,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "교육/온라인 교육",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -166,5 +178,5 @@
     "count_recent": 1,
     "avg_rate": 17.35
   },
-  "built_at": "2026-10-01T23:00:09"
+  "built_at": "2026-10-02T05:15:56"
 }

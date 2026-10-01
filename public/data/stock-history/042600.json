@@ -9,9 +9,9 @@
       "close_price": 12180.0,
       "trading_volume": 40827,
       "trading_value": 497272860,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI, 투자재원 확보",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성SDI, 투자재원 확보에 8%대 급등…이차전지주 동반 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005565381&office_id=014&code=066970&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -102,9 +112,9 @@
       "close_price": 11480.0,
       "trading_volume": 22801,
       "trading_value": 261755480,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -141,16 +151,18 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260306",
       "change_rate": 11.13,
       "close_price": 12780.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -158,7 +170,9 @@
       "source": "estimated",
       "trading_volume": 33632,
       "trading_value": 429816960,
-      "market_cap": 158778720000
+      "market_cap": 158778720000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -198,9 +212,9 @@
       "date": "20251017",
       "change_rate": 30.0,
       "close_price": 12870.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -228,16 +242,26 @@
       "source": "estimated",
       "trading_volume": 668802,
       "trading_value": 8607481740,
-      "market_cap": 159896880000
+      "market_cap": 159896880000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]새로닉스 30.00% 상한가…금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003583104",
+          "source": "서울신문",
+          "date": "2025-10-17"
+        }
+      ]
     },
     {
       "date": "20251016",
       "change_rate": 12.24,
       "close_price": 9900.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -258,7 +282,9 @@
       "source": "estimated",
       "trading_volume": 249904,
       "trading_value": 2474049600,
-      "market_cap": 122997600000
+      "market_cap": 122997600000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -269,5 +295,5 @@
     "count_recent": 0,
     "avg_rate": 15.7
   },
-  "built_at": "2026-10-01T22:56:57"
+  "built_at": "2026-10-02T05:15:56"
 }

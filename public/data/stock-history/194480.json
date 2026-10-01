@@ -9,9 +9,9 @@
       "close_price": 18460.0,
       "trading_volume": 433051,
       "trading_value": 7994121460,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "어반브레이크 2026서 쿠키런 아트 프로젝트 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상현실(VR)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "데브시스터즈, '어반브레이크 2026'서 쿠키런 아트 프로젝트 공개…대...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002432690&office_id=092&code=194480&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,9 +96,9 @@
       "close_price": 17090.0,
       "trading_volume": 140371,
       "trading_value": 2398940390,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 신작 쿠키런: 크럼블 글로벌 사전 등록 개시…대세 ....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "캐릭터상품",
       "news": [
@@ -155,16 +165,26 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "데브시스터즈, 신작 '쿠키런: 크럼블' 글로벌 사전 등록 개시…대세 ....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002428464&office_id=092&code=194480&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260325",
       "change_rate": 14.61,
       "close_price": 40000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -172,16 +192,18 @@
       "source": "estimated",
       "trading_volume": 418107,
       "trading_value": 16724280000,
-      "market_cap": 485217391304
+      "market_cap": 485217391304,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 14.35,
       "close_price": 39450.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -189,7 +211,9 @@
       "source": "estimated",
       "trading_volume": 189735,
       "trading_value": 7485045750,
-      "market_cap": 478545652173
+      "market_cap": 478545652173,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
@@ -260,10 +284,10 @@
       "date": "20250818",
       "change_rate": 17.2,
       "close_price": 51100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -271,7 +295,9 @@
       "source": "estimated",
       "trading_volume": 259576,
       "trading_value": 13264333600,
-      "market_cap": 619865217391
+      "market_cap": 619865217391,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250807",
@@ -299,5 +325,5 @@
     "count_recent": 0,
     "avg_rate": 20.81
   },
-  "built_at": "2026-10-01T22:56:41"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 28600.0,
       "trading_volume": 293186,
       "trading_value": 8385119600,
-      "rise_reason": "의료AI 임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료AI 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "의료AI 임상 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -86,15 +88,17 @@
       "close_price": 36000.0,
       "trading_volume": 158520,
       "trading_value": 5706720000,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "의료AI 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -102,9 +106,9 @@
       "close_price": 37700.0,
       "trading_volume": 529856,
       "trading_value": 19975571200,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "심전도 기기 美 FDA 허가 획득",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
@@ -171,7 +175,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨어스 심전도 기기 美 FDA 허가 획득",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005304125&office_id=015&code=458870&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260624",
@@ -179,9 +193,9 @@
       "close_price": 33900.0,
       "trading_volume": 501208,
       "trading_value": 16990951200,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2030년 매출 1조 가능",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -248,7 +262,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]\"씨어스, 2030년 매출 1조 가능…초성장주 탑승 기회...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005780453&office_id=277&code=458870&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.24"
+        }
+      ]
     },
     {
       "date": "20260616",
@@ -256,9 +280,9 @@
       "close_price": 32100.0,
       "trading_volume": 421802,
       "trading_value": 13539844200,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "씽크 도입 병원 200곳 돌파",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -325,7 +349,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨어스 ‘씽크’ 도입 병원 200곳 돌파…병원 운영 고도화 나선다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000101568&office_id=296&code=458870&page=&sm=",
+          "source": "코메디닷컴",
+          "date": "2026.06.16"
+        }
+      ]
     },
     {
       "date": "20260326",
@@ -427,9 +461,9 @@
       "date": "20260310",
       "change_rate": 10.95,
       "close_price": 47992.0,
-      "rise_reason": "무상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 메쥬, 독주에 도전장… 동아에스티 손잡고 영업망 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -463,7 +497,17 @@
       "source": "estimated",
       "trading_volume": 634219,
       "trading_value": 30437438248,
-      "market_cap": 1826510345679
+      "market_cap": 1826510345679,
+      "reason_previous": "무상증자",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "메쥬, ‘씨어스’ 독주에 도전장… 동아에스티 손잡고 영업망 확대",
+          "link": "https://n.news.naver.com/mnews/article/011/0004597316",
+          "source": "서울경제",
+          "date": "2026-03-09"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -576,5 +620,5 @@
     "count_recent": 0,
     "avg_rate": 14.63
   },
-  "built_at": "2026-10-01T22:54:23"
+  "built_at": "2026-10-02T05:15:56"
 }

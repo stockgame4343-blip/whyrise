@@ -9,9 +9,9 @@
       "close_price": 22150.0,
       "trading_volume": 919879,
       "trading_value": 20375319850,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 반도체 메가 프로젝트",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 메가 프로젝트에 건설주 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000180222&office_id=656&code=013580&page=&sm=",
+          "source": "대전일보",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -151,9 +161,9 @@
       "date": "20260320",
       "change_rate": 13.95,
       "close_price": 29400.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "건설주 동반 강세 — 대미 원전 투자 수혜",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -169,7 +179,17 @@
       "source": "estimated",
       "trading_volume": 639723,
       "trading_value": 18807856200,
-      "market_cap": 262619689119
+      "market_cap": 262619689119,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "“대미 원전 투자 수혜”…건설주 ‘불기둥’[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006239225",
+          "source": "이데일리",
+          "date": "2026-03-20"
+        }
+      ]
     }
   ],
   "stats": {
@@ -180,5 +200,5 @@
     "count_recent": 0,
     "avg_rate": 16.84
   },
-  "built_at": "2026-10-01T22:52:58"
+  "built_at": "2026-10-02T05:15:57"
 }

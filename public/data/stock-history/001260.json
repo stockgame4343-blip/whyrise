@@ -9,9 +9,9 @@
       "close_price": 8820.0,
       "trading_volume": 552082,
       "trading_value": 4869363240,
-      "rise_reason": "관련 보도: AI 데이터센터·원전이 새 성장동력 부각..건설株 강세[종목NOW]",
+      "rise_reason": "건설주 동반 강세 — AI 데이터센터·원전이 새 성장동력 부각",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -93,7 +93,8 @@
           "source": "파이낸셜뉴스",
           "date": "2026-09-28"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260706",
@@ -101,9 +102,9 @@
       "close_price": 11880.0,
       "trading_volume": 2675021,
       "trading_value": 31779249480,
-      "rise_reason": "건설 중소형 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설 중소형 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -170,7 +171,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건설 중소형 수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260701",
@@ -178,9 +181,9 @@
       "close_price": 10340.0,
       "trading_volume": 1423028,
       "trading_value": 14714109520,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설 중소형 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -247,7 +250,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260624",
@@ -255,9 +260,9 @@
       "close_price": 7980.0,
       "trading_volume": 225313,
       "trading_value": 1797997740,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설 중소형 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -324,7 +329,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260410",
@@ -348,15 +355,25 @@
       "close_price": 9560.0,
       "trading_volume": 212157,
       "trading_value": 2028220920,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20251205",
@@ -432,5 +449,5 @@
     "count_recent": 1,
     "avg_rate": 20.22
   },
-  "built_at": "2026-10-01T22:53:07"
+  "built_at": "2026-10-02T05:15:56"
 }

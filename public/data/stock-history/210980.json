@@ -9,10 +9,10 @@
       "close_price": 4155.0,
       "trading_volume": 1890638,
       "trading_value": 7855600890,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "부동산",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260902",
@@ -86,9 +88,9 @@
       "close_price": 4220.0,
       "trading_volume": 6280574,
       "trading_value": 26504022280,
-      "rise_reason": "유상증자 공시",
+      "rise_reason": "유상증자 권리락 효과",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "금감원",
       "news": [
@@ -143,7 +145,17 @@
       ],
       "sector": "부동산",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "SK디앤디, 장 초반 20% 급등…유상증자 권리락 효과",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005327751&office_id=015&code=210980&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260901",
@@ -151,9 +163,9 @@
       "close_price": 3650.0,
       "trading_volume": 1185074,
       "trading_value": 4325520100,
-      "rise_reason": "유상증자 공시",
+      "rise_reason": "유증 1차 발행가 2260원",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "금감원",
       "news": [
@@ -202,7 +214,17 @@
       ],
       "sector": "부동산",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "SK디앤디, 유증 1차 발행가 2260원…권리락 첫날 '上' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009143205&office_id=421&code=210980&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.09.01"
+        }
+      ]
     },
     {
       "date": "20260806",
@@ -210,9 +232,9 @@
       "close_price": 4041.0,
       "trading_volume": 1991756,
       "trading_value": 8048685996,
-      "rise_reason": "금감원 관련 뉴스",
+      "rise_reason": "금감원 정정요구",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "금감원",
       "news": [
@@ -279,7 +301,17 @@
       ],
       "sector": "부동산",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "금감원 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'유증 추진' SK디앤디, 금감원 정정요구에 상한가 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005557979&office_id=014&code=210980&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.06"
+        }
+      ]
     },
     {
       "date": "20251001",
@@ -338,5 +370,5 @@
     "count_recent": 3,
     "avg_rate": 19.88
   },
-  "built_at": "2026-10-01T22:53:13"
+  "built_at": "2026-10-02T05:15:56"
 }

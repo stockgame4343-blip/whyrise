@@ -9,10 +9,10 @@
       "close_price": 1587.0,
       "trading_volume": 1110143,
       "trading_value": 1761796941,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "자동차",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20250730",
@@ -114,9 +116,9 @@
       "date": "20250722",
       "change_rate": 29.89,
       "close_price": 578.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "29.89% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -144,7 +146,17 @@
       "source": "estimated",
       "trading_volume": 18591557,
       "trading_value": 10745919946,
-      "market_cap": 49892508143
+      "market_cap": 49892508143,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]KR모터스 29.89% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003559865",
+          "source": "서울신문",
+          "date": "2025-07-22"
+        }
+      ]
     }
   ],
   "stats": {
@@ -155,5 +167,5 @@
     "count_recent": 0,
     "avg_rate": 29.98
   },
-  "built_at": "2026-10-01T22:53:30"
+  "built_at": "2026-10-02T05:15:56"
 }

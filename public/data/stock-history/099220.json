@@ -9,15 +9,17 @@
       "close_price": 7440.0,
       "trading_volume": 46033,
       "trading_value": 342485520,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -25,15 +27,17 @@
       "close_price": 9370.0,
       "trading_volume": 59932,
       "trading_value": 561562840,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -56,10 +60,10 @@
       "date": "20260204",
       "change_rate": 12.36,
       "close_price": 1209.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -67,7 +71,9 @@
       "source": "estimated",
       "trading_volume": 8773319,
       "trading_value": 10606942671,
-      "market_cap": 78464100000
+      "market_cap": 78464100000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -78,5 +84,5 @@
     "count_recent": 0,
     "avg_rate": 12.38
   },
-  "built_at": "2026-10-01T22:59:14"
+  "built_at": "2026-10-02T05:15:57"
 }

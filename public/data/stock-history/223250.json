@@ -9,9 +9,9 @@
       "close_price": 3645.0,
       "trading_volume": 6568860,
       "trading_value": 23943494700,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료AI 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -24,7 +24,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -32,9 +34,9 @@
       "close_price": 3260.0,
       "trading_volume": 161547,
       "trading_value": 526643220,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료AI 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -101,7 +103,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -109,15 +113,17 @@
       "close_price": 2830.0,
       "trading_volume": 86940,
       "trading_value": 246040200,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "의료AI 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -295,10 +301,10 @@
       "close_price": 6250.0,
       "trading_volume": 1553996,
       "trading_value": 9712475000,
-      "rise_reason": "오가노이드 합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오가노이드",
       "news": [
         {
@@ -364,7 +370,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "오가노이드 합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -532,5 +540,5 @@
     "count_recent": 1,
     "avg_rate": 16.0
   },
-  "built_at": "2026-10-01T22:57:54"
+  "built_at": "2026-10-02T05:15:56"
 }

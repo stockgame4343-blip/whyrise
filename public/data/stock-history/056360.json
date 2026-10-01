@@ -41,9 +41,9 @@
       "close_price": 11260.0,
       "trading_volume": 2076026,
       "trading_value": 23376052760,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련주 동반 강세 — 포톤 2연상",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -110,7 +110,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "양자컴 관련株 동반 강세…포톤 '2연상'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006290442&office_id=018&code=056360&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -189,9 +199,9 @@
       "close_price": 10700.0,
       "trading_volume": 1044666,
       "trading_value": 11177926200,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "통신장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -252,7 +262,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260413",
@@ -260,15 +272,17 @@
       "close_price": 12440.0,
       "trading_volume": 7653930,
       "trading_value": 95214889200,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "양자암호 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -305,9 +319,9 @@
       "close_price": 7410.0,
       "trading_volume": 2404456,
       "trading_value": 17817018960,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "양자암호 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -320,15 +334,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
       "change_rate": 11.73,
       "close_price": 7430.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "통신장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -344,7 +360,9 @@
       "source": "estimated",
       "trading_volume": 1967641,
       "trading_value": 14619572630,
-      "market_cap": 72766825396
+      "market_cap": 72766825396,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
@@ -398,9 +416,9 @@
       "date": "20260223",
       "change_rate": 11.36,
       "close_price": 5540.0,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "지난해 매출 626억",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -422,7 +440,17 @@
       "source": "estimated",
       "trading_volume": 655916,
       "trading_value": 3633774640,
-      "market_cap": 54256825396
+      "market_cap": 54256825396,
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "코위버, 지난해 매출 626억…전년대비 34%↑",
+          "link": "https://n.news.naver.com/mnews/article/018/0006222810",
+          "source": "이데일리",
+          "date": "2026-02-23"
+        }
+      ]
     },
     {
       "date": "20251014",
@@ -457,5 +485,5 @@
     "count_recent": 0,
     "avg_rate": 15.32
   },
-  "built_at": "2026-10-01T22:58:30"
+  "built_at": "2026-10-02T05:15:56"
 }

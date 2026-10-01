@@ -9,10 +9,10 @@
       "close_price": 4630.0,
       "trading_volume": 6483091,
       "trading_value": 30016711330,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "증권",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -86,10 +88,10 @@
       "close_price": 4265.0,
       "trading_volume": 3528647,
       "trading_value": 15049679455,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -166,5 +170,5 @@
     "count_recent": 0,
     "avg_rate": 12.27
   },
-  "built_at": "2026-09-27T08:48:28"
+  "built_at": "2026-10-02T05:15:57"
 }

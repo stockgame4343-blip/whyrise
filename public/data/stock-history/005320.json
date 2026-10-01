@@ -9,10 +9,10 @@
       "close_price": 1146.0,
       "trading_volume": 3040738,
       "trading_value": 3484685748,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260901",
@@ -86,9 +88,9 @@
       "close_price": 1040.0,
       "trading_volume": 1496940,
       "trading_value": 1556817600,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "패션 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260818",
@@ -163,10 +167,10 @@
       "close_price": 896.0,
       "trading_volume": 1277988,
       "trading_value": 1145077248,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -273,10 +279,10 @@
       "date": "20260225",
       "change_rate": 13.13,
       "close_price": 1206.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -291,16 +297,18 @@
       "source": "estimated",
       "trading_volume": 890279,
       "trading_value": 1073676474,
-      "market_cap": 41263686131
+      "market_cap": 41263686131,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
       "change_rate": 10.57,
       "close_price": 1046.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -308,16 +316,18 @@
       "source": "estimated",
       "trading_volume": 1028265,
       "trading_value": 1075565190,
-      "market_cap": 35789233576
+      "market_cap": 35789233576,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260220",
       "change_rate": 10.51,
       "close_price": 946.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -325,7 +335,9 @@
       "source": "estimated",
       "trading_volume": 461090,
       "trading_value": 436191140,
-      "market_cap": 32367700729
+      "market_cap": 32367700729,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250702",
@@ -384,5 +396,5 @@
     "count_recent": 2,
     "avg_rate": 15.81
   },
-  "built_at": "2026-10-01T22:53:20"
+  "built_at": "2026-10-02T05:15:56"
 }

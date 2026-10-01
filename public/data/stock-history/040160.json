@@ -9,10 +9,10 @@
       "close_price": 6280.0,
       "trading_volume": 125891,
       "trading_value": 790595480,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화폐/금융자동화기기(디지털화폐 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -102,9 +104,9 @@
       "close_price": 5540.0,
       "trading_volume": 191354,
       "trading_value": 1060101160,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우즈벡 카라칼팍스탄과 스마트에너지 MOU",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화폐/금융자동화기기(디지털화폐 등)",
       "news": [
@@ -171,7 +173,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "누리플렉스, 우즈벡 카라칼팍스탄과 스마트에너지 MOU",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003040469&office_id=029&code=040160&page=&sm=",
+          "source": "디지털타임스",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -195,10 +207,10 @@
       "close_price": 5240.0,
       "trading_volume": 32884,
       "trading_value": 172312160,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
         {
@@ -264,7 +276,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -272,9 +286,9 @@
       "close_price": 6810.0,
       "trading_volume": 38091,
       "trading_value": 259399710,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우즈벡 에코에너지와 신재생에너지 협력 맞손",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [
@@ -341,7 +355,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "누리플렉스, 우즈벡 에코에너지와 신재생에너지 협력 '맞손'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003445702&office_id=030&code=040160&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.08"
+        }
+      ]
     },
     {
       "date": "20260423",
@@ -713,9 +737,9 @@
       "date": "20260206",
       "change_rate": 12.91,
       "close_price": 6210.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 기니 전력청과 6955만 달러 규모 스마트 선불식 AMI 공급 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화폐/금융자동화기기(디지털화폐 등)",
       "news": [
@@ -731,7 +755,17 @@
       "source": "estimated",
       "trading_volume": 423365,
       "trading_value": 2629096650,
-      "market_cap": 74834792626
+      "market_cap": 74834792626,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "누리플렉스, 기니 전력청과 6955만 달러 규모 스마트 선불식 AMI 공급 ...",
+          "link": "https://n.news.naver.com/mnews/article/092/0002409344",
+          "source": "지디넷코리아",
+          "date": "2026-02-05"
+        }
+      ]
     },
     {
       "date": "20260204",
@@ -806,5 +840,5 @@
     "count_recent": 0,
     "avg_rate": 14.36
   },
-  "built_at": "2026-10-01T22:58:08"
+  "built_at": "2026-10-02T05:15:56"
 }

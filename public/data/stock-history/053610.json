@@ -25,9 +25,9 @@
       "close_price": 66200.0,
       "trading_volume": 30067,
       "trading_value": 1990435400,
-      "rise_reason": "전자파 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "실적 부담 자회사 적자 축소 기대",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전자파",
       "news": [
@@ -40,7 +40,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전자파 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "프로텍, '실적 부담' 자회사 적자 축소 기대…4% 상승[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006325831",
+          "source": "이데일리",
+          "date": "2026-07-09"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -48,9 +58,9 @@
       "close_price": 81300.0,
       "trading_volume": 49967,
       "trading_value": 4062317100,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -105,7 +115,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -113,9 +133,9 @@
       "close_price": 75600.0,
       "trading_volume": 42442,
       "trading_value": 3208615200,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -182,7 +202,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260518",
@@ -190,10 +212,10 @@
       "close_price": 92100.0,
       "trading_volume": 167505,
       "trading_value": 15427210500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED장비",
       "news": [
         {
@@ -259,7 +281,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260421",
@@ -436,5 +460,5 @@
     "count_recent": 0,
     "avg_rate": 15.55
   },
-  "built_at": "2026-10-01T22:54:40"
+  "built_at": "2026-10-02T05:15:57"
 }

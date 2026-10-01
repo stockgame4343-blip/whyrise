@@ -9,9 +9,9 @@
       "close_price": 2530.0,
       "trading_volume": 238112,
       "trading_value": 602423360,
-      "rise_reason": "관련 보도: 거래 재개…“기술수출·사업화로 기업가치 회복”",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "관련 보도: 거래 재개…기술수출·사업화로 기업가치 회복",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -33,7 +33,8 @@
           "source": "조선비즈",
           "date": "2026-09-29"
         }
-      ]
+      ],
+      "reason_kind": "related"
     },
     {
       "date": "20260812",
@@ -41,9 +42,9 @@
       "close_price": 614.0,
       "trading_volume": 3449886,
       "trading_value": 2118230004,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "탈모 치료 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -110,7 +111,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -118,9 +121,9 @@
       "close_price": 491.0,
       "trading_volume": 1129956,
       "trading_value": 554808396,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -187,7 +190,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "theme"
     },
     {
       "date": "20260703",
@@ -195,9 +200,9 @@
       "close_price": 604.0,
       "trading_volume": 2374090,
       "trading_value": 1433950360,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "니즈테크 인수 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단/치료제/백신 개발 등)",
       "news": [
@@ -264,7 +269,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "샤페론, 니즈테크 인수 완료…‘바이오·뷰티 성장 엔진’ 가동",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006320668&office_id=018&code=378800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260617",
@@ -272,9 +287,9 @@
       "close_price": 1280.0,
       "trading_volume": 2124325,
       "trading_value": 2719136000,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "아토피 치료제 누겔 핵심 특허 등록",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -341,7 +356,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "샤페론, 아토피 치료제 ‘누겔’ 핵심 특허 등록…FDA 2b상 결과 앞...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006306545&office_id=018&code=378800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -349,9 +374,9 @@
       "close_price": 1300.0,
       "trading_volume": 6118042,
       "trading_value": 7953454600,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "아토피 치료제 누겔 핵심 특허 등록",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -418,7 +443,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "샤페론, 아토피 치료제 ‘누겔’ 핵심 특허 등록…FDA 2b상 결과 앞...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006306545&office_id=018&code=378800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20250924",
@@ -539,5 +574,5 @@
     "count_recent": 1,
     "avg_rate": 80.07
   },
-  "built_at": "2026-10-01T22:59:42"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 31950.0,
       "trading_volume": 146998,
       "trading_value": 4696586100,
-      "rise_reason": "렌터카 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "ESG 경영 성과 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "렌터카",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "도로와철도운송",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "렌터카 인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "롯데렌탈, ‘지속가능경영보고서’ 발간…ESG 경영 성과 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002664045&office_id=016&code=089860&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.07.01"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 13.7
   },
-  "built_at": "2026-10-01T22:52:29"
+  "built_at": "2026-10-02T05:15:57"
 }

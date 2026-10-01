@@ -9,9 +9,9 @@
       "close_price": 10200.0,
       "trading_volume": 341092,
       "trading_value": 3479138400,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "대한산업안전협회와 MOU 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "양방향미디어와서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "플리토, 대한산업안전협회와 MOU 체결…산업 현장 안전 강화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000090226&office_id=293&code=300080&page=&sm=",
+          "source": "블로터",
+          "date": "2026.09.09"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -86,10 +96,10 @@
       "close_price": 8600.0,
       "trading_volume": 197743,
       "trading_value": 1700589800,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "양방향미디어와서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260723",
@@ -163,9 +175,9 @@
       "close_price": 8180.0,
       "trading_volume": 221279,
       "trading_value": 1810062220,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "AI 챗봇 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -178,7 +190,9 @@
       ],
       "sector": "양방향미디어와서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -186,9 +200,9 @@
       "close_price": 7300.0,
       "trading_volume": 48109,
       "trading_value": 351195700,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "300억대 AI 데이터 계약 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -255,7 +269,17 @@
       ],
       "sector": "양방향미디어와서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "플리토, 300억대 AI 데이터 계약 확보…3분기만에 작년 수출액 추월",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086935&office_id=293&code=300080&page=&sm=",
+          "source": "블로터",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260529",
@@ -263,9 +287,9 @@
       "close_price": 10950.0,
       "trading_volume": 49975,
       "trading_value": 547226250,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: AI 통역에 기록 더했다…요약·문서화 한 번에",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -332,7 +356,17 @@
       ],
       "sector": "양방향미디어와서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "플리토, AI 통역에 '기록' 더했다…요약·문서화 한 번에",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002424682&office_id=092&code=300080&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.05.29"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -340,9 +374,9 @@
       "close_price": 9680.0,
       "trading_volume": 159579,
       "trading_value": 1544724720,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 성장 주도한 플랫폼·솔루션…피지컬AI 시장 겨냥",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -409,7 +443,17 @@
       ],
       "sector": "양방향미디어와서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "플리토, 성장 주도한 플랫폼·솔루션…피지컬AI 시장 겨냥",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000084974&office_id=293&code=300080&page=&sm=",
+          "source": "블로터",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -432,9 +476,9 @@
       "date": "20260123",
       "change_rate": 11.52,
       "close_price": 17230.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 데이원컴퍼니와 AI·데이터 기반 직무 교육 협력",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -450,7 +494,17 @@
       "source": "estimated",
       "trading_volume": 1109938,
       "trading_value": 19124231740,
-      "market_cap": 284283310719
+      "market_cap": 284283310719,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "플리토, 데이원컴퍼니와 AI·데이터 기반 직무 교육 협력",
+          "link": "https://n.news.naver.com/mnews/article/030/0003392720",
+          "source": "전자신문",
+          "date": "2026-01-23"
+        }
+      ]
     },
     {
       "date": "20251125",
@@ -568,9 +622,9 @@
       "date": "20251013",
       "change_rate": 14.16,
       "close_price": 12900.0,
-      "rise_reason": "수주 공시",
+      "rise_reason": "42억 공급계약 공시",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -592,15 +646,25 @@
       "source": "estimated",
       "trading_volume": 1273631,
       "trading_value": 16429839900,
-      "market_cap": 212841248303
+      "market_cap": 212841248303,
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]플리토, 42억 공급계약 공시에 상승세",
+          "link": "https://n.news.naver.com/mnews/article/030/0003358318",
+          "source": "전자신문",
+          "date": "2025-10-13"
+        }
+      ]
     },
     {
       "date": "20251010",
       "change_rate": 11.33,
       "close_price": 11300.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "42억 규모 AI 언어 모델 연구·개발용 데이터 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -622,15 +686,25 @@
       "source": "estimated",
       "trading_volume": 468921,
       "trading_value": 5298807300,
-      "market_cap": 186442333785
+      "market_cap": 186442333785,
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "플리토, 42억 규모 AI 언어 모델 연구·개발용 데이터 공급계약",
+          "link": "https://n.news.naver.com/mnews/article/293/0000073409",
+          "source": "블로터",
+          "date": "2025-10-10"
+        }
+      ]
     },
     {
       "date": "20250812",
       "change_rate": 11.54,
       "close_price": 12570.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: APEC 1~3차 고위관리회의 기간 AI 통번역 지원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -652,7 +726,17 @@
       "source": "estimated",
       "trading_volume": 1955897,
       "trading_value": 24585625290,
-      "market_cap": 207396472184
+      "market_cap": 207396472184,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "플리토, APEC 1~3차 고위관리회의 기간 AI 통번역 지원",
+          "link": "https://n.news.naver.com/mnews/article/030/0003339654",
+          "source": "전자신문",
+          "date": "2025-08-11"
+        }
+      ]
     },
     {
       "date": "20250801",
@@ -675,9 +759,9 @@
       "date": "20250728",
       "change_rate": 11.91,
       "close_price": 10520.0,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "실적으로 입증",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -717,7 +801,17 @@
       "source": "estimated",
       "trading_volume": 659308,
       "trading_value": 6935920160,
-      "market_cap": 173572862957
+      "market_cap": 173572862957,
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "&quot;실적으로 입증&quot;…플리토, 반기 영업익 26억원 기록",
+          "link": "https://n.news.naver.com/mnews/article/092/0002383800",
+          "source": "지디넷코리아",
+          "date": "2025-07-28"
+        }
+      ]
     },
     {
       "date": "20250616",
@@ -762,5 +856,5 @@
     "count_recent": 1,
     "avg_rate": 15.34
   },
-  "built_at": "2026-10-01T22:56:55"
+  "built_at": "2026-10-02T05:15:56"
 }

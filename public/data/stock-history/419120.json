@@ -7,10 +7,10 @@
       "date": "20250812",
       "change_rate": 12.06,
       "close_price": 7340.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -18,7 +18,9 @@
       "source": "estimated",
       "trading_volume": 4597773,
       "trading_value": 33747653820,
-      "market_cap": 104379684763
+      "market_cap": 104379684763,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250729",
@@ -119,9 +121,9 @@
       "date": "20250721",
       "change_rate": 11.34,
       "close_price": 6205.0,
-      "rise_reason": "무상증자",
+      "rise_reason": "100% 무상증자 결정",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -161,16 +163,26 @@
       "source": "estimated",
       "trading_volume": 8793763,
       "trading_value": 54565299415,
-      "market_cap": 88239229422
+      "market_cap": 88239229422,
+      "reason_previous": "무상증자",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "산돌, 100% 무상증자 결정에 11%↑[핫스탁](종합)",
+          "link": "https://n.news.naver.com/mnews/article/003/0013375728",
+          "source": "뉴시스",
+          "date": "2025-07-21"
+        }
+      ]
     },
     {
       "date": "20250714",
       "change_rate": 10.02,
       "close_price": 5239.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -178,7 +190,9 @@
       "source": "estimated",
       "trading_volume": 1884558,
       "trading_value": 9873199362,
-      "market_cap": 74502066549
+      "market_cap": 74502066549,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250618",
@@ -206,5 +220,5 @@
     "count_recent": 0,
     "avg_rate": 13.25
   },
-  "built_at": "2026-09-27T10:21:33"
+  "built_at": "2026-10-02T05:15:57"
 }

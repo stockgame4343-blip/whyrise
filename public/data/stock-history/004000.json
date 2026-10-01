@@ -9,9 +9,9 @@
       "close_price": 71200.0,
       "trading_volume": 406564,
       "trading_value": 28947356800,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "실적 개선",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "요소수",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "롯데정밀화학, 실적 개선에 8% 강세…롯데케미칼 13%↑[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008917870&office_id=421&code=004000&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -166,5 +176,5 @@
     "count_recent": 0,
     "avg_rate": 10.3
   },
-  "built_at": "2026-09-27T08:37:22"
+  "built_at": "2026-10-02T05:15:57"
 }

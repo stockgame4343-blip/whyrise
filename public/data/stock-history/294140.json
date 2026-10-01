@@ -9,10 +9,10 @@
       "close_price": 2600.0,
       "trading_volume": 65738,
       "trading_value": 170918800,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260807",
@@ -80,9 +82,9 @@
       "close_price": 2080.0,
       "trading_volume": 324221,
       "trading_value": 674379680,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 계속되는 순환매",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -143,7 +145,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "계속되는 순환매…2차전지 관련주 상승세 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003119310&office_id=119&code=025900&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.07"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -180,10 +192,10 @@
       "close_price": 2410.0,
       "trading_volume": 65867,
       "trading_value": 158739470,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [
         {
@@ -231,7 +243,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -239,10 +253,10 @@
       "close_price": 2560.0,
       "trading_volume": 135998,
       "trading_value": 348154880,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [
         {
@@ -290,7 +304,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -382,5 +398,5 @@
     "count_recent": 1,
     "avg_rate": 13.73
   },
-  "built_at": "2026-10-01T22:58:09"
+  "built_at": "2026-10-02T05:15:56"
 }

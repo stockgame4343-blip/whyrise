@@ -9,10 +9,10 @@
       "close_price": 33600.0,
       "trading_volume": 225210,
       "trading_value": 7567056000,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -147,9 +149,9 @@
       "date": "20260129",
       "change_rate": 12.54,
       "close_price": 32750.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 반도체·원전·우주항공 테마에 승계까지… 최고가, 신탁...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -171,15 +173,25 @@
       "source": "estimated",
       "trading_volume": 1052307,
       "trading_value": 34463054250,
-      "market_cap": 573125000000
+      "market_cap": 573125000000,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "반도체·원전·우주항공 테마에 승계까지… 한양이엔지 최고가, 신탁...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001139048",
+          "source": "조선비즈",
+          "date": "2026-01-28"
+        }
+      ]
     },
     {
       "date": "20260128",
       "change_rate": 11.28,
       "close_price": 29100.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 반도체·원전·우주항공 테마에 승계까지… 최고가, 신탁...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -207,7 +219,17 @@
       "source": "estimated",
       "trading_volume": 741912,
       "trading_value": 21589639200,
-      "market_cap": 509250000000
+      "market_cap": 509250000000,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "반도체·원전·우주항공 테마에 승계까지… 한양이엔지 최고가, 신탁...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001139048",
+          "source": "조선비즈",
+          "date": "2026-01-28"
+        }
+      ]
     },
     {
       "date": "20260105",
@@ -248,5 +270,5 @@
     "count_recent": 0,
     "avg_rate": 14.68
   },
-  "built_at": "2026-10-01T22:54:50"
+  "built_at": "2026-10-02T05:15:56"
 }

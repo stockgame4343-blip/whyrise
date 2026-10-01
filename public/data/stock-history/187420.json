@@ -56,9 +56,9 @@
       "close_price": 1988.0,
       "trading_volume": 762695,
       "trading_value": 1516237660,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 공정수 재이용 확대 수혜",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단키트)",
       "news": [
@@ -125,7 +125,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "HLB제넥스, 반도체 공정수 재이용 확대 수혜…美 공급망 진입 '속도'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005559869&office_id=014&code=187420&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -133,9 +143,9 @@
       "close_price": 1900.0,
       "trading_volume": 2105363,
       "trading_value": 4000189700,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유전자 치료제 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -202,7 +212,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -213,5 +225,5 @@
     "count_recent": 1,
     "avg_rate": 24.18
   },
-  "built_at": "2026-10-01T22:58:25"
+  "built_at": "2026-10-02T05:15:56"
 }

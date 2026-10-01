@@ -9,15 +9,25 @@
       "close_price": 823000.0,
       "trading_volume": 184074,
       "trading_value": 151492902000,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주주 동반 강세 — 제2우주센터 건립 소식",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 제2우주센터 건립 소식에…우주항공株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001185201&office_id=366&code=488900&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -25,9 +35,9 @@
       "close_price": 801000.0,
       "trading_volume": 182444,
       "trading_value": 146137644000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주항공산업 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -94,7 +104,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -102,15 +114,17 @@
       "close_price": 736000.0,
       "trading_volume": 112740,
       "trading_value": 82976640000,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -118,9 +132,9 @@
       "close_price": 757000.0,
       "trading_volume": 134277,
       "trading_value": 101647689000,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -187,7 +201,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260616",
@@ -391,9 +407,9 @@
       "date": "20260303",
       "change_rate": 29.86,
       "close_price": 661000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "방산주 동반 강세 — 이번엔 김승연 어서 타! 밈",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "드론(Drone)",
       "news": [],
@@ -402,15 +418,25 @@
       "source": "estimated",
       "trading_volume": 1163311,
       "trading_value": 768948571000,
-      "market_cap": 14542000000000
+      "market_cap": 14542000000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "이번엔 김승연 &quot;어서 타!&quot; 밈…이란 사태에 방산주 '급등'",
+          "link": "https://n.news.naver.com/mnews/article/243/0000093881",
+          "source": "이코노미스트",
+          "date": "2026-03-03"
+        }
+      ]
     },
     {
       "date": "20250613",
       "change_rate": 14.35,
       "close_price": 526000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "드론 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "드론(Drone)",
       "news": [],
@@ -419,7 +445,9 @@
       "source": "estimated",
       "trading_volume": 629467,
       "trading_value": 331099642000,
-      "market_cap": 11572000000000
+      "market_cap": 11572000000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -430,5 +458,5 @@
     "count_recent": 0,
     "avg_rate": 17.82
   },
-  "built_at": "2026-10-01T22:52:07"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 1853.0,
       "trading_volume": 329162,
       "trading_value": 609937186,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "24억 규모 자사주 취득 신탁 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "엔젤산업",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "토박스코리아, 24억 규모 자사주 취득 신탁 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014055954&office_id=003&code=215480&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.09"
+        }
+      ]
     },
     {
       "date": "20260703",
@@ -86,10 +96,10 @@
       "close_price": 1749.0,
       "trading_volume": 103973,
       "trading_value": 181848777,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔젤산업",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -166,5 +178,5 @@
     "count_recent": 0,
     "avg_rate": 11.5
   },
-  "built_at": "2026-10-01T22:59:44"
+  "built_at": "2026-10-02T05:15:57"
 }

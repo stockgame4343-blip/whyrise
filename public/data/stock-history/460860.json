@@ -9,10 +9,10 @@
       "close_price": 10840.0,
       "trading_volume": 753677,
       "trading_value": 8169858680,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 주요종목",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -86,9 +88,9 @@
       "close_price": 14490.0,
       "trading_volume": 5740362,
       "trading_value": 83177845380,
-      "rise_reason": "1분기 실적 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "올해 1분기 영업이익 214억원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 주요종목",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "1분기 실적 발표",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "동국제강, 올해 1분기 영업이익 214억원…전년比 404% ↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004614340&office_id=011&code=460860&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260227",
@@ -190,5 +202,5 @@
     "count_recent": 0,
     "avg_rate": 15.35
   },
-  "built_at": "2026-10-01T22:52:45"
+  "built_at": "2026-10-02T05:15:56"
 }

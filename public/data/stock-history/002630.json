@@ -9,9 +9,9 @@
       "close_price": 2268.0,
       "trading_volume": 1397996,
       "trading_value": 3170654928,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SPF 실험용 토끼 생산·공급 개시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "신약개발",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오리엔트바이오, SPF 실험용 토끼 생산·공급 개시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014106182&office_id=003&code=002630&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260721",
@@ -86,9 +96,9 @@
       "close_price": 2247.0,
       "trading_volume": 2063988,
       "trading_value": 4637781036,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "연구용 영장류 공급 부족",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "신약개발",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오리엔트바이오 \"연구용 영장류 공급 부족…CRO사업 수혜 기대\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014074835&office_id=003&code=002630&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260624",
@@ -163,9 +183,9 @@
       "close_price": 880.0,
       "trading_volume": 1749519,
       "trading_value": 1539576720,
-      "rise_reason": "무상감자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "최대주주 300만주 장내 취득 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "영장류",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "무상감자 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오리엔트바이오, 최대주주 300만주 장내 취득 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006313508&office_id=018&code=002630&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.24"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -240,9 +270,9 @@
       "close_price": 978.0,
       "trading_volume": 1424307,
       "trading_value": 1392972246,
-      "rise_reason": "영장류 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "최대주주 장내매수 등 기업가치 제고 방안 검토",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "영장류",
       "news": [
@@ -309,7 +339,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영장류 신약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오리엔트바이오, 최대주주 장내매수 등 기업가치 제고 방안 검토",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013999906&office_id=003&code=002630&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -349,9 +389,9 @@
       "date": "20260212",
       "change_rate": 29.83,
       "close_price": 1410.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "29.83% 금일 증시 상승률 1위로",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "영장류",
       "news": [
@@ -385,15 +425,25 @@
       "source": "estimated",
       "trading_volume": 8011201,
       "trading_value": 11295793410,
-      "market_cap": 83555555555
+      "market_cap": 83555555555,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]오리엔트바이오 29.83% 폭등 금일 증시 상승률 1위로 마...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003617624",
+          "source": "서울신문",
+          "date": "2026-02-12"
+        }
+      ]
     },
     {
       "date": "20251113",
       "change_rate": 10.68,
       "close_price": 1326.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "바이오주 동반 강세 — 美헬스케어 훈풍에 에이비엘 효과",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "영장류",
       "news": [
@@ -415,7 +465,17 @@
       "source": "estimated",
       "trading_volume": 21281536,
       "trading_value": 28219316736,
-      "market_cap": 78577777777
+      "market_cap": 78577777777,
+      "reason_previous": "바이오",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美헬스케어 훈풍에 에이비엘 효과…바이오주 ‘불기둥’[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006163190",
+          "source": "이데일리",
+          "date": "2025-11-13"
+        }
+      ]
     }
   ],
   "stats": {
@@ -426,5 +486,5 @@
     "count_recent": 0,
     "avg_rate": 16.24
   },
-  "built_at": "2026-10-01T22:53:19"
+  "built_at": "2026-10-02T05:15:56"
 }

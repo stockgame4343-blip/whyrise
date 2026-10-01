@@ -9,10 +9,10 @@
       "close_price": 6580.0,
       "trading_volume": 156358,
       "trading_value": 1028835640,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -24,15 +24,17 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250730",
       "change_rate": 11.9,
       "close_price": 6300.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "글로벌 축산 공급망 확대 수혜 기대",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -60,7 +62,17 @@
       "source": "estimated",
       "trading_volume": 13749852,
       "trading_value": 86624067600,
-      "market_cap": 208454400000
+      "market_cap": 208454400000,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[한경유레카 특징주] 이지바이오, 글로벌 축산 공급망 확대 수혜 기대",
+          "link": "https://n.news.naver.com/mnews/article/015/0005164586",
+          "source": "한국경제",
+          "date": "2025-07-30"
+        }
+      ]
     }
   ],
   "stats": {
@@ -71,5 +83,5 @@
     "count_recent": 0,
     "avg_rate": 10.96
   },
-  "built_at": "2026-09-27T09:33:03"
+  "built_at": "2026-10-02T05:15:57"
 }

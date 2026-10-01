@@ -9,9 +9,9 @@
       "close_price": 7480.0,
       "trading_volume": 298170,
       "trading_value": 2230311600,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "출산장려정책 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "출산장려정책",
       "news": [
@@ -72,15 +72,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20251230",
       "change_rate": 11.19,
       "close_price": 14810.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "저출산 대응책 강화 시그널",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -114,16 +116,26 @@
       "source": "estimated",
       "trading_volume": 1417777,
       "trading_value": 20997277370,
-      "market_cap": 112912330827
+      "market_cap": 112912330827,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "저출산 대응책 강화 시그널에…에르코스·꿈비 강세",
+          "link": "https://n.news.naver.com/mnews/article/015/0005230496",
+          "source": "한국경제",
+          "date": "2025-12-30"
+        }
+      ]
     },
     {
       "date": "20251224",
       "change_rate": 11.39,
       "close_price": 13010.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -138,7 +150,9 @@
       "source": "estimated",
       "trading_volume": 753919,
       "trading_value": 9808486190,
-      "market_cap": 99189022556
+      "market_cap": 99189022556,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251217",
@@ -192,10 +206,10 @@
       "date": "20251013",
       "change_rate": 10.91,
       "close_price": 11280.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -203,7 +217,9 @@
       "source": "estimated",
       "trading_volume": 188796,
       "trading_value": 2129618880,
-      "market_cap": 85999398496
+      "market_cap": 85999398496,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250704",
@@ -290,5 +306,5 @@
     "count_recent": 0,
     "avg_rate": 14.81
   },
-  "built_at": "2026-09-27T10:08:33"
+  "built_at": "2026-10-02T05:15:57"
 }

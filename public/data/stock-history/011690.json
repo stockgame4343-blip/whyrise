@@ -9,15 +9,17 @@
       "close_price": 3025.0,
       "trading_volume": 268082,
       "trading_value": 810948050,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -201,9 +203,9 @@
       "date": "20260223",
       "change_rate": 11.03,
       "close_price": 8760.0,
-      "rise_reason": "로봇/자동화",
+      "rise_reason": "위즈진과 로봇·드론 구동계 생태계 조성 MOU",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -225,7 +227,17 @@
       "source": "estimated",
       "trading_volume": 5136168,
       "trading_value": 44992831680,
-      "market_cap": 321448359659
+      "market_cap": 321448359659,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "와이투솔루션, 위즈진과 로봇·드론 구동계 생태계 조성 MOU",
+          "link": "https://n.news.naver.com/mnews/article/092/0002411501",
+          "source": "지디넷코리아",
+          "date": "2026-02-23"
+        }
+      ]
     },
     {
       "date": "20260219",
@@ -439,5 +451,5 @@
     "count_recent": 0,
     "avg_rate": 15.84
   },
-  "built_at": "2026-09-29T22:20:38"
+  "built_at": "2026-10-02T05:15:57"
 }

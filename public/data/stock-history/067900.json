@@ -9,10 +9,10 @@
       "close_price": 6730.0,
       "trading_volume": 476864,
       "trading_value": 3209294720,
-      "rise_reason": "정원오 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "골프",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "해운사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정원오 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260211",
@@ -108,9 +110,9 @@
       "date": "20260116",
       "change_rate": 10.26,
       "close_price": 7090.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 391억 규모 신규시설 투자 결정",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -132,7 +134,17 @@
       "source": "estimated",
       "trading_volume": 1293902,
       "trading_value": 9173765180,
-      "market_cap": 129086106623
+      "market_cap": 129086106623,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "와이엔텍, 391억 규모 신규시설 투자 결정",
+          "link": "https://n.news.naver.com/mnews/article/016/0002586931",
+          "source": "헤럴드경제",
+          "date": "2026-01-16"
+        }
+      ]
     }
   ],
   "stats": {
@@ -143,5 +155,5 @@
     "count_recent": 0,
     "avg_rate": 12.29
   },
-  "built_at": "2026-09-27T09:49:07"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -86,9 +86,9 @@
       "close_price": 15360.0,
       "trading_volume": 2571814,
       "trading_value": 39503063040,
-      "rise_reason": "2차전지주 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "성장동력 확보 속도",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -155,7 +155,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지주 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"불황에도 R&D 늘렸다\"…애경케미칼, 성장동력 확보 속도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006261603&office_id=018&code=161000&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.20"
+        }
+      ]
     },
     {
       "date": "20260327",
@@ -209,9 +219,9 @@
       "date": "20260122",
       "change_rate": 11.72,
       "close_price": 9630.0,
-      "rise_reason": "2차전지(나트륨이온) 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [],
@@ -220,15 +230,25 @@
       "source": "estimated",
       "trading_volume": 1658885,
       "trading_value": 15975062550,
-      "market_cap": 468479154929
+      "market_cap": 468479154929,
+      "reason_previous": "2차전지(나트륨이온) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20251024",
       "change_rate": 11.55,
       "close_price": 11780.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -262,7 +282,17 @@
       "source": "estimated",
       "trading_volume": 12912510,
       "trading_value": 152109367800,
-      "market_cap": 573072112676
+      "market_cap": 573072112676,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     },
     {
       "date": "20250708",
@@ -333,9 +363,9 @@
       "date": "20250626",
       "change_rate": 12.85,
       "close_price": 11420.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "퀀텀스케이프 급등",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -375,15 +405,25 @@
       "source": "estimated",
       "trading_volume": 17783108,
       "trading_value": 203083093360,
-      "market_cap": 555558873239
+      "market_cap": 555558873239,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "퀀텀스케이프 급등에 전고체株 강세…애경케미칼, 12%대↑[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0008335738",
+          "source": "뉴스1",
+          "date": "2025-06-26"
+        }
+      ]
     },
     {
       "date": "20250528",
       "change_rate": 25.91,
       "close_price": 11470.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [],
@@ -392,7 +432,9 @@
       "source": "estimated",
       "trading_volume": 12228344,
       "trading_value": 140259105680,
-      "market_cap": 557991267605
+      "market_cap": 557991267605,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -403,5 +445,5 @@
     "count_recent": 0,
     "avg_rate": 16.22
   },
-  "built_at": "2026-10-01T22:52:44"
+  "built_at": "2026-10-02T05:15:57"
 }

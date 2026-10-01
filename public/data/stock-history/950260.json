@@ -9,10 +9,10 @@
       "close_price": 29500.0,
       "trading_volume": 1620623,
       "trading_value": 47808378500,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260921",
@@ -97,10 +99,10 @@
       "close_price": 17520.0,
       "trading_volume": 3685975,
       "trading_value": 64578282000,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
         {
@@ -154,7 +156,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260820",
@@ -162,15 +166,25 @@
       "close_price": 18330.0,
       "trading_volume": 18921625,
       "trading_value": 346833386250,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 땡큐 모더나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "\"땡큐 모더나..\" mRNA 암백신 3상 성공에 'K-바이오株' 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005563966&office_id=014&code=227950&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.20"
+        }
+      ]
     }
   ],
   "stats": {
@@ -181,5 +195,5 @@
     "count_recent": 3,
     "avg_rate": 19.29
   },
-  "built_at": "2026-10-01T22:54:17"
+  "built_at": "2026-10-02T05:15:56"
 }

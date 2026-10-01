@@ -9,10 +9,10 @@
       "close_price": 16490.0,
       "trading_volume": 3844701,
       "trading_value": 63399119490,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260824",
@@ -68,9 +70,9 @@
       "close_price": 15150.0,
       "trading_volume": 1800509,
       "trading_value": 27277711350,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 셀리드",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
@@ -137,7 +139,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "코로나19 재유행 우려에 제약주 급등…셀리드 '上'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014143455&office_id=003&code=299660&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -207,10 +219,10 @@
       "date": "20260107",
       "change_rate": 10.83,
       "close_price": 43500.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -218,7 +230,9 @@
       "source": "estimated",
       "trading_volume": 3457895,
       "trading_value": 150418432500,
-      "market_cap": 1376272528672
+      "market_cap": 1376272528672,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251211",
@@ -241,10 +255,10 @@
       "date": "20251103",
       "change_rate": 17.45,
       "close_price": 27600.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -252,16 +266,18 @@
       "source": "estimated",
       "trading_volume": 7292303,
       "trading_value": 201267562800,
-      "market_cap": 873221190606
+      "market_cap": 873221190606,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251027",
       "change_rate": 13.53,
       "close_price": 24750.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -269,7 +285,9 @@
       "source": "estimated",
       "trading_volume": 4266614,
       "trading_value": 105598696500,
-      "market_cap": 783051611141
+      "market_cap": 783051611141,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250929",
@@ -365,5 +383,5 @@
     "count_recent": 1,
     "avg_rate": 14.2
   },
-  "built_at": "2026-10-01T22:52:46"
+  "built_at": "2026-10-02T05:15:56"
 }

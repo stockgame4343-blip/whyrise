@@ -9,9 +9,9 @@
       "close_price": 9000.0,
       "trading_volume": 6497902,
       "trading_value": 58481118000,
-      "rise_reason": "반도체 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 32종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -42,7 +42,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -50,9 +52,9 @@
       "close_price": 13740.0,
       "trading_volume": 8938508,
       "trading_value": 122815099920,
-      "rise_reason": "반도체 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 20종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -89,7 +91,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260709",
@@ -97,9 +101,9 @@
       "close_price": 11840.0,
       "trading_volume": 6296091,
       "trading_value": 74545717440,
-      "rise_reason": "반도체 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -124,7 +128,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -148,9 +154,9 @@
       "close_price": 22400.0,
       "trading_volume": 17639508,
       "trading_value": 395124979200,
-      "rise_reason": "WF6 공급망 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: AI 특수에 가스까지 품귀… 주가 일주일새 63% 쑥 [이주의 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -199,7 +205,17 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "WF6 공급망 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "“AI 특수에 가스까지 품귀”…후성 주가 일주일새 63% 쑥 [이주의 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005693318&office_id=009&code=093370&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.06.13"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -207,10 +223,10 @@
       "close_price": 19010.0,
       "trading_volume": 17847095,
       "trading_value": 339273275950,
-      "rise_reason": "외국인·기관 순매수",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "日 수출 규제(국산화 등)",
       "news": [
         {
@@ -246,7 +262,9 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인·기관 순매수",
+      "reason_kind": "none"
     },
     {
       "date": "20260610",
@@ -424,10 +442,10 @@
       "close_price": 13620.0,
       "trading_volume": 1865265,
       "trading_value": 25404909300,
-      "rise_reason": "리튬 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [
         {
@@ -493,7 +511,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "리튬 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260417",
@@ -552,15 +572,25 @@
       "close_price": 8920.0,
       "trading_volume": 8942707,
       "trading_value": 79768946440,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G상용화·광통신 기술 활용 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "통신장비株, 6G상용화·광통신 기술 활용 기대감에 장초반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005339366",
+          "source": "머니투데이",
+          "date": "2026-04-03"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -583,10 +613,10 @@
       "date": "20251027",
       "change_rate": 19.24,
       "close_price": 9420.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [
         {
@@ -625,15 +655,17 @@
       "source": "estimated",
       "trading_volume": 11679870,
       "trading_value": 110024375400,
-      "market_cap": 1010342266824
+      "market_cap": 1010342266824,
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20251024",
       "change_rate": 16.52,
       "close_price": 7900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [],
@@ -642,15 +674,25 @@
       "source": "estimated",
       "trading_volume": 9564166,
       "trading_value": 75556911400,
-      "market_cap": 847314639905
+      "market_cap": 847314639905,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     },
     {
       "date": "20251017",
       "change_rate": 10.19,
       "close_price": 7140.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — AI 투자 확대 따른 ESS 수요 증가 전망",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [],
@@ -659,7 +701,17 @@
       "source": "estimated",
       "trading_volume": 7460737,
       "trading_value": 53269662180,
-      "market_cap": 765800826446
+      "market_cap": 765800826446,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주]AI 투자 확대 따른 ESS 수요 증가 전망…2차전지株 강세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005665953",
+          "source": "아시아경제",
+          "date": "2025-10-17"
+        }
+      ]
     },
     {
       "date": "20250915",
@@ -704,5 +756,5 @@
     "count_recent": 0,
     "avg_rate": 17.52
   },
-  "built_at": "2026-10-01T22:52:31"
+  "built_at": "2026-10-02T05:15:57"
 }

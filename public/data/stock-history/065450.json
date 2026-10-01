@@ -131,9 +131,9 @@
       "date": "20260303",
       "change_rate": 30.0,
       "close_price": 5720.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "방산주 동반 강세 — 이번엔 김승연 어서 타! 밈",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자전거",
       "news": [
@@ -173,15 +173,25 @@
       "source": "estimated",
       "trading_volume": 20614556,
       "trading_value": 117915260320,
-      "market_cap": 168653333333
+      "market_cap": 168653333333,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "이번엔 김승연 &quot;어서 타!&quot; 밈…이란 사태에 방산주 '급등'",
+          "link": "https://n.news.naver.com/mnews/article/243/0000093881",
+          "source": "이코노미스트",
+          "date": "2026-03-03"
+        }
+      ]
     },
     {
       "date": "20260220",
       "change_rate": 11.21,
       "close_price": 4465.0,
-      "rise_reason": "자전거 테마 강세",
+      "rise_reason": "방산주 동반 강세 — 하루 새 11만5700원 우뚝",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자전거",
       "news": [],
@@ -190,7 +200,17 @@
       "source": "estimated",
       "trading_volume": 14887623,
       "trading_value": 66473236695,
-      "market_cap": 131649848484
+      "market_cap": 131649848484,
+      "reason_previous": "자전거 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "하루 새 8.74%↑ 11만5700원 '우뚝'…방산주 일제히 급등",
+          "link": "https://n.news.naver.com/mnews/article/243/0000093326",
+          "source": "이코노미스트",
+          "date": "2026-02-20"
+        }
+      ]
     },
     {
       "date": "20250613",
@@ -218,5 +238,5 @@
     "count_recent": 0,
     "avg_rate": 20.26
   },
-  "built_at": "2026-09-27T09:53:55"
+  "built_at": "2026-10-02T05:15:57"
 }

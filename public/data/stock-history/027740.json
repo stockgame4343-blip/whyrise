@@ -9,10 +9,10 @@
       "close_price": 1535.0,
       "trading_volume": 1899701,
       "trading_value": 2916041035,
-      "rise_reason": "육계 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "육계",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "육계 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -80,10 +82,10 @@
       "close_price": 1399.0,
       "trading_volume": 1486188,
       "trading_value": 2079177012,
-      "rise_reason": "육계 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "육계",
       "news": [
         {
@@ -149,7 +151,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "육계 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260611",
@@ -157,9 +161,9 @@
       "close_price": 1340.0,
       "trading_volume": 1681261,
       "trading_value": 2252889740,
-      "rise_reason": "육계 관련 뉴스",
+      "rise_reason": "월드컵 개막",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "육계",
       "news": [
@@ -226,7 +230,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "육계 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "마니커 상한가…월드컵 개막에 육계株 동반 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006302855&office_id=018&code=027740&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20260219",
@@ -254,5 +268,5 @@
     "count_recent": 0,
     "avg_rate": 17.4
   },
-  "built_at": "2026-10-01T22:53:25"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 7460.0,
       "trading_volume": 476460,
       "trading_value": 3554391600,
-      "rise_reason": "관련주 언급",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 신입사원 입사식...도전정신 갖추자",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관련주 언급",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "동부건설, 신입사원 입사식...\"도전정신 갖추자\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005542323&office_id=014&code=005960&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,15 +96,17 @@
       "close_price": 6860.0,
       "trading_volume": 167930,
       "trading_value": 1151999800,
-      "rise_reason": "GTX(수도권 광역급행철도) 테마 강세",
+      "rise_reason": "GTX 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "GTX(수도권 광역급행철도)",
       "news": [],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "GTX(수도권 광역급행철도) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -102,15 +114,25 @@
       "close_price": 9050.0,
       "trading_volume": 774517,
       "trading_value": 7009378850,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -181,9 +203,9 @@
       "date": "20260203",
       "change_rate": 13.14,
       "close_price": 5940.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "지난해 영업이익 606억원 흑자전환 성공",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -223,7 +245,17 @@
       "source": "estimated",
       "trading_volume": 598721,
       "trading_value": 3556402740,
-      "market_cap": 136350000000
+      "market_cap": 136350000000,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "동부건설, 지난해 영업이익 606억원 ‘흑자전환’ 성공",
+          "link": "https://n.news.naver.com/mnews/article/119/0003055653",
+          "source": "데일리안",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20250908",
@@ -251,5 +283,5 @@
     "count_recent": 0,
     "avg_rate": 13.05
   },
-  "built_at": "2026-10-01T22:52:58"
+  "built_at": "2026-10-02T05:15:57"
 }

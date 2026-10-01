@@ -9,10 +9,10 @@
       "close_price": 2600.0,
       "trading_volume": 1899984,
       "trading_value": 4939958400,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260615",
@@ -86,10 +88,10 @@
       "close_price": 2310.0,
       "trading_volume": 2185061,
       "trading_value": 5047490910,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260608",
@@ -163,10 +167,10 @@
       "close_price": 2050.0,
       "trading_volume": 1743996,
       "trading_value": 3575191800,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비철금속",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260527",
@@ -240,10 +246,10 @@
       "close_price": 2555.0,
       "trading_volume": 764220,
       "trading_value": 1952582100,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비철금속",
       "news": [
         {
@@ -303,7 +309,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -311,10 +319,10 @@
       "close_price": 1968.0,
       "trading_volume": 1287206,
       "trading_value": 2533221408,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -374,7 +382,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260428",
@@ -382,9 +392,9 @@
       "close_price": 1722.0,
       "trading_volume": 7911135,
       "trading_value": 13622974470,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "독일 ZF와 기술 협력 파트너십 추진",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비철금속",
       "news": [
@@ -439,7 +449,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한주라이트메탈 \"독일 ZF와 기술 협력 파트너십 추진\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013914674&office_id=003&code=198940&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260113",
@@ -534,5 +554,5 @@
     "count_recent": 0,
     "avg_rate": 21.17
   },
-  "built_at": "2026-10-01T22:59:27"
+  "built_at": "2026-10-02T05:15:57"
 }

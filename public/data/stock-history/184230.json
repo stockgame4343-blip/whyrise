@@ -9,9 +9,9 @@
       "close_price": 2200.0,
       "trading_volume": 1525378,
       "trading_value": 3355831600,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "국제 사이버안보 행사서 공공 AI 접근통제 기술 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "SGA솔루션즈, 국제 사이버안보 행사서 공공 AI 접근통제 기술 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014189205&office_id=003&code=184230&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.14"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -86,9 +96,9 @@
       "close_price": 3860.0,
       "trading_volume": 1094549,
       "trading_value": 4224959140,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -155,7 +165,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -163,9 +175,9 @@
       "close_price": 5840.0,
       "trading_volume": 14698589,
       "trading_value": 85839759760,
-      "rise_reason": "SI(시스템통합) 테마 강세",
+      "rise_reason": "국가 사이버보안 기본지침 시행 수혜",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "SI(시스템통합)",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "SI(시스템통합) 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'국가 사이버보안 기본지침' 시행 수혜…SGA솔루션즈 14%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006262396&office_id=018&code=184230&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.21"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -240,9 +262,9 @@
       "close_price": 5230.0,
       "trading_volume": 3554831,
       "trading_value": 18591766130,
-      "rise_reason": "보안주(정보) 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호·보안주 동반 강세 — 증권가는 이 종목 찍었다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -309,7 +331,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'미토스 쇼크' 양자암호·보안주 불기둥...증권가는 이 종목 찍었다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005346534&office_id=008&code=184230&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.04.20"
+        }
+      ]
     },
     {
       "date": "20260416",
@@ -317,9 +349,9 @@
       "close_price": 4565.0,
       "trading_volume": 4269985,
       "trading_value": 19492481525,
-      "rise_reason": "보안주(정보) 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호·보안주 동반 강세 — AI 해킹 우려",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -374,7 +406,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 해킹 우려에 양자암호·보안주 상한가…엑스게이트, 上上上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005344953&office_id=008&code=184230&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.04.16"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -451,9 +493,9 @@
       "date": "20250918",
       "change_rate": 10.18,
       "close_price": 3950.0,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -462,7 +504,9 @@
       "source": "estimated",
       "trading_volume": 2931542,
       "trading_value": 11579590900,
-      "market_cap": 74516552811
+      "market_cap": 74516552811,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250829",
@@ -552,9 +596,9 @@
       "date": "20250611",
       "change_rate": 11.13,
       "close_price": 2695.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -563,7 +607,9 @@
       "source": "estimated",
       "trading_volume": 4891660,
       "trading_value": 13183023700,
-      "market_cap": 50841040462
+      "market_cap": 50841040462,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -574,5 +620,5 @@
     "count_recent": 1,
     "avg_rate": 24.38
   },
-  "built_at": "2026-10-01T22:59:03"
+  "built_at": "2026-10-02T05:15:56"
 }

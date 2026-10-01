@@ -9,10 +9,10 @@
       "close_price": 2925.0,
       "trading_volume": 775623,
       "trading_value": 2268697275,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260911",
@@ -86,10 +88,10 @@
       "close_price": 2670.0,
       "trading_volume": 370995,
       "trading_value": 990556650,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260728",
@@ -163,10 +167,10 @@
       "close_price": 2500.0,
       "trading_volume": 846587,
       "trading_value": 2116467500,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260625",
@@ -240,10 +246,10 @@
       "close_price": 2655.0,
       "trading_volume": 1059672,
       "trading_value": 2813429160,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "퓨리오사AI",
       "news": [
         {
@@ -309,7 +315,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260529",
@@ -317,9 +325,9 @@
       "close_price": 3400.0,
       "trading_volume": 7408428,
       "trading_value": 25188655200,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 바이셀스탠다드, SK증권· 등서 50억 규모 시리즈A 투자 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "퓨리오사AI",
       "news": [
@@ -386,7 +394,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "바이셀스탠다드, SK증권·엑스페릭스 등서 50억 규모 시리즈A 투자 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002229161&office_id=138&code=317770&page=&sm=",
+          "source": "디지털데일리",
+          "date": "2026.05.28"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -463,5 +481,5 @@
     "count_recent": 2,
     "avg_rate": 14.58
   },
-  "built_at": "2026-10-01T22:57:27"
+  "built_at": "2026-10-02T05:15:56"
 }

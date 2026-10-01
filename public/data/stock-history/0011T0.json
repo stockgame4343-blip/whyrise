@@ -9,10 +9,10 @@
       "close_price": 5310.0,
       "trading_volume": 1155769,
       "trading_value": 6137133390,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -118,9 +120,9 @@
       "close_price": 5840.0,
       "trading_volume": 889958,
       "trading_value": 5197354720,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "테슬라 AI5 양산 초읽기",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차(충전소/충전기)",
       "news": [
@@ -187,7 +189,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼성, 테슬라 AI5 양산 초읽기…파운드리 반등 채비",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001258531&office_id=215&code=0011T0&page=&sm=",
+          "source": "한국경제TV",
+          "date": "2026.07.13"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -214,5 +226,5 @@
     "count_recent": 1,
     "avg_rate": 13.11
   },
-  "built_at": "2026-10-01T22:56:11"
+  "built_at": "2026-10-02T05:15:56"
 }

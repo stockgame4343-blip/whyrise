@@ -9,9 +9,9 @@
       "close_price": 22150.0,
       "trading_volume": 372944,
       "trading_value": 8260709600,
-      "rise_reason": "매출 관련 뉴스",
+      "rise_reason": "2분기 영업익 245억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "바텍, 2분기 영업익 245억…전년비 45% ↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002682361&office_id=016&code=043150&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260227",
@@ -137,5 +147,5 @@
     "count_recent": 0,
     "avg_rate": 21.07
   },
-  "built_at": "2026-10-01T22:56:02"
+  "built_at": "2026-10-02T05:15:56"
 }

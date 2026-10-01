@@ -102,9 +102,9 @@
       "close_price": 138400.0,
       "trading_volume": 3538477,
       "trading_value": 489725216800,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "젠슨황 효과",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -171,7 +171,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 젠슨황 효과에 두산로보틱스도 들썩… 두산베어스 '시구설...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003433181&office_id=030&code=454910&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.01"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -342,9 +352,9 @@
       "date": "20260119",
       "change_rate": 19.14,
       "close_price": 107700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -353,15 +363,17 @@
       "source": "estimated",
       "trading_volume": 5667656,
       "trading_value": 610406551200,
-      "market_cap": 6981139390962
+      "market_cap": 6981139390962,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251103",
       "change_rate": 18.08,
       "close_price": 92100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇주 동반 강세 — 젠슨 황 효과 계",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -370,7 +382,17 @@
       "source": "estimated",
       "trading_volume": 5024284,
       "trading_value": 462736556400,
-      "market_cap": 5969943713163
+      "market_cap": 5969943713163,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주]'젠슨 황 효과' 계속…로보티즈 등 로봇주 급등",
+          "link": "https://n.news.naver.com/mnews/article/277/0005673501",
+          "source": "아시아경제",
+          "date": "2025-11-03"
+        }
+      ]
     },
     {
       "date": "20250624",
@@ -393,9 +415,9 @@
       "date": "20250623",
       "change_rate": 12.57,
       "close_price": 59100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
@@ -404,7 +426,9 @@
       "source": "estimated",
       "trading_volume": 2154290,
       "trading_value": 127318539000,
-      "market_cap": 3830875933202
+      "market_cap": 3830875933202,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -415,5 +439,5 @@
     "count_recent": 0,
     "avg_rate": 17.9
   },
-  "built_at": "2026-09-29T22:19:05"
+  "built_at": "2026-10-02T05:15:57"
 }

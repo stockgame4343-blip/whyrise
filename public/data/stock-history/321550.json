@@ -9,15 +9,25 @@
       "close_price": 4205.0,
       "trading_volume": 245586,
       "trading_value": 1032689130,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -25,9 +35,9 @@
       "close_price": 11480.0,
       "trading_volume": 958586,
       "trading_value": 11004567280,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -88,7 +98,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260427",
@@ -96,9 +108,9 @@
       "close_price": 12000.0,
       "trading_volume": 1282371,
       "trading_value": 15388452000,
-      "rise_reason": "면역항암제 임상 관련 뉴스",
+      "rise_reason": "해외서 주목한 바이젠셀",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -153,7 +165,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 임상 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "해외서 주목한 티움바이오·바이젠셀 급등…휴온스는 합병 이슈에 강...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006267194&office_id=018&code=321550&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260423",
@@ -289,9 +311,9 @@
       "date": "20260305",
       "change_rate": 13.68,
       "close_price": 6400.0,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "면역항암제 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
@@ -300,7 +322,9 @@
       "source": "estimated",
       "trading_volume": 255701,
       "trading_value": 1636486400,
-      "market_cap": 192312958435
+      "market_cap": 192312958435,
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251105",
@@ -375,5 +399,5 @@
     "count_recent": 0,
     "avg_rate": 13.49
   },
-  "built_at": "2026-10-01T22:57:01"
+  "built_at": "2026-10-02T05:15:57"
 }

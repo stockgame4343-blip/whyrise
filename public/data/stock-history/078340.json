@@ -9,9 +9,9 @@
       "close_price": 34850.0,
       "trading_volume": 331669,
       "trading_value": 11558664650,
-      "rise_reason": "매출 관련 뉴스",
+      "rise_reason": "출시 2주째 구글 1위",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모바일게임(스마트폰)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "출시 2주째 구글 1위…증권가 컴투스 목표가 껑충 [오늘 나온 보고서....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005733047&office_id=009&code=078340&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,15 +96,17 @@
       "close_price": 26050.0,
       "trading_volume": 72029,
       "trading_value": 1876355450,
-      "rise_reason": "모바일게임(스마트폰) 테마 강세",
+      "rise_reason": "모바일게임 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모바일게임(스마트폰)",
       "news": [],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "모바일게임(스마트폰) 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -105,5 +117,5 @@
     "count_recent": 1,
     "avg_rate": 13.23
   },
-  "built_at": "2026-10-01T22:55:14"
+  "built_at": "2026-10-02T05:15:56"
 }

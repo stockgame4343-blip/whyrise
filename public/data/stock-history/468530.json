@@ -38,10 +38,10 @@
       "close_price": 46900.0,
       "trading_volume": 424234,
       "trading_value": 19896574600,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "6일",
       "news": [
         {
@@ -59,7 +59,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260921",
@@ -67,10 +69,10 @@
       "close_price": 39500.0,
       "trading_volume": 162723,
       "trading_value": 6427558500,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [
         {
@@ -82,7 +84,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260915",
@@ -90,9 +94,9 @@
       "close_price": 29200.0,
       "trading_volume": 132083,
       "trading_value": 3856823600,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: AI 신약 10만개 중 진짜는?…, 대규모 실험검증으로 후보...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -159,7 +163,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "“AI 신약 10만개 중 진짜는?”…프로티나, 대규모 실험검증으로 후보...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006368778&office_id=018&code=468530&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.14"
+        }
+      ]
     },
     {
       "date": "20260813",
@@ -167,10 +181,10 @@
       "close_price": 34450.0,
       "trading_volume": 163094,
       "trading_value": 5618588300,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -236,7 +250,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -244,10 +260,10 @@
       "close_price": 30500.0,
       "trading_volume": 213254,
       "trading_value": 6504247000,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -313,7 +329,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -321,10 +339,10 @@
       "close_price": 26100.0,
       "trading_volume": 72342,
       "trading_value": 1888126200,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -390,7 +408,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -398,10 +418,10 @@
       "close_price": 21250.0,
       "trading_volume": 74760,
       "trading_value": 1588650000,
-      "rise_reason": "전력반도체 흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -443,7 +463,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력반도체 흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -474,9 +496,9 @@
       "close_price": 26200.0,
       "trading_volume": 76143,
       "trading_value": 1994946600,
-      "rise_reason": "신약 관련 뉴스",
+      "rise_reason": "차세대 항암 신약 공동연구 추진",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "신약",
       "news": [
@@ -543,7 +565,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "차세대 항암 신약 공동연구 추진…프로티나 14%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006330520&office_id=018&code=468530&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -551,9 +583,9 @@
       "close_price": 26550.0,
       "trading_volume": 170243,
       "trading_value": 4519951650,
-      "rise_reason": "신약 관련 뉴스",
+      "rise_reason": "삼성바이오에피스와 계약",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "신약",
       "news": [
@@ -620,7 +652,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 프로티나, 삼성바이오에피스와 계약에 13% 상승(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016187828&office_id=001&code=468530&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.07.10"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -628,9 +670,9 @@
       "close_price": 31300.0,
       "trading_volume": 70230,
       "trading_value": 2198199000,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "BIO USA 2026서 28개 해외 제약사와 파트너링 미팅",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -697,7 +739,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "프로티나, BIO USA 2026서 28개 해외 제약사와 파트너링 미팅",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006317792&office_id=018&code=468530&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -705,10 +757,10 @@
       "close_price": 46750.0,
       "trading_volume": 89508,
       "trading_value": 4184499000,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -774,7 +826,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -1142,10 +1196,10 @@
       "date": "20250916",
       "change_rate": 10.45,
       "close_price": 33300.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -1184,15 +1238,17 @@
       "source": "estimated",
       "trading_volume": 5399149,
       "trading_value": 179791661700,
-      "market_cap": 367513787638
+      "market_cap": 367513787638,
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20250915",
       "change_rate": 26.68,
       "close_price": 30150.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 상장 두 달차 오버행 리스크 직면 …펀더멘털·성장성...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
@@ -1226,7 +1282,17 @@
       "source": "estimated",
       "trading_volume": 6950014,
       "trading_value": 209542922100,
-      "market_cap": 332748969889
+      "market_cap": 332748969889,
+      "reason_previous": "조선/해운",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "상장 두 달차 ‘오버행 리스크’ 직면 프로티나…“펀더멘털·성장성...",
+          "link": "https://n.news.naver.com/mnews/article/016/0002528659",
+          "source": "헤럴드경제",
+          "date": "2025-09-14"
+        }
+      ]
     },
     {
       "date": "20250904",
@@ -1305,5 +1371,5 @@
     "count_recent": 4,
     "avg_rate": 14.57
   },
-  "built_at": "2026-10-01T22:54:58"
+  "built_at": "2026-10-02T05:15:56"
 }

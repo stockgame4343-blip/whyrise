@@ -9,15 +9,17 @@
       "close_price": 1579.0,
       "trading_volume": 327362,
       "trading_value": 516904598,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -40,10 +42,10 @@
       "date": "20260129",
       "change_rate": 15.67,
       "close_price": 1336.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -51,15 +53,17 @@
       "source": "estimated",
       "trading_volume": 1654981,
       "trading_value": 2211054616,
-      "market_cap": 70917476432
+      "market_cap": 70917476432,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260106",
       "change_rate": 10.73,
       "close_price": 1011.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 3자배정 유증 1건 납입 완료…연내 추가 1건 마무리",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -81,7 +85,17 @@
       "source": "estimated",
       "trading_volume": 448560,
       "trading_value": 453494160,
-      "market_cap": 53665844815
+      "market_cap": 53665844815,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "네오리진, 3자배정 유증 1건 납입 완료…&quot;연내 추가 1건 마무리&quot;",
+          "link": "https://n.news.naver.com/mnews/article/018/0006194674",
+          "source": "이데일리",
+          "date": "2026-01-05"
+        }
+      ]
     },
     {
       "date": "20251022",
@@ -152,5 +166,5 @@
     "count_recent": 1,
     "avg_rate": 15.9
   },
-  "built_at": "2026-10-01T22:58:00"
+  "built_at": "2026-10-02T05:15:56"
 }

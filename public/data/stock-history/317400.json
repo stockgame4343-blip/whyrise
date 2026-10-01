@@ -9,10 +9,10 @@
       "close_price": 11330.0,
       "trading_volume": 1859384,
       "trading_value": 21066820720,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260903",
@@ -86,10 +88,10 @@
       "close_price": 11240.0,
       "trading_volume": 1527343,
       "trading_value": 17167335320,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -163,10 +167,10 @@
       "close_price": 7670.0,
       "trading_volume": 1946617,
       "trading_value": 14930552390,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
         {
@@ -232,7 +236,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -256,10 +262,10 @@
       "close_price": 8250.0,
       "trading_volume": 6369002,
       "trading_value": 52544266500,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
         {
@@ -325,7 +331,9 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -349,9 +357,9 @@
       "close_price": 4035.0,
       "trading_volume": 453963,
       "trading_value": 1831740705,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "주택 수주 1조 돌파",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
@@ -418,16 +426,26 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "자이에스앤디는, 주택 수주 1조 돌파…브랜드 저력 통했다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005303993&office_id=015&code=317400&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20251106",
       "change_rate": 11.4,
       "close_price": 3665.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -435,16 +453,18 @@
       "source": "estimated",
       "trading_volume": 1765596,
       "trading_value": 6470909340,
-      "market_cap": 142103708987
+      "market_cap": 142103708987,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251104",
       "change_rate": 11.07,
       "close_price": 3410.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -452,7 +472,9 @@
       "source": "estimated",
       "trading_volume": 4588762,
       "trading_value": 15647678420,
-      "market_cap": 132216547788
+      "market_cap": 132216547788,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -463,5 +485,5 @@
     "count_recent": 2,
     "avg_rate": 14.97
   },
-  "built_at": "2026-10-01T22:52:48"
+  "built_at": "2026-10-02T05:15:56"
 }

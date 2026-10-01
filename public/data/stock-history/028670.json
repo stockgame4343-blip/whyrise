@@ -9,9 +9,9 @@
       "close_price": 5640.0,
       "trading_volume": 8068272,
       "trading_value": 45505054080,
-      "rise_reason": "해운 영업이익 공시",
+      "rise_reason": "벌크선 호황에 2분기 어닝 서프",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "해운",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "해운사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해운 영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 팬오션, 벌크선 호황에 2분기 ‘어닝 서프’…12% 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001184143&office_id=366&code=028670&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -170,5 +180,5 @@
     "count_recent": 0,
     "avg_rate": 13.43
   },
-  "built_at": "2026-10-01T22:52:22"
+  "built_at": "2026-10-02T05:15:56"
 }

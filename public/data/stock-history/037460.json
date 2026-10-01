@@ -25,10 +25,10 @@
       "close_price": 56400.0,
       "trading_volume": 4054689,
       "trading_value": 228684459600,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260515",
@@ -102,10 +104,10 @@
       "close_price": 49650.0,
       "trading_volume": 1667513,
       "trading_value": 82792020450,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -171,7 +173,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -179,10 +183,10 @@
       "close_price": 37750.0,
       "trading_volume": 469534,
       "trading_value": 17724908500,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -248,7 +252,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -256,9 +262,9 @@
       "close_price": 26600.0,
       "trading_volume": 631911,
       "trading_value": 16808832600,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "5G 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -271,15 +277,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
       "change_rate": 17.1,
       "close_price": 27050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
@@ -288,15 +296,17 @@
       "source": "estimated",
       "trading_volume": 1240389,
       "trading_value": 33552522450,
-      "market_cap": 441385297549
+      "market_cap": 441385297549,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260311",
       "change_rate": 10.93,
       "close_price": 23850.0,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
@@ -305,15 +315,17 @@
       "source": "estimated",
       "trading_volume": 582978,
       "trading_value": 13904025300,
-      "market_cap": 389169661610
+      "market_cap": 389169661610,
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260105",
       "change_rate": 12.32,
       "close_price": 16500.0,
-      "rise_reason": "자사주 매입",
+      "rise_reason": "자사주 취득 신탁계약 체결",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -341,7 +353,17 @@
       "source": "estimated",
       "trading_volume": 1339967,
       "trading_value": 22109455500,
-      "market_cap": 269236872812
+      "market_cap": 269236872812,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼지전자, 자사주 취득 신탁계약 체결에 23%↑[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006194673",
+          "source": "이데일리",
+          "date": "2026-01-05"
+        }
+      ]
     }
   ],
   "stats": {
@@ -352,5 +374,5 @@
     "count_recent": 0,
     "avg_rate": 14.58
   },
-  "built_at": "2026-10-01T22:55:02"
+  "built_at": "2026-10-02T05:15:57"
 }

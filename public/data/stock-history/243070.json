@@ -9,9 +9,9 @@
       "close_price": 30550.0,
       "trading_volume": 82045,
       "trading_value": 2506474750,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 글로벌 주주보호대책…휴온스 주식 나눠주기로",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "휴온스글로벌 주주보호대책…'휴온스 주식 나눠주기로'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000047810&office_id=648&code=243070&page=&sm=",
+          "source": "비즈워치",
+          "date": "2026.06.08"
+        }
+      ]
     },
     {
       "date": "20260519",
@@ -86,9 +96,9 @@
       "close_price": 38200.0,
       "trading_volume": 654927,
       "trading_value": 25018211400,
-      "rise_reason": "승인 관련 뉴스",
+      "rise_reason": "자회사 랩 흡수합병 결정",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "제약",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "승인 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]휴온스, 자회사 휴온스랩 흡수합병 결정에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003429074&office_id=030&code=243070&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -163,9 +183,9 @@
       "close_price": 34250.0,
       "trading_volume": 296555,
       "trading_value": 10157008750,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "국내 첫 다회용 무보존제 올로파타딘 휴로타딘0.7% 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단키트)",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "제약",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "휴온스, 국내 첫 다회용 무보존제 올로파타딘 '휴로타딘0.7%' 출시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005285426&office_id=015&code=243070&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.05.11"
+        }
+      ]
     }
   ],
   "stats": {
@@ -243,5 +273,5 @@
     "count_recent": 0,
     "avg_rate": 14.97
   },
-  "built_at": "2026-09-27T09:31:13"
+  "built_at": "2026-10-02T05:15:57"
 }

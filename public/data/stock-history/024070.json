@@ -9,10 +9,10 @@
       "close_price": 2810.0,
       "trading_volume": 2125319,
       "trading_value": 5972146390,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -35,5 +37,5 @@
     "count_recent": 0,
     "avg_rate": 13.31
   },
-  "built_at": "2026-09-27T09:05:21"
+  "built_at": "2026-10-02T05:15:57"
 }

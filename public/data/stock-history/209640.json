@@ -9,9 +9,9 @@
       "close_price": 3770.0,
       "trading_volume": 6741063,
       "trading_value": 25413807510,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -86,15 +88,17 @@
       "close_price": 3005.0,
       "trading_volume": 192350,
       "trading_value": 578011750,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260625",
@@ -102,9 +106,9 @@
       "close_price": 4665.0,
       "trading_volume": 7455676,
       "trading_value": 34780728540,
-      "rise_reason": "수주 공시",
+      "rise_reason": "역대 최대 수주잔고 확보",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -171,7 +175,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "역대 최대 수주잔고 확보…와이제이링크 25%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006314379&office_id=018&code=209640&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.25"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -179,15 +193,17 @@
       "close_price": 8470.0,
       "trading_volume": 636653,
       "trading_value": 5392450910,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260427",
@@ -195,9 +211,9 @@
       "close_price": 9050.0,
       "trading_volume": 25458931,
       "trading_value": 230403325550,
-      "rise_reason": "스페이스X 지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "올해 영업익 82억원 흑전",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -264,7 +280,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스페이스X 지분 관련 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "와이제이링크, 올해 영업익 82억원 '흑전'…美 로봇기업과 협업 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005349598&office_id=008&code=209640&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -272,9 +298,9 @@
       "close_price": 7520.0,
       "trading_volume": 35239611,
       "trading_value": 265001874720,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 250억 규모 전환사채권 발행 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -341,7 +367,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "와이제이링크, 250억 규모 전환사채권 발행 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006262937&office_id=018&code=209640&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.21"
+        }
+      ]
     },
     {
       "date": "20260417",
@@ -472,9 +508,9 @@
       "date": "20260305",
       "change_rate": 15.0,
       "close_price": 3680.0,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -490,7 +526,9 @@
       "source": "estimated",
       "trading_volume": 847975,
       "trading_value": 3120548000,
-      "market_cap": 104690373725
+      "market_cap": 104690373725,
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260209",
@@ -543,9 +581,9 @@
       "date": "20251222",
       "change_rate": 10.2,
       "close_price": 4430.0,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "관련주 동반 강세 — 글로벌 IPO 대어",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -567,7 +605,17 @@
       "source": "estimated",
       "trading_volume": 8705430,
       "trading_value": 38565054900,
-      "market_cap": 126026727066
+      "market_cap": 126026727066,
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "글로벌 IPO 대어…스페이스X 관련주 장 초반 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005294981",
+          "source": "머니투데이",
+          "date": "2025-12-22"
+        }
+      ]
     },
     {
       "date": "20251212",
@@ -590,9 +638,9 @@
       "date": "20251204",
       "change_rate": 11.88,
       "close_price": 3250.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 자율이동로봇 YGV 공개 글로벌 시장 공략 박차",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -620,7 +668,17 @@
       "source": "estimated",
       "trading_volume": 11385452,
       "trading_value": 37002719000,
-      "market_cap": 92457531143
+      "market_cap": 92457531143,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "와이제이링크, 자율이동로봇 ‘YGV’ 공개 “글로벌 시장 공략 박차”",
+          "link": "https://n.news.naver.com/mnews/article/366/0001127991",
+          "source": "조선비즈",
+          "date": "2025-12-04"
+        }
+      ]
     },
     {
       "date": "20251125",
@@ -667,9 +725,9 @@
       "date": "20250821",
       "change_rate": 11.03,
       "close_price": 3775.0,
-      "rise_reason": "무상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "주당 1주 무상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -709,7 +767,17 @@
       "source": "estimated",
       "trading_volume": 3461738,
       "trading_value": 13068060950,
-      "market_cap": 107392978482
+      "market_cap": 107392978482,
+      "reason_previous": "무상증자",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "와이제이링크, 주당 1주 무상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006095128",
+          "source": "이데일리",
+          "date": "2025-08-21"
+        }
+      ]
     }
   ],
   "stats": {
@@ -720,5 +788,5 @@
     "count_recent": 1,
     "avg_rate": 16.38
   },
-  "built_at": "2026-10-01T22:57:32"
+  "built_at": "2026-10-02T05:15:56"
 }

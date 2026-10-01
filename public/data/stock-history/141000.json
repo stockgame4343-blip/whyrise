@@ -25,9 +25,9 @@
       "close_price": 9680.0,
       "trading_volume": 120283,
       "trading_value": 1164339440,
-      "rise_reason": "국책사업 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "OLED 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -94,7 +94,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "국책사업 관련",
+      "reason_kind": "theme"
     },
     {
       "date": "20260204",
@@ -117,10 +119,10 @@
       "date": "20260122",
       "change_rate": 10.77,
       "close_price": 7610.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -128,16 +130,18 @@
       "source": "estimated",
       "trading_volume": 145040,
       "trading_value": 1103754400,
-      "market_cap": 92167517401
+      "market_cap": 92167517401,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260109",
       "change_rate": 14.93,
       "close_price": 7700.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -145,7 +149,9 @@
       "source": "estimated",
       "trading_volume": 465493,
       "trading_value": 3584296100,
-      "market_cap": 93257540603
+      "market_cap": 93257540603,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -156,5 +162,5 @@
     "count_recent": 0,
     "avg_rate": 12.69
   },
-  "built_at": "2026-10-01T22:57:15"
+  "built_at": "2026-10-02T05:15:57"
 }

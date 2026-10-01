@@ -9,9 +9,9 @@
       "close_price": 6090.0,
       "trading_volume": 1215830,
       "trading_value": 7404404700,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -72,7 +72,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -96,15 +98,17 @@
       "close_price": 5330.0,
       "trading_volume": 312759,
       "trading_value": 1667005470,
-      "rise_reason": "2차전지(소재/부품) 테마 강세",
+      "rise_reason": "2차전지 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(소재/부품) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -181,9 +185,9 @@
       "date": "20260325",
       "change_rate": 14.81,
       "close_price": 7210.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -192,7 +196,9 @@
       "source": "estimated",
       "trading_volume": 1582955,
       "trading_value": 11413105550,
-      "market_cap": 277993814432
+      "market_cap": 277993814432,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -215,9 +221,9 @@
       "date": "20260122",
       "change_rate": 11.03,
       "close_price": 5840.0,
-      "rise_reason": "2차전지 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -226,7 +232,17 @@
       "source": "estimated",
       "trading_volume": 1733419,
       "trading_value": 10123166960,
-      "market_cap": 225171134020
+      "market_cap": 225171134020,
+      "reason_previous": "2차전지 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20251120",
@@ -296,5 +312,5 @@
     "count_recent": 0,
     "avg_rate": 13.24
   },
-  "built_at": "2026-10-01T22:56:20"
+  "built_at": "2026-10-02T05:15:56"
 }

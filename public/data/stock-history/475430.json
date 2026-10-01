@@ -9,9 +9,9 @@
       "close_price": 6280.0,
       "trading_volume": 17774786,
       "trading_value": 111625656080,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "증권가 견조한 체력 대비 저평가",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -48,7 +48,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "증권가 \"견조한 체력 대비 저평가\"…키스트론 7%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006311810&office_id=018&code=475430&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.22"
+        }
+      ]
     },
     {
       "date": "20260622",
@@ -56,9 +66,9 @@
       "close_price": 6110.0,
       "trading_volume": 7264787,
       "trading_value": 44387848570,
-      "rise_reason": "지분 관련 이슈",
+      "rise_reason": "증권가 견조한 체력 대비 저평가",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -119,7 +129,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "증권가 \"견조한 체력 대비 저평가\"…키스트론 7%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006311810&office_id=018&code=475430&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.22"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -127,9 +147,9 @@
       "close_price": 5650.0,
       "trading_volume": 6756159,
       "trading_value": 38172298350,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 고려제강 지분 사들인 홍영철… 순환출자 정리 스타트",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -196,7 +216,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "고려제강 지분 사들인 홍영철… 키스트론 순환출자 정리 스타트",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001165440&office_id=366&code=475430&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -204,10 +234,10 @@
       "close_price": 6980.0,
       "trading_volume": 11791669,
       "trading_value": 82305849620,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -273,7 +303,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260429",
@@ -281,9 +313,9 @@
       "close_price": 5860.0,
       "trading_volume": 14357417,
       "trading_value": 84134463620,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -350,7 +382,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20250709",
@@ -397,5 +439,5 @@
     "count_recent": 0,
     "avg_rate": 19.7
   },
-  "built_at": "2026-09-27T09:57:22"
+  "built_at": "2026-10-02T05:15:57"
 }

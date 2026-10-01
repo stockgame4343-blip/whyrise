@@ -9,9 +9,9 @@
       "close_price": 10500.0,
       "trading_volume": 509289,
       "trading_value": 5347534500,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "2분기 영업익 522억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 중소형",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "코오롱글로벌, 2분기 영업익 522억…전년比 173.6%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003740349&office_id=020&code=003070&page=&sm=",
+          "source": "동아일보",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -86,15 +96,25 @@
       "close_price": 12220.0,
       "trading_volume": 308295,
       "trading_value": 3767364900,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "종합상사",
       "news": [],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -135,5 +155,5 @@
     "count_recent": 0,
     "avg_rate": 13.24
   },
-  "built_at": "2026-10-01T22:52:57"
+  "built_at": "2026-10-02T05:15:56"
 }

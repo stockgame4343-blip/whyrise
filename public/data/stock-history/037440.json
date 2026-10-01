@@ -25,9 +25,9 @@
       "close_price": 5580.0,
       "trading_volume": 4715915,
       "trading_value": 26314805700,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전후 재건 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
@@ -94,7 +94,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260507",
@@ -102,9 +104,9 @@
       "close_price": 7460.0,
       "trading_volume": 10068380,
       "trading_value": 75110114800,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 미·이란 종전 MOU 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우크라이나 재건",
       "news": [
@@ -171,7 +173,17 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 미·이란 종전 MOU 기대감에…건설株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001162361&office_id=366&code=028050&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.07"
+        }
+      ]
     },
     {
       "date": "20260409",
@@ -276,5 +288,5 @@
     "count_recent": 0,
     "avg_rate": 20.51
   },
-  "built_at": "2026-10-01T22:58:36"
+  "built_at": "2026-10-02T05:15:57"
 }

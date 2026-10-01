@@ -25,10 +25,10 @@
       "close_price": 30500.0,
       "trading_volume": 1324425,
       "trading_value": 40394962500,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -88,7 +88,9 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260326",
@@ -178,9 +180,9 @@
       "date": "20260204",
       "change_rate": 13.59,
       "close_price": 19480.0,
-      "rise_reason": "우주/위성",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇·우주항공 진출 모멘텀 부각",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -202,7 +204,17 @@
       "source": "estimated",
       "trading_volume": 1616562,
       "trading_value": 31490627760,
-      "market_cap": 572087169811
+      "market_cap": 572087169811,
+      "reason_previous": "우주/위성",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]PI첨단소재, 로봇·우주항공 진출 모멘텀 부각에 강세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005716142",
+          "source": "아시아경제",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20250718",
@@ -261,5 +273,5 @@
     "count_recent": 0,
     "avg_rate": 15.45
   },
-  "built_at": "2026-09-27T08:41:24"
+  "built_at": "2026-10-02T05:15:57"
 }

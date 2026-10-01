@@ -9,10 +9,10 @@
       "close_price": 1489.0,
       "trading_volume": 2610656,
       "trading_value": 3887266784,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260821",
@@ -86,10 +88,10 @@
       "close_price": 1598.0,
       "trading_volume": 3257826,
       "trading_value": 5206005948,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -119,7 +121,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -127,9 +131,9 @@
       "close_price": 2020.0,
       "trading_volume": 7147221,
       "trading_value": 14437386420,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "대표이사 장내매수·최대주주 유상증자",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -196,7 +200,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 윙입푸드, 대표이사 장내매수·최대주주 유상증자 소식에 ‘.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001184848&office_id=366&code=900340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.07"
+        }
+      ]
     },
     {
       "date": "20260807",
@@ -204,9 +218,9 @@
       "close_price": 1554.0,
       "trading_volume": 347074,
       "trading_value": 539352996,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "대표이사 장내매수·최대주주 유상증자",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -273,7 +287,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 윙입푸드, 대표이사 장내매수·최대주주 유상증자 소식에 ‘.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001184848&office_id=366&code=900340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.07"
+        }
+      ]
     }
   ],
   "stats": {
@@ -284,5 +308,5 @@
     "count_recent": 1,
     "avg_rate": 20.91
   },
-  "built_at": "2026-10-01T22:58:57"
+  "built_at": "2026-10-02T05:15:56"
 }

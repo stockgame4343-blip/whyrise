@@ -9,23 +9,25 @@
       "close_price": 2585.0,
       "trading_volume": 474689,
       "trading_value": 1227071065,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
       "change_rate": 11.85,
       "close_price": 5570.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 동전주 탈피 위해 10대1 액면병합 단행",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -53,7 +55,17 @@
       "source": "estimated",
       "trading_volume": 7919714,
       "trading_value": 44112806980,
-      "market_cap": 112844074074
+      "market_cap": 112844074074,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SG세계물산, '동전주' 탈피 위해 10대1 액면병합 단행",
+          "link": "https://n.news.naver.com/mnews/article/008/0005327964",
+          "source": "머니투데이",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260223",
@@ -143,9 +155,9 @@
       "date": "20260206",
       "change_rate": 10.34,
       "close_price": 4910.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 금일 코스피 거래량 1위 거래대금 6천억원...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -185,7 +197,17 @@
       "source": "estimated",
       "trading_volume": 15512564,
       "trading_value": 76166689240,
-      "market_cap": 99472962962
+      "market_cap": 99472962962,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스피 거래량 1위 SG세계물산 거래대금 6천억원...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003615292",
+          "source": "서울신문",
+          "date": "2026-02-06"
+        }
+      ]
     },
     {
       "date": "20260204",
@@ -239,10 +261,10 @@
       "date": "20251211",
       "change_rate": 10.94,
       "close_price": 3650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -257,7 +279,9 @@
       "source": "estimated",
       "trading_volume": 2270634,
       "trading_value": 8287814100,
-      "market_cap": 73946296296
+      "market_cap": 73946296296,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251121",
@@ -285,5 +309,5 @@
     "count_recent": 0,
     "avg_rate": 20.6
   },
-  "built_at": "2026-10-01T22:53:24"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 7740.0,
       "trading_volume": 2114496,
       "trading_value": 16366199040,
-      "rise_reason": "관련 보도: 190억 규모 메모리반도체 공급계약",
+      "rise_reason": "190억 규모 메모리반도체 공급계약",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -39,7 +39,8 @@
           "source": "이데일리",
           "date": "2026-09-29"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260923",
@@ -47,9 +48,9 @@
       "close_price": 7020.0,
       "trading_volume": 902516,
       "trading_value": 6335662320,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 美 기술주 훈풍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -74,7 +75,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美 기술주 훈풍에…반도체 중소형주 장초반 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005417739",
+          "source": "머니투데이",
+          "date": "2026-09-23"
+        }
+      ]
     },
     {
       "date": "20260921",
@@ -82,9 +93,9 @@
       "close_price": 6550.0,
       "trading_volume": 1391193,
       "trading_value": 9112314150,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 반도체 수출 259% 급증",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -109,7 +120,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260918",
@@ -117,10 +138,10 @@
       "close_price": 5780.0,
       "trading_volume": 969113,
       "trading_value": 5601473140,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -138,7 +159,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -146,9 +169,9 @@
       "close_price": 5470.0,
       "trading_volume": 1584111,
       "trading_value": 8665087170,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "국내 상장 중국기업 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -197,7 +220,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260805",
@@ -205,10 +230,10 @@
       "close_price": 4480.0,
       "trading_volume": 1662819,
       "trading_value": 7449429120,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -256,7 +281,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -264,15 +291,25 @@
       "close_price": 3780.0,
       "trading_volume": 1841768,
       "trading_value": 6961883040,
-      "rise_reason": "국내 상장 중국기업 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 정부 활성화 정책·美공급망 확대 기대",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "국내 상장 중국기업 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "에너지장비株 강세…정부 활성화 정책·美공급망 확대 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005395232&office_id=008&code=475150&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -280,9 +317,9 @@
       "close_price": 3540.0,
       "trading_volume": 1164396,
       "trading_value": 4121961840,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스마트폰 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -331,7 +368,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -339,9 +378,9 @@
       "close_price": 4820.0,
       "trading_volume": 830725,
       "trading_value": 4004094500,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "美 셈테크와 66억원 규모 메모리반도체 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -366,7 +405,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "피델릭스, 美 셈테크와 66억원 규모 메모리반도체 공급계약",
+          "link": "https://n.news.naver.com/mnews/article/018/0006334685",
+          "source": "이데일리",
+          "date": "2026-07-22"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -390,9 +439,9 @@
       "close_price": 5410.0,
       "trading_volume": 1123527,
       "trading_value": 6078281070,
-      "rise_reason": "스마트폰 테마 강세",
+      "rise_reason": "스마트폰 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -405,7 +454,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스마트폰 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260706",
@@ -413,10 +464,10 @@
       "close_price": 5590.0,
       "trading_volume": 1706083,
       "trading_value": 9537003970,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -452,7 +503,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -460,10 +513,10 @@
       "close_price": 5700.0,
       "trading_volume": 3845415,
       "trading_value": 21918865500,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -499,7 +552,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -507,9 +562,9 @@
       "close_price": 4940.0,
       "trading_volume": 1023172,
       "trading_value": 5054469680,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -540,7 +595,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260622",
@@ -548,10 +613,10 @@
       "close_price": 6490.0,
       "trading_volume": 1810027,
       "trading_value": 11747075230,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -581,7 +646,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260618",
@@ -589,10 +656,10 @@
       "close_price": 6000.0,
       "trading_volume": 1307655,
       "trading_value": 7845930000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -622,7 +689,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260604",
@@ -630,9 +699,9 @@
       "close_price": 6270.0,
       "trading_volume": 2357359,
       "trading_value": 14780640930,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -663,7 +732,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 쉬어가자 반도체 장비株 강세…원익IPS '上' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008985149&office_id=421&code=084370&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -671,9 +750,9 @@
       "close_price": 8460.0,
       "trading_volume": 6902356,
       "trading_value": 58393931760,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "에이팩트, 파트너십",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -716,7 +795,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이팩트, 피델릭스와 파트너십…\"메모리 패키지 테스트 물량 장기 확.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006285199&office_id=018&code=032580&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -724,9 +813,9 @@
       "close_price": 6510.0,
       "trading_volume": 7647507,
       "trading_value": 49785270570,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "에이팩트, 파트너십",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -769,7 +858,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이팩트, 피델릭스와 파트너십…\"메모리 패키지 테스트 물량 장기 확.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006285199&office_id=018&code=032580&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260518",
@@ -777,10 +876,10 @@
       "close_price": 4275.0,
       "trading_volume": 7650257,
       "trading_value": 32704848675,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -816,7 +915,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260514",
@@ -824,10 +925,10 @@
       "close_price": 3865.0,
       "trading_volume": 16732332,
       "trading_value": 64670463180,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -863,7 +964,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -871,10 +974,10 @@
       "close_price": 3210.0,
       "trading_volume": 11489345,
       "trading_value": 36880797450,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -916,7 +1019,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260512",
@@ -924,10 +1029,10 @@
       "close_price": 2470.0,
       "trading_volume": 2073075,
       "trading_value": 5120495250,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -975,7 +1080,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -983,10 +1090,10 @@
       "close_price": 1901.0,
       "trading_volume": 1537780,
       "trading_value": 2923319780,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -1034,7 +1141,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -1116,5 +1225,5 @@
     "count_recent": 4,
     "avg_rate": 16.48
   },
-  "built_at": "2026-10-01T22:56:10"
+  "built_at": "2026-10-02T05:15:56"
 }

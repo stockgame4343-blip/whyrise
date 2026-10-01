@@ -163,9 +163,9 @@
       "close_price": 283000.0,
       "trading_volume": 153309,
       "trading_value": 43386447000,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 비욘드, 유튜브 할인광 협업…최대 63% 할인",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [
@@ -232,7 +232,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "LG생활건강 비욘드, 유튜브 '할인광' 협업…최대 63% 할인",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003427617&office_id=030&code=051900&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.14"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -240,9 +250,9 @@
       "close_price": 279500.0,
       "trading_volume": 333640,
       "trading_value": 93252380000,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "1분기 깜짝 실적",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [
@@ -309,7 +319,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]LG생활건강, 1분기 깜짝 실적에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003424038&office_id=030&code=051900&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.04"
+        }
+      ]
     }
   ],
   "stats": {
@@ -320,5 +340,5 @@
     "count_recent": 0,
     "avg_rate": 10.54
   },
-  "built_at": "2026-10-01T22:52:21"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -25,10 +25,10 @@
       "close_price": 32500.0,
       "trading_volume": 65653,
       "trading_value": 2133722500,
-      "rise_reason": "뉴스 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "뉴스 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -125,10 +127,10 @@
       "close_price": 37800.0,
       "trading_volume": 66445,
       "trading_value": 2511621000,
-      "rise_reason": "오가노이드 FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오가노이드",
       "news": [
         {
@@ -194,7 +196,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "오가노이드 FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -247,9 +251,9 @@
       "date": "20260206",
       "change_rate": 11.97,
       "close_price": 55200.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "분기 흑자전환 성공",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -283,7 +287,17 @@
       "source": "estimated",
       "trading_volume": 713979,
       "trading_value": 39411640800,
-      "market_cap": 738807629427
+      "market_cap": 738807629427,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "토모큐브, 분기 흑자전환 성공…주가도 8% UP [매경 자이앤트]",
+          "link": "https://n.news.naver.com/mnews/article/009/0005633532",
+          "source": "매일경제",
+          "date": "2026-02-06"
+        }
+      ]
     },
     {
       "date": "20251204",
@@ -325,10 +339,10 @@
       "date": "20251128",
       "change_rate": 12.62,
       "close_price": 47750.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -336,7 +350,9 @@
       "source": "estimated",
       "trading_volume": 939591,
       "trading_value": 44865470250,
-      "market_cap": 639095367847
+      "market_cap": 639095367847,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250925",
@@ -389,10 +405,10 @@
       "date": "20250616",
       "change_rate": 18.38,
       "close_price": 29300.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -400,7 +416,9 @@
       "source": "estimated",
       "trading_volume": 879541,
       "trading_value": 25770551300,
-      "market_cap": 392156948228
+      "market_cap": 392156948228,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -411,5 +429,5 @@
     "count_recent": 1,
     "avg_rate": 13.31
   },
-  "built_at": "2026-10-01T22:55:07"
+  "built_at": "2026-10-02T05:15:56"
 }

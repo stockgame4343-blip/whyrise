@@ -9,15 +9,17 @@
       "close_price": 4035.0,
       "trading_volume": 831006,
       "trading_value": 3353109210,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미용기기",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260928",
@@ -25,15 +27,17 @@
       "close_price": 3115.0,
       "trading_volume": 260599,
       "trading_value": 811765885,
-      "rise_reason": "미용기기 테마 강세",
+      "rise_reason": "미용기기 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미용기기",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "미용기기 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260514",
@@ -41,9 +45,9 @@
       "close_price": 6010.0,
       "trading_volume": 1253336,
       "trading_value": 7532549360,
-      "rise_reason": "미용기기 허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "식약처 인체조직은행 허가 취득",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미용기기",
       "news": [
@@ -110,7 +114,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "미용기기 허가 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "라메디텍, 식약처 인체조직은행 허가 취득...'ECM 재생의료' 시장 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006280919&office_id=018&code=462510&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.14"
+        }
+      ]
     },
     {
       "date": "20260311",
@@ -158,9 +172,9 @@
       "date": "20260305",
       "change_rate": 14.15,
       "close_price": 4680.0,
-      "rise_reason": "미용기기 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "레이저 미용기기 퓨라셀 MX 대한비만미용학회 증례 발표",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미용기기",
       "news": [
@@ -182,7 +196,17 @@
       "source": "estimated",
       "trading_volume": 46870,
       "trading_value": 219351600,
-      "market_cap": 41254976303
+      "market_cap": 41254976303,
+      "reason_previous": "미용기기 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "라메디텍, 레이저 미용기기 '퓨라셀 MX' 대한비만미용학회 증례 발표",
+          "link": "https://n.news.naver.com/mnews/article/003/0013803554",
+          "source": "뉴시스",
+          "date": "2026-03-05"
+        }
+      ]
     },
     {
       "date": "20260224",
@@ -251,5 +275,5 @@
     "count_recent": 2,
     "avg_rate": 22.57
   },
-  "built_at": "2026-10-01T22:59:19"
+  "built_at": "2026-10-02T05:15:56"
 }

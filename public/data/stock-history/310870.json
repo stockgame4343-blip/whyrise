@@ -9,9 +9,9 @@
       "close_price": 1547.0,
       "trading_volume": 551819,
       "trading_value": 853663993,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 자동차·방산 넘어 로보틱스로 사업 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "디와이씨 \"자동차·방산 넘어 로보틱스로 사업 확대\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363619&office_id=018&code=310870&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -86,9 +96,9 @@
       "close_price": 1462.0,
       "trading_volume": 903416,
       "trading_value": 1320794192,
-      "rise_reason": "지분 관련 이슈",
+      "rise_reason": "방산 성장 모멘텀 부각",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "디와이씨, 방산 성장 모멘텀 부각에 8%대 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006335203&office_id=018&code=310870&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260519",
@@ -163,10 +183,10 @@
       "close_price": 1922.0,
       "trading_volume": 1653005,
       "trading_value": 3177075610,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
         {
@@ -226,7 +246,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260515",
@@ -234,10 +256,10 @@
       "close_price": 1640.0,
       "trading_volume": 8575179,
       "trading_value": 14063293560,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -297,7 +319,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -380,5 +404,5 @@
     "count_recent": 1,
     "avg_rate": 17.4
   },
-  "built_at": "2026-10-01T22:59:16"
+  "built_at": "2026-10-02T05:15:56"
 }

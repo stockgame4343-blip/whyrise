@@ -9,9 +9,9 @@
       "close_price": 7930.0,
       "trading_volume": 161465,
       "trading_value": 1280417450,
-      "rise_reason": "계약 체결",
+      "rise_reason": "10억어치 자사주 취득 결정",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "출산장려정책",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "출판",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성출판사, 10억어치 자사주 취득 결정에 ‘상한가’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001168732&office_id=366&code=068290&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.02"
+        }
+      ]
     },
     {
       "date": "20250527",
@@ -106,5 +116,5 @@
     "count_recent": 0,
     "avg_rate": 30.0
   },
-  "built_at": "2026-09-27T09:00:27"
+  "built_at": "2026-10-02T05:15:57"
 }

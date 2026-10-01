@@ -9,9 +9,9 @@
       "close_price": 16350.0,
       "trading_volume": 3555653,
       "trading_value": 58134926550,
-      "rise_reason": "주주환원 정책",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스페이스X 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -86,15 +88,17 @@
       "close_price": 12500.0,
       "trading_volume": 507180,
       "trading_value": 6339750000,
-      "rise_reason": "창투사 테마 강세",
+      "rise_reason": "창투사 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "창투사",
       "news": [],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "창투사 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -118,10 +122,10 @@
       "close_price": 43700.0,
       "trading_volume": 2831563,
       "trading_value": 123739303100,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -187,7 +191,9 @@
       ],
       "sector": "창업투자",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260518",
@@ -493,15 +499,17 @@
       "close_price": 29650.0,
       "trading_volume": 5625547,
       "trading_value": 166797468550,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "스페이스X 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "창업투자",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260327",
@@ -795,5 +803,5 @@
     "count_recent": 0,
     "avg_rate": 20.62
   },
-  "built_at": "2026-10-01T22:54:23"
+  "built_at": "2026-10-02T05:15:56"
 }

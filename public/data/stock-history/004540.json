@@ -9,9 +9,9 @@
       "close_price": 1907.0,
       "trading_volume": 9117137,
       "trading_value": 17386380259,
-      "rise_reason": "해외 진출 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 연이은 재무 이벤트...자본구조 조정, 영구채 발행",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "日제품 불매운동(수혜)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "깨끗한나라, 연이은 재무 이벤트...자본구조 조정, 영구채 발행",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000087602&office_id=293&code=004540&page=&sm=",
+          "source": "블로터",
+          "date": "2026.07.14"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 26.54
   },
-  "built_at": "2026-10-01T22:53:19"
+  "built_at": "2026-10-02T05:15:57"
 }

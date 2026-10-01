@@ -86,10 +86,10 @@
       "close_price": 69500.0,
       "trading_volume": 90199,
       "trading_value": 6268830500,
-      "rise_reason": "마이크로바이옴 흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로바이옴",
       "news": [
         {
@@ -155,7 +155,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마이크로바이옴 흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -215,9 +217,9 @@
       "date": "20260123",
       "change_rate": 25.0,
       "close_price": 68000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "마이크로바이옴 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이크로바이옴",
       "news": [
@@ -233,7 +235,9 @@
       "source": "estimated",
       "trading_volume": 201166,
       "trading_value": 13679288000,
-      "market_cap": 489866666666
+      "market_cap": 489866666666,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251229",
@@ -320,5 +324,5 @@
     "count_recent": 0,
     "avg_rate": 14.72
   },
-  "built_at": "2026-09-27T09:30:21"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 11000.0,
       "trading_volume": 191598,
       "trading_value": 2107578000,
-      "rise_reason": "화장품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품주 동반 강세 — 반도체주 쉬어가는 사이",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 수출 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체주 쉬어가는 사이…화장품주 ‘불기둥’[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006325140&office_id=018&code=406820&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.08"
+        }
+      ]
     },
     {
       "date": "20260429",
@@ -86,9 +96,9 @@
       "close_price": 13160.0,
       "trading_volume": 608047,
       "trading_value": 8001898520,
-      "rise_reason": "화장품 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품주 동반 강세 — 아모레퍼시픽, 1Q 호실적",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 수출 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "아모레퍼시픽, 1Q 호실적에 4%대↑…화장품주 ‘불기둥’[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006268828&office_id=018&code=226320&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -243,5 +263,5 @@
     "count_recent": 0,
     "avg_rate": 13.87
   },
-  "built_at": "2026-09-27T08:48:21"
+  "built_at": "2026-10-02T05:15:57"
 }

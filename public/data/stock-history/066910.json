@@ -9,9 +9,9 @@
       "close_price": 2970.0,
       "trading_volume": 3811088,
       "trading_value": 11318931360,
-      "rise_reason": "애국 상장 이슈",
+      "rise_reason": "애국 매수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "캐릭터상품",
       "news": [
@@ -54,7 +54,17 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "애국 상장 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "손오공, '애국 매수'에 장초반 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005387852&office_id=008&code=066910&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260716",
@@ -62,10 +72,10 @@
       "close_price": 2285.0,
       "trading_volume": 731634,
       "trading_value": 1671783690,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔젤산업",
       "news": [
         {
@@ -131,16 +141,18 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
       "change_rate": 11.33,
       "close_price": 3095.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -148,16 +160,18 @@
       "source": "estimated",
       "trading_volume": 1520765,
       "trading_value": 4706767675,
-      "market_cap": 41392479674
+      "market_cap": 41392479674,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250826",
       "change_rate": 10.04,
       "close_price": 5370.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -178,7 +192,9 @@
       "source": "estimated",
       "trading_volume": 1144101,
       "trading_value": 6143822370,
-      "market_cap": 71818292682
+      "market_cap": 71818292682,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250530",
@@ -223,5 +239,5 @@
     "count_recent": 0,
     "avg_rate": 23.76
   },
-  "built_at": "2026-09-27T10:24:52"
+  "built_at": "2026-10-02T05:15:57"
 }

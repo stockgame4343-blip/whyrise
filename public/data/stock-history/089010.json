@@ -9,15 +9,17 @@
       "close_price": 19500.0,
       "trading_volume": 95234,
       "trading_value": 1857063000,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "유리 기판 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260506",
@@ -102,10 +104,10 @@
       "close_price": 39700.0,
       "trading_volume": 1506897,
       "trading_value": 59823810900,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -171,7 +173,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -193,9 +197,9 @@
       "date": "20260305",
       "change_rate": 15.2,
       "close_price": 28800.0,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "유리 기판 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [],
@@ -204,7 +208,9 @@
       "source": "estimated",
       "trading_volume": 213961,
       "trading_value": 6162076800,
-      "market_cap": 483022837370
+      "market_cap": 483022837370,
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251103",
@@ -297,5 +303,5 @@
     "count_recent": 0,
     "avg_rate": 15.39
   },
-  "built_at": "2026-10-01T22:55:11"
+  "built_at": "2026-10-02T05:15:57"
 }

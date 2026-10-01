@@ -9,10 +9,10 @@
       "close_price": 7680.0,
       "trading_volume": 20527433,
       "trading_value": 157650685440,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260903",
@@ -44,10 +46,10 @@
       "close_price": 7570.0,
       "trading_volume": 22372602,
       "trading_value": 169360597140,
-      "rise_reason": "지역 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -83,7 +85,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지역 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260902",
@@ -91,10 +95,10 @@
       "close_price": 6790.0,
       "trading_volume": 8789897,
       "trading_value": 59683400630,
-      "rise_reason": "지역 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -154,7 +158,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지역 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260820",
@@ -162,10 +168,10 @@
       "close_price": 5380.0,
       "trading_volume": 11946215,
       "trading_value": 64270636700,
-      "rise_reason": "지역 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -219,7 +225,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지역 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260812",
@@ -227,10 +235,10 @@
       "close_price": 6280.0,
       "trading_volume": 14834170,
       "trading_value": 93158587600,
-      "rise_reason": "지역 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -284,7 +292,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지역 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260811",
@@ -292,10 +302,10 @@
       "close_price": 5240.0,
       "trading_volume": 11105889,
       "trading_value": 58194858360,
-      "rise_reason": "지역 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -349,7 +359,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지역 실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260730",
@@ -357,9 +369,9 @@
       "close_price": 4205.0,
       "trading_volume": 7877896,
       "trading_value": 33126552680,
-      "rise_reason": "지역 실적 관련 뉴스",
+      "rise_reason": "건설경기 회복 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -402,7 +414,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지역 실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "서산, 건설경기 회복 기대감에 상승세…27.4%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006339785&office_id=018&code=079650&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.30"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -410,10 +432,10 @@
       "close_price": 5380.0,
       "trading_volume": 27222536,
       "trading_value": 146457243680,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -431,7 +453,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260707",
@@ -439,10 +463,10 @@
       "close_price": 4775.0,
       "trading_volume": 3889700,
       "trading_value": 18573317500,
-      "rise_reason": "진짜 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -466,7 +490,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "진짜 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260706",
@@ -474,10 +500,10 @@
       "close_price": 3675.0,
       "trading_volume": 6302940,
       "trading_value": 23163304500,
-      "rise_reason": "진짜 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -519,7 +545,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "진짜 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -527,9 +555,9 @@
       "close_price": 4765.0,
       "trading_volume": 15761833,
       "trading_value": 75105134245,
-      "rise_reason": "진짜 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시멘트 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -578,7 +606,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "진짜 상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260623",
@@ -586,10 +616,10 @@
       "close_price": 8120.0,
       "trading_volume": 795929,
       "trading_value": 6462943480,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -613,7 +643,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260622",
@@ -621,10 +653,10 @@
       "close_price": 6250.0,
       "trading_volume": 4933338,
       "trading_value": 30833362500,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -648,7 +680,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260618",
@@ -656,10 +690,10 @@
       "close_price": 4815.0,
       "trading_volume": 12040505,
       "trading_value": 57975031575,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -689,7 +723,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -697,10 +733,10 @@
       "close_price": 3705.0,
       "trading_volume": 11252955,
       "trading_value": 41692198275,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -748,7 +784,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260616",
@@ -756,9 +794,9 @@
       "close_price": 2850.0,
       "trading_volume": 3205101,
       "trading_value": 9134537850,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 대우건설",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -813,7 +851,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "미·이란 종전 합의에 건설주 강세…대우건설 23%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003101479&office_id=119&code=013360&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.06.16"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -821,9 +869,9 @@
       "close_price": 2195.0,
       "trading_volume": 414579,
       "trading_value": 910000905,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 종전 수혜주 어디",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -884,7 +932,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "종전 수혜주 어디…건설·항공·증권株 동반 강세 [마켓시그널]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004631160&office_id=011&code=272450&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -892,10 +950,10 @@
       "close_price": 1690.0,
       "trading_volume": 7608971,
       "trading_value": 12859160990,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -955,7 +1013,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260610",
@@ -963,10 +1023,10 @@
       "close_price": 1272.0,
       "trading_volume": 2261231,
       "trading_value": 2876285832,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -1026,7 +1086,9 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260507",
@@ -1034,9 +1096,9 @@
       "close_price": 1474.0,
       "trading_volume": 454449,
       "trading_value": 669857826,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 미·이란 종전 MOU 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -1097,7 +1159,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 미·이란 종전 MOU 기대감에…건설株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001162361&office_id=366&code=028050&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.07"
+        }
+      ]
     },
     {
       "date": "20260220",
@@ -1125,5 +1197,5 @@
     "count_recent": 3,
     "avg_rate": 22.88
   },
-  "built_at": "2026-10-01T22:57:23"
+  "built_at": "2026-10-02T05:15:56"
 }

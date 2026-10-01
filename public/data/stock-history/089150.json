@@ -23,10 +23,10 @@
       "date": "20260323",
       "change_rate": 10.52,
       "close_price": 3520.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -34,7 +34,9 @@
       "source": "estimated",
       "trading_volume": 14531838,
       "trading_value": 51152069760,
-      "market_cap": 60293069306
+      "market_cap": 60293069306,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260319",
@@ -81,10 +83,10 @@
       "date": "20260123",
       "change_rate": 11.02,
       "close_price": 2820.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -92,16 +94,18 @@
       "source": "estimated",
       "trading_volume": 987562,
       "trading_value": 2784924840,
-      "market_cap": 48302970297
+      "market_cap": 48302970297,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250828",
       "change_rate": 10.99,
       "close_price": 4190.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -122,15 +126,17 @@
       "source": "estimated",
       "trading_volume": 16747186,
       "trading_value": 70170709340,
-      "market_cap": 71769306930
+      "market_cap": 71769306930,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250822",
       "change_rate": 14.85,
       "close_price": 3945.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "신한은행과 21억 규모 영업점 카드 발급기 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -158,16 +164,26 @@
       "source": "estimated",
       "trading_volume": 12825305,
       "trading_value": 50595828225,
-      "market_cap": 67572772277
+      "market_cap": 67572772277,
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "케이씨티, 신한은행과 21억 규모 영업점 카드 발급기 공급계약",
+          "link": "https://n.news.naver.com/mnews/article/293/0000071473",
+          "source": "블로터",
+          "date": "2025-08-22"
+        }
+      ]
     },
     {
       "date": "20250710",
       "change_rate": 14.96,
       "close_price": 4380.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -182,7 +198,9 @@
       "source": "estimated",
       "trading_volume": 15920468,
       "trading_value": 69731649840,
-      "market_cap": 75023762376
+      "market_cap": 75023762376,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
@@ -227,5 +245,5 @@
     "count_recent": 0,
     "avg_rate": 14.74
   },
-  "built_at": "2026-09-27T10:24:59"
+  "built_at": "2026-10-02T05:15:57"
 }

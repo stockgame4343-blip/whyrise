@@ -9,9 +9,9 @@
       "close_price": 5420.0,
       "trading_volume": 2822119,
       "trading_value": 15295884980,
-      "rise_reason": "분리과세 배당 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 미국-이란 종전협상 교착",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "분리과세 배당 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 미국-이란 종전협상 교착… 철강株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003422455&office_id=030&code=008420&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.04.28"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 12.56
   },
-  "built_at": "2026-09-27T09:59:07"
+  "built_at": "2026-10-02T05:15:57"
 }

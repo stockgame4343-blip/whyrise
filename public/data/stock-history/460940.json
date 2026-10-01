@@ -9,10 +9,10 @@
       "close_price": 5830.0,
       "trading_volume": 2040083,
       "trading_value": 11893683890,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260806",
@@ -80,10 +82,10 @@
       "close_price": 5570.0,
       "trading_volume": 2917759,
       "trading_value": 16251917630,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
         {
@@ -143,7 +145,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -190,10 +194,10 @@
       "close_price": 6810.0,
       "trading_volume": 3296874,
       "trading_value": 22451711940,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
         {
@@ -253,7 +257,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -277,9 +283,9 @@
       "close_price": 9900.0,
       "trading_volume": 3575608,
       "trading_value": 35398519200,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "지능형로봇 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -340,15 +346,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20251212",
       "change_rate": 13.13,
       "close_price": 13700.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "숨은 휴머노이드 기술주",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -364,7 +372,17 @@
       "source": "estimated",
       "trading_volume": 9006015,
       "trading_value": 123382405500,
-      "market_cap": 184276064610
+      "market_cap": 184276064610,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]피앤에스로보틱스, 숨은 휴머노이드 기술주…돈버는 기업 강...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005692848",
+          "source": "아시아경제",
+          "date": "2025-12-12"
+        }
+      ]
     },
     {
       "date": "20251124",
@@ -472,9 +490,9 @@
       "date": "20251024",
       "change_rate": 10.01,
       "close_price": 8795.0,
-      "rise_reason": "무상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "주당 1.0주 무상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -508,7 +526,17 @@
       "source": "estimated",
       "trading_volume": 5649098,
       "trading_value": 49683816910,
-      "market_cap": 118299853157
+      "market_cap": 118299853157,
+      "reason_previous": "무상증자",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "피앤에스로보틱스, 주당 1.0주 무상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/374/0000470480",
+          "source": "SBS Biz",
+          "date": "2025-10-24"
+        }
+      ]
     },
     {
       "date": "20250623",
@@ -536,5 +564,5 @@
     "count_recent": 0,
     "avg_rate": 15.05
   },
-  "built_at": "2026-10-01T22:58:16"
+  "built_at": "2026-10-02T05:15:56"
 }

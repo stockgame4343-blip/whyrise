@@ -9,10 +9,10 @@
       "close_price": 35700.0,
       "trading_volume": 76960,
       "trading_value": 2747472000,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -86,9 +88,9 @@
       "close_price": 32000.0,
       "trading_volume": 204968,
       "trading_value": 6558976000,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "UCLA 진행 D-Salife 임상결과 9월 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "동운아나텍, UCLA 진행 'D-Salife' 임상결과 9월 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000088520&office_id=293&code=094170&page=&sm=",
+          "source": "블로터",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -163,9 +175,9 @@
       "close_price": 26900.0,
       "trading_volume": 278299,
       "trading_value": 7486243100,
-      "rise_reason": "바이오",
+      "rise_reason": "식약처에 타액기반 혈당측정기 임상계획서 승인 신청",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "카메라모듈/부품",
       "news": [
@@ -184,7 +196,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "동운아나텍, 식약처에 타액기반 혈당측정기 임상계획서 승인 신청",
+          "link": "https://n.news.naver.com/mnews/article/008/0005393639",
+          "source": "머니투데이",
+          "date": "2026-07-30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -215,9 +237,9 @@
       "close_price": 34400.0,
       "trading_volume": 202048,
       "trading_value": 6950451200,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 김동철 대표가 24억원 규모 지분 추가 취득",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -284,7 +306,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "동운아나텍, 김동철 대표가 24억원 규모 지분 추가 취득",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005376453&office_id=008&code=094170&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.24"
+        }
+      ]
     },
     {
       "date": "20260417",
@@ -446,10 +478,10 @@
       "close_price": 33950.0,
       "trading_volume": 558267,
       "trading_value": 18953164650,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
         {
@@ -515,7 +547,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -538,9 +572,9 @@
       "date": "20260105",
       "change_rate": 13.99,
       "close_price": 32600.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "자사주 25억 규모 추가 취득",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오인식(생체인식)",
       "news": [
@@ -562,7 +596,17 @@
       "source": "estimated",
       "trading_volume": 1059055,
       "trading_value": 34525193000,
-      "market_cap": 681693278463
+      "market_cap": 681693278463,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "김동철 동운아나텍 대표, 자사주 25억 규모 추가 취득…&quot;헬스케어 신...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005300158",
+          "source": "머니투데이",
+          "date": "2026-01-05"
+        }
+      ]
     },
     {
       "date": "20251127",
@@ -633,5 +677,5 @@
     "count_recent": 0,
     "avg_rate": 12.96
   },
-  "built_at": "2026-10-01T22:54:58"
+  "built_at": "2026-10-02T05:15:56"
 }

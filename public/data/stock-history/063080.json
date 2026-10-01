@@ -9,15 +9,17 @@
       "close_price": 12410.0,
       "trading_volume": 42038,
       "trading_value": 521691580,
-      "rise_reason": "모바일게임(스마트폰) 테마 강세",
+      "rise_reason": "모바일게임 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모바일게임(스마트폰)",
       "news": [],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "모바일게임(스마트폰) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260625",
@@ -25,9 +27,9 @@
       "close_price": 12870.0,
       "trading_volume": 84258,
       "trading_value": 1084400460,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "컬러스위퍼 7월2일 론칭",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -94,16 +96,26 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "컴투스홀딩스, ‘컬러스위퍼’ 7월2일 론칭…퍼즐 마니아 공략",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000747533&office_id=396&code=063080&page=&sm=",
+          "source": "스포츠월드",
+          "date": "2026.06.22"
+        }
+      ]
     },
     {
       "date": "20260126",
       "change_rate": 15.56,
       "close_price": 23400.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -111,16 +123,18 @@
       "source": "estimated",
       "trading_volume": 891741,
       "trading_value": 20866739400,
-      "market_cap": 154336764705
+      "market_cap": 154336764705,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260123",
       "change_rate": 10.9,
       "close_price": 20250.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -128,7 +142,9 @@
       "source": "estimated",
       "trading_volume": 262940,
       "trading_value": 5324535000,
-      "market_cap": 133560661764
+      "market_cap": 133560661764,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250610",
@@ -173,5 +189,5 @@
     "count_recent": 0,
     "avg_rate": 12.57
   },
-  "built_at": "2026-10-01T22:57:59"
+  "built_at": "2026-10-02T05:15:57"
 }

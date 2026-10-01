@@ -9,9 +9,9 @@
       "close_price": 123100.0,
       "trading_volume": 169882,
       "trading_value": 20912474200,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -24,7 +24,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -32,9 +34,9 @@
       "close_price": 112300.0,
       "trading_volume": 335510,
       "trading_value": 37677773000,
-      "rise_reason": "반도체 장비 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 36종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -89,7 +91,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -97,9 +101,9 @@
       "close_price": 162800.0,
       "trading_volume": 228109,
       "trading_value": 37136145200,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 12종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -130,7 +134,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -138,9 +144,9 @@
       "close_price": 165700.0,
       "trading_volume": 246578,
       "trading_value": 40857974600,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 29종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -177,7 +183,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260701",
@@ -185,9 +193,9 @@
       "close_price": 206500.0,
       "trading_volume": 639964,
       "trading_value": 132152566000,
-      "rise_reason": "반도체 장비 증설 발표",
+      "rise_reason": "메모리값 또 뛰었다",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -242,7 +250,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 증설 발표",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "메모리값 또 뛰었다…유진테크·주성ENG 들썩 [칩칩폭폭]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002385707&office_id=123&code=084370&page=&sm=",
+          "source": "조세일보",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -250,9 +268,9 @@
       "close_price": 185700.0,
       "trading_volume": 374299,
       "trading_value": 69507324300,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -319,7 +337,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260622",
@@ -327,9 +355,9 @@
       "close_price": 187300.0,
       "trading_volume": 291368,
       "trading_value": 54573226400,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -396,7 +424,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -404,9 +434,9 @@
       "close_price": 178300.0,
       "trading_volume": 716482,
       "trading_value": 127748740600,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -473,7 +503,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -481,9 +513,9 @@
       "close_price": 147400.0,
       "trading_volume": 515955,
       "trading_value": 76051767000,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 장비 테마 30종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -550,7 +582,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -629,15 +663,17 @@
       "close_price": 133600.0,
       "trading_volume": 235603,
       "trading_value": 31476560800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -645,9 +681,9 @@
       "close_price": 123700.0,
       "trading_volume": 180468,
       "trading_value": 22323891600,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -660,7 +696,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -690,9 +736,9 @@
       "date": "20260226",
       "change_rate": 12.32,
       "close_price": 137700.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 장비 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -714,7 +760,9 @@
       "source": "estimated",
       "trading_volume": 476389,
       "trading_value": 65598765300,
-      "market_cap": 3155515453460
+      "market_cap": 3155515453460,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260219",
@@ -780,9 +828,9 @@
       "date": "20260128",
       "change_rate": 11.33,
       "close_price": 102200.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -791,15 +839,17 @@
       "source": "estimated",
       "trading_volume": 804427,
       "trading_value": 82212439400,
-      "market_cap": 2342002028639
+      "market_cap": 2342002028639,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260126",
       "change_rate": 10.73,
       "close_price": 83600.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -808,15 +858,17 @@
       "source": "estimated",
       "trading_volume": 623365,
       "trading_value": 52113314000,
-      "market_cap": 1915766825775
+      "market_cap": 1915766825775,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260102",
       "change_rate": 14.13,
       "close_price": 85600.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -832,15 +884,17 @@
       "source": "estimated",
       "trading_volume": 623892,
       "trading_value": 53405155200,
-      "market_cap": 1961598568019
+      "market_cap": 1961598568019,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251029",
       "change_rate": 10.34,
       "close_price": 98200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 엔비디아의 노키아 투자 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -849,7 +903,17 @@
       "source": "estimated",
       "trading_volume": 374629,
       "trading_value": 36788567800,
-      "market_cap": 2250338544152
+      "market_cap": 2250338544152,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 통신장비株, 엔비디아의 노키아 투자 소식에 급등",
+          "link": "https://n.news.naver.com/mnews/article/001/0015707534",
+          "source": "연합뉴스",
+          "date": "2025-10-29"
+        }
+      ]
     },
     {
       "date": "20250703",
@@ -877,5 +941,5 @@
     "count_recent": 0,
     "avg_rate": 14.48
   },
-  "built_at": "2026-10-01T22:53:50"
+  "built_at": "2026-10-02T05:15:56"
 }

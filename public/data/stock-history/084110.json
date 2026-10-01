@@ -9,9 +9,9 @@
       "close_price": 30900.0,
       "trading_volume": 53929,
       "trading_value": 1666406100,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "휴온스·휴온스랩 합병 무산 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 휴온스·휴온스랩 합병 무산 소식에…휴온스글로벌 ‘상한가.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001188606&office_id=366&code=084110&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.27"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -370,5 +380,5 @@
     "count_recent": 0,
     "avg_rate": 16.63
   },
-  "built_at": "2026-10-01T22:55:51"
+  "built_at": "2026-10-02T05:15:56"
 }

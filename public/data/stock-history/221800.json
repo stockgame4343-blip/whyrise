@@ -9,10 +9,10 @@
       "close_price": 5340.0,
       "trading_volume": 396565,
       "trading_value": 2117657100,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(진단키트)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260512",
@@ -86,9 +88,9 @@
       "close_price": 17260.0,
       "trading_volume": 456583,
       "trading_value": 7880622580,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "코로나19 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단키트)",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260424",
@@ -905,5 +909,5 @@
     "count_recent": 0,
     "avg_rate": 24.45
   },
-  "built_at": "2026-10-01T22:58:32"
+  "built_at": "2026-10-02T05:15:56"
 }

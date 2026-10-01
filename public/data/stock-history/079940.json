@@ -9,9 +9,9 @@
       "close_price": 44050.0,
       "trading_volume": 10218,
       "trading_value": 450102900,
-      "rise_reason": "인수 관련 뉴스",
+      "rise_reason": "맥쿼리운용 공개매수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "SNS(소셜네트워크서비스)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 가비아, 맥쿼리운용 공개매수에 상한가…매수가 근접(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016204175&office_id=001&code=079940&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260416",
@@ -243,10 +253,10 @@
       "date": "20251029",
       "change_rate": 10.54,
       "close_price": 28850.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -285,15 +295,17 @@
       "source": "estimated",
       "trading_volume": 190313,
       "trading_value": 5490530050,
-      "market_cap": 387231111111
+      "market_cap": 387231111111,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20250910",
       "change_rate": 10.32,
       "close_price": 29400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -302,7 +314,9 @@
       "source": "estimated",
       "trading_volume": 457403,
       "trading_value": 13447648200,
-      "market_cap": 394613333333
+      "market_cap": 394613333333,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -313,5 +327,5 @@
     "count_recent": 0,
     "avg_rate": 15.85
   },
-  "built_at": "2026-09-27T09:19:24"
+  "built_at": "2026-10-02T05:15:57"
 }

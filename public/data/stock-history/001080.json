@@ -9,10 +9,10 @@
       "close_price": 4630.0,
       "trading_volume": 47772,
       "trading_value": 221184360,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -86,10 +88,10 @@
       "close_price": 6170.0,
       "trading_volume": 452177,
       "trading_value": 2789932090,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -143,15 +145,17 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20250930",
       "change_rate": 11.27,
       "close_price": 4790.0,
-      "rise_reason": "철강 중소형 테마 강세",
+      "rise_reason": "철강 중소형 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [],
@@ -160,15 +164,17 @@
       "source": "estimated",
       "trading_volume": 423290,
       "trading_value": 2027559100,
-      "market_cap": 198799515151
+      "market_cap": 198799515151,
+      "reason_previous": "철강 중소형 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250925",
       "change_rate": 14.96,
       "close_price": 3920.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 주주가치 제고 목적 250억 규모 자기주식 취득 결정…전량...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -208,7 +214,17 @@
       "source": "estimated",
       "trading_volume": 678250,
       "trading_value": 2658740000,
-      "market_cap": 162691878787
+      "market_cap": 162691878787,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "만호제강, 주주가치 제고 목적 250억 규모 자기주식 취득 결정…&quot;전량...",
+          "link": "https://n.news.naver.com/mnews/article/293/0000072989",
+          "source": "블로터",
+          "date": "2025-09-25"
+        }
+      ]
     },
     {
       "date": "20250912",
@@ -236,5 +252,5 @@
     "count_recent": 0,
     "avg_rate": 15.15
   },
-  "built_at": "2026-10-01T22:53:01"
+  "built_at": "2026-10-02T05:15:57"
 }

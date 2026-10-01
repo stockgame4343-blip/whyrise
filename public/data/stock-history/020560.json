@@ -9,9 +9,9 @@
       "close_price": 8050.0,
       "trading_volume": 1495271,
       "trading_value": 12036931550,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "항공 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "항공사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260514",
@@ -86,9 +88,9 @@
       "close_price": 7870.0,
       "trading_volume": 2982895,
       "trading_value": 23475383650,
-      "rise_reason": "합병 관련 뉴스",
+      "rise_reason": "대한항공과 합병계약",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "항공사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아시아나항공, 장중 10% 급등…대한항공과 합병계약[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008944053&office_id=421&code=020560&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.14"
+        }
+      ]
     }
   ],
   "stats": {
@@ -166,5 +178,5 @@
     "count_recent": 0,
     "avg_rate": 15.4
   },
-  "built_at": "2026-10-01T22:52:31"
+  "built_at": "2026-10-02T05:15:57"
 }

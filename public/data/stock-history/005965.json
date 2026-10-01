@@ -9,10 +9,10 @@
       "close_price": 21000.0,
       "trading_volume": 17266,
       "trading_value": 362586000,
-      "rise_reason": "건설 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건설 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -119,10 +121,10 @@
       "date": "20251230",
       "change_rate": 11.59,
       "close_price": 24550.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -161,7 +163,9 @@
       "source": "estimated",
       "trading_volume": 43395,
       "trading_value": 1065347250,
-      "market_cap": 5516853932
+      "market_cap": 5516853932,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251218",
@@ -383,9 +387,9 @@
       "date": "20251117",
       "change_rate": 29.96,
       "close_price": 17090.0,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "실시간 상승률 1위",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -419,7 +423,17 @@
       "source": "estimated",
       "trading_volume": 3025,
       "trading_value": 51697250,
-      "market_cap": 3840449438
+      "market_cap": 3840449438,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]‘동부건설우’ 29.96% 폭등…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003592326",
+          "source": "서울신문",
+          "date": "2025-11-17"
+        }
+      ]
     }
   ],
   "stats": {
@@ -430,5 +444,5 @@
     "count_recent": 0,
     "avg_rate": 25.9
   },
-  "built_at": "2026-09-27T09:09:18"
+  "built_at": "2026-10-02T05:15:57"
 }

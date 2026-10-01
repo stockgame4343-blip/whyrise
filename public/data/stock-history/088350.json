@@ -9,9 +9,9 @@
       "close_price": 5630.0,
       "trading_volume": 14537788,
       "trading_value": 81847746440,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 전직원 AI비서와 일해요",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "생명보험",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "생명보험",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "한화생명 전직원 \"AI비서와 일해요\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005561430&office_id=014&code=088350&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.13"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -86,9 +96,9 @@
       "close_price": 5490.0,
       "trading_volume": 44518112,
       "trading_value": 244404434880,
-      "rise_reason": "생명보험 순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1분기 순이익 29% 늘어",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "생명보험",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "생명보험",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "생명보험 순이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한화생명, '보험' 부진 '투자'로 뚫었다…1분기 순이익 29% 늘어",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002227793&office_id=138&code=088350&page=&sm=",
+          "source": "디지털데일리",
+          "date": "2026.05.14"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -268,5 +288,5 @@
     "count_recent": 0,
     "avg_rate": 14.43
   },
-  "built_at": "2026-10-01T22:52:18"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 7180.0,
       "trading_volume": 2331316,
       "trading_value": 16738848880,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "PCB(FPCB 등)",
       "news": [
         {
@@ -30,7 +30,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -38,15 +40,17 @@
       "close_price": 6600.0,
       "trading_volume": 125244,
       "trading_value": 826610400,
-      "rise_reason": "PCB(FPCB 등) 테마 강세",
+      "rise_reason": "PCB 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "PCB(FPCB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "PCB(FPCB 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -68,10 +72,10 @@
       "date": "20260310",
       "change_rate": 13.1,
       "close_price": 12690.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -79,7 +83,9 @@
       "source": "estimated",
       "trading_volume": 696686,
       "trading_value": 8840945340,
-      "market_cap": 296052257336
+      "market_cap": 296052257336,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -90,5 +96,5 @@
     "count_recent": 1,
     "avg_rate": 12.56
   },
-  "built_at": "2026-10-01T22:56:45"
+  "built_at": "2026-10-02T05:15:56"
 }

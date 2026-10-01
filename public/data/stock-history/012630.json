@@ -9,9 +9,9 @@
       "close_price": 27350.0,
       "trading_volume": 339793,
       "trading_value": 9293338550,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "발전·건설 자회사 호실적",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면세점",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목] \"HDC, 발전·건설 자회사 호실적…목표가 유지\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005814257&office_id=277&code=012630&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -86,9 +96,9 @@
       "close_price": 23100.0,
       "trading_volume": 215571,
       "trading_value": 4979690100,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 진선미 정몽규, 연임 앞두고 로 축구협회에 48억 후원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "진선미 \"정몽규, 연임 앞두고 HDC로 축구협회에 48억 후원\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000523291&office_id=374&code=012630&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -243,5 +263,5 @@
     "count_recent": 1,
     "avg_rate": 12.82
   },
-  "built_at": "2026-10-01T22:52:33"
+  "built_at": "2026-10-02T05:15:56"
 }

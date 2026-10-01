@@ -9,9 +9,9 @@
       "close_price": 6670.0,
       "trading_volume": 356474,
       "trading_value": 2377681580,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "중국서 첫 시술 성공, 본토 진출 문 열었다 이정선",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "줄기세포",
       "news": [
@@ -78,15 +78,25 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"중국서 첫 시술 성공, 본토 진출 문 열었다\" 이정선 바이오솔루션 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005561583&office_id=014&code=086820&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260326",
       "change_rate": 12.04,
       "close_price": 12660.0,
-      "rise_reason": "바이오",
+      "rise_reason": "무릎 연골 살리는 카티라이프, 中 진출 눈앞",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -114,15 +124,25 @@
       "source": "estimated",
       "trading_volume": 597985,
       "trading_value": 7570490100,
-      "market_cap": 328265437788
+      "market_cap": 328265437788,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "바이오솔루션 “무릎 연골 살리는 카티라이프, 中 진출 눈앞…美 FDA와...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004603544",
+          "source": "서울경제",
+          "date": "2026-03-26"
+        }
+      ]
     },
     {
       "date": "20260313",
       "change_rate": 13.65,
       "close_price": 12820.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "114억 CB 전환 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -138,16 +158,26 @@
       "source": "estimated",
       "trading_volume": 961089,
       "trading_value": 12321160980,
-      "market_cap": 332414132104
+      "market_cap": 332414132104,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "바이오솔루션, 114억 CB 전환 소식에 신고가 [Why 바이오]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004599015",
+          "source": "서울경제",
+          "date": "2026-03-13"
+        }
+      ]
     },
     {
       "date": "20260306",
       "change_rate": 15.35,
       "close_price": 11650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -155,15 +185,17 @@
       "source": "estimated",
       "trading_volume": 1170983,
       "trading_value": 13641951950,
-      "market_cap": 302076804915
+      "market_cap": 302076804915,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260225",
       "change_rate": 12.37,
       "close_price": 9900.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 올해 도약 원년…주요 파이프라인 동반 성장 본격화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -185,16 +217,26 @@
       "source": "estimated",
       "trading_volume": 942626,
       "trading_value": 9331997400,
-      "market_cap": 256700460829
+      "market_cap": 256700460829,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "바이오솔루션 &quot;올해 도약 원년…주요 파이프라인 동반 성장 본격화&quot;",
+          "link": "https://n.news.naver.com/mnews/article/008/0005322253",
+          "source": "머니투데이",
+          "date": "2026-02-25"
+        }
+      ]
     },
     {
       "date": "20251107",
       "change_rate": 20.71,
       "close_price": 9560.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -202,7 +244,9 @@
       "source": "estimated",
       "trading_volume": 505209,
       "trading_value": 4829798040,
-      "market_cap": 247884485407
+      "market_cap": 247884485407,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -213,5 +257,5 @@
     "count_recent": 0,
     "avg_rate": 14.18
   },
-  "built_at": "2026-10-01T22:56:36"
+  "built_at": "2026-10-02T05:15:56"
 }

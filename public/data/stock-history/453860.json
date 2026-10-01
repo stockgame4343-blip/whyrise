@@ -9,9 +9,9 @@
       "close_price": 12950.0,
       "trading_volume": 55300,
       "trading_value": 716135000,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화장품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -89,5 +91,5 @@
     "count_recent": 0,
     "avg_rate": 16.77
   },
-  "built_at": "2026-09-27T10:10:24"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 1214.0,
       "trading_volume": 1180185,
       "trading_value": 1432744590,
-      "rise_reason": "게임 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 월드컵과 함께 떴다… 프리스타일 풋볼 2",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "게임",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "게임 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "월드컵과 함께 떴다…조이시티 '프리스타일 풋볼 2'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000048097&office_id=648&code=067000&page=&sm=",
+          "source": "비즈워치",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -422,5 +432,5 @@
     "count_recent": 0,
     "avg_rate": 16.6
   },
-  "built_at": "2026-09-27T09:56:24"
+  "built_at": "2026-10-02T05:15:57"
 }

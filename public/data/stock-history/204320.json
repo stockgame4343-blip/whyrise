@@ -25,9 +25,9 @@
       "close_price": 65000.0,
       "trading_volume": 1202691,
       "trading_value": 78174915000,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "GM 우수 협력사 6년 연속 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[게시판] HL만도, GM 우수 협력사 6년 연속 선정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016127895&office_id=001&code=204320&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -102,9 +112,9 @@
       "close_price": 60400.0,
       "trading_volume": 668139,
       "trading_value": 40355595600,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "전기차 수요에 실적회복구간 진입",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차 대표주",
       "news": [
@@ -171,7 +181,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼성증권, HL만도 목표가↑…\"전기차 수요에 실적회복구간 진입\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016087443&office_id=001&code=204320&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -277,5 +297,5 @@
     "count_recent": 0,
     "avg_rate": 15.54
   },
-  "built_at": "2026-09-29T22:19:24"
+  "built_at": "2026-10-02T05:15:57"
 }

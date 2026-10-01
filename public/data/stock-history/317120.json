@@ -161,9 +161,9 @@
       "date": "20260310",
       "change_rate": 11.55,
       "close_price": 1970.0,
-      "rise_reason": "보안주(정보) 테마 강세",
+      "rise_reason": "보안주 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -172,7 +172,9 @@
       "source": "estimated",
       "trading_volume": 192215,
       "trading_value": 378663550,
-      "market_cap": 30076335877
+      "market_cap": 30076335877,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -195,9 +197,9 @@
       "date": "20260225",
       "change_rate": 11.98,
       "close_price": 2150.0,
-      "rise_reason": "보안주(정보) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "차량용 네트워크 MCU 양산 초읽기",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -219,7 +221,17 @@
       "source": "estimated",
       "trading_volume": 2376012,
       "trading_value": 5108425800,
-      "market_cap": 32824427480
+      "market_cap": 32824427480,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "라닉스, 차량용 네트워크 MCU 양산 초읽기…올 상반기 검증 완료",
+          "link": "https://n.news.naver.com/mnews/article/293/0000079875",
+          "source": "블로터",
+          "date": "2026-02-25"
+        }
+      ]
     },
     {
       "date": "20251226",
@@ -327,9 +339,9 @@
       "date": "20250925",
       "change_rate": 14.99,
       "close_price": 2340.0,
-      "rise_reason": "보안주(정보) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "양자 보안 칩 양산 기대",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -357,7 +369,17 @@
       "source": "estimated",
       "trading_volume": 27628532,
       "trading_value": 64650764880,
-      "market_cap": 35725190839
+      "market_cap": 35725190839,
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[오늘의 급등주] 라닉스, 양자 보안 칩 양산 기대에 상한가",
+          "link": "https://n.news.naver.com/mnews/article/037/0000037016",
+          "source": "주간동아",
+          "date": "2025-09-24"
+        }
+      ]
     },
     {
       "date": "20250924",
@@ -421,5 +443,5 @@
     "count_recent": 0,
     "avg_rate": 18.63
   },
-  "built_at": "2026-09-27T10:30:53"
+  "built_at": "2026-10-02T05:15:57"
 }

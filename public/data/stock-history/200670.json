@@ -9,9 +9,9 @@
       "close_price": 28350.0,
       "trading_volume": 56339,
       "trading_value": 1597210650,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 바이오의약품까지 CMO 확대…휴온스랩과 밸류체인 완성",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "휴메딕스, 바이오의약품까지 CMO 확대…휴온스랩과 밸류체인 완성",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000103274&office_id=296&code=200670&page=&sm=",
+          "source": "코메디닷컴",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -108,10 +118,10 @@
       "date": "20250905",
       "change_rate": 14.92,
       "close_price": 62400.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -119,7 +129,9 @@
       "source": "estimated",
       "trading_volume": 957142,
       "trading_value": 59725660800,
-      "market_cap": 700692737430
+      "market_cap": 700692737430,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250722",
@@ -147,5 +159,5 @@
     "count_recent": 0,
     "avg_rate": 11.31
   },
-  "built_at": "2026-10-01T22:55:51"
+  "built_at": "2026-10-02T05:15:56"
 }

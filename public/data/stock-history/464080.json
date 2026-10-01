@@ -9,15 +9,17 @@
       "close_price": 7690.0,
       "trading_volume": 169871,
       "trading_value": 1306307990,
-      "rise_reason": "자율주행차 테마 강세",
+      "rise_reason": "자율주행차 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자율주행차 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -25,9 +27,9 @@
       "close_price": 10300.0,
       "trading_volume": 379037,
       "trading_value": 3904081100,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "피지컬 AI 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -94,7 +96,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260615",
@@ -102,10 +106,10 @@
       "close_price": 13530.0,
       "trading_volume": 1359195,
       "trading_value": 18389908350,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자율주행차",
       "news": [
         {
@@ -171,7 +175,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -179,9 +185,9 @@
       "close_price": 12150.0,
       "trading_volume": 1157082,
       "trading_value": 14058546300,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — HL만도, 피지컬 AI 수혜 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -248,7 +254,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "HL만도, 피지컬 AI 수혜 기대감 상한가…로봇주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008999964&office_id=421&code=204320&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -256,9 +272,9 @@
       "close_price": 15450.0,
       "trading_volume": 263661,
       "trading_value": 4073562450,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "피지컬 AI 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -271,7 +287,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260317",
@@ -319,9 +337,9 @@
       "date": "20260305",
       "change_rate": 14.32,
       "close_price": 16050.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -330,15 +348,17 @@
       "source": "estimated",
       "trading_volume": 662116,
       "trading_value": 10626961800,
-      "market_cap": 288047787610
+      "market_cap": 288047787610,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260225",
       "change_rate": 12.21,
       "close_price": 19940.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -347,15 +367,17 @@
       "source": "estimated",
       "trading_volume": 3170002,
       "trading_value": 63209839880,
-      "market_cap": 357861238938
+      "market_cap": 357861238938,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260123",
       "change_rate": 11.71,
       "close_price": 24800.0,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "하반기 흑자 전환 전망",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -371,15 +393,25 @@
       "source": "estimated",
       "trading_volume": 7661068,
       "trading_value": 189994486400,
-      "market_cap": 445083185840
+      "market_cap": 445083185840,
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 에스오에스랩, 하반기 흑자 전환 전망에 22% 급등",
+          "link": "https://n.news.naver.com/mnews/article/366/0001137979",
+          "source": "조선비즈",
+          "date": "2026-01-23"
+        }
+      ]
     },
     {
       "date": "20260115",
       "change_rate": 15.67,
       "close_price": 22150.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "로봇주 동반 강세 — 형님 뛰니 아우 달린다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -388,7 +420,17 @@
       "source": "estimated",
       "trading_volume": 7114777,
       "trading_value": 157592310550,
-      "market_cap": 397523893805
+      "market_cap": 397523893805,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "형님 뛰니 아우 달린다…현대차 훈풍에 로봇株 급등[줍줍리포트]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004579138",
+          "source": "서울경제",
+          "date": "2026-01-15"
+        }
+      ]
     },
     {
       "date": "20260105",
@@ -411,9 +453,9 @@
       "date": "20251229",
       "change_rate": 11.03,
       "close_price": 14700.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇주 동반 강세 — 줄줄이 간다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -429,7 +471,17 @@
       "source": "estimated",
       "trading_volume": 6621389,
       "trading_value": 97334418300,
-      "market_cap": 263819469026
+      "market_cap": 263819469026,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;줄줄이 상한가 간다&quot;…계양전기·라온테크 등 로봇주 '급등'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005230132",
+          "source": "한국경제",
+          "date": "2025-12-29"
+        }
+      ]
     },
     {
       "date": "20251224",
@@ -471,9 +523,9 @@
       "date": "20251031",
       "change_rate": 12.56,
       "close_price": 11650.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇주 동반 강세 — 젠슨 황 로봇 관련 좋은 소식 있을 것",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -507,7 +559,17 @@
       "source": "estimated",
       "trading_volume": 2747619,
       "trading_value": 32009761350,
-      "market_cap": 209081415929
+      "market_cap": 209081415929,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "젠슨 황 &quot;로봇 관련 좋은 소식 있을 것&quot;…로봇주 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005204998",
+          "source": "한국경제",
+          "date": "2025-10-31"
+        }
+      ]
     },
     {
       "date": "20250523",
@@ -535,5 +597,5 @@
     "count_recent": 0,
     "avg_rate": 13.94
   },
-  "built_at": "2026-10-01T22:56:30"
+  "built_at": "2026-10-02T05:15:57"
 }

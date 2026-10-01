@@ -9,9 +9,9 @@
       "close_price": 4355.0,
       "trading_volume": 80463488,
       "trading_value": 350418490240,
-      "rise_reason": "기관 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -72,7 +72,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기관 순매수 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260908",
@@ -80,9 +82,9 @@
       "close_price": 3640.0,
       "trading_volume": 41821438,
       "trading_value": 152230034320,
-      "rise_reason": "지분 관련 이슈",
+      "rise_reason": "광통신 부품 상용화 사업 수행기관 선정",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -137,7 +139,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 빛과전자, 광통신 부품 상용화 사업 수행기관 선정 소식에…...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001190962&office_id=366&code=069540&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.09.08"
+        }
+      ]
     },
     {
       "date": "20260805",
@@ -145,9 +157,9 @@
       "close_price": 2890.0,
       "trading_volume": 29351396,
       "trading_value": 84825534440,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신주 동반 강세 — 트럼프 행정부 中부품 수입금지 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -202,7 +214,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 광통신주, 트럼프 행정부 中부품 수입금지 추진에 강세(종합....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016235466&office_id=001&code=069540&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -210,9 +232,9 @@
       "close_price": 2225.0,
       "trading_volume": 7686853,
       "trading_value": 17103247925,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "광통신 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -249,7 +271,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -280,9 +304,9 @@
       "close_price": 2825.0,
       "trading_volume": 47529812,
       "trading_value": 134271718900,
-      "rise_reason": "관련주 언급",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -319,7 +343,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관련주 언급",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -327,9 +353,9 @@
       "close_price": 2325.0,
       "trading_volume": 7075676,
       "trading_value": 16450946700,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -342,7 +368,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -350,9 +378,9 @@
       "close_price": 3880.0,
       "trading_volume": 13399928,
       "trading_value": 51991720640,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -365,7 +393,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -373,9 +403,9 @@
       "close_price": 6610.0,
       "trading_volume": 40253771,
       "trading_value": 266077426310,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "100% 자회사 세영기술 흡수합병 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -424,7 +454,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "빛과전자, 100% 자회사 세영기술 흡수합병 결정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006286156&office_id=018&code=069540&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260520",
@@ -432,9 +472,9 @@
       "close_price": 5140.0,
       "trading_volume": 39943536,
       "trading_value": 205309775040,
-      "rise_reason": "양자컴 전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -489,7 +529,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양자컴 전환사채 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260511",
@@ -497,9 +539,9 @@
       "close_price": 6070.0,
       "trading_volume": 34490065,
       "trading_value": 209354694550,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -560,7 +602,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260420",
@@ -878,23 +922,25 @@
       "close_price": 3115.0,
       "trading_volume": 27017797,
       "trading_value": 84160437655,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
       "change_rate": 15.27,
       "close_price": 3020.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [],
@@ -903,7 +949,9 @@
       "source": "estimated",
       "trading_volume": 43064945,
       "trading_value": 130056133900,
-      "market_cap": 328180204778
+      "market_cap": 328180204778,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260323",
@@ -1028,9 +1076,9 @@
       "date": "20260312",
       "change_rate": 16.17,
       "close_price": 1365.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "5G 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -1058,15 +1106,17 @@
       "source": "estimated",
       "trading_volume": 43427865,
       "trading_value": 59279035725,
-      "market_cap": 148333105802
+      "market_cap": 148333105802,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260311",
       "change_rate": 10.95,
       "close_price": 1175.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [],
@@ -1075,7 +1125,9 @@
       "source": "estimated",
       "trading_volume": 11475037,
       "trading_value": 13483168475,
-      "market_cap": 127686006825
+      "market_cap": 127686006825,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -1183,9 +1235,9 @@
       "date": "20260106",
       "change_rate": 29.89,
       "close_price": 791.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [],
@@ -1194,7 +1246,9 @@
       "source": "estimated",
       "trading_volume": 25155013,
       "trading_value": 19897615283,
-      "market_cap": 85957133105
+      "market_cap": 85957133105,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251029",
@@ -1321,5 +1375,5 @@
     "count_recent": 2,
     "avg_rate": 20.81
   },
-  "built_at": "2026-10-01T22:55:11"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,15 +9,17 @@
       "close_price": 144500.0,
       "trading_volume": 56217,
       "trading_value": 8123356500,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -25,9 +27,9 @@
       "close_price": 219000.0,
       "trading_volume": 71036,
       "trading_value": 15556884000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 호국보훈의 달 맞아 국가유공자 문화생활 지원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[게시판] 효성, 호국보훈의 달 맞아 국가유공자 문화생활 지원",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016090569&office_id=001&code=004800&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -102,9 +114,9 @@
       "close_price": 258500.0,
       "trading_volume": 228667,
       "trading_value": 59110419500,
-      "rise_reason": "수주 공시",
+      "rise_reason": "자회사 호실적",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "삼성페이",
       "news": [
@@ -171,7 +183,17 @@
       ],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]효성, 자회사 호실적에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003424568&office_id=030&code=004800&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260428",
@@ -179,9 +201,9 @@
       "close_price": 227000.0,
       "trading_volume": 354431,
       "trading_value": 80455837000,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "AI 훈풍에 전력기기株 랠리 지",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -248,7 +270,17 @@
       ],
       "sector": "복합기업",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "AI 훈풍에 전력기기株 랠리 지속…효성重 400만원↑[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008915321&office_id=421&code=004800&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -455,5 +487,5 @@
     "count_recent": 0,
     "avg_rate": 14.61
   },
-  "built_at": "2026-09-29T22:19:16"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -222,15 +222,25 @@
       "close_price": 97100.0,
       "trading_volume": 864236,
       "trading_value": 83917315600,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 정부 활성화 정책·美공급망 확대 기대",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "에너지장비株 강세…정부 활성화 정책·美공급망 확대 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005395232&office_id=008&code=475150&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -303,9 +313,9 @@
       "close_price": 121600.0,
       "trading_volume": 643119,
       "trading_value": 78203270400,
-      "rise_reason": "반도체주 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -348,7 +358,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체주 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260709",
@@ -356,10 +368,10 @@
       "close_price": 117900.0,
       "trading_volume": 1009251,
       "trading_value": 118990692900,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
         {
@@ -395,7 +407,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -551,9 +565,9 @@
       "close_price": 115100.0,
       "trading_volume": 935079,
       "trading_value": 107627592900,
-      "rise_reason": "강세에 전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "소캠 관련 우려 과도 (iM)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -620,7 +634,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "강세에 전환사채 이슈",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "심텍, 소캠 관련 우려 과도…주가 조정은 매수 기회-iM",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006300346&office_id=018&code=222800&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.08"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -776,15 +800,17 @@
       "close_price": 68000.0,
       "trading_volume": 2071095,
       "trading_value": 140834460000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 기판 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -792,15 +818,25 @@
       "close_price": 52900.0,
       "trading_volume": 497108,
       "trading_value": 26297013200,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -840,9 +876,9 @@
       "date": "20260305",
       "change_rate": 15.87,
       "close_price": 50000.0,
-      "rise_reason": "소캠(SOCAMM) 테마 강세",
+      "rise_reason": "소캠 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
@@ -851,7 +887,9 @@
       "source": "estimated",
       "trading_volume": 642138,
       "trading_value": 32106900000,
-      "market_cap": 1873209975864
+      "market_cap": 1873209975864,
+      "reason_previous": "소캠(SOCAMM) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260128",
@@ -874,9 +912,9 @@
       "date": "20251117",
       "change_rate": 12.02,
       "close_price": 55900.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체주 동반 강세 — 美 반도체주 ·메모리 호황 전망에 반도체주",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
@@ -898,7 +936,17 @@
       "source": "estimated",
       "trading_volume": 1760579,
       "trading_value": 98416366100,
-      "market_cap": 2094248753016
+      "market_cap": 2094248753016,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 美 반도체주 반등·메모리 호황 전망에 반도체주 '강세...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000475326",
+          "source": "SBS Biz",
+          "date": "2025-11-17"
+        }
+      ]
     },
     {
       "date": "20251023",
@@ -1152,5 +1200,5 @@
     "count_recent": 1,
     "avg_rate": 14.99
   },
-  "built_at": "2026-10-01T22:53:43"
+  "built_at": "2026-10-02T05:15:56"
 }

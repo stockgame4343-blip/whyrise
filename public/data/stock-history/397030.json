@@ -9,15 +9,17 @@
       "close_price": 30650.0,
       "trading_volume": 346605,
       "trading_value": 10623443250,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "면역항암제 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -25,15 +27,17 @@
       "close_price": 22150.0,
       "trading_volume": 119583,
       "trading_value": 2648763450,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "면역항암제 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -73,9 +77,9 @@
       "close_price": 39700.0,
       "trading_volume": 543631,
       "trading_value": 21582150700,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "REMAP 신규 파이프라인 특허 출원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -142,7 +146,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이프릴바이오, REMAP 신규 파이프라인 특허 출원…기술수출 추진",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005697778&office_id=009&code=397030&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260527",
@@ -150,10 +164,10 @@
       "close_price": 65700.0,
       "trading_volume": 726752,
       "trading_value": 47747606400,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [
         {
@@ -219,7 +233,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -227,9 +243,9 @@
       "close_price": 66200.0,
       "trading_volume": 672757,
       "trading_value": 44536513400,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 유한양행과 공동연구 조기 종료…ADC에 집중",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -296,15 +312,25 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에이프릴바이오, 유한양행과 공동연구 조기 종료…“ADC에 집중”",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004617461&office_id=011&code=397030&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.05.05"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.29,
       "close_price": 63200.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "면역항암제 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -326,7 +352,9 @@
       "source": "estimated",
       "trading_volume": 287692,
       "trading_value": 18182134400,
-      "market_cap": 1479682539682
+      "market_cap": 1479682539682,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20260223",
@@ -397,9 +425,9 @@
       "date": "20260126",
       "change_rate": 10.28,
       "close_price": 55800.0,
-      "rise_reason": "바이오",
+      "rise_reason": "큐리진과 손잡고 RNA 치료제 개발한다",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -421,7 +449,17 @@
       "source": "estimated",
       "trading_volume": 896817,
       "trading_value": 50042388600,
-      "market_cap": 1306428571428
+      "market_cap": 1306428571428,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이프릴바이오, 큐리진과 손잡고 RNA 치료제 개발한다",
+          "link": "https://n.news.naver.com/mnews/article/011/0004582940",
+          "source": "서울경제",
+          "date": "2026-01-26"
+        }
+      ]
     },
     {
       "date": "20251229",
@@ -444,9 +482,9 @@
       "date": "20251112",
       "change_rate": 11.04,
       "close_price": 35200.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "면역항암제 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -480,15 +518,17 @@
       "source": "estimated",
       "trading_volume": 2174126,
       "trading_value": 76529235200,
-      "market_cap": 824126984126
+      "market_cap": 824126984126,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20251010",
       "change_rate": 12.07,
       "close_price": 34350.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "진홍국 이사 플랫폼 확장으로 기술이전 가능성",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -522,15 +562,25 @@
       "source": "estimated",
       "trading_volume": 1558236,
       "trading_value": 53525406600,
-      "market_cap": 804226190476
+      "market_cap": 804226190476,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "진홍국 에이프릴바이오 이사 “플랫폼 확장으로 기술이전 가능성 ↑”...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006134460",
+          "source": "이데일리",
+          "date": "2025-10-10"
+        }
+      ]
     },
     {
       "date": "20250929",
       "change_rate": 11.85,
       "close_price": 29250.0,
-      "rise_reason": "원전/SMR",
+      "rise_reason": "파트너사 에보뮨 ARB-R3 차기 적응증 공개",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -570,7 +620,17 @@
       "source": "estimated",
       "trading_volume": 2263540,
       "trading_value": 66208545000,
-      "market_cap": 684821428571
+      "market_cap": 684821428571,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "&quot;에이프릴바이오 파트너사 에보뮨 ARB-R3 차기 적응증 공개&quot;",
+          "link": "https://n.news.naver.com/mnews/article/018/0006128688",
+          "source": "이데일리",
+          "date": "2025-09-29"
+        }
+      ]
     },
     {
       "date": "20250715",
@@ -598,5 +658,5 @@
     "count_recent": 0,
     "avg_rate": 13.44
   },
-  "built_at": "2026-10-01T22:54:55"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 1001.0,
       "trading_volume": 329948,
       "trading_value": 330277948,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260807",
@@ -86,9 +88,9 @@
       "close_price": 980.0,
       "trading_volume": 1164825,
       "trading_value": 1141528500,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "경영권 매각 막판",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이엠앤아이, 경영권 매각 막판… '메가스터디 출신+AI·로봇' 에듀테크...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005395454&office_id=008&code=083470&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -163,9 +175,9 @@
       "close_price": 946.0,
       "trading_volume": 598588,
       "trading_value": 566264248,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "경영권 매각 막판",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -184,7 +196,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이엠앤아이, 경영권 매각 막판… '메가스터디 출신+AI·로봇' 에듀테크...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005395454",
+          "source": "머니투데이",
+          "date": "2026-08-04"
+        }
+      ]
     },
     {
       "date": "20260803",
@@ -192,9 +214,9 @@
       "close_price": 848.0,
       "trading_volume": 407247,
       "trading_value": 345345456,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "인도 배터리 수주에 중수 매출 35억 올려",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -261,7 +283,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이엠앤아이, 인도 배터리 수주에 중수 매출 35억 올려…차세대 소재 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005393884&office_id=008&code=083470&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -269,10 +301,10 @@
       "close_price": 946.0,
       "trading_volume": 189182,
       "trading_value": 178966172,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -338,7 +370,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -346,10 +380,10 @@
       "close_price": 930.0,
       "trading_volume": 347491,
       "trading_value": 323166630,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -415,7 +449,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260519",
@@ -423,9 +459,9 @@
       "close_price": 1097.0,
       "trading_volume": 162067,
       "trading_value": 177787499,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 관계사 뉴로랩, 다음달 안산 로봇 전시장 개소",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -492,7 +528,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이엠앤아이 관계사 뉴로랩, 다음달 안산 로봇 전시장 개소",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005359812&office_id=008&code=083470&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260410",
@@ -568,9 +614,9 @@
       "date": "20260204",
       "change_rate": 29.9,
       "close_price": 1160.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "OLED 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -592,15 +638,17 @@
       "source": "estimated",
       "trading_volume": 4756170,
       "trading_value": 5517157200,
-      "market_cap": 24805785123
+      "market_cap": 24805785123,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "theme"
     },
     {
       "date": "20251024",
       "change_rate": 11.87,
       "close_price": 1046.0,
-      "rise_reason": "이차전지 테마",
+      "rise_reason": "슈뢰딩거와 차세대 배터리 전해질 개발",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -628,7 +676,17 @@
       "source": "estimated",
       "trading_volume": 23262863,
       "trading_value": 24332954698,
-      "market_cap": 22367975206
+      "market_cap": 22367975206,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이엠앤아이 &quot;이머지랩스, 슈뢰딩거와 차세대 배터리 전해질 개발 계약...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006145950",
+          "source": "이데일리",
+          "date": "2025-10-24"
+        }
+      ]
     },
     {
       "date": "20250825",
@@ -682,9 +740,9 @@
       "date": "20250813",
       "change_rate": 10.14,
       "close_price": 934.0,
-      "rise_reason": "OLED(유기 발광 다이오드) 테마 강세",
+      "rise_reason": "OLED 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [],
@@ -693,7 +751,9 @@
       "source": "estimated",
       "trading_volume": 6893093,
       "trading_value": 6438148862,
-      "market_cap": 19972933884
+      "market_cap": 19972933884,
+      "reason_previous": "OLED(유기 발광 다이오드) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250707",
@@ -738,5 +798,5 @@
     "count_recent": 0,
     "avg_rate": 15.44
   },
-  "built_at": "2026-10-01T22:59:52"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -97,9 +97,9 @@
       "date": "20260303",
       "change_rate": 30.0,
       "close_price": 8450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "30% 금일 증시 상승률 1위로 마감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -115,7 +115,17 @@
       "source": "estimated",
       "trading_volume": 3840581,
       "trading_value": 32452909450,
-      "market_cap": 155358744394
+      "market_cap": 155358744394,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]APS 30% 상한가 금일 증시 상승률 1위로 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003622425",
+          "source": "서울신문",
+          "date": "2026-03-03"
+        }
+      ]
     },
     {
       "date": "20260227",
@@ -186,10 +196,10 @@
       "date": "20260122",
       "change_rate": 14.59,
       "close_price": 4790.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -204,7 +214,9 @@
       "source": "estimated",
       "trading_volume": 2295497,
       "trading_value": 10995430630,
-      "market_cap": 88067264573
+      "market_cap": 88067264573,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -215,5 +227,5 @@
     "count_recent": 0,
     "avg_rate": 17.19
   },
-  "built_at": "2026-09-27T10:01:15"
+  "built_at": "2026-10-02T05:15:57"
 }

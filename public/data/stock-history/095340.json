@@ -9,9 +9,9 @@
       "close_price": 129600.0,
       "trading_volume": 180201,
       "trading_value": 23354049600,
-      "rise_reason": "소캠(SOCAMM) 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "HBM 소캠주 동반 강세 — 대덕전자",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소캠(SOCAMM) 영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "‘제2의 HBM’ 소캠株 불기둥…대덕전자 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006341005&office_id=018&code=095340&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -86,9 +96,9 @@
       "close_price": 230000.0,
       "trading_volume": 1429924,
       "trading_value": 328882520000,
-      "rise_reason": "HBM(고대역폭메모리) 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 송도로 국내 생산 및 R&D 통합 이전…총 350억원 투자",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "HBM(고대역폭메모리) 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "ISC, 송도로 국내 생산 및 R&D 통합 이전…총 350억원 투자",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003435870&office_id=030&code=095340&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260526",
@@ -163,9 +183,9 @@
       "close_price": 240000.0,
       "trading_volume": 349651,
       "trading_value": 83916240000,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "HPSP · 목표가 30만원",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
@@ -208,7 +228,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "HPSP 24% 급등·ISC 목표가 30만원…AI 반도체주 들썩 [칩칩...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002383625&office_id=123&code=095340&page=&sm=",
+          "source": "조세일보",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -216,9 +246,9 @@
       "close_price": 219500.0,
       "trading_volume": 200394,
       "trading_value": 43986483000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "소캠 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
@@ -261,7 +291,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -269,15 +301,25 @@
       "close_price": 264000.0,
       "trading_volume": 247902,
       "trading_value": 65446128000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260316",
@@ -430,9 +472,9 @@
       "date": "20251117",
       "change_rate": 12.43,
       "close_price": 83200.0,
-      "rise_reason": "소캠(SOCAMM) 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美 반도체주 ·메모리 호황 전망에 반도체주",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
@@ -441,7 +483,17 @@
       "source": "estimated",
       "trading_volume": 386577,
       "trading_value": 32163206400,
-      "market_cap": 1763616344086
+      "market_cap": 1763616344086,
+      "reason_previous": "소캠(SOCAMM) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 美 반도체주 반등·메모리 호황 전망에 반도체주 '강세...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000475326",
+          "source": "SBS Biz",
+          "date": "2025-11-17"
+        }
+      ]
     },
     {
       "date": "20250813",
@@ -486,5 +538,5 @@
     "count_recent": 0,
     "avg_rate": 15.99
   },
-  "built_at": "2026-10-01T22:53:45"
+  "built_at": "2026-10-02T05:15:57"
 }

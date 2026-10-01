@@ -9,9 +9,9 @@
       "close_price": 100000.0,
       "trading_volume": 1233054,
       "trading_value": 123305400000,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "경쟁사 가동 중단에 따른 반사수혜",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "두나무(Dunamu)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 코오롱인더, 경쟁사 가동 중단에 따른 반사수혜 기대감에….....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001160234&office_id=366&code=120110&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -255,5 +265,5 @@
     "count_recent": 0,
     "avg_rate": 12.36
   },
-  "built_at": "2026-10-01T22:52:33"
+  "built_at": "2026-10-02T05:15:57"
 }

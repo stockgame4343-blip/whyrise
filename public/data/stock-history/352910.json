@@ -9,9 +9,9 @@
       "close_price": 4345.0,
       "trading_volume": 67698,
       "trading_value": 294147810,
-      "rise_reason": "국책사업 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SDV 국가표준 시스템 개발 국책과제 참여",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "국책사업 관련",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "오비고, SDV 국가표준 시스템 개발 국책과제 참여",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014148451&office_id=003&code=352910&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260825",
@@ -86,10 +96,10 @@
       "close_price": 3790.0,
       "trading_volume": 58425,
       "trading_value": 221430750,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -241,5 +253,5 @@
     "count_recent": 0,
     "avg_rate": 17.79
   },
-  "built_at": "2026-10-01T22:58:30"
+  "built_at": "2026-10-02T05:15:56"
 }

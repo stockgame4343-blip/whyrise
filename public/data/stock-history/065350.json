@@ -9,15 +9,17 @@
       "close_price": 29000.0,
       "trading_volume": 271710,
       "trading_value": 7879590000,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -25,9 +27,9 @@
       "close_price": 34000.0,
       "trading_volume": 480880,
       "trading_value": 16349920000,
-      "rise_reason": "초전도체 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 홈비서 레미 첫 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "초전도체",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "초전도체 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "신성델타테크, AI 홈비서 ‘레미’ 첫 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005699213&office_id=009&code=065350&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.06.26"
+        }
+      ]
     },
     {
       "date": "20251208",
@@ -223,5 +235,5 @@
     "count_recent": 0,
     "avg_rate": 16.73
   },
-  "built_at": "2026-09-29T22:22:54"
+  "built_at": "2026-10-02T05:15:57"
 }

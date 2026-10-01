@@ -9,9 +9,9 @@
       "close_price": 2310.0,
       "trading_volume": 17906855,
       "trading_value": 41364835050,
-      "rise_reason": "탈 플라스틱(친환경/생분해성 등) 테마 강세",
+      "rise_reason": "탈플라스틱주 동반 강세 — 이란 해상 봉쇄 소식",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
@@ -42,7 +42,17 @@
       ],
       "sector": "포장재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "탈 플라스틱(친환경/생분해성 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美, 이란 해상 봉쇄 소식에…탈플라스틱주 강세",
+          "link": "https://n.news.naver.com/mnews/article/366/0001156335",
+          "source": "조선비즈",
+          "date": "2026-04-13"
+        }
+      ]
     },
     {
       "date": "20260402",
@@ -143,10 +153,10 @@
       "date": "20260318",
       "change_rate": 16.71,
       "close_price": 1439.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -154,16 +164,18 @@
       "source": "estimated",
       "trading_volume": 14281775,
       "trading_value": 20551474225,
-      "market_cap": 40868092386
+      "market_cap": 40868092386,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251202",
       "change_rate": 13.38,
       "close_price": 1610.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -184,7 +196,9 @@
       "source": "estimated",
       "trading_volume": 17366163,
       "trading_value": 27959522430,
-      "market_cap": 45724550898
+      "market_cap": 45724550898,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251113",
@@ -220,9 +234,9 @@
       "date": "20250804",
       "change_rate": 11.81,
       "close_price": 1884.0,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 시황 변동 관련 공시할 중요 정보 없어",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -262,7 +276,17 @@
       "source": "estimated",
       "trading_volume": 26573971,
       "trading_value": 50065361364,
-      "market_cap": 53506244653
+      "market_cap": 53506244653,
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "세림B&amp;G “시황 변동 관련 공시할 중요 정보 없어”",
+          "link": "https://n.news.naver.com/mnews/article/018/0006081536",
+          "source": "이데일리",
+          "date": "2025-08-04"
+        }
+      ]
     },
     {
       "date": "20250711",
@@ -345,5 +369,5 @@
     "count_recent": 0,
     "avg_rate": 17.99
   },
-  "built_at": "2026-09-27T10:31:39"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 1560.0,
       "trading_volume": 455833,
       "trading_value": 711099480,
-      "rise_reason": "LED장비 테마 강세",
+      "rise_reason": "관련 보도: 경기중기청장 안양 본사 방문",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED장비",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "LED장비 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "지아이에스, 경기중기청장 안양 본사 방문",
+          "link": "https://n.news.naver.com/mnews/article/003/0014097542",
+          "source": "뉴시스",
+          "date": "2026-07-30"
+        }
+      ]
     },
     {
       "date": "20260619",
@@ -32,10 +42,10 @@
       "close_price": 3355.0,
       "trading_volume": 8051285,
       "trading_value": 27012061175,
-      "rise_reason": "MLCC 정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -95,7 +105,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC 정부 정책 관련",
+      "reason_kind": "none"
     },
     {
       "date": "20260618",
@@ -103,9 +115,9 @@
       "close_price": 2855.0,
       "trading_volume": 3926470,
       "trading_value": 11210071850,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "MLCC 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -172,7 +184,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260526",
@@ -180,9 +194,9 @@
       "close_price": 3800.0,
       "trading_volume": 6624803,
       "trading_value": 25174251400,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -243,7 +257,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -251,9 +275,9 @@
       "close_price": 3165.0,
       "trading_volume": 4717130,
       "trading_value": 14929716450,
-      "rise_reason": "반도체 장비 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "MLCC 장비 수주 3배 이상 증가",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -302,7 +326,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "지아이에스, MLCC 장비 수주 3배 이상 증가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013958767&office_id=003&code=306620&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260317",
@@ -332,9 +366,9 @@
       "date": "20260305",
       "change_rate": 14.94,
       "close_price": 2770.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 28종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -343,7 +377,9 @@
       "source": "estimated",
       "trading_volume": 742740,
       "trading_value": 2057389800,
-      "market_cap": 132761847988
+      "market_cap": 132761847988,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260223",
@@ -397,9 +433,9 @@
       "date": "20260219",
       "change_rate": 10.11,
       "close_price": 2615.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -408,7 +444,9 @@
       "source": "estimated",
       "trading_volume": 1123186,
       "trading_value": 2937131390,
-      "market_cap": 125332935916
+      "market_cap": 125332935916,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -419,5 +457,5 @@
     "count_recent": 0,
     "avg_rate": 14.65
   },
-  "built_at": "2026-10-01T22:57:34"
+  "built_at": "2026-10-02T05:15:57"
 }

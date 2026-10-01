@@ -9,10 +9,10 @@
       "close_price": 6250.0,
       "trading_volume": 818312,
       "trading_value": 5114450000,
-      "rise_reason": "전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전환사채 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -102,9 +104,9 @@
       "close_price": 8850.0,
       "trading_volume": 435952,
       "trading_value": 3858175200,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 독일 에슈본서 이노베이션 포럼 개최",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
@@ -171,7 +173,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "레이, 독일 에슈본서 '이노베이션 포럼’ 개최",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013913681&office_id=003&code=228670&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -179,10 +191,10 @@
       "close_price": 10720.0,
       "trading_volume": 1972414,
       "trading_value": 21144278080,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
         {
@@ -248,7 +260,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260413",
@@ -285,9 +299,9 @@
       "close_price": 7250.0,
       "trading_volume": 3266534,
       "trading_value": 23682371500,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "경영권 영향 목적 명시",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
@@ -306,7 +320,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "메가젠임플란트, 레이 지분 5% 취득…'경영권 영향 목적 명시'",
+          "link": "https://n.news.naver.com/mnews/article/018/0006253478",
+          "source": "이데일리",
+          "date": "2026-04-09"
+        }
+      ]
     },
     {
       "date": "20260409",
@@ -468,5 +492,5 @@
     "count_recent": 0,
     "avg_rate": 17.65
   },
-  "built_at": "2026-10-01T22:58:18"
+  "built_at": "2026-10-02T05:15:56"
 }

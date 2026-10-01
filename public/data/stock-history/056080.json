@@ -9,9 +9,9 @@
       "close_price": 14260.0,
       "trading_volume": 591987,
       "trading_value": 8441734620,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -86,15 +88,17 @@
       "close_price": 10900.0,
       "trading_volume": 295562,
       "trading_value": 3221625800,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 22종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -125,15 +129,17 @@
       "close_price": 24600.0,
       "trading_volume": 575357,
       "trading_value": 14153782200,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 15종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -463,9 +469,9 @@
       "date": "20251212",
       "change_rate": 14.02,
       "close_price": 16920.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "35억원 규모 생산라인 설비 계약",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -505,7 +511,17 @@
       "source": "estimated",
       "trading_volume": 19839793,
       "trading_value": 335689297560,
-      "market_cap": 634669879518
+      "market_cap": 634669879518,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "유진로봇, 35억원 규모 생산라인 설비 계약…10%대 강세[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006182410",
+          "source": "이데일리",
+          "date": "2025-12-12"
+        }
+      ]
     },
     {
       "date": "20251020",
@@ -546,5 +562,5 @@
     "count_recent": 0,
     "avg_rate": 17.19
   },
-  "built_at": "2026-10-01T22:55:10"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,15 +9,17 @@
       "close_price": 2235.0,
       "trading_volume": 220350,
       "trading_value": 492482250,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260921",
@@ -25,15 +27,17 @@
       "close_price": 1794.0,
       "trading_volume": 108259,
       "trading_value": 194216646,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비만치료제",
       "news": [],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260721",
@@ -41,10 +45,10 @@
       "close_price": 1900.0,
       "trading_volume": 113062,
       "trading_value": 214817800,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -110,7 +114,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260316",
@@ -133,10 +139,10 @@
       "date": "20260116",
       "change_rate": 11.58,
       "close_price": 1060.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -151,16 +157,18 @@
       "source": "estimated",
       "trading_volume": 3193149,
       "trading_value": 3384737940,
-      "market_cap": 64763414634
+      "market_cap": 64763414634,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260115",
       "change_rate": 15.71,
       "close_price": 950.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -175,16 +183,18 @@
       "source": "estimated",
       "trading_volume": 5133821,
       "trading_value": 4877129950,
-      "market_cap": 58042682926
+      "market_cap": 58042682926,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
       "change_rate": 11.43,
       "close_price": 819.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -192,7 +202,9 @@
       "source": "estimated",
       "trading_volume": 1241912,
       "trading_value": 1017125928,
-      "market_cap": 50038902439
+      "market_cap": 50038902439,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -203,5 +215,5 @@
     "count_recent": 2,
     "avg_rate": 13.24
   },
-  "built_at": "2026-10-01T22:58:17"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 110200.0,
       "trading_volume": 335571,
       "trading_value": 36979924200,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 셀리드",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "코로나19 재유행 우려에 제약주 급등…셀리드 '上'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014143455&office_id=003&code=299660&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -163,15 +173,25 @@
       "close_price": 135000.0,
       "trading_volume": 319863,
       "trading_value": 43181505000,
-      "rise_reason": "mRNA(메신저 리보핵산) 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "mRNA(메신저 리보핵산) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -195,9 +215,9 @@
       "close_price": 167500.0,
       "trading_volume": 424180,
       "trading_value": 71050150000,
-      "rise_reason": "실적 개선 발표",
+      "rise_reason": "1분기 영업이익 115억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모더나(MODERNA)",
       "news": [
@@ -264,7 +284,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 개선 발표",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "에스티팜, 1분기 영업이익 115억…전년보다 10배 이상 ↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005349971&office_id=008&code=237690&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -371,5 +401,5 @@
     "count_recent": 0,
     "avg_rate": 12.83
   },
-  "built_at": "2026-10-01T22:54:05"
+  "built_at": "2026-10-02T05:15:56"
 }

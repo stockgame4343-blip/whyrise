@@ -9,9 +9,9 @@
       "close_price": 4050.0,
       "trading_volume": 10140631,
       "trading_value": 41069555550,
-      "rise_reason": "관련 보도: 美알래스카 LNG 투자 기대…하이스틸·세아제강 강세[핫종목]",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "美알래스카 LNG 투자 기대",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "강관업체(Steel pipe)",
       "news": [
@@ -57,7 +57,8 @@
           "source": "뉴스1",
           "date": "2026-09-30"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260428",
@@ -65,9 +66,9 @@
       "close_price": 5240.0,
       "trading_volume": 22841104,
       "trading_value": 119687384960,
-      "rise_reason": "관세 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 미국-이란 종전협상 교착",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
@@ -128,7 +129,17 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관세 정책 관련",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 미국-이란 종전협상 교착… 철강株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003422455&office_id=030&code=008420&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260409",
@@ -136,9 +147,9 @@
       "close_price": 4325.0,
       "trading_volume": 22360967,
       "trading_value": 96711182275,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "철강주 동반 강세 — 美 관세 제도 개편 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "강관업체(Steel pipe)",
       "news": [
@@ -169,7 +180,17 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美 관세 제도 개편 기대감…철강주 급등 마감 [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/119/0003078938",
+          "source": "데일리안",
+          "date": "2026-04-09"
+        }
+      ]
     },
     {
       "date": "20260121",
@@ -288,9 +309,9 @@
       "date": "20250708",
       "change_rate": 14.65,
       "close_price": 4500.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "철강주 동반 강세 — 美 알래스카 LNG 프로젝트 참여 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
@@ -330,7 +351,17 @@
       "source": "estimated",
       "trading_volume": 18626494,
       "trading_value": 83819223000,
-      "market_cap": 90834621329
+      "market_cap": 90834621329,
+      "reason_previous": "조선/해운",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美 알래스카 LNG 프로젝트 참여 기대…강관·철강주 강세[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006060329",
+          "source": "이데일리",
+          "date": "2025-07-08"
+        }
+      ]
     },
     {
       "date": "20250630",
@@ -358,5 +389,5 @@
     "count_recent": 1,
     "avg_rate": 15.64
   },
-  "built_at": "2026-10-01T22:53:11"
+  "built_at": "2026-10-02T05:15:56"
 }

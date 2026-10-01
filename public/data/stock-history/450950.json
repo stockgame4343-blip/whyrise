@@ -25,15 +25,17 @@
       "close_price": 7130.0,
       "trading_volume": 95053,
       "trading_value": 677727890,
-      "rise_reason": "미용기기 테마 강세",
+      "rise_reason": "미용기기 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미용기기",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "미용기기 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260617",
@@ -41,10 +43,10 @@
       "close_price": 7750.0,
       "trading_volume": 99792,
       "trading_value": 773388000,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미용기기",
       "news": [
         {
@@ -110,7 +112,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
@@ -175,5 +179,5 @@
     "count_recent": 0,
     "avg_rate": 13.68
   },
-  "built_at": "2026-10-01T22:56:11"
+  "built_at": "2026-10-02T05:15:57"
 }

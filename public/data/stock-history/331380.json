@@ -9,10 +9,10 @@
       "close_price": 1722.0,
       "trading_volume": 262900,
       "trading_value": 452713800,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CCTV＆DVR",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -86,10 +88,10 @@
       "close_price": 2325.0,
       "trading_volume": 326895,
       "trading_value": 760030875,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CCTV＆DVR",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -163,9 +167,9 @@
       "close_price": 2745.0,
       "trading_volume": 888776,
       "trading_value": 2439690120,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 구형모 대표이사 선임 사업 구조 재편 및 성장 전략...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CCTV＆DVR",
       "news": [
@@ -184,7 +188,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "포커스에이아이, 구형모 대표이사 선임 &quot;사업 구조 재편 및 성장 전략...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338214",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260331",
@@ -192,9 +206,9 @@
       "close_price": 2430.0,
       "trading_volume": 416894,
       "trading_value": 1013052420,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 구형모 신임 대표이사 선임",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CCTV＆DVR",
       "news": [
@@ -213,7 +227,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "포커스에이아이, 구형모 신임 대표이사 선임",
+          "link": "https://n.news.naver.com/mnews/article/018/0006246422",
+          "source": "이데일리",
+          "date": "2026-03-31"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -261,9 +285,9 @@
       "date": "20260203",
       "change_rate": 11.52,
       "close_price": 3195.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "비단 인수 절차 순항",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CCTV＆DVR",
       "news": [
@@ -285,7 +309,17 @@
       "source": "estimated",
       "trading_volume": 911498,
       "trading_value": 2912236110,
-      "market_cap": 103540022234
+      "market_cap": 103540022234,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "포커스에이아이, 비단 인수 절차 '순항'...2월 말 최대주주 등극",
+          "link": "https://n.news.naver.com/mnews/article/014/0005472566",
+          "source": "파이낸셜뉴스",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20260129",
@@ -395,9 +429,9 @@
       "date": "20250703",
       "change_rate": 11.83,
       "close_price": 2600.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 글로벌 보안 인증 MPoC 도입 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CCTV＆DVR",
       "news": [
@@ -437,15 +471,25 @@
       "source": "estimated",
       "trading_volume": 808550,
       "trading_value": 2102230000,
-      "market_cap": 84257921067
+      "market_cap": 84257921067,
+      "reason_previous": "유상증자",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "포커스에이아이, 글로벌 보안 인증 'MPoC' 도입 추진",
+          "link": "https://n.news.naver.com/mnews/article/008/0005216405",
+          "source": "머니투데이",
+          "date": "2025-07-03"
+        }
+      ]
     },
     {
       "date": "20250701",
       "change_rate": 13.16,
       "close_price": 2175.0,
-      "rise_reason": "로봇/자동화",
+      "rise_reason": "전기차 화재대응 맞손",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CCTV＆DVR",
       "news": [
@@ -485,7 +529,17 @@
       "source": "estimated",
       "trading_volume": 792435,
       "trading_value": 1723546125,
-      "market_cap": 70484991662
+      "market_cap": 70484991662,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "티엑스알로보틱스·포커스에이아이, 전기차 화재대응 맞손",
+          "link": "https://n.news.naver.com/mnews/article/018/0006052857",
+          "source": "이데일리",
+          "date": "2025-06-30"
+        }
+      ]
     },
     {
       "date": "20250619",
@@ -513,5 +567,5 @@
     "count_recent": 0,
     "avg_rate": 14.12
   },
-  "built_at": "2026-10-01T22:58:08"
+  "built_at": "2026-10-02T05:15:57"
 }

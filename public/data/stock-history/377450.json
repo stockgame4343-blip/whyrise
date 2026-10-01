@@ -9,9 +9,9 @@
       "close_price": 16010.0,
       "trading_volume": 1752300,
       "trading_value": 28054323000,
-      "rise_reason": "경영진 교체",
+      "rise_reason": "최대주주가 주당 1만7600원에 공개 매수 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "경영진 교체",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 최대주주가 주당 1만7600원에 공개 매수 소식에…리파인 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001186770&office_id=366&code=377450&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260730",
@@ -86,10 +96,10 @@
       "close_price": 11980.0,
       "trading_volume": 116869,
       "trading_value": 1400090620,
-      "rise_reason": "주주환원 정책",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -155,16 +165,18 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
       "change_rate": 12.64,
       "close_price": 13630.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -172,7 +184,9 @@
       "source": "estimated",
       "trading_volume": 180877,
       "trading_value": 2465353510,
-      "market_cap": 236133771929
+      "market_cap": 236133771929,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
@@ -200,5 +214,5 @@
     "count_recent": 0,
     "avg_rate": 14.91
   },
-  "built_at": "2026-10-01T22:56:11"
+  "built_at": "2026-10-02T05:15:56"
 }

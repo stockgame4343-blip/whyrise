@@ -80,9 +80,9 @@
       "close_price": 48200.0,
       "trading_volume": 309474,
       "trading_value": 14916646800,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2분기 영업이익 249억원 달성",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -149,7 +149,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "해성디에스, 2분기 영업이익 249억원 달성…전년比 3배↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003452255&office_id=030&code=195870&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.29"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -157,9 +167,9 @@
       "close_price": 59400.0,
       "trading_volume": 173827,
       "trading_value": 10325323800,
-      "rise_reason": "납품 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 20종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -226,7 +236,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "납품 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260622",
@@ -234,9 +246,9 @@
       "close_price": 85900.0,
       "trading_volume": 377764,
       "trading_value": 32449927600,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -297,7 +309,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -305,15 +319,17 @@
       "close_price": 73600.0,
       "trading_volume": 185117,
       "trading_value": 13624611200,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 22종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260526",
@@ -321,9 +337,9 @@
       "close_price": 102400.0,
       "trading_volume": 744732,
       "trading_value": 76260556800,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -384,7 +400,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260507",
@@ -392,10 +418,10 @@
       "close_price": 86000.0,
       "trading_volume": 590692,
       "trading_value": 50799512000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -449,7 +475,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260423",
@@ -522,9 +550,9 @@
       "close_price": 55700.0,
       "trading_volume": 333393,
       "trading_value": 18569990100,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -537,7 +565,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -560,9 +598,9 @@
       "date": "20260224",
       "change_rate": 12.16,
       "close_price": 65500.0,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -584,15 +622,25 @@
       "source": "estimated",
       "trading_volume": 464797,
       "trading_value": 30444203500,
-      "market_cap": 1113500000000
+      "market_cap": 1113500000000,
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "20만전자·100만닉스 끌고, 소부장 밀고…반도체주 '강세'(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0008790759",
+          "source": "뉴스1",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20251217",
       "change_rate": 19.27,
       "close_price": 58500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -614,15 +662,17 @@
       "source": "estimated",
       "trading_volume": 1274959,
       "trading_value": 74585101500,
-      "market_cap": 994500000000
+      "market_cap": 994500000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251002",
       "change_rate": 10.39,
       "close_price": 39300.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 10.39% 상승…실시간 상승률 1위",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -662,7 +712,17 @@
       "source": "estimated",
       "trading_volume": 1088373,
       "trading_value": 42773058900,
-      "market_cap": 668100000000
+      "market_cap": 668100000000,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]해성디에스 10.39% 상승…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003579777",
+          "source": "서울신문",
+          "date": "2025-10-02"
+        }
+      ]
     },
     {
       "date": "20251001",
@@ -733,9 +793,9 @@
       "date": "20250611",
       "change_rate": 11.03,
       "close_price": 23650.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -744,7 +804,9 @@
       "source": "estimated",
       "trading_volume": 813082,
       "trading_value": 19229389300,
-      "market_cap": 402050000000
+      "market_cap": 402050000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250609",
@@ -772,5 +834,5 @@
     "count_recent": 1,
     "avg_rate": 15.43
   },
-  "built_at": "2026-10-01T22:52:35"
+  "built_at": "2026-10-02T05:15:56"
 }

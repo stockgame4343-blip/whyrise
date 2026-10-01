@@ -9,15 +9,17 @@
       "close_price": 48450.0,
       "trading_volume": 468617,
       "trading_value": 22704493650,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260727",
@@ -25,9 +27,9 @@
       "close_price": 50900.0,
       "trading_volume": 710403,
       "trading_value": 36159512700,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -82,7 +84,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260709",
@@ -90,9 +94,9 @@
       "close_price": 55600.0,
       "trading_volume": 1462436,
       "trading_value": 81311441600,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -153,7 +157,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피 나흘 만에 반등…반도체주 일제히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000520734&office_id=374&code=399720&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.09"
+        }
+      ]
     },
     {
       "date": "20260707",
@@ -315,9 +329,9 @@
       "close_price": 41350.0,
       "trading_volume": 94909,
       "trading_value": 3924487150,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -336,7 +350,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -344,9 +360,9 @@
       "close_price": 57500.0,
       "trading_volume": 605879,
       "trading_value": 34838042500,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "296억 규모 ASIC 반도체 설계 개발 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -413,7 +429,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "가온칩스, 296억 규모 ASIC 반도체 설계 개발 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014000434&office_id=003&code=399720&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -421,9 +447,9 @@
       "close_price": 62600.0,
       "trading_volume": 140346,
       "trading_value": 8785659600,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -490,7 +516,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260427",
@@ -498,10 +526,10 @@
       "close_price": 79900.0,
       "trading_volume": 865684,
       "trading_value": 69168151600,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -567,7 +595,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -575,9 +605,9 @@
       "close_price": 62600.0,
       "trading_volume": 92535,
       "trading_value": 5792691000,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "수주 쌓였는데 적자 난 이유는",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -590,15 +620,25 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[팹리스 돋보기] 가온칩스, 수주 쌓였는데 적자 난 이유는",
+          "link": "https://n.news.naver.com/mnews/article/293/0000081977",
+          "source": "블로터",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.58,
       "close_price": 60500.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -607,7 +647,9 @@
       "source": "estimated",
       "trading_volume": 148434,
       "trading_value": 8980257000,
-      "market_cap": 716250000000
+      "market_cap": 716250000000,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260108",
@@ -643,9 +685,9 @@
       "date": "20251226",
       "change_rate": 16.9,
       "close_price": 55000.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -667,7 +709,17 @@
       "source": "estimated",
       "trading_volume": 739559,
       "trading_value": 40675745000,
-      "market_cap": 651136363636
+      "market_cap": 651136363636,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
+          "source": "SBS Biz",
+          "date": "2025-12-26"
+        }
+      ]
     },
     {
       "date": "20250728",
@@ -726,5 +778,5 @@
     "count_recent": 0,
     "avg_rate": 16.51
   },
-  "built_at": "2026-09-29T22:23:44"
+  "built_at": "2026-10-02T05:15:57"
 }

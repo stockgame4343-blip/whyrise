@@ -24,10 +24,10 @@
       "date": "20260220",
       "change_rate": 13.93,
       "close_price": 2290.0,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -60,7 +60,9 @@
       "source": "estimated",
       "trading_volume": 8419323,
       "trading_value": 19280249670,
-      "market_cap": 52949530516
+      "market_cap": 52949530516,
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260212",
@@ -192,10 +194,10 @@
       "date": "20260126",
       "change_rate": 13.73,
       "close_price": 1325.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -203,16 +205,18 @@
       "source": "estimated",
       "trading_volume": 1640666,
       "trading_value": 2173882450,
-      "market_cap": 30636737089
+      "market_cap": 30636737089,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250710",
       "change_rate": 14.07,
       "close_price": 1540.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -220,7 +224,9 @@
       "source": "estimated",
       "trading_volume": 6400671,
       "trading_value": 9857033340,
-      "market_cap": 35607981220
+      "market_cap": 35607981220,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -231,5 +237,5 @@
     "count_recent": 0,
     "avg_rate": 21.47
   },
-  "built_at": "2026-10-01T22:59:48"
+  "built_at": "2026-10-02T05:15:57"
 }

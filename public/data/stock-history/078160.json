@@ -9,9 +9,9 @@
       "close_price": 9860.0,
       "trading_volume": 216800,
       "trading_value": 2137648000,
-      "rise_reason": "제대혈 임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 셀트리, 예비 부모 대상 출산 준비 이벤트…제대혈·제대...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제대혈",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제대혈 임상 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "메디포스트 셀트리, 예비 부모 대상 출산 준비 이벤트…제대혈·제대...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006342887&office_id=018&code=078160&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,9 +96,9 @@
       "close_price": 9470.0,
       "trading_volume": 193153,
       "trading_value": 1829158910,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제대혈",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -163,9 +183,9 @@
       "close_price": 10450.0,
       "trading_volume": 236026,
       "trading_value": 2466471700,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "일본 허가 앞둔 카티스템",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "일본 허가 앞둔 카티스템…메디포스트, 국산 배지 적용 추진",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000101410&office_id=296&code=078160&page=&sm=",
+          "source": "코메디닷컴",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -444,5 +474,5 @@
     "count_recent": 0,
     "avg_rate": 16.85
   },
-  "built_at": "2026-10-01T22:55:30"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 9520.0,
       "trading_volume": 769496,
       "trading_value": 7325601920,
-      "rise_reason": "순이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "코리아 밸류업 지수 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코리아 밸류업 지수(Korea Value-up Index)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "자동차",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순이익 공시",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -89,5 +91,5 @@
     "count_recent": 0,
     "avg_rate": 11.74
   },
-  "built_at": "2026-09-27T08:45:52"
+  "built_at": "2026-10-02T05:15:57"
 }

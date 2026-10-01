@@ -86,9 +86,9 @@
       "close_price": 4010.0,
       "trading_volume": 5878523,
       "trading_value": 23572877230,
-      "rise_reason": "제지 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "제지·탈플라스틱주 동반 강세 — 미국-이란 종전 협상 결렬에 수급 우려",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제지",
       "news": [
@@ -149,15 +149,25 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제지 상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "미국-이란 종전 협상 결렬에 수급 우려…제지·탈플라스틱주 상승",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005343185&office_id=008&code=078130&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.04.13"
+        }
+      ]
     },
     {
       "date": "20250821",
       "change_rate": 12.02,
       "close_price": 5220.0,
-      "rise_reason": "제지 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "금일 코스닥 거래량 1위 거래대금 151억 돌파",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제지",
       "news": [
@@ -179,7 +189,17 @@
       "source": "estimated",
       "trading_volume": 3340857,
       "trading_value": 17439273540,
-      "market_cap": 588548167539
+      "market_cap": 588548167539,
+      "reason_previous": "제지 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 국일제지 거래대금 151억 돌파",
+          "link": "https://n.news.naver.com/mnews/article/081/0003567744",
+          "source": "서울신문",
+          "date": "2025-08-21"
+        }
+      ]
     },
     {
       "date": "20250722",
@@ -286,5 +306,5 @@
     "count_recent": 0,
     "avg_rate": 24.41
   },
-  "built_at": "2026-09-27T09:23:26"
+  "built_at": "2026-10-02T05:15:57"
 }

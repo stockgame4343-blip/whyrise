@@ -9,9 +9,9 @@
       "close_price": 36650.0,
       "trading_volume": 168799,
       "trading_value": 6186483350,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "우주항공산업 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -86,23 +88,25 @@
       "close_price": 71000.0,
       "trading_volume": 315612,
       "trading_value": 22408452000,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "스페이스X 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
       "change_rate": 14.07,
       "close_price": 68900.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 중국 저가 공세에 백기…, 베트남 사업 정리한다[only 이...",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -130,7 +134,17 @@
       "source": "estimated",
       "trading_volume": 513532,
       "trading_value": 35382354800,
-      "market_cap": 2470977777777
+      "market_cap": 2470977777777,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "중국 저가 공세에 백기…세아베스틸지주, 베트남 사업 정리한다[only 이...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006241926",
+          "source": "이데일리",
+          "date": "2026-03-24"
+        }
+      ]
     },
     {
       "date": "20260311",
@@ -280,9 +294,9 @@
       "date": "20260112",
       "change_rate": 10.7,
       "close_price": 68300.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "항공우주 성장 기대",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -322,7 +336,17 @@
       "source": "estimated",
       "trading_volume": 906328,
       "trading_value": 61902202400,
-      "market_cap": 2449459829059
+      "market_cap": 2449459829059,
+      "reason_previous": "원전/SMR",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]세아베스틸지주, 항공우주 성장 기대에 9%↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005705305",
+          "source": "아시아경제",
+          "date": "2026-01-12"
+        }
+      ]
     },
     {
       "date": "20260102",
@@ -410,9 +434,9 @@
       "date": "20251210",
       "change_rate": 14.03,
       "close_price": 34950.0,
-      "rise_reason": "자회사 상장",
-      "reason_confidence": "low",
-      "reason_source": "news",
+      "rise_reason": "스페이스X IPO 추진 소식에 14%대 쑥",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -452,7 +476,17 @@
       "source": "estimated",
       "trading_volume": 588526,
       "trading_value": 20568983700,
-      "market_cap": 1253420512820
+      "market_cap": 1253420512820,
+      "reason_previous": "자회사 상장",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 세아베스틸지주, 스페이스X IPO 추진 소식에 14%대 ‘쑥’",
+          "link": "https://n.news.naver.com/mnews/article/366/0001129259",
+          "source": "조선비즈",
+          "date": "2025-12-10"
+        }
+      ]
     },
     {
       "date": "20251208",
@@ -504,5 +538,5 @@
     "count_recent": 0,
     "avg_rate": 14.17
   },
-  "built_at": "2026-10-01T22:52:31"
+  "built_at": "2026-10-02T05:15:57"
 }

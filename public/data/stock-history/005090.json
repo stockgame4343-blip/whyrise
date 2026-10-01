@@ -9,10 +9,10 @@
       "close_price": 50400.0,
       "trading_volume": 291743,
       "trading_value": 14703847200,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -102,9 +104,9 @@
       "close_price": 54700.0,
       "trading_volume": 511056,
       "trading_value": 27954763200,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "2분기 영업익 448억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
@@ -171,7 +173,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "SGC에너지, 2분기 영업익 448억..전년 대비 31.9%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005389920&office_id=008&code=005090&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260722",
@@ -179,9 +191,9 @@
       "close_price": 42350.0,
       "trading_volume": 131630,
       "trading_value": 5574530500,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 취약계층 아동 지원 확대…식사·주거 등 지원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
@@ -248,7 +260,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SGC에너지, 취약계층 아동 지원 확대…식사·주거 등 지원",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014078907&office_id=003&code=005090&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.21"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -256,9 +278,9 @@
       "close_price": 39900.0,
       "trading_volume": 57528,
       "trading_value": 2295367200,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 2025 지속가능경영보고서 발간…탄소 배출 16만t 절감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
@@ -295,7 +317,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SGC에너지, 2025 지속가능경영보고서 발간…탄소 배출 16만t 절감",
+          "link": "https://n.news.naver.com/mnews/article/009/0005708015",
+          "source": "매일경제",
+          "date": "2026-07-15"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -303,10 +335,10 @@
       "close_price": 58400.0,
       "trading_volume": 166128,
       "trading_value": 9701875200,
-      "rise_reason": "순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
         {
@@ -372,7 +404,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260601",
@@ -380,10 +414,10 @@
       "close_price": 55400.0,
       "trading_volume": 173685,
       "trading_value": 9622149000,
-      "rise_reason": "순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
         {
@@ -449,7 +483,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260422",
@@ -457,9 +493,9 @@
       "close_price": 63500.0,
       "trading_volume": 604095,
       "trading_value": 38360032500,
-      "rise_reason": "실적 서프라이즈",
+      "rise_reason": "데이터센터 사업으로 실적 성장 기대",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
@@ -526,7 +562,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"SGC에너지, 데이터센터 사업으로 실적 성장 기대…목표가↑\"-DS",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005347503&office_id=008&code=005090&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.04.22"
+        }
+      ]
     },
     {
       "date": "20260410",
@@ -548,9 +594,9 @@
       "date": "20260324",
       "change_rate": 10.65,
       "close_price": 63400.0,
-      "rise_reason": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "해외 플랜트 실적 성장 전망",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
@@ -584,7 +630,17 @@
       "source": "estimated",
       "trading_volume": 185230,
       "trading_value": 11743582000,
-      "market_cap": 913536363636
+      "market_cap": 913536363636,
+      "reason_previous": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS) 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] SGC에너지, 해외 플랜트 실적 성장 전망에… 4% 상승",
+          "link": "https://n.news.naver.com/mnews/article/366/0001150970",
+          "source": "조선비즈",
+          "date": "2026-03-24"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -849,5 +905,5 @@
     "count_recent": 0,
     "avg_rate": 14.26
   },
-  "built_at": "2026-10-01T22:52:39"
+  "built_at": "2026-10-02T05:15:56"
 }

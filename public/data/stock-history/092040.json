@@ -9,9 +9,9 @@
       "close_price": 1730.0,
       "trading_volume": 6481010,
       "trading_value": 11212147300,
-      "rise_reason": "흑자 전환",
+      "rise_reason": "100억 규모 3자배정 유증 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아미코젠, 100억 규모 3자배정 유증 소식에 장중 24%대↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006312795&office_id=018&code=092040&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260619",
@@ -86,10 +96,10 @@
       "close_price": 1513.0,
       "trading_volume": 6758591,
       "trading_value": 10225748183,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건강기능식품",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260416",
@@ -254,9 +266,9 @@
       "date": "20260327",
       "change_rate": 13.11,
       "close_price": 1829.0,
-      "rise_reason": "유전자 치료제/분석 테마 강세",
+      "rise_reason": "유전자 치료제 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
@@ -265,7 +277,9 @@
       "source": "estimated",
       "trading_volume": 3273220,
       "trading_value": 5986719380,
-      "market_cap": 129226768010
+      "market_cap": 129226768010,
+      "reason_previous": "유전자 치료제/분석 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -288,9 +302,9 @@
       "date": "20260226",
       "change_rate": 11.81,
       "close_price": 1392.0,
-      "rise_reason": "바이오",
+      "rise_reason": "국산 배지 파트너십 확대해야",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -330,15 +344,25 @@
       "source": "estimated",
       "trading_volume": 11420452,
       "trading_value": 15897269184,
-      "market_cap": 98350826173
+      "market_cap": 98350826173,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[바이오 포럼] 아미코젠 &quot;국산 배지 파트너십 확대해야&quot;",
+          "link": "https://n.news.naver.com/mnews/article/015/0005255935",
+          "source": "한국경제",
+          "date": "2026-02-26"
+        }
+      ]
     },
     {
       "date": "20260206",
       "change_rate": 13.62,
       "close_price": 1693.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "수혜 기대감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -378,7 +402,17 @@
       "source": "estimated",
       "trading_volume": 12507785,
       "trading_value": 21175680005,
-      "market_cap": 119617779246
+      "market_cap": 119617779246,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'K바이오 소부장' 시대 활짝…아미코젠 수혜 기대감↑",
+          "link": "https://n.news.naver.com/mnews/article/008/0005315029",
+          "source": "머니투데이",
+          "date": "2026-02-06"
+        }
+      ]
     },
     {
       "date": "20251211",
@@ -440,5 +474,5 @@
     "count_recent": 0,
     "avg_rate": 13.73
   },
-  "built_at": "2026-10-01T18:19:36"
+  "built_at": "2026-10-02T05:15:57"
 }

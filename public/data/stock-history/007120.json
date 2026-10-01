@@ -9,10 +9,10 @@
       "close_price": 1417.0,
       "trading_volume": 2127937,
       "trading_value": 3015286729,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -86,10 +88,10 @@
       "close_price": 1301.0,
       "trading_volume": 123758,
       "trading_value": 161009158,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260317",
@@ -280,10 +284,10 @@
       "date": "20251216",
       "change_rate": 14.96,
       "close_price": 1030.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -310,7 +314,9 @@
       "source": "estimated",
       "trading_volume": 5160358,
       "trading_value": 5315168740,
-      "market_cap": 29769706336
+      "market_cap": 29769706336,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -321,5 +327,5 @@
     "count_recent": 0,
     "avg_rate": 19.46
   },
-  "built_at": "2026-10-01T22:53:28"
+  "built_at": "2026-10-02T05:15:56"
 }

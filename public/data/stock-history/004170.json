@@ -9,9 +9,9 @@
       "close_price": 659000.0,
       "trading_volume": 163545,
       "trading_value": 107776155000,
-      "rise_reason": "백화점 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 부산 공연 맞춰…白, 센텀시티서 BTS 팝업 운영",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "부산 공연 맞춰…신세계白, 센텀시티서 'BTS 팝업' 운영",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000514044&office_id=374&code=004170&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20260602",
@@ -86,9 +96,9 @@
       "close_price": 569000.0,
       "trading_volume": 149045,
       "trading_value": 84806605000,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "고배당·CAPEX·이자비용 삼중 부담",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "신세계, 고배당·CAPEX·이자비용 '삼중 부담'…재무 압박 커진다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000085687&office_id=293&code=004170&page=&sm=",
+          "source": "블로터",
+          "date": "2026.06.02"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -163,9 +183,9 @@
       "close_price": 578000.0,
       "trading_volume": 125719,
       "trading_value": 72665582000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 스타벅스 코리아 규탄- 회장 사퇴 촉구 회견",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "스타벅스 코리아 규탄-신세계 회장 사퇴 촉구 회견",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016091492&office_id=001&code=004170&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -240,9 +270,9 @@
       "close_price": 535000.0,
       "trading_volume": 144664,
       "trading_value": 77395240000,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "쌀 구독 서비스 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
@@ -309,7 +339,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"2주마다 새 쌀이 문앞에\"…신세계百, '쌀 구독' 서비스 출시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000510027&office_id=374&code=004170&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.14"
+        }
+      ]
     }
   ],
   "stats": {
@@ -320,5 +360,5 @@
     "count_recent": 0,
     "avg_rate": 13.46
   },
-  "built_at": "2026-10-01T22:52:22"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 2610.0,
       "trading_volume": 83705,
       "trading_value": 218470050,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -24,7 +24,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260713",
@@ -32,9 +34,9 @@
       "close_price": 2325.0,
       "trading_volume": 214375,
       "trading_value": 498421875,
-      "rise_reason": "자동차부품 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 오버행 부담 완화…포레스트벤처스 펀드 만기 청산",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -101,7 +103,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자동차부품 양산 보도",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "디에스엠, 오버행 부담 완화…포레스트벤처스 펀드 만기 청산",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006329021&office_id=018&code=104040&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.13"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -109,10 +121,10 @@
       "close_price": 2070.0,
       "trading_volume": 236670,
       "trading_value": 489906900,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -178,7 +190,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -186,9 +200,9 @@
       "close_price": 2770.0,
       "trading_volume": 106336,
       "trading_value": 294550720,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "관련 보도: 9.81파크 앞세워 플랫폼 기업 전환 가속",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -201,7 +215,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]&quot;디에스엠, '9.81파크' 앞세워 플랫폼 기업 전환 가속&quot;",
+          "link": "https://n.news.naver.com/mnews/article/277/0005766580",
+          "source": "아시아경제",
+          "date": "2026-05-22"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -259,5 +283,5 @@
     "count_recent": 0,
     "avg_rate": 12.24
   },
-  "built_at": "2026-09-27T10:00:20"
+  "built_at": "2026-10-02T05:15:57"
 }

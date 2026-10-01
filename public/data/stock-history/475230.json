@@ -9,9 +9,9 @@
       "close_price": 10250.0,
       "trading_volume": 222976,
       "trading_value": 2285504000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "수주 대비 저평가 (하나)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모듈러주택",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "엔알비, 4Q 공공 모듈러 발주 본격화…수주 대비 저평가-하나",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006366568&office_id=018&code=475230&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -86,9 +96,9 @@
       "close_price": 9490.0,
       "trading_volume": 482263,
       "trading_value": 4576675870,
-      "rise_reason": "모듈러주택 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "영업익 2배 쑥",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모듈러주택",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "모듈러주택 수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "모듈러 훈풍 엔알비…영업익 2배 '쑥'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005723078&office_id=009&code=475230&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.08.19"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -177,10 +197,10 @@
       "date": "20260320",
       "change_rate": 12.24,
       "close_price": 24750.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -188,7 +208,9 @@
       "source": "estimated",
       "trading_volume": 280886,
       "trading_value": 6951928500,
-      "market_cap": 269724489795
+      "market_cap": 269724489795,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -218,10 +240,10 @@
       "date": "20260203",
       "change_rate": 12.42,
       "close_price": 21000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -229,16 +251,18 @@
       "source": "estimated",
       "trading_volume": 543049,
       "trading_value": 11404029000,
-      "market_cap": 228857142857
+      "market_cap": 228857142857,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260105",
       "change_rate": 11.11,
       "close_price": 16100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -246,16 +270,18 @@
       "source": "estimated",
       "trading_volume": 561113,
       "trading_value": 9033919300,
-      "market_cap": 175457142857
+      "market_cap": 175457142857,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251110",
       "change_rate": 13.05,
       "close_price": 12820.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -270,7 +296,9 @@
       "source": "estimated",
       "trading_volume": 364148,
       "trading_value": 4668377360,
-      "market_cap": 139711836734
+      "market_cap": 139711836734,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -281,5 +309,5 @@
     "count_recent": 1,
     "avg_rate": 12.64
   },
-  "built_at": "2026-10-01T22:57:30"
+  "built_at": "2026-10-02T05:15:56"
 }

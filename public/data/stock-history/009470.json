@@ -9,15 +9,17 @@
       "close_price": 21750.0,
       "trading_volume": 104433,
       "trading_value": 2271417750,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260618",
@@ -25,10 +27,10 @@
       "close_price": 42900.0,
       "trading_volume": 1938053,
       "trading_value": 83142473700,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "페라이트",
       "news": [
         {
@@ -94,7 +96,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -102,10 +106,10 @@
       "close_price": 42000.0,
       "trading_volume": 963587,
       "trading_value": 40470654000,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "페라이트",
       "news": [
         {
@@ -171,7 +175,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -254,9 +260,9 @@
       "date": "20260122",
       "change_rate": 11.18,
       "close_price": 43750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "실시간 상승률 1위",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "페라이트",
       "news": [
@@ -290,7 +296,17 @@
       "source": "estimated",
       "trading_volume": 1949156,
       "trading_value": 85275575000,
-      "market_cap": 289394475920
+      "market_cap": 289394475920,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]‘삼화전기’ 13.85% 급등…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003610766",
+          "source": "서울신문",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20260121",
@@ -415,5 +431,5 @@
     "count_recent": 0,
     "avg_rate": 18.31
   },
-  "built_at": "2026-09-29T22:20:34"
+  "built_at": "2026-10-02T05:15:57"
 }

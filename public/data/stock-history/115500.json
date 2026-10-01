@@ -9,15 +9,17 @@
       "close_price": 7690.0,
       "trading_volume": 87865,
       "trading_value": 675681850,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "양자암호 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260526",
@@ -25,9 +27,9 @@
       "close_price": 20600.0,
       "trading_volume": 5368569,
       "trading_value": 110592521400,
-      "rise_reason": "소식에 지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련주 동반 강세 — 포톤 2연상",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소식에 지분 관련 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "양자컴 관련株 동반 강세…포톤 '2연상'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006290442&office_id=018&code=115500&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -102,9 +114,9 @@
       "close_price": 15850.0,
       "trading_volume": 3945935,
       "trading_value": 62543069750,
-      "rise_reason": "소식에 지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자컴퓨팅주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -171,7 +183,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "소식에 지분 관련 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'美 3조 투자 훈풍' 양자컴퓨팅주 급등…케이씨에스 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013961757&office_id=003&code=115500&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.22"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -250,9 +272,9 @@
       "close_price": 17780.0,
       "trading_volume": 971213,
       "trading_value": 17268167140,
-      "rise_reason": "화폐/금융자동화기기(디지털화폐 등) 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "화폐 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화폐/금융자동화기기(디지털화폐 등)",
       "news": [
@@ -319,7 +341,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화폐/금융자동화기기(디지털화폐 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260415",
@@ -424,5 +448,5 @@
     "count_recent": 0,
     "avg_rate": 22.96
   },
-  "built_at": "2026-10-01T22:57:16"
+  "built_at": "2026-10-02T05:15:57"
 }

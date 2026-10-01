@@ -9,9 +9,9 @@
       "close_price": 82000.0,
       "trading_volume": 95706,
       "trading_value": 7847892000,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "초·중·고등학교에 AI 기반 보안 솔루션 공급 확대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(물리)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스원, 초·중·고등학교에 AI 기반 보안 솔루션 공급 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000513387&office_id=629&code=012750&page=&sm=",
+          "source": "더팩트",
+          "date": "2026.07.06"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -86,9 +96,9 @@
       "close_price": 88700.0,
       "trading_volume": 309576,
       "trading_value": 27459391200,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "코리아 밸류업 지수 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코리아 밸류업 지수(Korea Value-up Index)",
       "news": [
@@ -155,7 +165,9 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -166,5 +178,5 @@
     "count_recent": 0,
     "avg_rate": 14.93
   },
-  "built_at": "2026-10-01T22:52:22"
+  "built_at": "2026-10-02T05:15:57"
 }

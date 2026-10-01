@@ -9,10 +9,10 @@
       "close_price": 1265.0,
       "trading_volume": 918279,
       "trading_value": 1161622935,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -48,7 +48,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -59,5 +61,5 @@
     "count_recent": 0,
     "avg_rate": 11.95
   },
-  "built_at": "2026-09-27T10:21:08"
+  "built_at": "2026-10-02T05:15:57"
 }

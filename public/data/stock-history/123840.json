@@ -9,15 +9,17 @@
       "close_price": 1926.0,
       "trading_volume": 109309,
       "trading_value": 210529134,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건강기능식품",
       "news": [],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -25,9 +27,9 @@
       "close_price": 1707.0,
       "trading_volume": 24485,
       "trading_value": 41795895,
-      "rise_reason": "건강기능식품 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "시서스 필 다이어트 누적 판매 7000만정 돌파",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -40,7 +42,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "건강기능식품 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "뉴온, '시서스 필 다이어트' 누적 판매 7000만정 돌파",
+          "link": "https://n.news.naver.com/mnews/article/018/0006341021",
+          "source": "이데일리",
+          "date": "2026-07-31"
+        }
+      ]
     },
     {
       "date": "20251209",
@@ -129,5 +141,5 @@
     "count_recent": 1,
     "avg_rate": 19.95
   },
-  "built_at": "2026-10-01T22:59:34"
+  "built_at": "2026-10-02T05:15:56"
 }

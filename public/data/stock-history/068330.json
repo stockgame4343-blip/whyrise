@@ -7,10 +7,10 @@
       "date": "20251121",
       "change_rate": 15.53,
       "close_price": 1852.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -18,7 +18,9 @@
       "source": "estimated",
       "trading_volume": 48695358,
       "trading_value": 90183803016,
-      "market_cap": 81908752327
+      "market_cap": 81908752327,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251113",
@@ -60,9 +62,9 @@
       "date": "20250717",
       "change_rate": 15.86,
       "close_price": 2170.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 929억 돌...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -78,7 +80,17 @@
       "source": "estimated",
       "trading_volume": 66204358,
       "trading_value": 143663456860,
-      "market_cap": 95972998137
+      "market_cap": 95972998137,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 일신바이오 거래대금 929억 돌...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003558491",
+          "source": "서울신문",
+          "date": "2025-07-17"
+        }
+      ]
     },
     {
       "date": "20250617",
@@ -101,10 +113,10 @@
       "date": "20250609",
       "change_rate": 12.43,
       "close_price": 1719.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -112,7 +124,9 @@
       "source": "estimated",
       "trading_volume": 32989607,
       "trading_value": 56709134433,
-      "market_cap": 76026536312
+      "market_cap": 76026536312,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250529",
@@ -157,5 +171,5 @@
     "count_recent": 0,
     "avg_rate": 15.12
   },
-  "built_at": "2026-09-27T10:13:13"
+  "built_at": "2026-10-02T05:15:57"
 }

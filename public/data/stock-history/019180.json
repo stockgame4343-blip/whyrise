@@ -9,9 +9,9 @@
       "close_price": 9680.0,
       "trading_volume": 4290508,
       "trading_value": 41532117440,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "본업 실적 호조에 로봇 모멘텀 가세",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "수소에너지(수소차/연료전지 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "티에이치엔, 본업 실적 호조에 로봇 모멘텀 가세…PER 1.7배 '저평...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362545&office_id=008&code=019180&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -247,5 +257,5 @@
     "count_recent": 0,
     "avg_rate": 17.56
   },
-  "built_at": "2026-09-27T08:57:06"
+  "built_at": "2026-10-02T05:15:57"
 }

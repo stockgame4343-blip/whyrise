@@ -9,9 +9,9 @@
       "close_price": 56200.0,
       "trading_volume": 222641,
       "trading_value": 12512424200,
-      "rise_reason": "임상 관련 뉴스",
+      "rise_reason": "모더나 mRNA 백신 임상 성공",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 모더나 mRNA 백신 임상 성공에… 삼양바이오팜 상한가...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003458879&office_id=030&code=0120G0&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -86,9 +96,9 @@
       "close_price": 44500.0,
       "trading_volume": 46811,
       "trading_value": 2083089500,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료기기 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -155,7 +165,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -163,15 +175,17 @@
       "close_price": 38500.0,
       "trading_volume": 33672,
       "trading_value": 1296372000,
-      "rise_reason": "유전자 치료제/분석 테마 강세",
+      "rise_reason": "유전자 치료제 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유전자 치료제/분석 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -179,9 +193,9 @@
       "close_price": 51100.0,
       "trading_volume": 39733,
       "trading_value": 2030356300,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 차세대 약물전달 플랫폼 센스로 시장 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -248,15 +262,25 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[바이오 USA]삼양바이오팜, 차세대 약물전달 플랫폼 '센스'로 시장 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003442085&office_id=030&code=0120G0&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260326",
       "change_rate": 15.69,
       "close_price": 138600.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 제1기 정기주총 개최",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -296,16 +320,26 @@
       "source": "estimated",
       "trading_volume": 476253,
       "trading_value": 66008665800,
-      "market_cap": 1030473529411
+      "market_cap": 1030473529411,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "삼양바이오팜, 제1기 정기주총 개최",
+          "link": "https://n.news.naver.com/mnews/article/005/0001839251",
+          "source": "국민일보",
+          "date": "2026-03-25"
+        }
+      ]
     },
     {
       "date": "20260320",
       "change_rate": 15.7,
       "close_price": 101700.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -320,16 +354,18 @@
       "source": "estimated",
       "trading_volume": 162485,
       "trading_value": 16524724500,
-      "market_cap": 756126680672
+      "market_cap": 756126680672,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 15.22,
       "close_price": 87800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -337,7 +373,9 @@
       "source": "estimated",
       "trading_volume": 81120,
       "trading_value": 7122336000,
-      "market_cap": 652781932773
+      "market_cap": 652781932773,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260211",
@@ -552,10 +590,10 @@
       "date": "20260114",
       "change_rate": 12.07,
       "close_price": 62200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -563,7 +601,9 @@
       "source": "estimated",
       "trading_volume": 270803,
       "trading_value": 16843946600,
-      "market_cap": 462449159663
+      "market_cap": 462449159663,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251128",
@@ -718,5 +758,5 @@
     "count_recent": 0,
     "avg_rate": 19.88
   },
-  "built_at": "2026-10-01T22:52:48"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 13900.0,
       "trading_volume": 2771404,
       "trading_value": 38522515600,
-      "rise_reason": "관련 보도: \"MRI 조영제 신약 국내 임상 3상 성공 ... 상업화 돌입한다\"",
+      "rise_reason": "MRI 조영제 신약 국내 임상 3상 성공",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -46,12 +46,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "인벤테라 &quot;MRI 조영제 신약 국내 임상 3상 성공 ... 상업화 돌입한다&quot;",
+          "title": "인벤테라 \"MRI 조영제 신약 국내 임상 3상 성공 ... 상업화 돌입한다\"",
           "link": "https://n.news.naver.com/mnews/article/015/0005335082",
           "source": "한국경제",
           "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260921",
@@ -59,9 +60,9 @@
       "close_price": 11970.0,
       "trading_volume": 1722023,
       "trading_value": 20612615310,
-      "rise_reason": "관련 보도: MRI 조영제 신약 국내 임상 3상 성공",
+      "rise_reason": "MRI 조영제 신약 국내 임상 3상 성공",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -101,7 +102,8 @@
           "source": "부산일보",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260915",
@@ -109,9 +111,9 @@
       "close_price": 9690.0,
       "trading_volume": 45322,
       "trading_value": 439170180,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "나노-MRI 조영제 임상 완주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -178,7 +180,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "인벤테라, '나노-MRI 조영제' 임상 완주…후속 파이프라인도 \"관심\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005413978&office_id=008&code=0007J0&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.09.15"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -202,9 +214,9 @@
       "close_price": 9530.0,
       "trading_volume": 82903,
       "trading_value": 790065590,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -271,7 +283,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     }
   ],
   "stats": {
@@ -282,5 +304,5 @@
     "count_recent": 3,
     "avg_rate": 15.8
   },
-  "built_at": "2026-10-01T22:57:58"
+  "built_at": "2026-10-02T05:15:56"
 }

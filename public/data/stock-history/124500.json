@@ -86,10 +86,10 @@
       "close_price": 31350.0,
       "trading_volume": 1556873,
       "trading_value": 48807968550,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "귀금속(금/은)",
       "news": [
         {
@@ -155,7 +155,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -163,10 +165,10 @@
       "close_price": 26450.0,
       "trading_volume": 529402,
       "trading_value": 14002682900,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "귀금속(금/은)",
       "news": [
         {
@@ -232,7 +234,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -256,10 +260,10 @@
       "close_price": 23500.0,
       "trading_volume": 391229,
       "trading_value": 9193881500,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "귀금속(금/은)",
       "news": [
         {
@@ -325,7 +329,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -349,9 +355,9 @@
       "close_price": 45050.0,
       "trading_volume": 201788,
       "trading_value": 9090549400,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유망 스타트업 투자로 글로벌 진출 박차",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "STO(토큰증권 발행)",
       "news": [
@@ -418,7 +424,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이티센글로벌, 유망 스타트업 투자로 글로벌 진출 박차",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005773437&office_id=277&code=124500&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.08"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -449,9 +465,9 @@
       "close_price": 61900.0,
       "trading_volume": 458790,
       "trading_value": 28399101000,
-      "rise_reason": "전환사채 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 기관투자자 대상 400억 규모 전환사채 발행",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "귀금속(금/은)",
       "news": [
@@ -518,7 +534,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전환사채 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아이티센글로벌, 기관투자자 대상 400억 규모 전환사채 발행",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005675053&office_id=009&code=124500&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -526,10 +552,10 @@
       "close_price": 54000.0,
       "trading_volume": 525837,
       "trading_value": 28395198000,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "귀금속(금/은)",
       "news": [
         {
@@ -595,7 +621,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -699,9 +727,9 @@
       "date": "20260127",
       "change_rate": 10.78,
       "close_price": 48300.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 자회사 부산 스마트양식 빅데이터센터 구축사업 수주...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "귀금속(금/은)",
       "news": [
@@ -741,7 +769,17 @@
       "source": "estimated",
       "trading_volume": 884257,
       "trading_value": 42709613100,
-      "market_cap": 1120807692307
+      "market_cap": 1120807692307,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아이티센글로벌, 자회사 부산 스마트양식 빅데이터센터 구축사업 수주...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006207790",
+          "source": "이데일리",
+          "date": "2026-01-27"
+        }
+      ]
     },
     {
       "date": "20260123",
@@ -879,9 +917,9 @@
       "date": "20251219",
       "change_rate": 10.11,
       "close_price": 23950.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 금, 보관 자산에서 디지털 인프라로…, 온체인 전략...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "귀금속(금/은)",
       "news": [
@@ -921,7 +959,17 @@
       "source": "estimated",
       "trading_volume": 835004,
       "trading_value": 19998345800,
-      "market_cap": 555762820512
+      "market_cap": 555762820512,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "&quot;금, 보관 자산에서 디지털 인프라로&quot;…아이티센글로벌, 온체인 전략...",
+          "link": "https://n.news.naver.com/mnews/article/092/0002403133",
+          "source": "지디넷코리아",
+          "date": "2025-12-19"
+        }
+      ]
     },
     {
       "date": "20251210",
@@ -1133,5 +1181,5 @@
     "count_recent": 0,
     "avg_rate": 15.33
   },
-  "built_at": "2026-10-01T22:54:48"
+  "built_at": "2026-10-02T05:15:56"
 }

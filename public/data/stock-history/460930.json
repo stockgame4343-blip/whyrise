@@ -9,9 +9,9 @@
       "close_price": 15950.0,
       "trading_volume": 7297537,
       "trading_value": 116395715150,
-      "rise_reason": "조선기자재 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 매각 기로 , HD현대 연결고리 향방은",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "조선기자재 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[K조선 공급망] 매각 기로 현대힘스, 'HD현대 연결고리' 향방은",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000087876&office_id=293&code=460930&page=&sm=",
+          "source": "블로터",
+          "date": "2026.07.21"
+        }
+      ]
     },
     {
       "date": "20260720",
@@ -161,9 +171,9 @@
       "date": "20260324",
       "change_rate": 12.96,
       "close_price": 22400.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "코스닥150 편입 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -197,16 +207,26 @@
       "source": "estimated",
       "trading_volume": 3608408,
       "trading_value": 80828339200,
-      "market_cap": 795431834403
+      "market_cap": 795431834403,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 현대힘스, 코스닥150 편입 소식에 13% 급등(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0015979008",
+          "source": "연합뉴스",
+          "date": "2026-03-24"
+        }
+      ]
     },
     {
       "date": "20260323",
       "change_rate": 10.04,
       "close_price": 19830.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -233,16 +253,18 @@
       "source": "estimated",
       "trading_volume": 4459692,
       "trading_value": 88435692360,
-      "market_cap": 704170235546
+      "market_cap": 704170235546,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 13.99,
       "close_price": 17440.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -250,7 +272,9 @@
       "source": "estimated",
       "trading_volume": 295155,
       "trading_value": 5147503200,
-      "market_cap": 619300499643
+      "market_cap": 619300499643,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260220",
@@ -368,5 +392,5 @@
     "count_recent": 0,
     "avg_rate": 14.33
   },
-  "built_at": "2026-09-27T09:21:17"
+  "built_at": "2026-10-02T05:15:57"
 }

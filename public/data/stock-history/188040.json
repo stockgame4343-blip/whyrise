@@ -9,10 +9,10 @@
       "close_price": 4905.0,
       "trading_volume": 27848,
       "trading_value": 136594440,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음식료업종",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20250623",
@@ -148,5 +150,5 @@
     "count_recent": 0,
     "avg_rate": 10.35
   },
-  "built_at": "2026-10-01T22:59:42"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,10 +9,10 @@
       "close_price": 21250.0,
       "trading_volume": 876850,
       "trading_value": 18633062500,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폴더블폰",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260917",
@@ -44,9 +46,9 @@
       "close_price": 19050.0,
       "trading_volume": 701482,
       "trading_value": 13363232100,
-      "rise_reason": "폴더블폰 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "부품주 동반 강세 — 애플도 폴더블 아이폰",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -125,7 +127,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "폴더블폰 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 애플도 폴더블 아이폰… 파인엠텍 등 부품株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003466403&office_id=030&code=290550&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.14"
+        }
+      ]
     },
     {
       "date": "20260904",
@@ -133,9 +145,9 @@
       "close_price": 16800.0,
       "trading_volume": 663269,
       "trading_value": 11142919200,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "폴더블폰 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -196,7 +208,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -204,15 +218,17 @@
       "close_price": 17300.0,
       "trading_volume": 325912,
       "trading_value": 5638277600,
-      "rise_reason": "폴더블폰 테마 강세",
+      "rise_reason": "폴더블폰 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "폴더블폰 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -220,9 +236,9 @@
       "close_price": 22200.0,
       "trading_volume": 427447,
       "trading_value": 9489323400,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "스마트폰 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트폰",
       "news": [
@@ -289,7 +305,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -297,10 +315,10 @@
       "close_price": 28150.0,
       "trading_volume": 225459,
       "trading_value": 6346670850,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
         {
@@ -366,7 +384,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260429",
@@ -374,9 +394,9 @@
       "close_price": 26500.0,
       "trading_volume": 773216,
       "trading_value": 20490224000,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
@@ -443,7 +463,17 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -678,9 +708,9 @@
       "date": "20251104",
       "change_rate": 10.24,
       "close_price": 8400.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 국내 배터리 3사 뚫었다…ESS용 BMS 공급",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폴더블폰",
       "news": [
@@ -696,7 +726,17 @@
       "source": "estimated",
       "trading_volume": 4498680,
       "trading_value": 37788912000,
-      "market_cap": 168000000000
+      "market_cap": 168000000000,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "디케이티, 국내 배터리 3사 뚫었다…“ESS용 BMS 공급”",
+          "link": "https://n.news.naver.com/mnews/article/030/0003366650",
+          "source": "전자신문",
+          "date": "2025-11-04"
+        }
+      ]
     }
   ],
   "stats": {
@@ -707,5 +747,5 @@
     "count_recent": 3,
     "avg_rate": 15.16
   },
-  "built_at": "2026-10-01T22:55:19"
+  "built_at": "2026-10-02T05:15:56"
 }

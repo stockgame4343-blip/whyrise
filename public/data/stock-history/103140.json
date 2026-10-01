@@ -9,9 +9,9 @@
       "close_price": 80700.0,
       "trading_volume": 417613,
       "trading_value": 33701369100,
-      "rise_reason": "자사주 소각",
+      "rise_reason": "2분기 실적 예상 상회",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "풍산, 2분기 실적 예상 상회…목표가 10.1만원↑-현대차",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006343792&office_id=018&code=103140&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,9 +96,9 @@
       "close_price": 71200.0,
       "trading_volume": 284573,
       "trading_value": 20261597600,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "실적 호조에 불붙은 주가",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -125,16 +135,26 @@
       ],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방산",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "실적 호조에 불붙은 풍산 주가, 19% 급등",
+          "link": "https://n.news.naver.com/mnews/article/050/0000109181",
+          "source": "한경비즈니스",
+          "date": "2026-07-31"
+        }
+      ]
     },
     {
       "date": "20260303",
       "change_rate": 12.78,
       "close_price": 130600.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -142,7 +162,9 @@
       "source": "estimated",
       "trading_volume": 2085493,
       "trading_value": 272365385800,
-      "market_cap": 3659927042253
+      "market_cap": 3659927042253,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250715",
@@ -221,5 +243,5 @@
     "count_recent": 0,
     "avg_rate": 15.37
   },
-  "built_at": "2026-10-01T22:52:27"
+  "built_at": "2026-10-02T05:15:56"
 }

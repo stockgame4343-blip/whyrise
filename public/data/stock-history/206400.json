@@ -9,15 +9,25 @@
       "close_price": 854.0,
       "trading_volume": 1373461,
       "trading_value": 1172935694,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "건설주 동반 강세 — AI 데이터센터·원전이 새 성장동력 부각",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 데이터센터·원전이 새 성장동력 부각..건설株 강세[종목NOW]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005581450",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-28"
+        }
+      ]
     },
     {
       "date": "20260706",
@@ -25,9 +35,9 @@
       "close_price": 1138.0,
       "trading_volume": 2664786,
       "trading_value": 3032526468,
-      "rise_reason": "수주 공시",
+      "rise_reason": "최대주주 변경·100억 유증 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -94,7 +104,17 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "베노티앤알, 최대주주 변경·100억 유증 소식에 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006323484&office_id=018&code=206400&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.06"
+        }
+      ]
     },
     {
       "date": "20260623",
@@ -102,10 +122,10 @@
       "close_price": 928.0,
       "trading_volume": 211947,
       "trading_value": 196686816,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -171,7 +191,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -179,9 +201,9 @@
       "close_price": 1151.0,
       "trading_volume": 548586,
       "trading_value": 631422486,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "현대건설과 11억원 규모 도배공사 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -248,7 +270,17 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "베노티앤알, 현대건설과 11억원 규모 도배공사 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006286000&office_id=018&code=206400&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260122",
@@ -284,9 +316,9 @@
       "date": "20250915",
       "change_rate": 13.38,
       "close_price": 2585.0,
-      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "rise_reason": "로봇 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -302,7 +334,9 @@
       "source": "estimated",
       "trading_volume": 1567575,
       "trading_value": 4052181375,
-      "market_cap": 97006989247
+      "market_cap": 97006989247,
+      "reason_previous": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250721",
@@ -361,5 +395,5 @@
     "count_recent": 1,
     "avg_rate": 17.48
   },
-  "built_at": "2026-10-01T22:59:14"
+  "built_at": "2026-10-02T05:15:56"
 }

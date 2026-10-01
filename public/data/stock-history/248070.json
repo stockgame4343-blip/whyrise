@@ -9,9 +9,9 @@
       "close_price": 15220.0,
       "trading_volume": 851795,
       "trading_value": 12964319900,
-      "rise_reason": "관련 보도: 전성호 대표 “6년 적자 견디며 키운 ESL…국내외 유통사로 사...",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "관련 보도: 전성호 대표 6년 적자 견디며 키운 ESL…국내외 유통사로 사...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차(충전소/충전기)",
       "news": [
@@ -33,7 +33,8 @@
           "source": "동아일보",
           "date": "2026.10.01"
         }
-      ]
+      ],
+      "reason_kind": "related"
     },
     {
       "date": "20260506",
@@ -41,10 +42,10 @@
       "close_price": 23600.0,
       "trading_volume": 2008660,
       "trading_value": 47404376000,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차(충전소/충전기)",
       "news": [
         {
@@ -110,7 +111,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20250905",
@@ -138,5 +141,5 @@
     "count_recent": 1,
     "avg_rate": 13.38
   },
-  "built_at": "2026-10-01T23:45:00"
+  "built_at": "2026-10-02T05:15:56"
 }

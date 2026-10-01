@@ -9,10 +9,10 @@
       "close_price": 2905.0,
       "trading_volume": 6043410,
       "trading_value": 17556106050,
-      "rise_reason": "초전도체 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "초전도체",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "초전도체 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260415",
@@ -32,15 +34,25 @@
       "close_price": 5530.0,
       "trading_volume": 8515880,
       "trading_value": 47092816400,
-      "rise_reason": "거래 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — 중동 전쟁 끝나나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "초전도체",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래 급증",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "중동 전쟁 끝나나…리스크 해소 기대감에 전선·전력설비주 강세 [매...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005666352&office_id=009&code=042370&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.04.15"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -256,5 +268,5 @@
     "count_recent": 0,
     "avg_rate": 21.21
   },
-  "built_at": "2026-09-27T09:55:39"
+  "built_at": "2026-10-02T05:15:57"
 }

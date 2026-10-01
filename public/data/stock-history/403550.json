@@ -25,9 +25,9 @@
       "close_price": 17140.0,
       "trading_volume": 776363,
       "trading_value": 13306861820,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 테슬라 FSD 성능 궁금해? 한 달 399만원...의 기술 렌...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "렌터카",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "도로와철도운송",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "\"테슬라 FSD 성능 궁금해? 한 달 399만원\"...쏘카의 '기술 렌...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005356746&office_id=008&code=403550&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.13"
+        }
+      ]
     },
     {
       "date": "20260430",
@@ -102,9 +112,9 @@
       "close_price": 17810.0,
       "trading_volume": 120838,
       "trading_value": 2152124780,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "크래프톤과 맞손",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "렌터카",
       "news": [
@@ -171,7 +181,17 @@
       ],
       "sector": "도로와철도운송",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "쏘카, 1500억원 규모 자율주행 법인 5월 설립…크래프톤과 맞손",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008921770&office_id=421&code=403550&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.04.30"
+        }
+      ]
     }
   ],
   "stats": {
@@ -182,5 +202,5 @@
     "count_recent": 0,
     "avg_rate": 23.6
   },
-  "built_at": "2026-09-27T08:43:23"
+  "built_at": "2026-10-02T05:15:57"
 }

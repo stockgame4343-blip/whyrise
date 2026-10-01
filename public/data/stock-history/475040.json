@@ -9,9 +9,9 @@
       "close_price": 3810.0,
       "trading_volume": 13062267,
       "trading_value": 49767237270,
-      "rise_reason": "자율주행차 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로보틱스 개발 지원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자율주행차 인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "스트라드비젼, Arm 피지컬 AI 생태계 합류…로보틱스 개발 지원",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002240593&office_id=138&code=475040&page=&sm=",
+          "source": "디지털데일리",
+          "date": "2026.09.08"
+        }
+      ]
     },
     {
       "date": "20260908",
@@ -86,9 +96,9 @@
       "close_price": 3350.0,
       "trading_volume": 10800304,
       "trading_value": 36181018400,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로보틱스 개발 지원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "스트라드비젼, Arm 피지컬 AI 생태계 합류…로보틱스 개발 지원",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002240593&office_id=138&code=475040&page=&sm=",
+          "source": "디지털데일리",
+          "date": "2026.09.08"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -192,9 +212,9 @@
       "close_price": 3600.0,
       "trading_volume": 5308804,
       "trading_value": 19111694400,
-      "rise_reason": "공급 계약 체결",
+      "rise_reason": "상장 후 첫 대규모 수주 소식에 18%대",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [
@@ -261,7 +281,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 스트라드비젼, 상장 후 첫 대규모 수주 소식에 18%대 강...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001181161&office_id=366&code=475040&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.23"
+        }
+      ]
     }
   ],
   "stats": {
@@ -272,5 +302,5 @@
     "count_recent": 2,
     "avg_rate": 15.15
   },
-  "built_at": "2026-10-01T22:56:49"
+  "built_at": "2026-10-02T05:15:56"
 }

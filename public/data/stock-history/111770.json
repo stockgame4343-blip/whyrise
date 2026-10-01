@@ -9,9 +9,9 @@
       "close_price": 83100.0,
       "trading_volume": 217425,
       "trading_value": 18068017500,
-      "rise_reason": "주주환원 정책",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "고무줄 상여금에 실적 따로 주가 따로",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "겨울",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"고무줄 상여금에 실적 따로 주가 따로\"…영원무역 부녀 경영 '도마 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000512436&office_id=629&code=111770&page=&sm=",
+          "source": "더팩트",
+          "date": "2026.07.02"
+        }
+      ]
     },
     {
       "date": "20260515",
@@ -86,9 +96,9 @@
       "close_price": 89600.0,
       "trading_volume": 204736,
       "trading_value": 18344345600,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "1분기 영업익 1204억원",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "겨울",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "영원무역, 1분기 영업익 1204억원…전년비 46.3%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006281476&office_id=018&code=111770&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.14"
+        }
+      ]
     },
     {
       "date": "20251117",
@@ -214,5 +234,5 @@
     "count_recent": 0,
     "avg_rate": 11.61
   },
-  "built_at": "2026-10-01T22:52:22"
+  "built_at": "2026-10-02T05:15:57"
 }

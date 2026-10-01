@@ -9,10 +9,10 @@
       "close_price": 28050.0,
       "trading_volume": 222610,
       "trading_value": 6244210500,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "여름",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -86,9 +88,9 @@
       "close_price": 28750.0,
       "trading_volume": 184747,
       "trading_value": 5311476250,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "부동산 보유 자산주 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "부동산 보유 자산주",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260422",
@@ -163,9 +167,9 @@
       "close_price": 30500.0,
       "trading_volume": 766590,
       "trading_value": 23380995000,
-      "rise_reason": "거래 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "비철금속 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비철금속",
       "news": [
@@ -232,15 +236,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래 급증",
+      "reason_kind": "theme"
     },
     {
       "date": "20260311",
       "change_rate": 10.81,
       "close_price": 22550.0,
-      "rise_reason": "비철금속 테마 강세",
+      "rise_reason": "관련 보도: 주가조작 사건 회사와 무관, 해당 임원 직무정지",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비철금속",
       "news": [
@@ -280,7 +286,17 @@
       "source": "estimated",
       "trading_volume": 124354,
       "trading_value": 2804182700,
-      "market_cap": 467143176733
+      "market_cap": 467143176733,
+      "reason_previous": "비철금속 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "DI동일 &quot;주가조작 사건 회사와 무관, 해당 임원 직무정지&quot;",
+          "link": "https://n.news.naver.com/mnews/article/648/0000045184",
+          "source": "비즈워치",
+          "date": "2026-03-11"
+        }
+      ]
     },
     {
       "date": "20251211",
@@ -308,5 +324,5 @@
     "count_recent": 0,
     "avg_rate": 11.95
   },
-  "built_at": "2026-10-01T22:52:44"
+  "built_at": "2026-10-02T05:15:56"
 }

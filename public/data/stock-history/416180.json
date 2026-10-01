@@ -9,9 +9,9 @@
       "close_price": 25250.0,
       "trading_volume": 72930,
       "trading_value": 1841482500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — 中겨냥?",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 中겨냥?…美 외국산 금지조치에 전력기기주 강세(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016275075&office_id=001&code=062040&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.08.27"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,9 +96,9 @@
       "close_price": 17770.0,
       "trading_volume": 28605,
       "trading_value": 508310850,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력저장장치 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
@@ -155,7 +165,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260701",
@@ -163,15 +175,25 @@
       "close_price": 23350.0,
       "trading_volume": 44292,
       "trading_value": 1034218200,
-      "rise_reason": "전력저장장치(ESS) 테마 강세",
+      "rise_reason": "전력주 동반 강세 — LS일렉트릭",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전력저장장치(ESS) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'1500조 메가프로젝트'에 전력株 급등…LS일렉트릭 13%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014039102&office_id=003&code=010120&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -179,9 +201,9 @@
       "close_price": 22000.0,
       "trading_volume": 103447,
       "trading_value": 2275834000,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -248,7 +270,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260528",
@@ -256,10 +280,10 @@
       "close_price": 34050.0,
       "trading_volume": 180819,
       "trading_value": 6156886950,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
         {
@@ -325,7 +349,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -348,9 +374,9 @@
       "date": "20251024",
       "change_rate": 11.31,
       "close_price": 46250.0,
-      "rise_reason": "전력저장장치(ESS) 테마 강세",
+      "rise_reason": "전력저장장치 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [],
@@ -359,15 +385,17 @@
       "source": "estimated",
       "trading_volume": 483271,
       "trading_value": 22351283750,
-      "market_cap": 418128626692
+      "market_cap": 418128626692,
+      "reason_previous": "전력저장장치(ESS) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251014",
       "change_rate": 20.52,
       "close_price": 41700.0,
-      "rise_reason": "트럼프/관세",
+      "rise_reason": "경영권 분쟁 중인 만호제강에 무슨 일이?",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
@@ -389,7 +417,17 @@
       "source": "estimated",
       "trading_volume": 801288,
       "trading_value": 33413709600,
-      "market_cap": 376993810444
+      "market_cap": 376993810444,
+      "reason_previous": "트럼프/관세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "경영권 분쟁 중인 만호제강에 무슨 일이?... 신성에스티 전 대표가 인...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001113891",
+          "source": "조선비즈",
+          "date": "2025-10-13"
+        }
+      ]
     },
     {
       "date": "20250724",
@@ -448,5 +486,5 @@
     "count_recent": 0,
     "avg_rate": 15.23
   },
-  "built_at": "2026-10-01T22:56:15"
+  "built_at": "2026-10-02T05:15:56"
 }

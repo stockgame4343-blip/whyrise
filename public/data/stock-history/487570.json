@@ -25,9 +25,9 @@
       "close_price": 65500.0,
       "trading_volume": 164553,
       "trading_value": 10778221500,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 연예인 초청 장애·비장애 통합 연주회",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "HS효성, 연예인 초청 장애·비장애 통합 연주회",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005671987&office_id=009&code=487570&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20251110",
@@ -117,9 +127,9 @@
       "date": "20251103",
       "change_rate": 10.82,
       "close_price": 64500.0,
-      "rise_reason": "지주사 테마 강세",
+      "rise_reason": "지주사 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [],
@@ -128,7 +138,9 @@
       "source": "estimated",
       "trading_volume": 49132,
       "trading_value": 3169014000,
-      "market_cap": 240306420233
+      "market_cap": 240306420233,
+      "reason_previous": "지주사 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250701",
@@ -168,9 +180,9 @@
       "date": "20250529",
       "change_rate": 29.8,
       "close_price": 52700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "지주사 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [],
@@ -179,7 +191,9 @@
       "source": "estimated",
       "trading_volume": 219434,
       "trading_value": 11564171800,
-      "market_cap": 196343385214
+      "market_cap": 196343385214,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -190,5 +204,5 @@
     "count_recent": 0,
     "avg_rate": 12.41
   },
-  "built_at": "2026-09-27T08:50:57"
+  "built_at": "2026-10-02T05:15:57"
 }

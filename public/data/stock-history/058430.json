@@ -9,9 +9,9 @@
       "close_price": 6580.0,
       "trading_volume": 16709573,
       "trading_value": 109948990340,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 454조 이란 재건 수혜 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 주요종목",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 철강주 동반 급등…‘454조 이란 재건’ 수혜 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001172334&office_id=366&code=023790&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260428",
@@ -86,9 +96,9 @@
       "close_price": 9130.0,
       "trading_volume": 16475098,
       "trading_value": 150417644740,
-      "rise_reason": "공급 관련 뉴스",
+      "rise_reason": "미·이란 협상 교착",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 주요종목",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "비철금속",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "미·이란 협상 교착에 철강株 급등…포스코스틸리온 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013913605&office_id=003&code=058430&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -163,9 +183,9 @@
       "close_price": 7030.0,
       "trading_volume": 9218550,
       "trading_value": 64806406500,
-      "rise_reason": "기업 분할 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "호주 하이퍼스케일 데이터센터에 자재 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 주요종목",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "비철금속",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기업 분할 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "포스코스틸리온, 호주 하이퍼스케일 데이터센터에 자재 공급",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016041168&office_id=001&code=058430&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -267,5 +297,5 @@
     "count_recent": 0,
     "avg_rate": 21.83
   },
-  "built_at": "2026-09-27T08:47:05"
+  "built_at": "2026-10-02T05:15:57"
 }

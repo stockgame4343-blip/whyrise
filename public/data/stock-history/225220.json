@@ -7,9 +7,9 @@
       "date": "20250825",
       "change_rate": 10.92,
       "close_price": 2590.0,
-      "rise_reason": "바이오",
+      "rise_reason": "꿀벌 노제마병 억제 기술 개발",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -37,16 +37,26 @@
       "source": "estimated",
       "trading_volume": 3340238,
       "trading_value": 8651216420,
-      "market_cap": 49720437956
+      "market_cap": 49720437956,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "제놀루션, 꿀벌 노제마병 억제 기술 개발… SCI급 국제학술지 게재",
+          "link": "https://n.news.naver.com/mnews/article/018/0006098336",
+          "source": "이데일리",
+          "date": "2025-08-25"
+        }
+      ]
     },
     {
       "date": "20250812",
       "change_rate": 11.09,
       "close_price": 2405.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -54,7 +64,9 @@
       "source": "estimated",
       "trading_volume": 8375478,
       "trading_value": 20143024590,
-      "market_cap": 46168978102
+      "market_cap": 46168978102,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -65,5 +77,5 @@
     "count_recent": 0,
     "avg_rate": 11.0
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T05:15:57"
 }

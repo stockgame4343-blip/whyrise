@@ -7,9 +7,9 @@
       "date": "20250701",
       "change_rate": 11.03,
       "close_price": 4630.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "상법개정 검토",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -37,7 +37,17 @@
       "source": "estimated",
       "trading_volume": 6171893,
       "trading_value": 28575864590,
-      "market_cap": 207529078014
+      "market_cap": 207529078014,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "KX, 상법개정 검토에...저평가 된 지주사 부각 ↑ [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005370813",
+          "source": "파이낸셜뉴스",
+          "date": "2025-07-01"
+        }
+      ]
     }
   ],
   "stats": {
@@ -48,5 +58,5 @@
     "count_recent": 0,
     "avg_rate": 11.03
   },
-  "built_at": "2026-10-01T22:57:21"
+  "built_at": "2026-10-02T05:15:57"
 }

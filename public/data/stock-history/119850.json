@@ -163,9 +163,9 @@
       "close_price": 42000.0,
       "trading_volume": 1752297,
       "trading_value": 73596474000,
-      "rise_reason": "전력설비 수주 공시",
+      "rise_reason": "KT 데이터센터 공급계약",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -232,7 +232,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력설비 수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "지엔씨에너지, KT 데이터센터 공급계약에 17%대 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001021811&office_id=088&code=119850&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -240,9 +250,9 @@
       "close_price": 36600.0,
       "trading_volume": 1055703,
       "trading_value": 38638729800,
-      "rise_reason": "전력설비 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력설비 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -309,7 +319,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력설비 수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -317,9 +329,9 @@
       "close_price": 45550.0,
       "trading_volume": 2885443,
       "trading_value": 131431928650,
-      "rise_reason": "전력설비 수주 공시",
+      "rise_reason": "증권가 전례 없는 성장 사이클",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -386,7 +398,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력설비 수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "증권가 \"전례 없는 성장 사이클\"…지엔씨에너지 14%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006335221&office_id=018&code=119850&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260714",
@@ -394,10 +416,10 @@
       "close_price": 30000.0,
       "trading_volume": 569293,
       "trading_value": 17078790000,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [
         {
@@ -463,7 +485,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -548,9 +572,9 @@
       "close_price": 22350.0,
       "trading_volume": 218292,
       "trading_value": 4878826200,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AIDC 전력 공급 안정성 높인다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -617,16 +641,26 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "LGU+, 지엔씨에너지와 맞손...AIDC 전력 공급 안정성 높인다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004635833&office_id=011&code=119850&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.45,
       "close_price": 35650.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -634,7 +668,9 @@
       "source": "estimated",
       "trading_volume": 238400,
       "trading_value": 8498960000,
-      "market_cap": 586335714285
+      "market_cap": 586335714285,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251029",
@@ -706,9 +742,9 @@
       "date": "20250910",
       "change_rate": 10.32,
       "close_price": 34750.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 147억원 규모 교환사채 발행 결정",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -730,7 +766,17 @@
       "source": "estimated",
       "trading_volume": 755062,
       "trading_value": 26238404500,
-      "market_cap": 571533410138
+      "market_cap": 571533410138,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "지엔씨에너지, 147억원 규모 교환사채 발행 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006112164",
+          "source": "이데일리",
+          "date": "2025-09-10"
+        }
+      ]
     },
     {
       "date": "20250707",
@@ -771,5 +817,5 @@
     "count_recent": 0,
     "avg_rate": 19.15
   },
-  "built_at": "2026-10-01T22:54:29"
+  "built_at": "2026-10-02T05:15:56"
 }

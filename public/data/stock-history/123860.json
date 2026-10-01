@@ -25,9 +25,9 @@
       "close_price": 22500.0,
       "trading_volume": 551002,
       "trading_value": 12397545000,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -94,7 +94,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260327",
@@ -139,5 +141,5 @@
     "count_recent": 0,
     "avg_rate": 14.67
   },
-  "built_at": "2026-09-27T09:38:26"
+  "built_at": "2026-10-02T05:15:57"
 }

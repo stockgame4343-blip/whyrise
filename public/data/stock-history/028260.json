@@ -9,15 +9,17 @@
       "close_price": 351500.0,
       "trading_volume": 1241836,
       "trading_value": 436505354000,
-      "rise_reason": "S7(삼성전자/SK하이닉스 등) 테마 강세",
+      "rise_reason": "S7 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "S7(삼성전자/SK하이닉스 등)",
       "news": [],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "S7(삼성전자/SK하이닉스 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260615",
@@ -256,9 +258,9 @@
       "close_price": 375500.0,
       "trading_volume": 1745292,
       "trading_value": 655357146000,
-      "rise_reason": "착공 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 주식선물·옵션, 가격제한폭 20%로 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 대표주",
       "news": [
@@ -325,7 +327,17 @@
       ],
       "sector": "복합기업",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "착공 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "삼성물산 주식선물·옵션, 가격제한폭 20%로 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000084012&office_id=293&code=028260&page=&sm=",
+          "source": "블로터",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -369,5 +381,5 @@
     "count_recent": 0,
     "avg_rate": 14.14
   },
-  "built_at": "2026-10-01T22:52:03"
+  "built_at": "2026-10-02T05:15:57"
 }

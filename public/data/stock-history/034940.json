@@ -9,9 +9,9 @@
       "close_price": 3230.0,
       "trading_volume": 2656108,
       "trading_value": 8579228840,
-      "rise_reason": "마스크 흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "상반기 순이익 흑자 전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마스크 흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "조아제약 상반기 순이익 흑자 전환…하반기 '가레오·더마'로 비상 예.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005726792&office_id=009&code=034940&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.08.27"
+        }
+      ]
     },
     {
       "date": "20260724",
@@ -86,10 +96,10 @@
       "close_price": 3340.0,
       "trading_volume": 2012945,
       "trading_value": 6723236300,
-      "rise_reason": "관련주 언급",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관련주 언급",
+      "reason_kind": "none"
     },
     {
       "date": "20260721",
@@ -163,10 +175,10 @@
       "close_price": 3395.0,
       "trading_volume": 1416656,
       "trading_value": 4809547120,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -232,7 +244,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260714",
@@ -240,10 +254,10 @@
       "close_price": 2820.0,
       "trading_volume": 945838,
       "trading_value": 2667263160,
-      "rise_reason": "마스크 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -303,7 +317,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마스크 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260703",
@@ -311,10 +327,10 @@
       "close_price": 3280.0,
       "trading_volume": 649058,
       "trading_value": 2128910240,
-      "rise_reason": "마스크 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -374,7 +390,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마스크 수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260623",
@@ -382,10 +400,10 @@
       "close_price": 4280.0,
       "trading_volume": 1091325,
       "trading_value": 4670871000,
-      "rise_reason": "마스크 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [
         {
@@ -451,7 +469,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마스크 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260622",
@@ -459,9 +479,9 @@
       "close_price": 3295.0,
       "trading_volume": 88611,
       "trading_value": 291973245,
-      "rise_reason": "마스크 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "마스크 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
@@ -528,16 +548,18 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "마스크 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260206",
       "change_rate": 13.84,
       "close_price": 1028.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -545,7 +567,9 @@
       "source": "estimated",
       "trading_volume": 15700474,
       "trading_value": 16140087272,
-      "market_cap": 31833530571
+      "market_cap": 31833530571,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250905",
@@ -568,10 +592,10 @@
       "date": "20250902",
       "change_rate": 12.45,
       "close_price": 1138.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -579,7 +603,9 @@
       "source": "estimated",
       "trading_volume": 8524937,
       "trading_value": 9701378306,
-      "market_cap": 35239842209
+      "market_cap": 35239842209,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -590,5 +616,5 @@
     "count_recent": 0,
     "avg_rate": 21.96
   },
-  "built_at": "2026-10-01T23:00:00"
+  "built_at": "2026-10-02T05:15:56"
 }

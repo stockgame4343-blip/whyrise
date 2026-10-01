@@ -9,15 +9,17 @@
       "close_price": 1834.0,
       "trading_volume": 979933,
       "trading_value": 1797197122,
-      "rise_reason": "OLED(유기 발광 다이오드) 테마 강세",
+      "rise_reason": "OLED 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "OLED(유기 발광 다이오드) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260507",
@@ -25,9 +27,9 @@
       "close_price": 4530.0,
       "trading_volume": 67835178,
       "trading_value": 307293356340,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "OLED 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -94,7 +96,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260506",
@@ -102,9 +106,9 @@
       "close_price": 4020.0,
       "trading_volume": 20680101,
       "trading_value": 83134006020,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유리 기판 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -165,15 +169,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 13.64,
       "close_price": 1949.0,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "유리 기판 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [],
@@ -182,7 +188,9 @@
       "source": "estimated",
       "trading_volume": 2246053,
       "trading_value": 4377557297,
-      "market_cap": 180671558935
+      "market_cap": 180671558935,
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -193,5 +201,5 @@
     "count_recent": 0,
     "avg_rate": 17.69
   },
-  "built_at": "2026-09-27T09:34:14"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -68,10 +68,10 @@
       "close_price": 4860.0,
       "trading_volume": 7491,
       "trading_value": 36406260,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음식료업종",
       "news": [
         {
@@ -137,7 +137,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -145,9 +147,9 @@
       "close_price": 4900.0,
       "trading_volume": 247287,
       "trading_value": 1211706300,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "비만치료제 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -214,15 +216,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260105",
       "change_rate": 13.86,
       "close_price": 8870.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "펩타이드 기반 방사성항암제 개발 착수",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -250,7 +254,17 @@
       "source": "estimated",
       "trading_volume": 177692,
       "trading_value": 1576128040,
-      "market_cap": 83162322015
+      "market_cap": 83162322015,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "HLB펩, 펩타이드 기반 방사성항암제 개발 착수",
+          "link": "https://n.news.naver.com/mnews/article/031/0000994119",
+          "source": "아이뉴스24",
+          "date": "2026-01-05"
+        }
+      ]
     }
   ],
   "stats": {
@@ -261,5 +275,5 @@
     "count_recent": 1,
     "avg_rate": 21.01
   },
-  "built_at": "2026-10-01T22:58:58"
+  "built_at": "2026-10-02T05:15:56"
 }

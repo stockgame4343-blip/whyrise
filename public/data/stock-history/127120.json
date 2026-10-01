@@ -9,10 +9,10 @@
       "close_price": 33600.0,
       "trading_volume": 468934,
       "trading_value": 15756182400,
-      "rise_reason": "투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 확대 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260806",
@@ -80,10 +82,10 @@
       "close_price": 40100.0,
       "trading_volume": 419818,
       "trading_value": 16834701800,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(진단/치료제/백신 개발 등)",
       "news": [
         {
@@ -149,7 +151,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -157,9 +161,9 @@
       "close_price": 32900.0,
       "trading_volume": 229897,
       "trading_value": 7563611300,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "의료AI 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -226,7 +230,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260624",
@@ -234,10 +240,10 @@
       "close_price": 35150.0,
       "trading_volume": 202338,
       "trading_value": 7112180700,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -297,7 +303,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -305,9 +313,9 @@
       "close_price": 39400.0,
       "trading_volume": 250574,
       "trading_value": 9872615600,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유전자 치료제 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -368,7 +376,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -391,9 +401,9 @@
       "date": "20260220",
       "change_rate": 18.89,
       "close_price": 36500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 지난해 영업손실 127억…전년比 적자 지속",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -415,7 +425,17 @@
       "source": "estimated",
       "trading_volume": 654726,
       "trading_value": 23897499000,
-      "market_cap": 1263672701949
+      "market_cap": 1263672701949,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "제이에스링크, 지난해 영업손실 127억…전년比 적자 지속",
+          "link": "https://n.news.naver.com/mnews/article/003/0013778527",
+          "source": "뉴시스",
+          "date": "2026-02-20"
+        }
+      ]
     },
     {
       "date": "20260203",
@@ -504,9 +524,9 @@
       "date": "20250915",
       "change_rate": 11.8,
       "close_price": 19420.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 200억원 규모 유상증자 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -534,7 +554,17 @@
       "source": "estimated",
       "trading_volume": 1030920,
       "trading_value": 20020466400,
-      "market_cap": 672343119777
+      "market_cap": 672343119777,
+      "reason_previous": "유상증자",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "제이에스링크, 200억원 규모 유상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006116351",
+          "source": "이데일리",
+          "date": "2025-09-15"
+        }
+      ]
     },
     {
       "date": "20250811",
@@ -596,5 +626,5 @@
     "count_recent": 1,
     "avg_rate": 15.44
   },
-  "built_at": "2026-10-01T22:54:23"
+  "built_at": "2026-10-02T05:15:56"
 }

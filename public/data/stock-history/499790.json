@@ -9,9 +9,9 @@
       "close_price": 44500.0,
       "trading_volume": 274471,
       "trading_value": 12213959500,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "2분기 호실적",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "호텔,레스토랑,레저",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]GS피앤엘, 2분기 호실적에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454441&office_id=030&code=499790&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -102,10 +112,10 @@
       "close_price": 54500.0,
       "trading_volume": 184353,
       "trading_value": 10047238500,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "호텔/리조트",
       "news": [
         {
@@ -171,7 +181,9 @@
       ],
       "sector": "호텔,레스토랑,레저",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -179,10 +191,10 @@
       "close_price": 56400.0,
       "trading_volume": 475487,
       "trading_value": 26817466800,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "호텔/리조트",
       "news": [
         {
@@ -248,7 +260,9 @@
       ],
       "sector": "호텔,레스토랑,레저",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260205",
@@ -488,5 +502,5 @@
     "count_recent": 0,
     "avg_rate": 11.37
   },
-  "built_at": "2026-10-01T22:52:38"
+  "built_at": "2026-10-02T05:15:56"
 }

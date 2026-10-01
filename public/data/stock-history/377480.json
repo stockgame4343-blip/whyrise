@@ -9,9 +9,9 @@
       "close_price": 11350.0,
       "trading_volume": 2025100,
       "trading_value": 22984885000,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇·AI주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피 상승폭 축소…로봇·AI株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000523815&office_id=374&code=377480&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.27"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -86,9 +96,9 @@
       "close_price": 9390.0,
       "trading_volume": 810571,
       "trading_value": 7611261690,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI 챗봇 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -155,7 +165,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -163,15 +175,17 @@
       "close_price": 10250.0,
       "trading_volume": 72343,
       "trading_value": 741515750,
-      "rise_reason": "AI 챗봇(챗GPT 등) 테마 강세",
+      "rise_reason": "AI 챗봇 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI 챗봇(챗GPT 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -179,9 +193,9 @@
       "close_price": 17600.0,
       "trading_volume": 1349833,
       "trading_value": 23757060800,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "두산밥캣, 협력해 건설장비 자율작업 기술 개발",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -248,7 +262,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "두산밥캣, 마음AI와 협력해 건설장비 자율작업 기술 개발",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000504367&office_id=629&code=377480&page=&sm=",
+          "source": "더팩트",
+          "date": "2026.06.02"
+        }
+      ]
     },
     {
       "date": "20260507",
@@ -256,9 +280,9 @@
       "close_price": 17450.0,
       "trading_volume": 2714827,
       "trading_value": 47373731150,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: AI, 이제 움직인다..., AI엑스포 2026 참가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -325,7 +349,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "\"AI, 이제 움직인다\"...마음AI, 'AI엑스포 2026' 참가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002421336&office_id=092&code=377480&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.05.05"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -348,9 +382,9 @@
       "date": "20251110",
       "change_rate": 10.43,
       "close_price": 24350.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 데이터팩토리 전문인재 양성 얼라이언스 구축",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -378,15 +412,25 @@
       "source": "estimated",
       "trading_volume": 351082,
       "trading_value": 8548846700,
-      "market_cap": 173155555555
+      "market_cap": 173155555555,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "마음AI, 데이터팩토리 전문인재 양성 얼라이언스 구축",
+          "link": "https://n.news.naver.com/mnews/article/092/0002397710",
+          "source": "지디넷코리아",
+          "date": "2025-11-10"
+        }
+      ]
     },
     {
       "date": "20250923",
       "change_rate": 13.73,
       "close_price": 23600.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "피지컬 AI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -426,7 +470,9 @@
       "source": "estimated",
       "trading_volume": 637671,
       "trading_value": 15049035600,
-      "market_cap": 167822222222
+      "market_cap": 167822222222,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20250730",
@@ -502,5 +548,5 @@
     "count_recent": 0,
     "avg_rate": 15.88
   },
-  "built_at": "2026-09-27T09:59:41"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -102,9 +102,9 @@
       "close_price": 66500.0,
       "trading_volume": 302605,
       "trading_value": 20123232500,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지주 동반 강세 — 글로벌 ESS 시장 확대에 힘받나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -129,7 +129,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "글로벌 ESS 시장 확대에 힘받나…국내 이차전지 관련주 상승 랠리 [매...",
+          "link": "https://n.news.naver.com/mnews/article/009/0005662187",
+          "source": "매일경제",
+          "date": "2026-04-07"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -242,5 +252,5 @@
     "count_recent": 0,
     "avg_rate": 13.66
   },
-  "built_at": "2026-10-01T22:55:08"
+  "built_at": "2026-10-02T05:15:57"
 }

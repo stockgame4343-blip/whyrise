@@ -9,23 +9,33 @@
       "close_price": 33150.0,
       "trading_volume": 145414,
       "trading_value": 4820474100,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "거래량",
       "news": [],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260320",
       "change_rate": 18.46,
       "close_price": 30800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 대미 원전 투자 수혜",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설 대표주",
       "news": [
@@ -41,7 +51,17 @@
       "source": "estimated",
       "trading_volume": 149134,
       "trading_value": 4593327200,
-      "market_cap": 65098580121
+      "market_cap": 65098580121,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "“대미 원전 투자 수혜”…건설주 ‘불기둥’[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006239225",
+          "source": "이데일리",
+          "date": "2026-03-20"
+        }
+      ]
     }
   ],
   "stats": {
@@ -52,5 +72,5 @@
     "count_recent": 0,
     "avg_rate": 15.04
   },
-  "built_at": "2026-09-27T09:00:43"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 3200.0,
       "trading_volume": 10933,
       "trading_value": 34985600,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "한국정보공학, 타잔 DB 국내 공급 협력",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한국정보공학, 엔텔스와 ‘타잔 DB’ 국내 공급 협력",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006343158&office_id=018&code=069410&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260410",
@@ -105,5 +115,5 @@
     "count_recent": 0,
     "avg_rate": 13.73
   },
-  "built_at": "2026-10-01T22:59:31"
+  "built_at": "2026-10-02T05:15:56"
 }

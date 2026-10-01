@@ -86,9 +86,9 @@
       "close_price": 121600.0,
       "trading_volume": 1067482,
       "trading_value": 129805811200,
-      "rise_reason": "이차전지주 강세",
+      "rise_reason": "14%·포스코퓨처엠",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -155,7 +155,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "이차전지주 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 2차전지주 급등…엘앤에프 14%·포스코퓨처엠 8%대↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001051761&office_id=031&code=066970&page=&sm=",
+          "source": "아이뉴스24",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -280,9 +290,9 @@
       "close_price": 116900.0,
       "trading_volume": 595669,
       "trading_value": 69633706100,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(LFP/리튬인산철)",
       "news": [
@@ -349,7 +359,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260528",
@@ -528,9 +540,9 @@
       "date": "20260306",
       "change_rate": 10.84,
       "close_price": 118600.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "LFP 양극재 양산 계획 소개",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -564,15 +576,25 @@
       "source": "estimated",
       "trading_volume": 578934,
       "trading_value": 68661572400,
-      "market_cap": 4811323483670
+      "market_cap": 4811323483670,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엘앤에프, 인터배터리 2026 참가…LFP 양극재 양산 계획 소개",
+          "link": "https://n.news.naver.com/mnews/article/030/0003404932",
+          "source": "전자신문",
+          "date": "2026-03-06"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.81,
       "close_price": 107000.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "인터배터리서 LFP 양극재 신제품 등 경쟁력·사업 비전 공개",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -606,15 +628,25 @@
       "source": "estimated",
       "trading_volume": 428293,
       "trading_value": 45827351000,
-      "market_cap": 4340738724727
+      "market_cap": 4340738724727,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엘앤에프, 인터배터리서 LFP 양극재 신제품 등 경쟁력·사업 비전 공개",
+          "link": "https://n.news.naver.com/mnews/article/629/0000478194",
+          "source": "더팩트",
+          "date": "2026-03-05"
+        }
+      ]
     },
     {
       "date": "20260122",
       "change_rate": 12.81,
       "close_price": 125900.0,
-      "rise_reason": "2차전지(소재/부품) 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
@@ -623,15 +655,25 @@
       "source": "estimated",
       "trading_volume": 1379304,
       "trading_value": 173654373600,
-      "market_cap": 5107467340590
+      "market_cap": 5107467340590,
+      "reason_previous": "2차전지(소재/부품) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20251024",
       "change_rate": 17.61,
       "close_price": 133600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
@@ -640,15 +682,25 @@
       "source": "estimated",
       "trading_volume": 1999866,
       "trading_value": 267182097600,
-      "market_cap": 5419838258164
+      "market_cap": 5419838258164,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     },
     {
       "date": "20251017",
       "change_rate": 12.8,
       "close_price": 111000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — AI 투자 확대 따른 ESS 수요 증가 전망",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
@@ -657,7 +709,17 @@
       "source": "estimated",
       "trading_volume": 2508939,
       "trading_value": 278492229000,
-      "market_cap": 4503009331259
+      "market_cap": 4503009331259,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주]AI 투자 확대 따른 ESS 수요 증가 전망…2차전지株 강세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005665953",
+          "source": "아시아경제",
+          "date": "2025-10-17"
+        }
+      ]
     },
     {
       "date": "20251016",
@@ -697,9 +759,9 @@
       "date": "20250811",
       "change_rate": 10.32,
       "close_price": 83400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 中 리튬 광산 가동 중단",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
@@ -708,7 +770,17 @@
       "source": "estimated",
       "trading_volume": 1057500,
       "trading_value": 88195500000,
-      "market_cap": 3383342146189
+      "market_cap": 3383342146189,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;中 리튬 광산 가동 중단&quot;…2차전지株 강세 [줍줍 리포트]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004519643",
+          "source": "서울경제",
+          "date": "2025-08-11"
+        }
+      ]
     },
     {
       "date": "20250718",
@@ -731,9 +803,9 @@
       "date": "20250711",
       "change_rate": 11.32,
       "close_price": 58000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 테슬라 호재",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
@@ -742,7 +814,17 @@
       "source": "estimated",
       "trading_volume": 1253175,
       "trading_value": 72684150000,
-      "market_cap": 2352923794712
+      "market_cap": 2352923794712,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주]이차전지주, 테슬라 호재에 일제히 강세…엘앤에프 10%↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005621205",
+          "source": "아시아경제",
+          "date": "2025-07-11"
+        }
+      ]
     },
     {
       "date": "20250528",
@@ -770,5 +852,5 @@
     "count_recent": 1,
     "avg_rate": 14.1
   },
-  "built_at": "2026-10-01T22:52:20"
+  "built_at": "2026-10-02T05:15:56"
 }

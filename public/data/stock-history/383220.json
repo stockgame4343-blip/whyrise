@@ -9,9 +9,9 @@
       "close_price": 76600.0,
       "trading_volume": 424940,
       "trading_value": 32550404000,
-      "rise_reason": "인수 관련 뉴스",
+      "rise_reason": "MLB 잘나가네",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코리아 밸류업 지수(Korea Value-up Index)",
       "news": [
@@ -78,15 +78,25 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "“MLB 잘나가네”…F&F, 목표주가 줄상향에 15%대↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006272860&office_id=018&code=383220&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20251111",
       "change_rate": 13.97,
       "close_price": 72600.0,
-      "rise_reason": "실적 개선",
+      "rise_reason": "3분기 호실적",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코리아 밸류업 지수(Korea Value-up Index)",
       "news": [
@@ -126,7 +136,17 @@
       "source": "estimated",
       "trading_volume": 477785,
       "trading_value": 34687191000,
-      "market_cap": 2781124723247
+      "market_cap": 2781124723247,
+      "reason_previous": "실적 개선",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]F&amp;F, 3분기 호실적에 상승세",
+          "link": "https://n.news.naver.com/mnews/article/030/0003368830",
+          "source": "전자신문",
+          "date": "2025-11-11"
+        }
+      ]
     }
   ],
   "stats": {
@@ -137,5 +157,5 @@
     "count_recent": 0,
     "avg_rate": 14.23
   },
-  "built_at": "2026-09-27T08:33:43"
+  "built_at": "2026-10-02T05:15:57"
 }

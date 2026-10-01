@@ -157,9 +157,9 @@
       "close_price": 34600.0,
       "trading_volume": 4780332,
       "trading_value": 165399487200,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "온디바이스 AI 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -178,7 +178,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -202,9 +204,9 @@
       "close_price": 44400.0,
       "trading_volume": 3942883,
       "trading_value": 175064005200,
-      "rise_reason": "투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "고압어닐링 장비 더 다양한 반도체 공정 적용될 것 (KB)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -235,7 +237,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 확대 발표",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "\"HPSP, 고압어닐링 장비 더 다양한 반도체 공정 적용될 것\"-KB",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005306967&office_id=015&code=403870&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.07.07"
+        }
+      ]
     },
     {
       "date": "20260703",
@@ -243,10 +255,10 @@
       "close_price": 48500.0,
       "trading_volume": 7569227,
       "trading_value": 367107509500,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체",
       "news": [
         {
@@ -264,7 +276,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260615",
@@ -349,9 +363,9 @@
       "close_price": 71500.0,
       "trading_volume": 16855107,
       "trading_value": 1205140150500,
-      "rise_reason": "반도체 장비 인수 관련 뉴스",
+      "rise_reason": "반도체주 폭풍 랠리",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -394,7 +408,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "반도체 장비 인수 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼성전자 13% 급등·HPSP 신고가…반도체주 폭풍 랠리 [칩칩폭폭]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002384618&office_id=123&code=403870&page=&sm=",
+          "source": "조세일보",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -402,9 +426,9 @@
       "close_price": 57000.0,
       "trading_volume": 11026620,
       "trading_value": 628517340000,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "온디바이스 AI 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -453,7 +477,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "theme"
     },
     {
       "date": "20260521",
@@ -461,15 +487,17 @@
       "close_price": 53400.0,
       "trading_volume": 1891554,
       "trading_value": 101008983600,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -491,9 +519,9 @@
       "date": "20260318",
       "change_rate": 13.51,
       "close_price": 50000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 외국인·기관 삼전닉스 2.6조 폭풍매수",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [],
@@ -502,15 +530,25 @@
       "source": "estimated",
       "trading_volume": 12172289,
       "trading_value": 608614450000,
-      "market_cap": 4115017667844
+      "market_cap": 4115017667844,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "외국인·기관 삼전닉스 2.6조 폭풍매수…반도체주 불기둥[핫종목](종합...",
+          "link": "https://n.news.naver.com/mnews/article/421/0008834272",
+          "source": "뉴스1",
+          "date": "2026-03-18"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 18.45,
       "close_price": 44950.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "온디바이스 AI 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -532,7 +570,9 @@
       "source": "estimated",
       "trading_volume": 5224317,
       "trading_value": 234833049150,
-      "market_cap": 3699400883392
+      "market_cap": 3699400883392,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20260128",
@@ -607,5 +647,5 @@
     "count_recent": 1,
     "avg_rate": 15.15
   },
-  "built_at": "2026-10-01T22:53:44"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -651,15 +651,25 @@
       "close_price": 893000.0,
       "trading_volume": 6255058,
       "trading_value": 5585766794000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260310",
@@ -699,9 +709,9 @@
       "date": "20251103",
       "change_rate": 10.91,
       "close_price": 620000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — AI 모멘텀은 이어진다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
@@ -710,7 +720,17 @@
       "source": "estimated",
       "trading_volume": 5787058,
       "trading_value": 3587975960000,
-      "market_cap": 441875458031837
+      "market_cap": 441875458031837,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'엔비디아 효과'에 반도체株 등 불기둥…AI 모멘텀은 이어진다",
+          "link": "https://n.news.naver.com/mnews/article/018/0006155368",
+          "source": "이데일리",
+          "date": "2025-11-03"
+        }
+      ]
     }
   ],
   "stats": {
@@ -721,5 +741,5 @@
     "count_recent": 0,
     "avg_rate": 13.27
   },
-  "built_at": "2026-10-01T22:52:03"
+  "built_at": "2026-10-02T05:15:56"
 }

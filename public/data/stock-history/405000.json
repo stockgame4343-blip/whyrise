@@ -86,10 +86,10 @@
       "close_price": 5010.0,
       "trading_volume": 523218,
       "trading_value": 2621322180,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -155,7 +155,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260720",
@@ -163,10 +165,10 @@
       "close_price": 3860.0,
       "trading_volume": 421989,
       "trading_value": 1628877540,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -232,7 +234,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -240,10 +244,10 @@
       "close_price": 4930.0,
       "trading_volume": 21082,
       "trading_value": 103934260,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -309,7 +313,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260601",
@@ -317,10 +323,10 @@
       "close_price": 6560.0,
       "trading_volume": 46389,
       "trading_value": 304311840,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -386,15 +392,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
       "change_rate": 12.59,
       "close_price": 7690.0,
-      "rise_reason": "의료기기 테마 강세",
+      "rise_reason": "의료기기 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [],
@@ -403,7 +411,9 @@
       "source": "estimated",
       "trading_volume": 12573,
       "trading_value": 96686370,
-      "market_cap": 29509275730
+      "market_cap": 29509275730,
+      "reason_previous": "의료기기 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -467,5 +477,5 @@
     "count_recent": 0,
     "avg_rate": 18.72
   },
-  "built_at": "2026-10-01T22:59:50"
+  "built_at": "2026-10-02T05:15:57"
 }

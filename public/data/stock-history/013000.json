@@ -9,10 +9,10 @@
       "close_price": 1498.0,
       "trading_volume": 3504695,
       "trading_value": 5250033110,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260326",
@@ -52,5 +54,5 @@
     "count_recent": 0,
     "avg_rate": 23.28
   },
-  "built_at": "2026-09-27T09:04:41"
+  "built_at": "2026-10-02T05:15:57"
 }

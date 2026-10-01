@@ -9,10 +9,10 @@
       "close_price": 3350.0,
       "trading_volume": 280453,
       "trading_value": 939517550,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260918",
@@ -44,9 +46,9 @@
       "close_price": 3175.0,
       "trading_volume": 229965,
       "trading_value": 730138875,
-      "rise_reason": "관련 보도: 김진명 '고구려' 학습만화 출간…연내 매출 가시화",
+      "rise_reason": "연내 매출 가시화",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
@@ -80,7 +82,8 @@
           "source": "머니투데이",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260828",
@@ -88,10 +91,10 @@
       "close_price": 2915.0,
       "trading_volume": 26863,
       "trading_value": 78305645,
-      "rise_reason": "엔터테인먼트 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -157,7 +160,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "엔터테인먼트 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260720",
@@ -165,10 +170,10 @@
       "close_price": 3045.0,
       "trading_volume": 6848,
       "trading_value": 20852160,
-      "rise_reason": "엔터테인먼트 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -234,7 +239,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "엔터테인먼트 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -242,9 +249,9 @@
       "close_price": 3180.0,
       "trading_volume": 84048,
       "trading_value": 267272640,
-      "rise_reason": "엔터테인먼트 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 150억원 유증 결정…독립 경영·신사업 확장 탄력",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
@@ -311,7 +318,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "엔터테인먼트 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아이오케이이엔엠, 150억원 유증 결정…독립 경영·신사업 확장 탄력",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005377499&office_id=008&code=078860&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.26"
+        }
+      ]
     },
     {
       "date": "20260624",
@@ -319,9 +336,9 @@
       "close_price": 3175.0,
       "trading_volume": 61623,
       "trading_value": 195653025,
-      "rise_reason": "엔터테인먼트 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "박지훈 아시아 투어 흥행 성공",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
@@ -388,7 +405,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "엔터테인먼트 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "아이오케이이엔엠, '박지훈 아시아 투어' 흥행 성공…글로벌 공연 매.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005780241&office_id=277&code=078860&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260507",
@@ -396,10 +423,10 @@
       "close_price": 5180.0,
       "trading_volume": 356488,
       "trading_value": 1846607840,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -459,7 +486,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -633,5 +662,5 @@
     "count_recent": 2,
     "avg_rate": 18.03
   },
-  "built_at": "2026-10-01T22:59:56"
+  "built_at": "2026-10-02T05:15:56"
 }

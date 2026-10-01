@@ -9,15 +9,25 @@
       "close_price": 22200.0,
       "trading_volume": 1556517,
       "trading_value": 34554677400,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 美반도체 훈풍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美반도체 훈풍에…삼성전기·LG이노텍 등 반도체 기판주 '들썩'[종목 ...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005579557",
+          "source": "파이낸셜뉴스",
+          "date": "2026-09-22"
+        }
+      ]
     },
     {
       "date": "20260825",
@@ -25,10 +35,10 @@
       "close_price": 19680.0,
       "trading_volume": 464647,
       "trading_value": 9144252960,
-      "rise_reason": "2차전지 허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지",
       "news": [
         {
@@ -94,7 +104,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지 허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260812",
@@ -102,10 +114,10 @@
       "close_price": 19330.0,
       "trading_volume": 539839,
       "trading_value": 10435087870,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -171,7 +183,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -179,9 +193,9 @@
       "close_price": 14650.0,
       "trading_volume": 384869,
       "trading_value": 5638330850,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -248,7 +262,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260611",
@@ -333,9 +349,9 @@
       "close_price": 23200.0,
       "trading_volume": 1236760,
       "trading_value": 28692832000,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "M&A로 큰, 유럽 LNG 100년 기업 인수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
@@ -402,7 +418,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "M&A로 큰 미코, 유럽 'LNG 100년 기업' 인수",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005293760&office_id=015&code=059090&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.06.01"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -410,9 +436,9 @@
       "close_price": 26100.0,
       "trading_volume": 2538964,
       "trading_value": 66266960400,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -479,7 +505,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 오르자 반도체장비株 강세…오로스테크놀로지 '上'[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008925316&office_id=421&code=322310&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -702,5 +738,5 @@
     "count_recent": 1,
     "avg_rate": 15.12
   },
-  "built_at": "2026-10-01T22:54:37"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 3565.0,
       "trading_volume": 3840964,
       "trading_value": 13693036660,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260826",
@@ -68,9 +70,9 @@
       "close_price": 3545.0,
       "trading_volume": 328459,
       "trading_value": 1164387155,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "中 복합 오락공간 운영사 선전시지커선과 합작계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -119,7 +121,17 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "헝셩그룹, 中 복합 오락공간 운영사 선전시지커선과 합작계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014148081&office_id=003&code=900270&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260825",
@@ -127,9 +139,9 @@
       "close_price": 2730.0,
       "trading_volume": 77572,
       "trading_value": 211771560,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "中국영기업과 예술·문화 IP 협력 MOU",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "국내 상장 중국기업",
       "news": [
@@ -172,7 +184,17 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "헝셩그룹, 中국영기업과 예술·문화 IP 협력 MOU",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014144680&office_id=003&code=900270&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260623",
@@ -180,10 +202,10 @@
       "close_price": 3620.0,
       "trading_volume": 445317,
       "trading_value": 1612047540,
-      "rise_reason": "납품 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -249,7 +271,9 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "납품 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260602",
@@ -257,9 +281,9 @@
       "close_price": 793.0,
       "trading_volume": 1064106,
       "trading_value": 843836058,
-      "rise_reason": "납품 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "주요 플랫폼 공급 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "출산장려정책",
       "news": [
@@ -326,15 +350,25 @@
       ],
       "sector": "레저용장비와제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "납품 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "헝셩그룹, 中 문화관광 사업 본격화…주요 플랫폼 공급 완료",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006294981&office_id=018&code=900270&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.01"
+        }
+      ]
     },
     {
       "date": "20250704",
       "change_rate": 14.22,
       "close_price": 2651.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "금일 코스닥 거래량 1위 거래대금 318억 돌파",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "출산장려정책",
       "news": [
@@ -362,7 +396,17 @@
       "source": "estimated",
       "trading_volume": 18124398,
       "trading_value": 48047779098,
-      "market_cap": 64592893401
+      "market_cap": 64592893401,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 헝셩그룹 거래대금 318억 돌파",
+          "link": "https://n.news.naver.com/mnews/article/081/0003555089",
+          "source": "서울신문",
+          "date": "2025-07-04"
+        }
+      ]
     }
   ],
   "stats": {
@@ -373,5 +417,5 @@
     "count_recent": 1,
     "avg_rate": 26.89
   },
-  "built_at": "2026-10-01T22:59:19"
+  "built_at": "2026-10-02T05:15:56"
 }

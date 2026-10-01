@@ -9,9 +9,9 @@
       "close_price": 3590.0,
       "trading_volume": 1027395,
       "trading_value": 3688348050,
-      "rise_reason": "전력반도체 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 마이크론·수출 호조",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력반도체",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력반도체 양산 보도",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "마이크론·수출 호조에…삼전닉스 강세·장비주 '불기둥'[핫종목](종합...",
+          "link": "https://n.news.naver.com/mnews/article/421/0009204527",
+          "source": "뉴스1",
+          "date": "2026.10.01"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -102,15 +112,17 @@
       "close_price": 3775.0,
       "trading_volume": 70261,
       "trading_value": 265235275,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -118,9 +130,9 @@
       "close_price": 8930.0,
       "trading_volume": 1978343,
       "trading_value": 17666602990,
-      "rise_reason": "전력반도체 양산 보도",
+      "rise_reason": "글로벌 톱티어향 광센서 양산 공급 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력반도체",
       "news": [
@@ -169,7 +181,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력반도체 양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "시지트로닉스, 글로벌 톱티어향 광센서 양산 공급 소식에 18%↑[특징주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006287707&office_id=018&code=429270&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.22"
+        }
+      ]
     },
     {
       "date": "20260508",
@@ -177,9 +199,9 @@
       "close_price": 10320.0,
       "trading_volume": 2598666,
       "trading_value": 26818233120,
-      "rise_reason": "전력반도체 관련 뉴스",
+      "rise_reason": "AI 데이터센터 구조적 수혜 가능성",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력반도체",
       "news": [
@@ -216,7 +238,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력반도체 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"AI 데이터센터 구조적 수혜 가능성\"…시지트로닉스 9%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275580&office_id=018&code=429270&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -224,9 +256,9 @@
       "close_price": 8690.0,
       "trading_volume": 1410723,
       "trading_value": 12259182870,
-      "rise_reason": "전력반도체 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 000 돌파",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력반도체",
       "news": [
@@ -257,7 +289,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력반도체 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피, 7,000 돌파…반도체 대표주 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000508330&office_id=374&code=024840&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -461,9 +503,9 @@
       "date": "20250915",
       "change_rate": 20.0,
       "close_price": 6563.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "시스템반도체 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -479,7 +521,9 @@
       "source": "estimated",
       "trading_volume": 1817621,
       "trading_value": 11929046623,
-      "market_cap": 42311410916
+      "market_cap": 42311410916,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250619",
@@ -524,5 +568,5 @@
     "count_recent": 1,
     "avg_rate": 19.05
   },
-  "built_at": "2026-10-01T22:59:36"
+  "built_at": "2026-10-02T05:15:56"
 }

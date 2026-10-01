@@ -86,9 +86,9 @@
       "close_price": 35550.0,
       "trading_volume": 613536,
       "trading_value": 21811204800,
-      "rise_reason": "화장품 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유럽·북미 쌍끌이에 2분기 최대 실적 전망",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -155,16 +155,26 @@
       ],
       "sector": "인터넷과카탈로그소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "화장품 영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "실리콘투, 유럽·북미 쌍끌이에 2분기 최대 실적 전망…목표가는↓-N.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006319509&office_id=018&code=257720&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20251110",
       "change_rate": 10.78,
       "close_price": 44200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -172,7 +182,9 @@
       "source": "estimated",
       "trading_volume": 3909130,
       "trading_value": 172783546000,
-      "market_cap": 2898428313253
+      "market_cap": 2898428313253,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250630",
@@ -217,5 +229,5 @@
     "count_recent": 0,
     "avg_rate": 12.03
   },
-  "built_at": "2026-10-01T22:54:01"
+  "built_at": "2026-10-02T05:15:56"
 }

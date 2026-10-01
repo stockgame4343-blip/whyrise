@@ -32,10 +32,10 @@
       "close_price": 1868.0,
       "trading_volume": 1498344,
       "trading_value": 2798906592,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영화",
       "news": [
         {
@@ -95,7 +95,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260713",
@@ -103,9 +105,9 @@
       "close_price": 1976.0,
       "trading_volume": 599342,
       "trading_value": 1184299792,
-      "rise_reason": "허가 관련 뉴스",
+      "rise_reason": "중앙일보 워크아웃 개시",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미디어(방송/신문)",
       "news": [
@@ -172,7 +174,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "중앙일보 워크아웃 개시…콘텐트리중앙 상한가 직행",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014062958&office_id=003&code=036420&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.13"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -180,10 +192,10 @@
       "close_price": 1520.0,
       "trading_volume": 454308,
       "trading_value": 690548160,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -249,7 +261,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -257,9 +271,9 @@
       "close_price": 4995.0,
       "trading_volume": 190085,
       "trading_value": 949474575,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "홍명보호 체코전 승리",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [
@@ -326,7 +340,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "홍명보호 체코전 승리에…'월드컵 중계권' 콘텐트리중앙 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005371096&office_id=008&code=036420&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260519",
@@ -334,9 +358,9 @@
       "close_price": 5970.0,
       "trading_volume": 431187,
       "trading_value": 2574186390,
-      "rise_reason": "영상콘텐츠 흑자 전환 보도",
+      "rise_reason": "1분기 왕사남·2분기 호프 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "영상콘텐츠",
       "news": [
@@ -403,7 +427,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영상콘텐츠 흑자 전환 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 1분기 왕사남·2분기 호프 기대감에…콘텐트리중앙 13%대 상...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001165407&office_id=366&code=036420&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20250610",
@@ -431,5 +465,5 @@
     "count_recent": 0,
     "avg_rate": 19.44
   },
-  "built_at": "2026-10-01T22:53:28"
+  "built_at": "2026-10-02T05:15:57"
 }

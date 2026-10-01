@@ -9,9 +9,9 @@
       "close_price": 1857.0,
       "trading_volume": 67387,
       "trading_value": 125137659,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "AI와 사람 협업형 기술지원 서비스 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "인스웨이브, AI와 사람 협업형 기술지원 서비스 공개…“끝까지 해결.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003447886&office_id=030&code=450520&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -105,5 +115,5 @@
     "count_recent": 0,
     "avg_rate": 11.91
   },
-  "built_at": "2026-09-27T10:24:22"
+  "built_at": "2026-10-02T05:15:57"
 }

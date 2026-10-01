@@ -9,10 +9,10 @@
       "close_price": 2095.0,
       "trading_volume": 322363,
       "trading_value": 675350485,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "김밥(냉동김밥 등)",
       "news": [
         {
@@ -72,15 +72,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20250820",
       "change_rate": 14.23,
       "close_price": 5380.0,
-      "rise_reason": "K-콘텐츠/엔터",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "실적 급증 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -120,7 +122,17 @@
       "source": "estimated",
       "trading_volume": 37838952,
       "trading_value": 203573561760,
-      "market_cap": 87942307692
+      "market_cap": 87942307692,
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "우양, 핫도그 등 가동식품 판매 개선...실적 급증 소식에↑ [특징주]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005394068",
+          "source": "파이낸셜뉴스",
+          "date": "2025-08-20"
+        }
+      ]
     },
     {
       "date": "20250811",
@@ -178,5 +190,5 @@
     "count_recent": 0,
     "avg_rate": 12.03
   },
-  "built_at": "2026-09-27T10:26:58"
+  "built_at": "2026-10-02T05:15:57"
 }

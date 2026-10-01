@@ -9,9 +9,9 @@
       "close_price": 1388.0,
       "trading_volume": 1318729,
       "trading_value": 1830395852,
-      "rise_reason": "임상 3상 진입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 매크로그래프와 500kW급 외부 AI 인프라 구축 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 3상 진입",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "신테카바이오, 매크로그래프와 500kW급 외부 AI 인프라 구축 추진",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005404439&office_id=008&code=226330&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260820",
@@ -86,9 +96,9 @@
       "close_price": 1255.0,
       "trading_volume": 1971768,
       "trading_value": 2474568840,
-      "rise_reason": "임상 3상 진입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오베터 AI 플랫폼 확보 실적 개선 노력",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 3상 진입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "신테카바이오, 바이오베터' AI 플랫폼 확보 \"실적 개선 노력\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005401189&office_id=008&code=226330&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260724",
@@ -163,9 +183,9 @@
       "close_price": 1835.0,
       "trading_volume": 1140513,
       "trading_value": 2092841355,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "항체 물성 최적화 AI 기술 개발",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -232,7 +252,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "신테카바이오, 항체 물성 최적화 AI 기술 개발…\"바이오베터 후보 확....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005390341&office_id=008&code=226330&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.24"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -240,9 +270,9 @@
       "close_price": 1872.0,
       "trading_volume": 1142763,
       "trading_value": 2139252336,
-      "rise_reason": "계약 체결",
+      "rise_reason": "약 65억원 신규 계약 체결 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -309,7 +339,17 @@
       ],
       "sector": "건강관리업체및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 신테카바이오, 약 65억원 신규 계약 체결 소식에…上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001178188&office_id=366&code=226330&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.10"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -481,5 +521,5 @@
     "count_recent": 0,
     "avg_rate": 20.33
   },
-  "built_at": "2026-10-01T22:59:20"
+  "built_at": "2026-10-02T05:15:56"
 }

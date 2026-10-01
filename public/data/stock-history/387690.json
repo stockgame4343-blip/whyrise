@@ -41,15 +41,17 @@
       "close_price": 18390.0,
       "trading_volume": 7782429,
       "trading_value": 143118869310,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 하반기 신규상장",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260907",
@@ -57,9 +59,9 @@
       "close_price": 18140.0,
       "trading_volume": 7214866,
       "trading_value": 130877669240,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "美 AMA에 휴대용 엑스레이·초음파 공급 확정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -114,7 +116,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[단독]레메디, 美 AMA에 휴대용 엑스레이·초음파 공급 확정… \"AI...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363492&office_id=018&code=387690&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -122,9 +134,9 @@
       "close_price": 16780.0,
       "trading_volume": 8129115,
       "trading_value": 136406549700,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "강원 상장사 희비",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
@@ -185,7 +197,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "강원 상장사 희비...레메디 14.20% 급등·파마리서치는 7.69% ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000197906&office_id=654&code=387690&page=&sm=",
+          "source": "강원도민일보",
+          "date": "2026.08.31"
+        }
+      ]
     },
     {
       "date": "20260831",
@@ -193,9 +215,9 @@
       "close_price": 14560.0,
       "trading_volume": 5669766,
       "trading_value": 82551792960,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "강원 상장사 희비",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
@@ -262,7 +284,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "강원 상장사 희비...레메디 14.20% 급등·파마리서치는 7.69% ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000197906&office_id=654&code=387690&page=&sm=",
+          "source": "강원도민일보",
+          "date": "2026.08.31"
+        }
+      ]
     },
     {
       "date": "20260828",
@@ -270,10 +302,10 @@
       "close_price": 12750.0,
       "trading_volume": 3068986,
       "trading_value": 39129571500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치아 치료(임플란트 등)",
       "news": [
         {
@@ -339,7 +371,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260820",
@@ -347,9 +381,9 @@
       "close_price": 14820.0,
       "trading_volume": 6218886,
       "trading_value": 92163890520,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "실적 급상승",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -416,7 +450,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "실적 급상승 레메디 23%↑…中 진출 바이오솔루션도 주목[바이오맥짚.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006354055&office_id=018&code=387690&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.19"
+        }
+      ]
     },
     {
       "date": "20260818",
@@ -424,9 +468,9 @@
       "close_price": 13590.0,
       "trading_volume": 6673096,
       "trading_value": 90687374640,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반기 실적 역대 최대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -493,7 +537,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "춘천 레메디, 반기 실적 '역대 최대'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000195620&office_id=654&code=387690&page=&sm=",
+          "source": "강원도민일보",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260730",
@@ -501,10 +555,10 @@
       "close_price": 8020.0,
       "trading_volume": 1906770,
       "trading_value": 15292295400,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
         {
@@ -570,7 +624,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -581,5 +637,5 @@
     "count_recent": 4,
     "avg_rate": 17.11
   },
-  "built_at": "2026-10-01T22:57:03"
+  "built_at": "2026-10-02T05:15:56"
 }

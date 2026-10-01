@@ -9,9 +9,9 @@
       "close_price": 607.0,
       "trading_volume": 1639256,
       "trading_value": 995028392,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "5 대 1 주식병합 추진",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "테마파크",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 이월드, 5 대 1 주식병합 추진… 주가 上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003460480&office_id=030&code=084680&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -119,5 +129,5 @@
     "count_recent": 0,
     "avg_rate": 20.37
   },
-  "built_at": "2026-10-01T22:53:10"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 8310.0,
       "trading_volume": 405999,
       "trading_value": 3373851690,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "HBM 테마 17종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -86,15 +88,17 @@
       "close_price": 10840.0,
       "trading_volume": 185173,
       "trading_value": 2007275320,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 29종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -102,9 +106,9 @@
       "close_price": 14460.0,
       "trading_volume": 168076,
       "trading_value": 2430378960,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "HBM 테마 12종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -171,7 +175,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260514",
@@ -179,9 +185,9 @@
       "close_price": 21050.0,
       "trading_volume": 2627105,
       "trading_value": 55300560250,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SK하이닉스와 292억 규모 HBM4 웨이퍼테스터 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -248,7 +254,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "유니테스트, SK하이닉스와 292억 규모 HBM4 웨이퍼테스터 공급 계...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005761575&office_id=277&code=086390&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -343,9 +359,9 @@
       "date": "20260204",
       "change_rate": 29.03,
       "close_price": 18400.0,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -367,15 +383,17 @@
       "source": "estimated",
       "trading_volume": 3685759,
       "trading_value": 67817965600,
-      "market_cap": 388863204096
+      "market_cap": 388863204096,
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251029",
       "change_rate": 13.39,
       "close_price": 20750.0,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 엔비디아의 노키아 투자 소식",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
@@ -384,7 +402,17 @@
       "source": "estimated",
       "trading_volume": 2606211,
       "trading_value": 54078878250,
-      "market_cap": 438527798098
+      "market_cap": 438527798098,
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 통신장비株, 엔비디아의 노키아 투자 소식에 급등",
+          "link": "https://n.news.naver.com/mnews/article/001/0015707534",
+          "source": "연합뉴스",
+          "date": "2025-10-29"
+        }
+      ]
     },
     {
       "date": "20250908",
@@ -501,5 +529,5 @@
     "count_recent": 0,
     "avg_rate": 18.99
   },
-  "built_at": "2026-10-01T22:55:46"
+  "built_at": "2026-10-02T05:15:57"
 }

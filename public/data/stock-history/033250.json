@@ -9,10 +9,10 @@
       "close_price": 4700.0,
       "trading_volume": 90208,
       "trading_value": 423977600,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비료",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -80,9 +82,9 @@
       "close_price": 3740.0,
       "trading_volume": 530927,
       "trading_value": 1985666980,
-      "rise_reason": "비료 M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 후계자 37살 이준성 광폭 행보만 보면…승....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비료",
       "news": [
@@ -143,7 +145,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "비료 M&A 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[거버넌스워치] 체시스 후계자 37살 이준성 ‘광폭 행보’만 보면…승....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000048907&office_id=648&code=033250&page=&sm=",
+          "source": "비즈워치",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20250526",
@@ -188,5 +200,5 @@
     "count_recent": 0,
     "avg_rate": 25.11
   },
-  "built_at": "2026-10-01T22:53:28"
+  "built_at": "2026-10-02T05:15:56"
 }

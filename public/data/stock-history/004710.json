@@ -9,10 +9,10 @@
       "close_price": 8490.0,
       "trading_volume": 4149392,
       "trading_value": 35228338080,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -54,7 +54,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260902",
@@ -62,10 +64,10 @@
       "close_price": 7580.0,
       "trading_volume": 2029327,
       "trading_value": 15382298660,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "페라이트",
       "news": [
         {
@@ -119,7 +121,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -172,9 +176,9 @@
       "close_price": 10340.0,
       "trading_volume": 2792297,
       "trading_value": 28872350980,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 검사 기업 인수 자금 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -241,7 +245,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한솔테크닉스 유증 청약률 96%...반도체 검사 기업 인수 자금 확보",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005310220&office_id=015&code=004710&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -278,9 +292,9 @@
       "close_price": 15460.0,
       "trading_volume": 12431044,
       "trading_value": 192183940240,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 프로브카드 품고 반도체 기업 변신 시동",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -347,7 +361,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "\"한솔테크닉스, 프로브카드 품고 반도체 기업 변신 시동\" [줌인e종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009015418&office_id=421&code=004710&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.22"
+        }
+      ]
     },
     {
       "date": "20260617",
@@ -355,9 +379,9 @@
       "close_price": 15340.0,
       "trading_volume": 5806039,
       "trading_value": 89064638260,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 검사 부품 기업 윌테크놀러지 인수 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "무선충전기술",
       "news": [
@@ -424,7 +448,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한솔테크닉스, 반도체 검사 부품 기업 윌테크놀러지 인수 완료",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000516622&office_id=374&code=004710&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -432,10 +466,10 @@
       "close_price": 13348.0,
       "trading_volume": 8094386,
       "trading_value": 108043864328,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "무선충전기술",
       "news": [
         {
@@ -489,7 +523,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260508",
@@ -497,10 +533,10 @@
       "close_price": 10270.0,
       "trading_volume": 6695368,
       "trading_value": 68761429360,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "무선충전기술",
       "news": [
         {
@@ -566,7 +602,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260507",
@@ -574,10 +612,10 @@
       "close_price": 8637.0,
       "trading_volume": 4269925,
       "trading_value": 36879342225,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -643,7 +681,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -651,9 +691,9 @@
       "close_price": 8203.0,
       "trading_volume": 6556563,
       "trading_value": 53783486289,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1분기 영업익 141억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "무선충전기술",
       "news": [
@@ -720,7 +760,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한솔테크닉스, 1분기 영업익 141억…전년비 26% 감소",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005279974&office_id=015&code=004710&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.04.27"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -933,5 +983,5 @@
     "count_recent": 2,
     "avg_rate": 18.43
   },
-  "built_at": "2026-10-01T22:52:40"
+  "built_at": "2026-10-02T05:15:56"
 }

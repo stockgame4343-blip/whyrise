@@ -9,9 +9,9 @@
       "close_price": 25250.0,
       "trading_volume": 230787,
       "trading_value": 5827371750,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -30,7 +30,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -38,9 +40,9 @@
       "close_price": 24200.0,
       "trading_volume": 392787,
       "trading_value": 9505445400,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -107,7 +109,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -115,9 +119,9 @@
       "close_price": 20300.0,
       "trading_volume": 190727,
       "trading_value": 3871758100,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "면역항암제 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -142,7 +146,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -150,9 +156,9 @@
       "close_price": 21800.0,
       "trading_volume": 164900,
       "trading_value": 3594820000,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "기술이전한 FGFR3 ADC, 임상 1상서 객관적",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -219,7 +225,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에임드바이오 “기술이전한 FGFR3 ADC, 임상 1상서 객관적 반응 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334632&office_id=018&code=0009K0&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -227,15 +243,25 @@
       "close_price": 26050.0,
       "trading_volume": 357623,
       "trading_value": 9316079150,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -259,15 +285,17 @@
       "close_price": 37100.0,
       "trading_volume": 276791,
       "trading_value": 10268946100,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "면역항암제 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -425,5 +453,5 @@
     "count_recent": 1,
     "avg_rate": 17.32
   },
-  "built_at": "2026-10-01T22:54:13"
+  "built_at": "2026-10-02T05:15:56"
 }

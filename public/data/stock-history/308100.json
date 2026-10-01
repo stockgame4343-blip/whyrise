@@ -9,10 +9,10 @@
       "close_price": 453.0,
       "trading_volume": 4007349,
       "trading_value": 1815329097,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "골프",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -86,10 +88,10 @@
       "close_price": 421.0,
       "trading_volume": 1556148,
       "trading_value": 655138308,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스테이블코인",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260716",
@@ -163,9 +167,9 @@
       "close_price": 656.0,
       "trading_volume": 2033093,
       "trading_value": 1333709008,
-      "rise_reason": "유상증자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "패션 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -232,7 +236,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "유상증자 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260630",
@@ -240,9 +246,9 @@
       "close_price": 651.0,
       "trading_volume": 1888300,
       "trading_value": 1229283300,
-      "rise_reason": "해외 진출 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "최대주주 패션그룹형지 대상 유상증자",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "골프",
       "news": [
@@ -309,7 +315,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "형지글로벌, 최대주주 패션그룹형지 대상 유상증자… 신사업 추진 및.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003034415&office_id=029&code=308100&page=&sm=",
+          "source": "디지털타임스",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260604",
@@ -317,10 +333,10 @@
       "close_price": 676.0,
       "trading_volume": 3574057,
       "trading_value": 2416062532,
-      "rise_reason": "골프 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "골프",
       "news": [
         {
@@ -386,7 +402,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "골프 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -394,10 +412,10 @@
       "close_price": 931.0,
       "trading_volume": 8656381,
       "trading_value": 8059090711,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -463,7 +481,9 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260407",
@@ -663,5 +683,5 @@
     "count_recent": 0,
     "avg_rate": 19.89
   },
-  "built_at": "2026-10-01T23:00:11"
+  "built_at": "2026-10-02T05:15:56"
 }

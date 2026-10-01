@@ -9,10 +9,10 @@
       "close_price": 4755.0,
       "trading_volume": 1324717,
       "trading_value": 6299029335,
-      "rise_reason": "FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소매유통",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "인터넷과카탈로그소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -226,5 +228,5 @@
     "count_recent": 0,
     "avg_rate": 12.16
   },
-  "built_at": "2026-10-01T22:57:56"
+  "built_at": "2026-10-02T05:15:57"
 }

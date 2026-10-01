@@ -9,9 +9,9 @@
       "close_price": 730000.0,
       "trading_volume": 443786,
       "trading_value": 323963780000,
-      "rise_reason": "외국인 순매수 보도",
+      "rise_reason": "금리 인상 수혜주 부각",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "손해보험",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "손해보험",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "삼성화재, 신고가 경신… 금리 인상 수혜주 부각",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005366960&office_id=008&code=000810&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.04"
+        }
+      ]
     },
     {
       "date": "20251211",
@@ -106,5 +116,5 @@
     "count_recent": 0,
     "avg_rate": 21.09
   },
-  "built_at": "2026-10-01T22:52:03"
+  "built_at": "2026-10-02T05:15:57"
 }

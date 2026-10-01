@@ -86,9 +86,9 @@
       "close_price": 15890.0,
       "trading_volume": 255704,
       "trading_value": 4063136560,
-      "rise_reason": "해외 진출 뉴스",
+      "rise_reason": "해외 진출 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "음식료업종",
       "news": [
@@ -155,7 +155,17 @@
       ],
       "sector": "호텔,레스토랑,레저",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "더본코리아, 해외 진출 기대감에 17% 급등[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009113847&office_id=421&code=475560&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.08.14"
+        }
+      ]
     }
   ],
   "stats": {
@@ -166,5 +176,5 @@
     "count_recent": 0,
     "avg_rate": 17.31
   },
-  "built_at": "2026-10-01T22:52:58"
+  "built_at": "2026-10-02T05:15:56"
 }

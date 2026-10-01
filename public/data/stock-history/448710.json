@@ -25,15 +25,17 @@
       "close_price": 22700.0,
       "trading_volume": 632247,
       "trading_value": 14352006900,
-      "rise_reason": "방위산업/전쟁 및 테러 테마 강세",
+      "rise_reason": "방위산업 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방위산업/전쟁 및 테러 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -41,9 +43,9 @@
       "close_price": 18800.0,
       "trading_volume": 109069,
       "trading_value": 2050497200,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "방위산업 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
@@ -56,7 +58,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방산",
+      "reason_kind": "theme"
     },
     {
       "date": "20260306",
@@ -185,5 +189,5 @@
     "count_recent": 0,
     "avg_rate": 11.43
   },
-  "built_at": "2026-09-27T10:07:15"
+  "built_at": "2026-10-02T05:15:57"
 }

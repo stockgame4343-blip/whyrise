@@ -9,10 +9,10 @@
       "close_price": 780.0,
       "trading_volume": 3071709,
       "trading_value": 2395933020,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "골판지 제조",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "포장재",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260326",
@@ -137,5 +139,5 @@
     "count_recent": 0,
     "avg_rate": 20.31
   },
-  "built_at": "2026-10-01T22:53:11"
+  "built_at": "2026-10-02T05:15:56"
 }

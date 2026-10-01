@@ -9,9 +9,9 @@
       "close_price": 3470.0,
       "trading_volume": 174711,
       "trading_value": 606247170,
-      "rise_reason": "자사주 소각",
+      "rise_reason": "자사주 소각 및 부동산 매각 추진",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조림사업",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]이건산업, 자사주 소각 및 부동산 매각 추진에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003460080&office_id=030&code=008250&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.25"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 29.96
   },
-  "built_at": "2026-10-01T22:53:25"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -7,10 +7,10 @@
       "date": "20260309",
       "change_rate": 11.39,
       "close_price": 2250.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -25,16 +25,18 @@
       "source": "estimated",
       "trading_volume": 2542023,
       "trading_value": 5719551750,
-      "market_cap": 27157513578
+      "market_cap": 27157513578,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251124",
       "change_rate": 13.57,
       "close_price": 2385.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -49,16 +51,18 @@
       "source": "estimated",
       "trading_volume": 833599,
       "trading_value": 1988133615,
-      "market_cap": 28786964393
+      "market_cap": 28786964393,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251119",
       "change_rate": 13.77,
       "close_price": 2190.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -73,15 +77,17 @@
       "source": "estimated",
       "trading_volume": 227923,
       "trading_value": 499151370,
-      "market_cap": 26433313216
+      "market_cap": 26433313216,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250926",
       "change_rate": 10.92,
       "close_price": 2285.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 25~28일 2025 대한민국 농업박람회서 만나요",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -97,16 +103,26 @@
       "source": "estimated",
       "trading_volume": 3353903,
       "trading_value": 7663668355,
-      "market_cap": 27579963789
+      "market_cap": 27579963789,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아시아종묘, “25~28일 ‘2025 대한민국 농업박람회’서 만나요”",
+          "link": "https://n.news.naver.com/mnews/article/662/0000078728",
+          "source": "농민신문",
+          "date": "2025-09-25"
+        }
+      ]
     },
     {
       "date": "20250903",
       "change_rate": 15.17,
       "close_price": 2315.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -121,7 +137,9 @@
       "source": "estimated",
       "trading_volume": 3485141,
       "trading_value": 8068101415,
-      "market_cap": 27942063971
+      "market_cap": 27942063971,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -132,5 +150,5 @@
     "count_recent": 0,
     "avg_rate": 12.91
   },
-  "built_at": "2026-09-27T10:33:23"
+  "built_at": "2026-10-02T05:15:57"
 }

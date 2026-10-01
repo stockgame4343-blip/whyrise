@@ -9,9 +9,9 @@
       "close_price": 6820.0,
       "trading_volume": 2924086,
       "trading_value": 19942266520,
-      "rise_reason": "관련 보도: 삼성생명공익재단과 줄기세포 배양기술 美 특허 등록",
+      "rise_reason": "삼성생명공익재단과 줄기세포 배양기술 美 특허 등록",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "줄기세포",
       "news": [
@@ -57,7 +57,8 @@
           "source": "한국경제",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260731",
@@ -88,15 +89,25 @@
       "close_price": 8170.0,
       "trading_volume": 161234,
       "trading_value": 1317281780,
-      "rise_reason": "줄기세포 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "줄기세포",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "줄기세포 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -104,9 +115,9 @@
       "close_price": 12100.0,
       "trading_volume": 356226,
       "trading_value": 4310334600,
-      "rise_reason": "줄기세포 흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2026 세계 임상시험의 날 보건복지부장관 표창 수상",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "줄기세포",
       "news": [
@@ -173,7 +184,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "줄기세포 흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이엔셀, '2026 세계 임상시험의 날' 보건복지부장관 표창 수상",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006287071&office_id=018&code=456070&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -259,5 +280,5 @@
     "count_recent": 1,
     "avg_rate": 16.92
   },
-  "built_at": "2026-10-01T22:58:20"
+  "built_at": "2026-10-02T05:15:56"
 }

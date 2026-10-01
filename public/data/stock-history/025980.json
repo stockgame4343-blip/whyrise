@@ -86,9 +86,9 @@
       "close_price": 4500.0,
       "trading_volume": 21304039,
       "trading_value": 95868175500,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "남북경협주 동반 강세 — 트럼프 김정은, 대화 요청에 응답",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -155,16 +155,26 @@
       ],
       "sector": "호텔,레스토랑,레저",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "트럼프 \"김정은, 대화 요청에 응답\"…남북경협주 '불기둥' [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003122514&office_id=119&code=025980&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.19,
       "close_price": 8130.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -185,16 +195,18 @@
       "source": "estimated",
       "trading_volume": 2637698,
       "trading_value": 21444484740,
-      "market_cap": 791067139959
+      "market_cap": 791067139959,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260206",
       "change_rate": 10.83,
       "close_price": 8900.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -215,7 +227,9 @@
       "source": "estimated",
       "trading_volume": 7194765,
       "trading_value": 64033408500,
-      "market_cap": 865989858012
+      "market_cap": 865989858012,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250731",
@@ -291,5 +305,5 @@
     "count_recent": 0,
     "avg_rate": 14.46
   },
-  "built_at": "2026-10-01T22:55:05"
+  "built_at": "2026-10-02T05:15:56"
 }

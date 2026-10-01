@@ -9,9 +9,9 @@
       "close_price": 3440.0,
       "trading_volume": 503556,
       "trading_value": 1732232640,
-      "rise_reason": "관련 보도: 비투엔, 앤씨앤 경영권 인수…차량용 영상·반도체로 사업 확장",
+      "rise_reason": "경영권 인수",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -33,7 +33,8 @@
           "source": "블로터",
           "date": "2026-09-28"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260918",
@@ -41,9 +42,9 @@
       "close_price": 3670.0,
       "trading_volume": 53180,
       "trading_value": 195170600,
-      "rise_reason": "관련 보도: 비투엔 피인수 소식에 상승세",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "비투엔 피인수 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -101,7 +102,8 @@
           "source": "전자신문",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260917",
@@ -109,9 +111,9 @@
       "close_price": 2825.0,
       "trading_volume": 50256,
       "trading_value": 141973200,
-      "rise_reason": "흑자 전환 보도",
+      "rise_reason": "비투엔에 피인수",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -190,7 +192,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 앤씨앤, 비투엔에 피인수… 주가 上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003467790&office_id=030&code=092600&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.09.17"
+        }
+      ]
     },
     {
       "date": "20260911",
@@ -198,10 +210,10 @@
       "close_price": 2365.0,
       "trading_volume": 506986,
       "trading_value": 1199021890,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(물리)",
       "news": [
         {
@@ -261,7 +273,9 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260901",
@@ -269,10 +283,10 @@
       "close_price": 2140.0,
       "trading_volume": 308941,
       "trading_value": 661133740,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(물리)",
       "news": [
         {
@@ -332,7 +346,9 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260728",
@@ -340,9 +356,9 @@
       "close_price": 2730.0,
       "trading_volume": 456263,
       "trading_value": 1245597990,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "본업 중심 사업구조 명확해져, 2분기 흑자 달성",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(물리)",
       "news": [
@@ -397,7 +413,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"본업 중심 사업구조 명확해져\" 앤씨앤, 2분기 흑자 달성",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005553858&office_id=014&code=092600&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.07.28"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -405,9 +431,9 @@
       "close_price": 2595.0,
       "trading_volume": 361483,
       "trading_value": 938048385,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 최종현 대표 북미·유럽 등 뷰로이드 수출 호조...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -462,7 +488,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[인터뷰] 앤씨앤 최종현 대표 \"북미·유럽 등 '뷰로이드' 수출 호조...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005551234&office_id=014&code=092600&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -502,9 +538,9 @@
       "close_price": 4130.0,
       "trading_volume": 563497,
       "trading_value": 2327242610,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
@@ -535,7 +571,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260515",
@@ -543,9 +589,9 @@
       "close_price": 6410.0,
       "trading_volume": 998580,
       "trading_value": 6400897800,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "영업이익 올리며 흑자 전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "CCTV＆DVR",
       "news": [
@@ -582,7 +628,17 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "\"뷰로이드 비중 강화\" 앤씨앤, 영업이익 올리며 흑자 전환",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005522103&office_id=014&code=092600&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.05.15"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -842,5 +898,5 @@
     "count_recent": 5,
     "avg_rate": 22.41
   },
-  "built_at": "2026-10-01T23:00:07"
+  "built_at": "2026-10-02T05:15:56"
 }

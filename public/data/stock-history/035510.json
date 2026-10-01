@@ -9,10 +9,10 @@
       "close_price": 15300.0,
       "trading_volume": 375457,
       "trading_value": 5744492100,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "SI(시스템통합)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260529",
@@ -86,9 +88,9 @@
       "close_price": 16910.0,
       "trading_volume": 1136470,
       "trading_value": 19217707700,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SI 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "SI(시스템통합)",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260317",
@@ -245,9 +249,9 @@
       "date": "20250623",
       "change_rate": 10.39,
       "close_price": 23900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "SI 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "SI(시스템통합)",
       "news": [],
@@ -256,7 +260,9 @@
       "source": "estimated",
       "trading_volume": 3007493,
       "trading_value": 71879082700,
-      "market_cap": 334098601398
+      "market_cap": 334098601398,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250619",
@@ -301,5 +307,5 @@
     "count_recent": 1,
     "avg_rate": 18.07
   },
-  "built_at": "2026-10-01T22:52:58"
+  "built_at": "2026-10-02T05:15:56"
 }

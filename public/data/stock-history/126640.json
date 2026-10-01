@@ -9,9 +9,9 @@
       "close_price": 5380.0,
       "trading_volume": 11786480,
       "trading_value": 63411262400,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -48,7 +48,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260722",
@@ -56,10 +58,10 @@
       "close_price": 3910.0,
       "trading_volume": 2995561,
       "trading_value": 11712643510,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -83,7 +85,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -91,9 +95,9 @@
       "close_price": 4565.0,
       "trading_volume": 6558142,
       "trading_value": 29937918230,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -124,7 +128,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260616",
@@ -132,9 +138,9 @@
       "close_price": 6830.0,
       "trading_volume": 20077702,
       "trading_value": 137130704660,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -201,7 +207,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260610",
@@ -209,9 +217,9 @@
       "close_price": 4430.0,
       "trading_volume": 23769605,
       "trading_value": 105299350150,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보스턴다이나믹스 방문 소식",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -254,7 +262,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 보스턴다이나믹스 방문 소식에…화신정공 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001170124&office_id=366&code=126640&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.08"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -262,9 +280,9 @@
       "close_price": 3410.0,
       "trading_volume": 6839435,
       "trading_value": 23322473350,
-      "rise_reason": "양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보스턴다이나믹스 방문 소식",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -307,7 +325,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양산 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 보스턴다이나믹스 방문 소식에…화신정공 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001170124&office_id=366&code=126640&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.08"
+        }
+      ]
     },
     {
       "date": "20260608",
@@ -315,9 +343,9 @@
       "close_price": 2625.0,
       "trading_volume": 2316909,
       "trading_value": 6081886125,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "보스턴다이나믹스 방문 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "공시",
       "news": [
@@ -366,7 +394,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 보스턴다이나믹스 방문 소식에…화신정공 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001170124&office_id=366&code=126640&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.08"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -374,10 +412,10 @@
       "close_price": 1921.0,
       "trading_volume": 3594378,
       "trading_value": 6904800138,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -425,7 +463,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260202",
@@ -466,5 +506,5 @@
     "count_recent": 0,
     "avg_rate": 24.86
   },
-  "built_at": "2026-10-01T22:57:11"
+  "built_at": "2026-10-02T05:15:56"
 }

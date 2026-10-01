@@ -9,9 +9,9 @@
       "close_price": 4235.0,
       "trading_volume": 111699,
       "trading_value": 473045265,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 영화 더 선 앤 더 씨 국내 상영… 영상 콘텐츠 IP ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광고",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "모비데이즈, 영화 ‘더 선 앤 더 씨’ 국내 상영… 영상 콘텐츠 IP ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001175505&office_id=366&code=363260&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20250917",
@@ -114,9 +124,9 @@
       "date": "20250814",
       "change_rate": 12.75,
       "close_price": 1840.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "상반기 역대 최대 매출 경신",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -138,7 +148,17 @@
       "source": "estimated",
       "trading_volume": 31408473,
       "trading_value": 57791590320,
-      "market_cap": 59196721311
+      "market_cap": 59196721311,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "모비데이즈, 상반기 역대 최대 매출 경신…영업이익 15배↑",
+          "link": "https://n.news.naver.com/mnews/article/003/0013421564",
+          "source": "뉴시스",
+          "date": "2025-08-14"
+        }
+      ]
     }
   ],
   "stats": {
@@ -149,5 +169,5 @@
     "count_recent": 0,
     "avg_rate": 12.19
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T05:15:57"
 }

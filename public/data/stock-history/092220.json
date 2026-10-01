@@ -9,9 +9,9 @@
       "close_price": 3190.0,
       "trading_volume": 1842303,
       "trading_value": 5876946570,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 반도체 수출 259% 급증",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -36,7 +36,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009183930",
+          "source": "뉴스1",
+          "date": "2026-09-21"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -60,10 +70,10 @@
       "close_price": 4020.0,
       "trading_volume": 3360336,
       "trading_value": 13508550720,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -75,7 +85,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -83,15 +95,17 @@
       "close_price": 6790.0,
       "trading_volume": 5415008,
       "trading_value": 36767904320,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260424",
@@ -99,15 +113,17 @@
       "close_price": 9355.0,
       "trading_volume": 29493428,
       "trading_value": 275911018940,
-      "rise_reason": "거래 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래 급증",
+      "reason_kind": "theme"
     },
     {
       "date": "20260422",
@@ -115,15 +131,17 @@
       "close_price": 9215.0,
       "trading_volume": 16563271,
       "trading_value": 152630542265,
-      "rise_reason": "거래 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래 급증",
+      "reason_kind": "theme"
     },
     {
       "date": "20260421",
@@ -200,9 +218,9 @@
       "date": "20260305",
       "change_rate": 23.83,
       "close_price": 7120.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "전기차 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -230,15 +248,17 @@
       "source": "estimated",
       "trading_volume": 4508831,
       "trading_value": 32102876720,
-      "market_cap": 285983379501
+      "market_cap": 285983379501,
+      "reason_previous": "조선/해운",
+      "reason_kind": "theme"
     },
     {
       "date": "20260225",
       "change_rate": 15.76,
       "close_price": 5950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전기차 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -278,15 +298,17 @@
       "source": "estimated",
       "trading_volume": 13010897,
       "trading_value": 77414837150,
-      "market_cap": 238988919667
+      "market_cap": 238988919667,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260224",
       "change_rate": 29.96,
       "close_price": 5140.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -326,7 +348,17 @@
       "source": "estimated",
       "trading_volume": 10969340,
       "trading_value": 56382407600,
-      "market_cap": 206454293628
+      "market_cap": 206454293628,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "20만전자·100만닉스 끌고, 소부장 밀고…반도체주 '강세'(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0008790759",
+          "source": "뉴스1",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20251010",
@@ -354,5 +386,5 @@
     "count_recent": 1,
     "avg_rate": 17.82
   },
-  "built_at": "2026-10-01T22:53:02"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -44,10 +44,10 @@
       "close_price": 3035.0,
       "trading_volume": 14286739,
       "trading_value": 43360252865,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -71,7 +71,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -82,5 +84,5 @@
     "count_recent": 2,
     "avg_rate": 23.73
   },
-  "built_at": "2026-10-01T22:57:52"
+  "built_at": "2026-10-02T05:15:56"
 }

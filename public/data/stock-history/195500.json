@@ -9,9 +9,9 @@
       "close_price": 2320.0,
       "trading_volume": 3211692,
       "trading_value": 7451125440,
-      "rise_reason": "육계 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "육계주 동반 강세 — 마니커",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "육계",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "육계 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "마니커 상한가…월드컵 개막에 육계株 동반 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006302855&office_id=018&code=195500&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.11"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 29.83
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T05:15:57"
 }

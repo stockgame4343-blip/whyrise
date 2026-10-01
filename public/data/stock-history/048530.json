@@ -9,9 +9,9 @@
       "close_price": 2600.0,
       "trading_volume": 203173,
       "trading_value": 528249800,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 박장준 연구소장 차세대 SC 기술로 알테오젠 잡겠다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "박장준 인트론바이오 연구소장 &quot;차세대 SC 기술로 알테오젠 잡겠다&quot;",
+          "link": "https://n.news.naver.com/mnews/article/008/0005383854",
+          "source": "머니투데이",
+          "date": "2026-07-09"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -48,9 +58,9 @@
       "close_price": 2995.0,
       "trading_volume": 197218,
       "trading_value": 590667910,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SAL200 기반 비강 항균제제 임상 1/2a상",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이크로바이옴",
       "news": [
@@ -105,7 +115,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "인트론바이오, 'SAL200' 기반 비강 항균제제 임상 1/2a상 IN...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005369250&office_id=008&code=048530&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260304",
@@ -237,9 +257,9 @@
       "date": "20260123",
       "change_rate": 11.74,
       "close_price": 3330.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "30억 규모 자사주 취득 신탁계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이크로바이옴",
       "news": [
@@ -261,7 +281,17 @@
       "source": "estimated",
       "trading_volume": 757823,
       "trading_value": 2523550590,
-      "market_cap": 102904511278
+      "market_cap": 102904511278,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "인트론바이오, 30억 규모 자사주 취득 신탁계약 체결",
+          "link": "https://n.news.naver.com/mnews/article/018/0006205580",
+          "source": "이데일리",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20250702",
@@ -320,5 +350,5 @@
     "count_recent": 0,
     "avg_rate": 18.24
   },
-  "built_at": "2026-10-01T22:57:52"
+  "built_at": "2026-10-02T05:15:57"
 }

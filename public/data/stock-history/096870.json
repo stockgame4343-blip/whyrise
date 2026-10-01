@@ -9,9 +9,9 @@
       "close_price": 2185.0,
       "trading_volume": 1810936,
       "trading_value": 3956895160,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "15억 규모 자사주 취득 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -42,7 +42,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엘디티, 15억 규모 자사주 취득 결정…\"주주가치 제고\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006309877&office_id=018&code=096870&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.19"
+        }
+      ]
     }
   ],
   "stats": {
@@ -53,5 +63,5 @@
     "count_recent": 0,
     "avg_rate": 14.76
   },
-  "built_at": "2026-10-01T22:59:48"
+  "built_at": "2026-10-02T05:15:57"
 }

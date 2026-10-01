@@ -9,9 +9,9 @@
       "close_price": 170900.0,
       "trading_volume": 578440,
       "trading_value": 98855396000,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI, 투자재원 확보",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성SDI, 투자재원 확보에 8%대 급등…이차전지주 동반 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005565381&office_id=014&code=066970&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,15 +96,17 @@
       "close_price": 187600.0,
       "trading_volume": 479720,
       "trading_value": 89995472000,
-      "rise_reason": "리튬 테마 강세",
+      "rise_reason": "리튬 테마 11종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "리튬 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -173,5 +185,5 @@
     "count_recent": 0,
     "avg_rate": 14.59
   },
-  "built_at": "2026-10-01T22:52:06"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 7100.0,
       "trading_volume": 70696,
       "trading_value": 501941600,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력반도체",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260415",
@@ -86,9 +88,9 @@
       "close_price": 7870.0,
       "trading_volume": 66849,
       "trading_value": 526101630,
-      "rise_reason": "무상감자 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — 중동 전쟁 끝나나",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "무상감자 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "중동 전쟁 끝나나…리스크 해소 기대감에 전선·전력설비주 강세 [매...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005666352&office_id=009&code=042370&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.04.15"
+        }
+      ]
     },
     {
       "date": "20260126",
@@ -248,5 +260,5 @@
     "count_recent": 0,
     "avg_rate": 19.04
   },
-  "built_at": "2026-10-01T22:59:39"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 30650.0,
       "trading_volume": 892918,
       "trading_value": 27367936700,
-      "rise_reason": "타이어 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 한국 배터리 방문 교체 서비스 ..쿠팡으로 언제나 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "타이어",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "타이어 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "한국앤컴퍼니, '한국 배터리' 방문 교체 서비스 ..\"쿠팡으로 언제나 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005534989&office_id=014&code=000240&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.06.15"
+        }
+      ]
     },
     {
       "date": "20260220",
@@ -157,5 +167,5 @@
     "count_recent": 0,
     "avg_rate": 11.62
   },
-  "built_at": "2026-09-27T08:34:11"
+  "built_at": "2026-10-02T05:15:57"
 }

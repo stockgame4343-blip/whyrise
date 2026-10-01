@@ -86,15 +86,17 @@
       "close_price": 52000.0,
       "trading_volume": 579922,
       "trading_value": 30155944000,
-      "rise_reason": "전선 테마 강세",
+      "rise_reason": "전선 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전선 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -118,15 +120,17 @@
       "close_price": 110400.0,
       "trading_volume": 439221,
       "trading_value": 48489998400,
-      "rise_reason": "전선 테마 강세",
+      "rise_reason": "전선 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전선 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -211,9 +215,9 @@
       "close_price": 109900.0,
       "trading_volume": 1175937,
       "trading_value": 129235476300,
-      "rise_reason": "전력 인프라 수요 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 활용한 실탄 마련…성장 발판 될까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -280,7 +284,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력 인프라 수요 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[일진홀딩스 줌인]③ 일진전기 활용한 실탄 마련…성장 발판 될까",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000083405&office_id=293&code=103590&page=&sm=",
+          "source": "블로터",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -303,9 +317,9 @@
       "date": "20260223",
       "change_rate": 14.15,
       "close_price": 82300.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "전선 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -345,7 +359,9 @@
       "source": "estimated",
       "trading_volume": 2298581,
       "trading_value": 189173216300,
-      "market_cap": 3924461848341
+      "market_cap": 3924461848341,
+      "reason_previous": "실적 호조",
+      "reason_kind": "theme"
     },
     {
       "date": "20260209",
@@ -441,5 +457,5 @@
     "count_recent": 0,
     "avg_rate": 13.31
   },
-  "built_at": "2026-10-01T22:52:22"
+  "built_at": "2026-10-02T05:15:56"
 }

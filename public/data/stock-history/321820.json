@@ -9,10 +9,10 @@
       "close_price": 3550.0,
       "trading_volume": 194890,
       "trading_value": 691859500,
-      "rise_reason": "해외 진출 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "해외 진출 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260914",
@@ -86,10 +88,10 @@
       "close_price": 3385.0,
       "trading_volume": 1100588,
       "trading_value": 3725490380,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광고",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260723",
@@ -163,9 +167,9 @@
       "close_price": 2510.0,
       "trading_volume": 503322,
       "trading_value": 1263338220,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 애드테크 플랫폼사업 레인보우8에 양도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아티스트컴퍼니, '애드테크 플랫폼사업' 레인보우8에 양도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005793399&office_id=277&code=321820&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -240,9 +254,9 @@
       "close_price": 4300.0,
       "trading_volume": 669515,
       "trading_value": 2878914500,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1분기 매출 74억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -309,7 +323,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아티스트컴퍼니, 1분기 매출 74억…전년比 14%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013950990&office_id=003&code=321820&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.18"
+        }
+      ]
     },
     {
       "date": "20260410",
@@ -338,9 +362,9 @@
       "date": "20251104",
       "change_rate": 10.63,
       "close_price": 5830.0,
-      "rise_reason": "지능형로봇/인공지능(AI) 테마 강세",
+      "rise_reason": "관련 보도: 콘텐츠 제작 속도 낸다…3일 얄미운 사랑 첫 방...",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -356,7 +380,17 @@
       "source": "estimated",
       "trading_volume": 146949,
       "trading_value": 856712670,
-      "market_cap": 90809968847
+      "market_cap": 90809968847,
+      "reason_previous": "지능형로봇/인공지능(AI) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "아티스트컴퍼니, 콘텐츠 제작 속도 낸다…3일 ‘얄미운 사랑’ 첫 방...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006154454",
+          "source": "이데일리",
+          "date": "2025-11-03"
+        }
+      ]
     }
   ],
   "stats": {
@@ -367,5 +401,5 @@
     "count_recent": 2,
     "avg_rate": 20.86
   },
-  "built_at": "2026-10-01T22:58:41"
+  "built_at": "2026-10-02T05:15:56"
 }

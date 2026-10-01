@@ -9,10 +9,10 @@
       "close_price": 3432.0,
       "trading_volume": 268339,
       "trading_value": 920939448,
-      "rise_reason": "공시 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공시 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -213,5 +215,5 @@
     "count_recent": 0,
     "avg_rate": 10.34
   },
-  "built_at": "2026-09-27T10:24:50"
+  "built_at": "2026-10-02T05:15:57"
 }

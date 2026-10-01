@@ -9,9 +9,9 @@
       "close_price": 2215.0,
       "trading_volume": 415759,
       "trading_value": 920906185,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "캑터스PE, 최대주주로",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "캑터스PE, 엔시트론 최대주주로…60억 베팅 넘어 'M&A 성장판' 짠...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005561292&office_id=014&code=101400&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.13"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -116,9 +126,9 @@
       "date": "20260318",
       "change_rate": 10.6,
       "close_price": 2724.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 주식병합·감자 결정…재무구조 개선 및 저가주 이미지 탈...",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -158,16 +168,26 @@
       "source": "estimated",
       "trading_volume": 818848,
       "trading_value": 2230541952,
-      "market_cap": 31930331125
+      "market_cap": 31930331125,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "엔시트론, 주식병합·감자 결정…&quot;재무구조 개선 및 저가주 이미지 탈...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006237076",
+          "source": "이데일리",
+          "date": "2026-03-17"
+        }
+      ]
     },
     {
       "date": "20260127",
       "change_rate": 28.88,
       "close_price": 3494.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -188,7 +208,9 @@
       "source": "estimated",
       "trading_volume": 4965058,
       "trading_value": 17347912652,
-      "market_cap": 40956158940
+      "market_cap": 40956158940,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
@@ -290,10 +312,10 @@
       "date": "20260113",
       "change_rate": 14.81,
       "close_price": 2520.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -314,16 +336,18 @@
       "source": "estimated",
       "trading_volume": 3734199,
       "trading_value": 9410181480,
-      "market_cap": 29539072847
+      "market_cap": 29539072847,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260108",
       "change_rate": 11.81,
       "close_price": 2348.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -344,7 +368,9 @@
       "source": "estimated",
       "trading_volume": 3040927,
       "trading_value": 7140096596,
-      "market_cap": 27522913907
+      "market_cap": 27522913907,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251001",
@@ -427,5 +453,5 @@
     "count_recent": 0,
     "avg_rate": 18.48
   },
-  "built_at": "2026-10-01T22:59:41"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 42800.0,
       "trading_volume": 667423,
       "trading_value": 28565704400,
-      "rise_reason": "치매 신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "치매 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -54,7 +54,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "치매 신약 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260826",
@@ -62,10 +64,10 @@
       "close_price": 41750.0,
       "trading_volume": 187744,
       "trading_value": 7838312000,
-      "rise_reason": "비만치료제 임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비만치료제",
       "news": [
         {
@@ -131,7 +133,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "비만치료제 임상 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -139,9 +143,9 @@
       "close_price": 42350.0,
       "trading_volume": 262683,
       "trading_value": 11124625050,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "치매 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -208,7 +212,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -216,10 +222,10 @@
       "close_price": 36650.0,
       "trading_volume": 327758,
       "trading_value": 12012330700,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비만치료제",
       "news": [
         {
@@ -285,7 +291,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -293,9 +301,9 @@
       "close_price": 30650.0,
       "trading_volume": 139503,
       "trading_value": 4275766950,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 이희용 대표 장기지속형 이어 항체…두 번째 성장축 확.....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -362,7 +370,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이희용 지투지바이오 대표 \"장기지속형 이어 항체…두 번째 성장축 확.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005393806&office_id=008&code=456160&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -370,9 +388,9 @@
       "close_price": 26950.0,
       "trading_volume": 118772,
       "trading_value": 3200905400,
-      "rise_reason": "바이오",
+      "rise_reason": "셀트리온과 초고농축 항체 SC 기술 MOU",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -391,7 +409,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "지투지바이오, 셀트리온과 '초고농축 항체 SC' 기술 MOU",
+          "link": "https://n.news.naver.com/mnews/article/215/0001260591",
+          "source": "한국경제TV",
+          "date": "2026-07-30"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -399,9 +427,9 @@
       "close_price": 43700.0,
       "trading_volume": 241931,
       "trading_value": 10572384700,
-      "rise_reason": "비만치료제 FDA 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -468,7 +496,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "비만치료제 FDA 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -513,10 +551,10 @@
       "date": "20260306",
       "change_rate": 14.63,
       "close_price": 103400.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -524,7 +562,9 @@
       "source": "estimated",
       "trading_volume": 982430,
       "trading_value": 101583262000,
-      "market_cap": 1719422222222
+      "market_cap": 1719422222222,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
@@ -554,10 +594,10 @@
       "date": "20260108",
       "change_rate": 25.27,
       "close_price": 80800.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -565,15 +605,17 @@
       "source": "estimated",
       "trading_volume": 3614494,
       "trading_value": 292051115200,
-      "market_cap": 1343610401891
+      "market_cap": 1343610401891,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251128",
       "change_rate": 13.63,
       "close_price": 84200.0,
-      "rise_reason": "바이오",
+      "rise_reason": "파트너십 체결 빅파마 4곳 이상, 복지부 장관 표창",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -613,7 +655,17 @@
       "source": "estimated",
       "trading_volume": 3731332,
       "trading_value": 314178154400,
-      "market_cap": 1400148463356
+      "market_cap": 1400148463356,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "&quot;파트너십 체결 빅파마 4곳 이상&quot; 지투지바이오, 복지부 장관 표창",
+          "link": "https://n.news.naver.com/mnews/article/011/0004560949",
+          "source": "서울경제",
+          "date": "2025-11-27"
+        }
+      ]
     },
     {
       "date": "20251111",
@@ -743,5 +795,5 @@
     "count_recent": 1,
     "avg_rate": 16.34
   },
-  "built_at": "2026-10-01T22:54:45"
+  "built_at": "2026-10-02T05:15:56"
 }

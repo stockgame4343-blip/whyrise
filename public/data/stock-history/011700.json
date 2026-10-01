@@ -9,9 +9,9 @@
       "close_price": 2630.0,
       "trading_volume": 2569343,
       "trading_value": 6757372090,
-      "rise_reason": "원자력발전 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "원전주 동반 강세 — 미국에 원전 8기 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -54,7 +54,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "원자력발전 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "미국에 원전 8기 기대감…원전주 일제히 급등 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003130162&office_id=119&code=019990&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.09.08"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -78,24 +88,26 @@
       "close_price": 2635.0,
       "trading_volume": 214519,
       "trading_value": 565257565,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 14종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 13.47,
       "close_price": 4255.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -110,15 +122,17 @@
       "source": "estimated",
       "trading_volume": 1587079,
       "trading_value": 6753021145,
-      "market_cap": 138024381625
+      "market_cap": 138024381625,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260121",
       "change_rate": 11.63,
       "close_price": 4750.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 금일 코스피 거래량 1위 거래대금 1조 3,710억...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -158,7 +172,17 @@
       "source": "estimated",
       "trading_volume": 36284023,
       "trading_value": 172349109250,
-      "market_cap": 154081272084
+      "market_cap": 154081272084,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스피 거래량 1위 한신기계 거래대금 1조 3,710억...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003610467",
+          "source": "서울신문",
+          "date": "2026-01-21"
+        }
+      ]
     },
     {
       "date": "20260120",
@@ -229,10 +253,10 @@
       "date": "20250612",
       "change_rate": 12.71,
       "close_price": 3770.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -240,7 +264,9 @@
       "source": "estimated",
       "trading_volume": 13136529,
       "trading_value": 49524714330,
-      "market_cap": 122291872791
+      "market_cap": 122291872791,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
@@ -268,5 +294,5 @@
     "count_recent": 1,
     "avg_rate": 15.23
   },
-  "built_at": "2026-10-01T22:53:05"
+  "built_at": "2026-10-02T05:15:56"
 }

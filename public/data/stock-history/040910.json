@@ -9,9 +9,9 @@
       "close_price": 6470.0,
       "trading_volume": 687029,
       "trading_value": 4445077630,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유리 기판 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -78,15 +78,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 13.49,
       "close_price": 5090.0,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "유리 기판 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [],
@@ -95,7 +97,9 @@
       "source": "estimated",
       "trading_volume": 92190,
       "trading_value": 469247100,
-      "market_cap": 92505217391
+      "market_cap": 92505217391,
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260219",
@@ -140,5 +144,5 @@
     "count_recent": 0,
     "avg_rate": 13.16
   },
-  "built_at": "2026-10-01T22:58:10"
+  "built_at": "2026-10-02T05:15:57"
 }

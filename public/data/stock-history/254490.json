@@ -50,15 +50,17 @@
       "close_price": 13710.0,
       "trading_volume": 282377,
       "trading_value": 3871388670,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -66,9 +68,9 @@
       "close_price": 17100.0,
       "trading_volume": 264099,
       "trading_value": 4516092900,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 산업장관 메가특구법과 반도체특별법 통해 지원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -135,7 +137,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "산업장관 \"메가특구법과 반도체특별법 통해 미래반도체 지원\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000515610&office_id=629&code=254490&page=&sm=",
+          "source": "더팩트",
+          "date": "2026.07.13"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -143,10 +155,10 @@
       "close_price": 43000.0,
       "trading_volume": 4350491,
       "trading_value": 187071113000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -212,7 +224,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260511",
@@ -220,10 +234,10 @@
       "close_price": 40100.0,
       "trading_volume": 2735521,
       "trading_value": 109694392100,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -289,7 +303,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260504",
@@ -297,9 +313,9 @@
       "close_price": 29250.0,
       "trading_volume": 3968034,
       "trading_value": 116064994500,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -366,7 +382,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 오르자 반도체장비株 강세…오로스테크놀로지 '上'[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008925316&office_id=421&code=322310&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260430",
@@ -374,10 +400,10 @@
       "close_price": 23350.0,
       "trading_volume": 2525622,
       "trading_value": 58973273700,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
         {
@@ -443,7 +469,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -451,10 +479,10 @@
       "close_price": 22350.0,
       "trading_volume": 2087547,
       "trading_value": 46656675450,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
         {
@@ -520,7 +548,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -528,23 +558,33 @@
       "close_price": 17410.0,
       "trading_volume": 85582,
       "trading_value": 1489982620,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "6G 준비에 광 네트워크까지…통신장비株 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/008/0005338091",
+          "source": "머니투데이",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 15.98,
       "close_price": 18800.0,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
@@ -553,15 +593,17 @@
       "source": "estimated",
       "trading_volume": 303638,
       "trading_value": 5708394400,
-      "market_cap": 271465517241
+      "market_cap": 271465517241,
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260224",
       "change_rate": 12.7,
       "close_price": 20500.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -577,7 +619,17 @@
       "source": "estimated",
       "trading_volume": 4729146,
       "trading_value": 96947493000,
-      "market_cap": 296012931034
+      "market_cap": 296012931034,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "20만전자·100만닉스 끌고, 소부장 밀고…반도체주 '강세'(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0008790759",
+          "source": "뉴스1",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20260203",
@@ -622,5 +674,5 @@
     "count_recent": 0,
     "avg_rate": 15.5
   },
-  "built_at": "2026-09-29T22:25:28"
+  "built_at": "2026-10-02T05:15:56"
 }

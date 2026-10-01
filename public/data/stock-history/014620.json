@@ -9,9 +9,9 @@
       "close_price": 29750.0,
       "trading_volume": 855226,
       "trading_value": 25442973500,
-      "rise_reason": "원자력발전 영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "원전주 동반 강세 — 美원전 특수 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "원자력발전 영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美원전 특수 기대감에…반토막 났던 원전株 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004655193&office_id=011&code=052690&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -86,9 +96,9 @@
       "close_price": 27500.0,
       "trading_volume": 126180,
       "trading_value": 3469950000,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "원자력발전 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -101,7 +111,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선/해운",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -109,9 +121,9 @@
       "close_price": 29150.0,
       "trading_volume": 184322,
       "trading_value": 5372986300,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 14종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -124,7 +136,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260424",
@@ -325,5 +339,5 @@
     "count_recent": 0,
     "avg_rate": 15.12
   },
-  "built_at": "2026-10-01T22:54:32"
+  "built_at": "2026-10-02T05:15:56"
 }

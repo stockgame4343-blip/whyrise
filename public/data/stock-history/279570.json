@@ -9,9 +9,9 @@
       "close_price": 6390.0,
       "trading_volume": 13896228,
       "trading_value": 88796896920,
-      "rise_reason": "은행 관련 뉴스",
+      "rise_reason": "코픽스 상승",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "은행",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "은행",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "은행 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "코픽스 상승에 은행주 동반 강세…케이뱅크 12%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006331493&office_id=018&code=279570&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.16"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 11.13
   },
-  "built_at": "2026-09-27T08:34:29"
+  "built_at": "2026-10-02T05:15:57"
 }

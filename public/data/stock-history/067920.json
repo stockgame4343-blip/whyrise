@@ -9,9 +9,9 @@
       "close_price": 7570.0,
       "trading_volume": 1474525,
       "trading_value": 11162154250,
-      "rise_reason": "거래 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 22종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래 급증",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -89,5 +91,5 @@
     "count_recent": 0,
     "avg_rate": 17.36
   },
-  "built_at": "2026-09-27T10:03:55"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,9 +9,9 @@
       "close_price": 533000.0,
       "trading_volume": 77249,
       "trading_value": 41173717000,
-      "rise_reason": "실적 관련 뉴스",
+      "rise_reason": "증권가 실적 개선 전망",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]KCC, 증권가 실적 개선 전망에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003441229&office_id=030&code=002380&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.25"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -86,9 +96,9 @@
       "close_price": 558000.0,
       "trading_volume": 42956,
       "trading_value": 23969448000,
-      "rise_reason": "페인트 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "獨 PCIM서 전력반도체 소재 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "페인트",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "페인트 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "KCC, 獨 PCIM서 전력반도체 소재 공개…AI 데이터센터 수요 대...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003100391&office_id=119&code=002380&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -177,10 +197,10 @@
       "date": "20260225",
       "change_rate": 10.47,
       "close_price": 675000.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "페인트",
       "news": [
         {
@@ -219,7 +239,9 @@
       "source": "estimated",
       "trading_volume": 66989,
       "trading_value": 45217575000,
-      "market_cap": 5800233778625
+      "market_cap": 5800233778625,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260211",
@@ -278,5 +300,5 @@
     "count_recent": 0,
     "avg_rate": 11.39
   },
-  "built_at": "2026-10-01T22:52:22"
+  "built_at": "2026-10-02T05:15:57"
 }

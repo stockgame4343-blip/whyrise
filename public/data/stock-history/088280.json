@@ -9,10 +9,10 @@
       "close_price": 2850.0,
       "trading_volume": 459320,
       "trading_value": 1309062000,
-      "rise_reason": "통신장비 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -60,7 +60,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -251,10 +253,10 @@
       "close_price": 6140.0,
       "trading_volume": 3313731,
       "trading_value": 20346308340,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -308,7 +310,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260413",
@@ -316,15 +320,17 @@
       "close_price": 5670.0,
       "trading_volume": 3408891,
       "trading_value": 19328411970,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -332,15 +338,17 @@
       "close_price": 4740.0,
       "trading_volume": 8803340,
       "trading_value": 41727831600,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260403",
@@ -348,9 +356,9 @@
       "close_price": 4105.0,
       "trading_volume": 3932991,
       "trading_value": 16144928055,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "통신장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -369,7 +377,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -377,9 +387,9 @@
       "close_price": 3485.0,
       "trading_volume": 2358951,
       "trading_value": 8220944235,
-      "rise_reason": "통신장비 테마 강세",
+      "rise_reason": "통신장비 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "통신장비",
       "news": [
@@ -392,7 +402,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260327",
@@ -415,9 +427,9 @@
       "date": "20260325",
       "change_rate": 29.93,
       "close_price": 3950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "5G 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -433,15 +445,17 @@
       "source": "estimated",
       "trading_volume": 1823827,
       "trading_value": 7204116650,
-      "market_cap": 68360681114
+      "market_cap": 68360681114,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
       "change_rate": 19.22,
       "close_price": 3040.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "5G 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -457,15 +471,17 @@
       "source": "estimated",
       "trading_volume": 1944939,
       "trading_value": 5912614560,
-      "market_cap": 52611764705
+      "market_cap": 52611764705,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260316",
       "change_rate": 12.64,
       "close_price": 2585.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "5G 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [],
@@ -474,7 +490,9 @@
       "source": "estimated",
       "trading_volume": 1320189,
       "trading_value": 3412688565,
-      "market_cap": 44737306501
+      "market_cap": 44737306501,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260204",
@@ -538,5 +556,5 @@
     "count_recent": 1,
     "avg_rate": 18.07
   },
-  "built_at": "2026-10-01T22:58:42"
+  "built_at": "2026-10-02T05:15:56"
 }

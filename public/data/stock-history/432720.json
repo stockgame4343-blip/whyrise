@@ -102,15 +102,17 @@
       "close_price": 7310.0,
       "trading_volume": 194797,
       "trading_value": 1423966070,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 17종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -118,15 +120,17 @@
       "close_price": 9030.0,
       "trading_volume": 142100,
       "trading_value": 1283163000,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -134,9 +138,9 @@
       "close_price": 9280.0,
       "trading_volume": 184737,
       "trading_value": 1714359360,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -149,7 +153,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피 나흘 만에 반등…반도체주 일제히 강세",
+          "link": "https://n.news.naver.com/mnews/article/374/0000520734",
+          "source": "SBS Biz",
+          "date": "2026-07-09"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -157,15 +171,17 @@
       "close_price": 13870.0,
       "trading_volume": 291500,
       "trading_value": 4043105000,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -173,9 +189,9 @@
       "close_price": 29500.0,
       "trading_volume": 7034141,
       "trading_value": 207507159500,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -242,7 +258,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼전닉스 오르자 반도체장비株 강세…오로스테크놀로지 '上'[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008925316&office_id=421&code=322310&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20260430",
@@ -250,10 +276,10 @@
       "close_price": 25050.0,
       "trading_volume": 9314458,
       "trading_value": 233327172900,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [
         {
@@ -313,7 +339,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -388,9 +416,9 @@
       "close_price": 15290.0,
       "trading_volume": 851452,
       "trading_value": 13018701080,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "2나노 공정 IP 美 AI칩 고객사에 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -409,7 +437,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "대형 수주",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "퀄리타스반도체, 2나노 공정 IP 美 AI칩 고객사에 공급",
+          "link": "https://n.news.naver.com/mnews/article/092/0002417163",
+          "source": "지디넷코리아",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -485,5 +523,5 @@
     "count_recent": 1,
     "avg_rate": 15.62
   },
-  "built_at": "2026-10-01T22:56:44"
+  "built_at": "2026-10-02T05:15:56"
 }

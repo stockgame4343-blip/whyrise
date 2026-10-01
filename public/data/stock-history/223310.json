@@ -9,10 +9,10 @@
       "close_price": 3640.0,
       "trading_volume": 1191413,
       "trading_value": 4336743320,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건강기능식품",
       "news": [
         {
@@ -66,7 +66,9 @@
       ],
       "sector": "식품과기본식료품소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260708",
@@ -74,10 +76,10 @@
       "close_price": 4610.0,
       "trading_volume": 90413,
       "trading_value": 416803930,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건강기능식품",
       "news": [
         {
@@ -143,7 +145,9 @@
       ],
       "sector": "식품과기본식료품소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260515",
@@ -151,9 +155,9 @@
       "close_price": 14790.0,
       "trading_volume": 173262,
       "trading_value": 2562544980,
-      "rise_reason": "테마 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "엔비디아 인셉션 프로그램 정식 회원사 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -220,7 +224,17 @@
       ],
       "sector": "식품과기본식료품소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "테마 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "사토시홀딩스, 엔비디아 인셉션 프로그램 정식 회원사 선정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013946251&office_id=003&code=223310&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.15"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -228,9 +242,9 @@
       "close_price": 12930.0,
       "trading_volume": 185731,
       "trading_value": 2401501830,
-      "rise_reason": "통신장비 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호·보안주 동반 강세 — 앤트로픽 해킹 공포",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -297,7 +311,17 @@
       ],
       "sector": "식품과기본식료품소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 앤트로픽 해킹 공포에…양자암호·보안주 ‘상한가’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001156957&office_id=366&code=223310&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.15"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -305,9 +329,9 @@
       "close_price": 9964.0,
       "trading_volume": 114118,
       "trading_value": 1137071752,
-      "rise_reason": "통신장비 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자암호 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -364,15 +388,17 @@
       ],
       "sector": "식품과기본식료품소매",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 15.13,
       "close_price": 7198.0,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "양자암호 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
@@ -381,7 +407,9 @@
       "source": "estimated",
       "trading_volume": 43042,
       "trading_value": 309816316,
-      "market_cap": 37526651685
+      "market_cap": 37526651685,
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251223",
@@ -562,5 +590,5 @@
     "count_recent": 0,
     "avg_rate": 19.91
   },
-  "built_at": "2026-10-01T22:59:43"
+  "built_at": "2026-10-02T05:15:56"
 }

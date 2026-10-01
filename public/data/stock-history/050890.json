@@ -9,15 +9,17 @@
       "close_price": 8470.0,
       "trading_volume": 846216,
       "trading_value": 7167449520,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "양자암호 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260522",
@@ -25,9 +27,9 @@
       "close_price": 18130.0,
       "trading_volume": 16074160,
       "trading_value": 291424520800,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "실적 낙관적 (하나증권)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "쏠리드, 저PBR 통신장비주...실적 낙관적-하나증권",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005523916&office_id=014&code=050890&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.05.20"
+        }
+      ]
     },
     {
       "date": "20260410",
@@ -131,15 +143,17 @@
       "close_price": 14570.0,
       "trading_volume": 19991805,
       "trading_value": 291280598850,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "양자암호 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
@@ -241,10 +255,10 @@
       "date": "20260310",
       "change_rate": 13.91,
       "close_price": 9010.0,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
         {
@@ -283,7 +297,9 @@
       "source": "estimated",
       "trading_volume": 5785628,
       "trading_value": 52128508280,
-      "market_cap": 547378444632
+      "market_cap": 547378444632,
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -402,5 +418,5 @@
     "count_recent": 0,
     "avg_rate": 17.74
   },
-  "built_at": "2026-09-27T09:18:53"
+  "built_at": "2026-10-02T05:15:57"
 }

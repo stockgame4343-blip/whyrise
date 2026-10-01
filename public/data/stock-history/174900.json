@@ -9,9 +9,9 @@
       "close_price": 26450.0,
       "trading_volume": 535938,
       "trading_value": 14175560100,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 기술이전 신약 결직장암 적응증 확대…29조 시장 공략",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -30,7 +30,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "앱클론 기술이전 신약 결직장암 적응증 확대…“29조 시장 공략”",
+          "link": "https://n.news.naver.com/mnews/article/011/0004666392",
+          "source": "서울경제",
+          "date": "2026.09.29"
+        }
+      ]
     },
     {
       "date": "20260929",
@@ -38,9 +48,9 @@
       "close_price": 22000.0,
       "trading_volume": 357272,
       "trading_value": 7859984000,
-      "rise_reason": "관련 보도: 기술이전 신약 결직장암 적응증 확대…“29조 시장 공략”",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "관련 보도: 기술이전 신약 결직장암 적응증 확대…29조 시장 공략",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
@@ -62,7 +72,8 @@
           "source": "서울경제",
           "date": "2026-09-29"
         }
-      ]
+      ],
+      "reason_kind": "related"
     },
     {
       "date": "20260810",
@@ -70,9 +81,9 @@
       "close_price": 34700.0,
       "trading_volume": 535264,
       "trading_value": 18573660800,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -139,7 +150,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260804",
@@ -147,9 +160,9 @@
       "close_price": 26500.0,
       "trading_volume": 499801,
       "trading_value": 13244726500,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 13종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -216,7 +229,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260803",
@@ -224,10 +239,10 @@
       "close_price": 21950.0,
       "trading_volume": 146070,
       "trading_value": 3206236500,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [
         {
@@ -293,7 +308,9 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -317,9 +334,9 @@
       "close_price": 30050.0,
       "trading_volume": 208436,
       "trading_value": 6263501800,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "튀르키예서 혈액암·고형암 CAR-T 개발 협력 나서",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -386,7 +403,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "앱클론, 튀르키예서 ‘혈액암·고형암’ CAR-T 개발 협력 나서",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004636138&office_id=011&code=174900&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -394,9 +421,9 @@
       "close_price": 39700.0,
       "trading_volume": 771397,
       "trading_value": 30624460900,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "식약처와 4억여원 규모 시약·기자재 공급 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -427,7 +454,17 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "앱클론, 식약처와 4억여원 규모 시약·기자재 공급 계약",
+          "link": "https://n.news.naver.com/mnews/article/293/0000085074",
+          "source": "블로터",
+          "date": "2026-05-21"
+        }
+      ]
     },
     {
       "date": "20260326",
@@ -487,9 +524,9 @@
       "date": "20260310",
       "change_rate": 13.31,
       "close_price": 71500.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "식약처와 8억원 규모 시약 공급 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -511,16 +548,26 @@
       "source": "estimated",
       "trading_volume": 659008,
       "trading_value": 47119072000,
-      "market_cap": 1426640939597
+      "market_cap": 1426640939597,
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "앱클론, 식약처와 8억원 규모 시약 공급 계약",
+          "link": "https://n.news.naver.com/mnews/article/293/0000080542",
+          "source": "블로터",
+          "date": "2026-03-09"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 17.3,
       "close_price": 61700.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -528,15 +575,17 @@
       "source": "estimated",
       "trading_volume": 342564,
       "trading_value": 21136198800,
-      "market_cap": 1231101342281
+      "market_cap": 1231101342281,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260226",
       "change_rate": 10.58,
       "close_price": 62700.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "첫 CAR-T 개발은 뒤졌지만",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -552,7 +601,17 @@
       "source": "estimated",
       "trading_volume": 433236,
       "trading_value": 27163897200,
-      "market_cap": 1251054362416
+      "market_cap": 1251054362416,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "첫 CAR-T 개발은 뒤졌지만… 앱클론, 시총 잘 나가는 까닭은?",
+          "link": "https://n.news.naver.com/mnews/article/296/0000097941",
+          "source": "코메디닷컴",
+          "date": "2026-02-25"
+        }
+      ]
     },
     {
       "date": "20260123",
@@ -611,9 +670,9 @@
       "date": "20251219",
       "change_rate": 11.29,
       "close_price": 42400.0,
-      "rise_reason": "바이오",
+      "rise_reason": "中파트너사 헨리우스, 췌장암 임상 2상도 개시",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -635,7 +694,17 @@
       "source": "estimated",
       "trading_volume": 659110,
       "trading_value": 27946264000,
-      "market_cap": 846008053691
+      "market_cap": 846008053691,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "앱클론 中파트너사 헨리우스, 췌장암 임상 2상도 개시 [분석+]",
+          "link": "https://n.news.naver.com/mnews/article/015/0005226811",
+          "source": "한국경제",
+          "date": "2025-12-19"
+        }
+      ]
     },
     {
       "date": "20251126",
@@ -736,9 +805,9 @@
       "date": "20251028",
       "change_rate": 14.29,
       "close_price": 20400.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 360억원 규모 CB·CPS 발행 납입 완료",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -760,7 +829,17 @@
       "source": "estimated",
       "trading_volume": 547461,
       "trading_value": 11168204400,
-      "market_cap": 407041610738
+      "market_cap": 407041610738,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[체크!공시] 앱클론, 360억원 규모 CB·CPS 발행 납입 완료",
+          "link": "https://n.news.naver.com/mnews/article/417/0001109532",
+          "source": "동행미디어 시대",
+          "date": "2025-10-28"
+        }
+      ]
     },
     {
       "date": "20250929",
@@ -800,10 +879,10 @@
       "date": "20250904",
       "change_rate": 10.3,
       "close_price": 11350.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -811,7 +890,9 @@
       "source": "estimated",
       "trading_volume": 287391,
       "trading_value": 3261887850,
-      "market_cap": 226466778523
+      "market_cap": 226466778523,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -822,5 +903,5 @@
     "count_recent": 2,
     "avg_rate": 14.65
   },
-  "built_at": "2026-10-01T22:55:02"
+  "built_at": "2026-10-02T05:15:56"
 }

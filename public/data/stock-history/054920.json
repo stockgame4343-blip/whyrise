@@ -9,9 +9,9 @@
       "close_price": 5230.0,
       "trading_volume": 10102187,
       "trading_value": 52834438010,
-      "rise_reason": "거래량 급증",
+      "rise_reason": "AI 속도조절론",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 급증",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'AI 속도조절론'에 양자암호·보안주 급등…아톤·한컴위드 '上'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014191750&office_id=003&code=054920&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.15"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -86,9 +96,9 @@
       "close_price": 7850.0,
       "trading_volume": 13959340,
       "trading_value": 109580819000,
-      "rise_reason": "스테이블코인 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 공인인증서 다음은 굴리는 금…, AI·양자 보안까지 새판 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "공인인증서 다음은 '굴리는 금'…한컴위드, AI·양자 보안까지 새판 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005353234&office_id=008&code=054920&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -163,10 +183,10 @@
       "close_price": 7760.0,
       "trading_volume": 19897293,
       "trading_value": 154402993680,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
         {
@@ -232,7 +252,9 @@
       ],
       "sector": "비철금속",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260420",
@@ -474,9 +496,9 @@
       "date": "20260123",
       "change_rate": 10.78,
       "close_price": 4830.0,
-      "rise_reason": "가상자산/블록체인",
+      "rise_reason": "얼굴위변조 탐지 한컴오스 라이브니스 출시",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -510,7 +532,17 @@
       "source": "estimated",
       "trading_volume": 6827403,
       "trading_value": 32976356490,
-      "market_cap": 136224128686
+      "market_cap": 136224128686,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한컴위드, 얼굴위변조 탐지 '한컴오스 라이브니스' 출시",
+          "link": "https://n.news.naver.com/mnews/article/648/0000043798",
+          "source": "비즈워치",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20251222",
@@ -533,9 +565,9 @@
       "date": "20250919",
       "change_rate": 10.65,
       "close_price": 4830.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "보안주 동반 강세 — 잇단 해킹",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -575,7 +607,17 @@
       "source": "estimated",
       "trading_volume": 8571892,
       "trading_value": 41402238360,
-      "market_cap": 136224128686
+      "market_cap": 136224128686,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "잇단 해킹에 보안주 들썩...KT·롯데카드 사태 후폭풍",
+          "link": "https://n.news.naver.com/mnews/article/123/0002368586",
+          "source": "조세일보",
+          "date": "2025-09-19"
+        }
+      ]
     },
     {
       "date": "20250725",
@@ -615,9 +657,9 @@
       "date": "20250609",
       "change_rate": 12.48,
       "close_price": 3470.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [],
@@ -626,7 +668,9 @@
       "source": "estimated",
       "trading_volume": 1236687,
       "trading_value": 4291303890,
-      "market_cap": 97867024128
+      "market_cap": 97867024128,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -637,5 +681,5 @@
     "count_recent": 1,
     "avg_rate": 17.09
   },
-  "built_at": "2026-10-01T22:57:13"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 1560.0,
       "trading_volume": 4148879,
       "trading_value": 6472251240,
-      "rise_reason": "가상화폐 정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "가상자산주 동반 강세 — 비트코인 8만 달러 눈앞",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "가상화폐 정책 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "비트코인 '8만 달러' 눈앞…트럼프發 훈풍에 가상자산株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001025025&office_id=088&code=290560&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260821",
@@ -86,9 +96,9 @@
       "close_price": 1362.0,
       "trading_volume": 3236055,
       "trading_value": 4407506910,
-      "rise_reason": "가상화폐 규제 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2분기 영업익 전년比 54.7% 증가",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "가상화폐 규제 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파라택시스이더리움, 2분기 영업익 전년比 54.7% 증가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006353289&office_id=018&code=290560&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -163,9 +183,9 @@
       "close_price": 1112.0,
       "trading_volume": 537087,
       "trading_value": 597240744,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -232,7 +252,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -240,9 +262,9 @@
       "close_price": 1233.0,
       "trading_volume": 186914,
       "trading_value": 230464962,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 이더리움 1050개 추가 매입…보유량 1만449개",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -255,7 +277,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "파라택시스이더리움, 이더리움 1050개 추가 매입…보유량 1만449개",
+          "link": "https://n.news.naver.com/mnews/article/138/0002233701",
+          "source": "디지털데일리",
+          "date": "2026-07-09"
+        }
+      ]
     },
     {
       "date": "20260618",
@@ -263,10 +295,10 @@
       "close_price": 1365.0,
       "trading_volume": 2190798,
       "trading_value": 2990439270,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
         {
@@ -332,7 +364,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260414",
@@ -405,9 +439,9 @@
       "date": "20260316",
       "change_rate": 10.11,
       "close_price": 1950.0,
-      "rise_reason": "가상자산/블록체인",
+      "rise_reason": "지난해 역대 최대 실적 달성",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -423,7 +457,17 @@
       "source": "estimated",
       "trading_volume": 360186,
       "trading_value": 702362700,
-      "market_cap": 43666666666
+      "market_cap": 43666666666,
+      "reason_previous": "가상자산/블록체인",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파라택시스이더리움, 지난해 역대 최대 실적 달성",
+          "link": "https://n.news.naver.com/mnews/article/003/0013823855",
+          "source": "뉴시스",
+          "date": "2026-03-16"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -446,9 +490,9 @@
       "date": "20260227",
       "change_rate": 11.22,
       "close_price": 1943.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "이더리움 추가 획득 2연",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -488,7 +532,17 @@
       "source": "estimated",
       "trading_volume": 5203418,
       "trading_value": 10110241174,
-      "market_cap": 43509914529
+      "market_cap": 43509914529,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'이더리움 추가 획득' 파라택시스이더리움 2연속 상승세…12%↑[특징주...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006225832",
+          "source": "이데일리",
+          "date": "2026-02-27"
+        }
+      ]
     },
     {
       "date": "20260226",
@@ -600,5 +654,5 @@
     "count_recent": 0,
     "avg_rate": 18.16
   },
-  "built_at": "2026-10-01T22:59:26"
+  "built_at": "2026-10-02T05:15:56"
 }

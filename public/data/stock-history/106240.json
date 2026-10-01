@@ -9,9 +9,9 @@
       "close_price": 1336.0,
       "trading_volume": 632683,
       "trading_value": 845264488,
-      "rise_reason": "관련 보도: 유클리드소프트와 AI 스마트 조명 개발 본격화",
+      "rise_reason": "유클리드소프트와 AI 스마트 조명 개발 본격화",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED",
       "news": [
@@ -33,7 +33,8 @@
           "source": "이데일리",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260813",
@@ -41,10 +42,10 @@
       "close_price": 1344.0,
       "trading_volume": 328281,
       "trading_value": 441209664,
-      "rise_reason": "LED 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -110,7 +111,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "LED 수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260626",
@@ -118,9 +121,9 @@
       "close_price": 1170.0,
       "trading_volume": 1049594,
       "trading_value": 1228024980,
-      "rise_reason": "LED 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유클리드소프트 인수 최종 실사 돌입",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED",
       "news": [
@@ -187,7 +190,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "LED 수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파인테크닉스, 유클리드소프트 인수 최종 실사 돌입",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006313057&office_id=018&code=106240&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260513",
@@ -195,9 +208,9 @@
       "close_price": 2225.0,
       "trading_volume": 485362,
       "trading_value": 1079930450,
-      "rise_reason": "LED 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "중동 국영 에너지 기업 공급망 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED",
       "news": [
@@ -264,7 +277,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "LED 수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파인테크닉스, 중동 국영 에너지 기업 공급망 확보",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006278498&office_id=018&code=106240&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -456,5 +479,5 @@
     "count_recent": 1,
     "avg_rate": 12.37
   },
-  "built_at": "2026-10-01T22:59:09"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 5280.0,
       "trading_volume": 1235001,
       "trading_value": 6520805280,
-      "rise_reason": "허가 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "허가 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -109,9 +111,9 @@
       "close_price": 4985.0,
       "trading_volume": 200442,
       "trading_value": 999203370,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 뇌졸중 AI 영상분석 활용 연구 국제학술지 게재",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [
@@ -124,7 +126,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "제이엘케이, 뇌졸중 AI 영상분석 활용 연구 국제학술지 게재",
+          "link": "https://n.news.naver.com/mnews/article/003/0014068256",
+          "source": "뉴시스",
+          "date": "2026-07-15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -148,9 +160,9 @@
       "close_price": 5210.0,
       "trading_volume": 1128050,
       "trading_value": 5877140500,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "뇌졸중 AI 신의료기술평가 유예 지정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -217,7 +229,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "제이엘케이, 뇌졸중 AI '신의료기술평가 유예' 지정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013995258&office_id=003&code=322510&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -225,9 +247,9 @@
       "close_price": 4335.0,
       "trading_volume": 410070,
       "trading_value": 1777653450,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "뇌졸중 AI 신의료기술평가 유예 지정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -294,7 +316,17 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "제이엘케이, 뇌졸중 AI '신의료기술평가 유예' 지정",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013995258&office_id=003&code=322510&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260313",
@@ -378,9 +410,9 @@
       "date": "20260113",
       "change_rate": 11.38,
       "close_price": 6460.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "서울아산병원서 효과 입증",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -402,15 +434,25 @@
       "source": "estimated",
       "trading_volume": 1909069,
       "trading_value": 12332585740,
-      "market_cap": 166151200000
+      "market_cap": 166151200000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "제이엘케이 뇌졸중 AI 솔루션, 서울아산병원서 효과 입증",
+          "link": "https://n.news.naver.com/mnews/article/011/0004578078",
+          "source": "서울경제",
+          "date": "2026-01-13"
+        }
+      ]
     },
     {
       "date": "20251222",
       "change_rate": 13.04,
       "close_price": 6500.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 분당서울대병원서 뇌졸중 AI 도입 성과 확인",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -432,7 +474,17 @@
       "source": "estimated",
       "trading_volume": 675346,
       "trading_value": 4389749000,
-      "market_cap": 167180000000
+      "market_cap": 167180000000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "제이엘케이 “분당서울대병원서 ‘뇌졸중 AI’ 도입 성과 확인”",
+          "link": "https://n.news.naver.com/mnews/article/029/0003000941",
+          "source": "디지털타임스",
+          "date": "2025-12-22"
+        }
+      ]
     },
     {
       "date": "20251212",
@@ -533,5 +585,5 @@
     "count_recent": 1,
     "avg_rate": 15.7
   },
-  "built_at": "2026-10-01T22:57:13"
+  "built_at": "2026-10-02T05:15:56"
 }

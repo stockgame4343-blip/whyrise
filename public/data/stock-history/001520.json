@@ -9,9 +9,9 @@
       "close_price": 1353.0,
       "trading_volume": 5029523,
       "trading_value": 6804944619,
-      "rise_reason": "관련 보도: AI데이터센터·가덕도신공항 수혜 기대감에 상승세",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "AI데이터센터·가덕도신공항 수혜 기대감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -33,7 +33,8 @@
           "source": "전자신문",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260723",
@@ -41,9 +42,9 @@
       "close_price": 1134.0,
       "trading_volume": 4873980,
       "trading_value": 5527093320,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 우리금융지주 지분가치만 약 1000억원…주가 저평가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "부동산 보유 자산주",
       "news": [
@@ -110,7 +111,17 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "동양 \"우리금융지주 지분가치만 약 1000억원…주가 저평가\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005793566&office_id=277&code=001520&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260616",
@@ -118,9 +129,9 @@
       "close_price": 1248.0,
       "trading_volume": 1266555,
       "trading_value": 1580660640,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "365억 부천 AI허브센터 MEP구매·구축 공사 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -187,15 +198,25 @@
       ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "동양, 365억 부천 AI허브센터 MEP구매·구축 공사 수주",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014009456&office_id=003&code=001520&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.16"
+        }
+      ]
     },
     {
       "date": "20251205",
       "change_rate": 10.68,
       "close_price": 881.0,
-      "rise_reason": "시멘트/레미콘 테마 강세",
+      "rise_reason": "건설주 동반 강세 — 신원종합개발",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [],
@@ -204,15 +225,25 @@
       "source": "estimated",
       "trading_volume": 55035952,
       "trading_value": 48486673712,
-      "market_cap": 188674336283
+      "market_cap": 188674336283,
+      "reason_previous": "시멘트/레미콘 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "주택공급 확대 기대감에 건설株 급등…신원종합개발 '上'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005220582",
+          "source": "한국경제",
+          "date": "2025-12-05"
+        }
+      ]
     },
     {
       "date": "20251022",
       "change_rate": 10.14,
       "close_price": 1075.0,
-      "rise_reason": "조선/해운",
+      "rise_reason": "금일 코스피 거래량 1위 거래대금 1천억 돌파",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
@@ -246,15 +277,25 @@
       "source": "estimated",
       "trading_volume": 127026393,
       "trading_value": 136553372475,
-      "market_cap": 230221238938
+      "market_cap": 230221238938,
+      "reason_previous": "조선/해운",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스피 거래량 1위 동양 거래대금 1천억 돌파",
+          "link": "https://n.news.naver.com/mnews/article/081/0003584290",
+          "source": "서울신문",
+          "date": "2025-10-22"
+        }
+      ]
     },
     {
       "date": "20251014",
       "change_rate": 29.92,
       "close_price": 1003.0,
-      "rise_reason": "시멘트/레미콘 테마 상한가",
+      "rise_reason": "시멘트 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [],
@@ -263,15 +304,17 @@
       "source": "estimated",
       "trading_volume": 99723208,
       "trading_value": 100022377624,
-      "market_cap": 214801769911
+      "market_cap": 214801769911,
+      "reason_previous": "시멘트/레미콘 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20250929",
       "change_rate": 29.92,
       "close_price": 1077.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "시멘트 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [],
@@ -280,15 +323,17 @@
       "source": "estimated",
       "trading_volume": 37063692,
       "trading_value": 39917596284,
-      "market_cap": 230649557522
+      "market_cap": 230649557522,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250926",
       "change_rate": 29.94,
       "close_price": 829.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "시멘트 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [],
@@ -297,7 +342,9 @@
       "source": "estimated",
       "trading_volume": 62520920,
       "trading_value": 51829842680,
-      "market_cap": 177538053097
+      "market_cap": 177538053097,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -308,5 +355,5 @@
     "count_recent": 1,
     "avg_rate": 17.52
   },
-  "built_at": "2026-10-01T22:53:04"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -25,10 +25,10 @@
       "close_price": 478500.0,
       "trading_volume": 14158,
       "trading_value": 6774603000,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI",
       "news": [
         {
@@ -82,7 +82,9 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20251013",
@@ -117,5 +119,5 @@
     "count_recent": 0,
     "avg_rate": 15.96
   },
-  "built_at": "2026-10-01T22:52:58"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,10 +9,10 @@
       "close_price": 7300.0,
       "trading_volume": 5833630,
       "trading_value": 42585499000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제습기",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260724",
@@ -86,10 +88,10 @@
       "close_price": 6810.0,
       "trading_volume": 8510260,
       "trading_value": 57954870600,
-      "rise_reason": "제습기 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제습기",
       "news": [
         {
@@ -125,7 +127,9 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제습기 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260713",
@@ -133,9 +137,9 @@
       "close_price": 8760.0,
       "trading_volume": 11810896,
       "trading_value": 103463448960,
-      "rise_reason": "제습기 관련 뉴스",
+      "rise_reason": "한증막 더위 위닉스 동반",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제습기",
       "news": [
@@ -190,7 +194,17 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제습기 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"한증막 더위\" 파세코·위닉스 동반 급등[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006328887&office_id=018&code=037070&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.13"
+        }
+      ]
     },
     {
       "date": "20260706",
@@ -198,9 +212,9 @@
       "close_price": 8870.0,
       "trading_volume": 8280613,
       "trading_value": 73449037310,
-      "rise_reason": "여름 관련 뉴스",
+      "rise_reason": "유럽 폭염 K에어컨, 불티나게 팔린다",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "여름",
       "news": [
@@ -249,7 +263,17 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "여름 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "'유럽 폭염' K에어컨, 불티나게 팔린다…파세코, 15%↑[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006323485&office_id=018&code=037070&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.06"
+        }
+      ]
     },
     {
       "date": "20260703",
@@ -257,9 +281,9 @@
       "close_price": 6830.0,
       "trading_volume": 4600223,
       "trading_value": 31419523090,
-      "rise_reason": "제습기 수출 관련 뉴스",
+      "rise_reason": "7월 장마 시작",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제습기",
       "news": [
@@ -326,7 +350,17 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제습기 수출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "7월 장마 시작에 제습기株 동반 상승…파세코 19%대 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005381020&office_id=008&code=037070&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.03"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -334,10 +368,10 @@
       "close_price": 6190.0,
       "trading_volume": 267346,
       "trading_value": 1654871740,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제습기",
       "news": [
         {
@@ -403,7 +437,9 @@
       ],
       "sector": "가정용기기와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20250702",
@@ -462,5 +498,5 @@
     "count_recent": 0,
     "avg_rate": 18.97
   },
-  "built_at": "2026-10-01T22:57:14"
+  "built_at": "2026-10-02T05:15:56"
 }

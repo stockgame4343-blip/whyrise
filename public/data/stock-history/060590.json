@@ -9,9 +9,9 @@
       "close_price": 4200.0,
       "trading_volume": 1758006,
       "trading_value": 7383625200,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "바이오노트가 인수한, 수익성 개선에 주가",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "바이오노트가 인수한 씨티씨바이오, 수익성 개선에 주가 16%↑[Why ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004619912&office_id=011&code=060590&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.05.12"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -106,5 +116,5 @@
     "count_recent": 0,
     "avg_rate": 13.92
   },
-  "built_at": "2026-09-27T09:59:31"
+  "built_at": "2026-10-02T05:15:57"
 }

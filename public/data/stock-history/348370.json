@@ -9,9 +9,9 @@
       "close_price": 22800.0,
       "trading_volume": 837119,
       "trading_value": 19086313200,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "3년간 750억원 매입·소각",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔켐, 전환사채 상환 부담 낮춘다…3년간 750억원 매입·소각",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005808224&office_id=277&code=348370&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.27"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -109,9 +119,9 @@
       "close_price": 24850.0,
       "trading_volume": 532234,
       "trading_value": 13226014900,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "美 나스닥 합병 대상사 조건부 상장 유지",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -178,7 +188,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔켐, 美 나스닥 합병 대상사 조건부 상장 유지",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006344178&office_id=018&code=348370&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -263,15 +283,17 @@
       "close_price": 17430.0,
       "trading_volume": 243573,
       "trading_value": 4245477390,
-      "rise_reason": "전력저장장치(ESS) 테마 강세",
+      "rise_reason": "전력저장장치 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전력저장장치(ESS) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -279,9 +301,9 @@
       "close_price": 30650.0,
       "trading_volume": 348501,
       "trading_value": 10681555650,
-      "rise_reason": "리튬 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 손익 중심 경영 집중…비용 감축·자산 매각 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -348,7 +370,17 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "리튬 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "엔켐, 손익 중심 경영 집중…비용 감축·자산 매각 추진",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002428256&office_id=092&code=348370&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.06.26"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -356,10 +388,10 @@
       "close_price": 34900.0,
       "trading_volume": 368767,
       "trading_value": 12869968300,
-      "rise_reason": "납품 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
         {
@@ -425,7 +457,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "납품 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -721,9 +755,9 @@
       "date": "20260126",
       "change_rate": 12.5,
       "close_price": 72900.0,
-      "rise_reason": "2차전지 테마 강세",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -732,15 +766,17 @@
       "source": "estimated",
       "trading_volume": 933671,
       "trading_value": 68064615900,
-      "market_cap": 1597236655948
+      "market_cap": 1597236655948,
+      "reason_previous": "2차전지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251224",
       "change_rate": 10.59,
       "close_price": 71000.0,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "CATL에 1.5조 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -780,7 +816,17 @@
       "source": "estimated",
       "trading_volume": 796374,
       "trading_value": 56542554000,
-      "market_cap": 1555607717041
+      "market_cap": 1555607717041,
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔켐, CATL에 1.5조 공급…&quot;내년 흑자 전환&quot;",
+          "link": "https://n.news.naver.com/mnews/article/215/0001235774",
+          "source": "한국경제TV",
+          "date": "2025-12-24"
+        }
+      ]
     },
     {
       "date": "20251128",
@@ -834,9 +880,9 @@
       "date": "20251024",
       "change_rate": 10.85,
       "close_price": 96000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [],
@@ -845,7 +891,17 @@
       "source": "estimated",
       "trading_volume": 920611,
       "trading_value": 88378656000,
-      "market_cap": 2103356913183
+      "market_cap": 2103356913183,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     },
     {
       "date": "20250912",
@@ -938,5 +994,5 @@
     "count_recent": 0,
     "avg_rate": 16.07
   },
-  "built_at": "2026-10-01T22:55:10"
+  "built_at": "2026-10-02T05:15:56"
 }

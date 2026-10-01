@@ -9,9 +9,9 @@
       "close_price": 5080.0,
       "trading_volume": 3463710,
       "trading_value": 17595646800,
-      "rise_reason": "다음 공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "산업안전 AI 솔루션 첫 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -72,7 +72,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "다음 공급 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "폴라리스AI, 산업안전 AI 솔루션 첫 공급…온프레미스·온디바이스 라....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005393864&office_id=008&code=039980&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -80,10 +90,10 @@
       "close_price": 5180.0,
       "trading_volume": 844663,
       "trading_value": 4375354340,
-      "rise_reason": "다음 매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "GTX(수도권 광역급행철도)",
       "news": [
         {
@@ -149,7 +159,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "다음 매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -157,15 +169,17 @@
       "close_price": 4780.0,
       "trading_volume": 122939,
       "trading_value": 587648420,
-      "rise_reason": "전후 재건(우크라/중동 전쟁 등) 테마 강세",
+      "rise_reason": "전후 재건 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전후 재건(우크라/중동 전쟁 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260514",
@@ -173,9 +187,9 @@
       "close_price": 9140.0,
       "trading_volume": 6774024,
       "trading_value": 61914579360,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 국산 NPU 기반 온디바이스 AI·로봇 사업 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "GTX(수도권 광역급행철도)",
       "news": [
@@ -212,7 +226,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "폴라리스AI, 국산 NPU 기반 온디바이스 AI·로봇 사업 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006280746&office_id=018&code=039980&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.14"
+        }
+      ]
     },
     {
       "date": "20260429",
@@ -220,10 +244,10 @@
       "close_price": 9630.0,
       "trading_volume": 1208345,
       "trading_value": 11636362350,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철도",
       "news": [
         {
@@ -259,15 +283,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260317",
       "change_rate": 14.41,
       "close_price": 11082.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 990억 돌...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철도",
       "news": [
@@ -289,7 +315,17 @@
       "source": "estimated",
       "trading_volume": 21132990,
       "trading_value": 234195795180,
-      "market_cap": 159303750000
+      "market_cap": 159303750000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 폴라리스AI 거래대금 990억 돌...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003626616",
+          "source": "서울신문",
+          "date": "2026-03-17"
+        }
+      ]
     },
     {
       "date": "20260313",
@@ -372,9 +408,9 @@
       "date": "20250923",
       "change_rate": 12.42,
       "close_price": 13584.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "핸디소프트와 시너지 본격화 기대감",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철도",
       "news": [
@@ -408,7 +444,17 @@
       "source": "estimated",
       "trading_volume": 6997254,
       "trading_value": 95050698336,
-      "market_cap": 195270000000
+      "market_cap": 195270000000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]폴라리스AI, 핸디소프트와 시너지 본격화 기대감에 11%↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005655955",
+          "source": "아시아경제",
+          "date": "2025-09-23"
+        }
+      ]
     }
   ],
   "stats": {
@@ -419,5 +465,5 @@
     "count_recent": 0,
     "avg_rate": 18.88
   },
-  "built_at": "2026-10-01T22:58:11"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 6760.0,
       "trading_volume": 315332,
       "trading_value": 2131644320,
-      "rise_reason": "흑자 전환 보도",
+      "rise_reason": "상반기 영업익 55억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아이윈, 상반기 영업익 55억…전년比 30%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014132589&office_id=003&code=090150&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260416",
@@ -154,5 +164,5 @@
     "count_recent": 0,
     "avg_rate": 20.95
   },
-  "built_at": "2026-10-01T22:59:39"
+  "built_at": "2026-10-02T05:15:56"
 }

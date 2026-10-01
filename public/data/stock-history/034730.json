@@ -102,9 +102,9 @@
       "close_price": 642000.0,
       "trading_volume": 366494,
       "trading_value": 235289148000,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 위버스브레인, 주도 K-AI 얼라이언스 참여",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
@@ -171,7 +171,17 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "위버스브레인, SK 주도 ‘K-AI 얼라이언스’ 참여",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001166513&office_id=366&code=034730&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.22"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -179,9 +189,9 @@
       "close_price": 475500.0,
       "trading_volume": 327170,
       "trading_value": 155569335000,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "메모리 장기계약 확대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차(충전소/충전기)",
       "news": [
@@ -248,7 +258,17 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "삼성·SK, 메모리 장기계약 확대… '공급자 우위' 흐름 확산",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005516940&office_id=014&code=034730&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.05.04"
+        }
+      ]
     },
     {
       "date": "20250604",
@@ -293,5 +313,5 @@
     "count_recent": 0,
     "avg_rate": 15.69
   },
-  "built_at": "2026-10-01T22:52:03"
+  "built_at": "2026-10-02T05:15:57"
 }

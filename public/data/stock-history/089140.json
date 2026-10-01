@@ -179,10 +179,10 @@
       "close_price": 2460.0,
       "trading_volume": 428348,
       "trading_value": 1053736080,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비만치료제",
       "news": [
         {
@@ -248,7 +248,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -256,9 +258,9 @@
       "close_price": 2715.0,
       "trading_volume": 2556114,
       "trading_value": 6939849510,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 미래산업 지분 40.4% 보유…가치 부각",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -325,7 +327,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "넥스턴앤롤코리아 \"미래산업 지분 40.4% 보유…가치 부각\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013961921&office_id=003&code=089140&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.22"
+        }
+      ]
     },
     {
       "date": "20260513",
@@ -333,10 +345,10 @@
       "close_price": 2270.0,
       "trading_volume": 507238,
       "trading_value": 1151430260,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공작기계",
       "news": [
         {
@@ -402,7 +414,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
@@ -430,5 +444,5 @@
     "count_recent": 0,
     "avg_rate": 15.63
   },
-  "built_at": "2026-09-27T10:20:58"
+  "built_at": "2026-10-02T05:15:57"
 }

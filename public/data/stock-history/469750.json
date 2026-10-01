@@ -9,10 +9,10 @@
       "close_price": 1137.0,
       "trading_volume": 2115207,
       "trading_value": 2404990359,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -80,10 +82,10 @@
       "close_price": 949.0,
       "trading_volume": 1510652,
       "trading_value": 1433608748,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -149,7 +151,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -157,9 +161,9 @@
       "close_price": 730.0,
       "trading_volume": 260437,
       "trading_value": 190119010,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유리 기판 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -226,7 +230,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260730",
@@ -234,9 +240,9 @@
       "close_price": 589.0,
       "trading_volume": 96721,
       "trading_value": 56968669,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(장비)",
       "news": [
@@ -303,7 +309,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -343,9 +351,9 @@
       "close_price": 1378.0,
       "trading_volume": 8767737,
       "trading_value": 12081941586,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "유리 기판 테마 9종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -394,7 +402,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -417,9 +427,9 @@
       "date": "20251203",
       "change_rate": 13.45,
       "close_price": 1712.0,
-      "rise_reason": "유리 기판 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "유리기판 관련 특허 출원",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -459,7 +469,17 @@
       "source": "estimated",
       "trading_volume": 46885825,
       "trading_value": 80268532400,
-      "market_cap": 59064000000
+      "market_cap": 59064000000,
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "아이비젼웍스, 유리기판 관련 특허 출원에 '上'[핫스탁](종합)",
+          "link": "https://n.news.naver.com/mnews/article/003/0013634676",
+          "source": "뉴시스",
+          "date": "2025-12-02"
+        }
+      ]
     },
     {
       "date": "20251202",
@@ -614,9 +634,9 @@
       "date": "20250825",
       "change_rate": 10.45,
       "close_price": 1438.0,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 약...",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -638,7 +658,17 @@
       "source": "estimated",
       "trading_volume": 41346864,
       "trading_value": 59456790432,
-      "market_cap": 49611000000
+      "market_cap": 49611000000,
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 ‘아이비젼웍스’ 거래대금 약...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003568542",
+          "source": "서울신문",
+          "date": "2025-08-25"
+        }
+      ]
     },
     {
       "date": "20250820",
@@ -787,5 +817,5 @@
     "count_recent": 0,
     "avg_rate": 16.84
   },
-  "built_at": "2026-10-01T22:59:14"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -86,9 +86,9 @@
       "close_price": 63500.0,
       "trading_volume": 752632,
       "trading_value": 47792132000,
-      "rise_reason": "원전주 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "원자력발전소 해체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [
@@ -155,7 +155,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "원전주 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260810",
@@ -163,9 +165,9 @@
       "close_price": 56100.0,
       "trading_volume": 477507,
       "trading_value": 26788142700,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "수주 가시성 확대·사상 최대 실적 가능할 것-iM證",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -232,7 +234,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "비에이치아이, 수주 가시성 확대·사상 최대 실적 가능할 것-iM證",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005559142&office_id=014&code=083650&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -240,9 +252,9 @@
       "close_price": 49850.0,
       "trading_volume": 623133,
       "trading_value": 31063180050,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "LNG·원전 양날개 단, 실적 성장세 이어간다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
@@ -309,7 +321,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "'LNG·원전' 양날개 단 비에이치아이, 실적 성장세 이어간다",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001154122&office_id=417&code=083650&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -317,15 +339,17 @@
       "close_price": 40300.0,
       "trading_volume": 242284,
       "trading_value": 9764045200,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "고체산화물 연료전지 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260701",
@@ -333,15 +357,17 @@
       "close_price": 60400.0,
       "trading_volume": 358150,
       "trading_value": 21632260000,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "고체산화물 연료전지 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -349,15 +375,17 @@
       "close_price": 55700.0,
       "trading_volume": 322332,
       "trading_value": 17953892400,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "고체산화물 연료전지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -365,9 +393,9 @@
       "close_price": 80600.0,
       "trading_volume": 1037069,
       "trading_value": 83587761400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "한국에너지기술연구원과 업무협약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전소 해체",
       "news": [
@@ -434,7 +462,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "비에이치아이, 한국에너지기술연구원과 업무협약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006301181&office_id=018&code=083650&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260306",
@@ -651,5 +689,5 @@
     "count_recent": 1,
     "avg_rate": 15.73
   },
-  "built_at": "2026-10-01T22:54:05"
+  "built_at": "2026-10-02T05:15:56"
 }

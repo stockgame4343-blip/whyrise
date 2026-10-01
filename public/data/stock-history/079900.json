@@ -9,10 +9,10 @@
       "close_price": 41750.0,
       "trading_volume": 963752,
       "trading_value": 40236646000,
-      "rise_reason": "건설기계 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설기계",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건설기계 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260826",
@@ -179,9 +181,9 @@
       "close_price": 57200.0,
       "trading_volume": 122462,
       "trading_value": 7004826400,
-      "rise_reason": "주주환원 정책",
+      "rise_reason": "이란 전쟁 종전 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
@@ -248,7 +250,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "재건 관련주, 이란 전쟁 종전 기대감에 급등…전진건설로봇 11%대↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005692857&office_id=009&code=079900&page=&sm=",
+          "source": "매일경제",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -297,15 +309,17 @@
       "close_price": 58000.0,
       "trading_volume": 175088,
       "trading_value": 10155104000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전후 재건 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -352,9 +366,9 @@
       "date": "20251017",
       "change_rate": 10.31,
       "close_price": 51900.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "러·우 종전 논의 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
@@ -394,7 +408,17 @@
       "source": "estimated",
       "trading_volume": 383888,
       "trading_value": 19923787200,
-      "market_cap": 757351668351
+      "market_cap": 757351668351,
+      "reason_previous": "방산",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]전진건설로봇, 러·우 종전 논의 소식에↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005665711",
+          "source": "아시아경제",
+          "date": "2025-10-17"
+        }
+      ]
     }
   ],
   "stats": {
@@ -405,5 +429,5 @@
     "count_recent": 1,
     "avg_rate": 16.83
   },
-  "built_at": "2026-10-01T22:52:44"
+  "built_at": "2026-10-02T05:15:56"
 }

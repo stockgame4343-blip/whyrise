@@ -9,10 +9,10 @@
       "close_price": 2305.0,
       "trading_volume": 4352174,
       "trading_value": 10031761070,
-      "rise_reason": "MLCC 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MLCC 상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260623",
@@ -44,10 +46,10 @@
       "close_price": 3755.0,
       "trading_volume": 24323734,
       "trading_value": 91335621170,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
         {
@@ -83,7 +85,9 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260622",
@@ -91,9 +95,9 @@
       "close_price": 2890.0,
       "trading_volume": 8259324,
       "trading_value": 23869446360,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강 중소형 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -142,7 +146,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260612",
@@ -150,10 +156,10 @@
       "close_price": 2150.0,
       "trading_volume": 564370,
       "trading_value": 1213395500,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
         {
@@ -207,7 +213,9 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260428",
@@ -215,9 +223,9 @@
       "close_price": 3350.0,
       "trading_volume": 22975453,
       "trading_value": 76967767550,
-      "rise_reason": "관세 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 동반 강세 — 미국-이란 종전협상 교착",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
@@ -254,7 +262,17 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "관세 정책 관련",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 미국-이란 종전협상 교착… 철강株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003422455&office_id=030&code=008420&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.04.28"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -379,5 +397,5 @@
     "count_recent": 0,
     "avg_rate": 21.47
   },
-  "built_at": "2026-10-01T22:53:22"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -68,9 +68,9 @@
       "close_price": 17880.0,
       "trading_volume": 18377140,
       "trading_value": 328583263200,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — 중국 로봇 사실상 수입금지",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -137,7 +137,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美, 중국 로봇 사실상 수입금지…국내 로봇주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009093359&office_id=421&code=484810&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260722",
@@ -145,9 +155,9 @@
       "close_price": 17570.0,
       "trading_volume": 732601,
       "trading_value": 12871799570,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇주 동반 강세 — 삼성전자 로봇 승부수에 줄줄이",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -220,7 +230,17 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "로봇주 '불기둥'…삼성전자 로봇 승부수에 줄줄이 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334418&office_id=018&code=066430&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.22"
+        }
+      ]
     },
     {
       "date": "20260721",
@@ -228,9 +248,9 @@
       "close_price": 13520.0,
       "trading_volume": 2613889,
       "trading_value": 35339779280,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -297,7 +317,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260615",
@@ -305,10 +327,10 @@
       "close_price": 25100.0,
       "trading_volume": 5151739,
       "trading_value": 129308648900,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [
         {
@@ -374,7 +396,9 @@
       ],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260520",
@@ -398,15 +422,17 @@
       "close_price": 48600.0,
       "trading_volume": 27976451,
       "trading_value": 1359655518600,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260514",
@@ -414,15 +440,17 @@
       "close_price": 52700.0,
       "trading_volume": 6319035,
       "trading_value": 333013144500,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2026 상반기 신규상장",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -430,15 +458,17 @@
       "close_price": 40550.0,
       "trading_volume": 10299308,
       "trading_value": 417636939400,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260512",
@@ -446,15 +476,17 @@
       "close_price": 31200.0,
       "trading_volume": 11809721,
       "trading_value": 368463295200,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -465,5 +497,5 @@
     "count_recent": 1,
     "avg_rate": 26.02
   },
-  "built_at": "2026-10-01T22:55:53"
+  "built_at": "2026-10-02T05:15:56"
 }

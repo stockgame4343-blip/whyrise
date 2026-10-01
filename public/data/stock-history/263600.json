@@ -9,10 +9,10 @@
       "close_price": 4410.0,
       "trading_volume": 542998,
       "trading_value": 2394621180,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -32,15 +34,17 @@
       "close_price": 3455.0,
       "trading_volume": 62599,
       "trading_value": 216279545,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -63,9 +67,9 @@
       "date": "20260219",
       "change_rate": 10.14,
       "close_price": 5650.0,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "지난해 영업이익 16억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -81,7 +85,17 @@
       "source": "estimated",
       "trading_volume": 603125,
       "trading_value": 3407656250,
-      "market_cap": 90024296675
+      "market_cap": 90024296675,
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "덕우전자, 지난해 영업이익 16억…전년比 흑자 전환",
+          "link": "https://n.news.naver.com/mnews/article/003/0013775000",
+          "source": "뉴시스",
+          "date": "2026-02-19"
+        }
+      ]
     }
   ],
   "stats": {
@@ -92,5 +106,5 @@
     "count_recent": 1,
     "avg_rate": 16.03
   },
-  "built_at": "2026-10-01T22:58:15"
+  "built_at": "2026-10-02T05:15:56"
 }

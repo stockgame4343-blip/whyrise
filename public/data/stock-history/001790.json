@@ -9,10 +9,10 @@
       "close_price": 2905.0,
       "trading_volume": 3477352,
       "trading_value": 10101707560,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "사료",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -80,9 +82,9 @@
       "close_price": 2500.0,
       "trading_volume": 2210608,
       "trading_value": 5526520000,
-      "rise_reason": "정부 정책 관련",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 설탕 담합 과징금 CJ만 냈다... ·삼양사는 뒤통수...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "환율하락 수혜",
       "news": [
@@ -149,7 +151,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정부 정책 관련",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[단독] 설탕 담합 과징금 CJ만 냈다... 대한제당·삼양사는 '뒤통수...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002520411&office_id=047&code=001790&page=&sm=",
+          "source": "오마이뉴스",
+          "date": "2026.06.24"
+        }
+      ]
     }
   ],
   "stats": {
@@ -160,5 +172,5 @@
     "count_recent": 0,
     "avg_rate": 12.37
   },
-  "built_at": "2026-09-27T08:48:02"
+  "built_at": "2026-10-02T05:15:57"
 }

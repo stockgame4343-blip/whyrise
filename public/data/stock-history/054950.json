@@ -9,9 +9,9 @@
       "close_price": 23050.0,
       "trading_volume": 109284,
       "trading_value": 2518996200,
-      "rise_reason": "수출 관련 뉴스",
+      "rise_reason": "2분기 영업익 135억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(25년 기업가치 제고계획 발표)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "제이브이엠, 2분기 영업익 135억…전년비 24%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014098799&office_id=003&code=054950&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.30"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 12.44
   },
-  "built_at": "2026-09-28T23:46:01"
+  "built_at": "2026-10-02T05:15:57"
 }

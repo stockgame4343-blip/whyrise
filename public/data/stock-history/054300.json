@@ -9,10 +9,10 @@
       "close_price": 904.0,
       "trading_volume": 1021282,
       "trading_value": 923238928,
-      "rise_reason": "승인 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(LFP/리튬인산철)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "해운사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "승인 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260615",
@@ -86,10 +88,10 @@
       "close_price": 989.0,
       "trading_volume": 466762,
       "trading_value": 461627618,
-      "rise_reason": "승인 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(LFP/리튬인산철)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "해운사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "승인 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -255,9 +259,9 @@
       "date": "20250731",
       "change_rate": 12.89,
       "close_price": 1804.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "퓨리오사AI 유니콘 등극",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(LFP/리튬인산철)",
       "news": [
@@ -285,15 +289,25 @@
       "source": "estimated",
       "trading_volume": 19016531,
       "trading_value": 34305821924,
-      "market_cap": 104335062006
+      "market_cap": 104335062006,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "퓨리오사AI '유니콘' 등극에…관련주 팬스타엔터프라이즈 6%↑[특징주...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006077799",
+          "source": "이데일리",
+          "date": "2025-07-31"
+        }
+      ]
     },
     {
       "date": "20250721",
       "change_rate": 13.4,
       "close_price": 1388.0,
-      "rise_reason": "2차전지(LFP/리튬인산철) 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 리튬 가격도 오른다",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(LFP/리튬인산철)",
       "news": [
@@ -315,7 +329,17 @@
       "source": "estimated",
       "trading_volume": 6685387,
       "trading_value": 9279317156,
-      "market_cap": 80275535512
+      "market_cap": 80275535512,
+      "reason_previous": "2차전지(LFP/리튬인산철) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;리튬 가격도 오른다&quot;...포스코·이녹스첨단소재 등 이차전지株 상승...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005380022",
+          "source": "파이낸셜뉴스",
+          "date": "2025-07-21"
+        }
+      ]
     }
   ],
   "stats": {
@@ -326,5 +350,5 @@
     "count_recent": 0,
     "avg_rate": 13.57
   },
-  "built_at": "2026-10-01T22:58:30"
+  "built_at": "2026-10-02T05:15:57"
 }

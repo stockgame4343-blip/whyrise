@@ -9,10 +9,10 @@
       "close_price": 2495.0,
       "trading_volume": 238237,
       "trading_value": 594401315,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -100,9 +102,9 @@
       "date": "20260209",
       "change_rate": 14.41,
       "close_price": 4010.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "작년 영업익 37억 흑자전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -124,7 +126,17 @@
       "source": "estimated",
       "trading_volume": 700413,
       "trading_value": 2808656130,
-      "market_cap": 49405907172
+      "market_cap": 49405907172,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "포인트모바일, 작년 영업익 37억 '흑자전환'",
+          "link": "https://n.news.naver.com/mnews/article/018/0006215881",
+          "source": "이데일리",
+          "date": "2026-02-09"
+        }
+      ]
     },
     {
       "date": "20251107",
@@ -218,5 +230,5 @@
     "count_recent": 0,
     "avg_rate": 17.8
   },
-  "built_at": "2026-10-01T22:59:20"
+  "built_at": "2026-10-02T05:15:56"
 }

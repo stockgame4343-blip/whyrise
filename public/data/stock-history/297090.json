@@ -9,15 +9,17 @@
       "close_price": 4015.0,
       "trading_volume": 181802,
       "trading_value": 729935030,
-      "rise_reason": "풍력에너지 테마 강세",
+      "rise_reason": "풍력에너지 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "풍력에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -25,15 +27,17 @@
       "close_price": 4345.0,
       "trading_volume": 207576,
       "trading_value": 901917720,
-      "rise_reason": "풍력에너지 테마 강세",
+      "rise_reason": "풍력에너지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "풍력에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260616",
@@ -41,9 +45,9 @@
       "close_price": 5860.0,
       "trading_volume": 1896653,
       "trading_value": 11114386580,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "풍력에너지 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -110,7 +114,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260403",
@@ -118,9 +124,9 @@
       "close_price": 9140.0,
       "trading_volume": 2336796,
       "trading_value": 21358315440,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "풍력·태양광주 동반 강세 — 신재생에너지 수요 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -139,7 +145,17 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;신재생에너지 수요 기대감&quot;…풍력·태양광株 급등",
+          "link": "https://n.news.naver.com/mnews/article/003/0013865240",
+          "source": "뉴시스",
+          "date": "2026-04-03"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -184,5 +200,5 @@
     "count_recent": 0,
     "avg_rate": 15.87
   },
-  "built_at": "2026-10-01T22:57:13"
+  "built_at": "2026-10-02T05:15:57"
 }

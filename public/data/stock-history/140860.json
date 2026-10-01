@@ -25,9 +25,9 @@
       "close_price": 339500.0,
       "trading_volume": 182263,
       "trading_value": 61878288500,
-      "rise_reason": "주주환원 정책",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2분기 실적 개선 재개 전망",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "주주환원 정책",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"파크시스템스, 2분기 실적 개선 재개 전망…목표가↑\"-iM",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005296497&office_id=015&code=140860&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -102,9 +112,9 @@
       "close_price": 259000.0,
       "trading_volume": 34637,
       "trading_value": 8970983000,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "코리아 밸류업 지수 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코리아 밸류업 지수(Korea Value-up Index)",
       "news": [
@@ -129,7 +139,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -152,9 +164,9 @@
       "date": "20260128",
       "change_rate": 10.15,
       "close_price": 298500.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -163,7 +175,9 @@
       "source": "estimated",
       "trading_volume": 122049,
       "trading_value": 36431626500,
-      "market_cap": 2090200978473
+      "market_cap": 2090200978473,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -174,5 +188,5 @@
     "count_recent": 0,
     "avg_rate": 14.74
   },
-  "built_at": "2026-10-01T18:07:41"
+  "built_at": "2026-10-02T05:15:57"
 }

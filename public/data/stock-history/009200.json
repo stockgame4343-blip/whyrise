@@ -9,9 +9,9 @@
       "close_price": 2560.0,
       "trading_volume": 27241200,
       "trading_value": 69737472000,
-      "rise_reason": "제지 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "제지주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제지",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "제지 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제지株 급등…‘쿠팡’ 종이봉투 가능성에 제지사들 숨통 트일까[중기...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002628976&office_id=016&code=009200&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.04.13"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 21.04
   },
-  "built_at": "2026-09-27T09:00:08"
+  "built_at": "2026-10-02T05:15:57"
 }

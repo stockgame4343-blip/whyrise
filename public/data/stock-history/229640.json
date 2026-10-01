@@ -9,9 +9,9 @@
       "close_price": 60300.0,
       "trading_volume": 918517,
       "trading_value": 55386575100,
-      "rise_reason": "관련 보도: 美 태양광 케이블 공급 소식에… 주가 15%↑",
+      "rise_reason": "美 태양광 케이블 공급 소식",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -99,7 +99,8 @@
           "source": "전자신문",
           "date": "2026-09-16"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260731",
@@ -123,9 +124,9 @@
       "close_price": 52700.0,
       "trading_volume": 281471,
       "trading_value": 14833521700,
-      "rise_reason": "전선 수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -192,7 +193,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 수출 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "알파벳, AI 투자 계속 간다… 전력설비주 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005389692&office_id=008&code=006340&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -200,9 +211,9 @@
       "close_price": 60700.0,
       "trading_volume": 289242,
       "trading_value": 17556989400,
-      "rise_reason": "전선 수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — LS일렉트릭",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -269,7 +280,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 수주 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'1500조 메가프로젝트'에 전력株 급등…LS일렉트릭 13%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014039102&office_id=003&code=010120&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.01"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -293,9 +314,9 @@
       "close_price": 67900.0,
       "trading_volume": 322895,
       "trading_value": 21924570500,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "현대로템에 철도 차량용 통신케이블 공급",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -362,7 +383,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "LS에코에너지, 현대로템에 철도 차량용 통신케이블 공급",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003726265&office_id=020&code=229640&page=&sm=",
+          "source": "동아일보",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -370,9 +401,9 @@
       "close_price": 89400.0,
       "trading_volume": 411318,
       "trading_value": 36771829200,
-      "rise_reason": "전선 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 통신케이블 美 UL 화재안전인증 획득",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -439,7 +470,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전선 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "LS에코에너지, 통신케이블 美 UL 화재안전인증 획득",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511575&office_id=374&code=229640&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260429",
@@ -678,15 +719,17 @@
       "close_price": 44350.0,
       "trading_volume": 120811,
       "trading_value": 5357967850,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전선 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
@@ -796,5 +839,5 @@
     "count_recent": 1,
     "avg_rate": 14.44
   },
-  "built_at": "2026-10-01T22:52:28"
+  "built_at": "2026-10-02T05:15:56"
 }

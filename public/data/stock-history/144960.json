@@ -9,9 +9,9 @@
       "close_price": 11870.0,
       "trading_volume": 3144138,
       "trading_value": 37320918060,
-      "rise_reason": "관련 보도: 반도체 수출 259% 급증…소부장株 불기둥, 시그네틱스 '上'[핫종목]",
+      "rise_reason": "반도체주 동반 강세 — 반도체 수출 259% 급증",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -45,7 +45,8 @@
           "source": "뉴스1",
           "date": "2026-09-21"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260810",
@@ -53,9 +54,9 @@
       "close_price": 12000.0,
       "trading_volume": 2023488,
       "trading_value": 24281856000,
-      "rise_reason": "착공 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 14종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -122,7 +123,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "착공 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -130,9 +133,9 @@
       "close_price": 10010.0,
       "trading_volume": 1906665,
       "trading_value": 19085716650,
-      "rise_reason": "착공 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "특허분쟁 MKS, 특허 무효 이어 정정도 무산",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -199,7 +202,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "착공 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "'뉴파워프라즈마와 특허분쟁' MKS, 특허 무효 이어 정정도 무산",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002432649&office_id=092&code=144960&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.07.31"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -207,9 +220,9 @@
       "close_price": 9560.0,
       "trading_volume": 1962586,
       "trading_value": 18762322160,
-      "rise_reason": "착공 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 20종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -276,7 +289,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "착공 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260703",
@@ -284,10 +299,10 @@
       "close_price": 8460.0,
       "trading_volume": 2280876,
       "trading_value": 19296210960,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -353,7 +368,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -361,9 +378,9 @@
       "close_price": 8150.0,
       "trading_volume": 877814,
       "trading_value": 7154184100,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -430,7 +447,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'메가프로젝트'에 반도체株 들썩…외국인은 8일째 매도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005379513&office_id=008&code=036930&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.30"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -438,9 +465,9 @@
       "close_price": 10050.0,
       "trading_volume": 1722535,
       "trading_value": 17311476750,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 소부장주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -507,7 +534,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "코스닥 '반도체 소부장주' 급등…최고가 종목중 95% 차지",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016136248&office_id=001&code=144960&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260601",
@@ -515,10 +552,10 @@
       "close_price": 9310.0,
       "trading_volume": 1992201,
       "trading_value": 18547391310,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -584,7 +621,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -592,9 +631,9 @@
       "close_price": 11150.0,
       "trading_volume": 9663091,
       "trading_value": 107743464650,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -661,7 +700,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "theme"
     },
     {
       "date": "20260512",
@@ -669,10 +710,10 @@
       "close_price": 8580.0,
       "trading_volume": 5482675,
       "trading_value": 47041351500,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -738,7 +779,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -746,9 +789,9 @@
       "close_price": 7850.0,
       "trading_volume": 1355261,
       "trading_value": 10638798850,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — 000 돌파",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -815,7 +858,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피, 7,000 돌파…반도체 대표주 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000508330&office_id=374&code=024840&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -838,9 +891,9 @@
       "date": "20260102",
       "change_rate": 10.25,
       "close_price": 5700.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -849,7 +902,9 @@
       "source": "estimated",
       "trading_volume": 623215,
       "trading_value": 3552325500,
-      "market_cap": 249071090047
+      "market_cap": 249071090047,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -860,5 +915,5 @@
     "count_recent": 1,
     "avg_rate": 16.35
   },
-  "built_at": "2026-10-01T22:54:57"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 31300.0,
       "trading_volume": 340577,
       "trading_value": 10660060100,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "中하이난 진출",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어 \"中하이난 진출…피부재생 수술 목표\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014182276&office_id=003&code=376900&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -86,10 +96,10 @@
       "close_price": 35000.0,
       "trading_volume": 198916,
       "trading_value": 6962060000,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "3D 프린터",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -426,9 +438,9 @@
       "close_price": 44500.0,
       "trading_volume": 672613,
       "trading_value": 29931278500,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "美 자회사의 나스닥 상장 초읽기",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "3D 프린터",
       "news": [
@@ -495,7 +507,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "美 자회사의 나스닥 상장 초읽기…로킷헬스케어 연속 급등[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006314341&office_id=018&code=376900&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.25"
+        }
+      ]
     },
     {
       "date": "20260624",
@@ -503,9 +525,9 @@
       "close_price": 48000.0,
       "trading_volume": 84431,
       "trading_value": 4052688000,
-      "rise_reason": "임상 관련 뉴스",
+      "rise_reason": "美자회사 나스닥 상장 임박",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "3D 프린터",
       "news": [
@@ -572,7 +594,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어, 美자회사 나스닥 상장 임박에 ‘상한가’ [Why 바이오]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004634364&office_id=011&code=376900&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.24"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -580,9 +612,9 @@
       "close_price": 76600.0,
       "trading_volume": 624137,
       "trading_value": 47808894200,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "피부암 절제 후 재생 치료 결과 발표 4.2주 내",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -649,7 +681,17 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어, 피부암 절제 후 재생 치료 결과 발표 “4.2주 내 상처...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004618674&office_id=011&code=376900&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -767,9 +809,9 @@
       "date": "20260310",
       "change_rate": 13.01,
       "close_price": 77300.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 625억원 규모 유상증자 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -809,7 +851,17 @@
       "source": "estimated",
       "trading_volume": 1109689,
       "trading_value": 85778959700,
-      "market_cap": 1226975299760
+      "market_cap": 1226975299760,
+      "reason_previous": "유상증자",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어, 625억원 규모 유상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006231870",
+          "source": "이데일리",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -839,9 +891,9 @@
       "date": "20260223",
       "change_rate": 14.26,
       "close_price": 63300.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 미국 연방정부 재향군인 의료 시스템 진...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -863,15 +915,25 @@
       "source": "estimated",
       "trading_volume": 615485,
       "trading_value": 38960200500,
-      "market_cap": 1004754676258
+      "market_cap": 1004754676258,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[바이오스냅] 로킷헬스케어, 미국 연방정부 재향군인 의료 시스템 진...",
+          "link": "https://n.news.naver.com/mnews/article/001/0015917954",
+          "source": "연합뉴스",
+          "date": "2026-02-23"
+        }
+      ]
     },
     {
       "date": "20260211",
       "change_rate": 13.31,
       "close_price": 64700.0,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "상장 첫해 영업이익 흑자 전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -893,15 +955,25 @@
       "source": "estimated",
       "trading_volume": 894068,
       "trading_value": 57846199600,
-      "market_cap": 1026976738609
+      "market_cap": 1026976738609,
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어, 상장 첫해 영업이익 ‘흑자 전환’",
+          "link": "https://n.news.naver.com/mnews/article/366/0001142136",
+          "source": "조선비즈",
+          "date": "2026-02-11"
+        }
+      ]
     },
     {
       "date": "20260108",
       "change_rate": 12.91,
       "close_price": 71700.0,
-      "rise_reason": "바이오",
+      "rise_reason": "中 의료기기 1위 기업 WEGO와 파트너십",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -941,15 +1013,25 @@
       "source": "estimated",
       "trading_volume": 1709923,
       "trading_value": 122601479100,
-      "market_cap": 1138087050359
+      "market_cap": 1138087050359,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어, 中 의료기기 1위 기업 WEGO와 파트너십…&quot;진출 본격화&quot;",
+          "link": "https://n.news.naver.com/mnews/article/029/0003003716",
+          "source": "디지털타임스",
+          "date": "2026-01-08"
+        }
+      ]
     },
     {
       "date": "20251202",
       "change_rate": 10.83,
       "close_price": 83900.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 영국·EU 보험 시장 공략 파마코이코노미 근거 확...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -989,15 +1071,25 @@
       "source": "estimated",
       "trading_volume": 2156425,
       "trading_value": 180924057500,
-      "market_cap": 1331736450839
+      "market_cap": 1331736450839,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어, 영국·EU 보험 시장 공략 ‘파마코이코노미 근거’ 확...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006175770",
+          "source": "이데일리",
+          "date": "2025-12-02"
+        }
+      ]
     },
     {
       "date": "20251126",
       "change_rate": 10.87,
       "close_price": 75500.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "이스라엘 공보험 진입 위한 최종 임상 승인",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -1037,15 +1129,25 @@
       "source": "estimated",
       "trading_volume": 2980797,
       "trading_value": 225050173500,
-      "market_cap": 1198404076738
+      "market_cap": 1198404076738,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어, 이스라엘 공보험 진입 위한 최종 임상 승인",
+          "link": "https://n.news.naver.com/mnews/article/029/0002995738",
+          "source": "디지털타임스",
+          "date": "2025-11-26"
+        }
+      ]
     },
     {
       "date": "20251125",
       "change_rate": 10.37,
       "close_price": 68100.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "중국 특허",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -1085,15 +1187,25 @@
       "source": "estimated",
       "trading_volume": 3643629,
       "trading_value": 248131134900,
-      "market_cap": 1080944604316
+      "market_cap": 1080944604316,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "로킷헬스케어, 중국 특허에 上…ECM 스킨부스터 업체 주목[바이오맥짚...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006170915",
+          "source": "이데일리",
+          "date": "2025-11-25"
+        }
+      ]
     },
     {
       "date": "20251120",
       "change_rate": 14.79,
       "close_price": 59000.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 아직 시작도 안 했다…, 당뇨발 국내 임상 연내...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -1121,7 +1233,17 @@
       "source": "estimated",
       "trading_volume": 3250572,
       "trading_value": 191783748000,
-      "market_cap": 936501199040
+      "market_cap": 936501199040,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "“아직 시작도 안 했다”…로킷헬스케어, ‘당뇨발 국내 임상’ 연내...",
+          "link": "https://n.news.naver.com/mnews/article/029/0002994779",
+          "source": "디지털타임스",
+          "date": "2025-11-20"
+        }
+      ]
     },
     {
       "date": "20251117",
@@ -1299,5 +1421,5 @@
     "count_recent": 1,
     "avg_rate": 16.86
   },
-  "built_at": "2026-10-01T22:55:05"
+  "built_at": "2026-10-02T05:15:56"
 }

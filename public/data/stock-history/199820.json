@@ -86,15 +86,17 @@
       "close_price": 6390.0,
       "trading_volume": 248484,
       "trading_value": 1587812760,
-      "rise_reason": "전력설비 테마 강세",
+      "rise_reason": "전력설비 테마 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전력설비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -195,9 +197,9 @@
       "close_price": 16640.0,
       "trading_volume": 8686269,
       "trading_value": 144539516160,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -264,7 +266,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260318",
@@ -375,5 +387,5 @@
     "count_recent": 0,
     "avg_rate": 15.39
   },
-  "built_at": "2026-10-01T22:56:41"
+  "built_at": "2026-10-02T05:15:56"
 }

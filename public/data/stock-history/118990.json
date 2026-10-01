@@ -9,9 +9,9 @@
       "close_price": 5770.0,
       "trading_volume": 216206,
       "trading_value": 1247508620,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "50억 규모 자사주 취득 신탁계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "모트렉스, 50억 규모 자사주 취득 신탁계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014137451&office_id=003&code=118990&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.20"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -177,5 +187,5 @@
     "count_recent": 0,
     "avg_rate": 11.73
   },
-  "built_at": "2026-10-01T22:56:53"
+  "built_at": "2026-10-02T05:15:56"
 }

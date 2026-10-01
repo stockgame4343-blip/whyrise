@@ -32,9 +32,9 @@
       "close_price": 171500.0,
       "trading_volume": 1034603,
       "trading_value": 177434414500,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "신재생에너지주 동반 강세 — 국제유가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -95,7 +95,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 국제유가 급등에…신재생에너지株 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001181164&office_id=366&code=322000&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260721",
@@ -103,9 +113,9 @@
       "close_price": 130000.0,
       "trading_volume": 324686,
       "trading_value": 42209180000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "신재생에너지주 동반 강세 — 유가 90달러 돌파",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -172,7 +182,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 유가 90달러 돌파에 신재생에너지株 강세…SK이터닉스 5% ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001180269&office_id=366&code=322000&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260715",
@@ -212,9 +232,9 @@
       "close_price": 244000.0,
       "trading_volume": 2231524,
       "trading_value": 544491856000,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "태양광에너지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -281,7 +301,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260403",
@@ -289,15 +311,17 @@
       "close_price": 191100.0,
       "trading_volume": 3337733,
       "trading_value": 637840776300,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "태양광에너지 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260312",
@@ -464,9 +488,9 @@
       "date": "20260219",
       "change_rate": 10.07,
       "close_price": 89600.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "태양광 관련주 동반 강세 — 페로브스카이트 합성 신기술 개발",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -488,7 +512,17 @@
       "source": "estimated",
       "trading_volume": 1778157,
       "trading_value": 159322867200,
-      "market_cap": 1003520000000
+      "market_cap": 1003520000000,
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "韓, 페로브스카이트 합성 신기술 개발…태양광 관련주 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005252254",
+          "source": "한국경제",
+          "date": "2026-02-19"
+        }
+      ]
     },
     {
       "date": "20260205",
@@ -590,9 +624,9 @@
       "date": "20251103",
       "change_rate": 28.35,
       "close_price": 72900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "태양광에너지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
@@ -601,7 +635,9 @@
       "source": "estimated",
       "trading_volume": 937650,
       "trading_value": 68354685000,
-      "market_cap": 816480000000
+      "market_cap": 816480000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251027",
@@ -663,5 +699,5 @@
     "count_recent": 0,
     "avg_rate": 19.72
   },
-  "built_at": "2026-10-01T22:52:33"
+  "built_at": "2026-10-02T05:15:57"
 }

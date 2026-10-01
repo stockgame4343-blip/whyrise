@@ -9,9 +9,9 @@
       "close_price": 17730.0,
       "trading_volume": 657295,
       "trading_value": 11653840350,
-      "rise_reason": "관련 보도: 자사주 300억 태운다…주주환원 확대",
+      "rise_reason": "자사주 300억 태운다",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "패션/의류",
       "news": [
@@ -99,7 +99,8 @@
           "source": "아이뉴스24",
           "date": "2026-09-18"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260514",
@@ -107,9 +108,9 @@
       "close_price": 27950.0,
       "trading_volume": 330577,
       "trading_value": 9239627150,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "신상품 100여종 공개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [
@@ -176,7 +177,17 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한섬, 성수동서 '나이키스킴스 쇼케이스'…신상품 100여종 공개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016073925&office_id=001&code=020000&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.05.13"
+        }
+      ]
     },
     {
       "date": "20260210",
@@ -230,9 +241,9 @@
       "date": "20260128",
       "change_rate": 11.47,
       "close_price": 17100.0,
-      "rise_reason": "실적 개선",
+      "rise_reason": "LF 깜짝실적 훈풍",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "밸류업(24년 기업가치 제고계획 발표)",
       "news": [
@@ -272,7 +283,17 @@
       "source": "estimated",
       "trading_volume": 690178,
       "trading_value": 11802043800,
-      "market_cap": 367292093023
+      "market_cap": 367292093023,
+      "reason_previous": "실적 개선",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] LF ‘깜짝실적’ 훈풍에… LF·한섬, 나란히 5%대 강세",
+          "link": "https://n.news.naver.com/mnews/article/366/0001138857",
+          "source": "조선비즈",
+          "date": "2026-01-28"
+        }
+      ]
     }
   ],
   "stats": {
@@ -283,5 +304,5 @@
     "count_recent": 1,
     "avg_rate": 12.02
   },
-  "built_at": "2026-10-01T22:52:47"
+  "built_at": "2026-10-02T05:15:56"
 }

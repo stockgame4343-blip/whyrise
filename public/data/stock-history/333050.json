@@ -9,9 +9,9 @@
       "close_price": 5160.0,
       "trading_volume": 29265,
       "trading_value": 151007400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 글로벌 제조 대기업 생성형 AI 플랫폼 내 실시간 데이터 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이노테나, 글로벌 제조 대기업 생성형 AI 플랫폼 내 '실시간 데이터 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003435678&office_id=030&code=333050&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.09"
+        }
+      ]
     },
     {
       "date": "20260306",
@@ -142,5 +152,5 @@
     "count_recent": 0,
     "avg_rate": 12.07
   },
-  "built_at": "2026-09-27T10:24:26"
+  "built_at": "2026-10-02T05:15:57"
 }

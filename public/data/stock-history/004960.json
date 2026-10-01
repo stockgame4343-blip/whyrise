@@ -25,10 +25,10 @@
       "close_price": 16290.0,
       "trading_volume": 474009,
       "trading_value": 7721606610,
-      "rise_reason": "공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모듈러주택",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -102,15 +104,25 @@
       "close_price": 17020.0,
       "trading_volume": 720473,
       "trading_value": 12262450460,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모듈러주택",
       "news": [],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -228,9 +240,9 @@
       "date": "20251211",
       "change_rate": 13.35,
       "close_price": 11380.0,
-      "rise_reason": "모듈러주택 테마 강세",
+      "rise_reason": "건설주 동반 강세 — 수도권 공공주택 공급 속도전",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모듈러주택",
       "news": [],
@@ -239,7 +251,17 @@
       "source": "estimated",
       "trading_volume": 2720711,
       "trading_value": 30961691180,
-      "market_cap": 131644694835
+      "market_cap": 131644694835,
+      "reason_previous": "모듈러주택 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 수도권 공공주택 공급 속도전에…중소형 건설株 ‘강세’",
+          "link": "https://n.news.naver.com/mnews/article/366/0001129439",
+          "source": "조선비즈",
+          "date": "2025-12-11"
+        }
+      ]
     },
     {
       "date": "20251203",
@@ -298,5 +320,5 @@
     "count_recent": 0,
     "avg_rate": 17.29
   },
-  "built_at": "2026-10-01T22:53:02"
+  "built_at": "2026-10-02T05:15:57"
 }

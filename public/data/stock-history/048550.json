@@ -9,9 +9,9 @@
       "close_price": 1742.0,
       "trading_volume": 1841650,
       "trading_value": 3208154300,
-      "rise_reason": "K-콘텐츠/엔터",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 엔터사업부문 최영인 신임 대표 선임",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광고",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SM C&amp;C 엔터사업부문 최영인 신임 대표 선임",
+          "link": "https://n.news.naver.com/mnews/article/277/0005798173",
+          "source": "아시아경제",
+          "date": "2026-08-03"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -48,10 +58,10 @@
       "close_price": 1540.0,
       "trading_volume": 3420464,
       "trading_value": 5267514560,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "여행",
       "news": [
         {
@@ -117,7 +127,9 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -125,10 +137,10 @@
       "close_price": 1100.0,
       "trading_volume": 1872069,
       "trading_value": 2059275900,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "여행",
       "news": [
         {
@@ -194,7 +206,9 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20260611",
@@ -202,10 +216,10 @@
       "close_price": 983.0,
       "trading_volume": 644501,
       "trading_value": 633544483,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -271,7 +285,9 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "none"
     },
     {
       "date": "20251021",
@@ -301,9 +317,9 @@
       "date": "20250819",
       "change_rate": 12.21,
       "close_price": 1516.0,
-      "rise_reason": "K-콘텐츠/엔터",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "엔터주 동반 강세 — 해외드라마 방송 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
@@ -343,7 +359,17 @@
       "source": "estimated",
       "trading_volume": 37171947,
       "trading_value": 56352671652,
-      "market_cap": 146656521739
+      "market_cap": 146656521739,
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "中, 해외드라마 방송 추진…한한령 해제 기대감에 엔터주 강세 [줍줍...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004522584",
+          "source": "서울경제",
+          "date": "2025-08-19"
+        }
+      ]
     }
   ],
   "stats": {
@@ -354,5 +380,5 @@
     "count_recent": 0,
     "avg_rate": 12.74
   },
-  "built_at": "2026-09-27T09:49:48"
+  "built_at": "2026-10-02T05:15:56"
 }

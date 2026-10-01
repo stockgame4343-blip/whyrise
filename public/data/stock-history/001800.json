@@ -86,10 +86,10 @@
       "close_price": 28300.0,
       "trading_volume": 1713856,
       "trading_value": 48502124800,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -155,15 +155,17 @@
       ],
       "sector": "식품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자사주 소각",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
       "change_rate": 19.11,
       "close_price": 22250.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "지주사 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
       "news": [],
@@ -172,7 +174,9 @@
       "source": "estimated",
       "trading_volume": 1136734,
       "trading_value": 25292331500,
-      "market_cap": 1393868884540
+      "market_cap": 1393868884540,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -183,5 +187,5 @@
     "count_recent": 0,
     "avg_rate": 12.29
   },
-  "built_at": "2026-09-27T08:36:22"
+  "built_at": "2026-10-02T05:15:57"
 }

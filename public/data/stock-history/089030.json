@@ -9,10 +9,10 @@
       "close_price": 46300.0,
       "trading_volume": 1779227,
       "trading_value": 82378210100,
-      "rise_reason": "실적 서프라이즈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 서프라이즈",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -86,9 +88,9 @@
       "close_price": 41450.0,
       "trading_volume": 1272940,
       "trading_value": 52763363000,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 국민성장펀드, LG디스플레이·에 1.35조 저리 대출…HBM 경...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "국민성장펀드, LG디스플레이·테크윙에 1.35조 저리 대출…“HBM 경...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002677602&office_id=016&code=089030&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.07.30"
+        }
+      ]
     },
     {
       "date": "20260714",
@@ -163,9 +175,9 @@
       "close_price": 48450.0,
       "trading_volume": 4262975,
       "trading_value": 206541138750,
-      "rise_reason": "영업이익 공시",
+      "rise_reason": "2분기 호실적",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]테크윙, 2분기 호실적에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003447579&office_id=030&code=089030&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.07.14"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -240,15 +262,17 @@
       "close_price": 43900.0,
       "trading_volume": 1543804,
       "trading_value": 67772995600,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 29종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260609",
@@ -490,9 +514,9 @@
       "date": "20260102",
       "change_rate": 11.14,
       "close_price": 50900.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -501,7 +525,9 @@
       "source": "estimated",
       "trading_volume": 1341575,
       "trading_value": 68286167500,
-      "market_cap": 1886005647840
+      "market_cap": 1886005647840,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250915",
@@ -560,5 +586,5 @@
     "count_recent": 0,
     "avg_rate": 15.95
   },
-  "built_at": "2026-10-01T22:54:04"
+  "built_at": "2026-10-02T05:15:56"
 }

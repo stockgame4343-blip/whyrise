@@ -9,9 +9,9 @@
       "close_price": 5070.0,
       "trading_volume": 539287,
       "trading_value": 2734185090,
-      "rise_reason": "면역항암제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "면역항암제 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -72,7 +72,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "면역항암제 기술이전 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -80,9 +82,9 @@
       "close_price": 5140.0,
       "trading_volume": 557694,
       "trading_value": 2866547160,
-      "rise_reason": "신약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "최대 수혜 기대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -149,7 +151,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "신약 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "첨생법 NK세포 치료 ‘저위험’ 조정…박셀바이오 최대 수혜 기대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006317714&office_id=018&code=323990&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.29"
+        }
+      ]
     }
   ],
   "stats": {
@@ -160,5 +172,5 @@
     "count_recent": 1,
     "avg_rate": 28.2
   },
-  "built_at": "2026-10-01T22:57:39"
+  "built_at": "2026-10-02T05:15:56"
 }

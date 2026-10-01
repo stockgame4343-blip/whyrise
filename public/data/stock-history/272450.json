@@ -9,9 +9,9 @@
       "close_price": 5720.0,
       "trading_volume": 382606,
       "trading_value": 2188506320,
-      "rise_reason": "계약 체결",
+      "rise_reason": "에어부산·에어서울 품는다",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "항공사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "진에어, 에어부산·에어서울 품는다…9%대 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006356837&office_id=018&code=272450&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -86,9 +96,9 @@
       "close_price": 6200.0,
       "trading_volume": 2572231,
       "trading_value": 15947832200,
-      "rise_reason": "종전 실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설·항공·증권주 동반 강세 — 종전 수혜주 어디",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "항공사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "종전 실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "종전 수혜주 어디…건설·항공·증권株 동반 강세 [마켓시그널]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004631160&office_id=011&code=272450&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.15"
+        }
+      ]
     }
   ],
   "stats": {
@@ -166,5 +186,5 @@
     "count_recent": 0,
     "avg_rate": 11.58
   },
-  "built_at": "2026-10-01T22:52:53"
+  "built_at": "2026-10-02T05:15:56"
 }

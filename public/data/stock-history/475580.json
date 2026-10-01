@@ -9,10 +9,10 @@
       "close_price": 8400.0,
       "trading_volume": 1733298,
       "trading_value": 14559703200,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "교육/온라인 교육",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260814",
@@ -86,9 +88,9 @@
       "close_price": 8280.0,
       "trading_volume": 441528,
       "trading_value": 3655851840,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "상반기 매출 371억 원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "교육/온라인 교육",
       "news": [
@@ -155,16 +157,26 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이럭스, 상반기 매출 371억 원…전년 대비 55% 증가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005320968&office_id=015&code=475580&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.08.14"
+        }
+      ]
     },
     {
       "date": "20260327",
       "change_rate": 13.73,
       "close_price": 14000.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -172,7 +184,9 @@
       "source": "estimated",
       "trading_volume": 4183575,
       "trading_value": 58570050000,
-      "market_cap": 190819672131
+      "market_cap": 190819672131,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260318",
@@ -226,10 +240,10 @@
       "date": "20251222",
       "change_rate": 10.28,
       "close_price": 10300.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -237,7 +251,9 @@
       "source": "estimated",
       "trading_volume": 538235,
       "trading_value": 5543820500,
-      "market_cap": 140388758782
+      "market_cap": 140388758782,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250904",
@@ -296,5 +312,5 @@
     "count_recent": 0,
     "avg_rate": 13.62
   },
-  "built_at": "2026-10-01T22:57:36"
+  "built_at": "2026-10-02T05:15:56"
 }

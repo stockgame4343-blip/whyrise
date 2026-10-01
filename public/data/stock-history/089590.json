@@ -9,9 +9,9 @@
       "close_price": 5150.0,
       "trading_volume": 7230160,
       "trading_value": 37235324000,
-      "rise_reason": "증권사 리포트 공개",
+      "rise_reason": "5월 LCC 수송객 1위",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "항공사",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "제주항공, 5월 LCC 수송객 1위…5개월 연속 100만명↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000507571&office_id=629&code=089590&page=&sm=",
+          "source": "더팩트",
+          "date": "2026.06.15"
+        }
+      ]
     }
   ],
   "stats": {
@@ -89,5 +99,5 @@
     "count_recent": 0,
     "avg_rate": 18.66
   },
-  "built_at": "2026-10-01T22:52:48"
+  "built_at": "2026-10-02T05:15:57"
 }

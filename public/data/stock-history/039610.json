@@ -9,10 +9,10 @@
       "close_price": 7070.0,
       "trading_volume": 1832786,
       "trading_value": 12957797020,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
         {
@@ -30,7 +30,9 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -65,10 +67,10 @@
       "date": "20251222",
       "change_rate": 12.57,
       "close_price": 8600.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -76,7 +78,9 @@
       "source": "estimated",
       "trading_volume": 6075676,
       "trading_value": 52250813600,
-      "market_cap": 89521259842
+      "market_cap": 89521259842,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -87,5 +91,5 @@
     "count_recent": 1,
     "avg_rate": 17.34
   },
-  "built_at": "2026-10-01T22:58:21"
+  "built_at": "2026-10-02T05:15:56"
 }

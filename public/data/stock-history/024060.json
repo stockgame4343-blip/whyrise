@@ -9,9 +9,9 @@
       "close_price": 14510.0,
       "trading_volume": 22285603,
       "trading_value": 323364099530,
-      "rise_reason": "테마 관련 뉴스",
+      "rise_reason": "국제유가 100달러 돌파 영향",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LPG(액화석유가스)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "테마 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "흥구석유, 장 초반 20%대 급등…국제유가 100달러 돌파 영향",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014181444&office_id=003&code=024060&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -86,9 +96,9 @@
       "close_price": 11570.0,
       "trading_volume": 9160951,
       "trading_value": 105992203070,
-      "rise_reason": "테마 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "석유주 동반 강세 — 미·이란 교전 재개에 국제유가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "윤활유",
       "news": [
@@ -143,7 +153,17 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "테마 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "미·이란 교전 재개에 국제유가 급등…석유株 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005327734&office_id=015&code=024060&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260722",
@@ -151,9 +171,9 @@
       "close_price": 13710.0,
       "trading_volume": 5319310,
       "trading_value": 72927740100,
-      "rise_reason": "정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "브렌트유 가격 90달러 넘었다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LPG(액화석유가스)",
       "news": [
@@ -208,7 +228,17 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "브렌트유 가격 90달러 넘었다…흥구석유, 장초반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005387829&office_id=008&code=024060&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260720",
@@ -216,9 +246,9 @@
       "close_price": 13440.0,
       "trading_volume": 9606544,
       "trading_value": 129111951360,
-      "rise_reason": "정책 관련 뉴스",
+      "rise_reason": "브렌트유 가격 90달러 넘었다",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "윤활유",
       "news": [
@@ -273,7 +303,17 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "정책 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "브렌트유 가격 90달러 넘었다…흥구석유, 장초반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005387829&office_id=008&code=024060&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.20"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -281,10 +321,10 @@
       "close_price": 10440.0,
       "trading_volume": 11262939,
       "trading_value": 117585083160,
-      "rise_reason": "석유 공급 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "윤활유",
       "news": [
         {
@@ -344,7 +384,9 @@
       ],
       "sector": "석유와가스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "석유 공급 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260402",
@@ -648,10 +690,10 @@
       "date": "20250623",
       "change_rate": 17.64,
       "close_price": 18270.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -659,7 +701,9 @@
       "source": "estimated",
       "trading_volume": 7531986,
       "trading_value": 137609384220,
-      "market_cap": 274139646712
+      "market_cap": 274139646712,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250616",
@@ -721,5 +765,5 @@
     "count_recent": 2,
     "avg_rate": 17.33
   },
-  "built_at": "2026-10-01T22:56:33"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,10 +9,10 @@
       "close_price": 100700.0,
       "trading_volume": 19016,
       "trading_value": 1914911200,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보도",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "운송인프라",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -86,9 +88,9 @@
       "close_price": 87900.0,
       "trading_volume": 37396,
       "trading_value": 3287108400,
-      "rise_reason": "뉴스 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "대한항공 중심 재편 수혜 (하나)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "운송인프라",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "뉴스 관련 뉴스",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "한국공항, 대한항공 중심 재편 수혜…고유가 영향 제한적-하나",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006302654&office_id=018&code=005430&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -163,9 +175,9 @@
       "close_price": 72400.0,
       "trading_volume": 69221,
       "trading_value": 5011600400,
-      "rise_reason": "뉴스 관련 뉴스",
+      "rise_reason": "1분기 영업익 197억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "뉴스",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "운송인프라",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "뉴스 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "한국공항, 1분기 영업익 197억…전년비 35.5% ↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002643493&office_id=016&code=005430&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.05.14"
+        }
+      ]
     }
   ],
   "stats": {
@@ -243,5 +265,5 @@
     "count_recent": 1,
     "avg_rate": 14.04
   },
-  "built_at": "2026-10-01T22:52:52"
+  "built_at": "2026-10-02T05:15:56"
 }

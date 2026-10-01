@@ -9,10 +9,10 @@
       "close_price": 15060.0,
       "trading_volume": 26317,
       "trading_value": 396334020,
-      "rise_reason": "코로나 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나",
       "news": [
         {
@@ -54,7 +54,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "코로나 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260824",
@@ -62,9 +64,9 @@
       "close_price": 15870.0,
       "trading_volume": 31645,
       "trading_value": 502206150,
-      "rise_reason": "코로나 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "바이오주 동반 강세 — 셀리드",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나",
       "news": [
@@ -119,7 +121,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "코로나 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "코로나19 재유행 우려에 제약주 급등…셀리드 '上'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014143455&office_id=003&code=299660&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260417",
@@ -174,10 +186,10 @@
       "close_price": 20500.0,
       "trading_volume": 31726,
       "trading_value": 650383000,
-      "rise_reason": "특허 취득",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -233,15 +245,17 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "특허 취득",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 14.0,
       "close_price": 17100.0,
-      "rise_reason": "코로나19 테마 강세",
+      "rise_reason": "코로나19 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
@@ -250,7 +264,9 @@
       "source": "estimated",
       "trading_volume": 26814,
       "trading_value": 458519400,
-      "market_cap": 34000728332
+      "market_cap": 34000728332,
+      "reason_previous": "코로나19 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250919",
@@ -462,5 +478,5 @@
     "count_recent": 0,
     "avg_rate": 22.6
   },
-  "built_at": "2026-10-01T22:53:28"
+  "built_at": "2026-10-02T05:15:56"
 }

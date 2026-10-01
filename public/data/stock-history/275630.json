@@ -9,10 +9,10 @@
       "close_price": 4560.0,
       "trading_volume": 138988,
       "trading_value": 633785280,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260819",
@@ -86,9 +88,9 @@
       "close_price": 4290.0,
       "trading_volume": 116577,
       "trading_value": 500115330,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 지란지교그룹, 유사 보안사업 로…70억 자금 지원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "지란지교그룹, 유사 보안사업 에스에스알로…70억 자금 지원",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003458435&office_id=030&code=275630&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.19"
+        }
+      ]
     },
     {
       "date": "20260706",
@@ -163,10 +175,10 @@
       "close_price": 3680.0,
       "trading_volume": 20877,
       "trading_value": 76827360,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -232,7 +244,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260630",
@@ -240,10 +254,10 @@
       "close_price": 2915.0,
       "trading_volume": 34792,
       "trading_value": 101418680,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -309,7 +323,9 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -320,5 +336,5 @@
     "count_recent": 1,
     "avg_rate": 11.63
   },
-  "built_at": "2026-10-01T22:59:50"
+  "built_at": "2026-10-02T05:15:56"
 }

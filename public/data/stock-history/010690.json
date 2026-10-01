@@ -9,10 +9,10 @@
       "close_price": 14330.0,
       "trading_volume": 12028092,
       "trading_value": 172362558360,
-      "rise_reason": "외국인 순매수 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -42,7 +42,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260616",
@@ -50,9 +52,9 @@
       "close_price": 14010.0,
       "trading_volume": 882115,
       "trading_value": 12358431150,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -95,7 +97,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260608",
@@ -103,10 +107,10 @@
       "close_price": 11490.0,
       "trading_volume": 4955132,
       "trading_value": 56934466680,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -166,7 +170,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -174,9 +180,9 @@
       "close_price": 12200.0,
       "trading_volume": 685601,
       "trading_value": 8364332200,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전기차 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -243,7 +249,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260512",
@@ -251,9 +259,9 @@
       "close_price": 15270.0,
       "trading_volume": 4062711,
       "trading_value": 62037596970,
-      "rise_reason": "자동차부품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -320,7 +328,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "자동차부품 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -328,9 +338,9 @@
       "close_price": 11740.0,
       "trading_volume": 253510,
       "trading_value": 2976207400,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 신용등급 BBB+ 상향…현대차 동반성장·수익성 개선",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -343,15 +353,25 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[마켓인]화신, 신용등급 ‘BBB+’ 상향…현대차 동반성장·수익성 개선",
+          "link": "https://n.news.naver.com/mnews/article/018/0006252780",
+          "source": "이데일리",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.37,
       "close_price": 13210.0,
-      "rise_reason": "자동차부품 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "59억 규모 결산배당",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -367,15 +387,25 @@
       "source": "estimated",
       "trading_volume": 726082,
       "trading_value": 9591543220,
-      "market_cap": 461289881367
+      "market_cap": 461289881367,
+      "reason_previous": "자동차부품 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "화신, 59억 규모 결산배당…주당 170원",
+          "link": "https://n.news.naver.com/mnews/article/293/0000080234",
+          "source": "블로터",
+          "date": "2026-03-04"
+        }
+      ]
     },
     {
       "date": "20260227",
       "change_rate": 11.33,
       "close_price": 15530.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "자동차부품 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [],
@@ -384,7 +414,9 @@
       "source": "estimated",
       "trading_volume": 2528179,
       "trading_value": 39262619870,
-      "market_cap": 542303698534
+      "market_cap": 542303698534,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260212",
@@ -508,5 +540,5 @@
     "count_recent": 0,
     "avg_rate": 15.43
   },
-  "built_at": "2026-10-01T22:52:56"
+  "built_at": "2026-10-02T05:15:57"
 }

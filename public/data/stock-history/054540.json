@@ -9,15 +9,17 @@
       "close_price": 6050.0,
       "trading_volume": 218780,
       "trading_value": 1323619000,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "조선기자재 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260724",
@@ -25,9 +27,9 @@
       "close_price": 7260.0,
       "trading_volume": 4042888,
       "trading_value": 29351366880,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "조선기자재 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -94,7 +96,9 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -116,10 +120,10 @@
       "date": "20260305",
       "change_rate": 16.02,
       "close_price": 11950.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -127,7 +131,9 @@
       "source": "estimated",
       "trading_volume": 383829,
       "trading_value": 4586756550,
-      "market_cap": 155336056009
+      "market_cap": 155336056009,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251223",
@@ -181,9 +187,9 @@
       "date": "20251202",
       "change_rate": 10.86,
       "close_price": 14910.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 700억 규모 종속사 주식 취득 결정",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -205,7 +211,17 @@
       "source": "estimated",
       "trading_volume": 7237822,
       "trading_value": 107915926020,
-      "market_cap": 193812602100
+      "market_cap": 193812602100,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "삼영엠텍, 700억 규모 종속사 주식 취득 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006175416",
+          "source": "이데일리",
+          "date": "2025-12-01"
+        }
+      ]
     },
     {
       "date": "20251114",
@@ -499,10 +515,10 @@
       "date": "20250827",
       "change_rate": 14.06,
       "close_price": 6570.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -510,7 +526,9 @@
       "source": "estimated",
       "trading_volume": 8047853,
       "trading_value": 52874394210,
-      "market_cap": 85402333722
+      "market_cap": 85402333722,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -521,5 +539,5 @@
     "count_recent": 0,
     "avg_rate": 14.15
   },
-  "built_at": "2026-09-27T09:54:01"
+  "built_at": "2026-10-02T05:15:57"
 }

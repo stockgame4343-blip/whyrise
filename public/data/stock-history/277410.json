@@ -9,10 +9,10 @@
       "close_price": 6300.0,
       "trading_volume": 359264,
       "trading_value": 2263363200,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -78,15 +78,17 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20250701",
       "change_rate": 11.4,
       "close_price": 1564.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 수분만으론 부족, 여름철 미네랄 보충 중요... 프리미엄 워터 ...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -108,7 +110,17 @@
       "source": "estimated",
       "trading_volume": 30692221,
       "trading_value": 48002633644,
-      "market_cap": 60018500000
+      "market_cap": 60018500000,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "수분만으론 부족, 여름철 미네랄 보충 중요...인산가 프리미엄 워터 ...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005215513",
+          "source": "머니투데이",
+          "date": "2025-07-01"
+        }
+      ]
     }
   ],
   "stats": {
@@ -119,5 +131,5 @@
     "count_recent": 0,
     "avg_rate": 10.92
   },
-  "built_at": "2026-10-01T22:59:46"
+  "built_at": "2026-10-02T05:15:57"
 }

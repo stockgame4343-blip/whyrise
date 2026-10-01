@@ -9,10 +9,10 @@
       "close_price": 4645.0,
       "trading_volume": 214096,
       "trading_value": 994475920,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260727",
@@ -86,9 +88,9 @@
       "close_price": 5350.0,
       "trading_volume": 122311,
       "trading_value": 654363850,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "103억 규모 수용가 인입 열수송관공사 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "공시",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "우진아이엔에스, 103억 규모 수용가 인입 열수송관공사 수주",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002674523&office_id=016&code=010400&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.07.24"
+        }
+      ]
     },
     {
       "date": "20260105",
@@ -208,10 +220,10 @@
       "date": "20251117",
       "change_rate": 11.15,
       "close_price": 3490.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -244,7 +256,9 @@
       "source": "estimated",
       "trading_volume": 309339,
       "trading_value": 1079593110,
-      "market_cap": 26639095744
+      "market_cap": 26639095744,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -255,5 +269,5 @@
     "count_recent": 1,
     "avg_rate": 11.68
   },
-  "built_at": "2026-10-01T22:53:28"
+  "built_at": "2026-10-02T05:15:56"
 }

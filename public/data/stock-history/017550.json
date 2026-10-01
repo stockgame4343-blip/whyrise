@@ -9,9 +9,9 @@
       "close_price": 2650.0,
       "trading_volume": 4617164,
       "trading_value": 12235484600,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "재건주 동반 강세 — 종전 기대감 다시 부상",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
@@ -42,7 +42,17 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 종전 기대감 다시 부상…재건관련주 상승 기대감",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000515641&office_id=374&code=017550&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -66,9 +76,9 @@
       "close_price": 3860.0,
       "trading_volume": 56504813,
       "trading_value": 218108578180,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 미·이란 종전 MOU 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설기계",
       "news": [
@@ -87,7 +97,17 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 미·이란 종전 MOU 기대감에…건설株 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001162361&office_id=366&code=028050&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.05.07"
+        }
+      ]
     },
     {
       "date": "20260421",
@@ -95,9 +115,9 @@
       "close_price": 3490.0,
       "trading_volume": 26852841,
       "trading_value": 93716415090,
-      "rise_reason": "건설기계 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건설주 동반 강세 — 중동 종전 및 재건 기대감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설기계",
       "news": [
@@ -122,7 +142,17 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건설기계 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주]건설주, 중동 종전 및 재건 기대감에 '급등'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001139880&office_id=417&code=009415&page=&sm=",
+          "source": "동행미디어 시대",
+          "date": "2026.04.21"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -130,9 +160,9 @@
       "close_price": 2700.0,
       "trading_volume": 17999831,
       "trading_value": 48599543700,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "건설주 동반 강세 — 종전 따른 인프라 재건 기대 영향",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
@@ -157,7 +187,17 @@
       ],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 건설주 줄줄이 상한가…종전 따른 인프라 재건 기대 영향",
+          "link": "https://n.news.naver.com/mnews/article/417/0001138062",
+          "source": "동행미디어 시대",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -165,15 +205,17 @@
       "close_price": 2035.0,
       "trading_volume": 1222531,
       "trading_value": 2487850585,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "전후 재건 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -184,5 +226,5 @@
     "count_recent": 0,
     "avg_rate": 16.95
   },
-  "built_at": "2026-10-01T22:53:04"
+  "built_at": "2026-10-02T05:15:57"
 }

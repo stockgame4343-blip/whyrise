@@ -9,9 +9,9 @@
       "close_price": 3980.0,
       "trading_volume": 303445,
       "trading_value": 1207711100,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 16.5억 규모 CB 상환…오버행 부담 완화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전환사채",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "LSK아이로봇, 16.5억 규모 CB 상환…오버행 부담 완화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014065277&office_id=003&code=091970&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.07.14"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -86,9 +96,9 @@
       "close_price": 3485.0,
       "trading_volume": 1572184,
       "trading_value": 5479061240,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 30억원 규모 11회차 CB 전액 상환…주주가치 제고...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전환사채",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "LSK아이로봇, 30억원 규모 11회차 CB 전액 상환…\"주주가치 제고...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005382986&office_id=008&code=091970&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.08"
+        }
+      ]
     },
     {
       "date": "20260706",
@@ -163,10 +183,10 @@
       "close_price": 3010.0,
       "trading_volume": 1073209,
       "trading_value": 3230359090,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보도",
       "news": [
         {
@@ -232,7 +252,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260619",
@@ -240,10 +262,10 @@
       "close_price": 3570.0,
       "trading_volume": 606697,
       "trading_value": 2165908290,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보도",
       "news": [
         {
@@ -309,7 +331,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -317,10 +341,10 @@
       "close_price": 3225.0,
       "trading_volume": 548583,
       "trading_value": 1769180175,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [
         {
@@ -386,7 +410,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260527",
@@ -394,10 +420,10 @@
       "close_price": 4920.0,
       "trading_volume": 766530,
       "trading_value": 3771327600,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -463,7 +489,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "none"
     },
     {
       "date": "20260429",
@@ -471,10 +499,10 @@
       "close_price": 3785.0,
       "trading_volume": 609962,
       "trading_value": 2308706170,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "대선",
       "news": [
         {
@@ -540,7 +568,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260422",
@@ -875,5 +905,5 @@
     "count_recent": 0,
     "avg_rate": 20.33
   },
-  "built_at": "2026-09-27T10:25:04"
+  "built_at": "2026-10-02T05:15:57"
 }

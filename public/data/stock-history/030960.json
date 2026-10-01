@@ -9,10 +9,10 @@
       "close_price": 6330.0,
       "trading_volume": 2918288,
       "trading_value": 18472763040,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남북경협",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260619",
@@ -86,9 +88,9 @@
       "close_price": 5710.0,
       "trading_volume": 3710162,
       "trading_value": 21185025020,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 포인트오브뷰 협업..디자인 브랜드 협업 통해 2030세대 공략",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "양지사 포인트오브뷰 협업..디자인 브랜드 협업 통해 2030세대 공략",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005536499&office_id=014&code=030960&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.06.18"
+        }
+      ]
     },
     {
       "date": "20260608",
@@ -163,10 +175,10 @@
       "close_price": 5670.0,
       "trading_volume": 1845889,
       "trading_value": 10466190630,
-      "rise_reason": "남북경협 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남북경협",
       "news": [
         {
@@ -226,7 +238,9 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "남북경협 관련 뉴스",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -237,5 +251,5 @@
     "count_recent": 0,
     "avg_rate": 11.65
   },
-  "built_at": "2026-09-27T09:57:30"
+  "built_at": "2026-10-02T05:15:57"
 }

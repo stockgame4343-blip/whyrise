@@ -7,9 +7,9 @@
       "date": "20260313",
       "change_rate": 10.26,
       "close_price": 2020.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "15억 규모 자사주 취득 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -31,16 +31,26 @@
       "source": "estimated",
       "trading_volume": 2468303,
       "trading_value": 4985972060,
-      "market_cap": 142730538922
+      "market_cap": 142730538922,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엑셈, 15억 규모 자사주 취득 결정",
+          "link": "https://n.news.naver.com/mnews/article/016/0002613280",
+          "source": "헤럴드경제",
+          "date": "2026-03-13"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.68,
       "close_price": 1836.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -48,7 +58,9 @@
       "source": "estimated",
       "trading_volume": 763905,
       "trading_value": 1402529580,
-      "market_cap": 129729341317
+      "market_cap": 129729341317,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -59,5 +71,5 @@
     "count_recent": 0,
     "avg_rate": 12.47
   },
-  "built_at": "2026-10-01T22:57:41"
+  "built_at": "2026-10-02T05:15:57"
 }

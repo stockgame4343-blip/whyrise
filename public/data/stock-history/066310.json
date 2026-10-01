@@ -25,9 +25,9 @@
       "close_price": 15670.0,
       "trading_volume": 1220266,
       "trading_value": 19121568220,
-      "rise_reason": "양자컴 지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -94,7 +94,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양자컴 지분 관련 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.26"
+        }
+      ]
     },
     {
       "date": "20260522",
@@ -102,9 +112,9 @@
       "close_price": 14000.0,
       "trading_volume": 846033,
       "trading_value": 11844462000,
-      "rise_reason": "양자컴 지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자컴퓨팅주 동반 강세 — 케이씨에스",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -171,7 +181,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "양자컴 지분 관련 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "'美 3조 투자 훈풍' 양자컴퓨팅주 급등…케이씨에스 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013961757&office_id=003&code=066310&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.22"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -256,15 +276,17 @@
       "close_price": 13500.0,
       "trading_volume": 2032099,
       "trading_value": 27433336500,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "양자암호 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -272,23 +294,25 @@
       "close_price": 12350.0,
       "trading_volume": 1298469,
       "trading_value": 16036092150,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "양자암호 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
       "change_rate": 29.98,
       "close_price": 13180.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "양자암호 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -304,7 +328,9 @@
       "source": "estimated",
       "trading_volume": 3598419,
       "trading_value": 47427162420,
-      "market_cap": 122251372118
+      "market_cap": 122251372118,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -327,9 +353,9 @@
       "date": "20260119",
       "change_rate": 11.35,
       "close_price": 8440.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 로봇 인지 능력 핵심부품 국산화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
@@ -345,7 +371,17 @@
       "source": "estimated",
       "trading_volume": 2916555,
       "trading_value": 24615724200,
-      "market_cap": 78285400658
+      "market_cap": 78285400658,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]&quot;큐에스아이, 로봇 인지 능력 핵심부품 국산화&quot;",
+          "link": "https://n.news.naver.com/mnews/article/277/0005708540",
+          "source": "아시아경제",
+          "date": "2026-01-19"
+        }
+      ]
     },
     {
       "date": "20251106",
@@ -373,5 +409,5 @@
     "count_recent": 0,
     "avg_rate": 17.25
   },
-  "built_at": "2026-10-01T22:58:07"
+  "built_at": "2026-10-02T05:15:57"
 }

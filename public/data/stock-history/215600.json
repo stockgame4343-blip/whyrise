@@ -9,9 +9,9 @@
       "close_price": 2960.0,
       "trading_volume": 13808362,
       "trading_value": 40872751520,
-      "rise_reason": "FDA 관련 뉴스",
+      "rise_reason": "FDA 희귀의약품",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "FDA 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 신라젠 “항암 파이프라인, FDA 희귀의약품 지정”… ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003460125&office_id=030&code=215600&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -86,9 +96,9 @@
       "close_price": 2465.0,
       "trading_volume": 724052,
       "trading_value": 1784788180,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -101,15 +111,25 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260325",
       "change_rate": 13.36,
       "close_price": 3945.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 정맥투여 항암바이러스 SJ-650 기전 규명…전신 치료 가능...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -143,7 +163,17 @@
       "source": "estimated",
       "trading_volume": 12975860,
       "trading_value": 51189767700,
-      "market_cap": 546616525423
+      "market_cap": 546616525423,
+      "reason_previous": "바이오",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "신라젠, 정맥투여 항암바이러스 ‘SJ-650’ 기전 규명…전신 치료 가능...",
+          "link": "https://n.news.naver.com/mnews/article/015/0005266856",
+          "source": "한국경제",
+          "date": "2026-03-25"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -219,9 +249,9 @@
       "date": "20250912",
       "change_rate": 10.73,
       "close_price": 3510.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: GEEV 플랫폼으로 면역항암 새 길 여는",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -249,7 +279,17 @@
       "source": "estimated",
       "trading_volume": 15925583,
       "trading_value": 55898796330,
-      "market_cap": 486343220338
+      "market_cap": 486343220338,
+      "reason_previous": "전기차",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "GEEV 플랫폼으로 면역항암 새 길 여는 신라젠",
+          "link": "https://n.news.naver.com/mnews/article/277/0005650468",
+          "source": "아시아경제",
+          "date": "2025-09-11"
+        }
+      ]
     },
     {
       "date": "20250904",
@@ -277,5 +317,5 @@
     "count_recent": 0,
     "avg_rate": 18.0
   },
-  "built_at": "2026-10-01T22:55:39"
+  "built_at": "2026-10-02T05:15:56"
 }

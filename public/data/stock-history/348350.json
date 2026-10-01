@@ -9,15 +9,17 @@
       "close_price": 8590.0,
       "trading_volume": 51413,
       "trading_value": 441637670,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 36종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -102,23 +104,25 @@
       "close_price": 7800.0,
       "trading_volume": 33182,
       "trading_value": 258819600,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260310",
       "change_rate": 11.26,
       "close_price": 9780.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "SK하이닉스와 반도체 모니터링 장비 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -146,7 +150,17 @@
       "source": "estimated",
       "trading_volume": 364279,
       "trading_value": 3562648620,
-      "market_cap": 97552091254
+      "market_cap": 97552091254,
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "위드텍, SK하이닉스와 반도체 모니터링 장비 공급계약",
+          "link": "https://n.news.naver.com/mnews/article/293/0000080618",
+          "source": "블로터",
+          "date": "2026-03-10"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -263,5 +277,5 @@
     "count_recent": 0,
     "avg_rate": 12.48
   },
-  "built_at": "2026-09-27T09:52:28"
+  "built_at": "2026-10-02T05:15:57"
 }

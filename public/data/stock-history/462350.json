@@ -9,15 +9,17 @@
       "close_price": 5720.0,
       "trading_volume": 296157,
       "trading_value": 1694018040,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260518",
@@ -25,9 +27,9 @@
       "close_price": 13435.0,
       "trading_volume": 1281473,
       "trading_value": 17216589755,
-      "rise_reason": "협력 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 3Q 한빛-나노 재발사 준비…우주사업 확대 기대-메리...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "협력 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이노스페이스, 3Q '한빛-나노' 재발사 준비…우주사업 확대 기대-메리...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006283976&office_id=018&code=462350&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.18"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -179,23 +191,25 @@
       "close_price": 12352.0,
       "trading_volume": 812664,
       "trading_value": 10038025728,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "우주항공산업 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
       "change_rate": 14.71,
       "close_price": 12524.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "캐나다 발사 기업과 협력 소식",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -235,15 +249,25 @@
       "source": "estimated",
       "trading_volume": 874471,
       "trading_value": 10951874804,
-      "market_cap": 263556363636
+      "market_cap": 263556363636,
+      "reason_previous": "방산",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 이노스페이스, 캐나다 발사 기업과 협력 소식에…19% 강세",
+          "link": "https://n.news.naver.com/mnews/article/366/0001145984",
+          "source": "조선비즈",
+          "date": "2026-03-05"
+        }
+      ]
     },
     {
       "date": "20260203",
       "change_rate": 12.21,
       "close_price": 18977.0,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주주 동반 강세 — LK삼양",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
@@ -252,15 +276,25 @@
       "source": "estimated",
       "trading_volume": 2622642,
       "trading_value": 49769877234,
-      "market_cap": 399353969396
+      "market_cap": 399353969396,
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "LK삼양 상한가…우주관련주 들썩",
+          "link": "https://n.news.naver.com/mnews/article/015/0005246275",
+          "source": "한국경제",
+          "date": "2026-02-03"
+        }
+      ]
     },
     {
       "date": "20260129",
       "change_rate": 13.37,
       "close_price": 17847.0,
-      "rise_reason": "우주/위성",
+      "rise_reason": "현대차그룹에 3D프린팅 관제 솔루션 공급",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -300,15 +334,25 @@
       "source": "estimated",
       "trading_volume": 3819188,
       "trading_value": 68161048236,
-      "market_cap": 375574131413
+      "market_cap": 375574131413,
+      "reason_previous": "우주/위성",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이노스페이스, 현대차그룹에 3D프린팅 관제 솔루션 공급",
+          "link": "https://n.news.naver.com/mnews/article/366/0001139236",
+          "source": "조선비즈",
+          "date": "2026-01-29"
+        }
+      ]
     },
     {
       "date": "20260120",
       "change_rate": 14.69,
       "close_price": 18859.0,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
@@ -317,7 +361,9 @@
       "source": "estimated",
       "trading_volume": 7976723,
       "trading_value": 150433019057,
-      "market_cap": 396870765076
+      "market_cap": 396870765076,
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260112",
@@ -439,9 +485,9 @@
       "date": "20251222",
       "change_rate": 16.63,
       "close_price": 11689.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "우주항공산업 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
@@ -450,7 +496,9 @@
       "source": "estimated",
       "trading_volume": 6287473,
       "trading_value": 73494271897,
-      "market_cap": 245984536453
+      "market_cap": 245984536453,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20251218",
@@ -563,5 +611,5 @@
     "count_recent": 0,
     "avg_rate": 13.6
   },
-  "built_at": "2026-09-27T09:31:06"
+  "built_at": "2026-10-02T05:15:57"
 }

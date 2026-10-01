@@ -9,10 +9,10 @@
       "close_price": 936.0,
       "trading_volume": 11476825,
       "trading_value": 10742308200,
-      "rise_reason": "인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260722",
@@ -86,10 +88,10 @@
       "close_price": 912.0,
       "trading_volume": 2878315,
       "trading_value": 2625023280,
-      "rise_reason": "무상감자 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "무상감자 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -192,9 +196,9 @@
       "close_price": 1930.0,
       "trading_volume": 15125060,
       "trading_value": 29191365800,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "美 나스닥 스팩 합병 계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -261,7 +265,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "이브이첨단소재 투자 프롤로지움, 美 나스닥 스팩 합병 계약",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013971864&office_id=003&code=131400&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.05.28"
+        }
+      ]
     },
     {
       "date": "20260421",
@@ -269,9 +283,9 @@
       "close_price": 2050.0,
       "trading_volume": 10020054,
       "trading_value": 20541110700,
-      "rise_reason": "2차전지(전고체) 유상증자 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 벤츠 한국 기업과 파트너십 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -338,7 +352,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "2차전지(전고체) 유상증자 이슈",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "벤츠 \"한국 기업과 파트너십 확대\"…2차전지주 급등세 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003082813&office_id=119&code=222080&page=&sm=",
+          "source": "데일리안",
+          "date": "2026.04.21"
+        }
+      ]
     },
     {
       "date": "20260126",
@@ -392,9 +416,9 @@
       "date": "20260122",
       "change_rate": 29.91,
       "close_price": 2085.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -422,7 +446,17 @@
       "source": "estimated",
       "trading_volume": 15220291,
       "trading_value": 31734306735,
-      "market_cap": 124314853556
+      "market_cap": 124314853556,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 삼성SDI 14%대↑… '피지컬 AI' 기대감에 이차전지주 강세",
+          "link": "https://n.news.naver.com/mnews/article/417/0001125859",
+          "source": "동행미디어 시대",
+          "date": "2026-01-22"
+        }
+      ]
     },
     {
       "date": "20260108",
@@ -464,9 +498,9 @@
       "date": "20251024",
       "change_rate": 10.87,
       "close_price": 2030.0,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
@@ -475,15 +509,25 @@
       "source": "estimated",
       "trading_volume": 14055898,
       "trading_value": 28533472940,
-      "market_cap": 121035564853
+      "market_cap": 121035564853,
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 테슬라 상승에 이차전지주 급등… 포스코퓨처엠 17% 상승",
+          "link": "https://n.news.naver.com/mnews/article/417/0001108758",
+          "source": "동행미디어 시대",
+          "date": "2025-10-24"
+        }
+      ]
     },
     {
       "date": "20250811",
       "change_rate": 15.18,
       "close_price": 2580.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 中 리튬 광산 가동 중단",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
@@ -492,7 +536,17 @@
       "source": "estimated",
       "trading_volume": 56022316,
       "trading_value": 144537575280,
-      "market_cap": 153828451882
+      "market_cap": 153828451882,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;中 리튬 광산 가동 중단&quot;…2차전지株 강세 [줍줍 리포트]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004519643",
+          "source": "서울경제",
+          "date": "2025-08-11"
+        }
+      ]
     },
     {
       "date": "20250718",
@@ -641,5 +695,5 @@
     "count_recent": 0,
     "avg_rate": 21.96
   },
-  "built_at": "2026-10-01T22:58:54"
+  "built_at": "2026-10-02T05:15:56"
 }

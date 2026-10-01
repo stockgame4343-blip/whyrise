@@ -9,9 +9,9 @@
       "close_price": 2380.0,
       "trading_volume": 10779433,
       "trading_value": 25655050540,
-      "rise_reason": "관련 보도: '피지컬 AI 부문' 고평가에 15%대↑",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "피지컬 AI 부문 고평가",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [
@@ -39,7 +39,8 @@
           "source": "아이뉴스24",
           "date": "2026-09-29"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260508",
@@ -47,9 +48,9 @@
       "close_price": 3160.0,
       "trading_volume": 22789376,
       "trading_value": 72014428160,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "양자보안 기술 개발 본격화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -116,7 +117,17 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "MDS테크, 양자보안 기술 개발 본격화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002640853&office_id=016&code=086960&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -139,9 +150,9 @@
       "date": "20260109",
       "change_rate": 11.51,
       "close_price": 3498.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "피지컬 AI 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -150,15 +161,17 @@
       "source": "estimated",
       "trading_volume": 4186030,
       "trading_value": 14642732940,
-      "market_cap": 147384351464
+      "market_cap": 147384351464,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251031",
       "change_rate": 10.57,
       "close_price": 3840.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "로봇주 동반 강세 — 젠슨 황 로봇 관련 좋은 소식 있을 것",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
@@ -167,7 +180,17 @@
       "source": "estimated",
       "trading_volume": 9730969,
       "trading_value": 37366920960,
-      "market_cap": 161794142259
+      "market_cap": 161794142259,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "젠슨 황 &quot;로봇 관련 좋은 소식 있을 것&quot;…로봇주 동반 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005204998",
+          "source": "한국경제",
+          "date": "2025-10-31"
+        }
+      ]
     },
     {
       "date": "20250528",
@@ -195,5 +218,5 @@
     "count_recent": 1,
     "avg_rate": 11.51
   },
-  "built_at": "2026-10-01T22:57:39"
+  "built_at": "2026-10-02T05:15:56"
 }

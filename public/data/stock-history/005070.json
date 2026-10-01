@@ -9,9 +9,9 @@
       "close_price": 32450.0,
       "trading_volume": 114959,
       "trading_value": 3730419550,
-      "rise_reason": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "rise_reason": "MLCC 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -24,7 +24,9 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "MLCC(적층세라믹콘덴서) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -53,10 +55,10 @@
       "date": "20260305",
       "change_rate": 15.41,
       "close_price": 49050.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -71,7 +73,9 @@
       "source": "estimated",
       "trading_volume": 394042,
       "trading_value": 19327760100,
-      "market_cap": 1629160714285
+      "market_cap": 1629160714285,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251021",
@@ -94,10 +98,10 @@
       "date": "20251014",
       "change_rate": 11.39,
       "close_price": 46450.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -105,7 +109,9 @@
       "source": "estimated",
       "trading_volume": 2974453,
       "trading_value": 138163341850,
-      "market_cap": 1542803571428
+      "market_cap": 1542803571428,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250811",
@@ -223,5 +229,5 @@
     "count_recent": 0,
     "avg_rate": 13.85
   },
-  "built_at": "2026-10-01T22:52:33"
+  "built_at": "2026-10-02T05:15:57"
 }

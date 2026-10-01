@@ -78,15 +78,17 @@
       "close_price": 23850.0,
       "trading_volume": 406174,
       "trading_value": 9687249900,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -94,9 +96,9 @@
       "close_price": 28000.0,
       "trading_volume": 337935,
       "trading_value": 9462180000,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 반도체 투자 사이클 올라탄다...온실가스 솔루션 .....",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
@@ -163,7 +165,17 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에코프로에이치엔, 반도체 투자 사이클 올라탄다...온실가스 솔루션 .....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006324225&office_id=018&code=383310&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.07"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -185,10 +197,10 @@
       "date": "20260305",
       "change_rate": 13.94,
       "close_price": 33100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -196,16 +208,18 @@
       "source": "estimated",
       "trading_volume": 499513,
       "trading_value": 16533880300,
-      "market_cap": 694256371814
+      "market_cap": 694256371814,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260209",
       "change_rate": 11.21,
       "close_price": 37700.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -213,7 +227,9 @@
       "source": "estimated",
       "trading_volume": 802001,
       "trading_value": 30235437700,
-      "market_cap": 790739130434
+      "market_cap": 790739130434,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
@@ -253,10 +269,10 @@
       "date": "20260126",
       "change_rate": 10.61,
       "close_price": 27100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -264,7 +280,9 @@
       "source": "estimated",
       "trading_volume": 777233,
       "trading_value": 21063014300,
-      "market_cap": 568409295352
+      "market_cap": 568409295352,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251017",
@@ -292,5 +310,5 @@
     "count_recent": 1,
     "avg_rate": 15.3
   },
-  "built_at": "2026-10-01T22:55:05"
+  "built_at": "2026-10-02T05:15:56"
 }

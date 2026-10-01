@@ -161,9 +161,9 @@
       "date": "20260206",
       "change_rate": 12.63,
       "close_price": 10700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "실시간 상승률 1위",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -185,7 +185,17 @@
       "source": "estimated",
       "trading_volume": 95310,
       "trading_value": 1019817000,
-      "market_cap": 235294059405
+      "market_cap": 235294059405,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]미원화학 29.89% 상한가…실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003615169",
+          "source": "서울신문",
+          "date": "2026-02-06"
+        }
+      ]
     }
   ],
   "stats": {
@@ -196,5 +206,5 @@
     "count_recent": 0,
     "avg_rate": 13.98
   },
-  "built_at": "2026-09-27T08:48:45"
+  "built_at": "2026-10-02T05:15:57"
 }

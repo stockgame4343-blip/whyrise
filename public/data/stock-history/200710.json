@@ -9,9 +9,9 @@
       "close_price": 26750.0,
       "trading_volume": 301603,
       "trading_value": 8067880250,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 17종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260727",
@@ -86,9 +88,9 @@
       "close_price": 29250.0,
       "trading_volume": 294426,
       "trading_value": 8611960500,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -155,7 +157,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260709",
@@ -163,9 +167,9 @@
       "close_price": 35450.0,
       "trading_volume": 886719,
       "trading_value": 31434188550,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -232,7 +236,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 코스피 나흘 만에 반등…반도체주 일제히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000520734&office_id=374&code=200710&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.09"
+        }
+      ]
     },
     {
       "date": "20260703",
@@ -240,10 +254,10 @@
       "close_price": 29800.0,
       "trading_volume": 225799,
       "trading_value": 6728810200,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -309,7 +323,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260609",
@@ -317,9 +333,9 @@
       "close_price": 36600.0,
       "trading_volume": 275565,
       "trading_value": 10085679000,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "온디바이스 AI 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -386,7 +402,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260521",
@@ -394,15 +412,17 @@
       "close_price": 44150.0,
       "trading_volume": 255585,
       "trading_value": 11284077750,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260424",
@@ -410,9 +430,9 @@
       "close_price": 60500.0,
       "trading_volume": 656629,
       "trading_value": 39726054500,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 1300억 R&D 투자…플랫폼 기업 전환 속도",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -479,7 +499,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "에이디테크놀로지, 1300억 R&D 투자…플랫폼 기업 전환 속도",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263594&office_id=018&code=200710&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.04.22"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -554,9 +584,9 @@
       "close_price": 54500.0,
       "trading_volume": 665873,
       "trading_value": 36290078500,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "올 매출 80% 늘 것",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -581,7 +611,17 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이디테크놀로지 &quot;AI·HPC 비중 급증… 올 매출 80% 늘 것&quot;",
+          "link": "https://n.news.naver.com/mnews/article/014/0005504669",
+          "source": "파이낸셜뉴스",
+          "date": "2026-04-08"
+        }
+      ]
     },
     {
       "date": "20260403",
@@ -664,9 +704,9 @@
       "date": "20260311",
       "change_rate": 14.82,
       "close_price": 48800.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체주 동반 강세 — 내후년까지 빅사이클 진입",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -682,7 +722,17 @@
       "source": "estimated",
       "trading_volume": 689205,
       "trading_value": 33633204000,
-      "market_cap": 656939280575
+      "market_cap": 656939280575,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;내후년까지 빅사이클 진입&quot;…통신장비주 상한가 쏟아져",
+          "link": "https://n.news.naver.com/mnews/article/015/0005261092",
+          "source": "한국경제",
+          "date": "2026-03-11"
+        }
+      ]
     },
     {
       "date": "20260306",
@@ -712,9 +762,9 @@
       "date": "20260305",
       "change_rate": 14.29,
       "close_price": 40000.0,
-      "rise_reason": "온디바이스 AI 테마 강세",
+      "rise_reason": "온디바이스 AI 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -730,15 +780,17 @@
       "source": "estimated",
       "trading_volume": 247434,
       "trading_value": 9897360000,
-      "market_cap": 538474820143
+      "market_cap": 538474820143,
+      "reason_previous": "온디바이스 AI 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260209",
       "change_rate": 13.58,
       "close_price": 40150.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "작년 영업익 29억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -760,15 +812,25 @@
       "source": "estimated",
       "trading_volume": 688986,
       "trading_value": 27662787900,
-      "market_cap": 540494100719
+      "market_cap": 540494100719,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에이디테크놀로지, 작년 영업익 29억…흑자전환",
+          "link": "https://n.news.naver.com/mnews/article/018/0006215865",
+          "source": "이데일리",
+          "date": "2026-02-09"
+        }
+      ]
     },
     {
       "date": "20251226",
       "change_rate": 27.9,
       "close_price": 35300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [],
@@ -777,7 +839,17 @@
       "source": "estimated",
       "trading_volume": 4544363,
       "trading_value": 160416013900,
-      "market_cap": 475204028776
+      "market_cap": 475204028776,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
+          "source": "SBS Biz",
+          "date": "2025-12-26"
+        }
+      ]
     },
     {
       "date": "20251201",
@@ -836,9 +908,9 @@
       "date": "20251117",
       "change_rate": 10.28,
       "close_price": 23600.0,
-      "rise_reason": "온디바이스 AI 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美 반도체주 ·메모리 호황 전망에 반도체주",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [],
@@ -847,7 +919,17 @@
       "source": "estimated",
       "trading_volume": 332398,
       "trading_value": 7844592800,
-      "market_cap": 317700143884
+      "market_cap": 317700143884,
+      "reason_previous": "온디바이스 AI 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 美 반도체주 반등·메모리 호황 전망에 반도체주 '강세...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000475326",
+          "source": "SBS Biz",
+          "date": "2025-11-17"
+        }
+      ]
     },
     {
       "date": "20250728",
@@ -940,5 +1022,5 @@
     "count_recent": 0,
     "avg_rate": 14.67
   },
-  "built_at": "2026-09-29T22:24:37"
+  "built_at": "2026-10-02T05:15:57"
 }

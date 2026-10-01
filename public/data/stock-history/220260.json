@@ -9,15 +9,17 @@
       "close_price": 4485.0,
       "trading_volume": 937788,
       "trading_value": 4205979180,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -25,15 +27,17 @@
       "close_price": 3250.0,
       "trading_volume": 208030,
       "trading_value": 676097500,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -41,15 +45,17 @@
       "close_price": 3625.0,
       "trading_volume": 138827,
       "trading_value": 503247875,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 20종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260514",
@@ -57,9 +63,9 @@
       "close_price": 6050.0,
       "trading_volume": 1062632,
       "trading_value": 6428923600,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "1분기 영업이익 786% 증가",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -120,15 +126,25 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "반도체 소재 기업 켐트로스, 1분기 영업이익 786% 증가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005286957&office_id=015&code=220260&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.05.14"
+        }
+      ]
     },
     {
       "date": "20260305",
       "change_rate": 14.5,
       "close_price": 5450.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 33종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
@@ -137,15 +153,17 @@
       "source": "estimated",
       "trading_volume": 391771,
       "trading_value": 2135151950,
-      "market_cap": 174778034682
+      "market_cap": 174778034682,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260224",
       "change_rate": 12.91,
       "close_price": 6560.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -167,15 +185,25 @@
       "source": "estimated",
       "trading_volume": 3717519,
       "trading_value": 24386924640,
-      "market_cap": 210375028901
+      "market_cap": 210375028901,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "20만전자·100만닉스 끌고, 소부장 밀고…반도체주 '강세'(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0008790759",
+          "source": "뉴스1",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20251217",
       "change_rate": 12.02,
       "close_price": 6430.0,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -191,15 +219,17 @@
       "source": "estimated",
       "trading_volume": 9331337,
       "trading_value": 60000496910,
-      "market_cap": 206206011560
+      "market_cap": 206206011560,
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20251208",
       "change_rate": 11.89,
       "close_price": 5930.0,
-      "rise_reason": "대형 수주",
+      "rise_reason": "HBM 밸류체인 합류 재평가 가",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -233,15 +263,25 @@
       "source": "estimated",
       "trading_volume": 23649672,
       "trading_value": 140242554960,
-      "market_cap": 190171329479
+      "market_cap": 190171329479,
+      "reason_previous": "대형 수주",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]켐트로스, HBM 밸류체인 합류 재평가 가속…중·일 갈등 반사...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005690310",
+          "source": "아시아경제",
+          "date": "2025-12-08"
+        }
+      ]
     },
     {
       "date": "20251201",
       "change_rate": 29.95,
       "close_price": 5250.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체 재료 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -269,7 +309,9 @@
       "source": "estimated",
       "trading_volume": 9940354,
       "trading_value": 52186858500,
-      "market_cap": 168364161849
+      "market_cap": 168364161849,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -280,5 +322,5 @@
     "count_recent": 1,
     "avg_rate": 15.16
   },
-  "built_at": "2026-10-01T22:56:55"
+  "built_at": "2026-10-02T05:15:56"
 }

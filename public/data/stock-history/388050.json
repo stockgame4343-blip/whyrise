@@ -9,9 +9,9 @@
       "close_price": 9790.0,
       "trading_volume": 8519007,
       "trading_value": 83401078530,
-      "rise_reason": "흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "원자력발전 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환 보도",
+      "reason_kind": "theme"
     },
     {
       "date": "20260813",
@@ -86,10 +88,10 @@
       "close_price": 10430.0,
       "trading_volume": 8301988,
       "trading_value": 86589734840,
-      "rise_reason": "전력설비 흑자 전환 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [
         {
@@ -155,7 +157,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전력설비 흑자 전환 보도",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -163,15 +167,17 @@
       "close_price": 6600.0,
       "trading_volume": 243772,
       "trading_value": 1608895200,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260723",
@@ -179,15 +185,25 @@
       "close_price": 7210.0,
       "trading_volume": 232367,
       "trading_value": 1675366070,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "알파벳, AI 투자 계속 간다… 전력설비주 동반 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005389692&office_id=008&code=006340&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.23"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -195,9 +211,9 @@
       "close_price": 8110.0,
       "trading_volume": 308983,
       "trading_value": 2505852130,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "원자력발전 테마 14종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -210,7 +226,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260504",
@@ -326,9 +344,9 @@
       "date": "20260305",
       "change_rate": 13.94,
       "close_price": 10300.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "전력설비 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -350,7 +368,9 @@
       "source": "estimated",
       "trading_volume": 950780,
       "trading_value": 9793034000,
-      "market_cap": 192740229885
+      "market_cap": 192740229885,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260220",
@@ -380,9 +400,9 @@
       "date": "20260120",
       "change_rate": 10.97,
       "close_price": 9000.0,
-      "rise_reason": "전력설비 테마 강세",
+      "rise_reason": "전력설비 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [],
@@ -391,7 +411,9 @@
       "source": "estimated",
       "trading_volume": 5055870,
       "trading_value": 45502830000,
-      "market_cap": 168413793103
+      "market_cap": 168413793103,
+      "reason_previous": "전력설비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250612",
@@ -419,5 +441,5 @@
     "count_recent": 0,
     "avg_rate": 14.37
   },
-  "built_at": "2026-10-01T22:56:30"
+  "built_at": "2026-10-02T05:15:56"
 }

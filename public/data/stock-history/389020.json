@@ -9,9 +9,9 @@
       "close_price": 22000.0,
       "trading_volume": 70643,
       "trading_value": 1554146000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "콜옵션 물량 소각",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "[메자닌 투자파일] 자람테크놀로지, 콜옵션 물량 소각…희석 최소화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000088620&office_id=293&code=389020&page=&sm=",
+          "source": "블로터",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -86,15 +96,17 @@
       "close_price": 18470.0,
       "trading_volume": 58986,
       "trading_value": 1089471420,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 11종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260710",
@@ -102,9 +114,9 @@
       "close_price": 23600.0,
       "trading_volume": 57273,
       "trading_value": 1351642800,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
+      "rise_reason": "광통신 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -117,7 +129,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -125,9 +139,9 @@
       "close_price": 25200.0,
       "trading_volume": 58675,
       "trading_value": 1478610000,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "XGS-PON ASIC 첫 양산 PO 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -140,7 +154,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "자람테크놀로지, XGS-PON ASIC 첫 양산 PO 수주…&quot;개발 넘어 양산 매출...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006318195",
+          "source": "이데일리",
+          "date": "2026-06-29"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -148,9 +172,9 @@
       "close_price": 57700.0,
       "trading_volume": 495403,
       "trading_value": 28584753100,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -211,7 +235,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "theme"
     },
     {
       "date": "20260414",
@@ -219,9 +245,9 @@
       "close_price": 60900.0,
       "trading_volume": 1240783,
       "trading_value": 75563684700,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -278,7 +304,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260401",
@@ -286,9 +314,9 @@
       "close_price": 54500.0,
       "trading_volume": 545580,
       "trading_value": 29734110000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 53억 규모 전환청구권 행사",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -301,7 +329,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "자람테크놀로지, 53억 규모 전환청구권 행사",
+          "link": "https://n.news.naver.com/mnews/article/018/0006247606",
+          "source": "이데일리",
+          "date": "2026-04-01"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -361,9 +399,9 @@
       "date": "20260305",
       "change_rate": 19.43,
       "close_price": 43650.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 13종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -372,7 +410,9 @@
       "source": "estimated",
       "trading_volume": 167412,
       "trading_value": 7307533800,
-      "market_cap": 301368403361
+      "market_cap": 301368403361,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260223",
@@ -419,9 +459,9 @@
       "date": "20251226",
       "change_rate": 12.05,
       "close_price": 39050.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -430,7 +470,17 @@
       "source": "estimated",
       "trading_volume": 117475,
       "trading_value": 4587398750,
-      "market_cap": 269609075630
+      "market_cap": 269609075630,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
+          "source": "SBS Biz",
+          "date": "2025-12-26"
+        }
+      ]
     },
     {
       "date": "20251205",
@@ -540,5 +590,5 @@
     "count_recent": 0,
     "avg_rate": 15.72
   },
-  "built_at": "2026-10-01T22:57:26"
+  "built_at": "2026-10-02T05:15:56"
 }

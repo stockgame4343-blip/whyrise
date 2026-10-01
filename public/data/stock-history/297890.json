@@ -48,10 +48,10 @@
       "close_price": 1933.0,
       "trading_volume": 723349,
       "trading_value": 1398233617,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -111,7 +111,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -119,9 +121,9 @@
       "close_price": 2715.0,
       "trading_volume": 13956634,
       "trading_value": 37892261310,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "플렉서블 디스플레이 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "플렉서블 디스플레이",
       "news": [
@@ -182,7 +184,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -227,5 +231,5 @@
     "count_recent": 0,
     "avg_rate": 12.17
   },
-  "built_at": "2026-09-27T09:47:20"
+  "built_at": "2026-10-02T05:15:57"
 }

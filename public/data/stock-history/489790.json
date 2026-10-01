@@ -9,15 +9,17 @@
       "close_price": 42000.0,
       "trading_volume": 561094,
       "trading_value": 23565948000,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -25,9 +27,9 @@
       "close_price": 48000.0,
       "trading_volume": 468978,
       "trading_value": 22510944000,
-      "rise_reason": "증권사 리포트 공개",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "소리 기억하는 AI기술 개발",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -94,7 +96,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권사 리포트 공개",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한화비전, '치명적 망각' 난제 풀었다…소리 기억하는 AI기술 개발",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006329612&office_id=018&code=489790&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.14"
+        }
+      ]
     },
     {
       "date": "20260604",
@@ -179,15 +191,17 @@
       "close_price": 72700.0,
       "trading_volume": 342992,
       "trading_value": 24935518400,
-      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
+      "rise_reason": "HBM 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "HBM(고대역폭메모리) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260325",
@@ -241,9 +255,9 @@
       "date": "20260305",
       "change_rate": 18.64,
       "close_price": 78300.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 28종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -252,15 +266,17 @@
       "source": "estimated",
       "trading_volume": 1632673,
       "trading_value": 127838295900,
-      "market_cap": 3953220623145
+      "market_cap": 3953220623145,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260226",
       "change_rate": 13.46,
       "close_price": 86000.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 장비 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -300,15 +316,17 @@
       "source": "estimated",
       "trading_volume": 7000707,
       "trading_value": 602060802000,
-      "market_cap": 4341979228486
+      "market_cap": 4341979228486,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260224",
       "change_rate": 29.89,
       "close_price": 80400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -317,15 +335,25 @@
       "source": "estimated",
       "trading_volume": 6625305,
       "trading_value": 532674522000,
-      "market_cap": 4059245697329
+      "market_cap": 4059245697329,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "20만전자·100만닉스 끌고, 소부장 밀고…반도체주 '강세'(종합)",
+          "link": "https://n.news.naver.com/mnews/article/421/0008790759",
+          "source": "뉴스1",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20260203",
       "change_rate": 12.3,
       "close_price": 63900.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 6종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -334,7 +362,9 @@
       "source": "estimated",
       "trading_volume": 2308902,
       "trading_value": 147538837800,
-      "market_cap": 3226191543026
+      "market_cap": 3226191543026,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260130",
@@ -413,5 +443,5 @@
     "count_recent": 0,
     "avg_rate": 15.04
   },
-  "built_at": "2026-09-29T22:19:17"
+  "built_at": "2026-10-02T05:15:57"
 }

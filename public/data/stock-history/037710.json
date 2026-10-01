@@ -9,9 +9,9 @@
       "close_price": 49800.0,
       "trading_volume": 1734732,
       "trading_value": 86389653600,
-      "rise_reason": "6월 매출 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "호남 반도체 테마 수혜주 된",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "백화점",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "6월 매출 증가",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[애프터마켓 리뷰] '호남 반도체 테마' 수혜주 된 광주신세계, 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000520296&office_id=374&code=037710&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.07.07"
+        }
+      ]
     },
     {
       "date": "20260706",
@@ -86,10 +96,10 @@
       "close_price": 50500.0,
       "trading_volume": 1213339,
       "trading_value": 61273619500,
-      "rise_reason": "백화점 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백화점",
       "news": [
         {
@@ -155,7 +165,9 @@
       ],
       "sector": "백화점과일반상점",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "백화점 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260626",
@@ -320,5 +332,5 @@
     "count_recent": 0,
     "avg_rate": 26.19
   },
-  "built_at": "2026-09-27T08:47:31"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,10 +9,10 @@
       "close_price": 11530.0,
       "trading_volume": 334262,
       "trading_value": 3854040860,
-      "rise_reason": "매출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "매출 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260813",
@@ -86,9 +88,9 @@
       "close_price": 17610.0,
       "trading_volume": 1018966,
       "trading_value": 17943991260,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "아스트라고 파트너 서밋 2026 개최",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -155,7 +157,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, '아스트라고 파트너 서밋 2026' 개최...'아스몬' 전격 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002433815&office_id=092&code=189330&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260811",
@@ -163,9 +175,9 @@
       "close_price": 16880.0,
       "trading_volume": 2181881,
       "trading_value": 36830151280,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 채정환 베라루핀 구축·운영 국내 최고",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -232,7 +244,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "채정환 씨이랩 \"베라루핀 구축·운영 국내 최고\"",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002433552&office_id=092&code=189330&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -240,10 +262,10 @@
       "close_price": 13810.0,
       "trading_volume": 1381340,
       "trading_value": 19076305400,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -309,7 +331,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260807",
@@ -317,9 +341,9 @@
       "close_price": 11700.0,
       "trading_volume": 1238345,
       "trading_value": 14488636500,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "비엔아이엔씨와 307억 규모 공급계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -386,7 +410,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 비엔아이엔씨와 307억 규모 공급계약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002679374&office_id=016&code=189330&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -394,9 +428,9 @@
       "close_price": 11020.0,
       "trading_volume": 1268777,
       "trading_value": 13981922540,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "비엔아이엔씨와 307억 규모 공급계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -463,7 +497,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 비엔아이엔씨와 307억 규모 공급계약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002679374&office_id=016&code=189330&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -471,9 +515,9 @@
       "close_price": 10390.0,
       "trading_volume": 567187,
       "trading_value": 5893072930,
-      "rise_reason": "공급 계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 데이터센터에너지효율협회 가입…AI 데이터센터 사업 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -540,7 +584,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 데이터센터에너지효율협회 가입…AI 데이터센터 사업 확대",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006333921&office_id=018&code=189330&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.21"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -548,9 +602,9 @@
       "close_price": 12620.0,
       "trading_volume": 867558,
       "trading_value": 10948581960,
-      "rise_reason": "공급 계약 체결",
+      "rise_reason": "대규모 공급 계약",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -617,7 +671,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "공급 계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 데이타솔루션·씨이랩, 대규모 공급 계약에 상한가(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016183310&office_id=001&code=189330&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.07.08"
+        }
+      ]
     },
     {
       "date": "20260703",
@@ -625,10 +689,10 @@
       "close_price": 9940.0,
       "trading_volume": 243727,
       "trading_value": 2422646380,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -694,7 +758,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -702,10 +768,10 @@
       "close_price": 9930.0,
       "trading_volume": 195738,
       "trading_value": 1943678340,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
         {
@@ -771,7 +837,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -779,15 +847,17 @@
       "close_price": 9050.0,
       "trading_volume": 236897,
       "trading_value": 2143917850,
-      "rise_reason": "지능형로봇/인공지능(AI) 테마 강세",
+      "rise_reason": "지능형로봇 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "지능형로봇/인공지능(AI) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -795,10 +865,10 @@
       "close_price": 10700.0,
       "trading_volume": 2271696,
       "trading_value": 24307147200,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -864,7 +934,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260601",
@@ -872,9 +944,9 @@
       "close_price": 11900.0,
       "trading_volume": 1199089,
       "trading_value": 14269159100,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "매출 11억 42% 늘어",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -941,7 +1013,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 1분기 수주잔고 3배 껑충...매출 11억 42% 늘어",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002424683&office_id=092&code=189330&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.05.29"
+        }
+      ]
     },
     {
       "date": "20260529",
@@ -949,9 +1031,9 @@
       "close_price": 10730.0,
       "trading_volume": 3442859,
       "trading_value": 36941877070,
-      "rise_reason": "수주 공시",
+      "rise_reason": "매출 11억 42% 늘어",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -1018,7 +1100,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 1분기 수주잔고 3배 껑충...매출 11억 42% 늘어",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002424683&office_id=092&code=189330&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.05.29"
+        }
+      ]
     },
     {
       "date": "20260526",
@@ -1026,10 +1118,10 @@
       "close_price": 9200.0,
       "trading_volume": 612448,
       "trading_value": 5634521600,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
         {
@@ -1095,7 +1187,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260512",
@@ -1103,9 +1197,9 @@
       "close_price": 8480.0,
       "trading_volume": 4009491,
       "trading_value": 34000483680,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "6개 기업과 호남권 AI 데이터센터 구축 MOU",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -1172,7 +1266,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 6개 기업과 호남권 AI 데이터센터 구축 MOU",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002422214&office_id=092&code=189330&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260421",
@@ -1180,9 +1284,9 @@
       "close_price": 8950.0,
       "trading_volume": 1990636,
       "trading_value": 17816192200,
-      "rise_reason": "메타버스(Metaverse) 테마 강세",
+      "rise_reason": "엔비디아 최고 파트너 승격에 2연상",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -1249,7 +1353,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "메타버스(Metaverse) 테마 강세",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 엔비디아 최고 파트너 승격에 '2연상' [핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008901932&office_id=421&code=189330&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.04.21"
+        }
+      ]
     },
     {
       "date": "20260420",
@@ -1257,9 +1371,9 @@
       "close_price": 6890.0,
       "trading_volume": 631423,
       "trading_value": 4350504470,
-      "rise_reason": "메타버스(Metaverse) 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "엔비디아 파트너 최고 등급 엘리트 승격",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -1326,7 +1440,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "메타버스(Metaverse) 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 엔비디아 파트너 최고 등급 '엘리트' 승격",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000083010&office_id=293&code=189330&page=&sm=",
+          "source": "블로터",
+          "date": "2026.04.20"
+        }
+      ]
     },
     {
       "date": "20260415",
@@ -1334,9 +1458,9 @@
       "close_price": 5350.0,
       "trading_volume": 723241,
       "trading_value": 3869339350,
-      "rise_reason": "거래 급증",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 2026 AI 엑스포 도쿄 참가...아스트라고 일 시장...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -1403,15 +1527,25 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래 급증",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, '2026 AI 엑스포 도쿄' 참가...'아스트라고' 일 시장...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002418530&office_id=092&code=189330&page=&sm=",
+          "source": "지디넷코리아",
+          "date": "2026.04.13"
+        }
+      ]
     },
     {
       "date": "20260312",
       "change_rate": 12.36,
       "close_price": 4455.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "엔비디아 옴니버스 기반 피지컬 AI 전략 공개",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -1427,7 +1561,17 @@
       "source": "estimated",
       "trading_volume": 184460,
       "trading_value": 821769300,
-      "market_cap": 41786833514
+      "market_cap": 41786833514,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨이랩, 엔비디아 옴니버스 기반 '피지컬 AI' 전략 공개",
+          "link": "https://n.news.naver.com/mnews/article/293/0000080831",
+          "source": "블로터",
+          "date": "2026-03-12"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -1498,9 +1642,9 @@
       "date": "20250618",
       "change_rate": 10.28,
       "close_price": 8409.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "지능형로봇 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [],
@@ -1509,7 +1653,9 @@
       "source": "estimated",
       "trading_volume": 256525,
       "trading_value": 2157118725,
-      "market_cap": 78874406964
+      "market_cap": 78874406964,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20250609",
@@ -1537,5 +1683,5 @@
     "count_recent": 1,
     "avg_rate": 16.42
   },
-  "built_at": "2026-10-01T22:57:40"
+  "built_at": "2026-10-02T05:15:56"
 }

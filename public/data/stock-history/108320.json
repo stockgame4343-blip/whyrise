@@ -9,9 +9,9 @@
       "close_price": 39250.0,
       "trading_volume": 125144,
       "trading_value": 4911902000,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "차량용 MCU 양산",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -36,7 +36,17 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "LX세미콘, 차량용 MCU 양산 … 현대차·기아에 공급 시작",
+          "link": "https://n.news.naver.com/mnews/article/009/0005719186",
+          "source": "매일경제",
+          "date": "2026-08-10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -76,9 +86,9 @@
       "close_price": 62200.0,
       "trading_volume": 245785,
       "trading_value": 15287827000,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "시스템반도체 테마 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -91,7 +101,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260424",
@@ -99,9 +111,9 @@
       "close_price": 64900.0,
       "trading_volume": 580498,
       "trading_value": 37674320200,
-      "rise_reason": "지분 투자 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "시스템반도체 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -168,15 +180,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 투자 이슈",
+      "reason_kind": "theme"
     },
     {
       "date": "20260225",
       "change_rate": 12.72,
       "close_price": 62900.0,
-      "rise_reason": "시스템반도체 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "삼성디스플레이에 DDI 공급한다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -216,7 +230,17 @@
       "source": "estimated",
       "trading_volume": 437499,
       "trading_value": 27518687100,
-      "market_cap": 1023055974165
+      "market_cap": 1023055974165,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "LX세미콘, 삼성디스플레이에 DDI 공급한다 [biz-플러스]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004593104",
+          "source": "서울경제",
+          "date": "2026-02-25"
+        }
+      ]
     }
   ],
   "stats": {
@@ -227,5 +251,5 @@
     "count_recent": 0,
     "avg_rate": 11.16
   },
-  "built_at": "2026-10-01T22:52:42"
+  "built_at": "2026-10-02T05:15:56"
 }

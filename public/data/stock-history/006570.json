@@ -9,9 +9,9 @@
       "close_price": 2010.0,
       "trading_volume": 311301,
       "trading_value": 625715010,
-      "rise_reason": "수출 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SPEC·수출 확대 등 사업 경쟁력 강화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리모델링/인테리어",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수출 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "대림통상, SPEC·수출 확대 등 사업 경쟁력 강화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014154110&office_id=003&code=006570&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.28"
+        }
+      ]
     },
     {
       "date": "20260818",
@@ -86,9 +96,9 @@
       "close_price": 2065.0,
       "trading_volume": 336040,
       "trading_value": 693922600,
-      "rise_reason": "수주 공시",
+      "rise_reason": "상반기 매출 684억",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리모델링/인테리어",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "대림통상, 상반기 매출 684억…전년比 15.2%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014132459&office_id=003&code=006570&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.18"
+        }
+      ]
     }
   ],
   "stats": {
@@ -166,5 +186,5 @@
     "count_recent": 0,
     "avg_rate": 10.58
   },
-  "built_at": "2026-10-01T22:53:28"
+  "built_at": "2026-10-02T05:15:56"
 }

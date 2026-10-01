@@ -25,9 +25,9 @@
       "close_price": 88100.0,
       "trading_volume": 79325,
       "trading_value": 6988532500,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "우주항공산업 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -40,7 +40,9 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방산",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -48,15 +50,17 @@
       "close_price": 89900.0,
       "trading_volume": 93059,
       "trading_value": 8366004100,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260413",
@@ -132,10 +136,10 @@
       "date": "20260305",
       "change_rate": 20.37,
       "close_price": 182600.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -143,7 +147,9 @@
       "source": "estimated",
       "trading_volume": 240664,
       "trading_value": 43945246400,
-      "market_cap": 1999734267040
+      "market_cap": 1999734267040,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
@@ -540,5 +546,5 @@
     "count_recent": 0,
     "avg_rate": 14.16
   },
-  "built_at": "2026-09-29T22:22:49"
+  "built_at": "2026-10-02T05:15:57"
 }

@@ -9,10 +9,10 @@
       "close_price": 75900.0,
       "trading_volume": 421482,
       "trading_value": 31990483800,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -78,7 +78,9 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -86,9 +88,9 @@
       "close_price": 75800.0,
       "trading_volume": 599196,
       "trading_value": 45419056800,
-      "rise_reason": "로봇/자동화",
+      "rise_reason": "현대차 로봇 밸류체인 핵심 부상 (삼성증권)",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -107,7 +109,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "에스엘, 현대차 로봇 밸류체인 핵심 부상-삼성증권",
+          "link": "https://n.news.naver.com/mnews/article/014/0005525104",
+          "source": "파이낸셜뉴스",
+          "date": "2026-05-22"
+        }
+      ]
     },
     {
       "date": "20260521",
@@ -115,9 +127,9 @@
       "close_price": 68500.0,
       "trading_volume": 287339,
       "trading_value": 19682721500,
-      "rise_reason": "계약 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "북미 램프 사업 호조·로보틱스 기대감 확대",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -184,7 +196,17 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "에스엘, 북미 램프 사업 호조·로보틱스 기대감 확대…목표가↑-NH",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006283978&office_id=018&code=005850&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.18"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -244,9 +266,9 @@
       "date": "20260220",
       "change_rate": 10.89,
       "close_price": 61100.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "영업이익·배당 매력 부각",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -268,7 +290,17 @@
       "source": "estimated",
       "trading_volume": 927506,
       "trading_value": 56670616600,
-      "market_cap": 2838021385542
+      "market_cap": 2838021385542,
+      "reason_previous": "바이오",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주]'영업이익·배당 매력 부각' 에스엘, 10%대↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005723579",
+          "source": "아시아경제",
+          "date": "2026-02-20"
+        }
+      ]
     },
     {
       "date": "20260121",
@@ -363,5 +395,5 @@
     "count_recent": 0,
     "avg_rate": 15.42
   },
-  "built_at": "2026-09-27T08:34:21"
+  "built_at": "2026-10-02T05:15:57"
 }

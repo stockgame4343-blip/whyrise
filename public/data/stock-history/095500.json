@@ -25,10 +25,10 @@
       "close_price": 8950.0,
       "trading_volume": 4304251,
       "trading_value": 38523046450,
-      "rise_reason": "리튬 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "리튬 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -118,9 +120,9 @@
       "close_price": 9030.0,
       "trading_volume": 55298,
       "trading_value": 499340940,
-      "rise_reason": "리튬 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "한양대와 전고체 배터리 핵심 기술 확보",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -187,7 +189,17 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "리튬 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "미래나노텍, 한양대와 전고체 배터리 핵심 기술 확보",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005538324&office_id=014&code=095500&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.06.23"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -210,10 +222,10 @@
       "date": "20260122",
       "change_rate": 16.57,
       "close_price": 12100.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -221,7 +233,9 @@
       "source": "estimated",
       "trading_volume": 3555409,
       "trading_value": 43020448900,
-      "market_cap": 375270422535
+      "market_cap": 375270422535,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251111",
@@ -263,10 +277,10 @@
       "date": "20251024",
       "change_rate": 25.63,
       "close_price": 12500.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -287,7 +301,9 @@
       "source": "estimated",
       "trading_volume": 5629493,
       "trading_value": 70368662500,
-      "market_cap": 387676056338
+      "market_cap": 387676056338,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250731",
@@ -364,5 +380,5 @@
     "count_recent": 0,
     "avg_rate": 17.95
   },
-  "built_at": "2026-09-27T09:33:36"
+  "built_at": "2026-10-02T05:15:57"
 }

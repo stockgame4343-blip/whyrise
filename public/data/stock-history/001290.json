@@ -9,9 +9,9 @@
       "close_price": 6015.0,
       "trading_volume": 276079,
       "trading_value": 1660615185,
-      "rise_reason": "증권 인수 관련 뉴스",
+      "rise_reason": "Sh수협은행 인수 추진 기대감",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권 인수 관련 뉴스",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주]상상인증권, Sh수협은행 인수 추진 기대감에 상승세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003455160&office_id=030&code=001290&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.08.07"
+        }
+      ]
     },
     {
       "date": "20260806",
@@ -86,9 +96,9 @@
       "close_price": 4630.0,
       "trading_volume": 272813,
       "trading_value": 1263124190,
-      "rise_reason": "증권 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "Sh수협은행, 인수 협의 진행",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권 인수 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "Sh수협은행, 상상인증권 인수 협의 진행",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014112898&office_id=003&code=001290&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.08.06"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -333,23 +353,25 @@
       "close_price": 1132.0,
       "trading_volume": 1847770,
       "trading_value": 2091675640,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260320",
       "change_rate": 11.88,
       "close_price": 1413.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "증권 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [
@@ -389,7 +411,9 @@
       "source": "estimated",
       "trading_volume": 27632825,
       "trading_value": 39045181725,
-      "market_cap": 153061754780
+      "market_cap": 153061754780,
+      "reason_previous": "바이오",
+      "reason_kind": "theme"
     },
     {
       "date": "20260306",
@@ -412,9 +436,9 @@
       "date": "20260305",
       "change_rate": 15.54,
       "close_price": 1175.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "증권 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -423,7 +447,9 @@
       "source": "estimated",
       "trading_volume": 7136078,
       "trading_value": 8384891650,
-      "market_cap": 127280652418
+      "market_cap": 127280652418,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260226",
@@ -446,9 +472,9 @@
       "date": "20260219",
       "change_rate": 29.98,
       "close_price": 1175.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -457,15 +483,17 @@
       "source": "estimated",
       "trading_volume": 9948967,
       "trading_value": 11690036225,
-      "market_cap": 127280652418
+      "market_cap": 127280652418,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260213",
       "change_rate": 21.02,
       "close_price": 904.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -474,15 +502,17 @@
       "source": "estimated",
       "trading_volume": 42234908,
       "trading_value": 38180356832,
-      "market_cap": 97924859392
+      "market_cap": 97924859392,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260129",
       "change_rate": 18.72,
       "close_price": 780.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "증권 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -491,7 +521,9 @@
       "source": "estimated",
       "trading_volume": 16964638,
       "trading_value": 13232417640,
-      "market_cap": 84492688413
+      "market_cap": 84492688413,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20250909",
@@ -570,5 +602,5 @@
     "count_recent": 0,
     "avg_rate": 19.12
   },
-  "built_at": "2026-10-01T22:53:05"
+  "built_at": "2026-10-02T05:15:56"
 }

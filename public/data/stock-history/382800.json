@@ -9,9 +9,9 @@
       "close_price": 5560.0,
       "trading_volume": 2264424,
       "trading_value": 12590197440,
-      "rise_reason": "투자 확대 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "태양광에너지 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -78,7 +78,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자 확대 발표",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -86,9 +88,9 @@
       "close_price": 4220.0,
       "trading_volume": 419379,
       "trading_value": 1769779380,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "태양광에너지 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
@@ -101,7 +103,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "theme"
     },
     {
       "date": "20260629",
@@ -125,15 +129,17 @@
       "close_price": 9180.0,
       "trading_volume": 1847236,
       "trading_value": 16957626480,
-      "rise_reason": "태양광에너지 테마 강세",
+      "rise_reason": "태양광에너지 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광에너지 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260429",
@@ -141,10 +147,10 @@
       "close_price": 8860.0,
       "trading_volume": 9990741,
       "trading_value": 88517965260,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -210,7 +216,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260424",
@@ -350,9 +358,9 @@
       "date": "20260204",
       "change_rate": 14.0,
       "close_price": 3745.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -368,7 +376,9 @@
       "source": "estimated",
       "trading_volume": 4252772,
       "trading_value": 15926631140,
-      "market_cap": 119176822916
+      "market_cap": 119176822916,
+      "reason_previous": "태양광/재생에너지",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -379,5 +389,5 @@
     "count_recent": 0,
     "avg_rate": 15.01
   },
-  "built_at": "2026-10-01T22:56:30"
+  "built_at": "2026-10-02T05:15:56"
 }

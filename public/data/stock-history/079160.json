@@ -9,9 +9,9 @@
       "close_price": 5430.0,
       "trading_volume": 2239278,
       "trading_value": 12159279540,
-      "rise_reason": "지분 관련 이슈",
+      "rise_reason": "여름 극장가 대작 경쟁에 13.8%",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "영화",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] CJ CGV, 여름 극장가 대작 경쟁에 13.8% 상승(종합...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016224872&office_id=001&code=079160&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.07.30"
+        }
+      ]
     },
     {
       "date": "20250620",
@@ -106,5 +116,5 @@
     "count_recent": 0,
     "avg_rate": 13.84
   },
-  "built_at": "2026-09-28T23:30:37"
+  "built_at": "2026-10-02T05:15:57"
 }

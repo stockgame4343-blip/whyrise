@@ -9,9 +9,9 @@
       "close_price": 115800.0,
       "trading_volume": 439896,
       "trading_value": 50939956800,
-      "rise_reason": "관련 보도: FDA·DIA 콘퍼런스서 황반변성 RNAi 개발 성과 발표",
+      "rise_reason": "FDA·DIA 콘퍼런스서 황반변성 RNAi 개발 성과 발표",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -45,7 +45,8 @@
           "source": "이데일리",
           "date": "2026.09.29"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260810",
@@ -53,9 +54,9 @@
       "close_price": 137800.0,
       "trading_volume": 403251,
       "trading_value": 55567987800,
-      "rise_reason": "기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "기술이전 경쟁력 강화",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -122,7 +123,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기술이전 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "올릭스, RNAi 전문가 민지영 수석부사장 영입…기술이전 경쟁력 강화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004650223&office_id=011&code=226950&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -130,9 +141,9 @@
       "close_price": 119800.0,
       "trading_volume": 484026,
       "trading_value": 57986314800,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "탈모치료제 임상 1b상 투약 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -199,7 +210,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "올릭스, 탈모치료제 임상 1b상 투약 완료…2상 진입 착수",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004648365&office_id=011&code=226950&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.04"
+        }
+      ]
     },
     {
       "date": "20260803",
@@ -207,9 +228,9 @@
       "close_price": 105400.0,
       "trading_volume": 283442,
       "trading_value": 29874786800,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전임상서 효과 확인",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -276,7 +297,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "임상 관련 뉴스",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "올릭스, 단일 약물로 간·지방 이상 동시 조절…전임상서 효과 확인",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004647911&office_id=011&code=226950&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.03"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -307,9 +338,9 @@
       "close_price": 167200.0,
       "trading_volume": 844686,
       "trading_value": 141231499200,
-      "rise_reason": "계약 체결",
+      "rise_reason": "로레알과 R&D 협력 계약 체결 소식",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -376,7 +407,17 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "올릭스, 로레알과 R&D 협력 계약 체결 소식에 27% 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005378332&office_id=008&code=226950&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260624",
@@ -384,10 +425,10 @@
       "close_price": 138400.0,
       "trading_volume": 434117,
       "trading_value": 60081792800,
-      "rise_reason": "비만치료제 기술이전 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "비만치료제",
       "news": [
         {
@@ -453,7 +494,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "비만치료제 기술이전 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -630,9 +673,9 @@
       "date": "20260225",
       "change_rate": 13.7,
       "close_price": 163500.0,
-      "rise_reason": "바이오",
+      "rise_reason": "차세대 비만약·CNS 전임상 가",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -666,7 +709,17 @@
       "source": "estimated",
       "trading_volume": 1083013,
       "trading_value": 177072625500,
-      "market_cap": 3322765909090
+      "market_cap": 3322765909090,
+      "reason_previous": "바이오",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "올릭스 &quot;차세대 비만약·CNS 전임상 가속…조기 기술이전도 가능&quot;",
+          "link": "https://n.news.naver.com/mnews/article/008/0005321592",
+          "source": "머니투데이",
+          "date": "2026-02-24"
+        }
+      ]
     },
     {
       "date": "20260126",
@@ -861,5 +914,5 @@
     "count_recent": 1,
     "avg_rate": 14.28
   },
-  "built_at": "2026-10-01T23:45:00"
+  "built_at": "2026-10-02T05:15:56"
 }

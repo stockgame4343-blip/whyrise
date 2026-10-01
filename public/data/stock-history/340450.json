@@ -9,9 +9,9 @@
       "close_price": 8080.0,
       "trading_volume": 1188856,
       "trading_value": 9605956480,
-      "rise_reason": "관련 보도: “지씨지놈, AI 암 조기진단·NIPT 성장 모멘텀 본격화”",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "관련 보도: AI 암 조기진단·NIPT 성장 모멘텀 본격화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
@@ -33,7 +33,8 @@
           "source": "이데일리",
           "date": "2026-09-23"
         }
-      ]
+      ],
+      "reason_kind": "related"
     },
     {
       "date": "20260629",
@@ -41,23 +42,33 @@
       "close_price": 4950.0,
       "trading_volume": 227251,
       "trading_value": 1124892450,
-      "rise_reason": "유전자 치료제/분석 테마 강세",
+      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유전자 치료제/분석 테마 강세",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "제약·바이오株 급등…국민성장펀드 날개 달고 다시 비상할까(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016165532&office_id=001&code=475830&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260325",
       "change_rate": 11.14,
       "close_price": 8280.0,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "조기암 선별검사 개화 수혜 (한양증권)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -73,7 +84,17 @@
       "source": "estimated",
       "trading_volume": 510363,
       "trading_value": 4225805640,
-      "market_cap": 195817731958
+      "market_cap": 195817731958,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "한양證 “지씨지놈, 조기암 선별검사 개화 수혜...성장대비 저평가”",
+          "link": "https://n.news.naver.com/mnews/article/014/0005496990",
+          "source": "파이낸셜뉴스",
+          "date": "2026-03-25"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -96,9 +117,9 @@
       "date": "20260120",
       "change_rate": 10.94,
       "close_price": 7200.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "지난해 매출 22% 성장 흑자전환에도 성공",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -120,7 +141,17 @@
       "source": "estimated",
       "trading_volume": 1655404,
       "trading_value": 11918908800,
-      "market_cap": 170276288659
+      "market_cap": 170276288659,
+      "reason_previous": "실적 호조",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "지씨지놈, 지난해 매출 22% 성장 &quot;흑자전환에도 성공&quot;",
+          "link": "https://n.news.naver.com/mnews/article/014/0005465036",
+          "source": "파이낸셜뉴스",
+          "date": "2026-01-19"
+        }
+      ]
     }
   ],
   "stats": {
@@ -131,5 +162,5 @@
     "count_recent": 1,
     "avg_rate": 11.25
   },
-  "built_at": "2026-10-01T22:56:21"
+  "built_at": "2026-10-02T05:15:56"
 }

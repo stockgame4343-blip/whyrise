@@ -32,10 +32,10 @@
       "close_price": 8570.0,
       "trading_volume": 10173833,
       "trading_value": 87189748810,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
         {
@@ -101,7 +101,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260529",
@@ -109,9 +111,9 @@
       "close_price": 8780.0,
       "trading_volume": 16540298,
       "trading_value": 145223816440,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "SI 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "SI(시스템통합)",
       "news": [
@@ -178,7 +180,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260528",
@@ -186,10 +190,10 @@
       "close_price": 7490.0,
       "trading_volume": 17990936,
       "trading_value": 134752110640,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
         {
@@ -255,7 +259,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260526",
@@ -263,9 +269,9 @@
       "close_price": 6290.0,
       "trading_volume": 12185973,
       "trading_value": 76649770170,
-      "rise_reason": "외국인 순매수",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "5G 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -332,7 +338,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "외국인 순매수",
+      "reason_kind": "theme"
     },
     {
       "date": "20260408",
@@ -367,9 +375,9 @@
       "date": "20260316",
       "change_rate": 29.88,
       "close_price": 6390.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "5G 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -409,7 +417,9 @@
       "source": "estimated",
       "trading_volume": 14213701,
       "trading_value": 90825549390,
-      "market_cap": 221110927152
+      "market_cap": 221110927152,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260306",
@@ -457,9 +467,9 @@
       "date": "20260305",
       "change_rate": 29.91,
       "close_price": 4300.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 상한가",
+      "rise_reason": "5G 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
@@ -493,7 +503,9 @@
       "source": "estimated",
       "trading_volume": 3324015,
       "trading_value": 14293264500,
-      "market_cap": 148791390728
+      "market_cap": 148791390728,
+      "reason_previous": "5G(5세대 이동통신) 테마 상한가",
+      "reason_kind": "theme"
     },
     {
       "date": "20260226",
@@ -804,5 +816,5 @@
     "count_recent": 0,
     "avg_rate": 18.04
   },
-  "built_at": "2026-09-27T09:49:24"
+  "built_at": "2026-10-02T05:15:57"
 }

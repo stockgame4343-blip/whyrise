@@ -9,9 +9,9 @@
       "close_price": 78600.0,
       "trading_volume": 138009,
       "trading_value": 10847507400,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "우주주 동반 강세 — 제2우주센터 건립 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -24,7 +24,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방산",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 제2우주센터 건립 소식에…우주항공株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001185201&office_id=366&code=488900&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -32,15 +42,17 @@
       "close_price": 70000.0,
       "trading_volume": 128023,
       "trading_value": 8961610000,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -48,15 +60,17 @@
       "close_price": 58200.0,
       "trading_volume": 129583,
       "trading_value": 7541730600,
-      "rise_reason": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "rise_reason": "우주항공산업 테마 9종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주항공산업(누리호/인공위성 등) 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260415",
@@ -229,9 +243,9 @@
       "date": "20260211",
       "change_rate": 11.26,
       "close_price": 133400.0,
-      "rise_reason": "실적 개선",
+      "rise_reason": "호실적에 우주 모멘텀 풍부",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -259,7 +273,17 @@
       "source": "estimated",
       "trading_volume": 783578,
       "trading_value": 104529305200,
-      "market_cap": 1432448034934
+      "market_cap": 1432448034934,
+      "reason_previous": "실적 개선",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "인텔리안테크, 호실적에 우주 모멘텀 풍부...목표가↑ -신한證",
+          "link": "https://n.news.naver.com/mnews/article/014/0005476032",
+          "source": "파이낸셜뉴스",
+          "date": "2026-02-10"
+        }
+      ]
     },
     {
       "date": "20260209",
@@ -313,9 +337,9 @@
       "date": "20260129",
       "change_rate": 20.92,
       "close_price": 105200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "우주항공산업 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
@@ -324,7 +348,9 @@
       "source": "estimated",
       "trading_volume": 874617,
       "trading_value": 92009708400,
-      "market_cap": 1129636681222
+      "market_cap": 1129636681222,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     },
     {
       "date": "20260102",
@@ -412,5 +438,5 @@
     "count_recent": 0,
     "avg_rate": 16.18
   },
-  "built_at": "2026-10-01T22:54:42"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 14250.0,
       "trading_volume": 348993,
       "trading_value": 4973150250,
-      "rise_reason": "관련 보도: 광주대와 ERP·AI 교육 협력 MOU",
+      "rise_reason": "광주대와 ERP·AI 교육 협력 MOU",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이데이터",
       "news": [
@@ -39,7 +39,8 @@
           "source": "뉴시스",
           "date": "2026-09-28"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260922",
@@ -47,9 +48,9 @@
       "close_price": 11930.0,
       "trading_volume": 406266,
       "trading_value": 4846753380,
-      "rise_reason": "관련 보도: 1550억원 들여 제조업체 인수…피지컬 AI 사업 확장",
+      "rise_reason": "1550억원 들여 제조업체 인수",
       "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이데이터",
       "news": [
@@ -83,7 +84,8 @@
           "source": "지디넷코리아",
           "date": "2026-09-22"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20260820",
@@ -91,9 +93,9 @@
       "close_price": 10400.0,
       "trading_volume": 506860,
       "trading_value": 5271344000,
-      "rise_reason": "스테이블코인 인수 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 금융데이터 자회사 핀테크 매각 추진",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2026 하반기 신규상장",
       "news": [
@@ -160,7 +162,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "스테이블코인 인수 관련 뉴스",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "핑거, 금융데이터 자회사 ‘핀테크’ 매각 추진",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001186918&office_id=366&code=163730&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.08.18"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -168,10 +180,10 @@
       "close_price": 9820.0,
       "trading_volume": 259512,
       "trading_value": 2548407840,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모바일솔루션(스마트폰)",
       "news": [
         {
@@ -237,7 +249,9 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -435,5 +449,5 @@
     "count_recent": 2,
     "avg_rate": 17.67
   },
-  "built_at": "2026-10-01T22:56:32"
+  "built_at": "2026-10-02T05:15:56"
 }

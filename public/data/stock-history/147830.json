@@ -9,9 +9,9 @@
       "close_price": 6850.0,
       "trading_volume": 1248850,
       "trading_value": 8554622500,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — 팔란티아 깜짝 실적 AI 수익성 안도감",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "팔란티아 '깜짝 실적' AI 수익성 안도감…전력주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009097921&office_id=421&code=298040&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.08.05"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -118,9 +128,9 @@
       "close_price": 11180.0,
       "trading_volume": 13366608,
       "trading_value": 149438677440,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -187,7 +197,17 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.04.29"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -195,9 +215,9 @@
       "close_price": 10850.0,
       "trading_volume": 6084109,
       "trading_value": 66012582650,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전력설비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -264,7 +284,9 @@
       ],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "MOU 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -317,9 +339,9 @@
       "date": "20260120",
       "change_rate": 10.81,
       "close_price": 7280.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "전력설비 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전력설비",
       "news": [
@@ -341,7 +363,9 @@
       "source": "estimated",
       "trading_volume": 6689499,
       "trading_value": 48699552720,
-      "market_cap": 145600000000
+      "market_cap": 145600000000,
+      "reason_previous": "로봇/자동화",
+      "reason_kind": "theme"
     },
     {
       "date": "20260102",
@@ -369,5 +393,5 @@
     "count_recent": 0,
     "avg_rate": 13.13
   },
-  "built_at": "2026-10-01T22:57:06"
+  "built_at": "2026-10-02T05:15:56"
 }

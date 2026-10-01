@@ -25,10 +25,10 @@
       "close_price": 12080.0,
       "trading_volume": 37075,
       "trading_value": 447866000,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -94,7 +94,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260625",
@@ -102,10 +104,10 @@
       "close_price": 10790.0,
       "trading_volume": 46885,
       "trading_value": 505889150,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -171,7 +173,9 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     },
     {
       "date": "20260617",
@@ -179,9 +183,9 @@
       "close_price": 10400.0,
       "trading_volume": 61938,
       "trading_value": 644155200,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "30억원 규모 자사주 취득 신탁계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -248,7 +252,17 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "우양에이치씨, 30억원 규모 자사주 취득 신탁계약 체결",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006308142&office_id=018&code=101970&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.06.17"
+        }
+      ]
     },
     {
       "date": "20260320",
@@ -408,10 +422,10 @@
       "date": "20250724",
       "change_rate": 12.17,
       "close_price": 13550.0,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -444,7 +458,9 @@
       "source": "estimated",
       "trading_volume": 1145876,
       "trading_value": 15526619800,
-      "market_cap": 200362295081
+      "market_cap": 200362295081,
+      "reason_previous": "수주 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
@@ -472,5 +488,5 @@
     "count_recent": 0,
     "avg_rate": 12.38
   },
-  "built_at": "2026-10-01T22:57:08"
+  "built_at": "2026-10-02T05:15:57"
 }

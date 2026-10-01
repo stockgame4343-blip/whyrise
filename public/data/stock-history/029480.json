@@ -9,9 +9,9 @@
       "close_price": 1588.0,
       "trading_volume": 723845,
       "trading_value": 1149465860,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — 삼성SDI, 투자재원 확보",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성SDI, 투자재원 확보에 8%대 급등…이차전지주 동반 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005565381&office_id=014&code=066970&page=&sm=",
+          "source": "파이낸셜뉴스",
+          "date": "2026.08.24"
+        }
+      ]
     },
     {
       "date": "20260708",
@@ -86,9 +96,9 @@
       "close_price": 1580.0,
       "trading_volume": 6185604,
       "trading_value": 9773254320,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 1143억 규모 삼성전자 주식 장내 매도 결정…수익율 433%",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "NI(네트워크통합)",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "광무, 1143억 규모 삼성전자 주식 장내 매도 결정…수익율 433%",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005383004&office_id=008&code=029480&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.08"
+        }
+      ]
     },
     {
       "date": "20260413",
@@ -177,10 +197,10 @@
       "date": "20260209",
       "change_rate": 10.35,
       "close_price": 2505.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -188,16 +208,18 @@
       "source": "estimated",
       "trading_volume": 742749,
       "trading_value": 1860586245,
-      "market_cap": 149616040955
+      "market_cap": 149616040955,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
       "change_rate": 11.16,
       "close_price": 2640.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -205,15 +227,17 @@
       "source": "estimated",
       "trading_volume": 1471397,
       "trading_value": 3884488080,
-      "market_cap": 157679180887
+      "market_cap": 157679180887,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251229",
       "change_rate": 13.7,
       "close_price": 2125.0,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "51억 자사주 소각 이어 50억 추가 매입",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -253,16 +277,26 @@
       "source": "estimated",
       "trading_volume": 1444390,
       "trading_value": 3069328750,
-      "market_cap": 126919795221
+      "market_cap": 126919795221,
+      "reason_previous": "자사주 매입",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "광무, 51억 자사주 소각 이어 50억 추가 매입… &quot;주주환원 드라이브&quot;",
+          "link": "https://n.news.naver.com/mnews/article/008/0005297993",
+          "source": "머니투데이",
+          "date": "2025-12-29"
+        }
+      ]
     },
     {
       "date": "20251001",
       "change_rate": 10.71,
       "close_price": 3050.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -277,16 +311,18 @@
       "source": "estimated",
       "trading_volume": 604448,
       "trading_value": 1843566400,
-      "market_cap": 182167235494
+      "market_cap": 182167235494,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250905",
       "change_rate": 12.15,
       "close_price": 2815.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -294,7 +330,9 @@
       "source": "estimated",
       "trading_volume": 1031618,
       "trading_value": 2904004670,
-      "market_cap": 168131399317
+      "market_cap": 168131399317,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -305,5 +343,5 @@
     "count_recent": 0,
     "avg_rate": 12.02
   },
-  "built_at": "2026-10-01T22:57:59"
+  "built_at": "2026-10-02T05:15:56"
 }

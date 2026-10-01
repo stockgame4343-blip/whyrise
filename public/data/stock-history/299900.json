@@ -9,9 +9,9 @@
       "close_price": 335.0,
       "trading_volume": 893883,
       "trading_value": 299450805,
-      "rise_reason": "메타버스(Metaverse) 테마 강세",
+      "rise_reason": "관련 보도: 유튜브 콘텐츠 신여성 기반 커머스 운영 확대",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -30,7 +30,17 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "메타버스(Metaverse) 테마 강세",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "위지윅스튜디오, 유튜브 콘텐츠 ‘신여성’ 기반 커머스 운영 확대",
+          "link": "https://n.news.naver.com/mnews/article/243/0000098134",
+          "source": "이코노미스트",
+          "date": "2026-05-22"
+        }
+      ]
     },
     {
       "date": "20260410",
@@ -38,9 +48,9 @@
       "close_price": 456.0,
       "trading_volume": 9242814,
       "trading_value": 4214723184,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "관련 보도: 엔피, 합병…콘텐츠·마케팅·기술 역량 통합 구축",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "메타버스(Metaverse)",
       "news": [
@@ -59,16 +69,26 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "위지윅스튜디오-엔피, 합병…콘텐츠·마케팅·기술 역량 통합 구축",
+          "link": "https://n.news.naver.com/mnews/article/003/0013876787",
+          "source": "뉴시스",
+          "date": "2026-04-09"
+        }
+      ]
     },
     {
       "date": "20260114",
       "change_rate": 12.31,
       "close_price": 675.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -76,7 +96,9 @@
       "source": "estimated",
       "trading_volume": 5530839,
       "trading_value": 3733316325,
-      "market_cap": 115500000000
+      "market_cap": 115500000000,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
@@ -104,5 +126,5 @@
     "count_recent": 0,
     "avg_rate": 11.79
   },
-  "built_at": "2026-08-17T17:33:16"
+  "built_at": "2026-10-02T05:15:57"
 }

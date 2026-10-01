@@ -44,9 +44,9 @@
       "close_price": 54400.0,
       "trading_volume": 704274,
       "trading_value": 38312505600,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신주 동반 강세 — 미국의 중국산 수입규제 추진 소식",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -113,7 +113,17 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 광통신주, 미국의 중국산 수입규제 추진 소식에 급등(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016242988&office_id=001&code=218410&page=&sm=",
+          "source": "연합뉴스",
+          "date": "2026.08.10"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -121,9 +131,9 @@
       "close_price": 48750.0,
       "trading_volume": 440018,
       "trading_value": 21450877500,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -184,7 +194,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -192,9 +204,9 @@
       "close_price": 42700.0,
       "trading_volume": 337256,
       "trading_value": 14400831200,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 11종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -255,7 +267,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "theme"
     },
     {
       "date": "20260715",
@@ -263,9 +277,9 @@
       "close_price": 51200.0,
       "trading_volume": 314679,
       "trading_value": 16111564800,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "광통신 테마 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -332,7 +346,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "theme"
     },
     {
       "date": "20260604",
@@ -340,10 +356,10 @@
       "close_price": 90900.0,
       "trading_volume": 565934,
       "trading_value": 51443400600,
-      "rise_reason": "영업이익 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
         {
@@ -409,7 +425,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "영업이익 공시",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -829,9 +847,9 @@
       "date": "20250626",
       "change_rate": 11.39,
       "close_price": 26900.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "방산 호조로 실적 성장 기대",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -859,7 +877,17 @@
       "source": "estimated",
       "trading_volume": 1187959,
       "trading_value": 31956097100,
-      "market_cap": 714303556771
+      "market_cap": 714303556771,
+      "reason_previous": "방산",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[클릭 e종목]&quot;RFHIC, 방산 호조로 실적 성장 기대…목표가↑&quot;",
+          "link": "https://n.news.naver.com/mnews/article/277/0005612656",
+          "source": "아시아경제",
+          "date": "2025-06-25"
+        }
+      ]
     },
     {
       "date": "20250530",
@@ -887,5 +915,5 @@
     "count_recent": 1,
     "avg_rate": 15.7
   },
-  "built_at": "2026-10-01T22:54:14"
+  "built_at": "2026-10-02T05:15:56"
 }

@@ -9,9 +9,9 @@
       "close_price": 41650.0,
       "trading_volume": 474827,
       "trading_value": 19776544550,
-      "rise_reason": "지분 관련 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 고교생 멘토링",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "지분 관련 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "롯데에너지머티리얼즈, 고교생 멘토링",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005329702&office_id=015&code=020150&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.09.07"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -134,10 +144,10 @@
       "close_price": 56500.0,
       "trading_volume": 651859,
       "trading_value": 36830033500,
-      "rise_reason": "합병 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
         {
@@ -197,7 +207,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "합병 관련 뉴스",
+      "reason_kind": "none"
     },
     {
       "date": "20260601",
@@ -205,9 +217,9 @@
       "close_price": 64300.0,
       "trading_volume": 937318,
       "trading_value": 60269547400,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: AI 데이터센...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -274,7 +286,17 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "흑자 전환",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[테크데이, '판'이 바뀐다]〈10〉롯데에너지머티리얼즈, AI 데이터센...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003433165&office_id=030&code=020150&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.01"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -282,10 +304,10 @@
       "close_price": 78500.0,
       "trading_volume": 1230570,
       "trading_value": 96599745000,
-      "rise_reason": "증설 발표",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -351,7 +373,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증설 발표",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -373,9 +397,9 @@
       "date": "20260306",
       "change_rate": 10.07,
       "close_price": 41000.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -391,7 +415,9 @@
       "source": "estimated",
       "trading_volume": 239696,
       "trading_value": 9827536000,
-      "market_cap": 2147000000000
+      "market_cap": 2147000000000,
+      "reason_previous": "이차전지 테마",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -421,9 +447,9 @@
       "date": "20260204",
       "change_rate": 13.83,
       "close_price": 47750.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
@@ -463,7 +489,9 @@
       "source": "estimated",
       "trading_volume": 2184127,
       "trading_value": 104292064250,
-      "market_cap": 2500469512195
+      "market_cap": 2500469512195,
+      "reason_previous": "실적 호조",
+      "reason_kind": "theme"
     },
     {
       "date": "20260203",
@@ -664,9 +692,9 @@
       "date": "20250721",
       "change_rate": 12.08,
       "close_price": 26450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세 — 리튬 가격도 오른다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [],
@@ -675,7 +703,17 @@
       "source": "estimated",
       "trading_volume": 513385,
       "trading_value": 13579033250,
-      "market_cap": 1385076829268
+      "market_cap": 1385076829268,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "&quot;리튬 가격도 오른다&quot;...포스코·이녹스첨단소재 등 이차전지株 상승...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005380022",
+          "source": "파이낸셜뉴스",
+          "date": "2025-07-21"
+        }
+      ]
     },
     {
       "date": "20250528",
@@ -703,5 +741,5 @@
     "count_recent": 1,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-01T22:52:27"
+  "built_at": "2026-10-02T05:15:56"
 }

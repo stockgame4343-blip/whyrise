@@ -9,9 +9,9 @@
       "close_price": 12940.0,
       "trading_volume": 2288161,
       "trading_value": 29608803340,
-      "rise_reason": "증권 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "증권주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [
@@ -78,15 +78,25 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권 관련 뉴스",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 7400선까지 터치한 코스피… 증권株 일제히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003424581&office_id=030&code=001500&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.05.06"
+        }
+      ]
     },
     {
       "date": "20260219",
       "change_rate": 29.21,
       "close_price": 13800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "증권 테마 10종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "증권",
       "news": [],
@@ -95,7 +105,9 @@
       "source": "estimated",
       "trading_volume": 11891701,
       "trading_value": 164105473800,
-      "market_cap": 853287150837
+      "market_cap": 853287150837,
+      "reason_previous": "52주 신고가 도달",
+      "reason_kind": "theme"
     }
   ],
   "stats": {
@@ -106,5 +118,5 @@
     "count_recent": 0,
     "avg_rate": 20.14
   },
-  "built_at": "2026-09-27T08:41:55"
+  "built_at": "2026-10-02T05:15:57"
 }

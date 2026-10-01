@@ -9,10 +9,10 @@
       "close_price": 4900.0,
       "trading_volume": 2342381,
       "trading_value": 11477666900,
-      "rise_reason": "계약 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -48,7 +48,9 @@
       ],
       "sector": "건축제품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "계약 체결",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -59,5 +61,5 @@
     "count_recent": 0,
     "avg_rate": 29.97
   },
-  "built_at": "2026-10-01T22:59:41"
+  "built_at": "2026-10-02T05:15:57"
 }

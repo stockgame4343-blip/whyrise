@@ -9,9 +9,9 @@
       "close_price": 2170.0,
       "trading_volume": 2652907,
       "trading_value": 5756808190,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "관련 보도: 레모나, 21년 연속 올해의 브랜드 대상 수상",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -78,7 +78,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "경남제약 ‘레모나’, 21년 연속 ‘올해의 브랜드 대상’ 수상",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363593&office_id=018&code=053950&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -86,9 +96,9 @@
       "close_price": 2210.0,
       "trading_volume": 2135210,
       "trading_value": 4718814100,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "올리브영서 산리오캐릭터즈 협업 제품 출시",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "제약업체",
       "news": [
@@ -155,7 +165,17 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "상장 이슈",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "경남제약 ‘칼로’, 올리브영서 산리오캐릭터즈 협업 제품 출시",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006360743&office_id=018&code=053950&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.31"
+        }
+      ]
     },
     {
       "date": "20260623",
@@ -163,9 +183,9 @@
       "close_price": 2320.0,
       "trading_volume": 851544,
       "trading_value": 1975582080,
-      "rise_reason": "건강기능식품 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "건강기능식품 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건강기능식품",
       "news": [
@@ -232,16 +252,18 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건강기능식품 관련 뉴스",
+      "reason_kind": "theme"
     },
     {
       "date": "20260317",
       "change_rate": 11.22,
       "close_price": 3865.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -249,7 +271,9 @@
       "source": "estimated",
       "trading_volume": 1539723,
       "trading_value": 5951029395,
-      "market_cap": 60377567567
+      "market_cap": 60377567567,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20260225",
@@ -390,5 +414,5 @@
     "count_recent": 2,
     "avg_rate": 23.5
   },
-  "built_at": "2026-10-01T22:59:03"
+  "built_at": "2026-10-02T05:15:56"
 }

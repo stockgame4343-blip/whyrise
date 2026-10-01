@@ -38,23 +38,25 @@
       "close_price": 23100.0,
       "trading_volume": 131536,
       "trading_value": 3038481600,
-      "rise_reason": "출산장려정책 테마 강세",
+      "rise_reason": "출산장려정책 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "출산장려정책",
       "news": [],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "출산장려정책 테마 강세",
+      "reason_kind": "theme"
     },
     {
       "date": "20260211",
       "change_rate": 12.69,
       "close_price": 45300.0,
-      "rise_reason": "실적 개선",
+      "rise_reason": "작년 4분기 호실적",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -94,16 +96,26 @@
       "source": "estimated",
       "trading_volume": 967983,
       "trading_value": 43849629900,
-      "market_cap": 462390403071
+      "market_cap": 462390403071,
+      "reason_previous": "실적 개선",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] SAMG엔터, 작년 4분기 호실적에 13% 급등(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0015900855",
+          "source": "연합뉴스",
+          "date": "2026-02-11"
+        }
+      ]
     },
     {
       "date": "20251215",
       "change_rate": 15.39,
       "close_price": 45350.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -111,16 +123,18 @@
       "source": "estimated",
       "trading_volume": 488575,
       "trading_value": 22156876250,
-      "market_cap": 462900767754
+      "market_cap": 462900767754,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20251024",
       "change_rate": 20.08,
       "close_price": 62200.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -128,16 +142,18 @@
       "source": "estimated",
       "trading_volume": 865477,
       "trading_value": 53832669400,
-      "market_cap": 634893666026
+      "market_cap": 634893666026,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250708",
       "change_rate": 10.32,
       "close_price": 85500.0,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -145,7 +161,9 @@
       "source": "estimated",
       "trading_volume": 240553,
       "trading_value": 20567281500,
-      "market_cap": 872723608445
+      "market_cap": 872723608445,
+      "reason_previous": "시장 관심 증가",
+      "reason_kind": "none"
     },
     {
       "date": "20250620",
@@ -190,5 +208,5 @@
     "count_recent": 0,
     "avg_rate": 14.37
   },
-  "built_at": "2026-09-27T09:36:03"
+  "built_at": "2026-10-02T05:15:57"
 }

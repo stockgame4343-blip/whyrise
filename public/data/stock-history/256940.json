@@ -9,9 +9,9 @@
       "close_price": 6810.0,
       "trading_volume": 180267,
       "trading_value": 1227618270,
-      "rise_reason": "관련 보도: 子, 인슐린서 GLP-1까지…'경구 플랫폼' 확장성 확인",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
+      "rise_reason": "관련 보도: 子, 인슐린서 GLP-1까지…경구 플랫폼 확장성 확인",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -33,7 +33,8 @@
           "source": "파이낸셜뉴스",
           "date": "2026.10.01"
         }
-      ]
+      ],
+      "reason_kind": "related"
     },
     {
       "date": "20260421",
@@ -150,9 +151,9 @@
       "date": "20251114",
       "change_rate": 13.03,
       "close_price": 10150.0,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "3분기 누적 매출 1250억원",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "폐배터리",
       "news": [
@@ -174,7 +175,17 @@
       "source": "estimated",
       "trading_volume": 316118,
       "trading_value": 3208597700,
-      "market_cap": 203833333333
+      "market_cap": 203833333333,
+      "reason_previous": "AI/반도체 테마",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "킵스파마, 3분기 누적 매출 1250억원…&quot;성장세 지속&quot;",
+          "link": "https://n.news.naver.com/mnews/article/648/0000041796",
+          "source": "비즈워치",
+          "date": "2025-11-14"
+        }
+      ]
     },
     {
       "date": "20251106",
@@ -296,5 +307,5 @@
     "count_recent": 1,
     "avg_rate": 13.96
   },
-  "built_at": "2026-10-01T23:45:00"
+  "built_at": "2026-10-02T05:15:56"
 }
