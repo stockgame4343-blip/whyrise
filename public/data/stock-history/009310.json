@@ -9,15 +9,17 @@
       "close_price": 5330.0,
       "trading_volume": 0,
       "trading_value": 0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -210,10 +212,10 @@
       "date": "20251121",
       "change_rate": 30.0,
       "close_price": 1378.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -221,7 +223,9 @@
       "source": "estimated",
       "trading_volume": 3276759,
       "trading_value": 4515373902,
-      "market_cap": 6023902439
+      "market_cap": 6023902439,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -232,5 +236,5 @@
     "count_recent": 0,
     "avg_rate": 76.73
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

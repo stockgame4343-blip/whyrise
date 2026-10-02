@@ -9,15 +9,17 @@
       "close_price": 4890.0,
       "trading_volume": 101940,
       "trading_value": 498486600,
-      "rise_reason": "스마트그리드(지능형전력망) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스마트그리드(지능형전력망) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -40,10 +42,10 @@
       "date": "20260213",
       "change_rate": 12.07,
       "close_price": 12440.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -58,7 +60,9 @@
       "source": "estimated",
       "trading_volume": 1081334,
       "trading_value": 13451794960,
-      "market_cap": 232623443223
+      "market_cap": 232623443223,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
@@ -263,5 +267,5 @@
     "count_recent": 0,
     "avg_rate": 14.7
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

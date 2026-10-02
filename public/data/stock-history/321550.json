@@ -246,10 +246,10 @@
       "date": "20260324",
       "change_rate": 10.09,
       "close_price": 12000.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [
         {
@@ -264,7 +264,9 @@
       "source": "estimated",
       "trading_volume": 1863708,
       "trading_value": 22364496000,
-      "market_cap": 360586797066
+      "market_cap": 360586797066,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -294,10 +296,10 @@
       "date": "20260318",
       "change_rate": 11.28,
       "close_price": 8680.0,
-      "rise_reason": "면역항암제 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [],
       "sector": "제약",
@@ -305,7 +307,9 @@
       "source": "estimated",
       "trading_volume": 1006898,
       "trading_value": 8739874640,
-      "market_cap": 260824449877
+      "market_cap": 260824449877,
+      "reason_previous": "면역항암제 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -330,10 +334,10 @@
       "date": "20251105",
       "change_rate": 10.89,
       "close_price": 9270.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면역항암제",
       "news": [
         {
@@ -354,7 +358,9 @@
       "source": "estimated",
       "trading_volume": 1706276,
       "trading_value": 15817178520,
-      "market_cap": 278553300733
+      "market_cap": 278553300733,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251104",
@@ -399,5 +405,5 @@
     "count_recent": 0,
     "avg_rate": 13.49
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

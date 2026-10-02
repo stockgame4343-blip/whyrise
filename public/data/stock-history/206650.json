@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/8 수막구균 백신 개발 순항",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006300735&office_id=018&code=206650&page=&sm=",
+        "title": "유바이오로직스, 수막구균 백신 개발 순항…‘제2의 유비콜’ 기대",
+        "date": "20260608"
+      }
     },
     {
       "date": "20260305",
@@ -128,10 +134,10 @@
       "date": "20260224",
       "change_rate": 14.41,
       "close_price": 16200.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보톡스(보툴리눔톡신)",
       "news": [
         {
@@ -152,7 +158,9 @@
       "source": "estimated",
       "trading_volume": 4683630,
       "trading_value": 75874806000,
-      "market_cap": 594873786407
+      "market_cap": 594873786407,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
@@ -221,5 +229,5 @@
     "count_recent": 0,
     "avg_rate": 12.52
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

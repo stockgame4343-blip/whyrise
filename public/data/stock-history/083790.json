@@ -167,7 +167,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/26 베트남 유전체 분석 시장 진출",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0000088115&office_id=293&code=083790&page=&sm=",
+        "title": "변곡점 맞은 CG인바이츠, 베트남 유전체 분석 시장 진출",
+        "date": "20260726"
+      }
     },
     {
       "date": "20260602",
@@ -269,10 +275,10 @@
       "date": "20260226",
       "change_rate": 13.51,
       "close_price": 1479.0,
-      "rise_reason": "유전자 치료제/분석 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -287,7 +293,9 @@
       "source": "estimated",
       "trading_volume": 1744294,
       "trading_value": 2579810826,
-      "market_cap": 113725048543
+      "market_cap": 113725048543,
+      "reason_previous": "유전자 치료제/분석 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -298,5 +306,5 @@
     "count_recent": 0,
     "avg_rate": 11.75
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

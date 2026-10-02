@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "MOU 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/27 삼정KPMG 매각주관사 선정",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005808245&office_id=277&code=002070&page=&sm=",
+        "title": "비비안, 삼정KPMG 매각주관사 선정…용산 사옥·부산 자산 유동화 착...",
+        "date": "20260827"
+      }
     },
     {
       "date": "20260904",
@@ -159,7 +165,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "MOU 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/27 삼정KPMG 매각주관사 선정",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005808245&office_id=277&code=002070&page=&sm=",
+        "title": "비비안, 삼정KPMG 매각주관사 선정…용산 사옥·부산 자산 유동화 착...",
+        "date": "20260827"
+      }
     },
     {
       "date": "20260803",
@@ -825,15 +837,17 @@
       "close_price": 11850.0,
       "trading_volume": 110676,
       "trading_value": 1311510600,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마스크",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -844,5 +858,5 @@
     "count_recent": 2,
     "avg_rate": 316.53
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

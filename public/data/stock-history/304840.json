@@ -349,10 +349,10 @@
       "close_price": 1500.0,
       "trading_volume": 9458824,
       "trading_value": 14188236000,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -364,7 +364,9 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -458,10 +460,10 @@
       "date": "20260105",
       "change_rate": 11.28,
       "close_price": 1273.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [
         {
@@ -482,7 +484,9 @@
       "source": "estimated",
       "trading_volume": 5866616,
       "trading_value": 7468202168,
-      "market_cap": 30925235602
+      "market_cap": 30925235602,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251224",
@@ -572,10 +576,10 @@
       "date": "20251103",
       "change_rate": 11.81,
       "close_price": 1591.0,
-      "rise_reason": "치매 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [],
       "sector": "건강관리장비와용품",
@@ -583,16 +587,18 @@
       "source": "estimated",
       "trading_volume": 911842,
       "trading_value": 1450740622,
-      "market_cap": 38650471204
+      "market_cap": 38650471204,
+      "reason_previous": "치매 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250908",
       "change_rate": 10.21,
       "close_price": 1760.0,
-      "rise_reason": "치매 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [],
       "sector": "건강관리장비와용품",
@@ -600,7 +606,9 @@
       "source": "estimated",
       "trading_volume": 260502,
       "trading_value": 458483520,
-      "market_cap": 42756020942
+      "market_cap": 42756020942,
+      "reason_previous": "치매 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -611,5 +619,5 @@
     "count_recent": 0,
     "avg_rate": 21.14
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

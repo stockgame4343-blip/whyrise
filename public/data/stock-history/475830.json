@@ -167,7 +167,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/2 증시 반등",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006342239&office_id=018&code=475830&page=&sm=",
+        "title": "증시 반등에 바이오주 동반 강세…오름테라퓨틱은 18% 급등 [바이오맥....",
+        "date": "20260802"
+      }
     },
     {
       "date": "20260804",
@@ -262,15 +268,17 @@
       "close_price": 44600.0,
       "trading_volume": 122891,
       "trading_value": 5480938600,
-      "rise_reason": "AML 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AML",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AML 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260723",
@@ -616,10 +624,10 @@
       "date": "20260312",
       "change_rate": 10.09,
       "close_price": 132000.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안",
       "news": [
         {
@@ -658,16 +666,18 @@
       "source": "estimated",
       "trading_volume": 430851,
       "trading_value": 56872332000,
-      "market_cap": 2839703225806
+      "market_cap": 2839703225806,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
       "change_rate": 11.59,
       "close_price": 117500.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안",
       "news": [
         {
@@ -706,7 +716,9 @@
       "source": "estimated",
       "trading_volume": 372062,
       "trading_value": 43717285000,
-      "market_cap": 2527766129032
+      "market_cap": 2527766129032,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -790,10 +802,10 @@
       "date": "20260203",
       "change_rate": 12.19,
       "close_price": 118700.0,
-      "rise_reason": "보안 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안",
       "news": [],
       "sector": "제약",
@@ -801,16 +813,18 @@
       "source": "estimated",
       "trading_volume": 410029,
       "trading_value": 48670442300,
-      "market_cap": 2553581612903
+      "market_cap": 2553581612903,
+      "reason_previous": "보안 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260123",
       "change_rate": 12.01,
       "close_price": 117500.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안",
       "news": [
         {
@@ -831,7 +845,9 @@
       "source": "estimated",
       "trading_volume": 519032,
       "trading_value": 60986260000,
-      "market_cap": 2527766129032
+      "market_cap": 2527766129032,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260105",
@@ -1139,5 +1155,5 @@
     "count_recent": 0,
     "avg_rate": 14.75
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

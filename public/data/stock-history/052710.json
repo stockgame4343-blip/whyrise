@@ -62,7 +62,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/22 범용 MLCC도 귀한 몸",
+        "link": "https://n.news.naver.com/mnews/article/024/0000108403",
+        "title": "범용 MLCC도 ‘귀한 몸’…삼화콘덴서·아모텍 급등 [오늘, 이 종목]",
+        "date": "20260922"
+      }
     },
     {
       "date": "20260922",
@@ -291,7 +297,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "수주 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/4 전장용 MLCC 고부가가치 제품 수주 확대",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014106241&office_id=003&code=052710&page=&sm=",
+        "title": "아모텍, 전장용 MLCC 고부가가치 제품 수주 확대",
+        "date": "20260804"
+      }
     },
     {
       "date": "20260731",
@@ -684,7 +696,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "MLCC(적층세라믹콘덴서) 증설 발표",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/27 증권가 MLCC 매출 꾸준히 성장",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006291252&office_id=018&code=052710&page=&sm=",
+        "title": "증권가 \"MLCC 매출 꾸준히 성장\"…아모텍 12%↑[특징주]",
+        "date": "20260527"
+      }
     },
     {
       "date": "20260526",
@@ -946,10 +964,10 @@
       "date": "20260305",
       "change_rate": 14.2,
       "close_price": 11500.0,
-      "rise_reason": "전자파 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [],
       "sector": "핸드셋",
@@ -957,7 +975,9 @@
       "source": "estimated",
       "trading_volume": 560510,
       "trading_value": 6445865000,
-      "market_cap": 168055214723
+      "market_cap": 168055214723,
+      "reason_previous": "전자파 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
@@ -1051,10 +1071,10 @@
       "date": "20260211",
       "change_rate": 22.82,
       "close_price": 11250.0,
-      "rise_reason": "전자파 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [
         {
@@ -1069,16 +1089,18 @@
       "source": "estimated",
       "trading_volume": 2609512,
       "trading_value": 29357010000,
-      "market_cap": 164401840490
+      "market_cap": 164401840490,
+      "reason_previous": "전자파 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
       "change_rate": 19.93,
       "close_price": 10470.0,
-      "rise_reason": "전자파 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [],
       "sector": "핸드셋",
@@ -1086,7 +1108,9 @@
       "source": "estimated",
       "trading_volume": 1966690,
       "trading_value": 20591244300,
-      "market_cap": 153003312883
+      "market_cap": 153003312883,
+      "reason_previous": "전자파 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250731",
@@ -1171,5 +1195,5 @@
     "count_recent": 3,
     "avg_rate": 18.9
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

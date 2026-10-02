@@ -9,15 +9,17 @@
       "close_price": 19920.0,
       "trading_volume": 78716,
       "trading_value": 1568022720,
-      "rise_reason": "신약 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "신약 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -438,10 +440,10 @@
       "date": "20260310",
       "change_rate": 14.81,
       "close_price": 45350.0,
-      "rise_reason": "기술이전 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기술이전",
       "news": [],
       "sector": "제약",
@@ -449,16 +451,18 @@
       "source": "estimated",
       "trading_volume": 229176,
       "trading_value": 10393131600,
-      "market_cap": 681295807127
+      "market_cap": 681295807127,
+      "reason_previous": "기술이전 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251126",
       "change_rate": 12.0,
       "close_price": 58800.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기술이전",
       "news": [
         {
@@ -479,7 +483,9 @@
       "source": "estimated",
       "trading_volume": 1165000,
       "trading_value": 68502000000,
-      "market_cap": 883355974842
+      "market_cap": 883355974842,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251030",
@@ -555,10 +561,10 @@
       "date": "20250912",
       "change_rate": 10.29,
       "close_price": 38600.0,
-      "rise_reason": "기술이전 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기술이전",
       "news": [],
       "sector": "제약",
@@ -566,16 +572,18 @@
       "source": "estimated",
       "trading_volume": 1060692,
       "trading_value": 40942711200,
-      "market_cap": 579890146750
+      "market_cap": 579890146750,
+      "reason_previous": "기술이전 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250911",
       "change_rate": 12.0,
       "close_price": 35000.0,
-      "rise_reason": "기술이전 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기술이전",
       "news": [],
       "sector": "제약",
@@ -583,7 +591,9 @@
       "source": "estimated",
       "trading_volume": 1877221,
       "trading_value": 65702735000,
-      "market_cap": 525807127882
+      "market_cap": 525807127882,
+      "reason_previous": "기술이전 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
@@ -611,5 +621,5 @@
     "count_recent": 0,
     "avg_rate": 13.4
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

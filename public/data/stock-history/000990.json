@@ -426,15 +426,17 @@
       "close_price": 181000.0,
       "trading_volume": 500249,
       "trading_value": 90545069000,
-      "rise_reason": "반도체 대표주(생산) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 대표주(생산) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260513",
@@ -600,7 +602,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "영업이익 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/6 8인치 공급난에 웃었다",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0000084039&office_id=293&code=000990&page=&sm=",
+        "title": "DB하이텍, 8인치 공급난에 웃었다…비수기에도 영업익 21%↑",
+        "date": "20260506"
+      }
     },
     {
       "date": "20260424",
@@ -812,5 +820,5 @@
     "count_recent": 2,
     "avg_rate": 14.41
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

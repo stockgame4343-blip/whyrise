@@ -333,7 +333,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "수출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/15 제이스로보틱스와 76억원 규모 ESS 배터리…",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006330695&office_id=018&code=0011A0&page=&sm=",
+        "title": "액스비스, 제이스로보틱스와 76억원 규모 ESS 배터리 장비 공급계약",
+        "date": "20260715"
+      }
     },
     {
       "date": "20260715",
@@ -386,15 +392,17 @@
       "close_price": 10160.0,
       "trading_volume": 66112,
       "trading_value": 671697920,
-      "rise_reason": "카메라모듈/부품 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "카메라모듈/부품 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -402,10 +410,10 @@
       "close_price": 11030.0,
       "trading_volume": 67948,
       "trading_value": 749466440,
-      "rise_reason": "카메라모듈/부품 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -423,7 +431,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "카메라모듈/부품 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -671,5 +681,5 @@
     "count_recent": 3,
     "avg_rate": 14.33
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

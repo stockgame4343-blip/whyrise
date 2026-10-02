@@ -116,7 +116,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "화장품 흑자 전환 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/15 1분기 흑자 달성",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005763462&office_id=277&code=159910&page=&sm=",
+        "title": "에코글로우, 1분기 '흑자' 달성…무차입 경영 기반 성장 전략 본격화",
+        "date": "20260515"
+      }
     },
     {
       "date": "20260511",
@@ -211,10 +217,10 @@
       "date": "20251112",
       "change_rate": 29.94,
       "close_price": 4470.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -253,16 +259,18 @@
       "source": "estimated",
       "trading_volume": 2905654,
       "trading_value": 12988273380,
-      "market_cap": 46849038461
+      "market_cap": 46849038461,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250923",
       "change_rate": 29.89,
       "close_price": 3955.0,
-      "rise_reason": "화장품 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
@@ -270,16 +278,18 @@
       "source": "estimated",
       "trading_volume": 1890530,
       "trading_value": 7477046150,
-      "market_cap": 41451442307
+      "market_cap": 41451442307,
+      "reason_previous": "화장품 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250902",
       "change_rate": 10.09,
       "close_price": 3490.0,
-      "rise_reason": "화장품 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
@@ -287,7 +297,9 @@
       "source": "estimated",
       "trading_volume": 158202,
       "trading_value": 552124980,
-      "market_cap": 36577884615
+      "market_cap": 36577884615,
+      "reason_previous": "화장품 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -298,5 +310,5 @@
     "count_recent": 0,
     "avg_rate": 15.2
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

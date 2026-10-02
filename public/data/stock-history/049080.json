@@ -159,7 +159,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/14 23억 규모 자동차 전장용 NIL 장비 공급 계약",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014127086&office_id=003&code=049080&page=&sm=",
+        "title": "기가레인, 23억 규모 자동차 전장용 NIL 장비 공급 계약",
+        "date": "20260814"
+      }
     },
     {
       "date": "20260805",
@@ -396,7 +402,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "수주 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/20 한국항공우주연구원과 계약 소식",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003449047&office_id=030&code=049080&page=&sm=",
+        "title": "[ET특징주]기가레인, 한국항공우주연구원과 계약 소식에 상승세",
+        "date": "20260720"
+      }
     },
     {
       "date": "20260720",
@@ -720,7 +732,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "홀린 실적 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/29 AI 활용 플라즈마 식각 공정 최적화 성공",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014033286&office_id=003&code=049080&page=&sm=",
+        "title": "기가레인 \"AI 활용 플라즈마 식각 공정 최적화 성공\"",
+        "date": "20260629"
+      }
     },
     {
       "date": "20260710",
@@ -1024,10 +1042,10 @@
       "close_price": 28550.0,
       "trading_volume": 5029130,
       "trading_value": 143581661500,
-      "rise_reason": "광통신 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [
         {
@@ -1039,7 +1057,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "광통신 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260402",
@@ -1252,10 +1272,10 @@
       "date": "20260311",
       "change_rate": 14.16,
       "close_price": 524.0,
-      "rise_reason": "갤럭시 부품주 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [],
       "sector": "통신장비",
@@ -1263,7 +1283,9 @@
       "source": "estimated",
       "trading_volume": 7832315,
       "trading_value": 4104133060,
-      "market_cap": 44484592145
+      "market_cap": 44484592145,
+      "reason_previous": "갤럭시 부품주 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -1350,10 +1372,10 @@
       "date": "20260102",
       "change_rate": 14.48,
       "close_price": 585.0,
-      "rise_reason": "갤럭시 부품주 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [],
       "sector": "통신장비",
@@ -1361,7 +1383,9 @@
       "source": "estimated",
       "trading_volume": 1815217,
       "trading_value": 1061901945,
-      "market_cap": 49663141993
+      "market_cap": 49663141993,
+      "reason_previous": "갤럭시 부품주 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251103",
@@ -1447,5 +1471,5 @@
     "count_recent": 1,
     "avg_rate": 20.96
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

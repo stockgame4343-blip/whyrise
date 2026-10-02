@@ -284,10 +284,10 @@
       "date": "20260219",
       "change_rate": 29.93,
       "close_price": 10810.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "수자원(양적/질적 개선)",
       "news": [
         {
@@ -308,7 +308,9 @@
       "source": "estimated",
       "trading_volume": 385200,
       "trading_value": 4164012000,
-      "market_cap": 77906551724
+      "market_cap": 77906551724,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -319,5 +321,5 @@
     "count_recent": 0,
     "avg_rate": 17.44
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

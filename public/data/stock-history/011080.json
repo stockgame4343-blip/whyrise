@@ -428,7 +428,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "해외 진출 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/4 신규 브랜드 출시 앞두고",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006297421&office_id=018&code=011080&page=&sm=",
+        "title": "신규 브랜드 출시 앞두고…형지I&C, 자금 조달에 '빨간불'",
+        "date": "20260604"
+      }
     },
     {
       "date": "20260604",
@@ -664,10 +670,10 @@
       "date": "20260102",
       "change_rate": 24.66,
       "close_price": 9793.0,
-      "rise_reason": "패션/의류 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
@@ -675,7 +681,9 @@
       "source": "estimated",
       "trading_volume": 2643741,
       "trading_value": 25890155613,
-      "market_cap": 42069502133
+      "market_cap": 42069502133,
+      "reason_previous": "패션/의류 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251105",
@@ -995,5 +1003,5 @@
     "count_recent": 0,
     "avg_rate": 19.07
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -138,15 +138,17 @@
       "close_price": 18700.0,
       "trading_volume": 3384079,
       "trading_value": 63282277300,
-      "rise_reason": "여름 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "여름",
       "news": [],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "여름 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260615",
@@ -426,15 +428,17 @@
       "close_price": 12380.0,
       "trading_volume": 1489033,
       "trading_value": 18434228540,
-      "rise_reason": "리튬 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "리튬 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260514",
@@ -513,7 +517,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "리튬 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/5 리튬 품귀에 포스코홀딩스",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005675570&office_id=009&code=093370&page=&sm=",
+        "title": "리튬 품귀에 포스코홀딩스·후성 '불기둥'",
+        "date": "20260505"
+      }
     },
     {
       "date": "20260417",
@@ -756,5 +766,5 @@
     "count_recent": 0,
     "avg_rate": 17.52
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

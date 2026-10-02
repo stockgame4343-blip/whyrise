@@ -183,15 +183,17 @@
       "close_price": 4215.0,
       "trading_volume": 96857,
       "trading_value": 408252255,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -276,10 +278,10 @@
       "close_price": 1253.0,
       "trading_volume": 10803632,
       "trading_value": 13536950896,
-      "rise_reason": "증권 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [
         {
@@ -345,7 +347,9 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -419,10 +423,10 @@
       "date": "20260306",
       "change_rate": 13.19,
       "close_price": 1330.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -430,7 +434,9 @@
       "source": "estimated",
       "trading_volume": 17911542,
       "trading_value": 23822350860,
-      "market_cap": 144070866141
+      "market_cap": 144070866141,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -529,10 +535,10 @@
       "date": "20250909",
       "change_rate": 21.0,
       "close_price": 824.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -540,7 +546,9 @@
       "source": "estimated",
       "trading_volume": 28823826,
       "trading_value": 23750832624,
-      "market_cap": 89258942632
+      "market_cap": 89258942632,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250709",
@@ -602,5 +610,5 @@
     "count_recent": 0,
     "avg_rate": 19.12
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

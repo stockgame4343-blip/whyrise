@@ -167,7 +167,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "자사주 매입",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/18 2분기 연결 매출액 110억",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014131800&office_id=003&code=352910&page=&sm=",
+        "title": "오비고, 2분기 연결 매출액 110억…전년比 33.4%↑",
+        "date": "20260818"
+      }
     },
     {
       "date": "20260629",
@@ -175,15 +181,17 @@
       "close_price": 3940.0,
       "trading_volume": 19836,
       "trading_value": 78153840,
-      "rise_reason": "스마트카(SMART CAR) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스마트카(SMART CAR) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -253,5 +261,5 @@
     "count_recent": 0,
     "avg_rate": 17.79
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

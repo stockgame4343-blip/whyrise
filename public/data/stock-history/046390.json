@@ -123,7 +123,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/18 20억 규모 자사주 취득 신탁계약 체결 결정",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002658259&office_id=016&code=046390&page=&sm=",
+        "title": "삼화네트웍스, 20억 규모 자사주 취득 신탁계약 체결 결정",
+        "date": "20260618"
+      }
     },
     {
       "date": "20260618",
@@ -221,10 +227,10 @@
       "date": "20260102",
       "change_rate": 11.82,
       "close_price": 3330.0,
-      "rise_reason": "엔터테인먼트 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -239,7 +245,9 @@
       "source": "estimated",
       "trading_volume": 436166,
       "trading_value": 1452432780,
-      "market_cap": 57609436435
+      "market_cap": 57609436435,
+      "reason_previous": "엔터테인먼트 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250819",
@@ -298,5 +306,5 @@
     "count_recent": 0,
     "avg_rate": 15.1
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

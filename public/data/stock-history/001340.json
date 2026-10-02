@@ -153,7 +153,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "영업이익 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/15 1분기 영업이익 50억",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0013948086&office_id=003&code=001340&page=&sm=",
+        "title": "PKC, 1분기 영업이익 50억…전년比 50.6%↑",
+        "date": "20260515"
+      }
     },
     {
       "date": "20260417",
@@ -241,10 +247,10 @@
       "date": "20260204",
       "change_rate": 10.15,
       "close_price": 6730.0,
-      "rise_reason": "공시 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "공시",
       "news": [],
       "sector": "화학",
@@ -252,7 +258,9 @@
       "source": "estimated",
       "trading_volume": 1819687,
       "trading_value": 12246493510,
-      "market_cap": 303076599326
+      "market_cap": 303076599326,
+      "reason_previous": "공시 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -263,5 +271,5 @@
     "count_recent": 0,
     "avg_rate": 15.78
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

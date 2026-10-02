@@ -152,10 +152,10 @@
       "date": "20260327",
       "change_rate": 17.13,
       "close_price": 1675.0,
-      "rise_reason": "뉴스 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [],
       "sector": "운송인프라",
@@ -163,16 +163,18 @@
       "source": "estimated",
       "trading_volume": 638516,
       "trading_value": 1069514300,
-      "market_cap": 22287963433
+      "market_cap": 22287963433,
+      "reason_previous": "뉴스 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260220",
       "change_rate": 10.82,
       "close_price": 1618.0,
-      "rise_reason": "뉴스 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [],
       "sector": "운송인프라",
@@ -180,7 +182,9 @@
       "source": "estimated",
       "trading_volume": 429023,
       "trading_value": 694159214,
-      "market_cap": 21529507364
+      "market_cap": 21529507364,
+      "reason_previous": "뉴스 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -191,5 +195,5 @@
     "count_recent": 0,
     "avg_rate": 14.7
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

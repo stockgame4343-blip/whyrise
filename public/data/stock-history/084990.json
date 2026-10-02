@@ -186,10 +186,10 @@
       "date": "20251202",
       "change_rate": 18.06,
       "close_price": 8500.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -216,16 +216,18 @@
       "source": "estimated",
       "trading_volume": 4235282,
       "trading_value": 35999897000,
-      "market_cap": 391858216970
+      "market_cap": 391858216970,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251201",
       "change_rate": 15.02,
       "close_price": 7200.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -252,7 +254,9 @@
       "source": "estimated",
       "trading_volume": 2203941,
       "trading_value": 15868375200,
-      "market_cap": 331926960257
+      "market_cap": 331926960257,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250918",
@@ -391,5 +395,5 @@
     "count_recent": 1,
     "avg_rate": 14.84
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

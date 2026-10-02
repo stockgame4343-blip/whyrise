@@ -9,15 +9,17 @@
       "close_price": 4150.0,
       "trading_volume": 1582026,
       "trading_value": 6565407900,
-      "rise_reason": "가상화폐(비트코인 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "가상화폐(비트코인 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -186,10 +188,10 @@
       "date": "20260123",
       "change_rate": 10.79,
       "close_price": 5440.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -197,7 +199,9 @@
       "source": "estimated",
       "trading_volume": 14286356,
       "trading_value": 77717776640,
-      "market_cap": 1167118425760
+      "market_cap": 1167118425760,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250929",
@@ -244,5 +248,5 @@
     "count_recent": 0,
     "avg_rate": 15.97
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

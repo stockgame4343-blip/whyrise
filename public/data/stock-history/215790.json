@@ -640,10 +640,10 @@
       "close_price": 4340.0,
       "trading_volume": 26098328,
       "trading_value": 113266743520,
-      "rise_reason": "통신장비 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우크라이나 재건",
       "news": [
         {
@@ -655,7 +655,9 @@
       ],
       "sector": "통신장비",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "통신장비 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260413",
@@ -1061,10 +1063,10 @@
       "date": "20260318",
       "change_rate": 15.04,
       "close_price": 413.0,
-      "rise_reason": "우크라이나 재건 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우크라이나 재건",
       "news": [],
       "sector": "통신장비",
@@ -1072,7 +1074,9 @@
       "source": "estimated",
       "trading_volume": 9894803,
       "trading_value": 4086553639,
-      "market_cap": 16627272727
+      "market_cap": 16627272727,
+      "reason_previous": "우크라이나 재건 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
@@ -1120,10 +1124,10 @@
       "date": "20260305",
       "change_rate": 17.31,
       "close_price": 305.0,
-      "rise_reason": "우크라이나 재건 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우크라이나 재건",
       "news": [],
       "sector": "통신장비",
@@ -1131,7 +1135,9 @@
       "source": "estimated",
       "trading_volume": 722663,
       "trading_value": 220412215,
-      "market_cap": 12279220779
+      "market_cap": 12279220779,
+      "reason_previous": "우크라이나 재건 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251111",
@@ -1154,10 +1160,10 @@
       "date": "20251105",
       "change_rate": 12.95,
       "close_price": 715.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우크라이나 재건",
       "news": [
         {
@@ -1190,16 +1196,18 @@
       "source": "estimated",
       "trading_volume": 16034207,
       "trading_value": 11464458005,
-      "market_cap": 28785714285
+      "market_cap": 28785714285,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251103",
       "change_rate": 29.83,
       "close_price": 679.0,
-      "rise_reason": "우크라이나 재건 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우크라이나 재건",
       "news": [],
       "sector": "통신장비",
@@ -1207,7 +1215,9 @@
       "source": "estimated",
       "trading_volume": 10041218,
       "trading_value": 6817987022,
-      "market_cap": 27336363636
+      "market_cap": 27336363636,
+      "reason_previous": "우크라이나 재건 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251029",
@@ -1296,5 +1306,5 @@
     "count_recent": 1,
     "avg_rate": 23.3
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

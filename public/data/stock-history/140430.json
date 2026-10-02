@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "수주 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/11 AI 데이터센터 수혜 본격화",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002696071&office_id=016&code=140430&page=&sm=",
+        "title": "카티스, AI 데이터센터 수혜 본격화…높은 수주잔고 바탕 하반기 반등....",
+        "date": "20260911"
+      }
     },
     {
       "date": "20260914",
@@ -489,7 +495,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/5 대림과 58억원 규모 공급계약 체결",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006298005&office_id=018&code=140430&page=&sm=",
+        "title": "카티스, 대림과 58억원 규모 공급계약 체결",
+        "date": "20260605"
+      }
     },
     {
       "date": "20260415",
@@ -641,15 +653,17 @@
       "close_price": 4140.0,
       "trading_volume": 2172350,
       "trading_value": 8993529000,
-      "rise_reason": "보안주(물리) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(물리)",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "보안주(물리) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260407",
@@ -827,10 +841,10 @@
       "date": "20251105",
       "change_rate": 29.99,
       "close_price": 4595.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(물리)",
       "news": [
         {
@@ -851,16 +865,18 @@
       "source": "estimated",
       "trading_volume": 5301722,
       "trading_value": 24361412590,
-      "market_cap": 49057729468
+      "market_cap": 49057729468,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250708",
       "change_rate": 10.62,
       "close_price": 4845.0,
-      "rise_reason": "보안주(물리) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(물리)",
       "news": [],
       "sector": "통신장비",
@@ -868,7 +884,9 @@
       "source": "estimated",
       "trading_volume": 778054,
       "trading_value": 3769671630,
-      "market_cap": 51726811594
+      "market_cap": 51726811594,
+      "reason_previous": "보안주(물리) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250605",
@@ -896,5 +914,5 @@
     "count_recent": 3,
     "avg_rate": 22.69
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

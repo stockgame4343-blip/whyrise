@@ -9,10 +9,10 @@
       "close_price": 10540.0,
       "trading_volume": 125386,
       "trading_value": 1321568440,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -30,7 +30,9 @@
       ],
       "sector": "",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -348,15 +350,17 @@
       "close_price": 23950.0,
       "trading_volume": 9657271,
       "trading_value": 231291640450,
-      "rise_reason": "의료기기 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "의료기기 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -367,5 +371,5 @@
     "count_recent": 0,
     "avg_rate": 17.7
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

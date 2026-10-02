@@ -9,10 +9,10 @@
       "close_price": 3385.0,
       "trading_volume": 4009696,
       "trading_value": 13572820960,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -42,7 +42,9 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -68,15 +70,17 @@
       "close_price": 5080.0,
       "trading_volume": 2184613,
       "trading_value": 11097834040,
-      "rise_reason": "LED 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "LED 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260709",
@@ -475,10 +479,10 @@
       "date": "20260323",
       "change_rate": 11.76,
       "close_price": 4135.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -499,7 +503,9 @@
       "source": "estimated",
       "trading_volume": 20840751,
       "trading_value": 86176505385,
-      "market_cap": 213355142231
+      "market_cap": 213355142231,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260318",
@@ -594,10 +600,10 @@
       "date": "20250915",
       "change_rate": 14.51,
       "close_price": 5840.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -618,7 +624,9 @@
       "source": "estimated",
       "trading_volume": 4337683,
       "trading_value": 25332068720,
-      "market_cap": 301328665207
+      "market_cap": 301328665207,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250729",
@@ -672,10 +680,10 @@
       "date": "20250707",
       "change_rate": 13.37,
       "close_price": 5300.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -690,7 +698,9 @@
       "source": "estimated",
       "trading_volume": 7314951,
       "trading_value": 38769240300,
-      "market_cap": 273466083150
+      "market_cap": 273466083150,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250610",
@@ -718,5 +728,5 @@
     "count_recent": 1,
     "avg_rate": 17.63
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

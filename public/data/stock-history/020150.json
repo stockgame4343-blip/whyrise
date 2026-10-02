@@ -96,15 +96,17 @@
       "close_price": 30450.0,
       "trading_volume": 166581,
       "trading_value": 5072391450,
-      "rise_reason": "PCB(FPCB 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "PCB(FPCB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "PCB(FPCB 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -128,15 +130,17 @@
       "close_price": 33150.0,
       "trading_volume": 156893,
       "trading_value": 5201002950,
-      "rise_reason": "PCB(FPCB 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "PCB(FPCB 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "PCB(FPCB 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -375,7 +379,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "증설 발표",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/28 국내 유일 회로박 생산 익산공장 증설",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005755959&office_id=277&code=020150&page=&sm=",
+        "title": "롯데에너지머티리얼즈, '국내 유일 회로박 생산' 익산공장 증설",
+        "date": "20260428"
+      }
     },
     {
       "date": "20260410",
@@ -641,10 +651,10 @@
       "date": "20251120",
       "change_rate": 17.12,
       "close_price": 39000.0,
-      "rise_reason": "2차전지(전고체) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "전자장비와기기",
@@ -652,7 +662,9 @@
       "source": "estimated",
       "trading_volume": 2141483,
       "trading_value": 83517837000,
-      "market_cap": 2042268292682
+      "market_cap": 2042268292682,
+      "reason_previous": "2차전지(전고체) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
@@ -741,5 +753,5 @@
     "count_recent": 1,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

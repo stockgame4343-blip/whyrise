@@ -191,15 +191,17 @@
       "close_price": 2860.0,
       "trading_volume": 1215762,
       "trading_value": 3477079320,
-      "rise_reason": "백신/진단시약/방역(신종플루, AI 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "백신/진단시약/방역(신종플루, AI 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260709",
@@ -278,7 +280,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "임상 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/30 차세대 mRNA 면역항암제 개발 본격 착수",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006318926&office_id=018&code=261780&page=&sm=",
+        "title": "아리바이오랩, 차세대 mRNA 면역항암제 개발 본격 착수",
+        "date": "20260630"
+      }
     },
     {
       "date": "20260630",
@@ -444,7 +452,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "허가 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/1 삼진제약, 차백신연구소서 사명 바꾼 백신 공동 개발",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005293544&office_id=015&code=261780&page=&sm=",
+        "title": "삼진제약, 차백신연구소서 사명 바꾼 아리바이오랩과 백신 공동 개발",
+        "date": "20260601"
+      }
     },
     {
       "date": "20260527",
@@ -750,10 +764,10 @@
       "close_price": 3665.0,
       "trading_volume": 8806550,
       "trading_value": 32276005750,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
         {
@@ -765,7 +779,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260323",
@@ -867,10 +883,10 @@
       "date": "20260310",
       "change_rate": 10.1,
       "close_price": 2835.0,
-      "rise_reason": "백신/진단시약/방역(신종플루, AI 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [],
       "sector": "제약",
@@ -878,7 +894,9 @@
       "source": "estimated",
       "trading_volume": 531818,
       "trading_value": 1507704030,
-      "market_cap": 76259302325
+      "market_cap": 76259302325,
+      "reason_previous": "백신/진단시약/방역(신종플루, AI 등) 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -889,5 +907,5 @@
     "count_recent": 2,
     "avg_rate": 16.12
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

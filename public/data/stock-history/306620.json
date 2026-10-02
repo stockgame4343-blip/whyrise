@@ -107,7 +107,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "MLCC 정부 정책 관련",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/9 경북TP 무인비행체 지원사업 선정",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0013995067&office_id=003&code=306620&page=&sm=",
+        "title": "지아이에스, 경북TP 무인비행체 지원사업 선정",
+        "date": "20260609"
+      }
     },
     {
       "date": "20260618",
@@ -342,10 +348,10 @@
       "date": "20260317",
       "change_rate": 13.89,
       "close_price": 3280.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -360,7 +366,9 @@
       "source": "estimated",
       "trading_volume": 12720668,
       "trading_value": 41723791040,
-      "market_cap": 157205365126
+      "market_cap": 157205365126,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -457,5 +465,5 @@
     "count_recent": 0,
     "avg_rate": 14.65
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

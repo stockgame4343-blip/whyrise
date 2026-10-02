@@ -562,10 +562,10 @@
       "close_price": 1989.0,
       "trading_volume": 23345382,
       "trading_value": 46433964798,
-      "rise_reason": "카메라모듈/부품 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -619,7 +619,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "카메라모듈/부품 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260415",
@@ -834,10 +836,10 @@
       "date": "20260206",
       "change_rate": 11.72,
       "close_price": 1335.0,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "핸드셋",
@@ -845,7 +847,9 @@
       "source": "estimated",
       "trading_volume": 2003592,
       "trading_value": 2674795320,
-      "market_cap": 45669343065
+      "market_cap": 45669343065,
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260123",
@@ -881,10 +885,10 @@
       "date": "20251212",
       "change_rate": 15.32,
       "close_price": 1430.0,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "핸드셋",
@@ -892,16 +896,18 @@
       "source": "estimated",
       "trading_volume": 3893307,
       "trading_value": 5567429010,
-      "market_cap": 48919221411
+      "market_cap": 48919221411,
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251201",
       "change_rate": 12.2,
       "close_price": 1150.0,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "핸드셋",
@@ -909,7 +915,9 @@
       "source": "estimated",
       "trading_volume": 1413132,
       "trading_value": 1625101800,
-      "market_cap": 39340632603
+      "market_cap": 39340632603,
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251014",
@@ -1031,5 +1039,5 @@
     "count_recent": 4,
     "avg_rate": 17.37
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

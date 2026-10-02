@@ -98,7 +98,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "납품 계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/1 글로벌 톱4 완성차 업체에 광반도체 칩 공급한",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005293699&office_id=015&code=046890&page=&sm=",
+        "title": "글로벌 톱4 완성차 업체에 광반도체 칩 공급한 서울반도체",
+        "date": "20260601"
+      }
     },
     {
       "date": "20260430",
@@ -171,7 +177,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "마이크로 LED 승인 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/18 제51차 사업재편계획 승인",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005751369&office_id=277&code=046890&page=&sm=",
+        "title": "메인비즈협회 지원 '서울반도체', 제51차 사업재편계획 승인",
+        "date": "20260418"
+      }
     },
     {
       "date": "20260427",
@@ -250,7 +262,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "마이크로 LED 영업이익 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/18 제51차 사업재편계획 승인",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005751369&office_id=277&code=046890&page=&sm=",
+        "title": "메인비즈협회 지원 '서울반도체', 제51차 사업재편계획 승인",
+        "date": "20260418"
+      }
     },
     {
       "date": "20260407",
@@ -303,10 +321,10 @@
       "date": "20260317",
       "change_rate": 10.11,
       "close_price": 11000.0,
-      "rise_reason": "마이크로 LED 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [],
       "sector": "디스플레이장비및부품",
@@ -314,7 +332,9 @@
       "source": "estimated",
       "trading_volume": 3054723,
       "trading_value": 33601953000,
-      "market_cap": 641380443714
+      "market_cap": 641380443714,
+      "reason_previous": "마이크로 LED 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260312",
@@ -464,5 +484,5 @@
     "count_recent": 0,
     "avg_rate": 19.16
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -315,10 +315,10 @@
       "close_price": 113800.0,
       "trading_volume": 269794,
       "trading_value": 30702557200,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -330,7 +330,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -496,7 +498,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "비만치료제 기술이전 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/17 글로벌 파트너십 확대 본격화한다",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005299669&office_id=015&code=226950&page=&sm=",
+        "title": "올릭스, 바이오 USA 참가…글로벌 파트너십 확대 본격화한다",
+        "date": "20260617"
+      }
     },
     {
       "date": "20260522",
@@ -504,15 +512,17 @@
       "close_price": 161800.0,
       "trading_volume": 446701,
       "trading_value": 72276221800,
-      "rise_reason": "mRNA(메신저 리보핵산) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "mRNA(메신저 리보핵산) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260416",
@@ -725,10 +735,10 @@
       "date": "20260126",
       "change_rate": 15.62,
       "close_price": 147300.0,
-      "rise_reason": "mRNA(메신저 리보핵산) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [],
       "sector": "생명과학도구및서비스",
@@ -736,7 +746,9 @@
       "source": "estimated",
       "trading_volume": 921139,
       "trading_value": 135683774700,
-      "market_cap": 2993537727272
+      "market_cap": 2993537727272,
+      "reason_previous": "mRNA(메신저 리보핵산) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
@@ -914,5 +926,5 @@
     "count_recent": 1,
     "avg_rate": 14.28
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

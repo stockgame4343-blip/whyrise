@@ -312,10 +312,10 @@
       "date": "20260227",
       "change_rate": 11.03,
       "close_price": 9160.0,
-      "rise_reason": "전기차 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -330,7 +330,9 @@
       "source": "estimated",
       "trading_volume": 19015076,
       "trading_value": 174178096160,
-      "market_cap": 249438979963
+      "market_cap": 249438979963,
+      "reason_previous": "전기차 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260225",
@@ -515,10 +517,10 @@
       "date": "20251226",
       "change_rate": 29.77,
       "close_price": 5100.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -557,7 +559,9 @@
       "source": "estimated",
       "trading_volume": 8964015,
       "trading_value": 45716476500,
-      "market_cap": 138879781420
+      "market_cap": 138879781420,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251223",
@@ -738,5 +742,5 @@
     "count_recent": 0,
     "avg_rate": 22.76
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -210,7 +210,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "장비 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/7 반도체 설비투자 수혜주 부상",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005307257&office_id=015&code=089970&page=&sm=",
+        "title": "반도체 설비투자 수혜주 부상…브이엠, 올 상승률 220% 돌파",
+        "date": "20260707"
+      }
     },
     {
       "date": "20260710",
@@ -766,10 +772,10 @@
       "date": "20260306",
       "change_rate": 10.01,
       "close_price": 43400.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -777,7 +783,9 @@
       "source": "estimated",
       "trading_volume": 1199999,
       "trading_value": 52079956600,
-      "market_cap": 1075082805429
+      "market_cap": 1075082805429,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -903,10 +911,10 @@
       "date": "20260127",
       "change_rate": 10.67,
       "close_price": 28000.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -914,7 +922,9 @@
       "source": "estimated",
       "trading_volume": 1106557,
       "trading_value": 30983596000,
-      "market_cap": 693601809954
+      "market_cap": 693601809954,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251002",
@@ -970,5 +980,5 @@
     "count_recent": 1,
     "avg_rate": 16.36
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

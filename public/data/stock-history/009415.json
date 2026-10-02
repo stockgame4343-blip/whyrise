@@ -333,10 +333,10 @@
       "close_price": 11050.0,
       "trading_volume": 506622,
       "trading_value": 5598173100,
-      "rise_reason": "건설 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설",
       "news": [
         {
@@ -366,7 +366,9 @@
       ],
       "sector": "건설",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "건설 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -466,10 +468,10 @@
       "date": "20260106",
       "change_rate": 10.99,
       "close_price": 10300.0,
-      "rise_reason": "건설 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설",
       "news": [
         {
@@ -502,7 +504,9 @@
       "source": "estimated",
       "trading_volume": 430702,
       "trading_value": 4436230600,
-      "market_cap": 6670984455
+      "market_cap": 6670984455,
+      "reason_previous": "건설 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251230",
@@ -617,10 +621,10 @@
       "date": "20251215",
       "change_rate": 23.18,
       "close_price": 8610.0,
-      "rise_reason": "건설 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설",
       "news": [],
       "sector": "건설",
@@ -628,7 +632,9 @@
       "source": "estimated",
       "trading_volume": 586295,
       "trading_value": 5047999950,
-      "market_cap": 5576424870
+      "market_cap": 5576424870,
+      "reason_previous": "건설 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251210",
@@ -731,5 +737,5 @@
     "count_recent": 0,
     "avg_rate": 25.33
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

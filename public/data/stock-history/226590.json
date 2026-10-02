@@ -279,10 +279,10 @@
       "date": "20260223",
       "change_rate": 29.86,
       "close_price": 27400.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -303,7 +303,9 @@
       "source": "estimated",
       "trading_volume": 2351094,
       "trading_value": 64419975600,
-      "market_cap": 293543785310
+      "market_cap": 293543785310,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
@@ -376,10 +378,10 @@
       "date": "20250808",
       "change_rate": 10.04,
       "close_price": 12380.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -387,7 +389,9 @@
       "source": "estimated",
       "trading_volume": 852608,
       "trading_value": 10555287040,
-      "market_cap": 132630367231
+      "market_cap": 132630367231,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -398,5 +402,5 @@
     "count_recent": 0,
     "avg_rate": 19.93
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

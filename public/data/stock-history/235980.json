@@ -237,10 +237,10 @@
       "date": "20250905",
       "change_rate": 10.31,
       "close_price": 5670.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -273,7 +273,9 @@
       "source": "estimated",
       "trading_volume": 2089912,
       "trading_value": 11849801040,
-      "market_cap": 194400000000
+      "market_cap": 194400000000,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250904",
@@ -301,5 +303,5 @@
     "count_recent": 0,
     "avg_rate": 19.27
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -483,7 +483,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/16 네달만에 2000억 일감 확보",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003448362&office_id=030&code=089890&page=&sm=",
+        "title": "코세스, 네달만에 2000억 일감 확보… 블룸에너지와 연료전지 시장 공...",
+        "date": "20260716"
+      }
     },
     {
       "date": "20260710",
@@ -835,10 +841,10 @@
       "date": "20260313",
       "change_rate": 13.14,
       "close_price": 28850.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -846,7 +852,9 @@
       "source": "estimated",
       "trading_volume": 822517,
       "trading_value": 23729615450,
-      "market_cap": 478475332348
+      "market_cap": 478475332348,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -918,10 +926,10 @@
       "date": "20251219",
       "change_rate": 11.57,
       "close_price": 21600.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -929,7 +937,9 @@
       "source": "estimated",
       "trading_volume": 672583,
       "trading_value": 14527792800,
-      "market_cap": 358234564254
+      "market_cap": 358234564254,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251106",
@@ -1102,5 +1112,5 @@
     "count_recent": 2,
     "avg_rate": 14.95
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

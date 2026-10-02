@@ -459,7 +459,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/3 239억 규모 반도체 위탁생산 계약",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002624454&office_id=016&code=117670&page=&sm=",
+        "title": "알파칩스, 239억 규모 반도체 위탁생산 계약",
+        "date": "20260403"
+      }
     },
     {
       "date": "20260403",
@@ -506,10 +512,10 @@
       "date": "20260312",
       "change_rate": 13.92,
       "close_price": 19800.0,
-      "rise_reason": "시스템반도체 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -517,7 +523,9 @@
       "source": "estimated",
       "trading_volume": 69510,
       "trading_value": 1376298000,
-      "market_cap": 131940000000
+      "market_cap": 131940000000,
+      "reason_previous": "시스템반도체 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -675,5 +683,5 @@
     "count_recent": 3,
     "avg_rate": 17.44
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

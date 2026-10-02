@@ -64,10 +64,10 @@
       "close_price": 2355.0,
       "trading_volume": 62330,
       "trading_value": 146787150,
-      "rise_reason": "제지 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제지",
       "news": [
         {
@@ -79,7 +79,9 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "제지 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260416",
@@ -172,10 +174,10 @@
       "date": "20260227",
       "change_rate": 25.22,
       "close_price": 4245.0,
-      "rise_reason": "제지 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제지",
       "news": [],
       "sector": "종이와목재",
@@ -183,7 +185,9 @@
       "source": "estimated",
       "trading_volume": 3015267,
       "trading_value": 12799808415,
-      "market_cap": 151020276497
+      "market_cap": 151020276497,
+      "reason_previous": "제지 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -194,5 +198,5 @@
     "count_recent": 0,
     "avg_rate": 14.92
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -38,7 +38,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "합병 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/21 감염병 공포",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006286460&office_id=018&code=011000&page=&sm=",
+        "title": "감염병 공포에 진원생명과학 上…아리바이오發 후광, 휴온스랩 합병 ...",
+        "date": "20260521"
+      }
     },
     {
       "date": "20260520",
@@ -130,7 +136,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/8 구조조정 속도 소식",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005354593&office_id=008&code=011000&page=&sm=",
+        "title": "구조조정 속도 소식에 진원생명과학, 장초반 상한가",
+        "date": "20260508"
+      }
     },
     {
       "date": "20260508",
@@ -387,10 +399,10 @@
       "date": "20260325",
       "change_rate": 13.57,
       "close_price": 1004.0,
-      "rise_reason": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "생물공학",
@@ -398,7 +410,9 @@
       "source": "estimated",
       "trading_volume": 3706252,
       "trading_value": 3721077008,
-      "market_cap": 91285878962
+      "market_cap": 91285878962,
+      "reason_previous": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
@@ -426,5 +440,5 @@
     "count_recent": 0,
     "avg_rate": 23.81
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

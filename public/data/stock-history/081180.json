@@ -177,7 +177,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/13 한화에어로와 93억 규모 공급계약 체결",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006279777&office_id=018&code=081180&page=&sm=",
+        "title": "쎄크, 한화에어로와 93억 규모 공급계약 체결",
+        "date": "20260513"
+      }
     },
     {
       "date": "20260401",
@@ -338,10 +344,10 @@
       "date": "20251124",
       "change_rate": 14.13,
       "close_price": 11310.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -356,16 +362,18 @@
       "source": "estimated",
       "trading_volume": 6824440,
       "trading_value": 77184416400,
-      "market_cap": 99794117647
+      "market_cap": 99794117647,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251118",
       "change_rate": 15.07,
       "close_price": 11070.0,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -392,7 +400,9 @@
       "source": "estimated",
       "trading_volume": 9555116,
       "trading_value": 105775134120,
-      "market_cap": 97676470588
+      "market_cap": 97676470588,
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251117",
@@ -449,5 +459,5 @@
     "count_recent": 0,
     "avg_rate": 17.21
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

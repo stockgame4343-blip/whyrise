@@ -365,15 +365,17 @@
       "close_price": 10760.0,
       "trading_volume": 479159,
       "trading_value": 5155750840,
-      "rise_reason": "LED 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "LED 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260522",
@@ -972,10 +974,10 @@
       "date": "20260109",
       "change_rate": 10.79,
       "close_price": 6060.0,
-      "rise_reason": "철도 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철도",
       "news": [],
       "sector": "전자장비와기기",
@@ -983,16 +985,18 @@
       "source": "estimated",
       "trading_volume": 620254,
       "trading_value": 3758739240,
-      "market_cap": 48823739495
+      "market_cap": 48823739495,
+      "reason_previous": "철도 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251117",
       "change_rate": 11.95,
       "close_price": 5900.0,
-      "rise_reason": "철도 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철도",
       "news": [],
       "sector": "전자장비와기기",
@@ -1000,7 +1004,9 @@
       "source": "estimated",
       "trading_volume": 447998,
       "trading_value": 2643188200,
-      "market_cap": 47534663865
+      "market_cap": 47534663865,
+      "reason_previous": "철도 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1011,5 +1017,5 @@
     "count_recent": 2,
     "avg_rate": 19.29
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

@@ -367,7 +367,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "니켈 흑자 전환 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/12 1분기 영업익 385% 급증",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005761242&office_id=277&code=009190&page=&sm=",
+        "title": "대양금속, 1분기 영업익 385% 급증…흑자 전환 성공",
+        "date": "20260512"
+      }
     },
     {
       "date": "20260522",
@@ -428,16 +434,22 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "니켈 흑자 전환 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/12 1분기 영업익 385% 급증",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005761242&office_id=277&code=009190&page=&sm=",
+        "title": "대양금속, 1분기 영업익 385% 급증…흑자 전환 성공",
+        "date": "20260512"
+      }
     },
     {
       "date": "20260206",
       "change_rate": 15.62,
       "close_price": 1369.0,
-      "rise_reason": "니켈 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "니켈",
       "news": [
         {
@@ -458,7 +470,9 @@
       "source": "estimated",
       "trading_volume": 2594362,
       "trading_value": 3551681578,
-      "market_cap": 60215133369
+      "market_cap": 60215133369,
+      "reason_previous": "니켈 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -469,5 +483,5 @@
     "count_recent": 0,
     "avg_rate": 15.41
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

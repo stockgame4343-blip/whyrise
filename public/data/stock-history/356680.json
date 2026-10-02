@@ -114,15 +114,17 @@
       "close_price": 12250.0,
       "trading_volume": 1233038,
       "trading_value": 15104715500,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -365,7 +367,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/11 양자보안 전환 수혜 본격화",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003436818&office_id=030&code=356680&page=&sm=",
+        "title": "엑스게이트, 양자보안 전환 수혜 본격화… 퀀텀·AI 앞세워 방산 시장...",
+        "date": "20260611"
+      }
     },
     {
       "date": "20260609",
@@ -1274,5 +1282,5 @@
     "count_recent": 1,
     "avg_rate": 20.24
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

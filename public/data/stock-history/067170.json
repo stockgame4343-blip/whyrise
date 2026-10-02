@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "기술이전 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/14 전기냉동탑차 101대 공급",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005803277&office_id=277&code=067170&page=&sm=",
+        "title": "오텍, 롯데마트 '오카도' 물류혁신 올라탔다…전기냉동탑차 101대 공급",
+        "date": "20260814"
+      }
     },
     {
       "date": "20260810",
@@ -168,7 +174,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/1 글로벌 캐리어과 맞손잡은",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0001257192&office_id=215&code=067170&page=&sm=",
+        "title": "글로벌 캐리어과 맞손잡은 오텍…차세대 냉각 솔루션 시장 출사표",
+        "date": "20260701"
+      }
     },
     {
       "date": "20260706",
@@ -217,7 +229,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/1 글로벌 캐리어과 맞손잡은",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0001257192&office_id=215&code=067170&page=&sm=",
+        "title": "글로벌 캐리어과 맞손잡은 오텍…차세대 냉각 솔루션 시장 출사표",
+        "date": "20260701"
+      }
     },
     {
       "date": "20260626",
@@ -431,7 +449,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "협력 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/22 미래 특수목적 모빌리티 공개",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005766677&office_id=277&code=067170&page=&sm=",
+        "title": "오텍, 2026 국제소방안전박람회 참가…미래 특수목적 모빌리티 공개",
+        "date": "20260522"
+      }
     },
     {
       "date": "20260519",
@@ -711,15 +735,17 @@
       "close_price": 2270.0,
       "trading_volume": 1806866,
       "trading_value": 4101585820,
-      "rise_reason": "재난/안전(지진/화재 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "재난/안전(지진/화재 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "재난/안전(지진/화재 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -748,10 +774,10 @@
       "date": "20251203",
       "change_rate": 29.74,
       "close_price": 2430.0,
-      "rise_reason": "코로나19(음압병실/음압구급차) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(음압병실/음압구급차)",
       "news": [
         {
@@ -772,7 +798,9 @@
       "source": "estimated",
       "trading_volume": 4116760,
       "trading_value": 10003726800,
-      "market_cap": 64168831168
+      "market_cap": 64168831168,
+      "reason_previous": "코로나19(음압병실/음압구급차) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250702",
@@ -817,5 +845,5 @@
     "count_recent": 0,
     "avg_rate": 17.1
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -23,10 +23,10 @@
       "date": "20251230",
       "change_rate": 30.0,
       "close_price": 2600.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -53,7 +53,9 @@
       "source": "estimated",
       "trading_volume": 1104352,
       "trading_value": 2871315200,
-      "market_cap": 36737315350
+      "market_cap": 36737315350,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -64,5 +66,5 @@
     "count_recent": 0,
     "avg_rate": 20.04
   },
-  "built_at": "2026-10-01T22:59:28"
+  "built_at": "2026-10-02T10:35:16"
 }

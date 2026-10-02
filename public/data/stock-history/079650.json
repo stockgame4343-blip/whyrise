@@ -294,7 +294,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "지역 실적 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/30 건설경기 회복 기대감",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006339785&office_id=018&code=079650&page=&sm=",
+        "title": "서산, 건설경기 회복 기대감에 상승세…27.4%↑",
+        "date": "20260730"
+      }
     },
     {
       "date": "20260811",
@@ -361,7 +367,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "지역 실적 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/30 건설경기 회복 기대감",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006339785&office_id=018&code=079650&page=&sm=",
+        "title": "서산, 건설경기 회복 기대감에 상승세…27.4%↑",
+        "date": "20260730"
+      }
     },
     {
       "date": "20260730",
@@ -1175,10 +1187,10 @@
       "date": "20260220",
       "change_rate": 10.06,
       "close_price": 1652.0,
-      "rise_reason": "시멘트/레미콘 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [],
       "sector": "건축자재",
@@ -1186,7 +1198,9 @@
       "source": "estimated",
       "trading_volume": 197475,
       "trading_value": 326228700,
-      "market_cap": 33040000000
+      "market_cap": 33040000000,
+      "reason_previous": "시멘트/레미콘 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1197,5 +1211,5 @@
     "count_recent": 3,
     "avg_rate": 22.88
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

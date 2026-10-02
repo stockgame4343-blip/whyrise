@@ -160,15 +160,17 @@
       "close_price": 6990.0,
       "trading_volume": 1807224,
       "trading_value": 12632495760,
-      "rise_reason": "무선충전기술 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "무선충전기술",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "무선충전기술 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -263,10 +265,10 @@
       "close_price": 9170.0,
       "trading_volume": 1254946,
       "trading_value": 11507854820,
-      "rise_reason": "무선충전기술 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "무선충전기술",
       "news": [
         {
@@ -284,7 +286,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "무선충전기술 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260622",
@@ -525,7 +529,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "흑자 전환 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/27 1분기 영업익 141억",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005279974&office_id=015&code=004710&page=&sm=",
+        "title": "한솔테크닉스, 1분기 영업익 141억…전년비 26% 감소",
+        "date": "20260427"
+      }
     },
     {
       "date": "20260508",
@@ -604,7 +614,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "흑자 전환 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/27 1분기 영업익 141억",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005279974&office_id=015&code=004710&page=&sm=",
+        "title": "한솔테크닉스, 1분기 영업익 141억…전년비 26% 감소",
+        "date": "20260427"
+      }
     },
     {
       "date": "20260507",
@@ -683,7 +699,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "흑자 전환 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/27 1분기 영업익 141억",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005279974&office_id=015&code=004710&page=&sm=",
+        "title": "한솔테크닉스, 1분기 영업익 141억…전년비 26% 감소",
+        "date": "20260427"
+      }
     },
     {
       "date": "20260427",
@@ -983,5 +1005,5 @@
     "count_recent": 2,
     "avg_rate": 18.43
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

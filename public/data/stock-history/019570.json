@@ -210,10 +210,10 @@
       "date": "20260211",
       "change_rate": 30.0,
       "close_price": 728.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "창투사",
       "news": [
         {
@@ -252,7 +252,9 @@
       "source": "estimated",
       "trading_volume": 3426026,
       "trading_value": 2494146928,
-      "market_cap": 69602702702
+      "market_cap": 69602702702,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260210",
@@ -330,10 +332,10 @@
       "date": "20260206",
       "change_rate": 29.69,
       "close_price": 332.0,
-      "rise_reason": "창투사 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "창투사",
       "news": [
         {
@@ -354,7 +356,9 @@
       "source": "estimated",
       "trading_volume": 13281440,
       "trading_value": 4409438080,
-      "market_cap": 31741891891
+      "market_cap": 31741891891,
+      "reason_previous": "창투사 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
@@ -382,5 +386,5 @@
     "count_recent": 0,
     "avg_rate": 28.35
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

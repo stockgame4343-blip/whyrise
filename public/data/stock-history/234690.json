@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "임상 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/22 보령과 라이넥주 공동 판매 계약",
+        "link": "https://n.news.naver.com/mnews/article/031/0001060643",
+        "title": "GC녹십자웰빙, 보령과 '라이넥주' 공동 판매 계약",
+        "date": "20260922"
+      }
     },
     {
       "date": "20260903",
@@ -324,10 +330,10 @@
       "date": "20260323",
       "change_rate": 12.81,
       "close_price": 11800.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -348,7 +354,9 @@
       "source": "estimated",
       "trading_volume": 1576896,
       "trading_value": 18607372800,
-      "market_cap": 211897243107
+      "market_cap": 211897243107,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -359,5 +367,5 @@
     "count_recent": 2,
     "avg_rate": 14.2
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

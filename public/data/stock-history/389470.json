@@ -66,10 +66,10 @@
       "close_price": 31300.0,
       "trading_volume": 65269,
       "trading_value": 2042919700,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -99,7 +99,9 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -164,10 +166,10 @@
       "date": "20260305",
       "change_rate": 14.81,
       "close_price": 93000.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -200,7 +202,9 @@
       "source": "estimated",
       "trading_volume": 295389,
       "trading_value": 27471177000,
-      "market_cap": 1237581560283
+      "market_cap": 1237581560283,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260227",
@@ -264,10 +268,10 @@
       "date": "20251229",
       "change_rate": 14.94,
       "close_price": 83100.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -288,7 +292,9 @@
       "source": "estimated",
       "trading_volume": 606302,
       "trading_value": 50383696200,
-      "market_cap": 1105839007092
+      "market_cap": 1105839007092,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251204",
@@ -342,10 +348,10 @@
       "date": "20251203",
       "change_rate": 11.06,
       "close_price": 78300.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -384,16 +390,18 @@
       "source": "estimated",
       "trading_volume": 6650011,
       "trading_value": 520695861300,
-      "market_cap": 1041963829787
+      "market_cap": 1041963829787,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
       "change_rate": 13.26,
       "close_price": 63200.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -414,7 +422,9 @@
       "source": "estimated",
       "trading_volume": 2063233,
       "trading_value": 130396325600,
-      "market_cap": 841023167848
+      "market_cap": 841023167848,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251104",
@@ -508,10 +518,10 @@
       "date": "20250827",
       "change_rate": 30.0,
       "close_price": 47450.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -519,7 +529,9 @@
       "source": "estimated",
       "trading_volume": 2209200,
       "trading_value": 104826540000,
-      "market_cap": 631432742316
+      "market_cap": 631432742316,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20250825",
@@ -604,5 +616,5 @@
     "count_recent": 1,
     "avg_rate": 13.26
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

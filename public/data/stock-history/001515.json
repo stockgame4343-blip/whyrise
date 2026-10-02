@@ -471,10 +471,10 @@
       "date": "20251229",
       "change_rate": 10.87,
       "close_price": 5100.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [
         {
@@ -489,16 +489,18 @@
       "source": "estimated",
       "trading_volume": 25319,
       "trading_value": 129126900,
-      "market_cap": 9959227467
+      "market_cap": 9959227467,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251002",
       "change_rate": 12.07,
       "close_price": 5200.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -506,7 +508,9 @@
       "source": "estimated",
       "trading_volume": 56643,
       "trading_value": 294543600,
-      "market_cap": 10154506437
+      "market_cap": 10154506437,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250930",
@@ -570,5 +574,5 @@
     "count_recent": 0,
     "avg_rate": 23.52
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

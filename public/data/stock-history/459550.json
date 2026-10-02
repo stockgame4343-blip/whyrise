@@ -665,10 +665,10 @@
       "date": "20251125",
       "change_rate": 29.89,
       "close_price": 4910.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -707,7 +707,9 @@
       "source": "estimated",
       "trading_volume": 31047087,
       "trading_value": 152441197170,
-      "market_cap": 123697543859
+      "market_cap": 123697543859,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251120",
@@ -822,5 +824,5 @@
     "count_recent": 1,
     "avg_rate": 25.05
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

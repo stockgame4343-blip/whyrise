@@ -339,15 +339,17 @@
       "close_price": 6710.0,
       "trading_volume": 16176305,
       "trading_value": 108543006550,
-      "rise_reason": "낙태/피임 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "낙태/피임",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "낙태/피임 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260714",
@@ -549,10 +551,10 @@
       "date": "20260205",
       "change_rate": 11.69,
       "close_price": 13090.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "낙태/피임",
       "news": [
         {
@@ -591,7 +593,9 @@
       "source": "estimated",
       "trading_volume": 18372231,
       "trading_value": 240492503790,
-      "market_cap": 418880000000
+      "market_cap": 418880000000,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260116",
@@ -729,10 +733,10 @@
       "date": "20251224",
       "change_rate": 11.24,
       "close_price": 7520.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "낙태/피임",
       "news": [
         {
@@ -771,16 +775,18 @@
       "source": "estimated",
       "trading_volume": 26678356,
       "trading_value": 200621237120,
-      "market_cap": 240640000000
+      "market_cap": 240640000000,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251216",
       "change_rate": 11.06,
       "close_price": 7030.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "낙태/피임",
       "news": [
         {
@@ -819,7 +825,9 @@
       "source": "estimated",
       "trading_volume": 13106722,
       "trading_value": 92140255660,
-      "market_cap": 224960000000
+      "market_cap": 224960000000,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251208",
@@ -943,5 +951,5 @@
     "count_recent": 2,
     "avg_rate": 20.29
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

@@ -418,7 +418,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/6 하반기 이익 개선 속도 빨라진다",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006273698&office_id=018&code=090460&page=&sm=",
+        "title": "비에이치, 하반기 이익 개선 속도 빨라진다…목표가 38%↑-DB",
+        "date": "20260506"
+      }
     },
     {
       "date": "20260416",
@@ -501,10 +507,10 @@
       "date": "20260320",
       "change_rate": 11.42,
       "close_price": 22150.0,
-      "rise_reason": "폴더블폰 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폴더블폰",
       "news": [],
       "sector": "전자장비와기기",
@@ -512,7 +518,9 @@
       "source": "estimated",
       "trading_volume": 1237345,
       "trading_value": 27407191750,
-      "market_cap": 746733532934
+      "market_cap": 746733532934,
+      "reason_previous": "폴더블폰 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260209",
@@ -599,5 +607,5 @@
     "count_recent": 2,
     "avg_rate": 17.23
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

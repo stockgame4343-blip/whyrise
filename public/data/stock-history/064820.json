@@ -127,10 +127,10 @@
       "date": "20250911",
       "change_rate": 20.41,
       "close_price": 14810.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -169,16 +169,18 @@
       "source": "estimated",
       "trading_volume": 11783992,
       "trading_value": 174520921520,
-      "market_cap": 457019348469
+      "market_cap": 457019348469,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250910",
       "change_rate": 14.85,
       "close_price": 12300.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -217,7 +219,9 @@
       "source": "estimated",
       "trading_volume": 6564490,
       "trading_value": 80743227000,
-      "market_cap": 379563672260
+      "market_cap": 379563672260,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250828",
@@ -295,10 +299,10 @@
       "date": "20250709",
       "change_rate": 11.66,
       "close_price": 6800.0,
-      "rise_reason": "조선기자재 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [],
       "sector": "증권",
@@ -306,7 +310,9 @@
       "source": "estimated",
       "trading_volume": 677558,
       "trading_value": 4607394400,
-      "market_cap": 209840078973
+      "market_cap": 209840078973,
+      "reason_previous": "조선기자재 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -317,5 +323,5 @@
     "count_recent": 0,
     "avg_rate": 18.91
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

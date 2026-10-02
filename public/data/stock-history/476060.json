@@ -240,15 +240,17 @@
       "close_price": 10820.0,
       "trading_volume": 323305,
       "trading_value": 3498160100,
-      "rise_reason": "미국 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미국",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "미국 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260716",
@@ -434,10 +436,10 @@
       "date": "20260325",
       "change_rate": 14.18,
       "close_price": 23750.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -452,7 +454,9 @@
       "source": "estimated",
       "trading_volume": 786986,
       "trading_value": 18690917500,
-      "market_cap": 1078406925031
+      "market_cap": 1078406925031,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260313",
@@ -542,10 +546,10 @@
       "date": "20251226",
       "change_rate": 15.1,
       "close_price": 21800.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -566,7 +570,9 @@
       "source": "estimated",
       "trading_volume": 15210907,
       "trading_value": 331597772600,
-      "market_cap": 989864040660
+      "market_cap": 989864040660,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251128",
@@ -736,5 +742,5 @@
     "count_recent": 0,
     "avg_rate": 17.81
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

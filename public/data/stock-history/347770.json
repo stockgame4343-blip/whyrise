@@ -99,10 +99,10 @@
       "date": "20260320",
       "change_rate": 18.59,
       "close_price": 1869.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -117,7 +117,9 @@
       "source": "estimated",
       "trading_volume": 1235367,
       "trading_value": 2308900923,
-      "market_cap": 42667902439
+      "market_cap": 42667902439,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260318",
@@ -142,10 +144,10 @@
       "date": "20260310",
       "change_rate": 13.18,
       "close_price": 1125.0,
-      "rise_reason": "OLED(유기 발광 다이오드) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [],
       "sector": "디스플레이장비및부품",
@@ -153,7 +155,9 @@
       "source": "estimated",
       "trading_volume": 2433790,
       "trading_value": 2738013750,
-      "market_cap": 25682926829
+      "market_cap": 25682926829,
+      "reason_previous": "OLED(유기 발광 다이오드) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250813",
@@ -240,5 +244,5 @@
     "count_recent": 1,
     "avg_rate": 16.52
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

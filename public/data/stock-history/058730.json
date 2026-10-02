@@ -106,7 +106,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "수주 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/8 532억 신안 태양광발전사업 수주",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002386170&office_id=123&code=058730&page=&sm=",
+        "title": "다스코, 532억 신안 태양광발전사업 수주…20년간 운영관리 [공시pi...",
+        "date": "20260708"
+      }
     },
     {
       "date": "20260708",
@@ -387,10 +393,10 @@
       "date": "20260203",
       "change_rate": 10.32,
       "close_price": 3420.0,
-      "rise_reason": "남북경협 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남북경협",
       "news": [],
       "sector": "건축자재",
@@ -398,7 +404,9 @@
       "source": "estimated",
       "trading_volume": 1305225,
       "trading_value": 4463869500,
-      "market_cap": 68202881844
+      "market_cap": 68202881844,
+      "reason_previous": "남북경협 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251124",
@@ -491,5 +499,5 @@
     "count_recent": 1,
     "avg_rate": 19.84
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

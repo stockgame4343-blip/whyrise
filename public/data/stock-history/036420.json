@@ -9,10 +9,10 @@
       "close_price": 1676.0,
       "trading_volume": 114098,
       "trading_value": 191228248,
-      "rise_reason": "미디어(방송/신문) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미디어(방송/신문)",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "미디어(방송/신문) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260720",
@@ -97,7 +99,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "허가 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/13 중앙일보 워크아웃 개시",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014062958&office_id=003&code=036420&page=&sm=",
+        "title": "중앙일보 워크아웃 개시…콘텐트리중앙 상한가 직행",
+        "date": "20260713"
+      }
     },
     {
       "date": "20260713",
@@ -465,5 +473,5 @@
     "count_recent": 0,
     "avg_rate": 19.44
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

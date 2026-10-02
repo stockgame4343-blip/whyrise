@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "임상 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/22 프로스타뷰 베트남에 라이선스·공급계약",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014080202&office_id=003&code=220100&page=&sm=",
+        "title": "퓨쳐켐, '프로스타뷰' 베트남에 라이선스·공급계약",
+        "date": "20260722"
+      }
     },
     {
       "date": "20260731",
@@ -299,10 +305,10 @@
       "date": "20251112",
       "change_rate": 15.68,
       "close_price": 24350.0,
-      "rise_reason": "치매 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [],
       "sector": "제약",
@@ -310,7 +316,9 @@
       "source": "estimated",
       "trading_volume": 3865722,
       "trading_value": 94130330700,
-      "market_cap": 546188561215
+      "market_cap": 546188561215,
+      "reason_previous": "치매 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250904",
@@ -379,5 +387,5 @@
     "count_recent": 0,
     "avg_rate": 12.61
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

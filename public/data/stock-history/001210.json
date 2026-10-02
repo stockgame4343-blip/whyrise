@@ -103,7 +103,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "LED 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/21 호남 반도체 클러스터 호재",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0001187494&office_id=366&code=001210&page=&sm=",
+        "title": "[특징주] 금호전기, ‘호남 반도체 클러스터’ 호재에 장 초반 26%...",
+        "date": "20260821"
+      }
     },
     {
       "date": "20260821",
@@ -924,10 +930,10 @@
       "date": "20260106",
       "change_rate": 29.93,
       "close_price": 712.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -960,7 +966,9 @@
       "source": "estimated",
       "trading_volume": 15887273,
       "trading_value": 11311738376,
-      "market_cap": 44055888223
+      "market_cap": 44055888223,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20250804",
@@ -1055,5 +1063,5 @@
     "count_recent": 0,
     "avg_rate": 25.97
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

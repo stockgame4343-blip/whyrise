@@ -9,15 +9,17 @@
       "close_price": 364500.0,
       "trading_volume": 131204,
       "trading_value": 47823858000,
-      "rise_reason": "SI(시스템통합) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "SI(시스템통합)",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "SI(시스템통합) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260529",
@@ -527,10 +529,10 @@
       "date": "20251202",
       "change_rate": 18.65,
       "close_price": 233500.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "IT서비스",
@@ -538,7 +540,9 @@
       "source": "estimated",
       "trading_volume": 760336,
       "trading_value": 177538456000,
-      "market_cap": 6403508232628
+      "market_cap": 6403508232628,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251103",
@@ -620,5 +624,5 @@
     "count_recent": 0,
     "avg_rate": 19.34
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -822,10 +822,10 @@
       "close_price": 314000.0,
       "trading_volume": 109682,
       "trading_value": 34440148000,
-      "rise_reason": "기록 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기록",
       "news": [
         {
@@ -855,7 +855,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "기록 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -978,5 +980,5 @@
     "count_recent": 0,
     "avg_rate": 16.22
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

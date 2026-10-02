@@ -133,7 +133,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "정책 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/3 트럼프 알래스카 언급",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0004658130&office_id=011&code=002710&page=&sm=",
+        "title": "트럼프 알래스카 언급에… TCC스틸·부국철강 등 관련주 급등 [줍줍리...",
+        "date": "20260903"
+      }
     },
     {
       "date": "20260629",
@@ -286,10 +292,10 @@
       "date": "20260122",
       "change_rate": 11.58,
       "close_price": 15130.0,
-      "rise_reason": "철강 중소형 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -316,16 +322,18 @@
       "source": "estimated",
       "trading_volume": 668893,
       "trading_value": 10120351090,
-      "market_cap": 396578211382
+      "market_cap": 396578211382,
+      "reason_previous": "철강 중소형 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250811",
       "change_rate": 10.78,
       "close_price": 20250.0,
-      "rise_reason": "철강 중소형 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [],
       "sector": "철강",
@@ -333,7 +341,9 @@
       "source": "estimated",
       "trading_volume": 760702,
       "trading_value": 15404215500,
-      "market_cap": 530780487804
+      "market_cap": 530780487804,
+      "reason_previous": "철강 중소형 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -344,5 +354,5 @@
     "count_recent": 2,
     "avg_rate": 15.47
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

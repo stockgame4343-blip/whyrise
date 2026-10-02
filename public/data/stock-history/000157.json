@@ -149,15 +149,17 @@
       "close_price": 415000.0,
       "trading_volume": 1554,
       "trading_value": 644910000,
-      "rise_reason": "두산그룹 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "두산그룹",
       "news": [],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "두산그룹 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -196,10 +198,10 @@
       "date": "20260227",
       "change_rate": 11.39,
       "close_price": 567000.0,
-      "rise_reason": "지주사 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -214,7 +216,9 @@
       "source": "estimated",
       "trading_volume": 11941,
       "trading_value": 6770547000,
-      "market_cap": 506301502890
+      "market_cap": 506301502890,
+      "reason_previous": "지주사 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251103",
@@ -256,10 +260,10 @@
       "date": "20250708",
       "change_rate": 13.57,
       "close_price": 410000.0,
-      "rise_reason": "지주사 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -280,7 +284,9 @@
       "source": "estimated",
       "trading_volume": 15379,
       "trading_value": 6305390000,
-      "market_cap": 366108670520
+      "market_cap": 366108670520,
+      "reason_previous": "지주사 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
@@ -342,5 +348,5 @@
     "count_recent": 0,
     "avg_rate": 15.32
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

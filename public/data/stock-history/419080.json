@@ -390,10 +390,10 @@
       "date": "20251224",
       "change_rate": 12.55,
       "close_price": 8160.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
         {
@@ -408,7 +408,9 @@
       "source": "estimated",
       "trading_volume": 10253618,
       "trading_value": 83669522880,
-      "market_cap": 87213759213
+      "market_cap": 87213759213,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251217",
@@ -520,5 +522,5 @@
     "count_recent": 0,
     "avg_rate": 14.6
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

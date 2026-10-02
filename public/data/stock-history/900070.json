@@ -271,10 +271,10 @@
       "date": "20260223",
       "change_rate": 21.47,
       "close_price": 1392.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [
         {
@@ -301,7 +301,9 @@
       "source": "estimated",
       "trading_volume": 6640749,
       "trading_value": 9243922608,
-      "market_cap": 37440000000
+      "market_cap": 37440000000,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260220",
@@ -361,10 +363,10 @@
       "date": "20260128",
       "change_rate": 10.27,
       "close_price": 902.0,
-      "rise_reason": "국내 상장 중국기업 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "국내 상장 중국기업",
       "news": [],
       "sector": "자동차부품",
@@ -372,7 +374,9 @@
       "source": "estimated",
       "trading_volume": 576659,
       "trading_value": 520146418,
-      "market_cap": 24260689655
+      "market_cap": 24260689655,
+      "reason_previous": "국내 상장 중국기업 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250708",
@@ -449,5 +453,5 @@
     "count_recent": 1,
     "avg_rate": 15.15
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

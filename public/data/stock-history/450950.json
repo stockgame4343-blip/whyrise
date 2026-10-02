@@ -114,16 +114,22 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/5 매출 성장 정체 (상상인)",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005367472&office_id=008&code=450950&page=&sm=",
+        "title": "아스테라시스, 매출 성장 정체…목표가 1만3000원으로 하향-상상인",
+        "date": "20260605"
+      }
     },
     {
       "date": "20260102",
       "change_rate": 13.66,
       "close_price": 14060.0,
-      "rise_reason": "미용기기 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미용기기",
       "news": [
         {
@@ -138,7 +144,9 @@
       "source": "estimated",
       "trading_volume": 559360,
       "trading_value": 7864601600,
-      "market_cap": 529079726027
+      "market_cap": 529079726027,
+      "reason_previous": "미용기기 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251017",
@@ -179,5 +187,5 @@
     "count_recent": 0,
     "avg_rate": 13.68
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

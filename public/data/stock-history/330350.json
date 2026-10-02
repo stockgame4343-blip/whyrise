@@ -442,10 +442,10 @@
       "date": "20260225",
       "change_rate": 29.92,
       "close_price": 11940.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -460,7 +460,9 @@
       "source": "estimated",
       "trading_volume": 14971844,
       "trading_value": 178763817360,
-      "market_cap": 157537923250
+      "market_cap": 157537923250,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251216",
@@ -536,5 +538,5 @@
     "count_recent": 0,
     "avg_rate": 17.98
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

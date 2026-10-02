@@ -308,15 +308,17 @@
       "close_price": 41950.0,
       "trading_volume": 2056791,
       "trading_value": 86282382450,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260710",
@@ -803,10 +805,10 @@
       "date": "20251124",
       "change_rate": 13.76,
       "close_price": 24800.0,
-      "rise_reason": "전력저장장치(ESS) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력저장장치(ESS)",
       "news": [],
       "sector": "전기장비",
@@ -814,7 +816,9 @@
       "source": "estimated",
       "trading_volume": 838989,
       "trading_value": 20806927200,
-      "market_cap": 1578529185185
+      "market_cap": 1578529185185,
+      "reason_previous": "전력저장장치(ESS) 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -825,5 +829,5 @@
     "count_recent": 1,
     "avg_rate": 14.34
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

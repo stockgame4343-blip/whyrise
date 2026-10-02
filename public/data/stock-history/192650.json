@@ -345,16 +345,22 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "양산 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/5 인도 메모리모듈 양산 임박",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006297817&office_id=018&code=192650&page=&sm=",
+        "title": "드림텍, 인도 메모리모듈 양산 임박…투자의견↑-키움",
+        "date": "20260605"
+      }
     },
     {
       "date": "20260203",
       "change_rate": 10.66,
       "close_price": 8410.0,
-      "rise_reason": "갤럭시 부품주 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [],
       "sector": "핸드셋",
@@ -362,7 +368,9 @@
       "source": "estimated",
       "trading_volume": 1211077,
       "trading_value": 10185157570,
-      "market_cap": 554061410018
+      "market_cap": 554061410018,
+      "reason_previous": "갤럭시 부품주 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251103",
@@ -431,5 +439,5 @@
     "count_recent": 1,
     "avg_rate": 14.93
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

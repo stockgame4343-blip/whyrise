@@ -51,10 +51,10 @@
       "close_price": 13330.0,
       "trading_volume": 497241,
       "trading_value": 6628222530,
-      "rise_reason": "치매 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [
         {
@@ -72,7 +72,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "치매 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260325",
@@ -138,10 +140,10 @@
       "date": "20260226",
       "change_rate": 16.62,
       "close_price": 44550.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -162,7 +164,9 @@
       "source": "estimated",
       "trading_volume": 522580,
       "trading_value": 23280939000,
-      "market_cap": 1972160633484
+      "market_cap": 1972160633484,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
@@ -395,5 +399,5 @@
     "count_recent": 0,
     "avg_rate": 15.33
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

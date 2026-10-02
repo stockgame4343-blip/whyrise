@@ -9,15 +9,17 @@
       "close_price": 26850.0,
       "trading_volume": 227893,
       "trading_value": 6118927050,
-      "rise_reason": "피팅(관이음쇠)/밸브 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피팅(관이음쇠)/밸브",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "피팅(관이음쇠)/밸브 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -196,10 +198,10 @@
       "date": "20260309",
       "change_rate": 13.62,
       "close_price": 29200.0,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "기계",
@@ -207,7 +209,9 @@
       "source": "estimated",
       "trading_volume": 1217526,
       "trading_value": 35551759200,
-      "market_cap": 755293310463
+      "market_cap": 755293310463,
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
@@ -320,5 +324,5 @@
     "count_recent": 0,
     "avg_rate": 15.27
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

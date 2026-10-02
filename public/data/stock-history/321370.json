@@ -386,7 +386,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/19 한화시스템과 10.6억 규모 계약 체결",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006309741&office_id=018&code=321370&page=&sm=",
+        "title": "센서뷰, 한화시스템과 10.6억 규모 계약 체결",
+        "date": "20260619"
+      }
     },
     {
       "date": "20260604",
@@ -802,10 +808,10 @@
       "date": "20260325",
       "change_rate": 12.32,
       "close_price": 3947.0,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -826,7 +832,9 @@
       "source": "estimated",
       "trading_volume": 10169568,
       "trading_value": 40139284896,
-      "market_cap": 203985043103
+      "market_cap": 203985043103,
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260316",
@@ -964,10 +972,10 @@
       "date": "20260224",
       "change_rate": 13.32,
       "close_price": 2586.0,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "통신장비",
@@ -975,7 +983,9 @@
       "source": "estimated",
       "trading_volume": 9377694,
       "trading_value": 24250716684,
-      "market_cap": 133647155172
+      "market_cap": 133647155172,
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
@@ -1256,10 +1266,10 @@
       "date": "20260102",
       "change_rate": 11.73,
       "close_price": 1496.0,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "통신장비",
@@ -1267,7 +1277,9 @@
       "source": "estimated",
       "trading_volume": 9070147,
       "trading_value": 13568939912,
-      "market_cap": 77314827586
+      "market_cap": 77314827586,
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
@@ -1297,10 +1309,10 @@
       "date": "20251029",
       "change_rate": 10.64,
       "close_price": 1456.0,
-      "rise_reason": "스페이스X(SpaceX) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "통신장비",
@@ -1308,7 +1320,9 @@
       "source": "estimated",
       "trading_volume": 1652713,
       "trading_value": 2406350128,
-      "market_cap": 75247586206
+      "market_cap": 75247586206,
+      "reason_previous": "스페이스X(SpaceX) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250626",
@@ -1435,5 +1449,5 @@
     "count_recent": 2,
     "avg_rate": 17.01
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

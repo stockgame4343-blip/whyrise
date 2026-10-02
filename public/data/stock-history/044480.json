@@ -82,10 +82,10 @@
       "close_price": 2225.0,
       "trading_volume": 2538465,
       "trading_value": 5648084625,
-      "rise_reason": "엔터테인먼트 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -97,7 +97,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "엔터테인먼트 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -370,10 +372,10 @@
       "date": "20250901",
       "change_rate": 30.0,
       "close_price": 2340.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -381,7 +383,9 @@
       "source": "estimated",
       "trading_volume": 6129357,
       "trading_value": 14342695380,
-      "market_cap": 77829880043
+      "market_cap": 77829880043,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20250811",
@@ -449,5 +453,5 @@
     "count_recent": 0,
     "avg_rate": 15.88
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

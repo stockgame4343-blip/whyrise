@@ -452,7 +452,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "탈모 치료 신약 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/17 탈모株의 날",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006307823&office_id=018&code=067290&page=&sm=",
+        "title": "“탈모株의 날”…JW신약·현대약품·삼익제약, 정책 모멘텀에 '上' [....",
+        "date": "20260617"
+      }
     },
     {
       "date": "20260619",
@@ -755,10 +761,10 @@
       "date": "20251226",
       "change_rate": 10.02,
       "close_price": 2206.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -779,7 +785,9 @@
       "source": "estimated",
       "trading_volume": 25971520,
       "trading_value": 57293173120,
-      "market_cap": 123573790149
+      "market_cap": 123573790149,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251219",
@@ -913,5 +921,5 @@
     "count_recent": 2,
     "avg_rate": 18.21
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

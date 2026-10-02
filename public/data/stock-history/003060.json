@@ -113,10 +113,10 @@
       "close_price": 3480.0,
       "trading_volume": 461349,
       "trading_value": 1605494520,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
         {
@@ -128,7 +128,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -175,5 +177,5 @@
     "count_recent": 0,
     "avg_rate": 344.04
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

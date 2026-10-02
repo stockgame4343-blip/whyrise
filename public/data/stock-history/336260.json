@@ -400,7 +400,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "수주 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/27 해외 수주 예상보다 늦어져",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005795239&office_id=277&code=336260&page=&sm=",
+        "title": "[클릭 e종목]\"두산퓨얼셀, 해외 수주 예상보다 늦어져…목표가↓\"",
+        "date": "20260727"
+      }
     },
     {
       "date": "20260723",
@@ -635,7 +641,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/30 단기 부진에도 수주·턴어라운드 기대",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006269552&office_id=018&code=336260&page=&sm=",
+        "title": "두산퓨얼셀, 단기 부진에도 '수주·턴어라운드' 기대…목표가 7만원↑.....",
+        "date": "20260430"
+      }
     },
     {
       "date": "20260508",
@@ -1048,10 +1060,10 @@
       "date": "20260310",
       "change_rate": 10.6,
       "close_price": 41750.0,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "전기제품",
@@ -1059,7 +1071,9 @@
       "source": "estimated",
       "trading_volume": 1214641,
       "trading_value": 50711261750,
-      "market_cap": 2734368076923
+      "market_cap": 2734368076923,
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -1084,10 +1098,10 @@
       "date": "20251205",
       "change_rate": 11.15,
       "close_price": 34900.0,
-      "rise_reason": "고체산화물 연료전지(SOFC) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "전기제품",
@@ -1095,7 +1109,9 @@
       "source": "estimated",
       "trading_volume": 2949764,
       "trading_value": 102946763600,
-      "market_cap": 2285735230769
+      "market_cap": 2285735230769,
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251028",
@@ -1194,5 +1210,5 @@
     "count_recent": 3,
     "avg_rate": 16.05
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

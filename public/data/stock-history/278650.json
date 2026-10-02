@@ -157,7 +157,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "FDA 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/7 튜머로이드·MPS 약물평가 개발",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005410505&office_id=008&code=278650&page=&sm=",
+        "title": "에드믹바이오·HLB바이오스텝, 튜머로이드·MPS 약물평가 개발",
+        "date": "20260907"
+      }
     },
     {
       "date": "20260804",
@@ -165,10 +171,10 @@
       "close_price": 1980.0,
       "trading_volume": 60423,
       "trading_value": 119637540,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [
         {
@@ -192,7 +198,9 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -363,5 +371,5 @@
     "count_recent": 2,
     "avg_rate": 19.59
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

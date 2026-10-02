@@ -46,10 +46,10 @@
       "close_price": 5430.0,
       "trading_volume": 6501048,
       "trading_value": 35300690640,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -73,7 +73,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260909",
@@ -257,10 +259,10 @@
       "close_price": 7580.0,
       "trading_volume": 1940067,
       "trading_value": 14705707860,
-      "rise_reason": "2차전지(장비) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -272,7 +274,9 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "2차전지(장비) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -339,7 +343,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "국책사업 관련",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/29 117억 규모 우주 국책과제 주관기관으로 선정",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0000083701&office_id=293&code=452190&page=&sm=",
+        "title": "한빛레이저, 117억 규모 우주 국책과제 주관기관으로 선정",
+        "date": "20260429"
+      }
     },
     {
       "date": "20260427",
@@ -638,10 +648,10 @@
       "date": "20251028",
       "change_rate": 14.26,
       "close_price": 5610.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -680,7 +690,9 @@
       "source": "estimated",
       "trading_volume": 9905897,
       "trading_value": 55572082170,
-      "market_cap": 134152173913
+      "market_cap": 134152173913,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
@@ -710,5 +722,5 @@
     "count_recent": 4,
     "avg_rate": 14.9
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

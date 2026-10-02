@@ -814,7 +814,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "정책 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/29 AI 데이터센터 냉각 소재 개발 완료",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006269187&office_id=018&code=448900&page=&sm=",
+        "title": "한국피아이엠, AI 데이터센터 냉각 소재 개발 완료",
+        "date": "20260429"
+      }
     },
     {
       "date": "20260416",
@@ -893,7 +899,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "피지컬 AI/휴머노이드 로봇 상장 이슈",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/10 휴머노이드 로봇 최적 8㎜ 감속기 구현 성공",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0013879608&office_id=003&code=448900&page=&sm=",
+        "title": "한국피아이엠, 휴머노이드 로봇 최적 8㎜ 감속기 구현 성공",
+        "date": "20260410"
+      }
     },
     {
       "date": "20260414",
@@ -1107,10 +1119,10 @@
       "date": "20260226",
       "change_rate": 17.92,
       "close_price": 125000.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
         {
@@ -1131,7 +1143,9 @@
       "source": "estimated",
       "trading_volume": 470332,
       "trading_value": 58791500000,
-      "market_cap": 759271523178
+      "market_cap": 759271523178,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260225",
@@ -1199,10 +1213,10 @@
       "date": "20260219",
       "change_rate": 11.85,
       "close_price": 80200.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "자동차부품",
@@ -1210,16 +1224,18 @@
       "source": "estimated",
       "trading_volume": 256579,
       "trading_value": 20577635800,
-      "market_cap": 487148609271
+      "market_cap": 487148609271,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260209",
       "change_rate": 19.61,
       "close_price": 74400.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "자동차부품",
@@ -1227,7 +1243,9 @@
       "source": "estimated",
       "trading_volume": 455659,
       "trading_value": 33901029600,
-      "market_cap": 451918410596
+      "market_cap": 451918410596,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260115",
@@ -1308,10 +1326,10 @@
       "date": "20260102",
       "change_rate": 17.81,
       "close_price": 51600.0,
-      "rise_reason": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "자동차부품",
@@ -1319,7 +1337,9 @@
       "source": "estimated",
       "trading_volume": 500923,
       "trading_value": 25847626800,
-      "market_cap": 313427284768
+      "market_cap": 313427284768,
+      "reason_previous": "피지컬 AI/휴머노이드 로봇 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251201",
@@ -1705,5 +1725,5 @@
     "count_recent": 2,
     "avg_rate": 17.25
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

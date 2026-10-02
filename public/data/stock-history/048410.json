@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "임상 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/4 전립선암 치료제 병용 임상1상 변경승인 신청",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363923&office_id=018&code=048410&page=&sm=",
+        "title": "현대바이오, 전립선암 치료제 병용 임상1상 변경승인 신청",
+        "date": "20260904"
+      }
     },
     {
       "date": "20260810",
@@ -88,15 +94,17 @@
       "close_price": 7540.0,
       "trading_volume": 2221759,
       "trading_value": 16752062860,
-      "rise_reason": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "코로나19(치료제/백신 개발 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -232,10 +240,10 @@
       "close_price": 14300.0,
       "trading_volume": 3230488,
       "trading_value": 46195978400,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -253,16 +261,18 @@
       ],
       "sector": "화장품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260312",
       "change_rate": 10.78,
       "close_price": 16650.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -283,7 +293,9 @@
       "source": "estimated",
       "trading_volume": 13185821,
       "trading_value": 219543919650,
-      "market_cap": 1606857142857
+      "market_cap": 1606857142857,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -543,10 +555,10 @@
       "date": "20260130",
       "change_rate": 11.39,
       "close_price": 11250.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -567,7 +579,9 @@
       "source": "estimated",
       "trading_volume": 4739376,
       "trading_value": 53317980000,
-      "market_cap": 1085714285714
+      "market_cap": 1085714285714,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
@@ -798,5 +812,5 @@
     "count_recent": 1,
     "avg_rate": 15.88
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

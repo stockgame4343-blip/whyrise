@@ -9,10 +9,10 @@
       "close_price": 10380.0,
       "trading_volume": 11693328,
       "trading_value": 121376744640,
-      "rise_reason": "탈모 치료 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "탈모 치료 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260915",
@@ -518,15 +520,17 @@
       "close_price": 4290.0,
       "trading_volume": 2382100,
       "trading_value": 10219209000,
-      "rise_reason": "탈모 치료 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "탈모 치료 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260624",
@@ -806,10 +810,10 @@
       "date": "20260108",
       "change_rate": 15.96,
       "close_price": 19980.0,
-      "rise_reason": "제약업체 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -830,7 +834,9 @@
       "source": "estimated",
       "trading_volume": 18604692,
       "trading_value": 371721746160,
-      "market_cap": 200037574316
+      "market_cap": 200037574316,
+      "reason_previous": "제약업체 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260107",
@@ -866,10 +872,10 @@
       "date": "20251204",
       "change_rate": 12.38,
       "close_price": 17880.0,
-      "rise_reason": "제약업체 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -884,16 +890,18 @@
       "source": "estimated",
       "trading_volume": 4405180,
       "trading_value": 78764618400,
-      "market_cap": 179012604042
+      "market_cap": 179012604042,
+      "reason_previous": "제약업체 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251125",
       "change_rate": 10.47,
       "close_price": 18150.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -932,7 +940,9 @@
       "source": "estimated",
       "trading_volume": 7258015,
       "trading_value": 131732972250,
-      "market_cap": 181715814506
+      "market_cap": 181715814506,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251118",
@@ -1135,5 +1145,5 @@
     "count_recent": 6,
     "avg_rate": 21.02
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

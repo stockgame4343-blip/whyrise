@@ -428,7 +428,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "전립선암 FDA 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/25 WCLC서 항암제 재감작 연구 발표",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005404224&office_id=008&code=187660&page=&sm=",
+        "title": "페니트리움바이오, WCLC서 '항암제 재감작' 연구 발표",
+        "date": "20260825"
+      }
     },
     {
       "date": "20260826",
@@ -594,7 +600,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "전립선암 FDA 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/5 항암제 페니트리움 미국 FDA 임상 2a상",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006344933&office_id=018&code=187660&page=&sm=",
+        "title": "페니트리움바이오, 항암제 ‘페니트리움’ '미국 FDA 임상 2a상 직행...",
+        "date": "20260805"
+      }
     },
     {
       "date": "20260731",
@@ -602,15 +614,17 @@
       "close_price": 4260.0,
       "trading_volume": 423319,
       "trading_value": 1803338940,
-      "rise_reason": "거래량 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "거래량 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -689,7 +703,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "임상 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/22 세계 최초 이중 불문 바스켓 임상으로 130조",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263221&office_id=018&code=187660&page=&sm=",
+        "title": "페니트리움바이오, 세계 최초 ‘이중 불문 바스켓 임상’으로 130조 표...",
+        "date": "20260422"
+      }
     },
     {
       "date": "20260415",
@@ -849,10 +869,10 @@
       "date": "20260306",
       "change_rate": 13.02,
       "close_price": 15540.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -885,7 +905,9 @@
       "source": "estimated",
       "trading_volume": 20495986,
       "trading_value": 318507622440,
-      "market_cap": 861882352941
+      "market_cap": 861882352941,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -933,10 +955,10 @@
       "date": "20260226",
       "change_rate": 19.14,
       "close_price": 18670.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -975,7 +997,9 @@
       "source": "estimated",
       "trading_volume": 38769080,
       "trading_value": 723818723600,
-      "market_cap": 1035478991596
+      "market_cap": 1035478991596,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260224",
@@ -1029,10 +1053,10 @@
       "date": "20260223",
       "change_rate": 29.96,
       "close_price": 12060.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -1071,7 +1095,9 @@
       "source": "estimated",
       "trading_volume": 28909783,
       "trading_value": 348651982980,
-      "market_cap": 668873949579
+      "market_cap": 668873949579,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
@@ -1238,10 +1264,10 @@
       "date": "20260130",
       "change_rate": 17.77,
       "close_price": 3380.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -1262,16 +1288,18 @@
       "source": "estimated",
       "trading_volume": 34972419,
       "trading_value": 118206776220,
-      "market_cap": 187462184873
+      "market_cap": 187462184873,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
       "change_rate": 13.56,
       "close_price": 3140.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -1310,16 +1338,18 @@
       "source": "estimated",
       "trading_volume": 24616443,
       "trading_value": 77295631020,
-      "market_cap": 174151260504
+      "market_cap": 174151260504,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251202",
       "change_rate": 11.72,
       "close_price": 2765.0,
-      "rise_reason": "신약 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [],
       "sector": "제약",
@@ -1327,7 +1357,9 @@
       "source": "estimated",
       "trading_volume": 6121707,
       "trading_value": 16926519855,
-      "market_cap": 153352941176
+      "market_cap": 153352941176,
+      "reason_previous": "신약 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251013",
@@ -1375,10 +1407,10 @@
       "date": "20251010",
       "change_rate": 12.06,
       "close_price": 2835.0,
-      "rise_reason": "신약 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [],
       "sector": "제약",
@@ -1386,7 +1418,9 @@
       "source": "estimated",
       "trading_volume": 11272123,
       "trading_value": 31956468705,
-      "market_cap": 157235294117
+      "market_cap": 157235294117,
+      "reason_previous": "신약 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250828",
@@ -1440,10 +1474,10 @@
       "date": "20250826",
       "change_rate": 13.05,
       "close_price": 2165.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -1476,16 +1510,18 @@
       "source": "estimated",
       "trading_volume": 17436787,
       "trading_value": 37750643855,
-      "market_cap": 120075630252
+      "market_cap": 120075630252,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250819",
       "change_rate": 16.62,
       "close_price": 2140.0,
-      "rise_reason": "신약 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [],
       "sector": "제약",
@@ -1493,16 +1529,18 @@
       "source": "estimated",
       "trading_volume": 37766219,
       "trading_value": 80819708660,
-      "market_cap": 118689075630
+      "market_cap": 118689075630,
+      "reason_previous": "신약 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250812",
       "change_rate": 13.65,
       "close_price": 1640.0,
-      "rise_reason": "신약 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [],
       "sector": "제약",
@@ -1510,16 +1548,18 @@
       "source": "estimated",
       "trading_volume": 19794093,
       "trading_value": 32462312520,
-      "market_cap": 90957983193
+      "market_cap": 90957983193,
+      "reason_previous": "신약 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250708",
       "change_rate": 29.94,
       "close_price": 1979.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -1558,16 +1598,18 @@
       "source": "estimated",
       "trading_volume": 36220461,
       "trading_value": 71680292319,
-      "market_cap": 109759663865
+      "market_cap": 109759663865,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250707",
       "change_rate": 29.95,
       "close_price": 1523.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "신약",
       "news": [
         {
@@ -1606,7 +1648,9 @@
       "source": "estimated",
       "trading_volume": 5654708,
       "trading_value": 8612120284,
-      "market_cap": 84468907563
+      "market_cap": 84468907563,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1617,5 +1661,5 @@
     "count_recent": 4,
     "avg_rate": 18.23
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

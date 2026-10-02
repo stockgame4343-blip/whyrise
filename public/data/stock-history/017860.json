@@ -9,10 +9,10 @@
       "close_price": 26250.0,
       "trading_volume": 5748767,
       "trading_value": 150905133750,
-      "rise_reason": "폐배터리 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폐배터리",
       "news": [
         {
@@ -54,16 +54,18 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "폐배터리 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260309",
       "change_rate": 10.77,
       "close_price": 19240.0,
-      "rise_reason": "폐배터리 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폐배터리",
       "news": [
         {
@@ -96,16 +98,18 @@
       "source": "estimated",
       "trading_volume": 1285524,
       "trading_value": 24733481760,
-      "market_cap": 341738357196
+      "market_cap": 341738357196,
+      "reason_previous": "폐배터리 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
       "change_rate": 11.98,
       "close_price": 19260.0,
-      "rise_reason": "폐배터리 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폐배터리",
       "news": [
         {
@@ -132,7 +136,9 @@
       "source": "estimated",
       "trading_volume": 1081389,
       "trading_value": 20827552140,
-      "market_cap": 342093594574
+      "market_cap": 342093594574,
+      "reason_previous": "폐배터리 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -143,5 +149,5 @@
     "count_recent": 0,
     "avg_rate": 17.57
   },
-  "built_at": "2026-09-27T08:49:26"
+  "built_at": "2026-10-02T10:35:15"
 }

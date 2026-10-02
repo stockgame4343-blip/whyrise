@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "허가 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/1 日 뇌졸중AI 인허가 다음은 매출",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005569287&office_id=014&code=322510&page=&sm=",
+        "title": "제이엘케이, 日 뇌졸중AI '인허가 다음은 매출'…7종 상용화 채널 구...",
+        "date": "20260901"
+      }
     },
     {
       "date": "20260731",
@@ -144,15 +150,17 @@
       "close_price": 4680.0,
       "trading_volume": 144384,
       "trading_value": 675717120,
-      "rise_reason": "원격진료/비대면진료(U-Healthcare) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "원격진료/비대면진료(U-Healthcare) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -585,5 +593,5 @@
     "count_recent": 1,
     "avg_rate": 15.7
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

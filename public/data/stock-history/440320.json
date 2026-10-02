@@ -113,7 +113,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/27 청년 일자리 정책 확대",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002424268&office_id=092&code=440320&page=&sm=",
+        "title": "청년 일자리 정책 확대...오픈놀, '민간 주도 일경험 플랫폼' 역할 ...",
+        "date": "20260527"
+      }
     },
     {
       "date": "20260428",
@@ -198,10 +204,10 @@
       "date": "20250618",
       "change_rate": 12.76,
       "close_price": 5920.0,
-      "rise_reason": "일자리(취업) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "일자리(취업)",
       "news": [],
       "sector": "상업서비스와공급품",
@@ -209,7 +215,9 @@
       "source": "estimated",
       "trading_volume": 3254549,
       "trading_value": 19266930080,
-      "market_cap": 58275000000
+      "market_cap": 58275000000,
+      "reason_previous": "일자리(취업) 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -220,5 +228,5 @@
     "count_recent": 0,
     "avg_rate": 13.73
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

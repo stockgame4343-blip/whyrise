@@ -9,15 +9,17 @@
       "close_price": 11300.0,
       "trading_volume": 12677,
       "trading_value": 143250100,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모바일콘텐츠(스마트폰/태블릿PC)",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -102,10 +104,10 @@
       "date": "20260203",
       "change_rate": 29.95,
       "close_price": 1948.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -113,7 +115,9 @@
       "source": "estimated",
       "trading_volume": 3507289,
       "trading_value": 6832198972,
-      "market_cap": 66122844827
+      "market_cap": 66122844827,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20260116",
@@ -143,5 +147,5 @@
     "count_recent": 1,
     "avg_rate": 204.59
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

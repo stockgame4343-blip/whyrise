@@ -74,7 +74,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "양자컴 협력 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/28 전고체 열전소자 기반 냉각 신사업 기대",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006337992&office_id=018&code=208710&page=&sm=",
+        "title": "포톤, 전고체 열전소자 기반 냉각 신사업 기대에 ‘上’[특징주]",
+        "date": "20260728"
+      }
     },
     {
       "date": "20260731",
@@ -719,10 +725,10 @@
       "date": "20251014",
       "change_rate": 14.45,
       "close_price": 3050.0,
-      "rise_reason": "양자암호/양자컴퓨팅 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
         {
@@ -737,7 +743,9 @@
       "source": "estimated",
       "trading_volume": 8257339,
       "trading_value": 25184883950,
-      "market_cap": 40138528138
+      "market_cap": 40138528138,
+      "reason_previous": "양자암호/양자컴퓨팅 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250926",
@@ -772,5 +780,5 @@
     "count_recent": 0,
     "avg_rate": 22.93
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -9,15 +9,17 @@
       "close_price": 10360.0,
       "trading_volume": 93236,
       "trading_value": 965924960,
-      "rise_reason": "모듈러주택 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모듈러주택",
       "news": [],
       "sector": "건설",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "모듈러주택 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260506",
@@ -96,7 +98,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/22 유니온바이오메트릭스, LH 현장에 건강관리…",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263102&office_id=018&code=004960&page=&sm=",
+        "title": "유니온바이오메트릭스, 한신공영 LH 현장에 건강관리 솔루션 공급",
+        "date": "20260422"
+      }
     },
     {
       "date": "20260408",
@@ -206,10 +214,10 @@
       "date": "20260204",
       "change_rate": 17.65,
       "close_price": 13000.0,
-      "rise_reason": "모듈러주택 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모듈러주택",
       "news": [],
       "sector": "건설",
@@ -217,16 +225,18 @@
       "source": "estimated",
       "trading_volume": 1348522,
       "trading_value": 17530786000,
-      "market_cap": 150384976525
+      "market_cap": 150384976525,
+      "reason_previous": "모듈러주택 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
       "change_rate": 10.5,
       "close_price": 11050.0,
-      "rise_reason": "모듈러주택 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모듈러주택",
       "news": [],
       "sector": "건설",
@@ -234,7 +244,9 @@
       "source": "estimated",
       "trading_volume": 398672,
       "trading_value": 4405325600,
-      "market_cap": 127827230046
+      "market_cap": 127827230046,
+      "reason_previous": "모듈러주택 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251211",
@@ -320,5 +332,5 @@
     "count_recent": 0,
     "avg_rate": 17.29
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

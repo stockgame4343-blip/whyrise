@@ -875,10 +875,10 @@
       "date": "20260112",
       "change_rate": 29.94,
       "close_price": 1007.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -911,16 +911,18 @@
       "source": "estimated",
       "trading_volume": 1788504,
       "trading_value": 1801023528,
-      "market_cap": 23721124620
+      "market_cap": 23721124620,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20250822",
       "change_rate": 14.86,
       "close_price": 1051.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -941,16 +943,18 @@
       "source": "estimated",
       "trading_volume": 5143865,
       "trading_value": 5406202115,
-      "market_cap": 24757598784
+      "market_cap": 24757598784,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250715",
       "change_rate": 29.95,
       "close_price": 1267.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -983,7 +987,9 @@
       "source": "estimated",
       "trading_volume": 4441395,
       "trading_value": 5627247465,
-      "market_cap": 29845744680
+      "market_cap": 29845744680,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20250709",
@@ -1052,5 +1058,5 @@
     "count_recent": 3,
     "avg_rate": 20.72
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

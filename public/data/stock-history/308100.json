@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/14 상반기 영업이익 8.8억",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014128054&office_id=003&code=308100&page=&sm=",
+        "title": "형지글로벌, 상반기 영업이익 8.8억…전년比 491%↑",
+        "date": "20260814"
+      }
     },
     {
       "date": "20260803",
@@ -661,10 +667,10 @@
       "date": "20250627",
       "change_rate": 14.89,
       "close_price": 3780.0,
-      "rise_reason": "패션/의류 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
@@ -672,7 +678,9 @@
       "source": "estimated",
       "trading_volume": 7912690,
       "trading_value": 29909968200,
-      "market_cap": 90965853658
+      "market_cap": 90965853658,
+      "reason_previous": "패션/의류 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -683,5 +691,5 @@
     "count_recent": 0,
     "avg_rate": 19.89
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -230,10 +230,10 @@
       "date": "20251209",
       "change_rate": 18.25,
       "close_price": 3855.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "그래핀",
       "news": [
         {
@@ -266,7 +266,9 @@
       "source": "estimated",
       "trading_volume": 26976853,
       "trading_value": 103995768315,
-      "market_cap": 160477862595
+      "market_cap": 160477862595,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251201",
@@ -319,5 +321,5 @@
     "count_recent": 0,
     "avg_rate": 12.95
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

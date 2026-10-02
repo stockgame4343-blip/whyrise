@@ -269,7 +269,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "납품 계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/3 2Q 영업익 100억 돌파할까",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0009038561&office_id=421&code=440110&page=&sm=",
+        "title": "파두, 2Q 영업익 100억 돌파할까…반도체 컨트롤러 납품 효과",
+        "date": "20260703"
+      }
     },
     {
       "date": "20260622",
@@ -751,10 +757,10 @@
       "date": "20251126",
       "change_rate": 10.2,
       "close_price": 24850.0,
-      "rise_reason": "CXL(컴퓨트익스프레스링크) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "CXL(컴퓨트익스프레스링크)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -762,7 +768,9 @@
       "source": "estimated",
       "trading_volume": 929981,
       "trading_value": 23110027850,
-      "market_cap": 1244901676528
+      "market_cap": 1244901676528,
+      "reason_previous": "CXL(컴퓨트익스프레스링크) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250922",
@@ -807,5 +815,5 @@
     "count_recent": 2,
     "avg_rate": 17.6
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

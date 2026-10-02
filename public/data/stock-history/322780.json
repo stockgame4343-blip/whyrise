@@ -159,7 +159,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/30 이정재·정우성 회사에 피인수",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003442688&office_id=030&code=322780&page=&sm=",
+        "title": "[ET특징주] 코퍼스코리아, 이정재·정우성 회사에 피인수… 주가 上",
+        "date": "20260630"
+      }
     },
     {
       "date": "20260703",
@@ -580,10 +586,10 @@
       "close_price": 2400.0,
       "trading_volume": 3820004,
       "trading_value": 9168009600,
-      "rise_reason": "영상콘텐츠 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
       "news": [
         {
@@ -601,16 +607,18 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "영상콘텐츠 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260326",
       "change_rate": 29.75,
       "close_price": 2115.0,
-      "rise_reason": "영상콘텐츠 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
       "news": [
         {
@@ -625,7 +633,9 @@
       "source": "estimated",
       "trading_volume": 1160712,
       "trading_value": 2454905880,
-      "market_cap": 19011235955
+      "market_cap": 19011235955,
+      "reason_previous": "영상콘텐츠 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260318",
@@ -697,10 +707,10 @@
       "date": "20251128",
       "change_rate": 17.53,
       "close_price": 7340.0,
-      "rise_reason": "영상콘텐츠 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -708,7 +718,9 @@
       "source": "estimated",
       "trading_volume": 349780,
       "trading_value": 2567385200,
-      "market_cap": 65977528089
+      "market_cap": 65977528089,
+      "reason_previous": "영상콘텐츠 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251013",
@@ -848,5 +860,5 @@
     "count_recent": 0,
     "avg_rate": 22.89
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

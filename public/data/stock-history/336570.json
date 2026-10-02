@@ -128,7 +128,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/15 PACM과 750억 전략적 파트너십 체결",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0001240671&office_id=468&code=336570&page=&sm=",
+        "title": "원텍, PACM과 750억 전략적 파트너십 체결",
+        "date": "20260515"
+      }
     },
     {
       "date": "20260508",
@@ -213,10 +219,10 @@
       "date": "20250908",
       "change_rate": 10.93,
       "close_price": 11060.0,
-      "rise_reason": "미용기기 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미용기기",
       "news": [],
       "sector": "건강관리장비와용품",
@@ -224,7 +230,9 @@
       "source": "estimated",
       "trading_volume": 2751585,
       "trading_value": 30432530100,
-      "market_cap": 990689608177
+      "market_cap": 990689608177,
+      "reason_previous": "미용기기 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250602",
@@ -252,5 +260,5 @@
     "count_recent": 0,
     "avg_rate": 16.19
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

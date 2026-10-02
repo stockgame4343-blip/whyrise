@@ -88,10 +88,10 @@
       "close_price": 2540.0,
       "trading_volume": 54722,
       "trading_value": 138993880,
-      "rise_reason": "마켓컬리(kurly) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마켓컬리(kurly)",
       "news": [
         {
@@ -103,16 +103,18 @@
       ],
       "sector": "식품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "마켓컬리(kurly) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260212",
       "change_rate": 12.4,
       "close_price": 4080.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -127,7 +129,9 @@
       "source": "estimated",
       "trading_volume": 1608562,
       "trading_value": 6562932960,
-      "market_cap": 149820242914
+      "market_cap": 149820242914,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260204",
@@ -241,5 +245,5 @@
     "count_recent": 0,
     "avg_rate": 15.96
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

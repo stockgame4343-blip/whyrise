@@ -43,15 +43,17 @@
       "close_price": 9360.0,
       "trading_volume": 665944,
       "trading_value": 6233235840,
-      "rise_reason": "OLED(유기 발광 다이오드) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "OLED(유기 발광 다이오드) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260427",
@@ -192,10 +194,10 @@
       "date": "20260226",
       "change_rate": 19.98,
       "close_price": 11050.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -210,16 +212,18 @@
       "source": "estimated",
       "trading_volume": 2454349,
       "trading_value": 27120556450,
-      "market_cap": 193192052980
+      "market_cap": 193192052980,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
       "change_rate": 23.95,
       "close_price": 10970.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -240,7 +244,9 @@
       "source": "estimated",
       "trading_volume": 1852349,
       "trading_value": 20320268530,
-      "market_cap": 191793377483
+      "market_cap": 191793377483,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260209",
@@ -372,5 +378,5 @@
     "count_recent": 0,
     "avg_rate": 18.61
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

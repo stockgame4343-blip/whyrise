@@ -162,7 +162,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/22 309억 규모 고성능 서버 장비 공급계약",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005793267&office_id=277&code=332570&page=&sm=",
+        "title": "PS일렉트로닉스, 309억 규모 고성능 서버 장비 공급계약",
+        "date": "20260722"
+      }
     },
     {
       "date": "20260731",
@@ -470,7 +476,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "영업이익 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/20 약 30억 규모 자사주 소각 추진",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005752058&office_id=277&code=332570&page=&sm=",
+        "title": "PS일렉트로닉스, 약 30억 규모 자사주 소각 추진…주주가치 제고 강화",
+        "date": "20260420"
+      }
     },
     {
       "date": "20260420",
@@ -543,15 +555,17 @@
       "close_price": 6670.0,
       "trading_volume": 14085757,
       "trading_value": 93951999190,
-      "rise_reason": "스마트폰 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "스마트폰 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -660,10 +674,10 @@
       "date": "20251128",
       "change_rate": 10.67,
       "close_price": 4925.0,
-      "rise_reason": "5G(5세대 이동통신) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [],
       "sector": "핸드셋",
@@ -671,7 +685,9 @@
       "source": "estimated",
       "trading_volume": 2512990,
       "trading_value": 12376475750,
-      "market_cap": 230052222222
+      "market_cap": 230052222222,
+      "reason_previous": "5G(5세대 이동통신) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250912",
@@ -777,5 +793,5 @@
     "count_recent": 0,
     "avg_rate": 17.82
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -74,7 +74,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "실적 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/19 데이터센터發 전력 수요 수혜 (하나)",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006284780&office_id=018&code=003720&page=&sm=",
+        "title": "삼영, 데이터센터發 전력 수요 수혜…사상 최대 실적-하나",
+        "date": "20260519"
+      }
     },
     {
       "date": "20260504",
@@ -125,10 +131,10 @@
       "close_price": 9650.0,
       "trading_volume": 8067588,
       "trading_value": 77852224200,
-      "rise_reason": "전기차 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -158,7 +164,9 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "전기차 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -277,10 +285,10 @@
       "date": "20251110",
       "change_rate": 22.03,
       "close_price": 5650.0,
-      "rise_reason": "전기차 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -295,16 +303,18 @@
       "source": "estimated",
       "trading_volume": 5475634,
       "trading_value": 30937332100,
-      "market_cap": 192100000000
+      "market_cap": 192100000000,
+      "reason_previous": "전기차 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251027",
       "change_rate": 11.64,
       "close_price": 5180.0,
-      "rise_reason": "전기차 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -325,7 +335,9 @@
       "source": "estimated",
       "trading_volume": 5957994,
       "trading_value": 30862408920,
-      "market_cap": 176120000000
+      "market_cap": 176120000000,
+      "reason_previous": "전기차 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -336,5 +348,5 @@
     "count_recent": 0,
     "avg_rate": 15.61
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

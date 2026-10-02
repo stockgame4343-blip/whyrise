@@ -623,10 +623,10 @@
       "close_price": 224000.0,
       "trading_volume": 6629231,
       "trading_value": 1484947744000,
-      "rise_reason": "투자심리 개선 영향",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED장비",
       "news": [
         {
@@ -692,7 +692,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "투자심리 개선 영향",
+      "reason_kind": "none"
     },
     {
       "date": "20260518",
@@ -1199,5 +1201,5 @@
     "count_recent": 0,
     "avg_rate": 19.2
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -9,10 +9,10 @@
       "close_price": 3705.0,
       "trading_volume": 258094,
       "trading_value": 956238270,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -36,7 +36,9 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260803",
@@ -190,7 +192,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/25 매출 부풀리고 손실 빠뜨리고",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002232058&office_id=138&code=012170&page=&sm=",
+        "title": "“매출 부풀리고 손실 빠뜨리고”…증선위, 아센디오·명가유업 등 제...",
+        "date": "20260625"
+      }
     },
     {
       "date": "20260703",
@@ -269,7 +277,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/25 매출 부풀리고 손실 빠뜨리고",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002232058&office_id=138&code=012170&page=&sm=",
+        "title": "“매출 부풀리고 손실 빠뜨리고”…증선위, 아센디오·명가유업 등 제...",
+        "date": "20260625"
+      }
     },
     {
       "date": "20260701",
@@ -348,7 +362,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/25 매출 부풀리고 손실 빠뜨리고",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002232058&office_id=138&code=012170&page=&sm=",
+        "title": "“매출 부풀리고 손실 빠뜨리고”…증선위, 아센디오·명가유업 등 제...",
+        "date": "20260625"
+      }
     },
     {
       "date": "20260529",
@@ -558,10 +578,10 @@
       "date": "20250903",
       "change_rate": 13.88,
       "close_price": 2380.0,
-      "rise_reason": "영화 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영화",
       "news": [
         {
@@ -576,7 +596,9 @@
       "source": "estimated",
       "trading_volume": 6899514,
       "trading_value": 16420843320,
-      "market_cap": 48303448275
+      "market_cap": 48303448275,
+      "reason_previous": "영화 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250825",
@@ -709,5 +731,5 @@
     "count_recent": 0,
     "avg_rate": 64.18
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

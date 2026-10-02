@@ -27,15 +27,17 @@
       "close_price": 15320.0,
       "trading_volume": 280202,
       "trading_value": 4292694640,
-      "rise_reason": "AI 챗봇(챗GPT 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI 챗봇(챗GPT 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260512",
@@ -114,7 +116,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "배당 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/29 美 아트센터와 차세대 디자인 혁신 성과 공개",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005350954&office_id=008&code=417970&page=&sm=",
+        "title": "모델솔루션, 美 아트센터와 차세대 디자인 혁신 성과 공개",
+        "date": "20260429"
+      }
     },
     {
       "date": "20260401",
@@ -162,10 +170,10 @@
       "date": "20260107",
       "change_rate": 10.4,
       "close_price": 26000.0,
-      "rise_reason": "AI 챗봇(챗GPT 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [],
       "sector": "기계",
@@ -173,16 +181,18 @@
       "source": "estimated",
       "trading_volume": 676096,
       "trading_value": 17578496000,
-      "market_cap": 166212832550
+      "market_cap": 166212832550,
+      "reason_previous": "AI 챗봇(챗GPT 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251210",
       "change_rate": 10.25,
       "close_price": 26900.0,
-      "rise_reason": "AI 챗봇(챗GPT 등) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
         {
@@ -197,7 +207,9 @@
       "source": "estimated",
       "trading_volume": 997061,
       "trading_value": 26820940900,
-      "market_cap": 171966353677
+      "market_cap": 171966353677,
+      "reason_previous": "AI 챗봇(챗GPT 등) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251110",
@@ -327,5 +339,5 @@
     "count_recent": 0,
     "avg_rate": 13.15
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

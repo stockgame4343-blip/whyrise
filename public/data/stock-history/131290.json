@@ -285,7 +285,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "투자 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/12 에스티팜· 샘씨엔에스 등 18개사 코스닥…",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0009110878&office_id=421&code=131290&page=&sm=",
+        "title": "에스티팜·티에스이·샘씨엔에스 등 18개사 '코스닥 라이징스타' 선정",
+        "date": "20260812"
+      }
     },
     {
       "date": "20260731",
@@ -437,7 +443,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "실적 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/3 반도체 슈퍼사이클 올라탄",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0001150225&office_id=417&code=131290&page=&sm=",
+        "title": "'반도체 슈퍼사이클' 올라탄 티에스이, 실적 개선 기대↑",
+        "date": "20260703"
+      }
     },
     {
       "date": "20260710",
@@ -881,10 +893,10 @@
       "close_price": 134200.0,
       "trading_volume": 114341,
       "trading_value": 15344562200,
-      "rise_reason": "발전 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -940,7 +952,9 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "발전 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -1131,10 +1145,10 @@
       "date": "20251106",
       "change_rate": 10.95,
       "close_price": 54200.0,
-      "rise_reason": "OLED(유기 발광 다이오드) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1142,7 +1156,9 @@
       "source": "estimated",
       "trading_volume": 247076,
       "trading_value": 13391519200,
-      "market_cap": 599531967213
+      "market_cap": 599531967213,
+      "reason_previous": "OLED(유기 발광 다이오드) 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1153,5 +1169,5 @@
     "count_recent": 3,
     "avg_rate": 14.52
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "MOU 체결",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/31 러·CIS 물류 전문 이에스로지스와 MOU",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014100675&office_id=003&code=096690&page=&sm=",
+        "title": "에이루트, 러·CIS 물류 전문 이에스로지스와 MOU",
+        "date": "20260731"
+      }
     },
     {
       "date": "20260415",
@@ -173,10 +179,10 @@
       "date": "20260126",
       "change_rate": 10.75,
       "close_price": 10371.0,
-      "rise_reason": "전력설비 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "컴퓨터와주변기기",
@@ -184,7 +190,9 @@
       "source": "estimated",
       "trading_volume": 71537,
       "trading_value": 741910227,
-      "market_cap": 41785154264
+      "market_cap": 41785154264,
+      "reason_previous": "전력설비 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251024",
@@ -260,5 +268,5 @@
     "count_recent": 0,
     "avg_rate": 19.04
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

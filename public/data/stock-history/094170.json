@@ -549,16 +549,22 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "자사주 소각",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/1 디썰라이프 식약처 품목분류 완료",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005338086&office_id=008&code=094170&page=&sm=",
+        "title": "동운아나텍, 디썰라이프 식약처 품목분류 완료…\"임상 본격 돌입\"",
+        "date": "20260401"
+      }
     },
     {
       "date": "20260305",
       "change_rate": 14.69,
       "close_price": 28500.0,
-      "rise_reason": "바이오인식(생체인식) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오인식(생체인식)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -566,7 +572,9 @@
       "source": "estimated",
       "trading_volume": 186200,
       "trading_value": 5306700000,
-      "market_cap": 595958847736
+      "market_cap": 595958847736,
+      "reason_previous": "바이오인식(생체인식) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260105",
@@ -677,5 +685,5 @@
     "count_recent": 0,
     "avg_rate": 12.96
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

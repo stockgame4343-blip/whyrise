@@ -115,10 +115,10 @@
       "date": "20260116",
       "change_rate": 22.67,
       "close_price": 1818.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -145,7 +145,9 @@
       "source": "estimated",
       "trading_volume": 23194767,
       "trading_value": 42168086406,
-      "market_cap": 151349851337
+      "market_cap": 151349851337,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260108",
@@ -517,10 +519,10 @@
       "date": "20250909",
       "change_rate": 29.98,
       "close_price": 802.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -528,7 +530,9 @@
       "source": "estimated",
       "trading_volume": 5013668,
       "trading_value": 4020961736,
-      "market_cap": 66767096134
+      "market_cap": 66767096134,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20250528",
@@ -573,5 +577,5 @@
     "count_recent": 0,
     "avg_rate": 25.81
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

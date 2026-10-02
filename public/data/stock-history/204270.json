@@ -422,7 +422,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "유리 기판 영업이익 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/11 26년 영업이익 흑전 기대",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005355471&office_id=008&code=204270&page=&sm=",
+        "title": "제이앤티씨, 유리 플랫폼 기업으로 진화…26년 영업이익 흑전 기대",
+        "date": "20260511"
+      }
     },
     {
       "date": "20260506",
@@ -524,10 +530,10 @@
       "date": "20260209",
       "change_rate": 11.86,
       "close_price": 24050.0,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [],
       "sector": "핸드셋",
@@ -535,7 +541,9 @@
       "source": "estimated",
       "trading_volume": 372554,
       "trading_value": 8959923700,
-      "market_cap": 1391235238095
+      "market_cap": 1391235238095,
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251125",
@@ -607,10 +615,10 @@
       "date": "20250912",
       "change_rate": 10.7,
       "close_price": 21200.0,
-      "rise_reason": "유리 기판 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [],
       "sector": "핸드셋",
@@ -618,7 +626,9 @@
       "source": "estimated",
       "trading_volume": 835853,
       "trading_value": 17720083600,
-      "market_cap": 1226369523809
+      "market_cap": 1226369523809,
+      "reason_previous": "유리 기판 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -629,5 +639,5 @@
     "count_recent": 0,
     "avg_rate": 17.49
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

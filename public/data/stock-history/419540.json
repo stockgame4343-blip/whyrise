@@ -134,10 +134,10 @@
       "date": "20251104",
       "change_rate": 11.29,
       "close_price": 10250.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -152,16 +152,18 @@
       "source": "estimated",
       "trading_volume": 615989,
       "trading_value": 6313887250,
-      "market_cap": 47059748427
+      "market_cap": 47059748427,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20251028",
       "change_rate": 16.53,
       "close_price": 8565.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -182,16 +184,18 @@
       "source": "estimated",
       "trading_volume": 1545087,
       "trading_value": 13233670155,
-      "market_cap": 39323584905
+      "market_cap": 39323584905,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250922",
       "change_rate": 11.57,
       "close_price": 7085.0,
-      "rise_reason": "의료기기 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -206,7 +210,9 @@
       "source": "estimated",
       "trading_volume": 2683997,
       "trading_value": 19016118745,
-      "market_cap": 32528616352
+      "market_cap": 32528616352,
+      "reason_previous": "의료기기 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -217,5 +223,5 @@
     "count_recent": 0,
     "avg_rate": 16.8
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

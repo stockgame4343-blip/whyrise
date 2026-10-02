@@ -70,15 +70,17 @@
       "close_price": 843.0,
       "trading_volume": 1019970,
       "trading_value": 859834710,
-      "rise_reason": "마이크로 LED 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "마이크로 LED 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -344,10 +346,10 @@
       "date": "20260225",
       "change_rate": 29.91,
       "close_price": 860.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -362,7 +364,9 @@
       "source": "estimated",
       "trading_volume": 4211714,
       "trading_value": 3622074040,
-      "market_cap": 41381176470
+      "market_cap": 41381176470,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260114",
@@ -390,5 +394,5 @@
     "count_recent": 0,
     "avg_rate": 22.19
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

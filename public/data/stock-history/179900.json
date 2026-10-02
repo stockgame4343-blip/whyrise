@@ -218,15 +218,17 @@
       "close_price": 3375.0,
       "trading_volume": 873972,
       "trading_value": 2949655500,
-      "rise_reason": "플렉서블 디스플레이 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "플렉서블 디스플레이",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "플렉서블 디스플레이 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260814",
@@ -575,7 +577,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "양산 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/9 최대주주 보통주 70만주 무상 증여",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005705087&office_id=009&code=179900&page=&sm=",
+        "title": "유티아이, 최대주주 보통주 70만주 무상 증여…폴더블 커버글라스 양.....",
+        "date": "20260709"
+      }
     },
     {
       "date": "20260703",
@@ -652,10 +660,10 @@
       "close_price": 4780.0,
       "trading_volume": 996180,
       "trading_value": 4761740400,
-      "rise_reason": "플렉서블 디스플레이 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "플렉서블 디스플레이",
       "news": [
         {
@@ -667,7 +675,9 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "플렉서블 디스플레이 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260626",
@@ -939,5 +949,5 @@
     "count_recent": 3,
     "avg_rate": 15.87
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

@@ -159,7 +159,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "자사주 매입",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/1 주식 담보 대출금 전액 자사주 매입",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014038985&office_id=003&code=464580&page=&sm=",
+        "title": "닷밀 정해운 대표, 주식 담보 대출금 전액 자사주 매입",
+        "date": "20260701"
+      }
     },
     {
       "date": "20260305",
@@ -184,10 +190,10 @@
       "date": "20251028",
       "change_rate": 12.12,
       "close_price": 2590.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -214,7 +220,9 @@
       "source": "estimated",
       "trading_volume": 11617418,
       "trading_value": 30089112620,
-      "market_cap": 47714725816
+      "market_cap": 47714725816,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20250620",
@@ -242,5 +250,5 @@
     "count_recent": 0,
     "avg_rate": 15.46
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

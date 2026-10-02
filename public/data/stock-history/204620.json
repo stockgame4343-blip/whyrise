@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/20 미용성형 부재에도 분기 최대 실적 (다올)",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005322673&office_id=015&code=204620&page=&sm=",
+        "title": "\"글로벌텍스프리, 미용성형 부재에도 분기 최대 실적\"-다올",
+        "date": "20260820"
+      }
     },
     {
       "date": "20260731",
@@ -88,15 +94,17 @@
       "close_price": 4740.0,
       "trading_volume": 992027,
       "trading_value": 4702207980,
-      "rise_reason": "면세점 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "면세점",
       "news": [],
       "sector": "기타금융",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "면세점 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251120",
@@ -240,5 +248,5 @@
     "count_recent": 0,
     "avg_rate": 14.4
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

@@ -1180,7 +1180,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "전선 양산 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/8 AI 데이터센터 투자확대에 전선株 역주행",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275566&office_id=018&code=000500&page=&sm=",
+        "title": "AI 데이터센터 투자확대에 전선株 '역주행'…가온전선 25% 급등[특징...",
+        "date": "20260508"
+      }
     },
     {
       "date": "20260508",
@@ -1891,10 +1897,10 @@
       "date": "20251029",
       "change_rate": 10.43,
       "close_price": 68800.0,
-      "rise_reason": "전선 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
@@ -1902,7 +1908,9 @@
       "source": "estimated",
       "trading_volume": 426275,
       "trading_value": 29327720000,
-      "market_cap": 1138166044444
+      "market_cap": 1138166044444,
+      "reason_previous": "전선 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1913,5 +1921,5 @@
     "count_recent": 3,
     "avg_rate": 18.28
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

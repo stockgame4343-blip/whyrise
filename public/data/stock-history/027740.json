@@ -153,7 +153,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "육계 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/12 월드컵 수혜 치킨주 온도차 왜?",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0000507074&office_id=629&code=027740&page=&sm=",
+        "title": "마니커 '상한가'·교촌 '잠잠'…월드컵 수혜 '치킨주' 온도차 왜?",
+        "date": "20260612"
+      }
     },
     {
       "date": "20260611",
@@ -246,10 +252,10 @@
       "date": "20260219",
       "change_rate": 12.56,
       "close_price": 1756.0,
-      "rise_reason": "육계 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "육계",
       "news": [],
       "sector": "식품",
@@ -257,7 +263,9 @@
       "source": "estimated",
       "trading_volume": 3520606,
       "trading_value": 6182184136,
-      "market_cap": 55697623400
+      "market_cap": 55697623400,
+      "reason_previous": "육계 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -268,5 +276,5 @@
     "count_recent": 0,
     "avg_rate": 17.4
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

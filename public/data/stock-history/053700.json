@@ -175,7 +175,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "실적 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/15 DGIST, AX 맞손",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005287574&office_id=015&code=053700&page=&sm=",
+        "title": "DGIST, 삼보모터스와 AX 맞손…'공동연구랩'으로 기술자립 돕는다",
+        "date": "20260515"
+      }
     },
     {
       "date": "20260305",
@@ -229,10 +235,10 @@
       "date": "20260129",
       "change_rate": 10.84,
       "close_price": 7770.0,
-      "rise_reason": "자율주행차 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자율주행차",
       "news": [
         {
@@ -253,7 +259,9 @@
       "source": "estimated",
       "trading_volume": 3011316,
       "trading_value": 23397925320,
-      "market_cap": 207572661870
+      "market_cap": 207572661870,
+      "reason_previous": "자율주행차 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260119",
@@ -449,5 +457,5 @@
     "count_recent": 0,
     "avg_rate": 16.87
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

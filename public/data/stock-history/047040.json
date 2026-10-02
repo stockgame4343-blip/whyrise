@@ -521,10 +521,10 @@
       "close_price": 28500.0,
       "trading_volume": 90657421,
       "trading_value": 2583736498500,
-      "rise_reason": "낸드 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [
         {
@@ -590,7 +590,9 @@
       ],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "낸드 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -777,10 +779,10 @@
       "date": "20260116",
       "change_rate": 13.35,
       "close_price": 4500.0,
-      "rise_reason": "원자력발전 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "건설",
@@ -788,7 +790,9 @@
       "source": "estimated",
       "trading_volume": 21682708,
       "trading_value": 97572186000,
-      "market_cap": 1849087058823
+      "market_cap": 1849087058823,
+      "reason_previous": "원자력발전 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250821",
@@ -826,5 +830,5 @@
     "count_recent": 0,
     "avg_rate": 17.3
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

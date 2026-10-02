@@ -34,10 +34,10 @@
       "close_price": 2635.0,
       "trading_volume": 7200,
       "trading_value": 18972000,
-      "rise_reason": "엔터테인먼트 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -49,16 +49,18 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "엔터테인먼트 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20250623",
       "change_rate": 20.23,
       "close_price": 1878.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -79,7 +81,9 @@
       "source": "estimated",
       "trading_volume": 5144165,
       "trading_value": 9660741870,
-      "market_cap": 60643750000
+      "market_cap": 60643750000,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -90,5 +94,5 @@
     "count_recent": 2,
     "avg_rate": 15.03
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

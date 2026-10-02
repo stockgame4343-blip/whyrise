@@ -9,10 +9,10 @@
       "close_price": 3200.0,
       "trading_volume": 3119,
       "trading_value": 9980800,
-      "rise_reason": "거래량 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [
         {
@@ -24,7 +24,9 @@
       ],
       "sector": "호텔,레스토랑,레저",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "거래량 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -195,5 +197,5 @@
     "count_recent": 1,
     "avg_rate": 10.84
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

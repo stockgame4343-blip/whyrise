@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "자사주 매입",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/8 주주가치 제고 위해 10억 규모 자사주 취득 결정",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003732430&office_id=020&code=053290&page=&sm=",
+        "title": "NE능률, 주주가치 제고 위해 10억 규모 자사주 취득 결정",
+        "date": "20260708"
+      }
     },
     {
       "date": "20260708",
@@ -175,15 +181,17 @@
       "close_price": 1320.0,
       "trading_volume": 51321,
       "trading_value": 67743720,
-      "rise_reason": "교육/온라인 교육 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "교육/온라인 교육",
       "news": [],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "교육/온라인 교육 테마 강세",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -194,5 +202,5 @@
     "count_recent": 0,
     "avg_rate": 13.01
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

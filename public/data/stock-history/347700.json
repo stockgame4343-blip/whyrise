@@ -157,7 +157,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "공급망 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/2 스페이스X 공급망 부각에 8배 뛴",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014102795&office_id=003&code=347700&page=&sm=",
+        "title": "'스페이스X 공급망' 부각에 8배 뛴 스피어, 지금은 70%↓[급등주 ...",
+        "date": "20260802"
+      }
     },
     {
       "date": "20260804",
@@ -402,7 +408,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "수주 공시",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/22 300억 규모 수입금융 확보",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006312219&office_id=018&code=347700&page=&sm=",
+        "title": "스피어, 300억 규모 수입금융 확보…\"인도네시아 니켈 사업 본격화\"",
+        "date": "20260622"
+      }
     },
     {
       "date": "20260630",
@@ -410,10 +422,10 @@
       "close_price": 23350.0,
       "trading_volume": 2543767,
       "trading_value": 59396959450,
-      "rise_reason": "우주항공 테마강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -479,7 +491,15 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "우주항공 테마강세",
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/22 300억 규모 수입금융 확보",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006312219&office_id=018&code=347700&page=&sm=",
+        "title": "스피어, 300억 규모 수입금융 확보…\"인도네시아 니켈 사업 본격화\"",
+        "date": "20260622"
+      }
     },
     {
       "date": "20260629",
@@ -915,10 +935,10 @@
       "date": "20260213",
       "change_rate": 15.84,
       "close_price": 44600.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -939,7 +959,9 @@
       "source": "estimated",
       "trading_volume": 6253426,
       "trading_value": 278902799600,
-      "market_cap": 2298710495049
+      "market_cap": 2298710495049,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     },
     {
       "date": "20260206",
@@ -1169,10 +1191,10 @@
       "date": "20251208",
       "change_rate": 17.34,
       "close_price": 8660.0,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [],
       "sector": "우주항공과국방",
@@ -1180,16 +1202,18 @@
       "source": "estimated",
       "trading_volume": 787325,
       "trading_value": 6818234500,
-      "market_cap": 446341544554
+      "market_cap": 446341544554,
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251117",
       "change_rate": 14.01,
       "close_price": 8950.0,
-      "rise_reason": "의료AI 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [],
       "sector": "우주항공과국방",
@@ -1197,7 +1221,9 @@
       "source": "estimated",
       "trading_volume": 539039,
       "trading_value": 4824399050,
-      "market_cap": 461288316831
+      "market_cap": 461288316831,
+      "reason_previous": "의료AI 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
@@ -1299,5 +1325,5 @@
     "count_recent": 1,
     "avg_rate": 18.22
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

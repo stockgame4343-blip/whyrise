@@ -9,10 +9,10 @@
       "close_price": 8940.0,
       "trading_volume": 11657616,
       "trading_value": 104219087040,
-      "rise_reason": "지능형로봇/인공지능(AI) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -30,7 +30,9 @@
       ],
       "sector": "광고",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "지능형로봇/인공지능(AI) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260910",
@@ -170,7 +172,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "흑자 전환 보도",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/1 증권사 기업분석 개시 AI 광고기업 20%",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0016283260&office_id=001&code=0039P0&page=&sm=",
+        "title": "[특징주] '증권사 기업분석 개시' AI 광고기업 매드업 20% 상승 ...",
+        "date": "20260901"
+      }
     },
     {
       "date": "20260901",
@@ -349,7 +357,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "실적 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "7/29 상반기 실적 호조",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006338911&office_id=018&code=0039P0&page=&sm=",
+        "title": "매드업, 상반기 실적 호조에 상한가…'AI 수익성 입증'",
+        "date": "20260729"
+      }
     },
     {
       "date": "20260803",
@@ -577,5 +591,5 @@
     "count_recent": 4,
     "avg_rate": 17.28
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

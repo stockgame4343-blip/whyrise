@@ -80,7 +80,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/14 당기순이익 흑자전환",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005561770&office_id=014&code=199550&page=&sm=",
+        "title": "레이저옵텍, 상반기 별도 매출 66%↑…당기순이익 흑자전환",
+        "date": "20260814"
+      }
     },
     {
       "date": "20260814",
@@ -173,10 +179,10 @@
       "date": "20260318",
       "change_rate": 29.9,
       "close_price": 6690.0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -184,7 +190,9 @@
       "source": "estimated",
       "trading_volume": 4218732,
       "trading_value": 28223317080,
-      "market_cap": 99356435643
+      "market_cap": 99356435643,
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
@@ -259,5 +267,5 @@
     "count_recent": 0,
     "avg_rate": 19.77
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }

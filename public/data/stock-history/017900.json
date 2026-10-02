@@ -56,7 +56,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "LED 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/3 엘포톤 자회사 편입 완료",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006362980&office_id=018&code=017900&page=&sm=",
+        "title": "파커스, 엘포톤 자회사 편입 완료…광전자 플랫폼 사업 본격화",
+        "date": "20260903"
+      }
     },
     {
       "date": "20260908",
@@ -111,7 +117,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "LED 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/3 엘포톤 자회사 편입 완료",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006362980&office_id=018&code=017900&page=&sm=",
+        "title": "파커스, 엘포톤 자회사 편입 완료…광전자 플랫폼 사업 본격화",
+        "date": "20260903"
+      }
     },
     {
       "date": "20260810",
@@ -444,10 +456,10 @@
       "close_price": 13700.0,
       "trading_volume": 42710550,
       "trading_value": 585134535000,
-      "rise_reason": "마이크로 LED 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -459,7 +471,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "마이크로 LED 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260520",
@@ -650,10 +664,10 @@
       "close_price": 17780.0,
       "trading_volume": 5025427,
       "trading_value": 89352092060,
-      "rise_reason": "광통신 테마 강세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -713,7 +727,9 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "광통신 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260413",
@@ -893,15 +909,17 @@
       "close_price": 3320.0,
       "trading_volume": 16743754,
       "trading_value": 55589263280,
-      "rise_reason": "마이크로 LED 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "마이크로 LED 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260325",
@@ -996,5 +1014,5 @@
     "count_recent": 2,
     "avg_rate": 22.61
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:14"
 }

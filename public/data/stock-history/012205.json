@@ -303,10 +303,10 @@
       "date": "20260227",
       "change_rate": 17.11,
       "close_price": 8350.0,
-      "rise_reason": "거래량 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [],
       "sector": "자동차부품",
@@ -314,7 +314,9 @@
       "source": "estimated",
       "trading_volume": 168701,
       "trading_value": 1408653350,
-      "market_cap": 9758433734
+      "market_cap": 9758433734,
+      "reason_previous": "거래량 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260225",
@@ -681,5 +683,5 @@
     "count_recent": 0,
     "avg_rate": 28.49
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

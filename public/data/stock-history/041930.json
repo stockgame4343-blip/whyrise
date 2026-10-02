@@ -116,10 +116,10 @@
       "date": "20251125",
       "change_rate": 11.8,
       "close_price": 6350.0,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "수소에너지(수소차/연료전지 등)",
       "news": [
         {
@@ -140,7 +140,9 @@
       "source": "estimated",
       "trading_volume": 5706962,
       "trading_value": 36239208700,
-      "market_cap": 96480620155
+      "market_cap": 96480620155,
+      "reason_previous": "바이오",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -151,5 +153,5 @@
     "count_recent": 0,
     "avg_rate": 12.41
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T10:35:15"
 }

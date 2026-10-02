@@ -96,15 +96,17 @@
       "close_price": 2015.0,
       "trading_volume": 3617389,
       "trading_value": 7289038835,
-      "rise_reason": "STO(토큰증권 발행) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "STO(토큰증권 발행)",
       "news": [],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "STO(토큰증권 발행) 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260612",
@@ -380,10 +382,10 @@
       "date": "20260319",
       "change_rate": 15.94,
       "close_price": 4364.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -391,16 +393,18 @@
       "source": "estimated",
       "trading_volume": 182028422,
       "trading_value": 794372033608,
-      "market_cap": 1009365734265
+      "market_cap": 1009365734265,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
       "change_rate": 10.81,
       "close_price": 3866.0,
-      "rise_reason": "증권 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -408,7 +412,9 @@
       "source": "estimated",
       "trading_volume": 84690728,
       "trading_value": 327414354448,
-      "market_cap": 894181468531
+      "market_cap": 894181468531,
+      "reason_previous": "증권 테마 강세",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -546,5 +552,5 @@
     "count_recent": 0,
     "avg_rate": 20.68
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T10:35:15"
 }
