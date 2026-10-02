@@ -9,15 +9,18 @@
       "close_price": 9770.0,
       "trading_volume": 13898,
       "trading_value": 135783460,
-      "rise_reason": "에너지장비및서비스 강세",
+      "rise_reason": "에너지장비및서비스 업종 11종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "에너지장비및서비스 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector"
     },
     {
       "date": "20260630",
@@ -25,10 +28,10 @@
       "close_price": 12080.0,
       "trading_volume": 37075,
       "trading_value": 447866000,
-      "rise_reason": "",
+      "rise_reason": "에너지장비및서비스 업종 3종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "",
       "news": [
         {
@@ -96,13 +99,7 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "6/17 30억원 규모 자사주 취득 신탁계약 체결",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006308142&office_id=018&code=101970&page=&sm=",
-        "title": "우양에이치씨, 30억원 규모 자사주 취득 신탁계약 체결",
-        "date": "20260617"
-      }
+      "reason_kind": "sector"
     },
     {
       "date": "20260625",
@@ -110,10 +107,10 @@
       "close_price": 10790.0,
       "trading_volume": 46885,
       "trading_value": 505889150,
-      "rise_reason": "",
+      "rise_reason": "에너지장비및서비스 업종 6종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "",
       "news": [
         {
@@ -181,13 +178,7 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "6/17 30억원 규모 자사주 취득 신탁계약 체결",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006308142&office_id=018&code=101970&page=&sm=",
-        "title": "우양에이치씨, 30억원 규모 자사주 취득 신탁계약 체결",
-        "date": "20260617"
-      }
+      "reason_kind": "sector"
     },
     {
       "date": "20260617",
@@ -280,9 +271,9 @@
       "date": "20260320",
       "change_rate": 14.05,
       "close_price": 13800.0,
-      "rise_reason": "에너지장비및서비스 강세",
+      "rise_reason": "에너지장비및서비스 업종 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [],
@@ -291,7 +282,10 @@
       "source": "estimated",
       "trading_volume": 158937,
       "trading_value": 2193330600,
-      "market_cap": 204059016393
+      "market_cap": 204059016393,
+      "reason_previous": "에너지장비및서비스 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector"
     },
     {
       "date": "20251203",
@@ -509,5 +503,5 @@
     "count_recent": 0,
     "avg_rate": 12.38
   },
-  "built_at": "2026-10-02T11:12:18"
+  "built_at": "2026-10-02T11:39:20"
 }

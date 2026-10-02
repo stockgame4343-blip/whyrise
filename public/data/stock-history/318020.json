@@ -9,10 +9,10 @@
       "close_price": 2495.0,
       "trading_volume": 238237,
       "trading_value": 594401315,
-      "rise_reason": "",
+      "rise_reason": "전자장비와기기 업종 4종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "",
       "news": [
         {
@@ -80,13 +80,7 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "7/29 일본 최대 물류기업에 산업용 태블릿 공급",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003452275&office_id=030&code=318020&page=&sm=",
-        "title": "포인트모바일, 일본 최대 물류기업에 산업용 태블릿 공급…일본 엔터...",
-        "date": "20260729"
-      }
+      "reason_kind": "sector"
     },
     {
       "date": "20260804",
@@ -94,15 +88,18 @@
       "close_price": 2155.0,
       "trading_volume": 35185,
       "trading_value": 75823675,
-      "rise_reason": "전자장비와기기 강세",
+      "rise_reason": "전자장비와기기 업종 10종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "전자장비와기기 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector"
     },
     {
       "date": "20260209",
@@ -242,5 +239,5 @@
     "count_recent": 0,
     "avg_rate": 17.8
   },
-  "built_at": "2026-10-02T11:12:18"
+  "built_at": "2026-10-02T11:39:20"
 }

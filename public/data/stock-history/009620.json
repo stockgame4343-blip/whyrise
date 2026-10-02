@@ -94,10 +94,10 @@
       "close_price": 5800.0,
       "trading_volume": 420091,
       "trading_value": 2436527800,
-      "rise_reason": "",
+      "rise_reason": "비철금속 업종 3종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "유상증자",
       "news": [
         {
@@ -159,13 +159,7 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "유상증자 관련 뉴스",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "7/21 리오틴토, 전기차 무게 줄일 알루미늄 공동 개발",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003449473&office_id=030&code=009620&page=&sm=",
-        "title": "삼보산업-리오틴토, 전기차 무게 줄일 알루미늄 공동 개발",
-        "date": "20260721"
-      }
+      "reason_kind": "sector"
     },
     {
       "date": "20260729",
@@ -761,15 +755,18 @@
       "close_price": 1056.0,
       "trading_volume": 2823337,
       "trading_value": 2981443872,
-      "rise_reason": "비철금속 강세",
+      "rise_reason": "비철금속 업종 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [],
       "sector": "비철금속",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "비철금속 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector"
     },
     {
       "date": "20260410",
@@ -907,5 +904,5 @@
     "count_recent": 0,
     "avg_rate": 15.82
   },
-  "built_at": "2026-10-02T11:12:18"
+  "built_at": "2026-10-02T11:39:20"
 }

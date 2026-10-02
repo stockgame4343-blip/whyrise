@@ -427,10 +427,10 @@
       "close_price": 138400.0,
       "trading_volume": 434117,
       "trading_value": 60081792800,
-      "rise_reason": "",
+      "rise_reason": "생명과학도구및서비스 업종 3종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
         {
@@ -498,13 +498,7 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "비만치료제 기술이전 뉴스",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "6/17 글로벌 파트너십 확대 본격화한다",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005299669&office_id=015&code=226950&page=&sm=",
-        "title": "올릭스, 바이오 USA 참가…글로벌 파트너십 확대 본격화한다",
-        "date": "20260617"
-      }
+      "reason_kind": "sector"
     },
     {
       "date": "20260522",
@@ -757,9 +751,9 @@
       "date": "20251112",
       "change_rate": 15.16,
       "close_price": 139000.0,
-      "rise_reason": "52주 신고가",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "생명과학도구및서비스 업종 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -793,7 +787,10 @@
       "source": "estimated",
       "trading_volume": 2694232,
       "trading_value": 374498248000,
-      "market_cap": 2824859090909
+      "market_cap": 2824859090909,
+      "reason_previous": "52주 신고가",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20251031",
@@ -935,5 +932,5 @@
     "count_recent": 1,
     "avg_rate": 14.28
   },
-  "built_at": "2026-10-02T11:26:32"
+  "built_at": "2026-10-02T11:39:19"
 }
