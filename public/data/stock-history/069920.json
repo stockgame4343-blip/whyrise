@@ -74,6 +74,18 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005393223&office_id=008&code=069920&page=&sm=",
           "source": "머니투데이",
           "date": "2026.07.30"
+        },
+        {
+          "title": "[마감시황]코스닥, 1.42% 올라 813.33 마감…2차전지 강세에 반등",
+          "link": "https://n.news.naver.com/mnews/article/081/0003673000",
+          "source": "서울신문",
+          "date": "2026-08-24"
+        },
+        {
+          "title": "오늘의 메모[8월 25일]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004654571",
+          "source": "서울경제",
+          "date": "2026-08-24"
         }
       ],
       "sector": "건설",
@@ -161,6 +173,18 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006338557&office_id=018&code=069920&page=&sm=",
           "source": "이데일리",
           "date": "2026.07.28"
+        },
+        {
+          "title": "[마감시황]코스닥, 1.42% 올라 813.33 마감…2차전지 강세에 반등",
+          "link": "https://n.news.naver.com/mnews/article/081/0003673000",
+          "source": "서울신문",
+          "date": "2026-08-24"
+        },
+        {
+          "title": "오늘의 메모[8월 25일]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004654571",
+          "source": "서울경제",
+          "date": "2026-08-24"
         }
       ],
       "sector": "건설",
@@ -181,12 +205,18 @@
       "close_price": 1045.0,
       "trading_volume": 819807,
       "trading_value": 856698315,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "28억 규모 일반공모 유상증자 결정",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "소매유통",
       "news": [
+        {
+          "title": "엑시온그룹, 28억 규모 일반공모 유상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006353697",
+          "source": "이데일리",
+          "date": "2026-08-18"
+        },
         {
           "title": "[유상증자 모니터] 엑시온그룹, 새 최대주주 추가 출자…정상화 이룰.....",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000087917&office_id=293&code=069920&page=&sm=",
@@ -234,13 +264,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환 보도",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "8/14 상반기 영업흑자 전환",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005400345&office_id=008&code=069920&page=&sm=",
-        "title": "엑시온그룹, 상반기 영업흑자 전환…환기종목 사유 해소 '청신호'",
-        "date": "20260814"
-      }
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엑시온그룹, 28억 규모 일반공모 유상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006353697",
+          "source": "이데일리",
+          "date": "2026-08-18"
+        }
+      ]
     },
     {
       "date": "20260724",
@@ -1052,5 +1084,5 @@
     "count_recent": 0,
     "avg_rate": 18.76
   },
-  "built_at": "2026-10-02T11:12:18"
+  "built_at": "2026-10-02T11:26:32"
 }

@@ -159,17 +159,35 @@
       "close_price": 30600.0,
       "trading_volume": 2942808,
       "trading_value": 90049924800,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "코스피 거래상위 종목 혼조",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
+        {
+          "title": "[서울데이터랩]코스피 거래상위 종목 혼조…SK디앤디·디아이 급등, 삼...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003675932",
+          "source": "서울신문",
+          "date": "2026-09-02"
+        },
         {
           "title": "SK하닉·삼전 양날개 단 '디아이'…HBM4 테스터로 영업익 3배 '점...",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0009111210&office_id=421&code=003160&page=&sm=",
           "source": "뉴스1",
           "date": "2026.08.13"
+        },
+        {
+          "title": "[마감시황]코스피 273.08포인트 급락한 6562.72 마감…외국인·기관 동...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003676030",
+          "source": "서울신문",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "[서울데이터랩]코스피, 9월 첫 거래일 하락 출발…외국인·기관 동반 ...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003675348",
+          "source": "서울신문",
+          "date": "2026-09-01"
         },
         {
           "title": "[증시 인사이트] 기타법인 방어막에도 코스피 약세…느는 건 빚투뿐?",
@@ -212,7 +230,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "실적 서프라이즈",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[서울데이터랩]코스피 거래상위 종목 혼조…SK디앤디·디아이 급등, 삼...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003675932",
+          "source": "서울신문",
+          "date": "2026-09-02"
+        }
+      ]
     },
     {
       "date": "20260901",
@@ -243,6 +269,12 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0005552304&office_id=014&code=003160&page=&sm=",
           "source": "파이낸셜뉴스",
           "date": "2026.07.24"
+        },
+        {
+          "title": "[서울데이터랩]코스피, 9월 첫 거래일 하락 출발…외국인·기관 동반 ...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003675348",
+          "source": "서울신문",
+          "date": "2026-09-01"
         },
         {
           "title": "SK하이닉스 HBM4 웨이퍼 테스터, 韓 장비사 수주 확대",
@@ -899,5 +931,5 @@
     "count_recent": 4,
     "avg_rate": 15.57
   },
-  "built_at": "2026-10-02T11:12:17"
+  "built_at": "2026-10-02T11:26:32"
 }

@@ -9,12 +9,18 @@
       "close_price": 1925.0,
       "trading_volume": 2596957,
       "trading_value": 4999142225,
-      "rise_reason": "관련 보도: 10MWh급 선박용 ESS 사업화 추진",
-      "reason_confidence": "low",
+      "rise_reason": "코스피 거래상위 종목 혼조",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "그래핀",
       "news": [
+        {
+          "title": "[서울데이터랩]코스피 거래상위 종목 혼조…디와이덕양 급등, 삼성전...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003680783",
+          "source": "서울신문",
+          "date": "2026-09-16"
+        },
         {
           "title": "디와이덕양, 10MWh급 선박용 ESS 사업화 추진",
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0006370414&office_id=018&code=024900&page=&sm=",
@@ -32,6 +38,12 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0000078675&office_id=293&code=024900&page=&sm=",
           "source": "블로터",
           "date": "2026.01.30"
+        },
+        {
+          "title": "[마감시황]코스피, 반도체 강세에 6717.97 마감…하루 만에 반등",
+          "link": "https://n.news.naver.com/mnews/article/081/0003680865",
+          "source": "서울신문",
+          "date": "2026-09-16"
         },
         {
           "title": "[이 시각 시황] 코스피 2%대 강세·코스닥 약세…전력설비·건설·LPG...",
@@ -80,13 +92,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "M&A 관련 뉴스",
-      "reason_kind": "related",
+      "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "디와이덕양, 10MWh급 선박용 ESS 사업화 추진",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006370414&office_id=018&code=024900&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.09.16"
+          "title": "[서울데이터랩]코스피 거래상위 종목 혼조…디와이덕양 급등, 삼성전...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003680783",
+          "source": "서울신문",
+          "date": "2026-09-16"
         }
       ]
     }
@@ -99,5 +111,5 @@
     "count_recent": 1,
     "avg_rate": 14.04
   },
-  "built_at": "2026-10-02T11:12:17"
+  "built_at": "2026-10-02T11:26:32"
 }
