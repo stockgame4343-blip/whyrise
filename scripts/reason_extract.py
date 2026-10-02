@@ -569,7 +569,13 @@ def build_day_context(rows: list[dict], day: str, min_rate: float = 10.0) -> dic
             continue
         if (r.get('change_rate') or 0) >= min_rate:
             themes[tag] = themes.get(tag, 0) + 1
-    return {'day': ev, 'sector_causes': sector_causes, 'themes': themes, 'pool': len(pool)}
+    # WICS 업종별 동반 상승 수 — 기사 없이도 '같은 업종 여럿이 함께 올랐다'는 사실 자체가 맥락이다
+    sectors: dict[str, int] = {}
+    for r in rows or []:
+        sec = str((r or {}).get('sector') or '').strip()
+        if sec and (r.get('change_rate') or 0) >= min_rate:
+            sectors[sec] = sectors.get(sec, 0) + 1
+    return {'day': ev, 'sector_causes': sector_causes, 'themes': themes, 'sectors': sectors, 'pool': len(pool)}
 
 
 def _theme_short(tag: str) -> str:
@@ -604,6 +610,13 @@ def explain(row: dict, day: str, ctx: dict | None = None) -> dict | None:
     short = _theme_short(theme)
     if n >= 3 and short and short not in THEME_JUNK:
         return {'reason': f'{short} 테마 {n}종목 동반 상승', 'confidence': 'low', 'kind': 'theme',
+                'evidence': [], 'evidence_items': []}
+    sec = str(row.get('sector') or '').strip()
+    m = (ctx.get('sectors') or {}).get(sec, 0)
+    if m >= 3:
+        g = WICS_GROUPS.get(sec)
+        label = GROUP_LABEL.get(g, f'{g}주') if g else f'{sec} 업종'
+        return {'reason': f'{label} {m}종목 동반 상승', 'confidence': 'low', 'kind': 'sector',
                 'evidence': [], 'evidence_items': []}
     return None
 

@@ -160,6 +160,14 @@ class ContextTest(unittest.TestCase):
         self.assertEqual((d['text'], d['label']), ('반도체와반도체장비', '업종'))
         self.assertNotEqual(R.display({'rise_reason': ''})['text'], R.UNKNOWN_TEXT)
 
+    def test_sector_co_move_without_article(self):
+        rows = [{'name': n, 'sector': '반도체와반도체장비', 'theme_tag': t, 'change_rate': 12.0, 'news': []}
+                for n, t in (('가', 'HBM'), ('나', '유리 기판'), ('다', 'CXL'))]
+        ctx = R.build_day_context(rows, '20261001')
+        self.assertEqual(R.explain(rows[0], '20261001', ctx)['reason'], '반도체주 3종목 동반 상승')
+        rows2 = rows[:2]
+        self.assertIsNone(R.explain(rows2[0], '20261001', R.build_day_context(rows2, '20261001')))
+
     def test_template_detection(self):
         for r in ('수주 공시', '정책 관련 뉴스', '양산 보도', '상장 이슈', '거래량 증가', '흑자 전환', '외국인·기관 순매수'):
             self.assertTrue(R.is_template_reason(r), r)
