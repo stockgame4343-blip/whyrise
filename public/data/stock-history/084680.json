@@ -9,10 +9,10 @@
       "close_price": 2660.0,
       "trading_volume": 0,
       "trading_value": 0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "토스(toss)",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260826",
@@ -152,5 +155,5 @@
     "count_recent": 1,
     "avg_rate": 146.91
   },
-  "built_at": "2026-10-02T22:08:45"
+  "built_at": "2026-10-03T00:59:19"
 }

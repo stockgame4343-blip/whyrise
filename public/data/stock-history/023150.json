@@ -9,9 +9,9 @@
       "close_price": 4530.0,
       "trading_volume": 113955,
       "trading_value": 516216150,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "주당 1.0주 무상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "주류업(주정, 에탄올 등)",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "음료",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "거래량 증가",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "MH에탄올, 주당 1.0주 무상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/374/0000535800",
+          "source": "SBS Biz",
+          "date": "2026.10.01"
+        }
+      ]
     },
     {
       "date": "20260403",
@@ -67,5 +78,5 @@
     "count_recent": 1,
     "avg_rate": 15.29
   },
-  "built_at": "2026-10-02T22:08:56"
+  "built_at": "2026-10-03T00:59:19"
 }

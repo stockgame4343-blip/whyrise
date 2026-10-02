@@ -54,10 +54,10 @@
       "close_price": 4955.0,
       "trading_volume": 0,
       "trading_value": 0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [
         {
@@ -81,7 +81,10 @@
       ],
       "sector": "전기제품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260805",
@@ -903,5 +906,5 @@
     "count_recent": 2,
     "avg_rate": 46.21
   },
-  "built_at": "2026-10-02T22:13:42"
+  "built_at": "2026-10-03T00:59:19"
 }
