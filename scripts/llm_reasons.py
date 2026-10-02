@@ -144,6 +144,9 @@ def _target_from_event(ticker: str, name: str, ev: dict) -> dict | None:
         'sector': ev.get('sector') or '',
         'rise_reason': reason,
         'reason_source': ev.get('reason_source') or '',
+        # 이전 정제 결과를 다시 판정할 때 기준은 상류 '원 사유' (재실행해도 같은 결론이 나오게)
+        'reason_previous': ev.get('reason_previous') if 'reason_previous' in ev else None,
+        'theme_tags': list(ev.get('theme_tags') or []),
         # stock-rise 구체 사유는 검증만(교체 금지) — 확정 데이터 보호
         # 상류 사유 중 Toss AI·기사 근거만 보존. 키워드 템플릿(rule)·'거래량 증가'(fallback)는 재검증
         'verify_only': ev.get('reason_source') == 'stockrise' and (
@@ -324,19 +327,23 @@ def headline_fallback(target: dict, ctx: dict | None = None) -> dict:
     if target.get('reason_source') == 'llm' and (target.get('rise_reason') or '').strip():
         return {'action': 'keep', 'note': 'llm'}
     row = {'name': target.get('name') or '', 'news': target.get('raw_news') or [],
-           'theme_tag': target.get('theme_tag') or '', 'sector': target.get('sector') or ''}
+           'theme_tag': target.get('theme_tag') or '', 'theme_tags': target.get('theme_tags') or [],
+           'sector': target.get('sector') or '', 'change_rate': target.get('change_rate') or 0}
     ex = rx.explain(row, target.get('date') or '', ctx or {})
-    if ex and not rx.should_replace(target.get('rise_reason') or '', ex):
-        return {'action': 'keep', 'note': 'specific'}
-    if ex:
+    ours = target.get('reason_source') in ('news_extract', 'news_headline')
+    base = (target.get('reason_previous') if ours else target.get('rise_reason')) or ''
+    if ex and rx.should_replace(base, ex):
         return {'action': 'replace', 'reason': ex['reason'], 'confidence': ex['confidence'],
                 'source': 'news_extract', 'kind': ex.get('kind', ''),
                 'evidence_items': _evidence_items(ex.get('evidence_items'))}
-    if rx.is_template_reason(target.get('rise_reason') or ''):
+    if rx.is_template_reason(base) and not ex:
         # 틀릴 수 있는 템플릿 대신 — 최근 2주 종목 재료 기사(날짜 표기)를 단서로 남긴다
         h = rx.recent_hint(target.get('name') or '', target.get('raw_news') or [], target.get('date') or '')
         return {'action': 'unverified', 'hint': h}
-    return {'action': 'no_evidence'}
+    if ours and target.get('reason_previous') is not None:
+        # 예전 규칙이 만든 사유인데 지금 규칙으론 근거가 안 된다 → 상류 원 사유로 되돌린다
+        return {'action': 'restore'}
+    return {'action': 'keep', 'note': 'specific'} if ex else {'action': 'no_evidence'}
 
 
 def refine(targets: list[dict], api_key: str, ctx: dict | None = None) -> tuple[dict, dict]:
@@ -415,7 +422,7 @@ def _reversal_fallback(ev: dict) -> str:
 def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
     """verdict 를 stock-history/{ticker}.json 이벤트에 반영. 반환: 액션별 카운트."""
     from datetime import datetime
-    counts = {'replaced': 0, 'flagged': 0, 'kept': 0, 'no_evidence': 0, 'unverified': 0}
+    counts = {'replaced': 0, 'flagged': 0, 'kept': 0, 'no_evidence': 0, 'unverified': 0, 'restored': 0}
     by_ticker: dict[str, list] = {}
     for (ticker, date), v in verdicts.items():
         by_ticker.setdefault(ticker, []).append((date, v))
@@ -438,7 +445,10 @@ def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
                 # build-history 의 carry_refined_reasons 가 다음 빌드에서 정제값을 이월한다.
                 already_refined = ev.get('reason_source') in REFINED_SOURCES and 'reason_previous' in ev
                 if ev.get('rise_reason') != v['reason'] and not already_refined:
-                    ev['reason_previous'] = ev.get('rise_reason') or ''
+                    # 원 사유만 기록 — 예전 정제 결과(원 사유 기록 없음)를 원 사유로 착각하지 않게
+                    mine = ev.get('reason_source') in REFINED_SOURCES
+                    ev['reason_previous'] = '' if mine else (ev.get('rise_reason') or '')
+                    ev['reason_source_previous'] = '' if mine else (ev.get('reason_source') or '')
                 ev['rise_reason'] = v['reason']
                 ev.pop('reason_hint', None)
                 ev['reason_confidence'] = v['confidence']
@@ -456,10 +466,22 @@ def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
                     _reorder_news(ev, v.get('evidence') or [])
                 counts['replaced'] += 1
                 changed = True
+            elif v['action'] == 'restore':
+                if 'reason_previous' in ev:
+                    ev['rise_reason'] = ev.pop('reason_previous') or ''
+                    ev['reason_source'] = ev.pop('reason_source_previous', None) or (
+                        'stockrise' if ev.get('source') == 'stockrise' else 'estimated')
+                    ev['reason_status'] = 'filled' if ev['rise_reason'] else 'missing'
+                    for k in ('reason_kind', 'reason_evidence', 'reason_hint'):
+                        ev.pop(k, None)
+                    counts['restored'] = counts.get('restored', 0) + 1
+                    changed = True
             elif v['action'] == 'unverified':
                 # 근거 없는 키워드 템플릿 사유('수주 공시' 등) — 틀린 이유를 보여주느니 '확인 중'
-                if ev.get('reason_source') not in REFINED_SOURCES or 'reason_previous' not in ev:
-                    ev['reason_previous'] = ev.get('rise_reason') or ''
+                if 'reason_previous' not in ev or ev.get('reason_source') not in REFINED_SOURCES:
+                    mine = ev.get('reason_source') in REFINED_SOURCES
+                    ev['reason_previous'] = '' if mine else (ev.get('rise_reason') or '')
+                    ev['reason_source_previous'] = '' if mine else (ev.get('reason_source') or '')
                 ev['rise_reason'] = ''
                 ev['reason_confidence'] = 'low'
                 ev['reason_source'] = 'news_extract'

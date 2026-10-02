@@ -16,6 +16,8 @@ on:
     - cron: '40 6 * * 1-5'               # 평일 KST 15:40 — incremental (장 마감 직후)
     - cron: '10 7 * * 1-5'               # 평일 KST 16:10 — 정정 종가
     - cron: '0 21 * * 6'                 # 일요일 KST 06:00 = 토요일 UTC 21:00 full
+    - cron: '43 9 * * 1-5'               # 평일 KST 18:43 — news-refresh (장 마감 뒤 나온 특징주·시황 기사로 사유 보강)
+    - cron: '13 23 * * 0-4'              # 평일 KST 08:13 — news-refresh (전날 저녁·밤 기사 반영)
   workflow_dispatch:
     inputs:
       mode:
@@ -23,9 +25,9 @@ on:
         required: false
         default: 'incremental'
         type: choice
-        options: [full, incremental, estimate-only, enrich-meta, enrich-news, enrich-ohlc, marketmap-only, marketmap-intraday, llm-refine-dry, llm-refine, reason-backfill]
+        options: [full, incremental, estimate-only, enrich-meta, enrich-news, enrich-ohlc, marketmap-only, marketmap-intraday, llm-refine-dry, llm-refine, reason-backfill, news-refresh]
       date:
-        description: 'llm-refine(-dry) 대상 일자 YYYYMMDD (빈값 = rise-history 최신) / reason-backfill 시작 일자(빈값 = 전체)'
+        description: 'llm-refine(-dry) 대상 일자 YYYYMMDD (빈값 = rise-history 최신) / reason-backfill·news-refresh 시작 일자(빈값 = 전체·최근 2거래일)'
         required: false
         default: ''
       days:
@@ -98,6 +100,7 @@ jobs:
             case "$SCHED" in
               '0 21 * * 6')   MODE="full" ;;          # 일요일 KST 06:00 풀빌드
               '40 6 * * 1-5') MODE="incremental" ;;   # 평일 KST 15:40 장마감 incremental
+              '43 9 * * 1-5'|'13 23 * * 0-4') MODE="news-refresh" ;;   # 늦게 나온 기사로 사유 보강
               *)              MODE="marketmap-intraday" ;;
             esac
           elif [ "$EVENT" = "repository_dispatch" ]; then
@@ -210,6 +213,13 @@ jobs:
             python3 scripts/build-history.py --enrich-ohlc --limit "$LIMIT"
           elif [ "$MODE" = "llm-refine-dry" ] || [ "$MODE" = "llm-refine" ]; then
             echo "llm-refine 전용 — 본빌드 스킵 (아래 LLM 스텝에서 실행, dry 는 --dry-run)"
+          elif [ "$MODE" = "news-refresh" ]; then
+            # 근거 못 찾은 최근 급등 종목의 뉴스를 다시 받아 사유 재정리 (시작 일자 지정 시 그 이후 전체 백필)
+            if [ -n "${{ github.event.inputs.date }}" ]; then
+              timeout -k 30 5400 python3 -u scripts/build-history.py --news-refresh --news-pages 10 --date "${{ github.event.inputs.date }}"
+            else
+              timeout -k 30 1800 python3 -u scripts/build-history.py --news-refresh --news-pages 3 --refresh-days 2
+            fi
           elif [ "$MODE" = "reason-backfill" ]; then
             # 과거 전 일자 사유를 '같은 날 기사 근거' 규칙으로 재정리 (LLM 미사용 — 비용 0)
             python3 -u scripts/build-history.py --reason-backfill --date "${{ github.event.inputs.date }}"
@@ -255,14 +265,14 @@ jobs:
       #   대장캘린더는 stock-rise 상류를 직접 읽으므로 whyrise 증분 성공과 무관하게 최신화 가능.
       #   (marketmap 실패가 캘린더 동결로 번지던 결합 해제)
       - name: Build leaders calendar
-        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'reason-backfill') }}
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'reason-backfill' || steps.mode.outputs.mode == 'news-refresh') }}
         continue-on-error: true
         run: node scripts/build_leaders_calendar.js
 
       # 날짜별 급등주 정적 페이지(/day/YYYYMMDD) — 대장캘린더 갱신 뒤에 만들어 '오늘의 대장'까지 반영.
       # 검색 유입용 SEO 페이지라 실패해도 본 빌드·커밋은 진행.
       - name: Prerender day pages (SEO)
-        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'reason-backfill') }}
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'reason-backfill' || steps.mode.outputs.mode == 'news-refresh') }}
         continue-on-error: true
         run: python3 scripts/prerender_days.py
 

@@ -657,5 +657,38 @@ class CarryRefinedReasonsTest(unittest.TestCase):
         new = [{'date': '20260930', 'rise_reason': '거래량 증가', 'reason_source': 'admin', 'reason_status': 'edited'}]
         self.assertEqual(bh.merge_ticker_events(old, new, '20260901')[0]['reason_source'], 'admin')
 
+class NewsRefreshTest(unittest.TestCase):
+    """늦게 나온 '[특징주]' 기사를 다시 받아 단서(추정) → 기사 근거 사유로 바꾼다 (네트워크 없음)."""
+    def test_late_article_upgrades_hint_to_evidence(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'data' / 'stock-history'; out.mkdir(parents=True)
+            rise = Path(tmp) / 'data' / 'rise-history'; rise.mkdir()
+            ev = {'date': '20261001', 'change_rate': 17.7, 'close_price': 1000, 'rise_reason': '수주 공시',
+                  'reason_source': 'stockrise', 'reason_origin': 'rule', 'reason_status': 'filled',
+                  'theme_tag': 'OLED', 'sector': '', 'news': []}
+            (out / '000001.json').write_text(json.dumps({'ticker': '000001', 'name': '가나다이내믹스', 'market': 'KOSDAQ',
+                                                         'events': [ev]}, ensure_ascii=False), encoding='utf-8')
+            (rise / '20261001.json').write_text(json.dumps({'date': '20261001', 'rankings': [
+                dict(ev, ticker='000001', name='가나다이내믹스')]}, ensure_ascii=False), encoding='utf-8')
+            (rise / 'dates.json').write_text('["20261001"]', encoding='utf-8')
+            late = [{'officeId': '001', 'articleId': '42', 'officeName': '연합', 'datetime': '202610011820',
+                     'title': '[특징주] 가나다이내믹스, 美 고객사와 300억 공급 계약에 17%↑'}]
+            args = argparse.Namespace(date='', refresh_days=2, news_pages=2, dry_run=False)
+            with patch.object(bh, 'OUTPUT_DIR', out), \
+                 patch.object(bh.naver_client, 'fetch_stock_news_paged', return_value=late), \
+                 patch.object(bh, 'build_stock_prerender', lambda *a, **k: None), \
+                 patch.object(bh, 'build_screening_index', lambda *a, **k: None), \
+                 patch.object(bh, 'build_report_summary', lambda *a, **k: None):
+                bh.build_news_refresh(args)
+            h = json.loads((out / '000001.json').read_text(encoding='utf-8'))
+            e = h['events'][0]
+            self.assertEqual(e['rise_reason'], '美 고객사와 300억 공급 계약')
+            self.assertEqual(e['reason_source'], 'news_extract')
+            self.assertEqual(e['reason_previous'], '수주 공시')
+            self.assertTrue(e['reason_evidence'][0]['link'].startswith('https://n.news.naver.com/'))
+            day = json.loads((rise / '20261001.json').read_text(encoding='utf-8'))
+            self.assertEqual(day['rankings'][0]['rise_reason'], '美 고객사와 300억 공급 계약')
+
+
 if __name__ == '__main__':
     unittest.main()

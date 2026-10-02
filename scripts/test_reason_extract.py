@@ -55,6 +55,31 @@ class TitleTest(unittest.TestCase):
         # 따옴표 뒤 일반 단어는 증권사 꼬리표가 아니다
         self.assertEqual(R.clean_title('에코프로 ‘불기둥’ 계속')[1], '')
 
+    def test_round3_regressions(self):
+        # 기업 이벤트(액면병합·거래재개), 실적 수치 보존, 다른 자산 움직임이 원인인 경우
+        self.assertEqual(cause('진영', '[특징주] 진영, 액면병합 후 거래 첫날 ‘상한가’'), '액면병합 후 거래 첫날')
+        self.assertEqual(cause('대동', '대동, 2분기 영업익 64%↑… AI·로보틱스 전환 속도'), '2분기 영업익 64% 증가')
+        self.assertEqual(cause('대한유화', '‘기름값 폭등’에 정유·석화 랠리…롯데케미칼·대한유화 10%대 급등.....'), '기름값 폭등')
+        self.assertEqual(cause('티사이언티픽', "티사이언티픽, 비트코인 강세에 '빗썸 지분 7.17%' 부각"), '비트코인 강세에 빗썸 지분 7.17% 부각')
+        self.assertEqual(cause('SK증권', '[특징주] SK증권, 상한가 직행?SK하이닉스 자사주 매입 단독 중개'), 'SK하이닉스 자사주 매입 단독 중개')
+        self.assertEqual(cause('한성기업', "'애국 테마 매수세' 모나미·한성기업 연일 상한가"), '애국 테마')
+        self.assertEqual(cause('X', 'X, 관리종목 지정 해제에 급등'), '관리종목 지정 해제')
+        # 원인이 아닌 것: 순위 로봇 기사, 다른 회사(효성重), 낚시 문구, 종목 나열·등락률, 적자 기사
+        self.assertIsNone(R.analyse_title('[서울데이터랩]SK증권우 29.98% 상한가 금일 증시 상승률 1위로 마감', 'SK증권우'))
+        self.assertIsNone(R.analyse_title('[특징주] “효성重 놓쳤다면 여기로”…효성, 장 초반 ‘상한가’ 직.....', '효성'))
+        self.assertEqual(cause('포스코퓨처엠', '[특징주] 2차전지주 급등…엘앤에프 14%·포스코퓨처엠 8%대↑'), '2차전지주 동반 강세')
+        self.assertIsNone(R.analyse_title('비투엔, 작년 영업손실 67억...적자 폭 확대', '비투엔'))
+        self.assertIsNone(R.analyse_title('X 관리종목 지정 우려', 'X'))
+
+    def test_category_labels_are_not_reasons(self):
+        for r in ('로봇/자동화', '방산', '트럼프/관세', '신약/임상', '5G 테마 상한가', '실적 호조'):
+            self.assertTrue(R.is_template_reason(r), r)
+        self.assertTrue(R.should_replace('로봇주 강세', {'reason': 'x', 'kind': 'sector'}))
+        d = R.display({'rise_reason': '로봇/자동화', 'theme_tag': ''})
+        self.assertEqual((d['text'], d['label']), ('로봇 관련주', '테마'))
+        d = R.display({'rise_reason': '거래량 증가', 'change_rate': 400.0, 'theme_tag': '남북경협'})
+        self.assertEqual(d['text'], '거래 재개·기준가 변경 영향')
+
     def test_truncated_tail_is_dropped(self):
         self.assertEqual(cause('HT로보틱스', "HT로보틱스, 산업부 '2026 월드클래스 플러스' 선정… 최대 50억원 R&D ..."), '산업부 2026 월드클래스 플러스 선정')
 
