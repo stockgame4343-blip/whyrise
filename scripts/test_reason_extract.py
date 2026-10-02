@@ -118,6 +118,23 @@ class ContextTest(unittest.TestCase):
         self.assertTrue(R.should_replace('반도체 테마 강세', {'reason': 'x', 'kind': 'theme'}))
         self.assertFalse(R.should_replace('수주 공시', None))
 
+    def test_unknown_rows_show_a_hint_not_blank(self):
+        # 최근 이슈(날짜 표기) > 키워드 추정 > 테마 > 업종 — '이유 확인 중' 같은 빈 표시는 쓰지 않는다
+        news = [{'title': '넥사다이내믹스, 경영진 개편 직후 해외 수주 성공', 'link': 'https://n.news.naver.com/a',
+                 'date': '2026.09.21'}]
+        h = R.recent_hint('넥사다이내믹스', news, '20261001')
+        self.assertEqual(h['text'], '9/21 경영진 개편 직후 해외 수주 성공')
+        self.assertIsNone(R.recent_hint('넥사다이내믹스', news, '20261020'))    # 2주 넘으면 단서로도 안 씀
+        d = R.display({'rise_reason': '', 'reason_source': 'news_extract', 'reason_hint': h, 'theme_tag': 'OLED'})
+        self.assertEqual((d['text'], d['label'], d['unknown'], d['hint']), (h['text'], '최근 이슈', True, True))
+        d = R.display({'rise_reason': '', 'reason_source': 'news_extract', 'reason_previous': '수주 공시', 'theme_tag': 'OLED'})
+        self.assertEqual((d['text'], d['label']), ('수주 공시', '추정'))
+        d = R.display({'rise_reason': '거래량 증가', 'theme_tag': '카메라모듈/부품'})
+        self.assertEqual((d['text'], d['label']), ('카메라모듈 관련주', '테마'))
+        d = R.display({'rise_reason': '거래량 증가', 'sector': '반도체와반도체장비'})
+        self.assertEqual((d['text'], d['label']), ('반도체와반도체장비', '업종'))
+        self.assertNotEqual(R.display({'rise_reason': ''})['text'], R.UNKNOWN_TEXT)
+
     def test_template_detection(self):
         for r in ('수주 공시', '정책 관련 뉴스', '양산 보도', '상장 이슈', '거래량 증가', '흑자 전환', '외국인·기관 순매수'):
             self.assertTrue(R.is_template_reason(r), r)

@@ -333,7 +333,9 @@ def headline_fallback(target: dict, ctx: dict | None = None) -> dict:
                 'source': 'news_extract', 'kind': ex.get('kind', ''),
                 'evidence_items': _evidence_items(ex.get('evidence_items'))}
     if rx.is_template_reason(target.get('rise_reason') or ''):
-        return {'action': 'unverified'}
+        # 틀릴 수 있는 템플릿 대신 — 최근 2주 종목 재료 기사(날짜 표기)를 단서로 남긴다
+        h = rx.recent_hint(target.get('name') or '', target.get('raw_news') or [], target.get('date') or '')
+        return {'action': 'unverified', 'hint': h}
     return {'action': 'no_evidence'}
 
 
@@ -438,6 +440,7 @@ def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
                 if ev.get('rise_reason') != v['reason'] and not already_refined:
                     ev['reason_previous'] = ev.get('rise_reason') or ''
                 ev['rise_reason'] = v['reason']
+                ev.pop('reason_hint', None)
                 ev['reason_confidence'] = v['confidence']
                 ev['reason_source'] = v.get('source', 'llm')
                 ev['reason_status'] = 'filled'
@@ -463,6 +466,10 @@ def apply_to_stock_history(stock_history_dir: Path, verdicts: dict) -> dict:
                 ev['reason_status'] = 'missing'
                 ev['reason_kind'] = 'none'
                 ev.pop('reason_evidence', None)
+                if v.get('hint'):
+                    ev['reason_hint'] = v['hint']
+                else:
+                    ev.pop('reason_hint', None)
                 counts['unverified'] = counts.get('unverified', 0) + 1
                 changed = True
             elif v['action'] == 'flag_reversal':

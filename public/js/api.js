@@ -273,6 +273,9 @@ var WhyAPI = (function () {
             var o = m[r.ticker];
             if (!o) return r;
             r = Object.assign({}, r);
+            // 근거 없음(빈 사유)이면 상류 원 사유를 '추정' 단서로 남긴다 (reason.js hint)
+            if (!o.rise_reason) r.reason_previous = o.reason_previous || r.rise_reason || '';
+            if (o.reason_hint) r.reason_hint = o.reason_hint;
             r.rise_reason = o.rise_reason;
             r.reason_source = o.reason_source;
             r.reason_evidence = o.reason_evidence || [];

@@ -360,6 +360,35 @@ def pick_reason(name: str, news: list[dict], event_date: str, theme_tag: str = '
     return {'reason': reason, 'confidence': conf, 'kind': kind, 'evidence': best['evidence'], 'title': best['title']}
 
 
+HINT_MAX_AGE_DAYS = 14
+
+
+def recent_hint(name: str, news: list[dict], event_date: str, max_days: int = HINT_MAX_AGE_DAYS) -> dict | None:
+    """같은 날 근거가 없을 때 — 최근 2주 안 종목 자체 재료 기사(날짜 표기) 1건. 사유가 아니라 '단서'."""
+    ev = _ymd(event_date)
+    best = None
+    for n in news or []:
+        title = str((n or {}).get('title') or '')
+        link = str((n or {}).get('link') or '')
+        if not title or not link.startswith('https://'):
+            continue
+        age = _days_before(ev, _ymd(n.get('date'))) if ev else None
+        if age is None or not 0 <= age <= max_days:
+            continue
+        a = analyse_title(title, name)
+        if not a or not a.get('named') or a['kind'] not in ('move', 'catalyst', 'analyst', 'rebound'):
+            continue
+        key = (a['score'], -age)
+        if best is None or key > best[0]:
+            best = (key, a, n)
+    if not best:
+        return None
+    a, n = best[1], best[2]
+    d = _ymd(n.get('date'))
+    return {'text': _clip(f'{int(d[4:6])}/{int(d[6:8])} {a["reason"]}', 32), 'link': str(n.get('link') or ''),
+            'title': str(n.get('title') or ''), 'date': d}
+
+
 # 상류(stock-rise) 키워드 템플릿 사유 — 뉴스 키워드만 보고 만든 문구라 종목과 무관한 경우가 많다.
 TEMPLATE_RE = re.compile(
     r'(?:관련\s*(?:뉴스|이슈|소식)|뉴스|보도|이슈|공시|발표|언급|관련|기록|급증|증가|테마\s*강세)$'
@@ -540,6 +569,29 @@ TRUSTED_SOURCES = ('llm', 'news_headline', 'news_extract', 'admin')
 KIND_LABEL = {'move': '기사', 'catalyst': '기사', 'analyst': '리포트', 'rebound': '기사', 'delisting': '정리매매',
               'sector': '업종', 'theme': '테마', 'ipo': '신규상장', 'related': '', 'none': ''}
 UNKNOWN_TEXT = '이유 확인 중'
+HINT_GENERIC_RE = re.compile(r'^(?:거래량\s*(?:증가|급증)|거래대금\s*증가|시장 관심 증가|상한가 — 사유 미수집|이유 분석 대기중|'
+                             r'관련 뉴스 없음|투자심리 개선 영향|테마 관련 뉴스|테마 관련 이슈|테마 대장주|테마 관련주|'
+                             r'관련주 언급|상장 이슈|바이오|-)$|테마\s*강세$')
+HINT_THEME_JUNK = {'거래량', '거래대금', '보도', '테마', '뉴스', '구성', '주요종목', '기타'}
+
+
+def hint(row: dict) -> dict:
+    """근거 없는 행의 단서 (reason.js hint 와 동일) — {'text','label','link','title'}."""
+    rh = row.get('reason_hint')
+    if isinstance(rh, dict) and rh.get('text'):
+        return {'text': str(rh['text']), 'label': '최근 이슈', 'link': str(rh.get('link') or ''),
+                'title': str(rh.get('title') or '')}
+    for c in (row.get('reason_previous'), row.get('rise_reason')):
+        c = re.sub(r'^전일 사유 · ', '', str(c or '')).strip()
+        if c and not HINT_GENERIC_RE.search(c) and len(c) <= 24 and not c.startswith('관련 보도:'):
+            return {'text': c, 'label': '추정'}
+    tag = _theme_short(row.get('theme_tag') or '')
+    if tag and tag not in HINT_THEME_JUNK and not IPO_RE.search(tag):
+        return {'text': f'{tag} 관련주', 'label': '테마'}
+    sector = str(row.get('sector') or '').strip()
+    if sector:
+        return {'text': sector, 'label': '업종'}
+    return {'text': '개별 종목 상승', 'label': ''}
 
 
 def display(row: dict) -> dict:
@@ -571,6 +623,11 @@ def display(row: dict) -> dict:
             label = KIND_LABEL[row['reason_kind']]
         elif ev:
             label = '기사'
-    return {'text': reason or UNKNOWN_TEXT, 'unknown': not reason, 'label': label,
+    if not reason:
+        h = hint(row)
+        return {'text': h['text'], 'unknown': True, 'hint': True, 'label': h['label'], 'link': h.get('link', ''),
+                'title': h.get('title', ''),
+                'kind': row.get('reason_kind') or '', 'confidence': row.get('reason_confidence') or ''}
+    return {'text': reason, 'unknown': False, 'label': label,
             'link': (ev or {}).get('link', ''), 'title': (ev or {}).get('title', ''),
             'kind': row.get('reason_kind') or '', 'confidence': row.get('reason_confidence') or ''}

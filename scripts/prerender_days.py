@@ -6,7 +6,7 @@
 
 - 출력은 결정적(빌드 시각 없음) — 데이터가 같으면 파일 바이트가 같아 git diff 가 생기지 않는다.
 - 오늘 날짜는 장 마감(15:40 KST) 이후에만 만든다(장중 부분 데이터가 '하루 결과'로 색인되는 것 방지).
-- 사유가 제네릭('거래량 증가' 등)이면 '확인 중'으로 표기 — 근거 없는 이유를 만들지 않는다.
+- 같은 날 기사 근거가 없으면 빈칸 대신 단서(최근 이슈·키워드 추정·테마)를 흐리게 + 라벨로 표기한다.
 
     python scripts/prerender_days.py            # 전체 날짜
     python scripts/prerender_days.py 20260930   # 특정 날짜만
@@ -226,7 +226,7 @@ HEAD = '''<!DOCTYPE html>
     <meta name="twitter:image" content="{og_image}">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="/css/style.css?v=20260702a">
-    <link rel="stylesheet" href="/css/whyrise.css?v=20261002a">
+    <link rel="stylesheet" href="/css/whyrise.css?v=20261002c">
     <link rel="stylesheet" href="/css/app-shell.css?v=20260702c">
     <link rel="stylesheet" href="/css/day.css?v={css_ver}">
     {json_ld}
@@ -311,16 +311,16 @@ def render_day(ymd: str, day: dict, calendar_day: dict | None, prev_ymd: str, ne
             theme = str(r.get('theme_tag') or '').strip()
             if theme and theme not in JUNK_THEMES and '신규상장' not in theme:
                 tags += f'<span class="day-tag">{_esc(theme)}</span>'
-            if d['unknown']:
-                why = '<span class="day-reason day-reason--none">직접적인 상승 이유 확인 중</span>'
-            else:
-                src = ''
-                if d['label'] and d['link']:
-                    src = (f' <a class="reason-src" href="{_esc(d["link"])}" rel="nofollow noopener" target="_blank" '
-                           f'title="{_esc(d["title"])}">{_esc(d["label"])} ↗</a>')
-                elif d['label']:
-                    src = f' <span class="reason-src">{_esc(d["label"])}</span>'
-                why = f'<span class="day-reason">{_esc(d["text"])}{src}</span>'
+            # 같은 날 근거가 없으면 빈칸 대신 단서(최근 이슈·키워드 추정·테마)를 흐리게 + 라벨로
+            hint_cls = ' reason-src--hint' if d.get('hint') else ''
+            src = ''
+            if d['label'] and d['link']:
+                src = (f' <a class="reason-src{hint_cls}" href="{_esc(d["link"])}" rel="nofollow noopener" target="_blank" '
+                       f'title="{_esc(d["title"])}">{_esc(d["label"])} ↗</a>')
+            elif d['label']:
+                src = f' <span class="reason-src{hint_cls}">{_esc(d["label"])}</span>'
+            why = (f'<span class="day-reason{" day-reason--none" if d.get("hint") else ""}">'
+                   f'{_esc(d["text"])}{src}</span>')
             trs.append(
                 f'<tr><td><a href="/stock/{r["ticker"]}">{_esc(r["name"])}</a>{tags}{why}</td>'
                 f'<td class="r">+{r["change_rate"]:.1f}%</td>'

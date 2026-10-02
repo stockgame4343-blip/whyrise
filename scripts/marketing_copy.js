@@ -147,7 +147,10 @@ function blogHtml(m, images) {
             `<li><b>${esc(it.row.name)}</b> ${esc(pct(it.row.change_rate))} — ${esc(it.d.text)}</li>`).join('') + '</ul>');
     }
     if (m.unknown.length) {
-        out.push(P(`그 밖에 ${esc(m.unknown.slice(0, 10).map(r => r.row.name + ' ' + pct(r.row.change_rate)).join(', '))}${m.unknown.length > 10 ? ` 등 ${m.unknown.length}종목` : ''}은 오른 이유가 같은 날 기사로 분명하게 확인되지 않았어요.`));
+        // 근거 기사가 없는 종목은 '확인 안 됨' 대신 테마를 붙여 나열 (읽는 사람에게 단서가 되게)
+        const tagOf = r => { const t = themeShort(r.theme_tag); return t && !/신규\s*상장|거래량|거래대금/.test(t) ? `(${t})` : ''; };
+        const rest = m.unknown.slice(0, 10).map(it => `${it.row.name} ${pct(it.row.change_rate)}${tagOf(it.row)}`).join(', ');
+        out.push(P(`그 밖에 함께 오른 종목: ${esc(rest)}${m.unknown.length > 10 ? ` 외 ${m.unknown.length - 10}종목` : ''}`));
     }
     if (images[1]) out.push(`<p><img src="${esc(images[1].url)}" alt="${esc(images[1].alt)}"></p>`);
     out.push(H('내일 체크 포인트'));

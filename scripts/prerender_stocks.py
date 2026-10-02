@@ -84,7 +84,9 @@ def _timeline_html(events: list[dict], day_pages: set | None = None) -> str:
     for e in events[:MAX_EVENTS]:
         rate = e.get('change_rate')
         rate_s = f'+{rate:.1f}%' if isinstance(rate, (int, float)) else ''
-        reason = rx_display(e)['text']
+        d = rx_display(e)
+        # 같은 날 근거가 없으면 단서(최근 이슈·추정·테마)에 라벨을 붙여 구분
+        reason = d['text'] + (f' ({d["label"]})' if d.get('hint') and d['label'] else '')
         theme = (e.get('theme_tag') or '').strip()
         date_html = f'<time class="prerender-date">{_fmt_date(e.get("date") or "")}</time>'
         if day_pages and e.get('date') in day_pages:

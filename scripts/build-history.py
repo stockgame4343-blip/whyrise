@@ -436,7 +436,7 @@ def build_events_for_ticker(
                 'source': 'stockrise',
             }
             # 상류 사유 출처(toss/news/rule/fallback) — llm-refine 이 rule/fallback 만 재검증한다
-            for k in ('reason_origin', 'reason_kind'):
+            for k in ('reason_origin', 'reason_kind', 'reason_hint'):
                 if sr.get(k):
                     ev_sr[k] = sr[k]
             if sr.get('reason_evidence'):
@@ -596,7 +596,7 @@ def merge_ticker_events(old: list[dict], new: list[dict], window_start: str) -> 
 # llm-refine/헤드라인 폴백이 정제한 사유 — 다음 빌드가 stock-rise 원 사유로 되돌리지 않게 보존.
 _REFINED_SOURCES = ('llm', 'news_headline', 'news_extract')
 _REFINED_FIELDS = ('rise_reason', 'reason_confidence', 'reason_source', 'reason_status',
-                   'reason_previous', 'reason_evidence', 'reason_kind')
+                   'reason_previous', 'reason_evidence', 'reason_kind', 'reason_hint')
 
 
 def carry_refined_reasons(old: list[dict], new: list[dict]) -> int:
@@ -1151,9 +1151,11 @@ def build_rise_history(stock_history_dir: Path, out_dir: Path) -> None:
             }
             if e.get('reason_evidence'):
                 row['reason_evidence'] = e['reason_evidence']
-            for k in ('reason_origin', 'reason_kind'):
+            for k in ('reason_origin', 'reason_kind', 'reason_hint'):
                 if e.get(k):
                     row[k] = e[k]
+            if not row['rise_reason'] and e.get('reason_previous'):
+                row['reason_previous'] = e['reason_previous']   # 근거 없을 때 '추정' 단서
             if isinstance(e.get('pre_override'), dict):
                 # 과거 fallback 일별 화면도 override 삭제/재저장 때 원본을 즉시 복원할 수 있게 한다.
                 row['pre_override'] = dict(e['pre_override'])
