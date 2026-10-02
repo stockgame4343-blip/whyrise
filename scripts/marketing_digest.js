@@ -145,6 +145,7 @@ function generate(date, market = null) {
     fs.writeFileSync(path.join(dir,'naver-blog.json'),JSON.stringify({date,...digest.naver_blog},null,2)+'\n');
     fs.writeFileSync(path.join(dir,'naver-blog.html'),blogPage(digest));
     for(const [channel,post] of Object.entries(digest.posts)) fs.writeFileSync(path.join(dir,channel+'.txt'),post.text+'\n');
+    writeDateIndex();
     const latestPath=path.join(ROOT,'public/marketing/latest.json');
     let latest=null;try{latest=read(latestPath);}catch(e){}
     if(latest && latest.date > date) return digest;
@@ -153,6 +154,13 @@ function generate(date, market = null) {
     let status=null;try{status=read(statusPath);}catch(e){}
     if(!status||status.date!==date) fs.writeFileSync(statusPath,JSON.stringify({date,channels:{threads:{status:'prepared'},instagram:{status:'prepared'},kakao:{status:'manual_ready'},toss:{status:'manual_ready'}}},null,2)+'\n');
     return digest;
+}
+// 발행실 날짜 이동용 목록 — 원고(digest)가 있는 날짜만, 최신순
+function writeDateIndex() {
+    const dir=path.join(ROOT,'public/marketing');
+    const dates=fs.readdirSync(dir).filter(n=>/^\d{8}$/.test(n)&&fs.existsSync(path.join(dir,n,'digest.json'))).sort().reverse();
+    fs.writeFileSync(path.join(dir,'dates.json'),JSON.stringify({dates})+'\n');
+    return dates;
 }
 async function marketSummary(date) {
     // 장 마감 지수 — 오늘 날짜일 때만(과거 날짜 재생성엔 지수를 싣지 않는다)
@@ -169,4 +177,4 @@ if(require.main===module) {
         console.log(JSON.stringify({date:d.date,coverage:d.coverage,default_story:d.default_story,blog:d.naver_blog.title}));
     })().catch(e=>{console.error(e.message);process.exitCode=1;});
 }
-module.exports={buildDigest,generate,evidence,supportedReason,hasTheme,dayLink,blogPage};
+module.exports={buildDigest,generate,evidence,supportedReason,hasTheme,dayLink,blogPage,writeDateIndex};

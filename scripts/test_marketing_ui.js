@@ -46,7 +46,19 @@ async function main(){
         assert.ok((await page.locator('#blogTags').textContent()).includes('#급등주'));
         assert.ok(await page.locator('#blogCopyHtml').isEnabled());
         assert.equal(await page.locator('#blogFrame').getAttribute('src'),'/marketing/'+JSON.parse(fs.readFileSync(path.resolve(__dirname,'../public/marketing/latest.json'),'utf8')).date+'/naver-blog.html');
-        assert.deepEqual(errors,[]);console.log('Marketing UI: topics, channels, downloads, editing, image navigation, mobile overflow and blog draft passed');
+        // 날짜 이동: 목록 = dates.json, 기본 = 최신, 이전 날짜로 이동하면 그 날짜 원고를 연다
+        const idx=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../public/marketing/dates.json'),'utf8')).dates;
+        assert.equal(await page.locator('#dateSelect option').count(),idx.length);
+        assert.equal(await page.locator('#dateSelect').inputValue(),idx[0]);
+        assert.ok(await page.locator('#dateNext').isDisabled());
+        if(idx.length>1){
+            await page.locator('#datePrev').click();
+            await page.waitForURL(new RegExp('date='+idx[1]));
+            await page.locator('#studio[aria-busy="false"], #error:not([hidden])').first().waitFor();
+            assert.equal(await page.locator('#dateSelect').inputValue(),idx[1]);
+            assert.ok(await page.locator('#dateNext').isEnabled());
+        }
+        assert.deepEqual(errors,[]);console.log('Marketing UI: topics, channels, downloads, editing, image navigation, mobile overflow, blog draft and date navigation passed');
     }finally{await browser.close();server.close();}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: 'YYYYMMDD, blank = today. Historical dates generate previews only.'
+        description: 'YYYYMMDD (여러 날짜는 쉼표로), blank = today. Historical dates generate previews only.'
         default: ''
         type: string
       publish:
@@ -27,7 +27,7 @@ jobs:
   daily:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
@@ -43,30 +43,33 @@ jobs:
         run: |
           node - <<'JS'
           const fs=require('fs'),tg=require('./scripts/tg_common');
-          const date=process.env.REQUESTED_DATE||tg.ymdKst();
-          if(!/^\d{8}$/.test(date))throw Error('Invalid date');
+          // 쉼표로 여러 날짜 — 과거 원고 일괄 재생성(미리보기 전용, 발행 없음)
+          const requested=(process.env.REQUESTED_DATE||tg.ymdKst()).split(/[\s,]+/).filter(Boolean);
+          if(!requested.length||requested.some(d=>!/^\d{8}$/.test(d)))throw Error('Invalid date');
           const manual=process.env.EVENT_NAME==='workflow_dispatch';
           const inWindow=tg.hmKst()>='16:20'&&tg.hmKst()<='22:00';
-          const p=`public/data/rise-history/${date}.json`;
-          const day=fs.existsSync(p)?JSON.parse(fs.readFileSync(p)):null;
-          const run=tg.isKrTradingDay(date)&&(manual||inWindow)&&day&&day.is_final===true;
-          fs.appendFileSync(process.env.GITHUB_OUTPUT,`run=${!!run}\ndate=${date}\nlive=${date===tg.ymdKst()}\n`);
-          if(!run)console.log('No current final trading data / outside window: skipped');
+          const ok=d=>{const p=`public/data/rise-history/${d}.json`;const day=fs.existsSync(p)?JSON.parse(fs.readFileSync(p)):null;return tg.isKrTradingDay(d)&&day&&day.is_final===true;};
+          const dates=[...new Set(requested)].sort().filter(d=>(manual||inWindow)&&ok(d));
+          const date=dates[dates.length-1]||requested[0];
+          const live=dates.length===1&&date===tg.ymdKst();
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`run=${dates.length>0}\ndate=${date}\ndates=${dates.join(' ')}\nlive=${live}\n`);
+          if(!dates.length)console.log('No current final trading data / outside window: skipped');
+          else console.log('dates: '+dates.join(' '));
           JS
       - name: Generate short captions and visual topics
         if: steps.gate.outputs.run == 'true'
         env:
-          DATE: ${{ steps.gate.outputs.date }}
-        run: node scripts/marketing_digest.js "$DATE"
+          DATES: ${{ steps.gate.outputs.dates }}
+        run: for D in $DATES; do node scripts/marketing_digest.js "$D"; done
       - name: Export native ORGO charts and calendar
         if: steps.gate.outputs.run == 'true'
         env:
-          DATE: ${{ steps.gate.outputs.date }}
+          DATES: ${{ steps.gate.outputs.dates }}
         run: |
           npm install --no-save --package-lock=false playwright@1.56.1
           npx playwright install --with-deps chromium
           sudo apt-get install -y fonts-noto-cjk
-          node scripts/marketing_render.js "$DATE"
+          for D in $DATES; do node scripts/marketing_render.js "$D"; done
           node scripts/test_marketing_ui.js
       - name: Deploy images before publication
         id: deploy

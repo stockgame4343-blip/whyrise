@@ -6,12 +6,33 @@
     const states={prepared:'계정 연결 전 · 원고 준비',uploading:'전송 확인 필요',uploaded:'이미지 업로드됨',retryable:'다음 실행에서 재시도',manual_ready:'수동 게시용 준비',needs_connection:'계정 연결 필요',published:'게시 완료',uncertain:'전송 결과 확인 필요',creating:'전송 확인 필요',publishing:'전송 확인 필요',created:'이미지 처리 중',awaiting_image:'이미지 배포 대기',needs_api_version:'API 설정 필요'};
     const symbols={theme:'◉',market:'▥',calendar:'▦',leader:'♜'};
     const get=async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();};
+    const WD=['일','월','화','수','목','금','토'];
+    const dayLabel=v=>`${+v.slice(4,6)}월 ${+v.slice(6)}일 (${WD[new Date(Date.UTC(+v.slice(0,4),+v.slice(4,6)-1,+v.slice(6))).getUTCDay()]})`;
+    // 날짜 이동 — ?date=YYYYMMDD (없으면 최신). 원고가 있는 날짜만 고를 수 있다.
+    async function setupDates(){
+        const latest=await get('/marketing/latest.json').catch(()=>null);
+        const idx=await get('/marketing/dates.json').catch(()=>null);
+        let dates=(idx&&Array.isArray(idx.dates)?idx.dates:[]).filter(v=>/^\d{8}$/.test(v));
+        if(latest&&/^\d{8}$/.test(latest.date)&&!dates.includes(latest.date))dates.push(latest.date);
+        dates=[...new Set(dates)].sort().reverse();
+        const want=new URLSearchParams(location.search).get('date')||'';
+        const date=dates.includes(want)?want:(latest&&latest.date)||dates[0]||'';
+        const sel=$('dateSelect');sel.replaceChildren();
+        dates.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=dayLabel(v)+(v===dates[0]?' · 최신':'');sel.append(o);});
+        sel.value=date;
+        const go=v=>{if(v&&v!==date)location.href=location.pathname+'?date='+v+location.hash;};
+        const i=dates.indexOf(date);
+        $('datePrev').disabled=i<0||i>=dates.length-1;$('dateNext').disabled=i<=0;
+        $('datePrev').onclick=()=>go(dates[i+1]);$('dateNext').onclick=()=>go(dates[i-1]);
+        sel.onchange=()=>go(sel.value);
+        return date;
+    }
     try {
-        const latest=await get('/marketing/latest.json');
-        if(!/^\d{8}$/.test(latest.date))throw Error('Invalid date');
-        const base='/marketing/'+latest.date+'/';
+        const date=await setupDates();
+        if(!/^\d{8}$/.test(date))throw Error('Invalid date');
+        const base='/marketing/'+date+'/';
         const d=await get(base+'digest.json');
-        if(d.version!==2||d.date!==latest.date||!d.stories?.length)throw Error('Visual digest unavailable');
+        if(d.version!==2||d.date!==date||!d.stories?.length)throw Error('Visual digest unavailable');
         const manifest=await get(base+'assets.json');
         if(manifest.date!==d.date||manifest.content_hash!==d.content_hash)throw Error('Images updating');
         $('date').textContent=`${+d.date.slice(4,6)}월 ${+d.date.slice(6)}일 · 장 마감`;
@@ -82,5 +103,5 @@
             };
             $('blog').setAttribute('aria-busy','false');
         }
-    }catch(e){$('error').hidden=false;$('error').textContent='오늘의 이미지를 준비하고 있습니다. 잠시 후 다시 확인해 주세요.';$('studio').hidden=true;$('date').textContent='준비 중';}
+    }catch(e){$('error').hidden=false;$('error').textContent='이 날짜의 이미지를 준비하고 있습니다. 잠시 후 다시 확인하거나 다른 날짜를 골라 주세요.';$('studio').hidden=true;$('date').textContent='준비 중';$('blogStatus').textContent='원고 없음';}
 })();
