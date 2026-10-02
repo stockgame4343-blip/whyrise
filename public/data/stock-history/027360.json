@@ -857,10 +857,10 @@
       "date": "20260203",
       "change_rate": 14.19,
       "close_price": 5110.0,
-      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 188억 돌...",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "창투사",
       "news": [
         {
@@ -901,24 +901,16 @@
       "trading_value": 228994424890,
       "market_cap": 619063934426,
       "reason_previous": "AI/반도체 테마",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]금일 코스닥 거래량 1위 아주IB투자 거래대금 188억 돌...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003614003",
-          "source": "서울신문",
-          "date": "2026-02-03"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
       "change_rate": 29.97,
       "close_price": 4510.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "창투사",
       "news": [],
       "sector": "창업투자",
@@ -926,7 +918,10 @@
       "source": "estimated",
       "trading_volume": 30487358,
       "trading_value": 137497984580,
-      "market_cap": 546375409836
+      "market_cap": 546375409836,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
@@ -981,10 +976,10 @@
       "date": "20251215",
       "change_rate": 11.75,
       "close_price": 2710.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "창투사",
       "news": [],
       "sector": "창업투자",
@@ -992,7 +987,10 @@
       "source": "estimated",
       "trading_volume": 24790457,
       "trading_value": 67182138470,
-      "market_cap": 328309836065
+      "market_cap": 328309836065,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1003,5 +1001,5 @@
     "count_recent": 0,
     "avg_rate": 20.88
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

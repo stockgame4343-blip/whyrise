@@ -113,7 +113,7 @@
       "close_price": 9355.0,
       "trading_volume": 29493428,
       "trading_value": 275911018940,
-      "rise_reason": "반도체 재료 테마 3종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -123,7 +123,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "거래 급증",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美 AI 인프라 수요 증가에 전기장비株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159440&office_id=366&code=006340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260422",
@@ -172,10 +180,10 @@
       "date": "20260323",
       "change_rate": 21.18,
       "close_price": 8525.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -214,7 +222,10 @@
       "source": "estimated",
       "trading_volume": 13867173,
       "trading_value": 118217649825,
-      "market_cap": 342416897506
+      "market_cap": 342416897506,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -308,7 +319,7 @@
       "date": "20260224",
       "change_rate": 29.96,
       "close_price": 5140.0,
-      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -366,9 +377,9 @@
       "date": "20251010",
       "change_rate": 11.02,
       "close_price": 4585.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [],
@@ -377,7 +388,18 @@
       "source": "estimated",
       "trading_volume": 1592211,
       "trading_value": 7300287435,
-      "market_cap": 184162049861
+      "market_cap": 184162049861,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성전자·SK하이닉스 강세...반도체 장비주 ‘급등세’",
+          "link": "https://n.news.naver.com/mnews/article/655/0000027792",
+          "source": "CJB청주방송",
+          "date": "2025-10-10"
+        }
+      ]
     }
   ],
   "stats": {
@@ -388,5 +410,5 @@
     "count_recent": 1,
     "avg_rate": 17.82
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

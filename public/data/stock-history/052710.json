@@ -826,10 +826,10 @@
       "close_price": 19151.0,
       "trading_volume": 751287,
       "trading_value": 14387897337,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -847,7 +847,10 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260422",
@@ -920,10 +923,10 @@
       "close_price": 19328.0,
       "trading_volume": 2271750,
       "trading_value": 43908384000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -935,7 +938,10 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -943,10 +949,10 @@
       "close_price": 14667.0,
       "trading_volume": 1931428,
       "trading_value": 28328254476,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -958,7 +964,10 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -1156,10 +1165,10 @@
       "date": "20250619",
       "change_rate": 17.22,
       "close_price": 10620.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [],
       "sector": "핸드셋",
@@ -1167,16 +1176,19 @@
       "source": "estimated",
       "trading_volume": 936682,
       "trading_value": 9947562840,
-      "market_cap": 155195337423
+      "market_cap": 155195337423,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
       "change_rate": 11.08,
       "close_price": 9220.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [],
       "sector": "핸드셋",
@@ -1184,7 +1196,10 @@
       "source": "estimated",
       "trading_volume": 612869,
       "trading_value": 5650652180,
-      "market_cap": 134736441717
+      "market_cap": 134736441717,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1195,5 +1210,5 @@
     "count_recent": 3,
     "avg_rate": 18.9
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

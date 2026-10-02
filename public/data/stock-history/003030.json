@@ -206,15 +206,18 @@
       "close_price": 220000.0,
       "trading_volume": 65969,
       "trading_value": 14513180000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -244,5 +247,5 @@
     "count_recent": 0,
     "avg_rate": 13.28
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:18"
 }

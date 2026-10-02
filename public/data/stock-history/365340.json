@@ -102,7 +102,7 @@
       "close_price": 66500.0,
       "trading_volume": 302605,
       "trading_value": 20123232500,
-      "rise_reason": "2차전지주 동반 강세 — 글로벌 ESS 시장 확대에 힘받나",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -169,10 +169,10 @@
       "date": "20260126",
       "change_rate": 12.96,
       "close_price": 64500.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [
         {
@@ -187,7 +187,10 @@
       "source": "estimated",
       "trading_volume": 332351,
       "trading_value": 21436639500,
-      "market_cap": 833418181818
+      "market_cap": 833418181818,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
@@ -223,10 +226,10 @@
       "date": "20260119",
       "change_rate": 16.92,
       "close_price": 50800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [
         {
@@ -241,7 +244,10 @@
       "source": "estimated",
       "trading_volume": 351088,
       "trading_value": 17835270400,
-      "market_cap": 656397575757
+      "market_cap": 656397575757,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -252,5 +258,5 @@
     "count_recent": 0,
     "avg_rate": 13.66
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:19"
 }

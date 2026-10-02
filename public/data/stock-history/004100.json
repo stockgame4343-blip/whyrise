@@ -149,10 +149,10 @@
       "close_price": 3345.0,
       "trading_volume": 2813388,
       "trading_value": 9410782860,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "후보",
       "news": [
         {
@@ -164,16 +164,19 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
       "change_rate": 17.88,
       "close_price": 3065.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -188,7 +191,10 @@
       "source": "estimated",
       "trading_volume": 3919792,
       "trading_value": 12014162480,
-      "market_cap": 112506003430
+      "market_cap": 112506003430,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -199,5 +205,5 @@
     "count_recent": 0,
     "avg_rate": 14.85
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

@@ -429,10 +429,10 @@
       "date": "20250609",
       "change_rate": 10.02,
       "close_price": 14600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모바일솔루션(스마트폰)",
       "news": [],
       "sector": "IT서비스",
@@ -440,7 +440,10 @@
       "source": "estimated",
       "trading_volume": 5006245,
       "trading_value": 73091177000,
-      "market_cap": 175443671766
+      "market_cap": 175443671766,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -451,5 +454,5 @@
     "count_recent": 2,
     "avg_rate": 17.67
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

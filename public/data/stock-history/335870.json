@@ -179,10 +179,10 @@
       "date": "20260115",
       "change_rate": 29.91,
       "close_price": 2150.0,
-      "rise_reason": "패션/의류 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -197,7 +197,10 @@
       "source": "estimated",
       "trading_volume": 3005269,
       "trading_value": 6461328350,
-      "market_cap": 36052274270
+      "market_cap": 36052274270,
+      "reason_previous": "패션/의류 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251106",
@@ -222,10 +225,10 @@
       "date": "20250526",
       "change_rate": 15.06,
       "close_price": 2865.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
@@ -233,7 +236,10 @@
       "source": "estimated",
       "trading_volume": 428123,
       "trading_value": 1226572395,
-      "market_cap": 48041751527
+      "market_cap": 48041751527,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -244,5 +250,5 @@
     "count_recent": 0,
     "avg_rate": 18.61
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

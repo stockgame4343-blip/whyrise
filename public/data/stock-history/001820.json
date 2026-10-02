@@ -562,7 +562,7 @@
       "close_price": 132600.0,
       "trading_volume": 1936586,
       "trading_value": 256791303600,
-      "rise_reason": "관련주 동반 강세 — AI향 부품 초호황",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -765,15 +765,18 @@
       "close_price": 57800.0,
       "trading_volume": 230902,
       "trading_value": 13346135600,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [],
       "sector": "전기제품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260318",
@@ -1012,5 +1015,5 @@
     "count_recent": 2,
     "avg_rate": 18.82
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

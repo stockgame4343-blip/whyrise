@@ -9,10 +9,10 @@
       "close_price": 2495.0,
       "trading_volume": 201896,
       "trading_value": 503730520,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "액면병합 후 첫 거래일",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "웹툰",
       "news": [
         {
@@ -80,7 +80,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "미스터블루, 액면병합 후 첫 거래일 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006362145&office_id=018&code=207760&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.02"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -307,10 +315,10 @@
       "date": "20250610",
       "change_rate": 15.92,
       "close_price": 1864.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -318,16 +326,19 @@
       "source": "estimated",
       "trading_volume": 77956235,
       "trading_value": 145310422040,
-      "market_cap": 154800761904
+      "market_cap": 154800761904,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250602",
       "change_rate": 18.84,
       "close_price": 1577.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -335,7 +346,10 @@
       "source": "estimated",
       "trading_volume": 66574008,
       "trading_value": 104987210616,
-      "market_cap": 130966095238
+      "market_cap": 130966095238,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -346,5 +360,5 @@
     "count_recent": 1,
     "avg_rate": 16.98
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

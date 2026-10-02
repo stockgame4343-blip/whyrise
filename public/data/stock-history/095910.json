@@ -538,10 +538,10 @@
       "date": "20260309",
       "change_rate": 29.83,
       "close_price": 2050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -580,7 +580,10 @@
       "source": "estimated",
       "trading_volume": 18783376,
       "trading_value": 38505920800,
-      "market_cap": 76489832007
+      "market_cap": 76489832007,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -708,10 +711,10 @@
       "date": "20260123",
       "change_rate": 29.92,
       "close_price": 1381.0,
-      "rise_reason": "태양광에너지 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -732,7 +735,10 @@
       "source": "estimated",
       "trading_volume": 4755228,
       "trading_value": 6566969868,
-      "market_cap": 51528028293
+      "market_cap": 51528028293,
+      "reason_previous": "태양광에너지 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260121",
@@ -790,10 +796,10 @@
       "date": "20250611",
       "change_rate": 10.88,
       "close_price": 1539.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -801,7 +807,10 @@
       "source": "estimated",
       "trading_volume": 6091673,
       "trading_value": 9375084747,
-      "market_cap": 57423342175
+      "market_cap": 57423342175,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -812,5 +821,5 @@
     "count_recent": 0,
     "avg_rate": 19.85
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

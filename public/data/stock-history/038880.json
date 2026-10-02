@@ -9,7 +9,7 @@
       "close_price": 3335.0,
       "trading_volume": 46295,
       "trading_value": 154393825,
-      "rise_reason": "반도체주 동반 강세 — 오픈AI 아스트라가 깨운 AI 랠리",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -83,9 +83,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "오픈AI '아스트라'가 깨운 AI 랠리…반도체株 일제히 '불기둥'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001027039&office_id=088&code=000990&page=&sm=",
-          "source": "매일신문",
+          "title": "[특징주] 반도체 훈풍에 관련 소부장주 장초반 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016293473&office_id=001&code=000150&page=&sm=",
+          "source": "연합뉴스",
           "date": "2026.09.07"
         }
       ]
@@ -431,7 +431,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "협력 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/23 코스닥시장본부, 26일 주권매매거래정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006313246&office_id=018&code=038880&page=&sm=",
+        "title": "코스닥시장본부, 26일 아이에이 주권매매거래정지 해제",
+        "date": "20260623"
+      }
     },
     {
       "date": "20260630",
@@ -510,7 +516,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "협력 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/23 코스닥시장본부, 26일 주권매매거래정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006313246&office_id=018&code=038880&page=&sm=",
+        "title": "코스닥시장본부, 26일 아이에이 주권매매거래정지 해제",
+        "date": "20260623"
+      }
     },
     {
       "date": "20260313",
@@ -604,10 +616,10 @@
       "date": "20250804",
       "change_rate": 11.74,
       "close_price": 2950.0,
-      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 196억원 돌...",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -642,24 +654,16 @@
       "trading_value": 25332443550,
       "market_cap": 110955223880,
       "reason_previous": "실적 호조",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]금일 코스닥 거래량 1위 아이에이 거래대금 196억원 돌...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003563255",
-          "source": "서울신문",
-          "date": "2025-08-04"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20250801",
       "change_rate": 16.3,
       "close_price": 2640.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -667,16 +671,19 @@
       "source": "estimated",
       "trading_volume": 10030474,
       "trading_value": 26480451360,
-      "market_cap": 99295522388
+      "market_cap": 99295522388,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250730",
       "change_rate": 29.56,
       "close_price": 2630.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -684,7 +691,10 @@
       "source": "estimated",
       "trading_volume": 1747327,
       "trading_value": 4595470010,
-      "market_cap": 98919402985
+      "market_cap": 98919402985,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -695,5 +705,5 @@
     "count_recent": 1,
     "avg_rate": 16.84
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

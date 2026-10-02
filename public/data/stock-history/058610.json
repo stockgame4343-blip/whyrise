@@ -9,7 +9,7 @@
       "close_price": 106500.0,
       "trading_volume": 1663373,
       "trading_value": 177149224500,
-      "rise_reason": "로봇주 동반 강세 — 2035년 휴머노이드 650만대 출하",
+      "rise_reason": "로봇주 동반 강세 — 정부 제조AI 확산안·中 로봇 규제 기대",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -83,9 +83,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "\"2035년 휴머노이드 650만대 출하\"…로봇주 '불기둥'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014191920&office_id=003&code=160190&page=&sm=",
-          "source": "뉴시스",
+          "title": "로봇株, 정부 제조AI 확산안·中 로봇 규제 기대에 강세[종목 NOW]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005576063&office_id=014&code=030530&page=&sm=",
+          "source": "파이낸셜뉴스",
           "date": "2026.09.15"
         }
       ]
@@ -733,10 +733,10 @@
       "date": "20260128",
       "change_rate": 24.28,
       "close_price": 151500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "전기제품",
@@ -744,7 +744,10 @@
       "source": "estimated",
       "trading_volume": 3410397,
       "trading_value": 516675145500,
-      "market_cap": 3359806506849
+      "market_cap": 3359806506849,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260126",
@@ -817,7 +820,7 @@
       "date": "20260115",
       "change_rate": 11.25,
       "close_price": 96900.0,
-      "rise_reason": "로봇주 동반 강세 — 형님 뛰니 아우 달린다",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -875,10 +878,10 @@
       "date": "20260113",
       "change_rate": 10.17,
       "close_price": 91000.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -917,7 +920,10 @@
       "source": "estimated",
       "trading_volume": 2627250,
       "trading_value": 239079750000,
-      "market_cap": 2018101598173
+      "market_cap": 2018101598173,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251219",
@@ -1063,10 +1069,10 @@
       "date": "20251127",
       "change_rate": 11.74,
       "close_price": 49950.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -1105,7 +1111,10 @@
       "source": "estimated",
       "trading_volume": 3879340,
       "trading_value": 193773033000,
-      "market_cap": 1107738184931
+      "market_cap": 1107738184931,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251120",
@@ -1282,5 +1291,5 @@
     "count_recent": 2,
     "avg_rate": 17.21
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

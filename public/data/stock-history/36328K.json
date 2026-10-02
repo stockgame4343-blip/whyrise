@@ -48,10 +48,10 @@
       "date": "20250716",
       "change_rate": 29.89,
       "close_price": 8430.0,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -80,15 +80,7 @@
       "trading_value": 5484583290,
       "market_cap": 9984771573,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]티와이홀딩스우 +29.28% 폭등…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003558039",
-          "source": "서울신문",
-          "date": "2025-07-16"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20250709",
@@ -158,10 +150,10 @@
       "date": "20250610",
       "change_rate": 12.2,
       "close_price": 5980.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -169,16 +161,19 @@
       "source": "estimated",
       "trading_volume": 1615953,
       "trading_value": 9663398940,
-      "market_cap": 7082910321
+      "market_cap": 7082910321,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
       "change_rate": 30.0,
       "close_price": 5330.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -186,7 +181,10 @@
       "source": "estimated",
       "trading_volume": 608012,
       "trading_value": 3240703960,
-      "market_cap": 6313028764
+      "market_cap": 6313028764,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -197,5 +195,5 @@
     "count_recent": 1,
     "avg_rate": 10.84
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

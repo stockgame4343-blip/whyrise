@@ -382,7 +382,7 @@
       "close_price": 5807.0,
       "trading_volume": 5306954,
       "trading_value": 30817481878,
-      "rise_reason": "시스템반도체 테마 11종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -453,7 +453,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "자사주 소각",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美 AI 인프라 수요 증가에 전기장비株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159440&office_id=366&code=006340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -495,10 +503,10 @@
       "date": "20250930",
       "change_rate": 12.9,
       "close_price": 4936.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -525,7 +533,10 @@
       "source": "estimated",
       "trading_volume": 8592403,
       "trading_value": 42412101208,
-      "market_cap": 286693698630
+      "market_cap": 286693698630,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250715",
@@ -594,5 +605,5 @@
     "count_recent": 0,
     "avg_rate": 14.03
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

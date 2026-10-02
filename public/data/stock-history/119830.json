@@ -246,7 +246,7 @@
       "close_price": 8210.0,
       "trading_volume": 1992393,
       "trading_value": 16357546530,
-      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -317,16 +317,24 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "수주 공시",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260204",
       "change_rate": 13.74,
       "close_price": 9600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -334,7 +342,10 @@
       "source": "estimated",
       "trading_volume": 1513923,
       "trading_value": 14533660800,
-      "market_cap": 254763285024
+      "market_cap": 254763285024,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
@@ -364,5 +375,5 @@
     "count_recent": 0,
     "avg_rate": 18.5
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

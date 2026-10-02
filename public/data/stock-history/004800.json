@@ -201,8 +201,8 @@
       "close_price": 227000.0,
       "trading_volume": 354431,
       "trading_value": 80455837000,
-      "rise_reason": "AI 훈풍에 전력기기株 랠리 지",
-      "reason_confidence": "high",
+      "rise_reason": "자회사주 동반 강세",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
@@ -272,13 +272,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "실적 관련 뉴스",
-      "reason_kind": "move",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "AI 훈풍에 전력기기株 랠리 지속…효성重 400만원↑[핫종목]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008915321&office_id=421&code=004800&page=&sm=",
-          "source": "뉴스1",
-          "date": "2026.04.28"
+          "title": "자회사 랠리 타고 지분가치 부각…SK스퀘어·효성 ‘불기둥’ [코주부.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004615065&office_id=011&code=004800&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.04.27"
         }
       ]
     },
@@ -437,10 +437,10 @@
       "date": "20251111",
       "change_rate": 12.77,
       "close_price": 164300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "복합기업",
@@ -448,16 +448,19 @@
       "source": "estimated",
       "trading_volume": 256596,
       "trading_value": 42158722800,
-      "market_cap": 2750458580508
+      "market_cap": 2750458580508,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251103",
       "change_rate": 28.18,
       "close_price": 162400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "복합기업",
@@ -465,16 +468,19 @@
       "source": "estimated",
       "trading_volume": 234303,
       "trading_value": 38050807200,
-      "market_cap": 2718651694915
+      "market_cap": 2718651694915,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250529",
       "change_rate": 11.33,
       "close_price": 66800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "복합기업",
@@ -482,7 +488,10 @@
       "source": "estimated",
       "trading_volume": 250240,
       "trading_value": 16716032000,
-      "market_cap": 1118263135593
+      "market_cap": 1118263135593,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -493,5 +502,5 @@
     "count_recent": 0,
     "avg_rate": 14.61
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

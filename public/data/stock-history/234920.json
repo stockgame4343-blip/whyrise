@@ -7,10 +7,10 @@
       "date": "20251024",
       "change_rate": 10.31,
       "close_price": 5780.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -25,16 +25,19 @@
       "source": "estimated",
       "trading_volume": 2567752,
       "trading_value": 14841606560,
-      "market_cap": 78155178907
+      "market_cap": 78155178907,
+      "reason_previous": "전기차",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251022",
       "change_rate": 12.94,
       "close_price": 5630.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -73,7 +76,10 @@
       "source": "estimated",
       "trading_volume": 5024478,
       "trading_value": 28287811140,
-      "market_cap": 76126930320
+      "market_cap": 76126930320,
+      "reason_previous": "전기차",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250626",
@@ -115,10 +121,10 @@
       "date": "20250528",
       "change_rate": 29.9,
       "close_price": 4735.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -126,7 +132,10 @@
       "source": "estimated",
       "trading_volume": 2341260,
       "trading_value": 11085866100,
-      "market_cap": 64025047080
+      "market_cap": 64025047080,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -137,5 +146,5 @@
     "count_recent": 0,
     "avg_rate": 11.62
   },
-  "built_at": "2026-09-27T09:59:55"
+  "built_at": "2026-10-02T11:12:19"
 }

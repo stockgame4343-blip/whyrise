@@ -90,16 +90,22 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "인수 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/29 1분기 영업익 63% 증가",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002420679&office_id=092&code=178920&page=&sm=",
+        "title": "PI첨단소재, 1분기 영업익 63% 상승",
+        "date": "20260429"
+      }
     },
     {
       "date": "20260326",
       "change_rate": 13.42,
       "close_price": 25350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -120,7 +126,10 @@
       "source": "estimated",
       "trading_volume": 1893944,
       "trading_value": 48011480400,
-      "market_cap": 744476886792
+      "market_cap": 744476886792,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260317",
@@ -273,5 +282,5 @@
     "count_recent": 0,
     "avg_rate": 15.45
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

@@ -88,7 +88,7 @@
       "close_price": 19890.0,
       "trading_volume": 112428,
       "trading_value": 2236192920,
-      "rise_reason": "HBM 테마 6종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -98,7 +98,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "HBM(고대역폭메모리) 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -239,7 +247,7 @@
       "close_price": 27500.0,
       "trading_volume": 400382,
       "trading_value": 11010505000,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -326,7 +334,7 @@
       "close_price": 28850.0,
       "trading_volume": 310075,
       "trading_value": 8945663750,
-      "rise_reason": "HBM 테마 6종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -343,7 +351,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "HBM(고대역폭메모리) 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -351,7 +367,7 @@
       "close_price": 44850.0,
       "trading_volume": 1784579,
       "trading_value": 80038368150,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -560,10 +576,10 @@
       "date": "20251013",
       "change_rate": 10.6,
       "close_price": 32350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -571,16 +587,19 @@
       "source": "estimated",
       "trading_volume": 489543,
       "trading_value": 15836716050,
-      "market_cap": 302988224637
+      "market_cap": 302988224637,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250911",
       "change_rate": 12.9,
       "close_price": 24500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -595,7 +614,10 @@
       "source": "estimated",
       "trading_volume": 396044,
       "trading_value": 9703078000,
-      "market_cap": 229465579710
+      "market_cap": 229465579710,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -606,5 +628,5 @@
     "count_recent": 0,
     "avg_rate": 14.88
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -96,7 +96,7 @@
       "close_price": 15650.0,
       "trading_volume": 25833711,
       "trading_value": 404297577150,
-      "rise_reason": "계약 7일 만",
+      "rise_reason": "남양주 왕숙 아테라 계약 완료",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -170,9 +170,9 @@
       "reason_kind": "catalyst",
       "reason_evidence": [
         {
-          "title": "금호건설 '왕숙 아테라' 812가구 완판…계약 7일 만",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006354109&office_id=018&code=002990&page=&sm=",
-          "source": "이데일리",
+          "title": "금호건설, 남양주 '왕숙 아테라' 계약 완료…서울 접근성 주효",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001262820&office_id=215&code=002990&page=&sm=",
+          "source": "한국경제TV",
           "date": "2026.08.19"
         }
       ]
@@ -264,7 +264,7 @@
       "close_price": 11490.0,
       "trading_volume": 13442358,
       "trading_value": 154452693420,
-      "rise_reason": "李 호남 반도체 속도전 지시? 남화토건",
+      "rise_reason": "李 호남 반도체 속도전 지시",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1014,10 +1014,10 @@
       "date": "20260320",
       "change_rate": 14.31,
       "close_price": 5630.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -1056,7 +1056,10 @@
       "source": "estimated",
       "trading_volume": 1570849,
       "trading_value": 8843879870,
-      "market_cap": 209784523809
+      "market_cap": 209784523809,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1067,5 +1070,5 @@
     "count_recent": 0,
     "avg_rate": 24.58
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

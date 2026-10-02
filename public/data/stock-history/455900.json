@@ -355,7 +355,7 @@
       "close_price": 31600.0,
       "trading_volume": 1008729,
       "trading_value": 31875836400,
-      "rise_reason": "로봇주 동반 강세 — 두산로보틱스",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -548,7 +548,7 @@
       "date": "20251010",
       "change_rate": 10.46,
       "close_price": 26400.0,
-      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -574,7 +574,15 @@
       "trading_value": 12418190400,
       "market_cap": 405907415730,
       "reason_previous": "AI/반도체 테마",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "소프트뱅크 로봇사업 인수 덕? 로봇주 일제히 ‘상승’ [줍줍 리포트...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004541832",
+          "source": "서울경제",
+          "date": "2025-10-10"
+        }
+      ]
     }
   ],
   "stats": {
@@ -585,5 +593,5 @@
     "count_recent": 0,
     "avg_rate": 16.19
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -380,7 +380,7 @@
       "close_price": 4445.0,
       "trading_volume": 1438379,
       "trading_value": 6393594655,
-      "rise_reason": "한증막 더위 파세코· 동반",
+      "rise_reason": "한증막 더위 동반",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -586,10 +586,10 @@
       "date": "20250702",
       "change_rate": 10.24,
       "close_price": 7750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -597,7 +597,10 @@
       "source": "estimated",
       "trading_volume": 5226720,
       "trading_value": 40507080000,
-      "market_cap": 138619550858
+      "market_cap": 138619550858,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -608,5 +611,5 @@
     "count_recent": 0,
     "avg_rate": 17.12
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

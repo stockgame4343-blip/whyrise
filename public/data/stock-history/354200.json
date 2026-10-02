@@ -181,7 +181,7 @@
       "close_price": 2585.0,
       "trading_volume": 2920669,
       "trading_value": 7549929365,
-      "rise_reason": "코오롱티슈진 임상 실패 후폭풍 속 나노엔텍· 진단株",
+      "rise_reason": "코오롱티슈진 임상 실패 후폭풍 속 진단株",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -642,10 +642,10 @@
       "date": "20260120",
       "change_rate": 29.96,
       "close_price": 1952.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(진단키트)",
       "news": [
         {
@@ -660,7 +660,10 @@
       "source": "estimated",
       "trading_volume": 5833165,
       "trading_value": 11386338080,
-      "market_cap": 52250505050
+      "market_cap": 52250505050,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -671,5 +674,5 @@
     "count_recent": 1,
     "avg_rate": 22.4
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

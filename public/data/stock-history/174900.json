@@ -504,9 +504,9 @@
       "date": "20260313",
       "change_rate": 11.93,
       "close_price": 89100.0,
-      "rise_reason": "52주 신고가 도달",
+      "rise_reason": "16일 관리종목 지정 해제",
       "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -522,7 +522,18 @@
       "source": "estimated",
       "trading_volume": 807065,
       "trading_value": 71909491500,
-      "market_cap": 1777814093959
+      "market_cap": 1777814093959,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "앱클론, 16일 관리종목 지정 해제… 매출 30억원 미달 사유 해소",
+          "link": "https://n.news.naver.com/mnews/article/008/0005329736",
+          "source": "머니투데이",
+          "date": "2026-03-13"
+        }
+      ]
     },
     {
       "date": "20260310",
@@ -657,10 +668,10 @@
       "date": "20260102",
       "change_rate": 15.06,
       "close_price": 48900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -668,7 +679,10 @@
       "source": "estimated",
       "trading_volume": 837886,
       "trading_value": 40972625400,
-      "market_cap": 975702684563
+      "market_cap": 975702684563,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251219",
@@ -796,10 +810,10 @@
       "date": "20251120",
       "change_rate": 14.64,
       "close_price": 34450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -807,7 +821,10 @@
       "source": "estimated",
       "trading_volume": 791241,
       "trading_value": 27258252450,
-      "market_cap": 687381543624
+      "market_cap": 687381543624,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251028",
@@ -853,10 +870,10 @@
       "date": "20250929",
       "change_rate": 13.89,
       "close_price": 17880.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -864,16 +881,19 @@
       "source": "estimated",
       "trading_volume": 756715,
       "trading_value": 13530064200,
-      "market_cap": 356760000000
+      "market_cap": 356760000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250922",
       "change_rate": 10.95,
       "close_price": 15400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -881,7 +901,10 @@
       "source": "estimated",
       "trading_volume": 599136,
       "trading_value": 9226694400,
-      "market_cap": 307276510067
+      "market_cap": 307276510067,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250904",
@@ -911,5 +934,5 @@
     "count_recent": 2,
     "avg_rate": 14.65
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

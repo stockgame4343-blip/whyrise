@@ -242,10 +242,10 @@
       "date": "20250708",
       "change_rate": 29.96,
       "close_price": 2724.0,
-      "rise_reason": "골프 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "골프",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
@@ -253,7 +253,10 @@
       "source": "estimated",
       "trading_volume": 526423,
       "trading_value": 1433976252,
-      "market_cap": 60977614678
+      "market_cap": 60977614678,
+      "reason_previous": "골프 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
@@ -278,10 +281,10 @@
       "date": "20250523",
       "change_rate": 29.94,
       "close_price": 3116.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "골프",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
@@ -289,7 +292,10 @@
       "source": "estimated",
       "trading_volume": 1472235,
       "trading_value": 4587484260,
-      "market_cap": 69752660550
+      "market_cap": 69752660550,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -300,5 +306,5 @@
     "count_recent": 0,
     "avg_rate": 18.61
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

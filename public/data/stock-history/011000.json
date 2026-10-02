@@ -87,7 +87,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/15 20일 보통주 487만주 의무보유 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0000084760&office_id=293&code=011000&page=&sm=",
+        "title": "진원생명과학, 20일 보통주 487만주 의무보유 해제",
+        "date": "20260515"
+      }
     },
     {
       "date": "20260519",
@@ -418,10 +424,10 @@
       "date": "20250523",
       "change_rate": 10.25,
       "close_price": 3710.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "생물공학",
@@ -429,7 +435,10 @@
       "source": "estimated",
       "trading_volume": 42804982,
       "trading_value": 158806483220,
-      "market_cap": 337321325648
+      "market_cap": 337321325648,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -440,5 +449,5 @@
     "count_recent": 0,
     "avg_rate": 23.81
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

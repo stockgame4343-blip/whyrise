@@ -27,7 +27,7 @@
       "close_price": 59700.0,
       "trading_volume": 2176189,
       "trading_value": 129918483300,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -114,7 +114,7 @@
       "close_price": 62000.0,
       "trading_volume": 1427429,
       "trading_value": 88500598000,
-      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -124,7 +124,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 재료/부품 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260422",
@@ -300,5 +308,5 @@
     "count_recent": 0,
     "avg_rate": 13.11
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:18"
 }

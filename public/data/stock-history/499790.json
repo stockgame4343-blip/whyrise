@@ -276,10 +276,10 @@
       "date": "20260205",
       "change_rate": 10.14,
       "close_price": 60800.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "호텔/리조트",
       "news": [
         {
@@ -318,7 +318,10 @@
       "source": "estimated",
       "trading_volume": 1028306,
       "trading_value": 62521004800,
-      "market_cap": 1205719806763
+      "market_cap": 1205719806763,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
@@ -362,10 +365,10 @@
       "date": "20251118",
       "change_rate": 10.65,
       "close_price": 48850.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "호텔/리조트",
       "news": [
         {
@@ -404,7 +407,10 @@
       "source": "estimated",
       "trading_volume": 509418,
       "trading_value": 24885069300,
-      "market_cap": 968740338164
+      "market_cap": 968740338164,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251104",
@@ -429,10 +435,10 @@
       "date": "20250904",
       "change_rate": 12.4,
       "close_price": 56200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "호텔/리조트",
       "news": [],
       "sector": "호텔,레스토랑,레저",
@@ -440,7 +446,10 @@
       "source": "estimated",
       "trading_volume": 371704,
       "trading_value": 20889764800,
-      "market_cap": 1114497584541
+      "market_cap": 1114497584541,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250806",
@@ -494,10 +503,10 @@
       "date": "20250707",
       "change_rate": 12.82,
       "close_price": 39600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "호텔/리조트",
       "news": [],
       "sector": "호텔,레스토랑,레저",
@@ -505,7 +514,10 @@
       "source": "estimated",
       "trading_volume": 377029,
       "trading_value": 14930348400,
-      "market_cap": 785304347826
+      "market_cap": 785304347826,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -516,5 +528,5 @@
     "count_recent": 0,
     "avg_rate": 11.37
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

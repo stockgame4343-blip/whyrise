@@ -96,7 +96,7 @@
       "close_price": 16580.0,
       "trading_volume": 2533154,
       "trading_value": 41999693320,
-      "rise_reason": "신재생에너지주 동반 강세 — 국제유가",
+      "rise_reason": "신재생에너지주 동반 강세 — 국제유가 급등",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -216,7 +216,7 @@
       "close_price": 14810.0,
       "trading_volume": 601137,
       "trading_value": 8902838970,
-      "rise_reason": "신재생에너지주 동반 강세 — SK이터닉스",
+      "rise_reason": "신재생에너지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -413,10 +413,10 @@
       "close_price": 24650.0,
       "trading_volume": 1483864,
       "trading_value": 36577247600,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -434,13 +434,16 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "태양광/재생에너지",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
       "change_rate": 12.8,
       "close_price": 23350.0,
-      "rise_reason": "신재생주 동반 강세 — 중동 에너지 인프라 잇단 피격",
+      "rise_reason": "신재생주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -534,7 +537,7 @@
       "date": "20260306",
       "change_rate": 12.32,
       "close_price": 17500.0,
-      "rise_reason": "태양광주 동반 강세 — 중동 리스크에 믿을 에너지원은 이것",
+      "rise_reason": "태양광주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -660,10 +663,10 @@
       "date": "20250609",
       "change_rate": 10.55,
       "close_price": 30400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -671,16 +674,19 @@
       "source": "estimated",
       "trading_volume": 2494906,
       "trading_value": 75845142400,
-      "market_cap": 544692359702
+      "market_cap": 544692359702,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250605",
       "change_rate": 14.35,
       "close_price": 27500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -688,7 +694,10 @@
       "source": "estimated",
       "trading_volume": 2127744,
       "trading_value": 58512960000,
-      "market_cap": 492731575388
+      "market_cap": 492731575388,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -699,5 +708,5 @@
     "count_recent": 0,
     "avg_rate": 15.05
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

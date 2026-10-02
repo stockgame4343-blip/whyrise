@@ -114,10 +114,10 @@
       "close_price": 19330.0,
       "trading_volume": 539839,
       "trading_value": 10435087870,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -185,7 +185,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "허가 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "빅테크 실적발 훈풍에 장비株 강세…미래산업 16%·네오셈 9%↑[코주부...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004651028&office_id=011&code=323350&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -436,7 +444,7 @@
       "close_price": 26100.0,
       "trading_volume": 2538964,
       "trading_value": 66266960400,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -692,10 +700,10 @@
       "date": "20251020",
       "change_rate": 13.8,
       "close_price": 17070.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
         {
@@ -710,16 +718,19 @@
       "source": "estimated",
       "trading_volume": 4121438,
       "trading_value": 70352946660,
-      "market_cap": 570460387409
+      "market_cap": 570460387409,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250827",
       "change_rate": 21.42,
       "close_price": 16550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -727,7 +738,10 @@
       "source": "estimated",
       "trading_volume": 4777211,
       "trading_value": 79062842050,
-      "market_cap": 553082566585
+      "market_cap": 553082566585,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -738,5 +752,5 @@
     "count_recent": 1,
     "avg_rate": 15.12
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -9,7 +9,7 @@
       "close_price": 18300.0,
       "trading_volume": 4183,
       "trading_value": 76548900,
-      "rise_reason": "바이오주 동반 강세 — 셀리드",
+      "rise_reason": "바이오주 동반 강세 — 코로나19 감염 재확산 소식",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -47,9 +47,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "코로나19 재유행 우려에 제약주 급등…셀리드 '上'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014143455&office_id=003&code=299660&page=&sm=",
-          "source": "뉴시스",
+          "title": "코로나19 감염 재확산 소식에…제약·바이오株 나란히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001024866&office_id=088&code=019170&page=&sm=",
+          "source": "매일신문",
           "date": "2026.08.24"
         }
       ]
@@ -192,10 +192,10 @@
       "date": "20250624",
       "change_rate": 29.97,
       "close_price": 47700.0,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [
         {
@@ -212,15 +212,7 @@
       "trading_value": 793346400,
       "market_cap": 40313259109,
       "reason_previous": "방산 테마 상한가",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]‘녹십자홀딩스2우’ 13.08% 급등…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003551836",
-          "source": "서울신문",
-          "date": "2025-06-24"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20250617",
@@ -264,10 +256,10 @@
       "date": "20250609",
       "change_rate": 28.35,
       "close_price": 58400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [],
       "sector": "제약",
@@ -275,16 +267,19 @@
       "source": "estimated",
       "trading_volume": 34289,
       "trading_value": 2002477600,
-      "market_cap": 49356275303
+      "market_cap": 49356275303,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250605",
       "change_rate": 30.0,
       "close_price": 45500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [],
       "sector": "제약",
@@ -292,16 +287,19 @@
       "source": "estimated",
       "trading_volume": 40272,
       "trading_value": 1832376000,
-      "market_cap": 38453947368
+      "market_cap": 38453947368,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
       "change_rate": 18.44,
       "close_price": 35000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [],
       "sector": "제약",
@@ -309,16 +307,19 @@
       "source": "estimated",
       "trading_volume": 42313,
       "trading_value": 1480955000,
-      "market_cap": 29579959514
+      "market_cap": 29579959514,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250602",
       "change_rate": 29.89,
       "close_price": 29550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백신/진단시약/방역(신종플루, AI 등)",
       "news": [],
       "sector": "제약",
@@ -326,7 +327,10 @@
       "source": "estimated",
       "trading_volume": 29435,
       "trading_value": 869804250,
-      "market_cap": 24973937246
+      "market_cap": 24973937246,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -337,5 +341,5 @@
     "count_recent": 0,
     "avg_rate": 15.02
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

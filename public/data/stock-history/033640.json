@@ -252,7 +252,7 @@
       "close_price": 20650.0,
       "trading_volume": 265145,
       "trading_value": 5475244250,
-      "rise_reason": "AI for Good 우수사례 선정",
+      "rise_reason": "코코아팹, AI for Good 우수사례 선정",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -333,7 +333,7 @@
       "close_price": 35450.0,
       "trading_volume": 1084087,
       "trading_value": 38430884150,
-      "rise_reason": "온디바이스 AI 테마 3종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -404,7 +404,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "수출 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -477,10 +485,10 @@
       "close_price": 25150.0,
       "trading_volume": 1041349,
       "trading_value": 26189927350,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
         {
@@ -492,7 +500,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260407",
@@ -500,10 +511,10 @@
       "close_price": 21950.0,
       "trading_volume": 1173752,
       "trading_value": 25763856400,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
         {
@@ -533,7 +544,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -568,10 +582,10 @@
       "date": "20260325",
       "change_rate": 10.09,
       "close_price": 20300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
         {
@@ -586,16 +600,19 @@
       "source": "estimated",
       "trading_volume": 614816,
       "trading_value": 12480764800,
-      "market_cap": 468112404287
+      "market_cap": 468112404287,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
       "change_rate": 17.07,
       "close_price": 21050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [
         {
@@ -610,7 +627,10 @@
       "source": "estimated",
       "trading_volume": 1239392,
       "trading_value": 26089201600,
-      "market_cap": 485407197549
+      "market_cap": 485407197549,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -652,10 +672,10 @@
       "date": "20250618",
       "change_rate": 16.26,
       "close_price": 11440.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -663,16 +683,19 @@
       "source": "estimated",
       "trading_volume": 1641659,
       "trading_value": 18780578960,
-      "market_cap": 263803246554
+      "market_cap": 263803246554,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
       "change_rate": 20.43,
       "close_price": 10200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴로모픽 반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -680,7 +703,10 @@
       "source": "estimated",
       "trading_volume": 858187,
       "trading_value": 8753507400,
-      "market_cap": 235209188361
+      "market_cap": 235209188361,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -691,5 +717,5 @@
     "count_recent": 2,
     "avg_rate": 16.11
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -760,7 +760,7 @@
       "close_price": 1827.0,
       "trading_volume": 3045167,
       "trading_value": 5563520109,
-      "rise_reason": "관련 보도: 매각 불발 , 벌점폭탄 피해?시총 압박 여전",
+      "rise_reason": "관련 보도: 매각 불발 , 벌점폭탄 피해…시총 압박 여전",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -912,10 +912,10 @@
       "date": "20251113",
       "change_rate": 11.51,
       "close_price": 4455.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "소프트웨어",
@@ -923,7 +923,10 @@
       "source": "estimated",
       "trading_volume": 1728148,
       "trading_value": 7698899340,
-      "market_cap": 50731578947
+      "market_cap": 50731578947,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251105",
@@ -1025,10 +1028,10 @@
       "date": "20250617",
       "change_rate": 29.84,
       "close_price": 2850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "소프트웨어",
@@ -1036,7 +1039,10 @@
       "source": "estimated",
       "trading_volume": 781829,
       "trading_value": 2228212650,
-      "market_cap": 32454545454
+      "market_cap": 32454545454,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1047,5 +1053,5 @@
     "count_recent": 3,
     "avg_rate": 19.61
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

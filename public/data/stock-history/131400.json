@@ -198,7 +198,7 @@
       "close_price": 1930.0,
       "trading_volume": 15125060,
       "trading_value": 29191365800,
-      "rise_reason": "美 나스닥 스팩 합병 계약",
+      "rise_reason": "투자 프롤로지움, 美 나스닥 스팩 합병 계약",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -370,10 +370,10 @@
       "date": "20260126",
       "change_rate": 13.77,
       "close_price": 2090.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -412,13 +412,16 @@
       "source": "estimated",
       "trading_volume": 25288269,
       "trading_value": 52852482210,
-      "market_cap": 124612970711
+      "market_cap": 124612970711,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
       "change_rate": 29.91,
       "close_price": 2085.0,
-      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -464,10 +467,10 @@
       "date": "20260108",
       "change_rate": 12.15,
       "close_price": 1588.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -494,13 +497,16 @@
       "source": "estimated",
       "trading_volume": 13994518,
       "trading_value": 22223294584,
-      "market_cap": 94682008368
+      "market_cap": 94682008368,
+      "reason_previous": "전기차",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251024",
       "change_rate": 10.87,
       "close_price": 2030.0,
-      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -697,5 +703,5 @@
     "count_recent": 0,
     "avg_rate": 21.96
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -174,10 +174,10 @@
       "date": "20251223",
       "change_rate": 14.19,
       "close_price": 3300.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -198,16 +198,19 @@
       "source": "estimated",
       "trading_volume": 8149378,
       "trading_value": 26892947400,
-      "market_cap": 76138905238
+      "market_cap": 76138905238,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
       "change_rate": 29.89,
       "close_price": 2890.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -228,7 +231,10 @@
       "source": "estimated",
       "trading_volume": 1511449,
       "trading_value": 4368087610,
-      "market_cap": 66679223072
+      "market_cap": 66679223072,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251215",
@@ -286,10 +292,10 @@
       "date": "20251112",
       "change_rate": 29.99,
       "close_price": 2375.0,
-      "rise_reason": "자동차부품 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -304,16 +310,19 @@
       "source": "estimated",
       "trading_volume": 4052263,
       "trading_value": 9624124625,
-      "market_cap": 54796939376
+      "market_cap": 54796939376,
+      "reason_previous": "자동차부품 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
       "change_rate": 10.79,
       "close_price": 2720.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "자동차부품",
@@ -321,7 +330,10 @@
       "source": "estimated",
       "trading_volume": 248757,
       "trading_value": 676619040,
-      "market_cap": 62756915832
+      "market_cap": 62756915832,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -332,5 +344,5 @@
     "count_recent": 0,
     "avg_rate": 16.96
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

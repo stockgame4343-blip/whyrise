@@ -737,10 +737,10 @@
       "close_price": 13680.0,
       "trading_volume": 5949246,
       "trading_value": 81385685280,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -764,7 +764,10 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -772,10 +775,10 @@
       "close_price": 10530.0,
       "trading_volume": 38554282,
       "trading_value": 405976589460,
-      "rise_reason": "30.00% 금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -813,15 +816,7 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]광전자 30.00% 상한가 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003633905",
-          "source": "서울신문",
-          "date": "2026-04-09"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260407",
@@ -829,10 +824,10 @@
       "close_price": 7520.0,
       "trading_volume": 21285477,
       "trading_value": 160066787040,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -870,15 +865,7 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩] 광전자 26.94% 폭등…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003633024",
-          "source": "서울신문",
-          "date": "2026-04-07"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260403",
@@ -973,10 +960,10 @@
       "date": "20260324",
       "change_rate": 29.78,
       "close_price": 2615.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -1003,7 +990,10 @@
       "source": "estimated",
       "trading_volume": 9665572,
       "trading_value": 25275470780,
-      "market_cap": 151529124579
+      "market_cap": 151529124579,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1014,5 +1004,5 @@
     "count_recent": 2,
     "avg_rate": 22.61
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

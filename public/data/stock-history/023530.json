@@ -171,10 +171,10 @@
       "date": "20260210",
       "change_rate": 14.88,
       "close_price": 113500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "홈쇼핑",
       "news": [],
       "sector": "백화점과일반상점",
@@ -182,7 +182,10 @@
       "source": "estimated",
       "trading_volume": 678290,
       "trading_value": 76985915000,
-      "market_cap": 3210744024458
+      "market_cap": 3210744024458,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -193,5 +196,5 @@
     "count_recent": 0,
     "avg_rate": 13.27
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:19"
 }

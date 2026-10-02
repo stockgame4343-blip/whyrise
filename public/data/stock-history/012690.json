@@ -195,10 +195,10 @@
       "date": "20260310",
       "change_rate": 12.76,
       "close_price": 2210.0,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -231,7 +231,10 @@
       "source": "estimated",
       "trading_volume": 12977937,
       "trading_value": 28681240770,
-      "market_cap": 80810376775
+      "market_cap": 80810376775,
+      "reason_previous": "트럼프/관세",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -242,5 +245,5 @@
     "count_recent": 0,
     "avg_rate": 18.55
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

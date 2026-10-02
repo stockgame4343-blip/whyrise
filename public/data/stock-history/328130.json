@@ -283,10 +283,10 @@
       "date": "20250623",
       "change_rate": 12.34,
       "close_price": 24749.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [],
       "sector": "건강관리기술",
@@ -294,7 +294,10 @@
       "source": "estimated",
       "trading_volume": 3305924,
       "trading_value": 81818313076,
-      "market_cap": 1842768487918
+      "market_cap": 1842768487918,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -305,5 +308,5 @@
     "count_recent": 2,
     "avg_rate": 15.92
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

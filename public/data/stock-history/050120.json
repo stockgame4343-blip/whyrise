@@ -152,10 +152,10 @@
       "date": "20250812",
       "change_rate": 29.91,
       "close_price": 2780.0,
-      "rise_reason": "가상자산 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상자산",
       "news": [],
       "sector": "레저용장비와제품",
@@ -163,16 +163,19 @@
       "source": "estimated",
       "trading_volume": 926141,
       "trading_value": 2574671980,
-      "market_cap": 37688590604
+      "market_cap": 37688590604,
+      "reason_previous": "가상자산 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250605",
       "change_rate": 11.62,
       "close_price": 2930.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상자산",
       "news": [],
       "sector": "레저용장비와제품",
@@ -180,7 +183,10 @@
       "source": "estimated",
       "trading_volume": 129185,
       "trading_value": 378512050,
-      "market_cap": 39722147651
+      "market_cap": 39722147651,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -191,5 +197,5 @@
     "count_recent": 0,
     "avg_rate": 19.79
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -251,10 +251,10 @@
       "close_price": 3540.0,
       "trading_volume": 633808,
       "trading_value": 2243680320,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화학섬유",
       "news": [
         {
@@ -272,7 +272,10 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -295,10 +298,10 @@
       "date": "20260223",
       "change_rate": 21.79,
       "close_price": 4360.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화학섬유",
       "news": [
         {
@@ -331,7 +334,10 @@
       "source": "estimated",
       "trading_volume": 896512,
       "trading_value": 3908792320,
-      "market_cap": 73391757049
+      "market_cap": 73391757049,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251013",
@@ -385,10 +391,10 @@
       "date": "20250716",
       "change_rate": 12.44,
       "close_price": 4970.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화학섬유",
       "news": [
         {
@@ -427,7 +433,10 @@
       "source": "estimated",
       "trading_volume": 4213954,
       "trading_value": 20943351380,
-      "market_cap": 83659869848
+      "market_cap": 83659869848,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -438,5 +447,5 @@
     "count_recent": 1,
     "avg_rate": 15.12
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

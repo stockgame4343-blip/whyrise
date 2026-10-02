@@ -92,7 +92,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "9/11 액면병합 후 거래 첫날",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0001191712&office_id=366&code=285800&page=&sm=",
+        "title": "[특징주] 진영, 액면병합 후 거래 첫날 ‘상한가’",
+        "date": "20260911"
+      }
     },
     {
       "date": "20260911",
@@ -100,10 +106,10 @@
       "close_price": 4760.0,
       "trading_volume": 156535,
       "trading_value": 745106600,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "액면병합 후 거래 첫날",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -171,7 +177,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 진영, 액면병합 후 거래 첫날 ‘상한가’",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001191712&office_id=366&code=285800&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.09.11"
+        }
+      ]
     },
     {
       "date": "20260720",
@@ -544,5 +558,5 @@
     "count_recent": 2,
     "avg_rate": 22.68
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

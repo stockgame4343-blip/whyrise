@@ -161,7 +161,7 @@
       "reason_previous": "폴더블폰 양산 보도",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "8/18 본업 성장 본격화",
+        "text": "8/18 2분기 영업익 73억 전년比 39% 증가",
         "link": "https://finance.naver.com/item/news_read.naver?article_id=0005804130&office_id=277&code=441270&page=&sm=",
         "title": "파인엠텍, 2분기 영업익 73억 전년比 39%↑…본업 성장 본격화",
         "date": "20260818"
@@ -700,10 +700,10 @@
       "date": "20250715",
       "change_rate": 29.97,
       "close_price": 9280.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폴더블폰",
       "news": [
         {
@@ -742,16 +742,19 @@
       "source": "estimated",
       "trading_volume": 10854098,
       "trading_value": 100726029440,
-      "market_cap": 390136216216
+      "market_cap": 390136216216,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250707",
       "change_rate": 16.13,
       "close_price": 7990.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폴더블폰",
       "news": [],
       "sector": "핸드셋",
@@ -759,16 +762,19 @@
       "source": "estimated",
       "trading_volume": 610369,
       "trading_value": 4876848310,
-      "market_cap": 335903918918
+      "market_cap": 335903918918,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250625",
       "change_rate": 13.56,
       "close_price": 6700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "폴더블폰",
       "news": [],
       "sector": "핸드셋",
@@ -776,7 +782,10 @@
       "source": "estimated",
       "trading_volume": 1288727,
       "trading_value": 8634470900,
-      "market_cap": 281671621621
+      "market_cap": 281671621621,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -787,5 +796,5 @@
     "count_recent": 1,
     "avg_rate": 14.51
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

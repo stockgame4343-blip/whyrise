@@ -549,10 +549,10 @@
       "date": "20251125",
       "change_rate": 11.45,
       "close_price": 20050.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -573,16 +573,19 @@
       "source": "estimated",
       "trading_volume": 547418,
       "trading_value": 10975730900,
-      "market_cap": 1159844761904
+      "market_cap": 1159844761904,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251015",
       "change_rate": 23.44,
       "close_price": 27650.0,
-      "rise_reason": "수소/연료전지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [
         {
@@ -609,7 +612,10 @@
       "source": "estimated",
       "trading_volume": 1324250,
       "trading_value": 36615512500,
-      "market_cap": 1599486666666
+      "market_cap": 1599486666666,
+      "reason_previous": "수소/연료전지",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250912",
@@ -639,5 +645,5 @@
     "count_recent": 0,
     "avg_rate": 17.49
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

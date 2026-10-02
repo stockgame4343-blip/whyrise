@@ -420,10 +420,10 @@
       "date": "20251215",
       "change_rate": 15.68,
       "close_price": 13940.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -444,16 +444,19 @@
       "source": "estimated",
       "trading_volume": 10425693,
       "trading_value": 145334160420,
-      "market_cap": 542182488479
+      "market_cap": 542182488479,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251208",
       "change_rate": 14.95,
       "close_price": 12840.0,
-      "rise_reason": "관련 보도: 금일 코스피 거래량 1위 거래대금 1,961억원 돌...",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -494,24 +497,16 @@
       "trading_value": 230473428960,
       "market_cap": 499399078341,
       "reason_previous": "자사주 소각",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]금일 코스피 거래량 1위 디아이씨 거래대금 1,961억원 돌...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003598929",
-          "source": "서울신문",
-          "date": "2025-12-08"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20251128",
       "change_rate": 24.35,
       "close_price": 9090.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -544,7 +539,10 @@
       "source": "estimated",
       "trading_volume": 20749516,
       "trading_value": 188613100440,
-      "market_cap": 353546543778
+      "market_cap": 353546543778,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251127",
@@ -690,10 +688,10 @@
       "date": "20251103",
       "change_rate": 29.83,
       "close_price": 6420.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈 플라스틱(친환경/생분해성 등)",
       "news": [
         {
@@ -732,7 +730,10 @@
       "source": "estimated",
       "trading_volume": 15533028,
       "trading_value": 99722039760,
-      "market_cap": 249699539170
+      "market_cap": 249699539170,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -743,5 +744,5 @@
     "count_recent": 0,
     "avg_rate": 16.29
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

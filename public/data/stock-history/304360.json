@@ -390,10 +390,10 @@
       "date": "20251202",
       "change_rate": 19.27,
       "close_price": 30950.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [
         {
@@ -420,7 +420,10 @@
       "source": "estimated",
       "trading_volume": 757141,
       "trading_value": 23433513950,
-      "market_cap": 383271232876
+      "market_cap": 383271232876,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251113",
@@ -479,10 +482,10 @@
       "date": "20250616",
       "change_rate": 12.16,
       "close_price": 24450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [],
       "sector": "생물공학",
@@ -490,7 +493,10 @@
       "source": "estimated",
       "trading_volume": 669419,
       "trading_value": 16367294550,
-      "market_cap": 302778082191
+      "market_cap": 302778082191,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -501,5 +507,5 @@
     "count_recent": 1,
     "avg_rate": 13.75
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

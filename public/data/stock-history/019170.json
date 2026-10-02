@@ -78,7 +78,7 @@
       "close_price": 10550.0,
       "trading_volume": 2074253,
       "trading_value": 21883369150,
-      "rise_reason": "바이오주 동반 강세 — 셀리드",
+      "rise_reason": "바이오주 동반 강세 — 코로나19 감염 재확산 소식",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -140,9 +140,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "코로나19 재유행 우려에 제약주 급등…셀리드 '上'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014143455&office_id=003&code=299660&page=&sm=",
-          "source": "뉴시스",
+          "title": "코로나19 감염 재확산 소식에…제약·바이오株 나란히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001024866&office_id=088&code=019170&page=&sm=",
+          "source": "매일신문",
           "date": "2026.08.24"
         }
       ]
@@ -308,10 +308,10 @@
       "date": "20250618",
       "change_rate": 29.98,
       "close_price": 16650.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "제약",
@@ -319,16 +319,19 @@
       "source": "estimated",
       "trading_volume": 3308401,
       "trading_value": 55084876650,
-      "market_cap": 872735903337
+      "market_cap": 872735903337,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250617",
       "change_rate": 29.92,
       "close_price": 12810.0,
-      "rise_reason": "코로나19(치료제/백신 개발 등) 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "제약",
@@ -336,16 +339,19 @@
       "source": "estimated",
       "trading_volume": 1993501,
       "trading_value": 25536747810,
-      "market_cap": 671456271576
+      "market_cap": 671456271576,
+      "reason_previous": "코로나19(치료제/백신 개발 등) 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
       "change_rate": 15.7,
       "close_price": 11790.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "제약",
@@ -353,7 +359,10 @@
       "source": "estimated",
       "trading_volume": 6892322,
       "trading_value": 81260476380,
-      "market_cap": 617991369390
+      "market_cap": 617991369390,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -364,5 +373,5 @@
     "count_recent": 0,
     "avg_rate": 23.52
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

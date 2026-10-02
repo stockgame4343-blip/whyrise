@@ -183,10 +183,10 @@
       "close_price": 21550.0,
       "trading_volume": 109300,
       "trading_value": 2355415000,
-      "rise_reason": "",
+      "rise_reason": "건설주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "면세점",
       "news": [
         {
@@ -206,16 +206,24 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "면세점 테마 강세",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 메가 프로젝트에 건설주 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000180222&office_id=656&code=013580&page=&sm=",
+          "source": "대전일보",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260320",
       "change_rate": 11.98,
       "close_price": 28050.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -254,7 +262,10 @@
       "source": "estimated",
       "trading_volume": 468888,
       "trading_value": 13152308400,
-      "market_cap": 1675783252427
+      "market_cap": 1675783252427,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -265,5 +276,5 @@
     "count_recent": 1,
     "avg_rate": 12.82
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

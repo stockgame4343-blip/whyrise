@@ -286,15 +286,18 @@
       "close_price": 4050.0,
       "trading_volume": 5911444,
       "trading_value": 23941348200,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제대혈",
       "news": [],
       "sector": "생물공학",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260410",
@@ -381,10 +384,10 @@
       "date": "20260311",
       "change_rate": 12.83,
       "close_price": 2550.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -399,7 +402,10 @@
       "source": "estimated",
       "trading_volume": 2742261,
       "trading_value": 6992765550,
-      "market_cap": 239800000000
+      "market_cap": 239800000000,
+      "reason_previous": "태양광/재생에너지",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260309",
@@ -439,10 +445,10 @@
       "date": "20251229",
       "change_rate": 10.91,
       "close_price": 2135.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -450,7 +456,10 @@
       "source": "estimated",
       "trading_volume": 1571456,
       "trading_value": 3355058560,
-      "market_cap": 200773725490
+      "market_cap": 200773725490,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250912",
@@ -526,5 +535,5 @@
     "count_recent": 0,
     "avg_rate": 14.12
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

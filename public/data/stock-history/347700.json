@@ -159,7 +159,7 @@
       "reason_previous": "공급망 관련 뉴스",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "8/2 스페이스X 공급망 부각에 8배 뛴",
+        "text": "8/2 스페이스X 공급망 부각",
         "link": "https://finance.naver.com/item/news_read.naver?article_id=0014102795&office_id=003&code=347700&page=&sm=",
         "title": "'스페이스X 공급망' 부각에 8배 뛴 스피어, 지금은 70%↓[급등주 ...",
         "date": "20260802"
@@ -171,7 +171,7 @@
       "close_price": 19690.0,
       "trading_volume": 3538155,
       "trading_value": 69666271950,
-      "rise_reason": "스페이스X 공급망 부각에 8배 뛴",
+      "rise_reason": "스페이스X 공급망 부각",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -902,15 +902,18 @@
       "close_price": 49200.0,
       "trading_volume": 1649397,
       "trading_value": 81150332400,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원격진료/비대면진료(U-Healthcare)",
       "news": [],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -967,10 +970,10 @@
       "date": "20260206",
       "change_rate": 29.91,
       "close_price": 37350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [],
       "sector": "우주항공과국방",
@@ -978,7 +981,10 @@
       "source": "estimated",
       "trading_volume": 6034625,
       "trading_value": 225393243750,
-      "market_cap": 1925041188118
+      "market_cap": 1925041188118,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
@@ -1030,10 +1036,10 @@
       "date": "20260123",
       "change_rate": 11.95,
       "close_price": 21550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [],
       "sector": "우주항공과국방",
@@ -1041,7 +1047,10 @@
       "source": "estimated",
       "trading_volume": 7900187,
       "trading_value": 170249029850,
-      "market_cap": 1110699801980
+      "market_cap": 1110699801980,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
@@ -1296,10 +1305,10 @@
       "date": "20250715",
       "change_rate": 11.6,
       "close_price": 12030.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -1314,7 +1323,10 @@
       "source": "estimated",
       "trading_volume": 1056660,
       "trading_value": 12711619800,
-      "market_cap": 620033346534
+      "market_cap": 620033346534,
+      "reason_previous": "대형 수주",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1325,5 +1337,5 @@
     "count_recent": 1,
     "avg_rate": 18.22
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -225,7 +225,7 @@
       "close_price": 104600.0,
       "trading_volume": 725098,
       "trading_value": 75845250800,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -268,10 +268,10 @@
       "date": "20260130",
       "change_rate": 14.98,
       "close_price": 105900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -279,16 +279,19 @@
       "source": "estimated",
       "trading_volume": 3108007,
       "trading_value": 329137941300,
-      "market_cap": 8070815118790
+      "market_cap": 8070815118790,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
       "change_rate": 10.62,
       "close_price": 83300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -296,7 +299,10 @@
       "source": "estimated",
       "trading_volume": 2020852,
       "trading_value": 168336971600,
-      "market_cap": 6348431533477
+      "market_cap": 6348431533477,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251125",
@@ -326,5 +332,5 @@
     "count_recent": 1,
     "avg_rate": 13.66
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -246,7 +246,7 @@
       "close_price": 8220.0,
       "trading_volume": 6038879,
       "trading_value": 49639585380,
-      "rise_reason": "관련 보도: 탈모치료제 생산 채비…피나?두타 장기지속형 주사...",
+      "rise_reason": "관련 보도: 탈모치료제 생산 채비…피나…두타 장기지속형 주사...",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -333,7 +333,7 @@
       "close_price": 8180.0,
       "trading_volume": 3068067,
       "trading_value": 25096788060,
-      "rise_reason": "관련 보도: 탈모치료제 생산 채비…피나?두타 장기지속형 주사...",
+      "rise_reason": "관련 보도: 탈모치료제 생산 채비…피나…두타 장기지속형 주사...",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -516,10 +516,10 @@
       "date": "20250523",
       "change_rate": 14.58,
       "close_price": 9510.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [],
       "sector": "제약",
@@ -527,7 +527,10 @@
       "source": "estimated",
       "trading_volume": 17763861,
       "trading_value": 168934318110,
-      "market_cap": 125476185101
+      "market_cap": 125476185101,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -538,5 +541,5 @@
     "count_recent": 0,
     "avg_rate": 17.98
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -568,7 +568,7 @@
       "close_price": 2030.0,
       "trading_volume": 399918,
       "trading_value": 811833540,
-      "rise_reason": "2차전지주 동반 강세 — 글로벌 ESS 시장 확대에 힘받나",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -618,10 +618,10 @@
       "date": "20260325",
       "change_rate": 11.76,
       "close_price": 1578.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
         {
@@ -636,7 +636,10 @@
       "source": "estimated",
       "trading_volume": 335940,
       "trading_value": 530113320,
-      "market_cap": 40540487804
+      "market_cap": 40540487804,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260319",
@@ -717,10 +720,10 @@
       "date": "20251210",
       "change_rate": 10.72,
       "close_price": 2210.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트홈(홈네트워크)",
       "news": [
         {
@@ -735,7 +738,10 @@
       "source": "estimated",
       "trading_volume": 851187,
       "trading_value": 1881123270,
-      "market_cap": 56777235772
+      "market_cap": 56777235772,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251107",
@@ -765,5 +771,5 @@
     "count_recent": 2,
     "avg_rate": 14.45
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -124,7 +124,7 @@
       "close_price": 55000.0,
       "trading_volume": 542924,
       "trading_value": 29860820000,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -288,7 +288,7 @@
       "close_price": 56900.0,
       "trading_volume": 1297469,
       "trading_value": 73825986100,
-      "rise_reason": "반도체주 동반 강세 — 000 돌파",
+      "rise_reason": "반도체주 동반 강세 — 전쟁 리스크도 눌렀다",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -362,9 +362,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[이 시각 시황] 코스피, 7,000 돌파…반도체 대표주 '훨훨'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000508330&office_id=374&code=024840&page=&sm=",
-          "source": "SBS Biz",
+          "title": "[기획] 전쟁 리스크도 눌렀다…AI 반도체 랠리에 코스피 레벨업",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003424739&office_id=030&code=001500&page=&sm=",
+          "source": "전자신문",
           "date": "2026.05.06"
         }
       ]
@@ -406,10 +406,10 @@
       "date": "20260306",
       "change_rate": 10.76,
       "close_price": 33450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "냉각시스템(액침냉각 등)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -417,7 +417,10 @@
       "source": "estimated",
       "trading_volume": 1072775,
       "trading_value": 35884323750,
-      "market_cap": 616462018348
+      "market_cap": 616462018348,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -479,5 +482,5 @@
     "count_recent": 0,
     "avg_rate": 14.31
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

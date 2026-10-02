@@ -412,7 +412,7 @@
       "close_price": 44150.0,
       "trading_volume": 255585,
       "trading_value": 11284077750,
-      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -422,7 +422,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "시스템반도체 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -430,7 +438,7 @@
       "close_price": 60500.0,
       "trading_volume": 656629,
       "trading_value": 39726054500,
-      "rise_reason": "관련 보도: 1300억 R&D 투자…플랫폼 기업 전환 속도",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -501,13 +509,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "에이디테크놀로지, 1300억 R&D 투자…플랫폼 기업 전환 속도",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263594&office_id=018&code=200710&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.04.22"
+          "title": "[특징주] 美 AI 인프라 수요 증가에 전기장비株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159440&office_id=366&code=006340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
         }
       ]
     },
@@ -662,10 +670,10 @@
       "date": "20260324",
       "change_rate": 18.37,
       "close_price": 58000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -698,13 +706,16 @@
       "source": "estimated",
       "trading_volume": 1493958,
       "trading_value": 86649564000,
-      "market_cap": 780788489208
+      "market_cap": 780788489208,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
       "change_rate": 14.82,
       "close_price": 48800.0,
-      "rise_reason": "반도체주 동반 강세 — 내후년까지 빅사이클 진입",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -830,10 +841,10 @@
       "date": "20251226",
       "change_rate": 27.9,
       "close_price": 35300.0,
-      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -843,24 +854,16 @@
       "trading_value": 160416013900,
       "market_cap": 475204028776,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "sector",
-      "reason_evidence": [
-        {
-          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
-          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
-          "source": "SBS Biz",
-          "date": "2025-12-26"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20251201",
       "change_rate": 10.79,
       "close_price": 30800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -868,7 +871,10 @@
       "source": "estimated",
       "trading_volume": 1315610,
       "trading_value": 40520788000,
-      "market_cap": 414625611510
+      "market_cap": 414625611510,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251128",
@@ -985,10 +991,10 @@
       "date": "20250701",
       "change_rate": 10.8,
       "close_price": 19080.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -996,16 +1002,19 @@
       "source": "estimated",
       "trading_volume": 638282,
       "trading_value": 12178420560,
-      "market_cap": 256852489208
+      "market_cap": 256852489208,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
       "change_rate": 16.3,
       "close_price": 18980.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1013,7 +1022,10 @@
       "source": "estimated",
       "trading_volume": 850339,
       "trading_value": 16139434220,
-      "market_cap": 255506302158
+      "market_cap": 255506302158,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1024,5 +1036,5 @@
     "count_recent": 0,
     "avg_rate": 14.67
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

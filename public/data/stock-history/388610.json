@@ -248,10 +248,10 @@
       "date": "20250709",
       "change_rate": 10.13,
       "close_price": 25000.0,
-      "rise_reason": "파트너십",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -272,7 +272,10 @@
       "source": "estimated",
       "trading_volume": 6943652,
       "trading_value": 173591300000,
-      "market_cap": 133050847457
+      "market_cap": 133050847457,
+      "reason_previous": "파트너십",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250630",
@@ -326,10 +329,10 @@
       "date": "20250616",
       "change_rate": 14.48,
       "close_price": 25700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "생물공학",
@@ -337,7 +340,10 @@
       "source": "estimated",
       "trading_volume": 5350,
       "trading_value": 137495000,
-      "market_cap": 136776271186
+      "market_cap": 136776271186,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250602",
@@ -367,5 +373,5 @@
     "count_recent": 0,
     "avg_rate": 11.74
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

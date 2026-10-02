@@ -149,10 +149,10 @@
       "date": "20260127",
       "change_rate": 30.0,
       "close_price": 15600.0,
-      "rise_reason": "금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "은행",
       "news": [
         {
@@ -193,24 +193,16 @@
       "trading_value": 152321036400,
       "market_cap": 589634782608,
       "reason_previous": "트럼프/관세",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]제주은행 30.00% 상한가…금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003612100",
-          "source": "서울신문",
-          "date": "2026-01-27"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20250710",
       "change_rate": 21.38,
       "close_price": 19190.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "은행",
       "news": [],
       "sector": "은행",
@@ -218,16 +210,19 @@
       "source": "estimated",
       "trading_volume": 12985035,
       "trading_value": 249182821650,
-      "market_cap": 725326376811
+      "market_cap": 725326376811,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250625",
       "change_rate": 11.27,
       "close_price": 15400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "은행",
       "news": [],
       "sector": "은행",
@@ -235,16 +230,19 @@
       "source": "estimated",
       "trading_volume": 10612094,
       "trading_value": 163426247600,
-      "market_cap": 582075362318
+      "market_cap": 582075362318,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250624",
       "change_rate": 20.87,
       "close_price": 13840.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "은행",
       "news": [],
       "sector": "은행",
@@ -252,16 +250,19 @@
       "source": "estimated",
       "trading_volume": 3645754,
       "trading_value": 50457235360,
-      "market_cap": 523111884057
+      "market_cap": 523111884057,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250623",
       "change_rate": 12.81,
       "close_price": 11450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "은행",
       "news": [],
       "sector": "은행",
@@ -269,7 +270,10 @@
       "source": "estimated",
       "trading_volume": 2469520,
       "trading_value": 28276004000,
-      "market_cap": 432776811594
+      "market_cap": 432776811594,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -280,5 +284,5 @@
     "count_recent": 0,
     "avg_rate": 19.72
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

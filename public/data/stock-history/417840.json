@@ -408,7 +408,7 @@
       "close_price": 17500.0,
       "trading_volume": 2476286,
       "trading_value": 43335005000,
-      "rise_reason": "반도체 장비 테마 17종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -479,7 +479,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "반도체 장비 영업이익 공시",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -1088,7 +1096,7 @@
       "date": "20251230",
       "change_rate": 11.3,
       "close_price": 5810.0,
-      "rise_reason": "실시간 상승률 1위",
+      "rise_reason": "무상증자 권리락 효과로",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1129,9 +1137,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "[서울데이터랩]저스템 29.89% 폭등…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003604922",
-          "source": "서울신문",
+          "title": "저스템, 무상증자 권리락 효과로 20%↑[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006191826",
+          "source": "이데일리",
           "date": "2025-12-30"
         }
       ]
@@ -1206,5 +1214,5 @@
     "count_recent": 0,
     "avg_rate": 18.29
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

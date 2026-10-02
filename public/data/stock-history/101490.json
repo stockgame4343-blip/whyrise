@@ -211,15 +211,18 @@
       "close_price": 102100.0,
       "trading_volume": 1014108,
       "trading_value": 103540426800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -328,10 +331,10 @@
       "date": "20260113",
       "change_rate": 12.71,
       "close_price": 66500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -352,7 +355,10 @@
       "source": "estimated",
       "trading_volume": 1957749,
       "trading_value": 130190308500,
-      "market_cap": 1418740066225
+      "market_cap": 1418740066225,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
@@ -409,10 +415,10 @@
       "date": "20251013",
       "change_rate": 12.41,
       "close_price": 59800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -420,7 +426,10 @@
       "source": "estimated",
       "trading_volume": 566662,
       "trading_value": 33886387600,
-      "market_cap": 1275799337748
+      "market_cap": 1275799337748,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250728",
@@ -470,10 +479,10 @@
       "date": "20250703",
       "change_rate": 11.45,
       "close_price": 46250.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -512,7 +521,10 @@
       "source": "estimated",
       "trading_volume": 849356,
       "trading_value": 39282715000,
-      "market_cap": 986717715231
+      "market_cap": 986717715231,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -523,5 +535,5 @@
     "count_recent": 1,
     "avg_rate": 15.02
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

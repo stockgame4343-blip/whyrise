@@ -25,10 +25,10 @@
       "close_price": 2065.0,
       "trading_volume": 3622541,
       "trading_value": 7480547165,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -40,7 +40,10 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260209",
@@ -70,5 +73,5 @@
     "count_recent": 0,
     "avg_rate": 10.79
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

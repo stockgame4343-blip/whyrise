@@ -256,15 +256,18 @@
       "close_price": 3820.0,
       "trading_volume": 2273167,
       "trading_value": 8683497940,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -272,10 +275,10 @@
       "close_price": 3675.0,
       "trading_volume": 5027644,
       "trading_value": 18476591700,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -287,7 +290,10 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -538,10 +544,10 @@
       "date": "20260108",
       "change_rate": 29.95,
       "close_price": 1957.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리비안(RIVIAN)",
       "news": [],
       "sector": "자동차부품",
@@ -549,7 +555,10 @@
       "source": "estimated",
       "trading_volume": 34422316,
       "trading_value": 67364472412,
-      "market_cap": 143314653130
+      "market_cap": 143314653130,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -560,5 +569,5 @@
     "count_recent": 0,
     "avg_rate": 21.78
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

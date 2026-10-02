@@ -253,10 +253,10 @@
       "date": "20250623",
       "change_rate": 10.38,
       "close_price": 23400.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지역화폐",
       "news": [
         {
@@ -277,16 +277,19 @@
       "source": "estimated",
       "trading_volume": 1905154,
       "trading_value": 44580603600,
-      "market_cap": 102230198019
+      "market_cap": 102230198019,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
       "change_rate": 11.93,
       "close_price": 27200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지역화폐",
       "news": [],
       "sector": "소프트웨어",
@@ -294,16 +297,19 @@
       "source": "estimated",
       "trading_volume": 6784729,
       "trading_value": 184544628800,
-      "market_cap": 118831683168
+      "market_cap": 118831683168,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250602",
       "change_rate": 29.95,
       "close_price": 24300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지역화폐",
       "news": [],
       "sector": "소프트웨어",
@@ -311,7 +317,10 @@
       "source": "estimated",
       "trading_volume": 3807890,
       "trading_value": 92531727000,
-      "market_cap": 106162128712
+      "market_cap": 106162128712,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -322,5 +331,5 @@
     "count_recent": 0,
     "avg_rate": 14.91
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

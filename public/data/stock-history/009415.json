@@ -512,8 +512,8 @@
       "date": "20251230",
       "change_rate": 13.83,
       "close_price": 13500.0,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "건설주 동반 강세 — 정책 기대 vs 단기 과열",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설",
@@ -556,12 +556,12 @@
       "trading_value": 11269206000,
       "market_cap": 8743523316,
       "reason_previous": "건설 테마 강세",
-      "reason_kind": "move",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[서울데이터랩]‘태영건설우’ +29.76% 폭등…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003604921",
-          "source": "서울신문",
+          "title": "정책 기대 vs 단기 과열…중소형 건설株 불기둥 [이런국장 저런주식]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004572859",
+          "source": "서울경제",
           "date": "2025-12-30"
         }
       ]
@@ -570,10 +570,10 @@
       "date": "20251219",
       "change_rate": 29.99,
       "close_price": 18900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설",
       "news": [],
       "sector": "건설",
@@ -581,16 +581,19 @@
       "source": "estimated",
       "trading_volume": 1327046,
       "trading_value": 25081169400,
-      "market_cap": 12240932642
+      "market_cap": 12240932642,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251218",
       "change_rate": 29.94,
       "close_price": 14540.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설",
       "news": [],
       "sector": "건설",
@@ -598,16 +601,19 @@
       "source": "estimated",
       "trading_volume": 175740,
       "trading_value": 2555259600,
-      "market_cap": 9417098445
+      "market_cap": 9417098445,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251216",
       "change_rate": 29.97,
       "close_price": 11190.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설",
       "news": [],
       "sector": "건설",
@@ -615,7 +621,10 @@
       "source": "estimated",
       "trading_volume": 227534,
       "trading_value": 2546105460,
-      "market_cap": 7247409326
+      "market_cap": 7247409326,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251215",
@@ -640,10 +649,10 @@
       "date": "20251210",
       "change_rate": 29.92,
       "close_price": 8510.0,
-      "rise_reason": "건설 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설",
       "news": [],
       "sector": "건설",
@@ -651,7 +660,10 @@
       "source": "estimated",
       "trading_volume": 192903,
       "trading_value": 1641604530,
-      "market_cap": 5511658031
+      "market_cap": 5511658031,
+      "reason_previous": "건설 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251208",
@@ -737,5 +749,5 @@
     "count_recent": 0,
     "avg_rate": 25.33
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

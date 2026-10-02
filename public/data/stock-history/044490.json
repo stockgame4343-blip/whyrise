@@ -88,7 +88,7 @@
       "close_price": 30800.0,
       "trading_volume": 309130,
       "trading_value": 9521204000,
-      "rise_reason": "원자력발전 테마 3종목 동반 상승",
+      "rise_reason": "원전주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -159,7 +159,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "원자력발전 수주 공시",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "원전株 동반 강세…한전기술 10%·현대건설 9%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001025028&office_id=088&code=052690&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -993,10 +1001,10 @@
       "date": "20251015",
       "change_rate": 11.42,
       "close_price": 35600.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [
         {
@@ -1017,7 +1025,10 @@
       "source": "estimated",
       "trading_volume": 549484,
       "trading_value": 19561630400,
-      "market_cap": 712305142857
+      "market_cap": 712305142857,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250721",
@@ -1090,10 +1101,10 @@
       "date": "20250612",
       "change_rate": 13.23,
       "close_price": 32950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -1101,16 +1112,19 @@
       "source": "estimated",
       "trading_volume": 6271272,
       "trading_value": 206638412400,
-      "market_cap": 659282428571
+      "market_cap": 659282428571,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250602",
       "change_rate": 20.09,
       "close_price": 27500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -1118,16 +1132,19 @@
       "source": "estimated",
       "trading_volume": 12252677,
       "trading_value": 336948617500,
-      "market_cap": 550235714285
+      "market_cap": 550235714285,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250529",
       "change_rate": 13.92,
       "close_price": 22100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -1135,16 +1152,19 @@
       "source": "estimated",
       "trading_volume": 5415795,
       "trading_value": 119689069500,
-      "market_cap": 442189428571
+      "market_cap": 442189428571,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
       "change_rate": 11.83,
       "close_price": 19100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -1152,16 +1172,19 @@
       "source": "estimated",
       "trading_volume": 10493826,
       "trading_value": 200432076600,
-      "market_cap": 382163714285
+      "market_cap": 382163714285,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
       "change_rate": 22.58,
       "close_price": 17750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -1169,7 +1192,10 @@
       "source": "estimated",
       "trading_volume": 9035561,
       "trading_value": 160381207750,
-      "market_cap": 355152142857
+      "market_cap": 355152142857,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1180,5 +1206,5 @@
     "count_recent": 1,
     "avg_rate": 16.59
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

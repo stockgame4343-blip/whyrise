@@ -354,10 +354,10 @@
       "date": "20250722",
       "change_rate": 29.94,
       "close_price": 15823.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "퓨리오사AI",
       "news": [
         {
@@ -396,7 +396,10 @@
       "source": "estimated",
       "trading_volume": 4129432,
       "trading_value": 65340002536,
-      "market_cap": 225773758503
+      "market_cap": 225773758503,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
@@ -421,10 +424,10 @@
       "date": "20250528",
       "change_rate": 12.88,
       "close_price": 17777.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "퓨리오사AI",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -432,7 +435,10 @@
       "source": "estimated",
       "trading_volume": 10673657,
       "trading_value": 189745600489,
-      "market_cap": 253654812925
+      "market_cap": 253654812925,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -443,5 +449,5 @@
     "count_recent": 0,
     "avg_rate": 17.4
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

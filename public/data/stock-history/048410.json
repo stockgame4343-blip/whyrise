@@ -349,10 +349,10 @@
       "date": "20260224",
       "change_rate": 12.55,
       "close_price": 20000.0,
-      "rise_reason": "+29.99% 금일 증시 상승률 1위로",
-      "reason_confidence": "mid",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -393,24 +393,16 @@
       "trading_value": 458129700000,
       "market_cap": 1930158730158,
       "reason_previous": "바이오",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]현대바이오 +29.99% 상한가 금일 증시 상승률 1위로 마...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003619997",
-          "source": "서울신문",
-          "date": "2026-02-23"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
       "change_rate": 29.99,
       "close_price": 17770.0,
-      "rise_reason": "+29.99% 금일 증시 상승률 1위로",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -451,15 +443,7 @@
       "trading_value": 217100443650,
       "market_cap": 1714946031746,
       "reason_previous": "바이오",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]현대바이오 +29.99% 상한가 금일 증시 상승률 1위로 마...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003619997",
-          "source": "서울신문",
-          "date": "2026-02-23"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
@@ -507,10 +491,10 @@
       "date": "20260210",
       "change_rate": 11.38,
       "close_price": 11550.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -549,7 +533,10 @@
       "source": "estimated",
       "trading_volume": 8304648,
       "trading_value": 95918684400,
-      "market_cap": 1114666666666
+      "market_cap": 1114666666666,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260130",
@@ -606,10 +593,10 @@
       "date": "20260127",
       "change_rate": 29.97,
       "close_price": 8110.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "화장품",
@@ -617,7 +604,10 @@
       "source": "estimated",
       "trading_volume": 9623839,
       "trading_value": 78049334290,
-      "market_cap": 782679365079
+      "market_cap": 782679365079,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260116",
@@ -812,5 +802,5 @@
     "count_recent": 1,
     "avg_rate": 15.88
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

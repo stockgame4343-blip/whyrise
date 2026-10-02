@@ -357,9 +357,9 @@
       "close_price": 61800.0,
       "trading_volume": 4983557,
       "trading_value": 307983822600,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -426,7 +426,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美 AI 인프라 수요 증가에 전기장비株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159440&office_id=366&code=006340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -590,5 +601,5 @@
     "count_recent": 0,
     "avg_rate": 15.95
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

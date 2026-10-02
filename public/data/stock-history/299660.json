@@ -178,7 +178,7 @@
       "close_price": 1885.0,
       "trading_volume": 3221896,
       "trading_value": 6073273960,
-      "rise_reason": "바이오주 동반 강세 — 땡큐 모더나",
+      "rise_reason": "바이오주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -677,10 +677,10 @@
       "date": "20250527",
       "change_rate": 29.86,
       "close_price": 8350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "생물공학",
@@ -688,7 +688,10 @@
       "source": "estimated",
       "trading_volume": 10677638,
       "trading_value": 89158277300,
-      "market_cap": 246264492753
+      "market_cap": 246264492753,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -699,5 +702,5 @@
     "count_recent": 1,
     "avg_rate": 22.21
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

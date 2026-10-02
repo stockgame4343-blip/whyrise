@@ -232,7 +232,7 @@
       "close_price": 4465.0,
       "trading_volume": 14414434,
       "trading_value": 64360447810,
-      "rise_reason": "전후 재건 테마 7종목 동반 상승",
+      "rise_reason": "건설주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -267,7 +267,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "호남 상장 이슈",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 메가 프로젝트에 건설주 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000180222&office_id=656&code=013580&page=&sm=",
+          "source": "대전일보",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260625",
@@ -335,10 +343,10 @@
       "date": "20260211",
       "change_rate": 29.87,
       "close_price": 4630.0,
-      "rise_reason": "금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "남북경협",
       "news": [
         {
@@ -379,15 +387,7 @@
       "trading_value": 23758131980,
       "market_cap": 92333141210,
       "reason_previous": "흑자 전환",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]다스코 29.87% 폭등…금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003617091",
-          "source": "서울신문",
-          "date": "2026-02-11"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
@@ -412,10 +412,10 @@
       "date": "20251124",
       "change_rate": 14.8,
       "close_price": 3490.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남북경협",
       "news": [
         {
@@ -442,7 +442,10 @@
       "source": "estimated",
       "trading_volume": 16181101,
       "trading_value": 56472042490,
-      "market_cap": 69598847262
+      "market_cap": 69598847262,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251119",
@@ -499,5 +502,5 @@
     "count_recent": 1,
     "avg_rate": 19.84
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

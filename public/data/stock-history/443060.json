@@ -96,9 +96,9 @@
       "close_price": 253500.0,
       "trading_volume": 627159,
       "trading_value": 158984806500,
-      "rise_reason": "실적 호조",
+      "rise_reason": "1분기 영업익 전년比 12.5% 증가",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "조선기자재",
       "news": [
@@ -165,7 +165,18 @@
       ],
       "sector": "조선",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "HD현대마린솔루션, 1분기 영업익 전년比 12.5%↑…선박 서비스 사...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002635003&office_id=016&code=443060&page=&sm=",
+          "source": "헤럴드경제",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260421",
@@ -247,5 +258,5 @@
     "count_recent": 0,
     "avg_rate": 13.12
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

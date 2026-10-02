@@ -101,10 +101,10 @@
       "reason_previous": "허가 관련 뉴스",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "7/13 중앙일보 워크아웃 개시",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0014062958&office_id=003&code=036420&page=&sm=",
-        "title": "중앙일보 워크아웃 개시…콘텐트리중앙 상한가 직행",
-        "date": "20260713"
+        "text": "7/14 중앙일보 워크아웃 성사 후",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005385555&office_id=008&code=036420&page=&sm=",
+        "title": "콘텐트리중앙, 중앙일보 워크아웃 성사 후 급등세…장초반 15%↑",
+        "date": "20260714"
       }
     },
     {
@@ -279,7 +279,7 @@
       "close_price": 4995.0,
       "trading_volume": 190085,
       "trading_value": 949474575,
-      "rise_reason": "홍명보호 체코전 승리",
+      "rise_reason": "월드컵 중계권, 체코전 승리",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -353,9 +353,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "홍명보호 체코전 승리에…'월드컵 중계권' 콘텐트리중앙 급등",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005371096&office_id=008&code=036420&page=&sm=",
-          "source": "머니투데이",
+          "title": "'월드컵 중계권' 콘텐트리중앙, 체코전 승리 13% 급등[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009000622&office_id=421&code=036420&page=&sm=",
+          "source": "뉴스1",
           "date": "2026.06.12"
         }
       ]
@@ -451,10 +451,10 @@
       "date": "20250610",
       "change_rate": 10.4,
       "close_price": 13480.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -462,7 +462,10 @@
       "source": "estimated",
       "trading_volume": 466133,
       "trading_value": 6283472840,
-      "market_cap": 259614814814
+      "market_cap": 259614814814,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -473,5 +476,5 @@
     "count_recent": 0,
     "avg_rate": 19.44
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

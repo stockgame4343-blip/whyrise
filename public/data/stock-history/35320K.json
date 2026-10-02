@@ -188,10 +188,10 @@
       "close_price": 19180.0,
       "trading_volume": 31523,
       "trading_value": 604611140,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "발표",
       "news": [
         {
@@ -203,7 +203,10 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -226,10 +229,10 @@
       "date": "20251119",
       "change_rate": 14.86,
       "close_price": 16770.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -250,15 +253,18 @@
       "source": "estimated",
       "trading_volume": 342342,
       "trading_value": 5741075340,
-      "market_cap": 35125702005
+      "market_cap": 35125702005,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251010",
       "change_rate": 11.55,
       "close_price": 11490.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
@@ -274,7 +280,18 @@
       "source": "estimated",
       "trading_volume": 213517,
       "trading_value": 2453310330,
-      "market_cap": 24066446991
+      "market_cap": 24066446991,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성전자·SK하이닉스 강세...반도체 장비주 ‘급등세’",
+          "link": "https://n.news.naver.com/mnews/article/655/0000027792",
+          "source": "CJB청주방송",
+          "date": "2025-10-10"
+        }
+      ]
     }
   ],
   "stats": {
@@ -285,5 +302,5 @@
     "count_recent": 0,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

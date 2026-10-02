@@ -9,10 +9,10 @@
       "close_price": 2174.0,
       "trading_volume": 1297415,
       "trading_value": 2820580210,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "후보",
       "news": [
         {
@@ -62,7 +62,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "양산 보도",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "빅테크 실적발 훈풍에 장비株 강세…미래산업 16%·네오셈 9%↑[코주부...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004651028&office_id=011&code=323350&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260729",
@@ -70,7 +78,7 @@
       "close_price": 1840.0,
       "trading_volume": 2759490,
       "trading_value": 5077461600,
-      "rise_reason": "반도체주 동반 강세 — 기술적 시도",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -322,7 +330,7 @@
       "close_price": 1482.0,
       "trading_volume": 164326,
       "trading_value": 243531132,
-      "rise_reason": "관련 보도: 65억 규모 3자배정 유증 결정",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -357,13 +365,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "양산 보도",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "하이딥, 65억 규모 3자배정 유증 결정",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006302398&office_id=018&code=365590&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.06.10"
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
         }
       ]
     },
@@ -371,10 +379,10 @@
       "date": "20260209",
       "change_rate": 29.93,
       "close_price": 3820.0,
-      "rise_reason": "정원오 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "정원오",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -382,7 +390,10 @@
       "source": "estimated",
       "trading_volume": 3518830,
       "trading_value": 13441930600,
-      "market_cap": 118375209380
+      "market_cap": 118375209380,
+      "reason_previous": "정원오 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260205",
@@ -433,10 +444,10 @@
       "date": "20260115",
       "change_rate": 29.98,
       "close_price": 3685.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "정원오",
       "news": [
         {
@@ -463,7 +474,10 @@
       "source": "estimated",
       "trading_volume": 1373053,
       "trading_value": 5059700305,
-      "market_cap": 114191792294
+      "market_cap": 114191792294,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251211",
@@ -501,10 +515,10 @@
       "date": "20251023",
       "change_rate": 29.79,
       "close_price": 2653.0,
-      "rise_reason": "29.8% 실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "정원오",
       "news": [
         {
@@ -533,15 +547,7 @@
       "trading_value": 3336762996,
       "market_cap": 82211892797,
       "reason_previous": "정원오 테마 강세",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]하이딥 29.8% 폭등 실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003584584",
-          "source": "서울신문",
-          "date": "2025-10-23"
-        }
-      ]
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -552,5 +558,5 @@
     "count_recent": 0,
     "avg_rate": 18.57
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

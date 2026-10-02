@@ -9,7 +9,7 @@
       "close_price": 49100.0,
       "trading_volume": 591901,
       "trading_value": 29062339100,
-      "rise_reason": "2차전지 테마 13종목 동반 상승",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -44,7 +44,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "이차전지 테마",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "LG에너지솔루션·삼성SDI 8% 급등…이차전지주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009028681&office_id=421&code=066970&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260324",
@@ -82,10 +90,10 @@
       "date": "20260306",
       "change_rate": 12.03,
       "close_price": 70800.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -112,16 +120,19 @@
       "source": "estimated",
       "trading_volume": 2488093,
       "trading_value": 176156984400,
-      "market_cap": 5006000000000
+      "market_cap": 5006000000000,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 14.29,
       "close_price": 63200.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -154,7 +165,10 @@
       "source": "estimated",
       "trading_volume": 1255128,
       "trading_value": 79324089600,
-      "market_cap": 4468632768361
+      "market_cap": 4468632768361,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
@@ -275,10 +289,10 @@
       "date": "20250703",
       "change_rate": 12.08,
       "close_price": 53800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -286,16 +300,19 @@
       "source": "estimated",
       "trading_volume": 2090766,
       "trading_value": 112483210800,
-      "market_cap": 3803994350282
+      "market_cap": 3803994350282,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250624",
       "change_rate": 16.08,
       "close_price": 49450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -303,16 +320,19 @@
       "source": "estimated",
       "trading_volume": 2450113,
       "trading_value": 121158087850,
-      "market_cap": 3496422316384
+      "market_cap": 3496422316384,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250528",
       "change_rate": 10.96,
       "close_price": 45550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -320,7 +340,10 @@
       "source": "estimated",
       "trading_volume": 1323416,
       "trading_value": 60281598800,
-      "market_cap": 3220668079096
+      "market_cap": 3220668079096,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -331,5 +354,5 @@
     "count_recent": 0,
     "avg_rate": 15.82
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

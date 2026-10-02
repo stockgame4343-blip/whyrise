@@ -26,10 +26,10 @@
       "date": "20251215",
       "change_rate": 29.95,
       "close_price": 12800.0,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -46,24 +46,16 @@
       "trading_value": 2246566400,
       "market_cap": 17647840531,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]‘해성산업1우’ 29.95% 상한가…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003600891",
-          "source": "서울신문",
-          "date": "2025-12-15"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20251212",
       "change_rate": 29.95,
       "close_price": 9850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -78,7 +70,10 @@
       "source": "estimated",
       "trading_volume": 684736,
       "trading_value": 6744649600,
-      "market_cap": 13580564784
+      "market_cap": 13580564784,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -89,5 +84,5 @@
     "count_recent": 0,
     "avg_rate": 29.95
   },
-  "built_at": "2026-10-02T10:35:16"
+  "built_at": "2026-10-02T11:12:19"
 }

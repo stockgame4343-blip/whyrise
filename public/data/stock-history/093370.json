@@ -519,7 +519,7 @@
       "reason_previous": "리튬 관련 뉴스",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "5/5 리튬 품귀에 포스코홀딩스",
+        "text": "5/5 리튬 품귀",
         "link": "https://finance.naver.com/item/news_read.naver?article_id=0005675570&office_id=009&code=093370&page=&sm=",
         "title": "리튬 품귀에 포스코홀딩스·후성 '불기둥'",
         "date": "20260505"
@@ -566,15 +566,18 @@
       "close_price": 11240.0,
       "trading_volume": 24973216,
       "trading_value": 280698947840,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260403",
@@ -673,7 +676,7 @@
       "date": "20251024",
       "change_rate": 16.52,
       "close_price": 7900.0,
-      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -727,10 +730,10 @@
       "date": "20250915",
       "change_rate": 20.18,
       "close_price": 6730.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [],
       "sector": "화학",
@@ -738,16 +741,19 @@
       "source": "estimated",
       "trading_volume": 8198023,
       "trading_value": 55172694790,
-      "market_cap": 721826269185
+      "market_cap": 721826269185,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250814",
       "change_rate": 10.61,
       "close_price": 5840.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [],
       "sector": "화학",
@@ -755,7 +761,10 @@
       "source": "estimated",
       "trading_volume": 3483398,
       "trading_value": 20343044320,
-      "market_cap": 626369303423
+      "market_cap": 626369303423,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -766,5 +775,5 @@
     "count_recent": 0,
     "avg_rate": 17.52
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

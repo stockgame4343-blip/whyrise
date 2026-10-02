@@ -84,7 +84,7 @@
       "close_price": 8290.0,
       "trading_volume": 19592352,
       "trading_value": 162420598080,
-      "rise_reason": "관련 보도: PX 이어 코스트코까지? 마이녹셀, 오프라인 유통 확대",
+      "rise_reason": "관련 보도: PX 이어 코스트코까지… 마이녹셀, 오프라인 유통 확대",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -881,10 +881,10 @@
       "date": "20251205",
       "change_rate": 29.91,
       "close_price": 5060.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "낙태/피임",
       "news": [],
       "sector": "제약",
@@ -892,7 +892,10 @@
       "source": "estimated",
       "trading_volume": 16829159,
       "trading_value": 85155544540,
-      "market_cap": 161920000000
+      "market_cap": 161920000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250717",
@@ -951,5 +954,5 @@
     "count_recent": 2,
     "avg_rate": 20.29
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

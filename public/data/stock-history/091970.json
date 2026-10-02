@@ -690,10 +690,10 @@
       "date": "20260306",
       "change_rate": 30.0,
       "close_price": 3120.0,
-      "rise_reason": "대선 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "대선",
       "news": [
         {
@@ -708,7 +708,10 @@
       "source": "estimated",
       "trading_volume": 504278,
       "trading_value": 1573347360,
-      "market_cap": 23509243697
+      "market_cap": 23509243697,
+      "reason_previous": "대선 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260210",
@@ -827,10 +830,10 @@
       "date": "20251024",
       "change_rate": 30.0,
       "close_price": 4290.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "대선",
       "news": [
         {
@@ -845,16 +848,19 @@
       "source": "estimated",
       "trading_volume": 1905342,
       "trading_value": 8173917180,
-      "market_cap": 32325210084
+      "market_cap": 32325210084,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251015",
       "change_rate": 29.92,
       "close_price": 3865.0,
-      "rise_reason": "대선 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "대선",
       "news": [
         {
@@ -887,7 +893,10 @@
       "source": "estimated",
       "trading_volume": 1767212,
       "trading_value": 6830274380,
-      "market_cap": 29122829131
+      "market_cap": 29122829131,
+      "reason_previous": "대선 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251002",
@@ -917,5 +926,5 @@
     "count_recent": 0,
     "avg_rate": 20.33
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

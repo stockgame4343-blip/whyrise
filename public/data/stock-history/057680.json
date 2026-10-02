@@ -96,8 +96,8 @@
       "close_price": 1740.0,
       "trading_volume": 902690,
       "trading_value": 1570680600,
-      "rise_reason": "가상화폐주 동반 강세 — 비트코인 7만 달러 돌파",
-      "reason_confidence": "low",
+      "rise_reason": "비트코인 강세에 빗썸 지분 7.17% 부각",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
@@ -167,13 +167,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "MOU 체결",
-      "reason_kind": "sector",
+      "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "[특징주] 비트코인 7만 달러 돌파에… 국내 가상화폐 관련주 강세",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001187487&office_id=366&code=057680&page=&sm=",
-          "source": "조선비즈",
-          "date": "2026.08.21"
+          "title": "티사이언티픽, 비트코인 강세에 '빗썸 지분 7.17%' 부각",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005806323&office_id=277&code=057680&page=&sm=",
+          "source": "아시아경제",
+          "date": "2026.08.24"
         }
       ]
     },
@@ -296,10 +296,10 @@
       "date": "20250620",
       "change_rate": 19.42,
       "close_price": 7970.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "IT서비스",
@@ -307,7 +307,10 @@
       "source": "estimated",
       "trading_volume": 2630615,
       "trading_value": 20966001550,
-      "market_cap": 113566394279
+      "market_cap": 113566394279,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
@@ -337,5 +340,5 @@
     "count_recent": 1,
     "avg_rate": 11.91
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -243,7 +243,7 @@
       "date": "20251226",
       "change_rate": 10.21,
       "close_price": 16940.0,
-      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
+      "rise_reason": "반도체 장비 테마 3종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -256,24 +256,16 @@
       "trading_value": 10613164100,
       "market_cap": 164711142654,
       "reason_previous": "반도체 장비 테마 강세",
-      "reason_kind": "sector",
-      "reason_evidence": [
-        {
-          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
-          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
-          "source": "SBS Biz",
-          "date": "2025-12-26"
-        }
-      ]
+      "reason_kind": "theme"
     },
     {
       "date": "20250925",
       "change_rate": 12.18,
       "close_price": 14920.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -288,7 +280,10 @@
       "source": "estimated",
       "trading_volume": 1042263,
       "trading_value": 15550563960,
-      "market_cap": 145070262597
+      "market_cap": 145070262597,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -299,5 +294,5 @@
     "count_recent": 0,
     "avg_rate": 12.99
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:18"
 }

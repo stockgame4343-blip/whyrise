@@ -335,10 +335,10 @@
       "date": "20251204",
       "change_rate": 11.23,
       "close_price": 4505.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -377,16 +377,19 @@
       "source": "estimated",
       "trading_volume": 9466567,
       "trading_value": 42646884335,
-      "market_cap": 165311057108
+      "market_cap": 165311057108,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251203",
       "change_rate": 14.89,
       "close_price": 4050.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
@@ -425,16 +428,19 @@
       "source": "estimated",
       "trading_volume": 5881618,
       "trading_value": 23820552900,
-      "market_cap": 148614823815
+      "market_cap": 148614823815,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
       "change_rate": 13.45,
       "close_price": 3290.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [],
       "sector": "전자장비와기기",
@@ -442,7 +448,10 @@
       "source": "estimated",
       "trading_volume": 8439517,
       "trading_value": 27766010930,
-      "market_cap": 120726609963
+      "market_cap": 120726609963,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -453,5 +462,5 @@
     "count_recent": 0,
     "avg_rate": 15.84
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

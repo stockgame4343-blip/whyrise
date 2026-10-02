@@ -349,10 +349,10 @@
       "close_price": 9880.0,
       "trading_volume": 136531,
       "trading_value": 1348926280,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
         {
@@ -364,7 +364,10 @@
       ],
       "sector": "화장품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -594,10 +597,10 @@
       "date": "20250701",
       "change_rate": 19.58,
       "close_price": 9590.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [
         {
@@ -624,7 +627,10 @@
       "source": "estimated",
       "trading_volume": 27759418,
       "trading_value": 266212818620,
-      "market_cap": 174412273361
+      "market_cap": 174412273361,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250625",
@@ -664,10 +670,10 @@
       "date": "20250604",
       "change_rate": 29.82,
       "close_price": 6400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [],
       "sector": "화장품",
@@ -675,16 +681,19 @@
       "source": "estimated",
       "trading_volume": 3987930,
       "trading_value": 25522752000,
-      "market_cap": 116396094839
+      "market_cap": 116396094839,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250529",
       "change_rate": 13.24,
       "close_price": 4620.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고령화 사회(노인복지)",
       "news": [],
       "sector": "화장품",
@@ -692,7 +701,10 @@
       "source": "estimated",
       "trading_volume": 2033860,
       "trading_value": 9396433200,
-      "market_cap": 84023430962
+      "market_cap": 84023430962,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -703,5 +715,5 @@
     "count_recent": 2,
     "avg_rate": 15.56
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

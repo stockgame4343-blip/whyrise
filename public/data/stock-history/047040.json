@@ -9,7 +9,7 @@
       "close_price": 17620.0,
       "trading_volume": 7968873,
       "trading_value": 140411542260,
-      "rise_reason": "관련 보도: 중랑천 생태복원부터 체코 소방차 기증까지…, 사회공헌활동...",
+      "rise_reason": "원전주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -80,12 +80,12 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "중랑천 생태복원부터 체코 소방차 기증까지…대우건설, 사회공헌활동...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003743186&office_id=020&code=047040&page=&sm=",
-          "source": "동아일보",
+          "title": "원전株 동반 강세…한전기술 10%·현대건설 9%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001025028&office_id=088&code=052690&page=&sm=",
+          "source": "매일신문",
           "date": "2026.08.25"
         }
       ]
@@ -626,15 +626,18 @@
       "close_price": 19430.0,
       "trading_volume": 79789445,
       "trading_value": 1550308916350,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설 대표주",
       "news": [],
       "sector": "건설",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -667,10 +670,10 @@
       "date": "20260318",
       "change_rate": 22.79,
       "close_price": 14870.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "건설",
@@ -678,7 +681,10 @@
       "source": "estimated",
       "trading_volume": 112090190,
       "trading_value": 1666781125300,
-      "market_cap": 6110205458823
+      "market_cap": 6110205458823,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260313",
@@ -728,10 +734,10 @@
       "date": "20260226",
       "change_rate": 14.86,
       "close_price": 10050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "건설",
@@ -739,16 +745,19 @@
       "source": "estimated",
       "trading_volume": 77399247,
       "trading_value": 777862432350,
-      "market_cap": 4129627764705
+      "market_cap": 4129627764705,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260210",
       "change_rate": 22.36,
       "close_price": 7060.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "건설",
@@ -756,16 +765,19 @@
       "source": "estimated",
       "trading_volume": 51272010,
       "trading_value": 361980390600,
-      "market_cap": 2901012141176
+      "market_cap": 2901012141176,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260120",
       "change_rate": 11.31,
       "close_price": 5020.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "건설",
@@ -773,7 +785,10 @@
       "source": "estimated",
       "trading_volume": 31512410,
       "trading_value": 158192298200,
-      "market_cap": 2062759341176
+      "market_cap": 2062759341176,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260116",
@@ -830,5 +845,5 @@
     "count_recent": 0,
     "avg_rate": 17.3
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

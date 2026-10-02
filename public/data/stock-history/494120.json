@@ -826,10 +826,10 @@
       "date": "20251204",
       "change_rate": 11.87,
       "close_price": 78200.0,
-      "rise_reason": "관련 보도: 코스닥 새내기 , 제2의 씨어스테크놀로지될까",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -858,15 +858,7 @@
       "trading_value": 189998942800,
       "market_cap": 596523679060,
       "reason_previous": "바이오",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "코스닥 새내기 큐리오시스, 제2의 씨어스테크놀로지될까",
-          "link": "https://n.news.naver.com/mnews/article/018/0006177800",
-          "source": "이데일리",
-          "date": "2025-12-04"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20251203",
@@ -910,10 +902,10 @@
       "date": "20251124",
       "change_rate": 13.53,
       "close_price": 68800.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -952,7 +944,10 @@
       "source": "estimated",
       "trading_volume": 5231385,
       "trading_value": 359919288000,
-      "market_cap": 524818786692
+      "market_cap": 524818786692,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251120",
@@ -1011,5 +1006,5 @@
     "count_recent": 0,
     "avg_rate": 13.53
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

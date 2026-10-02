@@ -818,10 +818,10 @@
       "date": "20251106",
       "change_rate": 12.33,
       "close_price": 8553.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -842,7 +842,10 @@
       "source": "estimated",
       "trading_volume": 306186,
       "trading_value": 2618808858,
-      "market_cap": 79220409836
+      "market_cap": 79220409836,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251015",
@@ -884,10 +887,10 @@
       "date": "20251013",
       "change_rate": 12.03,
       "close_price": 7941.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -914,7 +917,10 @@
       "source": "estimated",
       "trading_volume": 1074090,
       "trading_value": 8529348690,
-      "market_cap": 73551885245
+      "market_cap": 73551885245,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251010",
@@ -958,10 +964,10 @@
       "date": "20250729",
       "change_rate": 12.02,
       "close_price": 14184.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -994,7 +1000,10 @@
       "source": "estimated",
       "trading_volume": 89298,
       "trading_value": 1266602832,
-      "market_cap": 131376393442
+      "market_cap": 131376393442,
+      "reason_previous": "가상자산/블록체인",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250707",
@@ -1043,5 +1052,5 @@
     "count_recent": 0,
     "avg_rate": 18.76
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

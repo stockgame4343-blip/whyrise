@@ -328,7 +328,7 @@
       "close_price": 2045.0,
       "trading_volume": 5263845,
       "trading_value": 10764563025,
-      "rise_reason": "5선세훈 테마주 직행",
+      "rise_reason": "서울시장 선거, 오세훈 막판 역전",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -402,9 +402,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "‘5선세훈 테마주’ 진양화학 상한가 직행…정원오 에스제이그룹은 하.....",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005689171&office_id=009&code=051630&page=&sm=",
-          "source": "매일경제",
+          "title": "서울시장 선거, 오세훈 막판 역전에…진양화학 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005366978&office_id=008&code=051630&page=&sm=",
+          "source": "머니투데이",
           "date": "2026.06.04"
         }
       ]
@@ -468,10 +468,10 @@
       "date": "20260310",
       "change_rate": 17.89,
       "close_price": 2405.0,
-      "rise_reason": "관련 보도: 17.89% 상승…금일 증시 상승률 1위로 마감",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "오세훈",
       "news": [
         {
@@ -494,15 +494,7 @@
       "trading_value": 1246367200,
       "market_cap": 50950370370,
       "reason_previous": "오세훈 테마 강세",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]진양화학 17.89% 상승…금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003624597",
-          "source": "서울신문",
-          "date": "2026-03-10"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
@@ -527,10 +519,10 @@
       "date": "20251017",
       "change_rate": 10.38,
       "close_price": 3190.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오세훈",
       "news": [
         {
@@ -551,16 +543,19 @@
       "source": "estimated",
       "trading_volume": 381498,
       "trading_value": 1216978620,
-      "market_cap": 67580740740
+      "market_cap": 67580740740,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251013",
       "change_rate": 11.27,
       "close_price": 3210.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오세훈",
       "news": [],
       "sector": "화학",
@@ -568,16 +563,19 @@
       "source": "estimated",
       "trading_volume": 655826,
       "trading_value": 2105201460,
-      "market_cap": 68004444444
+      "market_cap": 68004444444,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251010",
       "change_rate": 16.33,
       "close_price": 2885.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오세훈",
       "news": [],
       "sector": "화학",
@@ -585,7 +583,10 @@
       "source": "estimated",
       "trading_volume": 842989,
       "trading_value": 2432023265,
-      "market_cap": 61119259259
+      "market_cap": 61119259259,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -596,5 +597,5 @@
     "count_recent": 1,
     "avg_rate": 15.74
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

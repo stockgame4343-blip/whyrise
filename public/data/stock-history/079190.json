@@ -733,7 +733,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "합병 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/30 내달 4일 주권매매 거래정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006270361&office_id=018&code=079190&page=&sm=",
+        "title": "케스피온, 내달 4일 주권매매 거래정지 해제",
+        "date": "20260430"
+      }
     },
     {
       "date": "20260504",
@@ -812,16 +818,22 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "합병 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/30 내달 4일 주권매매 거래정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006270361&office_id=018&code=079190&page=&sm=",
+        "title": "케스피온, 내달 4일 주권매매 거래정지 해제",
+        "date": "20260430"
+      }
     },
     {
       "date": "20260224",
       "change_rate": 30.0,
       "close_price": 1040.0,
-      "rise_reason": "스마트폰 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -848,7 +860,10 @@
       "source": "estimated",
       "trading_volume": 5431736,
       "trading_value": 5649005440,
-      "market_cap": 19877675840
+      "market_cap": 19877675840,
+      "reason_previous": "스마트폰 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260223",
@@ -911,10 +926,10 @@
       "date": "20251014",
       "change_rate": 29.92,
       "close_price": 1320.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -941,7 +956,10 @@
       "source": "estimated",
       "trading_volume": 8394872,
       "trading_value": 11081231040,
-      "market_cap": 25229357798
+      "market_cap": 25229357798,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -952,5 +970,5 @@
     "count_recent": 2,
     "avg_rate": 22.26
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

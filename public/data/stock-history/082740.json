@@ -193,7 +193,7 @@
       "close_price": 65500.0,
       "trading_volume": 2446907,
       "trading_value": 160272408500,
-      "rise_reason": "조선주 동반 강세 — 캐나다 잠수함 협력 기대감",
+      "rise_reason": "조선주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -665,10 +665,10 @@
       "date": "20260112",
       "change_rate": 10.26,
       "close_price": 54800.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -707,16 +707,19 @@
       "source": "estimated",
       "trading_volume": 4221900,
       "trading_value": 231360120000,
-      "market_cap": 4572925245901
+      "market_cap": 4572925245901,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251001",
       "change_rate": 10.36,
       "close_price": 49550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [],
       "sector": "조선",
@@ -724,7 +727,10 @@
       "source": "estimated",
       "trading_volume": 8604764,
       "trading_value": 426366056200,
-      "market_cap": 4134825655737
+      "market_cap": 4134825655737,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250829",
@@ -749,10 +755,10 @@
       "date": "20250725",
       "change_rate": 11.93,
       "close_price": 35650.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [],
       "sector": "조선",
@@ -760,7 +766,10 @@
       "source": "estimated",
       "trading_volume": 7568450,
       "trading_value": 269815242500,
-      "market_cap": 2974904836065
+      "market_cap": 2974904836065,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -771,5 +780,5 @@
     "count_recent": 1,
     "avg_rate": 12.02
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T11:12:17"
 }

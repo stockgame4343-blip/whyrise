@@ -9,15 +9,18 @@
       "close_price": 7490.0,
       "trading_volume": 285054,
       "trading_value": 2135054460,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260907",
@@ -25,7 +28,7 @@
       "close_price": 6970.0,
       "trading_volume": 201061,
       "trading_value": 1401395170,
-      "rise_reason": "반도체주 동반 강세 — 오픈AI 아스트라가 깨운 AI 랠리",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -99,9 +102,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "오픈AI '아스트라'가 깨운 AI 랠리…반도체株 일제히 '불기둥'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001027039&office_id=088&code=000990&page=&sm=",
-          "source": "매일신문",
+          "title": "[특징주] 반도체 훈풍에 관련 소부장주 장초반 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016293473&office_id=001&code=000150&page=&sm=",
+          "source": "연합뉴스",
           "date": "2026.09.07"
         }
       ]
@@ -349,7 +352,7 @@
       "close_price": 6550.0,
       "trading_volume": 448371,
       "trading_value": 2936830050,
-      "rise_reason": "시스템반도체 테마 11종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -420,7 +423,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美 AI 인프라 수요 증가에 전기장비株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159440&office_id=366&code=006340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260417",
@@ -507,7 +518,7 @@
       "close_price": 4590.0,
       "trading_volume": 152942,
       "trading_value": 702003780,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -531,10 +542,10 @@
       "date": "20260316",
       "change_rate": 12.1,
       "close_price": 3845.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -549,7 +560,10 @@
       "source": "estimated",
       "trading_volume": 795406,
       "trading_value": 3058336070,
-      "market_cap": 68700517598
+      "market_cap": 68700517598,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -624,5 +638,5 @@
     "count_recent": 2,
     "avg_rate": 12.01
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

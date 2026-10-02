@@ -9,10 +9,10 @@
       "close_price": 3250.0,
       "trading_volume": 155827,
       "trading_value": 506437750,
-      "rise_reason": "신약/임상",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [
         {
@@ -78,7 +78,10 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "신약/임상",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260915",
@@ -371,5 +374,5 @@
     "count_recent": 2,
     "avg_rate": 19.59
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

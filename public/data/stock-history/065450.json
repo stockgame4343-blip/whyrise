@@ -131,7 +131,7 @@
       "date": "20260303",
       "change_rate": 30.0,
       "close_price": 5720.0,
-      "rise_reason": "방산주 동반 강세 — 이번엔 김승연 어서 타! 밈",
+      "rise_reason": "방산주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -189,7 +189,7 @@
       "date": "20260220",
       "change_rate": 11.21,
       "close_price": 4465.0,
-      "rise_reason": "방산주 동반 강세 — 하루 새 11만5700원 우뚝",
+      "rise_reason": "방산주 동반 강세 — 美·이란 전쟁 긴장 최고조",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -205,9 +205,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "하루 새 8.74%↑ 11만5700원 '우뚝'…방산주 일제히 급등",
-          "link": "https://n.news.naver.com/mnews/article/243/0000093326",
-          "source": "이코노미스트",
+          "title": "美·이란 전쟁 긴장 최고조…국내 방산주 줄줄이 급등 [이런국장 저런...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004591660",
+          "source": "서울경제",
           "date": "2026-02-20"
         }
       ]
@@ -216,10 +216,10 @@
       "date": "20250613",
       "change_rate": 12.08,
       "close_price": 4825.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자전거",
       "news": [],
       "sector": "우주항공과국방",
@@ -227,7 +227,10 @@
       "source": "estimated",
       "trading_volume": 7520683,
       "trading_value": 36287295475,
-      "market_cap": 142264393939
+      "market_cap": 142264393939,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -238,5 +241,5 @@
     "count_recent": 0,
     "avg_rate": 20.26
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:19"
 }

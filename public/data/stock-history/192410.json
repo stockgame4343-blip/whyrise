@@ -631,10 +631,10 @@
       "date": "20250702",
       "change_rate": 10.5,
       "close_price": 4421.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "통신장비",
@@ -642,16 +642,19 @@
       "source": "estimated",
       "trading_volume": 1598899,
       "trading_value": 7068732479,
-      "market_cap": 111350693703
+      "market_cap": 111350693703,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250630",
       "change_rate": 18.39,
       "close_price": 4301.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -690,16 +693,19 @@
       "source": "estimated",
       "trading_volume": 4084116,
       "trading_value": 17565782916,
-      "market_cap": 108328281750
+      "market_cap": 108328281750,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250626",
       "change_rate": 10.65,
       "close_price": 3365.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -714,16 +720,19 @@
       "source": "estimated",
       "trading_volume": 3558219,
       "trading_value": 11973406935,
-      "market_cap": 84753468516
+      "market_cap": 84753468516,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
       "change_rate": 12.6,
       "close_price": 2601.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "통신장비",
@@ -731,7 +740,10 @@
       "source": "estimated",
       "trading_volume": 2675920,
       "trading_value": 6960067920,
-      "market_cap": 65510779082
+      "market_cap": 65510779082,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -742,5 +754,5 @@
     "count_recent": 0,
     "avg_rate": 19.07
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

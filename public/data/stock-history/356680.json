@@ -432,7 +432,7 @@
       "close_price": 27550.0,
       "trading_volume": 9073421,
       "trading_value": 249972748550,
-      "rise_reason": "관련주 동반 강세 — 포톤 2연상",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -997,7 +997,7 @@
       "close_price": 12980.0,
       "trading_volume": 109136,
       "trading_value": 1416585280,
-      "rise_reason": "양자암호·보안주 동반 강세 — 앤트로픽 해킹 공포",
+      "rise_reason": "양자암호·보안주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1168,10 +1168,10 @@
       "date": "20260226",
       "change_rate": 10.55,
       "close_price": 8280.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -1204,7 +1204,10 @@
       "source": "estimated",
       "trading_volume": 1625315,
       "trading_value": 13457608200,
-      "market_cap": 236360073937
+      "market_cap": 236360073937,
+      "reason_previous": "방산",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251023",
@@ -1282,5 +1285,5 @@
     "count_recent": 1,
     "avg_rate": 20.24
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

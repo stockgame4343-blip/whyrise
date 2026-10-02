@@ -374,10 +374,10 @@
       "date": "20250527",
       "change_rate": 14.49,
       "close_price": 6480.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [],
       "sector": "생물공학",
@@ -385,7 +385,10 @@
       "source": "estimated",
       "trading_volume": 86674,
       "trading_value": 561647520,
-      "market_cap": 87549641760
+      "market_cap": 87549641760,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -396,5 +399,5 @@
     "count_recent": 0,
     "avg_rate": 12.22
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

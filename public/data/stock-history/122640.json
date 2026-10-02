@@ -781,10 +781,10 @@
       "close_price": 29700.0,
       "trading_volume": 552977,
       "trading_value": 16423416900,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
         {
@@ -852,13 +852,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "특허 취득",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "4/15 HPSP- 고압수소어닐링 특허분쟁, 6월…",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002418837&office_id=092&code=122640&page=&sm=",
-        "title": "HPSP-예스티 '고압수소어닐링' 특허분쟁, 6월 특허법원서 판가름",
-        "date": "20260415"
-      }
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美 AI 인프라 수요 증가에 전기장비株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159440&office_id=366&code=006340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -899,10 +901,10 @@
       "date": "20260320",
       "change_rate": 16.84,
       "close_price": 28800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -910,7 +912,10 @@
       "source": "estimated",
       "trading_volume": 773647,
       "trading_value": 22281033600,
-      "market_cap": 621682758620
+      "market_cap": 621682758620,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -935,7 +940,7 @@
       "date": "20260224",
       "change_rate": 10.16,
       "close_price": 23850.0,
-      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -969,10 +974,10 @@
       "date": "20260130",
       "change_rate": 12.84,
       "close_price": 21700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -980,7 +985,10 @@
       "source": "estimated",
       "trading_volume": 870790,
       "trading_value": 18896143000,
-      "market_cap": 468420689655
+      "market_cap": 468420689655,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251205",
@@ -1044,10 +1052,10 @@
       "date": "20250616",
       "change_rate": 11.95,
       "close_price": 18170.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1055,7 +1063,10 @@
       "source": "estimated",
       "trading_volume": 326128,
       "trading_value": 5925745760,
-      "market_cap": 392221379310
+      "market_cap": 392221379310,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1066,5 +1077,5 @@
     "count_recent": 0,
     "avg_rate": 15.62
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

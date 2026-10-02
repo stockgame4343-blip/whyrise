@@ -337,10 +337,10 @@
       "date": "20260311",
       "change_rate": 17.62,
       "close_price": 3505.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [
         {
@@ -361,7 +361,10 @@
       "source": "estimated",
       "trading_volume": 874534,
       "trading_value": 3065241670,
-      "market_cap": 116943294117
+      "market_cap": 116943294117,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260211",
@@ -431,10 +434,10 @@
       "date": "20250528",
       "change_rate": 14.7,
       "close_price": 3395.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "통신장비",
@@ -442,7 +445,10 @@
       "source": "estimated",
       "trading_volume": 679850,
       "trading_value": 2308090750,
-      "market_cap": 113273176470
+      "market_cap": 113273176470,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -453,5 +459,5 @@
     "count_recent": 0,
     "avg_rate": 15.59
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

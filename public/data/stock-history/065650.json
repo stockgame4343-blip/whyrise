@@ -283,10 +283,10 @@
       "date": "20250711",
       "change_rate": 12.2,
       "close_price": 9380.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [
         {
@@ -301,7 +301,10 @@
       "source": "estimated",
       "trading_volume": 445360,
       "trading_value": 4177476800,
-      "market_cap": 102753636363
+      "market_cap": 102753636363,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250701",
@@ -504,5 +507,5 @@
     "count_recent": 1,
     "avg_rate": 14.47
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

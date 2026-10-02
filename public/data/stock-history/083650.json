@@ -86,7 +86,7 @@
       "close_price": 63500.0,
       "trading_volume": 752632,
       "trading_value": 47792132000,
-      "rise_reason": "원자력발전소 해체 테마 4종목 동반 상승",
+      "rise_reason": "원전주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -157,7 +157,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "원전주 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "원전株 동반 강세…한전기술 10%·현대건설 9%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001025028&office_id=088&code=052690&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -497,10 +505,10 @@
       "date": "20260219",
       "change_rate": 10.23,
       "close_price": 83000.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전소 해체",
       "news": [
         {
@@ -539,7 +547,10 @@
       "source": "estimated",
       "trading_volume": 1033519,
       "trading_value": 85782077000,
-      "market_cap": 2568388888888
+      "market_cap": 2568388888888,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251212",
@@ -654,10 +665,10 @@
       "date": "20250822",
       "change_rate": 10.78,
       "close_price": 51900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "원자력발전소 해체",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -665,7 +676,10 @@
       "source": "estimated",
       "trading_volume": 1773675,
       "trading_value": 92053732500,
-      "market_cap": 1606016666666
+      "market_cap": 1606016666666,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250724",
@@ -695,5 +709,5 @@
     "count_recent": 1,
     "avg_rate": 15.73
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

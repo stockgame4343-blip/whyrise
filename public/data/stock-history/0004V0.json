@@ -516,10 +516,10 @@
       "date": "20260225",
       "change_rate": 11.4,
       "close_price": 19450.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -534,7 +534,10 @@
       "source": "estimated",
       "trading_volume": 2328865,
       "trading_value": 45296424250,
-      "market_cap": 202413276231
+      "market_cap": 202413276231,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
@@ -585,9 +588,9 @@
       "date": "20260115",
       "change_rate": 12.82,
       "close_price": 19980.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "코스닥 상장 둘째날도",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -627,7 +630,18 @@
       "source": "estimated",
       "trading_volume": 18929443,
       "trading_value": 378210271140,
-      "market_cap": 207928907922
+      "market_cap": 207928907922,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "엔비알모션, 코스닥 상장 둘째날도 강세…4%↑[특징주]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006201124",
+          "source": "이데일리",
+          "date": "2026-01-15"
+        }
+      ]
     }
   ],
   "stats": {
@@ -638,5 +652,5 @@
     "count_recent": 2,
     "avg_rate": 15.75
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

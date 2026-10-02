@@ -96,15 +96,18 @@
       "close_price": 93600.0,
       "trading_volume": 1010935,
       "trading_value": 94623516000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LPG(액화석유가스)",
       "news": [],
       "sector": "석유와가스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260701",
@@ -128,10 +131,10 @@
       "date": "20251110",
       "change_rate": 11.79,
       "close_price": 56900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -139,7 +142,10 @@
       "source": "estimated",
       "trading_volume": 1104056,
       "trading_value": 62820786400,
-      "market_cap": 5285766142857
+      "market_cap": 5285766142857,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -150,5 +156,5 @@
     "count_recent": 0,
     "avg_rate": 11.9
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

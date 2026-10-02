@@ -9,7 +9,7 @@
       "close_price": 6120.0,
       "trading_volume": 14000922,
       "trading_value": 85685642640,
-      "rise_reason": "가상화폐주 동반 강세 — 비트코인 8만달러 탈환",
+      "rise_reason": "가상화폐주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -526,10 +526,10 @@
       "date": "20250610",
       "change_rate": 20.08,
       "close_price": 9450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -537,7 +537,10 @@
       "source": "estimated",
       "trading_volume": 14288920,
       "trading_value": 135030294000,
-      "market_cap": 793764540337
+      "market_cap": 793764540337,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -548,5 +551,5 @@
     "count_recent": 1,
     "avg_rate": 12.97
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

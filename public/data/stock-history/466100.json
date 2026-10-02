@@ -151,7 +151,7 @@
       "close_price": 25550.0,
       "trading_volume": 581889,
       "trading_value": 14867263950,
-      "rise_reason": "로봇주 동반 강세 — 중국 로봇 사실상 수입금지",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -256,7 +256,7 @@
       "close_price": 30452.0,
       "trading_volume": 267006,
       "trading_value": 8130866712,
-      "rise_reason": "AI·로봇 융합 산업현장 안전점검 MOU",
+      "rise_reason": "에이프로, AI·로봇 융합 산업현장 안전점검 MOU",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -424,7 +424,7 @@
       "date": "20260119",
       "change_rate": 12.99,
       "close_price": 75700.0,
-      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -437,7 +437,15 @@
       "trading_value": 384099074800,
       "market_cap": 1927360357675,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "시장 성장·실적 개선 기대감에 로봇株 '불기둥'…두산로보틱스 20%대...",
+          "link": "https://n.news.naver.com/mnews/article/088/0000992567",
+          "source": "매일신문",
+          "date": "2026-01-19"
+        }
+      ]
     },
     {
       "date": "20251212",
@@ -462,7 +470,7 @@
       "date": "20251103",
       "change_rate": 14.78,
       "close_price": 46600.0,
-      "rise_reason": "로봇주 동반 강세 — 젠슨 황 효과 계",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -575,10 +583,10 @@
       "date": "20250624",
       "change_rate": 11.23,
       "close_price": 21600.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -605,7 +613,10 @@
       "source": "estimated",
       "trading_volume": 7898061,
       "trading_value": 170598117600,
-      "market_cap": 549946944858
+      "market_cap": 549946944858,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -616,5 +627,5 @@
     "count_recent": 0,
     "avg_rate": 15.53
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

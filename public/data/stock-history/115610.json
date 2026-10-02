@@ -333,10 +333,10 @@
       "date": "20260203",
       "change_rate": 29.61,
       "close_price": 4863.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -351,7 +351,10 @@
       "source": "estimated",
       "trading_volume": 8943122,
       "trading_value": 43490402286,
-      "market_cap": 57569948776
+      "market_cap": 57569948776,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260130",
@@ -408,10 +411,10 @@
       "date": "20260121",
       "change_rate": 30.0,
       "close_price": 3402.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -450,7 +453,10 @@
       "source": "estimated",
       "trading_volume": 6433117,
       "trading_value": 21885464034,
-      "market_cap": 40274103585
+      "market_cap": 40274103585,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
@@ -541,36 +547,6 @@
       "date": "20250917",
       "change_rate": 29.97,
       "close_price": 2780.0,
-      "rise_reason": "시스템반도체 테마 상한가",
-      "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
-      "theme_tag": "시스템반도체",
-      "news": [
-        {
-          "title": "[서울데이터랩]금일 코스닥 거래량 1위 노을 거래대금 무려 1308억 돌파",
-          "link": "https://n.news.naver.com/mnews/article/081/0003575546",
-          "source": "서울신문",
-          "date": "2025-09-17"
-        },
-        {
-          "title": "[서울데이터랩]진매트릭스 29.94% 상한가 실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003575451",
-          "source": "서울신문",
-          "date": "2025-09-17"
-        }
-      ],
-      "sector": "핸드셋",
-      "is_52w_high": false,
-      "source": "estimated",
-      "trading_volume": 16235086,
-      "trading_value": 45133539080,
-      "market_cap": 32910643141
-    },
-    {
-      "date": "20250916",
-      "change_rate": 29.87,
-      "close_price": 2139.0,
       "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
@@ -593,11 +569,52 @@
       "sector": "핸드셋",
       "is_52w_high": false,
       "source": "estimated",
+      "trading_volume": 16235086,
+      "trading_value": 45133539080,
+      "market_cap": 32910643141,
+      "reason_previous": "시스템반도체 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
+    },
+    {
+      "date": "20250916",
+      "change_rate": 29.87,
+      "close_price": 2139.0,
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "시스템반도체",
+      "news": [
+        {
+          "title": "[서울데이터랩]금일 코스닥 거래량 1위 노을 거래대금 무려 1308억 돌파",
+          "link": "https://n.news.naver.com/mnews/article/081/0003575546",
+          "source": "서울신문",
+          "date": "2025-09-17"
+        },
+        {
+          "title": "[서울데이터랩]진매트릭스 29.94% 상한가 실시간 상승률 1위",
+          "link": "https://n.news.naver.com/mnews/article/081/0003575451",
+          "source": "서울신문",
+          "date": "2025-09-17"
+        }
+      ],
+      "sector": "핸드셋",
+      "is_52w_high": false,
+      "source": "estimated",
       "trading_volume": 7417308,
       "trading_value": 15865621812,
       "market_cap": 25322253841,
       "reason_previous": "시스템반도체 테마 강세",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] &quot;반도체 업황 긍정적&quot; 전망에 반도체주 ‘강세’",
+          "link": "https://n.news.naver.com/mnews/article/374/0000463612",
+          "source": "SBS Biz",
+          "date": "2025-09-16"
+        }
+      ]
     },
     {
       "date": "20250604",
@@ -627,5 +644,5 @@
     "count_recent": 0,
     "avg_rate": 17.54
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

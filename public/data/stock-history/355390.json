@@ -319,7 +319,7 @@
       "close_price": 3305.0,
       "trading_volume": 1501525,
       "trading_value": 4962540125,
-      "rise_reason": "로봇주 동반 강세 — 두산로보틱스",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -508,10 +508,10 @@
       "date": "20250618",
       "change_rate": 29.93,
       "close_price": 11113.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "딥페이크(deepfake)",
       "news": [],
       "sector": "IT서비스",
@@ -519,16 +519,19 @@
       "source": "estimated",
       "trading_volume": 4987837,
       "trading_value": 55429832581,
-      "market_cap": 176573222222
+      "market_cap": 176573222222,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250602",
       "change_rate": 17.07,
       "close_price": 8962.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "딥페이크(deepfake)",
       "news": [],
       "sector": "IT서비스",
@@ -536,7 +539,10 @@
       "source": "estimated",
       "trading_volume": 2314489,
       "trading_value": 20742450418,
-      "market_cap": 142396222222
+      "market_cap": 142396222222,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -547,5 +553,5 @@
     "count_recent": 2,
     "avg_rate": 18.63
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

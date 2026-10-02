@@ -708,10 +708,10 @@
       "date": "20251015",
       "change_rate": 30.0,
       "close_price": 5005.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "교육/온라인 교육",
       "news": [],
       "sector": "교육서비스",
@@ -719,7 +719,10 @@
       "source": "estimated",
       "trading_volume": 1154886,
       "trading_value": 5780204430,
-      "market_cap": 23871543086
+      "market_cap": 23871543086,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -730,5 +733,5 @@
     "count_recent": 0,
     "avg_rate": 20.79
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

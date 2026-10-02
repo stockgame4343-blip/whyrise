@@ -513,10 +513,10 @@
       "close_price": 8223.0,
       "trading_volume": 1634839,
       "trading_value": 13443281097,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -540,7 +540,10 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -565,10 +568,10 @@
       "date": "20260318",
       "change_rate": 29.92,
       "close_price": 9293.0,
-      "rise_reason": "30.00% 금일 증시 상승률",
-      "reason_confidence": "mid",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -591,15 +594,7 @@
       "trading_value": 31435737769,
       "market_cap": 92751631477,
       "reason_previous": "상한가 — 사유 미수집",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]‘휴림에이텍’ 30.00% 상한가 금일 증시 상승률 1위로...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003626703",
-          "source": "서울신문",
-          "date": "2026-03-17"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260317",
@@ -660,10 +655,10 @@
       "date": "20260122",
       "change_rate": 30.0,
       "close_price": 11749.0,
-      "rise_reason": "관련 보도: 29.99% 상승…실시간 상승률 1위",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -704,24 +699,16 @@
       "trading_value": 2689404845,
       "market_cap": 117264491362,
       "reason_previous": "로봇/자동화",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]휴림에이텍 29.99% 상승…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003610767",
-          "source": "서울신문",
-          "date": "2026-01-22"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260121",
       "change_rate": 29.86,
       "close_price": 9038.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -760,16 +747,19 @@
       "source": "estimated",
       "trading_volume": 4314550,
       "trading_value": 38994902900,
-      "market_cap": 90206525911
+      "market_cap": 90206525911,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251229",
       "change_rate": 12.1,
       "close_price": 8590.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -784,7 +774,10 @@
       "source": "estimated",
       "trading_volume": 2642524,
       "trading_value": 22699281160,
-      "market_cap": 85735124760
+      "market_cap": 85735124760,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251117",
@@ -828,10 +821,10 @@
       "date": "20251022",
       "change_rate": 15.42,
       "close_price": 9609.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -839,16 +832,19 @@
       "source": "estimated",
       "trading_volume": 6076283,
       "trading_value": 58387003347,
-      "market_cap": 95905566218
+      "market_cap": 95905566218,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251021",
       "change_rate": 29.9,
       "close_price": 8325.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -856,16 +852,19 @@
       "source": "estimated",
       "trading_volume": 1260007,
       "trading_value": 10489558275,
-      "market_cap": 83090211132
+      "market_cap": 83090211132,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251020",
       "change_rate": 29.95,
       "close_price": 6409.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -873,16 +872,19 @@
       "source": "estimated",
       "trading_volume": 1833105,
       "trading_value": 11748369945,
-      "market_cap": 63966986564
+      "market_cap": 63966986564,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250915",
       "change_rate": 16.02,
       "close_price": 5533.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -903,7 +905,10 @@
       "source": "estimated",
       "trading_volume": 1276273,
       "trading_value": 7061618509,
-      "market_cap": 55223800383
+      "market_cap": 55223800383,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -914,5 +919,5 @@
     "count_recent": 0,
     "avg_rate": 22.57
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -9,10 +9,10 @@
       "close_price": 19680.0,
       "trading_volume": 1288041,
       "trading_value": 25348646880,
-      "rise_reason": "관련 보도: 美 금리 부담에 반도체株 '털썩'⋯코스피 '6900선' 붕괴",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "news_headline",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -92,14 +92,7 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "신약/임상",
-      "reason_evidence": [
-        {
-          "title": "美 금리 부담에 반도체株 '털썩'⋯코스피 '6900선' 붕괴",
-          "link": "https://n.news.naver.com/mnews/article/031/0001061650",
-          "source": "아이뉴스24",
-          "date": "2026-09-28"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260910",
@@ -180,7 +173,7 @@
       "reason_previous": "인수 관련 뉴스",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "8/27 HLB셀 인수?국내 세포치료 사업 본격화",
+        "text": "8/27 HLB셀 인수",
         "link": "https://finance.naver.com/item/news_read.naver?article_id=0001052961&office_id=031&code=024850&page=&sm=",
         "title": "HLB이노베이션, HLB셀 인수?\"국내 세포치료 사업 본격화\"",
         "date": "20260827"
@@ -265,7 +258,7 @@
       "reason_previous": "인수 관련 뉴스",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "8/27 HLB셀 인수?국내 세포치료 사업 본격화",
+        "text": "8/27 HLB셀 인수",
         "link": "https://finance.naver.com/item/news_read.naver?article_id=0001052961&office_id=031&code=024850&page=&sm=",
         "title": "HLB이노베이션, HLB셀 인수?\"국내 세포치료 사업 본격화\"",
         "date": "20260827"
@@ -435,7 +428,7 @@
       "close_price": 11960.0,
       "trading_volume": 966837,
       "trading_value": 11563370520,
-      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -506,7 +499,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "FDA 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -601,7 +602,7 @@
       "close_price": 26300.0,
       "trading_volume": 1545294,
       "trading_value": 40641232200,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -806,10 +807,10 @@
       "date": "20260312",
       "change_rate": 12.42,
       "close_price": 17425.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -817,13 +818,16 @@
       "source": "estimated",
       "trading_volume": 995724,
       "trading_value": 17350490700,
-      "market_cap": 553336436170
+      "market_cap": 553336436170,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
       "change_rate": 14.31,
       "close_price": 14375.0,
-      "rise_reason": "TCR-T 신약 FDA 승인 이끈 규제 총괄 영입",
+      "rise_reason": "美자회사, TCR-T 신약 FDA 승인 이끈 규제 총괄 영입",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -915,10 +919,10 @@
       "date": "20260122",
       "change_rate": 23.27,
       "close_price": 14700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -926,16 +930,19 @@
       "source": "estimated",
       "trading_volume": 1573217,
       "trading_value": 23126289900,
-      "market_cap": 466803191489
+      "market_cap": 466803191489,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260115",
       "change_rate": 16.83,
       "close_price": 12150.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -943,7 +950,10 @@
       "source": "estimated",
       "trading_volume": 672202,
       "trading_value": 8167254300,
-      "market_cap": 385827127659
+      "market_cap": 385827127659,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251211",
@@ -1007,5 +1017,5 @@
     "count_recent": 3,
     "avg_rate": 16.3
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

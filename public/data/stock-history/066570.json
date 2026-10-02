@@ -465,7 +465,7 @@
       "close_price": 184900.0,
       "trading_volume": 10296997,
       "trading_value": 1903914745300,
-      "rise_reason": "폰 대신 잡은 이 사업 덕봤다",
+      "rise_reason": "1분기 깜짝실적·로봇 사업 가시화",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -539,9 +539,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "18% 나홀로 불기둥 찍은 LG전자…폰 대신 잡은 ‘이 사업’ 덕봤다",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005679070&office_id=009&code=066570&page=&sm=",
-          "source": "매일경제",
+          "title": "LG전자, 1분기 깜짝실적·로봇 사업 가시화에 52주 신고가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006278902&office_id=018&code=066570&page=&sm=",
+          "source": "이데일리",
           "date": "2026.05.12"
         }
       ]
@@ -550,10 +550,10 @@
       "date": "20260226",
       "change_rate": 10.05,
       "close_price": 146700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "IT 대표주",
       "news": [],
       "sector": "전자제품",
@@ -561,16 +561,19 @@
       "source": "estimated",
       "trading_volume": 4568151,
       "trading_value": 670147751700,
-      "market_cap": 23895175744680
+      "market_cap": 23895175744680,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260211",
       "change_rate": 22.98,
       "close_price": 127900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "IT 대표주",
       "news": [],
       "sector": "전자제품",
@@ -578,7 +581,10 @@
       "source": "estimated",
       "trading_volume": 13160492,
       "trading_value": 1683226926800,
-      "market_cap": 20832944633569
+      "market_cap": 20832944633569,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -589,5 +595,5 @@
     "count_recent": 0,
     "avg_rate": 19.74
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -214,7 +214,7 @@
       "close_price": 10370.0,
       "trading_volume": 272876,
       "trading_value": 2829724120,
-      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -224,7 +224,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 재료/부품 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -232,7 +240,7 @@
       "close_price": 19400.0,
       "trading_volume": 2563767,
       "trading_value": 49737079800,
-      "rise_reason": "반도체 재료 테마 8종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -285,7 +293,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "자사주 매입",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260506",
@@ -293,7 +309,7 @@
       "close_price": 21700.0,
       "trading_volume": 6675922,
       "trading_value": 144867507400,
-      "rise_reason": "반도체주 동반 강세 — 000 돌파",
+      "rise_reason": "반도체주 동반 강세 — 전쟁 리스크도 눌렀다",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -349,9 +365,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[이 시각 시황] 코스피, 7,000 돌파…반도체 대표주 '훨훨'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000508330&office_id=374&code=024840&page=&sm=",
-          "source": "SBS Biz",
+          "title": "[기획] 전쟁 리스크도 눌렀다…AI 반도체 랠리에 코스피 레벨업",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003424739&office_id=030&code=001500&page=&sm=",
+          "source": "전자신문",
           "date": "2026.05.06"
         }
       ]
@@ -362,7 +378,7 @@
       "close_price": 19710.0,
       "trading_volume": 10339701,
       "trading_value": 203795506710,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -527,10 +543,10 @@
       "date": "20251001",
       "change_rate": 13.39,
       "close_price": 10500.0,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "10위",
       "news": [
         {
@@ -557,7 +573,10 @@
       "source": "estimated",
       "trading_volume": 846716,
       "trading_value": 8890518000,
-      "market_cap": 224402027027
+      "market_cap": 224402027027,
+      "reason_previous": "트럼프/관세",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -568,5 +587,5 @@
     "count_recent": 1,
     "avg_rate": 16.82
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

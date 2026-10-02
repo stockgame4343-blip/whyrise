@@ -159,10 +159,10 @@
       "close_price": 2408.0,
       "trading_volume": 8264891,
       "trading_value": 19901857528,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
         {
@@ -218,7 +218,10 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -226,10 +229,10 @@
       "close_price": 2145.0,
       "trading_volume": 26824019,
       "trading_value": 57537520755,
-      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 무려 433억 돌...",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
         {
@@ -255,15 +258,7 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]금일 코스닥 거래량 1위 위지트 거래대금 무려 433억 돌...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003633831",
-          "source": "서울신문",
-          "date": "2026-04-09"
-        }
-      ]
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -274,5 +269,5 @@
     "count_recent": 0,
     "avg_rate": 18.38
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:18"
 }

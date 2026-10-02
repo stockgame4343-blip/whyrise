@@ -336,10 +336,10 @@
       "date": "20260128",
       "change_rate": 11.19,
       "close_price": 6460.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트팩토리(스마트공장)",
       "news": [
         {
@@ -360,16 +360,19 @@
       "source": "estimated",
       "trading_volume": 3491973,
       "trading_value": 22558145580,
-      "market_cap": 129401246105
+      "market_cap": 129401246105,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260120",
       "change_rate": 14.73,
       "close_price": 5840.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트팩토리(스마트공장)",
       "news": [
         {
@@ -396,7 +399,10 @@
       "source": "estimated",
       "trading_volume": 13098663,
       "trading_value": 76496191920,
-      "market_cap": 116981931464
+      "market_cap": 116981931464,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260115",
@@ -489,5 +495,5 @@
     "count_recent": 0,
     "avg_rate": 15.21
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

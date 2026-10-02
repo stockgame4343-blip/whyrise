@@ -68,8 +68,8 @@
       "close_price": 3950.0,
       "trading_volume": 5887921,
       "trading_value": 23257287950,
-      "rise_reason": "가격주 동반 강세",
-      "reason_confidence": "low",
+      "rise_reason": "가격 상승 계속된다",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
@@ -139,12 +139,12 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "리튬 인수 관련 뉴스",
-      "reason_kind": "sector",
+      "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "리튬 가격 강세에 관련주 동반 강세…리튬포어스 상한가[특징주]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006268055&office_id=018&code=073570&page=&sm=",
-          "source": "이데일리",
+          "title": "\"가격 상승 계속된다\" 리튬포어스 상한가…리튬주 동반 상승",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005350248&office_id=008&code=073570&page=&sm=",
+          "source": "머니투데이",
           "date": "2026.04.28"
         }
       ]
@@ -386,15 +386,26 @@
       "close_price": 3464.0,
       "trading_volume": 289213,
       "trading_value": 1001833832,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "리튬",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "유가급등에 ESS까지 호재 2차전지 소재주 급등세…대형주는 차익실현...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006246057",
+          "source": "이데일리",
+          "date": "2026-03-31"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -417,7 +428,7 @@
       "date": "20260122",
       "change_rate": 29.95,
       "close_price": 5133.0,
-      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -521,10 +532,10 @@
       "date": "20250722",
       "change_rate": 29.99,
       "close_price": 8174.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [],
       "sector": "핸드셋",
@@ -532,13 +543,16 @@
       "source": "estimated",
       "trading_volume": 383202,
       "trading_value": 3132293148,
-      "market_cap": 98362900683
+      "market_cap": 98362900683,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250721",
       "change_rate": 29.92,
       "close_price": 6288.0,
-      "rise_reason": "2차전지주 동반 강세 — 리튬 가격도 오른다",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -565,7 +579,7 @@
       "date": "20250718",
       "change_rate": 30.0,
       "close_price": 4840.0,
-      "rise_reason": "리튬 테마 3종목 동반 상승",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -578,7 +592,15 @@
       "trading_value": 5593283080,
       "market_cap": 58242774566,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "2차전지주 동반 강세…흑연관세·리튬공급축소 ‘불쏘시개’[주톡피아...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006068789",
+          "source": "이데일리",
+          "date": "2025-07-18"
+        }
+      ]
     }
   ],
   "stats": {
@@ -589,5 +611,5 @@
     "count_recent": 0,
     "avg_rate": 22.36
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

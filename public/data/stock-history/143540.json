@@ -129,10 +129,10 @@
       "date": "20251223",
       "change_rate": 12.42,
       "close_price": 887.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -147,7 +147,10 @@
       "source": "estimated",
       "trading_volume": 1419739,
       "trading_value": 1259308493,
-      "market_cap": 39562890276
+      "market_cap": 39562890276,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -158,5 +161,5 @@
     "count_recent": 0,
     "avg_rate": 11.54
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

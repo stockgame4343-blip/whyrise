@@ -201,10 +201,10 @@
       "date": "20250616",
       "change_rate": 23.65,
       "close_price": 137500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음식료업종",
       "news": [],
       "sector": "식품",
@@ -212,7 +212,10 @@
       "source": "estimated",
       "trading_volume": 190085,
       "trading_value": 26136687500,
-      "market_cap": 397736842105
+      "market_cap": 397736842105,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -223,5 +226,5 @@
     "count_recent": 0,
     "avg_rate": 15.39
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

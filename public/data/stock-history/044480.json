@@ -107,10 +107,10 @@
       "close_price": 1950.0,
       "trading_volume": 1938837,
       "trading_value": 3780732150,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -128,7 +128,10 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -222,10 +225,10 @@
       "date": "20260317",
       "change_rate": 29.58,
       "close_price": 1380.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -252,7 +255,10 @@
       "source": "estimated",
       "trading_volume": 3012829,
       "trading_value": 4157704020,
-      "market_cap": 45899672846
+      "market_cap": 45899672846,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -275,10 +281,10 @@
       "date": "20250916",
       "change_rate": 15.84,
       "close_price": 2925.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -299,7 +305,10 @@
       "source": "estimated",
       "trading_volume": 8895131,
       "trading_value": 26018258175,
-      "market_cap": 97287350054
+      "market_cap": 97287350054,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250911",
@@ -453,5 +462,5 @@
     "count_recent": 0,
     "avg_rate": 15.88
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

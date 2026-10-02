@@ -151,10 +151,10 @@
       "date": "20260309",
       "change_rate": 29.97,
       "close_price": 4575.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조림사업",
       "news": [
         {
@@ -169,7 +169,10 @@
       "source": "estimated",
       "trading_volume": 7592623,
       "trading_value": 34736250225,
-      "market_cap": 101919928825
+      "market_cap": 101919928825,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -180,5 +183,5 @@
     "count_recent": 0,
     "avg_rate": 19.43
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

@@ -9,10 +9,10 @@
       "close_price": 53100.0,
       "trading_volume": 410351,
       "trading_value": 21789638100,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "6일",
       "news": [
         {
@@ -30,7 +30,10 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260923",
@@ -94,10 +97,10 @@
       "close_price": 29200.0,
       "trading_volume": 132083,
       "trading_value": 3856823600,
-      "rise_reason": "관련 보도: AI 신약 10만개 중 진짜는?…, 대규모 실험검증으로 후보...",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [
         {
@@ -165,15 +168,7 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "FDA 관련 뉴스",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "“AI 신약 10만개 중 진짜는?”…프로티나, 대규모 실험검증으로 후보...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006368778&office_id=018&code=468530&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.09.14"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260813",
@@ -473,10 +468,10 @@
       "close_price": 18520.0,
       "trading_volume": 51964,
       "trading_value": 962373280,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "6일",
       "news": [
         {
@@ -488,7 +483,10 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260715",
@@ -897,10 +895,10 @@
       "date": "20251204",
       "change_rate": 11.08,
       "close_price": 104300.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -939,7 +937,10 @@
       "source": "estimated",
       "trading_volume": 3145184,
       "trading_value": 328042691200,
-      "market_cap": 1151101743264
+      "market_cap": 1151101743264,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251202",
@@ -993,10 +994,10 @@
       "date": "20251126",
       "change_rate": 14.61,
       "close_price": 80000.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -1035,16 +1036,19 @@
       "source": "estimated",
       "trading_volume": 3545684,
       "trading_value": 283654720000,
-      "market_cap": 882916006339
+      "market_cap": 882916006339,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251030",
       "change_rate": 10.92,
       "close_price": 63000.0,
-      "rise_reason": "",
+      "rise_reason": "바이오주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "2025 하반기 신규상장",
       "news": [
         {
@@ -1073,7 +1077,15 @@
       "trading_value": 122084550000,
       "market_cap": 695296354992,
       "reason_previous": "바이오",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "월드 ADC 앞두고 바이오株 '들썩'…인투셀·지놈앤컴퍼니 강세[Why 바이...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004549824",
+          "source": "서울경제",
+          "date": "2025-10-30"
+        }
+      ]
     },
     {
       "date": "20251027",
@@ -1316,10 +1328,10 @@
       "date": "20250904",
       "change_rate": 24.68,
       "close_price": 24600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2025 하반기 신규상장",
       "news": [],
       "sector": "생물공학",
@@ -1327,7 +1339,10 @@
       "source": "estimated",
       "trading_volume": 9510976,
       "trading_value": 233970009600,
-      "market_cap": 271496671949
+      "market_cap": 271496671949,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250903",
@@ -1395,5 +1410,5 @@
     "count_recent": 4,
     "avg_rate": 14.57
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

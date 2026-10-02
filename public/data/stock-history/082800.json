@@ -400,10 +400,10 @@
       "date": "20260225",
       "change_rate": 11.81,
       "close_price": 4260.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -430,7 +430,10 @@
       "source": "estimated",
       "trading_volume": 1985937,
       "trading_value": 8460091620,
-      "market_cap": 258720382165
+      "market_cap": 258720382165,
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260127",
@@ -558,5 +561,5 @@
     "count_recent": 0,
     "avg_rate": 17.48
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

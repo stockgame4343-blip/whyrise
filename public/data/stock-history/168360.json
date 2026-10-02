@@ -181,7 +181,7 @@
       "close_price": 16350.0,
       "trading_volume": 128317,
       "trading_value": 2097982950,
-      "rise_reason": "소캠 테마 6종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -252,7 +252,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -339,17 +347,25 @@
       "close_price": 25600.0,
       "trading_volume": 537268,
       "trading_value": 13754060800,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "소캠(SOCAMM) 테마 강세",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -491,10 +507,10 @@
       "close_price": 28100.0,
       "trading_volume": 1061719,
       "trading_value": 29834303900,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
         {
@@ -550,7 +566,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체주 랠리인데… ‘박스권 횡보’ 리노공업 주가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001380165&office_id=082&code=036930&page=&sm=",
+          "source": "부산일보",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -558,7 +582,7 @@
       "close_price": 21250.0,
       "trading_volume": 138598,
       "trading_value": 2945207500,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -648,7 +672,7 @@
       "date": "20260224",
       "change_rate": 10.34,
       "close_price": 24000.0,
-      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -778,10 +802,10 @@
       "date": "20250617",
       "change_rate": 13.11,
       "close_price": 12770.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "전자장비와기기",
@@ -789,16 +813,19 @@
       "source": "estimated",
       "trading_volume": 606937,
       "trading_value": 7750585490,
-      "market_cap": 279759318734
+      "market_cap": 279759318734,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250529",
       "change_rate": 14.72,
       "close_price": 10600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "전자장비와기기",
@@ -806,7 +833,10 @@
       "source": "estimated",
       "trading_volume": 838754,
       "trading_value": 8890792400,
-      "market_cap": 232219951338
+      "market_cap": 232219951338,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -817,5 +847,5 @@
     "count_recent": 0,
     "avg_rate": 14.79
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

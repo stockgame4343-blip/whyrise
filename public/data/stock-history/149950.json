@@ -324,15 +324,18 @@
       "close_price": 11390.0,
       "trading_volume": 248621,
       "trading_value": 2831793190,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -360,5 +363,5 @@
     "count_recent": 2,
     "avg_rate": 14.27
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

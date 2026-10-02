@@ -9,8 +9,8 @@
       "close_price": 3900.0,
       "trading_volume": 288767,
       "trading_value": 1126191300,
-      "rise_reason": "LED 테마 3종목 동반 상승",
-      "reason_confidence": "low",
+      "rise_reason": "7일 주권매매거래 정지 해제",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED",
@@ -80,7 +80,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "투자 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "우리엔터프라이즈, 7일 주권매매거래 정지 해제",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363891&office_id=018&code=037400&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.09.04"
+        }
+      ]
     },
     {
       "date": "20260812",
@@ -170,5 +178,5 @@
     "count_recent": 1,
     "avg_rate": 18.16
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T11:12:18"
 }

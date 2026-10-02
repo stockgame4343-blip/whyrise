@@ -42,8 +42,8 @@
       "close_price": 614.0,
       "trading_volume": 3449886,
       "trading_value": 2118230004,
-      "rise_reason": "탈모 치료 테마 4종목 동반 상승",
-      "reason_confidence": "low",
+      "rise_reason": "9월 말 액면병합 변경상장 완료",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
@@ -113,7 +113,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "기술이전 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "샤페론 “9월 말 액면병합 변경상장 완료…관리종목 지정 사유 해소 .....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005319920&office_id=015&code=378800&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -539,10 +547,10 @@
       "date": "20250530",
       "change_rate": 17.12,
       "close_price": 3338.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [],
       "sector": "제약",
@@ -550,16 +558,19 @@
       "source": "estimated",
       "trading_volume": 29176499,
       "trading_value": 97391153662,
-      "market_cap": 154398610038
+      "market_cap": 154398610038,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
       "change_rate": 14.0,
       "close_price": 3013.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "탈모 치료",
       "news": [],
       "sector": "제약",
@@ -567,7 +578,10 @@
       "source": "estimated",
       "trading_volume": 13655504,
       "trading_value": 41144033552,
-      "market_cap": 139365791505
+      "market_cap": 139365791505,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -578,5 +592,5 @@
     "count_recent": 1,
     "avg_rate": 80.07
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

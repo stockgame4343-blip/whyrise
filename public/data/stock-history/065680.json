@@ -198,10 +198,10 @@
       "date": "20250612",
       "change_rate": 10.22,
       "close_price": 32900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리포트",
       "news": [],
       "sector": "핸드셋",
@@ -209,7 +209,10 @@
       "source": "estimated",
       "trading_volume": 182329,
       "trading_value": 5998624100,
-      "market_cap": 303992196531
+      "market_cap": 303992196531,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -220,5 +223,5 @@
     "count_recent": 1,
     "avg_rate": 14.01
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -201,7 +201,7 @@
       "close_price": 31000.0,
       "trading_volume": 2719010,
       "trading_value": 84289310000,
-      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "rise_reason": "전력주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -588,15 +588,18 @@
       "close_price": 31400.0,
       "trading_volume": 4798682,
       "trading_value": 150678614800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -637,10 +640,10 @@
       "date": "20260203",
       "change_rate": 15.57,
       "close_price": 30800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
@@ -648,16 +651,19 @@
       "source": "estimated",
       "trading_volume": 15605824,
       "trading_value": 480659379200,
-      "market_cap": 6036558431372
+      "market_cap": 6036558431372,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251031",
       "change_rate": 14.96,
       "close_price": 24200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
@@ -665,16 +671,19 @@
       "source": "estimated",
       "trading_volume": 17592323,
       "trading_value": 425734216600,
-      "market_cap": 4743010196078
+      "market_cap": 4743010196078,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251013",
       "change_rate": 10.07,
       "close_price": 18140.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
@@ -682,16 +691,19 @@
       "source": "estimated",
       "trading_volume": 13621224,
       "trading_value": 247089003360,
-      "market_cap": 3555297725490
+      "market_cap": 3555297725490,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
       "change_rate": 12.74,
       "close_price": 15400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
@@ -699,7 +711,10 @@
       "source": "estimated",
       "trading_volume": 10437686,
       "trading_value": 160740364400,
-      "market_cap": 3018279215686
+      "market_cap": 3018279215686,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -710,5 +725,5 @@
     "count_recent": 1,
     "avg_rate": 13.38
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T11:12:17"
 }

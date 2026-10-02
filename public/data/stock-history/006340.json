@@ -210,7 +210,7 @@
       "close_price": 14200.0,
       "trading_volume": 29061070,
       "trading_value": 412667194000,
-      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "rise_reason": "전력주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -329,7 +329,7 @@
       "close_price": 13400.0,
       "trading_volume": 32007321,
       "trading_value": 428898101400,
-      "rise_reason": "전력주 동반 강세 — LS일렉트릭",
+      "rise_reason": "전력주 동반 강세 — 인프라 투자 확대와 데이터센터 기대감",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -379,9 +379,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "'1500조 메가프로젝트'에 전력株 급등…LS일렉트릭 13%↑",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014039102&office_id=003&code=010120&page=&sm=",
-          "source": "뉴시스",
+          "title": "[기업이슈] 전선주, 인프라 투자 확대와 데이터센터 기대감에 상승",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000519253&office_id=374&code=000500&page=&sm=",
+          "source": "SBS Biz",
           "date": "2026.07.01"
         }
       ]
@@ -664,7 +664,7 @@
       "close_price": 13090.0,
       "trading_volume": 85728928,
       "trading_value": 1122191667520,
-      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "rise_reason": "전력주 동반 강세 — LS일렉, 美 데이터센터 3200억 수주 5% 증가",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -738,9 +738,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
-          "source": "연합뉴스",
+          "title": "LS일렉, 美 데이터센터 3200억 수주 5%↑…전력주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008917941&office_id=421&code=006340&page=&sm=",
+          "source": "뉴스1",
           "date": "2026.04.29"
         }
       ]
@@ -1005,15 +1005,18 @@
       "close_price": 5630.0,
       "trading_volume": 4171108,
       "trading_value": 23483338040,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -1267,10 +1270,10 @@
       "date": "20251029",
       "change_rate": 11.37,
       "close_price": 3525.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전선",
       "news": [
         {
@@ -1309,7 +1312,10 @@
       "source": "estimated",
       "trading_volume": 30808334,
       "trading_value": 108599377350,
-      "market_cap": 276410810810
+      "market_cap": 276410810810,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1320,5 +1326,5 @@
     "count_recent": 0,
     "avg_rate": 17.28
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -311,7 +311,7 @@
       "close_price": 7600.0,
       "trading_volume": 8303686,
       "trading_value": 63108013600,
-      "rise_reason": "무선통신장비주 동반 강세 — 젠슨 황이 찍었다",
+      "rise_reason": "무선통신장비주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1071,10 +1071,10 @@
       "date": "20260311",
       "change_rate": 14.9,
       "close_price": 4395.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자율주행차",
       "news": [
         {
@@ -1101,7 +1101,10 @@
       "source": "estimated",
       "trading_volume": 10632848,
       "trading_value": 46731366960,
-      "market_cap": 134543497757
+      "market_cap": 134543497757,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
@@ -1194,10 +1197,10 @@
       "date": "20250611",
       "change_rate": 13.35,
       "close_price": 2760.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자율주행차",
       "news": [],
       "sector": "통신장비",
@@ -1205,7 +1208,10 @@
       "source": "estimated",
       "trading_volume": 10515149,
       "trading_value": 29021811240,
-      "market_cap": 84491479820
+      "market_cap": 84491479820,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1216,5 +1222,5 @@
     "count_recent": 1,
     "avg_rate": 18.0
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

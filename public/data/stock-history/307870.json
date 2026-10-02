@@ -444,10 +444,10 @@
       "date": "20260312",
       "change_rate": 29.9,
       "close_price": 1047.0,
-      "rise_reason": "관련 보도: 작년 영업손실 67억...적자 폭 확대",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
         {
@@ -482,24 +482,16 @@
       "trading_value": 9851630283,
       "market_cap": 77805602536,
       "reason_previous": "클라우드 컴퓨팅 테마 상한가",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "비투엔, 작년 영업손실 67억...적자 폭 확대",
-          "link": "https://n.news.naver.com/mnews/article/018/0006233603",
-          "source": "이데일리",
-          "date": "2026-03-12"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
       "change_rate": 30.0,
       "close_price": 806.0,
-      "rise_reason": "클라우드 컴퓨팅 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
         {
@@ -532,7 +524,10 @@
       "source": "estimated",
       "trading_volume": 1816555,
       "trading_value": 1464143330,
-      "market_cap": 59896194503
+      "market_cap": 59896194503,
+      "reason_previous": "클라우드 컴퓨팅 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
@@ -623,10 +618,10 @@
       "date": "20250722",
       "change_rate": 10.42,
       "close_price": 1844.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [],
       "sector": "IT서비스",
@@ -634,7 +629,10 @@
       "source": "estimated",
       "trading_volume": 3875908,
       "trading_value": 7147174352,
-      "market_cap": 137032980972
+      "market_cap": 137032980972,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250717",
@@ -761,10 +759,10 @@
       "date": "20250624",
       "change_rate": 11.86,
       "close_price": 1302.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
         {
@@ -785,7 +783,10 @@
       "source": "estimated",
       "trading_volume": 1600822,
       "trading_value": 2084270244,
-      "market_cap": 96755391120
+      "market_cap": 96755391120,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -796,5 +797,5 @@
     "count_recent": 0,
     "avg_rate": 17.94
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

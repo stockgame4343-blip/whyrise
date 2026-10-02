@@ -9,7 +9,7 @@
       "close_price": 129600.0,
       "trading_volume": 180201,
       "trading_value": 23354049600,
-      "rise_reason": "HBM 소캠주 동반 강세 — 대덕전자",
+      "rise_reason": "HBM 소캠주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -96,7 +96,7 @@
       "close_price": 230000.0,
       "trading_volume": 1429924,
       "trading_value": 328882520000,
-      "rise_reason": "관련 보도: 송도로 국내 생산 및 R&D 통합 이전…총 350억원 투자",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -167,13 +167,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "HBM(고대역폭메모리) 관련 뉴스",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "ISC, 송도로 국내 생산 및 R&D 통합 이전…총 350억원 투자",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003435870&office_id=030&code=095340&page=&sm=",
-          "source": "전자신문",
-          "date": "2026.06.09"
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
         }
       ]
     },
@@ -183,7 +183,7 @@
       "close_price": 240000.0,
       "trading_volume": 349651,
       "trading_value": 83916240000,
-      "rise_reason": "HPSP · 목표가 30만원",
+      "rise_reason": "HPSP 24% 목표가 30만원",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -246,7 +246,7 @@
       "close_price": 219500.0,
       "trading_volume": 200394,
       "trading_value": 43986483000,
-      "rise_reason": "소캠 테마 4종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -293,7 +293,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -301,7 +309,7 @@
       "close_price": 264000.0,
       "trading_volume": 247902,
       "trading_value": 65446128000,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -325,10 +333,10 @@
       "date": "20260316",
       "change_rate": 18.66,
       "close_price": 220000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -336,7 +344,10 @@
       "source": "estimated",
       "trading_volume": 565362,
       "trading_value": 124379640000,
-      "market_cap": 4663408602150
+      "market_cap": 4663408602150,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -390,10 +401,10 @@
       "date": "20260219",
       "change_rate": 10.72,
       "close_price": 189000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -401,16 +412,19 @@
       "source": "estimated",
       "trading_volume": 261177,
       "trading_value": 49362453000,
-      "market_cap": 4006291935483
+      "market_cap": 4006291935483,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
       "change_rate": 11.62,
       "close_price": 131600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -418,7 +432,10 @@
       "source": "estimated",
       "trading_volume": 479477,
       "trading_value": 63099173200,
-      "market_cap": 2789566236559
+      "market_cap": 2789566236559,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251125",
@@ -518,9 +535,9 @@
       "date": "20250625",
       "change_rate": 16.1,
       "close_price": 62000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세 — SK하이닉스 29만원 돌파, 시총 210조 넘겼다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
@@ -529,7 +546,18 @@
       "source": "estimated",
       "trading_volume": 808376,
       "trading_value": 50119312000,
-      "market_cap": 1314233333333
+      "market_cap": 1314233333333,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "SK하이닉스 장중 29만원 돌파, 시총 210조 넘겼다…반도체주 랠리",
+          "link": "https://n.news.naver.com/mnews/article/008/0005212262",
+          "source": "머니투데이",
+          "date": "2025-06-25"
+        }
+      ]
     }
   ],
   "stats": {
@@ -540,5 +568,5 @@
     "count_recent": 0,
     "avg_rate": 15.99
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

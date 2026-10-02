@@ -267,10 +267,10 @@
       "date": "20251216",
       "change_rate": 30.0,
       "close_price": 26000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -309,7 +309,10 @@
       "source": "estimated",
       "trading_volume": 42430,
       "trading_value": 1103180000,
-      "market_cap": 5842696629
+      "market_cap": 5842696629,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251210",
@@ -387,10 +390,10 @@
       "date": "20251117",
       "change_rate": 29.96,
       "close_price": 17090.0,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -425,15 +428,7 @@
       "trading_value": 51697250,
       "market_cap": 3840449438,
       "reason_previous": "상한가 — 사유 미수집",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]‘동부건설우’ 29.96% 폭등…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003592326",
-          "source": "서울신문",
-          "date": "2025-11-17"
-        }
-      ]
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -444,5 +439,5 @@
     "count_recent": 0,
     "avg_rate": 25.9
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

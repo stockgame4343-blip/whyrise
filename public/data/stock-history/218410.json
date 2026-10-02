@@ -637,10 +637,10 @@
       "date": "20260303",
       "change_rate": 12.32,
       "close_price": 63800.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
         {
@@ -679,7 +679,10 @@
       "source": "estimated",
       "trading_volume": 1278165,
       "trading_value": 81546927000,
-      "market_cap": 1694147469220
+      "market_cap": 1694147469220,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
@@ -733,10 +736,10 @@
       "date": "20260129",
       "change_rate": 10.77,
       "close_price": 49350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "통신장비",
@@ -744,16 +747,19 @@
       "source": "estimated",
       "trading_volume": 1172658,
       "trading_value": 57870672300,
-      "market_cap": 1310441655266
+      "market_cap": 1310441655266,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260126",
       "change_rate": 11.16,
       "close_price": 38850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "통신장비",
@@ -761,7 +767,10 @@
       "source": "estimated",
       "trading_volume": 1107267,
       "trading_value": 43017322950,
-      "market_cap": 1031624281805
+      "market_cap": 1031624281805,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
@@ -899,10 +908,10 @@
       "date": "20250530",
       "change_rate": 10.95,
       "close_price": 19660.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "통신장비",
@@ -910,7 +919,10 @@
       "source": "estimated",
       "trading_volume": 1450345,
       "trading_value": 28513782700,
-      "market_cap": 522052339261
+      "market_cap": 522052339261,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -921,5 +933,5 @@
     "count_recent": 1,
     "avg_rate": 15.7
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

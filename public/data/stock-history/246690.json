@@ -32,7 +32,7 @@
       "close_price": 3055.0,
       "trading_volume": 6173173,
       "trading_value": 18859043515,
-      "rise_reason": "관련주 동반 강세 — 국민성장펀드 투자 호재",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -143,10 +143,10 @@
       "date": "20260223",
       "change_rate": 11.17,
       "close_price": 2090.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "퓨리오사AI",
       "news": [
         {
@@ -179,7 +179,10 @@
       "source": "estimated",
       "trading_volume": 26462033,
       "trading_value": 55305648970,
-      "market_cap": 99342444950
+      "market_cap": 99342444950,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260210",
@@ -299,5 +302,5 @@
     "count_recent": 0,
     "avg_rate": 18.94
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

@@ -556,7 +556,7 @@
       "close_price": 69500.0,
       "trading_volume": 1227101,
       "trading_value": 85283519500,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -643,7 +643,7 @@
       "close_price": 59900.0,
       "trading_volume": 817612,
       "trading_value": 48974958800,
-      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -714,7 +714,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -738,7 +746,7 @@
       "date": "20260318",
       "change_rate": 11.81,
       "close_price": 45900.0,
-      "rise_reason": "반도체주 동반 강세 — 외국인·기관 삼전닉스 2.6조 폭풍매수",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -980,5 +988,5 @@
     "count_recent": 1,
     "avg_rate": 16.36
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

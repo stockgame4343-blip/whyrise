@@ -27,7 +27,7 @@
       "close_price": 5730.0,
       "trading_volume": 777373,
       "trading_value": 4454347290,
-      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "rise_reason": "전력주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -225,7 +225,7 @@
       "close_price": 7300.0,
       "trading_volume": 12013984,
       "trading_value": 87702083200,
-      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "rise_reason": "전력주 동반 강세 — LS일렉, 美 데이터센터 3200억 수주 5% 증가",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -263,9 +263,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
-          "source": "연합뉴스",
+          "title": "LS일렉, 美 데이터센터 3200억 수주 5%↑…전력주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008917941&office_id=421&code=006340&page=&sm=",
+          "source": "뉴스1",
           "date": "2026.04.29"
         }
       ]
@@ -492,10 +492,10 @@
       "date": "20250527",
       "change_rate": 30.0,
       "close_price": 7150.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
@@ -503,7 +503,10 @@
       "source": "estimated",
       "trading_volume": 18976895,
       "trading_value": 135684799250,
-      "market_cap": 250518796992
+      "market_cap": 250518796992,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -514,5 +517,5 @@
     "count_recent": 0,
     "avg_rate": 16.31
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

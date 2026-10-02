@@ -9,7 +9,7 @@
       "close_price": 3360.0,
       "trading_volume": 43673913,
       "trading_value": 146744347680,
-      "rise_reason": "양자암호·보안주 동반 강세 — AI 속도조절론",
+      "rise_reason": "양자암호·보안주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -422,7 +422,7 @@
       "close_price": 8213.0,
       "trading_volume": 13604203,
       "trading_value": 111731319239,
-      "rise_reason": "관련주 동반 강세 — 포톤 2연상",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -509,7 +509,7 @@
       "close_price": 6322.0,
       "trading_volume": 12531637,
       "trading_value": 79225009114,
-      "rise_reason": "테마주 동반 강세 — 양자컴퓨팅 지원 발표",
+      "rise_reason": "관련주 동반 강세 — 美정부, 양자컴퓨팅 기업 지분투자",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -583,9 +583,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[ET특징주] 美 정부, 양자컴퓨팅 지원 발표… 국내 테마주 급등",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003430556&office_id=030&code=062970&page=&sm=",
-          "source": "전자신문",
+          "title": "[특징주] 美정부, 양자컴퓨팅 기업 지분투자에 관련株 급등(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016093650&office_id=001&code=062970&page=&sm=",
+          "source": "연합뉴스",
           "date": "2026.05.22"
         }
       ]
@@ -675,15 +675,18 @@
       "close_price": 3575.0,
       "trading_volume": 4876804,
       "trading_value": 17434574300,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -912,10 +915,10 @@
       "date": "20250918",
       "change_rate": 29.99,
       "close_price": 2449.0,
-      "rise_reason": "광통신(광케이블/광섬유 등) 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [],
       "sector": "통신장비",
@@ -923,7 +926,10 @@
       "source": "estimated",
       "trading_volume": 19288016,
       "trading_value": 47236351184,
-      "market_cap": 139838046734
+      "market_cap": 139838046734,
+      "reason_previous": "광통신(광케이블/광섬유 등) 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -934,5 +940,5 @@
     "count_recent": 2,
     "avg_rate": 24.17
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

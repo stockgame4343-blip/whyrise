@@ -283,7 +283,7 @@
       "close_price": 199800.0,
       "trading_volume": 251223,
       "trading_value": 50194355400,
-      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "rise_reason": "바이오주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -718,10 +718,10 @@
       "date": "20251120",
       "change_rate": 15.4,
       "close_price": 386000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "생물공학",
@@ -729,7 +729,10 @@
       "source": "estimated",
       "trading_volume": 544757,
       "trading_value": 210276202000,
-      "market_cap": 9000500733496
+      "market_cap": 9000500733496,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
@@ -773,10 +776,10 @@
       "date": "20250813",
       "change_rate": 14.24,
       "close_price": 349000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "생물공학",
@@ -784,16 +787,19 @@
       "source": "estimated",
       "trading_volume": 420233,
       "trading_value": 146661317000,
-      "market_cap": 8137758435207
+      "market_cap": 8137758435207,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250717",
       "change_rate": 19.62,
       "close_price": 283500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [],
       "sector": "생물공학",
@@ -801,7 +807,10 @@
       "source": "estimated",
       "trading_volume": 885490,
       "trading_value": 251036415000,
-      "market_cap": 6610471393643
+      "market_cap": 6610471393643,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250715",
@@ -850,5 +859,5 @@
     "count_recent": 0,
     "avg_rate": 14.13
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

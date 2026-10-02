@@ -507,10 +507,10 @@
       "date": "20260209",
       "change_rate": 13.57,
       "close_price": 44992.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주태양광(페로브스카이트 등)",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -518,7 +518,10 @@
       "source": "estimated",
       "trading_volume": 38130324,
       "trading_value": 1715559537408,
-      "market_cap": 7733775978975
+      "market_cap": 7733775978975,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260206",
@@ -586,5 +589,5 @@
     "count_recent": 1,
     "avg_rate": 15.54
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -143,10 +143,10 @@
       "close_price": 810.0,
       "trading_volume": 336983,
       "trading_value": 272956230,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [
         {
@@ -202,7 +202,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "반도체 투자 확대 발표",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260528",
@@ -269,7 +277,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "반도체 투자 확대 발표",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/21 22일 주권매매거래 정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006287327&office_id=018&code=072770&page=&sm=",
+        "title": "멤레이비티, 22일 주권매매거래 정지 해제",
+        "date": "20260521"
+      }
     },
     {
       "date": "20260129",
@@ -519,10 +533,10 @@
       "date": "20250825",
       "change_rate": 10.43,
       "close_price": 2076.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체",
       "news": [
         {
@@ -537,16 +551,19 @@
       "source": "estimated",
       "trading_volume": 1166077,
       "trading_value": 2420775852,
-      "market_cap": 86142068965
+      "market_cap": 86142068965,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250821",
       "change_rate": 12.25,
       "close_price": 1832.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체",
       "news": [
         {
@@ -585,16 +602,19 @@
       "source": "estimated",
       "trading_volume": 13081816,
       "trading_value": 23965886912,
-      "market_cap": 76017471264
+      "market_cap": 76017471264,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250818",
       "change_rate": 29.98,
       "close_price": 1604.0,
-      "rise_reason": "반도체 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체",
       "news": [
         {
@@ -609,7 +629,10 @@
       "source": "estimated",
       "trading_volume": 7407191,
       "trading_value": 11881134364,
-      "market_cap": 66556781609
+      "market_cap": 66556781609,
+      "reason_previous": "반도체 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250814",
@@ -658,5 +681,5 @@
     "count_recent": 0,
     "avg_rate": 22.05
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

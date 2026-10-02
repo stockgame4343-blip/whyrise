@@ -127,7 +127,7 @@
       "date": "20251021",
       "change_rate": 13.64,
       "close_price": 11500.0,
-      "rise_reason": "조선기자재 테마 6종목 동반 상승",
+      "rise_reason": "조선주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -140,7 +140,15 @@
       "trading_value": 186738288000,
       "market_cap": 524201127819,
       "reason_previous": "조선기자재 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 조선주 급등, 조선기자재는 폭등",
+          "link": "https://n.news.naver.com/mnews/article/417/0001107912",
+          "source": "동행미디어 시대",
+          "date": "2025-10-21"
+        }
+      ]
     },
     {
       "date": "20250908",
@@ -194,10 +202,10 @@
       "date": "20250904",
       "change_rate": 11.99,
       "close_price": 8870.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [],
       "sector": "조선",
@@ -205,16 +213,19 @@
       "source": "estimated",
       "trading_volume": 11043869,
       "trading_value": 97959118030,
-      "market_cap": 404318609022
+      "market_cap": 404318609022,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250807",
       "change_rate": 27.94,
       "close_price": 8060.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -235,16 +246,19 @@
       "source": "estimated",
       "trading_volume": 16647696,
       "trading_value": 134180429760,
-      "market_cap": 367396616541
+      "market_cap": 367396616541,
+      "reason_previous": "전기차",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
       "change_rate": 11.0,
       "close_price": 6660.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [],
       "sector": "조선",
@@ -252,7 +266,10 @@
       "source": "estimated",
       "trading_volume": 4552397,
       "trading_value": 30318964020,
-      "market_cap": 303580827067
+      "market_cap": 303580827067,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -263,5 +280,5 @@
     "count_recent": 0,
     "avg_rate": 12.1
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

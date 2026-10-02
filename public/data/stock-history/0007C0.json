@@ -268,10 +268,10 @@
       "close_price": 17990.0,
       "trading_volume": 84236,
       "trading_value": 1515405640,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
         {
@@ -283,7 +283,10 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -307,7 +310,7 @@
       "close_price": 16430.0,
       "trading_volume": 98004,
       "trading_value": 1610205720,
-      "rise_reason": "AI 인프라 사업 맞손",
+      "rise_reason": "메가존클라우드, AI 인프라 사업 맞손",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -886,10 +889,10 @@
       "date": "20251223",
       "change_rate": 21.81,
       "close_price": 47200.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
         {
@@ -928,7 +931,10 @@
       "source": "estimated",
       "trading_volume": 5074714,
       "trading_value": 239526500800,
-      "market_cap": 378986828774
+      "market_cap": 378986828774,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -939,5 +945,5 @@
     "count_recent": 3,
     "avg_rate": 15.73
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

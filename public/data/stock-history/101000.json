@@ -653,10 +653,10 @@
       "date": "20260219",
       "change_rate": 11.57,
       "close_price": 1321.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -671,7 +671,10 @@
       "source": "estimated",
       "trading_volume": 3147653,
       "trading_value": 4158049613,
-      "market_cap": 52284763572
+      "market_cap": 52284763572,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260130",
@@ -784,10 +787,10 @@
       "date": "20251016",
       "change_rate": 29.94,
       "close_price": 1085.0,
-      "rise_reason": "29.94% 금일 증시 상승률",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -816,15 +819,7 @@
       "trading_value": 14978111435,
       "market_cap": 42943957968,
       "reason_previous": "로봇/자동화",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]‘KS인더스트리’ 29.94% 상한가 금일 증시 상승률 1위...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003582720",
-          "source": "서울신문",
-          "date": "2025-10-16"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20251001",
@@ -1022,5 +1017,5 @@
     "count_recent": 5,
     "avg_rate": 17.89
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

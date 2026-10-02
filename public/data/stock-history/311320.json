@@ -185,10 +185,10 @@
       "close_price": 10270.0,
       "trading_volume": 1253727,
       "trading_value": 12875776290,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -256,7 +256,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "영업이익 공시",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 인텔·마이크론 급등에 AI 반도체주 랠리 재개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000517034&office_id=374&code=320000&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.06.19"
+        }
+      ]
     },
     {
       "date": "20260615",
@@ -475,5 +483,5 @@
     "count_recent": 0,
     "avg_rate": 16.34
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

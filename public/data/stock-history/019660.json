@@ -9,10 +9,10 @@
       "close_price": 2730.0,
       "trading_volume": 1446334,
       "trading_value": 3948491820,
-      "rise_reason": "30.00% 금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -32,15 +32,7 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]글로본 30.00% 상한가 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003633142",
-          "source": "서울신문",
-          "date": "2026-04-07"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -48,15 +40,18 @@
       "close_price": 2300.0,
       "trading_volume": 58855,
       "trading_value": 135366500,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251020",
@@ -86,5 +81,5 @@
     "count_recent": 0,
     "avg_rate": 18.36
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

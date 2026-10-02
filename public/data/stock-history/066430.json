@@ -183,7 +183,7 @@
       "close_price": 2425.0,
       "trading_volume": 2162369,
       "trading_value": 5243744825,
-      "rise_reason": "로봇주 동반 강세 — 삼성전자 로봇 승부수에 줄줄이",
+      "rise_reason": "로봇주 동반 강세 — 삼성전자 로봇사업 강화 소식",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -257,9 +257,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "로봇주 '불기둥'…삼성전자 로봇 승부수에 줄줄이 '상한가'[특징주]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006334418&office_id=018&code=066430&page=&sm=",
-          "source": "이데일리",
+          "title": "[특징주] 로봇주, 삼성전자 로봇사업 강화 소식에 급등 마감(종합)",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016208746&office_id=001&code=439960&page=&sm=",
+          "source": "연합뉴스",
           "date": "2026.07.22"
         }
       ]
@@ -1014,10 +1014,10 @@
       "date": "20260121",
       "change_rate": 17.58,
       "close_price": 2910.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유상증자",
       "news": [],
       "sector": "화학",
@@ -1025,16 +1025,19 @@
       "source": "estimated",
       "trading_volume": 4419086,
       "trading_value": 12859540260,
-      "market_cap": 113959354838
+      "market_cap": 113959354838,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260119",
       "change_rate": 18.52,
       "close_price": 2560.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유상증자",
       "news": [],
       "sector": "화학",
@@ -1042,7 +1045,10 @@
       "source": "estimated",
       "trading_volume": 2500569,
       "trading_value": 6401456640,
-      "market_cap": 100252903225
+      "market_cap": 100252903225,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
@@ -1078,10 +1084,10 @@
       "date": "20251226",
       "change_rate": 20.0,
       "close_price": 1860.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유상증자",
       "news": [
         {
@@ -1102,16 +1108,19 @@
       "source": "estimated",
       "trading_volume": 13600849,
       "trading_value": 25297579140,
-      "market_cap": 72840000000
+      "market_cap": 72840000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251210",
       "change_rate": 29.99,
       "close_price": 1556.0,
-      "rise_reason": "유상증자 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유상증자",
       "news": [
         {
@@ -1126,7 +1135,10 @@
       "source": "estimated",
       "trading_volume": 16644796,
       "trading_value": 25899302576,
-      "market_cap": 60934967741
+      "market_cap": 60934967741,
+      "reason_previous": "유상증자 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251203",
@@ -1213,5 +1225,5 @@
     "count_recent": 0,
     "avg_rate": 21.79
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

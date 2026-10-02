@@ -9,7 +9,7 @@
       "close_price": 2960.0,
       "trading_volume": 13808362,
       "trading_value": 40872751520,
-      "rise_reason": "FDA 희귀의약품",
+      "rise_reason": "항암 파이프라인, FDA 희귀의약품",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -96,7 +96,7 @@
       "close_price": 2465.0,
       "trading_volume": 724052,
       "trading_value": 1784788180,
-      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "rise_reason": "바이오주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -196,10 +196,10 @@
       "date": "20260129",
       "change_rate": 29.9,
       "close_price": 4975.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -207,16 +207,19 @@
       "source": "estimated",
       "trading_volume": 17430475,
       "trading_value": 86716613125,
-      "market_cap": 689332627118
+      "market_cap": 689332627118,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251205",
       "change_rate": 12.08,
       "close_price": 3850.0,
-      "rise_reason": "신약/임상",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -243,7 +246,10 @@
       "source": "estimated",
       "trading_volume": 12022804,
       "trading_value": 46287795400,
-      "market_cap": 533453389830
+      "market_cap": 533453389830,
+      "reason_previous": "신약/임상",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250912",
@@ -295,10 +301,10 @@
       "date": "20250904",
       "change_rate": 16.01,
       "close_price": 3370.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -306,7 +312,10 @@
       "source": "estimated",
       "trading_volume": 18517071,
       "trading_value": 62402529270,
-      "market_cap": 466944915254
+      "market_cap": 466944915254,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -317,5 +326,5 @@
     "count_recent": 0,
     "avg_rate": 18.0
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

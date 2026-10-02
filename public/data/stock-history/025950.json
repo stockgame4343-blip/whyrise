@@ -262,7 +262,7 @@
       "close_price": 11250.0,
       "trading_volume": 39957,
       "trading_value": 449516250,
-      "rise_reason": "건설 중소형 테마 7종목 동반 상승",
+      "rise_reason": "건설주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -272,7 +272,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "건설 중소형 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 메가 프로젝트에 건설주 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000180222&office_id=656&code=013580&page=&sm=",
+          "source": "대전일보",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -506,10 +514,10 @@
       "date": "20250529",
       "change_rate": 13.55,
       "close_price": 39800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -517,7 +525,10 @@
       "source": "estimated",
       "trading_volume": 339331,
       "trading_value": 13505373800,
-      "market_cap": 334175986842
+      "market_cap": 334175986842,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -528,5 +539,5 @@
     "count_recent": 0,
     "avg_rate": 19.42
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -381,10 +381,10 @@
       "reason_previous": "증설 발표",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "4/28 국내 유일 회로박 생산 익산공장 증설",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005755959&office_id=277&code=020150&page=&sm=",
-        "title": "롯데에너지머티리얼즈, '국내 유일 회로박 생산' 익산공장 증설",
-        "date": "20260428"
+        "text": "4/23 AI회로박 수요 타고 실적 시동",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005511988&office_id=014&code=020150&page=&sm=",
+        "title": "\"롯데에너지머티리얼즈, AI회로박 수요 타고 실적 반등 시동\" 유진투자...",
+        "date": "20260423"
       }
     },
     {
@@ -393,15 +393,18 @@
       "close_price": 49150.0,
       "trading_volume": 732289,
       "trading_value": 35992004350,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -457,8 +460,8 @@
       "date": "20260204",
       "change_rate": 13.83,
       "close_price": 47750.0,
-      "rise_reason": "2차전지 테마 3종목 동반 상승",
-      "reason_confidence": "low",
+      "rise_reason": "흑자전환 기대",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(전고체)",
@@ -501,16 +504,24 @@
       "trading_value": 104292064250,
       "market_cap": 2500469512195,
       "reason_previous": "실적 호조",
-      "reason_kind": "theme"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 롯데에너지머티리얼즈, 흑자전환 기대에 14%↑ 마감(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0015885267",
+          "source": "연합뉴스",
+          "date": "2026-02-04"
+        }
+      ]
     },
     {
       "date": "20260203",
       "change_rate": 13.99,
       "close_price": 41950.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -549,7 +560,10 @@
       "source": "estimated",
       "trading_volume": 682519,
       "trading_value": 28631672050,
-      "market_cap": 2196747560975
+      "market_cap": 2196747560975,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
@@ -603,10 +617,10 @@
       "date": "20260114",
       "change_rate": 10.57,
       "close_price": 34000.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [
         {
@@ -645,7 +659,10 @@
       "source": "estimated",
       "trading_volume": 953132,
       "trading_value": 32406488000,
-      "market_cap": 1780439024390
+      "market_cap": 1780439024390,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251120",
@@ -670,10 +687,10 @@
       "date": "20251112",
       "change_rate": 14.37,
       "close_price": 40200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "전자장비와기기",
@@ -681,16 +698,19 @@
       "source": "estimated",
       "trading_volume": 4090388,
       "trading_value": 164433597600,
-      "market_cap": 2105107317073
+      "market_cap": 2105107317073,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251110",
       "change_rate": 29.82,
       "close_price": 32000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "전자장비와기기",
@@ -698,13 +718,16 @@
       "source": "estimated",
       "trading_volume": 1546640,
       "trading_value": 49492480000,
-      "market_cap": 1675707317073
+      "market_cap": 1675707317073,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250721",
       "change_rate": 12.08,
       "close_price": 26450.0,
-      "rise_reason": "2차전지주 동반 강세 — 리튬 가격도 오른다",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -731,10 +754,10 @@
       "date": "20250528",
       "change_rate": 11.06,
       "close_price": 22100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "전자장비와기기",
@@ -742,7 +765,10 @@
       "source": "estimated",
       "trading_volume": 221650,
       "trading_value": 4898465000,
-      "market_cap": 1157285365853
+      "market_cap": 1157285365853,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -753,5 +779,5 @@
     "count_recent": 1,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -118,7 +118,7 @@
       "close_price": 612000.0,
       "trading_volume": 821531,
       "trading_value": 502776972000,
-      "rise_reason": "반도체 소부장주 동반 강세",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -192,9 +192,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "코스닥 '반도체 소부장주' 급등…최고가 종목중 95% 차지",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016136248&office_id=001&code=039030&page=&sm=",
-          "source": "연합뉴스",
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
           "date": "2026.06.12"
         }
       ]
@@ -284,7 +284,7 @@
       "close_price": 496000.0,
       "trading_volume": 251374,
       "trading_value": 124681504000,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -371,7 +371,7 @@
       "close_price": 549000.0,
       "trading_volume": 212389,
       "trading_value": 116601561000,
-      "rise_reason": "HBM 테마 6종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -442,7 +442,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "기관 순매수 보도",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260513",
@@ -517,7 +525,7 @@
       "close_price": 435000.0,
       "trading_volume": 100790,
       "trading_value": 43843650000,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -598,10 +606,10 @@
       "date": "20251104",
       "change_rate": 20.53,
       "close_price": 293500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -609,7 +617,10 @@
       "source": "estimated",
       "trading_volume": 653838,
       "trading_value": 191901453000,
-      "market_cap": 3615790471414
+      "market_cap": 3615790471414,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250918",
@@ -639,5 +650,5 @@
     "count_recent": 0,
     "avg_rate": 15.95
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T11:12:18"
 }

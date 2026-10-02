@@ -575,7 +575,7 @@
       "date": "20250919",
       "change_rate": 10.65,
       "close_price": 4830.0,
-      "rise_reason": "보안주 동반 강세 — 잇단 해킹",
+      "rise_reason": "보안주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -652,10 +652,10 @@
       "date": "20250707",
       "change_rate": 29.96,
       "close_price": 4880.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "비철금속",
@@ -663,7 +663,10 @@
       "source": "estimated",
       "trading_volume": 9279077,
       "trading_value": 45281895760,
-      "market_cap": 137634316353
+      "market_cap": 137634316353,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
@@ -693,5 +696,5 @@
     "count_recent": 1,
     "avg_rate": 17.09
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

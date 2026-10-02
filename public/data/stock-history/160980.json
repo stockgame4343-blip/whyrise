@@ -88,7 +88,7 @@
       "close_price": 41000.0,
       "trading_volume": 281352,
       "trading_value": 11535432000,
-      "rise_reason": "반도체 장비 테마 12종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -159,7 +159,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "외국인 순매수 보도",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -246,7 +254,7 @@
       "close_price": 39850.0,
       "trading_volume": 393942,
       "trading_value": 15698588700,
-      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -518,8 +526,8 @@
       "date": "20260318",
       "change_rate": 12.94,
       "close_price": 24000.0,
-      "rise_reason": "반도체주 동반 강세 — 외국인·기관 삼전닉스 2.6조 폭풍매수",
-      "reason_confidence": "low",
+      "rise_reason": "정구용 전 회장, 주식 소유 보고 의무 해제",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
@@ -538,12 +546,12 @@
       "trading_value": 15798360000,
       "market_cap": 262173228346,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "sector",
+      "reason_kind": "catalyst",
       "reason_evidence": [
         {
-          "title": "외국인·기관 삼전닉스 2.6조 폭풍매수…반도체주 불기둥[핫종목](종합...",
-          "link": "https://n.news.naver.com/mnews/article/421/0008834272",
-          "source": "뉴스1",
+          "title": "정구용 전 싸이맥스 회장, 주식 소유 보고 의무 해제",
+          "link": "https://n.news.naver.com/mnews/article/293/0000081121",
+          "source": "블로터",
           "date": "2026-03-18"
         }
       ]
@@ -595,5 +603,5 @@
     "count_recent": 0,
     "avg_rate": 19.89
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -661,15 +661,18 @@
       "close_price": 1340000.0,
       "trading_volume": 1366361,
       "trading_value": 1830923740000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "S7(삼성전자/SK하이닉스 등)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260521",
@@ -941,10 +944,10 @@
       "date": "20260223",
       "change_rate": 13.13,
       "close_price": 426500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "전자장비와기기",
@@ -952,7 +955,10 @@
       "source": "estimated",
       "trading_volume": 1645328,
       "trading_value": 701732392000,
-      "market_cap": 31856863237885
+      "market_cap": 31856863237885,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
@@ -977,10 +983,10 @@
       "date": "20250730",
       "change_rate": 10.55,
       "close_price": 151900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(전고체)",
       "news": [],
       "sector": "전자장비와기기",
@@ -988,7 +994,10 @@
       "source": "estimated",
       "trading_volume": 3094286,
       "trading_value": 470022043400,
-      "market_cap": 11345973096916
+      "market_cap": 11345973096916,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -999,5 +1008,5 @@
     "count_recent": 0,
     "avg_rate": 14.74
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -866,10 +866,10 @@
       "date": "20251222",
       "change_rate": 10.26,
       "close_price": 37600.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -908,7 +908,10 @@
       "source": "estimated",
       "trading_volume": 1994510,
       "trading_value": 74993576000,
-      "market_cap": 406273342354
+      "market_cap": 406273342354,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251219",
@@ -1050,10 +1053,10 @@
       "date": "20250924",
       "change_rate": 21.04,
       "close_price": 35950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "IT서비스",
@@ -1061,7 +1064,10 @@
       "source": "estimated",
       "trading_volume": 11420216,
       "trading_value": 410556765200,
-      "market_cap": 388444857916
+      "market_cap": 388444857916,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250923",
@@ -1091,5 +1097,5 @@
     "count_recent": 3,
     "avg_rate": 14.95
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

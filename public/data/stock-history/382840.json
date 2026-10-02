@@ -93,10 +93,10 @@
       "date": "20260126",
       "change_rate": 22.33,
       "close_price": 9970.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -111,7 +111,10 @@
       "source": "estimated",
       "trading_volume": 5681650,
       "trading_value": 56646050500,
-      "market_cap": 152319444444
+      "market_cap": 152319444444,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -122,5 +125,5 @@
     "count_recent": 0,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

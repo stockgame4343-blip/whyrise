@@ -292,7 +292,7 @@
       "close_price": 116900.0,
       "trading_volume": 595669,
       "trading_value": 69633706100,
-      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -363,7 +363,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "LG에너지솔루션·삼성SDI 8% 급등…이차전지주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009028681&office_id=421&code=066970&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260528",
@@ -494,10 +502,10 @@
       "date": "20260324",
       "change_rate": 11.51,
       "close_price": 125000.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
         {
@@ -536,7 +544,10 @@
       "source": "estimated",
       "trading_volume": 1385441,
       "trading_value": 173180125000,
-      "market_cap": 5070956454121
+      "market_cap": 5070956454121,
+      "reason_previous": "대형 수주",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -646,7 +657,7 @@
       "date": "20260122",
       "change_rate": 12.81,
       "close_price": 125900.0,
-      "rise_reason": "2차전지주 동반 강세 — 삼성SDI",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -673,7 +684,7 @@
       "date": "20251024",
       "change_rate": 17.61,
       "close_price": 133600.0,
-      "rise_reason": "2차전지주 동반 강세 — 포스코퓨처엠",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -727,10 +738,10 @@
       "date": "20251016",
       "change_rate": 19.27,
       "close_price": 98400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "전기제품",
@@ -738,7 +749,10 @@
       "source": "estimated",
       "trading_volume": 2235770,
       "trading_value": 219999768000,
-      "market_cap": 3991856920684
+      "market_cap": 3991856920684,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251014",
@@ -790,9 +804,9 @@
       "date": "20250718",
       "change_rate": 12.89,
       "close_price": 62200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "2차전지주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
@@ -801,7 +815,18 @@
       "source": "estimated",
       "trading_volume": 1743058,
       "trading_value": 108418207600,
-      "market_cap": 2523307931570
+      "market_cap": 2523307931570,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "2차전지주 동반 강세…흑연관세·리튬공급축소 ‘불쏘시개’[주톡피아...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006068789",
+          "source": "이데일리",
+          "date": "2025-07-18"
+        }
+      ]
     },
     {
       "date": "20250711",
@@ -834,10 +859,10 @@
       "date": "20250528",
       "change_rate": 16.88,
       "close_price": 56100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(소재/부품)",
       "news": [],
       "sector": "전기제품",
@@ -845,7 +870,10 @@
       "source": "estimated",
       "trading_volume": 1006818,
       "trading_value": 56482489800,
-      "market_cap": 2275845256609
+      "market_cap": 2275845256609,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -856,5 +884,5 @@
     "count_recent": 1,
     "avg_rate": 14.1
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

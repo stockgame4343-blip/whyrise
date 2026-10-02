@@ -42,10 +42,10 @@
       "date": "20251223",
       "change_rate": 29.99,
       "close_price": 13090.0,
-      "rise_reason": "금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -62,15 +62,7 @@
       "trading_value": 24413151070,
       "market_cap": 118709312977,
       "reason_previous": "상한가 — 사유 미수집",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]이닉스 29.99% 상한가…금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003603327",
-          "source": "서울신문",
-          "date": "2025-12-23"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20251017",
@@ -102,10 +94,10 @@
       "date": "20250721",
       "change_rate": 12.42,
       "close_price": 12580.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -120,16 +112,19 @@
       "source": "estimated",
       "trading_volume": 7429296,
       "trading_value": 93460543680,
-      "market_cap": 114084274809
+      "market_cap": 114084274809,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250715",
       "change_rate": 18.01,
       "close_price": 12450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -150,16 +145,19 @@
       "source": "estimated",
       "trading_volume": 9615217,
       "trading_value": 119709451650,
-      "market_cap": 112905343511
+      "market_cap": 112905343511,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250714",
       "change_rate": 29.93,
       "close_price": 10550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -180,7 +178,10 @@
       "source": "estimated",
       "trading_volume": 3251320,
       "trading_value": 34301426000,
-      "market_cap": 95674809160
+      "market_cap": 95674809160,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -191,5 +192,5 @@
     "count_recent": 0,
     "avg_rate": 18.21
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

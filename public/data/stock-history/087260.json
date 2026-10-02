@@ -220,10 +220,10 @@
       "date": "20260106",
       "change_rate": 11.41,
       "close_price": 1894.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [
         {
@@ -250,16 +250,19 @@
       "source": "estimated",
       "trading_volume": 24397534,
       "trading_value": 46208929396,
-      "market_cap": 61702549575
+      "market_cap": 61702549575,
+      "reason_previous": "가상자산/블록체인",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250911",
       "change_rate": 10.26,
       "close_price": 2170.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트카(SMART CAR)",
       "news": [],
       "sector": "자동차부품",
@@ -267,7 +270,10 @@
       "source": "estimated",
       "trading_volume": 5295237,
       "trading_value": 11490664290,
-      "market_cap": 70694050991
+      "market_cap": 70694050991,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -278,5 +284,5 @@
     "count_recent": 0,
     "avg_rate": 19.36
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

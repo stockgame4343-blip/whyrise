@@ -109,10 +109,10 @@
       "date": "20260202",
       "change_rate": 26.15,
       "close_price": 2055.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "강관업체(Steel pipe)",
       "news": [
         {
@@ -127,7 +127,10 @@
       "source": "estimated",
       "trading_volume": 10242292,
       "trading_value": 21047910060,
-      "market_cap": 49362010221
+      "market_cap": 49362010221,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
@@ -152,10 +155,10 @@
       "date": "20251230",
       "change_rate": 29.95,
       "close_price": 1575.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "강관업체(Steel pipe)",
       "news": [
         {
@@ -194,7 +197,10 @@
       "source": "estimated",
       "trading_volume": 8801829,
       "trading_value": 13862880675,
-      "market_cap": 37832197614
+      "market_cap": 37832197614,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -205,5 +211,5 @@
     "count_recent": 0,
     "avg_rate": 22.56
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

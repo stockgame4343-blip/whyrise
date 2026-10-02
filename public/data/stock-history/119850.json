@@ -718,10 +718,10 @@
       "date": "20251015",
       "change_rate": 21.98,
       "close_price": 41350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -742,7 +742,10 @@
       "source": "estimated",
       "trading_volume": 3609158,
       "trading_value": 149238683300,
-      "market_cap": 680083640552
+      "market_cap": 680083640552,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250910",
@@ -788,10 +791,10 @@
       "date": "20250707",
       "change_rate": 11.04,
       "close_price": 35700.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -812,7 +815,10 @@
       "source": "estimated",
       "trading_volume": 519200,
       "trading_value": 18535440000,
-      "market_cap": 587158064516
+      "market_cap": 587158064516,
+      "reason_previous": "방산",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -823,5 +829,5 @@
     "count_recent": 0,
     "avg_rate": 19.15
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

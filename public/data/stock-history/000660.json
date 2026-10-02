@@ -388,17 +388,25 @@
       "close_price": 1940000.0,
       "trading_volume": 5096690,
       "trading_value": 9887578600000,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 대표주(생산) 테마 강세",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260511",
@@ -637,15 +645,18 @@
       "close_price": 1033000.0,
       "trading_volume": 6709356,
       "trading_value": 6930764748000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -653,7 +664,7 @@
       "close_price": 893000.0,
       "trading_volume": 6255058,
       "trading_value": 5585766794000,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -713,7 +724,7 @@
       "date": "20251103",
       "change_rate": 10.91,
       "close_price": 620000.0,
-      "rise_reason": "반도체주 동반 강세 — AI 모멘텀은 이어진다",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -745,5 +756,5 @@
     "count_recent": 0,
     "avg_rate": 13.27
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

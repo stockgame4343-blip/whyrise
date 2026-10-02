@@ -9,7 +9,7 @@
       "close_price": 11500.0,
       "trading_volume": 564760,
       "trading_value": 6494740000,
-      "rise_reason": "AI 기반 MLCC 검사 정확도 98%",
+      "rise_reason": "AI MLCC 6면 검사서 정확도 98% 구현",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -83,9 +83,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "[ET특징주] 한울반도체, AI 기반 MLCC 검사 정확도 98% 구현...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003462215&office_id=030&code=320000&page=&sm=",
-          "source": "전자신문",
+          "title": "AI MLCC 6면 검사서 정확도 98% 구현…한울반도체 14%↑[특...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006361358&office_id=018&code=320000&page=&sm=",
+          "source": "이데일리",
           "date": "2026.09.01"
         }
       ]
@@ -256,8 +256,8 @@
       "close_price": 23150.0,
       "trading_volume": 9379724,
       "trading_value": 217140610600,
-      "rise_reason": "AI 기반 MLCC 검사장비 고도화 소식에 12%대",
-      "reason_confidence": "high",
+      "rise_reason": "증권가 MLCC 초호황기 분석",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
@@ -330,10 +330,10 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "한울반도체, AI 기반 MLCC 검사장비 고도화 소식에 12%대 강세[...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006311796&office_id=018&code=320000&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.06.22"
+          "title": "[ET특징주] 증권가 “MLCC 초호황기” 분석에… 한울반도체, 이틀째...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003439374&office_id=030&code=320000&page=&sm=",
+          "source": "전자신문",
+          "date": "2026.06.19"
         }
       ]
     },
@@ -673,10 +673,10 @@
       "close_price": 12960.0,
       "trading_volume": 2918071,
       "trading_value": 37818200160,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "액면병합 후 첫 거래일",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
         {
@@ -744,7 +744,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "유상증자 공시",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "한울반도체, 액면병합 후 첫 거래일 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275584&office_id=018&code=320000&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260508",
@@ -752,8 +760,8 @@
       "close_price": 9970.0,
       "trading_volume": 858991,
       "trading_value": 8564140270,
-      "rise_reason": "OLED 테마 4종목 동반 상승",
-      "reason_confidence": "low",
+      "rise_reason": "액면병합 후 첫 거래일",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
@@ -823,7 +831,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "인수 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "한울반도체, 액면병합 후 첫 거래일 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275584&office_id=018&code=320000&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.05.08"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -880,10 +896,10 @@
       "date": "20250610",
       "change_rate": 11.95,
       "close_price": 15234.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [],
       "sector": "전자장비와기기",
@@ -891,7 +907,10 @@
       "source": "estimated",
       "trading_volume": 124256,
       "trading_value": 1892915904,
-      "market_cap": 101560000000
+      "market_cap": 101560000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -902,5 +921,5 @@
     "count_recent": 1,
     "avg_rate": 21.87
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

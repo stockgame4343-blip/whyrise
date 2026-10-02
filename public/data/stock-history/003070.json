@@ -120,10 +120,10 @@
       "date": "20260320",
       "change_rate": 14.11,
       "close_price": 11970.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -144,7 +144,10 @@
       "source": "estimated",
       "trading_volume": 729724,
       "trading_value": 8734796280,
-      "market_cap": 304313761467
+      "market_cap": 304313761467,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -155,5 +158,5 @@
     "count_recent": 0,
     "avg_rate": 13.24
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

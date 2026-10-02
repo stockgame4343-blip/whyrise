@@ -218,7 +218,7 @@
       "close_price": 11870.0,
       "trading_volume": 40327522,
       "trading_value": 478687686140,
-      "rise_reason": "전력주 동반 강세 — LS일렉트릭·LS·효성중공업 52주 최고가",
+      "rise_reason": "전력주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -305,15 +305,18 @@
       "close_price": 10230.0,
       "trading_volume": 4728449,
       "trading_value": 48372033270,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
@@ -417,10 +420,10 @@
       "date": "20260211",
       "change_rate": 12.38,
       "close_price": 9170.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [
         {
@@ -435,7 +438,10 @@
       "source": "estimated",
       "trading_volume": 57126534,
       "trading_value": 523850316780,
-      "market_cap": 450516169154
+      "market_cap": 450516169154,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260120",
@@ -489,10 +495,10 @@
       "date": "20251010",
       "change_rate": 20.04,
       "close_price": 5600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
@@ -500,7 +506,10 @@
       "source": "estimated",
       "trading_volume": 28285172,
       "trading_value": 158396963200,
-      "market_cap": 275124378109
+      "market_cap": 275124378109,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250821",
@@ -536,10 +545,10 @@
       "date": "20250619",
       "change_rate": 14.24,
       "close_price": 3850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
@@ -547,7 +556,10 @@
       "source": "estimated",
       "trading_volume": 10319720,
       "trading_value": 39730922000,
-      "market_cap": 189148009950
+      "market_cap": 189148009950,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -558,5 +570,5 @@
     "count_recent": 0,
     "avg_rate": 17.18
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

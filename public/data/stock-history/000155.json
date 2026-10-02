@@ -282,10 +282,10 @@
       "close_price": 555000.0,
       "trading_volume": 81213,
       "trading_value": 45073215000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "기록",
       "news": [
         {
@@ -297,14 +297,17 @@
       ],
       "sector": "복합기업",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251111",
       "change_rate": 10.95,
       "close_price": 618000.0,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "지주사주 동반 강세 — 배당소득 과세 완화·자사주 소각 의무화 기대에 지주사株",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
@@ -347,12 +350,12 @@
       "trading_value": 68962002000,
       "market_cap": 2469817472118,
       "reason_previous": "자사주 소각",
-      "reason_kind": "move",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[서울데이터랩]두산우 12.21% 급등…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003590129",
-          "source": "서울신문",
+          "title": "배당소득 과세 완화·자사주 소각 의무화 기대에 지주사株 '강세'[특징...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006161422",
+          "source": "이데일리",
           "date": "2025-11-11"
         }
       ]
@@ -380,10 +383,10 @@
       "date": "20251029",
       "change_rate": 10.83,
       "close_price": 563000.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -416,7 +419,10 @@
       "source": "estimated",
       "trading_volume": 56230,
       "trading_value": 31657490000,
-      "market_cap": 2250011710037
+      "market_cap": 2250011710037,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250714",
@@ -441,10 +447,10 @@
       "date": "20250609",
       "change_rate": 15.85,
       "close_price": 402000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [],
       "sector": "복합기업",
@@ -452,16 +458,19 @@
       "source": "estimated",
       "trading_volume": 146349,
       "trading_value": 58832298000,
-      "market_cap": 1606580297397
+      "market_cap": 1606580297397,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
       "change_rate": 11.86,
       "close_price": 316000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [],
       "sector": "복합기업",
@@ -469,7 +478,10 @@
       "source": "estimated",
       "trading_volume": 102978,
       "trading_value": 32541048000,
-      "market_cap": 1262884014869
+      "market_cap": 1262884014869,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -480,5 +492,5 @@
     "count_recent": 0,
     "avg_rate": 14.61
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

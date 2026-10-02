@@ -313,7 +313,7 @@
       "close_price": 121600.0,
       "trading_volume": 643119,
       "trading_value": 78203270400,
-      "rise_reason": "반도체 기판 테마 3종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -360,7 +360,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "반도체주 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260709",
@@ -818,7 +826,7 @@
       "close_price": 52900.0,
       "trading_volume": 497108,
       "trading_value": 26297013200,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1006,10 +1014,10 @@
       "date": "20251001",
       "change_rate": 10.26,
       "close_price": 47300.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
         {
@@ -1048,16 +1056,19 @@
       "source": "estimated",
       "trading_volume": 1401424,
       "trading_value": 66287355200,
-      "market_cap": 1772056637168
+      "market_cap": 1772056637168,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250924",
       "change_rate": 12.45,
       "close_price": 42000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "전자장비와기기",
@@ -1065,7 +1076,10 @@
       "source": "estimated",
       "trading_volume": 3373791,
       "trading_value": 141699222000,
-      "market_cap": 1573496379726
+      "market_cap": 1573496379726,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250909",
@@ -1138,10 +1152,10 @@
       "date": "20250715",
       "change_rate": 14.35,
       "close_price": 25500.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
         {
@@ -1180,16 +1194,19 @@
       "source": "estimated",
       "trading_volume": 1998766,
       "trading_value": 50968533000,
-      "market_cap": 955337087691
+      "market_cap": 955337087691,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250605",
       "change_rate": 17.87,
       "close_price": 21300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "전자장비와기기",
@@ -1197,7 +1214,10 @@
       "source": "estimated",
       "trading_volume": 2152364,
       "trading_value": 45845353200,
-      "market_cap": 797987449718
+      "market_cap": 797987449718,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1208,5 +1228,5 @@
     "count_recent": 1,
     "avg_rate": 14.99
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -161,7 +161,7 @@
       "close_price": 1669.0,
       "trading_volume": 2624370,
       "trading_value": 4380073530,
-      "rise_reason": "리튬 테마 11종목 동반 상승",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -220,7 +220,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환 보도",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "LG에너지솔루션·삼성SDI 8% 급등…이차전지주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009028681&office_id=421&code=066970&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260626",
@@ -228,7 +236,7 @@
       "close_price": 1284.0,
       "trading_volume": 169110,
       "trading_value": 217137240,
-      "rise_reason": "신재생에너지주 동반 강세 — SK이터닉스",
+      "rise_reason": "신재생에너지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -303,7 +311,7 @@
       "close_price": 988.0,
       "trading_volume": 228029,
       "trading_value": 225292652,
-      "rise_reason": "신재생에너지주 동반 강세 — SK이터닉스",
+      "rise_reason": "신재생에너지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -486,7 +494,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/7 8일 주권매매거래 정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275281&office_id=018&code=270520&page=&sm=",
+        "title": "앱튼, 8일 주권매매거래 정지 해제",
+        "date": "20260507"
+      }
     },
     {
       "date": "20260410",
@@ -703,10 +717,10 @@
       "date": "20250702",
       "change_rate": 23.5,
       "close_price": 13980.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리튬",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -714,7 +728,10 @@
       "source": "estimated",
       "trading_volume": 2133250,
       "trading_value": 29822835000,
-      "market_cap": 274280618311
+      "market_cap": 274280618311,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -725,5 +742,5 @@
     "count_recent": 0,
     "avg_rate": 21.35
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -504,15 +504,18 @@
       "close_price": 36200.0,
       "trading_volume": 542117,
       "trading_value": 19624635400,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [],
       "sector": "조선",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -633,10 +636,10 @@
       "date": "20250814",
       "change_rate": 27.59,
       "close_price": 36300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [],
       "sector": "조선",
@@ -644,7 +647,10 @@
       "source": "estimated",
       "trading_volume": 4778174,
       "trading_value": 173447716200,
-      "market_cap": 1457377777777
+      "market_cap": 1457377777777,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -655,5 +661,5 @@
     "count_recent": 0,
     "avg_rate": 14.08
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

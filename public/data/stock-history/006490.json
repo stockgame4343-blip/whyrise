@@ -546,10 +546,10 @@
       "date": "20260325",
       "change_rate": 17.54,
       "close_price": 268.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [
         {
@@ -576,7 +576,10 @@
       "source": "estimated",
       "trading_volume": 7185742,
       "trading_value": 1925778856,
-      "market_cap": 39652044609
+      "market_cap": 39652044609,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
@@ -620,10 +623,10 @@
       "date": "20260106",
       "change_rate": 29.96,
       "close_price": 694.0,
-      "rise_reason": "스마트그리드(지능형전력망) 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [],
       "sector": "무선통신서비스",
@@ -631,7 +634,10 @@
       "source": "estimated",
       "trading_volume": 9837350,
       "trading_value": 6827120900,
-      "market_cap": 102681040892
+      "market_cap": 102681040892,
+      "reason_previous": "스마트그리드(지능형전력망) 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251223",
@@ -700,10 +706,10 @@
       "date": "20250909",
       "change_rate": 14.0,
       "close_price": 855.0,
-      "rise_reason": "파트너십",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [
         {
@@ -730,7 +736,10 @@
       "source": "estimated",
       "trading_volume": 7476299,
       "trading_value": 6392235645,
-      "market_cap": 126501858736
+      "market_cap": 126501858736,
+      "reason_previous": "파트너십",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
@@ -755,10 +764,10 @@
       "date": "20250609",
       "change_rate": 12.31,
       "close_price": 1880.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [],
       "sector": "무선통신서비스",
@@ -766,16 +775,19 @@
       "source": "estimated",
       "trading_volume": 5928733,
       "trading_value": 11146018040,
-      "market_cap": 278156133828
+      "market_cap": 278156133828,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
       "change_rate": 12.04,
       "close_price": 1703.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [],
       "sector": "무선통신서비스",
@@ -783,16 +795,19 @@
       "source": "estimated",
       "trading_volume": 4807223,
       "trading_value": 8186700769,
-      "market_cap": 251968029739
+      "market_cap": 251968029739,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250528",
       "change_rate": 10.68,
       "close_price": 1482.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [],
       "sector": "무선통신서비스",
@@ -800,7 +815,10 @@
       "source": "estimated",
       "trading_volume": 2557191,
       "trading_value": 3789757062,
-      "market_cap": 219269888475
+      "market_cap": 219269888475,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -811,5 +829,5 @@
     "count_recent": 2,
     "avg_rate": 19.61
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -424,7 +424,7 @@
       "close_price": 7570.0,
       "trading_volume": 3101777,
       "trading_value": 23480451890,
-      "rise_reason": "형제주 동반 강세 — 화장품만? 이젠 건강기능식품까지",
+      "rise_reason": "형제주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -734,10 +734,10 @@
       "date": "20250602",
       "change_rate": 13.44,
       "close_price": 5740.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음식료업종",
       "news": [],
       "sector": "건강관리업체및서비스",
@@ -745,16 +745,19 @@
       "source": "estimated",
       "trading_volume": 484827,
       "trading_value": 2782906980,
-      "market_cap": 118428200972
+      "market_cap": 118428200972,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
       "change_rate": 12.78,
       "close_price": 5250.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음식료업종",
       "news": [],
       "sector": "건강관리업체및서비스",
@@ -762,7 +765,10 @@
       "source": "estimated",
       "trading_volume": 548315,
       "trading_value": 2878653750,
-      "market_cap": 108318476499
+      "market_cap": 108318476499,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -773,5 +779,5 @@
     "count_recent": 0,
     "avg_rate": 14.4
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

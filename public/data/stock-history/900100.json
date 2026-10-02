@@ -627,10 +627,10 @@
       "close_price": 4220.0,
       "trading_volume": 129042,
       "trading_value": 544557240,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마리화나(대마)",
       "news": [
         {
@@ -666,7 +666,10 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -881,10 +884,10 @@
       "date": "20250805",
       "change_rate": 12.0,
       "close_price": 1185.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마리화나(대마)",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
@@ -892,7 +895,10 @@
       "source": "estimated",
       "trading_volume": 6581918,
       "trading_value": 7799572830,
-      "market_cap": 62448586118
+      "market_cap": 62448586118,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250731",
@@ -941,5 +947,5 @@
     "count_recent": 3,
     "avg_rate": 22.33
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

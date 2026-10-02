@@ -193,10 +193,10 @@
       "close_price": 174000.0,
       "trading_volume": 1099286,
       "trading_value": 191275764000,
-      "rise_reason": "",
+      "rise_reason": "AI 반도체주 동반 강세 — 인텔·마이크론 급등",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [
         {
@@ -264,7 +264,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "외국인 순매수",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 인텔·마이크론 급등에 AI 반도체주 랠리 재개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000517034&office_id=374&code=000990&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.06.19"
+        }
+      ]
     },
     {
       "date": "20260612",
@@ -426,17 +434,25 @@
       "close_price": 181000.0,
       "trading_volume": 500249,
       "trading_value": 90545069000,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 대표주(생산) 테마 강세",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260513",
@@ -531,10 +547,10 @@
       "close_price": 186700.0,
       "trading_volume": 1307405,
       "trading_value": 244092513500,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "반도체 대표주(생산)",
       "news": [
         {
@@ -602,13 +618,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "영업이익 공시",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "5/6 8인치 공급난에 웃었다",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0000084039&office_id=293&code=000990&page=&sm=",
-        "title": "DB하이텍, 8인치 공급난에 웃었다…비수기에도 영업익 21%↑",
-        "date": "20260506"
-      }
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체주 랠리인데… ‘박스권 횡보’ 리노공업 주가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001380165&office_id=082&code=036930&page=&sm=",
+          "source": "부산일보",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260424",
@@ -781,10 +799,10 @@
       "date": "20251111",
       "change_rate": 11.81,
       "close_price": 69100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -792,16 +810,19 @@
       "source": "estimated",
       "trading_volume": 5307531,
       "trading_value": 366750392100,
-      "market_cap": 3006181998718
+      "market_cap": 3006181998718,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251110",
       "change_rate": 15.73,
       "close_price": 61800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 대표주(생산)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -809,7 +830,10 @@
       "source": "estimated",
       "trading_volume": 3169225,
       "trading_value": 195858105000,
-      "market_cap": 2688596925048
+      "market_cap": 2688596925048,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -820,5 +844,5 @@
     "count_recent": 2,
     "avg_rate": 14.41
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

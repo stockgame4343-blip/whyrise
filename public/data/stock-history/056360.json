@@ -45,7 +45,7 @@
       "close_price": 11260.0,
       "trading_volume": 2076026,
       "trading_value": 23376052760,
-      "rise_reason": "관련주 동반 강세 — 포톤 2연상",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -372,10 +372,10 @@
       "date": "20260324",
       "change_rate": 14.66,
       "close_price": 6650.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -390,7 +390,10 @@
       "source": "estimated",
       "trading_volume": 2589883,
       "trading_value": 17222721950,
-      "market_cap": 65127777777
+      "market_cap": 65127777777,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
@@ -460,10 +463,10 @@
       "date": "20251014",
       "change_rate": 10.0,
       "close_price": 5830.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -478,7 +481,10 @@
       "source": "estimated",
       "trading_volume": 6979938,
       "trading_value": 40693038540,
-      "market_cap": 57096984126
+      "market_cap": 57096984126,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -489,5 +495,5 @@
     "count_recent": 0,
     "avg_rate": 15.32
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

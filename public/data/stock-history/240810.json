@@ -106,7 +106,7 @@
       "close_price": 142700.0,
       "trading_volume": 2381708,
       "trading_value": 339869731600,
-      "rise_reason": "반도체 장비 테마 12종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -116,7 +116,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 장비 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -509,7 +517,7 @@
       "close_price": 127200.0,
       "trading_volume": 1192343,
       "trading_value": 151666029600,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -596,7 +604,7 @@
       "close_price": 125300.0,
       "trading_volume": 622047,
       "trading_value": 77942489100,
-      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -606,7 +614,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 장비 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260324",
@@ -783,10 +799,10 @@
       "date": "20250808",
       "change_rate": 13.09,
       "close_price": 35850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -794,16 +810,19 @@
       "source": "estimated",
       "trading_volume": 2431714,
       "trading_value": 87176946900,
-      "market_cap": 1759660480769
+      "market_cap": 1759660480769,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250728",
       "change_rate": 15.38,
       "close_price": 31500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -811,16 +830,19 @@
       "source": "estimated",
       "trading_volume": 1326591,
       "trading_value": 41787616500,
-      "market_cap": 1546145192307
+      "market_cap": 1546145192307,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
       "change_rate": 10.42,
       "close_price": 26500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -828,7 +850,10 @@
       "source": "estimated",
       "trading_volume": 772615,
       "trading_value": 20474297500,
-      "market_cap": 1300725320512
+      "market_cap": 1300725320512,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -839,5 +864,5 @@
     "count_recent": 0,
     "avg_rate": 17.8
   },
-  "built_at": "2026-10-02T05:15:56"
+  "built_at": "2026-10-02T11:12:18"
 }

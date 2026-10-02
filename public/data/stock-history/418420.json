@@ -225,10 +225,10 @@
       "close_price": 8350.0,
       "trading_volume": 1715688,
       "trading_value": 14325994800,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -296,13 +296,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "합병 관련 뉴스",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "4/30 SID서 마이크로 디스플레이 라인업 공개",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003423416&office_id=030&code=418420&page=&sm=",
-        "title": "라온텍, SID서 마이크로 디스플레이 라인업 공개",
-        "date": "20260430"
-      }
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체주 랠리인데… ‘박스권 횡보’ 리노공업 주가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001380165&office_id=082&code=036930&page=&sm=",
+          "source": "부산일보",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260423",
@@ -591,10 +593,10 @@
       "date": "20250730",
       "change_rate": 12.76,
       "close_price": 5610.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상현실(VR)",
       "news": [
         {
@@ -609,16 +611,19 @@
       "source": "estimated",
       "trading_volume": 2155605,
       "trading_value": 12092944050,
-      "market_cap": 172191329479
+      "market_cap": 172191329479,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250721",
       "change_rate": 15.15,
       "close_price": 4940.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상현실(VR)",
       "news": [
         {
@@ -633,7 +638,10 @@
       "source": "estimated",
       "trading_volume": 2153353,
       "trading_value": 10637563820,
-      "market_cap": 151626589595
+      "market_cap": 151626589595,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250707",
@@ -671,10 +679,10 @@
       "date": "20250523",
       "change_rate": 10.89,
       "close_price": 3870.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "가상현실(VR)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -682,7 +690,10 @@
       "source": "estimated",
       "trading_volume": 1954825,
       "trading_value": 7565172750,
-      "market_cap": 118784393063
+      "market_cap": 118784393063,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -693,5 +704,5 @@
     "count_recent": 0,
     "avg_rate": 14.74
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

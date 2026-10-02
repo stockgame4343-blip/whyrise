@@ -325,7 +325,7 @@
       "close_price": 2990.0,
       "trading_volume": 4684127,
       "trading_value": 14005539730,
-      "rise_reason": "반도체 장비 테마 12종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -396,7 +396,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "영업이익 공시",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260713",
@@ -754,10 +762,10 @@
       "date": "20251201",
       "change_rate": 15.68,
       "close_price": 4870.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -796,16 +804,19 @@
       "source": "estimated",
       "trading_volume": 27856896,
       "trading_value": 135663083520,
-      "market_cap": 177423474178
+      "market_cap": 177423474178,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251111",
       "change_rate": 15.54,
       "close_price": 4685.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -826,7 +837,10 @@
       "source": "estimated",
       "trading_volume": 47025137,
       "trading_value": 220312766845,
-      "market_cap": 170683568075
+      "market_cap": 170683568075,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251110",
@@ -864,7 +878,7 @@
       "date": "20251027",
       "change_rate": 16.45,
       "close_price": 4425.0,
-      "rise_reason": "조선주 동반 강세 — 다가온 APEC 정상회의",
+      "rise_reason": "조선주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1139,5 +1153,5 @@
     "count_recent": 1,
     "avg_rate": 19.74
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

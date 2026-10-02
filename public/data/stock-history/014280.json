@@ -25,10 +25,10 @@
       "date": "20251017",
       "change_rate": 29.88,
       "close_price": 6520.0,
-      "rise_reason": "금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -57,24 +57,16 @@
       "trading_value": 46466233960,
       "market_cap": 191242959427,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]금강공업 29.88% 상한가…금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003583103",
-          "source": "서울신문",
-          "date": "2025-10-17"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20250909",
       "change_rate": 12.94,
       "close_price": 5630.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -113,16 +105,19 @@
       "source": "estimated",
       "trading_volume": 9711810,
       "trading_value": 54677490300,
-      "market_cap": 165137708830
+      "market_cap": 165137708830,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250908",
       "change_rate": 14.86,
       "close_price": 4985.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -161,7 +156,10 @@
       "source": "estimated",
       "trading_volume": 8202980,
       "trading_value": 40891855300,
-      "market_cap": 146218735083
+      "market_cap": 146218735083,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -172,5 +170,5 @@
     "count_recent": 0,
     "avg_rate": 20.13
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

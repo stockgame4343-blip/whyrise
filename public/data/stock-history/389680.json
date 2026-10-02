@@ -499,8 +499,8 @@
       "close_price": 4630.0,
       "trading_volume": 363579,
       "trading_value": 1683370770,
-      "rise_reason": "엔비디아 기반 차세대 디지털 트윈 플랫폼 공급 계약",
-      "reason_confidence": "mid",
+      "rise_reason": "액면병합 후 첫 거래일",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
@@ -570,12 +570,12 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "catalyst",
+      "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "유디엠텍, '엔비디아 기반 차세대 디지털 트윈 플랫폼' 공급 계약",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005356317&office_id=008&code=389680&page=&sm=",
-          "source": "머니투데이",
+          "title": "유디엠텍, 액면병합 후 첫 거래일 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006278863&office_id=018&code=389680&page=&sm=",
+          "source": "이데일리",
           "date": "2026.05.12"
         }
       ]
@@ -586,8 +586,8 @@
       "close_price": 3565.0,
       "trading_volume": 285402,
       "trading_value": 1017458130,
-      "rise_reason": "엔비디아 기반 차세대 디지털 트윈 플랫폼 공급 계약",
-      "reason_confidence": "mid",
+      "rise_reason": "액면병합 후 첫 거래일",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
@@ -657,12 +657,12 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "catalyst",
+      "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "유디엠텍, '엔비디아 기반 차세대 디지털 트윈 플랫폼' 공급 계약",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005356317&office_id=008&code=389680&page=&sm=",
-          "source": "머니투데이",
+          "title": "유디엠텍, 액면병합 후 첫 거래일 '상한가'[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006278863&office_id=018&code=389680&page=&sm=",
+          "source": "이데일리",
           "date": "2026.05.12"
         }
       ]
@@ -688,10 +688,10 @@
       "date": "20260204",
       "change_rate": 29.94,
       "close_price": 7010.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -712,16 +712,19 @@
       "source": "estimated",
       "trading_volume": 1356511,
       "trading_value": 9509142110,
-      "market_cap": 58208354559
+      "market_cap": 58208354559,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260203",
       "change_rate": 30.0,
       "close_price": 5395.0,
-      "rise_reason": "지능형로봇/인공지능(AI) 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -742,7 +745,10 @@
       "source": "estimated",
       "trading_volume": 4491835,
       "trading_value": 24233449825,
-      "market_cap": 44798013245
+      "market_cap": 44798013245,
+      "reason_previous": "지능형로봇/인공지능(AI) 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
@@ -905,5 +911,5 @@
     "count_recent": 2,
     "avg_rate": 24.47
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

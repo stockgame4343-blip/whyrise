@@ -137,10 +137,10 @@
       "date": "20260319",
       "change_rate": 14.57,
       "close_price": 22100.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -161,7 +161,10 @@
       "source": "estimated",
       "trading_volume": 1539809,
       "trading_value": 34029778900,
-      "market_cap": 175474000000
+      "market_cap": 175474000000,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -238,5 +241,5 @@
     "count_recent": 0,
     "avg_rate": 13.27
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

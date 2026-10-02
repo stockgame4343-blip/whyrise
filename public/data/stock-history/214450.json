@@ -27,7 +27,7 @@
       "close_price": 351000.0,
       "trading_volume": 218429,
       "trading_value": 76668579000,
-      "rise_reason": "바닥 다졌다",
+      "rise_reason": "새 성장동력",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -101,10 +101,10 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "“바닥 다졌다”… 증권가, 파마리서치 반등 본격화 전망 [Why 바이오...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004619334&office_id=011&code=214450&page=&sm=",
-          "source": "서울경제",
-          "date": "2026.05.11"
+          "title": "‘리쥬란 화장품’ 매출 51% 껑충… 파마리서치의 새 성장동력",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000100484&office_id=296&code=214450&page=&sm=",
+          "source": "코메디닷컴",
+          "date": "2026.05.13"
         }
       ]
     },
@@ -129,10 +129,10 @@
       "date": "20250708",
       "change_rate": 13.73,
       "close_price": 588000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미용기기",
       "news": [],
       "sector": "건강관리장비와용품",
@@ -140,7 +140,10 @@
       "source": "estimated",
       "trading_volume": 529438,
       "trading_value": 311309544000,
-      "market_cap": 6109200000000
+      "market_cap": 6109200000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -151,5 +154,5 @@
     "count_recent": 0,
     "avg_rate": 11.16
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

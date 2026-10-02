@@ -104,7 +104,7 @@
       "close_price": 3340.0,
       "trading_volume": 46852330,
       "trading_value": 156486782200,
-      "rise_reason": "신설법인 기대감",
+      "rise_reason": "한화 신설법인 재상장 예비심사 적격 판정",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -178,9 +178,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "[특징주] 한화갤러리아, 신설법인 기대감에 상한가(종합)",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016041578&office_id=001&code=452260&page=&sm=",
-          "source": "연합뉴스",
+          "title": "[특징주] 한화 신설법인 재상장 예비심사 적격 판정에…한화갤러리아.....",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159413&office_id=366&code=452260&page=&sm=",
+          "source": "조선비즈",
           "date": "2026.04.24"
         }
       ]
@@ -189,10 +189,10 @@
       "date": "20260220",
       "change_rate": 12.69,
       "close_price": 2930.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백화점",
       "news": [],
       "sector": "백화점과일반상점",
@@ -200,7 +200,10 @@
       "source": "estimated",
       "trading_volume": 57678846,
       "trading_value": 168999018780,
-      "market_cap": 568061224489
+      "market_cap": 568061224489,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260204",
@@ -225,10 +228,10 @@
       "date": "20260115",
       "change_rate": 29.78,
       "close_price": 2105.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백화점",
       "news": [],
       "sector": "백화점과일반상점",
@@ -236,16 +239,19 @@
       "source": "estimated",
       "trading_volume": 64435259,
       "trading_value": 135636220195,
-      "market_cap": 408112244897
+      "market_cap": 408112244897,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260114",
       "change_rate": 29.97,
       "close_price": 1622.0,
-      "rise_reason": "백화점 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백화점",
       "news": [],
       "sector": "백화점과일반상점",
@@ -253,16 +259,19 @@
       "source": "estimated",
       "trading_volume": 70237910,
       "trading_value": 113925890020,
-      "market_cap": 314469387755
+      "market_cap": 314469387755,
+      "reason_previous": "백화점 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251217",
       "change_rate": 30.0,
       "close_price": 1443.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "백화점",
       "news": [],
       "sector": "백화점과일반상점",
@@ -270,7 +279,10 @@
       "source": "estimated",
       "trading_volume": 61451652,
       "trading_value": 88674733836,
-      "market_cap": 279765306122
+      "market_cap": 279765306122,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -281,5 +293,5 @@
     "count_recent": 0,
     "avg_rate": 23.2
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

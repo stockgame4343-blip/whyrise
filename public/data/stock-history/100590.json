@@ -465,10 +465,10 @@
       "close_price": 11320.0,
       "trading_volume": 12874263,
       "trading_value": 145736657160,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
         {
@@ -486,7 +486,10 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260409",
@@ -790,10 +793,10 @@
       "date": "20260311",
       "change_rate": 12.2,
       "close_price": 4140.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
         {
@@ -820,7 +823,10 @@
       "source": "estimated",
       "trading_volume": 7481534,
       "trading_value": 30973550760,
-      "market_cap": 70919205298
+      "market_cap": 70919205298,
+      "reason_previous": "태양광/재생에너지",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
@@ -850,5 +856,5 @@
     "count_recent": 2,
     "avg_rate": 17.92
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

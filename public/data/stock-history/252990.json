@@ -167,7 +167,7 @@
       "close_price": 15690.0,
       "trading_volume": 2043907,
       "trading_value": 32068900830,
-      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -238,7 +238,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "영업이익 공시",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -264,7 +272,7 @@
       "close_price": 16320.0,
       "trading_volume": 2019965,
       "trading_value": 32965828800,
-      "rise_reason": "반도체 재료 테마 8종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -335,7 +343,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "영업이익 공시",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -501,7 +517,7 @@
       "close_price": 13850.0,
       "trading_volume": 1258155,
       "trading_value": 17425446750,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -675,7 +691,7 @@
       "close_price": 13080.0,
       "trading_volume": 1064554,
       "trading_value": 13924366320,
-      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -692,7 +708,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 재료/부품 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -700,7 +724,7 @@
       "close_price": 9940.0,
       "trading_volume": 762643,
       "trading_value": 7580671420,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -788,10 +812,10 @@
       "date": "20250922",
       "change_rate": 11.45,
       "close_price": 6910.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -806,7 +830,10 @@
       "source": "estimated",
       "trading_volume": 5594168,
       "trading_value": 38655700880,
-      "market_cap": 416096925227
+      "market_cap": 416096925227,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -817,5 +844,5 @@
     "count_recent": 1,
     "avg_rate": 13.85
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

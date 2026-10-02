@@ -327,10 +327,10 @@
       "date": "20260306",
       "change_rate": 29.96,
       "close_price": 1696.0,
-      "rise_reason": "자동차부품 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -345,16 +345,19 @@
       "source": "estimated",
       "trading_volume": 4238115,
       "trading_value": 7187843040,
-      "market_cap": 35053302253
+      "market_cap": 35053302253,
+      "reason_previous": "자동차부품 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250730",
       "change_rate": 13.08,
       "close_price": 1625.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -393,7 +396,10 @@
       "source": "estimated",
       "trading_volume": 3507880,
       "trading_value": 5700305000,
-      "market_cap": 33585858585
+      "market_cap": 33585858585,
+      "reason_previous": "방산",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -404,5 +410,5 @@
     "count_recent": 1,
     "avg_rate": 17.4
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

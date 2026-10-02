@@ -42,15 +42,18 @@
       "close_price": 1786.0,
       "trading_volume": 2665954,
       "trading_value": 4761393844,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광고",
       "news": [],
       "sector": "광고",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260622",
@@ -216,10 +219,10 @@
       "close_price": 983.0,
       "trading_volume": 644501,
       "trading_value": 633544483,
-      "rise_reason": "",
+      "rise_reason": "엔터주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
         {
@@ -287,7 +290,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "에스엠 17%·YG 8% 급등…엔터주 동반 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008998355&office_id=421&code=041510&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20251021",
@@ -319,7 +330,7 @@
       "date": "20250819",
       "change_rate": 12.21,
       "close_price": 1516.0,
-      "rise_reason": "엔터주 동반 강세 — 해외드라마 방송 추진",
+      "rise_reason": "엔터주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -382,5 +393,5 @@
     "count_recent": 0,
     "avg_rate": 12.74
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

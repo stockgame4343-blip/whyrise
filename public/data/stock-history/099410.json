@@ -162,7 +162,7 @@
       "date": "20251021",
       "change_rate": 13.35,
       "close_price": 6030.0,
-      "rise_reason": "조선기자재 테마 6종목 동반 상승",
+      "rise_reason": "조선주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -175,7 +175,15 @@
       "trading_value": 36037921140,
       "market_cap": 84370370370,
       "reason_previous": "조선기자재 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 조선주 급등, 조선기자재는 폭등",
+          "link": "https://n.news.naver.com/mnews/article/417/0001107912",
+          "source": "동행미디어 시대",
+          "date": "2025-10-21"
+        }
+      ]
     },
     {
       "date": "20251016",
@@ -207,10 +215,10 @@
       "date": "20250909",
       "change_rate": 14.31,
       "close_price": 5750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -225,7 +233,10 @@
       "source": "estimated",
       "trading_volume": 17891926,
       "trading_value": 102878574500,
-      "market_cap": 80452674897
+      "market_cap": 80452674897,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250829",
@@ -260,5 +271,5 @@
     "count_recent": 0,
     "avg_rate": 13.48
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

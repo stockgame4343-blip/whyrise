@@ -88,7 +88,7 @@
       "close_price": 8420.0,
       "trading_volume": 3279398,
       "trading_value": 27612531160,
-      "rise_reason": "건설주 동반 강세 — 대우건설",
+      "rise_reason": "건설주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -637,10 +637,10 @@
       "date": "20250702",
       "change_rate": 29.98,
       "close_price": 14740.0,
-      "rise_reason": "건설 중소형 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설 중소형",
       "news": [],
       "sector": "건설",
@@ -648,16 +648,19 @@
       "source": "estimated",
       "trading_volume": 7492954,
       "trading_value": 110446141960,
-      "market_cap": 100658926342
+      "market_cap": 100658926342,
+      "reason_previous": "건설 중소형 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250612",
       "change_rate": 29.98,
       "close_price": 15650.0,
-      "rise_reason": "건설 중소형 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설 중소형",
       "news": [],
       "sector": "건설",
@@ -665,7 +668,10 @@
       "source": "estimated",
       "trading_volume": 5766250,
       "trading_value": 90241812500,
-      "market_cap": 106873283395
+      "market_cap": 106873283395,
+      "reason_previous": "건설 중소형 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -676,5 +682,5 @@
     "count_recent": 0,
     "avg_rate": 20.47
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

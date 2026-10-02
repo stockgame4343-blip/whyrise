@@ -350,10 +350,10 @@
       "date": "20260203",
       "change_rate": 29.96,
       "close_price": 65500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
         {
@@ -368,7 +368,10 @@
       "source": "estimated",
       "trading_volume": 1091695,
       "trading_value": 71506022500,
-      "market_cap": 955809908998
+      "market_cap": 955809908998,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251017",
@@ -437,5 +440,5 @@
     "count_recent": 1,
     "avg_rate": 16.83
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

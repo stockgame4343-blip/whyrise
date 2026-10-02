@@ -142,7 +142,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/19 20일 주권매매거래 정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006354296&office_id=018&code=210120&page=&sm=",
+        "title": "캔버스엔, 20일 주권매매거래 정지 해제",
+        "date": "20260819"
+      }
     },
     {
       "date": "20260828",
@@ -197,7 +203,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "8/19 20일 주권매매거래 정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006354296&office_id=018&code=210120&page=&sm=",
+        "title": "캔버스엔, 20일 주권매매거래 정지 해제",
+        "date": "20260819"
+      }
     },
     {
       "date": "20260605",
@@ -313,10 +325,10 @@
       "date": "20260310",
       "change_rate": 29.99,
       "close_price": 1760.0,
-      "rise_reason": "영상콘텐츠 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
       "news": [
         {
@@ -331,7 +343,10 @@
       "source": "estimated",
       "trading_volume": 1680969,
       "trading_value": 2958505440,
-      "market_cap": 42580645161
+      "market_cap": 42580645161,
+      "reason_previous": "영상콘텐츠 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -568,10 +583,10 @@
       "date": "20250805",
       "change_rate": 29.96,
       "close_price": 1362.0,
-      "rise_reason": "영상콘텐츠 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -579,16 +594,19 @@
       "source": "estimated",
       "trading_volume": 19771346,
       "trading_value": 26928573252,
-      "market_cap": 32951612903
+      "market_cap": 32951612903,
+      "reason_previous": "영상콘텐츠 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
       "change_rate": 10.77,
       "close_price": 4680.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -596,7 +614,10 @@
       "source": "estimated",
       "trading_volume": 606637,
       "trading_value": 2839061160,
-      "market_cap": 113225806451
+      "market_cap": 113225806451,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -607,5 +628,5 @@
     "count_recent": 2,
     "avg_rate": 18.85
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

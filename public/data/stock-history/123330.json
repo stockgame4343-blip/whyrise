@@ -350,15 +350,18 @@
       "close_price": 31000.0,
       "trading_volume": 244909,
       "trading_value": 7592179000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260327",
@@ -503,7 +506,7 @@
       "date": "20260122",
       "change_rate": 14.54,
       "close_price": 18980.0,
-      "rise_reason": "화장품주 동반 강세 — 에이피알 52주 최고가",
+      "rise_reason": "화장품주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -601,10 +604,10 @@
       "date": "20250526",
       "change_rate": 10.05,
       "close_price": 31750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
@@ -612,7 +615,10 @@
       "source": "estimated",
       "trading_volume": 363497,
       "trading_value": 11541029750,
-      "market_cap": 252968831849
+      "market_cap": 252968831849,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -623,5 +629,5 @@
     "count_recent": 0,
     "avg_rate": 14.66
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

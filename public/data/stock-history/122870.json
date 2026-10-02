@@ -27,10 +27,10 @@
       "close_price": 44500.0,
       "trading_volume": 286722,
       "trading_value": 12759129000,
-      "rise_reason": "",
+      "rise_reason": "엔터주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "음원/음반",
       "news": [
         {
@@ -98,16 +98,24 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증권사 리포트 공개",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "에스엠 17%·YG 8% 급등…엔터주 동반 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008998355&office_id=421&code=041510&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.11"
+        }
+      ]
     },
     {
       "date": "20250811",
       "change_rate": 11.91,
       "close_price": 104300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "음원/음반",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -115,7 +123,10 @@
       "source": "estimated",
       "trading_volume": 949468,
       "trading_value": 99029512400,
-      "market_cap": 1949545635359
+      "market_cap": 1949545635359,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -126,5 +137,5 @@
     "count_recent": 0,
     "avg_rate": 11.46
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

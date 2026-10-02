@@ -64,10 +64,10 @@
       "date": "20250717",
       "change_rate": 15.86,
       "close_price": 2170.0,
-      "rise_reason": "관련 보도: 금일 코스닥 거래량 1위 거래대금 929억 돌...",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -84,24 +84,16 @@
       "trading_value": 143663456860,
       "market_cap": 95972998137,
       "reason_previous": "바이오",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]금일 코스닥 거래량 1위 일신바이오 거래대금 929억 돌...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003558491",
-          "source": "서울신문",
-          "date": "2025-07-17"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20250617",
       "change_rate": 22.25,
       "close_price": 2110.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -109,7 +101,10 @@
       "source": "estimated",
       "trading_volume": 42849981,
       "trading_value": 90413459910,
-      "market_cap": 93319366852
+      "market_cap": 93319366852,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250609",
@@ -134,10 +129,10 @@
       "date": "20250529",
       "change_rate": 29.96,
       "close_price": 1670.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -145,16 +140,19 @@
       "source": "estimated",
       "trading_volume": 31319751,
       "trading_value": 52303984170,
-      "market_cap": 73859404096
+      "market_cap": 73859404096,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
       "change_rate": 14.93,
       "close_price": 1347.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -162,7 +160,10 @@
       "source": "estimated",
       "trading_volume": 16923170,
       "trading_value": 22795509990,
-      "market_cap": 59574022346
+      "market_cap": 59574022346,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -173,5 +174,5 @@
     "count_recent": 0,
     "avg_rate": 15.12
   },
-  "built_at": "2026-10-02T10:35:16"
+  "built_at": "2026-10-02T11:12:19"
 }

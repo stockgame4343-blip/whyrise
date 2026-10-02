@@ -228,10 +228,10 @@
       "date": "20260312",
       "change_rate": 29.9,
       "close_price": 2715.0,
-      "rise_reason": "LED 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -246,7 +246,10 @@
       "source": "estimated",
       "trading_volume": 1444510,
       "trading_value": 3921844650,
-      "market_cap": 30961555075
+      "market_cap": 30961555075,
+      "reason_previous": "LED 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250904",
@@ -302,10 +305,10 @@
       "date": "20250902",
       "change_rate": 29.96,
       "close_price": 2325.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "LED",
       "news": [
         {
@@ -320,7 +323,10 @@
       "source": "estimated",
       "trading_volume": 3933743,
       "trading_value": 9145952475,
-      "market_cap": 26514038876
+      "market_cap": 26514038876,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -331,5 +337,5 @@
     "count_recent": 0,
     "avg_rate": 26.04
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

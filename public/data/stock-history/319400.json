@@ -509,15 +509,18 @@
       "close_price": 29200.0,
       "trading_volume": 2654515,
       "trading_value": 77511838000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -667,7 +670,7 @@
       "date": "20260120",
       "change_rate": 11.44,
       "close_price": 38950.0,
-      "rise_reason": "로봇주 동반 강세 — 관련주 연일",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -725,7 +728,7 @@
       "date": "20260119",
       "change_rate": 20.52,
       "close_price": 34950.0,
-      "rise_reason": "로봇 테마 7종목 동반 상승",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -738,13 +741,21 @@
       "trading_value": 352173849750,
       "market_cap": 3892549455676,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "시장 성장·실적 개선 기대감에 로봇株 '불기둥'…두산로보틱스 20%대...",
+          "link": "https://n.news.naver.com/mnews/article/088/0000992567",
+          "source": "매일신문",
+          "date": "2026-01-19"
+        }
+      ]
     },
     {
       "date": "20260115",
       "change_rate": 13.85,
       "close_price": 27950.0,
-      "rise_reason": "로봇주 동반 강세 — 형님 뛰니 아우 달린다",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -771,10 +782,10 @@
       "date": "20260102",
       "change_rate": 26.13,
       "close_price": 23700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
@@ -782,7 +793,10 @@
       "source": "estimated",
       "trading_volume": 18018899,
       "trading_value": 427047906300,
-      "market_cap": 2639582892690
+      "market_cap": 2639582892690,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
@@ -826,7 +840,7 @@
       "date": "20251015",
       "change_rate": 22.72,
       "close_price": 12800.0,
-      "rise_reason": "로봇주 동반 강세 — 하이젠알앤엠",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -872,10 +886,10 @@
       "date": "20250910",
       "change_rate": 10.51,
       "close_price": 8310.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
@@ -883,16 +897,19 @@
       "source": "estimated",
       "trading_volume": 3909951,
       "trading_value": 32491692810,
-      "market_cap": 925524634525
+      "market_cap": 925524634525,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250902",
       "change_rate": 29.97,
       "close_price": 6050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
@@ -900,7 +917,10 @@
       "source": "estimated",
       "trading_volume": 32433420,
       "trading_value": 196222191000,
-      "market_cap": 673817573872
+      "market_cap": 673817573872,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250825",
@@ -933,10 +953,10 @@
       "date": "20250619",
       "change_rate": 10.16,
       "close_price": 4825.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
@@ -944,7 +964,10 @@
       "source": "estimated",
       "trading_volume": 5746042,
       "trading_value": 27724652650,
-      "market_cap": 537383437013
+      "market_cap": 537383437013,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -955,5 +978,5 @@
     "count_recent": 0,
     "avg_rate": 17.2
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

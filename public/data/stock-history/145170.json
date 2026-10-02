@@ -57,10 +57,10 @@
       "date": "20250926",
       "change_rate": 19.07,
       "close_price": 5650.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -68,7 +68,10 @@
       "source": "estimated",
       "trading_volume": 6161231,
       "trading_value": 34810955150,
-      "market_cap": 95590116279
+      "market_cap": 95590116279,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -79,5 +82,5 @@
     "count_recent": 2,
     "avg_rate": 12.78
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

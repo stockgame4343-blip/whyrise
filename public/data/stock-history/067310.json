@@ -523,7 +523,7 @@
       "close_price": 54500.0,
       "trading_volume": 6184634,
       "trading_value": 337062553000,
-      "rise_reason": "반도체 장비 테마 10종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -582,7 +582,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "반도체 장비 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260515",
@@ -755,10 +763,10 @@
       "date": "20251030",
       "change_rate": 11.59,
       "close_price": 30800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "밸류업(25년 기업가치 제고계획 발표)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -766,16 +774,19 @@
       "source": "estimated",
       "trading_volume": 6013265,
       "trading_value": 185208562000,
-      "market_cap": 2047068571428
+      "market_cap": 2047068571428,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251013",
       "change_rate": 13.96,
       "close_price": 27750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "밸류업(25년 기업가치 제고계획 발표)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -783,16 +794,19 @@
       "source": "estimated",
       "trading_volume": 3945110,
       "trading_value": 109476802500,
-      "market_cap": 1844355612244
+      "market_cap": 1844355612244,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250909",
       "change_rate": 12.41,
       "close_price": 15760.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "밸류업(25년 기업가치 제고계획 발표)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -800,16 +814,19 @@
       "source": "estimated",
       "trading_volume": 5674712,
       "trading_value": 89433461120,
-      "market_cap": 1047461061224
+      "market_cap": 1047461061224,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250730",
       "change_rate": 13.23,
       "close_price": 12670.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "밸류업(25년 기업가치 제고계획 발표)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -817,7 +834,10 @@
       "source": "estimated",
       "trading_volume": 10394477,
       "trading_value": 131698023590,
-      "market_cap": 842089571428
+      "market_cap": 842089571428,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -828,5 +848,5 @@
     "count_recent": 1,
     "avg_rate": 15.11
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

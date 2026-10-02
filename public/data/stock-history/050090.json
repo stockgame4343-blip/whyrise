@@ -776,10 +776,10 @@
       "close_price": 852.0,
       "trading_volume": 778564,
       "trading_value": 663336528,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광고",
       "news": [
         {
@@ -791,7 +791,10 @@
       ],
       "sector": "광고",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -835,10 +838,10 @@
       "date": "20260220",
       "change_rate": 29.94,
       "close_price": 703.0,
-      "rise_reason": "29.94% 금일 증시 상승률 1위로",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -861,15 +864,7 @@
       "trading_value": 1221286750,
       "market_cap": 16560030395,
       "reason_previous": "상한가 — 사유 미수집",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]비케이홀딩스 29.94% 상한가 금일 증시 상승률 1위로 마...",
-          "link": "https://n.news.naver.com/mnews/article/081/0003619420",
-          "source": "서울신문",
-          "date": "2026-02-20"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
@@ -995,10 +990,10 @@
       "date": "20250709",
       "change_rate": 30.0,
       "close_price": 1066.0,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -1039,15 +1034,7 @@
       "trading_value": 1210296958,
       "market_cap": 25110942249,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]비케이홀딩스 30% 상한가…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003556176",
-          "source": "서울신문",
-          "date": "2025-07-09"
-        }
-      ]
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1058,5 +1045,5 @@
     "count_recent": 3,
     "avg_rate": 20.72
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

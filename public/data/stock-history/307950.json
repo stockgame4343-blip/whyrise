@@ -416,15 +416,18 @@
       "close_price": 415500.0,
       "trading_volume": 101352,
       "trading_value": 42111756000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "SI(시스템통합)",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260225",
@@ -468,10 +471,10 @@
       "date": "20260107",
       "change_rate": 26.44,
       "close_price": 394500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "IT서비스",
@@ -479,16 +482,19 @@
       "source": "estimated",
       "trading_volume": 2617269,
       "trading_value": 1032512620500,
-      "market_cap": 10818775151057
+      "market_cap": 10818775151057,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251219",
       "change_rate": 18.45,
       "close_price": 305000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "IT서비스",
@@ -496,13 +502,16 @@
       "source": "estimated",
       "trading_volume": 1221039,
       "trading_value": 372416895000,
-      "market_cap": 8364325528700
+      "market_cap": 8364325528700,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251204",
       "change_rate": 27.19,
       "close_price": 283000.0,
-      "rise_reason": "로봇주 동반 강세 — 현대오토에버 52주 최고가",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -518,9 +527,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "&quot;트럼프가 밀어준대&quot; 로봇주 불기둥…현대오토에버 52주 최고가",
-          "link": "https://n.news.naver.com/mnews/article/008/0005287308",
-          "source": "머니투데이",
+          "title": "[특징주] 트럼프 행정부 로봇산업 지원 소식에 로봇주 급등(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0015779391",
+          "source": "연합뉴스",
           "date": "2025-12-04"
         }
       ]
@@ -548,7 +557,7 @@
       "date": "20251103",
       "change_rate": 10.57,
       "close_price": 225000.0,
-      "rise_reason": "로봇주 동반 강세 — 젠슨 황 효과 계",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -602,10 +611,10 @@
       "date": "20250624",
       "change_rate": 11.94,
       "close_price": 183700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "IT서비스",
@@ -613,7 +622,10 @@
       "source": "estimated",
       "trading_volume": 491623,
       "trading_value": 90311145100,
-      "market_cap": 5037792129909
+      "market_cap": 5037792129909,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -624,5 +636,5 @@
     "count_recent": 0,
     "avg_rate": 19.34
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

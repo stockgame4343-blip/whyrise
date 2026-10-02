@@ -9,7 +9,7 @@
       "close_price": 52700.0,
       "trading_volume": 1130542,
       "trading_value": 59579563400,
-      "rise_reason": "로봇주 동반 강세 — 2035년 휴머노이드 650만대 출하",
+      "rise_reason": "로봇주 동반 강세 — 정부 제조AI 확산안·中 로봇 규제 기대",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -83,9 +83,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "\"2035년 휴머노이드 650만대 출하\"…로봇주 '불기둥'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014191920&office_id=003&code=160190&page=&sm=",
-          "source": "뉴시스",
+          "title": "로봇株, 정부 제조AI 확산안·中 로봇 규제 기대에 강세[종목 NOW]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005576063&office_id=014&code=030530&page=&sm=",
+          "source": "파이낸셜뉴스",
           "date": "2026.09.15"
         }
       ]
@@ -767,10 +767,10 @@
       "date": "20251127",
       "change_rate": 30.0,
       "close_price": 41600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -803,7 +803,10 @@
       "source": "estimated",
       "trading_volume": 8049086,
       "trading_value": 334841977600,
-      "market_cap": 1319045073612
+      "market_cap": 1319045073612,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251126",
@@ -883,7 +886,7 @@
       "date": "20250918",
       "change_rate": 12.65,
       "close_price": 23600.0,
-      "rise_reason": "로봇 테마 4종목 동반 상승",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -896,7 +899,15 @@
       "trading_value": 71974218000,
       "market_cap": 748304416761,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 4.5일제 추진 소식에 로봇株 강세",
+          "link": "https://n.news.naver.com/mnews/article/366/0001108908",
+          "source": "조선비즈",
+          "date": "2025-09-18"
+        }
+      ]
     },
     {
       "date": "20250909",
@@ -982,5 +993,5 @@
     "count_recent": 3,
     "avg_rate": 16.62
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

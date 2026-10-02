@@ -267,10 +267,10 @@
       "date": "20260223",
       "change_rate": 13.4,
       "close_price": 2200.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "SI(시스템통합)",
       "news": [
         {
@@ -309,16 +309,19 @@
       "source": "estimated",
       "trading_volume": 25993807,
       "trading_value": 57186375400,
-      "market_cap": 442630434782
+      "market_cap": 442630434782,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260130",
       "change_rate": 10.83,
       "close_price": 1832.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "SI(시스템통합)",
       "news": [],
       "sector": "IT서비스",
@@ -326,16 +329,19 @@
       "source": "estimated",
       "trading_volume": 9591115,
       "trading_value": 17570922680,
-      "market_cap": 368590434782
+      "market_cap": 368590434782,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250901",
       "change_rate": 13.01,
       "close_price": 1555.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "SI(시스템통합)",
       "news": [],
       "sector": "IT서비스",
@@ -343,7 +349,10 @@
       "source": "estimated",
       "trading_volume": 34240012,
       "trading_value": 53243218660,
-      "market_cap": 312859239130
+      "market_cap": 312859239130,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -354,5 +363,5 @@
     "count_recent": 1,
     "avg_rate": 12.98
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

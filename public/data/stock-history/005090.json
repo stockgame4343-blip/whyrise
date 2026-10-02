@@ -692,10 +692,10 @@
       "date": "20260310",
       "change_rate": 13.92,
       "close_price": 57300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -703,7 +703,10 @@
       "source": "estimated",
       "trading_volume": 299968,
       "trading_value": 17188166400,
-      "market_cap": 825640909090
+      "market_cap": 825640909090,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -828,10 +831,10 @@
       "date": "20260212",
       "change_rate": 12.74,
       "close_price": 34950.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
         {
@@ -864,7 +867,10 @@
       "source": "estimated",
       "trading_volume": 288193,
       "trading_value": 10072345350,
-      "market_cap": 503597727272
+      "market_cap": 503597727272,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260204",
@@ -923,5 +929,5 @@
     "count_recent": 0,
     "avg_rate": 14.26
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

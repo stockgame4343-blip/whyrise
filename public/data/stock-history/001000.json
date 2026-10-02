@@ -221,10 +221,10 @@
       "date": "20250613",
       "change_rate": 14.88,
       "close_price": 1830.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [],
       "sector": "부동산",
@@ -232,7 +232,10 @@
       "source": "estimated",
       "trading_volume": 3339954,
       "trading_value": 6112115820,
-      "market_cap": 44431556195
+      "market_cap": 44431556195,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -243,5 +246,5 @@
     "count_recent": 0,
     "avg_rate": 17.69
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

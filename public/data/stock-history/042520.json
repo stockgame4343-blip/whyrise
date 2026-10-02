@@ -9,7 +9,7 @@
       "close_price": 21000.0,
       "trading_volume": 252606,
       "trading_value": 5304726000,
-      "rise_reason": "스킨부스터 덕에 한달새 3배 뛴",
+      "rise_reason": "스킨부스터",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -322,10 +322,10 @@
       "reason_previous": "의료기기 허가 관련 뉴스",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "5/14 영업익 전년比 538% 증가",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006281049&office_id=018&code=042520&page=&sm=",
-        "title": "한스바이오메드, 셀르디엠 효과 본격화…영업익 전년比 538% 증가",
-        "date": "20260514"
+        "text": "5/19 中·휴젤 업고 실적 기대",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0004622221&office_id=011&code=042520&page=&sm=",
+        "title": "한스바이오메드, 中·휴젤 업고 실적 반등 기대 [Why 기대감]",
+        "date": "20260519"
       }
     },
     {
@@ -334,10 +334,10 @@
       "close_price": 27050.0,
       "trading_volume": 469608,
       "trading_value": 12702896400,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "中·휴젤 업고 실적 기대",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -405,13 +405,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "의료기기 허가 관련 뉴스",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "5/14 영업익 전년比 538% 증가",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006281049&office_id=018&code=042520&page=&sm=",
-        "title": "한스바이오메드, 셀르디엠 효과 본격화…영업익 전년比 538% 증가",
-        "date": "20260514"
-      }
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "한스바이오메드, 中·휴젤 업고 실적 반등 기대 [Why 기대감]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004622221&office_id=011&code=042520&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.05.19"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -575,8 +577,8 @@
       "date": "20260219",
       "change_rate": 14.49,
       "close_price": 49000.0,
-      "rise_reason": "의료기기 테마 3종목 동반 상승",
-      "reason_confidence": "low",
+      "rise_reason": "셀르디엠 판매 호조에 빠르게 성 (하나)",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
@@ -607,7 +609,15 @@
       "trading_value": 26921433000,
       "market_cap": 698800000000,
       "reason_previous": "바이오",
-      "reason_kind": "theme"
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "&quot;한스바이오메드, '셀르디엠' 판매 호조에 빠르게 성장 중&quot;-하나",
+          "link": "https://n.news.naver.com/mnews/article/008/0005319365",
+          "source": "머니투데이",
+          "date": "2026-02-19"
+        }
+      ]
     },
     {
       "date": "20260209",
@@ -651,10 +661,10 @@
       "date": "20260130",
       "change_rate": 29.93,
       "close_price": 39500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [],
       "sector": "건강관리장비와용품",
@@ -662,7 +672,10 @@
       "source": "estimated",
       "trading_volume": 1004102,
       "trading_value": 39662029000,
-      "market_cap": 563318367346
+      "market_cap": 563318367346,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
@@ -852,10 +865,10 @@
       "date": "20251016",
       "change_rate": 24.32,
       "close_price": 25300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [],
       "sector": "건강관리장비와용품",
@@ -863,7 +876,10 @@
       "source": "estimated",
       "trading_volume": 1591744,
       "trading_value": 40271123200,
-      "market_cap": 360808979591
+      "market_cap": 360808979591,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251015",
@@ -888,10 +904,10 @@
       "date": "20251001",
       "change_rate": 12.82,
       "close_price": 20500.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -924,16 +940,19 @@
       "source": "estimated",
       "trading_volume": 1692433,
       "trading_value": 34694876500,
-      "market_cap": 292355102040
+      "market_cap": 292355102040,
+      "reason_previous": "전기차",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250930",
       "change_rate": 16.18,
       "close_price": 18170.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [],
       "sector": "건강관리장비와용품",
@@ -941,7 +960,10 @@
       "source": "estimated",
       "trading_volume": 2517894,
       "trading_value": 45750133980,
-      "market_cap": 259126448979
+      "market_cap": 259126448979,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250929",
@@ -1002,10 +1024,10 @@
       "date": "20250915",
       "change_rate": 22.18,
       "close_price": 14320.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [],
       "sector": "건강관리장비와용품",
@@ -1013,7 +1035,10 @@
       "source": "estimated",
       "trading_volume": 2146873,
       "trading_value": 30743221360,
-      "market_cap": 204220734693
+      "market_cap": 204220734693,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250910",
@@ -1110,5 +1135,5 @@
     "count_recent": 1,
     "avg_rate": 15.95
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

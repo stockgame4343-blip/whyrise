@@ -345,24 +345,27 @@
       "close_price": 309000.0,
       "trading_volume": 776090,
       "trading_value": 239811810000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [],
       "sector": "복합기업",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251029",
       "change_rate": 11.59,
       "close_price": 231000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설 대표주",
       "news": [],
       "sector": "복합기업",
@@ -370,7 +373,10 @@
       "source": "estimated",
       "trading_volume": 1013687,
       "trading_value": 234161697000,
-      "market_cap": 37460727161749
+      "market_cap": 37460727161749,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -381,5 +387,5 @@
     "count_recent": 0,
     "avg_rate": 14.14
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:18"
 }

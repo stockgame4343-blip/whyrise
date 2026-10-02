@@ -88,10 +88,10 @@
       "close_price": 10410.0,
       "trading_volume": 2687881,
       "trading_value": 27980841210,
-      "rise_reason": "관련 보도: 한화생명·RFHIC",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -159,15 +159,7 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "화장품 관련 뉴스",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "한화생명·RFHIC·아로마티카[하나證 주간추천주]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006364042&office_id=018&code=0015N0&page=&sm=",
-          "source": "이데일리",
-          "date": "2026.09.05"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -644,7 +636,7 @@
       "close_price": 10290.0,
       "trading_volume": 1609938,
       "trading_value": 16566262020,
-      "rise_reason": "관련 보도: 리필데이로 승부수…뷰티업계 재사용 경쟁",
+      "rise_reason": "화장품주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -715,13 +707,13 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "화장품 테마 강세",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "아로마티카, 리필데이로 승부수…뷰티업계 재사용 경쟁",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001023739&office_id=031&code=0015N0&page=&sm=",
-          "source": "아이뉴스24",
-          "date": "2026.04.21"
+          "title": "[특징주] 미국·유럽 수출 호조에 화장품株 일제히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159421&office_id=366&code=406820&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
         }
       ]
     },
@@ -731,15 +723,18 @@
       "close_price": 10020.0,
       "trading_volume": 2685500,
       "trading_value": 26908710000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -781,10 +776,10 @@
       "date": "20260212",
       "change_rate": 29.95,
       "close_price": 14710.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
         {
@@ -799,7 +794,10 @@
       "source": "estimated",
       "trading_volume": 8642867,
       "trading_value": 127136573570,
-      "market_cap": 187042883895
+      "market_cap": 187042883895,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260204",
@@ -848,5 +846,5 @@
     "count_recent": 2,
     "avg_rate": 16.05
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

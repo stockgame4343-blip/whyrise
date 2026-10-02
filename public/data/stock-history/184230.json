@@ -262,7 +262,7 @@
       "close_price": 5230.0,
       "trading_volume": 3554831,
       "trading_value": 18591766130,
-      "rise_reason": "양자암호·보안주 동반 강세 — 증권가는 이 종목 찍었다",
+      "rise_reason": "양자암호·보안주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -349,7 +349,7 @@
       "close_price": 4565.0,
       "trading_volume": 4269985,
       "trading_value": 19492481525,
-      "rise_reason": "양자암호·보안주 동반 강세 — AI 해킹 우려",
+      "rise_reason": "양자암호·보안주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -424,9 +424,9 @@
       "close_price": 3515.0,
       "trading_volume": 3275857,
       "trading_value": 11514637355,
-      "rise_reason": "급등세",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "보안주 테마 22종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -487,7 +487,10 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "급등세",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "theme"
     },
     {
       "date": "20250918",
@@ -548,10 +551,10 @@
       "date": "20250714",
       "change_rate": 10.36,
       "close_price": 3515.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -590,7 +593,10 @@
       "source": "estimated",
       "trading_volume": 4539344,
       "trading_value": 15955794160,
-      "market_cap": 66310299527
+      "market_cap": 66310299527,
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
@@ -620,5 +626,5 @@
     "count_recent": 1,
     "avg_rate": 24.38
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

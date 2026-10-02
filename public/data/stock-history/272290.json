@@ -41,10 +41,10 @@
       "date": "20260306",
       "change_rate": 13.28,
       "close_price": 35400.0,
-      "rise_reason": "관련 보도: 코스닥 공시우수법인 수상",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -85,15 +85,7 @@
       "trading_value": 26622747000,
       "market_cap": 705807650273,
       "reason_previous": "시장 관심 증가",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "이녹스첨단소재, 코스닥 공시우수법인 수상",
-          "link": "https://n.news.naver.com/mnews/article/030/0003404950",
-          "source": "전자신문",
-          "date": "2026-03-06"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -147,10 +139,10 @@
       "date": "20260209",
       "change_rate": 11.1,
       "close_price": 42050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -158,7 +150,10 @@
       "source": "estimated",
       "trading_volume": 1617636,
       "trading_value": 68021593800,
-      "market_cap": 838395810564
+      "market_cap": 838395810564,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
@@ -230,5 +225,5 @@
     "count_recent": 0,
     "avg_rate": 12.83
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

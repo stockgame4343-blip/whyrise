@@ -704,7 +704,7 @@
       "date": "20260325",
       "change_rate": 10.81,
       "close_price": 57400.0,
-      "rise_reason": "에너지주 동반 강세 — 중동 리스크",
+      "rise_reason": "에너지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -762,7 +762,7 @@
       "date": "20260320",
       "change_rate": 11.55,
       "close_price": 59900.0,
-      "rise_reason": "관련 보도: 86%나 올랐다고? 코스피 상승률 1위 …고유가 공포에 신...",
+      "rise_reason": "신재생주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -806,12 +806,12 @@
       "trading_value": 627431295400,
       "market_cap": 2040621064814,
       "reason_previous": "태양광/재생에너지",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "“86%나 올랐다고?” 코스피 상승률 1위 SK이터닉스…고유가 공포에 신...",
-          "link": "https://n.news.naver.com/mnews/article/016/0002617085",
-          "source": "헤럴드경제",
+          "title": "[특징주] 중동 에너지 인프라 잇단 피격에 신재생주 동반 상승(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0015971808",
+          "source": "연합뉴스",
           "date": "2026-03-20"
         }
       ]
@@ -1009,10 +1009,10 @@
       "date": "20250623",
       "change_rate": 27.6,
       "close_price": 28200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -1020,7 +1020,10 @@
       "source": "estimated",
       "trading_volume": 12613170,
       "trading_value": 355691394000,
-      "market_cap": 960693055555
+      "market_cap": 960693055555,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1031,5 +1034,5 @@
     "count_recent": 0,
     "avg_rate": 18.66
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

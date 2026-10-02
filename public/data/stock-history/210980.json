@@ -9,10 +9,10 @@
       "close_price": 4155.0,
       "trading_volume": 1890638,
       "trading_value": 7855600890,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "한앤코 최소 3년간 상장폐지 않겠다",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "",
       "news": [
         {
@@ -80,13 +80,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "none",
-      "reason_hint": {
-        "text": "9/2 유상증자 권리락 효과",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005327751&office_id=015&code=210980&page=&sm=",
-        "title": "SK디앤디, 장 초반 20% 급등…유상증자 권리락 효과",
-        "date": "20260902"
-      }
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한앤코 \"SK디앤디 최소 3년간 상장폐지 않겠다\"…기존 1년→3년 늘려",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005330958&office_id=015&code=210980&page=&sm=",
+          "source": "한국경제",
+          "date": "2026.09.10"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -94,7 +96,7 @@
       "close_price": 4220.0,
       "trading_volume": 6280574,
       "trading_value": 26504022280,
-      "rise_reason": "유상증자 권리락 효과",
+      "rise_reason": "권리락 첫날 이어 또",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -156,9 +158,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "SK디앤디, 장 초반 20% 급등…유상증자 권리락 효과",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005327751&office_id=015&code=210980&page=&sm=",
-          "source": "한국경제",
+          "title": "SK디앤디, 권리락 첫날 상한가 이어 또 22% 급등 [특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003128120&office_id=119&code=210980&page=&sm=",
+          "source": "데일리안",
           "date": "2026.09.02"
         }
       ]
@@ -238,7 +240,7 @@
       "close_price": 4041.0,
       "trading_volume": 1991756,
       "trading_value": 8048685996,
-      "rise_reason": "금감원 정정요구",
+      "rise_reason": "유증 추진, 금감원 정정요구",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -323,10 +325,10 @@
       "date": "20251001",
       "change_rate": 13.23,
       "close_price": 12670.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -365,7 +367,10 @@
       "source": "estimated",
       "trading_volume": 2132394,
       "trading_value": 27017431980,
-      "market_cap": 235863667820
+      "market_cap": 235863667820,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -376,5 +381,5 @@
     "count_recent": 3,
     "avg_rate": 19.88
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

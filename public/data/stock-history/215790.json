@@ -739,10 +739,10 @@
       "close_price": 2655.0,
       "trading_volume": 3856508,
       "trading_value": 10239028740,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -778,7 +778,10 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260407",
@@ -786,10 +789,10 @@
       "close_price": 2045.0,
       "trading_volume": 9634195,
       "trading_value": 19701928775,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -819,7 +822,10 @@
       ],
       "sector": "통신장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260402",
@@ -1143,10 +1149,10 @@
       "date": "20251111",
       "change_rate": 29.9,
       "close_price": 782.0,
-      "rise_reason": "우크라이나 재건 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우크라이나 재건",
       "news": [],
       "sector": "통신장비",
@@ -1154,7 +1160,10 @@
       "source": "estimated",
       "trading_volume": 16710397,
       "trading_value": 13067530454,
-      "market_cap": 31483116883
+      "market_cap": 31483116883,
+      "reason_previous": "우크라이나 재건 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251105",
@@ -1271,10 +1280,10 @@
       "date": "20251016",
       "change_rate": 29.81,
       "close_price": 553.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우크라이나 재건",
       "news": [
         {
@@ -1295,7 +1304,10 @@
       "source": "estimated",
       "trading_volume": 9245986,
       "trading_value": 5113030258,
-      "market_cap": 22263636363
+      "market_cap": 22263636363,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1306,5 +1318,5 @@
     "count_recent": 1,
     "avg_rate": 23.3
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

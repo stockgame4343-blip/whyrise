@@ -48,10 +48,10 @@
       "close_price": 10520.0,
       "trading_volume": 207601,
       "trading_value": 2183962520,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -119,7 +119,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증설 발표",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "빅테크 실적발 훈풍에 장비株 강세…미래산업 16%·네오셈 9%↑[코주부...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004651028&office_id=011&code=323350&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260805",
@@ -408,7 +416,7 @@
       "close_price": 19350.0,
       "trading_volume": 416295,
       "trading_value": 8055308250,
-      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -479,7 +487,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "증설 발표",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -759,5 +775,5 @@
     "count_recent": 1,
     "avg_rate": 14.37
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

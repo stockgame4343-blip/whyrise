@@ -58,17 +58,25 @@
       "close_price": 14740.0,
       "trading_volume": 178023,
       "trading_value": 2624059020,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "뉴로모픽 반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "뉴로모픽 반도체 테마 강세",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260414",
@@ -141,7 +149,7 @@
       "date": "20260311",
       "change_rate": 10.66,
       "close_price": 15570.0,
-      "rise_reason": "반도체주 동반 강세 — 내후년까지 빅사이클 진입",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -225,10 +233,10 @@
       "date": "20251226",
       "change_rate": 22.59,
       "close_price": 14760.0,
-      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -245,24 +253,16 @@
       "trading_value": 36158988960,
       "market_cap": 388830229007,
       "reason_previous": "온디바이스 AI 테마 강세",
-      "reason_kind": "sector",
-      "reason_evidence": [
-        {
-          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
-          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
-          "source": "SBS Biz",
-          "date": "2025-12-26"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
       "change_rate": 13.2,
       "close_price": 13210.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -270,7 +270,10 @@
       "source": "estimated",
       "trading_volume": 318567,
       "trading_value": 4208270070,
-      "market_cap": 347997786259
+      "market_cap": 347997786259,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -281,5 +284,5 @@
     "count_recent": 0,
     "avg_rate": 13.65
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

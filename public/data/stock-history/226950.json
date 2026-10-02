@@ -653,10 +653,10 @@
       "date": "20260227",
       "change_rate": 12.92,
       "close_price": 180000.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
         {
@@ -677,13 +677,16 @@
       "source": "estimated",
       "trading_volume": 802519,
       "trading_value": 144453420000,
-      "market_cap": 3658090909090
+      "market_cap": 3658090909090,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260225",
       "change_rate": 13.7,
       "close_price": 163500.0,
-      "rise_reason": "차세대 비만약·CNS 전임상 가",
+      "rise_reason": "차세대 비만약·CNS 전임상 가속",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -796,10 +799,10 @@
       "date": "20251031",
       "change_rate": 15.5,
       "close_price": 118500.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
         {
@@ -814,7 +817,10 @@
       "source": "estimated",
       "trading_volume": 2406143,
       "trading_value": 285127945500,
-      "market_cap": 2408243181818
+      "market_cap": 2408243181818,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250919",
@@ -904,10 +910,10 @@
       "date": "20250527",
       "change_rate": 12.03,
       "close_price": 51700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [],
       "sector": "생명과학도구및서비스",
@@ -915,7 +921,10 @@
       "source": "estimated",
       "trading_volume": 1071493,
       "trading_value": 55396188100,
-      "market_cap": 1050685000000
+      "market_cap": 1050685000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -926,5 +935,5 @@
     "count_recent": 1,
     "avg_rate": 14.28
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

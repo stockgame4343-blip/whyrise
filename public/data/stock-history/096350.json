@@ -94,10 +94,10 @@
       "date": "20260319",
       "change_rate": 19.54,
       "close_price": 3640.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -112,16 +112,19 @@
       "source": "estimated",
       "trading_volume": 12173375,
       "trading_value": 44311085000,
-      "market_cap": 134144162436
+      "market_cap": 134144162436,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260316",
       "change_rate": 11.36,
       "close_price": 2695.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -154,7 +157,10 @@
       "source": "estimated",
       "trading_volume": 4351879,
       "trading_value": 11728313905,
-      "market_cap": 99318274111
+      "market_cap": 99318274111,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
@@ -262,10 +268,10 @@
       "date": "20250623",
       "change_rate": 13.65,
       "close_price": 2665.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -273,16 +279,19 @@
       "source": "estimated",
       "trading_volume": 9062997,
       "trading_value": 24152887005,
-      "market_cap": 98212690355
+      "market_cap": 98212690355,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250620",
       "change_rate": 10.87,
       "close_price": 2345.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -290,7 +299,10 @@
       "source": "estimated",
       "trading_volume": 11095232,
       "trading_value": 26018319040,
-      "market_cap": 86419796954
+      "market_cap": 86419796954,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -301,5 +313,5 @@
     "count_recent": 0,
     "avg_rate": 15.82
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

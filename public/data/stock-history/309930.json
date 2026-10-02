@@ -578,15 +578,18 @@
       "close_price": 1308.0,
       "trading_volume": 1679427,
       "trading_value": 2196690516,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리모델링/인테리어",
       "news": [],
       "sector": "가구",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251224",
@@ -692,5 +695,5 @@
     "count_recent": 0,
     "avg_rate": 18.65
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

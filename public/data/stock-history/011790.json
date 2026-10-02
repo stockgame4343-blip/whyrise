@@ -203,7 +203,7 @@
       "reason_previous": "ESS 동박 판매 증가",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "5/29 주가 뛰었지만 양산 안갯",
+        "text": "5/29 주가 뛰었지만 양산 안갯속",
         "link": "https://finance.naver.com/item/news_read.naver?article_id=0000512986&office_id=374&code=011790&page=&sm=",
         "title": "SKC, 주가 뛰었지만 양산 안갯속…유리기판 플랜B 공식화",
         "date": "20260529"
@@ -489,10 +489,10 @@
       "date": "20250617",
       "change_rate": 15.49,
       "close_price": 98129.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [],
       "sector": "화학",
@@ -500,7 +500,10 @@
       "source": "estimated",
       "trading_volume": 2051176,
       "trading_value": 201279849704,
-      "market_cap": 4867067123745
+      "market_cap": 4867067123745,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -511,5 +514,5 @@
     "count_recent": 0,
     "avg_rate": 15.01
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

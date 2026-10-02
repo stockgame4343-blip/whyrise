@@ -119,10 +119,10 @@
       "date": "20260316",
       "change_rate": 10.26,
       "close_price": 4675.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "일자리(취업)",
       "news": [
         {
@@ -137,7 +137,10 @@
       "source": "estimated",
       "trading_volume": 119357,
       "trading_value": 557993975,
-      "market_cap": 64514999999
+      "market_cap": 64514999999,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -148,5 +151,5 @@
     "count_recent": 0,
     "avg_rate": 10.7
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:19"
 }

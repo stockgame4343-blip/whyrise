@@ -672,10 +672,10 @@
       "date": "20260323",
       "change_rate": 20.03,
       "close_price": 8210.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -696,16 +696,19 @@
       "source": "estimated",
       "trading_volume": 1025777,
       "trading_value": 8421629170,
-      "market_cap": 80458000000
+      "market_cap": 80458000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
       "change_rate": 16.67,
       "close_price": 6090.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -720,16 +723,19 @@
       "source": "estimated",
       "trading_volume": 436510,
       "trading_value": 2658345900,
-      "market_cap": 59682000000
+      "market_cap": 59682000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260213",
       "change_rate": 12.51,
       "close_price": 4945.0,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "엑셀세라퓨틱스, 대만發 호재",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -752,7 +758,15 @@
       "trading_value": 4161202665,
       "market_cap": 48461000000,
       "reason_previous": "바이오",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "엑셀세라퓨틱스, 대만發 호재에 상한가 직행... 셀레믹스·쿼드메디슨...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006218801",
+          "source": "이데일리",
+          "date": "2026-02-13"
+        }
+      ]
     },
     {
       "date": "20260210",
@@ -782,10 +796,10 @@
       "date": "20260203",
       "change_rate": 29.87,
       "close_price": 3870.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생물공학",
@@ -793,7 +807,10 @@
       "source": "estimated",
       "trading_volume": 1054824,
       "trading_value": 4082168880,
-      "market_cap": 37926000000
+      "market_cap": 37926000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -804,5 +821,5 @@
     "count_recent": 0,
     "avg_rate": 18.72
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -9,10 +9,10 @@
       "close_price": 42500.0,
       "trading_volume": 284582,
       "trading_value": 12094735000,
-      "rise_reason": "관련 보도: 강남 논현동에 플래그십 개장",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "리모델링/인테리어",
       "news": [
         {
@@ -80,15 +80,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "실적 관련 뉴스",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "LX하우시스, 강남 논현동에 플래그십 개장",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001846518&office_id=005&code=108670&page=&sm=",
-          "source": "국민일보",
-          "date": "2026.05.01"
-        }
-      ]
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/30 1Q 영업익 458억원",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002638042&office_id=016&code=108670&page=&sm=",
+        "title": "LX하우시스, 1Q 영업익 458억원… 전년比 550% ‘껑충’",
+        "date": "20260430"
+      }
     }
   ],
   "stats": {
@@ -99,5 +97,5 @@
     "count_recent": 0,
     "avg_rate": 17.73
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:19"
 }

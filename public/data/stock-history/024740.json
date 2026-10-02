@@ -99,7 +99,7 @@
       "close_price": 3780.0,
       "trading_volume": 19693673,
       "trading_value": 74442083940,
-      "rise_reason": "방위산업 테마 4종목 동반 상승",
+      "rise_reason": "방산주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -116,7 +116,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "방위산업/전쟁 및 테러 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美·이란 종전 협상 결렬 방산株 강세…LIG넥스원 52주 신고가(종합)",
+          "link": "https://n.news.naver.com/mnews/article/003/0013884554",
+          "source": "뉴시스",
+          "date": "2026-04-13"
+        }
+      ]
     },
     {
       "date": "20260409",
@@ -124,10 +132,10 @@
       "close_price": 3300.0,
       "trading_volume": 24095471,
       "trading_value": 79515054300,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
         {
@@ -139,7 +147,10 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260316",
@@ -187,10 +198,10 @@
       "date": "20260306",
       "change_rate": 29.84,
       "close_price": 3720.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
         {
@@ -229,13 +240,16 @@
       "source": "estimated",
       "trading_volume": 19118410,
       "trading_value": 71120485200,
-      "market_cap": 122372850678
+      "market_cap": 122372850678,
+      "reason_previous": "태양광/재생에너지",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260303",
       "change_rate": 15.95,
       "close_price": 2690.0,
-      "rise_reason": "방산주 동반 강세 — 이번엔 김승연 어서 타! 밈",
+      "rise_reason": "방산주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -293,7 +307,7 @@
       "date": "20260109",
       "change_rate": 10.28,
       "close_price": 2360.0,
-      "rise_reason": "방산주 동반 강세 — 트럼프 美 내년 국방비 2000조원",
+      "rise_reason": "방산주 동반 강세 — 거침 없는 트럼프 돈로 독트린",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -322,9 +336,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[이 시각 시황] 트럼프 &quot;美 내년 국방비 2000조원&quot;…방산주 상승 랠리",
-          "link": "https://n.news.naver.com/mnews/article/374/0000485312",
-          "source": "SBS Biz",
+          "title": "거침 없는 트럼프 '돈로 독트린'…K-방산주 랠리",
+          "link": "https://n.news.naver.com/mnews/article/003/0013701590",
+          "source": "뉴시스",
           "date": "2026-01-09"
         }
       ]
@@ -333,10 +347,10 @@
       "date": "20250613",
       "change_rate": 17.89,
       "close_price": 2570.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "자동차부품",
@@ -344,7 +358,10 @@
       "source": "estimated",
       "trading_volume": 29609933,
       "trading_value": 76097527810,
-      "market_cap": 84542533936
+      "market_cap": 84542533936,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -355,5 +372,5 @@
     "count_recent": 1,
     "avg_rate": 14.98
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

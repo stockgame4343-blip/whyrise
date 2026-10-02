@@ -161,9 +161,9 @@
       "reason_previous": "MOU 체결",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "9/1 틱톡· 맞손",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0002435829&office_id=092&code=321820&page=&sm=",
-        "title": "틱톡·아티스트컴퍼니 맞손…이정재 IP 기반 뷰티 브랜드 사업 협력",
+        "text": "9/1 배우 IP 브랜드 사업 맞손",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0001189703&office_id=366&code=321820&page=&sm=",
+        "title": "틱톡-아티스트컴퍼니, 배우 IP 브랜드 사업 맞손…이정재 뷰티 브랜드...",
         "date": "20260901"
       }
     },
@@ -347,10 +347,10 @@
       "close_price": 4500.0,
       "trading_volume": 738252,
       "trading_value": 3322134000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
         {
@@ -362,7 +362,10 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251104",
@@ -407,5 +410,5 @@
     "count_recent": 2,
     "avg_rate": 20.86
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

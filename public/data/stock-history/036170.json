@@ -161,7 +161,7 @@
       "close_price": 4800.0,
       "trading_volume": 6715411,
       "trading_value": 32233972800,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -277,10 +277,10 @@
       "close_price": 6760.0,
       "trading_volume": 5104361,
       "trading_value": 34505480360,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
         {
@@ -336,7 +336,10 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20260413",
@@ -362,10 +365,10 @@
       "close_price": 5160.0,
       "trading_volume": 3962467,
       "trading_value": 20446329720,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -377,7 +380,10 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -385,10 +391,10 @@
       "close_price": 4845.0,
       "trading_volume": 8784581,
       "trading_value": 42561294945,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -400,7 +406,10 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260324",
@@ -599,10 +608,10 @@
       "date": "20260112",
       "change_rate": 29.96,
       "close_price": 1861.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)",
       "news": [
         {
@@ -629,7 +638,10 @@
       "source": "estimated",
       "trading_volume": 23906210,
       "trading_value": 44489456810,
-      "market_cap": 114204530831
+      "market_cap": 114204530831,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260109",
@@ -736,5 +748,5 @@
     "count_recent": 0,
     "avg_rate": 19.86
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

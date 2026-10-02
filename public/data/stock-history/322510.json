@@ -394,10 +394,10 @@
       "date": "20260204",
       "change_rate": 10.68,
       "close_price": 8600.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -412,13 +412,16 @@
       "source": "estimated",
       "trading_volume": 1359966,
       "trading_value": 11695707600,
-      "market_cap": 221192000000
+      "market_cap": 221192000000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260113",
       "change_rate": 11.38,
       "close_price": 6460.0,
-      "rise_reason": "서울아산병원서 효과 입증",
+      "rise_reason": "뇌졸중 AI 솔루션, 서울아산병원서 효과 입증",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -540,10 +543,10 @@
       "date": "20250625",
       "change_rate": 13.39,
       "close_price": 7030.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -582,7 +585,10 @@
       "source": "estimated",
       "trading_volume": 802014,
       "trading_value": 5638158420,
-      "market_cap": 180811600000
+      "market_cap": 180811600000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -593,5 +599,5 @@
     "count_recent": 1,
     "avg_rate": 15.7
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

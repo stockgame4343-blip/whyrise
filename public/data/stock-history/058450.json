@@ -406,7 +406,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "인수 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/22 27일 주권매매 거래정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263676&office_id=018&code=058450&page=&sm=",
+        "title": "한주에이알티, 27일 주권매매 거래정지 해제",
+        "date": "20260422"
+      }
     },
     {
       "date": "20260428",
@@ -473,7 +479,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "인수 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/22 27일 주권매매 거래정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263676&office_id=018&code=058450&page=&sm=",
+        "title": "한주에이알티, 27일 주권매매 거래정지 해제",
+        "date": "20260422"
+      }
     },
     {
       "date": "20260427",
@@ -540,7 +552,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "인수 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/22 27일 주권매매 거래정지 해제",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006263676&office_id=018&code=058450&page=&sm=",
+        "title": "한주에이알티, 27일 주권매매 거래정지 해제",
+        "date": "20260422"
+      }
     },
     {
       "date": "20260324",
@@ -584,10 +602,10 @@
       "date": "20260318",
       "change_rate": 29.99,
       "close_price": 2514.0,
-      "rise_reason": "뉴스 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -595,13 +613,16 @@
       "source": "estimated",
       "trading_volume": 577219,
       "trading_value": 1451128566,
-      "market_cap": 12583920265
+      "market_cap": 12583920265,
+      "reason_previous": "뉴스 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
       "change_rate": 11.67,
       "close_price": 2201.0,
-      "rise_reason": "비츠 인수",
+      "rise_reason": "상폐 리스크 돌파할까",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -685,10 +706,10 @@
       "date": "20250616",
       "change_rate": 29.94,
       "close_price": 6314.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -696,7 +717,10 @@
       "source": "estimated",
       "trading_volume": 276262,
       "trading_value": 1744318268,
-      "market_cap": 31604961240
+      "market_cap": 31604961240,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -707,5 +731,5 @@
     "count_recent": 1,
     "avg_rate": 22.81
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -427,10 +427,10 @@
       "date": "20250929",
       "change_rate": 29.94,
       "close_price": 14060.0,
-      "rise_reason": "미만 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미만",
       "news": [
         {
@@ -451,16 +451,19 @@
       "source": "estimated",
       "trading_volume": 18107,
       "trading_value": 254584420,
-      "market_cap": 3048238482
+      "market_cap": 3048238482,
+      "reason_previous": "미만 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250624",
       "change_rate": 13.33,
       "close_price": 14280.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "미만",
       "news": [],
       "sector": "식품",
@@ -468,7 +471,10 @@
       "source": "estimated",
       "trading_volume": 4467,
       "trading_value": 63788760,
-      "market_cap": 3095934959
+      "market_cap": 3095934959,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -479,5 +485,5 @@
     "count_recent": 1,
     "avg_rate": 21.16
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

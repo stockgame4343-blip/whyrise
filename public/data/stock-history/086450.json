@@ -9,7 +9,7 @@
       "close_price": 21500.0,
       "trading_volume": 1197196,
       "trading_value": 25739714000,
-      "rise_reason": "PDRN 더하고 끈적임 줄였다? 새 수분크림 출시",
+      "rise_reason": "새 수분크림 출시",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -112,15 +112,18 @@
       "close_price": 29000.0,
       "trading_volume": 4387177,
       "trading_value": 127228133000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260325",
@@ -247,5 +250,5 @@
     "count_recent": 0,
     "avg_rate": 14.96
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

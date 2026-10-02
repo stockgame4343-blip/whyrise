@@ -42,10 +42,10 @@
       "date": "20250722",
       "change_rate": 14.1,
       "close_price": 10360.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -84,16 +84,19 @@
       "source": "estimated",
       "trading_volume": 27832308,
       "trading_value": 288342710880,
-      "market_cap": 659453846153
+      "market_cap": 659453846153,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250721",
       "change_rate": 13.64,
       "close_price": 9080.0,
-      "rise_reason": "K-콘텐츠/엔터",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -132,7 +135,10 @@
       "source": "estimated",
       "trading_volume": 8254853,
       "trading_value": 74954065240,
-      "market_cap": 577976923076
+      "market_cap": 577976923076,
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250709",
@@ -177,5 +183,5 @@
     "count_recent": 0,
     "avg_rate": 11.09
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -42,7 +42,7 @@
       "close_price": 13580.0,
       "trading_volume": 370768,
       "trading_value": 5035029440,
-      "rise_reason": "CPO 핵심부품 양산 채비",
+      "rise_reason": "관계사 포스텍, CPO 핵심부품 양산 채비",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -129,7 +129,7 @@
       "close_price": 10450.0,
       "trading_volume": 251138,
       "trading_value": 2624392100,
-      "rise_reason": "CPO 핵심부품 양산 채비",
+      "rise_reason": "관계사 포스텍, CPO 핵심부품 양산 채비",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -567,10 +567,10 @@
       "date": "20260126",
       "change_rate": 11.64,
       "close_price": 15350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -578,7 +578,10 @@
       "source": "estimated",
       "trading_volume": 82372,
       "trading_value": 1264410200,
-      "market_cap": 102286818181
+      "market_cap": 102286818181,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260113",
@@ -624,10 +627,10 @@
       "date": "20260106",
       "change_rate": 14.56,
       "close_price": 10860.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -642,7 +645,10 @@
       "source": "estimated",
       "trading_volume": 154421,
       "trading_value": 1677012060,
-      "market_cap": 72367090909
+      "market_cap": 72367090909,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251106",
@@ -683,5 +689,5 @@
     "count_recent": 3,
     "avg_rate": 17.44
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

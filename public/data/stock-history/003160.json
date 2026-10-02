@@ -463,7 +463,7 @@
       "close_price": 27950.0,
       "trading_volume": 531286,
       "trading_value": 14849443700,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -748,10 +748,10 @@
       "date": "20251022",
       "change_rate": 12.53,
       "close_price": 24250.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -778,16 +778,19 @@
       "source": "estimated",
       "trading_volume": 8328403,
       "trading_value": 201963772750,
-      "market_cap": 686305807622
+      "market_cap": 686305807622,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251013",
       "change_rate": 11.06,
       "close_price": 22200.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -814,7 +817,10 @@
       "source": "estimated",
       "trading_volume": 8461877,
       "trading_value": 187853669400,
-      "market_cap": 628288203266
+      "market_cap": 628288203266,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251001",
@@ -868,10 +874,10 @@
       "date": "20250528",
       "change_rate": 10.21,
       "close_price": 15870.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -879,7 +885,10 @@
       "source": "estimated",
       "trading_volume": 1571549,
       "trading_value": 24940482630,
-      "market_cap": 449141161524
+      "market_cap": 449141161524,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -890,5 +899,5 @@
     "count_recent": 4,
     "avg_rate": 15.57
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

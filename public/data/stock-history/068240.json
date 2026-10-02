@@ -150,10 +150,10 @@
       "date": "20260120",
       "change_rate": 10.87,
       "close_price": 2550.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -192,7 +192,10 @@
       "source": "estimated",
       "trading_volume": 2288569,
       "trading_value": 5835850950,
-      "market_cap": 97363636363
+      "market_cap": 97363636363,
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -203,5 +206,5 @@
     "count_recent": 0,
     "avg_rate": 15.79
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

@@ -277,10 +277,10 @@
       "date": "20260120",
       "change_rate": 29.94,
       "close_price": 2300.0,
-      "rise_reason": "스마트폰 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [
         {
@@ -295,16 +295,19 @@
       "source": "estimated",
       "trading_volume": 817573,
       "trading_value": 1880417900,
-      "market_cap": 30699855699
+      "market_cap": 30699855699,
+      "reason_previous": "스마트폰 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250623",
       "change_rate": 10.33,
       "close_price": 3045.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트폰",
       "news": [],
       "sector": "핸드셋",
@@ -312,7 +315,10 @@
       "source": "estimated",
       "trading_volume": 1469991,
       "trading_value": 4476122595,
-      "market_cap": 40643939393
+      "market_cap": 40643939393,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -323,5 +329,5 @@
     "count_recent": 0,
     "avg_rate": 21.58
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

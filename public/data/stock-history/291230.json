@@ -369,10 +369,10 @@
       "date": "20260114",
       "change_rate": 29.9,
       "close_price": 1160.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광고",
       "news": [
         {
@@ -411,16 +411,19 @@
       "source": "estimated",
       "trading_volume": 18186889,
       "trading_value": 21096791240,
-      "market_cap": 51114688128
+      "market_cap": 51114688128,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260113",
       "change_rate": 29.99,
       "close_price": 893.0,
-      "rise_reason": "광고 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광고",
       "news": [
         {
@@ -447,7 +450,10 @@
       "source": "estimated",
       "trading_volume": 5357213,
       "trading_value": 4783991209,
-      "market_cap": 39349496981
+      "market_cap": 39349496981,
+      "reason_previous": "광고 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -458,5 +464,5 @@
     "count_recent": 0,
     "avg_rate": 24.05
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

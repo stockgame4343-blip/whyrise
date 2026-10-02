@@ -386,10 +386,10 @@
       "date": "20260113",
       "change_rate": 30.0,
       "close_price": 1833.0,
-      "rise_reason": "30.00% 금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -430,15 +430,7 @@
       "trading_value": 47027411340,
       "market_cap": 70309459459,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]삼기 30.00% 상한가 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003608437",
-          "source": "서울신문",
-          "date": "2026-01-13"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
@@ -482,10 +474,10 @@
       "date": "20250704",
       "change_rate": 11.33,
       "close_price": 1297.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -506,7 +498,10 @@
       "source": "estimated",
       "trading_volume": 18471414,
       "trading_value": 23957423958,
-      "market_cap": 49749792099
+      "market_cap": 49749792099,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -517,5 +512,5 @@
     "count_recent": 0,
     "avg_rate": 25.47
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -222,10 +222,10 @@
       "date": "20260115",
       "change_rate": 15.73,
       "close_price": 4965.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -246,7 +246,10 @@
       "source": "estimated",
       "trading_volume": 652637,
       "trading_value": 3240342705,
-      "market_cap": 42306919945
+      "market_cap": 42306919945,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260112",
@@ -333,5 +336,5 @@
     "count_recent": 0,
     "avg_rate": 13.65
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

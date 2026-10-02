@@ -142,10 +142,10 @@
       "date": "20250707",
       "change_rate": 15.11,
       "close_price": 1021.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -178,16 +178,19 @@
       "source": "estimated",
       "trading_volume": 13868152,
       "trading_value": 14159383192,
-      "market_cap": 47018888186
+      "market_cap": 47018888186,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250704",
       "change_rate": 29.87,
       "close_price": 887.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -208,7 +211,10 @@
       "source": "estimated",
       "trading_volume": 8019930,
       "trading_value": 7113677910,
-      "market_cap": 40847946936
+      "market_cap": 40847946936,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -219,5 +225,5 @@
     "count_recent": 0,
     "avg_rate": 25.6
   },
-  "built_at": "2026-10-02T10:35:16"
+  "built_at": "2026-10-02T11:12:19"
 }

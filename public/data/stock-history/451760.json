@@ -76,10 +76,10 @@
       "close_price": 19180.0,
       "trading_volume": 387155,
       "trading_value": 7425632900,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
         {
@@ -91,7 +91,10 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -99,7 +102,7 @@
       "close_price": 19070.0,
       "trading_volume": 385347,
       "trading_value": 7348567290,
-      "rise_reason": "관련 보도: 위성 데이터 수신부터 처리·분석까지…우주기업 , 제주 ASP 개장",
+      "rise_reason": "우주항공산업 테마 6종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -128,15 +131,7 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "우주/위성",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "&quot;위성 데이터 수신부터 처리·분석까지&quot;…우주기업 컨텍, 제주 ASP 개장",
-          "link": "https://n.news.naver.com/mnews/article/421/0008863790",
-          "source": "뉴스1",
-          "date": "2026-04-01"
-        }
-      ]
+      "reason_kind": "theme"
     },
     {
       "date": "20260324",
@@ -220,7 +215,7 @@
       "date": "20260122",
       "change_rate": 12.71,
       "close_price": 20400.0,
-      "rise_reason": "레오스페이스, AP위성으로부터 전략적 투자 유치",
+      "rise_reason": "레오스페이스, 전략적 투자 유치",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -302,10 +297,10 @@
       "date": "20260105",
       "change_rate": 15.16,
       "close_price": 13600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -313,16 +308,19 @@
       "source": "estimated",
       "trading_volume": 8159183,
       "trading_value": 110964888800,
-      "market_cap": 224521428571
+      "market_cap": 224521428571,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
       "change_rate": 19.58,
       "close_price": 10930.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -330,7 +328,10 @@
       "source": "estimated",
       "trading_volume": 1467250,
       "trading_value": 16037042500,
-      "market_cap": 180442589285
+      "market_cap": 180442589285,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -341,5 +342,5 @@
     "count_recent": 0,
     "avg_rate": 14.5
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

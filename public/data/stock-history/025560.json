@@ -96,7 +96,7 @@
       "close_price": 8570.0,
       "trading_volume": 684161,
       "trading_value": 5863259770,
-      "rise_reason": "반도체 장비 테마 4종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -167,7 +167,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "반도체 장비 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "빅테크 실적발 훈풍에 장비株 강세…미래산업 16%·네오셈 9%↑[코주부...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004651028&office_id=011&code=323350&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.08.12"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -524,7 +532,7 @@
       "close_price": 9450.0,
       "trading_volume": 2588155,
       "trading_value": 24458064750,
-      "rise_reason": "관련 보도: 경영권 할인매각…에 쏠린 눈",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -595,13 +603,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "계약 체결",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[격랑의 알로이스]② 경영권 할인매각…'미래산업'에 쏠린 눈",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000086012&office_id=293&code=025560&page=&sm=",
-          "source": "블로터",
-          "date": "2026.06.09"
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
         }
       ]
     },
@@ -1145,5 +1153,5 @@
     "count_recent": 0,
     "avg_rate": 20.15
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

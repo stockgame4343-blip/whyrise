@@ -98,7 +98,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "6/30 감자 후 거래 재개",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005378980&office_id=008&code=200230&page=&sm=",
+        "title": "텔콘RF제약, 감자 후 거래 재개...제약사업부 경쟁력 강화",
+        "date": "20260630"
+      }
     },
     {
       "date": "20260414",
@@ -369,10 +375,10 @@
       "date": "20250714",
       "change_rate": 29.95,
       "close_price": 2430.0,
-      "rise_reason": "제약업체 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [],
       "sector": "제약",
@@ -380,7 +386,10 @@
       "source": "estimated",
       "trading_volume": 11838215,
       "trading_value": 28766862450,
-      "market_cap": 173475000000
+      "market_cap": 173475000000,
+      "reason_previous": "제약업체 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250626",
@@ -524,10 +533,10 @@
       "date": "20250616",
       "change_rate": 12.16,
       "close_price": 1227.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [],
       "sector": "제약",
@@ -535,7 +544,10 @@
       "source": "estimated",
       "trading_volume": 740115,
       "trading_value": 908121105,
-      "market_cap": 87594166666
+      "market_cap": 87594166666,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -546,5 +558,5 @@
     "count_recent": 0,
     "avg_rate": 20.12
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

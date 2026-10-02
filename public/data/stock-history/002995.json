@@ -321,7 +321,7 @@
       "reason_evidence": [
         {
           "title": "금호건설·금호건설우 '상한가'…남화토건 19.87%↑ 건설주 강세",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006339795&office_id=018&code=002995&page=&sm=",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006339795&office_id=018&code=002990&page=&sm=",
           "source": "이데일리",
           "date": "2026.07.30"
         }
@@ -700,7 +700,7 @@
       "close_price": 26000.0,
       "trading_volume": 21484,
       "trading_value": 558584000,
-      "rise_reason": "건설주 동반 강세 — 삼전닉스 들어선다",
+      "rise_reason": "건설주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -744,10 +744,10 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "“삼전닉스 들어선다”…호남 건설株 ‘불기둥’",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000106499&office_id=024&code=002995&page=&sm=",
-          "source": "매경이코노미",
-          "date": "2026.06.26"
+          "title": "반도체 메가 프로젝트에 건설주 들썩",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000180222&office_id=656&code=013580&page=&sm=",
+          "source": "대전일보",
+          "date": "2026.06.29"
         }
       ]
     },
@@ -757,7 +757,7 @@
       "close_price": 20000.0,
       "trading_volume": 33953,
       "trading_value": 679060000,
-      "rise_reason": "건설주 동반 강세 — 호남 반도체 투자설",
+      "rise_reason": "건설주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1011,10 +1011,10 @@
       "date": "20251216",
       "change_rate": 29.98,
       "close_price": 29700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -1053,7 +1053,10 @@
       "source": "estimated",
       "trading_volume": 42955,
       "trading_value": 1275763500,
-      "market_cap": 8664505672
+      "market_cap": 8664505672,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251215",
@@ -1103,10 +1106,10 @@
       "date": "20251211",
       "change_rate": 29.97,
       "close_price": 19950.0,
-      "rise_reason": "29.97% 금일 증시 상승률 1위로 마감",
-      "reason_confidence": "mid",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -1147,24 +1150,16 @@
       "trading_value": 1541317050,
       "market_cap": 5820097244,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]금호건설우 29.97% 상한가 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003599736",
-          "source": "서울신문",
-          "date": "2025-12-10"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20251210",
       "change_rate": 29.97,
       "close_price": 15350.0,
-      "rise_reason": "29.97% 금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -1199,15 +1194,7 @@
       "trading_value": 826873800,
       "market_cap": 4478119935,
       "reason_previous": "상한가 — 사유 미수집",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]금호건설우 29.97% 상한가 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003599736",
-          "source": "서울신문",
-          "date": "2025-12-10"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20251208",
@@ -1274,5 +1261,5 @@
     "count_recent": 0,
     "avg_rate": 26.79
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

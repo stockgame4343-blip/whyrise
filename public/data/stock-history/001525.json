@@ -174,10 +174,10 @@
       "date": "20250930",
       "change_rate": 29.87,
       "close_price": 8870.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -204,7 +204,10 @@
       "source": "estimated",
       "trading_volume": 366099,
       "trading_value": 3247298130,
-      "market_cap": 4678681318
+      "market_cap": 4678681318,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250929",
@@ -272,5 +275,5 @@
     "count_recent": 1,
     "avg_rate": 25.58
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

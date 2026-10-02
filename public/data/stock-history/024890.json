@@ -9,10 +9,10 @@
       "close_price": 3945.0,
       "trading_volume": 435091,
       "trading_value": 1716433995,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "회사 땅값이 올랐네",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "희귀금속(희토류 등)",
       "news": [
         {
@@ -62,7 +62,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "수출 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "\"회사 땅값이 올랐네\" 대원화성 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005373695&office_id=008&code=024890&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.06.18"
+        }
+      ]
     }
   ],
   "stats": {
@@ -73,5 +81,5 @@
     "count_recent": 0,
     "avg_rate": 29.98
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

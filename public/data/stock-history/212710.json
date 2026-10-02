@@ -193,7 +193,7 @@
       "close_price": 11460.0,
       "trading_volume": 303658,
       "trading_value": 3479920680,
-      "rise_reason": "반도체 장비 테마 17종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -264,7 +264,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "반도체 장비 수주 공시",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260611",
@@ -509,7 +517,7 @@
       "close_price": 11010.0,
       "trading_volume": 1187197,
       "trading_value": 13071038970,
-      "rise_reason": "반도체주 동반 강세 — 000 돌파",
+      "rise_reason": "반도체주 동반 강세 — 전쟁 리스크도 눌렀다",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -583,9 +591,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[이 시각 시황] 코스피, 7,000 돌파…반도체 대표주 '훨훨'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000508330&office_id=374&code=024840&page=&sm=",
-          "source": "SBS Biz",
+          "title": "[기획] 전쟁 리스크도 눌렀다…AI 반도체 랠리에 코스피 레벨업",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003424739&office_id=030&code=001500&page=&sm=",
+          "source": "전자신문",
           "date": "2026.05.06"
         }
       ]
@@ -683,9 +691,9 @@
       "date": "20251010",
       "change_rate": 12.69,
       "close_price": 13230.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [],
@@ -694,7 +702,18 @@
       "source": "estimated",
       "trading_volume": 1120910,
       "trading_value": 14829639300,
-      "market_cap": 127272312703
+      "market_cap": 127272312703,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성전자·SK하이닉스 강세...반도체 장비주 ‘급등세’",
+          "link": "https://n.news.naver.com/mnews/article/655/0000027792",
+          "source": "CJB청주방송",
+          "date": "2025-10-10"
+        }
+      ]
     },
     {
       "date": "20250918",
@@ -757,10 +776,10 @@
       "date": "20250725",
       "change_rate": 15.1,
       "close_price": 10750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -768,7 +787,10 @@
       "source": "estimated",
       "trading_volume": 2085062,
       "trading_value": 22414416500,
-      "market_cap": 103414766558
+      "market_cap": 103414766558,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250624",
@@ -798,5 +820,5 @@
     "count_recent": 0,
     "avg_rate": 14.61
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -261,10 +261,10 @@
       "date": "20260226",
       "change_rate": 18.53,
       "close_price": 98500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -279,7 +279,10 @@
       "source": "estimated",
       "trading_volume": 192974,
       "trading_value": 19007939000,
-      "market_cap": 232911458333
+      "market_cap": 232911458333,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260220",
@@ -311,10 +314,10 @@
       "date": "20260128",
       "change_rate": 21.52,
       "close_price": 67200.0,
-      "rise_reason": "21.52% 금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [
         {
@@ -337,15 +340,7 @@
       "trading_value": 31306396800,
       "market_cap": 158900000000,
       "reason_previous": "지주사 테마 강세",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]경동인베스트 21.52% 폭등 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003612433",
-          "source": "서울신문",
-          "date": "2026-01-28"
-        }
-      ]
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -356,5 +351,5 @@
     "count_recent": 1,
     "avg_rate": 15.75
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

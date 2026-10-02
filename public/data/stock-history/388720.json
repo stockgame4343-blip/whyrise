@@ -121,7 +121,7 @@
       "close_price": 96400.0,
       "trading_volume": 235805,
       "trading_value": 22731602000,
-      "rise_reason": "로봇주 동반 강세 — 두산로보틱스",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -303,7 +303,7 @@
       "date": "20250826",
       "change_rate": 10.34,
       "close_price": 73600.0,
-      "rise_reason": "로봇 테마 5종목 동반 상승",
+      "rise_reason": "로봇주 동반 강세 — 증권가 자동화 수요 확대",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -347,7 +347,15 @@
       "trading_value": 28413059200,
       "market_cap": 867126436781,
       "reason_previous": "AI/반도체 테마",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "노란봉투법발 로봇·스마트팩토리 랠리…증권가 &quot;자동화 수요 확대&quot;",
+          "link": "https://n.news.naver.com/mnews/article/008/0005241009",
+          "source": "머니투데이",
+          "date": "2025-08-26"
+        }
+      ]
     }
   ],
   "stats": {
@@ -358,5 +366,5 @@
     "count_recent": 0,
     "avg_rate": 15.32
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:19"
 }

@@ -111,10 +111,10 @@
       "date": "20260122",
       "change_rate": 13.99,
       "close_price": 2770.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [],
       "sector": "컴퓨터와주변기기",
@@ -122,7 +122,10 @@
       "source": "estimated",
       "trading_volume": 268789,
       "trading_value": 744545530,
-      "market_cap": 24924335378
+      "market_cap": 24924335378,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -133,5 +136,5 @@
     "count_recent": 1,
     "avg_rate": 24.58
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

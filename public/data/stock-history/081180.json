@@ -191,15 +191,18 @@
       "close_price": 12700.0,
       "trading_volume": 229002,
       "trading_value": 2908325400,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(장비)",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -370,10 +373,10 @@
       "date": "20251118",
       "change_rate": 15.07,
       "close_price": 11070.0,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "전일 이어",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
         {
@@ -402,7 +405,15 @@
       "trading_value": 105775134120,
       "market_cap": 97676470588,
       "reason_previous": "반도체 장비 테마 강세",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[한경유레카 특징주] 쎄크, 전일 상한가 이어 강세",
+          "link": "https://n.news.naver.com/mnews/article/015/0005212784",
+          "source": "한국경제",
+          "date": "2025-11-18"
+        }
+      ]
     },
     {
       "date": "20251117",
@@ -459,5 +470,5 @@
     "count_recent": 0,
     "avg_rate": 17.21
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

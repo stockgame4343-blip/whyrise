@@ -34,10 +34,10 @@
       "close_price": 16650.0,
       "trading_volume": 47649,
       "trading_value": 793355850,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -61,7 +61,10 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260128",
@@ -93,10 +96,10 @@
       "date": "20260116",
       "change_rate": 29.98,
       "close_price": 18210.0,
-      "rise_reason": "자동차부품 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "비철금속",
@@ -104,7 +107,10 @@
       "source": "estimated",
       "trading_volume": 41496,
       "trading_value": 755642160,
-      "market_cap": 5629957356
+      "market_cap": 5629957356,
+      "reason_previous": "자동차부품 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251229",
@@ -158,10 +164,10 @@
       "date": "20251226",
       "change_rate": 30.0,
       "close_price": 16250.0,
-      "rise_reason": "30.00% 금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -184,15 +190,7 @@
       "trading_value": 725595000,
       "market_cap": 5023987206,
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]남선알미우 30.00% 상한가 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003604259",
-          "source": "서울신문",
-          "date": "2025-12-26"
-        }
-      ]
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -203,5 +201,5 @@
     "count_recent": 0,
     "avg_rate": 24.27
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

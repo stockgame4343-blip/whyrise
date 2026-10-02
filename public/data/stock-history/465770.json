@@ -273,7 +273,7 @@
       "close_price": 4140.0,
       "trading_volume": 1360243,
       "trading_value": 5631406020,
-      "rise_reason": "신재생에너지·해운주 동반 강세 — 중동 긴장에 유가",
+      "rise_reason": "조선주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -329,9 +329,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "중동 긴장에 유가 급등…신재생에너지·해운주 동반 강세[핫종목]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009067680&office_id=421&code=465770&page=&sm=",
-          "source": "뉴스1",
+          "title": "[애프터마켓 리뷰] 트럼프 조선 협력 발언에 조선주 '강세'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000522414&office_id=374&code=460930&page=&sm=",
+          "source": "SBS Biz",
           "date": "2026.07.20"
         }
       ]
@@ -342,7 +342,7 @@
       "close_price": 3740.0,
       "trading_volume": 10062858,
       "trading_value": 37635088920,
-      "rise_reason": "정유·해운주 동반 강세 — 중동 긴장 고조",
+      "rise_reason": "정유·해운주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -683,10 +683,10 @@
       "date": "20260316",
       "change_rate": 19.33,
       "close_price": 7780.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "해운",
       "news": [
         {
@@ -707,7 +707,10 @@
       "source": "estimated",
       "trading_volume": 5762071,
       "trading_value": 44828912380,
-      "market_cap": 55737313432
+      "market_cap": 55737313432,
+      "reason_previous": "방산",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260303",
@@ -761,10 +764,10 @@
       "date": "20250623",
       "change_rate": 12.27,
       "close_price": 11350.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "해운",
       "news": [
         {
@@ -803,16 +806,19 @@
       "source": "estimated",
       "trading_volume": 6063881,
       "trading_value": 68825049350,
-      "market_cap": 81313432835
+      "market_cap": 81313432835,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250613",
       "change_rate": 21.46,
       "close_price": 11490.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "해운",
       "news": [],
       "sector": "해운사",
@@ -820,7 +826,10 @@
       "source": "estimated",
       "trading_volume": 10808738,
       "trading_value": 124192399620,
-      "market_cap": 82316417910
+      "market_cap": 82316417910,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -831,5 +840,5 @@
     "count_recent": 1,
     "avg_rate": 24.73
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

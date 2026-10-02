@@ -553,10 +553,10 @@
       "date": "20260203",
       "change_rate": 10.27,
       "close_price": 4510.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -577,13 +577,16 @@
       "source": "estimated",
       "trading_volume": 4441343,
       "trading_value": 20030456930,
-      "market_cap": 128302604756
+      "market_cap": 128302604756,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
       "change_rate": 10.2,
       "close_price": 4430.0,
-      "rise_reason": "관련주 동반 강세 — 글로벌 IPO 대어",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -688,10 +691,10 @@
       "date": "20251125",
       "change_rate": 11.62,
       "close_price": 2690.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
         {
@@ -706,16 +709,19 @@
       "source": "estimated",
       "trading_volume": 9957678,
       "trading_value": 26786153820,
-      "market_cap": 76526387315
+      "market_cap": 76526387315,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250910",
       "change_rate": 10.14,
       "close_price": 4075.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [],
       "sector": "전자장비와기기",
@@ -723,7 +729,10 @@
       "source": "estimated",
       "trading_volume": 2439747,
       "trading_value": 9941969025,
-      "market_cap": 115927519818
+      "market_cap": 115927519818,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250821",
@@ -792,5 +801,5 @@
     "count_recent": 1,
     "avg_rate": 16.38
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

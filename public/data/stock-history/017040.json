@@ -24,10 +24,10 @@
       "date": "20251023",
       "change_rate": 19.23,
       "close_price": 1736.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -66,16 +66,19 @@
       "source": "estimated",
       "trading_volume": 13847944,
       "trading_value": 24040030784,
-      "market_cap": 75251502145
+      "market_cap": 75251502145,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251022",
       "change_rate": 13.66,
       "close_price": 1456.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -114,16 +117,19 @@
       "source": "estimated",
       "trading_volume": 3966839,
       "trading_value": 5775717584,
-      "market_cap": 63114163090
+      "market_cap": 63114163090,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250529",
       "change_rate": 14.21,
       "close_price": 2170.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -131,7 +137,10 @@
       "source": "estimated",
       "trading_volume": 9934426,
       "trading_value": 21557704420,
-      "market_cap": 94064377682
+      "market_cap": 94064377682,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -142,5 +151,5 @@
     "count_recent": 0,
     "avg_rate": 14.66
   },
-  "built_at": "2026-09-27T09:03:57"
+  "built_at": "2026-10-02T11:12:19"
 }

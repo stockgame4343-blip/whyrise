@@ -463,10 +463,10 @@
       "date": "20250716",
       "change_rate": 20.85,
       "close_price": 48400.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -505,7 +505,10 @@
       "source": "estimated",
       "trading_volume": 5131033,
       "trading_value": 248341997200,
-      "market_cap": 488389498806
+      "market_cap": 488389498806,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250707",
@@ -559,10 +562,10 @@
       "date": "20250605",
       "change_rate": 30.0,
       "close_price": 35750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -570,16 +573,19 @@
       "source": "estimated",
       "trading_volume": 9000589,
       "trading_value": 321771056750,
-      "market_cap": 360742243436
+      "market_cap": 360742243436,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
       "change_rate": 24.43,
       "close_price": 27500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -587,7 +593,10 @@
       "source": "estimated",
       "trading_volume": 2692116,
       "trading_value": 74033190000,
-      "market_cap": 277494033412
+      "market_cap": 277494033412,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -598,5 +607,5 @@
     "count_recent": 1,
     "avg_rate": 17.64
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

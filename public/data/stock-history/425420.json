@@ -204,7 +204,7 @@
       "close_price": 29250.0,
       "trading_volume": 263110,
       "trading_value": 7695967500,
-      "rise_reason": "HBM 소캠주 동반 강세 — 대덕전자",
+      "rise_reason": "HBM 소캠주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -237,7 +237,7 @@
       "close_price": 39950.0,
       "trading_volume": 160732,
       "trading_value": 6421243400,
-      "rise_reason": "소캠 테마 6종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -247,7 +247,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "소캠(SOCAMM) 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -273,7 +281,7 @@
       "close_price": 57300.0,
       "trading_volume": 158150,
       "trading_value": 9061995000,
-      "rise_reason": "AI 서버 시대 테스트 증가 수혜 기대",
+      "rise_reason": "NH투자, AI 서버 시대 테스트 증가 수혜 기대",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -431,10 +439,10 @@
       "date": "20260320",
       "change_rate": 11.2,
       "close_price": 67500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
         {
@@ -449,7 +457,10 @@
       "source": "estimated",
       "trading_volume": 468798,
       "trading_value": 31643865000,
-      "market_cap": 833376024590
+      "market_cap": 833376024590,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
@@ -571,10 +582,10 @@
       "date": "20260204",
       "change_rate": 10.34,
       "close_price": 41100.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [
         {
@@ -589,7 +600,10 @@
       "source": "estimated",
       "trading_volume": 466592,
       "trading_value": 19176931200,
-      "market_cap": 507433401639
+      "market_cap": 507433401639,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251125",
@@ -687,10 +701,10 @@
       "date": "20250909",
       "change_rate": 11.13,
       "close_price": 43950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -698,16 +712,19 @@
       "source": "estimated",
       "trading_volume": 345871,
       "trading_value": 15201030450,
-      "market_cap": 542620389344
+      "market_cap": 542620389344,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
       "change_rate": 13.78,
       "close_price": 22050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "소캠(SOCAMM)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -715,7 +732,10 @@
       "source": "estimated",
       "trading_volume": 176631,
       "trading_value": 3894713550,
-      "market_cap": 272236168032
+      "market_cap": 272236168032,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -726,5 +746,5 @@
     "count_recent": 2,
     "avg_rate": 14.09
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

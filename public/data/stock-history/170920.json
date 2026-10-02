@@ -325,7 +325,7 @@
       "close_price": 51600.0,
       "trading_volume": 336443,
       "trading_value": 17360458800,
-      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -667,7 +667,7 @@
       "close_price": 47400.0,
       "trading_volume": 913408,
       "trading_value": 43295539200,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -906,10 +906,10 @@
       "date": "20260325",
       "change_rate": 13.34,
       "close_price": 34400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -917,16 +917,19 @@
       "source": "estimated",
       "trading_volume": 534088,
       "trading_value": 18372627200,
-      "market_cap": 363405128205
+      "market_cap": 363405128205,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260319",
       "change_rate": 13.86,
       "close_price": 34100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
         {
@@ -941,7 +944,10 @@
       "source": "estimated",
       "trading_volume": 749943,
       "trading_value": 25573056300,
-      "market_cap": 360235897435
+      "market_cap": 360235897435,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260317",
@@ -1106,10 +1112,10 @@
       "date": "20250915",
       "change_rate": 14.37,
       "close_price": 16480.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
         {
@@ -1130,7 +1136,10 @@
       "source": "estimated",
       "trading_volume": 1170420,
       "trading_value": 19288521600,
-      "market_cap": 174096410256
+      "market_cap": 174096410256,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250708",
@@ -1160,5 +1169,5 @@
     "count_recent": 0,
     "avg_rate": 14.48
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

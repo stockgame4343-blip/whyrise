@@ -484,10 +484,10 @@
       "close_price": 1408.0,
       "trading_volume": 17530856,
       "trading_value": 24683445248,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -517,7 +517,10 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260407",
@@ -525,10 +528,10 @@
       "close_price": 1171.0,
       "trading_volume": 12049832,
       "trading_value": 14110353272,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -558,16 +561,19 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260224",
       "change_rate": 29.96,
       "close_price": 733.0,
-      "rise_reason": "지능형로봇/인공지능(AI) 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [],
       "sector": "소프트웨어",
@@ -575,7 +581,10 @@
       "source": "estimated",
       "trading_volume": 5533036,
       "trading_value": 4055715388,
-      "market_cap": 26687599206
+      "market_cap": 26687599206,
+      "reason_previous": "지능형로봇/인공지능(AI) 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -586,5 +595,5 @@
     "count_recent": 2,
     "avg_rate": 19.8
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

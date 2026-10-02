@@ -165,10 +165,10 @@
       "date": "20260203",
       "change_rate": 15.37,
       "close_price": 16360.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "건설기계",
       "news": [],
       "sector": "기계",
@@ -176,7 +176,10 @@
       "source": "estimated",
       "trading_volume": 918949,
       "trading_value": 15034005640,
-      "market_cap": 360441886269
+      "market_cap": 360441886269,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -187,5 +190,5 @@
     "count_recent": 0,
     "avg_rate": 14.03
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

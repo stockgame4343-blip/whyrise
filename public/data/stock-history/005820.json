@@ -27,10 +27,10 @@
       "close_price": 17090.0,
       "trading_volume": 49764,
       "trading_value": 850466760,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -60,7 +60,10 @@
       ],
       "sector": "포장재",
       "is_52w_high": true,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -71,5 +74,5 @@
     "count_recent": 1,
     "avg_rate": 10.77
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

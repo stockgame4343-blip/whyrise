@@ -9,7 +9,7 @@
       "close_price": 2810.0,
       "trading_volume": 11086158,
       "trading_value": 31152103980,
-      "rise_reason": "SK하이닉스 자사주 중개 소식",
+      "rise_reason": "SK하이닉스 자사주 매입 단독 중개",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -83,9 +83,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "[특징주] SK하이닉스 자사주 중개 소식에…SK증권 ‘상한가’",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001187243&office_id=366&code=001510&page=&sm=",
-          "source": "조선비즈",
+          "title": "[특징주] SK증권, 상한가 직행?SK하이닉스 자사주 매입 단독 중개",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001051005&office_id=031&code=001510&page=&sm=",
+          "source": "아이뉴스24",
           "date": "2026.08.20"
         }
       ]
@@ -349,15 +349,18 @@
       "close_price": 4294.0,
       "trading_volume": 61624683,
       "trading_value": 264616388802,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
@@ -439,10 +442,10 @@
       "date": "20260226",
       "change_rate": 18.99,
       "close_price": 4304.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -450,16 +453,19 @@
       "source": "estimated",
       "trading_volume": 176854291,
       "trading_value": 761180868464,
-      "market_cap": 995488111888
+      "market_cap": 995488111888,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260220",
       "change_rate": 18.38,
       "close_price": 3742.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -467,7 +473,10 @@
       "source": "estimated",
       "trading_volume": 159618290,
       "trading_value": 597291641180,
-      "market_cap": 865501048951
+      "market_cap": 865501048951,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
@@ -530,10 +539,10 @@
       "date": "20250604",
       "change_rate": 11.33,
       "close_price": 1317.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "증권",
       "news": [],
       "sector": "증권",
@@ -541,7 +550,10 @@
       "source": "estimated",
       "trading_volume": 18510563,
       "trading_value": 24378411471,
-      "market_cap": 304613811188
+      "market_cap": 304613811188,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -552,5 +564,5 @@
     "count_recent": 0,
     "avg_rate": 20.68
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

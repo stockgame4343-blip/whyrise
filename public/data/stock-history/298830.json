@@ -40,10 +40,10 @@
       "date": "20260122",
       "change_rate": 19.98,
       "close_price": 10210.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -70,16 +70,19 @@
       "source": "estimated",
       "trading_volume": 50298703,
       "trading_value": 513549757630,
-      "market_cap": 545913995943
+      "market_cap": 545913995943,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260107",
       "change_rate": 15.96,
       "close_price": 9300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -94,7 +97,10 @@
       "source": "estimated",
       "trading_volume": 46869924,
       "trading_value": 435890293200,
-      "market_cap": 497257606490
+      "market_cap": 497257606490,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251224",
@@ -140,10 +146,10 @@
       "date": "20251211",
       "change_rate": 13.55,
       "close_price": 7040.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -151,16 +157,19 @@
       "source": "estimated",
       "trading_volume": 9246232,
       "trading_value": 65093473280,
-      "market_cap": 376418661257
+      "market_cap": 376418661257,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251208",
       "change_rate": 16.61,
       "close_price": 6600.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -168,7 +177,10 @@
       "source": "estimated",
       "trading_volume": 9045060,
       "trading_value": 59697396000,
-      "market_cap": 352892494929
+      "market_cap": 352892494929,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -179,5 +191,5 @@
     "count_recent": 0,
     "avg_rate": 14.54
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:19"
 }

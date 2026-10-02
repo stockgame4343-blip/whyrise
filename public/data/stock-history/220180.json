@@ -26,10 +26,10 @@
       "date": "20250721",
       "change_rate": 14.88,
       "close_price": 3705.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -68,16 +68,19 @@
       "source": "estimated",
       "trading_volume": 1548915,
       "trading_value": 5738730075,
-      "market_cap": 88597826086
+      "market_cap": 88597826086,
+      "reason_previous": "대형 수주",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250718",
       "change_rate": 10.63,
       "close_price": 3225.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -92,7 +95,10 @@
       "source": "estimated",
       "trading_volume": 718923,
       "trading_value": 2318526675,
-      "market_cap": 77119565217
+      "market_cap": 77119565217,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250717",
@@ -139,5 +145,5 @@
     "count_recent": 0,
     "avg_rate": 13.34
   },
-  "built_at": "2026-10-02T10:35:16"
+  "built_at": "2026-10-02T11:12:19"
 }

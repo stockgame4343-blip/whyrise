@@ -150,10 +150,10 @@
       "date": "20260313",
       "change_rate": 14.35,
       "close_price": 1506.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -174,7 +174,10 @@
       "source": "estimated",
       "trading_volume": 104192476,
       "trading_value": 156913868856,
-      "market_cap": 194368529664
+      "market_cap": 194368529664,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -224,10 +227,10 @@
       "date": "20251226",
       "change_rate": 29.96,
       "close_price": 1310.0,
-      "rise_reason": "자동차부품 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "비철금속",
@@ -235,7 +238,10 @@
       "source": "estimated",
       "trading_volume": 53754096,
       "trading_value": 70417865760,
-      "market_cap": 169072226999
+      "market_cap": 169072226999,
+      "reason_previous": "자동차부품 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -246,5 +252,5 @@
     "count_recent": 0,
     "avg_rate": 22.5
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

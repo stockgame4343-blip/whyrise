@@ -114,7 +114,7 @@
       "close_price": 8650.0,
       "trading_volume": 1036878,
       "trading_value": 8968994700,
-      "rise_reason": "전력주 동반 강세 — LS일렉트릭",
+      "rise_reason": "전력주 동반 강세 — 인프라 투자 확대와 데이터센터 기대감",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -188,9 +188,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "'1500조 메가프로젝트'에 전력株 급등…LS일렉트릭 13%↑",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014039102&office_id=003&code=010120&page=&sm=",
-          "source": "뉴시스",
+          "title": "[기업이슈] 전선주, 인프라 투자 확대와 데이터센터 기대감에 상승",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000519253&office_id=374&code=000500&page=&sm=",
+          "source": "SBS Biz",
           "date": "2026.07.01"
         }
       ]
@@ -217,7 +217,7 @@
       "close_price": 14080.0,
       "trading_volume": 11793353,
       "trading_value": 166050410240,
-      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "rise_reason": "전력주 동반 강세 — LS일렉, 美 데이터센터 3200억 수주 5% 증가",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -291,9 +291,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
-          "source": "연합뉴스",
+          "title": "LS일렉, 美 데이터센터 3200억 수주 5%↑…전력주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008917941&office_id=421&code=006340&page=&sm=",
+          "source": "뉴스1",
           "date": "2026.04.29"
         }
       ]
@@ -450,10 +450,10 @@
       "date": "20250811",
       "change_rate": 16.11,
       "close_price": 11170.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "해저터널(지하화/지하도로 등)",
       "news": [],
       "sector": "전기장비",
@@ -461,7 +461,10 @@
       "source": "estimated",
       "trading_volume": 11719290,
       "trading_value": 130904469300,
-      "market_cap": 170349164677
+      "market_cap": 170349164677,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250807",
@@ -502,5 +505,5 @@
     "count_recent": 0,
     "avg_rate": 13.52
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

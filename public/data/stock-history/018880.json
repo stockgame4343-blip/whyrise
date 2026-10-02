@@ -545,10 +545,10 @@
       "date": "20260219",
       "change_rate": 18.16,
       "close_price": 5270.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차 대표주",
       "news": [],
       "sector": "자동차부품",
@@ -556,16 +556,19 @@
       "source": "estimated",
       "trading_volume": 163464161,
       "trading_value": 861456128470,
-      "market_cap": 5408432336655
+      "market_cap": 5408432336655,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260210",
       "change_rate": 17.94,
       "close_price": 4570.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차 대표주",
       "news": [
         {
@@ -604,7 +607,10 @@
       "source": "estimated",
       "trading_volume": 124964899,
       "trading_value": 571089588430,
-      "market_cap": 4690044739756
+      "market_cap": 4690044739756,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -615,5 +621,5 @@
     "count_recent": 0,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

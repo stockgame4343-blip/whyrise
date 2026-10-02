@@ -9,10 +9,10 @@
       "close_price": 3240.0,
       "trading_volume": 6278682,
       "trading_value": 20342929680,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "다양",
       "news": [
         {
@@ -78,7 +78,16 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "4/17 보은 산업용 로봇 양산 돌입",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0008895775&office_id=421&code=049800&page=&sm=",
+        "title": "보은 우진플라임 산업용 로봇 양산 돌입…\"글로벌 기술협력 성과\"",
+        "date": "20260417"
+      }
     },
     {
       "date": "20260414",
@@ -86,10 +95,10 @@
       "close_price": 2990.0,
       "trading_volume": 371820,
       "trading_value": 1111741800,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -145,7 +154,10 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20260211",
@@ -187,10 +199,10 @@
       "date": "20260206",
       "change_rate": 12.98,
       "close_price": 2480.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "다양",
       "news": [
         {
@@ -217,7 +229,10 @@
       "source": "estimated",
       "trading_volume": 777062,
       "trading_value": 1927113760,
-      "market_cap": 49572910977
+      "market_cap": 49572910977,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -228,5 +243,5 @@
     "count_recent": 0,
     "avg_rate": 16.02
   },
-  "built_at": "2026-10-01T22:53:25"
+  "built_at": "2026-10-02T11:12:19"
 }

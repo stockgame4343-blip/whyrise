@@ -186,9 +186,9 @@
       "reason_previous": "인수 관련 뉴스",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "8/5 최대주주 변경 기대에 4연상",
-        "link": "https://finance.naver.com/item/news_read.naver?article_id=0006344865&office_id=018&code=226340&page=&sm=",
-        "title": "본느, 최대주주 변경 기대에 '4연상'[특징주]",
+        "text": "8/5 최대주주 변경 기대감",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454368&office_id=030&code=226340&page=&sm=",
+        "title": "[ET특징주] 본느, 최대주주 변경 기대감에 나흘째 上",
         "date": "20260805"
       }
     },
@@ -285,7 +285,7 @@
       "close_price": 6200.0,
       "trading_volume": 710753,
       "trading_value": 4406668600,
-      "rise_reason": "최대주주 변경 기대에 4연상",
+      "rise_reason": "최대주주 변경 기대감",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -359,9 +359,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "본느, 최대주주 변경 기대에 '4연상'[특징주]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006344865&office_id=018&code=226340&page=&sm=",
-          "source": "이데일리",
+          "title": "[ET특징주] 본느, 최대주주 변경 기대감에 나흘째 上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454368&office_id=030&code=226340&page=&sm=",
+          "source": "전자신문",
           "date": "2026.08.05"
         }
       ]
@@ -372,7 +372,7 @@
       "close_price": 4775.0,
       "trading_volume": 3262141,
       "trading_value": 15576723275,
-      "rise_reason": "최대주주 변경 기대에 4연상",
+      "rise_reason": "최대주주 변경 기대감",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -446,9 +446,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "본느, 최대주주 변경 기대에 '4연상'[특징주]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006344865&office_id=018&code=226340&page=&sm=",
-          "source": "이데일리",
+          "title": "[ET특징주] 본느, 최대주주 변경 기대감에 나흘째 上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454368&office_id=030&code=226340&page=&sm=",
+          "source": "전자신문",
           "date": "2026.08.05"
         }
       ]
@@ -459,7 +459,7 @@
       "close_price": 3675.0,
       "trading_volume": 372644,
       "trading_value": 1369466700,
-      "rise_reason": "최대주주 변경 기대에 4연상",
+      "rise_reason": "최대주주 변경 기대감",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -533,9 +533,9 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "본느, 최대주주 변경 기대에 '4연상'[특징주]",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006344865&office_id=018&code=226340&page=&sm=",
-          "source": "이데일리",
+          "title": "[ET특징주] 본느, 최대주주 변경 기대감에 나흘째 上",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003454368&office_id=030&code=226340&page=&sm=",
+          "source": "전자신문",
           "date": "2026.08.05"
         }
       ]
@@ -1042,15 +1042,18 @@
       "close_price": 2895.0,
       "trading_volume": 1130477,
       "trading_value": 3272730915,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260326",
@@ -1116,5 +1119,5 @@
     "count_recent": 1,
     "avg_rate": 24.41
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

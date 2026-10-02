@@ -267,7 +267,7 @@
       "close_price": 6760.0,
       "trading_volume": 8849150,
       "trading_value": 59820254000,
-      "rise_reason": "관련주 동반 강세 — 탈모 치료 아직 멀었는데",
+      "rise_reason": "반등하더니주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -323,9 +323,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "탈모 치료 아직 멀었는데…탈모 관련株 줄줄이 상한가 [이런국장 저런....",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004657618&office_id=011&code=014950&page=&sm=",
-          "source": "서울경제",
+          "title": "탈모株, 월가 호평에 잠시 반등하더니 랠리 끝?",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000107941&office_id=024&code=014950&page=&sm=",
+          "source": "매경이코노미",
           "date": "2026.09.02"
         }
       ]
@@ -842,10 +842,10 @@
       "date": "20260107",
       "change_rate": 29.94,
       "close_price": 17230.0,
-      "rise_reason": "제약업체 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -866,7 +866,10 @@
       "source": "estimated",
       "trading_volume": 2397149,
       "trading_value": 41302877270,
-      "market_cap": 172504875148
+      "market_cap": 172504875148,
+      "reason_previous": "제약업체 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251204",
@@ -1145,5 +1148,5 @@
     "count_recent": 6,
     "avg_rate": 21.02
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

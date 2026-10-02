@@ -179,7 +179,7 @@
       "reason_previous": "마이크로 LED 승인 관련 뉴스",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "4/18 제51차 사업재편계획 승인",
+        "text": "4/18 메인비즈협회 지원, 제51차 사업재편계획 승인",
         "link": "https://finance.naver.com/item/news_read.naver?article_id=0005751369&office_id=277&code=046890&page=&sm=",
         "title": "메인비즈협회 지원 '서울반도체', 제51차 사업재편계획 승인",
         "date": "20260418"
@@ -264,7 +264,7 @@
       "reason_previous": "마이크로 LED 영업이익 공시",
       "reason_kind": "none",
       "reason_hint": {
-        "text": "4/18 제51차 사업재편계획 승인",
+        "text": "4/18 메인비즈협회 지원, 제51차 사업재편계획 승인",
         "link": "https://finance.naver.com/item/news_read.naver?article_id=0005751369&office_id=277&code=046890&page=&sm=",
         "title": "메인비즈협회 지원 '서울반도체', 제51차 사업재편계획 승인",
         "date": "20260418"
@@ -340,10 +340,10 @@
       "date": "20260312",
       "change_rate": 10.56,
       "close_price": 10780.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -358,7 +358,10 @@
       "source": "estimated",
       "trading_volume": 1516347,
       "trading_value": 16346220660,
-      "market_cap": 628552834839
+      "market_cap": 628552834839,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -383,10 +386,10 @@
       "date": "20260225",
       "change_rate": 29.94,
       "close_price": 12370.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로 LED",
       "news": [
         {
@@ -425,7 +428,10 @@
       "source": "estimated",
       "trading_volume": 302319,
       "trading_value": 3739686030,
-      "market_cap": 721261462612
+      "market_cap": 721261462612,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260224",
@@ -484,5 +490,5 @@
     "count_recent": 0,
     "avg_rate": 19.16
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

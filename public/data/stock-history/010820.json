@@ -268,10 +268,10 @@
       "close_price": 9130.0,
       "trading_volume": 14055100,
       "trading_value": 128323063000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
         {
@@ -283,7 +283,10 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260306",
@@ -421,7 +424,7 @@
       "date": "20260220",
       "change_rate": 26.08,
       "close_price": 6720.0,
-      "rise_reason": "방산주 동반 강세 — 하루 새 11만5700원 우뚝",
+      "rise_reason": "방산주 동반 강세 — 美·이란 전쟁 긴장 최고조",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -450,9 +453,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "하루 새 8.74%↑ 11만5700원 '우뚝'…방산주 일제히 급등",
-          "link": "https://n.news.naver.com/mnews/article/243/0000093326",
-          "source": "이코노미스트",
+          "title": "美·이란 전쟁 긴장 최고조…국내 방산주 줄줄이 급등 [이런국장 저런...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004591660",
+          "source": "서울경제",
           "date": "2026-02-20"
         }
       ]
@@ -461,10 +464,10 @@
       "date": "20260119",
       "change_rate": 12.42,
       "close_price": 4435.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
         {
@@ -497,16 +500,19 @@
       "source": "estimated",
       "trading_volume": 9919398,
       "trading_value": 43992530130,
-      "market_cap": 216283893557
+      "market_cap": 216283893557,
+      "reason_previous": "방산",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250911",
       "change_rate": 11.93,
       "close_price": 4925.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [],
       "sector": "우주항공과국방",
@@ -514,7 +520,10 @@
       "source": "estimated",
       "trading_volume": 17905946,
       "trading_value": 88186784050,
-      "market_cap": 240179971988
+      "market_cap": 240179971988,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -525,5 +534,5 @@
     "count_recent": 0,
     "avg_rate": 17.68
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

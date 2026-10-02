@@ -96,7 +96,7 @@
       "close_price": 428000.0,
       "trading_volume": 154148,
       "trading_value": 65975344000,
-      "rise_reason": "바이오주 동반 강세 — 국민성장펀드 날개 달고 다시 비상할까",
+      "rise_reason": "바이오주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -181,10 +181,10 @@
       "date": "20251027",
       "change_rate": 26.25,
       "close_price": 428000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -192,7 +192,10 @@
       "source": "estimated",
       "trading_volume": 894689,
       "trading_value": 382926892000,
-      "market_cap": 5483086131386
+      "market_cap": 5483086131386,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -203,5 +206,5 @@
     "count_recent": 0,
     "avg_rate": 24.38
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

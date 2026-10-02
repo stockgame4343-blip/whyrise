@@ -212,7 +212,7 @@
       "close_price": 196100.0,
       "trading_volume": 666080,
       "trading_value": 130618288000,
-      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -476,7 +476,7 @@
       "close_price": 126500.0,
       "trading_volume": 1227232,
       "trading_value": 155244848000,
-      "rise_reason": "반도체 장비주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체 장비주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -557,7 +557,7 @@
       "close_price": 114400.0,
       "trading_volume": 1006244,
       "trading_value": 115114313600,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -632,7 +632,7 @@
       "close_price": 100100.0,
       "trading_volume": 476581,
       "trading_value": 47705758100,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -699,10 +699,10 @@
       "date": "20260316",
       "change_rate": 15.44,
       "close_price": 74000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -717,7 +717,10 @@
       "source": "estimated",
       "trading_volume": 1005247,
       "trading_value": 74388278000,
-      "market_cap": 2143533333333
+      "market_cap": 2143533333333,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -742,7 +745,7 @@
       "date": "20260224",
       "change_rate": 12.74,
       "close_price": 63700.0,
-      "rise_reason": "반도체주 동반 강세 — 20만전자·100만닉스 끌고, 소부장 밀고",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -814,10 +817,10 @@
       "date": "20260127",
       "change_rate": 13.04,
       "close_price": 47250.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -825,7 +828,10 @@
       "source": "estimated",
       "trading_volume": 1133430,
       "trading_value": 53554567500,
-      "market_cap": 1368675000000
+      "market_cap": 1368675000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
@@ -890,10 +896,10 @@
       "date": "20251020",
       "change_rate": 14.2,
       "close_price": 37400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -901,7 +907,10 @@
       "source": "estimated",
       "trading_volume": 1546358,
       "trading_value": 57833789200,
-      "market_cap": 1083353333333
+      "market_cap": 1083353333333,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250829",
@@ -970,5 +979,5 @@
     "count_recent": 0,
     "avg_rate": 15.23
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

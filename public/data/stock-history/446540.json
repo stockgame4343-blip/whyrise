@@ -9,8 +9,8 @@
       "close_price": 10890.0,
       "trading_volume": 3520445,
       "trading_value": 38337646050,
-      "rise_reason": "반도체주 동반 강세 — 美 기술주 훈풍",
-      "reason_confidence": "low",
+      "rise_reason": "반도체 핀 중심 사업전환 및 ESS 수요 외형+수익성 개선",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
@@ -34,13 +34,13 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "美 기술주 훈풍에…반도체 중소형주 장초반 강세",
-          "link": "https://n.news.naver.com/mnews/article/008/0005417739",
+          "title": "메가터치, 반도체 핀 중심 사업전환 및 ESS 수요↑'외형+수익성 개선'",
+          "link": "https://n.news.naver.com/mnews/article/008/0005417141",
           "source": "머니투데이",
-          "date": "2026-09-23"
+          "date": "2026-09-22"
         }
       ],
-      "reason_kind": "sector"
+      "reason_kind": "move"
     },
     {
       "date": "20260810",
@@ -206,7 +206,7 @@
       "close_price": 7230.0,
       "trading_volume": 340083,
       "trading_value": 2458800090,
-      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -223,7 +223,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -959,10 +967,10 @@
       "date": "20260126",
       "change_rate": 12.03,
       "close_price": 4425.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
         {
@@ -977,7 +985,10 @@
       "source": "estimated",
       "trading_volume": 9380932,
       "trading_value": 41510624100,
-      "market_cap": 128698497854
+      "market_cap": 128698497854,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
@@ -1041,5 +1052,5 @@
     "count_recent": 1,
     "avg_rate": 13.48
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

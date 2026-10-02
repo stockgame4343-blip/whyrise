@@ -181,7 +181,7 @@
       "close_price": 183600.0,
       "trading_volume": 291258,
       "trading_value": 53474968800,
-      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "rise_reason": "전력주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -586,10 +586,10 @@
       "date": "20251016",
       "change_rate": 14.37,
       "close_price": 138500.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [
         {
@@ -628,16 +628,19 @@
       "source": "estimated",
       "trading_volume": 2667208,
       "trading_value": 369408308000,
-      "market_cap": 4240276008492
+      "market_cap": 4240276008492,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251015",
       "change_rate": 11.1,
       "close_price": 121100.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [
         {
@@ -676,16 +679,19 @@
       "source": "estimated",
       "trading_volume": 1132434,
       "trading_value": 137137757400,
-      "market_cap": 3707562632696
+      "market_cap": 3707562632696,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250728",
       "change_rate": 13.55,
       "close_price": 112300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
@@ -693,7 +699,10 @@
       "source": "estimated",
       "trading_volume": 1638911,
       "trading_value": 184049705300,
-      "market_cap": 3438144373673
+      "market_cap": 3438144373673,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -704,5 +713,5 @@
     "count_recent": 0,
     "avg_rate": 14.11
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

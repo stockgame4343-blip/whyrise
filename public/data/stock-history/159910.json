@@ -130,7 +130,7 @@
       "close_price": 3905.0,
       "trading_volume": 157633,
       "trading_value": 615556865,
-      "rise_reason": "화장품 테마 4종목 동반 상승",
+      "rise_reason": "화장품주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -195,7 +195,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "실적 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "한국콜마 11%·에이피알 8% 급등…화장품주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008936543&office_id=421&code=406820&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -203,15 +211,18 @@
       "close_price": 4000.0,
       "trading_volume": 123398,
       "trading_value": 493592000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [],
       "sector": "화장품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251112",
@@ -310,5 +321,5 @@
     "count_recent": 0,
     "avg_rate": 15.2
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -530,7 +530,7 @@
       "close_price": 37450.0,
       "trading_volume": 422341,
       "trading_value": 15816670450,
-      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -601,7 +601,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "자사주 매입",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260514",
@@ -992,10 +1000,10 @@
       "date": "20251113",
       "change_rate": 15.47,
       "close_price": 25750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -1010,7 +1018,10 @@
       "source": "estimated",
       "trading_volume": 2090891,
       "trading_value": 53840443250,
-      "market_cap": 392534557235
+      "market_cap": 392534557235,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251015",
@@ -1092,10 +1103,10 @@
       "date": "20250909",
       "change_rate": 10.0,
       "close_price": 10230.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1103,7 +1114,10 @@
       "source": "estimated",
       "trading_volume": 656558,
       "trading_value": 6716588340,
-      "market_cap": 155946738660
+      "market_cap": 155946738660,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1114,5 +1128,5 @@
     "count_recent": 4,
     "avg_rate": 15.09
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

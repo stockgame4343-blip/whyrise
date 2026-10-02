@@ -600,10 +600,10 @@
       "date": "20250625",
       "change_rate": 10.16,
       "close_price": 21150.0,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "통신장비",
       "news": [
         {
@@ -618,7 +618,10 @@
       "source": "estimated",
       "trading_volume": 352064,
       "trading_value": 7446153600,
-      "market_cap": 281478913043
+      "market_cap": 281478913043,
+      "reason_previous": "대형 수주",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -629,5 +632,5 @@
     "count_recent": 0,
     "avg_rate": 18.19
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

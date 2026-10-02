@@ -9,10 +9,10 @@
       "close_price": 106.0,
       "trading_volume": 5506283,
       "trading_value": 583665998,
-      "rise_reason": "관련 보도: 상폐 앞두고 널뛴 에이에프더블류…20% 급등→16% 급락 마감(종합)",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [
         {
@@ -68,14 +68,7 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "거래량 증가",
-      "reason_evidence": [
-        {
-          "title": "상폐 앞두고 널뛴 에이에프더블류…20% 급등→16% 급락 마감(종합)",
-          "link": "https://n.news.naver.com/mnews/article/421/0009184207",
-          "source": "뉴스1",
-          "date": "2026-09-21"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260828",
@@ -350,7 +343,7 @@
       "close_price": 494.0,
       "trading_volume": 945308,
       "trading_value": 466982152,
-      "rise_reason": "2차전지 테마 13종목 동반 상승",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -367,7 +360,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "LG에너지솔루션·삼성SDI 8% 급등…이차전지주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009028681&office_id=421&code=066970&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260422",
@@ -443,10 +444,10 @@
       "date": "20250724",
       "change_rate": 29.93,
       "close_price": 1667.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "2차전지",
       "news": [],
       "sector": "자동차부품",
@@ -454,7 +455,10 @@
       "source": "estimated",
       "trading_volume": 3262544,
       "trading_value": 5438660848,
-      "market_cap": 33888191330
+      "market_cap": 33888191330,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -465,5 +469,5 @@
     "count_recent": 1,
     "avg_rate": 22.69
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

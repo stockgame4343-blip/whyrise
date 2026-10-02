@@ -360,8 +360,8 @@
       "close_price": 32000.0,
       "trading_volume": 208973,
       "trading_value": 6687136000,
-      "rise_reason": "로킷헬스케어 맞손",
-      "reason_confidence": "mid",
+      "rise_reason": "관련 보도: 항노화 연구…·로킷헬스케어 맞손",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유전자 치료제/분석",
@@ -383,7 +383,7 @@
       "is_52w_high": null,
       "source": "estimated",
       "reason_previous": "유전자 치료제/분석 테마 강세",
-      "reason_kind": "catalyst",
+      "reason_kind": "related",
       "reason_evidence": [
         {
           "title": "&quot;항노화 연구&quot;…알지노믹스·로킷헬스케어 '맞손'",
@@ -711,10 +711,10 @@
       "date": "20260109",
       "change_rate": 22.88,
       "close_price": 193900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생물공학",
@@ -722,16 +722,19 @@
       "source": "estimated",
       "trading_volume": 2035136,
       "trading_value": 394612870400,
-      "market_cap": 2701857393209
+      "market_cap": 2701857393209,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
       "change_rate": 30.0,
       "close_price": 152100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생물공학",
@@ -739,16 +742,19 @@
       "source": "estimated",
       "trading_volume": 1227822,
       "trading_value": 186751726200,
-      "market_cap": 2119404381161
+      "market_cap": 2119404381161,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251219",
       "change_rate": 30.0,
       "close_price": 117000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생물공학",
@@ -756,7 +762,10 @@
       "source": "estimated",
       "trading_volume": 44949,
       "trading_value": 5259033000,
-      "market_cap": 1630311062431
+      "market_cap": 1630311062431,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -767,5 +776,5 @@
     "count_recent": 1,
     "avg_rate": 18.29
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

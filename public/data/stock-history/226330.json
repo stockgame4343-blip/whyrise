@@ -420,10 +420,10 @@
       "date": "20251107",
       "change_rate": 15.58,
       "close_price": 5120.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -462,16 +462,19 @@
       "source": "estimated",
       "trading_volume": 2433151,
       "trading_value": 12457733120,
-      "market_cap": 124078774617
+      "market_cap": 124078774617,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251105",
       "change_rate": 14.18,
       "close_price": 4050.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -510,7 +513,10 @@
       "source": "estimated",
       "trading_volume": 3724879,
       "trading_value": 15085759950,
-      "market_cap": 98148249452
+      "market_cap": 98148249452,
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -521,5 +527,5 @@
     "count_recent": 0,
     "avg_rate": 20.33
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

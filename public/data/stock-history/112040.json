@@ -9,8 +9,8 @@
       "close_price": 19010.0,
       "trading_volume": 959635,
       "trading_value": 18242661350,
-      "rise_reason": "게임 테마 4종목 동반 상승",
-      "reason_confidence": "low",
+      "rise_reason": "2분기 실적 공개 앞두고",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "게임",
@@ -80,7 +80,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "게임 관련 뉴스",
-      "reason_kind": "theme"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "위메이드, 2분기 실적 공개 앞두고 장초반 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005398191&office_id=008&code=112040&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.08.11"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -459,10 +467,10 @@
       "date": "20250623",
       "change_rate": 27.6,
       "close_price": 43000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "블록체인",
       "news": [],
       "sector": "게임엔터테인먼트",
@@ -470,7 +478,10 @@
       "source": "estimated",
       "trading_volume": 980303,
       "trading_value": 42153029000,
-      "market_cap": 1459710059171
+      "market_cap": 1459710059171,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -481,5 +492,5 @@
     "count_recent": 0,
     "avg_rate": 16.92
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

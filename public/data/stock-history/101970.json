@@ -344,10 +344,10 @@
       "date": "20250903",
       "change_rate": 18.05,
       "close_price": 18570.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -368,7 +368,10 @@
       "source": "estimated",
       "trading_volume": 259988,
       "trading_value": 4827977160,
-      "market_cap": 274592459016
+      "market_cap": 274592459016,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250827",
@@ -398,10 +401,10 @@
       "date": "20250729",
       "change_rate": 14.13,
       "close_price": 17120.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -428,7 +431,10 @@
       "source": "estimated",
       "trading_volume": 779066,
       "trading_value": 13337609920,
-      "market_cap": 253151475409
+      "market_cap": 253151475409,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250724",
@@ -478,10 +484,10 @@
       "date": "20250527",
       "change_rate": 10.21,
       "close_price": 16840.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "에너지장비및서비스",
@@ -489,7 +495,10 @@
       "source": "estimated",
       "trading_volume": 362715,
       "trading_value": 6108120600,
-      "market_cap": 249011147540
+      "market_cap": 249011147540,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -500,5 +509,5 @@
     "count_recent": 0,
     "avg_rate": 12.38
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

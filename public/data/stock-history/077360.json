@@ -149,7 +149,7 @@
       "close_price": 10140.0,
       "trading_volume": 694511,
       "trading_value": 7042341540,
-      "rise_reason": "관련 보도: 중복상장 모범사례 ...주목받는 대신증권",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -190,13 +190,13 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "중복상장 '모범사례' 덕산하이메탈...주목받는 대신증권",
-          "link": "https://n.news.naver.com/mnews/article/648/0000048878",
-          "source": "비즈워치",
-          "date": "2026-07-14"
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
         }
       ]
     },
@@ -451,7 +451,7 @@
       "close_price": 15010.0,
       "trading_volume": 2916861,
       "trading_value": 43782083610,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -635,10 +635,10 @@
       "close_price": 11810.0,
       "trading_volume": 3791055,
       "trading_value": 44772359550,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -650,7 +650,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -658,7 +661,7 @@
       "close_price": 11200.0,
       "trading_volume": 1258043,
       "trading_value": 14090081600,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -770,10 +773,10 @@
       "date": "20260220",
       "change_rate": 11.69,
       "close_price": 12900.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "그래핀",
       "news": [
         {
@@ -800,16 +803,19 @@
       "source": "estimated",
       "trading_volume": 5885319,
       "trading_value": 75920615100,
-      "market_cap": 586186656076
+      "market_cap": 586186656076,
+      "reason_previous": "방산",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
       "change_rate": 10.84,
       "close_price": 11550.0,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "그래핀",
       "news": [
         {
@@ -836,7 +842,10 @@
       "source": "estimated",
       "trading_volume": 2331677,
       "trading_value": 26930869350,
-      "market_cap": 524841540905
+      "market_cap": 524841540905,
+      "reason_previous": "방산",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260204",
@@ -890,10 +899,10 @@
       "date": "20260121",
       "change_rate": 29.95,
       "close_price": 7550.0,
-      "rise_reason": "그래핀 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "그래핀",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -901,7 +910,10 @@
       "source": "estimated",
       "trading_volume": 10537604,
       "trading_value": 79558910200,
-      "market_cap": 343078236695
+      "market_cap": 343078236695,
+      "reason_previous": "그래핀 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251106",
@@ -926,10 +938,10 @@
       "date": "20251002",
       "change_rate": 17.33,
       "close_price": 7380.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "그래핀",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -937,16 +949,19 @@
       "source": "estimated",
       "trading_volume": 15511701,
       "trading_value": 114476353380,
-      "market_cap": 335353296266
+      "market_cap": 335353296266,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250918",
       "change_rate": 11.6,
       "close_price": 6350.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "그래핀",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -954,16 +969,19 @@
       "source": "estimated",
       "trading_volume": 11914233,
       "trading_value": 75655379550,
-      "market_cap": 288549245432
+      "market_cap": 288549245432,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250917",
       "change_rate": 12.67,
       "close_price": 5690.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "그래핀",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -971,7 +989,10 @@
       "source": "estimated",
       "trading_volume": 12677506,
       "trading_value": 72135009140,
-      "market_cap": 258558300238
+      "market_cap": 258558300238,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250730",
@@ -1018,5 +1039,5 @@
     "count_recent": 1,
     "avg_rate": 17.31
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

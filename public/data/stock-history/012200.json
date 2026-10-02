@@ -376,10 +376,10 @@
       "date": "20260109",
       "change_rate": 12.39,
       "close_price": 12340.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -406,7 +406,10 @@
       "source": "estimated",
       "trading_volume": 19067786,
       "trading_value": 235296479240,
-      "market_cap": 336034608378
+      "market_cap": 336034608378,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260108",
@@ -567,10 +570,10 @@
       "date": "20251223",
       "change_rate": 29.9,
       "close_price": 4475.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -609,7 +612,10 @@
       "source": "estimated",
       "trading_volume": 1106935,
       "trading_value": 4953534125,
-      "market_cap": 121860200364
+      "market_cap": 121860200364,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251222",
@@ -742,5 +748,5 @@
     "count_recent": 0,
     "avg_rate": 22.76
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

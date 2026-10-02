@@ -27,7 +27,7 @@
       "close_price": 15050.0,
       "trading_volume": 57823,
       "trading_value": 870236150,
-      "rise_reason": "2차전지 테마 7종목 동반 상승",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -98,7 +98,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 계약 체결",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "LG에너지솔루션·삼성SDI 8% 급등…이차전지주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009028681&office_id=421&code=066970&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -142,10 +150,10 @@
       "date": "20250530",
       "change_rate": 10.09,
       "close_price": 23450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -153,16 +161,19 @@
       "source": "estimated",
       "trading_volume": 488218,
       "trading_value": 11448712100,
-      "market_cap": 187433392539
+      "market_cap": 187433392539,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250528",
       "change_rate": 11.9,
       "close_price": 21250.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -170,7 +181,10 @@
       "source": "estimated",
       "trading_volume": 73439,
       "trading_value": 1560578750,
-      "market_cap": 169849023090
+      "market_cap": 169849023090,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -181,5 +195,5 @@
     "count_recent": 0,
     "avg_rate": 13.99
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

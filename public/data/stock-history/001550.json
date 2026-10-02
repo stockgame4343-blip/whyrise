@@ -117,10 +117,10 @@
       "date": "20260312",
       "change_rate": 11.31,
       "close_price": 16140.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -159,16 +159,19 @@
       "source": "estimated",
       "trading_volume": 3672035,
       "trading_value": 59266644900,
-      "market_cap": 83777860465
+      "market_cap": 83777860465,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260309",
       "change_rate": 11.93,
       "close_price": 16330.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -207,7 +210,10 @@
       "source": "estimated",
       "trading_volume": 2492847,
       "trading_value": 40708191510,
-      "market_cap": 84764093023
+      "market_cap": 84764093023,
+      "reason_previous": "전기차",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -292,5 +298,5 @@
     "count_recent": 0,
     "avg_rate": 14.74
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

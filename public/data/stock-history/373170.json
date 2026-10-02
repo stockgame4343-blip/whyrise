@@ -310,10 +310,10 @@
       "date": "20250616",
       "change_rate": 10.12,
       "close_price": 3122.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트팩토리(스마트공장)",
       "news": [],
       "sector": "IT서비스",
@@ -321,7 +321,10 @@
       "source": "estimated",
       "trading_volume": 359753,
       "trading_value": 1123148866,
-      "market_cap": 47139108910
+      "market_cap": 47139108910,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -332,5 +335,5 @@
     "count_recent": 1,
     "avg_rate": 18.96
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

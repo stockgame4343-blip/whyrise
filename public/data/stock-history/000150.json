@@ -9,7 +9,7 @@
       "close_price": 1271000.0,
       "trading_volume": 101468,
       "trading_value": 128965828000,
-      "rise_reason": "반도체주 동반 강세 — 오픈AI 아스트라가 깨운 AI 랠리",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -83,9 +83,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "오픈AI '아스트라'가 깨운 AI 랠리…반도체株 일제히 '불기둥'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001027039&office_id=088&code=000990&page=&sm=",
-          "source": "매일신문",
+          "title": "[특징주] 반도체 훈풍에 관련 소부장주 장초반 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016293473&office_id=001&code=000150&page=&sm=",
+          "source": "연합뉴스",
           "date": "2026.09.07"
         }
       ]
@@ -173,8 +173,8 @@
       "close_price": 1382000.0,
       "trading_volume": 103119,
       "trading_value": 142510458000,
-      "rise_reason": "광모듈향 CCL 매출액 1360억",
-      "reason_confidence": "mid",
+      "rise_reason": "시총 22兆",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
@@ -244,12 +244,12 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "catalyst",
+      "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "\"두산, 광모듈향 CCL 매출액 1360억...추가 수요 대응 여력 충...",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005546333&office_id=014&code=000150&page=&sm=",
-          "source": "파이낸셜뉴스",
+          "title": "시총 22兆 두산, 16%대 급등…증권가는 AI 데이터센터 수요 주목 ...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004640311&office_id=011&code=000150&page=&sm=",
+          "source": "서울경제",
           "date": "2026.07.10"
         }
       ]
@@ -598,15 +598,18 @@
       "close_price": 1204000.0,
       "trading_volume": 155769,
       "trading_value": 187545876000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "복합기업",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -629,10 +632,10 @@
       "date": "20251029",
       "change_rate": 12.11,
       "close_price": 981000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [],
       "sector": "복합기업",
@@ -640,16 +643,19 @@
       "source": "estimated",
       "trading_volume": 201993,
       "trading_value": 198155133000,
-      "market_cap": 15886125137952
+      "market_cap": 15886125137952,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251017",
       "change_rate": 15.02,
       "close_price": 697000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지주사",
       "news": [],
       "sector": "복합기업",
@@ -657,7 +663,10 @@
       "source": "estimated",
       "trading_volume": 503658,
       "trading_value": 351049626000,
-      "market_cap": 11287083813611
+      "market_cap": 11287083813611,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
@@ -687,5 +696,5 @@
     "count_recent": 1,
     "avg_rate": 15.34
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

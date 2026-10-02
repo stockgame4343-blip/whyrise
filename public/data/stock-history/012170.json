@@ -46,8 +46,8 @@
       "close_price": 842.0,
       "trading_volume": 963700,
       "trading_value": 811435400,
-      "rise_reason": "관련 보도: 경남제약 현물출자 법원 인가…유상증자 절차 본격화",
-      "reason_confidence": "low",
+      "rise_reason": "상장유지 기반 강화",
+      "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
@@ -105,12 +105,12 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "related",
+      "reason_kind": "catalyst",
       "reason_evidence": [
         {
-          "title": "아센디오, 경남제약 현물출자 법원 인가…\"유상증자 절차 본격화\"",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006341217&office_id=018&code=012170&page=&sm=",
-          "source": "이데일리",
+          "title": "아센디오, 경남제약 현물출자 인가…상장유지 기반 강화",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0014100977&office_id=003&code=012170&page=&sm=",
+          "source": "뉴시스",
           "date": "2026.07.31"
         }
       ]
@@ -692,10 +692,10 @@
       "date": "20250806",
       "change_rate": 29.98,
       "close_price": 3230.0,
-      "rise_reason": "영화 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영화",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -703,16 +703,19 @@
       "source": "estimated",
       "trading_volume": 1136280,
       "trading_value": 3670184400,
-      "market_cap": 65554679802
+      "market_cap": 65554679802,
+      "reason_previous": "영화 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
       "change_rate": 11.54,
       "close_price": 4300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "영화",
       "news": [],
       "sector": "방송과엔터테인먼트",
@@ -720,7 +723,10 @@
       "source": "estimated",
       "trading_volume": 146561,
       "trading_value": 630212300,
-      "market_cap": 87270935960
+      "market_cap": 87270935960,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -731,5 +737,5 @@
     "count_recent": 0,
     "avg_rate": 64.18
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -317,7 +317,7 @@
       "close_price": 332500.0,
       "trading_volume": 1291819,
       "trading_value": 429529817500,
-      "rise_reason": "HBM 테마 6종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -376,7 +376,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "반도체주 동반 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260427",
@@ -506,10 +514,10 @@
       "date": "20260227",
       "change_rate": 17.42,
       "close_price": 323500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -517,7 +525,10 @@
       "source": "estimated",
       "trading_volume": 6701641,
       "trading_value": 2167980863500,
-      "market_cap": 30833497796610
+      "market_cap": 30833497796610,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260226",
@@ -542,10 +553,10 @@
       "date": "20260129",
       "change_rate": 11.81,
       "close_price": 203500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -553,16 +564,19 @@
       "source": "estimated",
       "trading_volume": 7160116,
       "trading_value": 1457083606000,
-      "market_cap": 19396033389830
+      "market_cap": 19396033389830,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260105",
       "change_rate": 15.78,
       "close_price": 167300.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -570,7 +584,10 @@
       "source": "estimated",
       "trading_volume": 6479709,
       "trading_value": 1084055315700,
-      "market_cap": 15945731627118
+      "market_cap": 15945731627118,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
@@ -595,10 +612,10 @@
       "date": "20251015",
       "change_rate": 10.33,
       "close_price": 142000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -606,15 +623,18 @@
       "source": "estimated",
       "trading_volume": 3313731,
       "trading_value": 470549802000,
-      "market_cap": 13534332881355
+      "market_cap": 13534332881355,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251010",
       "change_rate": 18.39,
       "close_price": 119100.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
@@ -623,7 +643,18 @@
       "source": "estimated",
       "trading_volume": 4838068,
       "trading_value": 576213898800,
-      "market_cap": 11351683423728
+      "market_cap": 11351683423728,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성전자·SK하이닉스 강세...반도체 장비주 ‘급등세’",
+          "link": "https://n.news.naver.com/mnews/article/655/0000027792",
+          "source": "CJB청주방송",
+          "date": "2025-10-10"
+        }
+      ]
     }
   ],
   "stats": {
@@ -634,5 +665,5 @@
     "count_recent": 0,
     "avg_rate": 18.81
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

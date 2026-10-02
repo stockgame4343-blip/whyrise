@@ -262,9 +262,9 @@
       "date": "20251029",
       "change_rate": 12.76,
       "close_price": 16350.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "MANUGA 협력에 美 SMR프로젝트 참여 부각",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -304,7 +304,18 @@
       "source": "estimated",
       "trading_volume": 20302089,
       "trading_value": 331939155150,
-      "market_cap": 427121687929
+      "market_cap": 427121687929,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 강원에너지, 'MANUGA' 협력에 美 SMR프로젝트 참여 부각 강세",
+          "link": "https://n.news.naver.com/mnews/article/277/0005671137",
+          "source": "아시아경제",
+          "date": "2025-10-29"
+        }
+      ]
     },
     {
       "date": "20251024",
@@ -371,10 +382,10 @@
       "date": "20250714",
       "change_rate": 17.59,
       "close_price": 12700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -382,16 +393,19 @@
       "source": "estimated",
       "trading_volume": 9519823,
       "trading_value": 120901752100,
-      "market_cap": 331770363101
+      "market_cap": 331770363101,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250704",
       "change_rate": 25.55,
       "close_price": 9730.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -424,16 +438,19 @@
       "source": "estimated",
       "trading_volume": 10665127,
       "trading_value": 103771685710,
-      "market_cap": 254183120706
+      "market_cap": 254183120706,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250703",
       "change_rate": 16.54,
       "close_price": 7750.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -466,7 +483,10 @@
       "source": "estimated",
       "trading_volume": 3764305,
       "trading_value": 29173363750,
-      "market_cap": 202458292443
+      "market_cap": 202458292443,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -477,5 +497,5 @@
     "count_recent": 0,
     "avg_rate": 19.12
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

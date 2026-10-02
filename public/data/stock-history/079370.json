@@ -78,7 +78,7 @@
       "close_price": 12870.0,
       "trading_volume": 2179697,
       "trading_value": 28052700390,
-      "rise_reason": "반도체주 동반 강세 — 美 기술주 훈풍",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -127,9 +127,9 @@
       "reason_previous": "거래량 증가",
       "reason_evidence": [
         {
-          "title": "美 기술주 훈풍에…반도체 중소형주 장초반 강세",
-          "link": "https://n.news.naver.com/mnews/article/008/0005417739",
-          "source": "머니투데이",
+          "title": "[특징주] 美 반도체 훈풍에 관련 소부장株 '강세'",
+          "link": "https://n.news.naver.com/mnews/article/031/0001060864",
+          "source": "아이뉴스24",
           "date": "2026-09-23"
         }
       ],
@@ -268,10 +268,10 @@
       "date": "20260127",
       "change_rate": 24.5,
       "close_price": 19870.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -298,16 +298,19 @@
       "source": "estimated",
       "trading_volume": 9880838,
       "trading_value": 196332251060,
-      "market_cap": 616331272727
+      "market_cap": 616331272727,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250918",
       "change_rate": 12.39,
       "close_price": 15600.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -346,7 +349,10 @@
       "source": "estimated",
       "trading_volume": 1756124,
       "trading_value": 27395534400,
-      "market_cap": 483883636363
+      "market_cap": 483883636363,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -357,5 +363,5 @@
     "count_recent": 2,
     "avg_rate": 16.25
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -964,7 +964,7 @@
       "date": "20260311",
       "change_rate": 14.53,
       "close_price": 108800.0,
-      "rise_reason": "반도체주 동반 강세 — 내후년까지 빅사이클 진입",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1363,10 +1363,10 @@
       "date": "20251215",
       "change_rate": 10.21,
       "close_price": 36150.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -1405,7 +1405,10 @@
       "source": "estimated",
       "trading_volume": 1553616,
       "trading_value": 56163218400,
-      "market_cap": 435503115501
+      "market_cap": 435503115501,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251212",
@@ -1459,10 +1462,10 @@
       "date": "20251208",
       "change_rate": 13.04,
       "close_price": 26000.0,
-      "rise_reason": "우주/위성",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -1489,7 +1492,10 @@
       "source": "estimated",
       "trading_volume": 476786,
       "trading_value": 12396436000,
-      "market_cap": 313224924012
+      "market_cap": 313224924012,
+      "reason_previous": "우주/위성",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250801",
@@ -1543,10 +1549,10 @@
       "date": "20250627",
       "change_rate": 10.54,
       "close_price": 29900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "비철금속",
@@ -1554,7 +1560,10 @@
       "source": "estimated",
       "trading_volume": 566147,
       "trading_value": 16927795300,
-      "market_cap": 360208662613
+      "market_cap": 360208662613,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1565,5 +1574,5 @@
     "count_recent": 2,
     "avg_rate": 16.13
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

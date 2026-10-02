@@ -9,10 +9,10 @@
       "close_price": 1009.0,
       "trading_volume": 509865,
       "trading_value": 514453785,
-      "rise_reason": "관련 보도: ‘관리종목’ 지정된 티웨이홀딩스…거래재개 첫날 15%↓[코주부]",
-      "reason_confidence": "mid",
-      "reason_source": "news_headline",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "항공/저가 항공사(LCC)",
       "news": [
         {
@@ -44,14 +44,7 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "거래량 증가",
-      "reason_evidence": [
-        {
-          "title": "‘관리종목’ 지정된 티웨이홀딩스…거래재개 첫날 15%↓[코주부]",
-          "link": "https://n.news.naver.com/mnews/article/011/0004664026",
-          "source": "서울경제",
-          "date": "2026-09-21"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -322,7 +315,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "공급 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "5/21 사명 변경으로 이미지 개선 기대감",
+        "link": "https://finance.naver.com/item/news_read.naver?article_id=0005360991&office_id=008&code=004870&page=&sm=",
+        "title": "티웨이홀딩스, 사명 변경으로 이미지 개선 기대감↑…3일 연속 상한가",
+        "date": "20260521"
+      }
     },
     {
       "date": "20260521",
@@ -330,8 +329,8 @@
       "close_price": 2240.0,
       "trading_volume": 17542340,
       "trading_value": 39294841600,
-      "rise_reason": "트리니티항공 사명 변경 기대감",
-      "reason_confidence": "mid",
+      "rise_reason": "사명 변경으로 이미지 개선 기대감",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "항공/저가 항공사(LCC)",
@@ -386,10 +385,10 @@
       "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "[ET특징주]티웨이홀딩스, '트리니티항공' 사명 변경 기대감에 상승세",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0003429609&office_id=030&code=004870&page=&sm=",
-          "source": "전자신문",
-          "date": "2026.05.20"
+          "title": "티웨이홀딩스, 사명 변경으로 이미지 개선 기대감↑…3일 연속 상한가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005360991&office_id=008&code=004870&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.05.21"
         }
       ]
     },
@@ -568,5 +567,5 @@
     "count_recent": 1,
     "avg_rate": 24.59
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

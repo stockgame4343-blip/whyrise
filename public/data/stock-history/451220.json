@@ -185,7 +185,7 @@
       "close_price": 14000.0,
       "trading_volume": 214642,
       "trading_value": 3004988000,
-      "rise_reason": "HBM 테마 6종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -195,7 +195,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "HBM(고대역폭메모리) 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -203,7 +211,7 @@
       "close_price": 17440.0,
       "trading_volume": 2641029,
       "trading_value": 46059545760,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -354,5 +362,5 @@
     "count_recent": 0,
     "avg_rate": 18.04
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

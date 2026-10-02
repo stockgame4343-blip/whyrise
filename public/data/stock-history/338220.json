@@ -378,7 +378,7 @@
       "date": "20251128",
       "change_rate": 14.86,
       "close_price": 27050.0,
-      "rise_reason": "씨어스 영업흑자 비결은",
+      "rise_reason": "영업흑자 비결은",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -418,10 +418,10 @@
       "date": "20251001",
       "change_rate": 10.04,
       "close_price": 25750.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -442,7 +442,10 @@
       "source": "estimated",
       "trading_volume": 361729,
       "trading_value": 9314521750,
-      "market_cap": 360500000000
+      "market_cap": 360500000000,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250902",
@@ -545,5 +548,5 @@
     "count_recent": 4,
     "avg_rate": 14.61
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

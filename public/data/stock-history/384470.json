@@ -171,10 +171,10 @@
       "date": "20251128",
       "change_rate": 13.69,
       "close_price": 3945.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료기기",
       "news": [
         {
@@ -189,7 +189,10 @@
       "source": "estimated",
       "trading_volume": 907849,
       "trading_value": 3581464305,
-      "market_cap": 70795468277
+      "market_cap": 70795468277,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -200,5 +203,5 @@
     "count_recent": 0,
     "avg_rate": 14.09
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

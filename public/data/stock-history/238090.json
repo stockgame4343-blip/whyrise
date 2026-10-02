@@ -167,10 +167,10 @@
       "close_price": 3800.0,
       "trading_volume": 692950,
       "trading_value": 2633210000,
-      "rise_reason": "관련 보도: ? 사모펀드 투자 속 낮은 자본효율 | ?",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [
         {
@@ -238,24 +238,16 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "신약 관련 뉴스",
-      "reason_kind": "related",
-      "reason_evidence": [
-        {
-          "title": "?[저평가 리포트] 사모펀드 투자 속 낮은 자본효율 | 앤디포스?②",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000084035&office_id=293&code=238090&page=&sm=",
-          "source": "블로터",
-          "date": "2026.05.06"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
       "change_rate": 11.62,
       "close_price": 3265.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [],
       "sector": "핸드셋",
@@ -263,16 +255,19 @@
       "source": "estimated",
       "trading_volume": 361922,
       "trading_value": 1181675330,
-      "market_cap": 99542682926
+      "market_cap": 99542682926,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260304",
       "change_rate": 23.26,
       "close_price": 2915.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [
         {
@@ -293,16 +288,19 @@
       "source": "estimated",
       "trading_volume": 2534484,
       "trading_value": 7388020860,
-      "market_cap": 88871951219
+      "market_cap": 88871951219,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260303",
       "change_rate": 12.62,
       "close_price": 2365.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [
         {
@@ -323,7 +321,10 @@
       "source": "estimated",
       "trading_volume": 734731,
       "trading_value": 1737638815,
-      "market_cap": 72103658536
+      "market_cap": 72103658536,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260226",
@@ -367,10 +368,10 @@
       "date": "20250707",
       "change_rate": 10.25,
       "close_price": 2205.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "갤럭시 부품주",
       "news": [],
       "sector": "핸드셋",
@@ -378,7 +379,10 @@
       "source": "estimated",
       "trading_volume": 639272,
       "trading_value": 1409594760,
-      "market_cap": 67225609756
+      "market_cap": 67225609756,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -389,5 +393,5 @@
     "count_recent": 0,
     "avg_rate": 15.05
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

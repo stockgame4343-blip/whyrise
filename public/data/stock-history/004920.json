@@ -94,10 +94,10 @@
       "date": "20260105",
       "change_rate": 24.55,
       "close_price": 1446.0,
-      "rise_reason": "24.55% 금일 증시 상승률 1위로 마감",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "키오스크(KIOSK)",
       "news": [
         {
@@ -138,24 +138,16 @@
       "trading_value": 27146700792,
       "market_cap": 75476359832,
       "reason_previous": "키오스크(KIOSK) 테마 강세",
-      "reason_kind": "move",
-      "reason_evidence": [
-        {
-          "title": "[서울데이터랩]씨아이테크 24.55% 폭등 금일 증시 상승률 1위로 마감",
-          "link": "https://n.news.naver.com/mnews/article/081/0003606308",
-          "source": "서울신문",
-          "date": "2026-01-05"
-        }
-      ]
+      "reason_kind": "none"
     },
     {
       "date": "20250605",
       "change_rate": 12.98,
       "close_price": 1384.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "키오스크(KIOSK)",
       "news": [],
       "sector": "컴퓨터와주변기기",
@@ -163,7 +155,10 @@
       "source": "estimated",
       "trading_volume": 818444,
       "trading_value": 1132726496,
-      "market_cap": 72240167364
+      "market_cap": 72240167364,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -174,5 +169,5 @@
     "count_recent": 0,
     "avg_rate": 19.47
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

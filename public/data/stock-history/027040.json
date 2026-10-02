@@ -463,10 +463,10 @@
       "date": "20260317",
       "change_rate": 20.0,
       "close_price": 2220.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신",
       "news": [
         {
@@ -487,16 +487,19 @@
       "source": "estimated",
       "trading_volume": 1635052,
       "trading_value": 3629815440,
-      "market_cap": 30850704225
+      "market_cap": 30850704225,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
       "change_rate": 14.77,
       "close_price": 1710.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신",
       "news": [],
       "sector": "전자장비와기기",
@@ -504,16 +507,19 @@
       "source": "estimated",
       "trading_volume": 1512819,
       "trading_value": 2586920490,
-      "market_cap": 23763380281
+      "market_cap": 23763380281,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250612",
       "change_rate": 10.0,
       "close_price": 1210.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신",
       "news": [],
       "sector": "전자장비와기기",
@@ -521,16 +527,19 @@
       "source": "estimated",
       "trading_volume": 592901,
       "trading_value": 717410210,
-      "market_cap": 16815023474
+      "market_cap": 16815023474,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250528",
       "change_rate": 10.73,
       "close_price": 1135.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광통신",
       "news": [],
       "sector": "전자장비와기기",
@@ -538,7 +547,10 @@
       "source": "estimated",
       "trading_volume": 686396,
       "trading_value": 779059460,
-      "market_cap": 15772769953
+      "market_cap": 15772769953,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -549,5 +561,5 @@
     "count_recent": 0,
     "avg_rate": 23.17
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

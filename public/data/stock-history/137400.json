@@ -25,7 +25,7 @@
       "close_price": 39150.0,
       "trading_volume": 195156,
       "trading_value": 7640357400,
-      "rise_reason": "2차전지 테마 10종목 동반 상승",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -42,7 +42,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "2차전지 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "LG에너지솔루션·삼성SDI 8% 급등…이차전지주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0009028681&office_id=421&code=066970&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.29"
+        }
+      ]
     },
     {
       "date": "20260421",
@@ -159,10 +167,10 @@
       "date": "20260209",
       "change_rate": 12.06,
       "close_price": 53900.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
         {
@@ -177,16 +185,19 @@
       "source": "estimated",
       "trading_volume": 609752,
       "trading_value": 32865632800,
-      "market_cap": 1276932668329
+      "market_cap": 1276932668329,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260122",
       "change_rate": 12.4,
       "close_price": 43950.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
         {
@@ -201,7 +212,10 @@
       "source": "estimated",
       "trading_volume": 1107508,
       "trading_value": 48674976600,
-      "market_cap": 1041209476309
+      "market_cap": 1041209476309,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251024",
@@ -231,5 +245,5 @@
     "count_recent": 0,
     "avg_rate": 12.5
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:18"
 }

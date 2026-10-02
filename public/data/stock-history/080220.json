@@ -212,10 +212,10 @@
       "close_price": 89100.0,
       "trading_volume": 4106822,
       "trading_value": 365917840200,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -283,7 +283,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "투자 관련 뉴스",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -502,7 +510,7 @@
       "close_price": 117800.0,
       "trading_volume": 8596695,
       "trading_value": 1012690671000,
-      "rise_reason": "관련 보도: 콜옵션 승부수…메자닌 혈맹 구축",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -567,13 +575,13 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "매출 관련 뉴스",
-      "reason_kind": "related",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[메자닌 투자파일] 제주반도체 콜옵션 승부수…'메자닌 혈맹' 구축",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000085022&office_id=293&code=080220&page=&sm=",
-          "source": "블로터",
-          "date": "2026.05.20"
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
         }
       ]
     },
@@ -755,7 +763,7 @@
       "close_price": 54000.0,
       "trading_volume": 20601605,
       "trading_value": 1112486670000,
-      "rise_reason": "온디바이스 AI 테마 3종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -826,7 +834,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "온디바이스 AI 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美 AI 인프라 수요 증가에 전기장비株 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001159440&office_id=366&code=006340&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.24"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -834,15 +850,18 @@
       "close_price": 43000.0,
       "trading_volume": 2320685,
       "trading_value": 99789455000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -850,7 +869,7 @@
       "close_price": 39100.0,
       "trading_volume": 1037476,
       "trading_value": 40565311600,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -1033,10 +1052,10 @@
       "date": "20260128",
       "change_rate": 14.96,
       "close_price": 36500.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -1063,16 +1082,19 @@
       "source": "estimated",
       "trading_volume": 12803921,
       "trading_value": 467343116500,
-      "market_cap": 1257158355205
+      "market_cap": 1257158355205,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
       "change_rate": 16.32,
       "close_price": 30650.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1080,7 +1102,10 @@
       "source": "estimated",
       "trading_volume": 17669105,
       "trading_value": 541558068250,
-      "market_cap": 1055668591426
+      "market_cap": 1055668591426,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251230",
@@ -1134,10 +1159,10 @@
       "date": "20251002",
       "change_rate": 14.75,
       "close_price": 20850.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -1176,7 +1201,10 @@
       "source": "estimated",
       "trading_volume": 9512854,
       "trading_value": 198343005900,
-      "market_cap": 718130183727
+      "market_cap": 718130183727,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250625",
@@ -1212,10 +1240,10 @@
       "date": "20250624",
       "change_rate": 12.9,
       "close_price": 15050.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "온디바이스 AI",
       "news": [
         {
@@ -1236,7 +1264,10 @@
       "source": "estimated",
       "trading_volume": 8817575,
       "trading_value": 132704503750,
-      "market_cap": 518362554680
+      "market_cap": 518362554680,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1247,5 +1278,5 @@
     "count_recent": 1,
     "avg_rate": 17.25
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

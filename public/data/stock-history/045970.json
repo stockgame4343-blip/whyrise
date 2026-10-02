@@ -270,7 +270,7 @@
       "date": "20251226",
       "change_rate": 22.86,
       "close_price": 6180.0,
-      "rise_reason": "반도체주 동반 강세 — 美산타랠리 훈풍에 동반 상승",
+      "rise_reason": "시스템반도체 테마 3종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -290,15 +290,7 @@
       "trading_value": 10972559100,
       "market_cap": 162574598540,
       "reason_previous": "시스템반도체 테마 강세",
-      "reason_kind": "sector",
-      "reason_evidence": [
-        {
-          "title": "[오늘 장 브리핑] 코스피, 美산타랠리 훈풍에 동반 상승…반도체주 강...",
-          "link": "https://n.news.naver.com/mnews/article/374/0000482819",
-          "source": "SBS Biz",
-          "date": "2025-12-26"
-        }
-      ]
+      "reason_kind": "theme"
     },
     {
       "date": "20251031",
@@ -323,10 +315,10 @@
       "date": "20251010",
       "change_rate": 15.93,
       "close_price": 7350.0,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "핸드셋",
@@ -336,7 +328,15 @@
       "trading_value": 9847419750,
       "market_cap": 193353284671,
       "reason_previous": "시스템반도체 테마 강세",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "삼성전자·SK하이닉스 강세...반도체 장비주 ‘급등세’",
+          "link": "https://n.news.naver.com/mnews/article/655/0000027792",
+          "source": "CJB청주방송",
+          "date": "2025-10-10"
+        }
+      ]
     },
     {
       "date": "20250915",
@@ -424,10 +424,10 @@
       "date": "20250609",
       "change_rate": 14.56,
       "close_price": 3620.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "핸드셋",
@@ -435,7 +435,10 @@
       "source": "estimated",
       "trading_volume": 242771,
       "trading_value": 878831020,
-      "market_cap": 95229781021
+      "market_cap": 95229781021,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -446,5 +449,5 @@
     "count_recent": 0,
     "avg_rate": 15.66
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

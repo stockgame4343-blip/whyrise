@@ -287,10 +287,10 @@
       "date": "20251117",
       "change_rate": 13.88,
       "close_price": 32000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이크로바이옴",
       "news": [],
       "sector": "건강관리업체및서비스",
@@ -298,7 +298,10 @@
       "source": "estimated",
       "trading_volume": 158408,
       "trading_value": 5069056000,
-      "market_cap": 230525490196
+      "market_cap": 230525490196,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250903",
@@ -328,5 +331,5 @@
     "count_recent": 0,
     "avg_rate": 14.72
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

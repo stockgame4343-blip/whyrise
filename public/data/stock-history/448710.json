@@ -25,7 +25,7 @@
       "close_price": 22700.0,
       "trading_volume": 632247,
       "trading_value": 14352006900,
-      "rise_reason": "방위산업 테마 4종목 동반 상승",
+      "rise_reason": "방산주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -35,7 +35,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "방위산업/전쟁 및 테러 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "美·이란 종전 협상 결렬 방산株 강세…LIG넥스원 52주 신고가(종합)",
+          "link": "https://n.news.naver.com/mnews/article/003/0013884554",
+          "source": "뉴시스",
+          "date": "2026-04-13"
+        }
+      ]
     },
     {
       "date": "20260401",
@@ -66,10 +74,10 @@
       "date": "20260306",
       "change_rate": 12.95,
       "close_price": 21800.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -84,7 +92,10 @@
       "source": "estimated",
       "trading_volume": 1181514,
       "trading_value": 25757005200,
-      "market_cap": 115153225806
+      "market_cap": 115153225806,
+      "reason_previous": "태양광/재생에너지",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -150,10 +161,10 @@
       "date": "20250620",
       "change_rate": 20.23,
       "close_price": 25850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -161,16 +172,19 @@
       "source": "estimated",
       "trading_volume": 2037303,
       "trading_value": 52664282550,
-      "market_cap": 136546370967
+      "market_cap": 136546370967,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250613",
       "change_rate": 15.87,
       "close_price": 23000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -178,7 +192,10 @@
       "source": "estimated",
       "trading_volume": 1625448,
       "trading_value": 37385304000,
-      "market_cap": 121491935483
+      "market_cap": 121491935483,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -189,5 +206,5 @@
     "count_recent": 0,
     "avg_rate": 11.43
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:19"
 }

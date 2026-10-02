@@ -227,10 +227,10 @@
       "date": "20250828",
       "change_rate": 10.83,
       "close_price": 8700.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조선기자재",
       "news": [
         {
@@ -251,7 +251,10 @@
       "source": "estimated",
       "trading_volume": 2740615,
       "trading_value": 23843350500,
-      "market_cap": 268471865745
+      "market_cap": 268471865745,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250818",
@@ -323,5 +326,5 @@
     "count_recent": 0,
     "avg_rate": 18.91
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

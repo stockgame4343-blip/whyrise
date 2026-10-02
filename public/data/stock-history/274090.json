@@ -9,7 +9,7 @@
       "close_price": 12880.0,
       "trading_volume": 5797940,
       "trading_value": 74677467200,
-      "rise_reason": "우주항공주 동반 강세 — 스페이스X 첫 궤도 시험비행 임박",
+      "rise_reason": "우주항공주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -219,7 +219,7 @@
       "close_price": 34250.0,
       "trading_volume": 5624301,
       "trading_value": 192632309250,
-      "rise_reason": "관련주 동반 강세 — 내달로 다가온 스페이스X IPO",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -306,7 +306,7 @@
       "close_price": 28500.0,
       "trading_volume": 2782940,
       "trading_value": 79313790000,
-      "rise_reason": "우주항공주 동반 강세 — 저점 매수 타이밍?",
+      "rise_reason": "우주항공주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -635,10 +635,10 @@
       "date": "20260129",
       "change_rate": 23.86,
       "close_price": 29850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "항공기부품",
       "news": [],
       "sector": "우주항공과국방",
@@ -646,7 +646,10 @@
       "source": "estimated",
       "trading_volume": 8087553,
       "trading_value": 241413457050,
-      "market_cap": 411141509433
+      "market_cap": 411141509433,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251224",
@@ -748,10 +751,10 @@
       "date": "20251218",
       "change_rate": 14.3,
       "close_price": 12230.0,
-      "rise_reason": "우주/위성",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "항공기부품",
       "news": [
         {
@@ -790,7 +793,10 @@
       "source": "estimated",
       "trading_volume": 1624372,
       "trading_value": 19866069560,
-      "market_cap": 168450943396
+      "market_cap": 168450943396,
+      "reason_previous": "우주/위성",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -801,5 +807,5 @@
     "count_recent": 2,
     "avg_rate": 17.43
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

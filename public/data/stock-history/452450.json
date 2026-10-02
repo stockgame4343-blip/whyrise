@@ -372,15 +372,18 @@
       "close_price": 5260.0,
       "trading_volume": 216183,
       "trading_value": 1137122580,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [],
       "sector": "IT서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -486,10 +489,10 @@
       "date": "20250617",
       "change_rate": 29.91,
       "close_price": 10510.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유리 기판",
       "news": [],
       "sector": "IT서비스",
@@ -497,7 +500,10 @@
       "source": "estimated",
       "trading_volume": 43341341,
       "trading_value": 455517493910,
-      "market_cap": 378647945205
+      "market_cap": 378647945205,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250526",
@@ -527,5 +533,5 @@
     "count_recent": 2,
     "avg_rate": 12.85
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -416,7 +416,7 @@
       "close_price": 67800.0,
       "trading_volume": 101979,
       "trading_value": 6914176200,
-      "rise_reason": "반도체 재료 테마 9종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -426,7 +426,15 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "52주 신고가 도달",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -434,7 +442,7 @@
       "close_price": 52600.0,
       "trading_volume": 301930,
       "trading_value": 15881518000,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -555,10 +563,10 @@
       "date": "20260121",
       "change_rate": 20.21,
       "close_price": 34200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -566,7 +574,10 @@
       "source": "estimated",
       "trading_volume": 416320,
       "trading_value": 14238144000,
-      "market_cap": 215934306569
+      "market_cap": 215934306569,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251127",
@@ -639,10 +650,10 @@
       "date": "20250725",
       "change_rate": 10.01,
       "close_price": 18140.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -650,7 +661,10 @@
       "source": "estimated",
       "trading_volume": 226164,
       "trading_value": 4102614960,
-      "market_cap": 114533576642
+      "market_cap": 114533576642,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -661,5 +675,5 @@
     "count_recent": 1,
     "avg_rate": 15.51
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -392,7 +392,7 @@
       "close_price": 201000.0,
       "trading_volume": 3312537,
       "trading_value": 665819937000,
-      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -789,10 +789,10 @@
       "close_price": 163800.0,
       "trading_volume": 2036596,
       "trading_value": 333594424800,
-      "rise_reason": "",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "LED장비",
       "news": [
         {
@@ -854,7 +854,15 @@
       "is_52w_high": true,
       "source": "stockrise",
       "reason_previous": "외국인 순매수 보도",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체주 랠리인데… ‘박스권 횡보’ 리노공업 주가",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001380165&office_id=082&code=036930&page=&sm=",
+          "source": "부산일보",
+          "date": "2026.05.11"
+        }
+      ]
     },
     {
       "date": "20260421",
@@ -1109,10 +1117,10 @@
       "date": "20260320",
       "change_rate": 19.34,
       "close_price": 72800.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "플렉서블 디스플레이",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1120,16 +1128,19 @@
       "source": "estimated",
       "trading_volume": 6206038,
       "trading_value": 451799566400,
-      "market_cap": 3383823925427
+      "market_cap": 3383823925427,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260310",
       "change_rate": 16.86,
       "close_price": 70000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "플렉서블 디스플레이",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1137,7 +1148,10 @@
       "source": "estimated",
       "trading_volume": 5263877,
       "trading_value": 368471390000,
-      "market_cap": 3253676851372
+      "market_cap": 3253676851372,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -1162,10 +1176,10 @@
       "date": "20260209",
       "change_rate": 10.31,
       "close_price": 51900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "플렉서블 디스플레이",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1173,16 +1187,19 @@
       "source": "estimated",
       "trading_volume": 1421812,
       "trading_value": 73792042800,
-      "market_cap": 2412368979803
+      "market_cap": 2412368979803,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260108",
       "change_rate": 12.74,
       "close_price": 34950.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "플렉서블 디스플레이",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -1190,7 +1207,10 @@
       "source": "estimated",
       "trading_volume": 4781874,
       "trading_value": 167126496300,
-      "market_cap": 1624514370792
+      "market_cap": 1624514370792,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1201,5 +1221,5 @@
     "count_recent": 0,
     "avg_rate": 19.2
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -9,10 +9,10 @@
       "close_price": 2345.0,
       "trading_volume": 2146055,
       "trading_value": 5032498975,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260908",
@@ -396,10 +399,10 @@
       "date": "20251230",
       "change_rate": 10.06,
       "close_price": 3500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생물공학",
@@ -407,7 +410,10 @@
       "source": "estimated",
       "trading_volume": 1695350,
       "trading_value": 5933725000,
-      "market_cap": 137895791583
+      "market_cap": 137895791583,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251212",
@@ -568,10 +574,10 @@
       "date": "20250902",
       "change_rate": 11.96,
       "close_price": 1685.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [
         {
@@ -586,16 +592,19 @@
       "source": "estimated",
       "trading_volume": 2174099,
       "trading_value": 3663356815,
-      "market_cap": 66386973947
+      "market_cap": 66386973947,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250618",
       "change_rate": 18.94,
       "close_price": 2700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유전자 치료제/분석",
       "news": [],
       "sector": "생물공학",
@@ -603,7 +612,10 @@
       "source": "estimated",
       "trading_volume": 1434594,
       "trading_value": 3873403800,
-      "market_cap": 106376753507
+      "market_cap": 106376753507,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -614,5 +626,5 @@
     "count_recent": 2,
     "avg_rate": 15.76
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

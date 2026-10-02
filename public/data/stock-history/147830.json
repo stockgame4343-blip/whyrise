@@ -128,7 +128,7 @@
       "close_price": 11180.0,
       "trading_volume": 13366608,
       "trading_value": 149438677440,
-      "rise_reason": "전력주 동반 강세 — LS일렉",
+      "rise_reason": "전력주 동반 강세 — LS일렉, 美 데이터센터 3200억 수주 5% 증가",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -202,9 +202,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[특징주] 'AI 붐'에 전력기기株 강세…LS일렉 4%↑(종합)",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016049773&office_id=001&code=007610&page=&sm=",
-          "source": "연합뉴스",
+          "title": "LS일렉, 美 데이터센터 3200억 수주 5%↑…전력주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008917941&office_id=421&code=006340&page=&sm=",
+          "source": "뉴스1",
           "date": "2026.04.29"
         }
       ]
@@ -309,10 +309,10 @@
       "date": "20260121",
       "change_rate": 12.36,
       "close_price": 8180.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [
         {
@@ -333,7 +333,10 @@
       "source": "estimated",
       "trading_volume": 9856156,
       "trading_value": 80623356080,
-      "market_cap": 163600000000
+      "market_cap": 163600000000,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260120",
@@ -395,5 +398,5 @@
     "count_recent": 0,
     "avg_rate": 13.13
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

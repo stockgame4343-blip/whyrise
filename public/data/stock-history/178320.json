@@ -221,7 +221,7 @@
       "close_price": 42500.0,
       "trading_volume": 1208044,
       "trading_value": 51341870000,
-      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "rise_reason": "전력주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -664,10 +664,10 @@
       "date": "20260324",
       "change_rate": 11.19,
       "close_price": 49200.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
         {
@@ -700,7 +700,10 @@
       "source": "estimated",
       "trading_volume": 7601833,
       "trading_value": 374010183600,
-      "market_cap": 3131598222222
+      "market_cap": 3131598222222,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -748,10 +751,10 @@
       "date": "20260227",
       "change_rate": 21.61,
       "close_price": 47550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력저장장치(ESS)",
       "news": [],
       "sector": "전기장비",
@@ -759,7 +762,10 @@
       "source": "estimated",
       "trading_volume": 8809516,
       "trading_value": 418892485800,
-      "market_cap": 3026575111111
+      "market_cap": 3026575111111,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260129",
@@ -829,5 +835,5 @@
     "count_recent": 1,
     "avg_rate": 14.34
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

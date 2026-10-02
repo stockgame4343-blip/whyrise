@@ -207,7 +207,7 @@
       "close_price": 2795.0,
       "trading_volume": 1194871,
       "trading_value": 3339664445,
-      "rise_reason": "가상자산주 동반 강세 — 비트코인 8만 달러 눈앞",
+      "rise_reason": "가상자산주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -897,10 +897,10 @@
       "date": "20260114",
       "change_rate": 14.44,
       "close_price": 5230.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -927,7 +927,10 @@
       "source": "estimated",
       "trading_volume": 2832148,
       "trading_value": 14812134040,
-      "market_cap": 123256922086
+      "market_cap": 123256922086,
+      "reason_previous": "가상자산/블록체인",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260105",
@@ -1013,10 +1016,10 @@
       "date": "20250829",
       "change_rate": 29.85,
       "close_price": 17075.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "소프트웨어",
@@ -1024,7 +1027,10 @@
       "source": "estimated",
       "trading_volume": 3357693,
       "trading_value": 57332607975,
-      "market_cap": 402411461687
+      "market_cap": 402411461687,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250818",
@@ -1049,10 +1055,10 @@
       "date": "20250730",
       "change_rate": 12.26,
       "close_price": 11900.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -1079,16 +1085,19 @@
       "source": "estimated",
       "trading_volume": 2427267,
       "trading_value": 28884477300,
-      "market_cap": 280450740502
+      "market_cap": 280450740502,
+      "reason_previous": "가상자산/블록체인",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250721",
       "change_rate": 10.0,
       "close_price": 11000.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [
         {
@@ -1121,7 +1130,10 @@
       "source": "estimated",
       "trading_volume": 10138219,
       "trading_value": 111520409000,
-      "market_cap": 259240180296
+      "market_cap": 259240180296,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250718",
@@ -1386,10 +1398,10 @@
       "date": "20250623",
       "change_rate": 15.0,
       "close_price": 2415.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "소프트웨어",
@@ -1397,7 +1409,10 @@
       "source": "estimated",
       "trading_volume": 1818513,
       "trading_value": 4391708895,
-      "market_cap": 56915003219
+      "market_cap": 56915003219,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250611",
@@ -1427,5 +1442,5 @@
     "count_recent": 2,
     "avg_rate": 18.65
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

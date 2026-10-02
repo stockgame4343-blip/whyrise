@@ -101,7 +101,7 @@
       "close_price": 162800.0,
       "trading_volume": 228109,
       "trading_value": 37136145200,
-      "rise_reason": "반도체 장비 테마 12종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -136,7 +136,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 장비 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -268,7 +276,7 @@
       "close_price": 185700.0,
       "trading_volume": 374299,
       "trading_value": 69507324300,
-      "rise_reason": "반도체주 동반 강세 — 외국인은 8일째 매도",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -681,7 +689,7 @@
       "close_price": 123700.0,
       "trading_volume": 180468,
       "trading_value": 22323891600,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -921,10 +929,10 @@
       "date": "20250703",
       "change_rate": 13.89,
       "close_price": 43050.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -932,7 +940,10 @@
       "source": "estimated",
       "trading_volume": 574667,
       "trading_value": 24739414350,
-      "market_cap": 986528251789
+      "market_cap": 986528251789,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -943,5 +954,5 @@
     "count_recent": 0,
     "avg_rate": 14.48
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

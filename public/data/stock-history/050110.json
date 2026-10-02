@@ -304,10 +304,10 @@
       "date": "20260120",
       "change_rate": 29.93,
       "close_price": 4276.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -346,7 +346,10 @@
       "source": "estimated",
       "trading_volume": 3481757,
       "trading_value": 14887992932,
-      "market_cap": 124966199813
+      "market_cap": 124966199813,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260119",
@@ -410,10 +413,10 @@
       "date": "20260116",
       "change_rate": 29.91,
       "close_price": 2532.0,
-      "rise_reason": "카메라모듈/부품 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -428,7 +431,10 @@
       "source": "estimated",
       "trading_volume": 3328132,
       "trading_value": 8426830224,
-      "market_cap": 73997759103
+      "market_cap": 73997759103,
+      "reason_previous": "카메라모듈/부품 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -439,5 +445,5 @@
     "count_recent": 0,
     "avg_rate": 26.15
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

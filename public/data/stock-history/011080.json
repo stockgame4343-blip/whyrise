@@ -616,15 +616,18 @@
       "close_price": 6137.0,
       "trading_volume": 852496,
       "trading_value": 5231767952,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -689,7 +692,7 @@
       "date": "20251105",
       "change_rate": 12.65,
       "close_price": 8727.0,
-      "rise_reason": "4분기 매출목표 100% 달성 청신호",
+      "rise_reason": "10월도 매출 이어가",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -795,10 +798,10 @@
       "date": "20251022",
       "change_rate": 11.33,
       "close_price": 10055.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -837,7 +840,10 @@
       "source": "estimated",
       "trading_volume": 2164007,
       "trading_value": 21759090385,
-      "market_cap": 43195021337
+      "market_cap": 43195021337,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251021",
@@ -933,10 +939,10 @@
       "date": "20250702",
       "change_rate": 29.9,
       "close_price": 12764.0,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [
         {
@@ -975,16 +981,19 @@
       "source": "estimated",
       "trading_volume": 3684334,
       "trading_value": 47026839176,
-      "market_cap": 54832546230
+      "market_cap": 54832546230,
+      "reason_previous": "가상자산/블록체인",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250523",
       "change_rate": 16.63,
       "close_price": 20840.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "패션/의류",
       "news": [],
       "sector": "섬유,의류,신발,호화품",
@@ -992,7 +1001,10 @@
       "source": "estimated",
       "trading_volume": 2607174,
       "trading_value": 54333506160,
-      "market_cap": 89526031294
+      "market_cap": 89526031294,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1003,5 +1015,5 @@
     "count_recent": 0,
     "avg_rate": 19.07
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

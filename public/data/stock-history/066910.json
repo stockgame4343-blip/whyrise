@@ -168,10 +168,10 @@
       "date": "20250826",
       "change_rate": 10.04,
       "close_price": 5370.0,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "라부부 열풍에 팝마트 로보샵 매출 1년",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "",
       "news": [
         {
@@ -194,16 +194,24 @@
       "trading_value": 6143822370,
       "market_cap": 71818292682,
       "reason_previous": "시장 관심 증가",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "손오공, '라부부' 열풍에 팝마트 로보샵 매출 1년 만에 3배 '껑충'",
+          "link": "https://n.news.naver.com/mnews/article/277/0005641542",
+          "source": "아시아경제",
+          "date": "2025-08-25"
+        }
+      ]
     },
     {
       "date": "20250530",
       "change_rate": 18.45,
       "close_price": 5745.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -211,16 +219,19 @@
       "source": "estimated",
       "trading_volume": 1736733,
       "trading_value": 9977531085,
-      "market_cap": 76833536585
+      "market_cap": 76833536585,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250529",
       "change_rate": 12.01,
       "close_price": 4850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -228,7 +239,10 @@
       "source": "estimated",
       "trading_volume": 375842,
       "trading_value": 1822833700,
-      "market_cap": 64863821138
+      "market_cap": 64863821138,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -239,5 +253,5 @@
     "count_recent": 0,
     "avg_rate": 23.76
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

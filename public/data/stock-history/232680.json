@@ -192,7 +192,7 @@
       "close_price": 18300.0,
       "trading_volume": 2670058,
       "trading_value": 48862061400,
-      "rise_reason": "로봇 테마 15종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -257,7 +257,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "자사주 매입",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260408",
@@ -265,15 +273,18 @@
       "close_price": 15600.0,
       "trading_volume": 213296,
       "trading_value": 3327417600,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "스마트팩토리(스마트공장)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -281,7 +292,7 @@
       "close_price": 15340.0,
       "trading_volume": 227974,
       "trading_value": 3497121160,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -449,7 +460,7 @@
       "date": "20260115",
       "change_rate": 11.56,
       "close_price": 15050.0,
-      "rise_reason": "로봇주 동반 강세 — 형님 뛰니 아우 달린다",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -476,7 +487,7 @@
       "date": "20251229",
       "change_rate": 29.92,
       "close_price": 13940.0,
-      "rise_reason": "로봇주 동반 강세 — 줄줄이 간다",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -580,10 +591,10 @@
       "date": "20251211",
       "change_rate": 11.85,
       "close_price": 10380.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -591,13 +602,16 @@
       "source": "estimated",
       "trading_volume": 1496517,
       "trading_value": 15533846460,
-      "market_cap": 137089605157
+      "market_cap": 137089605157,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251103",
       "change_rate": 10.99,
       "close_price": 9190.0,
-      "rise_reason": "로봇주 동반 강세 — 젠슨 황 효과 계",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -629,5 +643,5 @@
     "count_recent": 0,
     "avg_rate": 15.64
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

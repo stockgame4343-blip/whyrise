@@ -132,10 +132,10 @@
       "close_price": 1129.0,
       "trading_volume": 4928529,
       "trading_value": 5564309241,
-      "rise_reason": "",
+      "rise_reason": "건설주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [
         {
@@ -167,7 +167,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "관련주 언급",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "금호건설·금호건설우 '상한가'…남화토건 19.87%↑ 건설주 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006339795&office_id=018&code=002990&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.07.30"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -509,5 +517,5 @@
     "count_recent": 1,
     "avg_rate": 21.38
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -331,7 +331,7 @@
       "close_price": 18560.0,
       "trading_volume": 878873,
       "trading_value": 16311882880,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -523,10 +523,10 @@
       "date": "20250717",
       "change_rate": 13.5,
       "close_price": 11690.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 장비",
       "news": [],
       "sector": "반도체와반도체장비",
@@ -534,7 +534,10 @@
       "source": "estimated",
       "trading_volume": 5279848,
       "trading_value": 61721423120,
-      "market_cap": 959148263888
+      "market_cap": 959148263888,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -545,5 +548,5 @@
     "count_recent": 1,
     "avg_rate": 13.86
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

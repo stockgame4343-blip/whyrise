@@ -333,10 +333,10 @@
       "close_price": 10800.0,
       "trading_volume": 1218615,
       "trading_value": 13161042000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "마이데이터",
       "news": [
         {
@@ -348,7 +348,10 @@
       ],
       "sector": "다각화된통신서비스",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -527,10 +530,10 @@
       "date": "20250714",
       "change_rate": 22.84,
       "close_price": 7411.0,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "재택근무/스마트워크",
       "news": [
         {
@@ -569,16 +572,19 @@
       "source": "estimated",
       "trading_volume": 332083,
       "trading_value": 2461067113,
-      "market_cap": 74110000000
+      "market_cap": 74110000000,
+      "reason_previous": "트럼프/관세",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250602",
       "change_rate": 12.87,
       "close_price": 7788.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "재택근무/스마트워크",
       "news": [],
       "sector": "다각화된통신서비스",
@@ -586,16 +592,19 @@
       "source": "estimated",
       "trading_volume": 2228832,
       "trading_value": 17358143616,
-      "market_cap": 77880000000
+      "market_cap": 77880000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250530",
       "change_rate": 12.51,
       "close_price": 6900.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "재택근무/스마트워크",
       "news": [],
       "sector": "다각화된통신서비스",
@@ -603,16 +612,19 @@
       "source": "estimated",
       "trading_volume": 1709965,
       "trading_value": 11798758500,
-      "market_cap": 69000000000
+      "market_cap": 69000000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250527",
       "change_rate": 29.92,
       "close_price": 6488.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "재택근무/스마트워크",
       "news": [],
       "sector": "다각화된통신서비스",
@@ -620,7 +632,10 @@
       "source": "estimated",
       "trading_volume": 1997411,
       "trading_value": 12959202568,
-      "market_cap": 64880000000
+      "market_cap": 64880000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -631,5 +646,5 @@
     "count_recent": 1,
     "avg_rate": 18.34
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

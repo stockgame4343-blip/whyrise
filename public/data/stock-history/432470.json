@@ -185,7 +185,7 @@
       "close_price": 8520.0,
       "trading_volume": 1527952,
       "trading_value": 13018151040,
-      "rise_reason": "美 AIDC향 버스덕트 자동화 설비 수주",
+      "rise_reason": "은성FA, 美 AIDC향 버스덕트 자동화 설비 수주",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -432,10 +432,10 @@
       "date": "20260305",
       "change_rate": 14.24,
       "close_price": 13720.0,
-      "rise_reason": "전기차",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -450,7 +450,10 @@
       "source": "estimated",
       "trading_volume": 210051,
       "trading_value": 2881899720,
-      "market_cap": 120383963344
+      "market_cap": 120383963344,
+      "reason_previous": "전기차",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260226",
@@ -584,5 +587,5 @@
     "count_recent": 1,
     "avg_rate": 17.37
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

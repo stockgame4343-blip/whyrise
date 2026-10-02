@@ -274,10 +274,10 @@
       "close_price": 17810.0,
       "trading_volume": 289361,
       "trading_value": 5153519410,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [
         {
@@ -333,7 +333,10 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "stockrise"
+      "source": "stockrise",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20260311",
@@ -474,10 +477,10 @@
       "date": "20260114",
       "change_rate": 10.54,
       "close_price": 22550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [],
       "sector": "핸드셋",
@@ -485,7 +488,10 @@
       "source": "estimated",
       "trading_volume": 573444,
       "trading_value": 12931162200,
-      "market_cap": 226969739292
+      "market_cap": 226969739292,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260107",
@@ -536,10 +542,10 @@
       "date": "20251222",
       "change_rate": 18.33,
       "close_price": 16200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [],
       "sector": "핸드셋",
@@ -547,7 +553,10 @@
       "source": "estimated",
       "trading_volume": 629322,
       "trading_value": 10195016400,
-      "market_cap": 163055865921
+      "market_cap": 163055865921,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251216",
@@ -649,10 +658,10 @@
       "date": "20251212",
       "change_rate": 13.85,
       "close_price": 8550.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "카메라모듈/부품",
       "news": [],
       "sector": "핸드셋",
@@ -660,7 +669,10 @@
       "source": "estimated",
       "trading_volume": 423164,
       "trading_value": 3618052200,
-      "market_cap": 86057262569
+      "market_cap": 86057262569,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -671,5 +683,5 @@
     "count_recent": 0,
     "avg_rate": 14.2
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

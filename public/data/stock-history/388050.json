@@ -9,7 +9,7 @@
       "close_price": 9790.0,
       "trading_volume": 8519007,
       "trading_value": 83401078530,
-      "rise_reason": "원자력발전 테마 3종목 동반 상승",
+      "rise_reason": "원전주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -80,7 +80,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환 보도",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "원전株 동반 강세…한전기술 10%·현대건설 9%↑",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001025028&office_id=088&code=052690&page=&sm=",
+          "source": "매일신문",
+          "date": "2026.08.25"
+        }
+      ]
     },
     {
       "date": "20260813",
@@ -185,7 +193,7 @@
       "close_price": 7210.0,
       "trading_volume": 232367,
       "trading_value": 1675366070,
-      "rise_reason": "전력주 동반 강세 — AI 투자 계속 간다",
+      "rise_reason": "전력주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -313,24 +321,27 @@
       "close_price": 12520.0,
       "trading_volume": 4318765,
       "trading_value": 54070937800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260320",
       "change_rate": 15.29,
       "close_price": 13500.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
@@ -338,7 +349,10 @@
       "source": "estimated",
       "trading_volume": 9005285,
       "trading_value": 121571347500,
-      "market_cap": 252620689655
+      "market_cap": 252620689655,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -421,10 +435,10 @@
       "date": "20250612",
       "change_rate": 15.84,
       "close_price": 11190.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [],
       "sector": "전기장비",
@@ -432,7 +446,10 @@
       "source": "estimated",
       "trading_volume": 10399276,
       "trading_value": 116367898440,
-      "market_cap": 209394482758
+      "market_cap": 209394482758,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -443,5 +460,5 @@
     "count_recent": 0,
     "avg_rate": 14.37
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

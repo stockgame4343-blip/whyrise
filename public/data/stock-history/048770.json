@@ -9,7 +9,7 @@
       "close_price": 4375.0,
       "trading_volume": 9164275,
       "trading_value": 40093703125,
-      "rise_reason": "비트코인·로봇주 동반 강세",
+      "rise_reason": "동반주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -83,9 +83,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[이 시각 시황] 양대 지수 동반 상승…비트코인·로봇주 강세",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000531167&office_id=374&code=048770&page=&sm=",
-          "source": "SBS Biz",
+          "title": "‘흑자전환’ 로보티즈 강세에 국내 로봇주 ‘동반 랠리’[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006363590&office_id=018&code=048770&page=&sm=",
+          "source": "이데일리",
           "date": "2026.09.04"
         }
       ]
@@ -830,10 +830,10 @@
       "date": "20260119",
       "change_rate": 11.98,
       "close_price": 3740.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "3D 프린터",
       "news": [],
       "sector": "기계",
@@ -841,7 +841,10 @@
       "source": "estimated",
       "trading_volume": 1489458,
       "trading_value": 5570572920,
-      "market_cap": 58750585175
+      "market_cap": 58750585175,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260109",
@@ -866,10 +869,10 @@
       "date": "20251229",
       "change_rate": 19.02,
       "close_price": 3285.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "3D 프린터",
       "news": [
         {
@@ -884,16 +887,19 @@
       "source": "estimated",
       "trading_volume": 5597068,
       "trading_value": 18386368380,
-      "market_cap": 51603120936
+      "market_cap": 51603120936,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251212",
       "change_rate": 21.26,
       "close_price": 2795.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "3D 프린터",
       "news": [
         {
@@ -908,7 +914,10 @@
       "source": "estimated",
       "trading_volume": 3393798,
       "trading_value": 9485665410,
-      "market_cap": 43905851755
+      "market_cap": 43905851755,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251128",
@@ -933,10 +942,10 @@
       "date": "20250915",
       "change_rate": 29.83,
       "close_price": 2655.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "3D 프린터",
       "news": [
         {
@@ -957,16 +966,19 @@
       "source": "estimated",
       "trading_volume": 5842605,
       "trading_value": 15512116275,
-      "market_cap": 41706631989
+      "market_cap": 41706631989,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250627",
       "change_rate": 14.05,
       "close_price": 2200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "3D 프린터",
       "news": [],
       "sector": "기계",
@@ -974,7 +986,10 @@
       "source": "estimated",
       "trading_volume": 754024,
       "trading_value": 1658852800,
-      "market_cap": 34559167750
+      "market_cap": 34559167750,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -985,5 +1000,5 @@
     "count_recent": 3,
     "avg_rate": 17.89
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:18"
 }

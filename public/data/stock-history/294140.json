@@ -82,7 +82,7 @@
       "close_price": 2080.0,
       "trading_volume": 324221,
       "trading_value": 674379680,
-      "rise_reason": "2차전지주 동반 강세 — 계속되는 순환매",
+      "rise_reason": "2차전지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -352,10 +352,10 @@
       "date": "20250919",
       "change_rate": 14.6,
       "close_price": 6200.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [],
       "sector": "화학",
@@ -363,16 +363,19 @@
       "source": "estimated",
       "trading_volume": 844185,
       "trading_value": 5233947000,
-      "market_cap": 138961608775
+      "market_cap": 138961608775,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250716",
       "change_rate": 10.29,
       "close_price": 4450.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전자파",
       "news": [
         {
@@ -393,7 +396,10 @@
       "source": "estimated",
       "trading_volume": 1897712,
       "trading_value": 8444818400,
-      "market_cap": 99738574040
+      "market_cap": 99738574040,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -404,5 +410,5 @@
     "count_recent": 1,
     "avg_rate": 13.73
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

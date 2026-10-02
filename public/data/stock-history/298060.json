@@ -143,10 +143,10 @@
       "date": "20250724",
       "change_rate": 29.93,
       "close_price": 6620.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "줄기세포",
       "news": [
         {
@@ -167,7 +167,10 @@
       "source": "estimated",
       "trading_volume": 244986,
       "trading_value": 1621807320,
-      "market_cap": 58561538461
+      "market_cap": 58561538461,
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -178,5 +181,5 @@
     "count_recent": 0,
     "avg_rate": 11.72
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

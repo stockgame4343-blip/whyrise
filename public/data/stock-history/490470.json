@@ -319,7 +319,7 @@
       "close_price": 20300.0,
       "trading_volume": 283308,
       "trading_value": 5751152400,
-      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -390,7 +390,15 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "투자 확대 발표",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "반도체 랠리에 돌아온 외국인...28만전자·210만닉스 복귀",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005386342&office_id=008&code=024850&page=&sm=",
+          "source": "머니투데이",
+          "date": "2026.07.15"
+        }
+      ]
     },
     {
       "date": "20260710",
@@ -564,7 +572,7 @@
       "close_price": 48800.0,
       "trading_volume": 4932305,
       "trading_value": 240696484000,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -746,15 +754,18 @@
       "close_price": 31300.0,
       "trading_volume": 6000606,
       "trading_value": 187818967800,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260401",
@@ -762,7 +773,7 @@
       "close_price": 25000.0,
       "trading_volume": 909557,
       "trading_value": 22738925000,
-      "rise_reason": "반도체주 동반 강세 — 6G 준비에 광 네트워크까지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -786,7 +797,7 @@
       "date": "20260318",
       "change_rate": 14.76,
       "close_price": 29150.0,
-      "rise_reason": "반도체주 동반 강세 — 외국인·기관 삼전닉스 2.6조 폭풍매수",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -899,10 +910,10 @@
       "date": "20260123",
       "change_rate": 11.89,
       "close_price": 26350.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -923,7 +934,10 @@
       "source": "estimated",
       "trading_volume": 1639533,
       "trading_value": 43201694550,
-      "market_cap": 896543991853
+      "market_cap": 896543991853,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
@@ -966,5 +980,5 @@
     "count_recent": 3,
     "avg_rate": 15.67
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

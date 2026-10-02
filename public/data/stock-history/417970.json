@@ -130,15 +130,18 @@
       "close_price": 19470.0,
       "trading_volume": 38213,
       "trading_value": 744007110,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -215,10 +218,10 @@
       "date": "20251110",
       "change_rate": 13.47,
       "close_price": 22150.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [],
       "sector": "기계",
@@ -226,16 +229,19 @@
       "source": "estimated",
       "trading_volume": 2671999,
       "trading_value": 59184777850,
-      "market_cap": 141600547730
+      "market_cap": 141600547730,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251107",
       "change_rate": 19.68,
       "close_price": 19520.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
         {
@@ -256,7 +262,10 @@
       "source": "estimated",
       "trading_volume": 4668896,
       "trading_value": 91136849920,
-      "market_cap": 124787480438
+      "market_cap": 124787480438,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251106",
@@ -339,5 +348,5 @@
     "count_recent": 0,
     "avg_rate": 13.15
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

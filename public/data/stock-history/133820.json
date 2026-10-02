@@ -9,10 +9,10 @@
       "close_price": 1475.0,
       "trading_volume": 396149,
       "trading_value": 584319775,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "철강",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -111,10 +114,10 @@
       "date": "20250909",
       "change_rate": 11.8,
       "close_price": 2700.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -147,16 +150,19 @@
       "source": "estimated",
       "trading_volume": 7988120,
       "trading_value": 21567924000,
-      "market_cap": 100112359550
+      "market_cap": 100112359550,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250908",
       "change_rate": 11.29,
       "close_price": 2415.0,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -183,7 +189,10 @@
       "source": "estimated",
       "trading_volume": 4095539,
       "trading_value": 9890726685,
-      "market_cap": 89544943820
+      "market_cap": 89544943820,
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250829",
@@ -219,10 +228,10 @@
       "date": "20250825",
       "change_rate": 13.52,
       "close_price": 1705.0,
-      "rise_reason": "원전/SMR",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -243,7 +252,10 @@
       "source": "estimated",
       "trading_volume": 1451615,
       "trading_value": 2475003575,
-      "market_cap": 63219101123
+      "market_cap": 63219101123,
+      "reason_previous": "원전/SMR",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20250729",
@@ -297,10 +309,10 @@
       "date": "20250527",
       "change_rate": 18.69,
       "close_price": 940.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -308,7 +320,10 @@
       "source": "estimated",
       "trading_volume": 14270213,
       "trading_value": 13414000220,
-      "market_cap": 34853932584
+      "market_cap": 34853932584,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -319,5 +334,5 @@
     "count_recent": 0,
     "avg_rate": 11.73
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:19"
 }

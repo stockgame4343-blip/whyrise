@@ -27,7 +27,7 @@
       "close_price": 20600.0,
       "trading_volume": 5368569,
       "trading_value": 110592521400,
-      "rise_reason": "관련주 동반 강세 — 포톤 2연상",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -426,10 +426,10 @@
       "date": "20251023",
       "change_rate": 10.19,
       "close_price": 12330.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "IT서비스",
@@ -437,7 +437,10 @@
       "source": "estimated",
       "trading_volume": 2441132,
       "trading_value": 30099157560,
-      "market_cap": 147960000000
+      "market_cap": 147960000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -448,5 +451,5 @@
     "count_recent": 0,
     "avg_rate": 22.96
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:18"
 }

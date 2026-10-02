@@ -192,10 +192,10 @@
       "close_price": 10055.0,
       "trading_volume": 839170,
       "trading_value": 8437854350,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "5G(5세대 이동통신)",
       "news": [
         {
@@ -207,7 +207,10 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260227",
@@ -294,5 +297,5 @@
     "count_recent": 0,
     "avg_rate": 21.15
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -377,7 +377,7 @@
       "close_price": 10500.0,
       "trading_volume": 892222,
       "trading_value": 9368331000,
-      "rise_reason": "시스템반도체 테마 7종목 동반 상승",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -387,7 +387,15 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "시스템반도체 테마 강세",
-      "reason_kind": "theme"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[이 시각 시황] 반도체주 강세에 소캠 관련주도 '훨훨'",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0000511490&office_id=374&code=348340&page=&sm=",
+          "source": "SBS Biz",
+          "date": "2026.05.21"
+        }
+      ]
     },
     {
       "date": "20260504",
@@ -395,7 +403,7 @@
       "close_price": 11580.0,
       "trading_volume": 14213226,
       "trading_value": 164589157080,
-      "rise_reason": "반도체주 동반 강세 — 오로스테크놀로지",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -482,10 +490,10 @@
       "close_price": 8910.0,
       "trading_volume": 16968905,
       "trading_value": 151192943550,
-      "rise_reason": "",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
         {
@@ -553,7 +561,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "none"
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 엔비디아 훈풍 타고 로봇주 일제히 강세",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0001160982&office_id=366&code=459510&page=&sm=",
+          "source": "조선비즈",
+          "date": "2026.04.30"
+        }
+      ]
     },
     {
       "date": "20260325",
@@ -578,7 +594,7 @@
       "date": "20260310",
       "change_rate": 14.41,
       "close_price": 7780.0,
-      "rise_reason": "관련주 동반 강세 — 로봇이 거실 정리하네",
+      "rise_reason": "관련주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -689,10 +705,10 @@
       "date": "20260128",
       "change_rate": 16.37,
       "close_price": 9880.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
         {
@@ -713,7 +729,10 @@
       "source": "estimated",
       "trading_volume": 5454791,
       "trading_value": 53893335080,
-      "market_cap": 180856793893
+      "market_cap": 180856793893,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260115",
@@ -827,9 +846,9 @@
       "date": "20251127",
       "change_rate": 11.27,
       "close_price": 4047.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -845,7 +864,18 @@
       "source": "estimated",
       "trading_volume": 769896,
       "trading_value": 3115769112,
-      "market_cap": 74081725190
+      "market_cap": 74081725190,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[종목리포트] 구글 TPU로 AI 살아나자 반도체주 '강세'",
+          "link": "https://n.news.naver.com/mnews/article/374/0000477465",
+          "source": "SBS Biz",
+          "date": "2025-11-27"
+        }
+      ]
     }
   ],
   "stats": {
@@ -856,5 +886,5 @@
     "count_recent": 1,
     "avg_rate": 15.56
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -48,8 +48,8 @@
       "close_price": 3160.0,
       "trading_volume": 22789376,
       "trading_value": 72014428160,
-      "rise_reason": "양자보안 기술 개발 본격화",
-      "reason_confidence": "mid",
+      "rise_reason": "액면병합 후 첫 거래일",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
@@ -119,12 +119,12 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "상장 이슈",
-      "reason_kind": "catalyst",
+      "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "MDS테크, 양자보안 기술 개발 본격화",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002640853&office_id=016&code=086960&page=&sm=",
-          "source": "헤럴드경제",
+          "title": "MDS테크, 액면병합 후 첫 거래일 26% 강세[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006275572&office_id=018&code=086960&page=&sm=",
+          "source": "이데일리",
           "date": "2026.05.08"
         }
       ]
@@ -196,10 +196,10 @@
       "date": "20250528",
       "change_rate": 19.15,
       "close_price": 3485.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [],
       "sector": "소프트웨어",
@@ -207,7 +207,10 @@
       "source": "estimated",
       "trading_volume": 39334222,
       "trading_value": 137079763670,
-      "market_cap": 146836610878
+      "market_cap": 146836610878,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -218,5 +221,5 @@
     "count_recent": 1,
     "avg_rate": 11.51
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -169,10 +169,10 @@
       "date": "20260310",
       "change_rate": 10.35,
       "close_price": 14820.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
         {
@@ -205,7 +205,10 @@
       "source": "estimated",
       "trading_volume": 1131670,
       "trading_value": 16771349400,
-      "market_cap": 889310185873
+      "market_cap": 889310185873,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -304,10 +307,10 @@
       "date": "20251117",
       "change_rate": 10.3,
       "close_price": 19270.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
         {
@@ -346,7 +349,10 @@
       "source": "estimated",
       "trading_volume": 18182916,
       "trading_value": 350384791320,
-      "market_cap": 1156343271375
+      "market_cap": 1156343271375,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251029",
@@ -460,10 +466,10 @@
       "date": "20250915",
       "change_rate": 22.38,
       "close_price": 14380.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [],
       "sector": "화학",
@@ -471,16 +477,19 @@
       "source": "estimated",
       "trading_volume": 20083364,
       "trading_value": 288798774320,
-      "market_cap": 862906914498
+      "market_cap": 862906914498,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250625",
       "change_rate": 19.31,
       "close_price": 12850.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [],
       "sector": "화학",
@@ -488,7 +497,10 @@
       "source": "estimated",
       "trading_volume": 7430137,
       "trading_value": 95477260450,
-      "market_cap": 771095539033
+      "market_cap": 771095539033,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -499,5 +511,5 @@
     "count_recent": 0,
     "avg_rate": 12.2
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

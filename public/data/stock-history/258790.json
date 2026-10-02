@@ -305,10 +305,10 @@
       "date": "20250922",
       "change_rate": 17.06,
       "close_price": 7685.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보안주(정보)",
       "news": [],
       "sector": "소프트웨어",
@@ -316,7 +316,10 @@
       "source": "estimated",
       "trading_volume": 3358621,
       "trading_value": 25811002385,
-      "market_cap": 38425000000
+      "market_cap": 38425000000,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250919",
@@ -365,5 +368,5 @@
     "count_recent": 0,
     "avg_rate": 21.59
   },
-  "built_at": "2026-10-02T05:15:57"
+  "built_at": "2026-10-02T11:12:18"
 }

@@ -25,8 +25,8 @@
       "close_price": 65000.0,
       "trading_volume": 1202691,
       "trading_value": 78174915000,
-      "rise_reason": "GM 우수 협력사 6년 연속 선정",
-      "reason_confidence": "mid",
+      "rise_reason": "피지컬 AI 수혜 기대감",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
@@ -96,13 +96,13 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "협력 관련 뉴스",
-      "reason_kind": "catalyst",
+      "reason_kind": "move",
       "reason_evidence": [
         {
-          "title": "[게시판] HL만도, GM 우수 협력사 6년 연속 선정",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0016127895&office_id=001&code=204320&page=&sm=",
-          "source": "연합뉴스",
-          "date": "2026.06.09"
+          "title": "HL만도, 피지컬 AI 수혜 기대감 상한가…로봇주 강세[핫종목]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0008999964&office_id=421&code=204320&page=&sm=",
+          "source": "뉴스1",
+          "date": "2026.06.12"
         }
       ]
     },
@@ -227,10 +227,10 @@
       "date": "20260121",
       "change_rate": 12.26,
       "close_price": 71400.0,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차 대표주",
       "news": [
         {
@@ -269,16 +269,19 @@
       "source": "estimated",
       "trading_volume": 6796873,
       "trading_value": 485296732200,
-      "market_cap": 3352738437978
+      "market_cap": 3352738437978,
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260102",
       "change_rate": 11.41,
       "close_price": 65400.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차 대표주",
       "news": [],
       "sector": "자동차부품",
@@ -286,7 +289,10 @@
       "source": "estimated",
       "trading_volume": 3967292,
       "trading_value": 259460896800,
-      "market_cap": 3070995712098
+      "market_cap": 3070995712098,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -297,5 +303,5 @@
     "count_recent": 0,
     "avg_rate": 15.54
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

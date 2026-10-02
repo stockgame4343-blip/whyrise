@@ -694,15 +694,18 @@
       "close_price": 2205.0,
       "trading_volume": 1234093,
       "trading_value": 2721175065,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유심(USIM)",
       "news": [],
       "sector": "핸드셋",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260316",
@@ -795,10 +798,10 @@
       "date": "20260105",
       "change_rate": 13.57,
       "close_price": 1565.0,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "유심(USIM)",
       "news": [
         {
@@ -831,7 +834,10 @@
       "source": "estimated",
       "trading_volume": 1204330,
       "trading_value": 1884776450,
-      "market_cap": 55600317208
+      "market_cap": 55600317208,
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251205",
@@ -912,5 +918,5 @@
     "count_recent": 0,
     "avg_rate": 15.4
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

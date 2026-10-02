@@ -319,7 +319,7 @@
       "close_price": 7865.0,
       "trading_volume": 1099182,
       "trading_value": 8645066430,
-      "rise_reason": "양자 테마 훈풍 지",
+      "rise_reason": "양자 테마 훈풍 지속",
       "reason_confidence": "high",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -642,10 +642,10 @@
       "date": "20250918",
       "change_rate": 13.23,
       "close_price": 4835.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "양자암호/양자컴퓨팅",
       "news": [],
       "sector": "디스플레이장비및부품",
@@ -653,7 +653,10 @@
       "source": "estimated",
       "trading_volume": 1688548,
       "trading_value": 8164129580,
-      "market_cap": 42005429864
+      "market_cap": 42005429864,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -664,5 +667,5 @@
     "count_recent": 0,
     "avg_rate": 22.35
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

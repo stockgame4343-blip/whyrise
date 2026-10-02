@@ -317,15 +317,26 @@
       "close_price": 1358000.0,
       "trading_volume": 1522588,
       "trading_value": 2067674504000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "S7(삼성전자/SK하이닉스 등)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "AI 소부장株 들썩…HPSP·원익IPS 나란히 상한가 [이런국장 저런주...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0004630506&office_id=011&code=403870&page=&sm=",
+          "source": "서울경제",
+          "date": "2026.06.12"
+        }
+      ]
     },
     {
       "date": "20260609",
@@ -627,15 +638,18 @@
       "close_price": 578000.0,
       "trading_volume": 752399,
       "trading_value": 434886622000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "밸류업(25년 기업가치 제고계획 발표)",
       "news": [],
       "sector": "복합기업",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260305",
@@ -658,10 +672,10 @@
       "date": "20251002",
       "change_rate": 15.82,
       "close_price": 238000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모바일콘텐츠(스마트폰/태블릿PC)",
       "news": [],
       "sector": "복합기업",
@@ -669,16 +683,19 @@
       "source": "estimated",
       "trading_volume": 1434172,
       "trading_value": 341332936000,
-      "market_cap": 31406092247191
+      "market_cap": 31406092247191,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250624",
       "change_rate": 10.57,
       "close_price": 181000.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모바일콘텐츠(스마트폰/태블릿PC)",
       "news": [],
       "sector": "복합기업",
@@ -686,16 +703,19 @@
       "source": "estimated",
       "trading_volume": 920842,
       "trading_value": 166672402000,
-      "market_cap": 23884465112359
+      "market_cap": 23884465112359,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250604",
       "change_rate": 13.06,
       "close_price": 124700.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "모바일콘텐츠(스마트폰/태블릿PC)",
       "news": [],
       "sector": "복합기업",
@@ -703,7 +723,10 @@
       "source": "estimated",
       "trading_volume": 888057,
       "trading_value": 110740707900,
-      "market_cap": 16455208837078
+      "market_cap": 16455208837078,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -714,5 +737,5 @@
     "count_recent": 0,
     "avg_rate": 14.89
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

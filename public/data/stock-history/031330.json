@@ -124,7 +124,7 @@
       "close_price": 18860.0,
       "trading_volume": 3795803,
       "trading_value": 71588844580,
-      "rise_reason": "반도체주 동반 강세 — 원익IPS",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -290,7 +290,7 @@
       "close_price": 18170.0,
       "trading_volume": 4405046,
       "trading_value": 80039685820,
-      "rise_reason": "반도체주 동반 강세 — DB하이텍",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -364,9 +364,9 @@
       "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "DB하이텍 17% 급등…코스피200 편입·반도체주 강세 '겹호재'",
-          "link": "https://finance.naver.com/item/news_read.naver?article_id=0005362601&office_id=008&code=000990&page=&sm=",
-          "source": "머니투데이",
+          "title": "HPSP 24% 급등·ISC 목표가 30만원…AI 반도체주 들썩 [칩칩...",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0002383625&office_id=123&code=095340&page=&sm=",
+          "source": "조세일보",
           "date": "2026.05.26"
         }
       ]
@@ -584,15 +584,18 @@
       "close_price": 6370.0,
       "trading_volume": 2087766,
       "trading_value": 13299069420,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "전자장비와기기",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260408",
@@ -633,10 +636,10 @@
       "date": "20251230",
       "change_rate": 13.39,
       "close_price": 4150.0,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "반도체 재료/부품",
       "news": [
         {
@@ -657,7 +660,10 @@
       "source": "estimated",
       "trading_volume": 12909143,
       "trading_value": 53572943450,
-      "market_cap": 414974817961
+      "market_cap": 414974817961,
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -668,5 +674,5 @@
     "count_recent": 0,
     "avg_rate": 16.23
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

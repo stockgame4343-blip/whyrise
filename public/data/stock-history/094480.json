@@ -96,7 +96,7 @@
       "close_price": 6160.0,
       "trading_volume": 13795475,
       "trading_value": 84980126000,
-      "rise_reason": "올해 영업익 사상 최대",
+      "rise_reason": "독립리서치 아리스, 올해 영업익 사상 최대",
       "reason_confidence": "mid",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -390,10 +390,10 @@
       "date": "20250609",
       "change_rate": 29.95,
       "close_price": 12150.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [],
       "sector": "",
@@ -401,7 +401,10 @@
       "source": "estimated",
       "trading_volume": 7875929,
       "trading_value": 95692537350,
-      "market_cap": 476620287253
+      "market_cap": 476620287253,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -412,5 +415,5 @@
     "count_recent": 1,
     "avg_rate": 13.24
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

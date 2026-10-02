@@ -88,10 +88,10 @@
       "close_price": 38900.0,
       "trading_volume": 1735840,
       "trading_value": 67524176000,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "지방선거 앞두고",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
         {
@@ -159,7 +159,15 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_previous": "거래량 급증",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "천일·동양고속, 지방선거 앞두고 20%대 급등",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0013981880&office_id=003&code=084670&page=&sm=",
+          "source": "뉴시스",
+          "date": "2026.06.02"
+        }
+      ]
     },
     {
       "date": "20260515",
@@ -469,10 +477,10 @@
       "date": "20260114",
       "change_rate": 29.91,
       "close_price": 72100.0,
-      "rise_reason": "서울고속버스터미널 재개발 수혜 테마 상한가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [],
       "sector": "도로와철도운송",
@@ -480,7 +488,10 @@
       "source": "estimated",
       "trading_volume": 1386637,
       "trading_value": 99976527700,
-      "market_cap": 208780368098
+      "market_cap": 208780368098,
+      "reason_previous": "서울고속버스터미널 재개발 수혜 테마 상한가",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20251217",
@@ -582,10 +593,10 @@
       "date": "20251215",
       "change_rate": 29.89,
       "close_price": 79100.0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
         {
@@ -624,7 +635,10 @@
       "source": "estimated",
       "trading_volume": 592258,
       "trading_value": 46847607800,
-      "market_cap": 229050306748
+      "market_cap": 229050306748,
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20251211",
@@ -774,10 +788,10 @@
       "date": "20251205",
       "change_rate": 29.98,
       "close_price": 27750.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [],
       "sector": "도로와철도운송",
@@ -785,7 +799,10 @@
       "source": "estimated",
       "trading_volume": 1085181,
       "trading_value": 30113772750,
-      "market_cap": 80355828220
+      "market_cap": 80355828220,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20251203",
@@ -1031,10 +1048,10 @@
       "date": "20250619",
       "change_rate": 12.7,
       "close_price": 8520.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [],
       "sector": "도로와철도운송",
@@ -1042,7 +1059,10 @@
       "source": "estimated",
       "trading_volume": 237342,
       "trading_value": 2022153840,
-      "market_cap": 24671411042
+      "market_cap": 24671411042,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1053,5 +1073,5 @@
     "count_recent": 0,
     "avg_rate": 25.54
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

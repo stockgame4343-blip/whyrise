@@ -202,10 +202,10 @@
       "close_price": 2210.0,
       "trading_volume": 1286860,
       "trading_value": 2843960600,
-      "rise_reason": "",
-      "reason_confidence": "low",
+      "rise_reason": "액면병합 후 거래재개 첫날",
+      "reason_confidence": "high",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "DMZ 평화공원",
       "news": [
         {
@@ -273,7 +273,15 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "배당 공시",
-      "reason_kind": "none"
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "시그네틱스, 액면병합 후 거래재개 첫날 상한가[특징주]",
+          "link": "https://finance.naver.com/item/news_read.naver?article_id=0006358140&office_id=018&code=033170&page=&sm=",
+          "source": "이데일리",
+          "date": "2026.08.26"
+        }
+      ]
     },
     {
       "date": "20260701",
@@ -638,8 +646,8 @@
       "date": "20251014",
       "change_rate": 14.22,
       "close_price": 980.0,
-      "rise_reason": "실시간 상승률 1위",
-      "reason_confidence": "high",
+      "rise_reason": "반도체주 동반 강세",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
@@ -682,12 +690,12 @@
       "trading_value": 45028158980,
       "market_cap": 84000000000,
       "reason_previous": "실적 개선",
-      "reason_kind": "move",
+      "reason_kind": "sector",
       "reason_evidence": [
         {
-          "title": "[서울데이터랩]시그네틱스 29.95% 폭등…실시간 상승률 1위",
-          "link": "https://n.news.naver.com/mnews/article/081/0003581891",
-          "source": "서울신문",
+          "title": "[특징주] 삼성전자 호실적 훈풍에 반도체주 동반 ‘들썩’",
+          "link": "https://n.news.naver.com/mnews/article/366/0001114096",
+          "source": "조선비즈",
           "date": "2025-10-14"
         }
       ]
@@ -696,10 +704,10 @@
       "date": "20251002",
       "change_rate": 29.97,
       "close_price": 941.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -714,7 +722,10 @@
       "source": "estimated",
       "trading_volume": 21025804,
       "trading_value": 19785281564,
-      "market_cap": 80657142857
+      "market_cap": 80657142857,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -725,5 +736,5 @@
     "count_recent": 3,
     "avg_rate": 17.48
   },
-  "built_at": "2026-10-02T10:35:14"
+  "built_at": "2026-10-02T11:12:17"
 }

@@ -131,10 +131,10 @@
       "close_price": 7660.0,
       "trading_volume": 1341827,
       "trading_value": 10278394820,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "무선충전기술",
       "news": [
         {
@@ -152,7 +152,10 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -949,10 +952,10 @@
       "date": "20251027",
       "change_rate": 14.9,
       "close_price": 6702.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "삼성페이",
       "news": [],
       "sector": "전자장비와기기",
@@ -960,16 +963,19 @@
       "source": "estimated",
       "trading_volume": 1852780,
       "trading_value": 12417331560,
-      "market_cap": 272281559633
+      "market_cap": 272281559633,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250926",
       "change_rate": 14.66,
       "close_price": 6202.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "삼성페이",
       "news": [],
       "sector": "전자장비와기기",
@@ -977,16 +983,19 @@
       "source": "estimated",
       "trading_volume": 6933388,
       "trading_value": 43000872376,
-      "market_cap": 251968103975
+      "market_cap": 251968103975,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20250623",
       "change_rate": 12.62,
       "close_price": 6157.0,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "삼성페이",
       "news": [],
       "sector": "전자장비와기기",
@@ -994,7 +1003,10 @@
       "source": "estimated",
       "trading_volume": 3897312,
       "trading_value": 23995749984,
-      "market_cap": 250139892966
+      "market_cap": 250139892966,
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -1005,5 +1017,5 @@
     "count_recent": 2,
     "avg_rate": 18.43
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }

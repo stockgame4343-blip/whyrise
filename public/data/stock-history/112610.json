@@ -88,7 +88,7 @@
       "close_price": 43100.0,
       "trading_volume": 647412,
       "trading_value": 27903457200,
-      "rise_reason": "신재생에너지주 동반 강세 — SK이터닉스",
+      "rise_reason": "신재생에너지주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -230,10 +230,10 @@
       "date": "20260306",
       "change_rate": 11.83,
       "close_price": 52000.0,
-      "rise_reason": "태양광/재생에너지",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [
         {
@@ -266,7 +266,10 @@
       "source": "estimated",
       "trading_volume": 734307,
       "trading_value": 38183964000,
-      "market_cap": 2192942285041
+      "market_cap": 2192942285041,
+      "reason_previous": "태양광/재생에너지",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260219",
@@ -308,10 +311,10 @@
       "date": "20250721",
       "change_rate": 10.02,
       "close_price": 51600.0,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "풍력에너지",
       "news": [
         {
@@ -350,7 +353,10 @@
       "source": "estimated",
       "trading_volume": 2142637,
       "trading_value": 110560069200,
-      "market_cap": 2176073498233
+      "market_cap": 2176073498233,
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -361,5 +367,5 @@
     "count_recent": 0,
     "avg_rate": 17.18
   },
-  "built_at": "2026-10-02T10:35:15"
+  "built_at": "2026-10-02T11:12:18"
 }
