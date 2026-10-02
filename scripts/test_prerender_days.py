@@ -32,7 +32,8 @@ class DayPageTest(unittest.TestCase):
         self.assertNotIn('>거래량 증가<', html)
         self.assertNotIn('확인 중', html)
         # 근거 없는 '거래량 증가'는 테마 단서로 대신 (흐리게 + 라벨)
-        self.assertIn('철강 중소형 관련주 <span class="reason-src reason-src--hint">테마</span>', html)
+        self.assertIn('<span class="day-reason day-reason--none">철강 중소형 관련주</span>', html)
+        self.assertNotIn('reason-src', html)          # 리스트엔 출처 태그를 달지 않는다
         self.assertIn('정리매매(상장폐지 절차) 종목은 급등 집계에서 제외', html)
         self.assertNotIn('href="/stock/100120"', html)
         self.assertIn('<span class="day-tag">신규상장</span>', html)

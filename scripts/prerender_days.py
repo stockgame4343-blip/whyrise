@@ -311,16 +311,9 @@ def render_day(ymd: str, day: dict, calendar_day: dict | None, prev_ymd: str, ne
             theme = str(r.get('theme_tag') or '').strip()
             if theme and theme not in JUNK_THEMES and '신규상장' not in theme:
                 tags += f'<span class="day-tag">{_esc(theme)}</span>'
-            # 같은 날 근거가 없으면 빈칸 대신 단서(최근 이슈·키워드 추정·테마)를 흐리게 + 라벨로
-            hint_cls = ' reason-src--hint' if d.get('hint') else ''
-            src = ''
-            if d['label'] and d['link']:
-                src = (f' <a class="reason-src{hint_cls}" href="{_esc(d["link"])}" rel="nofollow noopener" target="_blank" '
-                       f'title="{_esc(d["title"])}">{_esc(d["label"])} ↗</a>')
-            elif d['label']:
-                src = f' <span class="reason-src{hint_cls}">{_esc(d["label"])}</span>'
+            # 리스트는 출처 태그 없이 문장만 — 같은 날 근거 없는 단서(최근 이슈·추정·테마)는 흐린 글씨
             why = (f'<span class="day-reason{" day-reason--none" if d.get("hint") else ""}">'
-                   f'{_esc(d["text"])}{src}</span>')
+                   f'{_esc(d["text"])}</span>')
             trs.append(
                 f'<tr><td><a href="/stock/{r["ticker"]}">{_esc(r["name"])}</a>{tags}{why}</td>'
                 f'<td class="r">+{r["change_rate"]:.1f}%</td>'

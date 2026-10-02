@@ -547,7 +547,7 @@ var WhyTable = (function () {
             var eventDate = opts.watchlistMode ? (r._historyDate || r.date || '') : '';
             var reasonDate = eventDate || date;
             // 이유는 항상 채움(빈칸=오류처럼 보임). 약한 "관련 뉴스"류는 짧은 이슈 문구로 표시.
-            // 이유 표시 규칙은 reason.js 공통 — 기사 근거 사유는 그대로, 옛 키워드 템플릿은 '이유 확인 중'
+            // 이유 표시 규칙은 reason.js 공통 — 리스트는 출처 태그 없이 문장만 (근거 없는 단서는 흐린 글씨)
             var rd = window.OrgoReason ? window.OrgoReason.display(r)
                 : { text: cleanReasonText(r.rise_reason, rawTag, r.news, r.name, reasonDate, r._liveNew) || '-', unknown: false, label: '' };
             var reason = rd.text;
@@ -559,7 +559,6 @@ var WhyTable = (function () {
                 '<div class="cell-reason__inline">' +
                 (displayTag ? '<a class="theme-tag" href="/screening.html?theme=' + encodeURIComponent(rawTag) + '" style="text-decoration:none" title="' + esc(rawTag) + ' 스크리닝">' + esc(displayTag) + '</a>' : '') +
                 '<a class="cell-reason__text' + (rd.unknown ? ' cell-reason__text--unknown' : '') + '" href="' + detailUrl + '" data-ticker="' + tEsc + '" style="color:inherit;text-decoration:none" title="' + esc(reason) + '">' + esc(reason) + '</a>' +
-                (window.OrgoReason ? window.OrgoReason.sourceHtml(rd) : '') +
                 editBtn +
                 '</div></td>';
             // 상승률
