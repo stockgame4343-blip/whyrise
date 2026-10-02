@@ -19,8 +19,8 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "52주 신고가 도달",
-      "reason_source_previous": "pattern",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_source_previous": "pattern"
     },
     {
       "date": "20260907",
@@ -99,7 +99,6 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "흑자 전환",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 반도체 훈풍에 관련 소부장주 장초반 급등",
@@ -107,7 +106,8 @@
           "source": "연합뉴스",
           "date": "2026.09.07"
         }
-      ]
+      ],
+      "reason_kind": "sector"
     },
     {
       "date": "20260820",
@@ -638,5 +638,5 @@
     "count_recent": 2,
     "avg_rate": 12.01
   },
-  "built_at": "2026-10-02T11:39:20"
+  "built_at": "2026-10-02T16:23:14"
 }

@@ -13,7 +13,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "마켓컬리(kurly)",
+      "theme_tag": "소매유통",
       "news": [
         {
           "title": "코딩 교육하던 엘리스그룹, 지난해 매출 395억인데 IPO 몸값 1조 인정...",
@@ -26,8 +26,8 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "52주 신고가 도달",
-      "reason_source_previous": "pattern",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_source_previous": "pattern"
     },
     {
       "date": "20260917",
@@ -100,12 +100,6 @@
           "link": "https://finance.naver.com/item/news_read.naver?article_id=0003991982&office_id=023&code=051160&page=&sm=",
           "source": "조선일보",
           "date": "2026.08.09"
-        },
-        {
-          "title": "오픈AI, ‘코덱스 하네스’ 개발자에 개방…에이전트 인프라 경쟁 본...",
-          "link": "https://n.news.naver.com/mnews/article/018/0006368270",
-          "source": "이데일리",
-          "date": "2026-09-13"
         }
       ],
       "sector": "판매업체",
@@ -197,7 +191,6 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "자사주 소각",
-      "reason_kind": "move",
       "reason_evidence": [
         {
           "title": "지어소프트, 자사주 소각 결정에 5% 급등[특징주]",
@@ -205,7 +198,8 @@
           "source": "이데일리",
           "date": "2026.09.03"
         }
-      ]
+      ],
+      "reason_kind": "move"
     },
     {
       "date": "20260804",
@@ -284,7 +278,6 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_previous": "자사주 매입",
-      "reason_kind": "catalyst",
       "reason_evidence": [
         {
           "title": "지어소프트, 100억 규모 자사주 취득 결정",
@@ -292,7 +285,8 @@
           "source": "헤럴드경제",
           "date": "2026.08.04"
         }
-      ]
+      ],
+      "reason_kind": "catalyst"
     },
     {
       "date": "20251218",
@@ -329,5 +323,5 @@
     "count_recent": 3,
     "avg_rate": 13.41
   },
-  "built_at": "2026-10-02T11:39:20"
+  "built_at": "2026-10-02T16:21:40"
 }
