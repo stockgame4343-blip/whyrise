@@ -1,0 +1,35 @@
+name: lab (wonyotti backtest)
+on:
+  push:
+    branches: ['lab/wonyotti-backtest']
+    paths: ['lab/**', '.github/workflows/lab.yml']
+permissions:
+  contents: write
+concurrency:
+  group: lab-wonyotti
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      TZ: Asia/Seoul
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests pandas numpy pyarrow finance-datareader
+      - name: run lab task
+        run: |
+          TASK=$(cat lab/TASK 2>/dev/null || echo probe)
+          echo "task=$TASK"
+          python -u lab/$TASK.py
+      - name: commit outputs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add lab/out || true
+          git diff --staged --quiet && exit 0
+          git commit -m "lab: outputs [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 3; done
