@@ -105,10 +105,17 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
         stories.push({id:'calendar',label:'대장 캘린더',note:'하루씩 쌓인 흐름',caption:stock ? (repeats>1 ? `이번 달 ${stock.name}, 벌써 ${repeats}번째 대장이네요.\n캘린더로 보니까 더 잘 보입니다.` : `오늘 대장은 ${stock.name}.\n이번 달 대장들을 달력에 모아봤어요.`) : '오늘은 대장 조건을 채운 종목이 없네요.\n이번 달 흐름은 캘린더에 남겨둡니다.',assets:['calendar'],facts:[`${date.slice(0,4)}년 ${+date.slice(4,6)}월 · ${monthDays.length}거래일 집계`,`${date} 이후 데이터 제외`,...(stock?[`${stock.name} 이번 달 대장 ${repeats}회`]:['해당 거래일 대장주 없음'])]},
             {id:'leader',label:'오늘의 대장',note:'주도주 · 섹터 · 테마',caption:stock ? `오늘 대장은 ${stock.name}이네요.\n섹터와 테마까지 한 장으로 남겨봅니다.` : '오늘은 대장 조건을 채운 종목이 없네요.\n이런 날도 기록해둡니다.',assets:['leader'],facts:[stock?`대장주 ${stock.name} ${tg.pct(stock.rate)}`:'거래대금·상승률 대장 조건 충족 종목 없음']});
     }
-    // Friday / month-end: accumulated calendar; otherwise lead with the day's visual flow.
+    // 오늘의 마감 — 텔레그램 15:45 마감과 같은 구성(대장 카드 + 테마 버블). 쓰레드·인스타 기본 이미지
+    // 테마 버블이 있는 날만(조용한 날은 예전처럼 시장 지도·캘린더가 기본)
+    const closeAssets = themeAvailable ? [leader ? 'leader' : null, 'theme-bubble', !leader && sameSnapshot ? 'market-tree' : null].filter(Boolean) : [];
+    if (closeAssets.length) {
+        const stock = leader?.stock;
+        stories.unshift({id:'close',label:'오늘의 마감',note:'대장 + 테마 (텔레그램과 같은 구성)',caption:themeCaption,assets:closeAssets,
+            facts:[stock?`대장주 ${stock.name} ${tg.pct(stock.rate)}`:'대장주 조건 충족 종목 없음', theme?.name?`대장 테마: ${theme.name} · ${theme.count}종목`:`+15% 이상 ${S.hot.length}종목`]});
+    }
     const weekday = new Date(utcDay(date)).getUTCDay();
     if(!stories.length)throw Error('No exportable dated visuals');
-    const defaultStory = leader && ((weekday===5 && monthDays.length>=8) || +date.slice(6)>=28) ? 'calendar' : themeAvailable?'theme':sameSnapshot?'market':'calendar';
+    const defaultStory = closeAssets.length ? 'close' : leader && ((weekday===5 && monthDays.length>=8) || +date.slice(6)>=28) ? 'calendar' : sameSnapshot ? 'market' : 'calendar';
     const th = Copy.threads(material);
     for(const story of stories) {
         story.posts = Object.fromEntries(Object.keys(LIMITS).map(channel=> {
@@ -119,8 +126,9 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
             return [channel,post];
         }));
     }
-    const blogImages = [themeAvailable?'theme-bubble':sameSnapshot?'market-bubble':null, leader?'calendar':null].filter(Boolean)
-        .map(id => { const a = assets.find(x => x.id === id); return a ? { url: `https://orgo.kr${base}${a.file}`, alt: a.alt } : null; }).filter(Boolean);
+    // 블로그 이미지 — 텔레그램처럼 대장 카드·테마 버블을 앞에, 시장 트리맵은 '오늘의 숫자', 캘린더는 끝에
+    const blogImages = ['leader', themeAvailable ? 'theme-bubble' : null, sameSnapshot ? 'market-tree' : null, 'calendar'].filter(Boolean)
+        .map(id => { const a = assets.find(x => x.id === id); return a ? { id, url: `https://orgo.kr${base}${a.file}`, alt: a.alt } : null; }).filter(Boolean);
     const naverBlog = Copy.naverBlog(material, blogImages);
     const selected=stories.find(s=>s.id===defaultStory);
     const digest={version:2,date,generated_at:now.toISOString(),is_final:true,scope:'ORGO 수집 종목 기준 (전체 시장 전수 통계 아님)',

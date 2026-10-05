@@ -12,7 +12,7 @@ function snapshotBundle(date,d,day,map) {
     if(inputHash!==d.input_hash)throw Error('Chart input changed after digest generation');
     const days=Object.fromEntries(Object.entries(d.calendar_days||{}).filter(([key])=>key<=date).map(([key,value])=>[key,{...value,stock:value.stock?{...value.stock,reason:''}:null}]));
     if(d.assets.some(a=>a.id==='calendar')&&!days[date])throw Error('Calendar day missing');
-    return {day,map,calendar:{days}};
+    return {day,map,calendar:{days,holidays:tg.krHolidayLabels()}};   // 캘린더 이미지에도 휴장일(대체공휴일 포함) 표시
 }
 async function jpeg(page,png,out) {
     const data=fs.readFileSync(png).toString('base64');

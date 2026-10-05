@@ -57,7 +57,10 @@ test('calendar captions count only elapsed month and never invent a first-ever e
     const d=buildDigest(day,null,new Date(),calendar);
     assert.ok(d.stories.find(s=>s.id==='calendar').caption.includes('2번째'));
     assert.deepEqual(Object.keys(d.calendar_days),['20260902','20260904']);
-    assert.equal(d.default_story,'theme');
+    assert.equal(d.default_story,'close');                                          // 텔레그램 마감과 같은 구성이 기본
+    assert.deepEqual(d.stories.find(s=>s.id==='close').assets,['leader','theme-bubble']);
+    assert.deepEqual(d.posts.threads.images.map(u=>u.split('/').pop()),['leader.jpg','theme-bubble.jpg']);
+    assert.ok(d.stories.some(s=>s.id==='theme')&&d.stories.some(s=>s.id==='calendar'));   // 다른 구성은 그대로 고를 수 있다
     assert.ok(!buildDigest(day,null).assets.some(a=>a.id==='calendar'));
     const none=buildDigest(day,null,new Date(),{days:{[day.date]:{stock:null}}});
     assert.ok(none.stories.find(s=>s.id==='leader').caption.includes('조건을 채운 종목이 없네요'));
@@ -204,7 +207,7 @@ test('listing-day leader missing from rows is shown as a new listing, not as a t
     const b=Copy.naverBlog(m,[]);
     assert.match(b.html,/신규상장: 브릴스/);
     assert.match(b.title,/가나 상한가 이유/);
-    assert.match(b.text.split('\n')[0],/가나는 '신규 수주 공급 계약' 기사와 함께 상한가를 기록했습니다/);   // 제목의 약속에 첫 문단에서 답한다
+    assert.match(b.text.split('\n\n')[0],/가나는 '신규 수주 공급 계약' 기사와 함께 상한가를 기록했습니다/);   // 제목의 약속에 첫 문단에서 답한다
 });
 test('weak "관련 보도" reasons are not used as reasons in external copy',()=>{
     const rows=[{ticker:'000002',name:'다라',change_rate:20,rise_reason:'관련 보도: 대표 인터뷰',reason_source:'news_extract',reason_kind:'related'}];
@@ -212,4 +215,37 @@ test('weak "관련 보도" reasons are not used as reasons in external copy',()=
     assert.equal(m.solo.length,0);
     assert.equal(m.unknown.length,1);
     assert.doesNotMatch(Copy.naverBlog(m,[]).text,/관련 보도/);
+});
+test('블로그 본문 — 꼭지는 이모지(■·점 목록 없음), 문장마다 줄바꿈, 링크는 본 화면 주소가 텍스트에도 남는다',()=>{
+    const news=(r)=>({rise_reason:r,reason_source:'news_extract',reason_kind:'catalyst'});
+    const rows=[
+        {ticker:'000011',name:'가가',change_rate:29.9,close_price:13000,trading_value:9e10,theme_tag:'로봇',...news('휴머노이드 공급 계약')},
+        {ticker:'000012',name:'나나',change_rate:18,trading_value:5e10,theme_tag:'로봇'},
+        {ticker:'000013',name:'다다',change_rate:16,trading_value:4e10,theme_tag:'로봇'},
+        {ticker:'000014',name:'라라',change_rate:22,trading_value:3e10,...news('자사주 소각 결정')},
+    ];
+    const b=Copy.naverBlog(Copy.material({date:'20261002',rows}),[]);
+    for(const t of [b.html,b.text]) {
+        assert.doesNotMatch(t,/■|•|<ul|<li/);                       // 붙여넣기 어려운 기호·목록 서식 없음
+        assert.doesNotMatch(t,/orgo\.kr\/day\//);                  // 날짜별 정적 페이지로 보내지 않는다
+    }
+    assert.match(b.html,/<p><b>💡 개별 재료로 오른 종목<\/b><\/p>/);
+    assert.match(b.html,/🔺 <b>라라<\/b> \+22\.0% — 자사주 소각 결정/);
+    assert.match(b.html,/<p><b>📊 오늘의 숫자<\/b><\/p>/);
+    assert.match(b.text,/\nhttps:\/\/orgo\.kr\/rise\.html\?date=20261002&utm_source=naver_blog/);   // 텍스트로 붙여도 주소가 남는다
+    assert.match(b.text,/\nhttps:\/\/t\.me\/whyorgo/);
+    // 한 줄에 문장 하나 — '다.' 뒤에 같은 줄로 이어지는 문장이 없다
+    for(const line of b.text.split('\n')) assert.doesNotMatch(line,/다\.\s+\S/, line);
+});
+test('블로그 이미지 — 텔레그램처럼 대장 카드·테마 버블이 첫 문단 뒤, 트리맵은 오늘의 숫자, 캘린더는 끝',()=>{
+    const stock={ticker:'005930',name:'삼성전자',rate:20};
+    const d=buildDigest(day,{date:day.date,items:[row]},new Date(),{days:{[day.date]:{stock}}});
+    const h=d.naver_blog.html, at=f=>h.indexOf('/'+f);
+    for(const f of ['leader.jpg','theme-bubble.jpg','market-tree.jpg','calendar.jpg']) assert.ok(at(f)>0,f);
+    assert.ok(at('leader.jpg')<at('theme-bubble.jpg'));
+    assert.ok(at('theme-bubble.jpg')<h.indexOf('📊 오늘의 숫자'));
+    assert.ok(h.indexOf('📊 오늘의 숫자')<at('market-tree.jpg')&&at('market-tree.jpg')<at('calendar.jpg'));
+    assert.match(h,/📸 9월 4일 오늘의 대장 — 대장주·대장 섹터·대장 테마/);
+    assert.match(h,/📸 9월 대장주 캘린더 \(9월 4일까지\)/);
+    assert.doesNotMatch(h,/market-bubble/);   // 같은 내용의 시장 버블은 트리맵 하나로
 });

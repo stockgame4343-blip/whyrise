@@ -4,7 +4,7 @@
     const labels={threads:'Threads',instagram:'인스타',kakao:'카톡',toss:'토스',telegram:'텔레그램'};
     const limits={threads:500,instagram:2200,kakao:1000,toss:4000,telegram:4096};
     const states={prepared:'계정 연결 전 · 원고 준비',uploading:'전송 확인 필요',uploaded:'이미지 업로드됨',retryable:'다음 실행에서 재시도',manual_ready:'수동 게시용 준비',needs_connection:'계정 연결 필요',published:'게시 완료',uncertain:'전송 결과 확인 필요',creating:'전송 확인 필요',publishing:'전송 확인 필요',created:'이미지 처리 중',awaiting_image:'이미지 배포 대기',needs_api_version:'API 설정 필요'};
-    const symbols={theme:'◉',market:'▥',calendar:'▦',leader:'♜'};
+    const symbols={close:'★',theme:'◉',market:'▥',calendar:'▦',leader:'♜'};
     const get=async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();};
     const WD=['일','월','화','수','목','금','토'];
     const dayLabel=v=>`${+v.slice(4,6)}월 ${+v.slice(6)}일 (${WD[new Date(Date.UTC(+v.slice(0,4),+v.slice(4,6)-1,+v.slice(6))).getUTCDay()]})`;

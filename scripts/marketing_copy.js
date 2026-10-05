@@ -254,63 +254,75 @@ function flowParagraph(f, hooked, introduced) {
     return out.join(' ').replace('기록했고.', '기록했습니다.');
 }
 
+// 네이버 블로그 본문 — 붙여넣기 그대로 쓰도록: 꼭지는 이모지(■·점 목록 없음), 문장마다 줄바꿈, 꼭지 사이 빈 줄.
+// 목록(<ul><li>)은 스마트에디터에 붙이면 글머리표 서식이 따라와 고치기 어려워 쓰지 않는다.
+const FLOW_EMOJI = ['🔥', '⚡', '📌'];
+function sentences(t) { return String(t || '').split(/(?<=[다\)]\.)\s+/).map(x => x.trim()).filter(Boolean); }
 function blogHtml(m, images) {
     const s = m.story;
     const P = x => `<p>${x}</p>`;
-    const H = x => `<p><b>■ ${esc(x)}</b></p>`;
-    const UL = items => '<ul>' + items.map(x => `<li>${x}</li>`).join('') + '</ul>';
+    const LINES = arr => P(arr.join('<br>'));                          // 한 꼭지 = 한 단락, 줄마다 <br>
+    const SAY = text => LINES(sentences(text).map(esc));              // 문장마다 줄바꿈
+    const H = (emoji, x) => `<p><b>${emoji} ${esc(x)}</b></p>`;
+    const GAP = '<p><br></p>';                                         // 꼭지 사이 빈 줄
     const plan = titlePlan(s), hooked = new Set(plan.kind === 'stock' ? plan.rows : []);
-    const out = [P(esc(intro(m)))];
-    if (images[0]) out.push(`<p><img src="${esc(images[0].url)}" alt="${esc(images[0].alt)}"></p>`);
+    // 이미지 — id 로 자리를 정한다(대장 카드·테마 버블은 첫 문단 뒤, 트리맵은 오늘의 숫자, 캘린더는 끝). id 없으면 예전 순서(0: 앞, 1: 숫자 뒤)
+    const byId = {}, d = mdKo(m.date);
+    (images || []).forEach((im, i) => { byId[im.id || (i === 0 ? 'lead-visual' : 'calendar')] = im; });
+    const CAP = { leader: `📸 ${d} 오늘의 대장 — 대장주·대장 섹터·대장 테마`, 'theme-bubble': `📸 ${d} 테마별 급등주 지도`,
+        'market-tree': `📸 ${d} 시장 전체 등락 트리맵 (ORGO 수집 종목 기준)`, calendar: `📸 ${+m.date.slice(4, 6)}월 대장주 캘린더 (${d}까지)` };
+    const IMG = id => { const im = byId[id]; return im ? [`<p><img src="${esc(im.url)}" alt="${esc(im.alt)}"></p>`].concat(CAP[id] ? [P(esc(CAP[id]))] : []) : []; };
+    const out = [SAY(intro(m))];
+    out.push(...IMG('leader'), ...IMG('theme-bubble'), ...IMG('lead-visual'));
 
-    // ① 이유가 있는 흐름 — 흐름마다 소제목 + 설명 단락 + 종목 한 줄
+    // ① 이유가 있는 흐름 — 흐름마다 이모지 소제목 + 문장 + 관련 종목 한 줄
     const told = s.lead.concat(s.flows.filter(f => !f.headliner && f.kind !== 'sector' && Story.flowReason(f))).slice(0, 3);
     let quiet = 0;   // 근거 기사 없는 흐름 — 같은 문장을 되풀이하지 않게
-    for (const f of told) {
-        out.push(H(f.catalyst ? `${flowWord(f)} — ${Story.clipWords(f.catalyst, 32)}` : `${flowWord(f)} ${f.members.length}종목 동반 상승`));
+    told.forEach((f, i) => {
+        out.push(GAP, H(FLOW_EMOJI[i] || '📈', f.catalyst ? `${flowWord(f)} — ${Story.clipWords(f.catalyst, 32)}` : `${flowWord(f)} ${f.members.length}종목 동반 상승`));
         const lu = f.members.filter(r => r.limit).length;
-        if (!Story.flowReason(f)) out.push(P(esc((quiet++ ? `${flowWord(f)} ${f.members.length}종목도 함께 올랐습니다(근거 기사 미확인).` :
+        if (!Story.flowReason(f)) out.push(SAY((quiet++ ? `${flowWord(f)} ${f.members.length}종목도 함께 올랐습니다(근거 기사 미확인).` :
             `${flowWord(f)} ${f.members.length}종목이 함께 올랐지만, 같은 날 근거 기사는 확인되지 않았습니다.`) +
-            (lu ? ` 이 중 ${lu}종목이 상한가였고,` : '') + ` ${f.members.slice(0, 3).map(rl).join('·')} 순으로 많이 올랐습니다.`)));
-        else
-        out.push(P(esc(flowParagraph(f, hooked, plan.kind === 'flow' && plan.flow === f))));
-        if (f.members.length > 3) out.push(P(esc('관련 종목: ' + f.members.slice(0, 10).map(r => `${r.name} ${rateOf(r)}`).join(', ') + (f.members.length > 10 ? ` 외 ${f.members.length - 10}종목` : ''))));
-    }
-    // ② 개별 재료 — 종목마다 이유
+            (lu ? ` 이 중 ${lu}종목이 상한가였고,` : '') + ` ${f.members.slice(0, 3).map(rl).join('·')} 순으로 많이 올랐습니다.`));
+        else out.push(SAY(flowParagraph(f, hooked, plan.kind === 'flow' && plan.flow === f)));
+        if (f.members.length > 3) out.push(P(esc('📋 관련 종목: ' + f.members.slice(0, 10).map(r => `${r.name} ${rateOf(r)}`).join(', ') + (f.members.length > 10 ? ` 외 ${f.members.length - 10}종목` : ''))));
+    });
+    // ② 개별 재료 — 종목마다 한 줄
     const solos = s.solos.slice().sort((a, b) => (hooked.has(b) - hooked.has(a)) || b.rate - a.rate).slice(0, 8);
     if (solos.length) {
-        out.push(H('개별 재료로 오른 종목'));
-        out.push(UL(solos.map(r => `<b>${esc(r.name)}</b> ${esc(rateOf(r))}${r.limit ? ' (상한가)' : ''} — ${esc(r.reason)}`)));
+        out.push(GAP, H('💡', '개별 재료로 오른 종목'));
+        out.push(LINES(solos.map(r => `🔺 <b>${esc(r.name)}</b> ${esc(rateOf(r))}${r.limit ? ' (상한가)' : ''} — ${esc(r.reason)}`)));
     }
     // ③ 근거 기사 없이 테마로만 함께 오른 종목 — 한 단락으로
     const tagged = s.flows.filter(f => !told.includes(f)).slice(0, 3);
     if (tagged.length) {
         const parts = tagged.map(f => `${flowWord(f)} ${f.members.length}종목(${f.members.slice(0, 2).map(r => `${r.name} ${rateOf(r)}`).join(', ')} 등)`);
-        out.push(P(esc(`이 밖에 ${parts.join(', ')}도 함께 올랐지만, 같은 날 근거 기사는 확인되지 않았습니다.`)));
+        out.push(GAP, SAY(`이 밖에 ${parts.join(', ')}도 함께 올랐지만, 같은 날 근거 기사는 확인되지 않았습니다.`));
     }
-    // ④ 오늘의 숫자
+    // ④ 오늘의 숫자 — 줄마다 이모지
     const nums = [];
-    if (s.limitUps.length) nums.push(`상한가 ${s.limitUps.length}종목: ${s.limitUps.map(r => r.name).join(', ')}`);
-    nums.push(`+15% 이상 ${s.hot.length}종목` + (s.prevHot != null ? ` (전 거래일 ${s.prevHot}종목)` : ''));
-    if (s.money[0]) nums.push(`거래대금 1위 급등주: ${s.money[0].name} ${amount(s.money[0].vol)} (${rateOf(s.money[0])})`);
-    if (s.continuing.length) nums.push(`연속 상승: ${s.continuing.slice(0, 4).map(r => `${r.name}(${r.streak}거래일)`).join(', ')} — 연속 +10% 이상`);
-    if (s.high52.length) nums.push(`52주 신고가: ${s.high52.slice(0, 5).map(r => r.name).join(', ')}`);
-    if (s.ipos.length) nums.push(`신규상장: ${s.ipos.map(r => r.name + (r.vol ? ` (거래대금 ${amount(r.vol)})` : '')).join(', ')}`);
-    out.push(H('오늘의 숫자'));
-    out.push(UL(nums.map(esc)));
-    if (images[1]) out.push(`<p><img src="${esc(images[1].url)}" alt="${esc(images[1].alt)}"></p>`);
+    if (s.limitUps.length) nums.push(`🔒 상한가 ${s.limitUps.length}종목: ${s.limitUps.map(r => r.name).join(', ')}`);
+    nums.push(`📈 +15% 이상 ${s.hot.length}종목` + (s.prevHot != null ? ` (전 거래일 ${s.prevHot}종목)` : ''));
+    if (s.money[0]) nums.push(`💰 거래대금 1위 급등주: ${s.money[0].name} ${amount(s.money[0].vol)} (${rateOf(s.money[0])})`);
+    if (s.continuing.length) nums.push(`🔁 연속 상승: ${s.continuing.slice(0, 4).map(r => `${r.name}(${r.streak}거래일)`).join(', ')} — 연속 +10% 이상`);
+    if (s.high52.length) nums.push(`🏔️ 52주 신고가: ${s.high52.slice(0, 5).map(r => r.name).join(', ')}`);
+    if (s.ipos.length) nums.push(`🆕 신규상장: ${s.ipos.map(r => r.name + (r.vol ? ` (거래대금 ${amount(r.vol)})` : '')).join(', ')}`);
+    out.push(GAP, H('📊', '오늘의 숫자'));
+    out.push(LINES(nums.map(esc)));
+    out.push(...IMG('market-tree'), ...IMG('calendar'));
     const hol = holidaySentence(m.holiday);
-    if (hol) out.push(P(`<b>휴장 안내</b> ${esc(hol)}`));
+    if (hol) out.push(GAP, H('🗓', '휴장 안내'), SAY(hol));
+    // 링크는 주소를 그대로 보이게 — 텍스트로 붙여넣어도 주소가 남는다. 날짜별 정적 페이지(/day/)로는 보내지 않는다
     const link = siteLink(m.date, 'naver_blog', 'blog');
-    out.push(P(`오른 종목 전체와 종목별 이유·근거 기사는 ORGO에서 날짜별로 볼 수 있습니다.<br><a href="${esc(link)}">orgo.kr 오른 종목 (${mdKo(m.date)})</a>`));
-    out.push(P(`장전 브리핑·장중 주도주·마감 정리는 텔레그램에서 매일 받아볼 수 있습니다: <a href="${CHANNEL}">${CHANNEL.replace('https://', '')}</a>`));
+    out.push(GAP, LINES([`🔗 ${esc(mdKo(m.date))} 오른 종목 전체와 종목별 이유·근거 기사는 ORGO에서 볼 수 있습니다.`, `<a href="${esc(link)}">${esc(link)}</a>`]));
+    out.push(LINES(['📲 장전 브리핑·장중 주도주·마감 정리는 텔레그램에서 매일 받아볼 수 있습니다.', `<a href="${CHANNEL}">${CHANNEL}</a>`]));
     const notes = [];
     if (s.abnormal.length) {
         const who = s.abnormal.slice(0, 3).map(a => a.name).join('·') + (s.abnormal.length > 3 ? ` 등 ${s.abnormal.length}종목` : '');
         notes.push(`${josa(who, '은', '는')} 등락률이 가격제한폭(30%)을 벗어나(거래 재개·기준가 변경 등) 집계에서 뺐습니다.`);
     }
     notes.push('공개된 시세와 기사 제목을 자동으로 모은 기록입니다. 기사 인용은 상승 원인을 확정하지 않으며 투자 권유가 아닙니다.');
-    out.push(P(`<span style="color:#888888">${notes.map(n => '※ ' + esc(n)).join('<br>')}</span>`));
+    out.push(GAP, P(`<span style="color:#888888">${notes.map(n => '※ ' + sentences(n).map(esc).join('<br>')).join('<br>')}</span>`));
     return out.join('\n');
 }
 
@@ -327,7 +339,8 @@ function blogTags(m) {
 function naverBlog(m, images) {
     const title = blogTitle(m);
     const html = blogHtml(m, images || []);
-    const text = html.replace(/<br>/g, '\n').replace(/<\/(p|li|ul)>/g, '\n').replace(/<[^>]+>/g, '')
+    // 텍스트 복사본: 꼭지 제목 바로 아래에 본문, 단락 사이 빈 줄 한 줄
+    const text = html.replace(/<p><br><\/p>\n?/g, '').replace(/(<p><b>[^<]*<\/b><\/p>)\n/g, '$1').replace(/<br>/g, '\n').replace(/<\/(p|li|ul)>/g, '\n').replace(/<[^>]+>/g, '')
         .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/\n{3,}/g, '\n\n').trim();
     return { title, html, text, tags: blogTags(m), images: images || [] };
 }
