@@ -252,3 +252,12 @@ test('블로그 이미지 — 텔레그램처럼 대장 카드·테마 버블이
     assert.match(h,/📸 9월 대장주 캘린더 \(9월 4일까지\)/);
     assert.doesNotMatch(h,/market-bubble/);   // 같은 내용의 시장 버블은 트리맵 하나로
 });
+test('쓰레드 원고는 Threads 기준 길이(이모지=바이트)로 500자 안 — 게시 실패 방지',()=>{
+    const {threadsLength}=require('./threads_publish');
+    assert.equal(Copy.threadsLen('🇰🇷 ⚡ 가나'), threadsLength('🇰🇷 ⚡ 가나'));
+    const fs=require('fs'),path=require('path'),dir=path.join(__dirname,'..','public','marketing');
+    for(const d of fs.readdirSync(dir).filter(x=>/^\d{8}$/.test(x))){
+        const t=JSON.parse(fs.readFileSync(path.join(dir,d,'digest.json'),'utf8')).posts.threads.text;
+        assert.ok(threadsLength(t)<=500, d+' '+threadsLength(t));
+    }
+});

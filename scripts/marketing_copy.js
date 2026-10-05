@@ -29,6 +29,14 @@ function weekday(ymd) { return WD[new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice
 function dayKo(ymd) { return `${mdKo(ymd)}(${weekday(ymd)})`; }   // "10월 2일(금)" — 텔레그램과 같은 표기
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 function len(s) { return Array.from(String(s || '')).length; }
+// Threads 가 세는 길이 — 이모지는 UTF-8 바이트(🇰🇷=8, ⚡=3), 나머지는 1자 (threads_publish.js 와 같은 규칙, 500 넘으면 게시 실패)
+const EMOJI_RE = /\p{Extended_Pictographic}|\p{Regional_Indicator}/u;
+function threadsLen(text) {
+    let n = 0;
+    for (const { segment } of new Intl.Segmenter('ko', { granularity: 'grapheme' }).segment(String(text || '')))
+        n += EMOJI_RE.test(segment) ? Buffer.byteLength(segment, 'utf8') : Array.from(segment).length;
+    return n;
+}
 function pick(list, ymd, salt = 0) { let h = salt; for (const c of ymd) h = (h * 31 + c.charCodeAt(0)) >>> 0; return list[h % list.length]; }
 const josa = Story.josa;   // 받침·영문 발음에 맞는 조사 — "티엠씨가", "형지I&C가", "삼천당제약이"
 // "광통신" → "광통신주", "면역항암제" → "면역항암제 테마", "핸드셋 업종" 그대로
@@ -130,11 +138,12 @@ function threads(m) {
     const tail = '👇 종목별 이유 전체는 아래 링크에서';
     const compose = bs => bs.map(b => b.lines.join('\n')).join('\n\n') + '\n\n' + tail;
     let text = compose(blocks);
-    while (len(text) > 480 && blocks.some(b => b.prio > 0)) {
+    while (threadsLen(text) > 480 && blocks.some(b => b.prio > 0)) {
         let w = -1; blocks.forEach((b, i) => { if (b.prio > 0 && (w < 0 || b.prio >= blocks[w].prio)) w = i; });
         blocks.splice(w, 1); text = compose(blocks);
     }
-    return { text: len(text) > 480 ? clip(text, 480) : text, reply };
+    while (threadsLen(text) > 490) text = clip(text, Array.from(text).length - 10);   // 그래도 넘으면 끝을 자른다(드묾)
+    return { text, reply };
 }
 
 // ── 네이버 블로그 ─────────────────────────────────────────
@@ -412,4 +421,4 @@ function assertSafe(s) {
     return s;
 }
 
-module.exports = { blogCard, holidayLine, holidaySentence, josa, flowName, flowWord, material, threads, threadsHook, headPhrase, hookStocks, siteLink, naverBlog, blogTitle, pageTitle, pageDesc, blogTags, intro, assertSafe, md, mdKo };
+module.exports = { threadsLen, blogCard, holidayLine, holidaySentence, josa, flowName, flowWord, material, threads, threadsHook, headPhrase, hookStocks, siteLink, naverBlog, blogTitle, pageTitle, pageDesc, blogTags, intro, assertSafe, md, mdKo };
