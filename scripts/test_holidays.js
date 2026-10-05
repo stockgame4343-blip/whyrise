@@ -189,7 +189,7 @@ test('쓰레드·블로그 한 줄 — 국내 휴장이 먼저, 없으면 다음
     assert.match(Copy.threads(m).text, /🇰🇷 국내 증시 휴장: 10월 9일\(금\) 한글날 → 다음 거래일 10월 12일\(월\)\n\n👇/);
     assert.match(Copy.naverBlog(m).html, /<b>🗓 휴장 안내<\/b><\/p>\n<p>국내 증시는 10월 9일\(금\) 한글날 휴장, 다음 거래일은 10월 12일\(월\)입니다\./);
     const plain = Copy.material({ date: '20261124', rows: [row('000001', '가나다', 12)], holiday: ed.holidayNotice('20261124') });
-    assert.doesNotMatch(Copy.threads(plain).text + Copy.naverBlog(plain).html, /휴장/);
+    assert.doesNotMatch(Copy.threads(plain).text + Copy.naverBlog(plain).html, /국내 증시 휴장|국내 증시는|해외 휴장|🗓 휴장 안내/);   // (블로그 끝 텔레그램 소개 문구의 '휴장 안내'는 예외)
 });
 
 test('사이트 대장 캘린더 데이터 — 휴장일이 달력(kr_holidays.json)과 같다', () => {

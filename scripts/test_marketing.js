@@ -233,8 +233,10 @@ test('블로그 본문 — 꼭지는 이모지(■·점 목록 없음), 문장�
     assert.match(b.html,/<p><b>💡 개별 재료로 오른 종목<\/b><\/p>/);
     assert.match(b.html,/🔺 <b>라라<\/b> \+22\.0% — 자사주 소각 결정/);
     assert.match(b.html,/<p><b>📊 숫자로 본 오늘<\/b><\/p>/);
-    assert.match(b.text,/\nhttps:\/\/orgo\.kr\/rise\.html\?date=20261002&utm_source=naver_blog/);   // 텍스트로 붙여도 주소가 남는다
-    assert.match(b.text,/\nhttps:\/\/t\.me\/whyorgo/);
+    assert.match(b.text,/👉 10월 2일 오른 종목 전체: https:\/\/orgo\.kr\/rise\.html\?date=20261002&utm_source=naver_blog/);   // 텍스트로 붙여도 주소가 남는다
+    assert.match(b.text,/👉 https:\/\/t\.me\/whyorgo/);
+    assert.match(b.text,/🧭 ORGO에서 더 보기\n🌐 웹 orgo\.kr\n/);                    // 마지막에 웹·텔레그램 소개
+    assert.match(b.text,/장전 브리핑\(08:30\), 장중 주도주\(09:30\), 오전 테마\(10:00\), 장 마감 정리\(마감 후\), 저녁 '오늘 왜 올랐나'\(19:00\)/);
     // 한 줄에 문장 하나 — '다.' 뒤에 같은 줄로 이어지는 문장이 없다
     for(const line of b.text.split('\n')) assert.doesNotMatch(line,/다\.\s+\S/, line);
 });

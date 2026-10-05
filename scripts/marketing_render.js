@@ -20,7 +20,7 @@ function titleCardHtml(c) {
     return `<!doctype html><html lang="ko"><head><meta charset="utf-8">`+
         `<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">`+
         `<style>*{box-sizing:border-box;margin:0}body{background:#101218}`+
-        `#card{width:1080px;height:1080px;padding:96px 88px;display:flex;flex-direction:column;justify-content:space-between;`+
+        `#card{width:1080px;height:1080px;padding:110px 88px 96px;display:flex;flex-direction:column;justify-content:space-between;`+
         `background:radial-gradient(circle at 85% 12%,rgba(255,86,102,.22),transparent 46%),#101218;color:#fff;`+
         `font-family:'Pretendard Variable',Pretendard,'Noto Sans KR','Noto Sans CJK KR',sans-serif;letter-spacing:-.02em}`+
         `.logo{font-size:44px;font-weight:900;letter-spacing:-.01em}.logo span{font-size:28px;font-weight:600;color:#8b93a7;margin-left:14px}`+
@@ -29,7 +29,6 @@ function titleCardHtml(c) {
         `.sub{margin-top:30px;font-size:54px;font-weight:700;color:#c9ced8;word-break:keep-all;line-height:1.25}`+
         `.chips{display:flex;flex-wrap:wrap;gap:18px}.chip{font-size:36px;font-weight:700;background:#1d212b;border:2px solid #2c3240;border-radius:20px;padding:14px 26px;color:#e8ebf1}`+
         `.foot{font-size:30px;color:#8b93a7;margin-top:28px}</style></head><body><div id="card">`+
-        `<div class="logo">ORGO<span>orgo.kr</span></div>`+
         `<div><div class="kicker">${e(c.kicker)}</div><div class="main">${e(main)}</div>${c.sub?`<div class="sub">${e(c.sub)}</div>`:''}</div>`+
         `<div><div class="chips">${(c.chips||[]).map(x=>`<span class="chip">${e(x)}</span>`).join('')}</div><div class="foot">오늘 오른 종목과 이유 · orgo.kr</div></div>`+
         `</div></body></html>`;

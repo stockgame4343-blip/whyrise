@@ -356,8 +356,15 @@ function blogHtml(m, images) {
     if (hol) out.push(GAP, H('🗓', '휴장 안내'), SAY(hol));
     // 링크는 주소를 그대로 보이게 — 텍스트로 붙여넣어도 주소가 남는다. 날짜별 정적 페이지(/day/)로는 보내지 않는다
     const link = siteLink(m.date, 'naver_blog', 'blog');
-    out.push(GAP, LINES([`🔗 ${esc(mdKo(m.date))} 오른 종목 전체와 종목별 이유·근거 기사는 ORGO에서 볼 수 있습니다.`, `<a href="${esc(link)}">${esc(link)}</a>`]));
-    out.push(LINES(['📲 장전 브리핑·장중 주도주·마감 정리는 텔레그램에서 매일 받아볼 수 있습니다.', `<a href="${CHANNEL}">${CHANNEL}</a>`]));
+    // 마지막 — 웹과 텔레그램 소개(무엇을 볼 수 있는지, 언제 오는지)
+    out.push(GAP, H('🧭', 'ORGO에서 더 보기'));
+    out.push(LINES([`🌐 <b>웹 orgo.kr</b>`, '매일 오른 종목과 그 이유를 근거 기사와 함께 날짜별로 정리합니다.',
+        '대장 캘린더, 테마 지도, 종목별 1년 급등 이력도 볼 수 있습니다.',
+        `👉 ${esc(mdKo(m.date))} 오른 종목 전체: <a href="${esc(link)}">${esc(link)}</a>`]));
+    out.push(LINES([`📲 <b>텔레그램 채널</b>`, '평일 아침부터 저녁까지 장 흐름을 받아볼 수 있습니다.',
+        '장전 브리핑(08:30), 장중 주도주(09:30), 오전 테마(10:00), 장 마감 정리(마감 후), 저녁 \'오늘 왜 올랐나\'(19:00).',
+        '휴장일과 해외 증시 휴장 안내도 함께 보내드립니다.',
+        `👉 <a href="${CHANNEL}">${CHANNEL}</a>`]));
     const notes = [];
     if (s.abnormal.length) {
         const who = s.abnormal.slice(0, 3).map(a => a.name).join('·') + (s.abnormal.length > 3 ? ` 등 ${s.abnormal.length}종목` : '');

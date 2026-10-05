@@ -40,6 +40,11 @@ async function main() {
     }
 
     var today = DATE_ARG || tg.ymdKst();
+    // 캡션 머리가 '오전 · 테마 확산'이라 오전 창에서만 보낸다 — GitHub 크론이 몇 시간씩 밀려 오후에 '오전' 글이 나가던 문제
+    // (9/14 14:56, 10/1 16:00, 10/2 15:49 발송). 창을 놓친 날은 보내지 않는다.
+    if (!DRY && !DATE_ARG && !FORCE && (tg.hmKst() < '10:00' || tg.hmKst() >= '11:30')) {
+        console.log('오전 테마 게시 시간(10:00~11:30) 밖(' + tg.hmKst() + ') — 스킵'); return;
+    }
     if (!DATE_ARG && !FORCE) {
         // 휴장일 2중 가드 — 캘린더(공휴일) + 네이버 실측(임시휴장, 2026-07-17 사고 방어)
         tg.logHolidayWarnings(today);
