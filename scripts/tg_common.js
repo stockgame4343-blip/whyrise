@@ -530,10 +530,10 @@ function rankCardHtml(opts) {
         '.col{display:flex;flex-direction:column;gap:16px;min-width:0}' +
         '.col h3{font-size:26px;font-weight:800;color:#e9edf5}' +
         '.row{display:grid;grid-template-columns:36px minmax(0,1fr);align-items:center;column-gap:14px;row-gap:6px;padding:16px 20px;border-radius:18px;' +
-        'background:rgba(255,86,102,.07);border:1px solid rgba(255,86,102,.22)}' +
+        'background:rgba(49,130,246,.10);border:1px solid rgba(49,130,246,.34)}' +
         '.row.empty{justify-content:center;color:#8a93a6;background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}' +
-        '.rk{grid-row:span 2;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);' +
-        'color:#cfd6e4;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center}' +
+        '.rk{grid-row:span 2;width:36px;height:36px;border-radius:50%;background:rgba(49,130,246,.28);' +
+        'color:#dbe8ff;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center}' +
         '.nm{font-size:25px;font-weight:700;color:#f5f7fa;word-break:keep-all;overflow-wrap:anywhere}' +
         '.sub{grid-column:2;font-size:21px;font-weight:700;color:' + UP + '}' +
         '.xlabel{font-size:24px;font-weight:800;color:#e9edf5;margin-top:6px}' +
@@ -615,7 +615,7 @@ function leaderCardHtml(opts) {
         '.hd .wm{font-size:21px;font-weight:600;color:#8a93a6}' +
         '.hd .title{font-size:27px;font-weight:700;color:#c3cad8}' +
         '.hd .range{font-size:24px;font-weight:700;color:#8a93a6;white-space:nowrap}' +
-        '.tile{padding:26px 30px;border-radius:20px;background:rgba(255,86,102,.07);border:1px solid rgba(255,86,102,.22);display:flex;flex-direction:column;gap:8px}' +
+        '.tile{padding:26px 30px;border-radius:20px;background:rgba(49,130,246,.10);border:1px solid rgba(49,130,246,.34);display:flex;flex-direction:column;gap:8px}' +
         '.tile .tl{display:flex;align-items:center;gap:10px}' +
         '.tile .ic{font-size:26px}.tile .lb{font-size:23px;font-weight:800;color:#e9edf5}' +
         '.tile .nm{font-size:34px;font-weight:800;color:#fff;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}' +
@@ -662,9 +662,9 @@ function topMoversCardHtml(opts) {
         '.hd .title{font-size:27px;font-weight:700;color:#c3cad8}' +
         '.hd .range{font-size:23px;font-weight:700;color:#8a93a6;white-space:nowrap}' +
         '.row{display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-radius:18px;' +
-        'background:rgba(255,86,102,.07);border:1px solid rgba(255,86,102,.22)}' +
-        '.rk{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);' +
-        'color:#cfd6e4;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}' +
+        'background:rgba(49,130,246,.10);border:1px solid rgba(49,130,246,.34)}' +
+        '.rk{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:rgba(49,130,246,.28);' +
+        'color:#dbe8ff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}' +
         '.col{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}' +
         '.nm{font-size:30px;font-weight:800;color:#fff;display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}' +
         '.nm .mk{font-size:19px;font-weight:700;color:#8a93a6}' +

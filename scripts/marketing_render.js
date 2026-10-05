@@ -21,13 +21,13 @@ function titleCardHtml(c) {
         `<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">`+
         `<style>*{box-sizing:border-box;margin:0}body{background:#101218}`+
         `#card{width:1080px;height:1080px;padding:110px 88px 96px;display:flex;flex-direction:column;justify-content:space-between;`+
-        `background:radial-gradient(circle at 85% 12%,rgba(255,86,102,.22),transparent 46%),#101218;color:#fff;`+
+        `background:radial-gradient(circle at 85% 12%,rgba(49,130,246,.34),transparent 50%),#101218;color:#fff;`+
         `font-family:'Pretendard Variable',Pretendard,'Noto Sans KR','Noto Sans CJK KR',sans-serif;letter-spacing:-.02em}`+
         `.logo{font-size:44px;font-weight:900;letter-spacing:-.01em}.logo span{font-size:28px;font-weight:600;color:#8b93a7;margin-left:14px}`+
-        `.kicker{display:inline-block;font-size:38px;font-weight:700;color:#ff5666;border:3px solid rgba(255,86,102,.6);border-radius:999px;padding:10px 30px;margin-bottom:40px}`+
+        `.kicker{display:inline-block;font-size:38px;font-weight:700;color:#5aa2ff;border:3px solid rgba(49,130,246,.75);border-radius:999px;padding:10px 30px;margin-bottom:40px}`+
         `.main{font-size:${big}px;font-weight:900;line-height:1.16;word-break:keep-all}`+
         `.sub{margin-top:30px;font-size:54px;font-weight:700;color:#c9ced8;word-break:keep-all;line-height:1.25}`+
-        `.chips{display:flex;flex-wrap:wrap;gap:18px}.chip{font-size:36px;font-weight:700;background:#1d212b;border:2px solid #2c3240;border-radius:20px;padding:14px 26px;color:#e8ebf1}`+
+        `.chips{display:flex;flex-wrap:wrap;gap:18px}.chip{font-size:36px;font-weight:700;background:rgba(49,130,246,.12);border:2px solid rgba(49,130,246,.45);border-radius:20px;padding:14px 26px;color:#e8ebf1}`+
         `.foot{font-size:30px;color:#8b93a7;margin-top:28px}</style></head><body><div id="card">`+
         `<div><div class="kicker">${e(c.kicker)}</div><div class="main">${e(main)}</div>${c.sub?`<div class="sub">${e(c.sub)}</div>`:''}</div>`+
         `<div><div class="chips">${(c.chips||[]).map(x=>`<span class="chip">${e(x)}</span>`).join('')}</div><div class="foot">오늘 오른 종목과 이유 · orgo.kr</div></div>`+
@@ -56,7 +56,7 @@ async function render(date) {
     const manifestPath=path.join(dir,'assets.json');
     if(fs.existsSync(manifestPath)) {
         const previous=read(manifestPath);
-        const valid=previous.content_hash===d.content_hash&&previous.render_version===2&&d.assets.every(a=>{
+        const valid=previous.content_hash===d.content_hash&&previous.render_version===3&&d.assets.every(a=>{
             const meta=previous.assets[a.file];if(!meta?.file)return false;
             return [a.file,meta.file].every(file=>fs.existsSync(path.join(dir,file))&&crypto.createHash('sha256').update(fs.readFileSync(path.join(dir,file))).digest('hex')===meta.sha256);
         });
@@ -84,7 +84,7 @@ async function render(date) {
         page.on('pageerror',e=>console.error('Page error: '+e.message));
         // Next-day midnight keeps exported headers dated, without an invented capture time.
         await page.clock.setFixedTime(new Date(Date.UTC(+date.slice(0,4),+date.slice(4,6)-1,+date.slice(6),15)));
-        const manifest={date,render_version:2,content_hash:d.content_hash,assets:{}};
+        const manifest={date,render_version:3,content_hash:d.content_hash,assets:{}};
         for(const asset of d.assets) {
             const png=path.join(dir,asset.id+'.png');
             if(asset.id==='title') {
