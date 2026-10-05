@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    var DATA_URL = '/data/leaders-calendar.json?v=20260616h';
+    var DATA_URL = '/data/leaders-calendar.json?v=20261005a';
     var DOW = ['일', '월', '화', '수', '목', '금', '토'];
     var TYPE_LABEL = { stock: '대장주', sector: '대장 섹터', theme: '대장 테마' };
 
@@ -31,7 +31,7 @@
         theme: '상승률 15% 이상 오른 종목을 테마로 묶어 가장 많이 오른 테마를 그날의 대장 테마로 본 결과입니다. 투자 자문·추천이 아닌 과거 기록입니다.',
     };
 
-    var state = { days: {}, type: 'stock', year: 0, month: 0, min: null, max: null, colorMap: {}, counts: {}, activeColors: {} };
+    var state = { days: {}, holidays: {}, type: 'stock', year: 0, month: 0, min: null, max: null, colorMap: {}, counts: {}, activeColors: {} };
 
     function esc(s) {
         return String(s == null ? '' : s)
@@ -135,8 +135,15 @@
         if (!day) {
             var cls = 'cal-cell cal-cell--empty';
             var center = '';
+            var hname = state.holidays[key];
             if (dow === 0 || dow === 6) {
                 cls += ' cal-cell--weekend';
+            } else if (hname) {
+                // 국내 휴장일(대체공휴일 포함, kr_holidays.json) — 오늘·앞날도 표시. '연말 휴장' → 휴장 · 연말
+                cls += ' cal-cell--holiday';
+                var short = String(hname).replace(/대체공휴일$/, '대체휴일').replace(/\s*휴장$/, '');
+                center = '<div class="cal-cell__center"><span class="cal-cell__off">휴장' +
+                    (short ? '<span class="cal-cell__hname">' + esc(short) + '</span>' : '') + '</span></div>';
             } else if (key === todayYmd()) {
                 // 오늘(평일) — 장중/집계 전. 마감 후 데이터가 누적됨을 안내
                 cls += ' cal-cell--today';
@@ -582,6 +589,7 @@
             .then(function (data) {
                 $loading.style.display = 'none';
                 state.days = (data && data.days) || {};
+                state.holidays = (data && data.holidays) || {};
                 var keys = Object.keys(state.days).sort();
                 if (!keys.length) { $msg.textContent = '데이터가 없습니다.'; $msg.style.display = 'block'; return; }
                 state.min = keys[0]; state.max = keys[keys.length - 1];

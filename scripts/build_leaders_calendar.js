@@ -168,7 +168,30 @@ function fetchJson(url) {
     });
 }
 
+// 국내 휴장일 {YYYYMMDD: 이름} — 대장 캘린더가 휴장일 칸(오늘·앞날 포함)에 '휴장 · 한글날'로 표시.
+// 단일 소스 collector/kr_holidays.json(대체공휴일 포함). 메인 목록은 휴장일을 따로 띄우지 않는다.
+function holidayPayload() {
+    const tg = require('./tg_common');
+    return { holidays: tg.krHolidayLabels(), holidays_through: tg.krCalendarThrough() };
+}
+// 휴장일 날짜의 대장 기록은 버린다 — 상류가 휴장일에 전 거래일 시세를 복제해 둔 날(6/3 지방선거·7/17 제헌절)이
+// 캘린더에 '대장'으로 찍히고 반복 횟수(×N)까지 부풀리던 문제. 주말도 같은 이유로 뺀다.
+function dropHolidays(days) {
+    const tg = require('./tg_common');
+    const out = {};
+    Object.keys(days).forEach(function (d) { if (tg.isKrTradingDay(d)) out[d] = days[d]; else console.log('  drop(휴장일)', d, tg.krHolidayName(d) || '주말'); });
+    return out;
+}
+// --holidays-only: kr_holidays.json 을 고친 뒤 시세 재계산 없이 캘린더 파일의 휴장일만 갈아 끼운다(네트워크 불필요)
+function writeHolidaysOnly() {
+    const cur = JSON.parse(fs.readFileSync(OUT, 'utf8'));
+    const next = Object.assign({}, cur, { days: dropHolidays(cur.days || {}) }, holidayPayload());
+    fs.writeFileSync(OUT, JSON.stringify(next), 'utf8');
+    console.log('wrote', OUT, '— holidays', Object.keys(next.holidays).length, 'through', next.holidays_through);
+}
+
 async function main() {
+    if (process.argv.includes('--holidays-only')) return writeHolidaysOnly();
     // 누적(merge) — 기존 캘린더를 읽어 두고 새 날짜만 계산해 합친다.
     // stock-rise 데이터는 무한 보관이라 dates.json 이 날마다 길어진다(시작일 2026-04-13).
     // 매 빌드에서 누적 전체를 다시 받으면 시간이 갈수록 무거워지므로, 이미 가진 옛 날은 건너뛰고
@@ -185,7 +208,9 @@ async function main() {
     const refresh = new Set(dates.slice().sort().slice(-2)); // 최근 2거래일은 항상 재계산
     const days = {};
     let skipped = 0;
+    const isTrading = require('./tg_common').isKrTradingDay;
     for (const d of dates) {
+        if (!isTrading(d)) continue;                                   // 휴장일 복제 데이터는 받지도 않는다
         if (have.has(d) && !refresh.has(d)) { skipped++; continue; }  // 이미 보유한 옛 날 → fetch 생략(merge 가 유지)
         try {
             const day = await fetchJson(RAW + '/' + d + '.json');
@@ -216,8 +241,8 @@ async function main() {
         console.error('rise-history dir 없음:', e.message);
     }
     // 기존 + 신규 합치기(신규가 같은 날짜는 갱신, 기존-only 옛 날짜는 보존 → 누적)
-    const mergedDays = Object.assign({}, existing, days);
-    const payload = { built_at: new Date().toISOString().slice(0, 19), days: mergedDays };
+    const mergedDays = dropHolidays(Object.assign({}, existing, days));
+    const payload = Object.assign({ built_at: new Date().toISOString().slice(0, 19), days: mergedDays }, holidayPayload());
     fs.writeFileSync(OUT, JSON.stringify(payload), 'utf8');
     const before = Object.keys(existing).length, after = Object.keys(mergedDays).length;
     console.log('\nwrote', OUT, '—', after, 'days (기존', before, '+ 신규계산', Object.keys(days).length, ', 옛날 fetch생략', skipped, '→ 누적', after, ')');
@@ -230,6 +255,6 @@ if (require.main === module) {
 
 module.exports = {
     leadersFromRows, buildGroups, pickLeader, loadMarketRows, leaderEnergy, themeOf, themeTags, isActive,
-    fetchJson, num, capRate,
+    fetchJson, num, capRate, holidayPayload,
     RISE_CUTOFF, LEADER_MIN_RATE, LEADER_MIN_SCORE, GROUP_MIN, RAW,
 };

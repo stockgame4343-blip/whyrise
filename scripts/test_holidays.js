@@ -175,3 +175,30 @@ test('장전 브리핑 캡션 — 간밤 미국 휴장이면 전날 시세 대�
     assert.match(tg08, /S&amp;P \+0\.4%/);
     assert.match(tg08, /국내 증시 휴장 예정: 내일 10월 9일\(금\) 한글날/);
 });
+
+test('쓰레드·블로그 한 줄 — 국내 휴장이 먼저, 없으면 다음 거래일 해외 휴장, 날짜는 그대로(내일 없이)', () => {
+    const Copy = require('./marketing_copy');
+    assert.equal(Copy.holidayLine(ed.holidayNotice('20261008')), '🇰🇷 국내 증시 휴장: 10월 9일(금) 한글날 → 다음 거래일 10월 12일(월)');
+    assert.equal(Copy.holidaySentence(ed.holidayNotice('20261002')), '국내 증시는 10월 5일(월) 개천절 대체공휴일 휴장, 다음 거래일은 10월 6일(화)입니다.');
+    assert.equal(Copy.holidaySentence(ed.holidayNotice('20271230')), '국내 증시는 12월 31일(금) 연말 휴장입니다.');   // 연말 휴장 휴장 X, 달력 밖 다음 거래일 X
+    assert.equal(Copy.holidayLine(ed.holidayNotice('20261016')), '🌏 10월 19일(월) 해외 휴장: 🇭🇰 홍콩(중양절 대체휴일)');
+    assert.equal(Copy.holidayLine(ed.holidayNotice('20261124')), '');
+    // 원고에 실제로 붙는지 — 쓰레드는 글자 수가 넘쳐도 빠지지 않는다
+    const row = (t, n, rate) => ({ ticker: t, name: n, change_rate: rate, close_price: 10000, trading_value: 5e10, trading_volume: 1e6, rise_reason: '' });
+    const m = Copy.material({ date: '20261008', rows: [row('000001', '가나다', 12), row('000002', '라마바', 14)], holiday: ed.holidayNotice('20261008') });
+    assert.match(Copy.threads(m).text, /🇰🇷 국내 증시 휴장: 10월 9일\(금\) 한글날 → 다음 거래일 10월 12일\(월\)\n\n👇/);
+    assert.match(Copy.naverBlog(m).html, /<b>휴장 안내<\/b> 국내 증시는 10월 9일\(금\) 한글날 휴장, 다음 거래일은 10월 12일\(월\)입니다\./);
+    const plain = Copy.material({ date: '20261124', rows: [row('000001', '가나다', 12)], holiday: ed.holidayNotice('20261124') });
+    assert.doesNotMatch(Copy.threads(plain).text + Copy.naverBlog(plain).html, /휴장/);
+});
+
+test('사이트 대장 캘린더 데이터 — 휴장일이 달력(kr_holidays.json)과 같다', () => {
+    const cal = JSON.parse(fs.readFileSync(path.join(ROOT, 'public', 'data', 'leaders-calendar.json'), 'utf8'));
+    // 다르면: node scripts/build_leaders_calendar.js --holidays-only
+    assert.deepEqual(cal.holidays, tg.krHolidayLabels());
+    assert.equal(cal.holidays_through, KR._covered_through);
+    assert.equal(cal.holidays['20261005'], '개천절 대체공휴일');
+    assert.equal(cal.holidays['20260928'], undefined);
+    // 메인 목록(rise-history)에는 휴장일 날짜가 없다 — 휴장일은 캘린더 표시만
+    for (const d of Object.keys(cal.holidays)) assert.ok(!cal.days[d], d + ' 휴장일에 대장 기록');
+});

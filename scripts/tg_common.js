@@ -93,6 +93,11 @@ function isKrTradingDay(ymd) {
 
 // ── 휴장일 안내 (한국 + 해외 증시) ──
 function krHolidayName(ymd) { return _krHolidays()[String(ymd || '')] || ''; }
+// 안내용 이름 — 괄호 설명을 떼고 '대체'는 '대체공휴일'로: '개천절 대체(10/3 토)' → '개천절 대체공휴일'
+function krHolidayLabel(name) { return String(name || '휴장').replace(/\s*\([^)]*\)/g, '').replace(/\s*대체(공휴일)?$/, ' 대체공휴일').trim(); }
+// 달력 전체 {YYYYMMDD: 안내용 이름} — 사이트 대장 캘린더용
+function krHolidayLabels() { var h = _krHolidays(), out = {}; Object.keys(h).sort().forEach(function (d) { out[d] = krHolidayLabel(h[d]); }); return out; }
+function krCalendarThrough() { _krHolidays(); return _KR_META.covered || ''; }
 // 한국 휴장일 달력이 이 날짜까지 확실히 담고 있는지 — 모르는 날짜엔 캘린더만 믿고 발행하지 않는다
 function krCalendarCovers(ymd) { _krHolidays(); return _KR_META.loaded && !!_KR_META.covered && String(ymd) <= _KR_META.covered; }
 function _ymdAdd(ymd, days) {
@@ -881,7 +886,7 @@ module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, dateKo, marketLabel, clip, orgoLink, escHtml, htmlLink,
     fetchRefinedReasons, refinedReasonsFromDay, verifiedReason, isKrTradingDay, isDuplicateDayData, specificReason,
-    krHolidayName, krCalendarCovers, nextKrTradingDay, krClosuresBefore, foreignClosures, holidayCalendarWarnings, krPublishBlock, logHolidayWarnings,
+    krHolidayName, krHolidayLabel, krHolidayLabels, krCalendarThrough, krCalendarCovers, nextKrTradingDay, krClosuresBefore, foreignClosures, holidayCalendarWarnings, krPublishBlock, logHolidayWarnings,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,

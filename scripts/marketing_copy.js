@@ -42,11 +42,11 @@ function flowName(text) {
 }
 
 /** 하루 데이터 → 원고 공통 재료 */
-function material({ date, rows, leader, breadth, market, history, extraRows, prevCloses, altRates }) {
+function material({ date, rows, leader, breadth, market, history, extraRows, prevCloses, altRates, holiday }) {
     const story = Story.build({ date, rankings: rows || [], _prevCloses: prevCloses || null, _altRates: altRates || null }, { leader, history: history || [], extraRows });
     const item = r => ({ row: r.row, r, d: { text: r.reason || Story.whyOf(r), unknown: !r.reason } });
     return {
-        date, story, leader: story.leader, breadth, market: market || null,
+        date, story, leader: story.leader, breadth, market: market || null, holiday: holiday || null,
         // 하위 호환(발행실·테스트): 개별 이유 종목 / 이유 미확인 종목
         solo: story.solos.map(item), unknown: story.rest.map(item),
         active: story.rows, hot: story.hot, limit: story.limitUps, flows: story.flows,
@@ -83,6 +83,18 @@ function headPhrase(s) {
     return s.headline || '';
 }
 // 이전 이름 호환 — 첫 줄
+// 휴장 안내 한 줄 — 날짜를 그대로 써서(내일·모레 없이) 나중에 읽어도 맞게
+function holidayLine(h) {
+    if (!h) return '';
+    if (h.kr) return '🇰🇷 국내 증시 휴장: ' + h.kr + (h.next ? ' → 다음 거래일 ' + h.next : '');
+    return h.foreign || '';
+}
+// 블로그는 문장으로 — '국내 증시는 10월 5일(월) 개천절 대체공휴일 휴장, 다음 거래일은 10월 6일(화)입니다.'
+function holidaySentence(h) {
+    if (!h) return '';
+    if (h.kr) return '국내 증시는 ' + h.kr + (/휴장$/.test(h.kr) ? '' : ' 휴장') + (h.next ? ', 다음 거래일은 ' + h.next + '입니다.' : '입니다.');
+    return h.foreignPlain || '';
+}
 function threadsHook(s) { return s.date ? dayKo(s.date) + ' 마감 | ' + headPhrase(s) : headPhrase(s); }
 function threads(m) {
     const s = m.story;
@@ -105,6 +117,9 @@ function threads(m) {
     const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, flows.length >= 2 ? 2 : 3);
     if (solos.length) blocks.push({ prio: 3, lines: ['💡 개별 재료'].concat(solos.map(r => `• ${r.name} ${rateOf(r)} — ${Story.clipWords(r.reason, 32)}`)) });
     if (blocks.length === 1) blocks.push({ prio: 3, lines: [s.rows.filter(r => !r.ipo).slice(0, 3).map(r => r.name + ' ' + rateOf(r)).join(' · ')] });
+    // 휴장 안내 한 줄 — 국내 휴장(대체공휴일 포함)이 먼저, 없으면 다음 거래일 해외 휴장. 글자 수가 넘쳐도 빼지 않는다
+    const hol = holidayLine(m.holiday);
+    if (hol) blocks.push({ prio: 0, lines: [hol] });
     const tail = '👇 종목별 이유 전체는 댓글 링크에서';
     const compose = bs => bs.map(b => b.lines.join('\n')).join('\n\n') + '\n\n' + tail;
     let text = compose(blocks);
@@ -284,6 +299,8 @@ function blogHtml(m, images) {
     out.push(H('오늘의 숫자'));
     out.push(UL(nums.map(esc)));
     if (images[1]) out.push(`<p><img src="${esc(images[1].url)}" alt="${esc(images[1].alt)}"></p>`);
+    const hol = holidaySentence(m.holiday);
+    if (hol) out.push(P(`<b>휴장 안내</b> ${esc(hol)}`));
     const link = siteLink(m.date, 'naver_blog', 'blog');
     out.push(P(`오른 종목 전체와 종목별 이유·근거 기사는 ORGO에서 날짜별로 볼 수 있습니다.<br><a href="${esc(link)}">orgo.kr 오른 종목 (${mdKo(m.date)})</a>`));
     out.push(P(`장전 브리핑·장중 주도주·마감 정리는 텔레그램에서 매일 받아볼 수 있습니다: <a href="${CHANNEL}">${CHANNEL.replace('https://', '')}</a>`));
@@ -321,4 +338,4 @@ function assertSafe(s) {
     return s;
 }
 
-module.exports = { josa, flowName, flowWord, material, threads, threadsHook, headPhrase, hookStocks, siteLink, naverBlog, blogTitle, pageTitle, pageDesc, blogTags, intro, assertSafe, md, mdKo };
+module.exports = { holidayLine, holidaySentence, josa, flowName, flowWord, material, threads, threadsHook, headPhrase, hookStocks, siteLink, naverBlog, blogTitle, pageTitle, pageDesc, blogTags, intro, assertSafe, md, mdKo };

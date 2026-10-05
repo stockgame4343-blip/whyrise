@@ -89,7 +89,8 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
     const extraRows = sameSnapshot && themeLookup ? Story.snapshotExtras(themeLookup, date, day.rankings) : [];
     const ctx = themeLookup ? Story.withSnapshot(themeLookup, day) : {};
     const material = Copy.material({ date, rows: day.rankings, leader: leader?.stock || null, breadth,
-        market: market && market.kospi != null ? market : null, history, extraRows, prevCloses: ctx._prevCloses || null, altRates: ctx._altRates || null });
+        market: market && market.kospi != null ? market : null, history, extraRows, prevCloses: ctx._prevCloses || null, altRates: ctx._altRates || null,
+        holiday: require('./tg_editorial').holidayNotice(date) });   // 다음 거래일 전 휴장 안내(쓰레드·블로그 한 줄)
     const S = material.story, topFlow = S.flows.find(f=>f.kind!=='sector');
     const themeCaption = topFlow ? `${S.headline}\n${topFlow.label} ${topFlow.members.length}종목${topFlow.catalyst?' — '+topFlow.catalyst:''}` :
         `+15% 이상 ${S.hot.length}종목${S.limitUps.length?' · 상한가 '+S.limitUps.length:''}\n테마별로 모은 지도입니다.`;
