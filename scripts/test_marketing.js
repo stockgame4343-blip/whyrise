@@ -173,7 +173,8 @@ test('naver blog draft: SEO title, facts only, link and disclaimer, no advisory 
     assert.doesNotMatch(b.html,/orgo\.kr\/day\//);
     assert.match(b.html,/투자 권유가 아닙니다/);
     assert.doesNotMatch(b.html.replace(/투자 권유가 아닙니다/g,''),/매수|매도|추천|목표가|급등 예상/);
-    assert.ok(b.tags.length>=8&&b.tags.length<=30);assert.ok(b.tags.every(t=>!/\s/.test(t)));
+    assert.ok(b.tags.length>=4&&b.tags.length<=12);assert.ok(b.tags.every(t=>!/\s/.test(t)));   // 태그는 핵심만 12개 이내
+    assert.ok(b.tags.includes('9월4일상한가')&&b.tags.includes('9월4일급등주'));
     assert.match(b.html,/장비 공급계약 체결/);   // 근거 있는 이유는 본문에 실린다
 });
 test('analyst target-price reasons are not repeated on external channels',()=>{
@@ -231,7 +232,7 @@ test('블로그 본문 — 꼭지는 이모지(■·점 목록 없음), 문장�
     }
     assert.match(b.html,/<p><b>💡 개별 재료로 오른 종목<\/b><\/p>/);
     assert.match(b.html,/🔺 <b>라라<\/b> \+22\.0% — 자사주 소각 결정/);
-    assert.match(b.html,/<p><b>📊 오늘의 숫자<\/b><\/p>/);
+    assert.match(b.html,/<p><b>📊 숫자로 본 오늘<\/b><\/p>/);
     assert.match(b.text,/\nhttps:\/\/orgo\.kr\/rise\.html\?date=20261002&utm_source=naver_blog/);   // 텍스트로 붙여도 주소가 남는다
     assert.match(b.text,/\nhttps:\/\/t\.me\/whyorgo/);
     // 한 줄에 문장 하나 — '다.' 뒤에 같은 줄로 이어지는 문장이 없다
@@ -243,8 +244,8 @@ test('블로그 이미지 — 텔레그램처럼 대장 카드·테마 버블이
     const h=d.naver_blog.html, at=f=>h.indexOf('/'+f);
     for(const f of ['leader.jpg','theme-bubble.jpg','market-tree.jpg','calendar.jpg']) assert.ok(at(f)>0,f);
     assert.ok(at('leader.jpg')<at('theme-bubble.jpg'));
-    assert.ok(at('theme-bubble.jpg')<h.indexOf('📊 오늘의 숫자'));
-    assert.ok(h.indexOf('📊 오늘의 숫자')<at('market-tree.jpg')&&at('market-tree.jpg')<at('calendar.jpg'));
+    assert.ok(at('theme-bubble.jpg')<h.indexOf('📊 숫자로 본 오늘'));
+    assert.ok(h.indexOf('📊 숫자로 본 오늘')<at('market-tree.jpg')&&at('market-tree.jpg')<at('calendar.jpg'));
     assert.match(h,/📸 9월 4일 오늘의 대장 — 대장주·대장 섹터·대장 테마/);
     assert.match(h,/📸 9월 대장주 캘린더 \(9월 4일까지\)/);
     assert.doesNotMatch(h,/market-bubble/);   // 같은 내용의 시장 버블은 트리맵 하나로

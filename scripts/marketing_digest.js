@@ -50,6 +50,23 @@ function hasTheme(rows) {
     }
     return [...counts.values()].some(n=>n>=3);
 }
+// 종목 급등 이력(ORGO stock-history) — 블로그 '어떤 종목이길래' 꼭지용
+function stockEvents(publicDir) {
+    const cache = new Map();
+    return ticker => {
+        if (!/^[0-9A-Z]{6}$/.test(ticker || '')) return null;
+        if (!cache.has(ticker)) {
+            let ev = null;
+            try { ev = JSON.parse(fs.readFileSync(path.join(publicDir, 'data', 'stock-history', ticker + '.json'), 'utf8')).events || null; } catch (_) { ev = null; }
+            cache.set(ticker, Array.isArray(ev) ? ev : null);
+        }
+        return cache.get(ticker);
+    };
+}
+// ORGO 급등주 기록이 시작된 날(가장 오래된 rise-history) — '최근 1년'이 기록보다 길면 '기록 시작 이후'로 쓴다
+function historyStart(publicDir) {
+    try { return fs.readdirSync(path.join(publicDir, 'data', 'rise-history')).filter(f => /^\d{8}\.json$/.test(f)).sort()[0].slice(0, 8); } catch (_) { return ''; }
+}
 function buildDigest(day, marketmap, now = new Date(), calendar = null, market = null, history = [], themeLookup = null) {
     const date = ymd(day.date);
     if (!/^\d{8}$/.test(date) || !Array.isArray(day.rankings) || day.is_final !== true) throw new Error('Final dated rankings required');
@@ -90,7 +107,8 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
     const ctx = themeLookup ? Story.withSnapshot(themeLookup, day) : {};
     const material = Copy.material({ date, rows: day.rankings, leader: leader?.stock || null, breadth,
         market: market && market.kospi != null ? market : null, history, extraRows, prevCloses: ctx._prevCloses || null, altRates: ctx._altRates || null,
-        holiday: require('./tg_editorial').holidayNotice(date) });   // 다음 거래일 전 휴장 안내(쓰레드·블로그 한 줄)
+        holiday: require('./tg_editorial').holidayNotice(date),   // 다음 거래일 전 휴장 안내(쓰레드·블로그 한 줄)
+        calendar: calendarDays, profileOf: themeLookup ? stockEvents(themeLookup) : null, since: themeLookup ? historyStart(themeLookup) : '' });
     const S = material.story, topFlow = S.flows.find(f=>f.kind!=='sector');
     const themeCaption = topFlow ? `${S.headline}\n${topFlow.label} ${topFlow.members.length}종목${topFlow.catalyst?' — '+topFlow.catalyst:''}` :
         `+15% 이상 ${S.hot.length}종목${S.limitUps.length?' · 상한가 '+S.limitUps.length:''}\n테마별로 모은 지도입니다.`;
@@ -126,8 +144,11 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
             return [channel,post];
         }));
     }
-    // 블로그 이미지 — 텔레그램처럼 대장 카드·테마 버블을 앞에, 시장 트리맵은 '오늘의 숫자', 캘린더는 끝에
-    const blogImages = ['leader', themeAvailable ? 'theme-bubble' : null, sameSnapshot ? 'market-tree' : null, 'calendar'].filter(Boolean)
+    // 블로그 썸네일(제목 카드) — 검색 결과 대표 이미지
+    const blogTitleText = Copy.blogTitle(material);
+    assets.push({id:'title',label:'블로그 썸네일',file:'title.jpg',source:'/marketing.html',alt:`${date} ${blogTitleText}`});
+    // 블로그 이미지 — 썸네일 → 텔레그램처럼 대장 카드·테마 버블, 시장 트리맵은 '숫자로 본 오늘', 캘린더는 끝에
+    const blogImages = ['title', 'leader', themeAvailable ? 'theme-bubble' : null, sameSnapshot ? 'market-tree' : null, 'calendar'].filter(Boolean)
         .map(id => { const a = assets.find(x => x.id === id); return a ? { id, url: `https://orgo.kr${base}${a.file}`, alt: a.alt } : null; }).filter(Boolean);
     const naverBlog = Copy.naverBlog(material, blogImages);
     const selected=stories.find(s=>s.id===defaultStory);

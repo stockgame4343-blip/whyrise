@@ -113,7 +113,7 @@ test('조용한 날과 빈 날도 문장이 깨지지 않는다', () => {
     assert.doesNotMatch(t, /undefined|NaN|null/);
     const b = Copy.naverBlog(quiet, []);
     assert.doesNotMatch(b.html + b.title, /undefined|NaN|null/);
-    assert.match(b.html, /뚜렷한 테마 없이/);
+    assert.match(b.html, /10월 2일은 (뚜렷한 주도 테마 없이|큰 줄기 없이)/);
     const empty = Copy.material({ date: '20261002', rows: [] });
     assert.equal(Copy.threads(empty).text, '');
     assert.doesNotMatch(Copy.naverBlog(empty, []).html, /undefined|NaN/);
@@ -194,4 +194,66 @@ test('대장 선정 — 신규상장(+30% 초과)도 +30%로 쳐서 거래대금
     assert.equal(site(capped).name, '기존주');
     // 표시용 상승률은 그대로(+59.5%) — 캘린더 기록
     assert.equal(core.leadersFromRows(oct1).stock.rate, 59.5);
+});
+
+test('해석 문장 — 돈의 쏠림·열기·이유의 무게·지난 급등 이력을 데이터로만 말한다', () => {
+    const Talk = require('./market_commentary');
+    const fw = f => f.label + '주';
+    const news2 = (t) => ({ rise_reason: t, reason_source: 'news_extract', reason_kind: 'catalyst' });
+    const rows = [
+        row('머큐리', 30, { theme_tag: '광통신', trading_value: 6e11, close_price: 13000, ...news2('광통신 투자 확대') }),
+        row('티엠씨', 20, { theme_tag: '광통신', trading_value: 2e11 }),
+        row('다산네트웍스', 15, { theme_tag: '광통신', trading_value: 1e11 }),
+        row('빛샘전자', 12, { theme_tag: '광통신', trading_value: 1e11 }),
+        row('리튬포어스', 18, { theme_tag: '2차전지', trading_value: 5e10 }),
+        row('하이드로리튬', 16, { theme_tag: '2차전지', trading_value: 5e10 }),
+        row('파워넷', 12, { theme_tag: '2차전지', trading_value: 5e10 }),
+    ];
+    const s = S.build(day(rows));
+    const v = Talk.verdict(s, fw);
+    assert.match(v.text, /광통신주 쪽으로 돈이 확실히 몰린 하루/);
+    assert.match(v.text, /가운데 87%가/);                                   // 1조 / 1조 1,500억
+    assert.match(v.short, /^광통신으로 돈이 몰린 날 — 급등주 거래대금의 87%$/);
+    // 열기 — 전 거래일 대비(작은 차이는 '다소', 큰 차이만 '크게')
+    assert.match(Talk.heat({ hot: new Array(19), prevHot: 12 }), /크게 늘어, 급등주 열기가 (달아올랐|뜨거워졌)습니다/);
+    assert.match(Talk.heat({ hot: new Array(19), prevHot: 16 }), /다소 늘었습니다/);
+    assert.match(Talk.heat({ hot: new Array(8), prevHot: 16 }), /크게 줄어, 급등주 열기가 (식었|가라앉았)습니다/);
+    assert.match(Talk.heat({ hot: new Array(17), prevHot: 16 }), /과 비슷했습니다/);
+    // 지난 급등 이력 — 오늘 이전, 기록 시작일·1년 창 안, +10% 이상만 센다
+    const r = s.rows.find(x => x.name === '머큐리');
+    const events = [{ date: '20261002', change_rate: 30 }, { date: '20260910', change_rate: 14.1, rise_reason: '美 광통신주 호재', reason_source: 'news_extract', reason_kind: 'catalyst' },
+        { date: '20260312', change_rate: 12.5 }, { date: '20250901', change_rate: 20 }];
+    const p = Talk.stockProfile(r, { date: '20261002', profileOf: () => events, since: '20250523' }, fw);
+    assert.match(p, /최근 1년 동안 \+10% 이상 오른 날이 이번 말고도 2번 있었습니다/);   // 2025-09-01 은 1년 밖
+    assert.match(p, /직전은 9월 10일\(\+14\.1%\)로, '美 광통신주 호재' 기사가 나온 날이었습니다/);
+    assert.match(p, /혼자가 아니라 광통신주 4종목이 같이 오른 날이었습니다/);
+    const young = Talk.stockProfile(r, { date: '20260102', profileOf: () => [], since: '20250523' }, fw);
+    assert.match(young, /ORGO 기록이 시작된 2025년 5월 이후 \+10% 이상 오른 적이 없던 종목/);
+    // 💬 종합 — 본문에 나온 흐름만, '이유 없음' 단정 없이, 권유·전망 없이
+    const view = Talk.view(s, { date: '20261002', calendar: {}, holiday: null }, fw, s.flows);
+    assert.doesNotMatch(view, S.FORBIDDEN);
+    assert.match(view, /기사로 확인되는 재료가 있는 광통신주에 돈이 실린, 비교적 이야기가 분명한 날이었습니다/);
+    assert.match(view, /다음 거래일에는 광통신주 강세가 하루로 끝나지 않는지가 (지켜볼|확인할) 부분입니다/);
+    assert.doesNotMatch(view, /테마 이름만|보는 게 맞|무게가 다릅/);
+    // 대장 설명 — 목록 밖 대형주
+    const big = { ...s, leader: { ticker: '005930', name: '삼성전자', rate: 6.1, vol: 3e12, row: null } };
+    assert.match(Talk.leaderPara(big, {}, '20261002', fw), /오늘의 대장은 삼성전자입니다\. \+6\.1% 올라 급등주 목록\(\+10% 이상\)에는 들지 않지만, 거래대금 3조가 실려/);
+});
+
+test('블로그는 나열 대신 해석 — 💬 ORGO의 시선·🔍 제목 종목 꼭지·썸네일 카드', () => {
+    const rows = [
+        row('머큐리', 30, { theme_tag: '광통신', trading_value: 6e11, close_price: 13000, sector: '통신장비', rise_reason: '광통신 투자 확대', reason_source: 'news_extract', reason_kind: 'catalyst' }),
+        row('티엠씨', 20, { theme_tag: '광통신', trading_value: 2e11 }), row('다산네트웍스', 15, { theme_tag: '광통신', trading_value: 1e11 }),
+        row('빛샘전자', 12, { theme_tag: '광통신', trading_value: 1e11 }),
+    ];
+    const m = Copy.material({ date: '20261002', rows, calendar: {}, profileOf: () => [], since: '20250523' });
+    const b = Copy.naverBlog(m, []);
+    assert.match(b.html, /<p><b>💬 ORGO의 시선<\/b><\/p>/);
+    assert.match(b.html, /<p><b>🔍 머큐리, 어떤 종목이길래<\/b><\/p>/);
+    assert.match(b.text.split('\n\n')[0], /^10월 2일 머큐리는 '광통신 투자 확대' 기사와 함께 상한가를 기록했습니다\.\n/);
+    assert.doesNotMatch(b.html, /📋 관련 종목/);                                 // 긴 종목 나열은 없다
+    assert.ok(b.tags.length <= 12);
+    assert.deepEqual(b.card, { kicker: '10월 2일(금) 마감', main: b.title.replace(/^10월 2일 /, '').split(/\? | \| /)[0] + (b.title.includes('? ') ? '?' : ''),
+        sub: b.card.sub, chips: ['상한가 1', '+15% 이상 3종목'] });
+    assert.match(Copy.threads(m).text, /\n\n💬 광통신으로 돈이 몰린 날 — 급등주 거래대금의 100%\n\n/);
 });

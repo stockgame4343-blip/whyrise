@@ -11,6 +11,7 @@
  */
 const path = require('path');
 const Story = require(path.resolve(__dirname, 'market_story.js'));
+const Talk = require(path.resolve(__dirname, 'market_commentary.js'));   // 해석 문장(오늘은 어떤 날이었나·볼 부분)
 
 const SITE = 'https://orgo.kr';
 const CHANNEL = 'https://t.me/whyorgo';
@@ -42,11 +43,12 @@ function flowName(text) {
 }
 
 /** 하루 데이터 → 원고 공통 재료 */
-function material({ date, rows, leader, breadth, market, history, extraRows, prevCloses, altRates, holiday }) {
+function material({ date, rows, leader, breadth, market, history, extraRows, prevCloses, altRates, holiday, calendar, profileOf, since }) {
     const story = Story.build({ date, rankings: rows || [], _prevCloses: prevCloses || null, _altRates: altRates || null }, { leader, history: history || [], extraRows });
     const item = r => ({ row: r.row, r, d: { text: r.reason || Story.whyOf(r), unknown: !r.reason } });
     return {
         date, story, leader: story.leader, breadth, market: market || null, holiday: holiday || null,
+        calendar: calendar || null, profileOf: profileOf || null, since: since || '',   // 해석용: 이번 달 대장 기록, 종목 급등 이력
         // 하위 호환(발행실·테스트): 개별 이유 종목 / 이유 미확인 종목
         solo: story.solos.map(item), unknown: story.rest.map(item),
         active: story.rows, hot: story.hot, limit: story.limitUps, flows: story.flows,
@@ -106,6 +108,10 @@ function threads(m) {
     if (m.market && Number.isFinite(m.market.kospi) && Number.isFinite(m.market.kosdaq)) head.push(`📊 코스피 ${pct(m.market.kospi)} · 코스닥 ${pct(m.market.kosdaq)}`);
     head.push(`🔺 상한가 ${s.limitUps.length} · +15% 이상 ${s.hot.length}종목`);
     const blocks = [{ prio: 0, lines: head }];
+    // 💬 오늘은 어떤 날이었나 — 나열 전에 한 줄 해석
+    const v = Talk.verdict(s, flowWord);
+    if (v.short) blocks.push({ prio: 0, lines: [`💬 ${v.short}`] });
+    const fixed = blocks.length;
     // 흐름은 '왜'가 있는 것만, 한 줄 이유 + 대표 종목
     // 흐름마다 한 줄: '왜'가 있으면 이유, 없으면 상한가 수만 (근거 없는 말은 붙이지 않는다)
     const flows = s.lead.slice(0, 2);
@@ -116,7 +122,7 @@ function threads(m) {
     });
     const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, flows.length >= 2 ? 2 : 3);
     if (solos.length) blocks.push({ prio: 3, lines: ['💡 개별 재료'].concat(solos.map(r => `• ${r.name} ${rateOf(r)} — ${Story.clipWords(r.reason, 32)}`)) });
-    if (blocks.length === 1) blocks.push({ prio: 3, lines: [s.rows.filter(r => !r.ipo).slice(0, 3).map(r => r.name + ' ' + rateOf(r)).join(' · ')] });
+    if (blocks.length === fixed) blocks.push({ prio: 3, lines: [s.rows.filter(r => !r.ipo).slice(0, 3).map(r => r.name + ' ' + rateOf(r)).join(' · ')] });
     // 휴장 안내 한 줄 — 국내 휴장(대체공휴일 포함)이 먼저, 없으면 다음 거래일 해외 휴장. 글자 수가 넘쳐도 빼지 않는다
     const hol = holidayLine(m.holiday);
     if (hol) blocks.push({ prio: 0, lines: [hol] });
@@ -220,11 +226,6 @@ function intro(m) {
         const end = v => Math.abs(v) < 0.05 ? '보합으로 마감했습니다' : `${a(v)}% ${v > 0 ? '올랐습니다' : '내렸습니다'}`;
         out.push(`${d} 코스피는 ${mid(mk.kospi)}, 코스닥은 ${end(mk.kosdaq)}.`);
     }
-    const lead = s.lead.slice(0, 2);
-    if (lead.length) {
-        const both = lead.length > 1 ? josa(flowWord(lead[0]), '과', '와') + ' ' + flowWord(lead[1]) : flowWord(lead[0]);
-        out.push(`${out.length ? '' : d + ' '}시장에서는 ${both} 쪽으로 상승이 몰렸습니다.`);
-    } else if (s.rows.length) out.push(`${out.length ? '' : d + ' '}시장은 뚜렷한 테마 없이 개별 재료로 오른 종목이 많았습니다.`);
     // 제목이 약속한 것에 첫 문단에서 바로 답한다
     const plan = titlePlan(s);
     if (plan.kind === 'stock') for (const r of plan.rows) { const w = whySentence(r); if (w) out.push(w); }
@@ -232,26 +233,42 @@ function intro(m) {
         const f = plan.flow, told = f.members.filter(r => r.reason).sort((a, b) => b.energy - a.energy)[0];
         out.push(`${flowWord(f)} ${f.members.length}종목이 함께 올랐고, ` + (f.catalyst ? `같은 날 '${f.catalyst}' 관련 기사가 나왔습니다.` : `${josa(told.name, '은', '는')} '${told.reason}' 기사가 나왔습니다.`));
     }
-    const prev = s.prevHot != null ? `(전 거래일 ${s.prevHot}개)` : '';
-    out.push(`+15% 이상 오른 종목은 ${s.hot.length}개${prev}${s.limitUps.length ? `, 상한가는 ${s.limitUps.length}종목` : ''}입니다.`);
-    return out.join(' ');
+    // 그래서 오늘은 어떤 날이었나 — 나열 전에 해석 한 마디
+    const v = Talk.verdict(s, flowWord).text;
+    if (v) out.push(v);
+    else if (!out.length) out.push(`${d} +10% 이상 오른 종목은 ${s.rows.length}개였습니다.`);
+    let text = out.join(' ');
+    // 첫 문장에 날짜(검색어)를 — '오늘은' 으로 시작하면 '10월 2일은'
+    if (!/^\d+월 \d+일/.test(text)) text = /^오늘은 /.test(text) ? text.replace(/^오늘은 /, `${d}은 `) : out[0] === v ? `${d}은 ${text}` : `${d} ${text}`;
+    return text;
 }
 // 흐름 한 단락 — 몇 종목이 왜 올랐고, 누가 앞장섰고, 돈은 어디로 갔나
-function flowParagraph(f, hooked, introduced) {
-    // 첫 문단에서 이미 소개한 흐름이면 '몇 종목·배경' 문장은 반복하지 않는다
-    const out = introduced ? [] : [`${flowWord(f)} ${f.members.length}종목이 함께 올랐습니다.`];
+function flowParagraph(f, hooked, introduced, headed) {
+    // 소제목에 종목 수가 있거나 첫 문단에서 이미 소개한 흐름이면 '몇 종목이 올랐다'는 문장은 반복하지 않는다
+    const out = introduced || headed ? [] : [`${flowWord(f)} ${f.members.length}종목이 함께 올랐습니다.`];
     if (f.catalyst && !introduced) out.push(`같은 날 '${f.catalyst}' 관련 기사가 나왔습니다.`);
     const lu = f.members.filter(r => r.limit);
     const rest = f.members.filter(r => !r.limit).slice(0, lu.length ? 2 : 3);
     if (lu.length) out.push(`${rlJ(lu.slice(0, 3), '이', '가')} 상한가를 기록했고` + (rest.length ? `, ${rest.map(rl).join('·')}도 크게 올랐습니다.` : '.'));
     else if (rest.length) out.push(`${rest.map(rl).join('·')} 순으로 많이 올랐습니다.`);
-    // 개별 기사가 확인된 종목 — 제목에 건 종목 먼저, 최대 2개
-    const told = f.members.filter(r => r.reason && !hooked.has(r)).sort((a, b) => b.energy - a.energy).slice(0, 2);   // 제목 종목은 첫 문단에서 답했다
-    for (const r of told) out.push(`${josa(r.name, '은', '는')} '${r.reason}' 기사가 함께 나왔습니다.`);
+    // 개별 기사가 확인된 종목 — 제목에 건 종목은 위에서 답했다, 최대 2개
+    const told = f.members.filter(r => r.reason && !hooked.has(r)).sort((a, b) => b.energy - a.energy).slice(0, 2);
+    for (const r of told) out.push(`${r.name} 관련 '${r.reason}' 기사도 나왔습니다.`);
     const top = f.members.slice().sort((a, b) => b.vol - a.vol)[0];
     if (top && top.vol >= 3e10) out.push(`거래대금은 ${josa(top.name, '이', '가')} ${josa(amount(top.vol), '으로', '로')} 가장 컸습니다.`);
-    if (f.streak >= 2) out.push(`${flowWord(f)} 급등은 ${f.streak}거래일째 이어지고 있습니다.`);
     return out.join(' ').replace('기록했고.', '기록했습니다.');
+}
+
+// 이유가 확인되지 않은 큰 흐름 — 규모·상한가·앞장선 종목·돈, 그리고 '근거 기사 미확인'을 분명히
+function quietParagraph(f, date, n = 0) {
+    const out = [];
+    const lu = f.members.filter(r => r.limit), rest = f.members.filter(r => !r.limit).slice(0, lu.length ? 2 : 3);
+    if (lu.length) out.push(`이 중 ${lu.length}종목이 상한가였고, ${rlJ(lu.slice(0, 3), '이', '가')} 앞장섰습니다.`);
+    else if (rest.length) out.push(`${rest.map(rl).join('·')} 순으로 많이 올랐습니다.`);
+    const top = f.members.slice().sort((a, b) => b.vol - a.vol)[0];
+    if (top && top.vol >= 3e10) out.push(`거래대금은 ${josa(top.name, '이', '가')} ${josa(amount(top.vol), '으로', '로')} 가장 컸습니다.`);
+    out.push(Talk.noArticle(date, n));
+    return out.join(' ');
 }
 
 // 네이버 블로그 본문 — 붙여넣기 그대로 쓰도록: 꼭지는 이모지(■·점 목록 없음), 문장마다 줄바꿈, 꼭지 사이 빈 줄.
@@ -266,50 +283,74 @@ function blogHtml(m, images) {
     const H = (emoji, x) => `<p><b>${emoji} ${esc(x)}</b></p>`;
     const GAP = '<p><br></p>';                                         // 꼭지 사이 빈 줄
     const plan = titlePlan(s), hooked = new Set(plan.kind === 'stock' ? plan.rows : []);
-    // 이미지 — id 로 자리를 정한다(대장 카드·테마 버블은 첫 문단 뒤, 트리맵은 오늘의 숫자, 캘린더는 끝). id 없으면 예전 순서(0: 앞, 1: 숫자 뒤)
+    const ctx = { date: m.date, calendar: m.calendar, profileOf: m.profileOf, since: m.since, holiday: m.holiday, story: s };
+    // 이미지 — id 로 자리를 정한다. 썸네일(제목 카드)이 맨 위 → 대표 이미지
     const byId = {}, d = mdKo(m.date);
     (images || []).forEach((im, i) => { byId[im.id || (i === 0 ? 'lead-visual' : 'calendar')] = im; });
     const CAP = { leader: `📸 ${d} 오늘의 대장 — 대장주·대장 섹터·대장 테마`, 'theme-bubble': `📸 ${d} 테마별 급등주 지도`,
         'market-tree': `📸 ${d} 시장 전체 등락 트리맵 (ORGO 수집 종목 기준)`, calendar: `📸 ${+m.date.slice(4, 6)}월 대장주 캘린더 (${d}까지)` };
     const IMG = id => { const im = byId[id]; return im ? [`<p><img src="${esc(im.url)}" alt="${esc(im.alt)}"></p>`].concat(CAP[id] ? [P(esc(CAP[id]))] : []) : []; };
-    const out = [SAY(intro(m))];
-    out.push(...IMG('leader'), ...IMG('theme-bubble'), ...IMG('lead-visual'));
 
-    // ① 이유가 있는 흐름 — 흐름마다 이모지 소제목 + 문장 + 관련 종목 한 줄
-    const told = s.lead.concat(s.flows.filter(f => !f.headliner && f.kind !== 'sector' && Story.flowReason(f))).slice(0, 3);
-    let quiet = 0;   // 근거 기사 없는 흐름 — 같은 문장을 되풀이하지 않게
+    // ① 첫 문단 — 제목의 답 + 오늘은 어떤 날이었나
+    const out = [...IMG('title'), SAY(intro(m))];
+    // ② 오늘의 대장 — 누가, 왜 대장인지
+    out.push(GAP, H('🏆', '오늘의 대장'), SAY(Talk.leaderPara(s, m.calendar, m.date, flowWord)), ...IMG('leader'));
+
+    // ③ 제목 종목 깊게 — 업종·테마, 같은 날 기사, 지난 급등 이력, 같은 테마 동반 여부
+    if (plan.kind === 'stock') {
+        const flowsTold = new Set();
+        for (const r of plan.rows.slice(0, 2)) {
+            const t = Talk.stockProfile(r, ctx, flowWord, { flowTold: r.flow && flowsTold.has(r.flow) });
+            if (r.flow) flowsTold.add(r.flow);
+            if (t) out.push(GAP, H('🔍', `${r.name}, 어떤 종목이길래`), SAY(t));
+        }
+    }
+
+    // ④ 오늘의 큰 흐름 — 테마 지도 다음에. 이유가 확인된 흐름은 배경·앞장선 종목·돈, 직접 다룬 기사를 못 찾은 큰 흐름은 규모와 그 사실을
+    out.push(...IMG('theme-bubble'), ...IMG('lead-visual'));
+    const told = s.lead.slice(0, 3);
+    const extra = s.flows.find(f => !told.includes(f) && f.kind !== 'sector' && Story.flowReason(f));
+    if (extra) told.push(extra);
+    let noArt = 0;   // '기사를 찾지 못했다'를 한 글에서 몇 번 했는지 — 표현을 바꿔 되풀이를 피한다
     told.forEach((f, i) => {
-        out.push(GAP, H(FLOW_EMOJI[i] || '📈', f.catalyst ? `${flowWord(f)} — ${Story.clipWords(f.catalyst, 32)}` : `${flowWord(f)} ${f.members.length}종목 동반 상승`));
-        const lu = f.members.filter(r => r.limit).length;
-        if (!Story.flowReason(f)) out.push(SAY((quiet++ ? `${flowWord(f)} ${f.members.length}종목도 함께 올랐습니다(근거 기사 미확인).` :
-            `${flowWord(f)} ${f.members.length}종목이 함께 올랐지만, 같은 날 근거 기사는 확인되지 않았습니다.`) +
-            (lu ? ` 이 중 ${lu}종목이 상한가였고,` : '') + ` ${f.members.slice(0, 3).map(rl).join('·')} 순으로 많이 올랐습니다.`));
-        else out.push(SAY(flowParagraph(f, hooked, plan.kind === 'flow' && plan.flow === f)));
-        if (f.members.length > 3) out.push(P(esc('📋 관련 종목: ' + f.members.slice(0, 10).map(r => `${r.name} ${rateOf(r)}`).join(', ') + (f.members.length > 10 ? ` 외 ${f.members.length - 10}종목` : ''))));
+        const known = !!Story.flowReason(f), headed = !f.catalyst;
+        out.push(GAP, H(FLOW_EMOJI[i] || '📌', f.catalyst ? `${flowWord(f)} — ${Story.clipWords(f.catalyst, 32)}` : `${flowWord(f)} ${f.members.length}종목 동반 ${known ? '상승' : '급등'}`));
+        out.push(SAY(known ? flowParagraph(f, hooked, plan.kind === 'flow' && plan.flow === f, headed) : quietParagraph(f, m.date, noArt++)));
     });
-    // ② 개별 재료 — 종목마다 한 줄
-    const solos = s.solos.slice().sort((a, b) => (hooked.has(b) - hooked.has(a)) || b.rate - a.rate).slice(0, 8);
+
+    // ⑤ 그 밖의 동반 상승 — 한 단락으로
+    const quiet = s.flows.filter(f => !told.includes(f) && !Story.flowReason(f)).slice(0, 3);
+    if (quiet.length) {
+        const parts = quiet.map(f => `${flowWord(f)} ${f.members.length}종목(${f.members.slice(0, 2).map(r => `${r.name} ${rateOf(r)}`).join(', ')} 등)`);
+        const lu = quiet.flatMap(f => f.members.filter(r => r.limit));
+        const luText = !lu.length ? '' : lu.length <= 3 ? ` 이 중 ${josa(lu.map(r => r.name).join('·'), '은', '는')} 상한가였습니다.` : ` 이 중 ${lu.length}종목은 상한가였습니다.`;
+        out.push(GAP, H('🤔', '그 밖에 함께 오른 테마'), SAY(`${parts.join(', ')}도 함께 올랐습니다.${luText} ${Talk.noArticle(m.date, noArt++)}`));
+    }
+    const shown = told.concat(quiet);
+
+    // ⑥ 개별 재료 — 이유가 분명한 종목만 몇 개
+    const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).filter(r => !hooked.has(r)).slice(0, 4);
     if (solos.length) {
         out.push(GAP, H('💡', '개별 재료로 오른 종목'));
         out.push(LINES(solos.map(r => `🔺 <b>${esc(r.name)}</b> ${esc(rateOf(r))}${r.limit ? ' (상한가)' : ''} — ${esc(r.reason)}`)));
     }
-    // ③ 근거 기사 없이 테마로만 함께 오른 종목 — 한 단락으로
-    const tagged = s.flows.filter(f => !told.includes(f)).slice(0, 3);
-    if (tagged.length) {
-        const parts = tagged.map(f => `${flowWord(f)} ${f.members.length}종목(${f.members.slice(0, 2).map(r => `${r.name} ${rateOf(r)}`).join(', ')} 등)`);
-        out.push(GAP, SAY(`이 밖에 ${parts.join(', ')}도 함께 올랐지만, 같은 날 근거 기사는 확인되지 않았습니다.`));
-    }
-    // ④ 오늘의 숫자 — 줄마다 이모지
+
+    // ⑦ 숫자로 본 오늘 — 열기 비교 한 문장 + 꼭 필요한 숫자만
     const nums = [];
-    if (s.limitUps.length) nums.push(`🔒 상한가 ${s.limitUps.length}종목: ${s.limitUps.map(r => r.name).join(', ')}`);
-    nums.push(`📈 +15% 이상 ${s.hot.length}종목` + (s.prevHot != null ? ` (전 거래일 ${s.prevHot}종목)` : ''));
-    if (s.money[0]) nums.push(`💰 거래대금 1위 급등주: ${s.money[0].name} ${amount(s.money[0].vol)} (${rateOf(s.money[0])})`);
-    if (s.continuing.length) nums.push(`🔁 연속 상승: ${s.continuing.slice(0, 4).map(r => `${r.name}(${r.streak}거래일)`).join(', ')} — 연속 +10% 이상`);
+    if (s.limitUps.length) nums.push(`🔒 상한가 ${s.limitUps.length}종목: ${s.limitUps.slice(0, 8).map(r => r.name).join(', ')}${s.limitUps.length > 8 ? ` 외 ${s.limitUps.length - 8}종목` : ''}`);
+    if (s.money[0]) nums.push(`💰 +10% 이상 종목 중 거래대금 1위: ${s.money[0].name} ${amount(s.money[0].vol)} (${rateOf(s.money[0])})`);
+    if (s.continuing.length) nums.push(`🔁 연속 +10% 이상: ${s.continuing.slice(0, 4).map(r => `${r.name}(${r.streak}거래일)`).join(', ')}`);
     if (s.high52.length) nums.push(`🏔️ 52주 신고가: ${s.high52.slice(0, 5).map(r => r.name).join(', ')}`);
     if (s.ipos.length) nums.push(`🆕 신규상장: ${s.ipos.map(r => r.name + (r.vol ? ` (거래대금 ${amount(r.vol)})` : '')).join(', ')}`);
-    out.push(GAP, H('📊', '오늘의 숫자'));
-    out.push(LINES(nums.map(esc)));
-    out.push(...IMG('market-tree'), ...IMG('calendar'));
+    out.push(GAP, H('📊', '숫자로 본 오늘'), SAY(Talk.heat(s)));
+    if (nums.length) out.push(LINES(nums.map(esc)));
+    out.push(...IMG('market-tree'));
+
+    // ⑧ ORGO의 시선 — 본문에 나온 흐름만 놓고 종합, 이어짐, 다음 거래일에 볼 부분 (원인 단정·전망·권유 없이)
+    const view = Talk.view(s, ctx, flowWord, shown);
+    if (view) out.push(GAP, H('💬', 'ORGO의 시선'), SAY(view));
+    out.push(...IMG('calendar'));
+
     const hol = holidaySentence(m.holiday);
     if (hol) out.push(GAP, H('🗓', '휴장 안내'), SAY(hol));
     // 링크는 주소를 그대로 보이게 — 텍스트로 붙여넣어도 주소가 남는다. 날짜별 정적 페이지(/day/)로는 보내지 않는다
@@ -326,23 +367,35 @@ function blogHtml(m, images) {
     return out.join('\n');
 }
 
+// 썸네일(제목 카드) 재료 — 검색 결과에 뜨는 대표 이미지. 제목을 큰 글씨로
+function blogCard(m, title) {
+    const s = m.story, body = title.replace(/^\d+월 \d+일 /, '');
+    let main = body, sub = '';
+    if (body.includes('? ')) { const k = body.indexOf('? '); main = body.slice(0, k + 1); sub = body.slice(k + 2); }
+    else if (body.includes(' | ')) { const k = body.indexOf(' | '); main = body.slice(0, k); sub = body.slice(k + 3); }
+    const chips = [s.limitUps.length ? `상한가 ${s.limitUps.length}` : '', `+15% 이상 ${s.hot.length}종목`, s.leader ? `대장 ${s.leader.name}` : ''].filter(Boolean);
+    return { kicker: `${dayKo(m.date)} 마감`, main, sub, chips };
+}
+
 function blogTags(m) {
+    // 태그는 많다고 좋지 않다 — 제목 종목·날짜·흐름 위주로 12개 이내
     const s = m.story, mm = +m.date.slice(4, 6), dd = +m.date.slice(6);
     const clean = t => String(t || '').replace(/[^가-힣A-Za-z0-9]/g, '');
-    const base = ['급등주', '상한가', '상한가종목', '오늘의급등주', '주식시황', '국내증시', '코스닥', `${mm}월${dd}일상한가`, `${mm}월${dd}일급등주`];
-    const flows = s.lead.slice(0, 4).map(f => clean(flowWord(f).replace(/ 테마$/, '관련주')));
     const h = hookStocks(s).rows.map(r => clean(r.name) + (r.limit ? '상한가' : '급등'));
-    const stocks = [...s.limitUps, ...s.flows.slice(0, 2).flatMap(f => f.members.slice(0, 3)), ...s.solos.slice(0, 4)].map(r => clean(r.name));
-    return [...new Set(base.concat(flows, h, stocks))].filter(t => len(t) >= 2).slice(0, 30);
+    const flows = s.lead.slice(0, 3).map(f => clean(flowWord(f).replace(/ 테마$/, '관련주')));
+    const stocks = [...s.limitUps, ...s.solos.slice(0, 2)].map(r => clean(r.name));
+    const base = [`${mm}월${dd}일상한가`, `${mm}월${dd}일급등주`, '상한가', '급등주', '주식시황'];
+    return [...new Set(h.concat(base.slice(0, 2), flows, base.slice(2), stocks))].filter(t => len(t) >= 2).slice(0, 12);
 }
 
 function naverBlog(m, images) {
     const title = blogTitle(m);
     const html = blogHtml(m, images || []);
     // 텍스트 복사본: 꼭지 제목 바로 아래에 본문, 단락 사이 빈 줄 한 줄
-    const text = html.replace(/<p><br><\/p>\n?/g, '').replace(/(<p><b>[^<]*<\/b><\/p>)\n/g, '$1').replace(/<br>/g, '\n').replace(/<\/(p|li|ul)>/g, '\n').replace(/<[^>]+>/g, '')
+    // 이미지 설명(📸) 줄은 이미지가 없는 텍스트 복사본에선 뺀다
+    const text = html.replace(/<p>📸[^<]*<\/p>\n?/g, '').replace(/<p><br><\/p>\n?/g, '').replace(/(<p><b>[^<]*<\/b><\/p>)\n/g, '$1').replace(/<br>/g, '\n').replace(/<\/(p|li|ul)>/g, '\n').replace(/<[^>]+>/g, '')
         .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/\n{3,}/g, '\n\n').trim();
-    return { title, html, text, tags: blogTags(m), images: images || [] };
+    return { title, html, text, tags: blogTags(m), images: images || [], card: blogCard(m, title) };
 }
 
 function assertSafe(s) {
@@ -351,4 +404,4 @@ function assertSafe(s) {
     return s;
 }
 
-module.exports = { holidayLine, holidaySentence, josa, flowName, flowWord, material, threads, threadsHook, headPhrase, hookStocks, siteLink, naverBlog, blogTitle, pageTitle, pageDesc, blogTags, intro, assertSafe, md, mdKo };
+module.exports = { blogCard, holidayLine, holidaySentence, josa, flowName, flowWord, material, threads, threadsHook, headPhrase, hookStocks, siteLink, naverBlog, blogTitle, pageTitle, pageDesc, blogTags, intro, assertSafe, md, mdKo };

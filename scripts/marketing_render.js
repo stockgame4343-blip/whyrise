@@ -14,6 +14,26 @@ function snapshotBundle(date,d,day,map) {
     if(d.assets.some(a=>a.id==='calendar')&&!days[date])throw Error('Calendar day missing');
     return {day,map,calendar:{days,holidays:tg.krHolidayLabels()}};   // 캘린더 이미지에도 휴장일(대체공휴일 포함) 표시
 }
+function titleCardHtml(c) {
+    const e=v=>String(v==null?'':v).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+    const main=String(c.main||''),big=Array.from(main).length<=12?120:Array.from(main).length<=18?100:84;
+    return `<!doctype html><html lang="ko"><head><meta charset="utf-8">`+
+        `<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">`+
+        `<style>*{box-sizing:border-box;margin:0}body{background:#101218}`+
+        `#card{width:1080px;height:1080px;padding:96px 88px;display:flex;flex-direction:column;justify-content:space-between;`+
+        `background:radial-gradient(circle at 85% 12%,rgba(255,86,102,.22),transparent 46%),#101218;color:#fff;`+
+        `font-family:'Pretendard Variable',Pretendard,'Noto Sans KR','Noto Sans CJK KR',sans-serif;letter-spacing:-.02em}`+
+        `.logo{font-size:44px;font-weight:900;letter-spacing:-.01em}.logo span{font-size:28px;font-weight:600;color:#8b93a7;margin-left:14px}`+
+        `.kicker{display:inline-block;font-size:38px;font-weight:700;color:#ff5666;border:3px solid rgba(255,86,102,.6);border-radius:999px;padding:10px 30px;margin-bottom:40px}`+
+        `.main{font-size:${big}px;font-weight:900;line-height:1.16;word-break:keep-all}`+
+        `.sub{margin-top:30px;font-size:54px;font-weight:700;color:#c9ced8;word-break:keep-all;line-height:1.25}`+
+        `.chips{display:flex;flex-wrap:wrap;gap:18px}.chip{font-size:36px;font-weight:700;background:#1d212b;border:2px solid #2c3240;border-radius:20px;padding:14px 26px;color:#e8ebf1}`+
+        `.foot{font-size:30px;color:#8b93a7;margin-top:28px}</style></head><body><div id="card">`+
+        `<div class="logo">ORGO<span>orgo.kr</span></div>`+
+        `<div><div class="kicker">${e(c.kicker)}</div><div class="main">${e(main)}</div>${c.sub?`<div class="sub">${e(c.sub)}</div>`:''}</div>`+
+        `<div><div class="chips">${(c.chips||[]).map(x=>`<span class="chip">${e(x)}</span>`).join('')}</div><div class="foot">오늘 오른 종목과 이유 · orgo.kr</div></div>`+
+        `</div></body></html>`;
+}
 async function jpeg(page,png,out) {
     const data=fs.readFileSync(png).toString('base64');
     const result=await page.evaluate(async data=>{
@@ -68,7 +88,10 @@ async function render(date) {
         const manifest={date,render_version:2,content_hash:d.content_hash,assets:{}};
         for(const asset of d.assets) {
             const png=path.join(dir,asset.id+'.png');
-            if(asset.id==='leader') {
+            if(asset.id==='title') {
+                // 블로그 썸네일 — 제목을 큰 글씨로(검색 결과 대표 이미지)
+                await tg.captureHtml(browser,titleCardHtml(d.naver_blog.card||{}),{outPath:png,width:1080,height:1080});
+            } else if(asset.id==='leader') {
                 const stock=d.leader.stock;
                 const html=tg.leaderCardHtml({dateRange:`${date.slice(0,4)}.${date.slice(4,6)}.${date.slice(6)}`,leader:stock?{...stock,tag:stock.theme,reason:''}:null,sector:d.leader.sector,theme:d.leader.theme});
                 await tg.captureHtml(browser,html,{outPath:png});
@@ -102,4 +125,4 @@ async function render(date) {
     } finally {if(browser)await browser.close();server.close();}
 }
 if(require.main===module)render(process.argv[2]).catch(e=>{console.error(e.stack);process.exitCode=1;});
-module.exports={render,snapshotBundle};
+module.exports={render,snapshotBundle,titleCardHtml};
