@@ -368,8 +368,8 @@ function blogHtml(m, images) {
     if (hol) out.push(GAP, H('🗓', '휴장 안내'), SAY(hol));
     // 링크는 주소를 그대로 보이게 — 텍스트로 붙여넣어도 주소가 남는다. 날짜별 정적 페이지(/day/)로는 보내지 않는다
     const link = siteLink(m.date, 'naver_blog', 'blog');
-    // 캐릭터 마무리 멘트 + 캐릭터 이미지
-    out.push(GAP, `<p><img src="${Persona.MASCOT_URL}" alt="ORGO 캐릭터" width="160"></p>`, SAY(Persona.blogClosing(m)));
+    // 캐릭터 마무리 멘트(그림은 운영자가 직접 넣는다)
+    out.push(GAP, SAY(Persona.blogClosing(m)));
     // 마지막 — 웹과 텔레그램 소개(무엇을 볼 수 있는지, 언제 오는지)
     out.push(GAP, H('🧭', 'ORGO에서 더 보기'));
     out.push(LINES([`🌐 <b>웹 orgo.kr</b>`, '매일 오른 종목과 그 이유를 근거 기사와 함께 날짜별로 정리합니다.',

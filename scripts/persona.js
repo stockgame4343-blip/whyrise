@@ -1,6 +1,6 @@
 'use strict';
 /**
- * ORGO 캐릭터 말투 — 파란 정장·안경의 애널리스트 캐릭터(public/img/orgo-mascot.png).
+ * ORGO 캐릭터 말투 — 파란 정장·안경의 애널리스트 캐릭터. 캐릭터 그림은 운영자가 직접 넣는다(자동 이미지·썸네일에는 넣지 않음).
  *
  * 쓰는 곳 (사용자 결정 2026-10-06)
  *  - 쓰레드: 글 전체를 캐릭터 말투로
@@ -65,5 +65,4 @@ function blogClosing(m) {
     return safe(`${end} ${next} ${ask}`);
 }
 
-const MASCOT_URL = 'https://orgo.kr/img/orgo-mascot-sm.png';
-module.exports = { threadsOpen, verdictTalk, holidayTalk, threadsTail, blogOpening, blogClosing, safe, HYPE, MASCOT_URL };
+module.exports = { threadsOpen, verdictTalk, holidayTalk, threadsTail, blogOpening, blogClosing, safe, HYPE };
