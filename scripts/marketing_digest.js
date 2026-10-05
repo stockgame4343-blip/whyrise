@@ -89,7 +89,8 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
     const monthDays = Object.entries(calendarDays).filter(([key]) => key.startsWith(date.slice(0,6)));
     const base = `/marketing/${date}/`;
     const themeAvailable=hasTheme(day.rankings);
-    const assets = themeAvailable?[{id:'theme-bubble',label:'테마 버블맵',file:'theme-bubble.jpg',source:'/flowmap.html',alt:`${date} 급등주 테마별 버블맵`}]:[];
+    const assets = themeAvailable?[{id:'theme-bubble',label:'테마 버블맵',file:'theme-bubble.jpg',source:'/flowmap.html',alt:`${date} 급등주 테마별 버블맵`},
+        {id:'theme-tree',label:'테마 트리맵',file:'theme-tree.jpg',source:'/flowmap.html',alt:`${date} 급등주 테마별 트리맵`}]:[];
     if(sameSnapshot) assets.push(
         {id:'market-tree',label:'시장 트리맵',file:'market-tree.jpg',source:'/treemap.html',alt:`${date} ORGO 수집 종목 등락률 트리맵`},
         {id:'market-bubble',label:'시장 버블맵',file:'market-bubble.jpg',source:'/bubbles2.html',alt:`${date} ORGO 수집 종목 등락률 버블맵`});
@@ -144,20 +145,26 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
             return [channel,post];
         }));
     }
+    // 오늘의 주도주 TOP5 카드(마감 기준, 상승률×거래대금) — 블로그 이미지
+    const top5 = S.rows.filter(r => !r.ipo).sort((a, b) => b.energy - a.energy).slice(0, 5)
+        .map(r => ({ name: r.name, market: r.market, rate: Math.round(r.rate * 100) / 100, vol: Math.round(r.vol), theme: r.theme || '', reason: r.reason || (r.flow && r.flow.kind !== 'sector' && r.flow.catalyst) || '' }));   // 카드에 테마 이름이 따로 붙어 '광통신 광통신 강세'처럼 겹치지 않게
+    if (top5.length >= 3) assets.push({id:'top5',label:'오늘의 주도주 TOP5',file:'top5.jpg',source:'/rise.html',alt:`${date} 오늘의 주도주 TOP5 (마감 기준)`});
     // 블로그 썸네일(제목 카드) — 검색 결과 대표 이미지
     const blogTitleText = Copy.blogTitle(material);
     assets.push({id:'title',label:'블로그 썸네일',file:'title.jpg',source:'/marketing.html',alt:`${date} ${blogTitleText}`});
     // 블로그 이미지 — 썸네일 → 텔레그램처럼 대장 카드·테마 버블, 시장 트리맵은 '숫자로 본 오늘', 캘린더는 끝에
-    const blogImages = ['title', 'leader', themeAvailable ? 'theme-bubble' : null, sameSnapshot ? 'market-tree' : null, 'calendar'].filter(Boolean)
+    // 우리 자료 이미지를 넉넉히 — 썸네일, 대장 카드, 주도주 TOP5, 테마 버블·트리, 시장 트리·버블, 대장 캘린더
+    const blogImages = ['title', 'leader', 'top5', themeAvailable ? 'theme-bubble' : null, themeAvailable ? 'theme-tree' : null,
+        sameSnapshot ? 'market-tree' : null, sameSnapshot ? 'market-bubble' : null, 'calendar'].filter(Boolean)
         .map(id => { const a = assets.find(x => x.id === id); return a ? { id, url: `https://orgo.kr${base}${a.file}`, alt: a.alt } : null; }).filter(Boolean);
     const naverBlog = Copy.naverBlog(material, blogImages);
     const selected=stories.find(s=>s.id===defaultStory);
     const digest={version:2,date,generated_at:now.toISOString(),is_final:true,scope:'ORGO 수집 종목 기준 (전체 시장 전수 통계 아님)',
         coverage:{total:all.length,supported:covered,related_news:reported,unresolved:all.length-covered-reported,snapshot_merged:!!sameSnapshot,supplemented:all.filter(r=>r.reason_source==='missing').length},
-        overview:`+15% 이상 ${S.hot.length}종목`,headline:S.headline,movers,breadth,leader,calendar_days:calendarDays,assets,stories,default_story:defaultStory,posts:selected.posts,
+        overview:`+15% 이상 ${S.hot.length}종목`,headline:S.headline,movers,breadth,leader,top5,calendar_days:calendarDays,assets,stories,default_story:defaultStory,posts:selected.posts,
         naver_blog:naverBlog};
     digest.input_hash=crypto.createHash('sha256').update(JSON.stringify({day,marketmap:sameSnapshot?marketmap:null})).digest('hex');
-    digest.content_hash=crypto.createHash('sha256').update(JSON.stringify({date,input_hash:digest.input_hash,movers,breadth,leader,calendarDays,stories,naverBlog})).digest('hex');
+    digest.content_hash=crypto.createHash('sha256').update(JSON.stringify({date,input_hash:digest.input_hash,movers,breadth,leader,top5,calendarDays,stories,naverBlog})).digest('hex');
     return digest;
 }
 function blogPage(d) {

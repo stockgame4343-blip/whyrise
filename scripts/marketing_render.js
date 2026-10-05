@@ -90,6 +90,9 @@ async function render(date) {
             if(asset.id==='title') {
                 // 블로그 썸네일 — 제목을 큰 글씨로(검색 결과 대표 이미지)
                 await tg.captureHtml(browser,titleCardHtml(d.naver_blog.card||{}),{outPath:png,width:1080,height:1080});
+            } else if(asset.id==='top5') {
+                // 오늘의 주도주 TOP5(마감 기준) — 텔레그램 장중 카드와 같은 틀
+                await tg.captureHtml(browser,tg.topMoversCardHtml({dateRange:`${date.slice(0,4)}.${date.slice(4,6)}.${date.slice(6)} 마감`,movers:d.top5||[]}),{outPath:png});
             } else if(asset.id==='leader') {
                 const stock=d.leader.stock;
                 const html=tg.leaderCardHtml({dateRange:`${date.slice(0,4)}.${date.slice(4,6)}.${date.slice(6)}`,leader:stock?{...stock,tag:stock.theme,reason:''}:null,sector:d.leader.sector,theme:d.leader.theme});
@@ -104,6 +107,7 @@ async function render(date) {
                 } else {
                     await page.waitForFunction(date=>window.WhyRiseTmapBridge?.getCurrentDate()===date,date);
                     if(asset.id==='theme-bubble')await page.evaluate(()=>{WhyRiseTmapBridge.setMode('theme');WhyRiseTmapBridge.setView('bubble');});
+                    if(asset.id==='theme-tree')await page.evaluate(()=>{WhyRiseTmapBridge.setMode('theme');WhyRiseTmapBridge.setView('tree');});
                     await page.addStyleTag({content:'#tmapStage{height:650px!important;min-height:650px!important;max-height:650px!important}'});
                     await page.evaluate(()=>window.dispatchEvent(new Event('resize')));
                     await page.waitForFunction(()=>{const svg=document.querySelector('#tmapSvg'),vb=svg.viewBox.baseVal;return Math.abs(vb.width-svg.clientWidth)<2&&Math.abs(vb.height-svg.clientHeight)<2;});

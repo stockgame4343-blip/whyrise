@@ -250,7 +250,11 @@ test('블로그 이미지 — 텔레그램처럼 대장 카드·테마 버블이
     assert.ok(h.indexOf('📊 숫자로 본 오늘')<at('market-tree.jpg')&&at('market-tree.jpg')<at('calendar.jpg'));
     assert.match(h,/📸 9월 4일 오늘의 대장 — 대장주·대장 섹터·대장 테마/);
     assert.match(h,/📸 9월 대장주 캘린더 \(9월 4일까지\)/);
-    assert.doesNotMatch(h,/market-bubble/);   // 같은 내용의 시장 버블은 트리맵 하나로
+    // 우리 자료 이미지를 넉넉히 — 썸네일·대장·TOP5·테마 버블·테마 트리·시장 트리·시장 버블·캘린더 순
+    const order=['title.jpg','leader.jpg','theme-bubble.jpg','theme-tree.jpg','market-tree.jpg','market-bubble.jpg','calendar.jpg'].map(at);
+    assert.ok(order.every((v,i)=>v>0&&(i===0||v>order[i-1])), JSON.stringify(order));
+    assert.match(h,/📸 9월 4일 테마별 급등주 트리맵/);
+    assert.match(h,/📸 9월 4일 시장 전체 등락 버블맵/);
 });
 test('쓰레드 원고는 Threads 기준 길이(이모지=바이트)로 500자 안 — 게시 실패 방지',()=>{
     const {threadsLength}=require('./threads_publish');

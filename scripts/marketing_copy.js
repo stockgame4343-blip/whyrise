@@ -297,13 +297,15 @@ function blogHtml(m, images) {
     const byId = {}, d = mdKo(m.date);
     (images || []).forEach((im, i) => { byId[im.id || (i === 0 ? 'lead-visual' : 'calendar')] = im; });
     const CAP = { leader: `📸 ${d} 오늘의 대장 — 대장주·대장 섹터·대장 테마`, 'theme-bubble': `📸 ${d} 테마별 급등주 지도`,
-        'market-tree': `📸 ${d} 시장 전체 등락 트리맵 (ORGO 수집 종목 기준)`, calendar: `📸 ${+m.date.slice(4, 6)}월 대장주 캘린더 (${d}까지)` };
+        'market-tree': `📸 ${d} 시장 전체 등락 트리맵 (ORGO 수집 종목 기준)`, calendar: `📸 ${+m.date.slice(4, 6)}월 대장주 캘린더 (${d}까지)`,
+        top5: `📸 ${d} 오늘의 주도주 TOP5 — 상승률×거래대금 기준(마감)`, 'theme-tree': `📸 ${d} 테마별 급등주 트리맵`,
+        'market-bubble': `📸 ${d} 시장 전체 등락 버블맵 (ORGO 수집 종목 기준)` };
     const IMG = id => { const im = byId[id]; return im ? [`<p><img src="${esc(im.url)}" alt="${esc(im.alt)}"></p>`].concat(CAP[id] ? [P(esc(CAP[id]))] : []) : []; };
 
     // ① 첫 문단 — 제목의 답 + 오늘은 어떤 날이었나
     const out = [...IMG('title'), SAY(intro(m))];
     // ② 오늘의 대장 — 누가, 왜 대장인지
-    out.push(GAP, H('🏆', '오늘의 대장'), SAY(Talk.leaderPara(s, m.calendar, m.date, flowWord)), ...IMG('leader'));
+    out.push(GAP, H('🏆', '오늘의 대장'), SAY(Talk.leaderPara(s, m.calendar, m.date, flowWord)), ...IMG('leader'), ...IMG('top5'));
 
     // ③ 제목 종목 깊게 — 업종·테마, 같은 날 기사, 지난 급등 이력, 같은 테마 동반 여부
     if (plan.kind === 'stock') {
@@ -316,7 +318,7 @@ function blogHtml(m, images) {
     }
 
     // ④ 오늘의 큰 흐름 — 테마 지도 다음에. 이유가 확인된 흐름은 배경·앞장선 종목·돈, 직접 다룬 기사를 못 찾은 큰 흐름은 규모와 그 사실을
-    out.push(...IMG('theme-bubble'), ...IMG('lead-visual'));
+    out.push(...IMG('theme-bubble'), ...IMG('theme-tree'), ...IMG('lead-visual'));
     const told = s.lead.slice(0, 3);
     const extra = s.flows.find(f => !told.includes(f) && f.kind !== 'sector' && Story.flowReason(f));
     if (extra) told.push(extra);
@@ -353,7 +355,7 @@ function blogHtml(m, images) {
     if (s.ipos.length) nums.push(`🆕 신규상장: ${s.ipos.map(r => r.name + (r.vol ? ` (거래대금 ${amount(r.vol)})` : '')).join(', ')}`);
     out.push(GAP, H('📊', '숫자로 본 오늘'), SAY(Talk.heat(s)));
     if (nums.length) out.push(LINES(nums.map(esc)));
-    out.push(...IMG('market-tree'));
+    out.push(...IMG('market-tree'), ...IMG('market-bubble'));
 
     // ⑧ ORGO의 시선 — 본문에 나온 흐름만 놓고 종합, 이어짐, 다음 거래일에 볼 부분 (원인 단정·전망·권유 없이)
     const view = Talk.view(s, ctx, flowWord, shown);
