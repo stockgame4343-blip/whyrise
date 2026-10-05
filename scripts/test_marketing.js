@@ -164,7 +164,7 @@ test('threads reply waits for the main post and is never resent',async()=>{
 });
 test('naver blog draft: SEO title, facts only, link and disclaimer, no advisory words',()=>{
     const d=buildDigest(day,null),b=d.naver_blog;
-    assert.match(b.title,/9월 4일/);assert.ok(Array.from(b.title).length<=70);
+    assert.match(b.title,/9월 4일/);assert.ok(Array.from(b.title).length<=42);
     assert.match(b.html,/orgo\.kr\/day\/20260904\?utm_source=naver_blog/);
     assert.match(b.html,/투자 권유가 아닙니다/);
     assert.doesNotMatch(b.html.replace(/투자 권유가 아닙니다/g,''),/매수|매도|추천|목표가|급등 예상/);
@@ -190,13 +190,16 @@ test('operator blog alert names the post and the 발행실 link (HTML-escaped)',
     assert.match(note,/orgo\.kr\/marketing\.html#blog/);
     assert.match(note,/쓰레드: 계정 연결 전/);
 });
-test('threads hook names the day top mover incl. listing-day leader missing from rows',()=>{
+test('listing-day leader missing from rows is shown as a new listing, not as a theme member',()=>{
     const rows=[{ticker:'000001',name:'가나',change_rate:30,rise_reason:'신규 수주 공급 계약',reason_source:'news_extract',reason_kind:'catalyst'}];
     const m=Copy.material({date:'20261001',rows,leader:{ticker:'468670',name:'브릴스',rate:59.5,listing_day:true},breadth:null,market:null});
     const t=Copy.threads(m).text;
-    assert.match(t,/1위는 브릴스 \+59\.5% \(상장 첫날\)/);
-    assert.match(t,/가나 \+30\.0%/);
+    assert.match(t,/신규상장 브릴스/);
+    assert.doesNotMatch(t,/59\.5/);                 // 신규상장주 등락률은 공모가 기준이 아니어서 싣지 않는다
+    assert.match(t,/가나 \+30\.0% — 신규 수주 공급 계약/);
+    assert.match(t,/^오늘 가나가 상한가 간 이유/);    // 이유가 실린 상한가 종목이 첫 줄
     assert.ok(Array.from(t).length<=500);
+    assert.match(Copy.naverBlog(m,[]).html,/신규상장주/);
 });
 test('weak "관련 보도" reasons are not used as reasons in external copy',()=>{
     const rows=[{ticker:'000002',name:'다라',change_rate:20,rise_reason:'관련 보도: 대표 인터뷰',reason_source:'news_extract',reason_kind:'related'}];

@@ -269,6 +269,13 @@ jobs:
         continue-on-error: true
         run: node scripts/build_leaders_calendar.js
 
+      # 날짜별 '오늘의 흐름'(public/data/day-story) — 쓰레드·블로그·텔레그램과 같은 흐름·제목을 날짜 페이지에도.
+      # 대장캘린더 뒤, 날짜 페이지 앞. 실패해도 날짜 페이지는 기존 방식으로 만들어진다.
+      - name: Build day stories
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && (steps.mode.outputs.mode == 'full' || steps.mode.outputs.mode == 'incremental' || steps.mode.outputs.mode == 'reason-backfill' || steps.mode.outputs.mode == 'news-refresh') }}
+        continue-on-error: true
+        run: node scripts/build_day_stories.js
+
       # 날짜별 급등주 정적 페이지(/day/YYYYMMDD) — 대장캘린더 갱신 뒤에 만들어 '오늘의 대장'까지 반영.
       # 검색 유입용 SEO 페이지라 실패해도 본 빌드·커밋은 진행.
       - name: Prerender day pages (SEO)

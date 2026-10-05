@@ -103,24 +103,36 @@ test('editorial comparisons count distinct qualifying stocks without future or p
 
 test('slot captions answer distinct questions and keep follow-up observations factual',()=>{
     const e=require('./tg_editorial');
-    const row={ticker:'000001',name:'검증전자',change_rate:20,trading_value:1e10};
+    const row={ticker:'000001',name:'검증전자',change_rate:20,trading_value:1e10,rise_reason:'국방부 드론에 카메라 모듈 공급',reason_source:'news_extract',reason_kind:'catalyst'};
     const day={date:'20260904',is_final:true,rankings:[row]};
     const texts=[e.daily(day.date,{leader:row,theme:null},null,{},day,null),e.intraday(day.date,[{...row,rate:20,vol:1e10}],{}),e.themes(day.date,{themes:[{key:'반도체',count:3,avgRate:18}],sectors:[]}),e.evening(day.date,day,null,{})];
     for(const text of texts){
-        assert.ok(text.length<900);
+        assert.ok(text.length<1024);
         // 본문 링크 1개 + (마감·저녁만) 공유 링크 1개
         assert.ok((text.match(/<a href/g)||[]).length<=2);
-        assert.doesNotMatch(text,/목표가|매수|매도|확실|최초/);
-        assert.doesNotMatch(text,/지도는 전체 수집 종목, 위 통계는/);   // 반복 방법론 문구 제거
+        assert.doesNotMatch(text,/목표가|매수|매도|확실|최초|관심 가져/);
+        assert.doesNotMatch(text,/내일 체크|오늘 볼 것/);          // 매일 같은 일반론 문구는 없다
     }
-    assert.match(texts[0],/오늘의 대장/);assert.match(texts[1],/개별 주도주/);assert.match(texts[2],/테마 확산/);assert.match(texts[3],/오늘 왜 올랐나/);
+    assert.match(texts[0],/오늘의 대장 검증전자/);assert.match(texts[1],/개별 주도주/);assert.match(texts[2],/테마 확산/);assert.match(texts[3],/오늘 왜 올랐나/);
     assert.match(texts[0],/orgo\.kr\/day\/20260904/);assert.match(texts[3],/t\.me\/share\/url/);
-    assert.match(e.daily(day.date,{leader:null},null,{},day,null),/대장 조건을 충족한 종목이 없어요/);
-    // 이유가 있는 종목은 이름 아래에 '왜'가 붙는다
-    const withWhy=e.evening(day.date,day,null,{'000001':'국방부 드론에 카메라 모듈 공급'});
-    assert.match(withWhy,/<b>검증전자<\/b> \+20\.0%\n   └ 국방부 드론에 카메라 모듈 공급/);
+    assert.match(e.daily(day.date,{leader:null},null,{},day,null),/오늘의 대장 없음 · 거래대금 1위 검증전자/);
+    // 이유가 있는 종목은 '—' 뒤에 이유가 붙는다
+    assert.match(texts[3],/<b>검증전자<\/b> \+20\.0% — 국방부 드론에 카메라 모듈 공급/);
 });
 
+test('captions stay within Telegram limits on busy days and group by flow with real counts',()=>{
+    const e=require('./tg_editorial');
+    const rows=[];
+    for(let i=0;i<60;i++) rows.push({ticker:String(100000+i),name:'광통신종목'+i,change_rate:29-(i%15),trading_value:1e11-i*1e9,theme_tag:'광통신(광케이블/광섬유 등)',
+        rise_reason:'광통신주 동반 강세 — 美 빅테크 투자 확대 소식',reason_source:'news_extract',reason_kind:'sector'});
+    const day={date:'20261002',is_final:true,rankings:rows};
+    const d=e.daily(day.date,{leader:null},{kospi:{changePct:0.5},kosdaq:{changePct:-0.1}},{},day,null);
+    assert.ok(d.length<=1024,'daily caption '+d.length);
+    assert.match(d,/<b>광통신<\/b> 60종목 — 美 빅테크 투자 확대/);
+    const ev=e.evening(day.date,day,null,{});
+    assert.ok(ev.length<=4096);
+    assert.match(ev,/외 55/);
+});
 test('calendar commentary includes explicit no-leader days and excludes future records',()=>{
     const e=require('./tg_editorial');
     const cal={'20260901':{stock:{ticker:'000001',name:'가전자'}},'20260902':{stock:null},'20260903':{stock:{ticker:'000001',name:'가전자'}},'20260904':{stock:{ticker:'000002',name:'나전자'}},'20260907':{stock:{ticker:'000002',name:'나전자'}}};

@@ -17,6 +17,7 @@ const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
 const editorial = require('./tg_editorial.js');
 const market = require('./tg_market.js');
+const Story = require('./market_story.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -58,15 +59,13 @@ async function fetchYesterdayRecap(today) {
     if (!day) day = editorial.previousSnapshot(PUBLIC, { date: today, is_final: true, rankings: [] });
     if (!day) return null;
     var last = day.date;
-    var rows = editorial.activeRows(day).sort(function (a, b) { return b.change_rate - a.change_rate; });
-    var limitUps = rows.filter(function (r) { return core.num(r.change_rate) >= LIMIT_UP_CUTOFF; });
     var leader = null;
     try { leader = editorial.calendarLeaders(PUBLIC, last, day).leader; } catch (_) { /* 캘린더 미반영 */ }
-    var themes = core.buildGroups(rows, 'theme').filter(function (g) { return !editorial.isNewListing(g.key) && !/^거래(량|대금)$/.test(g.key); });
-    var refined = tg.reasonsFromRows(day.rankings, last);
-    var explained = editorial.explainedFirst(rows, refined, 3).filter(function (r) { return refined[r.ticker]; });
-    return { ymd: last, riseCount: rows.length, limitUpCount: limitUps.length, leader: leader,
-        topTheme: themes[0] || null, explained: explained, refined: refined };
+    // 어제 흐름 — 마감·저녁과 같은 규칙(market_story), 연속일은 그 전 거래일들 기준
+    return Story.build(Story.withSnapshot(PUBLIC, day), {
+        leader: leader ? { ticker: leader.ticker, name: leader.name, rate: leader.change_rate, vol: leader.trading_value, listing_day: leader.listing_day } : null,
+        history: Story.loadHistory(PUBLIC, last, 10),
+    });
 }
 
 // ── 캡션 ── 해외는 한 줄 요약, 핵심은 '어제 왜 올랐나'
@@ -84,16 +83,10 @@ function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
     if (extra.length) lines.push(e('   ' + extra.join(' · ')));
     if (recap) {
         lines.push('');
-        lines.push('<b>' + e('📌 어제(' + (+recap.ymd.slice(4,6)) + '/' + (+recap.ymd.slice(6)) + ') 국내') + '</b>');
-        lines.push(e('+' + core.RISE_CUTOFF + '% 이상 ' + recap.riseCount + '종목 · 상한가 근접 ' + recap.limitUpCount + '종목'));
-        if (recap.leader) lines.push(e('대장 ' + recap.leader.name + editorial.ipoMark(recap.leader) + ' ' + tg.pct(recap.leader.change_rate)));
-        if (recap.explained.length) {
-            lines.push('', '<b>' + e('어제 왜 올랐나') + '</b>');
-            lines.push.apply(lines, editorial.stockLines(recap.explained, recap.refined));
-        }
+        lines.push.apply(lines, editorial.morningBlock(recap));
     }
     if (comment) { lines.push(''); lines.push(e(comment)); }
-    var link = recap ? tg.htmlLink('어제 오른 종목·이유 전체', tg.orgoLink('/day/' + recap.ymd, 'morning'))
+    var link = recap ? tg.htmlLink('어제 오른 종목·이유 전체', tg.orgoLink('/day/' + recap.date, 'morning'))
         : tg.htmlLink('대장 캘린더', tg.orgoLink('/sample2.html', 'morning'));
     return lines.join('\n') + '\n\n' + link;
 }
@@ -127,7 +120,7 @@ async function main() {
     try { recap = await fetchYesterdayRecap(today); }
     catch (e) { console.error('국내 복기 실패(블록 생략):', e.message); }
 
-    var comment = editorial.morningCheck(recap);
+    var comment = '';   // 일반론 '오늘 볼 것' 문구는 쓰지 않는다 — 연속 흐름은 morningBlock 이 데이터로 싣는다
 
     var caption = buildCaption(today, quotes, fxQuote, recap, comment);
     console.log('----- 캡션 -----\n' + caption + '\n----------------');

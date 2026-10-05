@@ -16,6 +16,7 @@ const path = require('path');
 const tg = require('./tg_common.js');
 const editorial = require('./tg_editorial.js');
 const market = require('./tg_market.js');
+const Story = require('./market_story.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -47,7 +48,7 @@ async function main() {
     var day = editorial.finalSnapshot(PUBLIC, today);
     var prevDay = editorial.previousSnapshot(PUBLIC, day);
     var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
-    var caption = editorial.evening(today, day, prevDay, refined);
+    var caption = editorial.evening(today, Story.withSnapshot(PUBLIC, day), prevDay, refined, Story.loadHistory(PUBLIC, today, 10));
     console.log('----- 캡션 -----\n' + caption + '\n----------------');
 
     if (DRY) { console.log('[dry-run] 전송 생략'); return; }

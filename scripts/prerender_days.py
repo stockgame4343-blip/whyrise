@@ -28,6 +28,7 @@ SITE = 'https://orgo.kr'
 PUBLIC = ROOT / 'public'
 RISE_DIR = PUBLIC / 'data' / 'rise-history'
 CALENDAR = PUBLIC / 'data' / 'leaders-calendar.json'
+STORY_DIR = PUBLIC / 'data' / 'day-story'   # scripts/build_day_stories.js — 쓰레드·블로그·텔레그램과 같은 '오늘의 흐름'
 OUT_DIR = PUBLIC / 'day'
 KST = timezone(timedelta(hours=9))
 MIN_RATE = 10.0          # 사이트 타임라인 노출 기준과 동일
@@ -42,6 +43,15 @@ CSS_VER = '20261001a'
 def _esc(s) -> str:
     return (str(s or '').replace('&', '&amp;').replace('<', '&lt;')
             .replace('>', '&gt;').replace('"', '&quot;'))
+
+
+def _p1(v) -> str:
+    """소수 첫째 자리 반올림(11.35 → 11.4) — 텔레그램·블로그·쓰레드와 같은 표기."""
+    from decimal import Decimal, ROUND_HALF_UP
+    try:
+        return str(Decimal(str(float(v))).quantize(Decimal('0.1'), rounding=ROUND_HALF_UP))
+    except Exception:
+        return '0.0'
 
 
 def _d(ymd: str) -> datetime:
@@ -167,9 +177,9 @@ def summary_line(ymd: str, rows: list[dict], leader: dict | None, groups: list[d
         parts.append(f'상한가 근접 {len(limit)}종목')
     if groups:
         g = groups[0]
-        parts.append(f'{g["name"]} {g["count"]}종목 평균 +{g["avg"]:.1f}%')
+        parts.append(f'{g["name"]} {g["count"]}종목 평균 +{_p1(g["avg"])}%')
     if leader and leader.get('name'):
-        parts.append(f'대장 {leader["name"]} +{float(leader.get("rate") or 0):.1f}%')
+        parts.append(f'대장 {leader["name"]} +{_p1(leader.get("rate") or 0)}%')
     return ' · '.join(parts)
 
 
@@ -261,14 +271,56 @@ FOOT = '''
 '''
 
 
+def load_story(ymd: str) -> dict | None:
+    try:
+        st = json.loads((STORY_DIR / f'{ymd}.json').read_text(encoding='utf-8'))
+    except Exception:
+        return None
+    return st if str(st.get('date')) == ymd and isinstance(st.get('flows'), list) else None
+
+
+def _story_flows_html(story: dict) -> str:
+    items = []
+    flows = [f for f in story['flows'] if f.get('headliner')] + [f for f in story['flows'] if not f.get('headliner') and f.get('kind') != 'sector']
+    for f in flows[:5]:
+        meta = [f'{len(f["members"])}종목']
+        if f.get('limit_ups'):
+            meta.append(f'상한가 {f["limit_ups"]}')
+        if (f.get('streak') or 1) >= 2:
+            meta.append(f'{f["streak"]}거래일 연속')
+        members = ', '.join(
+            f'<a href="/stock/{_esc(m["ticker"])}">{_esc(m["name"])}</a> +{_p1(m["rate"])}%' for m in f['members'][:8])
+        more = f' 외 {len(f["members"]) - 8}종목' if len(f['members']) > 8 else ''
+        cat = (f'<br><span class="day-reason">배경: {_esc(f["catalyst"])}</span>' if f.get('catalyst') else
+               '' if any(m.get('reason') for m in f['members']) else '<br><span class="day-reason day-reason--none">같은 테마로 함께 오른 종목 (근거 기사 미확인)</span>')
+        items.append(f'<li><strong>{_esc(f.get("word") or f["label"])}</strong> {_esc(" · ".join(meta))}{cat}<br>{members}{more}</li>')
+    return ('        <h2>오늘의 주도 흐름</h2>\n        <ul class="day-groups">' + ''.join(items) + '</ul>') if items else ''
+
+
 def render_day(ymd: str, day: dict, calendar_day: dict | None, prev_ymd: str, next_ymd: str,
-               snapshot: list[dict] | None = None) -> str:
+               snapshot: list[dict] | None = None, story: dict | None = None) -> str:
     rows, delisting = page_rows(day, snapshot)
-    hot = [r for r in rows if r['change_rate'] >= HOT_RATE]
+    odd = []
+    ipo_set: set = set()
+    if story and isinstance(story.get('rates'), dict):
+        # 쓰레드·블로그·텔레그램과 같은 검증(market_story)을 통과한 종목만, 같은 등락률로 싣는다.
+        # 가격제한폭을 벗어난 종목은 아래에 따로 밝히고, 전일 종가와 안 맞는 스냅샷 보충 종목은 뺀다.
+        abnormal = {a['ticker'] for a in story.get('abnormal') or []}
+        odd = [r for r in rows if r.get('ticker') in abnormal]
+        rates = story['rates']
+        ipo_set = set(story.get('ipo_tickers') or [])
+        rows = [dict(r, change_rate=float(rates[r['ticker']])) for r in rows if r.get('ticker') in rates]
+        # 신규상장주는 등락률이 공모가 기준이 아니어서 숫자 없이 표 맨 아래에
+        rows.sort(key=lambda r: (r.get('ticker') in ipo_set, -r['change_rate']))
+    hot = [r for r in rows if r['change_rate'] >= HOT_RATE and r.get('ticker') not in ipo_set]
     groups = theme_groups(hot) or theme_groups(rows)
     leader = (calendar_day or {}).get('stock')
     title = f'{label_long(ymd)} 급등주·상한가, 왜 올랐나 | ORGO'
     desc = summary_line(ymd, rows, leader, groups) + '. 종목별 상승 이유와 같은 날 관련 보도를 정리했습니다.'
+    if story and story.get('title'):
+        # 검색어를 앞에: "10월 2일 상한가·급등주 | 티엠씨·머큐리 상한가 이유 | 광통신주 강세"
+        title = story['title'] + ' | ORGO'
+        desc = story.get('description') or desc
     desc = desc[:155]
     canonical = f'{SITE}/day/{ymd}'
     og_image = f'{SITE}/og-default.png'
@@ -278,35 +330,68 @@ def render_day(ymd: str, day: dict, calendar_day: dict | None, prev_ymd: str, ne
                          robots=robots, css_ver=CSS_VER, json_ld=_json_ld(ymd, title, desc, rows))]
     parts.append(f'        <p class="day-crumb"><a href="/">홈</a> › <a href="/day/">날짜별 급등주</a> › {label_short(ymd)}</p>')
     parts.append(f'        <h1>{_esc(label_long(ymd))} 급등주, 왜 올랐나</h1>')
-    parts.append(f'        <p class="day-lead">{_esc(summary_line(ymd, rows, leader, groups))}. '
-                 'ORGO가 장 마감 기준으로 +10% 이상 오른 종목과 같은 날 보도를 모았습니다.</p>')
+    if story and story.get('flows') is not None and rows:
+        lead = [story.get('headline') or '']
+        lead.append(f'상한가 {len(story.get("limit_ups") or [])}종목, +15% 이상 {story.get("hot", len(hot))}종목'
+                    + (f'(전 거래일 {story["prev_hot"]}개)' if story.get('prev_hot') is not None else ''))
+        parts.append('        <p class="day-lead">' + _esc('. '.join(x for x in lead if x)) + '. '
+                     'ORGO가 장 마감 기준으로 +10% 이상 오른 종목과 같은 날 보도를 모았습니다.</p>')
+    else:
+        parts.append(f'        <p class="day-lead">{_esc(summary_line(ymd, rows, leader, groups))}. '
+                     'ORGO가 장 마감 기준으로 +10% 이상 오른 종목과 같은 날 보도를 모았습니다.</p>')
 
-    cards = [('+15% 이상', f'{len(hot)}종목'),
-             ('상한가 근접(+29.5%↑)', f'{sum(1 for r in rows if r["change_rate"] >= LIMIT_RATE)}종목')]
+    if story and isinstance(story.get('limit_ups'), list):
+        cards = [('+15% 이상', f'{story.get("hot", len(hot))}종목'), ('상한가', f'{len(story["limit_ups"])}종목')]
+    else:
+        cards = [('+15% 이상', f'{len(hot)}종목'),
+                 ('상한가 근접(+29.5%↑)', f'{sum(1 for r in rows if r["change_rate"] >= LIMIT_RATE)}종목')]
     if leader and leader.get('name'):
-        ipo = ' (상장 첫날)' if leader.get('listing_day') else ''
-        cards.append(('오늘의 대장', f'{leader["name"]}{ipo} +{float(leader.get("rate") or 0):.1f}%'))
-    if groups:
+        if story and (leader.get('ticker') in ipo_set or (leader.get('ticker') not in (story.get('rates') or {}) and leader.get('listing_day'))):
+            cards.append(('오늘의 대장', f'{leader["name"]} (신규상장)'))
+        elif story and leader.get('ticker') in (story.get('rates') or {}):
+            cards.append(('오늘의 대장', f'{leader["name"]} +{_p1(story["rates"][leader["ticker"]])}%'))
+        else:
+            ipo = ' (상장 첫날)' if leader.get('listing_day') else ''
+            cards.append(('오늘의 대장', f'{leader["name"]}{ipo} +{_p1(leader.get("rate") or 0)}%'))
+    lead_flow = next((f for f in (story or {}).get('flows') or [] if f.get('headliner')), None)
+    if lead_flow:
+        cards.append(('주도 흐름', f'{lead_flow["label"]} {len(lead_flow["members"])}종목'))
+    elif groups:
         cards.append(('많이 오른 테마', f'{groups[0]["name"]} {groups[0]["count"]}종목'))
     parts.append('        <div class="day-cards">' + ''.join(
         f'<div class="day-card"><b>{_esc(k)}</b><span>{_esc(v)}</span></div>' for k, v in cards) + '</div>')
 
-    if groups:
+    flows_html = _story_flows_html(story) if story else ''
+    if flows_html:
+        parts.append(flows_html)
+    elif groups:
         parts.append('        <h2>테마별로 보면</h2>\n        <ul class="day-groups">' + ''.join(
-            f'<li><strong>{_esc(g["name"])}</strong> {g["count"]}종목 · 평균 +{g["avg"]:.1f}% '
+            f'<li><strong>{_esc(g["name"])}</strong> {g["count"]}종목 · 평균 +{_p1(g["avg"])}% '
             f'(최고 <a href="/stock/{g["top"]["ticker"]}">{_esc(g["top"]["name"])}</a> '
-            f'+{g["top"]["change_rate"]:.1f}%)</li>' for g in groups[:6]) + '</ul>')
+            f'+{_p1(g["top"]["change_rate"])}%)</li>' for g in groups[:6]) + '</ul>')
 
     if rows:
         parts.append('        <h2>오른 종목과 이유</h2>')
         trs = []
         for r in rows[:MAX_ROWS]:
             d = rx_display(r)
-            if d['unknown'] and leader and leader.get('listing_day') and leader.get('ticker') == r.get('ticker'):
+            is_ipo = r.get('ticker') in ipo_set
+            if is_ipo:
+                d = dict(d, text='신규상장주', unknown=False, hint=False, label='신규상장', link='')
+            elif story and isinstance(story.get('whys'), dict):
+                # 쓰레드·블로그·텔레그램과 같은 기준: 같은 날 근거로 확인된 이유 > '관련 보도' 제목 > 테마 단서(흐리게)
+                why = story['whys'].get(r.get('ticker'))
+                if why:
+                    d = dict(d, text=why, unknown=False, hint=False)
+                elif not str(d.get('text') or '').startswith('관련 보도'):
+                    th = str(r.get('theme_tag') or '').split('(')[0].split('/')[0].strip()
+                    th = '' if (not th or th in JUNK_THEMES or th in ('공시', '뉴스', '테마', '애국', '기타') or '신규상장' in th) else th
+                    d = dict(d, text=(f'{th} 관련주' if th else (r.get('sector') or '')), unknown=True, hint=True)
+            elif d['unknown'] and leader and leader.get('listing_day') and leader.get('ticker') == r.get('ticker'):
                 # 상장 첫날 대장 — rise-history(OHLC 기반)엔 없고 스냅샷으로만 들어오는 종목
                 d = dict(d, text='상장 첫날 (공모가 대비)', unknown=False, label='신규상장', link='')
             tags = ''
-            if is_new_listing(r):
+            if is_new_listing(r) or r.get('ticker') in ipo_set:
                 tags += '<span class="day-tag">신규상장</span>'
             theme = str(r.get('theme_tag') or '').strip()
             if theme and theme not in JUNK_THEMES and '신규상장' not in theme:
@@ -314,9 +399,10 @@ def render_day(ymd: str, day: dict, calendar_day: dict | None, prev_ymd: str, ne
             # 리스트는 출처 태그 없이 문장만 — 같은 날 근거 없는 단서(최근 이슈·추정·테마)는 흐린 글씨
             why = (f'<span class="day-reason{" day-reason--none" if d.get("hint") else ""}">'
                    f'{_esc(d["text"])}</span>')
+            rate_cell = '<td class="r">신규상장</td>' if is_ipo else f'<td class="r">+{_p1(r["change_rate"])}%</td>'
             trs.append(
                 f'<tr><td><a href="/stock/{r["ticker"]}">{_esc(r["name"])}</a>{tags}{why}</td>'
-                f'<td class="r">+{r["change_rate"]:.1f}%</td>'
+                + rate_cell +
                 f'<td class="v hide-sm">{_esc(_amount(r.get("trading_value")))}</td></tr>')
         more = len(rows) - min(len(rows), MAX_ROWS)
         if more > 0:
@@ -326,6 +412,9 @@ def render_day(ymd: str, day: dict, calendar_day: dict | None, prev_ymd: str, ne
     else:
         parts.append('        <p class="day-lead">이 날은 +10% 이상 오른 종목 기록이 없습니다.</p>')
 
+    if odd:
+        parts.append('        <p class="day-lead" style="margin-top:16px">등락률이 가격제한폭(30%)을 벗어난 종목(거래 재개·기준가 변경 등)은 집계에서 제외했습니다: '
+                     + ', '.join(f'{_esc(r["name"])} +{_p1(r["change_rate"])}%' for r in odd) + '.</p>')
     if delisting:
         parts.append('        <p class="day-lead" style="margin-top:16px">정리매매(상장폐지 절차) 종목은 급등 집계에서 제외했습니다: '
                      + ', '.join(_esc(r['name']) for r in delisting) + '.</p>')
@@ -409,7 +498,7 @@ def build_day_pages(only: str = '', now: datetime | None = None) -> dict:
             continue
         prev_ymd = dates[i - 1] if i > 0 else ''
         next_ymd = dates[i + 1] if i + 1 < len(dates) else ''
-        html = render_day(ymd, day, cal_days.get(ymd), prev_ymd, next_ymd, snapshot)
+        html = render_day(ymd, day, cal_days.get(ymd), prev_ymd, next_ymd, snapshot, load_story(ymd))
         if _write_if_changed(OUT_DIR / f'{ymd}.html', html):
             written += 1
         else:

@@ -135,7 +135,18 @@ def _render_one(template: str, ticker: str, history: dict, day_pages: set | None
     n = len(events)
     latest = events[0] if events else None
 
-    title = f'{name} 왜 오름? 급등 이유·1년 이력 - ORGO'
+    # 검색어 그대로: "○○ 주가 급등 이유", 최근 상한가면 "○○ 상한가 이유" + 날짜·등락률·이유(짧을 때)
+    title = f'{name} 주가 급등 이유·1년 이력 | ORGO'
+    if latest and len(str(latest.get('date') or '')) == 8:
+        ld, rate = str(latest['date']), float(latest.get('change_rate') or 0)
+        kind = '상한가' if 29.5 <= rate <= 30.5 else '급등'
+        d = rx_display(latest)
+        why = '' if d.get('unknown') else str(d.get('text') or '')
+        why = '' if why.startswith('관련 보도') or '동반' in why or len(why) > 16 else why
+        head = f'{name} {kind} 이유 | {int(ld[4:6])}/{int(ld[6:])} {rate:+.1f}%'
+        cand = f'{head} {why} | ORGO' if why else f'{head} · 급등 이력 | ORGO'
+        if len(cand) <= 50:
+            title = cand
     if latest:
         desc = (f'{name} 최근 1년 급등 {n}회. 최근 {_fmt_date(latest.get("date") or "")} '
                 f'{latest.get("change_rate", 0):+.1f}% — '

@@ -8,6 +8,7 @@ const MAX_NEWS_AGE = 3;
 const LIMITS = { threads: 500, instagram: 2200, kakao: 1000, toss: 4000, telegram: 4096 };
 const Copy = require('./marketing_copy');
 const Reason = require(path.resolve(__dirname, '..', 'public', 'js', 'reason.js'));
+const Story = require('./market_story');
 // 외부 채널 → 날짜별 정적 페이지(검색 색인 대상)로 유입 — utm 으로 채널별 성과 구분
 function dayLink(date, channel) { return `https://orgo.kr/day/${date}?utm_source=${channel}&utm_medium=social&utm_campaign=daily`; }
 const UNKNOWN = '직접 상승 촉매 확인 중';
@@ -49,7 +50,7 @@ function hasTheme(rows) {
     }
     return [...counts.values()].some(n=>n>=3);
 }
-function buildDigest(day, marketmap, now = new Date(), calendar = null, market = null) {
+function buildDigest(day, marketmap, now = new Date(), calendar = null, market = null, history = [], themeLookup = null) {
     const date = ymd(day.date);
     if (!/^\d{8}$/.test(date) || !Array.isArray(day.rankings) || day.is_final !== true) throw new Error('Final dated rankings required');
     if (!tg.isKrTradingDay(date)) throw new Error('Not a trading day');
@@ -77,13 +78,23 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
         {id:'market-bubble',label:'시장 버블맵',file:'market-bubble.jpg',source:'/bubbles2.html',alt:`${date} ORGO 수집 종목 등락률 버블맵`});
     if(leader) assets.push({id:'calendar',label:'대장 캘린더',file:'calendar.jpg',source:'/sample2.html',alt:`${date.slice(0,6)} 대장주 캘린더 · ${date}까지`},
         {id:'leader',label:'오늘의 대장',file:'leader.jpg',source:'/sample2.html',alt:`${date} 대장주 · 대장 섹터 · 대장 테마`});
-    const theme = leader?.theme;
-    const themeCaption = theme?.name ? `오늘은 ${theme.name.replace(/\([^)]*\)/g,'').trim()} 쪽이 눈에 들어오네요.\n테마별로 모아봤어요.` : `오늘 급등주를 테마별로 모아봤어요.\n+15% 이상 오른 종목은 ${all.filter(r=>r.change_rate>=15).length}개네요.`;
-    const stories = themeAvailable?[{id:'theme',label:'오늘의 테마',note:'어디로 모였을까',caption:themeCaption,assets:['theme-bubble',...(sameSnapshot?['market-tree']:[])],facts:[theme?.name ? `대장 테마: ${theme.name} · 조건 충족 ${theme.count}종목` : `ORGO 집계 +15% 이상 ${all.filter(r=>r.change_rate>=15).length}종목`]}]:[];
     let breadth = null;
     if(sameSnapshot) {
         const items = [...new Map(marketmap.items.filter(r=>/^[0-9A-Z]{6}$/.test(r.ticker||'')&&r.name&&Number.isFinite(r.change_rate)).map(r=>[r.ticker,r])).values()];
         breadth = {total:items.length,up:items.filter(r=>r.change_rate>0).length,down:items.filter(r=>r.change_rate<0).length,flat:items.filter(r=>r.change_rate===0).length};
+    }
+    const theme = leader?.theme;
+    // 채널 원고 재료 — 지수(장 마감 요약)가 있으면 블로그·쓰레드에 함께 싣는다
+    // 시장 스냅샷 보충 종목은 전 거래일 종가로 등락률이 맞는 것만 (스냅샷 기준가가 어긋난 날이 있다)
+    const extraRows = sameSnapshot && themeLookup ? Story.snapshotExtras(themeLookup, date, day.rankings) : [];
+    const ctx = themeLookup ? Story.withSnapshot(themeLookup, day) : {};
+    const material = Copy.material({ date, rows: day.rankings, leader: leader?.stock || null, breadth,
+        market: market && market.kospi != null ? market : null, history, extraRows, prevCloses: ctx._prevCloses || null, altRates: ctx._altRates || null });
+    const S = material.story, topFlow = S.flows.find(f=>f.kind!=='sector');
+    const themeCaption = topFlow ? `${S.headline}\n${topFlow.label} ${topFlow.members.length}종목${topFlow.catalyst?' — '+topFlow.catalyst:''}` :
+        `+15% 이상 ${S.hot.length}종목${S.limitUps.length?' · 상한가 '+S.limitUps.length:''}\n테마별로 모은 지도입니다.`;
+    const stories = themeAvailable?[{id:'theme',label:'오늘의 테마',note:'어디로 모였을까',caption:themeCaption,assets:['theme-bubble',...(sameSnapshot?['market-tree']:[])],facts:[theme?.name ? `대장 테마: ${theme.name} · 조건 충족 ${theme.count}종목` : `ORGO 집계 +15% 이상 ${S.hot.length}종목`]}]:[];
+    if(sameSnapshot) {
         const mood = breadth.up>breadth.down ? '빨간 종목이 더 많네요.' : breadth.down>breadth.up ? '파란 종목이 더 많네요.' : '오른 종목과 내린 종목 수가 같네요.';
         stories.push({id:'market',label:'오늘의 온도',note:'시장을 한눈에',caption:`오늘은 ${mood}\nORGO 수집 ${breadth.total}종목 중 상승 ${breadth.up} · 하락 ${breadth.down}.`,assets:['market-bubble','market-tree'],facts:[`상승 ${breadth.up} · 하락 ${breadth.down} · 보합 ${breadth.flat}`,`전체 시장 전수 통계가 아닌 ORGO 수집 ${breadth.total}종목 기준`]});
     }
@@ -97,9 +108,6 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
     const weekday = new Date(utcDay(date)).getUTCDay();
     if(!stories.length)throw Error('No exportable dated visuals');
     const defaultStory = leader && ((weekday===5 && monthDays.length>=8) || +date.slice(6)>=28) ? 'calendar' : themeAvailable?'theme':sameSnapshot?'market':'calendar';
-    // 채널 원고 재료 — 지수(장 마감 요약)가 있으면 블로그·쓰레드에 함께 싣는다
-    const material = Copy.material({ date, rows: day.rankings, leader: leader?.stock || null, breadth,
-        market: market && market.kospi != null ? market : null });
     const th = Copy.threads(material);
     for(const story of stories) {
         story.posts = Object.fromEntries(Object.keys(LIMITS).map(channel=> {
@@ -116,7 +124,7 @@ function buildDigest(day, marketmap, now = new Date(), calendar = null, market =
     const selected=stories.find(s=>s.id===defaultStory);
     const digest={version:2,date,generated_at:now.toISOString(),is_final:true,scope:'ORGO 수집 종목 기준 (전체 시장 전수 통계 아님)',
         coverage:{total:all.length,supported:covered,related_news:reported,unresolved:all.length-covered-reported,snapshot_merged:!!sameSnapshot,supplemented:all.filter(r=>r.reason_source==='missing').length},
-        overview:`+15% 이상 ${all.filter(r=>r.change_rate>=15).length}종목`,movers,breadth,leader,calendar_days:calendarDays,assets,stories,default_story:defaultStory,posts:selected.posts,
+        overview:`+15% 이상 ${S.hot.length}종목`,headline:S.headline,movers,breadth,leader,calendar_days:calendarDays,assets,stories,default_story:defaultStory,posts:selected.posts,
         naver_blog:naverBlog};
     digest.input_hash=crypto.createHash('sha256').update(JSON.stringify({day,marketmap:sameSnapshot?marketmap:null})).digest('hex');
     digest.content_hash=crypto.createHash('sha256').update(JSON.stringify({date,input_hash:digest.input_hash,movers,breadth,leader,calendarDays,stories,naverBlog})).digest('hex');
@@ -138,7 +146,7 @@ function generate(date, market = null) {
     let snapshot=null,calendar=null;
     try { snapshot=read(path.join(ROOT,'public/data/marketmap',date+'.json')); } catch(e) {}
     try { calendar=read(path.join(ROOT,'public/data/leaders-calendar.json')); } catch(e) {}
-    const digest=buildDigest(day,snapshot,new Date(),calendar,market);
+    const digest=buildDigest(day,snapshot,new Date(),calendar,market,Story.loadHistory(path.join(ROOT,'public'),date,10),path.join(ROOT,'public'));
     const dir=path.join(ROOT,'public/marketing',date); fs.mkdirSync(dir,{recursive:true});
     fs.writeFileSync(path.join(dir,'digest.json'),JSON.stringify(digest,null,2)+'\n');
     // 네이버 블로그 원고 — 자동 발행(연결 PC 브라우저)과 발행실 '서식 포함 복사'가 같은 파일을 쓴다
@@ -167,7 +175,7 @@ async function marketSummary(date) {
     if (date !== tg.ymdKst()) return null;
     try {
         const M = await require('./tg_market').fetchKrMarketSummary();
-        return M.tradedYmd === date ? { kospi: M.kospi.changePct, kosdaq: M.kosdaq.changePct } : null;
+        return M.tradedYmd === date ? { kospi: M.kospi.changePct, kosdaq: M.kosdaq.changePct, up: M.upCount, down: M.downCount } : null;
     } catch (e) { console.error('지수 요약 생략:', e.message); return null; }
 }
 if(require.main===module) {

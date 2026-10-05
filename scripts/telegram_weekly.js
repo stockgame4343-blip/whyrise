@@ -20,6 +20,7 @@ const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
 const editorial = require('./tg_editorial.js');
+const Story = require('./market_story.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -103,9 +104,12 @@ async function main() {
 
     var end = today < wk[4] ? today : wk[4];
     var range = tg.mdLabel(wk[0]) + '~' + tg.mdLabel(end);
-    var topNames = sectors.slice(0, 2).map(function (r) { return r.name; }).concat(themes.slice(0, 1).map(function (r) { return r.name; }));
-    var comment = (topNames.length ? '이번 주 돈이 몰린 곳: ' + topNames.join(' · ') + '\n' : '') +
-        editorial.calendarObservation(cal, wk[0], end) + '\n👀 다음 주 체크: 이번 주 대장이 다시 등장하는지';
+    // 이번 주 흐름 — 매일의 '오늘의 흐름'(마감·블로그와 같은 규칙)을 모아 자주 주도한 흐름·자주 오른 종목
+    var weekDays = wk.filter(function (d) { return d <= end && tg.isKrTradingDay(d); }).map(function (d) {
+        try { var x = JSON.parse(fs.readFileSync(path.join(DATA, 'rise-history', d + '.json'), 'utf8')); return x.is_final === true && x.date === d ? Story.withSnapshot(PUBLIC, x) : null; }
+        catch (e) { return null; }
+    }).filter(Boolean);
+    var comment = editorial.periodLines(weekDays, '이번 주').concat([editorial.calendarObservation(cal, wk[0], end)]).join('\n');
 
     var html = tg.rankCardHtml({
         title: '주간 리포트',

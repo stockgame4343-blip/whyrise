@@ -347,17 +347,24 @@
         var $title = document.getElementById('stockTitle');
         var $market = document.getElementById('stockMarket');
         var $stats = document.getElementById('stockStats');
-        var pageTitle = name + ' 왜 오름? - ORGO';
+        var pageTitle = name + ' 주가 급등 이유·1년 이력 | ORGO';
         var pageDesc = name + '의 최근 1년 급등 날짜와 이유·뉴스.';
-        document.getElementById('pageTitle').textContent = pageTitle;
-        document.getElementById('pageDesc').setAttribute('content', pageDesc);
+        var $pt = document.getElementById('pageTitle');
+        // 정적 생성 페이지(/stock/티커)의 검색용 제목·설명은 그대로 둔다 — 비어 있는 셸일 때만 채운다
+        var prerendered = $pt && $pt.textContent.indexOf(name) >= 0;
+        if (!prerendered) {
+            $pt.textContent = pageTitle;
+            document.getElementById('pageDesc').setAttribute('content', pageDesc);
+        } else {
+            pageTitle = $pt.textContent;
+        }
         var ticker = getTicker() || '';
         var $can = document.getElementById('pageCanonical');
         if ($can && ticker) $can.setAttribute('href', 'https://orgo.kr/stock/' + ticker);
         var $ogT = document.getElementById('pageOgTitle');
-        if ($ogT) $ogT.setAttribute('content', pageTitle);
+        if ($ogT && !prerendered) $ogT.setAttribute('content', pageTitle);
         var $ogD = document.getElementById('pageOgDesc');
-        if ($ogD) $ogD.setAttribute('content', pageDesc);
+        if ($ogD && !prerendered) $ogD.setAttribute('content', pageDesc);
 
         $title.innerHTML = '<strong>' + esc(name) + '</strong> 왜 오름?';
         if (market) $market.textContent = market;

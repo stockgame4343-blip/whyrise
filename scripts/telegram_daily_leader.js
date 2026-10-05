@@ -21,6 +21,7 @@ const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
 const editorial = require('./tg_editorial.js');
 const market = require('./tg_market.js');
+const Story = require('./market_story.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -107,6 +108,15 @@ async function main() {
 
     var day = editorial.finalSnapshot(PUBLIC, today);
     var L = editorial.calendarLeaders(PUBLIC, today, day);
+    // 대장 숫자는 같은 날 목록(날짜별 페이지·캡션과 동일)의 값으로 맞춘다 — 캘린더 값은 집계 시점에 따라 소수점이 다를 수 있음
+    var dayX = Story.withSnapshot(PUBLIC, day);
+    if (L.leader) {
+        var lr = dayX.rankings.find(function (r) { return r && r.ticker === L.leader.ticker; });
+        if (lr && isFinite(lr.change_rate)) {
+            L.leader.change_rate = Number(lr.change_rate);
+            if (Number(lr.trading_value) > 0) L.leader.trading_value = Number(lr.trading_value);
+        }
+    }
     console.log('대장주:', L.leader ? (L.leader.name + ' ' + pct(L.leader.change_rate)) : '없음',
         '| 섹터:', L.sector && L.sector.key, '| 테마:', L.theme && L.theme.key);
 
@@ -122,7 +132,8 @@ async function main() {
     var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
     if (L.leader && !day.rankings.some(function (r) { return r.ticker === L.leader.ticker && r.name === L.leader.name; })) delete refined[L.leader.ticker];
     var previous = editorial.previousSnapshot(PUBLIC, day);
-    var caption = editorial.daily(today, L, M, refined, day, previous);
+    var history = Story.loadHistory(PUBLIC, today, 10);   // 연속 상승·흐름 연속일
+    var caption = editorial.daily(today, L, M, refined, dayX, previous, history);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
     await renderImage(today, L, refined);

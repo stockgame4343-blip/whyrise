@@ -27,7 +27,8 @@ const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
 
 // ── 포맷 헬퍼 (report.js / telegram_daily_leader.js 와 동일 톤) ──
 function num(v) { var n = Number(v); return isFinite(n) ? n : 0; }
-function pct(v) { var n = num(v); return (n >= 0 ? '+' : '') + (Math.round(n * 10) / 10).toFixed(1) + '%'; }
+// 소수 첫째 자리 반올림 — 10진 문자열 기준(11.35 → 11.4). 블로그·쓰레드·날짜별 페이지와 같은 규칙
+function pct(v) { var n = num(v), a = Math.round(Number(Math.abs(n) + 'e1')) / 10; if (n < 0) a = -a; return (a >= 0 ? '+' : '') + a.toFixed(1) + '%'; }
 function fmtAmount(won) {
     won = num(won);
     if (won >= 1e12) return (Math.round(won / 1e11) / 10).toLocaleString('ko-KR') + '조';

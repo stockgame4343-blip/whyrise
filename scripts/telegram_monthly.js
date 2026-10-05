@@ -21,6 +21,7 @@ const { chromium } = require('playwright');
 const core = require('./build_leaders_calendar.js');
 const tg = require('./tg_common.js');
 const editorial = require('./tg_editorial.js');
+const Story = require('./market_story.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
@@ -99,10 +100,16 @@ async function main() {
 
     var monthLabel = monthLabelOf(today);
     var repeat = (m.frequent_top || [])[0];
-    var comment = '한 달 동안 +' + core.RISE_CUTOFF + '% 급등 ' + (m.total_events_15 || 0) + '건' +
-        (sectors[0] ? ' · 가장 많이 오른 업종 ' + sectors[0].name : '') +
-        (repeat ? '\n가장 자주 급등한 종목: ' + repeat.name + ' ' + (repeat.count || 0) + '회' : '') +
-        '\n캘린더에서 날짜별 대장을 한눈에 볼 수 있어요.';
+    // 이번 달 흐름 — 매일의 '오늘의 흐름'을 모은 요약 (리포트 집계가 비면 기존 문장)
+    var monthDays = [];
+    try {
+        monthDays = fs.readdirSync(path.join(PUBLIC, 'data', 'rise-history')).filter(function (f) { return f.indexOf(monthKey) === 0 && /^\d{8}\.json$/.test(f) && f.slice(0, 8) <= today && tg.isKrTradingDay(f.slice(0, 8)); })
+            .map(function (f) { try { var x = JSON.parse(fs.readFileSync(path.join(PUBLIC, 'data', 'rise-history', f), 'utf8')); return x.is_final === true ? Story.withSnapshot(PUBLIC, x) : null; } catch (e) { return null; } })
+            .filter(Boolean);
+    } catch (e) { monthDays = []; }
+    var lines = editorial.periodLines(monthDays, '이번 달');
+    var comment = lines.length ? lines.join('\n') : ('한 달 동안 +' + core.RISE_CUTOFF + '% 급등 ' + (m.total_events_15 || 0) + '건' +
+        (repeat ? '\n가장 자주 급등한 종목: ' + repeat.name + ' ' + (repeat.count || 0) + '회' : ''));
 
     var html = tg.rankCardHtml({
         title: '월간 리포트',
