@@ -14,7 +14,11 @@ function snapshotBundle(date,d,day,map) {
     if(d.assets.some(a=>a.id==='calendar')&&!days[date])throw Error('Calendar day missing');
     return {day,map,calendar:{days,holidays:tg.krHolidayLabels()}};   // 캘린더 이미지에도 휴장일(대체공휴일 포함) 표시
 }
-function titleCardHtml(c) {
+// 썸네일 오른쪽 아래 캐릭터(public/img/orgo-mascot.png) — 렌더 페이지에 바로 넣도록 data URI
+function mascotDataUri() {
+    try { return 'data:image/png;base64,'+fs.readFileSync(path.join(ROOT,'public','img','orgo-mascot.png')).toString('base64'); } catch(_) { return ''; }
+}
+function titleCardHtml(c, mascot = mascotDataUri()) {
     const e=v=>String(v==null?'':v).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
     const main=String(c.main||''),big=Array.from(main).length<=12?120:Array.from(main).length<=18?100:84;
     return `<!doctype html><html lang="ko"><head><meta charset="utf-8">`+
@@ -28,7 +32,9 @@ function titleCardHtml(c) {
         `.main{font-size:${big}px;font-weight:900;line-height:1.16;word-break:keep-all}`+
         `.sub{margin-top:30px;font-size:54px;font-weight:700;color:#c9ced8;word-break:keep-all;line-height:1.25}`+
         `.chips{display:flex;flex-wrap:wrap;gap:18px}.chip{font-size:36px;font-weight:700;background:rgba(49,130,246,.12);border:2px solid rgba(49,130,246,.45);border-radius:20px;padding:14px 26px;color:#e8ebf1}`+
-        `.foot{font-size:30px;color:#8b93a7;margin-top:28px}</style></head><body><div id="card">`+
+        `.foot{font-size:30px;color:#8b93a7;margin-top:28px}#card{position:relative}.main,.sub{max-width:${mascot?'700px':'none'}}.chips{max-width:${mascot?'600px':'none'}}`+
+        `.mascot{position:absolute;right:34px;bottom:26px;width:400px;height:400px;filter:drop-shadow(0 10px 28px rgba(0,0,0,.45))}</style></head><body><div id="card">`+
+        (mascot?`<img class="mascot" src="${mascot}" alt="">`:'')+
         `<div><div class="kicker">${e(c.kicker)}</div><div class="main">${e(main)}</div>${c.sub?`<div class="sub">${e(c.sub)}</div>`:''}</div>`+
         `<div><div class="chips">${(c.chips||[]).map(x=>`<span class="chip">${e(x)}</span>`).join('')}</div><div class="foot">오늘 오른 종목과 이유 · orgo.kr</div></div>`+
         `</div></body></html>`;

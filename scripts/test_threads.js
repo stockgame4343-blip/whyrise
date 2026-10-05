@@ -46,7 +46,7 @@ test('원고: 본문엔 링크 없이 끝줄이 댓글을 가리키고, 댓글�
     const row = { ticker: '005930', name: '삼성전자', theme_tag: '반도체', change_rate: 20, rise_reason: '장비 공급계약 체결', reason_source: 'llm', reason_confidence: 'mid', reason_evidence: [{ title: '삼성전자 장비 공급계약' }], news: [{ title: '삼성전자 장비 공급계약', date: '2026.09.04', link: 'https://example.com/a' }] };
     const day = { date: DATE, is_final: true, rankings: [row, { ticker: '111111', name: '동반A', theme_tag: '반도체', change_rate: 1 }, { ticker: '222222', name: '동반B', theme_tag: '반도체', change_rate: 2 }] };
     const th = buildDigest(day, null).posts.threads;
-    assert.match(th.text, /댓글 링크에서$/);
+    assert.match(th.text.split('\n').pop(), /댓글 링크에/);   // 끝줄이 댓글 링크를 가리킨다(캐릭터 말투 끝줄)
     assert.doesNotMatch(th.text, /https?:\/\//);
     assert.match(th.reply, /orgo\.kr\/rise\.html\?date=20260904/);
     assert.doesNotMatch(th.reply, /\/day\//);

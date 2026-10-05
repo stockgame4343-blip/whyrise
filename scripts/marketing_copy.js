@@ -12,6 +12,7 @@
 const path = require('path');
 const Story = require(path.resolve(__dirname, 'market_story.js'));
 const Talk = require(path.resolve(__dirname, 'market_commentary.js'));   // 해석 문장(오늘은 어떤 날이었나·볼 부분)
+const Persona = require(path.resolve(__dirname, 'persona.js'));          // 캐릭터 말투 — 쓰레드 전부, 블로그 시작·마무리 멘트만
 
 const SITE = 'https://orgo.kr';
 const CHANNEL = 'https://t.me/whyorgo';
@@ -106,35 +107,35 @@ function holidaySentence(h) {
     return h.foreignPlain || '';
 }
 function threadsHook(s) { return s.date ? dayKo(s.date) + ' 마감 | ' + headPhrase(s) : headPhrase(s); }
+// 쓰레드 — 캐릭터 말투로 전부(사용자 결정 2026-10-06). 숫자·종목 줄은 그대로, 말하는 줄만 캐릭터 말투
 function threads(m) {
     const s = m.story;
     const reply = `📋 ${mdKo(m.date)} 오른 종목과 이유 전체 👉 ${siteLink(m.date, 'threads', 'social')}\n` +
         `📲 장전·장중·마감 정리는 텔레그램에서 👉 ${CHANNEL}`;
     if (!s.rows.length) return { text: '', reply };
-    // 이모지는 줄의 종류를 알려주는 표지로만 — 한 줄에 하나
-    const head = [`📌 ${dayKo(m.date)} 마감 | ${headPhrase(s)}`];
-    if (m.market && Number.isFinite(m.market.kospi) && Number.isFinite(m.market.kosdaq)) head.push(`📊 코스피 ${pct(m.market.kospi)} · 코스닥 ${pct(m.market.kosdaq)}`);
-    head.push(`🔺 상한가 ${s.limitUps.length} · +15% 이상 ${s.hot.length}종목`);
-    const blocks = [{ prio: 0, lines: head }];
-    // 💬 오늘은 어떤 날이었나 — 나열 전에 한 줄 해석
-    const v = Talk.verdict(s, flowWord);
-    if (v.short) blocks.push({ prio: 0, lines: [`💬 ${v.short}`] });
+    // 첫 줄은 인사, 둘째 줄은 오늘이 어떤 날이었는지 — 피드에 보이는 두 줄이 글의 요지
+    const head = [Persona.threadsOpen(dayKo(m.date), m.date)];
+    const talk = Persona.verdictTalk(s);
+    if (talk) head.push(talk);
+    const nums = [];
+    if (m.market && Number.isFinite(m.market.kospi) && Number.isFinite(m.market.kosdaq)) nums.push(`📊 코스피 ${pct(m.market.kospi)} · 코스닥 ${pct(m.market.kosdaq)}`);
+    nums.push(`🔺 상한가 ${s.limitUps.length} · +15% 이상 ${s.hot.length}종목`);
+    const blocks = [{ prio: 0, lines: head }, { prio: 0, lines: nums }];
     const fixed = blocks.length;
-    // 흐름은 '왜'가 있는 것만, 한 줄 이유 + 대표 종목
-    // 흐름마다 한 줄: '왜'가 있으면 이유, 없으면 상한가 수만 (근거 없는 말은 붙이지 않는다)
+    // 흐름마다: 이유가 있으면 이유, 없으면 상한가 수만 (근거 없는 말은 붙이지 않는다) + 대표 종목
     const flows = s.lead.slice(0, 2);
     flows.forEach((f, i) => {
         const why = Story.flowReason(f, 30), lu = f.members.filter(r => r.limit).length;
         blocks.push({ prio: 1 + i, lines: [`${i ? '⚡' : '🔥'} ${f.label} ${f.members.length}종목` + (why ? ` — ${why}` : lu ? ` · 상한가 ${lu}` : ''),
-            f.members.slice(0, 3).map(r => `${r.name} ${rateOf(r)}`).join(' · ')] });
+            f.members.slice(0, 3).map(r => `${r.name} ${r.limit ? '상한가' : rateOf(r)}`).join(' · ')] });
     });
     const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, flows.length >= 2 ? 2 : 3);
-    if (solos.length) blocks.push({ prio: 3, lines: ['💡 개별 재료'].concat(solos.map(r => `• ${r.name} ${rateOf(r)} — ${Story.clipWords(r.reason, 32)}`)) });
+    if (solos.length) blocks.push({ prio: 3, lines: ['💡 혼자 튄 종목'].concat(solos.map(r => `🔺 ${r.name} ${r.limit ? '상한가' : rateOf(r)} — ${Story.clipWords(r.reason, 32)}`)) });
     if (blocks.length === fixed) blocks.push({ prio: 3, lines: [s.rows.filter(r => !r.ipo).slice(0, 3).map(r => r.name + ' ' + rateOf(r)).join(' · ')] });
-    // 휴장 안내 한 줄 — 국내 휴장(대체공휴일 포함)이 먼저, 없으면 다음 거래일 해외 휴장. 글자 수가 넘쳐도 빼지 않는다
-    const hol = holidayLine(m.holiday);
+    // 휴장 안내 — 국내 휴장(대체공휴일 포함)이 먼저, 없으면 다음 거래일 해외 휴장. 글자 수가 넘쳐도 빼지 않는다
+    const hol = Persona.holidayTalk(m.holiday);
     if (hol) blocks.push({ prio: 0, lines: [hol] });
-    const tail = '👇 종목별 이유 전체는 댓글 링크에서';
+    const tail = Persona.threadsTail(m.date);
     const compose = bs => bs.map(b => b.lines.join('\n')).join('\n\n') + '\n\n' + tail;
     let text = compose(blocks);
     while (threadsLen(text) > 480 && blocks.some(b => b.prio > 0)) {
@@ -302,8 +303,9 @@ function blogHtml(m, images) {
         'market-bubble': `📸 ${d} 시장 전체 등락 버블맵 (ORGO 수집 종목 기준)` };
     const IMG = id => { const im = byId[id]; return im ? [`<p><img src="${esc(im.url)}" alt="${esc(im.alt)}"></p>`].concat(CAP[id] ? [P(esc(CAP[id]))] : []) : []; };
 
+    // ⓪ 캐릭터 시작 멘트(블로그는 멘트만 캐릭터 말투, 본문은 담백하게)
     // ① 첫 문단 — 제목의 답 + 오늘은 어떤 날이었나
-    const out = [...IMG('title'), SAY(intro(m))];
+    const out = [...IMG('title'), SAY(Persona.blogOpening(m, plan, flowWord)), SAY(intro(m))];
     // ② 오늘의 대장 — 누가, 왜 대장인지
     out.push(GAP, H('🏆', '오늘의 대장'), SAY(Talk.leaderPara(s, m.calendar, m.date, flowWord)), ...IMG('leader'), ...IMG('top5'));
 
@@ -366,6 +368,8 @@ function blogHtml(m, images) {
     if (hol) out.push(GAP, H('🗓', '휴장 안내'), SAY(hol));
     // 링크는 주소를 그대로 보이게 — 텍스트로 붙여넣어도 주소가 남는다. 날짜별 정적 페이지(/day/)로는 보내지 않는다
     const link = siteLink(m.date, 'naver_blog', 'blog');
+    // 캐릭터 마무리 멘트 + 캐릭터 이미지
+    out.push(GAP, `<p><img src="${Persona.MASCOT_URL}" alt="ORGO 캐릭터" width="160"></p>`, SAY(Persona.blogClosing(m)));
     // 마지막 — 웹과 텔레그램 소개(무엇을 볼 수 있는지, 언제 오는지)
     out.push(GAP, H('🧭', 'ORGO에서 더 보기'));
     out.push(LINES([`🌐 <b>웹 orgo.kr</b>`, '매일 오른 종목과 그 이유를 근거 기사와 함께 날짜별로 정리합니다.',

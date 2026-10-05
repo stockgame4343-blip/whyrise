@@ -250,10 +250,11 @@ test('블로그는 나열 대신 해석 — 💬 ORGO의 시선·🔍 제목 종
     const b = Copy.naverBlog(m, []);
     assert.match(b.html, /<p><b>💬 ORGO의 시선<\/b><\/p>/);
     assert.match(b.html, /<p><b>🔍 머큐리, 어떤 종목이길래<\/b><\/p>/);
-    assert.match(b.text.split('\n\n')[0], /^10월 2일 머큐리는 '광통신 투자 확대' 기사와 함께 상한가를 기록했습니다\.\n/);
+    assert.match(b.text.split('\n\n')[0], /머큐리 상한가 이유부터 볼게요\.$/);                    // 캐릭터 시작 멘트(블로그는 멘트만)
+    assert.match(b.text.split('\n\n')[1], /^10월 2일 머큐리는 '광통신 투자 확대' 기사와 함께 상한가를 기록했습니다\.\n/);
     assert.doesNotMatch(b.html, /📋 관련 종목/);                                 // 긴 종목 나열은 없다
     assert.ok(b.tags.length <= 12);
     assert.deepEqual(b.card, { kicker: '10월 2일(금) 마감', main: b.title.replace(/^10월 2일 /, '').split(/\? | \| /)[0] + (b.title.includes('? ') ? '?' : ''),
         sub: b.card.sub, chips: ['상한가 1', '+15% 이상 3종목'] });
-    assert.match(Copy.threads(m).text, /\n\n💬 광통신으로 돈이 몰린 날 — 급등주 거래대금의 100%\n\n/);
+    assert.match(Copy.threads(m).text, /\n오늘은 광통신으로 돈이 확 몰렸어요\. 급등주 거래대금의 100%가 광통신 쪽이었거든요 👀\n\n/);   // 쓰레드는 캐릭터 말투
 });

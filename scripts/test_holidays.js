@@ -186,7 +186,7 @@ test('쓰레드·블로그 한 줄 — 국내 휴장이 먼저, 없으면 다음
     // 원고에 실제로 붙는지 — 쓰레드는 글자 수가 넘쳐도 빠지지 않는다
     const row = (t, n, rate) => ({ ticker: t, name: n, change_rate: rate, close_price: 10000, trading_value: 5e10, trading_volume: 1e6, rise_reason: '' });
     const m = Copy.material({ date: '20261008', rows: [row('000001', '가나다', 12), row('000002', '라마바', 14)], holiday: ed.holidayNotice('20261008') });
-    assert.match(Copy.threads(m).text, /🇰🇷 국내 증시 휴장: 10월 9일\(금\) 한글날 → 다음 거래일 10월 12일\(월\)\n\n👇/);
+    assert.match(Copy.threads(m).text, /\n🗓 10월 9일\(금\) 한글날, 국내 증시는 쉬어요\. 다음 장은 10월 12일\(월\)!\n\n/);   // 쓰레드는 캐릭터 말투
     assert.match(Copy.naverBlog(m).html, /<b>🗓 휴장 안내<\/b><\/p>\n<p>국내 증시는 10월 9일\(금\) 한글날 휴장, 다음 거래일은 10월 12일\(월\)입니다\./);
     const plain = Copy.material({ date: '20261124', rows: [row('000001', '가나다', 12)], holiday: ed.holidayNotice('20261124') });
     assert.doesNotMatch(Copy.threads(plain).text + Copy.naverBlog(plain).html, /국내 증시 휴장|국내 증시는|해외 휴장|🗓 휴장 안내/);   // (블로그 끝 텔레그램 소개 문구의 '휴장 안내'는 예외)

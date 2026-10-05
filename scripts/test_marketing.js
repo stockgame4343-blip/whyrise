@@ -201,14 +201,14 @@ test('listing-day leader missing from rows is shown as a new listing, not as a t
     const m=Copy.material({date:'20261001',rows,leader:{ticker:'468670',name:'브릴스',rate:59.5,listing_day:true},breadth:null,market:null});
     const t=Copy.threads(m).text;
     assert.doesNotMatch(t,/59\.5/);                 // 신규상장주 등락률은 공모가 기준이 아니어서 싣지 않는다
-    assert.match(t,/가나 \+30\.0% — 신규 수주 공급 계약/);
-    assert.match(t,/^📌 10월 1일\(목\) 마감 \| /);      // 텔레그램 마감 메시지와 같은 머리·날짜 표기
+    assert.match(t,/🔺 가나 상한가 — 신규 수주 공급 계약/);
+    assert.match(t,/^📌 10월 1일\(목\) (마감 정리 왔어요!|장 마감 정리해 왔어요!|오늘 장 마감 정리예요!)\n/);      // 캐릭터 말투 첫 줄 + 날짜 표기
     assert.match(Copy.blogTitle(m),/^10월 1일 /);          // 블로그 제목은 날짜가 맨 앞
     assert.ok(Array.from(t).length<=500);
     const b=Copy.naverBlog(m,[]);
     assert.match(b.html,/신규상장: 브릴스/);
     assert.match(b.title,/가나 상한가 이유/);
-    assert.match(b.text.split('\n\n')[0],/가나는 '신규 수주 공급 계약' 기사와 함께 상한가를 기록했습니다/);   // 제목의 약속에 첫 문단에서 답한다
+    assert.match(b.text.split('\n\n')[1],/가나는 '신규 수주 공급 계약' 기사와 함께 상한가를 기록했습니다/);   // 캐릭터 멘트 다음 첫 문단에서 제목의 약속에 답한다
 });
 test('weak "관련 보도" reasons are not used as reasons in external copy',()=>{
     const rows=[{ticker:'000002',name:'다라',change_rate:20,rise_reason:'관련 보도: 대표 인터뷰',reason_source:'news_extract',reason_kind:'related'}];
