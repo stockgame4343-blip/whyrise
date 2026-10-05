@@ -142,15 +142,15 @@ Threads/Instagram 연결 시 이미지 1장이면 IMAGE, 2장이면 CAROUSEL로 
 
 ## 쓰레드 자동 발행 — 2026-10-06
 
-- **무엇**: 평일 16:30 KST 이후 마감 확정 데이터가 있으면 발행실 오늘자 쓰레드 원고(`digest.json`의 `posts.threads.text`)를 Threads에 **텍스트 + 링크 카드**로 하루 1번 게시한다. 링크 카드는 사이트 본 화면 `rise.html?date=YYYYMMDD`(utm_source=threads)이며 /day/ 페이지가 아니다. Threads는 링크 카드를 텍스트 게시물에만 붙이므로 이미지는 붙지 않는다. 원고 끝줄은 '👇 종목별 이유 전체는 아래 링크에서'.
-- **스크립트**: `scripts/threads_publish.js [YYYYMMDD] [--dry-run] [--retry-failed]`. `POST /me/threads`(media_type=TEXT, text, link_attachment) → 상태 확인(5초 간격 최대 30초) → `POST /me/threads_publish`(creation_id). 단계마다 실패 시 1회 재시도하고, 게시 재시도는 같은 creation_id로만 해서 중복 게시가 생기지 않는다. 본문은 Threads 기준(이모지=UTF-8 바이트)으로 500자를 넘으면 게시하지 않고 실패 처리한다.
-- **중복 방지**: `.marketing-state/{date}-threads.json`(기존 이미지 경로와 같은 키). `published`면 건너뛴다. `failed`는 그날 자동 재시도하지 않고 수동 실행(`gh workflow run marketing-daily.yml -f publish=true`)만 다시 시도한다. 결과가 불명확한 `publishing`·`uncertain`은 다음 실행이 컨테이너 상태로 판정한다(PUBLISHED → 완료, FINISHED → 같은 컨테이너로 게시, ERROR·EXPIRED → 새로 생성, 불명 → 보류).
+- **무엇**: 평일 16:30 KST 이후 마감 확정 데이터가 있으면 발행실 오늘자 쓰레드 원고(`digest.json`의 `posts.threads.text`)를 Threads에 **링크 없는 텍스트**로 하루 1번 게시하고, 게시가 확인되면 **첫 댓글**로 `posts.threads.reply`(사이트 본 화면 `rise.html?date=YYYYMMDD` + 텔레그램 채널 링크)를 단다. 본문 링크는 도달을 깎아서 댓글로 단다(사용자 결정 10-06). /day/ 페이지가 아니다. 원고 끝줄은 '👇 종목별 이유 전체는 댓글 링크에서'.
+- **스크립트**: `scripts/threads_publish.js [YYYYMMDD] [--dry-run] [--retry-failed] [--preview-dm]`. `POST /me/threads`(media_type=TEXT, text) → 상태 확인(5초 간격 최대 30초) → `POST /me/threads_publish`(creation_id), 이어서 같은 방식으로 댓글(reply_to_id=본문 ID). 단계마다 실패 시 1회 재시도하고, 게시 재시도는 같은 creation_id로만 해서 중복 게시가 생기지 않는다. 게시 응답을 놓쳐 본문 ID를 모르면 최근 게시물에서 같은 본문을 찾아 댓글 대상으로 쓴다. 본문·댓글은 Threads 기준(이모지=UTF-8 바이트)으로 500자를 넘으면 게시하지 않고 실패 처리한다.
+- **중복 방지**: 본문 `.marketing-state/{date}-threads.json`, 댓글 `{date}-threads-reply.json`(기존 이미지 경로와 같은 키). `published`면 건너뛰고, 본문만 게시된 날 다시 돌면 빠진 댓글만 단다. `failed`는 그날 자동 재시도하지 않고 수동 실행(`gh workflow run marketing-daily.yml -f publish=true`)만 다시 시도한다. 결과가 불명확한 `publishing`·`uncertain`은 다음 실행이 컨테이너 상태로 판정한다(PUBLISHED → 완료, FINISHED → 같은 컨테이너로 게시, ERROR·EXPIRED → 새로 생성, 불명 → 보류).
 - **실행 경로**: Vercel 크론(`vercel.json` crons `30 7 * * 1-5` = 평일 16:30 KST) → `api/threads-cron.py` → GitHub `repository_dispatch` `threads-publish` → `marketing-daily.yml`. 원고 생성 직후·이미지 렌더 전에 게시한다. 16:30에 마감 데이터가 아직 없으면 그 뒤 빌드 완료 트리거(16:20~22:00)에서 게시된다. GitHub 크론 16:37·17:37은 백업.
 - **켜고 끄기**: 저장소 변수 `THREADS_AUTOPUBLISH=on`일 때만 실게시. 그 외에는 같은 단계가 dry-run으로 본문·링크·글자 수만 로그에 남긴다.
 - **토큰**: `THREADS_ACCESS_TOKEN`(시크릿, 장기 토큰 60일). `scripts/threads_token.js`가 크론·Vercel·수동 실행마다 `debug_token`으로 만료일을 보고, 10일 이하로 남으면 `refresh_access_token`으로 갱신해 `gh secret set`으로 시크릿을 덮어쓴다(쓰기 권한은 `THREADS_SECRET_PAT` — 이 저장소 한정 fine-grained PAT, Secrets 읽기·쓰기). 기록 `.marketing-state/threads-token.json`에는 만료일과 토큰 지문(해시 앞 12자)만 남긴다. 단기 토큰(1시간)이 들어오면 교환 필요 알림을 보낸다.
 - **알림**: 게시 실패·결과 불명·토큰 갱신 실패·단기/무효 토큰·PAT 없음은 `THREADS_ALERT_CHAT_ID`(운영자 개인 채팅, @whyorgo_bot에 먼저 /start)로 보낸다. 공개 채널 `TELEGRAM_CHAT_ID`로는 보내지 않는다. 같은 종류는 하루 한 번.
 - **Vercel 환경변수**: `GITHUB_TOKEN`(admin-override.py와 같은 PAT, repository_dispatch). `CRON_SECRET`을 설정하면 그 값만 받고, 없으면 Vercel 크론 User-Agent + 평일 16~18시 KST 호출만 받는다.
-- **검증**: `node --test scripts/test_threads.js`, `node scripts/threads_publish.js YYYYMMDD --dry-run`.
+- **검증**: `node --test scripts/test_threads.js`, `node scripts/threads_publish.js YYYYMMDD --dry-run`. 운영자 DM 미리보기(게시·커밋 없음): `gh workflow run threads-preview.yml -R stockgame4343-blip/whyrise [-f date=YYYYMMDD]`.
 
 ## 채널별 발행 시각·내용 (2026-10-06 기준, 실제 발송 기록 9/7~10/2 대조)
 
@@ -164,5 +164,5 @@ Threads/Instagram 연결 시 이미지 1장이면 IMAGE, 2장이면 CAROUSEL로 
 | 텔레그램 저녁 정리 | 19:00 (백업 19:30) | 대부분 19:00, 데이터 늦은 날 23시대 | '오늘 왜 올랐나' — 이유 있는 흐름, 같은 테마, 개별 재료, 신규상장, 연속 상승, 국내 휴장 |
 | 텔레그램 주간 | 목·금 15:55 (주 마지막 거래일만) | 10/2 15:55 | 주간 주도 섹터·테마 TOP5 + 일별 대장 카드 |
 | 텔레그램 월간 | 25~31일 16:10 (달 마지막 거래일만) | 9/30 16:11 | 월간 주도 섹터·테마 + 단골 급등주 + 대장 캘린더 |
-| 쓰레드 자동 게시 | 16:30 (Vercel 크론, `THREADS_AUTOPUBLISH=on`일 때) — 마감 데이터가 없으면 그 뒤 빌드 완료(16:20~22:00) 때 하루 1번 | 원고가 처음 생기는 때(최근 3주 17:16~17:42, 늦으면 19~20시) | 마감 요약 + 💬 한 줄 + 흐름 + 개별 재료 + 휴장, 텍스트 + 링크 카드(rise.html?date=) |
+| 쓰레드 자동 게시 | 16:30 (Vercel 크론, `THREADS_AUTOPUBLISH=on`일 때) — 마감 데이터가 없으면 그 뒤 빌드 완료(16:20~22:00) 때 하루 1번 | 원고가 처음 생기는 때(최근 3주 17:16~17:42, 늦으면 19~20시) | 마감 요약 + 💬 한 줄 + 흐름 + 개별 재료 + 휴장, 링크 없는 텍스트 + 첫 댓글에 rise.html?date= 링크 |
 | 블로그 원고(수동 붙여넣기) | 16:37 (백업 17:37) + 16:20~22:00 사이 빌드마다 갱신 | 첫 원고 17:16~17:42, 최종 21:20~22:00 | 해석형 본문 + 썸네일 등 이미지 6장 + 끝에 웹·텔레그램 소개 |

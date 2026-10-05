@@ -1,19 +1,19 @@
 'use strict';
 /**
- * 발행실 오늘자 쓰레드 원고 → Threads 텍스트 게시 (하루 1회)
+ * 발행실 오늘자 쓰레드 원고 → Threads 본문 게시 + 첫 댓글 링크 (하루 1회)
  *
- *   node scripts/threads_publish.js [YYYYMMDD] [--dry-run] [--retry-failed]
+ *   node scripts/threads_publish.js [YYYYMMDD] [--dry-run] [--retry-failed] [--preview-dm]
  *
- * 원고: public/marketing/{date}/digest.json 의 posts.threads.text — 발행실이 보여주는 그 원고
- * 링크: 링크 카드(link_attachment)로 사이트 본 화면 rise.html?date= — Threads 는 텍스트 게시물에만 링크 카드를 붙인다
- * 기록: .marketing-state/{date}-threads.json — 기존 이미지 게시 경로(marketing_publish.js)와 같은 키라 어느 경로든 하루 1번
+ * 본문: public/marketing/{date}/digest.json 의 posts.threads.text — 발행실 원고 그대로, 링크 없음
+ * 댓글: posts.threads.reply — 사이트 본 화면 rise.html?date= 링크. 본문 링크는 도달을 깎아서 첫 댓글로 단다
+ * 기록: .marketing-state/{date}-threads.json · {date}-threads-reply.json
+ *       기존 이미지 게시 경로(marketing_publish.js)와 같은 키라 어느 경로든 하루 1번
  * 알림: 실패·확인 필요 시 THREADS_ALERT_CHAT_ID(운영자 개인 채팅)로만 — 공개 채널(TELEGRAM_CHAT_ID)로는 보내지 않는다
  */
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const tg = require('./tg_common');
-const { siteLink } = require('./marketing_copy');
 const { Ledger } = require('./delivery_ledger');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -24,7 +24,9 @@ const CONTAINER_WAIT_MS = 5000;
 const CONTAINER_MAX_POLLS = 6;         // 5초 × 6 = 30초 — Meta 권장 평균 대기
 const RETRY_WAIT_MS = 10000;
 const REQUEST_TIMEOUT_MS = 20000;
-const LEDGER_CHANNEL = 'threads';
+const RECENT_POSTS_LIMIT = 10;
+const POST_CHANNEL = 'threads';
+const REPLY_CHANNEL = 'threads-reply';
 const HOLD_STATUSES = ['publishing', 'uncertain'];
 const EMOJI_RE = /\p{Extended_Pictographic}|\p{Regional_Indicator}/u;
 
@@ -67,8 +69,8 @@ async function threadsApi(url, token, method = 'GET', fields) {
     return body;
 }
 
-async function createContainer(api, token, text, link) {
-    const r = await api(`${API_BASE}/me/threads`, token, 'POST', { media_type: 'TEXT', text, link_attachment: link });
+async function createContainer(api, token, fields) {
+    const r = await api(`${API_BASE}/me/threads`, token, 'POST', fields);
     if (!r.id) throw apiError('컨테이너 ID 없음', false);
     return r.id;
 }
@@ -91,17 +93,28 @@ async function waitUntilReady(api, token, id, sleep) {
     return 'IN_PROGRESS';
 }
 
+// 게시 응답을 놓쳐 ID 를 모를 때 — 최근 게시물에서 같은 본문을 찾는다(댓글을 달 대상)
+async function findPostId(api, token, text) {
+    try {
+        const r = await api(`${API_BASE}/me/threads?fields=id,text&limit=${RECENT_POSTS_LIMIT}`, token);
+        const hit = (r.data || []).find(p => String(p.text || '').trim() === String(text).trim());
+        return hit ? hit.id : null;
+    } catch (e) {
+        return null;
+    }
+}
+
 /**
- * 컨테이너 생성 → 대기 → 게시. 단계마다 실패 시 1회 재시도.
+ * 컨테이너 생성 → 대기 → 게시(본문·댓글 공용). 단계마다 실패 시 1회 재시도.
  * 생성 재시도는 안전(미게시 컨테이너는 노출되지 않음). 게시 재시도는 같은 creation_id 로만 —
  * 컨테이너는 한 번만 게시되므로 첫 시도가 실제로 됐어도 중복 게시가 생기지 않는다.
  */
-async function publishText(o) {
-    const { date, text, link, token, ledger, retryFailed = false } = o;
+async function publishPost(o) {
+    const { date, channel, fields, token, ledger, retryFailed = false } = o;
     const api = o.api || threadsApi;
     const sleep = o.sleep || wait;
     const now = o.now || (() => new Date().toISOString());
-    const rec = await ledger.load(date, LEDGER_CHANNEL);
+    const rec = await ledger.load(date, channel);
     let state = rec.state || {};
 
     if (state.status === 'published') return { ...state, skipped: true };
@@ -110,7 +123,7 @@ async function publishText(o) {
     if (state.status === 'failed' && !retryFailed) return { ...state, skipped: true };
 
     const published = async postId => {
-        state = { ...state, status: 'published', post_id: postId, published_at: now() };
+        state = { ...state, status: 'published', post_id: postId || await findPostId(api, token, fields.text), published_at: now() };
         delete state.error;
         await ledger.save(rec, state);
         return state;
@@ -127,13 +140,13 @@ async function publishText(o) {
     }
 
     if (!state.container_id) {
-        state = { date, channel: LEDGER_CHANNEL, mode: 'text', link, content_hash: crypto.createHash('sha256').update(text + '\n' + link).digest('hex') };
+        state = { date, channel, mode: 'text', content_hash: crypto.createHash('sha256').update(JSON.stringify(fields)).digest('hex') };
         try {
             try {
-                state.container_id = await createContainer(api, token, text, link);
+                state.container_id = await createContainer(api, token, fields);
             } catch (e) {
                 await sleep(RETRY_WAIT_MS);
-                state.container_id = await createContainer(api, token, text, link);
+                state.container_id = await createContainer(api, token, fields);
             }
         } catch (e) {
             state = { ...state, status: 'failed', step: 'create', error: e.message, failed_at: now() };
@@ -171,20 +184,38 @@ async function publishText(o) {
     return state;
 }
 
-// 실패를 하루 한 번만 알리기 위해 원고 단계 실패도 같은 기록에 남긴다
-async function recordFailure(ledger, date, reason) {
-    const rec = await ledger.load(date, LEDGER_CHANNEL);
+// 실패를 하루 한 번만 알리기 위해 게시 전 단계 실패도 같은 기록에 남긴다
+async function recordFailure(ledger, date, channel, reason) {
+    const rec = await ledger.load(date, channel);
     if (rec.state.status) return { ...rec.state, skipped: true };
-    const state = { date, channel: LEDGER_CHANNEL, mode: 'text', status: 'failed', step: 'precheck', error: reason, failed_at: new Date().toISOString() };
+    const state = { date, channel, mode: 'text', status: 'failed', step: 'precheck', error: reason, failed_at: new Date().toISOString() };
     await ledger.save(rec, state);
     return state;
+}
+
+// 본문이 게시된 뒤에만 첫 댓글(링크)을 단다. 본문이 이미 게시된 날 다시 돌면 빠진 댓글만 채운다
+async function publishWithReply(o) {
+    const { date, text, reply, token, ledger } = o;
+    const api = o.api || threadsApi;
+    const post = await publishPost({ ...o, channel: POST_CHANNEL, fields: { media_type: 'TEXT', text } });
+    if (post.status !== 'published' || !reply) return { post, reply: null };
+    let postId = post.post_id;
+    if (!postId) {
+        postId = await findPostId(api, token, text);
+        if (!postId) return { post, reply: await recordFailure(ledger, date, REPLY_CHANNEL, '본문 게시 ID를 찾지 못해 댓글을 달 수 없음') };
+        const rec = await ledger.load(date, POST_CHANNEL);
+        await ledger.save(rec, { ...rec.state, post_id: postId });
+    }
+    const replied = await publishPost({ ...o, channel: REPLY_CHANNEL, fields: { media_type: 'TEXT', text: reply, reply_to_id: postId } });
+    return { post: { ...post, post_id: postId }, reply: replied };
 }
 
 function loadManuscript(date) {
     const p = path.join(ROOT, 'public/marketing', date, 'digest.json');
     if (!fs.existsSync(p)) return null;
     const digest = JSON.parse(fs.readFileSync(p, 'utf8'));
-    return { digest, text: String((digest.posts && digest.posts.threads && digest.posts.threads.text) || '').trim() };
+    const th = (digest.posts && digest.posts.threads) || {};
+    return { digest, text: String(th.text || '').trim(), reply: String(th.reply || '').trim() };
 }
 
 // 게시하면 안 되는 날·시각이면 사유를 돌려준다(조용히 종료)
@@ -195,6 +226,14 @@ function skipReason(date, digest) {
     const block = tg.krPublishBlock(date, false);
     if (block) return block;
     if (tg.hmKst() < PUBLISH_NOT_BEFORE) return `${PUBLISH_NOT_BEFORE} KST 이전`;
+    return '';
+}
+
+function precheckReason(m, env) {
+    const bodyLen = threadsLength(m.text), replyLen = threadsLength(m.reply);
+    if (bodyLen > TEXT_LIMIT) return `본문 ${bodyLen}자 — ${TEXT_LIMIT}자 초과(Threads 기준, 이모지=바이트)`;
+    if (replyLen > TEXT_LIMIT) return `댓글 ${replyLen}자 — ${TEXT_LIMIT}자 초과`;
+    if (!env.THREADS_ACCESS_TOKEN) return 'THREADS_ACCESS_TOKEN 시크릿 없음';
     return '';
 }
 
@@ -212,15 +251,15 @@ async function notifyOperator(env, lines) {
     }
 }
 
-function failureLines(date, result) {
+function failureLines(date, result, label) {
     const md = `${+date.slice(4, 6)}/${+date.slice(6)}`;
     if (result.status === 'uncertain') return [
-        `⚠️ ${md} 쓰레드 게시 결과 확인 필요`,
+        `⚠️ ${md} ${label} 결과 확인 필요`,
         `오류: ${result.error}`,
         '게시됐는지 Threads 앱에서 확인해 주세요. 다음 실행이 컨테이너 상태를 보고 자동으로 이어가거나 멈춥니다(중복 게시 없음).',
     ];
     return [
-        `❌ ${md} 쓰레드 게시 실패 (${result.step || '-'})`,
+        `❌ ${md} ${label} 실패 (${result.step || '-'})`,
         `오류: ${result.error}`,
         '오늘은 자동으로 다시 시도하지 않습니다. 다시 올리려면: gh workflow run marketing-daily.yml -f publish=true -R stockgame4343-blip/whyrise',
     ];
@@ -245,31 +284,34 @@ async function main(argv = process.argv.slice(2), env = process.env) {
     const m = loadManuscript(date);
     if (!m || !m.text) { console.log(`${date} 쓰레드 원고 없음 — 게시하지 않음`); return; }
 
-    const link = siteLink(date, 'threads', 'social');
     const length = threadsLength(m.text);
     const skip = skipReason(date, m.digest);
 
     if (args.dryRun) {
-        console.log(`── 쓰레드 원고 ${date} (dry-run, 게시 안 함) ──\n${m.text}\n──\n링크 카드: ${link}\n글자 수(Threads 기준): ${length}/${TEXT_LIMIT}`);
+        console.log(`── 쓰레드 원고 ${date} (dry-run, 게시 안 함) ──\n${m.text}\n── 첫 댓글 ──\n${m.reply || '(없음)'}\n──\n글자 수(Threads 기준): 본문 ${length}/${TEXT_LIMIT}, 댓글 ${threadsLength(m.reply)}/${TEXT_LIMIT}`);
         if (skip) console.log(`실게시였다면 건너뜀: ${skip}`);
         if (length > TEXT_LIMIT) { console.log(`::error::${TEXT_LIMIT}자 초과 — 실게시는 막힘`); process.exitCode = 1; }
-        if (args.previewDm) await notifyOperator(env, [`🧪 쓰레드 미리보기 ${+date.slice(4, 6)}/${+date.slice(6)} (게시 안 함)`, '', m.text, '', `🔗 링크 카드: ${link}`, `글자 수(Threads 기준): ${length}/${TEXT_LIMIT}`]);
+        if (args.previewDm) await notifyOperator(env, [`🧪 쓰레드 미리보기 ${+date.slice(4, 6)}/${+date.slice(6)} (게시 안 함)`, '', m.text, '', '💬 첫 댓글로 달릴 링크', m.reply || '(없음)', '', `글자 수(Threads 기준): 본문 ${length}/${TEXT_LIMIT}`]);
         return;
     }
     if (skip) { console.log(`건너뜀: ${skip}`); return; }
     if (!env.GH_TOKEN || !env.GITHUB_REPOSITORY) throw new Error('게시 기록에 GH_TOKEN·GITHUB_REPOSITORY 필요');
     const ledger = new Ledger(env.GITHUB_REPOSITORY, env.GH_TOKEN);
 
-    const precheck = length > TEXT_LIMIT ? `본문 ${length}자 — ${TEXT_LIMIT}자 초과(Threads 기준, 이모지=바이트)`
-        : !env.THREADS_ACCESS_TOKEN ? 'THREADS_ACCESS_TOKEN 시크릿 없음' : '';
-    const result = precheck ? await recordFailure(ledger, date, precheck)
-        : await publishText({ date, text: m.text, link, token: env.THREADS_ACCESS_TOKEN, ledger, retryFailed: args.retryFailed });
+    const precheck = precheckReason(m, env);
+    const result = precheck ? { post: await recordFailure(ledger, date, POST_CHANNEL, precheck), reply: null }
+        : await publishWithReply({ date, text: m.text, reply: m.reply, token: env.THREADS_ACCESS_TOKEN, ledger, retryFailed: args.retryFailed });
 
-    console.log(JSON.stringify({ date, status: result.status, skipped: !!result.skipped, post_id: result.post_id || null, error: result.error || null }));
-    if (result.status === 'published') return;
-    if (!result.skipped) await notifyOperator(env, failureLines(date, result));
-    if (!result.skipped || result.hold) process.exitCode = 1;
+    const brief = r => r && { status: r.status, skipped: !!r.skipped, post_id: r.post_id || null, error: r.error || null };
+    console.log(JSON.stringify({ date, post: brief(result.post), reply: brief(result.reply) }));
+    let bad = false;
+    for (const [r, label] of [[result.post, '쓰레드 게시'], [result.reply, '쓰레드 댓글 링크']]) {
+        if (!r || r.status === 'published') continue;
+        if (!r.skipped) await notifyOperator(env, failureLines(date, r, label));
+        if (!r.skipped || r.hold) bad = true;
+    }
+    if (bad) process.exitCode = 1;
 }
 
 if (require.main === module) main().catch(e => { console.error(e.message); process.exitCode = 1; });
-module.exports = { threadsLength, publishText, recordFailure, skipReason, parseArgs, failureLines, TEXT_LIMIT };
+module.exports = { threadsLength, publishPost, publishWithReply, recordFailure, skipReason, parseArgs, failureLines, TEXT_LIMIT };
