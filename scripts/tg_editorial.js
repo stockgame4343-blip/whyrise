@@ -160,7 +160,7 @@ function daily(date, leaders, market, refined, day, previous, history) {
     const s = storyOf(day, { leader: leaders && leaders.leader ? { ...leaders.leader, rate: leaders.leader.change_rate, vol: leaders.leader.trading_value } : null,
         history: history || (previous ? [previous] : []) });
     const blocks = [];
-    const head = [b_('📌 ' + md(date) + ' 마감' + (s.rows.length ? ' | ' + headPhrase(s) : ''))];
+    const head = [b_('📌 ' + tg.dateKo(date) + ' 마감' + (s.rows.length ? ' | ' + headPhrase(s) : ''))];
     if (market) head.push(e_('코스피 ' + tg.pct(market.kospi.changePct) + ' · 코스닥 ' + tg.pct(market.kosdaq.changePct)));
     head.push(e_('상한가 ' + s.limitUps.length + ' · +' + core.RISE_CUTOFF + '% 이상 ' + s.hot.length + '종목' + (s.prevHot != null ? ' (전일 ' + s.prevHot + ')' : '')));
     blocks.push({ prio: 0, lines: head });
@@ -183,7 +183,7 @@ function daily(date, leaders, market, refined, day, previous, history) {
 /** 19:00 저녁 — 뉴스 보강 후 '왜 올랐나' 전체 (텍스트 4096자 이내) */
 function evening(date, day, previous, refined, history) {
     const s = storyOf(day, { history: history || (previous ? [previous] : []) });
-    const blocks = [{ prio: 0, lines: [b_('🌙 ' + md(date) + ' 오늘 왜 올랐나' + (s.headline && s.flows.length ? ' | ' + s.headline : '')),
+    const blocks = [{ prio: 0, lines: [b_('🌙 ' + tg.dateKo(date) + ' 오늘 왜 올랐나' + (s.headline && s.flows.length ? ' | ' + s.headline : '')),
         e_('+10% 이상 ' + s.rows.length + '종목 중 이유가 확인된 ' + s.explained + '종목' + (s.limitUps.length ? ' · 상한가 ' + s.limitUps.length : ''))] }];
     // 기사 배경·개별 이유가 있는 흐름은 자세히, 테마로만 묶인 흐름은 한 묶음으로
     const told = s.flows.filter(f => f.kind !== 'sector' && (f.catalyst || f.members.some(r => r.reason)));
@@ -207,7 +207,7 @@ function evening(date, day, previous, refined, history) {
 /** 장전 브리핑의 '어제 국내' 블록 (HTML 줄 배열) */
 function morningBlock(s) {
     if (!s || !s.date) return [];
-    const lines = [b_('📌 어제(' + md(s.date) + ') 국내'),
+    const lines = [b_('📌 ' + tg.dateKo(s.date) + ' 국내 마감'),
         e_((s.flows.length ? s.headline + ' · ' : '') + '상한가 ' + s.limitUps.length + ' · +' + core.RISE_CUTOFF + '% 이상 ' + s.hot.length + '종목')];
     const items = [];
     for (const f of s.lead.slice(0, 2)) {
@@ -228,14 +228,14 @@ function morningBlock(s) {
 function morningCheck() { return ''; }
 
 function intraday(date, movers, refined) {
-    const lines = [b_('🚀 ' + md(date) + ' 개장 30분 · 개별 주도주'), e_('거래대금이 실린 상승 종목 순서예요.'), ''];
+    const lines = [b_('🚀 ' + tg.dateKo(date) + ' 개장 30분 · 개별 주도주'), e_('거래대금이 실린 상승 종목 순서예요.'), ''];
     lines.push(...stockLines(movers.slice(0, TOP_CAPTION_ROWS).map(m => ({ ...m, change_rate: m.rate, trading_value: m.vol })), refined, { volume: true }));
     return closing(lines, '실시간 오른 종목 전체', tg.orgoLink('/rise.html?date=' + date, 'intraday'), false);
 }
 /** 10:00 오전 테마 — 장중 랭킹을 같은 흐름 규칙으로 묶는다 */
 function themes(date, groups, refined, rankings) {
     const s = storyOf({ date, rankings: rankings || [] });
-    const lines = [b_('🗺 ' + md(date) + ' 오전 · 테마 확산')];
+    const lines = [b_('🗺 ' + tg.dateKo(date) + ' 오전 · 테마 확산')];
     const flows = s.lead.concat(s.flows.filter(f => !f.headliner && f.kind !== 'sector')).slice(0, 3);
     if (flows.length) {
         flows.forEach(f => {

@@ -103,7 +103,7 @@ async function main() {
     }).filter(Boolean);
 
     var end = today < wk[4] ? today : wk[4];
-    var range = tg.mdLabel(wk[0]) + '~' + tg.mdLabel(end);
+    var range = tg.dateKo(wk[0], false) + '~' + tg.dateKo(end, false);
     // 이번 주 흐름 — 매일의 '오늘의 흐름'(마감·블로그와 같은 규칙)을 모아 자주 주도한 흐름·자주 오른 종목
     var weekDays = wk.filter(function (d) { return d <= end && tg.isKrTradingDay(d); }).map(function (d) {
         try { var x = JSON.parse(fs.readFileSync(path.join(DATA, 'rise-history', d + '.json'), 'utf8')); return x.is_final === true && x.date === d ? Story.withSnapshot(PUBLIC, x) : null; }

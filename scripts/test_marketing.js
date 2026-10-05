@@ -198,7 +198,8 @@ test('listing-day leader missing from rows is shown as a new listing, not as a t
     const t=Copy.threads(m).text;
     assert.doesNotMatch(t,/59\.5/);                 // 신규상장주 등락률은 공모가 기준이 아니어서 싣지 않는다
     assert.match(t,/가나 \+30\.0% — 신규 수주 공급 계약/);
-    assert.match(t,/^10\/1\(목\) 마감 \| /);           // 텔레그램 마감 메시지와 같은 머리
+    assert.match(t,/^📌 10월 1일\(목\) 마감 \| /);      // 텔레그램 마감 메시지와 같은 머리·날짜 표기
+    assert.match(Copy.blogTitle(m),/^10월 1일 /);          // 블로그 제목은 날짜가 맨 앞
     assert.ok(Array.from(t).length<=500);
     const b=Copy.naverBlog(m,[]);
     assert.match(b.html,/신규상장: 브릴스/);

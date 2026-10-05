@@ -50,6 +50,13 @@ function dateLabel(ymd) {
     return y + '.' + m + '.' + d + ' ' + dow;
 }
 function mdLabel(ymd) { return (+ymd.slice(4, 6)) + '.' + (+ymd.slice(6, 8)); }
+// 메시지 머리 날짜 — "10월 2일(금)"
+function dateKo(ymd, withDay) {
+    ymd = String(ymd || '');
+    var s = (+ymd.slice(4, 6)) + '월 ' + (+ymd.slice(6, 8)) + '일';
+    if (withDay === false) return s;
+    return s + '(' + WEEKDAY[new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8))).getUTCDay()] + ')';
+}
 function marketLabel(m) {
     m = String(m || '').toUpperCase();
     if (m.indexOf('KOSDAQ') >= 0) return 'KOSDAQ';
@@ -797,7 +804,7 @@ function socialThemesCaption(opts) {
 module.exports = {
     reasonsFromRows,
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
-    num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, marketLabel, clip, orgoLink, escHtml, htmlLink,
+    num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, dateKo, marketLabel, clip, orgoLink, escHtml, htmlLink,
     fetchRefinedReasons, refinedReasonsFromDay, verifiedReason, isKrTradingDay, isDuplicateDayData, specificReason,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,

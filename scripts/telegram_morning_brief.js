@@ -71,7 +71,7 @@ async function fetchYesterdayRecap(today) {
 // ── 캡션 ── 해외는 한 줄 요약, 핵심은 '어제 왜 올랐나'
 function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
     var e = tg.escHtml;
-    var lines = ['<b>' + e('🌅 ' + (+todayYmd.slice(4,6)) + '/' + (+todayYmd.slice(6)) + ' 장전 브리핑') + '</b>', ''];
+    var lines = ['<b>' + e('🌅 ' + tg.dateKo(todayYmd) + ' 장전 브리핑') + '</b>', ''];
     var by = {};
     quotes.forEach(function (q) { by[q.label] = q; });
     var us = ['S&P 500', '나스닥', '반도체(SOX)'].filter(function (k) { return by[k]; })
@@ -86,7 +86,7 @@ function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
         lines.push.apply(lines, editorial.morningBlock(recap));
     }
     if (comment) { lines.push(''); lines.push(e(comment)); }
-    var link = recap ? tg.htmlLink('어제 오른 종목·이유 전체', tg.orgoLink('/rise.html?date=' + recap.date, 'morning'))
+    var link = recap ? tg.htmlLink(tg.dateKo(recap.date, false) + ' 오른 종목·이유 전체', tg.orgoLink('/rise.html?date=' + recap.date, 'morning'))
         : tg.htmlLink('대장 캘린더', tg.orgoLink('/sample2.html', 'morning'));
     return lines.join('\n') + '\n\n' + link;
 }

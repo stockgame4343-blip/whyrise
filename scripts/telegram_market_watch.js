@@ -77,7 +77,7 @@ function lunchCaption(today, M, breadth) {
     var e = tg.escHtml;
     var up = M.upCount, down = M.downCount;
     var mood = up > down * 1.3 ? '오른 종목이 더 많은 오전' : down > up * 1.3 ? '내린 종목이 더 많은 오전' : '오른 종목과 내린 종목이 비슷한 오전';
-    var lines = ['<b>' + e('🕐 ' + (+today.slice(4,6)) + '/' + (+today.slice(6)) + ' 점심 점검 · ' + mood) + '</b>', ''];
+    var lines = ['<b>' + e('🕐 ' + tg.dateKo(today) + ' 점심 점검 · ' + mood) + '</b>', ''];
     lines.push(e('📊 코스피 ' + idxNum(M.kospi.price) + ' (' + tg.pct(M.kospi.changePct) + ') · 코스닥 ' + idxNum(M.kosdaq.price) + ' (' + tg.pct(M.kosdaq.changePct) + ')'));
     lines.push(e('상승 ' + up.toLocaleString('ko-KR') + ' · 하락 ' + down.toLocaleString('ko-KR') + ' · 거래대금 ' + tg.fmtAmount(M.tradingValueWon)));
     if (breadth) {
