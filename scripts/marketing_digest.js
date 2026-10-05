@@ -53,7 +53,7 @@ function hasTheme(rows) {
 function buildDigest(day, marketmap, now = new Date(), calendar = null, market = null, history = [], themeLookup = null) {
     const date = ymd(day.date);
     if (!/^\d{8}$/.test(date) || !Array.isArray(day.rankings) || day.is_final !== true) throw new Error('Final dated rankings required');
-    if (!tg.isKrTradingDay(date)) throw new Error('Not a trading day');
+    if (!tg.isKrTradingDay(date) || !tg.krCalendarCovers(date)) throw new Error('Not a confirmed trading day (휴장일이거나 휴장일 달력 범위 밖)');
     const rows = new Map();
     for (const r of day.rankings) {
         if (/^[0-9A-Z]{6}$/.test(r.ticker || '') && r.name && Number.isFinite(r.change_rate) && r.change_rate >= 10) rows.set(r.ticker, {...r});

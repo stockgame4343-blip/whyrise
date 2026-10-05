@@ -132,14 +132,16 @@ function adminNote(d,status) {
         blog.title?e(blog.title):'',
         '발행실에서 제목·본문·태그 복사 → 네이버 블로그 글쓰기에 붙여넣기',
         'https://orgo.kr/marketing.html#blog',
-        `쓰레드: ${e(thLabel)}`].filter(Boolean).join('\n');
+        `쓰레드: ${e(thLabel)}`,
+        // 휴장일 달력 갱신 알림 — 한국·해외 달력이 30일 안에 끝나면 운영자에게 미리 알린다
+        ...tg.holidayCalendarWarnings(d.date).map(w=>'⚠️ '+e(w))].filter(Boolean).join('\n');
 }
 
 async function main(env=process.env) {
     const date=process.argv[2]||tg.ymdKst();
     if(!/^\d{8}$/.test(date)) throw new Error('Expected YYYYMMDD');
     const d=JSON.parse(fs.readFileSync(path.join(ROOT,'public/marketing',date,'digest.json'),'utf8'));
-    if(date!==tg.ymdKst()||d.date!==date||d.is_final!==true||!tg.isKrTradingDay(date)) throw new Error('Live publication requires today\'s final trading data');
+    if(date!==tg.ymdKst()||d.date!==date||d.is_final!==true||tg.krPublishBlock(date,false)) throw new Error('Live publication requires today\'s final trading data on a confirmed trading day');
     const enabled=new Set((env.MARKETING_ENABLED_CHANNELS||'').split(',').map(s=>s.trim()));
     const status={date,checked_at:new Date().toISOString(),channels:{}};
     for(const channel of ['threads','instagram','kakao','toss']) {

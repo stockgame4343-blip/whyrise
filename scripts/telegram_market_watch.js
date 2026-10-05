@@ -134,7 +134,8 @@ async function main() {
     }
     var today = tg.ymdKst();
     // 주말+공휴일 캘린더 가드 (임시휴장은 아래 tradedYmd 실측 가드가 잡는다)
-    if (!DEMO && !FORCE && !tg.isKrTradingDay(today)) { console.log('휴장일(' + today + ') — 스킵'); return; }
+    var block = DEMO || FORCE ? '' : tg.krPublishBlock(today, true);   // 범위 밖이면 아래 tradedYmd 실측 가드에 맡긴다
+    if (block) { console.log(block + ' — 스킵'); return; }
 
     // 시장 시세 — 실패 시 이번 실행은 아무것도 안 함(다음 15분에 재시도)
     var M;

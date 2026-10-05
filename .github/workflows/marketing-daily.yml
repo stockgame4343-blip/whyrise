@@ -48,7 +48,8 @@ jobs:
           if(!requested.length||requested.some(d=>!/^\d{8}$/.test(d)))throw Error('Invalid date');
           const manual=process.env.EVENT_NAME==='workflow_dispatch';
           const inWindow=tg.hmKst()>='16:20'&&tg.hmKst()<='22:00';
-          const ok=d=>{const p=`public/data/rise-history/${d}.json`;const day=fs.existsSync(p)?JSON.parse(fs.readFileSync(p)):null;return tg.isKrTradingDay(d)&&day&&day.is_final===true;};
+          const ok=d=>{const p=`public/data/rise-history/${d}.json`;const day=fs.existsSync(p)?JSON.parse(fs.readFileSync(p)):null;return tg.isKrTradingDay(d)&&tg.krCalendarCovers(d)&&day&&day.is_final===true;};
+          tg.logHolidayWarnings(tg.ymdKst());
           const dates=[...new Set(requested)].sort().filter(d=>(manual||inWindow)&&ok(d));
           const date=dates[dates.length-1]||requested[0];
           const live=dates.length===1&&date===tg.ymdKst();

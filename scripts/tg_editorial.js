@@ -155,6 +155,78 @@ function fit(blocks, max, tailHtml) {
 }
 function tail(label, url, share) { return tg.htmlLink(label, url) + (share ? '  ·  ' + tg.htmlLink('📲 공유', SHARE_URL) : ''); }
 
+// ── 휴장 안내 ── 한국(대체공휴일 포함)은 kr_holidays.json, 해외는 global_holidays.json 의 거래소 발표분만
+function holidayName(n) { return String(n || '휴장').replace(/\s*\([^)]*\)/g, '').replace(/\s*대체(공휴일)?$/, ' 대체공휴일').trim(); }
+function dateRangeKo(a, b) {
+    if (a === b) return tg.dateKo(a);
+    const tail = a.slice(0, 6) === b.slice(0, 6) ? tg.dateKo(b).replace(/^\d+월 /, '') : tg.dateKo(b);
+    return tg.dateKo(a) + '~' + tail;
+}
+// 이어지는 국내 휴장 — 설·추석 연휴는 한 덩어리로, 나머지는 날짜마다
+function krClosureText(kr) {
+    const names = kr.map(k => holidayName(k.name));
+    const root = names[0].split(' ')[0];
+    if (kr.length > 1 && /^(설날|추석)$/.test(root) && names.every(n => n.split(' ')[0] === root))
+        return dateRangeKo(kr[0].date, kr[kr.length - 1].date) + ' ' + (root === '설날' ? '설' : root) + ' 연휴' + (names.some(n => /대체/.test(n)) ? '(대체공휴일 포함)' : '');
+    return kr.map(k => tg.dateKo(k.date) + ' ' + holidayName(k.name)).join(', ');
+}
+// 해외 휴장이 며칠 이어지는지 — 중국 국경절처럼 긴 연휴는 '~10월 7일(수)까지'
+function foreignUntil(code, ymd, name) {
+    let last = ymd, d = ymd;
+    for (let i = 0; i < 12; i++) {
+        d = shiftDay(d, 1);
+        if (!isWeekday(d)) continue;
+        const hit = tg.foreignClosures(d, [code]).filter(x => !x.early && x.name === name)[0];
+        if (!hit) break;
+        last = d;
+    }
+    return last;
+}
+function foreignLine(when, ymd) {
+    const fx = tg.foreignClosures(ymd);
+    if (!fx.length) return '';
+    const onlyClosed = fx.every(x => !x.early);
+    const items = fx.map(x => {
+        if (x.early) return x.flag + ' ' + x.label + ' ' + x.note + '(' + x.name + ')';
+        const until = foreignUntil(x.code, ymd, x.name);
+        return x.flag + ' ' + x.label + (onlyClosed ? '' : ' 휴장') + '(' + x.name + (until > ymd ? ', ~' + tg.dateKo(until) + '까지' : '') + ')';
+    });
+    return '🌏 ' + when + ' 해외' + (onlyClosed ? ' 휴장' : '') + ': ' + items.join(' · ');
+}
+// 마감·저녁: 다음 거래일 전에 끼는 국내 휴장(대체공휴일 포함)과, 다음 거래일의 해외 휴장·단축장
+function holidayCloseLines(date, withForeign) {
+    const out = [], next = tg.nextKrTradingDay(date), kr = tg.krClosuresBefore(date);
+    if (!next) return out;
+    const sure = tg.krCalendarCovers(next);   // 달력 범위 밖 날짜는 '다음 거래일'로 단정하지 않는다
+    if (kr.length) out.push('🇰🇷 국내 증시 휴장: ' + (kr[0].date === shiftDay(date, 1) ? '내일 ' : '') + krClosureText(kr) + (sure ? ' → 다음 거래일 ' + tg.dateKo(next) : ''));
+    if (withForeign !== false && sure) { const f = foreignLine(tg.dateKo(next), next); if (f) out.push(f); }
+    return out;
+}
+// 장전: 오늘 해외 휴장·단축장, 일주일 안의 국내 휴장 예고(이어지는 날은 한 덩어리로)
+function holidayMorningLines(today) {
+    const out = [], f = foreignLine('오늘', today);
+    if (f) out.push(f);
+    const runs = [];
+    for (let i = 1; i <= 7; i++) {
+        const d = shiftDay(today, i), n = tg.krHolidayName(d);
+        if (!n || !isWeekday(d)) continue;
+        const last = runs.length ? runs[runs.length - 1] : null;
+        if (last && tg.nextKrTradingDay(last[last.length - 1].date) > d) last.push({ date: d, name: n });
+        else runs.push([{ date: d, name: n }]);
+    }
+    if (runs.length) out.push('🇰🇷 국내 증시 휴장 예정: ' + (runs[0][0].date === shiftDay(today, 1) ? '내일 ' : '') + runs.map(krClosureText).join(', '));
+    return out;
+}
+// 간밤 미국 정규장이 쉬었는지 — 장전 브리핑이 그 전 거래일 시세를 '간밤'으로 싣지 않게
+function usOvernightClosure(today) {
+    let d = shiftDay(today, -1);
+    while (!isWeekday(d)) d = shiftDay(d, -1);
+    const us = tg.foreignClosures(d, ['US']).filter(x => !x.early)[0];
+    return us ? { date: d, name: us.name } : null;
+}
+function shiftDay(ymd, n) { const t = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8))); t.setUTCDate(t.getUTCDate() + n); return t.toISOString().slice(0, 10).replace(/-/g, ''); }
+function isWeekday(ymd) { const w = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8))).getUTCDay(); return w > 0 && w < 6; }
+
 /** 15:45 마감 — 이미지(대장 카드·테마 버블)와 함께 나가는 캡션 (1024자 이내) */
 function daily(date, leaders, market, refined, day, previous, history) {
     const s = storyOf(day, { leader: leaders && leaders.leader ? { ...leaders.leader, rate: leaders.leader.change_rate, vol: leaders.leader.trading_value } : null,
@@ -177,6 +249,8 @@ function daily(date, leaders, market, refined, day, previous, history) {
     flows.forEach((f, i) => blocks.push({ prio: 2 + i, lines: [flowHead(f), e_(memberLine(f.members, 3))] }));
     const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, 2);
     if (solos.length) blocks.push({ prio: 6, lines: solos.map(r => '• ' + b_(r.name) + ' ' + e_(Story.rateOf(r) + ' — ' + tg.clip(r.reason, 34))) });
+    const hol = holidayCloseLines(date);   // 휴장 안내는 줄이지 않는다
+    if (hol.length) blocks.push({ prio: 0, lines: hol.map(e_) });
     return fit(blocks, 1000, tail('오늘 오른 종목·이유 전체 보기', dayUrl(date, 'daily'), true));
 }
 
@@ -201,6 +275,8 @@ function evening(date, day, previous, refined, history) {
     if (s.ipos.length) blocks.push({ prio: 6, lines: [e_('🆕 신규상장 ' + s.ipos.map(r => r.name + (r.vol ? ' (거래대금 ' + tg.fmtAmount(r.vol) + ')' : '')).join(', '))] });
     if (s.continuing.length) blocks.push({ prio: 4, lines: [e_('🔁 연속 +10%: ' + s.continuing.slice(0, 5).map(r => r.name + '(' + r.streak + '거래일)').join(', '))] });
     if (!s.rows.length) blocks.push({ prio: 0, lines: [e_('오늘은 +10% 이상 오른 종목이 없어요.')] });
+    const hol = holidayCloseLines(date, false);
+    if (hol.length) blocks.push({ prio: 0, lines: hol.map(e_) });
     return fit(blocks, 3900, tail('📋 ' + s.rows.length + '종목 이유 전체 보기', dayUrl(date, 'evening'), true));
 }
 
@@ -276,4 +352,4 @@ function calendarObservation(days, start, end) {
     if (!top) return '기록된 ' + entries.length + '거래일 모두 대장 조건을 충족한 종목이 없었어요.';
     return '기록된 ' + entries.length + '거래일 · ' + top.name + ' 대장 ' + top.count + '일.' + (empty ? ' 대장 없는 날은 ' + empty + '일.' : '');
 }
-module.exports = {stockLines, explainedFirst, isDelisting, isNewListing, ipoMark, finalSnapshot, calendarLeaders, activeRows, comparison, previousSnapshot, countLine, daily, intraday, themes, evening, morningCheck, morningBlock, periodLines, headPhrase, storyOf, calendarObservation};
+module.exports = {stockLines, explainedFirst, isDelisting, isNewListing, ipoMark, finalSnapshot, calendarLeaders, activeRows, comparison, previousSnapshot, countLine, daily, intraday, themes, evening, morningCheck, morningBlock, periodLines, headPhrase, storyOf, calendarObservation, holidayCloseLines, holidayMorningLines, usOvernightClosure};

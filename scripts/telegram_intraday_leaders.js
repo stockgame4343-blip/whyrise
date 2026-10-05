@@ -60,7 +60,9 @@ async function main() {
     if (!DATE_ARG && !FORCE) {
         // 휴장일 2중 가드 — 캘린더(공휴일) + 네이버 실측(임시휴장). 휴장일에 상류가
         // 전 거래일 복제 파일을 만들어도(2026-07-17 사고) 여기서 막힌다.
-        if (!tg.isKrTradingDay(today)) { console.log('휴장일(' + today + ', 캘린더) — 스킵'); return; }
+        tg.logHolidayWarnings(today);
+        var block = tg.krPublishBlock(today, true);
+        if (block) { console.log(block + ' — 게시 스킵'); return; }
         var traded = await market.isKrTradedToday(today);
         if (!traded.ok) { console.log('휴장일(실측 거래일=' + traded.tradedYmd + ') — 스킵'); return; }
         var dates = await core.fetchJson(RAW + '/dates.json');

@@ -69,12 +69,14 @@ function clip(s, n) { s = Array.from(String(s == null ? '' : s)); return s.lengt
 // 임시휴장은 테이블에 없을 수 있으므로(2026-07-17 사고) 09:00 이후 게시물은
 // tg_market.isKrTradedToday(네이버 실측)를 이 캘린더와 함께 쓴다.
 var _KR_HOLIDAYS = null;
+var _KR_META = { covered: '', loaded: false };
 function _krHolidays() {
     if (_KR_HOLIDAYS) return _KR_HOLIDAYS;
     try {
         var j = JSON.parse(fs.readFileSync(
             path.resolve(__dirname, '..', 'collector', 'kr_holidays.json'), 'utf8'));
         _KR_HOLIDAYS = j.holidays || {};
+        _KR_META = { covered: String(j._covered_through || ''), loaded: true, verified2027: j._verified_2027 !== false, verifyBy: String(j._verify_by || '') };
     } catch (e) {
         console.error('[tg_common] kr_holidays.json 로드 실패(공휴일 미반영):', e.message);
         _KR_HOLIDAYS = {};
@@ -87,6 +89,79 @@ function isKrTradingDay(ymd) {
     var dow = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8))).getUTCDay();
     if (dow === 0 || dow === 6) return false;
     return !_krHolidays()[ymd];
+}
+
+// ── 휴장일 안내 (한국 + 해외 증시) ──
+function krHolidayName(ymd) { return _krHolidays()[String(ymd || '')] || ''; }
+// 한국 휴장일 달력이 이 날짜까지 확실히 담고 있는지 — 모르는 날짜엔 캘린더만 믿고 발행하지 않는다
+function krCalendarCovers(ymd) { _krHolidays(); return _KR_META.loaded && !!_KR_META.covered && String(ymd) <= _KR_META.covered; }
+function _ymdAdd(ymd, days) {
+    var d = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8)));
+    d.setUTCDate(d.getUTCDate() + days);
+    return d.toISOString().slice(0, 10).replace(/-/g, '');
+}
+function _isWeekday(ymd) { var w = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8))).getUTCDay(); return w > 0 && w < 6; }
+function nextKrTradingDay(ymd) { var d = String(ymd); for (var i = 0; i < 20; i++) { d = _ymdAdd(d, 1); if (isKrTradingDay(d)) return d; } return ''; }
+// ymd 다음 날부터 다음 거래일 전날까지의 평일 휴장일 — [{date, name}]
+function krClosuresBefore(ymd) {
+    var out = [], next = nextKrTradingDay(ymd), d = String(ymd);
+    for (var i = 0; i < 20 && next; i++) { d = _ymdAdd(d, 1); if (d >= next) break; if (_isWeekday(d)) out.push({ date: d, name: krHolidayName(d) || '휴장' }); }
+    return out;
+}
+var _GLOBAL = null;
+function _globalHolidays() {
+    if (_GLOBAL) return _GLOBAL;
+    try { _GLOBAL = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'collector', 'global_holidays.json'), 'utf8')).markets || {}; }
+    catch (e) { console.error('[tg_common] global_holidays.json 로드 실패(해외 휴장 안내 생략):', e.message); _GLOBAL = {}; }
+    return _GLOBAL;
+}
+// 그날 해외 증시 휴장·단축 — 공식 발표분(holidays/early)만, 달력 범위 밖이면 안내하지 않는다
+function foreignClosures(ymd, codes) {
+    var g = _globalHolidays(), out = [];
+    (codes || ['US', 'JP', 'CN', 'HK', 'TW']).forEach(function (code) {
+        var m = g[code];
+        if (!m || !m.covered_through || String(ymd) > m.covered_through) return;
+        if (m.holidays && m.holidays[ymd]) out.push({ code: code, label: m.label, flag: m.flag, name: m.holidays[ymd], early: false });
+        else if (m.early && m.early[ymd]) out.push({ code: code, label: m.label, flag: m.flag, name: m.early[ymd], note: m.early_note || '단축 거래', early: true });
+    });
+    return out;
+}
+// 게시 가드 — 막아야 하면 사유 문자열, 통과면 ''.
+//  · 주말·휴장일(대체공휴일·연말 휴장·선거일 포함) → 막음
+//  · 오늘이 휴장일 달력 범위 밖 → liveCheck(네이버 실측 거래일 확인)가 뒤따르는 게시물만 경고 후 통과,
+//    캘린더가 유일한 가드인 게시물(장전 브리핑·마케팅 발행)은 막는다 — 모르는 날엔 발행하지 않는다
+function krPublishBlock(ymd, liveCheck) {
+    ymd = String(ymd || '');
+    if (!/^\d{8}$/.test(ymd)) return '날짜 형식 오류(' + ymd + ')';
+    if (!_isWeekday(ymd)) return '주말(' + ymd + ')';
+    if (!krCalendarCovers(ymd)) {
+        var msg = '한국 휴장일 달력(collector/kr_holidays.json)이 ' + (_KR_META.covered || '?') + '까지만 있어 ' + ymd + ' 휴장 여부를 달력으로 확정할 수 없음';
+        if (liveCheck) { console.log('::warning::' + msg + ' — 실측 거래일 확인으로만 판단'); return ''; }
+        console.log('::error::' + msg + ' — KRX 휴장일을 추가할 때까지 게시 중단');
+        return msg;
+    }
+    if (!isKrTradingDay(ymd)) return '휴장일(' + ymd + ' ' + krHolidayName(ymd) + ')';
+    return '';
+}
+// 달력 갱신 경고를 Actions 로그에 노출(::warning::) — 운영자 알림은 발행실 메시지가 함께 싣는다
+function logHolidayWarnings(today) {
+    var w = holidayCalendarWarnings(String(today || ymdKst()));
+    w.forEach(function (x) { console.log('::warning::' + x); });
+    return w;
+}
+// 달력 갱신이 필요한 시장 — 운영자 알림용
+function holidayCalendarWarnings(today) {
+    var warn = [], soon = _ymdAdd(String(today), 30);
+    _krHolidays();
+    if (!_KR_META.loaded) warn.push('한국 휴장일 달력(kr_holidays.json)을 읽지 못했습니다.');
+    else if (!_KR_META.covered || _KR_META.covered <= soon) warn.push('한국 휴장일 달력이 ' + (_KR_META.covered || '?') + '까지만 있습니다. 다음 해 KRX 휴장일을 추가해 주세요.');
+    if (_KR_META.loaded && _KR_META.verified2027 === false && _KR_META.verifyBy && today >= _ymdAdd(_KR_META.verifyBy, -31)) warn.push('KRX 공식 2027 휴장일이 나오면 kr_holidays.json 과 대조하고 _verified_2027 을 true 로 바꿔 주세요.');
+    var g = _globalHolidays();
+    Object.keys(g).forEach(function (code) {
+        var m = g[code];
+        if (!m.covered_through || m.covered_through <= soon || (m.verify_by && String(today) >= m.verify_by)) warn.push(m.label + ' 휴장일 달력이 ' + (m.covered_through || '?') + '까지만 있습니다. 거래소 발표분을 추가해 주세요.');
+    });
+    return warn;
 }
 
 // ── 휴장일 복제 파일 판정 — 두 날짜 랭킹의 등락률이 사실상 전부 동일하면 같은 데이터 ──
@@ -806,6 +881,7 @@ module.exports = {
     TG_CAPTION_MAX, TG_TEXT_MAX, WEEKDAY, HOOK_RULE,
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, dateKo, marketLabel, clip, orgoLink, escHtml, htmlLink,
     fetchRefinedReasons, refinedReasonsFromDay, verifiedReason, isKrTradingDay, isDuplicateDayData, specificReason,
+    krHolidayName, krCalendarCovers, nextKrTradingDay, krClosuresBefore, foreignClosures, holidayCalendarWarnings, krPublishBlock, logHolidayWarnings,
     loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,

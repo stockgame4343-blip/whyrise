@@ -74,13 +74,19 @@ function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
     var lines = ['<b>' + e('🌅 ' + tg.dateKo(todayYmd) + ' 장전 브리핑') + '</b>', ''];
     var by = {};
     quotes.forEach(function (q) { by[q.label] = q; });
+    // 간밤 미국 정규장이 쉬었으면 시세는 그 전 거래일 값이다 — 등락률 대신 휴장이라고 쓴다
+    var usClosed = editorial.usOvernightClosure(todayYmd);
     var us = ['S&P 500', '나스닥', '반도체(SOX)'].filter(function (k) { return by[k]; })
         .map(function (k) { return k.replace(' 500', '') + ' ' + tg.pct(by[k].changePct); });
-    if (us.length) lines.push(e('🇺🇸 간밤 ' + us.join(' · ')));
+    if (usClosed) lines.push(e('🇺🇸 간밤 미국 증시 휴장(' + usClosed.name + ')'));
+    else if (us.length) lines.push(e('🇺🇸 간밤 ' + us.join(' · ')));
     var extra = [];
-    if (by.VIX) extra.push('VIX ' + idx(by.VIX.price));
+    if (by.VIX && !usClosed) extra.push('VIX ' + idx(by.VIX.price));
     if (fxQuote) extra.push('원/달러 ' + fx(fxQuote.price) + '원');
     if (extra.length) lines.push(e('   ' + extra.join(' · ')));
+    // 휴장 안내 — 오늘 해외 휴장·단축장, 일주일 안의 국내 휴장(대체공휴일 포함)
+    var hol = editorial.holidayMorningLines(todayYmd);
+    if (hol.length) { lines.push(''); hol.forEach(function (h) { lines.push(e(h)); }); }
     if (recap) {
         lines.push('');
         lines.push.apply(lines, editorial.morningBlock(recap));
@@ -99,9 +105,15 @@ async function main() {
     var today = tg.ymdKst();
     // 주말+공휴일 캘린더 가드 — 장전(07:30)엔 네이버 실측 거래일 확인이 불가능(항상 전 거래일이
     // 나옴)해서 캘린더(kr_holidays.json)가 유일한 가드다. 임시휴장은 공지 즉시 JSON에 추가할 것.
-    if (!DRY && !FORCE && !tg.isKrTradingDay(today)) {
-        console.log('휴장일(' + today + ') — 게시 스킵');
-        return;
+    // 달력 범위 밖(다음 해 휴장일 미등록)이면 확정할 수 없으므로 게시하지 않고 워크플로를 실패로 남긴다.
+    tg.logHolidayWarnings(today);
+    if (!DRY && !FORCE) {
+        var block = tg.krPublishBlock(today, false);
+        if (block) {
+            console.log(block + ' — 게시 스킵');
+            if (!tg.krCalendarCovers(today)) process.exitCode = 1;
+            return;
+        }
     }
     if (!DRY && !FORCE) {
         var mk = tg.loadMarker(MARKER);
@@ -131,4 +143,5 @@ async function main() {
     tg.saveMarker(MARKER, { last: today, message_id: r.result && r.result.message_id, at: new Date().toISOString().slice(0, 19) });
 }
 
-main().catch(function (e) { console.error(e); process.exit(1); });
+if (require.main === module) main().catch(function (e) { console.error(e); process.exit(1); });
+module.exports = { buildCaption: buildCaption };
