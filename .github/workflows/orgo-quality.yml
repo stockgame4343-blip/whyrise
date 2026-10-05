@@ -24,6 +24,7 @@ jobs:
       - run: python scripts/test_build_history.py
       - run: python scripts/test_prerender_days.py
       - run: node --test scripts/test_marketing.js
+      - run: node --test scripts/test_threads.js
       - run: node --test scripts/test_tg_delivery.js
       - run: node --test scripts/test_market_story.js
       - run: node --test scripts/test_holidays.js

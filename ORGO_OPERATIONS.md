@@ -139,3 +139,15 @@ Threads/Instagram 연결 시 이미지 1장이면 IMAGE, 2장이면 CAROUSEL로 
 - **같은 문장 반복 줄이기**: 자주 쓰는 문장은 날짜별로 표현을 바꾸고, 한 글 안에서는 같은 말을 되풀이하지 않는다.
 - **태그**는 제목 종목·날짜·흐름 위주 12개 이내. 쓰레드에는 머리 아래 💬 한 줄(오늘의 성격)이 붙는다.
 - 검증: 333거래일 원고를 다시 만들어 지난 급등 횟수·이번 달 대장 횟수를 원자료에서 따로 세어 대조하고, 결론에만 나오는 종목·흐름, 같은 테마 모순, 금지 문구를 검사했다(문제 0건). 별도 검토 에이전트가 문장·논리·권유 위험을 검토했고 지적 사항을 반영했다.
+
+## 쓰레드 자동 발행 — 2026-10-06
+
+- **무엇**: 평일 16:30 KST 이후 마감 확정 데이터가 있으면 발행실 오늘자 쓰레드 원고(`digest.json`의 `posts.threads.text`)를 Threads에 **텍스트 + 링크 카드**로 하루 1번 게시한다. 링크 카드는 사이트 본 화면 `rise.html?date=YYYYMMDD`(utm_source=threads)이며 /day/ 페이지가 아니다. Threads는 링크 카드를 텍스트 게시물에만 붙이므로 이미지는 붙지 않는다. 원고 끝줄은 '👇 종목별 이유 전체는 아래 링크에서'.
+- **스크립트**: `scripts/threads_publish.js [YYYYMMDD] [--dry-run] [--retry-failed]`. `POST /me/threads`(media_type=TEXT, text, link_attachment) → 상태 확인(5초 간격 최대 30초) → `POST /me/threads_publish`(creation_id). 단계마다 실패 시 1회 재시도하고, 게시 재시도는 같은 creation_id로만 해서 중복 게시가 생기지 않는다. 본문은 Threads 기준(이모지=UTF-8 바이트)으로 500자를 넘으면 게시하지 않고 실패 처리한다.
+- **중복 방지**: `.marketing-state/{date}-threads.json`(기존 이미지 경로와 같은 키). `published`면 건너뛴다. `failed`는 그날 자동 재시도하지 않고 수동 실행(`gh workflow run marketing-daily.yml -f publish=true`)만 다시 시도한다. 결과가 불명확한 `publishing`·`uncertain`은 다음 실행이 컨테이너 상태로 판정한다(PUBLISHED → 완료, FINISHED → 같은 컨테이너로 게시, ERROR·EXPIRED → 새로 생성, 불명 → 보류).
+- **실행 경로**: Vercel 크론(`vercel.json` crons `30 7 * * 1-5` = 평일 16:30 KST) → `api/threads-cron.py` → GitHub `repository_dispatch` `threads-publish` → `marketing-daily.yml`. 원고 생성 직후·이미지 렌더 전에 게시한다. 16:30에 마감 데이터가 아직 없으면 그 뒤 빌드 완료 트리거(16:20~22:00)에서 게시된다. GitHub 크론 16:37·17:37은 백업.
+- **켜고 끄기**: 저장소 변수 `THREADS_AUTOPUBLISH=on`일 때만 실게시. 그 외에는 같은 단계가 dry-run으로 본문·링크·글자 수만 로그에 남긴다.
+- **토큰**: `THREADS_ACCESS_TOKEN`(시크릿, 장기 토큰 60일). `scripts/threads_token.js`가 크론·Vercel·수동 실행마다 `debug_token`으로 만료일을 보고, 10일 이하로 남으면 `refresh_access_token`으로 갱신해 `gh secret set`으로 시크릿을 덮어쓴다(쓰기 권한은 `THREADS_SECRET_PAT` — 이 저장소 한정 fine-grained PAT, Secrets 읽기·쓰기). 기록 `.marketing-state/threads-token.json`에는 만료일과 토큰 지문(해시 앞 12자)만 남긴다. 단기 토큰(1시간)이 들어오면 교환 필요 알림을 보낸다.
+- **알림**: 게시 실패·결과 불명·토큰 갱신 실패·단기/무효 토큰·PAT 없음은 `THREADS_ALERT_CHAT_ID`(운영자 개인 채팅, @whyorgo_bot에 먼저 /start)로 보낸다. 공개 채널 `TELEGRAM_CHAT_ID`로는 보내지 않는다. 같은 종류는 하루 한 번.
+- **Vercel 환경변수**: `GITHUB_TOKEN`(admin-override.py와 같은 PAT, repository_dispatch). `CRON_SECRET`을 설정하면 그 값만 받고, 없으면 Vercel 크론 User-Agent + 평일 16~18시 KST 호출만 받는다.
+- **검증**: `node --test scripts/test_threads.js`, `node scripts/threads_publish.js YYYYMMDD --dry-run`.

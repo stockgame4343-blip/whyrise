@@ -2,6 +2,8 @@ name: ORGO daily marketing
 on:
   schedule:
     - cron: '37 7,8 * * 1-5' # KST 16:37, 17:37 backup
+  repository_dispatch:
+    types: [threads-publish] # Vercel 크론(api/threads-cron.py) 평일 16:30 KST 정시 트리거
   workflow_run:
     workflows: ["종목 인덱스 빌드 (1년치)"]
     types: [completed]
@@ -62,6 +64,20 @@ jobs:
         env:
           DATES: ${{ steps.gate.outputs.dates }}
         run: for D in $DATES; do node scripts/marketing_digest.js "$D"; done
+      # 텍스트+링크 카드라 이미지 렌더를 기다리지 않는다. 실패해도 이미지·발행실 배포는 계속(알림은 스크립트가 보냄)
+      # 실게시는 vars.THREADS_AUTOPUBLISH == 'on' + 오늘 마감 확정일 때만, 그 외엔 dry-run 으로 본문만 로그에 남긴다
+      - name: Publish Threads text post
+        if: steps.gate.outputs.run == 'true'
+        continue-on-error: true
+        env:
+          DATE: ${{ steps.gate.outputs.date }}
+          DRY_RUN: ${{ !(steps.gate.outputs.live == 'true' && vars.THREADS_AUTOPUBLISH == 'on' && (github.event_name != 'workflow_dispatch' || inputs.publish)) && '--dry-run' || '' }}
+          RETRY_FAILED: ${{ github.event_name == 'workflow_dispatch' && inputs.publish && '--retry-failed' || '' }}
+          GH_TOKEN: ${{ github.token }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          THREADS_ALERT_CHAT_ID: ${{ secrets.THREADS_ALERT_CHAT_ID }}
+        run: node scripts/threads_publish.js "$DATE" $DRY_RUN $RETRY_FAILED
       - name: Export native ORGO charts and calendar
         if: steps.gate.outputs.run == 'true'
         env:
@@ -118,6 +134,18 @@ jobs:
             sleep 3
           done
           exit 1
+      # 거래일·게시 여부와 무관하게 만료일 확인 — 10일 이하로 남으면 갱신해 THREADS_ACCESS_TOKEN 시크릿을 덮어쓴다
+      # 빌드 완료 트리거(장중 15분마다)는 빼고 크론·Vercel·수동 실행에서만 → 평일 하루 1~3번
+      - name: Check Threads token expiry
+        if: ${{ !cancelled() && github.event_name != 'workflow_run' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_SECRET_PAT: ${{ secrets.THREADS_SECRET_PAT }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          THREADS_ALERT_CHAT_ID: ${{ secrets.THREADS_ALERT_CHAT_ID }}
+        run: node scripts/threads_token.js
       - uses: actions/upload-artifact@v4
         if: always() && steps.gate.outputs.run == 'true'
         with:

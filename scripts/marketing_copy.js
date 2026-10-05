@@ -126,7 +126,8 @@ function threads(m) {
     // 휴장 안내 한 줄 — 국내 휴장(대체공휴일 포함)이 먼저, 없으면 다음 거래일 해외 휴장. 글자 수가 넘쳐도 빼지 않는다
     const hol = holidayLine(m.holiday);
     if (hol) blocks.push({ prio: 0, lines: [hol] });
-    const tail = '👇 종목별 이유 전체는 댓글 링크에서';
+    // 자동 게시(threads_publish.js)는 rise.html 링크를 본문 아래 링크 카드로 붙인다
+    const tail = '👇 종목별 이유 전체는 아래 링크에서';
     const compose = bs => bs.map(b => b.lines.join('\n')).join('\n\n') + '\n\n' + tail;
     let text = compose(blocks);
     while (len(text) > 480 && blocks.some(b => b.prio > 0)) {
