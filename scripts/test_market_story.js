@@ -174,3 +174,24 @@ test('잘린 제목·물음형·증권사 전망은 이유가 아니다', () => 
     for (const ok of ['임상 결과 발표', '범LG家 구미현 인수 효과', '中 궈룬과 2년간 하이난성에 DeepCARS 독점 판매계약'])
         assert.equal(S.goodReason(S.cleanReason(ok)), true, ok);
 });
+
+test('대장 선정 — 신규상장(+30% 초과)도 +30%로 쳐서 거래대금과 곱한 에너지로 뽑는다(캘린더·사이트 공통)', () => {
+    const core = require('./build_leaders_calendar');
+    const vm = require('vm'), fs = require('fs'), path = require('path');
+    const ctx = {}; vm.createContext(ctx);
+    vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'report-core.js'), 'utf8') + '\nthis.C = WhyReportCore;', ctx);
+    const site = rows => ctx.C.pickLeader(rows, [], [], []);
+    const row = (t, n, rate, tv, extra) => Object.assign({ ticker: t, name: n, change_rate: rate, trading_value: tv, sector: '기계', theme_tags: [] }, extra || {});
+    const ipo = { theme_tags: ['2026 하반기 신규상장'] };
+    // 10/1 실제 값: 브릴스(신규상장) +59.5%·6,958억 → 30×6,958억=20.9조 > 제주반도체 14.2%×3,183억=4.5조
+    const oct1 = [row('468670', '브릴스', 59.49, 695.8e9, ipo), row('080220', '제주반도체', 14.18, 318.3e9)];
+    assert.equal(core.pickLeader(oct1).name, '브릴스');
+    assert.equal(site(oct1).name, '브릴스');
+    assert.equal(core.leaderEnergy(oct1[0]), 695.8e9 * 30);
+    // 캡이 실제로 걸리는지 — 원래 상승률(120%)이면 이기지만(24조) 30%로 치면 진다(2,000억×30=6조 < 5,000억×20=10조)
+    const capped = [row('000001', '새내기', 120, 200e9, ipo), row('000002', '기존주', 20, 500e9)];
+    assert.equal(core.pickLeader(capped).name, '기존주');
+    assert.equal(site(capped).name, '기존주');
+    // 표시용 상승률은 그대로(+59.5%) — 캘린더 기록
+    assert.equal(core.leadersFromRows(oct1).stock.rate, 59.5);
+});
