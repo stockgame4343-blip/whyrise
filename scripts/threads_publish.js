@@ -227,10 +227,11 @@ function failureLines(date, result) {
 }
 
 function parseArgs(argv) {
-    const args = { dryRun: false, retryFailed: false, date: '' };
+    const args = { dryRun: false, retryFailed: false, previewDm: false, date: '' };
     for (const a of argv) {
         if (a === '--dry-run') args.dryRun = true;
         else if (a === '--retry-failed') args.retryFailed = true;
+        else if (a === '--preview-dm') args.previewDm = args.dryRun = true;   // 미리보기는 게시하지 않는다
         else if (/^\d{8}$/.test(a)) args.date = a;
         else throw new Error('알 수 없는 인자: ' + a);
     }
@@ -252,6 +253,7 @@ async function main(argv = process.argv.slice(2), env = process.env) {
         console.log(`── 쓰레드 원고 ${date} (dry-run, 게시 안 함) ──\n${m.text}\n──\n링크 카드: ${link}\n글자 수(Threads 기준): ${length}/${TEXT_LIMIT}`);
         if (skip) console.log(`실게시였다면 건너뜀: ${skip}`);
         if (length > TEXT_LIMIT) { console.log(`::error::${TEXT_LIMIT}자 초과 — 실게시는 막힘`); process.exitCode = 1; }
+        if (args.previewDm) await notifyOperator(env, [`🧪 쓰레드 미리보기 ${+date.slice(4, 6)}/${+date.slice(6)} (게시 안 함)`, '', m.text, '', `🔗 링크 카드: ${link}`, `글자 수(Threads 기준): ${length}/${TEXT_LIMIT}`]);
         return;
     }
     if (skip) { console.log(`건너뜀: ${skip}`); return; }

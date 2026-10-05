@@ -127,7 +127,8 @@ test('원고 단계 실패(500자 초과 등)는 하루 한 번만 기록·알�
 });
 
 test('인자: 날짜·--dry-run·--retry-failed, 모르는 인자는 거부', () => {
-    assert.deepEqual(parseArgs(['20261006', '--dry-run']), { dryRun: true, retryFailed: false, date: '20261006' });
+    assert.deepEqual(parseArgs(['20261006', '--dry-run']), { dryRun: true, retryFailed: false, previewDm: false, date: '20261006' });
+    assert.equal(parseArgs(['--preview-dm']).dryRun, true);
     assert.equal(parseArgs([]).date, tg.ymdKst());
     assert.throws(() => parseArgs(['--publish']));
 });
