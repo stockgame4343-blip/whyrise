@@ -125,7 +125,7 @@ async function main() {
     var head = ['📅 ' + range + ' 이번 주 급등주 정리', ''];
     if (comment) { head.push(comment); head.push(''); }   // 특이사항 없으면 멘트 줄 자체를 생략
     var caption = '<b>' + tg.escHtml(head[0]) + '</b>\n' + tg.escHtml(head.slice(1).join('\n')) + '\n' +
-        tg.htmlLink('날짜별 급등주 기록', tg.orgoLink('/day/', 'weekly')) + '  ·  ' +
+        tg.htmlLink('대장 캘린더로 보기', tg.orgoLink('/sample2.html', 'weekly')) + '  ·  ' +
         tg.htmlLink('📲 공유', 'https://t.me/share/url?url=' + encodeURIComponent('https://t.me/whyorgo'));
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------');
     console.log('섹터:', sectors.map(function (s) { return s.name; }).join(',') || '-');

@@ -102,7 +102,7 @@ test('제목은 이유가 실린 종목만 "○○ 상한가 이유"로 걸고, 
     assert.match(title, /머큐리/);
     assert.doesNotMatch(title, /이유없는상한/);
     assert.ok(Array.from(title).length <= 40, title);
-    assert.match(Copy.threadsHook(m.story), /^오늘 머큐리가 상한가 간 이유$/);
+    assert.match(Copy.headPhrase(m.story), /머큐리 상한가/);
     assert.match(Copy.pageTitle(m), /^10월 2일 상한가·급등주 \| 머큐리 상한가 이유/);
 });
 

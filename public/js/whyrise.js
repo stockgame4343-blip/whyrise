@@ -908,9 +908,13 @@ var WhyApp = (function () {
                 return;
             }
             state.dates = dates;
-            state.currentDateIdx = 0;
+            // ?date=YYYYMMDD — 텔레그램·쓰레드·블로그 링크가 그날 목록으로 바로 열리게
+            var want = '';
+            try { want = (new URLSearchParams(window.location.search).get('date') || '').replace(/\D/g, ''); } catch (e) { want = ''; }
+            var wantIdx = want ? dates.indexOf(want) : -1;
+            state.currentDateIdx = wantIdx > 0 ? wantIdx : 0;
             updateDateUI();
-            return loadDate(dates[0]);
+            return loadDate(dates[state.currentDateIdx]);
         }).then(function () {
             return primeLive();   // 최신일 라이브 1회 즉시 반영 — 마감 후에도 실제 종가/시세 표시
         }).then(function () {

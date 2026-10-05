@@ -149,7 +149,8 @@ function multiLedger(){const store={};return {store,async load(date,ch){const k=
 test('threads post keeps the link out of the body and in the first reply',()=>{
     const d=buildDigest(day,null);
     assert.doesNotMatch(d.posts.threads.text,/https?:\/\//);
-    assert.match(d.posts.threads.reply,/https:\/\/orgo\.kr\/day\/20260904\?utm_source=threads/);
+    assert.match(d.posts.threads.reply,/https:\/\/orgo\.kr\/rise\.html\?date=20260904&utm_source=threads/);   // 사이트 본 화면으로
+    assert.doesNotMatch(d.posts.threads.reply,/orgo\.kr\/day\//);
     assert.ok(Array.from(d.posts.threads.text).length<=500);
 });
 test('threads reply waits for the main post and is never resent',async()=>{
@@ -165,7 +166,8 @@ test('threads reply waits for the main post and is never resent',async()=>{
 test('naver blog draft: SEO title, facts only, link and disclaimer, no advisory words',()=>{
     const d=buildDigest(day,null),b=d.naver_blog;
     assert.match(b.title,/9월 4일/);assert.ok(Array.from(b.title).length<=42);
-    assert.match(b.html,/orgo\.kr\/day\/20260904\?utm_source=naver_blog/);
+    assert.match(b.html,/orgo\.kr\/rise\.html\?date=20260904&amp;utm_source=naver_blog/);
+    assert.doesNotMatch(b.html,/orgo\.kr\/day\//);
     assert.match(b.html,/투자 권유가 아닙니다/);
     assert.doesNotMatch(b.html.replace(/투자 권유가 아닙니다/g,''),/매수|매도|추천|목표가|급등 예상/);
     assert.ok(b.tags.length>=8&&b.tags.length<=30);assert.ok(b.tags.every(t=>!/\s/.test(t)));
@@ -194,12 +196,14 @@ test('listing-day leader missing from rows is shown as a new listing, not as a t
     const rows=[{ticker:'000001',name:'가나',change_rate:30,rise_reason:'신규 수주 공급 계약',reason_source:'news_extract',reason_kind:'catalyst'}];
     const m=Copy.material({date:'20261001',rows,leader:{ticker:'468670',name:'브릴스',rate:59.5,listing_day:true},breadth:null,market:null});
     const t=Copy.threads(m).text;
-    assert.match(t,/신규상장 브릴스/);
     assert.doesNotMatch(t,/59\.5/);                 // 신규상장주 등락률은 공모가 기준이 아니어서 싣지 않는다
     assert.match(t,/가나 \+30\.0% — 신규 수주 공급 계약/);
-    assert.match(t,/^오늘 가나가 상한가 간 이유/);    // 이유가 실린 상한가 종목이 첫 줄
+    assert.match(t,/^10\/1\(목\) 마감 \| /);           // 텔레그램 마감 메시지와 같은 머리
     assert.ok(Array.from(t).length<=500);
-    assert.match(Copy.naverBlog(m,[]).html,/신규상장주/);
+    const b=Copy.naverBlog(m,[]);
+    assert.match(b.html,/신규상장: 브릴스/);
+    assert.match(b.title,/가나 상한가 이유/);
+    assert.match(b.text.split('\n')[0],/가나는 '신규 수주 공급 계약' 기사와 함께 상한가를 기록했습니다/);   // 제목의 약속에 첫 문단에서 답한다
 });
 test('weak "관련 보도" reasons are not used as reasons in external copy',()=>{
     const rows=[{ticker:'000002',name:'다라',change_rate:20,rise_reason:'관련 보도: 대표 인터뷰',reason_source:'news_extract',reason_kind:'related'}];

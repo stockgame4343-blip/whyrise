@@ -89,7 +89,8 @@ function stockLines(rows, refined, opts = {}) {
     });
     return out;
 }
-function dayUrl(date, campaign) { return tg.orgoLink('/day/' + date, campaign); }
+// 사이트 본 화면(오른 종목)의 그날 목록 — 검색용 날짜별 정적 페이지로 보내지 않는다
+function dayUrl(date, campaign) { return tg.orgoLink('/rise.html?date=' + date, campaign); }
 function closing(lines, label, url, share) {
     return lines.filter(x => x !== null && x !== undefined).join('\n') + '\n\n' +
         tg.htmlLink(label, url) + (share ? '  ·  ' + tg.htmlLink('📲 공유', SHARE_URL) : '');
@@ -124,15 +125,20 @@ function storyOf(day, opts) { return Story.build(day || { date: '', rankings: []
 const P = Story.pct;
 // 머리 한 줄: "광통신주 급등, 머큐리·티엠씨 상한가" / "광통신·우주항공 강세"
 function headPhrase(s) {
-    const lead = s.flows.find(f => f.headliner);
+    const lead = s.lead[0];
     const lu = lead ? lead.members.filter(r => r.limit) : [];
     if (lead && lu.length) return flowWord(lead) + ' 급등, ' + lu.slice(0, 2).map(r => r.name).join('·') + ' 상한가';
+    // 흐름이 없는 날 — 이유가 확인된 상한가 종목을 앞에
+    const solo = !lead ? s.limitUps.filter(r => r.reason).slice(0, 2) : [];
+    if (solo.length) return solo.map(r => r.name).join('·') + ' 상한가, 개별 재료 장세';
     return s.headline || '';
 }
 function memberLine(rows, n) { return rows.slice(0, n).map(r => r.name + ' ' + Story.rateOf(r)).join(' · '); }
 function flowHead(f) {
-    return b_(f.label) + ' ' + e_(f.members.length + '종목' + (f.streak >= 2 ? ' · ' + f.streak + '거래일 연속' : '') +
-        (f.catalyst ? ' — ' + tg.clip(f.catalyst, 34) : ''));
+    const why = Story.flowReason(f);   // 기사 배경, 없으면 이유가 확인된 대표 종목의 이유
+    const lu = f.members.filter(r => r.limit).length;
+    return b_(f.label) + ' ' + e_(f.members.length + '종목' + (!why && lu ? ' · 상한가 ' + lu : '') + (f.streak >= 2 ? ' · ' + f.streak + '거래일 연속' : '') +
+        (why ? ' — ' + why : ''));
 }
 // 캡션 길이(HTML 포함) 제한 — 넘으면 우선순위 낮은 줄부터 뺀다 (잘린 태그로 파싱 실패 방지)
 function fit(blocks, max, tailHtml) {
@@ -167,7 +173,7 @@ function daily(date, leaders, market, refined, day, previous, history) {
     } else if (s.money[0]) {
         blocks.push({ prio: 0, lines: [e_('🏆 오늘의 대장 없음 · 거래대금 1위 ' + s.money[0].name + ' ' + tg.fmtAmount(s.money[0].vol) + ' (' + Story.rateOf(s.money[0]) + ')')] });
     }
-    const flows = s.flows.filter(f => f.headliner).slice(0, 3);
+    const flows = s.lead.slice(0, 3);
     flows.forEach((f, i) => blocks.push({ prio: 2 + i, lines: [flowHead(f), e_(memberLine(f.members, 3))] }));
     const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, 2);
     if (solos.length) blocks.push({ prio: 6, lines: solos.map(r => '• ' + b_(r.name) + ' ' + e_(Story.rateOf(r) + ' — ' + tg.clip(r.reason, 34))) });
@@ -204,7 +210,7 @@ function morningBlock(s) {
     const lines = [b_('📌 어제(' + md(s.date) + ') 국내'),
         e_((s.flows.length ? s.headline + ' · ' : '') + '상한가 ' + s.limitUps.length + ' · +' + core.RISE_CUTOFF + '% 이상 ' + s.hot.length + '종목')];
     const items = [];
-    for (const f of s.flows.filter(f => f.headliner).slice(0, 2)) {
+    for (const f of s.lead.slice(0, 2)) {
         const lu = f.members.filter(r => r.limit).slice(0, 2).map(r => r.name);
         const first = f.members.find(r => r.reason);
         const why = f.catalyst ? f.catalyst : first ? first.name + ' ' + first.reason : '';
@@ -230,7 +236,7 @@ function intraday(date, movers, refined) {
 function themes(date, groups, refined, rankings) {
     const s = storyOf({ date, rankings: rankings || [] });
     const lines = [b_('🗺 ' + md(date) + ' 오전 · 테마 확산')];
-    const flows = s.flows.filter(f => f.headliner).concat(s.flows.filter(f => !f.headliner && f.kind !== 'sector')).slice(0, 3);
+    const flows = s.lead.concat(s.flows.filter(f => !f.headliner && f.kind !== 'sector')).slice(0, 3);
     if (flows.length) {
         flows.forEach(f => {
             const avg = f.members.reduce((a, r) => a + r.rate, 0) / f.members.length;

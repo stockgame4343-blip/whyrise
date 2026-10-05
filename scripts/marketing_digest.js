@@ -9,8 +9,8 @@ const LIMITS = { threads: 500, instagram: 2200, kakao: 1000, toss: 4000, telegra
 const Copy = require('./marketing_copy');
 const Reason = require(path.resolve(__dirname, '..', 'public', 'js', 'reason.js'));
 const Story = require('./market_story');
-// 외부 채널 → 날짜별 정적 페이지(검색 색인 대상)로 유입 — utm 으로 채널별 성과 구분
-function dayLink(date, channel) { return `https://orgo.kr/day/${date}?utm_source=${channel}&utm_medium=social&utm_campaign=daily`; }
+// 외부 채널 → 사이트 본 화면(오른 종목, 그날 날짜)으로 유입 — utm 으로 채널별 성과 구분
+function dayLink(date, channel) { return `https://orgo.kr/rise.html?date=${date}&utm_source=${channel}&utm_medium=social&utm_campaign=daily`; }
 const UNKNOWN = '직접 상승 촉매 확인 중';
 function ymd(value) { return String(value || '').replace(/\D/g, '').slice(0, 8); }
 function utcDay(value) {

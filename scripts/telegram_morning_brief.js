@@ -86,7 +86,7 @@ function buildCaption(todayYmd, quotes, fxQuote, recap, comment) {
         lines.push.apply(lines, editorial.morningBlock(recap));
     }
     if (comment) { lines.push(''); lines.push(e(comment)); }
-    var link = recap ? tg.htmlLink('어제 오른 종목·이유 전체', tg.orgoLink('/day/' + recap.date, 'morning'))
+    var link = recap ? tg.htmlLink('어제 오른 종목·이유 전체', tg.orgoLink('/rise.html?date=' + recap.date, 'morning'))
         : tg.htmlLink('대장 캘린더', tg.orgoLink('/sample2.html', 'morning'));
     return lines.join('\n') + '\n\n' + link;
 }

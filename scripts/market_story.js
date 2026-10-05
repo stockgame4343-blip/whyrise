@@ -444,6 +444,10 @@ function build(day, opts = {}) {
         prevDate: history[0] ? String(history[0].date) : '',
         leader: leaderOf(leader, rows, abnormal, prevCloses),
     };
+    // 이야기의 중심 흐름 — 상승 에너지 순, 이유(기사 배경·개별 이유)가 있는 흐름은 2배로 쳐서 앞으로
+    // (그래도 19종목 무더기 상한가 같은 큰 흐름은 이유가 없어도 앞에 남는다)
+    const weight = f => f.energy * (flowReason(f) ? 2 : 1);
+    story.lead = flows.filter(f => f.headliner).sort((a, b) => weight(b) - weight(a));
     story.headline = headline(story);
     return story;
 }
@@ -488,7 +492,7 @@ function josa(word, withBatchim, without) {
 function flowTitle(f) { return f.label; }
 // 오늘을 한 줄로: "광통신·우주항공 강세"
 function headline(s) {
-    const top = s.flows.filter(f => f.headliner).slice(0, 2);
+    const top = (s.lead || s.flows.filter(f => f.headliner)).slice(0, 2);
     if (top.length) return top.map(flowTitle).join('·') + ' 강세';
     if (s.rows.length) return '뚜렷한 테마 없이 개별 종목 장세';
     return '';
@@ -498,6 +502,22 @@ function whyOf(r) {
     if (r.reason) return r.reason;
     if (r.flow && r.flow.kind !== 'sector' && r.flow.catalyst) return r.flow.label + ' 강세 · ' + r.flow.catalyst;
     return '';
+}
+// 흐름 한 줄 설명 — 기사 배경, 없으면 이유가 확인된 대표 종목의 이유("나라스페이스테크놀로지 메탄위성 교신 성공")
+function flowReason(f, max = 34) {
+    if (f.catalyst) return clipWords(f.catalyst, max);
+    const told = f.members.filter(x => x.reason).sort((a, b) => b.energy - a.energy);
+    // 잘리지 않고 한 줄에 들어가는 이유를 우선 (거래대금×상승률이 큰 종목부터)
+    const fit = told.find(x => Array.from(x.name + ' ' + x.reason).length <= max);
+    if (fit) return fit.name + ' ' + fit.reason;
+    return told[0] ? clipWords(told[0].name + ' ' + told[0].reason, max) : '';
+}
+// 단어 중간에서 자르지 않는 말줄임
+function clipWords(s, n) {
+    const a = Array.from(String(s || ''));
+    if (a.length <= n) return a.join('');
+    const cut = a.slice(0, n - 1).join(''), sp = cut.lastIndexOf(' ');
+    return (sp > n * 0.5 ? cut.slice(0, sp) : cut) + '…';
 }
 // 이유가 없을 때 보여줄 분류(테마) — 이유 자리가 아니라 '· ○○ 테마'로 쓴다
 function tagOf(r) {
@@ -536,5 +556,5 @@ function period(days) {
 module.exports = {
     RISE, HOT, LIMIT_UP, PRICE_LIMIT, FORBIDDEN, FAMILIES,
     build, period, loadHistory, snapshotExtras, withSnapshot, closesOn, prevTradingDate, rowsOf, flowsOf, parseGroup, cleanReason, goodReason,
-    familyOf, themeShort, companyOf, isLimitUp, limitPrice, tick, headline, whyOf, tagOf, josa, flowTitle, pct, rateOf, round1, amount, clip,
+    familyOf, themeShort, companyOf, isLimitUp, limitPrice, tick, headline, whyOf, flowReason, clipWords, tagOf, josa, flowTitle, pct, rateOf, round1, amount, clip,
 };

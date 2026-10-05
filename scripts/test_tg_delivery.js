@@ -114,7 +114,8 @@ test('slot captions answer distinct questions and keep follow-up observations fa
         assert.doesNotMatch(text,/내일 체크|오늘 볼 것/);          // 매일 같은 일반론 문구는 없다
     }
     assert.match(texts[0],/오늘의 대장 검증전자/);assert.match(texts[1],/개별 주도주/);assert.match(texts[2],/테마 확산/);assert.match(texts[3],/오늘 왜 올랐나/);
-    assert.match(texts[0],/orgo\.kr\/day\/20260904/);assert.match(texts[3],/t\.me\/share\/url/);
+    assert.match(texts[0],/orgo\.kr\/rise\.html\?date=20260904/);assert.match(texts[3],/t\.me\/share\/url/);
+    for(const text of texts) assert.doesNotMatch(text,/orgo\.kr\/day\//);   // 날짜별 정적 페이지로 보내지 않는다
     assert.match(e.daily(day.date,{leader:null},null,{},day,null),/오늘의 대장 없음 · 거래대금 1위 검증전자/);
     // 이유가 있는 종목은 '—' 뒤에 이유가 붙는다
     assert.match(texts[3],/<b>검증전자<\/b> \+20\.0% — 국방부 드론에 카메라 모듈 공급/);

@@ -4,8 +4,9 @@
  *
  * 원칙
  * - 재료는 market_story.js 하나: 숫자는 데이터 그대로, 이유는 같은 날 기사 근거로 확인된 것만.
- * - 제목·첫 줄은 사람들이 실제로 검색하는 말로: "○○ 상한가 이유", "오늘 ○○주가 오른 이유".
- *   단, 이유를 실제로 싣는 종목만 '이유' 제목에 쓴다(낚시 금지).
+ * - 쓰레드는 텔레그램 마감 메시지처럼 간결하게: 한 줄 요약 → 흐름마다 '왜' 한 줄 → 개별 재료.
+ * - 블로그는 종목 나열이 아니라 '오늘 무슨 일이 있었나'를 설명하는 글: 흐름마다 배경·주도 종목·돈의 쏠림을 문장으로.
+ *   제목은 검색어("○○ 상한가 이유")를 앞에 두되, 그 이유를 첫 문단에서 바로 답한다.
  * - 투자 권유·전망 표현 금지(매수/매도/추천/목표가/관심 가져야 할 등). 채워넣기 문장 없이 데이터가 있는 줄만.
  */
 const path = require('path');
@@ -13,6 +14,10 @@ const Story = require(path.resolve(__dirname, 'market_story.js'));
 
 const SITE = 'https://orgo.kr';
 const CHANNEL = 'https://t.me/whyorgo';
+// 외부 채널 링크는 사이트 본 화면(오른 종목, 그날 날짜)으로 — 검색용 날짜별 정적 페이지로 보내지 않는다
+function siteLink(date, source, medium) {
+    return `${SITE}/rise.html?date=${date}&utm_source=${source}&utm_medium=${medium}&utm_campaign=daily`;
+}
 const WD = ['일', '월', '화', '수', '목', '금', '토'];
 const FORBIDDEN = Story.FORBIDDEN;
 const { pct, rateOf, amount, clip } = Story;
@@ -51,7 +56,7 @@ function material({ date, rows, leader, breadth, market, history, extraRows, pre
 // '이유' 제목을 걸 종목 — 이유(개별·흐름 배경)가 실제로 실리는 종목만, 상한가 → 상승 에너지 순
 function hookStocks(s, n = 2) {
     const why = r => !r.ipo && Story.whyOf(r);
-    const lead = s.flows.find(f => f.headliner) || null;
+    const lead = s.lead[0] || null;
     const byEnergy = (a, b) => b.energy - a.energy || b.rate - a.rate;
     let list = s.limitUps.filter(why).sort((a, b) => (b.flow === lead) - (a.flow === lead) || byEnergy(a, b));
     if (list.length) {
@@ -65,61 +70,62 @@ function hookStocks(s, n = 2) {
 }
 function names(rows) { return rows.map(r => r.name).join('·'); }
 
-// ── 쓰레드 ───────────────────────────────────────────────
-function threadsHook(s) {
-    const h = hookStocks(s);
-    const lead = s.flows.find(f => f.headliner);
-    if (h.rows.length && h.limit) return '오늘 ' + josa(names(h.rows), '이', '가') + ' 상한가 간 이유';
-    if (lead && (lead.catalyst || lead.members.some(r => r.reason))) return '오늘 ' + josa(flowWord(lead), '이', '가') + ' 오른 이유';
-    if (h.rows.length) return josa(h.rows[0].name, '이', '가') + ' ' + rateOf(h.rows[0]) + ' 오른 이유';
-    if (lead) return '오늘 상한가·급등주: ' + flowWord(lead) + ' 강세';
-    return '';
+// ── 쓰레드 — 텔레그램 마감 메시지와 같은 틀 ───────────────────
+// 머리 한 줄: "광통신주 급등, 머큐리 상한가" / "광통신·우주항공 강세"
+function headPhrase(s) {
+    const lead = s.lead[0];
+    const lu = lead ? lead.members.filter(r => r.limit) : [];
+    if (lead && lu.length) return flowWord(lead) + ' 급등, ' + lu.slice(0, 2).map(r => r.name).join('·') + ' 상한가';
+    // 흐름이 없는 날 — 이유가 확인된 상한가 종목을 앞에
+    const solo = !lead ? s.limitUps.filter(r => r.reason).slice(0, 2) : [];
+    if (solo.length) return solo.map(r => r.name).join('·') + ' 상한가, 개별 재료 장세';
+    return s.headline || '';
 }
-function memberText(r, withWhy) {
-    return r.name + ' ' + rateOf(r) + (withWhy && r.reason ? '(' + clip(r.reason, 22) + ')' : '');
-}
+// 이전 이름 호환 — 첫 줄
+function threadsHook(s) { return s.date ? md(s.date) + ' 마감 | ' + headPhrase(s) : headPhrase(s); }
 function threads(m) {
     const s = m.story;
-    const reply = `${md(m.date)} 오른 종목 전체와 근거 기사 👉 ${SITE}/day/${m.date}?utm_source=threads&utm_medium=social&utm_campaign=daily\n` +
+    const reply = `${md(m.date)} 오른 종목과 이유 전체 👉 ${siteLink(m.date, 'threads', 'social')}\n` +
         `장전·장중·마감 정리는 텔레그램에서 👉 ${CHANNEL}`;
     if (!s.rows.length) return { text: '', reply };
-    const stat = `${md(m.date)}(${weekday(m.date)}) 상한가 ${s.limitUps.length} · +15% 이상 ${s.hot.length}종목`;
-    const hook = hookStocks(s), hooked = new Set(hook.rows);
-    const first = list => list.slice().sort((a, b) => hooked.has(b) - hooked.has(a));   // 첫 줄에 건 종목은 본문에 꼭 나오게
-    const blocks = [];
-    const flows = s.flows.filter(f => f.headliner).slice(0, 2);
-    for (const f of flows) {
-        const head = `${f.label} ${f.members.length}종목` + (f.streak >= 2 ? ` · ${f.streak}거래일 연속` : '') + (f.catalyst ? ` — ${clip(f.catalyst, 26)}` : '');
-        const shown = first(f.members).slice(0, 3).sort((a, b) => b.rate - a.rate);
-        blocks.push({ prio: 1, lines: [head, shown.map(r => memberText(r, !f.catalyst)).join(' · ')] });
-    }
-    const solos = first(s.solos.slice().sort((a, b) => b.rate - a.rate)).slice(0, Math.max(3 - flows.length, 1));
-    for (const r of solos) blocks.push({ prio: hooked.has(r) ? 0 : 2, lines: [`${r.name} ${rateOf(r)} — ${clip(r.reason, 30)}`] });
-    for (const r of s.ipos.slice(0, 1)) blocks.push({ prio: 3, lines: [`신규상장 ${r.name}` + (r.vol ? ` · 거래대금 ${amount(r.vol)}` : '')] });
-    if (!blocks.length) {
-        // 이유가 확인된 종목이 없는 날 — 많이 오른 종목만 사실대로
-        blocks.push({ prio: 2, lines: [s.rows.filter(r => !r.ipo).slice(0, 3).map(r => r.name + ' ' + rateOf(r)).join(' · ')] });
-    }
-    // 첫 줄에 건 종목이 본문에 없으면(3번째 흐름 소속 등) 그 종목 줄을 맨 앞에 붙인다
-    const shownText = () => blocks.map(b => b.lines.join('\n')).join('\n');
-    for (const r of hook.rows) if (!shownText().includes(r.name)) blocks.unshift({ prio: 0, lines: [`${r.name} ${rateOf(r)} — ${clip(Story.whyOf(r), 34)}`] });
-    const tail = '종목별 이유와 근거 기사는 댓글 링크에.';
-    const compose = bs => [threadsHook(s), stat, ''].filter((x, i) => x || i === 2).concat(...bs.map(b => b.lines.concat(''))).concat([tail]).join('\n')
-        .replace(/^\n+/, '');
+    const head = [`${md(m.date)}(${weekday(m.date)}) 마감 | ${headPhrase(s)}`];
+    if (m.market && Number.isFinite(m.market.kospi) && Number.isFinite(m.market.kosdaq)) head.push(`코스피 ${pct(m.market.kospi)} · 코스닥 ${pct(m.market.kosdaq)}`);
+    head.push(`상한가 ${s.limitUps.length} · +15% 이상 ${s.hot.length}종목`);
+    const blocks = [{ prio: 0, lines: head }];
+    // 흐름은 '왜'가 있는 것만, 한 줄 이유 + 대표 종목
+    // 흐름마다 한 줄: '왜'가 있으면 이유, 없으면 상한가 수만 (근거 없는 말은 붙이지 않는다)
+    const flows = s.lead.slice(0, 2);
+    flows.forEach((f, i) => {
+        const why = Story.flowReason(f, 30), lu = f.members.filter(r => r.limit).length;
+        blocks.push({ prio: 1 + i, lines: [`${f.label} ${f.members.length}종목` + (why ? ` — ${why}` : lu ? ` · 상한가 ${lu}` : ''),
+            f.members.slice(0, 3).map(r => `${r.name} ${rateOf(r)}`).join(' · ')] });
+    });
+    const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, flows.length >= 2 ? 2 : 3);
+    if (solos.length) blocks.push({ prio: 3, lines: solos.map(r => `• ${r.name} ${rateOf(r)} — ${Story.clipWords(r.reason, 32)}`) });
+    if (blocks.length === 1) blocks.push({ prio: 3, lines: [s.rows.filter(r => !r.ipo).slice(0, 3).map(r => r.name + ' ' + rateOf(r)).join(' · ')] });
+    const tail = '종목별 이유 전체는 댓글 링크에서.';
+    const compose = bs => bs.map(b => b.lines.join('\n')).join('\n\n') + '\n\n' + tail;
     let text = compose(blocks);
-    // 500자 제한 — 우선순위 낮은 줄(신규상장 → 개별 이슈 → 흐름)부터 뺀다
     while (len(text) > 480 && blocks.some(b => b.prio > 0)) {
         let w = -1; blocks.forEach((b, i) => { if (b.prio > 0 && (w < 0 || b.prio >= blocks[w].prio)) w = i; });
         blocks.splice(w, 1); text = compose(blocks);
     }
-    if (len(text) > 480) text = clip(text, 480);
-    return { text, reply };
+    return { text: len(text) > 480 ? clip(text, 480) : text, reply };
 }
 
 // ── 네이버 블로그 ─────────────────────────────────────────
+// 제목이 무엇을 약속하는지 — 종목('○○ 상한가 이유')인지 흐름('○○주 급등 이유')인지. 첫 문단이 같은 것에 답한다
+function titlePlan(s) {
+    const h = hookStocks(s);
+    const lead = s.lead;
+    if (h.limit && h.rows.length) return { kind: 'stock', rows: h.rows };
+    if (lead[0] && (lead[0].catalyst || lead[0].members.some(r => r.reason))) return { kind: 'flow', flow: lead[0] };
+    if (h.rows.length) return { kind: 'stock', rows: h.rows.slice(0, 1) };
+    return { kind: 'plain' };
+}
 function blogTitle(m) {
     const s = m.story, d = mdKo(m.date);
-    const lead = s.flows.filter(f => f.headliner);
+    const lead = s.lead;
     const fw = lead.slice(0, 2).map(flowWord);
     const h = hookStocks(s);
     const both = h.rows.map(r => r.name), one = both.slice(0, 1);
@@ -152,7 +158,7 @@ function blogTitle(m) {
 // 날짜별 페이지(orgo.kr/day/…) 제목 — 날짜 검색어를 앞에, 매일 같은 틀(검색 결과에서 일관되게)
 function pageTitle(m) {
     const s = m.story, d = mdKo(m.date);
-    const fw = s.flows.filter(f => f.headliner).slice(0, 2).map(flowWord);
+    const fw = s.lead.slice(0, 2).map(flowWord);
     const h = hookStocks(s);
     const why = h.rows.length ? `${h.rows.map(r => r.name).join('·')} ${h.limit ? '상한가' : '급등'} 이유` : '';
     const one = h.rows.length ? `${h.rows[0].name} ${h.limit ? '상한가' : '급등'} 이유` : '';
@@ -165,7 +171,7 @@ function pageTitle(m) {
 function pageDesc(m) {
     const s = m.story, d = mdKo(m.date);
     const parts = [`${d} 상한가 ${s.limitUps.length}종목, +15% 이상 ${s.hot.length}종목.`];
-    const lead = s.flows.filter(f => f.headliner).slice(0, 2);
+    const lead = s.lead.slice(0, 2);
     if (lead.length) parts.push(lead.map(f => {
         const lu = f.members.filter(r => r.limit).slice(0, 2).map(r => r.name);
         return `${f.label} ${f.members.length}종목` + (lu.length ? `(${lu.join('·')} 상한가)` : '') + (f.catalyst ? ` — ${f.catalyst}` : '');
@@ -174,6 +180,21 @@ function pageDesc(m) {
     return clip(parts.join(' '), 155);
 }
 
+// ── 블로그 문장 재료 ──
+// "머큐리(+29.8%)가" — 조사는 종목명 기준
+function rl(r) { return `${r.name}(${rateOf(r)})`; }
+function rlJ(list, a, b) {
+    const last = list[list.length - 1];
+    return list.map(rl).join('·') + josa(last.name, a, b).slice(last.name.length);
+}
+// 종목 한 줄 설명 문장 — 이유를 실제로 말하는 문장 (제목에 건 종목은 여기서 답한다)
+function whySentence(r) {
+    const did = r.limit ? '상한가를 기록했습니다' : `${rateOf(r)} 올랐습니다`;
+    if (r.reason) return `${josa(r.name, '은', '는')} '${r.reason}' 기사와 함께 ${did}.`;
+    if (r.flow && r.flow.catalyst) return `${josa(r.name, '은', '는')} ${flowWord(r.flow)} 동반 강세 속에 ${did}. 같은 날 '${r.flow.catalyst}' 관련 기사가 나왔습니다.`;
+    // (위 두 경우만 '이유'가 있다 — 제목에 거는 종목은 hookStocks 에서 이미 이 조건을 통과한 종목)
+    return '';
+}
 function intro(m) {
     const s = m.story, d = mdKo(m.date), out = [];
     const mk = m.market;
@@ -183,16 +204,38 @@ function intro(m) {
         const end = v => Math.abs(v) < 0.05 ? '보합으로 마감했습니다' : `${a(v)}% ${v > 0 ? '올랐습니다' : '내렸습니다'}`;
         out.push(`${d} 코스피는 ${mid(mk.kospi)}, 코스닥은 ${end(mk.kosdaq)}.`);
     }
-    const prev = s.prevHot != null ? `(전 거래일 ${s.prevHot}개)` : '';
-    out.push(`${out.length ? '' : d + ' '}+15% 이상 오른 종목은 ${s.hot.length}개${prev}${s.limitUps.length ? `, 상한가는 ${s.limitUps.length}종목` : ''}입니다.`);
-    const lead = s.flows.filter(f => f.headliner).slice(0, 2);
+    const lead = s.lead.slice(0, 2);
     if (lead.length) {
-        const both = lead.length > 1 ? josa(lead[0].label, '과', '와') + ' ' + lead[1].label : lead[0].label;
-        const lu = lead[0].members.filter(r => r.limit);
-        out.push(pick([`상승 종목은 ${both} 쪽에 몰렸습니다.`, `오늘은 ${both} 쪽으로 상승이 몰렸습니다.`], m.date, 5) +
-            (lu.length ? ` ${lead[0].label}에서는 ${josa(names(lu.slice(0, 3)), '이', '가')} 상한가를 기록했습니다.` : ''));
-    } else if (s.rows.length) out.push('뚜렷한 테마 없이 개별 재료로 오른 종목이 많았습니다.');
+        const both = lead.length > 1 ? josa(flowWord(lead[0]), '과', '와') + ' ' + flowWord(lead[1]) : flowWord(lead[0]);
+        out.push(`${out.length ? '' : d + ' '}시장에서는 ${both} 쪽으로 상승이 몰렸습니다.`);
+    } else if (s.rows.length) out.push(`${out.length ? '' : d + ' '}시장은 뚜렷한 테마 없이 개별 재료로 오른 종목이 많았습니다.`);
+    // 제목이 약속한 것에 첫 문단에서 바로 답한다
+    const plan = titlePlan(s);
+    if (plan.kind === 'stock') for (const r of plan.rows) { const w = whySentence(r); if (w) out.push(w); }
+    if (plan.kind === 'flow') {
+        const f = plan.flow, told = f.members.filter(r => r.reason).sort((a, b) => b.energy - a.energy)[0];
+        out.push(`${flowWord(f)} ${f.members.length}종목이 함께 올랐고, ` + (f.catalyst ? `같은 날 '${f.catalyst}' 관련 기사가 나왔습니다.` : `${josa(told.name, '은', '는')} '${told.reason}' 기사가 나왔습니다.`));
+    }
+    const prev = s.prevHot != null ? `(전 거래일 ${s.prevHot}개)` : '';
+    out.push(`+15% 이상 오른 종목은 ${s.hot.length}개${prev}${s.limitUps.length ? `, 상한가는 ${s.limitUps.length}종목` : ''}입니다.`);
     return out.join(' ');
+}
+// 흐름 한 단락 — 몇 종목이 왜 올랐고, 누가 앞장섰고, 돈은 어디로 갔나
+function flowParagraph(f, hooked, introduced) {
+    // 첫 문단에서 이미 소개한 흐름이면 '몇 종목·배경' 문장은 반복하지 않는다
+    const out = introduced ? [] : [`${flowWord(f)} ${f.members.length}종목이 함께 올랐습니다.`];
+    if (f.catalyst && !introduced) out.push(`같은 날 '${f.catalyst}' 관련 기사가 나왔습니다.`);
+    const lu = f.members.filter(r => r.limit);
+    const rest = f.members.filter(r => !r.limit).slice(0, lu.length ? 2 : 3);
+    if (lu.length) out.push(`${rlJ(lu.slice(0, 3), '이', '가')} 상한가를 기록했고` + (rest.length ? `, ${rest.map(rl).join('·')}도 크게 올랐습니다.` : '.'));
+    else if (rest.length) out.push(`${rest.map(rl).join('·')} 순으로 많이 올랐습니다.`);
+    // 개별 기사가 확인된 종목 — 제목에 건 종목 먼저, 최대 2개
+    const told = f.members.filter(r => r.reason && !hooked.has(r)).sort((a, b) => b.energy - a.energy).slice(0, 2);   // 제목 종목은 첫 문단에서 답했다
+    for (const r of told) out.push(`${josa(r.name, '은', '는')} '${r.reason}' 기사가 함께 나왔습니다.`);
+    const top = f.members.slice().sort((a, b) => b.vol - a.vol)[0];
+    if (top && top.vol >= 3e10) out.push(`거래대금은 ${josa(top.name, '이', '가')} ${josa(amount(top.vol), '으로', '로')} 가장 컸습니다.`);
+    if (f.streak >= 2) out.push(`${flowWord(f)} 급등은 ${f.streak}거래일째 이어지고 있습니다.`);
+    return out.join(' ').replace('기록했고.', '기록했습니다.');
 }
 
 function blogHtml(m, images) {
@@ -200,59 +243,48 @@ function blogHtml(m, images) {
     const P = x => `<p>${x}</p>`;
     const H = x => `<p><b>■ ${esc(x)}</b></p>`;
     const UL = items => '<ul>' + items.map(x => `<li>${x}</li>`).join('') + '</ul>';
+    const plan = titlePlan(s), hooked = new Set(plan.kind === 'stock' ? plan.rows : []);
     const out = [P(esc(intro(m)))];
     if (images[0]) out.push(`<p><img src="${esc(images[0].url)}" alt="${esc(images[0].alt)}"></p>`);
 
-    // 오늘의 주도 흐름 — 기사 배경이 있는 흐름 먼저, 테마로만 묶인 흐름은 뒤에, 업종 묶음은 흐름이 부족할 때만
-    let flows = s.flows.filter(f => f.headliner).concat(s.flows.filter(f => !f.headliner && f.kind !== 'sector')).slice(0, 4);
-    if (flows.length < 2) flows = flows.concat(s.flows.filter(f => f.kind === 'sector').slice(0, 2 - flows.length));
-    if (flows.length) {
-        out.push(H('오늘의 주도 흐름'));
-        flows.forEach((f, i) => {
-            const meta = [`${f.members.length}종목`];
-            if (f.limitUps) meta.push(`상한가 ${f.limitUps}`);
-            if (f.streak >= 2) meta.push(`${f.streak}거래일 연속`);
-            const note = f.catalyst ? `<br>배경: ${esc(f.catalyst)}` : !f.members.some(r => r.reason) ? '<br>같은 테마로 함께 오른 종목 (근거 기사 미확인)' : '';
-            out.push(P(`<b>${i + 1}. ${esc(flowWord(f))}</b> · ${esc(meta.join(' · '))}` + note));
-            const shown = f.members.slice(0, 6);
-            out.push(UL(shown.map(r => `${esc(r.name)} ${esc(rateOf(r))}${r.reason ? ' — ' + esc(r.reason) : ''}`)));
-            if (f.members.length > shown.length) out.push(P(esc(`외 ${f.members.length - shown.length}종목: ` + f.members.slice(6, 14).map(r => r.name).join(', ') + (f.members.length > 14 ? ' 등' : ''))));
-        });
+    // ① 이유가 있는 흐름 — 흐름마다 소제목 + 설명 단락 + 종목 한 줄
+    const told = s.lead.concat(s.flows.filter(f => !f.headliner && f.kind !== 'sector' && Story.flowReason(f))).slice(0, 3);
+    let quiet = 0;   // 근거 기사 없는 흐름 — 같은 문장을 되풀이하지 않게
+    for (const f of told) {
+        out.push(H(f.catalyst ? `${flowWord(f)} — ${Story.clipWords(f.catalyst, 32)}` : `${flowWord(f)} ${f.members.length}종목 동반 상승`));
+        const lu = f.members.filter(r => r.limit).length;
+        if (!Story.flowReason(f)) out.push(P(esc((quiet++ ? `${flowWord(f)} ${f.members.length}종목도 함께 올랐습니다(근거 기사 미확인).` :
+            `${flowWord(f)} ${f.members.length}종목이 함께 올랐지만, 같은 날 근거 기사는 확인되지 않았습니다.`) +
+            (lu ? ` 이 중 ${lu}종목이 상한가였고,` : '') + ` ${f.members.slice(0, 3).map(rl).join('·')} 순으로 많이 올랐습니다.`)));
+        else
+        out.push(P(esc(flowParagraph(f, hooked, plan.kind === 'flow' && plan.flow === f))));
+        if (f.members.length > 3) out.push(P(esc('관련 종목: ' + f.members.slice(0, 10).map(r => `${r.name} ${rateOf(r)}`).join(', ') + (f.members.length > 10 ? ` 외 ${f.members.length - 10}종목` : ''))));
     }
-    // 이유가 없으면 이유 자리에 아무 말도 넣지 않고, 분류만 '· ○○ 테마'로
-    const line = r => { const w = Story.whyOf(r), t = Story.tagOf(r); return w ? ' — ' + esc(w) : t ? ' · ' + esc(t) + ' 테마' : ''; };
-    if (s.limitUps.length) {
-        out.push(H(`상한가 ${s.limitUps.length}종목`));
-        out.push(UL(s.limitUps.map(r => `<b>${esc(r.name)}</b> ${esc(rateOf(r))}${line(r)}`)));
-    }
-    const solos = s.solos.filter(r => !r.limit).slice(0, 10);
+    // ② 개별 재료 — 종목마다 이유
+    const solos = s.solos.slice().sort((a, b) => (hooked.has(b) - hooked.has(a)) || b.rate - a.rate).slice(0, 8);
     if (solos.length) {
         out.push(H('개별 재료로 오른 종목'));
-        out.push(UL(solos.map(r => `<b>${esc(r.name)}</b> ${esc(rateOf(r))} — ${esc(r.reason)}`)));
+        out.push(UL(solos.map(r => `<b>${esc(r.name)}</b> ${esc(rateOf(r))}${r.limit ? ' (상한가)' : ''} — ${esc(r.reason)}`)));
     }
-    if (s.ipos.length) {
-        // 신규상장주의 등락률은 공모가 기준이 아니어서 숫자를 싣지 않는다
-        out.push(H('신규상장주'));
-        out.push(UL(s.ipos.map(r => `<b>${esc(r.name)}</b>` + (r.vol ? ` · 거래대금 ${esc(amount(r.vol))}` : ''))));
+    // ③ 근거 기사 없이 테마로만 함께 오른 종목 — 한 단락으로
+    const tagged = s.flows.filter(f => !told.includes(f)).slice(0, 3);
+    if (tagged.length) {
+        const parts = tagged.map(f => `${flowWord(f)} ${f.members.length}종목(${f.members.slice(0, 2).map(r => `${r.name} ${rateOf(r)}`).join(', ')} 등)`);
+        out.push(P(esc(`이 밖에 ${parts.join(', ')}도 함께 올랐지만, 같은 날 근거 기사는 확인되지 않았습니다.`)));
     }
-    if (s.money.length >= 3) {
-        out.push(H('거래대금이 가장 많이 몰린 급등주'));
-        out.push(UL(s.money.map(r => `${esc(r.name)} ${esc(amount(r.vol))} · ${esc(rateOf(r))}`)));
-    }
-    const extra = [];
-    if (s.continuing.length) extra.push(s.continuing.slice(0, 6).map(r => `${r.name}(${r.streak}거래일)`).join(', ') + ' — 연속 +10% 이상');
-    if (s.high52.length) extra.push(s.high52.slice(0, 6).map(r => r.name).join(', ') + ' — 52주 신고가');
-    if (extra.length) { out.push(H('연속 상승 · 신고가')); out.push(UL(extra.map(esc))); }
-    const shownSet = new Set([...flows.flatMap(f => f.members.slice(0, 14)), ...s.limitUps, ...solos, ...s.ipos]);
-    const rest = s.rows.filter(r => !shownSet.has(r));
-    if (rest.length) {
-        const tag = r => { const t = Story.tagOf(r); return t ? `(${t})` : ''; };
-        out.push(P(esc('그 밖에 +10% 이상 오른 종목: ' + rest.slice(0, 12).map(r => `${r.name} ${rateOf(r)}${tag(r)}`).join(', ') +
-            (rest.length > 12 ? ` 외 ${rest.length - 12}종목` : ''))));
-    }
+    // ④ 오늘의 숫자
+    const nums = [];
+    if (s.limitUps.length) nums.push(`상한가 ${s.limitUps.length}종목: ${s.limitUps.map(r => r.name).join(', ')}`);
+    nums.push(`+15% 이상 ${s.hot.length}종목` + (s.prevHot != null ? ` (전 거래일 ${s.prevHot}종목)` : ''));
+    if (s.money[0]) nums.push(`거래대금 1위 급등주: ${s.money[0].name} ${amount(s.money[0].vol)} (${rateOf(s.money[0])})`);
+    if (s.continuing.length) nums.push(`연속 상승: ${s.continuing.slice(0, 4).map(r => `${r.name}(${r.streak}거래일)`).join(', ')} — 연속 +10% 이상`);
+    if (s.high52.length) nums.push(`52주 신고가: ${s.high52.slice(0, 5).map(r => r.name).join(', ')}`);
+    if (s.ipos.length) nums.push(`신규상장: ${s.ipos.map(r => r.name + (r.vol ? ` (거래대금 ${amount(r.vol)})` : '')).join(', ')}`);
+    out.push(H('오늘의 숫자'));
+    out.push(UL(nums.map(esc)));
     if (images[1]) out.push(`<p><img src="${esc(images[1].url)}" alt="${esc(images[1].alt)}"></p>`);
-    const link = `${SITE}/day/${m.date}?utm_source=naver_blog&utm_medium=blog&utm_campaign=daily`;
-    out.push(P(`종목별 근거 기사와 오른 종목 전체 목록은 ORGO 날짜별 페이지에 정리돼 있습니다.<br><a href="${link}">${SITE.replace('https://', '')}/day/${m.date}</a>`));
+    const link = siteLink(m.date, 'naver_blog', 'blog');
+    out.push(P(`오른 종목 전체와 종목별 이유·근거 기사는 ORGO에서 날짜별로 볼 수 있습니다.<br><a href="${esc(link)}">orgo.kr 오른 종목 (${md(m.date)})</a>`));
     out.push(P(`장전 브리핑·장중 주도주·마감 정리는 텔레그램에서 매일 받아볼 수 있습니다: <a href="${CHANNEL}">${CHANNEL.replace('https://', '')}</a>`));
     const notes = [];
     if (s.abnormal.length) {
@@ -268,7 +300,7 @@ function blogTags(m) {
     const s = m.story, mm = +m.date.slice(4, 6), dd = +m.date.slice(6);
     const clean = t => String(t || '').replace(/[^가-힣A-Za-z0-9]/g, '');
     const base = ['급등주', '상한가', '상한가종목', '오늘의급등주', '주식시황', '국내증시', '코스닥', `${mm}월${dd}일상한가`, `${mm}월${dd}일급등주`];
-    const flows = s.flows.filter(f => f.headliner).slice(0, 4).map(f => clean(flowWord(f).replace(/ 테마$/, '관련주')));
+    const flows = s.lead.slice(0, 4).map(f => clean(flowWord(f).replace(/ 테마$/, '관련주')));
     const h = hookStocks(s).rows.map(r => clean(r.name) + (r.limit ? '상한가' : '급등'));
     const stocks = [...s.limitUps, ...s.flows.slice(0, 2).flatMap(f => f.members.slice(0, 3)), ...s.solos.slice(0, 4)].map(r => clean(r.name));
     return [...new Set(base.concat(flows, h, stocks))].filter(t => len(t) >= 2).slice(0, 30);
@@ -288,4 +320,4 @@ function assertSafe(s) {
     return s;
 }
 
-module.exports = { josa, flowName, flowWord, material, threads, threadsHook, hookStocks, naverBlog, blogTitle, pageTitle, pageDesc, blogTags, intro, assertSafe, md, mdKo };
+module.exports = { josa, flowName, flowWord, material, threads, threadsHook, headPhrase, hookStocks, siteLink, naverBlog, blogTitle, pageTitle, pageDesc, blogTags, intro, assertSafe, md, mdKo };
