@@ -80,5 +80,5 @@ test('운영 DM 은 전용 delivery_key 로 — 저녁 복기의 순번 키(워�
     assert.equal(dmKey(D, 0), 'ops-check:20261006:0');
     assert.notEqual(dmKey(D, 0), dmKey(D, 1));
     const src = fs.readFileSync(path.join(__dirname, 'ops_check.js'), 'utf8');
-    assert.match(src, /sendMessage\([^)]*delivery_key: dmKey\(/);
+    assert.match(src, /sendMessage\(.*\{ delivery_key: dmKey\(date, sent\.length\) \}\)/);
 });
