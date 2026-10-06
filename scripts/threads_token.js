@@ -163,10 +163,10 @@ async function main(argv = process.argv.slice(2), env = process.env) {
     const r = await checkToken({ env, ledger: ledger || memoryLedger(), dryRun });
     console.log(JSON.stringify({ status: r.status, kind: r.kind || null, days_left: r.days_left ?? null, expires_on: r.expires_on || null, note: r.note || null }));
     if (r.alert) {
-        if (env.TELEGRAM_BOT_TOKEN && env.THREADS_ALERT_CHAT_ID) {
-            try { await tg.sendMessage(env.TELEGRAM_BOT_TOKEN, env.THREADS_ALERT_CHAT_ID, r.alert.lines.join('\n')); }
+        if (env.TELEGRAM_BOT_TOKEN && tg.operatorChat(env)) {
+            try { await tg.sendMessage(env.TELEGRAM_BOT_TOKEN, tg.operatorChat(env), r.alert.lines.join('\n')); }
             catch (e) { console.log('::warning::운영자 알림 실패: ' + e.message); }
-        } else console.log('::warning::운영자 알림 미설정(THREADS_ALERT_CHAT_ID) — ' + r.alert.lines[0]);
+        } else console.log('::warning::운영자 알림 미설정(THREADS_ALERT_CHAT_ID / TELEGRAM_ADMIN_CHAT_ID) — ' + r.alert.lines[0]);
     }
     if (r.status === 'alert') process.exitCode = 1;
 }

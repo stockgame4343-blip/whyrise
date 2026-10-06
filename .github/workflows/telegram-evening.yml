@@ -45,6 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write     # 운영 점검이 마감 빌드를 다시 걸 때
     steps:
       - uses: actions/checkout@v4
         with:
@@ -90,3 +91,18 @@ jobs:
             sleep 5
           done
           echo "::error::마커 push 실패 — 재실행 전 채널 확인 필요"; exit 1
+
+      # 저녁 운영 점검 — 19:00 외부 디스패치(가장 정확한 시계)에서만. 오늘 텔레그램 마감 정리·쓰레드·블로그 원고가
+      # 다 나갔는지 보고, 빠진 게 있으면 운영자 개인 DM 한 통(공개 채널 X). 마감 빌드가 안 돌았으면 직접 다시 건다.
+      - name: Ops check (operator DM only when something is missing)
+        if: ${{ !cancelled() && github.event_name != 'workflow_run' && inputs.dry_run != true }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          THREADS_ALERT_CHAT_ID: ${{ secrets.THREADS_ALERT_CHAT_ID }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+          THREADS_AUTOPUBLISH: ${{ vars.THREADS_AUTOPUBLISH }}
+        run: |
+          git fetch -q origin "$GITHUB_REF_NAME" && git reset -q --hard FETCH_HEAD   # 다른 런이 남긴 최신 기록으로
+          node scripts/ops_check.js

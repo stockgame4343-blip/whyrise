@@ -148,7 +148,7 @@ Threads/Instagram 연결 시 이미지 1장이면 IMAGE, 2장이면 CAROUSEL로 
 - **실행 경로**: Vercel 크론(`vercel.json` crons `30 7 * * 1-5` = 평일 16:30 KST) → `api/threads-cron.py` → GitHub `repository_dispatch` `threads-publish` → `marketing-daily.yml`. 원고 생성 직후·이미지 렌더 전에 게시한다. 16:30에 마감 데이터가 아직 없으면 그 뒤 빌드 완료 트리거(16:20~22:00)에서 게시된다. GitHub 크론 16:37·17:37은 백업.
 - **켜고 끄기**: 저장소 변수 `THREADS_AUTOPUBLISH=on`일 때만 실게시. 그 외에는 같은 단계가 dry-run으로 본문·링크·글자 수만 로그에 남긴다.
 - **토큰**: `THREADS_ACCESS_TOKEN`(시크릿, 장기 토큰 60일). `scripts/threads_token.js`가 크론·Vercel·수동 실행마다 `debug_token`으로 만료일을 보고, 10일 이하로 남으면 `refresh_access_token`으로 갱신해 `gh secret set`으로 시크릿을 덮어쓴다(쓰기 권한은 `THREADS_SECRET_PAT` — 이 저장소 한정 fine-grained PAT, Secrets 읽기·쓰기). 기록 `.marketing-state/threads-token.json`에는 만료일과 토큰 지문(해시 앞 12자)만 남긴다. 단기 토큰(1시간)이 들어오면 교환 필요 알림을 보낸다.
-- **알림(운영자 개인 DM, @whyorgo_bot)**: 쓰레드는 게시 완료(게시물 주소·첫 댓글 여부)·실패·결과 불명, 토큰 갱신 실패·단기/무효 토큰·PAT 없음을 `THREADS_ALERT_CHAT_ID`로 보낸다(이번 실행에서 새로 일어난 일만). 블로그 원고는 하루 첫 준비 때(이미지 배포 후 orgo.kr 반영 확인, 최대 3분 대기) 한 번만 `TELEGRAM_ADMIN_CHAT_ID`로 보낸다(기록 `.marketing-state/{date}-blog-note.json`). 두 값 모두 같은 개인 채팅 ID. 공개 채널 `TELEGRAM_CHAT_ID`로는 보내지 않는다.
+- **알림(운영자 개인 DM, @whyorgo_bot)**: 쓰레드는 게시 완료(게시물 주소·첫 댓글 여부)·실패·결과 불명, 토큰 갱신 실패·단기/무효 토큰·PAT 없음을 `THREADS_ALERT_CHAT_ID`로 보낸다(이번 실행에서 새로 일어난 일만). 블로그 원고는 하루 첫 준비 때(이미지 배포 후 orgo.kr 반영 확인, 최대 3분 대기) 한 번만 `TELEGRAM_ADMIN_CHAT_ID`로 보낸다(기록 `.marketing-state/{date}-blog-note.json`). 두 값 모두 같은 개인 채팅 ID — 하나만 등록돼 있어도 모든 운영 DM이 그쪽으로 간다(`tg.operatorChat`, 10-06). 공개 채널 `TELEGRAM_CHAT_ID`로는 보내지 않는다.
 - **Vercel 환경변수**: `GITHUB_TOKEN`(admin-override.py와 같은 PAT, repository_dispatch). `CRON_SECRET`을 설정하면 그 값만 받고, 없으면 Vercel 크론 User-Agent + 평일 16~18시 KST 호출만 받는다.
 - **검증**: `node --test scripts/test_threads.js`, `node scripts/threads_publish.js YYYYMMDD --dry-run`. 운영자 DM 미리보기(게시·커밋 없음): `gh workflow run threads-preview.yml -R stockgame4343-blip/whyrise [-f date=YYYYMMDD]`.
 
@@ -189,3 +189,11 @@ Threads/Instagram 연결 시 이미지 1장이면 IMAGE, 2장이면 CAROUSEL로 
 - 쓰레드: 첫 줄 인사("📌 10월 2일(금) 마감 정리 왔어요!") → 오늘이 어떤 날이었는지 한두 문장 → 숫자 → 흐름 → 💡 혼자 튄 종목(🔺) → 🗓 휴장("국내 증시는 쉬어요. 다음 장은 …!") → 끝줄은 댓글 링크 안내.
 - 블로그: 맨 위 시작 멘트("…이유부터 볼게요."), 맨 끝 마무리 멘트("오늘 정리는 여기까지예요! … 댓글로 남겨 주세요"). 그 사이 본문은 담백한 서술체 그대로.
 - 텔레그램은 바꾸지 않는다. 검증 스크립트가 텔레그램 문구에 캐릭터 말투가 섞였는지, 블로그 본문에 해요체가 섞였는지 검사한다.
+
+## 마감 빌드 지연 대책·저녁 운영 점검 — 2026-10-06
+
+- **무슨 일이 있었나**: 10/6(9/16·9/29도) 업스트림 마감 확정(16:23)이 마지막 외부 디스패치(16:05)보다 늦었고, 마감 빌드를 대신 깨워야 할 GitHub 크론(15:40)은 몇 시간씩 밀려서 18시가 넘도록 마감 빌드가 한 번도 안 돌았다. 그래서 텔레그램 마감 정리·쓰레드·블로그 원고·운영자 DM이 전부 멈췄다(원고가 없으니 보낼 DM도 없었다).
+- **빌드 대기**: `build-history.yml` 모드 판정에서 15:40 이후 업스트림이 아직 미확정이면 그 런 안에서 150초마다 다시 보고(최대 120분, 18:30까지) 확정 즉시 incremental로 승격한다. 마감 빌드는 약 70분 걸리므로 업스트림 확정 ~16:20 → 마감 정리·쓰레드·블로그 원고 ~17:30.
+- **데이터 없을 때**: 오늘의 대장·저녁 복기는 오늘 확정 데이터가 없으면 실패 대신 스킵하고, 빌드 완료(workflow_run) 때 다시 불린다. 저녁 복기는 빌드 완료 트리거를 19:00~22:00에만 쓴다(마커로 하루 1번).
+- **저녁 운영 점검(`scripts/ops_check.js`)**: 19:00 외부 디스패치(tg-evening, 가장 정확한 시계)로 도는 `telegram-evening.yml` 마지막 단계. 오늘 ① 마감 빌드 ② 텔레그램 마감 정리 ③ 쓰레드 발행(`THREADS_AUTOPUBLISH=on`일 때) ④ 블로그 원고·준비 DM을 확인해 **빠진 게 있을 때만** 운영자 개인 DM 한 통을 보낸다(다 나갔으면 조용히 끝 — 완료 DM은 각 단계가 보냄). 마감 빌드가 없고 업스트림은 확정이면 20:50까지는 빌드를 직접 다시 건다(`actions: write`). 같은 내용은 하루 1번, 상황이 바뀌면 다시(하루 최대 3통) — 기록 `.marketing-state/{date}-ops-check.json`. 검증 `node --test scripts/test_ops_check.js`, `node scripts/ops_check.js YYYYMMDD --dry-run`.
+- **운영자가 받는 메시지(평일, 모두 개인 DM)**: 쓰레드 게시 완료(주소) 또는 실패 / 블로그 원고 준비 완료(발행실 링크) / 19:00 점검에서 빠진 게 있을 때 점검 결과. 17:45까지 쓰레드·블로그 DM이 없으면 지연, 19:00 점검 DM이 이유를 알려 준다.

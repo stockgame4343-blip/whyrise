@@ -285,6 +285,14 @@ function htmlLink(text, url) {
     return '<a href="' + escHtml(url) + '">' + escHtml(text) + '</a>';
 }
 
+// ── 운영자 개인 DM chat id ── 쓰레드 쪽은 THREADS_ALERT_CHAT_ID, 블로그 원고 쪽은 TELEGRAM_ADMIN_CHAT_ID 로 시작했는데
+// 둘 다 운영자 한 사람이라 하나만 등록돼 있어도 모든 운영 알림이 가게 서로를 대신한다. 공개 채널(TELEGRAM_CHAT_ID)은 절대 쓰지 않는다.
+function operatorChat(env, prefer) {
+    env = env || {};
+    var a = String(env.THREADS_ALERT_CHAT_ID || '').trim(), b = String(env.TELEGRAM_ADMIN_CHAT_ID || '').trim();
+    return prefer === 'admin' ? (b || a) : (a || b);
+}
+
 // ── 중복 방지 마커 ──
 function loadMarker(markerPath) {
     try { return JSON.parse(fs.readFileSync(markerPath, 'utf8')) || {}; } catch (e) { return {}; }
@@ -887,7 +895,7 @@ module.exports = {
     num, pct, fmtAmount, ymdKst, hmKst, dateLabel, mdLabel, dateKo, marketLabel, clip, orgoLink, escHtml, htmlLink,
     fetchRefinedReasons, refinedReasonsFromDay, verifiedReason, isKrTradingDay, isDuplicateDayData, specificReason,
     krHolidayName, krHolidayLabel, krHolidayLabels, krCalendarThrough, krCalendarCovers, nextKrTradingDay, krClosuresBefore, foreignClosures, holidayCalendarWarnings, krPublishBlock, logHolidayWarnings,
-    loadMarker, saveMarker,
+    operatorChat, loadMarker, saveMarker,
     servePublic, captureFramed, saveViaBridge, captureDownloadClick, captureFlowmaps, captureHtml, rankCardHtml, leaderCardHtml, topMoversCardHtml,
     sendMessage, sendPhoto, sendMediaGroup, aiComment, aiHook,
     socialMoversCaption, socialThemesCaption,

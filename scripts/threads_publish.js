@@ -238,12 +238,13 @@ function precheckReason(m, env) {
 }
 
 async function notifyOperator(env, lines) {
-    if (!env.TELEGRAM_BOT_TOKEN || !env.THREADS_ALERT_CHAT_ID) {
-        console.log('::warning::운영자 알림 미설정(THREADS_ALERT_CHAT_ID) — ' + lines[0]);
+    const chat = tg.operatorChat(env);
+    if (!env.TELEGRAM_BOT_TOKEN || !chat) {
+        console.log('::warning::운영자 알림 미설정(THREADS_ALERT_CHAT_ID / TELEGRAM_ADMIN_CHAT_ID) — ' + lines[0]);
         return false;
     }
     try {
-        await tg.sendMessage(env.TELEGRAM_BOT_TOKEN, env.THREADS_ALERT_CHAT_ID, lines.join('\n'));
+        await tg.sendMessage(env.TELEGRAM_BOT_TOKEN, chat, lines.join('\n'));
         return true;
     } catch (e) {
         console.log('::warning::운영자 알림 실패: ' + e.message);

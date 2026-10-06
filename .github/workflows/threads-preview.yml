@@ -1,5 +1,5 @@
 name: 쓰레드 원고 미리보기 (DM)
-# 게시하지 않고, 원고를 다시 만들어 운영자 개인 DM(THREADS_ALERT_CHAT_ID)으로만 보낸다. 커밋도 하지 않는다.
+# 게시하지 않고, 원고를 다시 만들어 운영자 개인 DM(THREADS_ALERT_CHAT_ID, 없으면 TELEGRAM_ADMIN_CHAT_ID)으로만 보낸다. 커밋도 하지 않는다.
 #   gh workflow run threads-preview.yml -R stockgame4343-blip/whyrise [-f date=YYYYMMDD]
 on:
   workflow_dispatch:
@@ -24,6 +24,7 @@ jobs:
           DATE: ${{ inputs.date }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           THREADS_ALERT_CHAT_ID: ${{ secrets.THREADS_ALERT_CHAT_ID }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
         run: |
           if [ -z "$DATE" ]; then DATE=$(ls public/marketing | grep -E '^[0-9]{8}$' | sort | tail -1); fi
           node scripts/marketing_digest.js "$DATE"

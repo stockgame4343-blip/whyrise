@@ -152,7 +152,7 @@ async function notifyBlogReady(d,env,ledger,send=tg.sendMessage,waitLive=waitLiv
     const rec=ledger?await ledger.load(d.date,'blog-note'):null;
     if(rec&&rec.state.status==='sent') return 'already_sent';
     await waitLive(d);
-    await send(env.TELEGRAM_BOT_TOKEN,env.TELEGRAM_ADMIN_CHAT_ID,adminNote(d),{parse_mode:'HTML'});
+    await send(env.TELEGRAM_BOT_TOKEN,tg.operatorChat(env,'admin'),adminNote(d),{parse_mode:'HTML'});
     if(rec) await ledger.save(rec,{status:'sent',sent_at:new Date().toISOString(),content_hash:d.content_hash});
     return 'sent';
 }
@@ -183,12 +183,12 @@ async function main(env=process.env) {
     }
     // 네이버 블로그는 쓰기 API가 없어(2020 종료) 발행실 원고를 붙여넣는 방식 — 준비 완료를 운영자에게 알린다
     status.channels.naver_blog={status:'manual_ready'};
-    if(env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_ADMIN_CHAT_ID) {
+    if(env.TELEGRAM_BOT_TOKEN&&tg.operatorChat(env,'admin')) {
         try {
             const ledger=env.GH_TOKEN&&env.GITHUB_REPOSITORY?new Ledger(env.GITHUB_REPOSITORY,env.GH_TOKEN):null;
             status.channels.naver_blog.notified=await notifyBlogReady(d,env,ledger);
         } catch(e) {console.log('운영자 알림 실패(무시): '+e.message);}
-    }
+    } else {status.channels.naver_blog.notified='no_operator_chat';console.log('::warning::운영자 DM 미설정(THREADS_ALERT_CHAT_ID / TELEGRAM_ADMIN_CHAT_ID) — 블로그 원고 준비 알림 못 보냄');}
     fs.writeFileSync(path.join(ROOT,'public/marketing/status.json'),JSON.stringify(status,null,2)+'\n');
     console.log(JSON.stringify(status));
     if(Object.values(status.channels).some(s=>s.requires_action||s.status.startsWith('needs_')||['awaiting_image','created'].includes(s.status))) process.exitCode=1;
