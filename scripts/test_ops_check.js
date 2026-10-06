@@ -74,3 +74,11 @@ test('운영자 DM chat id — 둘 중 하나만 있어도 가고, 공개 채널
     assert.equal(tg.operatorChat({ THREADS_ALERT_CHAT_ID: '1', TELEGRAM_ADMIN_CHAT_ID: '2' }, 'admin'), '2');
     assert.equal(tg.operatorChat({ TELEGRAM_CHAT_ID: '-100' }), '');
 });
+
+test('운영 DM 은 전용 delivery_key 로 — 저녁 복기의 순번 키(워크플로:1)와 겹치지 않게', () => {
+    const { dmKey } = require('./ops_check');
+    assert.equal(dmKey(D, 0), 'ops-check:20261006:0');
+    assert.notEqual(dmKey(D, 0), dmKey(D, 1));
+    const src = fs.readFileSync(path.join(__dirname, 'ops_check.js'), 'utf8');
+    assert.match(src, /sendMessage\([^)]*delivery_key: dmKey\(/);
+});

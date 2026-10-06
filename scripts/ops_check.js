@@ -27,6 +27,7 @@ const LEDGER_CHANNEL = 'ops-check';
 const MAX_ALERTS = 3;
 const STUDIO = 'https://orgo.kr/marketing.html#blog';
 
+function dmKey(date, n) { return 'ops-check:' + date + ':' + n; }
 function readJson(p) { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch (e) { return null; } }
 
 /** 저장소에 남은 기록만으로 오늘 어디까지 나갔나 */
@@ -146,9 +147,11 @@ async function main(argv = process.argv.slice(2), env = process.env) {
     if (sent.length && sent[sent.length - 1].key === key) { console.log('같은 내용 이미 보냄 — 스킵'); return; }
     const chat = tg.operatorChat(env);
     if (!env.TELEGRAM_BOT_TOKEN || !chat) { console.log('::warning::운영자 DM 미설정(THREADS_ALERT_CHAT_ID / TELEGRAM_ADMIN_CHAT_ID) — 점검 결과를 보낼 곳이 없음'); return; }
-    await tg.sendMessage(env.TELEGRAM_BOT_TOKEN, chat, lines.join('\n'));
+    // 전용 delivery_key 필수 — 이 워크플로(저녁 복기)는 TG_DELIVERY_TOKEN 으로 '워크플로:순번' 중복 방지를 쓴다.
+    // 키 없이 보내면 이 DM 이 '1번 메시지'로 기록돼, 같은 날 나중 런의 저녁 복기가 '이미 보냄'으로 막힌다(10/6 실제로 발생).
+    await tg.sendMessage(env.TELEGRAM_BOT_TOKEN, chat, lines.join('\n'), { delivery_key: dmKey(date, sent.length) });
     if (rec) await ledger.save(rec, { alerts: [...sent, { at: new Date().toISOString(), key }] });
 }
 
 if (require.main === module) main().catch(e => { console.error(e); process.exitCode = 1; });
-module.exports = { inspect, report };
+module.exports = { inspect, report, dmKey };
