@@ -1,7 +1,7 @@
 'use strict';
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const { threadsLength, publishPost, publishWithReply, recordFailure, parseArgs, TEXT_LIMIT } = require('./threads_publish');
+const { threadsLength, publishPost, publishWithReply, recordFailure, parseArgs, outcomeLines, TEXT_LIMIT } = require('./threads_publish');
 const { checkToken, fingerprint } = require('./threads_token');
 const { buildDigest } = require('./marketing_digest');
 const tg = require('./tg_common');
@@ -158,6 +158,29 @@ test('게시 전 단계 실패(500자 초과 등)는 하루 한 번만 기록·�
     const first = await recordFailure(l, DATE, 'threads', '본문 520자');
     assert.equal(first.status, 'failed'); assert.ok(!first.skipped);
     assert.equal((await recordFailure(l, DATE, 'threads', '본문 520자')).skipped, true);
+});
+
+test('운영자 DM: 이번 실행에서 새로 게시·실패한 것만 — 이미 게시된 날 재실행은 조용히', () => {
+    const ok = outcomeLines(DATE, { post: { status: 'published', post_id: 'p1' }, reply: { status: 'published' } }, 'https://www.threads.net/@orgo.kr/post/x');
+    assert.match(ok[0], /9\/4 쓰레드 게시 완료/); assert.equal(ok[1], 'https://www.threads.net/@orgo.kr/post/x'); assert.match(ok[2], /첫 댓글 링크 달림/);
+    const replyFail = outcomeLines(DATE, { post: { status: 'published' }, reply: { status: 'failed', error: 'HTTP 400' } }, '');
+    assert.match(replyFail[0], /게시 완료/); assert.match(replyFail[2], /첫 댓글 링크 실패: HTTP 400/);
+    assert.match(outcomeLines(DATE, { post: { status: 'failed', step: 'create', error: 'HTTP 400' }, reply: null }, '')[0], /❌ 9\/4 쓰레드 게시 실패/);
+    assert.equal(outcomeLines(DATE, { post: { status: 'published', skipped: true }, reply: { status: 'published', skipped: true } }, ''), null);
+    assert.equal(outcomeLines(DATE, { post: { status: 'failed', skipped: true }, reply: null }, ''), null);
+    assert.match(outcomeLines(DATE, { post: { status: 'published', skipped: true }, reply: { status: 'published' } }, '')[0], /첫 댓글 링크 달림/);
+});
+
+test('블로그 원고 준비 DM은 하루 한 번 — 다음 빌드 실행에서는 보내지 않는다', async () => {
+    const { notifyBlogReady, adminNote } = require('./marketing_publish');
+    const l = memLedger(), sent = [];
+    const send = async (bot, chat, text) => sent.push({ chat, text });
+    const d = { date: DATE, content_hash: 'h1', naver_blog: { title: '9월 4일 삼성전자 상승 이유' } };
+    const env = { TELEGRAM_BOT_TOKEN: 'b', TELEGRAM_ADMIN_CHAT_ID: '468' };
+    assert.equal(await notifyBlogReady(d, env, l, send, async () => true), 'sent');
+    assert.equal(await notifyBlogReady({ ...d, content_hash: 'h2' }, env, l, send, async () => true), 'already_sent');
+    assert.equal(sent.length, 1); assert.equal(sent[0].chat, '468');
+    assert.equal(sent[0].text, adminNote(d)); assert.match(sent[0].text, /블로그 원고 준비 완료/);
 });
 
 test('인자: 날짜·--dry-run·--retry-failed·--preview-dm, 모르는 인자는 거부', () => {

@@ -123,18 +123,38 @@ async function publishThreadsReply(d, env, ledger, api=request) {
         return failed;
     }
 }
-function adminNote(d,status) {
+// 쓰레드 결과는 threads_publish.js 가 따로 DM 한다 — 여기는 블로그 원고만
+function adminNote(d) {
     const e=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
     const blog=d.naver_blog||{};
-    const th=status.channels.threads||{};
-    const thLabel=th.status==='published'?'게시 완료':th.status==='prepared'?'계정 연결 전':th.status||'-';
     return [`📝 <b>${+d.date.slice(4,6)}/${+d.date.slice(6)} 블로그 원고 준비 완료</b>`,
         blog.title?e(blog.title):'',
         '발행실에서 제목·본문·태그 복사 → 네이버 블로그 글쓰기에 붙여넣기',
         'https://orgo.kr/marketing.html#blog',
-        `쓰레드: ${e(thLabel)}`,
         // 휴장일 달력 갱신 알림 — 한국·해외 달력이 30일 안에 끝나면 운영자에게 미리 알린다
         ...tg.holidayCalendarWarnings(d.date).map(w=>'⚠️ '+e(w))].filter(Boolean).join('\n');
+}
+const NOTE_LIVE_WAIT_MS=10000;
+const NOTE_LIVE_MAX_POLLS=18;   // 10초 × 18 = 3분 — Vercel 배포 대기
+// 알림 받고 바로 열어도 새 원고가 보이게, orgo.kr 에 오늘 원고가 배포된 걸 확인한 뒤 보낸다(시간 넘으면 그냥 보냄)
+async function waitLiveDigest(d) {
+    for(let i=0;i<NOTE_LIVE_MAX_POLLS;i++) {
+        try {
+            const r=await fetch(`https://orgo.kr/marketing/${d.date}/digest.json`,{cache:'no-store',signal:AbortSignal.timeout(10000)});
+            if(r.ok&&(await r.json()).content_hash===d.content_hash) return true;
+        } catch(e) {}
+        await new Promise(r=>setTimeout(r,NOTE_LIVE_WAIT_MS));
+    }
+    return false;
+}
+// 빌드가 끝날 때마다 이 단계가 돌므로(16:20~22:00 여러 번) 하루 첫 준비 때 한 번만 보낸다
+async function notifyBlogReady(d,env,ledger,send=tg.sendMessage,waitLive=waitLiveDigest) {
+    const rec=ledger?await ledger.load(d.date,'blog-note'):null;
+    if(rec&&rec.state.status==='sent') return 'already_sent';
+    await waitLive(d);
+    await send(env.TELEGRAM_BOT_TOKEN,env.TELEGRAM_ADMIN_CHAT_ID,adminNote(d),{parse_mode:'HTML'});
+    if(rec) await ledger.save(rec,{status:'sent',sent_at:new Date().toISOString(),content_hash:d.content_hash});
+    return 'sent';
 }
 
 async function main(env=process.env) {
@@ -165,8 +185,8 @@ async function main(env=process.env) {
     status.channels.naver_blog={status:'manual_ready'};
     if(env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_ADMIN_CHAT_ID) {
         try {
-            await tg.sendMessage(env.TELEGRAM_BOT_TOKEN,env.TELEGRAM_ADMIN_CHAT_ID,adminNote(d,status),{parse_mode:'HTML'});
-            status.channels.naver_blog.notified=true;
+            const ledger=env.GH_TOKEN&&env.GITHUB_REPOSITORY?new Ledger(env.GITHUB_REPOSITORY,env.GH_TOKEN):null;
+            status.channels.naver_blog.notified=await notifyBlogReady(d,env,ledger);
         } catch(e) {console.log('운영자 알림 실패(무시): '+e.message);}
     }
     fs.writeFileSync(path.join(ROOT,'public/marketing/status.json'),JSON.stringify(status,null,2)+'\n');
@@ -174,4 +194,4 @@ async function main(env=process.env) {
     if(Object.values(status.channels).some(s=>s.requires_action||s.status.startsWith('needs_')||['awaiting_image','created'].includes(s.status))) process.exitCode=1;
 }
 if(require.main===module) main().catch(e=>{console.error(e.message);process.exitCode=1;});
-module.exports={publishChannel,publishThreadsReply,Ledger,checkAssets,adminNote};
+module.exports={publishChannel,publishThreadsReply,Ledger,checkAssets,adminNote,notifyBlogReady};

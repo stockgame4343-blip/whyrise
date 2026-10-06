@@ -194,7 +194,7 @@ test('operator blog alert names the post and the 발행실 link (HTML-escaped)',
     assert.match(note,/10\/1 블로그 원고 준비 완료/);
     assert.match(note,/&lt;정리&gt;/);
     assert.match(note,/orgo\.kr\/marketing\.html#blog/);
-    assert.match(note,/쓰레드: 계정 연결 전/);
+    assert.doesNotMatch(note,/쓰레드/);   // 쓰레드 결과는 threads_publish.js 가 따로 DM
 });
 test('listing-day leader missing from rows is shown as a new listing, not as a theme member',()=>{
     const rows=[{ticker:'000001',name:'가나',change_rate:30,rise_reason:'신규 수주 공급 계약',reason_source:'news_extract',reason_kind:'catalyst'}];

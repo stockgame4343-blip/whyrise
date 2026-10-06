@@ -148,7 +148,7 @@ Threads/Instagram 연결 시 이미지 1장이면 IMAGE, 2장이면 CAROUSEL로 
 - **실행 경로**: Vercel 크론(`vercel.json` crons `30 7 * * 1-5` = 평일 16:30 KST) → `api/threads-cron.py` → GitHub `repository_dispatch` `threads-publish` → `marketing-daily.yml`. 원고 생성 직후·이미지 렌더 전에 게시한다. 16:30에 마감 데이터가 아직 없으면 그 뒤 빌드 완료 트리거(16:20~22:00)에서 게시된다. GitHub 크론 16:37·17:37은 백업.
 - **켜고 끄기**: 저장소 변수 `THREADS_AUTOPUBLISH=on`일 때만 실게시. 그 외에는 같은 단계가 dry-run으로 본문·링크·글자 수만 로그에 남긴다.
 - **토큰**: `THREADS_ACCESS_TOKEN`(시크릿, 장기 토큰 60일). `scripts/threads_token.js`가 크론·Vercel·수동 실행마다 `debug_token`으로 만료일을 보고, 10일 이하로 남으면 `refresh_access_token`으로 갱신해 `gh secret set`으로 시크릿을 덮어쓴다(쓰기 권한은 `THREADS_SECRET_PAT` — 이 저장소 한정 fine-grained PAT, Secrets 읽기·쓰기). 기록 `.marketing-state/threads-token.json`에는 만료일과 토큰 지문(해시 앞 12자)만 남긴다. 단기 토큰(1시간)이 들어오면 교환 필요 알림을 보낸다.
-- **알림**: 게시 실패·결과 불명·토큰 갱신 실패·단기/무효 토큰·PAT 없음은 `THREADS_ALERT_CHAT_ID`(운영자 개인 채팅, @whyorgo_bot에 먼저 /start)로 보낸다. 공개 채널 `TELEGRAM_CHAT_ID`로는 보내지 않는다. 같은 종류는 하루 한 번.
+- **알림(운영자 개인 DM, @whyorgo_bot)**: 쓰레드는 게시 완료(게시물 주소·첫 댓글 여부)·실패·결과 불명, 토큰 갱신 실패·단기/무효 토큰·PAT 없음을 `THREADS_ALERT_CHAT_ID`로 보낸다(이번 실행에서 새로 일어난 일만). 블로그 원고는 하루 첫 준비 때(이미지 배포 후 orgo.kr 반영 확인, 최대 3분 대기) 한 번만 `TELEGRAM_ADMIN_CHAT_ID`로 보낸다(기록 `.marketing-state/{date}-blog-note.json`). 두 값 모두 같은 개인 채팅 ID. 공개 채널 `TELEGRAM_CHAT_ID`로는 보내지 않는다.
 - **Vercel 환경변수**: `GITHUB_TOKEN`(admin-override.py와 같은 PAT, repository_dispatch). `CRON_SECRET`을 설정하면 그 값만 받고, 없으면 Vercel 크론 User-Agent + 평일 16~18시 KST 호출만 받는다.
 - **검증**: `node --test scripts/test_threads.js`, `node scripts/threads_publish.js YYYYMMDD --dry-run`. 운영자 DM 미리보기(게시·커밋 없음): `gh workflow run threads-preview.yml -R stockgame4343-blip/whyrise [-f date=YYYYMMDD]`.
 

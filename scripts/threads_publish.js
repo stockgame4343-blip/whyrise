@@ -8,7 +8,7 @@
  * 댓글: posts.threads.reply — 사이트 본 화면 rise.html?date= 링크. 본문 링크는 도달을 깎아서 첫 댓글로 단다
  * 기록: .marketing-state/{date}-threads.json · {date}-threads-reply.json
  *       기존 이미지 게시 경로(marketing_publish.js)와 같은 키라 어느 경로든 하루 1번
- * 알림: 실패·확인 필요 시 THREADS_ALERT_CHAT_ID(운영자 개인 채팅)로만 — 공개 채널(TELEGRAM_CHAT_ID)로는 보내지 않는다
+ * 알림: 게시 완료·실패·확인 필요 시 THREADS_ALERT_CHAT_ID(운영자 개인 채팅)로만 — 공개 채널(TELEGRAM_CHAT_ID)로는 보내지 않는다
  */
 const fs = require('fs');
 const path = require('path');
@@ -265,6 +265,27 @@ function failureLines(date, result, label) {
     ];
 }
 
+async function permalinkOf(api, token, id) {
+    if (!id) return '';
+    try { return (await api(`${API_BASE}/${id}?fields=permalink`, token)).permalink || ''; } catch (e) { return ''; }
+}
+
+// 이번 실행에서 새로 일어난 일만 DM 한다(이미 게시·이미 실패한 건 다시 알리지 않음). 알릴 게 없으면 null
+function outcomeLines(date, { post, reply }, permalink) {
+    const md = `${+date.slice(4, 6)}/${+date.slice(6)}`;
+    const fresh = r => r && !r.skipped;
+    if (fresh(post) && post.status === 'published') return [
+        `✅ ${md} 쓰레드 게시 완료`,
+        permalink || '(게시물 주소를 못 받았습니다 — Threads 앱에서 확인)',
+        !reply ? '💬 첫 댓글 링크: 원고에 없음'
+            : reply.status === 'published' ? '💬 첫 댓글 링크 달림'
+            : `⚠️ 첫 댓글 링크 ${reply.status === 'uncertain' ? '확인 필요' : '실패'}: ${reply.error || reply.status}`,
+    ];
+    if (fresh(post)) return failureLines(date, post, '쓰레드 게시');
+    if (fresh(reply)) return reply.status === 'published' ? [`✅ ${md} 쓰레드 첫 댓글 링크 달림`] : failureLines(date, reply, '쓰레드 댓글 링크');
+    return null;
+}
+
 function parseArgs(argv) {
     const args = { dryRun: false, retryFailed: false, previewDm: false, date: '' };
     for (const a of argv) {
@@ -304,14 +325,13 @@ async function main(argv = process.argv.slice(2), env = process.env) {
 
     const brief = r => r && { status: r.status, skipped: !!r.skipped, post_id: r.post_id || null, error: r.error || null };
     console.log(JSON.stringify({ date, post: brief(result.post), reply: brief(result.reply) }));
-    let bad = false;
-    for (const [r, label] of [[result.post, '쓰레드 게시'], [result.reply, '쓰레드 댓글 링크']]) {
-        if (!r || r.status === 'published') continue;
-        if (!r.skipped) await notifyOperator(env, failureLines(date, r, label));
-        if (!r.skipped || r.hold) bad = true;
-    }
+    const fresh = result.post && !result.post.skipped && result.post.status === 'published';
+    const permalink = fresh ? await permalinkOf(threadsApi, env.THREADS_ACCESS_TOKEN, result.post.post_id) : '';
+    const lines = outcomeLines(date, result, permalink);
+    if (lines) await notifyOperator(env, lines);
+    const bad = [result.post, result.reply].some(r => r && r.status !== 'published' && (!r.skipped || r.hold));
     if (bad) process.exitCode = 1;
 }
 
 if (require.main === module) main().catch(e => { console.error(e.message); process.exitCode = 1; });
-module.exports = { threadsLength, publishPost, publishWithReply, recordFailure, skipReason, parseArgs, failureLines, TEXT_LIMIT };
+module.exports = { threadsLength, publishPost, publishWithReply, recordFailure, skipReason, parseArgs, failureLines, outcomeLines, TEXT_LIMIT };
