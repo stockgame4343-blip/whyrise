@@ -23,8 +23,8 @@ on:
         default: ''
   repository_dispatch:
     types: [tg-evening]      # 외부 cron-job.org → GitHub dispatch (GitHub 크론 누락 대비 이중화)
-  workflow_run:              # 마감 빌드가 19시 넘어 끝난 날 — 빌드 완료 뒤 19:00~22:00 이면 게시(마커로 하루 1번)
-    workflows: ["종목 인덱스 빌드 (1년치)"]
+  workflow_run:              # 마감 빌드가 19시 넘어 끝난 날 — 마감 정리(오늘의 대장)가 끝난 뒤 19:00~22:00 이면 게시(마커로 하루 1번)
+    workflows: ["오늘의 대장 텔레그램 자동 게시"]   # 빌드 완료가 아니라 마감 정리 다음에 — 저녁 정리가 마감 정리보다 먼저 나가지 않게
     types: [completed]
     branches: [master]
   schedule:
