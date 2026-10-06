@@ -44,7 +44,7 @@ const josa = Story.josa;   // 받침·영문 발음에 맞는 조사 — "티엠
 const JU = { '반도체': '반도체주', '2차전지': '2차전지주', '로봇': '로봇주', '우주항공': '우주항공주', '원전': '원전주',
     '전력설비': '전력주', '광통신': '광통신주', '조선': '조선주', '방산': '방산주', '양자': '양자주', '자동차·부품': '자동차주',
     '스마트폰 부품': '스마트폰 부품주', '철강': '철강주', '건설': '건설주', '바이오': '바이오주', '화장품': '화장품주', '증권': '증권주' };
-function flowWord(f) { return f.kind === 'sector' ? f.label : (JU[f.label] || f.label + ' 테마'); }
+function flowWord(f) { return f.kind === 'sector' ? f.label : f.group ? f.label + '주' : (JU[f.label] || f.label + ' 테마'); }
 // 이전 버전과 같은 이름 — 흐름 이름만
 function flowName(text) {
     const g = Story.parseGroup(text);
@@ -262,7 +262,8 @@ function flowParagraph(f, hooked, introduced, headed) {
     if (lu.length) out.push(`${rlJ(lu.slice(0, 3), '이', '가')} 상한가를 기록했고` + (rest.length ? `, ${rest.map(rl).join('·')}도 크게 올랐습니다.` : '.'));
     else if (rest.length) out.push(`${rest.map(rl).join('·')} 순으로 많이 올랐습니다.`);
     // 개별 기사가 확인된 종목 — 제목에 건 종목은 위에서 답했다, 최대 2개
-    const told = f.members.filter(r => r.reason && !hooked.has(r)).sort((a, b) => b.energy - a.energy).slice(0, 2);
+    // 흐름 배경과 같은 이유는 위 문장과 겹친다
+    const told = f.members.filter(r => r.reason && !hooked.has(r) && r.reason !== f.catalyst).sort((a, b) => b.energy - a.energy).slice(0, 2);
     for (const r of told) out.push(`${r.name} 관련 '${r.reason}' 기사도 나왔습니다.`);
     const top = f.members.slice().sort((a, b) => b.vol - a.vol)[0];
     if (top && top.vol >= 3e10) out.push(`거래대금은 ${josa(top.name, '이', '가')} ${josa(amount(top.vol), '으로', '로')} 가장 컸습니다.`);

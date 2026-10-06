@@ -42,6 +42,8 @@ const FAMILIES = [
     ['조선', /^(?:조선)/, /조선|선박|LNG선|컨선|해운/],
     ['방산', /^(?:방위산업|방산)/, /방산|방위|국방|미사일/],
     ['양자', /^(?:양자)/, /양자/],
+    // 해킹 사고 날 보안주는 정보보안·딥페이크·화이트해커 태그로 흩어지고, 대장(상한가)은 '해킹' 이유로 따로 떨어졌다(10/6)
+    ['보안', /^(?:보안|정보보안|사이버\s*보안|보안\s*솔루션|딥페이크|화이트해커|해킹|양자\s*암호|생체\s*인식)/, /보안|해킹|사이버|랜섬웨어|딥페이크|개인정보\s*유출|침해/],
     ['자동차·부품', /^(?:자동차)/, /자동차|전장|완성차/],
     ['스마트폰 부품', /^(?:카메라모듈|스마트폰|폴더블)/, /폴더블|스마트폰|카메라모듈|UTG/],
     ['철강', /^(?:철강)/, /철강|강관|특수강/],
@@ -251,8 +253,70 @@ function offSector(r) {
     return false;
 }
 
+// ── 같은 그룹 계열사 동반 상승 ── 'HLB·HLB제약·HLB생명과학…'처럼 이름 앞머리가 같은 3개사 이상이 함께 오르고,
+// 최근 기사 제목이 2개사 이상에서 '○○그룹(주)'로 묶어 다룬 날. 계열사 테마 태그는 제각각이라(비만치료제·줄기세포·화장품…)
+// 테마로는 못 묶고, 그대로 두면 '바이오 7종목 — 다른 회사 재료'처럼 엉뚱한 이유가 붙는다(10/6 HLB 그룹주).
+const GROUP_NAMES_KO = ['셀트리온', '에코프로', '포스코', '카카오', '코오롱', '신세계', '아모레', '삼성', '현대', '한화', '두산', '롯데', '효성', '한진', '금호', '대웅', '한미', '영풍', '하림', '태광', '네이버'];
+const GROUP_NEWS_DAYS = 4;   // 연휴·주말 뒤 첫 거래일도 직전 기사를 볼 수 있게
+function groupPrefix(name) {
+    const n = String(name || '');
+    const m = n.match(/^([A-Z]{2,4})(?=[가-힣]|$)/);
+    if (m) return m[1];
+    return GROUP_NAMES_KO.find(g => n.startsWith(g) && n !== g + '우') || '';
+}
+function ymdOf(v) { const d = String(v || '').replace(/\D/g, '').slice(0, 8); return d.length === 8 ? d : ''; }
+function daysBetween(a, b) { return Math.round((Date.UTC(+b.slice(0, 4), +b.slice(4, 6) - 1, +b.slice(6, 8)) - Date.UTC(+a.slice(0, 4), +a.slice(4, 6) - 1, +a.slice(6, 8))) / 86400000); }
+function recentTitles(row, date) {
+    return ((row && row.news) || []).filter(n => {
+        const d = ymdOf(n && n.date);
+        return n && n.title && (!date || (d && d <= date && daysBetween(d, date) <= GROUP_NEWS_DAYS));
+    }).map(n => String(n.title));
+}
+function escRe(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+/** 제목들이 이 그룹을 '그룹(주)'로 다뤘나 → 기사에 쓰인 그룹 이름(HLB·HD현대 등), 아니면 '' */
+function groupMention(titles, prefix) {
+    const re = new RegExp('(' + escRe(prefix) + '[가-힣]{0,2})\\s?그룹');
+    for (const t of titles) { const m = t.match(re); if (m) return m[1]; }
+    return '';
+}
+function groupFlows(rows, date) {
+    const by = new Map();
+    for (const r of rows) {
+        if (r.ipo) continue;
+        const p = groupPrefix(r.name);
+        if (!p) continue;
+        if (!by.has(p)) by.set(p, []);
+        by.get(p).push(r);
+    }
+    const out = [];
+    for (const [prefix, list] of by) {
+        if (new Set(list.map(r => r.company)).size < 3) continue;
+        const named = list.map(r => groupMention(recentTitles(r.row, date), prefix)).filter(Boolean);
+        if (named.length < 2) continue;
+        const label = mostCommon(named) + '그룹';
+        // 배경: 계열사 이유 가운데, 다른 계열사 2곳 이상의 최근 기사 제목에도 그 핵심어가 나오는 것(한 회사만의 재료는 그룹 배경이 아니다)
+        const cands = list.filter(r => r.reason).map(owner => {
+            const words = distinctiveWords(owner.reason).filter(w => w !== prefix && !w.startsWith(prefix));
+            const score = list.filter(r => r !== owner && recentTitles(r.row, date).some(t => words.some(w => t.includes(w)))).length;
+            return { text: owner.reason, energy: owner.energy, score };
+        }).filter(c => c.score >= 2).sort((a, b) => b.score - a.score || b.energy - a.energy);
+        const catalyst = cands.length ? cands[0].text : '';
+        const words = catalyst ? distinctiveWords(catalyst) : [];
+        // 자기 재료가 따로 있는 계열사(그룹 기사도 없고 배경과도 무관)는 개별 재료로 남긴다
+        const members = list.filter(r => !r.reason || r.reason === catalyst || words.some(w => r.reason.includes(w)) ||
+            groupMention(recentTitles(r.row, date), prefix));
+        if (new Set(members.map(r => r.company)).size < 3) continue;
+        out.push({ label, catalyst, members });
+    }
+    return out;
+}
+function mostCommon(list) {
+    const c = new Map(); for (const x of list) c.set(x, (c.get(x) || 0) + 1);
+    return [...c.entries()].sort((a, b) => b[1] - a[1] || a[0].length - b[0].length)[0][0];
+}
+
 /** 행 → 흐름(그룹) */
-function flowsOf(rows) {
+function flowsOf(rows, date) {
     const G = new Map();
     const get = (key, label, kind) => {
         if (!G.has(key)) G.set(key, { key, label, kind, core: [], extra: [], cats: [] });
@@ -262,9 +326,16 @@ function flowsOf(rows) {
     };
     const companies = list => new Set(list.map(r => r.company)).size;
     const assigned = new Set();
+    // ⓪ 같은 그룹 계열사 동반 상승 — 테마·업종 묶음보다 먼저(계열사 테마 태그는 제각각이라)
+    for (const gf of groupFlows(rows, date)) {
+        const g = get(gf.label, gf.label, gf.catalyst ? 'news' : 'theme');
+        g.group = true;
+        for (const r of gf.members) { g.core.push(r); assigned.add(r); }
+        if (gf.catalyst) g.cats.push({ text: gf.catalyst, energy: Math.max(...gf.members.map(r => r.energy)) });
+    }
     // ① 상류 그룹 사유(테마·기사 배경) — 같은 계열 이름으로
     for (const r of rows) {
-        if (r.ipo || !r.group || r.group.kind === 'sector') continue;
+        if (assigned.has(r) || r.ipo || !r.group || r.group.kind === 'sector') continue;
         const key = familyOf(r.group.name);
         const g = get(key, key, r.group.catalyst ? 'news' : 'theme');
         g.core.push(r); assigned.add(r);
@@ -308,7 +379,7 @@ function flowsOf(rows) {
         const tally = new Map();
         for (const c of g.cats) { const t = tally.get(c.text) || { text: c.text, n: 0, e: 0 }; t.n++; t.e = Math.max(t.e, c.energy); tally.set(c.text, t); }
         const cat = [...tally.values()].sort((a, b) => b.n - a.n || b.e - a.e)[0];
-        const flow = { key: g.key, label: g.label, kind: g.kind, catalyst: cat ? cat.text : '', members, companies: companies(members),
+        const flow = { key: g.key, label: g.label, kind: g.kind, group: !!g.group, catalyst: cat ? cat.text : '', members, companies: companies(members),
             energy: members.reduce((s, r) => s + r.energy, 0), vol: members.reduce((s, r) => s + r.vol, 0),
             limitUps: members.filter(r => r.limit).length, streak: 1 };
         // 제목·머리말에 쓸 만한 흐름: 기사 배경이 있거나, 개별 이유가 있는 종목이 있거나, 4개사 이상
@@ -419,7 +490,7 @@ function build(day, opts = {}) {
     const history = (opts.history || []).filter(d => d && String(d.date) < date);
     const prevCloses = (day && day._prevCloses) || null;
     const { rows, abnormal } = rowsWithLeader(day, { leader, prevCloses }, opts.extraRows);
-    const flows = flowsOf(rows);
+    const flows = flowsOf(rows, date);
     const inFlow = new Set(flows.flatMap(f => f.members));
     const solos = rows.filter(r => !inFlow.has(r) && r.reason && !r.ipo);
     const rest = rows.filter(r => !inFlow.has(r) && !r.reason && !r.ipo);
@@ -429,7 +500,7 @@ function build(day, opts = {}) {
     if (history.length) {
         // 종목 연속 상승(+10%↑)과 흐름 연속일
         // 신규상장일 등락률은 공모가 기준이 아니어서 연속 상승에 넣지 않는다
-        const past = pastRows.map(rs => ({ tickers: new Set(rs.filter(r => !r.ipo).map(r => r.ticker)), flows: new Set(flowsOf(rs).map(f => f.key)) }));
+        const past = pastRows.map((rs, i) => ({ tickers: new Set(rs.filter(r => !r.ipo).map(r => r.ticker)), flows: new Set(flowsOf(rs, String(history[i].date || '')).map(f => f.key)) }));
         for (const r of rows) { let s = 1; for (const p of past) { if (p.tickers.has(r.ticker)) s++; else break; } r.streak = s; }
         for (const f of flows) { let s = 1; for (const p of past) { if (p.flows.has(f.key)) s++; else break; } f.streak = s; }
     }

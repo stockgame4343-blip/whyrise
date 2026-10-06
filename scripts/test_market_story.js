@@ -258,3 +258,48 @@ test('블로그는 나열 대신 해석 — 💬 ORGO의 시선·🔍 제목 종
         sub: b.card.sub, chips: ['상한가 1', '+15% 이상 3종목'] });
     assert.match(Copy.threads(m).text, /\n오늘은 광통신으로 돈이 확 몰렸어요\. 급등주 거래대금의 100%가 광통신 쪽이었거든요 👀\n\n/);   // 쓰레드는 캐릭터 말투
 });
+
+test('같은 그룹 계열사 동반 상승은 테마가 제각각이어도 그룹주 흐름으로 묶고, 계열사 기사와 맞는 이유를 배경으로 쓴다', () => {
+    const t = (title, date = '2026.10.02') => ({ news: [{ title, date }] });
+    const s = S.build(day([
+        row('GAO제약', 29.6, { theme_tag: '비만치료제', ...t('GAO그룹주 연일 강세…신약 FDA 허가 효과') }),
+        row('GAO바이오텍', 29.4, { theme_tag: 'GAO그룹', ...news('간암 신약 제조시설 FDA 실사 종결'), news: [{ title: 'GAO, 간암 신약 제조시설 FDA 실사 종결', date: '2026.10.02' }] }),
+        row('GAO생명', 25, { theme_tag: '줄기세포', ...t('GAO 간암 신약 FDA 재신청에 그룹주 동반 강세') }),
+        row('GAO글로벌', 16, { theme_tag: '화장품', ...t('GAO그룹株 일제히 급등') }),
+        row('남천제약', 17, { theme_tag: '바이오시밀러', ...news('기술이전 기대 재부각') }),
+    ]));
+    const g = s.flows.find(f => f.group);
+    assert.ok(g, '그룹주 흐름이 있어야 한다');
+    assert.equal(g.label, 'GAO그룹');
+    assert.equal(g.members.length, 4);
+    assert.equal(g.catalyst, '간암 신약 제조시설 FDA 실사 종결');
+    assert.ok(!g.members.some(r => r.name === '남천제약'));            // 다른 회사 재료는 섞지 않는다
+    assert.ok(s.solos.some(r => r.name === '남천제약'));
+    assert.ok(!s.flows.some(f => f !== g && f.members.some(r => g.members.includes(r))));   // 한 종목은 한 흐름에만
+    const th = Copy.threads(Copy.material({ date: '20261002', rows: s.rows.map(r => r.row) })).text;
+    assert.match(th, /GAO그룹 4종목 — 간암 신약 제조시설 FDA 실사 종결/);
+});
+
+test('이름 앞머리만 같고 그룹 기사가 없거나 지난 기사뿐이면 그룹주로 묶지 않는다', () => {
+    const old = { news: [{ title: 'NR그룹주 일제히 급등', date: '2026.09.01' }] };
+    const s = S.build(day([
+        row('NR전자', 20, { theme_tag: '반도체', ...old }),
+        row('NR건설', 18, { theme_tag: '건설', ...old }),
+        row('NR식품', 15, { theme_tag: '음식료' }),
+    ]));
+    assert.ok(!s.flows.some(f => f.group));
+});
+
+test('해킹 사고 날 보안주 — 정보보안·딥페이크 태그와 해킹 이유 종목이 한 흐름으로', () => {
+    const s = S.build(day([
+        row('시큐A', 30, { theme_tag: '딥페이크', ...news('AI 해킹 대응 부각') }),
+        row('시큐B', 25, { theme_tag: '보안주(정보보안 등)', ...news('금융권 해킹') }),
+        row('시큐C', 16, { theme_tag: '보안주(정보보안 등)' }),
+        row('시큐D', 15, { theme_tag: '보안주(정보보안 등)' }),
+        row('시큐E', 13, { theme_tag: '딥페이크' }),
+    ]));
+    const f = s.flows.find(x => x.label === '보안');
+    assert.ok(f);
+    assert.equal(f.members.length, 5);
+    assert.equal(s.solos.length, 0);
+});

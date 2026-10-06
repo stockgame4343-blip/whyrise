@@ -120,7 +120,7 @@ const Story = require('./market_story');
 const JU = { '반도체': '반도체주', '2차전지': '2차전지주', '로봇': '로봇주', '우주항공': '우주항공주', '원전': '원전주',
     '전력설비': '전력주', '광통신': '광통신주', '조선': '조선주', '방산': '방산주', '양자': '양자주', '자동차·부품': '자동차주',
     '스마트폰 부품': '스마트폰 부품주', '철강': '철강주', '건설': '건설주', '바이오': '바이오주', '화장품': '화장품주', '증권': '증권주' };
-function flowWord(f) { return f.kind === 'sector' ? f.label : (JU[f.label] || f.label + ' 테마'); }
+function flowWord(f) { return f.kind === 'sector' ? f.label : f.group ? f.label + '주' : (JU[f.label] || f.label + ' 테마'); }
 function storyOf(day, opts) { return Story.build(day || { date: '', rankings: [] }, opts || {}); }
 const P = Story.pct;
 // 머리 한 줄: "광통신주 급등, 머큐리·티엠씨 상한가" / "광통신·우주항공 강세"
