@@ -23,6 +23,10 @@ on:
         default: ''
   repository_dispatch:
     types: [tg-evening]      # 외부 cron-job.org → GitHub dispatch (GitHub 크론 누락 대비 이중화)
+  workflow_run:              # 마감 빌드가 19시 넘어 끝난 날 — 빌드 완료 뒤 19:00~22:00 이면 게시(마커로 하루 1번)
+    workflows: ["종목 인덱스 빌드 (1년치)"]
+    types: [completed]
+    branches: [master]
   schedule:
     - cron: '0 10 * * 1-5'   # 평일 KST 19:00
     - cron: '30 10 * * 1-5'  # 평일 KST 19:30 — 백업(첫 크론 누락 대비, 마커로 중복 방지)
@@ -37,6 +41,7 @@ concurrency:
 
 jobs:
   post:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -54,6 +59,11 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
+          # 빌드 완료 트리거는 저녁 정리 시간(19:00~22:00)에만 — 낮 동안의 15분 빌드마다 불리므로
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            HM=$(date +%H%M)
+            if [ "$HM" -lt 1900 ] || [ "$HM" -ge 2200 ]; then echo "저녁 정리 시간 밖($HM) — 스킵"; exit 0; fi
+          fi
           ARGS=""
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
           [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"

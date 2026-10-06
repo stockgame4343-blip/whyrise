@@ -108,7 +108,10 @@ async function main() {
         } catch (e) { /* 마커 없음 → 첫 게시 */ }
     }
 
-    var day = editorial.finalSnapshot(PUBLIC, today);
+    // 오늘 마감 확정 데이터(rise-history)가 아직 빌드되지 않았으면 실패 대신 건너뛴다 — 빌드가 끝나면 workflow_run 으로 다시 불린다
+    var day;
+    try { day = editorial.finalSnapshot(PUBLIC, today); }
+    catch (e) { console.log('오늘(' + today + ') 마감 확정 데이터 아직 없음(' + e.message + ') — 빌드 완료 후 다시 실행됨, 스킵'); return; }
     var L = editorial.calendarLeaders(PUBLIC, today, day);
     // 대장 숫자는 같은 날 목록(날짜별 페이지·캡션과 동일)의 값으로 맞춘다 — 캘린더 값은 집계 시점에 따라 소수점이 다를 수 있음
     var dayX = Story.withSnapshot(PUBLIC, day);

@@ -128,6 +128,15 @@ jobs:
                 # 장중(미확정) 데이터로 승격하면 그날 이유/뉴스가 장중 스냅샷으로 박제됨 —
                 # 업스트림 최신일이 is_final 일 때만 승격 (아니면 다음 슬롯에서 재시도)
                 FINAL=$(curl -sf --max-time 20 "https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data/${UPSTREAM}.json" | python3 -c "import json,sys;print(json.load(sys.stdin).get('is_final', False))" 2>/dev/null || echo '')
+                # 마감 후 외부 디스패치는 16:05 무렵 끊기고 GitHub 크론(15:40·16:10)은 몇 시간씩 밀린다 —
+                # 업스트림 확정이 그 뒤에 나오면 그날 마감 빌드가 저녁까지 안 돌았다(9/16·9/29·10/6).
+                # 그래서 미확정이면 이 런에서 최대 120분(18:30 까지) 2분 30초마다 다시 보고, 확정되는 즉시 승격한다.
+                WAITED=0
+                while [ "$FINAL" != "True" ] && [ "$WAITED" -lt 7200 ] && [ "$(date +%H%M)" -lt 1830 ]; do
+                  echo "업스트림 $UPSTREAM 미확정 — 150초 뒤 다시 확인 (${WAITED}s 대기)"
+                  sleep 150; WAITED=$((WAITED + 150))
+                  FINAL=$(curl -sf --max-time 20 "https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data/${UPSTREAM}.json" | python3 -c "import json,sys;print(json.load(sys.stdin).get('is_final', False))" 2>/dev/null || echo '')
+                done
                 if [ "$FINAL" = "True" ]; then
                   echo "stock-history stale (local=${LOCAL:-none} < upstream=$UPSTREAM, final) — incremental 승격"
                   MODE="incremental"

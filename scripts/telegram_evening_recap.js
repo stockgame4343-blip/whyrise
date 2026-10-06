@@ -47,7 +47,10 @@ async function main() {
         if (mk && mk.last === today) { console.log('이미 오늘(' + today + ') 저녁 복기 게시함 — 스킵'); return; }
     }
 
-    var day = editorial.finalSnapshot(PUBLIC, today);
+    // 마감 확정 데이터가 아직 없으면 실패 대신 건너뛴다 — 빌드가 끝나면(19~22시) workflow_run 으로 다시 불린다
+    var day;
+    try { day = editorial.finalSnapshot(PUBLIC, today); }
+    catch (e) { console.log('오늘(' + today + ') 마감 확정 데이터 아직 없음(' + e.message + ') — 스킵'); return; }
     var prevDay = editorial.previousSnapshot(PUBLIC, day);
     var refined = await tg.fetchRefinedReasons(today);   // 날짜·근거 검증 사유만 사용
     var caption = editorial.evening(today, Story.withSnapshot(PUBLIC, day), prevDay, refined, Story.loadHistory(PUBLIC, today, 10));
