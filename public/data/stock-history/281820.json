@@ -4,16 +4,46 @@
   "market": "KOSPI",
   "events": [
     {
+      "date": "20261007",
+      "change_rate": 15.71,
+      "close_price": 123000.0,
+      "trading_volume": 1087224,
+      "trading_value": 133728552000,
+      "rise_reason": "메모리 증설 수혜",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "HBM(고대역폭메모리)",
+      "news": [
+        {
+          "title": "케이씨텍, 반도체 장비株 강세에 이틀째 급등…12%대↑[종목NOW]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005585941",
+          "source": "파이낸셜뉴스",
+          "date": "2026.10.07"
+        },
+        {
+          "title": "외국인 ‘팔자’에 6941 마감… 환율은 1340원대로 하락",
+          "link": "https://n.news.naver.com/mnews/article/081/0003686445",
+          "source": "서울신문",
+          "date": "2026-10-06"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": true,
+      "source": "stockrise",
+      "reason_origin": "toss"
+    },
+    {
       "date": "20261006",
-      "change_rate": 15.09,
-      "close_price": 106000.0,
-      "trading_volume": 374837,
-      "trading_value": 39732722000,
-      "rise_reason": "반도체주 4종목 동반 상승",
+      "change_rate": 15.42,
+      "close_price": 106300.0,
+      "trading_volume": 378533,
+      "trading_value": 40238057900,
+      "rise_reason": "반도체주 5종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "stockrise",
       "reason_status": "filled",
-      "theme_tag": "반도체 재료/부품",
+      "theme_tag": "반도체 장비",
       "news": [
         {
           "title": "[거버넌스워치] 케이씨 사주 일가 1040억 현금화로 본 케이씨텍 활용...",
@@ -76,6 +106,12 @@
           "date": "2026.08.26"
         },
         {
+          "title": "케이씨텍, 반도체 장비株 강세에 이틀째 급등…12%대↑[종목NOW]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005585941",
+          "source": "파이낸셜뉴스",
+          "date": "2026-10-07"
+        },
+        {
           "title": "외국인 ‘팔자’에 6941 마감… 환율은 1340원대로 하락",
           "link": "https://n.news.naver.com/mnews/article/081/0003686445",
           "source": "서울신문",
@@ -94,11 +130,11 @@
       "close_price": 66400.0,
       "trading_volume": 230920,
       "trading_value": 15333088000,
-      "rise_reason": "반도체 재료 테마 14종목 동반 상승",
+      "rise_reason": "HBM(고대역폭메모리) 테마 강세",
       "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "reason_source": "theme",
       "reason_status": "filled",
-      "theme_tag": "반도체 재료/부품",
+      "theme_tag": "HBM(고대역폭메모리)",
       "news": [
         {
           "title": "\"R&D 넘어 양산 데이터 확보 필요\"…반도체특별법, '소부장 검증' 시험...",
@@ -109,9 +145,7 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "반도체 재료/부품 테마 강세",
-      "reason_kind": "theme"
+      "source": "estimated"
     },
     {
       "date": "20260731",
@@ -993,12 +1027,12 @@
     }
   ],
   "stats": {
-    "count_10": 15,
-    "count_15": 6,
+    "count_10": 16,
+    "count_15": 7,
     "count_20": 2,
     "count_limit": 0,
-    "count_recent": 1,
-    "avg_rate": 14.99
+    "count_recent": 2,
+    "avg_rate": 15.05
   },
-  "built_at": "2026-10-06T22:36:06"
+  "built_at": "2026-10-07T16:09:15"
 }
