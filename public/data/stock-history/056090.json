@@ -9,9 +9,9 @@
       "close_price": 5950.0,
       "trading_volume": 0,
       "trading_value": 0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "관련 보도: 美 수술실 노리는 K-임플란트…메디쎄이·엘앤케이· FDA 문...",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "美 수술실 노리는 K-임플란트…메디쎄이·엘앤케이·시지메드텍 FDA 문...",
+          "link": "https://n.news.naver.com/mnews/article/022/0004164330",
+          "source": "세계일보",
+          "date": "2026-10-06"
+        }
+      ]
     },
     {
       "date": "20260619",
@@ -448,5 +459,5 @@
     "count_recent": 1,
     "avg_rate": 51.92
   },
-  "built_at": "2026-10-07T22:55:59"
+  "built_at": "2026-10-08T11:42:12"
 }
