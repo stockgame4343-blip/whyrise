@@ -9,9 +9,9 @@
       "close_price": 11360.0,
       "trading_volume": 1081358,
       "trading_value": 12284226880,
-      "rise_reason": "MOU 체결",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "2차전지주 동반 강세 — LG엔솔, 분기 최대 매출",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -91,7 +91,18 @@
       "sector": "전기제품",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "MOU 체결",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "2차전지株 동반상승…LG엔솔, 분기 최대 매출에 6%↑",
+          "link": "https://n.news.naver.com/mnews/article/003/0014240861",
+          "source": "뉴시스",
+          "date": "2026.10.08"
+        }
+      ]
     },
     {
       "date": "20260901",
@@ -917,5 +928,5 @@
     "count_recent": 1,
     "avg_rate": 13.59
   },
-  "built_at": "2026-10-08T23:02:14"
+  "built_at": "2026-10-09T01:57:43"
 }

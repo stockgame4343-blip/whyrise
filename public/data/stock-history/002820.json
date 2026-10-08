@@ -9,10 +9,10 @@
       "close_price": 1150.0,
       "trading_volume": 646785,
       "trading_value": 743802750,
-      "rise_reason": "테마 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "조림사업",
       "news": [
         {
@@ -31,7 +31,10 @@
       "sector": "종이와목재",
       "is_52w_high": null,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "테마 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20260826",
@@ -202,5 +205,5 @@
     "count_recent": 1,
     "avg_rate": 15.67
   },
-  "built_at": "2026-10-08T23:00:35"
+  "built_at": "2026-10-09T01:57:43"
 }

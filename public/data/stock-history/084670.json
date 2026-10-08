@@ -9,9 +9,9 @@
       "close_price": 38000.0,
       "trading_volume": 1396332,
       "trading_value": 53060616000,
-      "rise_reason": "거래량 급증",
+      "rise_reason": "고터 재개발 수혜 기대",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
@@ -61,7 +61,18 @@
       "sector": "도로와철도운송",
       "is_52w_high": null,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "거래량 급증",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "천일고속·동양고속 들썩…고터 재개발 수혜 기대",
+          "link": "https://n.news.naver.com/mnews/article/015/0005340640",
+          "source": "한국경제",
+          "date": "2026-10-08"
+        }
+      ]
     },
     {
       "date": "20261007",
@@ -1188,5 +1199,5 @@
     "count_recent": 2,
     "avg_rate": 25.8
   },
-  "built_at": "2026-10-08T23:00:16"
+  "built_at": "2026-10-09T01:57:43"
 }

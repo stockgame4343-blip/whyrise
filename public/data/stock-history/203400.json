@@ -9,15 +9,26 @@
       "close_price": 3380.0,
       "trading_volume": 0,
       "trading_value": 0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "바이오주 동반 강세",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단/치료제/백신 개발 등)",
       "news": [],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "러시아 페스트 우려 제약·진단주 강세…국제약품 상한가[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009213455",
+          "source": "뉴스1",
+          "date": "2026.10.07"
+        }
+      ]
     },
     {
       "date": "20260811",
@@ -1114,5 +1125,5 @@
     "count_recent": 1,
     "avg_rate": 38.99
   },
-  "built_at": "2026-10-08T23:04:54"
+  "built_at": "2026-10-09T01:57:43"
 }

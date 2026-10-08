@@ -9,9 +9,9 @@
       "close_price": 3565.0,
       "trading_volume": 3178648,
       "trading_value": 11331880120,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "자사주 150억원 취득 후 197억원 규모 소각",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -22,15 +22,21 @@
           "date": "2026-10-08"
         },
         {
-          "title": "BGF, 반도체 소재 손자회사 자회사로 편입…“지배구조 개편”",
-          "link": "https://n.news.naver.com/mnews/article/016/0002706750",
-          "source": "헤럴드경제",
-          "date": "2026-10-08"
+          "title": "BGF에코머티리얼즈, 자사주 150억원 취득 후 197억원 규모 소각",
+          "link": "https://n.news.naver.com/mnews/article/277/0005825854",
+          "source": "아시아경제",
+          "date": "2026-10-07"
         },
         {
           "title": "BGF에코머티리얼즈, 자사주 6.21% 공개매수…전량 소각 계획[시그널]",
           "link": "https://n.news.naver.com/mnews/article/011/0004669288",
           "source": "서울경제",
+          "date": "2026-10-08"
+        },
+        {
+          "title": "BGF, 반도체 소재 손자회사 자회사로 편입…“지배구조 개편”",
+          "link": "https://n.news.naver.com/mnews/article/016/0002706750",
+          "source": "헤럴드경제",
           "date": "2026-10-08"
         },
         {
@@ -90,7 +96,18 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 매입",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "BGF에코머티리얼즈, 자사주 150억원 취득 후 197억원 규모 소각",
+          "link": "https://n.news.naver.com/mnews/article/277/0005825854",
+          "source": "아시아경제",
+          "date": "2026-10-07"
+        }
+      ]
     }
   ],
   "stats": {
@@ -101,5 +118,5 @@
     "count_recent": 1,
     "avg_rate": 10.54
   },
-  "built_at": "2026-10-08T23:02:42"
+  "built_at": "2026-10-09T01:57:43"
 }
