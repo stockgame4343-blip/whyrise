@@ -9,10 +9,10 @@
       "close_price": 267.0,
       "trading_volume": 18225452,
       "trading_value": 4866195684,
-      "rise_reason": "투자 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -49,7 +49,10 @@
       "sector": "소프트웨어",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20261008",
@@ -736,5 +739,5 @@
     "count_recent": 4,
     "avg_rate": 20.52
   },
-  "built_at": "2026-10-14T00:38:46"
+  "built_at": "2026-10-14T02:08:26"
 }

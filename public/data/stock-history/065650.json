@@ -9,10 +9,10 @@
       "close_price": 1937.0,
       "trading_volume": 1434445,
       "trading_value": 2778519965,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "치매",
       "news": [
         {
@@ -49,7 +49,10 @@
         "link": "https://n.news.naver.com/mnews/article/277/0005824334",
         "title": "하이퍼코퍼레이션 자회사 큐비스트 미용기기 제조, 올해 누적 수주 13...",
         "date": "20261003"
-      }
+      },
+      "reason_previous": "수주 공시",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20261012",
@@ -638,5 +641,5 @@
     "count_recent": 3,
     "avg_rate": 14.55
   },
-  "built_at": "2026-10-14T00:36:39"
+  "built_at": "2026-10-14T02:08:26"
 }

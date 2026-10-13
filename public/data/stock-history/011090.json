@@ -9,10 +9,10 @@
       "close_price": 1747.0,
       "trading_volume": 236681,
       "trading_value": 413481707,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "리모델링/인테리어",
       "news": [
         {
@@ -31,7 +31,10 @@
       "sector": "가구",
       "is_52w_high": null,
       "source": "stockrise",
-      "reason_origin": "fallback"
+      "reason_origin": "fallback",
+      "reason_previous": "거래량 증가",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20261007",
@@ -956,5 +959,5 @@
     "count_recent": 3,
     "avg_rate": 21.06
   },
-  "built_at": "2026-10-14T00:14:22"
+  "built_at": "2026-10-14T02:08:26"
 }
