@@ -4,6 +4,39 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261013",
+      "change_rate": 12.31,
+      "close_price": 3695.0,
+      "trading_volume": 1858668,
+      "trading_value": 6867778260,
+      "rise_reason": "반도체 장비 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "반도체 장비",
+      "news": [
+        {
+          "title": "기보·서울대 기술지주 손잡았다…초기 스타트업 투자·대출 동시 지원",
+          "link": "https://n.news.naver.com/mnews/article/011/0004668440",
+          "source": "서울경제",
+          "date": "2026.10.06"
+        },
+        {
+          "title": "진입 문턱 낮추는 IPO…‘시총 1000억’도 합류 [시그널]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004668246",
+          "source": "서울경제",
+          "date": "2026.10.05"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": null,
+      "source": "stockrise",
+      "reason_origin": "rule",
+      "reason_previous": "투자 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "theme"
+    },
+    {
       "date": "20261001",
       "change_rate": 24.65,
       "close_price": 3160.0,
@@ -142,12 +175,12 @@
     }
   ],
   "stats": {
-    "count_10": 6,
+    "count_10": 7,
     "count_15": 4,
     "count_20": 4,
     "count_limit": 1,
-    "count_recent": 1,
-    "avg_rate": 23.69
+    "count_recent": 2,
+    "avg_rate": 22.06
   },
-  "built_at": "2026-10-13T23:36:48"
+  "built_at": "2026-10-14T02:01:26"
 }
