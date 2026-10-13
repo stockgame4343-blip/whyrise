@@ -13,7 +13,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 _REPO = Path(__file__).resolve().parent.parent
@@ -106,6 +106,40 @@ class OhlcCacheRangeTest(unittest.TestCase):
         rows = bh.fetch_ohlc_cached('005930', '20250301', today, ttl_s=20 * 60)
         self.assertEqual(self.calls, [('005930', today, today)])
         self.assertEqual(rows[-1]['closePrice'], 21)
+
+    def test_cache_fetched_before_close_refreshes_today_after_close(self):
+        # 밀린 마감 빌드가 자정 넘어 돌아 'end=오늘'로 찍힌 캐시 — 마감 뒤에는 오늘 행을 다시 받는다
+        today = date.today().strftime('%Y%m%d')
+        midnight = datetime.combine(date.today(), datetime.min.time()).timestamp()
+        self.fake_now = midnight + 16 * 3600
+        self._seed('20250101', today, [{'localDate': '20250102', 'closePrice': 10}],
+                   fetched_at=midnight + 3600)
+        self._fake({(today, today): [{'localDate': today, 'closePrice': 21}]})
+        rows = bh.fetch_ohlc_cached('005930', '20250301', today)
+        self.assertEqual(self.calls, [('005930', today, today)])
+        self.assertEqual(rows[-1], {'localDate': today, 'closePrice': 21})
+        # 마감 뒤에 받은 캐시는 그대로 쓴다
+        self.calls.clear()
+        self.assertEqual(bh.fetch_ohlc_cached('005930', '20250301', today)[-1]['closePrice'], 21)
+        self.assertEqual(self.calls, [])
+
+    def test_cache_fetched_before_close_is_trusted_until_close(self):
+        today = date.today().strftime('%Y%m%d')
+        midnight = datetime.combine(date.today(), datetime.min.time()).timestamp()
+        self.fake_now = midnight + 9 * 3600
+        self._seed('20250101', today, [{'localDate': '20250102', 'closePrice': 10}],
+                   fetched_at=midnight + 3600)
+        self._fake({})
+        bh.fetch_ohlc_cached('005930', '20250301', today)
+        self.assertEqual(self.calls, [])
+
+    def test_build_meta_records_latest_final_date_only(self):
+        days = {'20261013': {'is_final': False}, '20261012': {'is_final': True}}
+        with patch.object(bh, 'load_stockrise_day', lambda d: days.get(d)):
+            self.assertEqual(bh.latest_final_stockrise_date(['20261008', '20261012', '20261013']), '20261012')
+            days['20261013']['is_final'] = True
+            self.assertEqual(bh.latest_final_stockrise_date(['20261008', '20261012', '20261013']), '20261013')
+        self.assertEqual(bh.latest_final_stockrise_date([]), '')
 
     def test_empty_partial_response_falls_back_to_full_request(self):
         self._seed('20250101', '20260710', [{'localDate': '20260710', 'closePrice': 20}])

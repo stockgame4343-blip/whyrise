@@ -1,7 +1,7 @@
 'use strict';
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const { threadsLength, publishPost, publishWithReply, recordFailure, parseArgs, outcomeLines, TEXT_LIMIT } = require('./threads_publish');
+const { threadsLength, publishPost, publishWithReply, recordFailure, skipReason, parseArgs, outcomeLines, TEXT_LIMIT } = require('./threads_publish');
 const { checkToken, fingerprint } = require('./threads_token');
 const { buildDigest } = require('./marketing_digest');
 const tg = require('./tg_common');
@@ -184,10 +184,19 @@ test('블로그 원고 준비 DM은 하루 한 번 — 다음 빌드 실행에�
 });
 
 test('인자: 날짜·--dry-run·--retry-failed·--preview-dm, 모르는 인자는 거부', () => {
-    assert.deepEqual(parseArgs(['20261006', '--dry-run']), { dryRun: true, retryFailed: false, previewDm: false, date: '20261006' });
+    assert.deepEqual(parseArgs(['20261006', '--dry-run']), { dryRun: true, retryFailed: false, previewDm: false, forcePast: false, date: '20261006' });
     assert.equal(parseArgs(['--preview-dm']).dryRun, true);
+    assert.equal(parseArgs(['20261013', '--force-past']).forcePast, true);
     assert.equal(parseArgs([]).date, tg.ymdKst());
     assert.throws(() => parseArgs(['--publish']));
+});
+
+test('--force-past: 지난 거래일 확정 원고만 날짜·시각 가드를 건너뛴다', () => {
+    const past = '20261013', final = { date: past, is_final: true };   // 화요일 거래일
+    assert.match(skipReason(past, final), /오늘\(/);
+    assert.equal(skipReason(past, final, true), '');
+    assert.equal(skipReason(past, { date: past, is_final: false }, true), '마감 확정 전 데이터');
+    assert.equal(skipReason(tg.ymdKst(), { date: tg.ymdKst(), is_final: true }, true), '--force-past 는 지난 거래일만');
 });
 
 // ── 토큰 만료 관리 ──

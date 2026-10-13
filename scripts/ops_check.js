@@ -22,7 +22,8 @@ const ROOT = path.resolve(__dirname, '..');
 const UPSTREAM_RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/master/public/data/';
 const BUILD_WORKFLOW = 'build-history.yml';
 const MARKETING_WORKFLOW = 'marketing-daily.yml';
-const REBUILD_UNTIL = '20:50';   // 빌드 ~70분 → 마감 정리·원고 발행 창(~22:00) 안에 끝나는 마지막 시각
+const REBUILD_UNTIL = '22:45';   // 빌드 ~70분 → 마감 정리·원고 발행 창(~23:59) 안에 끝나는 마지막 시각
+const RUN_FRESH_MS = 6 * 3600 * 1000;   // 이보다 오래된 '대기/진행' 런은 유령으로 본다 — 10/7 에 멈춘 대기 런 하나가 재실행을 일주일 막았다
 const LEDGER_CHANNEL = 'ops-check';
 const MAX_ALERTS = 3;
 const STUDIO = 'https://orgo.kr/marketing.html#blog';
@@ -96,7 +97,7 @@ async function gh(env, url, init = {}) {
 async function running(env, workflow) {
     for (const status of ['in_progress', 'queued']) {
         const j = await gh(env, `/actions/workflows/${workflow}/runs?status=${status}&per_page=5`);
-        if (j && j.total_count > 0) return true;
+        if (j && (j.workflow_runs || []).some(r => Date.now() - Date.parse(r.created_at) < RUN_FRESH_MS)) return true;
     }
     return false;
 }

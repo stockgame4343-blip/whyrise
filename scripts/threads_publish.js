@@ -2,7 +2,8 @@
 /**
  * 발행실 오늘자 쓰레드 원고 → Threads 본문 게시 + 첫 댓글 링크 (하루 1회)
  *
- *   node scripts/threads_publish.js [YYYYMMDD] [--dry-run] [--retry-failed] [--preview-dm]
+ *   node scripts/threads_publish.js [YYYYMMDD] [--dry-run] [--retry-failed] [--preview-dm] [--force-past]
+ *   --force-past: 놓친 지난 거래일 원고를 늦게 내보낸다(오늘 날짜·게시 시각 가드만 건너뜀, 확정·휴장일 가드는 그대로)
  *
  * 본문: public/marketing/{date}/digest.json 의 posts.threads.text — 발행실 원고 그대로, 링크 없음
  * 댓글: posts.threads.reply — 사이트 본 화면 rise.html?date= 링크. 본문 링크는 도달을 깎아서 첫 댓글로 단다
@@ -219,13 +220,13 @@ function loadManuscript(date) {
 }
 
 // 게시하면 안 되는 날·시각이면 사유를 돌려준다(조용히 종료)
-function skipReason(date, digest) {
-    if (date !== tg.ymdKst()) return `오늘(${tg.ymdKst()})이 아닌 날짜`;
+function skipReason(date, digest, forcePast = false) {
+    if (forcePast ? date >= tg.ymdKst() : date !== tg.ymdKst()) return forcePast ? '--force-past 는 지난 거래일만' : `오늘(${tg.ymdKst()})이 아닌 날짜`;
     if (digest.date !== date) return '원고 날짜 불일치';
     if (digest.is_final !== true) return '마감 확정 전 데이터';
     const block = tg.krPublishBlock(date, false);
     if (block) return block;
-    if (tg.hmKst() < PUBLISH_NOT_BEFORE) return `${PUBLISH_NOT_BEFORE} KST 이전`;
+    if (!forcePast && tg.hmKst() < PUBLISH_NOT_BEFORE) return `${PUBLISH_NOT_BEFORE} KST 이전`;
     return '';
 }
 
@@ -288,10 +289,11 @@ function outcomeLines(date, { post, reply }, permalink) {
 }
 
 function parseArgs(argv) {
-    const args = { dryRun: false, retryFailed: false, previewDm: false, date: '' };
+    const args = { dryRun: false, retryFailed: false, previewDm: false, forcePast: false, date: '' };
     for (const a of argv) {
         if (a === '--dry-run') args.dryRun = true;
         else if (a === '--retry-failed') args.retryFailed = true;
+        else if (a === '--force-past') args.forcePast = true;
         else if (a === '--preview-dm') args.previewDm = args.dryRun = true;   // 미리보기는 게시하지 않는다
         else if (/^\d{8}$/.test(a)) args.date = a;
         else throw new Error('알 수 없는 인자: ' + a);
@@ -307,7 +309,7 @@ async function main(argv = process.argv.slice(2), env = process.env) {
     if (!m || !m.text) { console.log(`${date} 쓰레드 원고 없음 — 게시하지 않음`); return; }
 
     const length = threadsLength(m.text);
-    const skip = skipReason(date, m.digest);
+    const skip = skipReason(date, m.digest, args.forcePast);
 
     if (args.dryRun) {
         console.log(`── 쓰레드 원고 ${date} (dry-run, 게시 안 함) ──\n${m.text}\n── 첫 댓글 ──\n${m.reply || '(없음)'}\n──\n글자 수(Threads 기준): 본문 ${length}/${TEXT_LIMIT}, 댓글 ${threadsLength(m.reply)}/${TEXT_LIMIT}`);

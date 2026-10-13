@@ -147,7 +147,7 @@ async function waitLiveDigest(d) {
     }
     return false;
 }
-// 빌드가 끝날 때마다 이 단계가 돌므로(16:20~22:00 여러 번) 하루 첫 준비 때 한 번만 보낸다
+// 빌드가 끝날 때마다 이 단계가 돌므로(16:20~23:59 여러 번) 하루 첫 준비 때 한 번만 보낸다
 async function notifyBlogReady(d,env,ledger,send=tg.sendMessage,waitLive=waitLiveDigest) {
     const rec=ledger?await ledger.load(d.date,'blog-note'):null;
     if(rec&&rec.state.status==='sent') return 'already_sent';
@@ -161,7 +161,9 @@ async function main(env=process.env) {
     const date=process.argv[2]||tg.ymdKst();
     if(!/^\d{8}$/.test(date)) throw new Error('Expected YYYYMMDD');
     const d=JSON.parse(fs.readFileSync(path.join(ROOT,'public/marketing',date,'digest.json'),'utf8'));
-    if(date!==tg.ymdKst()||d.date!==date||d.is_final!==true||tg.krPublishBlock(date,false)) throw new Error('Live publication requires today\'s final trading data on a confirmed trading day');
+    // 놓친 날 늦게 내보내기 — 워크플로 게이트가 넘긴 지난 거래일(MARKETING_FORCE_DATE)만 오늘 날짜 가드를 건너뛴다
+    const forcePast=env.MARKETING_FORCE_DATE===date&&date<tg.ymdKst();
+    if((date!==tg.ymdKst()&&!forcePast)||d.date!==date||d.is_final!==true||tg.krPublishBlock(date,false)) throw new Error('Live publication requires today\'s final trading data on a confirmed trading day');
     const enabled=new Set((env.MARKETING_ENABLED_CHANNELS||'').split(',').map(s=>s.trim()));
     const status={date,checked_at:new Date().toISOString(),channels:{}};
     for(const channel of ['threads','instagram','kakao','toss']) {

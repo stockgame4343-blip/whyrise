@@ -42,6 +42,7 @@ jobs:
         env:
           REQUESTED_DATE: ${{ inputs.date }}
           EVENT_NAME: ${{ github.event_name }}
+          FORCE_DATE: ${{ vars.MARKETING_FORCE_DATE }}
         run: |
           node - <<'JS'
           const fs=require('fs'),tg=require('./scripts/tg_common');
@@ -49,13 +50,18 @@ jobs:
           const requested=(process.env.REQUESTED_DATE||tg.ymdKst()).split(/[\s,]+/).filter(Boolean);
           if(!requested.length||requested.some(d=>!/^\d{8}$/.test(d)))throw Error('Invalid date');
           const manual=process.env.EVENT_NAME==='workflow_dispatch';
-          const inWindow=tg.hmKst()>='16:20'&&tg.hmKst()<='22:00';
+          const inWindow=tg.hmKst()>='16:20'&&tg.hmKst()<='23:59';
           const ok=d=>{const p=`public/data/rise-history/${d}.json`;const day=fs.existsSync(p)?JSON.parse(fs.readFileSync(p)):null;return tg.isKrTradingDay(d)&&tg.krCalendarCovers(d)&&day&&day.is_final===true;};
           tg.logHolidayWarnings(tg.ymdKst());
-          const dates=[...new Set(requested)].sort().filter(d=>(manual||inWindow)&&ok(d));
+          // 놓친 날 늦게 내보내기 — 저장소 변수 MARKETING_FORCE_DATE(지난 거래일)를 다음 날부터 오전(08:30~12:00)에 발행한다.
+          // 블로그 원고 알림 기록(.marketing-state/{date}-blog-note.json)이 생기면 끝난 것으로 보고 다시 돌지 않는다(변수는 그대로 둬도 됨).
+          const force=(process.env.FORCE_DATE||'').trim();
+          const noted=d=>{try{return JSON.parse(fs.readFileSync(`.marketing-state/${d}-blog-note.json`)).status==='sent';}catch(e){return false;}};
+          const forced=!process.env.REQUESTED_DATE&&/^\d{8}$/.test(force)&&force<tg.ymdKst()&&tg.hmKst()>='08:30'&&tg.hmKst()<'12:00'&&ok(force)&&!noted(force);
+          const dates=forced?[force]:[...new Set(requested)].sort().filter(d=>(manual||inWindow)&&ok(d));
           const date=dates[dates.length-1]||requested[0];
-          const live=dates.length===1&&date===tg.ymdKst();
-          fs.appendFileSync(process.env.GITHUB_OUTPUT,`run=${dates.length>0}\ndate=${date}\ndates=${dates.join(' ')}\nlive=${live}\n`);
+          const live=dates.length===1&&(forced||date===tg.ymdKst());
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`run=${dates.length>0}\ndate=${date}\ndates=${dates.join(' ')}\nlive=${live}\nforce=${forced}\n`);
           if(!dates.length)console.log('No current final trading data / outside window: skipped');
           else console.log('dates: '+dates.join(' '));
           JS
@@ -73,12 +79,13 @@ jobs:
           DATE: ${{ steps.gate.outputs.date }}
           DRY_RUN: ${{ !(steps.gate.outputs.live == 'true' && vars.THREADS_AUTOPUBLISH == 'on' && (github.event_name != 'workflow_dispatch' || inputs.publish)) && '--dry-run' || '' }}
           RETRY_FAILED: ${{ github.event_name == 'workflow_dispatch' && inputs.publish && '--retry-failed' || '' }}
+          FORCE_PAST: ${{ steps.gate.outputs.force == 'true' && '--force-past' || '' }}
           GH_TOKEN: ${{ github.token }}
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           THREADS_ALERT_CHAT_ID: ${{ secrets.THREADS_ALERT_CHAT_ID }}
           TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
-        run: node scripts/threads_publish.js "$DATE" $DRY_RUN $RETRY_FAILED
+        run: node scripts/threads_publish.js "$DATE" $DRY_RUN $RETRY_FAILED $FORCE_PAST
       - name: Export native ORGO charts and calendar
         if: steps.gate.outputs.run == 'true'
         env:
@@ -109,6 +116,7 @@ jobs:
         if: steps.gate.outputs.run == 'true' && steps.gate.outputs.live == 'true' && (github.event_name != 'workflow_dispatch' || inputs.publish)
         env:
           DATE: ${{ steps.gate.outputs.date }}
+          MARKETING_FORCE_DATE: ${{ steps.gate.outputs.force == 'true' && steps.gate.outputs.date || '' }}
           GH_TOKEN: ${{ github.token }}
           MARKETING_ENABLED_CHANNELS: ${{ vars.MARKETING_ENABLED_CHANNELS }}
           THREADS_USER_ID: ${{ vars.THREADS_USER_ID }}

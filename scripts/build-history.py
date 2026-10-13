@@ -50,7 +50,20 @@ BUILD_META_PATH = _REPO / 'public' / 'data' / 'build-meta.json'
 _OHLC_CACHE_DIR = _REPO / 'public' / 'data' / '_cache' / 'ohlc'
 _OHLC_CACHE_TTL_S = 7 * 24 * 3600       # 백필 기본 7일
 _OHLC_CACHE_TTL_INTRADAY_S = 20 * 60    # 장중 빌드 — 20분 (오늘 row 자주 갱신)
+_KR_CLOSE_SETTLED_HM = (15, 40)         # KST — 이 시각 뒤에 받은 오늘 행만 '마감값'으로 믿는다
+BUILD_META_FINAL_LOOKBACK = 3           # build-meta 에 적을 '확정 반영일'을 찾을 때 뒤에서 몇 일자까지 볼지
 _ohlc_cache_stats = {'hit': 0, 'miss': 0}
+
+
+def _fetched_before_close(fetched_at: float, now: float) -> bool:
+    """오늘 마감 전에 받은 캐시인데 지금은 마감 뒤인가.
+
+    밀린 마감 빌드가 자정 넘어(장 시작 전) 돌면 캐시가 'end=오늘'로 찍히지만 오늘 행은 없다.
+    그대로 7일 TTL 로 믿으면 그날 마감 빌드가 오늘 시세를 안 받아 rise-history 가 통째로 빠진다(10/13).
+    """
+    close = datetime.combine(date.today(), datetime.min.time()).replace(
+        hour=_KR_CLOSE_SETTLED_HM[0], minute=_KR_CLOSE_SETTLED_HM[1]).timestamp()
+    return fetched_at < close <= now
 
 
 def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = None) -> list[dict]:
@@ -81,7 +94,8 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = Non
         today_str = date.today().strftime('%Y%m%d')
         complete = cs <= start and ce >= end
         historical = end < today_str
-        if complete and (age < ttl or historical):
+        pre_close = not historical and _fetched_before_close(now - age, now)
+        if complete and (age < ttl or historical) and not pre_close:
             _ohlc_cache_stats['hit'] += 1
             return cached_rows
 
@@ -94,8 +108,8 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = Non
                 segments.append((start, min(cs, end)))
             if ce < end:
                 segments.append((max(start, ce), end))
-            elif end >= today_str and age >= ttl:
-                # 범위는 완전하지만 장중 TTL 만료 — 마지막 행만 다시 받아 오늘 값을 갱신.
+            elif end >= today_str and (age >= ttl or pre_close):
+                # 범위는 완전하지만 장중 TTL 만료·마감 전 캐시 — 마지막 행만 다시 받아 오늘 값을 갱신.
                 segments.append((end, end))
 
             if segments:
@@ -203,6 +217,19 @@ def load_stockrise_day(date_str: str) -> dict | None:
     return naver_client.fetch_json(f'{STOCK_RISE_RAW}/{date_str}.json')
 
 
+def latest_final_stockrise_date(sr_dates: list[str]) -> str:
+    """마감 확정(is_final)된 가장 최근 stock-rise 일자.
+
+    stock-rise 는 자정 넘어 도는 장중 수집이 당일 파일을 미리 만든다. 그때 밀려 돈 마감 빌드가
+    max(dates) 를 '반영 완료'로 적으면 그날 마감 뒤 승격이 하루 종일 꺼진다(10/13).
+    """
+    for d in sorted(sr_dates, reverse=True)[:BUILD_META_FINAL_LOOKBACK]:
+        day = load_stockrise_day(d)
+        if day and day.get('is_final') is True:
+            return d
+    return ''
+
+
 def write_build_meta(sr_dates: list[str]) -> None:
     """stock-history 빌드(full/incremental) 완료 마커.
 
@@ -210,11 +237,12 @@ def write_build_meta(sr_dates: list[str]) -> None:
     비교해 stale 이면 marketmap-intraday 런을 incremental 로 승격한다.
     """
     try:
+        latest = latest_final_stockrise_date(sr_dates)
         BUILD_META_PATH.write_text(json.dumps({
             'built_at': datetime.now().isoformat(timespec='seconds'),
-            'latest_stockrise_date': max(sr_dates) if sr_dates else '',
+            'latest_stockrise_date': latest,
         }, ensure_ascii=False), encoding='utf-8')
-        print(f'  build-meta 기록: latest_stockrise_date={max(sr_dates) if sr_dates else "n/a"}')
+        print(f'  build-meta 기록: latest_stockrise_date={latest or "n/a"}')
     except Exception as e:
         print(f'  build-meta 기록 실패 (무시): {e}')
 

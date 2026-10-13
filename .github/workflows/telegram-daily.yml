@@ -51,7 +51,7 @@ jobs:
         run: |
           RUN=true
           HM=$(TZ=Asia/Seoul date +%H%M)
-          if [ "$EVENT_NAME" = "workflow_run" ] && { [ "$HM" -lt 1540 ] || [ "$HM" -ge 2200 ]; }; then RUN=false; fi
+          if [ "$EVENT_NAME" = "workflow_run" ] && [ "$HM" -lt 1540 ]; then RUN=false; fi   # 마감 빌드가 늦은 날도 자정 전이면 게시
           echo "run=$RUN" >> "$GITHUB_OUTPUT"
   post:
     needs: window
