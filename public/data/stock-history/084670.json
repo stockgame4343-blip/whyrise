@@ -10,8 +10,8 @@
       "trading_volume": 1506170,
       "trading_value": 63183831500,
       "rise_reason": "서울고속버스터미널 재개발 수혜 테마 3종목 동반 상승",
-      "reason_confidence": "low",
-      "reason_source": "stockrise",
+      "reason_confidence": "high",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
@@ -80,7 +80,20 @@
       "is_52w_high": null,
       "source": "stockrise",
       "reason_origin": "news",
-      "reason_kind": "theme"
+      "reason_evidence": [
+        {
+          "title": "'서울고터 재개발' 동양고속 5%대 강세…투자경고에도 급등 [핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009226394",
+          "source": "뉴스1",
+          "date": "2026.10.14"
+        },
+        {
+          "title": "\"23% 급등 뒤 10% 하락\"…동양고속, '롤러코스터' 급등락 [종목 NOW]",
+          "link": "https://n.news.naver.com/mnews/article/014/0005588345",
+          "source": "파이낸셜뉴스",
+          "date": "2026.10.13"
+        }
+      ]
     },
     {
       "date": "20261008",
@@ -1295,5 +1308,5 @@
     "count_recent": 3,
     "avg_rate": 25.53
   },
-  "built_at": "2026-10-14T16:27:08"
+  "built_at": "2026-10-14T22:06:00"
 }
