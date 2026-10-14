@@ -9,10 +9,10 @@
       "close_price": 1981.0,
       "trading_volume": 523268,
       "trading_value": 1036593908,
-      "rise_reason": "실적 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "뉴스",
       "news": [
         {
@@ -37,7 +37,10 @@
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "실적 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20261013",
@@ -442,5 +445,5 @@
     "count_recent": 6,
     "avg_rate": 23.81
   },
-  "built_at": "2026-10-14T21:26:05"
+  "built_at": "2026-10-14T23:40:31"
 }

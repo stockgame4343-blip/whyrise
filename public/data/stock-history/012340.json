@@ -9,10 +9,10 @@
       "close_price": 600.0,
       "trading_volume": 8605381,
       "trading_value": 5163228600,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전기차",
       "news": [
         {
@@ -67,7 +67,10 @@
         "link": "https://n.news.naver.com/mnews/article/018/0006382997",
         "title": "유럽 완성차향 수주 증가…뉴인텍, 생산 대응력 강화 추진",
         "date": "20261007"
-      }
+      },
+      "reason_previous": "수주 공시",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20261013",
@@ -802,5 +805,5 @@
     "count_recent": 3,
     "avg_rate": 26.25
   },
-  "built_at": "2026-10-14T21:25:51"
+  "built_at": "2026-10-14T23:40:31"
 }

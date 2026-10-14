@@ -9,10 +9,10 @@
       "close_price": 2635.0,
       "trading_volume": 5567076,
       "trading_value": 14669245260,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "남북경협",
       "news": [
         {
@@ -25,7 +25,10 @@
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
       "source": "stockrise",
-      "reason_origin": "fallback"
+      "reason_origin": "fallback",
+      "reason_previous": "거래량 증가",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20260907",
@@ -992,5 +995,5 @@
     "count_recent": 1,
     "avg_rate": 59.19
   },
-  "built_at": "2026-10-14T21:24:42"
+  "built_at": "2026-10-14T23:40:31"
 }
