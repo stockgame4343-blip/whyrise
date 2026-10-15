@@ -9,9 +9,9 @@
       "close_price": 96300.0,
       "trading_volume": 108309,
       "trading_value": 10430156700,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "기존 자사주 전량소각·4500억 추가 매입",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(물리)",
       "news": [
@@ -48,7 +48,18 @@
       ],
       "sector": "상업서비스와공급품",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 매입",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "에스원, 기존 자사주 전량소각·4500억 추가 매입",
+          "link": "https://n.news.naver.com/mnews/article/009/0005748764",
+          "source": "매일경제",
+          "date": "2026-10-14"
+        }
+      ]
     },
     {
       "date": "20260709",
@@ -225,5 +236,5 @@
     "count_recent": 1,
     "avg_rate": 13.9
   },
-  "built_at": "2026-10-15T21:04:13"
+  "built_at": "2026-10-15T23:24:36"
 }

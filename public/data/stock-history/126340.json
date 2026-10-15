@@ -9,10 +9,10 @@
       "close_price": 87400.0,
       "trading_volume": 187671,
       "trading_value": 16402445400,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
         {
@@ -79,7 +79,10 @@
       "sector": "전기장비",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "수주 공시",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20260916",
@@ -1442,5 +1445,5 @@
     "count_recent": 2,
     "avg_rate": 15.24
   },
-  "built_at": "2026-10-15T21:06:21"
+  "built_at": "2026-10-15T23:24:36"
 }

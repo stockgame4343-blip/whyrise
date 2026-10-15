@@ -9,10 +9,10 @@
       "close_price": 2575.0,
       "trading_volume": 304915,
       "trading_value": 785156125,
-      "rise_reason": "관리 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "관리",
       "news": [
         {
@@ -49,7 +49,10 @@
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "관리 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20261014",
@@ -529,5 +532,5 @@
     "count_recent": 7,
     "avg_rate": 24.43
   },
-  "built_at": "2026-10-15T21:11:01"
+  "built_at": "2026-10-15T23:24:36"
 }

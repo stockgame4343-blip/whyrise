@@ -9,10 +9,10 @@
       "close_price": 379.0,
       "trading_volume": 7123280,
       "trading_value": 2699723120,
-      "rise_reason": "상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [
         {
@@ -61,7 +61,10 @@
       "sector": "전자장비와기기",
       "is_52w_high": null,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "상장 이슈",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20261014",
@@ -1139,5 +1142,5 @@
     "count_recent": 5,
     "avg_rate": 24.37
   },
-  "built_at": "2026-10-15T21:05:24"
+  "built_at": "2026-10-15T23:24:36"
 }
