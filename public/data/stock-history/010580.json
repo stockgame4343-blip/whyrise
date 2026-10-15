@@ -4,14 +4,52 @@
   "market": "KOSPI",
   "events": [
     {
+      "date": "20261015",
+      "change_rate": 21.54,
+      "close_price": 3245.0,
+      "trading_volume": 41907076,
+      "trading_value": 135988461620,
+      "rise_reason": "위성용 배터리 기술 확보",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
+      "reason_status": "filled",
+      "theme_tag": "자동차부품",
+      "news": [
+        {
+          "title": "에스엠벡셀, 저궤도 위성용 배터리 제조 기술 확보…우주환경 시험 통...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006387694",
+          "source": "이데일리",
+          "date": "2026.10.14"
+        },
+        {
+          "title": "8월 '반짝 반등' 충청 상장사 시총…한 달 만에 다시 하락",
+          "link": "https://n.news.naver.com/mnews/article/656/0000189503",
+          "source": "대전일보",
+          "date": "2026.10.14"
+        }
+      ],
+      "sector": "자동차부품",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_origin": "toss",
+      "reason_evidence": [
+        {
+          "title": "에스엠벡셀, 저궤도 위성용 배터리 제조 기술 확보…우주환경 시험 통...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006387694",
+          "source": "이데일리",
+          "date": "2026.10.14"
+        }
+      ]
+    },
+    {
       "date": "20261014",
       "change_rate": 28.99,
       "close_price": 2670.0,
-      "trading_volume": 14995440,
-      "trading_value": 40037824800,
+      "trading_volume": 15015548,
+      "trading_value": 40091513160,
       "rise_reason": "저궤도 위성용 배터리 제조 기술 확보",
       "reason_confidence": "mid",
-      "reason_source": "llm",
+      "reason_source": "stockrise",
       "reason_status": "filled",
       "theme_tag": "전력저장장치(ESS)",
       "news": [
@@ -32,6 +70,7 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_origin": "news",
+      "reason_kind": "catalyst",
       "reason_evidence": [
         {
           "title": "에스엠벡셀, 저궤도 위성용 배터리 제조 기술 확보…우주환경 시험 통...",
@@ -678,12 +717,12 @@
     }
   ],
   "stats": {
-    "count_10": 13,
-    "count_15": 6,
-    "count_20": 4,
+    "count_10": 14,
+    "count_15": 7,
+    "count_20": 5,
     "count_limit": 1,
-    "count_recent": 3,
-    "avg_rate": 17.14
+    "count_recent": 4,
+    "avg_rate": 17.45
   },
-  "built_at": "2026-10-14T22:06:00"
+  "built_at": "2026-10-15T18:04:26"
 }
