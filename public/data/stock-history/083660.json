@@ -4,6 +4,33 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261016",
+      "change_rate": 21.81,
+      "close_price": 1385.0,
+      "trading_volume": 27462,
+      "trading_value": 38034870,
+      "rise_reason": "화장품주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "수자원(양적/질적 개선)",
+      "news": [],
+      "sector": "화장품",
+      "is_52w_high": false,
+      "source": "estimated",
+      "reason_previous": "수자원(양적/질적 개선) 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 화장품주, 반발매수세에 강세…달바글로벌 8%대 상승(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016381761",
+          "source": "연합뉴스",
+          "date": "2026-10-16"
+        }
+      ]
+    },
+    {
       "date": "20260826",
       "change_rate": 30.0,
       "close_price": 1859.0,
@@ -608,12 +635,12 @@
     }
   ],
   "stats": {
-    "count_10": 9,
-    "count_15": 7,
-    "count_20": 7,
+    "count_10": 10,
+    "count_15": 8,
+    "count_20": 8,
     "count_limit": 5,
-    "count_recent": 0,
-    "avg_rate": 25.83
+    "count_recent": 1,
+    "avg_rate": 25.43
   },
-  "built_at": "2026-10-16T17:06:39"
+  "built_at": "2026-10-16T21:51:24"
 }
