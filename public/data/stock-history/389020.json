@@ -9,9 +9,9 @@
       "close_price": 12370.0,
       "trading_volume": 54270,
       "trading_value": 671319900,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "광통신 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20260805",
@@ -620,5 +623,5 @@
     "count_recent": 1,
     "avg_rate": 15.56
   },
-  "built_at": "2026-10-16T20:58:29"
+  "built_at": "2026-10-16T23:16:56"
 }

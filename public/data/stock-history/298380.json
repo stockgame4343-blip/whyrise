@@ -9,9 +9,9 @@
       "close_price": 43400.0,
       "trading_volume": 387382,
       "trading_value": 16812378800,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "면역항암제 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -42,7 +42,10 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20261001",
@@ -482,5 +485,5 @@
     "count_recent": 2,
     "avg_rate": 17.23
   },
-  "built_at": "2026-10-16T20:54:50"
+  "built_at": "2026-10-16T23:16:56"
 }

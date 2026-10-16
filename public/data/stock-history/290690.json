@@ -9,9 +9,9 @@
       "close_price": 2870.0,
       "trading_volume": 586276,
       "trading_value": 1682612120,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "LED 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "LED",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20260930",
@@ -748,5 +751,5 @@
     "count_recent": 2,
     "avg_rate": 17.11
   },
-  "built_at": "2026-10-16T20:57:19"
+  "built_at": "2026-10-16T23:16:56"
 }

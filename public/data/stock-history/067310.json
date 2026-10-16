@@ -9,9 +9,9 @@
       "close_price": 41000.0,
       "trading_volume": 1743941,
       "trading_value": 71501581000,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체 재료 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -90,7 +90,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20260921",
@@ -864,5 +867,5 @@
     "count_recent": 2,
     "avg_rate": 14.86
   },
-  "built_at": "2026-10-16T20:54:48"
+  "built_at": "2026-10-16T23:16:56"
 }
