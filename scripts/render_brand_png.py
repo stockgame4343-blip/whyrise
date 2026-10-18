@@ -20,6 +20,8 @@ PREVIEW.mkdir(exist_ok=True)
 JOBS = [
     # 프로덕션 OG (정확히 1200x630)
     (PUBLIC / "og-default.svg", PUBLIC / "og-default.png", 1200, 630, 1),
+    # 구조화 데이터 Organization.logo (구글은 112px 이상 래스터 요구 — SVG 불가)
+    (PUBLIC / "favicon.svg", PUBLIC / "logo-512.png", 128, 128, 4),
     # 검수용 미리보기
     (PUBLIC / "og-default.svg", PREVIEW / "orgo-og-sample.png", 1200, 630, 1),
     (PUBLIC / "favicon.svg", PREVIEW / "orgo-favicon-128.png", 128, 128, 4),

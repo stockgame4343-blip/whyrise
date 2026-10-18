@@ -332,7 +332,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # 빌드 산출물 stage — sitemap·종목 프리렌더도 빌드 산출물
           # (git add 가 아래 checkout/clean 보다 먼저라 stage 분은 보존됨)
-          git add public/data/ public/sitemap.xml public/stock/ public/day/
+          git add public/data/ public/sitemap.xml public/rss.xml public/stock/ public/day/
           # IndexNow 핑 대상(바뀐 종목·날짜 페이지) — 커밋 전에 기록
           git diff --staged --name-only > "$RUNNER_TEMP/orgo-changed.txt" || true
           # 추가 unstaged 변경 (예: pip cache·기타) 도 stage 또는 버림

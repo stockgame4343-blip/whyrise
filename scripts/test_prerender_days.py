@@ -72,6 +72,52 @@ class DayPageTest(unittest.TestCase):
         b = pd.render_day('20260930', self.day(), None, '', '')
         self.assertEqual(a, b)
 
+    def test_page_links_rss_and_publisher(self):
+        html = pd.render_day('20260930', self.day(), None, '', '')
+        self.assertIn('type="application/rss+xml"', html)
+        self.assertIn('"@id": "https://orgo.kr/#organization"', html)
+
+    def test_rss_skips_noindex_and_is_valid_xml(self):
+        import tempfile
+        import xml.etree.ElementTree as ET
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            (out / '20260930.html').write_text(pd.render_day('20260930', self.day(), None, '', ''), encoding='utf-8')
+            (out / '20261001.html').write_text(pd.render_day('20261001', {'date': '20261001', 'rankings': []}, None, '', ''), encoding='utf-8')
+            xml = pd.render_rss(['20260930', '20261001'], out)
+            self.assertEqual(xml, pd.render_rss(['20260930', '20261001'], out))   # 결정적
+        items = ET.fromstring(xml).findall('./channel/item')
+        self.assertEqual([i.findtext('link') for i in items], ['https://orgo.kr/day/20260930'])
+        self.assertEqual(items[0].findtext('pubDate'), 'Wed, 30 Sep 2026 15:40:00 +0900')
+
+
+class StockAnswerTest(unittest.TestCase):
+    def test_answer_first_sentence(self):
+        from scripts import prerender_stocks as ps
+        ev = [{'date': '20260731', 'change_rate': 26.8, 'rise_reason': '대규모 수주 공시', 'reason_status': 'filled',
+               'reason_source': 'stockrise', 'theme_tag': '반도체'},
+              {'date': '20260601', 'change_rate': 12.0, 'rise_reason': '', 'theme_tag': '반도체'}]
+        html = ps._answer('삼성전자', ev)
+        self.assertIn('삼성전자는 최근 1년 동안 하루 +10% 이상 오른 날이 2번 있었습니다.', html)
+        self.assertIn('2026년 7월 31일 +26.8%', html)
+        self.assertIn("자주 묶인 테마는 '반도체'", html)
+        self.assertTrue(ps._answer('SK하이닉스', ev).startswith('<p class="prerender-answer"'))
+        self.assertIn('LG은(는)', ps._answer('LG', ev))
+        self.assertIn('한미반도체는', ps._answer('한미반도체', ev))
+        self.assertIn('셀트리온은', ps._answer('셀트리온', ev))
+        self.assertEqual(ps._answer('삼성전자', []), '')
+        # 같은 날 근거 없음 — 조사 없이 끝맺고, 정보 없는 단서는 싣지 않는다
+        bare = ps._answer('경방', [{'date': '20260203', 'change_rate': 15.3, 'rise_reason': ''}])
+        self.assertIn('+15.3%이며, 같은 날 확인된 근거는 없습니다.', bare)
+        self.assertNotIn('개별 종목 상승', bare)
+        news = ps._answer('신테카바이오', [{'date': '20260827', 'change_rate': 13.1, 'reason_source': 'stockrise',
+                                          'rise_reason': '관련 보도: 외부 AI 인프라 구축 추진', 'reason_status': 'filled'}])
+        self.assertIn("같은 날 관련 보도는 '외부 AI 인프라 구축 추진'입니다.", news)
+        self.assertNotIn('이유는', news)
+        ld = ps._json_ld('005930', '삼성전자', 'd', '20260731')
+        self.assertIn('"dateModified": "2026-07-31"', ld)
+        self.assertIn('"tickerSymbol": "005930"', ld)
+
 
 class IndexNowTest(unittest.TestCase):
     def test_paths_to_urls(self):

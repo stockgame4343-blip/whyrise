@@ -38,6 +38,11 @@ MAX_ROWS = 80
 WEEKDAYS = '월화수목금토일'
 JUNK_THEMES = {'거래량', '거래대금'}
 CSS_VER = '20261001a'
+RSS_PATH = PUBLIC / 'rss.xml'
+RSS_ITEMS = 30           # RSS 에 싣는 최근 거래일 수 (네이버 서치어드바이저 RSS 제출용)
+RSS_PUB_TIME = '15:40:00'  # 날짜 페이지가 확정되는 장 마감 기준 시각(KST) — 결정적 pubDate
+# JSON-LD 발행처 — public/index.html 의 Organization(@id) 과 같은 엔티티
+ORG_REF = {'@type': 'Organization', '@id': f'{SITE}/#organization', 'name': 'ORGO', 'url': f'{SITE}/'}
 
 
 def _esc(s) -> str:
@@ -195,7 +200,8 @@ def _json_ld(ymd: str, title: str, desc: str, rows: list[dict]) -> str:
         '@context': 'https://schema.org',
         '@graph': [
             {'@type': 'WebPage', 'name': title, 'url': url, 'description': desc,
-             'inLanguage': 'ko', 'datePublished': f'{ymd[:4]}-{ymd[4:6]}-{ymd[6:]}'},
+             'inLanguage': 'ko', 'datePublished': f'{ymd[:4]}-{ymd[4:6]}-{ymd[6:]}',
+             'isPartOf': {'@id': f'{SITE}/#website'}, 'publisher': ORG_REF},
             {'@type': 'BreadcrumbList', 'itemListElement': [
                 {'@type': 'ListItem', 'position': 1, 'name': 'ORGO', 'item': f'{SITE}/'},
                 {'@type': 'ListItem', 'position': 2, 'name': '날짜별 급등주', 'item': f'{SITE}/day/'},
@@ -223,6 +229,7 @@ HEAD = '''<!DOCTYPE html>
     <meta name="googlebot" content="{robots},max-image-preview:large,max-snippet:-1">
     <link rel="canonical" href="{canonical}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="alternate" type="application/rss+xml" title="ORGO 날짜별 급등주" href="https://orgo.kr/rss.xml">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="ORGO">
     <meta property="og:title" content="{title}">
@@ -432,7 +439,8 @@ def render_index(entries: list[tuple[str, int, str]]) -> str:
     canonical = f'{SITE}/day/'
     ld = ('<script type="application/ld+json">' + _ld_dumps({
         '@context': 'https://schema.org', '@type': 'CollectionPage', 'name': title, 'url': canonical,
-        'description': desc, 'inLanguage': 'ko'}) + '</script>')
+        'description': desc, 'inLanguage': 'ko', 'isPartOf': {'@id': f'{SITE}/#website'},
+        'publisher': ORG_REF}) + '</script>')
     parts = [HEAD.format(title=_esc(title), desc=_esc(desc), canonical=canonical,
                          og_image=f'{SITE}/og-default.png', robots='index,follow', css_ver=CSS_VER, json_ld=ld)]
     parts.append('        <p class="day-crumb"><a href="/">홈</a> › 날짜별 급등주</p>')
@@ -478,6 +486,53 @@ def _write_if_changed(path: Path, text: str) -> bool:
     return True
 
 
+def render_rss(dates: list[str], out_dir: Path | None = None) -> str:
+    """최근 거래일 페이지 RSS 2.0 — 이미 쓴 day/*.html 의 제목·설명(HTML 이스케이프 = XML 호환)을 재사용.
+
+    pubDate·lastBuildDate 는 날짜+장 마감 시각이라 데이터가 같으면 바이트가 같다.
+    색인 제외(noindex) 날짜는 싣지 않는다.
+    """
+    from email.utils import format_datetime
+    out_dir = out_dir or OUT_DIR
+    hh, mm, ss = (int(x) for x in RSS_PUB_TIME.split(':'))
+    items = []
+    for ymd in sorted(dates, reverse=True):
+        try:
+            html = (out_dir / f'{ymd}.html').read_text(encoding='utf-8')
+        except Exception:
+            continue
+        if 'content="noindex' in html:
+            continue
+        t = re.search(r'<title>(.*?)</title>', html)
+        d = re.search(r'<meta name="description" content="(.*?)">', html)
+        if not t:
+            continue
+        pub = format_datetime(_d(ymd).replace(hour=hh, minute=mm, second=ss, tzinfo=KST))
+        url = f'{SITE}/day/{ymd}'
+        items.append((pub, '    <item>\n'
+                      f'      <title>{t.group(1)}</title>\n'
+                      f'      <link>{url}</link>\n'
+                      f'      <guid isPermaLink="true">{url}</guid>\n'
+                      f'      <description>{d.group(1) if d else ""}</description>\n'
+                      f'      <pubDate>{pub}</pubDate>\n'
+                      '    </item>'))
+        if len(items) >= RSS_ITEMS:
+            break
+    last = items[0][0] if items else ''
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+            '  <channel>\n'
+            '    <title>ORGO 날짜별 급등주·상한가</title>\n'
+            f'    <link>{SITE}/day/</link>\n'
+            f'    <atom:link href="{SITE}/rss.xml" rel="self" type="application/rss+xml"/>\n'
+            '    <description>거래일마다 +10% 이상 오른 한국 주식과 상승 이유, 테마, 대장주를 정리합니다.</description>\n'
+            '    <language>ko</language>\n'
+            + (f'    <lastBuildDate>{last}</lastBuildDate>\n' if last else '')
+            + '\n'.join(i[1] for i in items) + ('\n' if items else '')
+            + '  </channel>\n'
+            '</rss>\n')
+
+
 def build_day_pages(only: str = '', now: datetime | None = None) -> dict:
     dates = publishable_dates(now)
     try:
@@ -504,6 +559,8 @@ def build_day_pages(only: str = '', now: datetime | None = None) -> dict:
         else:
             same += 1
     if _write_if_changed(OUT_DIR / 'index.html', render_index(entries)):
+        written += 1
+    if _write_if_changed(RSS_PATH, render_rss([e[0] for e in entries])):
         written += 1
     print(f'  [prerender-days] day/*.html: {written} 갱신, {same} 동일 (날짜 {len(entries)}개)')
     return {'written': written, 'same': same, 'dates': [e[0] for e in entries]}

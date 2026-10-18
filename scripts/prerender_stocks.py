@@ -23,6 +23,9 @@ except ImportError:  # pragma: no cover — scripts/ 단독 실행
 SITE = 'https://orgo.kr'
 MAX_EVENTS = 60          # 스냅샷에 넣을 최근 이벤트 상한 (파일 크기 가드)
 GENERIC_SUMMARY = {'52주 신고가 도달', '상한가 — 사유 미수집', '시장 관심 증가', '-', ''}
+ANSWER_EMPTY_HINTS = {'개별 종목 상승'}   # 답변형 요약에서 '단서'로 쓰기엔 정보가 없는 문구
+# JSON-LD 발행처 — public/index.html 의 Organization(@id) 과 같은 엔티티
+ORG_REF = {'@type': 'Organization', '@id': f'{SITE}/#organization', 'name': 'ORGO', 'url': f'{SITE}/'}
 
 # 템플릿 앵커 — public/stock.html 의 원문과 정확히 일치해야 함 (드리프트 시 경고)
 ANCHORS = {
@@ -77,6 +80,45 @@ def _summary(events: list[dict]) -> str:
     return ' · '.join(parts)
 
 
+def _topic(name: str) -> str:
+    """주제 조사 은/는 — 끝 글자 받침 기준, 한글이 아니면 '은(는)'."""
+    last = name[-1:] if name else ''
+    if not ('가' <= last <= '힣'):
+        return f'{name}은(는)'
+    return f'{name}{"은" if (ord(last) - 0xAC00) % 28 else "는"}'
+
+
+def _ymd_ko(ymd: str) -> str:
+    return f'{ymd[:4]}년 {int(ymd[4:6])}월 {int(ymd[6:8])}일' if len(ymd or '') == 8 else ''
+
+
+def _answer(name: str, events: list[dict]) -> str:
+    """답변형 요약 한 단락 — 검색 위 AI 답변·챗봇이 그대로 인용할 수 있게 본문 맨 위에 둔다."""
+    if not events:
+        return ''
+    latest = events[0]
+    rate = latest.get('change_rate')
+    rate_s = f' {rate:+.1f}%' if isinstance(rate, (int, float)) else ''
+    s = (f'{_topic(name)} 최근 1년 동안 하루 +10% 이상 오른 날이 {len(events)}번 있었습니다. '
+         f'가장 최근은 {_ymd_ko(str(latest.get("date") or ""))}{rate_s}')
+    d = rx_display(latest)
+    text = str(d.get('text') or '').strip()
+    if text.startswith('관련 보도') and not d.get('unknown'):
+        # '관련 보도'는 같은 날 기사 제목 인용일 뿐 원인 확정이 아니다 — '이유는'으로 단정하지 않는다
+        s += f'이고, 같은 날 관련 보도는 \'{text.split(":", 1)[-1].strip()}\'입니다.'
+    elif text and not d.get('unknown'):
+        s += f'이고, 이유는 \'{text}\'입니다.'
+    elif text and text not in ANSWER_EMPTY_HINTS:
+        s += (f'입니다. 같은 날 확인된 근거는 없고, 단서는 \'{text}\''
+              + (f'({d["label"]})' if d.get('label') else '') + '입니다.')
+    else:
+        s += '이며, 같은 날 확인된 근거는 없습니다.'
+    theme = _top_freq(events, lambda e: (e.get('theme_tag') or '').strip())
+    if theme:
+        s += f' 자주 묶인 테마는 \'{theme}\'입니다.'
+    return f'<p class="prerender-answer" style="margin:0 0 12px;line-height:1.6">{_esc(s)}</p>'
+
+
 def _timeline_html(events: list[dict], day_pages: set | None = None) -> str:
     if not events:
         return '<div class="event-empty">최근 1년간 +10% 이상 기록이 없습니다.</div>'
@@ -103,17 +145,24 @@ def _timeline_html(events: list[dict], day_pages: set | None = None) -> str:
     return '<ol class="prerender-list">' + ''.join(rows) + '</ol>'
 
 
-def _json_ld(ticker: str, name: str, desc: str) -> str:
+def _json_ld(ticker: str, name: str, desc: str, latest_ymd: str = '') -> str:
+    page = {
+        '@type': 'WebPage',
+        'name': f'{name} 왜 오름? 급등 이유와 1년 이력',
+        'url': f'{SITE}/stock/{ticker}',
+        'description': desc,
+        'inLanguage': 'ko',
+        'isPartOf': {'@id': f'{SITE}/#website'},
+        'publisher': ORG_REF,
+        'about': {'@type': 'Corporation', 'name': name, 'tickerSymbol': ticker},
+    }
+    if len(latest_ymd or '') == 8:
+        # 결정적 출력 유지 — 빌드 시각이 아니라 최근 급등일을 수정일로 쓴다
+        page['dateModified'] = f'{latest_ymd[:4]}-{latest_ymd[4:6]}-{latest_ymd[6:]}'
     data = {
         '@context': 'https://schema.org',
         '@graph': [
-            {
-                '@type': 'WebPage',
-                'name': f'{name} 왜 오름? 급등 이유와 1년 이력',
-                'url': f'{SITE}/stock/{ticker}',
-                'description': desc,
-                'inLanguage': 'ko',
-            },
+            page,
             {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
@@ -170,7 +219,8 @@ def _render_one(template: str, ticker: str, history: dict, day_pages: set | None
     if not events:
         # 이벤트 0건 = 씬 콘텐츠 — 색인 제외 (페이지 자체는 접근 가능)
         out = out.replace(ANCHORS['robots'], '<meta name="robots" content="noindex,follow">')
-    out = out.replace(ANCHORS['head_end'], _json_ld(ticker, name, desc) + '</head>')
+    out = out.replace(ANCHORS['head_end'],
+                      _json_ld(ticker, name, desc, str((latest or {}).get('date') or '')) + '</head>')
     out = out.replace(ANCHORS['h1'],
                       '<h1 class="stock-header__title" id="stockTitle">'
                       f'<strong>{_esc(name)}</strong> 왜 오름?</h1>')
@@ -182,7 +232,7 @@ def _render_one(template: str, ticker: str, history: dict, day_pages: set | None
                           f'<p class="stock-header__summary" id="stockSummary">{_esc(summary)}</p>')
     out = out.replace(ANCHORS['timeline'],
                       '<section class="timeline" id="timeline">'
-                      + _timeline_html(events, day_pages) + '</section>')
+                      + _answer(name, events) + _timeline_html(events, day_pages) + '</section>')
     return out
 
 

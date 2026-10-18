@@ -33,19 +33,36 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "ORGO",
-        "alternateName": ["이거왜오름", "왜오름"],
-        "url": "https://orgo.kr/",
-        "description": "차트 말고 이유. 오늘 오른 한국 주식 종목이 왜 올랐는지 찾아주는 서비스.",
-        "inLanguage": "ko-KR",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://orgo.kr/stock/{search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://orgo.kr/#website",
+                "name": "ORGO",
+                "alternateName": ["오르고", "이거왜오름", "왜오름"],
+                "url": "https://orgo.kr/",
+                "description": "차트 말고 이유. 오늘 오른 한국 주식 종목이 왜 올랐는지 찾아주는 서비스.",
+                "inLanguage": "ko-KR",
+                "publisher": {"@id": "https://orgo.kr/#organization"},
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://orgo.kr/stock/{search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://orgo.kr/#organization",
+                "name": "ORGO",
+                "alternateName": ["오르고", "이거왜오름"],
+                "url": "https://orgo.kr/",
+                "logo": {"@type": "ImageObject", "url": "https://orgo.kr/logo-512.png", "width": 512, "height": 512},
+                "description": "한국 주식(코스피·코스닥)에서 그날 많이 오른 종목의 상승 이유와 급등 이력을 정리하는 서비스.",
+                "sameAs": ["https://t.me/whyorgo", "https://www.threads.net/@orgo.kr"]
+            }
+        ]
     }
     </script>
+    <link rel="alternate" type="application/rss+xml" title="ORGO 날짜별 급등주" href="https://orgo.kr/rss.xml">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="/css/style.css?v=20260702a">
     <link rel="stylesheet" href="/css/whyrise.css?v=20261002c">
