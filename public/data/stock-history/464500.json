@@ -9,9 +9,9 @@
       "close_price": 1710.0,
       "trading_volume": 33014,
       "trading_value": 56453940,
-      "rise_reason": "시스템반도체 양산 보도",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "반도체주 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -85,7 +85,10 @@
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "시스템반도체 양산 보도",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector"
     },
     {
       "date": "20260305",
@@ -365,5 +368,5 @@
     "count_recent": 1,
     "avg_rate": 16.08
   },
-  "built_at": "2026-10-19T22:58:03"
+  "built_at": "2026-10-20T01:40:46"
 }

@@ -9,9 +9,9 @@
       "close_price": 52600.0,
       "trading_volume": 110842,
       "trading_value": 5830289200,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 살빼는 약 시대 필수장비…덩치 키우는",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "살빼는 약 시대 필수장비…덩치 키우는 인바디[클릭 e종목]",
+          "link": "https://n.news.naver.com/mnews/article/277/0005828034",
+          "source": "아시아경제",
+          "date": "2026-10-14"
+        }
+      ]
     },
     {
       "date": "20260806",
@@ -593,5 +604,5 @@
     "count_recent": 1,
     "avg_rate": 17.13
   },
-  "built_at": "2026-10-19T22:58:01"
+  "built_at": "2026-10-20T01:40:46"
 }
