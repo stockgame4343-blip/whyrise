@@ -9,9 +9,9 @@
       "close_price": 586000.0,
       "trading_volume": 1007289,
       "trading_value": 590271354000,
-      "rise_reason": "탈중국 공급망 수혜",
+      "rise_reason": "미국향 ESS 실적확대 기대 2차전지 급등",
       "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "2차전지(나트륨이온)",
       "news": [
@@ -32,6 +32,12 @@
           "link": "https://n.news.naver.com/mnews/article/001/0016386444",
           "source": "연합뉴스",
           "date": "2026.10.19"
+        },
+        {
+          "title": "배터리도 AI 훈풍…LG엔솔·삼성SDI 3분기 흑자 간다",
+          "link": "https://n.news.naver.com/mnews/article/029/0003053964",
+          "source": "디지털타임스",
+          "date": "2026-10-19"
         },
         {
           "title": "[마켓뷰] 반도체 불안에 급락 출발했지만… 코스피, 반등 성공",
@@ -76,12 +82,6 @@
           "date": "2026.10.19"
         },
         {
-          "title": "배터리도 AI 훈풍…LG엔솔·삼성SDI 3분기 흑자 간다",
-          "link": "https://n.news.naver.com/mnews/article/029/0003053964",
-          "source": "디지털타임스",
-          "date": "2026-10-19"
-        },
-        {
           "title": "반도체 주춤한새 이차전지 ETF 빛났다",
           "link": "https://n.news.naver.com/mnews/article/014/0005591348",
           "source": "파이낸셜뉴스",
@@ -91,7 +91,35 @@
       "sector": "전기제품",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "toss"
+      "reason_origin": "toss",
+      "reason_previous": "탈중국 공급망 수혜",
+      "reason_source_previous": "stockrise",
+      "reason_evidence": [
+        {
+          "title": "[속보] \"드디어 60만원 회복하나요\"…개미 '들썩' 삼성SDI 12% ↑",
+          "link": "https://n.news.naver.com/mnews/article/215/0001269666",
+          "source": "한국경제TV",
+          "date": "2026.10.19"
+        },
+        {
+          "title": "삼성SDI 11%, 에코프로 8% 급등…2차전지株 불기둥 [줍줍리포트]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004672735",
+          "source": "서울경제",
+          "date": "2026.10.19"
+        },
+        {
+          "title": "[특징주] 이차전지 일제히 급등마감…미국향 ESS 실적확대 기대(종합...",
+          "link": "https://n.news.naver.com/mnews/article/001/0016386444",
+          "source": "연합뉴스",
+          "date": "2026.10.19"
+        },
+        {
+          "title": "배터리도 AI 훈풍…LG엔솔·삼성SDI 3분기 흑자 간다",
+          "link": "https://n.news.naver.com/mnews/article/029/0003053964",
+          "source": "디지털타임스",
+          "date": "2026-10-19"
+        }
+      ]
     },
     {
       "date": "20260827",
@@ -405,5 +433,5 @@
     "count_recent": 1,
     "avg_rate": 13.28
   },
-  "built_at": "2026-10-19T19:52:20"
+  "built_at": "2026-10-19T22:58:14"
 }
