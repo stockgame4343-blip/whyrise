@@ -9,9 +9,9 @@
       "close_price": 73000.0,
       "trading_volume": 235025,
       "trading_value": 17156825000,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "화장품주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "화장품",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "포장재",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 화장품주, 반발매수세에 강세…달바글로벌 8%대 상승(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016381761",
+          "source": "연합뉴스",
+          "date": "2026-10-16"
+        }
+      ]
     },
     {
       "date": "20260914",
@@ -400,5 +411,5 @@
     "count_recent": 1,
     "avg_rate": 12.17
   },
-  "built_at": "2026-10-18T08:20:08"
+  "built_at": "2026-10-19T10:11:55"
 }

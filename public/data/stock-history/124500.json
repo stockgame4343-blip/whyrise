@@ -9,9 +9,9 @@
       "close_price": 22450.0,
       "trading_volume": 163173,
       "trading_value": 3663233850,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "IT서비스 업종 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -30,7 +30,10 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20260824",
@@ -1254,5 +1257,5 @@
     "count_recent": 1,
     "avg_rate": 14.84
   },
-  "built_at": "2026-10-18T08:22:15"
+  "built_at": "2026-10-19T10:11:55"
 }

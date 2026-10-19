@@ -9,9 +9,9 @@
       "close_price": 38650.0,
       "trading_volume": 71528,
       "trading_value": 2764557200,
-      "rise_reason": "조선/해운",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: Arm 피지컬 AI 생태계 합류",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "조선/해운",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "가온칩스, Arm 피지컬 AI 생태계 합류",
+          "link": "https://n.news.naver.com/mnews/article/030/0003475027",
+          "source": "전자신문",
+          "date": "2026-10-14"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -808,5 +819,5 @@
     "count_recent": 1,
     "avg_rate": 16.11
   },
-  "built_at": "2026-10-18T08:22:59"
+  "built_at": "2026-10-19T10:11:55"
 }

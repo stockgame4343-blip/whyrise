@@ -9,9 +9,9 @@
       "close_price": 10210.0,
       "trading_volume": 27857,
       "trading_value": 284419970,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
@@ -36,7 +36,10 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20260827",
@@ -252,5 +255,5 @@
     "count_recent": 1,
     "avg_rate": 13.86
   },
-  "built_at": "2026-10-18T08:39:02"
+  "built_at": "2026-10-19T10:11:55"
 }
