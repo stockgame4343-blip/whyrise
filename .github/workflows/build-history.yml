@@ -250,7 +250,8 @@ jobs:
             #   말미 marketmap 전체 재빌드(2,768종목×1년 OHLC)가 캐시 콜드면 ~55분 → 총 ~95분이
             #   정상 진행인데도 가드에 걸려 처음부터 반복. 캐시가 차면 평시 15~25분으로 복귀.
             # full·수동 enrich/backfill 은 정상적으로 길 수 있어 무제한(job timeout-minutes 350 이 상한).
-            timeout -k 30 7200 python3 -u scripts/build-history.py --incremental --days 30 --cutoff "$CUTOFF"
+            # --skip-marketmap: marketmap(전종목 1년 OHLC)은 종목 데이터 커밋·발행 뒤 'Marketmap rebuild' 스텝에서 (10/19).
+            timeout -k 30 7200 python3 -u scripts/build-history.py --incremental --days 30 --cutoff "$CUTOFF" --skip-marketmap
           fi
 
       # LLM 사유 정제 — 당일 급등의 제네릭 사유("~테마 강세" 등)를 뉴스 근거 구체 사유로 교체.
@@ -326,61 +327,37 @@ jobs:
       #   (marketmap은 marketmap-intraday 런들이 별도로 최신화하므로 증분의 marketmap 재빌드 실패는 비치명적)
       #   git add + diff-quiet 가드로, 변경 없으면 no-op — 조기 실패로 쓸 게 없으면 그냥 넘어감.
       - name: Commit & push
+        id: commit
         if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 빌드 산출물 stage — sitemap·종목 프리렌더도 빌드 산출물
-          # (git add 가 아래 checkout/clean 보다 먼저라 stage 분은 보존됨)
-          git add public/data/ public/sitemap.xml public/rss.xml public/stock/ public/day/
-          # IndexNow 핑 대상(바뀐 종목·날짜 페이지) — 커밋 전에 기록
-          git diff --staged --name-only > "$RUNNER_TEMP/orgo-changed.txt" || true
-          # 추가 unstaged 변경 (예: pip cache·기타) 도 stage 또는 버림
-          git checkout -- . || true   # 추적 중인 다른 파일 변경 복원
-          git clean -fd -e 'public/data/_cache' || true  # 추적 안 되는 파일 제거 (cache 디렉토리는 보존)
-          git diff --staged --quiet && echo "변경 없음" && exit 0
-          git commit -m "build: 인덱스+버블+리포트 갱신 ($(date +%Y%m%d))"
-          # 트리거한 브랜치로 커밋·푸시 — 스케줄(master)이든 수동 dispatch(feature 브랜치)든
-          # 자기 브랜치에 rebase 후 push. master 하드코딩 시 feature 브랜치 백필이 add/add 충돌로 실패함.
-          BRANCH="${GITHUB_REF_NAME}"
-          echo "push 대상 브랜치: $BRANCH"
-          for attempt in 1 2 3; do
-            git fetch origin "$BRANCH"
-            REBASE_OK=false
-            if git -c rebase.autoStash=true rebase "origin/$BRANCH"; then
-              REBASE_OK=true
-            else
-              # override-sync 는 종목 파일 1개만 최신 원격에서 재생성해 push한다.
-              # 전역 빌드와 그 파일만 충돌하면 원격(override 반영본)을 보존하고,
-              # 그 외 충돌은 자동 판단하지 않고 기존 재시도/실패 경로로 넘긴다.
-              CONFLICTS=$(git diff --name-only --diff-filter=U)
-              BAD=$(printf '%s\n' "$CONFLICTS" | grep -Ev '^public/data/stock-history/[0-9A-Z]{6}\.json$' || true)
-              if [ -n "$CONFLICTS" ] && [ -z "$BAD" ]; then
-                echo "override-sync 종목 파일 충돌 - 최신 원격본 보존"
-                while IFS= read -r file; do
-                  [ -z "$file" ] && continue
-                  # rebase 중 --ours = 새 upstream(origin/$BRANCH).
-                  git checkout --ours -- "$file"
-                  git add "$file"
-                done <<< "$CONFLICTS"
-                if GIT_EDITOR=true git rebase --continue; then
-                  REBASE_OK=true
-                fi
-              fi
-            fi
-            if [ "$REBASE_OK" = "true" ]; then
-              if git push origin "HEAD:$BRANCH"; then
-                echo "push 성공 (시도 $attempt, branch=$BRANCH)"
-                exit 0
-              fi
-            else
-              echo "rebase 충돌 - abort 후 재시도"
-              git rebase --abort || true
-            fi
-            sleep 5
+          bash scripts/ci_commit_build.sh "build: 인덱스+버블+리포트 갱신 ($(date +%Y%m%d))"
+
+      # 마감 빌드: 종목 데이터가 올라간 즉시 대장 텔레그램·쓰레드/블로그를 띄운다.
+      #   예전엔 두 워크플로가 이 빌드 '완료'(workflow_run)만 기다려 marketmap 49분까지 같이 기다렸다(10/19 17:48 발행).
+      #   GITHUB_TOKEN 의 repository_dispatch 는 새 런을 만든다. 각 워크플로의 시간·데이터 게이트와 마커가 그대로라
+      #   빌드 완료 때 workflow_run 으로 한 번 더 깨어나도 중복 게시는 없다.
+      - name: Trigger closing publishers
+        if: ${{ !cancelled() && steps.mode.outputs.mode == 'incremental' && steps.commit.outputs.pushed == 'true' && github.ref_name == 'master' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for EV in tg-daily threads-publish; do
+            gh api -X POST "repos/${{ github.repository }}/dispatches" -f event_type="$EV" && echo "dispatch $EV"
           done
-          echo "::error::push 3회 실패"
-          exit 1
+
+      # marketmap(전종목 1년 OHLC) + 스크리닝 — 발행에 필요 없어 종목 데이터 커밋 뒤로 미뤘다.
+      #   실패해도 marketmap-intraday 런들이 라이브 값으로 따로 갱신하므로 비치명적.
+      - name: Marketmap rebuild
+        id: marketmap
+        if: ${{ !cancelled() && steps.gate.outputs.skip != 'true' && steps.mode.outputs.mode == 'incremental' }}
+        continue-on-error: true
+        run: timeout -k 30 3600 python3 -u scripts/build-history.py --marketmap-only
+
+      - name: Commit & push (marketmap)
+        if: ${{ !cancelled() && steps.marketmap.outcome == 'success' }}
+        run: |
+          bash scripts/ci_commit_build.sh "build: 버블 갱신 ($(date +%Y%m%d))"
 
       # 바뀐 종목·날짜 페이지를 네이버(서치어드바이저)·Bing 에 즉시 알림. 배포 반영 확인 후 전송.
       - name: IndexNow ping

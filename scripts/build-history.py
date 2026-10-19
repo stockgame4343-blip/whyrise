@@ -25,6 +25,7 @@ import re
 import sys
 import time
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Iterable
@@ -52,7 +53,16 @@ _OHLC_CACHE_TTL_S = 7 * 24 * 3600       # 백필 기본 7일
 _OHLC_CACHE_TTL_INTRADAY_S = 20 * 60    # 장중 빌드 — 20분 (오늘 row 자주 갱신)
 _KR_CLOSE_SETTLED_HM = (15, 40)         # KST — 이 시각 뒤에 받은 오늘 행만 '마감값'으로 믿는다
 BUILD_META_FINAL_LOOKBACK = 3           # build-meta 에 적을 '확정 반영일'을 찾을 때 뒤에서 몇 일자까지 볼지
+# 네이버 OHLC·뉴스 동시 요청 수 — 종목마다 한 건씩 순서대로 받으면 마감 빌드가 85분 걸려
+# 텔레그램·쓰레드·블로그가 매일 2시간씩 밀렸다(10/19). 차단 방지로 동시 4건까지만.
+PREFETCH_WORKERS = 4
+PREFETCH_LOG_EVERY = 300
 _ohlc_cache_stats = {'hit': 0, 'miss': 0}
+
+
+def _close_settled_ts() -> float:
+    return datetime.combine(date.today(), datetime.min.time()).replace(
+        hour=_KR_CLOSE_SETTLED_HM[0], minute=_KR_CLOSE_SETTLED_HM[1]).timestamp()
 
 
 def _fetched_before_close(fetched_at: float, now: float) -> bool:
@@ -61,9 +71,36 @@ def _fetched_before_close(fetched_at: float, now: float) -> bool:
     밀린 마감 빌드가 자정 넘어(장 시작 전) 돌면 캐시가 'end=오늘'로 찍히지만 오늘 행은 없다.
     그대로 7일 TTL 로 믿으면 그날 마감 빌드가 오늘 시세를 안 받아 rise-history 가 통째로 빠진다(10/13).
     """
-    close = datetime.combine(date.today(), datetime.min.time()).replace(
-        hour=_KR_CLOSE_SETTLED_HM[0], minute=_KR_CLOSE_SETTLED_HM[1]).timestamp()
-    return fetched_at < close <= now
+    return fetched_at < _close_settled_ts() <= now
+
+
+def _fetched_after_close(fetched_at: float) -> bool:
+    """오늘 마감 뒤에 받은 캐시 — 오늘 행이 이미 마감값이라 장중 TTL(20분)로 버릴 이유가 없다.
+
+    마감 빌드에서 종목 빌드가 받은 OHLC 를 30분 뒤 marketmap 이 TTL 만료로 전부 다시 받아
+    캐시 적중이 4,293건 중 1건이었다(10/19).
+    """
+    return fetched_at >= _close_settled_ts()
+
+
+def _prefetch_parallel(label: str, keys: list, fn) -> None:
+    """keys 마다 fn 을 동시에 돌려 캐시를 미리 채운다. 실패는 뒤따르는 본 루프가 기존대로 다시 처리."""
+    total = len(keys)
+    if not total:
+        return
+    t0 = time.time()
+    done = 0
+    fail = 0
+    with ThreadPoolExecutor(max_workers=PREFETCH_WORKERS) as ex:
+        futures = [ex.submit(fn, k) for k in keys]
+        for fut in as_completed(futures):
+            done += 1
+            try:
+                fut.result()
+            except Exception:
+                fail += 1
+            if done % PREFETCH_LOG_EVERY == 0 or done == total:
+                print(f'  [prefetch {label}] {done}/{total} el={time.time() - t0:.0f}s fail={fail}', flush=True)
 
 
 def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = None) -> list[dict]:
@@ -95,7 +132,8 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = Non
         complete = cs <= start and ce >= end
         historical = end < today_str
         pre_close = not historical and _fetched_before_close(now - age, now)
-        if complete and (age < ttl or historical) and not pre_close:
+        settled = not historical and _fetched_after_close(now - age)
+        if complete and (age < ttl or historical or settled) and not pre_close:
             _ohlc_cache_stats['hit'] += 1
             return cached_rows
 
@@ -108,7 +146,7 @@ def fetch_ohlc_cached(ticker: str, start: str, end: str, ttl_s: int | None = Non
                 segments.append((start, min(cs, end)))
             if ce < end:
                 segments.append((max(start, ce), end))
-            elif end >= today_str and (age >= ttl or pre_close):
+            elif end >= today_str and ((age >= ttl and not settled) or pre_close):
                 # 범위는 완전하지만 장중 TTL 만료·마감 전 캐시 — 마지막 행만 다시 받아 오늘 값을 갱신.
                 segments.append((end, end))
 
@@ -1760,6 +1798,22 @@ def build_full(args) -> int:
     end_str = _yyyymmdd(end)
     t_start = time.time()
 
+    # 4-a. OHLC·뉴스를 동시에 미리 받아 캐시에 채운다 — 아래 루프는 캐시에서 바로 읽는다.
+    #      뉴스는 이벤트 윈도우에 컷 이상 급등이 있는 종목만(루프가 뉴스를 찾는 종목과 같다).
+    def _prefetch_ticker(ticker: str) -> None:
+        ohlc = fetch_ohlc_cached(ticker, ohlc_start_str, end_str)
+        rows = sorted(ohlc or [], key=lambda r: r.get('localDate', ''))
+        for j in range(1, len(rows)):
+            prev = rows[j - 1].get('closePrice') or 0
+            cur = rows[j].get('closePrice') or 0
+            if (rows[j].get('localDate') or '') >= window_start and prev > 0 and cur > 0 \
+                    and calc_change_rate(prev, cur) >= cutoff:
+                _raw_news(ticker)
+                return
+
+    _prefetch_parallel('ohlc+news', [t for t in ((it.get('itemCode') or '') for it in universe)
+                                     if len(t) == 6], _prefetch_ticker)
+
     for i, item in enumerate(universe):
         ticker = item.get('itemCode') or ''
         name = item.get('stockName') or ticker
@@ -1834,8 +1888,10 @@ def build_full(args) -> int:
     build_pref_themes(output_dir, output_dir.parent / 'pref-themes.json')
     build_sitemap(output_dir, output_dir.parent.parent)
     build_stock_prerender(output_dir, output_dir.parent.parent)
-    build_marketmap(output_dir.parent.parent)
-    build_screening_index(output_dir, output_dir.parent / 'screening.json')
+    # --skip-marketmap: 마감 빌드는 종목 데이터를 먼저 커밋·발행하고 marketmap 은 다음 스텝(--marketmap-only)에서.
+    if not getattr(args, 'skip_marketmap', False):
+        build_marketmap(output_dir.parent.parent)
+        build_screening_index(output_dir, output_dir.parent / 'screening.json')
     elapsed = time.time() - t_start
     print(f'== 완료: {success}/{total} 종목, skip {skipped}, elapsed {elapsed:.0f}s ==')
     return 0
@@ -2475,6 +2531,8 @@ def build_marketmap(public_dir: Path | None = None, top_per_market: int = 100) -
     t_start = time.time()
     total = len(pool)
     log_every = max(50, total // 20)
+    _prefetch_parallel('marketmap', [it.get('itemCode') for it, _m in pool],
+                       lambda t: fetch_ohlc_cached(t, start_str, end_str, ttl_s=_OHLC_CACHE_TTL_INTRADAY_S))
     for i, (it, market) in enumerate(pool):
         ticker = it.get('itemCode') or ''
         name = it.get('stockName') or ticker
@@ -2546,6 +2604,8 @@ def build_marketmap_only(args) -> int:
         build_marketmap_backfill(backfill_days=args.backfill_days)
         return 0
     build_marketmap()
+    # 스크리닝 인덱스는 marketmap 을 읽는다 — 마감 빌드가 marketmap 을 뒤로 미룬 경우 여기서 함께 갱신.
+    build_screening_index(OUTPUT_DIR, OUTPUT_DIR.parent / 'screening.json')
     return 0
 
 
@@ -2938,6 +2998,8 @@ def main() -> None:
                    help='--override-sync 대상 종목코드 (6자리)')
     p.add_argument('--marketmap-only', action='store_true',
                    help='전종목 OHLC 1년치 + union → marketmap.json (5~15분, rates 다 갱신)')
+    p.add_argument('--skip-marketmap', action='store_true',
+                   help='full/incremental: marketmap·screening 생략 (워크플로가 커밋 뒤 --marketmap-only 로 따로 실행)')
     p.add_argument('--marketmap-intraday', action='store_true',
                    help='라이브 m.stock 만으로 marketmap.json 1d 빠르게 갱신 (~30s, rates 1w/1m/3m/1y 유지)')
     p.add_argument('--backfill-days', type=int, default=0,
