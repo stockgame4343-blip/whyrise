@@ -9,9 +9,9 @@
       "close_price": 2180.0,
       "trading_volume": 1461377,
       "trading_value": 3185801860,
-      "rise_reason": "애국 상장 이슈",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "전기제품 업종 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "무선충전기술",
       "news": [
@@ -91,7 +91,10 @@
       "sector": "전기제품",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "애국 상장 이슈",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector"
     },
     {
       "date": "20261012",
@@ -567,5 +570,5 @@
     "count_recent": 2,
     "avg_rate": 20.68
   },
-  "built_at": "2026-10-21T21:24:34"
+  "built_at": "2026-10-21T23:40:55"
 }
