@@ -4,6 +4,33 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261021",
+      "change_rate": 13.71,
+      "close_price": 4230.0,
+      "trading_volume": 2235785,
+      "trading_value": 9457370550,
+      "rise_reason": "바이오주 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "오가노이드",
+      "news": [
+        {
+          "title": "'코스닥 도전' 노바셀테크, 거래소 '중복상장' 판단 주목",
+          "link": "https://n.news.naver.com/mnews/article/648/0000051526",
+          "source": "비즈워치",
+          "date": "2026.10.13"
+        }
+      ],
+      "sector": "제약",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_origin": "rule",
+      "reason_previous": "상장 이슈",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector"
+    },
+    {
       "date": "20260921",
       "change_rate": 16.45,
       "close_price": 3645.0,
@@ -547,12 +574,12 @@
     }
   ],
   "stats": {
-    "count_10": 11,
+    "count_10": 12,
     "count_15": 4,
     "count_20": 2,
     "count_limit": 1,
-    "count_recent": 1,
-    "avg_rate": 16.26
+    "count_recent": 2,
+    "avg_rate": 16.05
   },
-  "built_at": "2026-10-20T21:09:54"
+  "built_at": "2026-10-21T16:32:24"
 }

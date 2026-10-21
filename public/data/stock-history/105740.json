@@ -4,6 +4,33 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261021",
+      "change_rate": 15.28,
+      "close_price": 12220.0,
+      "trading_volume": 1856198,
+      "trading_value": 22682739560,
+      "rise_reason": "기계 업종 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "피팅(관이음쇠)/밸브",
+      "news": [
+        {
+          "title": "태광산업·한국카본 케이조선 인수 본격화…MOU 체결",
+          "link": "https://n.news.naver.com/mnews/article/016/0002709405",
+          "source": "헤럴드경제",
+          "date": "2026.10.14"
+        }
+      ],
+      "sector": "기계",
+      "is_52w_high": true,
+      "source": "stockrise",
+      "reason_origin": "rule",
+      "reason_previous": "인수 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector"
+    },
+    {
       "date": "20261002",
       "change_rate": 12.42,
       "close_price": 11680.0,
@@ -42,11 +69,11 @@
       "close_price": 9380.0,
       "trading_volume": 1642252,
       "trading_value": 15404323760,
-      "rise_reason": "남-북-러 가스관사업 테마 강세",
+      "rise_reason": "피팅(관이음쇠)/밸브 테마 강세",
       "reason_confidence": "low",
       "reason_source": "theme",
       "reason_status": "filled",
-      "theme_tag": "남-북-러 가스관사업",
+      "theme_tag": "피팅(관이음쇠)/밸브",
       "news": [
         {
           "title": "디케이락, '글로벌 장비사' 인증 확보…반도체 부품 사업 확장",
@@ -113,12 +140,12 @@
     }
   ],
   "stats": {
-    "count_10": 3,
-    "count_15": 1,
+    "count_10": 4,
+    "count_15": 2,
     "count_20": 0,
     "count_limit": 0,
-    "count_recent": 2,
-    "avg_rate": 14.72
+    "count_recent": 3,
+    "avg_rate": 14.86
   },
-  "built_at": "2026-10-20T21:09:54"
+  "built_at": "2026-10-21T16:32:24"
 }
