@@ -9,9 +9,9 @@
       "close_price": 107000.0,
       "trading_volume": 243067,
       "trading_value": 26008169000,
-      "rise_reason": "임상 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "생명과학도구및서비스 업종 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -56,12 +56,9 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_origin": "rule",
-      "reason_hint": {
-        "text": "10/12 신약 임상 뉴질랜드서 반려",
-        "link": "https://n.news.naver.com/mnews/article/015/0005341690",
-        "title": "올릭스 신약 임상 뉴질랜드서 반려",
-        "date": "20261012"
-      }
+      "reason_previous": "임상 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector"
     },
     {
       "date": "20261016",
@@ -1044,5 +1041,5 @@
     "count_recent": 3,
     "avg_rate": 14.11
   },
-  "built_at": "2026-10-22T21:24:58"
+  "built_at": "2026-10-22T23:40:30"
 }
