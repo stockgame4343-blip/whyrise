@@ -4,30 +4,55 @@
   "market": "KOSPI",
   "events": [
     {
-      "date": "20261021",
-      "change_rate": 10.58,
-      "close_price": 1265.0,
-      "trading_volume": 34232,
-      "trading_value": 43303480,
-      "rise_reason": "바이오주 3종목 동반 상승",
+      "date": "20261022",
+      "change_rate": 10.36,
+      "close_price": 1331.0,
+      "trading_volume": 149644,
+      "trading_value": 199176164,
+      "rise_reason": "관련 보도: 이수진 대표中 로봇+K-임상 결합… AI 모발이식 글로벌 정조...",
       "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "reason_source": "stockrise",
       "reason_status": "filled",
-      "theme_tag": "탈모 치료",
+      "theme_tag": "줄기세포",
       "news": [
+        {
+          "title": "이수진 메타케어 대표\"中 로봇+K-임상 결합… AI 모발이식 글로벌 정조...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005430024",
+          "source": "머니투데이",
+          "date": "2026.10.22"
+        },
         {
           "title": "팜젠사이언스 지역 유해식물 제거 봉사활동…ESG 경영 실천",
           "link": "https://n.news.naver.com/mnews/article/021/0002826218",
           "source": "문화일보",
-          "date": "2026-10-19"
+          "date": "2026.10.19"
+        },
+        {
+          "title": "메타랩스, 中 의료로봇 기업과 탈모 헬스케어 ‘피지컬 AI’로 확장",
+          "link": "https://n.news.naver.com/mnews/article/366/0001198091",
+          "source": "조선비즈",
+          "date": "2026.10.15"
+        },
+        {
+          "title": "메타랩스, 中 의료로봇 기업과 맞손… 탈모 생태계 '피지컬 AI'로 확장",
+          "link": "https://n.news.naver.com/mnews/article/008/0005426636",
+          "source": "머니투데이",
+          "date": "2026.10.15"
         }
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "탈모 치료 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "sector"
+      "source": "stockrise",
+      "reason_origin": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이수진 메타케어 대표\"中 로봇+K-임상 결합… AI 모발이식 글로벌 정조...",
+          "link": "https://n.news.naver.com/mnews/article/008/0005430024",
+          "source": "머니투데이",
+          "date": "2026.10.22"
+        }
+      ]
     },
     {
       "date": "20260224",
@@ -62,7 +87,7 @@
     "count_20": 0,
     "count_limit": 0,
     "count_recent": 1,
-    "avg_rate": 12.23
+    "avg_rate": 12.12
   },
-  "built_at": "2026-10-22T10:28:35"
+  "built_at": "2026-10-22T16:36:05"
 }
