@@ -9,9 +9,9 @@
       "close_price": 2055.0,
       "trading_volume": 6736722,
       "trading_value": 13843963710,
-      "rise_reason": "방산",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "김정은 사망설 확산",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "방산",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "김정은 사망설 확산에 스페코 상한가…방산주 매수세 집중",
+          "link": "https://n.news.naver.com/mnews/article/629/0000545045",
+          "source": "더팩트",
+          "date": "2026-10-23"
+        }
+      ]
     },
     {
       "date": "20261022",
@@ -146,5 +157,5 @@
     "count_recent": 2,
     "avg_rate": 20.35
   },
-  "built_at": "2026-10-23T21:11:28"
+  "built_at": "2026-10-23T23:26:14"
 }

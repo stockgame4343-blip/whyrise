@@ -9,10 +9,10 @@
       "close_price": 2780.0,
       "trading_volume": 563969,
       "trading_value": 1567833820,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -78,7 +78,10 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261022",
@@ -393,5 +396,5 @@
     "count_recent": 3,
     "avg_rate": 23.51
   },
-  "built_at": "2026-10-23T21:11:29"
+  "built_at": "2026-10-23T23:26:14"
 }

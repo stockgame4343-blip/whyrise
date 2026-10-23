@@ -9,10 +9,10 @@
       "close_price": 5420.0,
       "trading_volume": 55538,
       "trading_value": 301015960,
-      "rise_reason": "오세훈 정책 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "후보",
       "news": [
         {
@@ -85,7 +85,10 @@
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "오세훈 정책 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "none"
     },
     {
       "date": "20261012",
@@ -295,5 +298,5 @@
     "count_recent": 3,
     "avg_rate": 12.05
   },
-  "built_at": "2026-10-23T21:11:27"
+  "built_at": "2026-10-23T23:26:14"
 }

@@ -9,9 +9,9 @@
       "close_price": 2360.0,
       "trading_volume": 3390288,
       "trading_value": 8001079680,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "화학 업종 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "당선",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector"
     },
     {
       "date": "20261007",
@@ -677,5 +680,5 @@
     "count_recent": 2,
     "avg_rate": 18.31
   },
-  "built_at": "2026-10-23T21:11:26"
+  "built_at": "2026-10-23T23:26:14"
 }
