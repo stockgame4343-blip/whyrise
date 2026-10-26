@@ -9,9 +9,9 @@
       "close_price": 1424.0,
       "trading_volume": 196468,
       "trading_value": 279770432,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "경영권 매각 난항에 파산 신청까지",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "거래량",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "파이온엑스, 경영권 매각 난항에 파산 신청까지… 유동성 위기 직면",
+          "link": "https://n.news.naver.com/mnews/article/366/0001199389",
+          "source": "조선비즈",
+          "date": "2026-10-21"
+        }
+      ]
     },
     {
       "date": "20260923",
@@ -963,5 +974,5 @@
     "count_recent": 1,
     "avg_rate": 22.71
   },
-  "built_at": "2026-10-25T08:17:14"
+  "built_at": "2026-10-26T10:07:26"
 }
