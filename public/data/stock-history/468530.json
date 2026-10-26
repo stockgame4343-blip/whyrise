@@ -9,10 +9,10 @@
       "close_price": 47800.0,
       "trading_volume": 315689,
       "trading_value": 15089934200,
-      "rise_reason": "6일 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "6일",
       "news": [
         {
@@ -30,7 +30,10 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "6일 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20261016",
@@ -1426,5 +1429,5 @@
     "count_recent": 3,
     "avg_rate": 14.12
   },
-  "built_at": "2026-10-26T22:39:54"
+  "built_at": "2026-10-27T01:19:06"
 }

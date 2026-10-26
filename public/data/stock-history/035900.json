@@ -9,12 +9,24 @@
       "close_price": 42050.0,
       "trading_volume": 860640,
       "trading_value": 36189912000,
-      "rise_reason": "K-콘텐츠/엔터",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
+        {
+          "title": "'갑툭튀' 日 투자사 지분 인수 선언…JYP, 야간장서 주가 14% 급등",
+          "link": "https://n.news.naver.com/mnews/article/119/0003147260",
+          "source": "데일리안",
+          "date": "2026-10-26"
+        },
+        {
+          "title": "일본계 ‘지분 매수설’ 영향…JYP엔터, 애프터마켓서 14% 급등",
+          "link": "https://n.news.naver.com/mnews/article/015/0005346748",
+          "source": "한국경제",
+          "date": "2026-10-26"
+        },
         {
           "title": "\"JYP 절반 사겠다\" 日투자사 깜짝 발표…주가 14% 뛰었다",
           "link": "https://n.news.naver.com/mnews/article/015/0005346759",
@@ -72,7 +84,10 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "K-콘텐츠/엔터",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -99,5 +114,5 @@
     "count_recent": 1,
     "avg_rate": 12.38
   },
-  "built_at": "2026-10-26T22:39:54"
+  "built_at": "2026-10-27T01:19:06"
 }

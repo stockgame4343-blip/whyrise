@@ -9,9 +9,9 @@
       "close_price": 7680.0,
       "trading_volume": 1950702,
       "trading_value": 14981391360,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "의료기기 테마 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -42,7 +42,10 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20261016",
@@ -517,5 +520,5 @@
     "count_recent": 4,
     "avg_rate": 16.14
   },
-  "built_at": "2026-10-26T22:39:55"
+  "built_at": "2026-10-27T01:19:06"
 }
