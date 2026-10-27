@@ -9,9 +9,9 @@
       "close_price": 14690.0,
       "trading_volume": 4183481,
       "trading_value": 61455335890,
-      "rise_reason": "바이오",
+      "rise_reason": "AI진단 넘어 신약개발로",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -90,7 +90,18 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "루닛, AI진단 넘어 신약개발로…사업가치 최소 5000억 [Why 바이오]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004675059",
+          "source": "서울경제",
+          "date": "2026-10-26"
+        }
+      ]
     },
     {
       "date": "20261016",
@@ -396,5 +407,5 @@
     "count_recent": 3,
     "avg_rate": 17.78
   },
-  "built_at": "2026-10-27T21:48:56"
+  "built_at": "2026-10-28T00:34:03"
 }

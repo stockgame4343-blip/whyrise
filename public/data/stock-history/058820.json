@@ -9,10 +9,10 @@
       "close_price": 5620.0,
       "trading_volume": 0,
       "trading_value": 0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제약업체",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "제약",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260813",
@@ -174,5 +177,5 @@
     "count_recent": 1,
     "avg_rate": 234.28
   },
-  "built_at": "2026-10-27T21:48:57"
+  "built_at": "2026-10-28T00:34:03"
 }

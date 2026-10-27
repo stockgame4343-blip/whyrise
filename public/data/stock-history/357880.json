@@ -9,9 +9,9 @@
       "close_price": 2005.0,
       "trading_volume": 20669555,
       "trading_value": 41442457775,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 스카이인텔리전스 지분 66.9%로 확대…피지컬AI·데이터 사업 집...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "AI 챗봇(챗GPT 등)",
       "news": [
@@ -54,7 +54,18 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SKAI, 스카이인텔리전스 지분 66.9%로 확대…피지컬AI·데이터 사업 집...",
+          "link": "https://n.news.naver.com/mnews/article/138/0002245971",
+          "source": "디지털데일리",
+          "date": "2026-10-26"
+        }
+      ]
     },
     {
       "date": "20261022",
@@ -802,5 +813,5 @@
     "count_recent": 2,
     "avg_rate": 17.95
   },
-  "built_at": "2026-10-27T21:48:57"
+  "built_at": "2026-10-28T00:34:03"
 }

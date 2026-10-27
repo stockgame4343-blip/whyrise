@@ -9,9 +9,9 @@
       "close_price": 4250.0,
       "trading_volume": 322151,
       "trading_value": 1369141750,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "강상우 대표, 자사주 1만주 장내매수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "씨티알모빌리티 강상우 대표, 자사주 1만주 장내매수",
+          "link": "https://n.news.naver.com/mnews/article/293/0000092127",
+          "source": "블로터",
+          "date": "2026-10-26"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -208,5 +219,5 @@
     "count_recent": 1,
     "avg_rate": 20.46
   },
-  "built_at": "2026-10-27T21:48:56"
+  "built_at": "2026-10-28T00:34:03"
 }

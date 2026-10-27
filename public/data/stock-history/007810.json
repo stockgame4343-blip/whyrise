@@ -9,9 +9,9 @@
       "close_price": 77100.0,
       "trading_volume": 984797,
       "trading_value": 75927848700,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "전자장비와기기 업종 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "갤럭시 부품주",
       "news": [
@@ -84,7 +84,10 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20260922",
@@ -995,5 +998,5 @@
     "count_recent": 1,
     "avg_rate": 15.76
   },
-  "built_at": "2026-10-27T21:48:56"
+  "built_at": "2026-10-28T00:34:03"
 }
