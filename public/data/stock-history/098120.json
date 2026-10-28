@@ -4,6 +4,29 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261028",
+      "change_rate": 13.27,
+      "close_price": 54200.0,
+      "trading_volume": 399518,
+      "trading_value": 21653875600,
+      "rise_reason": "반도체 재료/부품 테마 강세",
+      "reason_confidence": "low",
+      "reason_source": "theme",
+      "reason_status": "filled",
+      "theme_tag": "반도체 재료/부품",
+      "news": [
+        {
+          "title": "반도체 코스닥 중소형주, 美 훈풍에 두 자릿수 강세",
+          "link": "https://n.news.naver.com/mnews/article/008/0005432038",
+          "source": "머니투데이",
+          "date": "2026-10-27"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
       "date": "20261027",
       "change_rate": 20.23,
       "close_price": 47850.0,
@@ -26,8 +49,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 재료/부품 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 반도체주, 앤트로픽 훈풍에 급등…삼전·닉스 4∼5%대↑(종합...",
@@ -35,7 +56,9 @@
           "source": "연합뉴스",
           "date": "2026-10-27"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "theme"
     },
     {
       "date": "20261016",
@@ -624,12 +647,12 @@
     }
   ],
   "stats": {
-    "count_10": 13,
+    "count_10": 14,
     "count_15": 7,
     "count_20": 5,
     "count_limit": 1,
-    "count_recent": 2,
-    "avg_rate": 17.34
+    "count_recent": 3,
+    "avg_rate": 17.05
   },
-  "built_at": "2026-10-28T11:10:34"
+  "built_at": "2026-10-28T22:39:34"
 }

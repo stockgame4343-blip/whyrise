@@ -4,6 +4,25 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261028",
+      "change_rate": 11.52,
+      "close_price": 30000.0,
+      "trading_volume": 1708873,
+      "trading_value": 51266190000,
+      "rise_reason": "반도체주 14종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "CXL(컴퓨트익스프레스링크)",
+      "news": [],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": true,
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector"
+    },
+    {
       "date": "20261027",
       "change_rate": 17.47,
       "close_price": 26900.0,
@@ -19,8 +38,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "CXL(컴퓨트익스프레스링크) 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 반도체주, 앤트로픽 훈풍에 급등…삼전·닉스 4∼5%대↑(종합...",
@@ -28,7 +45,9 @@
           "source": "연합뉴스",
           "date": "2026-10-27"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "theme"
     },
     {
       "date": "20261016",
@@ -1400,12 +1419,12 @@
     }
   ],
   "stats": {
-    "count_10": 27,
+    "count_10": 28,
     "count_15": 14,
     "count_20": 3,
     "count_limit": 0,
-    "count_recent": 3,
-    "avg_rate": 15.19
+    "count_recent": 4,
+    "avg_rate": 15.06
   },
-  "built_at": "2026-10-28T11:10:34"
+  "built_at": "2026-10-28T22:39:47"
 }
