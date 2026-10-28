@@ -9,12 +9,30 @@
       "close_price": 156600.0,
       "trading_volume": 5096,
       "trading_value": 798033600,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "주당 19만원 공개매수 추진",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
+        {
+          "title": "[특징주] 케이아이엔엑스, ‘주당 19만원 공개매수’ 추진에 上",
+          "link": "https://n.news.naver.com/mnews/article/366/0001200804",
+          "source": "조선비즈",
+          "date": "2026-10-28"
+        },
+        {
+          "title": "케이아이엔엑스, 맥쿼리 공개매수 합의에 ‘상한가’ [줍줍 리포트]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004675980",
+          "source": "서울경제",
+          "date": "2026-10-28"
+        },
+        {
+          "title": "맥쿼리, 가비아·KINX 동시 인수 추진…얼라인·미리도 공개매수 지지",
+          "link": "https://n.news.naver.com/mnews/article/001/0016406084",
+          "source": "연합뉴스",
+          "date": "2026-10-28"
+        },
         {
           "title": "맥쿼리 공개매수 발표에…KINX 상한가, 가비아 26% 급등[시그널]",
           "link": "https://n.news.naver.com/mnews/article/011/0004676229",
@@ -26,17 +44,22 @@
           "link": "https://n.news.naver.com/mnews/article/081/0003693435",
           "source": "서울신문",
           "date": "2026-10-28"
-        },
-        {
-          "title": "케이아이엔엑스, 맥쿼리 공개매수 합의에 ‘상한가’ [줍줍 리포트]",
-          "link": "https://n.news.naver.com/mnews/article/011/0004675980",
-          "source": "서울경제",
-          "date": "2026-10-28"
         }
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 케이아이엔엑스, ‘주당 19만원 공개매수’ 추진에 上",
+          "link": "https://n.news.naver.com/mnews/article/366/0001200804",
+          "source": "조선비즈",
+          "date": "2026-10-28"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -199,5 +222,5 @@
     "count_recent": 1,
     "avg_rate": 17.23
   },
-  "built_at": "2026-10-28T22:39:34"
+  "built_at": "2026-10-29T01:18:23"
 }
