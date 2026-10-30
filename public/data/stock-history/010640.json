@@ -9,10 +9,10 @@
       "close_price": 3040.0,
       "trading_volume": 2611088,
       "trading_value": 7937707520,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오세훈",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261029",
@@ -32,10 +35,10 @@
       "close_price": 2705.0,
       "trading_volume": 2302618,
       "trading_value": 6228581690,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "오세훈",
       "news": [
         {
@@ -47,7 +50,10 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261023",
@@ -280,5 +286,5 @@
     "count_recent": 3,
     "avg_rate": 15.28
   },
-  "built_at": "2026-10-30T22:38:35"
+  "built_at": "2026-10-31T01:13:34"
 }

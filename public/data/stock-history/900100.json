@@ -9,9 +9,9 @@
       "close_price": 1501.0,
       "trading_volume": 232061,
       "trading_value": 348323561,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "관련 보도: 이례적인 실물 CB 발행… 어둠의 통로 투자자들 노리...",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "거래량",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "파이온엑스, 이례적인 실물 CB 발행… ‘어둠의 통로’ 투자자들 노리...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001200731",
+          "source": "조선비즈",
+          "date": "2026-10-28"
+        }
+      ]
     },
     {
       "date": "20261023",
@@ -1015,5 +1026,5 @@
     "count_recent": 2,
     "avg_rate": 23.05
   },
-  "built_at": "2026-10-30T22:38:38"
+  "built_at": "2026-10-31T01:13:34"
 }

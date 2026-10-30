@@ -9,9 +9,9 @@
       "close_price": 2575.0,
       "trading_volume": 1319094,
       "trading_value": 3396667050,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: PHP 대응 서버백신·서버보안 가상패치 지원",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -72,7 +72,18 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "SGA솔루션즈, PHP 대응 서버백신·서버보안 ‘가상패치’ 지원",
+          "link": "https://n.news.naver.com/mnews/article/092/0002442785",
+          "source": "지디넷코리아",
+          "date": "2026-10-28"
+        }
+      ]
     },
     {
       "date": "20261006",
@@ -784,5 +795,5 @@
     "count_recent": 2,
     "avg_rate": 23.38
   },
-  "built_at": "2026-10-30T22:38:37"
+  "built_at": "2026-10-31T01:13:34"
 }

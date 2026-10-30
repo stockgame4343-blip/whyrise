@@ -9,9 +9,9 @@
       "close_price": 1251.0,
       "trading_volume": 501389,
       "trading_value": 627237639,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 엘브이엠씨홀딩스, 관계사 사명 다이나맥으로 변경",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "자동차",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "엘브이엠씨홀딩스, 관계사 KR모터스 사명 '다이나맥'으로 변경",
+          "link": "https://n.news.naver.com/mnews/article/003/0014280210",
+          "source": "뉴시스",
+          "date": "2026-10-27"
+        }
+      ]
     },
     {
       "date": "20261020",
@@ -245,5 +256,5 @@
     "count_recent": 2,
     "avg_rate": 24.31
   },
-  "built_at": "2026-10-30T22:38:36"
+  "built_at": "2026-10-31T01:13:34"
 }
