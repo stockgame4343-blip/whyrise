@@ -9,12 +9,18 @@
       "close_price": 5480.0,
       "trading_volume": 3717169,
       "trading_value": 20370086120,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "지능형로봇 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
+        {
+          "title": "엇갈린 투심, 되는 곳 밀어준다… 의료로봇 강세 [바이오맥짚기]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006399613",
+          "source": "이데일리",
+          "date": "2026-10-30"
+        },
         {
           "title": "[마감시황]코스닥, 장중 낙폭 딛고 734.36 마감…기관 623억원 순매수",
           "link": "https://n.news.naver.com/mnews/article/081/0003694890",
@@ -30,7 +36,10 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "theme"
     },
     {
       "date": "20261028",
@@ -661,5 +670,5 @@
     "count_recent": 2,
     "avg_rate": 17.53
   },
-  "built_at": "2026-11-03T01:40:56"
+  "built_at": "2026-11-03T04:47:48"
 }

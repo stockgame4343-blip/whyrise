@@ -9,12 +9,18 @@
       "close_price": 3690.0,
       "trading_volume": 21270,
       "trading_value": 78486300,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "보통",
       "news": [
+        {
+          "title": "SK하이닉스 7% 뚝, 삼성바이오는 8.9% 쑥… 코스피 206포인트 내려",
+          "link": "https://n.news.naver.com/mnews/article/081/0003694352",
+          "source": "서울신문",
+          "date": "2026-10-30"
+        },
         {
           "title": "코스피 장 초반 급락 딛고 2.24% 반등… 5859선 마감",
           "link": "https://n.news.naver.com/mnews/article/081/0003694891",
@@ -24,7 +30,10 @@
       ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20261028",
@@ -300,5 +309,5 @@
     "count_recent": 2,
     "avg_rate": 21.09
   },
-  "built_at": "2026-11-03T01:40:54"
+  "built_at": "2026-11-03T04:47:48"
 }

@@ -9,10 +9,10 @@
       "close_price": 6870.0,
       "trading_volume": 3476874,
       "trading_value": 23886124380,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "HLB그룹",
       "news": [
         {
@@ -36,7 +36,10 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261030",
@@ -827,5 +830,5 @@
     "count_recent": 8,
     "avg_rate": 19.64
   },
-  "built_at": "2026-11-03T01:40:55"
+  "built_at": "2026-11-03T04:47:48"
 }
