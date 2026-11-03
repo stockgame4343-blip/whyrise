@@ -9,9 +9,9 @@
       "close_price": 2190.0,
       "trading_volume": 4415943,
       "trading_value": 9670915170,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "관련 보도: 주식 매도 물량 쏟아져 나와… M&A 한 달 만에 FI 지분 ...",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "공시",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "교육서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "벡트로보틱스, 주식 매도 물량 쏟아져 나와… M&A 한 달 만에 FI 지분 ...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001201940",
+          "source": "조선비즈",
+          "date": "2026-11-02"
+        }
+      ]
     },
     {
       "date": "20261002",
@@ -1058,5 +1069,5 @@
     "count_recent": 1,
     "avg_rate": 17.96
   },
-  "built_at": "2026-11-03T23:46:45"
+  "built_at": "2026-11-04T02:21:59"
 }

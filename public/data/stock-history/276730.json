@@ -9,9 +9,9 @@
       "close_price": 1140.0,
       "trading_volume": 3614279,
       "trading_value": 4120278060,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "최대주주·경영진 장내매수",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한울앤제주, 최대주주·경영진 장내매수…책임경영 의지",
+          "link": "https://n.news.naver.com/mnews/article/003/0014294011",
+          "source": "뉴시스",
+          "date": "2026-11-02"
+        }
+      ]
     },
     {
       "date": "20261030",
@@ -865,5 +876,5 @@
     "count_recent": 4,
     "avg_rate": 18.2
   },
-  "built_at": "2026-11-03T23:46:45"
+  "built_at": "2026-11-04T02:21:59"
 }

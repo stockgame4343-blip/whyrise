@@ -9,12 +9,18 @@
       "close_price": 10850.0,
       "trading_volume": 2164345,
       "trading_value": 23483143250,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "보안주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
+        {
+          "title": "5조 털고, 기술 빼가고…해킹 맞서는 K-사이버 방패 [방산 혁신 골든타...",
+          "link": "https://n.news.naver.com/mnews/article/215/0001271182",
+          "source": "한국경제TV",
+          "date": "2026-10-31"
+        },
         {
           "title": "[테크스냅] CJ ONE, 11월 '원더위크'…CJ더마켓·이마트24 할인",
           "link": "https://n.news.naver.com/mnews/article/001/0016418049",
@@ -36,7 +42,18 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "한양증권 고객정보 유출 '보안주 급등'…한싹·파수AI 상한가[핫종목...",
+          "link": "https://n.news.naver.com/mnews/article/421/0009266345",
+          "source": "뉴스1",
+          "date": "2026-11-03"
+        }
+      ]
     },
     {
       "date": "20260922",
@@ -1090,5 +1107,5 @@
     "count_recent": 1,
     "avg_rate": 15.15
   },
-  "built_at": "2026-11-03T23:46:44"
+  "built_at": "2026-11-04T02:21:59"
 }
