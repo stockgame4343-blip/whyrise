@@ -4,6 +4,25 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261103",
+      "change_rate": 10.98,
+      "close_price": 1930.0,
+      "trading_volume": 749182,
+      "trading_value": 1445921260,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
+      "theme_tag": "소매유통",
+      "news": [],
+      "sector": "건설",
+      "is_52w_high": false,
+      "source": "estimated",
+      "reason_previous": "소매유통 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
+    },
+    {
       "date": "20261102",
       "change_rate": 10.41,
       "close_price": 1739.0,
@@ -19,8 +38,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "소매유통 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "건설주 일제히 강세…데이터센터 기대에 GS건설 9%대 급등[종목NOW]",
@@ -28,7 +45,9 @@
           "source": "파이낸셜뉴스",
           "date": "2026-11-02"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "theme"
     },
     {
       "date": "20261021",
@@ -1194,12 +1213,12 @@
     }
   ],
   "stats": {
-    "count_10": 20,
+    "count_10": 21,
     "count_15": 10,
     "count_20": 8,
     "count_limit": 6,
-    "count_recent": 2,
-    "avg_rate": 19.01
+    "count_recent": 3,
+    "avg_rate": 18.62
   },
-  "built_at": "2026-11-03T12:56:00"
+  "built_at": "2026-11-03T23:46:56"
 }
