@@ -9,9 +9,9 @@
       "close_price": 997.0,
       "trading_volume": 206054,
       "trading_value": 205435838,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "3분기 영업이익 44억",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "영우디에스피, 3분기 영업이익 44억…전년比 313.9%↑",
+          "link": "https://n.news.naver.com/mnews/article/003/0014297935",
+          "source": "뉴시스",
+          "date": "2026-11-03"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -190,5 +201,5 @@
     "count_recent": 1,
     "avg_rate": 11.39
   },
-  "built_at": "2026-11-05T00:02:33"
+  "built_at": "2026-11-05T02:31:06"
 }

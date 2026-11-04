@@ -9,12 +9,36 @@
       "close_price": 50700.0,
       "trading_volume": 1169016,
       "trading_value": 59269111200,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
+        {
+          "title": "[특징주] 한진칼, '호반 vs 조원태' 지분 매입 경쟁에 상한가(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016419050",
+          "source": "연합뉴스",
+          "date": "2026-11-03"
+        },
+        {
+          "title": "[특징주] 조원태-호반 '경영권 분쟁' 가능성⋯한진칼 26%↑",
+          "link": "https://n.news.naver.com/mnews/article/031/0001071672",
+          "source": "아이뉴스24",
+          "date": "2026-11-03"
+        },
+        {
+          "title": "코스피 3% 급락 5650선… 삼성전자·SK하이닉스 동반 약세",
+          "link": "https://n.news.naver.com/mnews/article/081/0003695146",
+          "source": "서울신문",
+          "date": "2026-11-03"
+        },
+        {
+          "title": "한진칼 15% 급등·우선주 상한가…호반·조원태 지분 경쟁 불붙나",
+          "link": "https://n.news.naver.com/mnews/article/018/0006402375",
+          "source": "이데일리",
+          "date": "2026-11-02"
+        },
         {
           "title": "“하루만에 26% 폭락할 수” 한진칼 주식 투자, ‘널뛰기’ 주의해야...",
           "link": "https://n.news.naver.com/mnews/article/016/0002718981",
@@ -70,18 +94,6 @@
           "date": "2026-11-03"
         },
         {
-          "title": "[특징주] 한진칼, '호반 vs 조원태' 지분 매입 경쟁에 상한가(종합)",
-          "link": "https://n.news.naver.com/mnews/article/001/0016419050",
-          "source": "연합뉴스",
-          "date": "2026-11-03"
-        },
-        {
-          "title": "[특징주] 조원태-호반 '경영권 분쟁' 가능성⋯한진칼 26%↑",
-          "link": "https://n.news.naver.com/mnews/article/031/0001071672",
-          "source": "아이뉴스24",
-          "date": "2026-11-03"
-        },
-        {
           "title": "한진칼, 호반그룹과 조원태 회장 지분 매입 경쟁에 주가 급등",
           "link": "https://n.news.naver.com/mnews/article/023/0004007467",
           "source": "조선일보",
@@ -90,7 +102,10 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20261103",
@@ -440,5 +455,5 @@
     "count_recent": 3,
     "avg_rate": 23.2
   },
-  "built_at": "2026-11-05T00:02:31"
+  "built_at": "2026-11-05T02:31:06"
 }

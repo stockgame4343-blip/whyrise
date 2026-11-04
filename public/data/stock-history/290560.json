@@ -9,9 +9,9 @@
       "close_price": 2154.0,
       "trading_volume": 0,
       "trading_value": 0,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "소프트웨어 업종 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20260825",
@@ -679,5 +682,5 @@
     "count_recent": 1,
     "avg_rate": 24.45
   },
-  "built_at": "2026-11-05T00:02:33"
+  "built_at": "2026-11-05T02:31:06"
 }

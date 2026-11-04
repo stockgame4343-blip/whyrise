@@ -9,9 +9,9 @@
       "close_price": 2030.0,
       "trading_volume": 0,
       "trading_value": 0,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "소프트웨어 업종 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상현실(VR)",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector"
     },
     {
       "date": "20261007",
@@ -836,5 +839,5 @@
     "count_recent": 2,
     "avg_rate": 55.86
   },
-  "built_at": "2026-11-05T00:02:33"
+  "built_at": "2026-11-05T02:31:06"
 }

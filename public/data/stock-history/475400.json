@@ -9,9 +9,9 @@
       "close_price": 15600.0,
       "trading_volume": 208965,
       "trading_value": 3259854000,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "기계 업종 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -36,7 +36,10 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20260910",
@@ -895,5 +898,5 @@
     "count_recent": 1,
     "avg_rate": 15.26
   },
-  "built_at": "2026-11-05T00:02:32"
+  "built_at": "2026-11-05T02:31:06"
 }
