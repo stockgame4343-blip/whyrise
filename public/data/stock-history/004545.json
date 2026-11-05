@@ -9,9 +9,9 @@
       "close_price": 4030.0,
       "trading_volume": 19568,
       "trading_value": 78859040,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "종이와목재 업종 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "10일",
       "news": [
@@ -42,7 +42,10 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector"
     },
     {
       "date": "20261104",
@@ -438,5 +441,5 @@
     "count_recent": 5,
     "avg_rate": 22.3
   },
-  "built_at": "2026-11-06T00:02:48"
+  "built_at": "2026-11-06T02:38:46"
 }

@@ -9,9 +9,9 @@
       "close_price": 6270.0,
       "trading_volume": 1849033,
       "trading_value": 11593436910,
-      "rise_reason": "트럼프/관세",
+      "rise_reason": "3분기 영업이익 두 배로",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -54,7 +54,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "트럼프/관세",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "중대형 트랙터 판매 늘린 TYM…3분기 영업이익 두 배로",
+          "link": "https://n.news.naver.com/mnews/article/015/0005350216",
+          "source": "한국경제",
+          "date": "2026-11-04"
+        }
+      ]
     },
     {
       "date": "20260305",
@@ -109,5 +120,5 @@
     "count_recent": 1,
     "avg_rate": 12.8
   },
-  "built_at": "2026-11-06T00:02:47"
+  "built_at": "2026-11-06T02:38:46"
 }
