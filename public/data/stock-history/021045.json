@@ -28,15 +28,18 @@
       "close_price": 1768.0,
       "trading_volume": 36452,
       "trading_value": 64447136,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "제강",
       "news": [],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20260918",
@@ -316,5 +319,5 @@
     "count_recent": 2,
     "avg_rate": 24.44
   },
-  "built_at": "2026-11-06T23:46:11"
+  "built_at": "2026-11-07T01:56:50"
 }

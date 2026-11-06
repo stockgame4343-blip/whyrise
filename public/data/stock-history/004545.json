@@ -9,10 +9,10 @@
       "close_price": 5230.0,
       "trading_volume": 42650,
       "trading_value": 223059500,
-      "rise_reason": "10일 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "10일",
       "news": [
         {
@@ -48,7 +48,10 @@
       ],
       "sector": "종이와목재",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "10일 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20261105",
@@ -512,5 +515,5 @@
     "count_recent": 6,
     "avg_rate": 23.04
   },
-  "built_at": "2026-11-06T23:46:00"
+  "built_at": "2026-11-07T01:56:50"
 }

@@ -9,9 +9,9 @@
       "close_price": 53200.0,
       "trading_volume": 610421,
       "trading_value": 32474397200,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "365억원 조달해 AI 바이오파운드리 구축",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "6일",
       "news": [
@@ -84,7 +84,18 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 프로티나, 365억원 조달해 AI 바이오파운드리 구축…12% 강세",
+          "link": "https://n.news.naver.com/mnews/article/366/0001202711",
+          "source": "조선비즈",
+          "date": "2026-11-05"
+        }
+      ]
     },
     {
       "date": "20261026",
@@ -1518,5 +1529,5 @@
     "count_recent": 3,
     "avg_rate": 14.67
   },
-  "built_at": "2026-11-06T23:46:00"
+  "built_at": "2026-11-07T01:56:50"
 }

@@ -9,9 +9,9 @@
       "close_price": 6900.0,
       "trading_volume": 935665,
       "trading_value": 6456088500,
-      "rise_reason": "바이오",
+      "rise_reason": "GI-102, J&J 전립선암 신약과 병용임상 첫 투약",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "면역항암제",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "지아이이노베이션 ‘GI-102’, J&J 전립선암 신약과 병용임상 첫 투약",
+          "link": "https://n.news.naver.com/mnews/article/015/0005350580",
+          "source": "한국경제",
+          "date": "2026-11-05"
+        }
+      ]
     },
     {
       "date": "20261001",
@@ -699,5 +710,5 @@
     "count_recent": 1,
     "avg_rate": 13.94
   },
-  "built_at": "2026-11-06T23:46:00"
+  "built_at": "2026-11-07T01:56:50"
 }

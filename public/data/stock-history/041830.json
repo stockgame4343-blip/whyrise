@@ -9,9 +9,9 @@
       "close_price": 56400.0,
       "trading_volume": 485852,
       "trading_value": 27402052800,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "3분기 영업익 193억",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "인바디, 3분기 영업익 193억…전년비 96.5% ↑",
+          "link": "https://n.news.naver.com/mnews/article/016/0002719458",
+          "source": "헤럴드경제",
+          "date": "2026-11-05"
+        }
+      ]
     },
     {
       "date": "20261016",
@@ -610,5 +621,5 @@
     "count_recent": 2,
     "avg_rate": 17.57
   },
-  "built_at": "2026-11-06T23:46:00"
+  "built_at": "2026-11-07T01:56:50"
 }
