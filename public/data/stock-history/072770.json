@@ -9,9 +9,9 @@
       "close_price": 1674.0,
       "trading_volume": 1230043,
       "trading_value": 2059091982,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "주식병합 후 거래 재개",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "멤레이비티, 주식병합 후 거래 재개…턴어라운드 실현할까",
+          "link": "https://n.news.naver.com/mnews/article/293/0000092719",
+          "source": "블로터",
+          "date": "2026-11-04"
+        }
+      ]
     },
     {
       "date": "20260814",
@@ -698,5 +709,5 @@
     "count_recent": 1,
     "avg_rate": 41.71
   },
-  "built_at": "2026-11-08T09:31:33"
+  "built_at": "2026-11-09T11:37:39"
 }
