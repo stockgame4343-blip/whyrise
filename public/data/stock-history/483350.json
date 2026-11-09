@@ -9,10 +9,10 @@
       "close_price": 2240.0,
       "trading_volume": 863401,
       "trading_value": 1934018240,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -30,7 +30,10 @@
       ],
       "sector": "",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
     },
     {
       "date": "20261106",
@@ -38,10 +41,10 @@
       "close_price": 1980.0,
       "trading_volume": 650709,
       "trading_value": 1288403820,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -65,7 +68,16 @@
       ],
       "sector": "",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none",
+      "reason_hint": {
+        "text": "11/2 3분기 누적 영업이익 45억",
+        "link": "https://n.news.naver.com/mnews/article/020/0003759390",
+        "title": "딜리셔스, 3분기 누적 영업이익 45억…전년比 44배",
+        "date": "20261102"
+      }
     },
     {
       "date": "20260820",
@@ -94,5 +106,5 @@
     "count_recent": 2,
     "avg_rate": 11.66
   },
-  "built_at": "2026-11-10T01:59:18"
+  "built_at": "2026-11-10T05:04:37"
 }
