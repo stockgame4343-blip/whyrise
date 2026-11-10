@@ -9,9 +9,9 @@
       "close_price": 34600.0,
       "trading_volume": 297057,
       "trading_value": 10278172200,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "바이오주 6종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -30,7 +30,10 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20261023",
@@ -1066,5 +1069,5 @@
     "count_recent": 4,
     "avg_rate": 16.93
   },
-  "built_at": "2026-11-11T00:20:45"
+  "built_at": "2026-11-11T02:19:22"
 }

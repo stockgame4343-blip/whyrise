@@ -114,12 +114,42 @@
       "close_price": 29350.0,
       "trading_volume": 254549,
       "trading_value": 7471013150,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
+        {
+          "title": "한진칼 지분 경쟁에 대한항공우 이틀 연속 상한가[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009280300",
+          "source": "뉴스1",
+          "date": "2026-11-10"
+        },
+        {
+          "title": "[특징주] 국제유가 급락에 항공주 급등…대한항공 11%대↑(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016433968",
+          "source": "연합뉴스",
+          "date": "2026-11-10"
+        },
+        {
+          "title": "[특징주] 국제유가 급락에 항공주 급등…대한항공 9%대↑",
+          "link": "https://n.news.naver.com/mnews/article/001/0016432600",
+          "source": "연합뉴스",
+          "date": "2026-11-10"
+        },
+        {
+          "title": "[특징주] 대한항공·아시아나항공, 합병 시너지 기대 장 초반 급등",
+          "link": "https://n.news.naver.com/mnews/article/031/0001073605",
+          "source": "아이뉴스24",
+          "date": "2026-11-10"
+        },
+        {
+          "title": "열흘 새 주가 292% '폭등'...경영권 분쟁에 불붙은 '한진칼우'",
+          "link": "https://n.news.naver.com/mnews/article/008/0005438282",
+          "source": "머니투데이",
+          "date": "2026-11-09"
+        },
         {
           "title": "열흘 간 300% 날았다…'경영권 분쟁 시즌' 우선주 투자 유의점은?",
           "link": "https://n.news.naver.com/mnews/article/374/0000542840",
@@ -133,12 +163,6 @@
           "date": "2026-11-10"
         },
         {
-          "title": "[특징주] 국제유가 급락에 항공주 급등…대한항공 11%대↑(종합)",
-          "link": "https://n.news.naver.com/mnews/article/001/0016433968",
-          "source": "연합뉴스",
-          "date": "2026-11-10"
-        },
-        {
           "title": "“땡큐, 트럼프” 국제유가 급락에 대한항공 등 항공주 ‘급등’[이런...",
           "link": "https://n.news.naver.com/mnews/article/011/0004680618",
           "source": "서울경제",
@@ -148,24 +172,6 @@
           "title": "국제유가 급락에 항공주 급등…대한항공 9%↑·우선주 30%↑",
           "link": "https://n.news.naver.com/mnews/article/374/0000542673",
           "source": "SBS Biz",
-          "date": "2026-11-10"
-        },
-        {
-          "title": "[특징주] 국제유가 급락에 항공주 급등…대한항공 9%대↑",
-          "link": "https://n.news.naver.com/mnews/article/001/0016432600",
-          "source": "연합뉴스",
-          "date": "2026-11-10"
-        },
-        {
-          "title": "한진칼 지분 경쟁에 대한항공우 이틀 연속 상한가[핫종목]",
-          "link": "https://n.news.naver.com/mnews/article/421/0009280300",
-          "source": "뉴스1",
-          "date": "2026-11-10"
-        },
-        {
-          "title": "[특징주] 대한항공·아시아나항공, 합병 시너지 기대 장 초반 급등",
-          "link": "https://n.news.naver.com/mnews/article/031/0001073605",
-          "source": "아이뉴스24",
           "date": "2026-11-10"
         },
         {
@@ -195,7 +201,10 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "트럼프/관세",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     }
   ],
   "stats": {
@@ -206,5 +215,5 @@
     "count_recent": 2,
     "avg_rate": 28.8
   },
-  "built_at": "2026-11-11T00:21:03"
+  "built_at": "2026-11-11T02:19:22"
 }

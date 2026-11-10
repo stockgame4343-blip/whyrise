@@ -9,10 +9,10 @@
       "close_price": 5890.0,
       "trading_volume": 1511763,
       "trading_value": 8904284070,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "의료AI",
       "news": [
         {
@@ -36,7 +36,10 @@
       ],
       "sector": "건강관리기술",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261026",
@@ -613,5 +616,5 @@
     "count_recent": 2,
     "avg_rate": 15.86
   },
-  "built_at": "2026-11-11T00:20:46"
+  "built_at": "2026-11-11T02:19:22"
 }

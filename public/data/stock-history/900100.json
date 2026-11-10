@@ -9,10 +9,10 @@
       "close_price": 1406.0,
       "trading_volume": 352146,
       "trading_value": 495117276,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "거래량",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261106",
@@ -1075,5 +1078,5 @@
     "count_recent": 4,
     "avg_rate": 23.65
   },
-  "built_at": "2026-11-11T00:20:47"
+  "built_at": "2026-11-11T02:19:22"
 }

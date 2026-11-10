@@ -9,12 +9,18 @@
       "close_price": 50400.0,
       "trading_volume": 1071835,
       "trading_value": 54020484000,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "광통신주 동반 강세 — 데이터센터 우려 과도 평가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
+        {
+          "title": "[특징주] 광통신주, '데이터센터 우려 과도' 평가에 장 초반 급등",
+          "link": "https://n.news.naver.com/mnews/article/001/0016432668",
+          "source": "연합뉴스",
+          "date": "2026-11-10"
+        },
         {
           "title": "[특징주] 광통신주, '데이터센터 우려 과도' 평가에 급등 마감(종합)",
           "link": "https://n.news.naver.com/mnews/article/001/0016433874",
@@ -22,15 +28,15 @@
           "date": "2026-11-10"
         },
         {
-          "title": "삼전·하닉 팔고…한 달 새 40% 빠진 삼성전기 담았다 [주식 초고수는...",
-          "link": "https://n.news.naver.com/mnews/article/011/0004680543",
-          "source": "서울경제",
-          "date": "2026-11-10"
-        },
-        {
           "title": "[특징주] AI 데이터센터·통신망 투자 재개 기대… 광통신株 일제히 강...",
           "link": "https://n.news.naver.com/mnews/article/366/0001203671",
           "source": "조선비즈",
+          "date": "2026-11-10"
+        },
+        {
+          "title": "삼전·하닉 팔고…한 달 새 40% 빠진 삼성전기 담았다 [주식 초고수는...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004680543",
+          "source": "서울경제",
           "date": "2026-11-10"
         },
         {
@@ -42,7 +48,18 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 광통신주, '데이터센터 우려 과도' 평가에 장 초반 급등",
+          "link": "https://n.news.naver.com/mnews/article/001/0016432668",
+          "source": "연합뉴스",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20261109",
@@ -50,9 +67,9 @@
       "close_price": 42350.0,
       "trading_volume": 975051,
       "trading_value": 41293409850,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "광통신 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -83,7 +100,10 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20261016",
@@ -1015,5 +1035,5 @@
     "count_recent": 3,
     "avg_rate": 15.05
   },
-  "built_at": "2026-11-11T00:20:45"
+  "built_at": "2026-11-11T02:19:22"
 }

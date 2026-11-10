@@ -9,9 +9,9 @@
       "close_price": 20100.0,
       "trading_volume": 195171,
       "trading_value": 3922937100,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "치매 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "생물공학",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20261019",
@@ -780,5 +783,5 @@
     "count_recent": 2,
     "avg_rate": 17.52
   },
-  "built_at": "2026-11-11T00:20:46"
+  "built_at": "2026-11-11T02:19:22"
 }

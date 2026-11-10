@@ -9,9 +9,9 @@
       "close_price": 44750.0,
       "trading_volume": 503778,
       "trading_value": 22544065500,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "재건주 동반 강세 — 트럼프 분쟁 종식 긍정적 모멘텀 발언",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "트럼프/관세",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 재건주, 트럼프 \"분쟁 종식 긍정적 모멘텀\" 발언에 강세(종합...",
+          "link": "https://n.news.naver.com/mnews/article/001/0016433901",
+          "source": "연합뉴스",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20260903",
@@ -461,5 +472,5 @@
     "count_recent": 1,
     "avg_rate": 17.54
   },
-  "built_at": "2026-11-11T00:20:45"
+  "built_at": "2026-11-11T02:19:22"
 }

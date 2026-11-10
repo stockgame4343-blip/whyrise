@@ -9,9 +9,9 @@
       "close_price": 1534.0,
       "trading_volume": 342179,
       "trading_value": 524902586,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "소프트웨어 업종 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상현실(VR)",
       "news": [
@@ -36,7 +36,10 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20261103",
@@ -886,5 +889,5 @@
     "count_recent": 2,
     "avg_rate": 51.75
   },
-  "built_at": "2026-11-11T00:20:47"
+  "built_at": "2026-11-11T02:19:22"
 }

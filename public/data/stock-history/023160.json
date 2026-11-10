@@ -9,9 +9,9 @@
       "close_price": 24300.0,
       "trading_volume": 280429,
       "trading_value": 6814424700,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "3분기 영업익 49억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "태광, 3분기 영업익 49억…전년비 57.4% ↓",
+          "link": "https://n.news.naver.com/mnews/article/016/0002720645",
+          "source": "헤럴드경제",
+          "date": "2026-11-09"
+        }
+      ]
     },
     {
       "date": "20261102",
@@ -366,5 +377,5 @@
     "count_recent": 2,
     "avg_rate": 15.35
   },
-  "built_at": "2026-11-11T00:20:45"
+  "built_at": "2026-11-11T02:19:22"
 }

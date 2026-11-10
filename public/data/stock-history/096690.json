@@ -9,10 +9,10 @@
       "close_price": 6180.0,
       "trading_volume": 6235,
       "trading_value": 38532300,
-      "rise_reason": "가상자산/블록체인",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전력설비",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "컴퓨터와주변기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "가상자산/블록체인",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20260811",
@@ -294,5 +297,5 @@
     "count_recent": 1,
     "avg_rate": 14.53
   },
-  "built_at": "2026-11-11T00:20:47"
+  "built_at": "2026-11-11T02:19:22"
 }
