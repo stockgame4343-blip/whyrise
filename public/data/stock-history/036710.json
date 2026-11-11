@@ -4,6 +4,35 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261111",
+      "change_rate": 32.37,
+      "close_price": 5050.0,
+      "trading_volume": 5879249,
+      "trading_value": 29690207450,
+      "rise_reason": "상한가 — 사유 미수집",
+      "reason_confidence": "low",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
+      "news": [
+        {
+          "title": "'괜히 팔았나' 깜짝 반전…하루 만에 29% 급등한 회사 정체",
+          "link": "https://n.news.naver.com/mnews/article/015/0005352902",
+          "source": "한국경제",
+          "date": "2026-11-11"
+        },
+        {
+          "title": "코스닥 장 초반 2.47% 급등… 684선 회복",
+          "link": "https://n.news.naver.com/mnews/article/081/0003698084",
+          "source": "서울신문",
+          "date": "2026-11-11"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
       "date": "20261110",
       "change_rate": 13.88,
       "close_price": 3815.0,
@@ -16,6 +45,18 @@
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
         {
+          "title": "'괜히 팔았나' 깜짝 반전…하루 만에 29% 급등한 회사 정체",
+          "link": "https://n.news.naver.com/mnews/article/015/0005352902",
+          "source": "한국경제",
+          "date": "2026-11-11"
+        },
+        {
+          "title": "코스닥 장 초반 2.47% 급등… 684선 회복",
+          "link": "https://n.news.naver.com/mnews/article/081/0003698084",
+          "source": "서울신문",
+          "date": "2026-11-11"
+        },
+        {
           "title": "심텍, AI서버 기판 덕에 분기 영업익 1000억 돌파",
           "link": "https://n.news.naver.com/mnews/article/417/0001163435",
           "source": "동행미디어 시대",
@@ -26,8 +67,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 美 반도체주 급등에 기판株 동반 강세…코리아써키트 9%↑",
@@ -35,7 +74,9 @@
           "source": "조선비즈",
           "date": "2026-11-10"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "theme"
     },
     {
       "date": "20261104",
@@ -1083,12 +1124,12 @@
     }
   ],
   "stats": {
-    "count_10": 16,
-    "count_15": 6,
-    "count_20": 5,
-    "count_limit": 1,
-    "count_recent": 2,
-    "avg_rate": 15.67
+    "count_10": 17,
+    "count_15": 7,
+    "count_20": 6,
+    "count_limit": 2,
+    "count_recent": 3,
+    "avg_rate": 16.65
   },
-  "built_at": "2026-11-11T11:45:55"
+  "built_at": "2026-11-11T23:52:09"
 }

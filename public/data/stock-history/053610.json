@@ -4,6 +4,25 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261111",
+      "change_rate": 13.49,
+      "close_price": 61400.0,
+      "trading_volume": 25055,
+      "trading_value": 1538377000,
+      "rise_reason": "반도체주 69종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "전자파",
+      "news": [],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "estimated",
+      "reason_previous": "전자파 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector"
+    },
+    {
       "date": "20261110",
       "change_rate": 12.12,
       "close_price": 54100.0,
@@ -19,8 +38,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "전자파 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 美 반도체주 급등에 기판株 동반 강세…코리아써키트 9%↑",
@@ -28,7 +45,9 @@
           "source": "조선비즈",
           "date": "2026-11-10"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "theme"
     },
     {
       "date": "20260731",
@@ -485,12 +504,12 @@
     }
   ],
   "stats": {
-    "count_10": 10,
+    "count_10": 11,
     "count_15": 3,
     "count_20": 2,
     "count_limit": 0,
-    "count_recent": 1,
-    "avg_rate": 15.2
+    "count_recent": 2,
+    "avg_rate": 15.05
   },
-  "built_at": "2026-11-11T11:45:55"
+  "built_at": "2026-11-11T23:52:31"
 }

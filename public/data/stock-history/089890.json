@@ -4,6 +4,29 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261111",
+      "change_rate": 12.3,
+      "close_price": 31950.0,
+      "trading_volume": 264128,
+      "trading_value": 8438889600,
+      "rise_reason": "AI/반도체 테마",
+      "reason_confidence": "mid",
+      "reason_source": "news",
+      "reason_status": "filled",
+      "theme_tag": "고체산화물 연료전지(SOFC)",
+      "news": [
+        {
+          "title": "美 반도체 강세에 삼전닉스 상승…\"AI 투자 유지 기대감\"",
+          "link": "https://n.news.naver.com/mnews/article/008/0005439170",
+          "source": "머니투데이",
+          "date": "2026-11-10"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
       "date": "20261110",
       "change_rate": 18.54,
       "close_price": 28450.0,
@@ -26,8 +49,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
-      "reason_source_previous": "news",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 美 반도체주 급등에 기판株 동반 강세…코리아써키트 9%↑",
@@ -35,7 +56,9 @@
           "source": "조선비즈",
           "date": "2026-11-10"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "news"
     },
     {
       "date": "20261027",
@@ -1365,12 +1388,12 @@
     }
   ],
   "stats": {
-    "count_10": 21,
+    "count_10": 22,
     "count_15": 8,
     "count_20": 3,
     "count_limit": 0,
-    "count_recent": 4,
-    "avg_rate": 15.02
+    "count_recent": 5,
+    "avg_rate": 14.9
   },
-  "built_at": "2026-11-11T11:45:55"
+  "built_at": "2026-11-11T23:52:09"
 }

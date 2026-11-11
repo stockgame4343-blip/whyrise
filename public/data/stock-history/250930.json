@@ -4,6 +4,35 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261111",
+      "change_rate": 30.0,
+      "close_price": 1521.0,
+      "trading_volume": 1000080,
+      "trading_value": 1521121680,
+      "rise_reason": "상한가 — 사유 미수집",
+      "reason_confidence": "low",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "OLED(유기 발광 다이오드)",
+      "news": [
+        {
+          "title": "코스닥 장 초반 2.47% 급등… 684선 회복",
+          "link": "https://n.news.naver.com/mnews/article/081/0003698084",
+          "source": "서울신문",
+          "date": "2026-11-11"
+        },
+        {
+          "title": "'투자경고' 종목 추격매수 주의보 … 23개 평균 36%↓",
+          "link": "https://n.news.naver.com/mnews/article/009/0005761186",
+          "source": "매일경제",
+          "date": "2026-11-09"
+        }
+      ],
+      "sector": "디스플레이장비및부품",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
       "date": "20261110",
       "change_rate": 30.0,
       "close_price": 1170.0,
@@ -16,6 +45,12 @@
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
         {
+          "title": "코스닥 장 초반 2.47% 급등… 684선 회복",
+          "link": "https://n.news.naver.com/mnews/article/081/0003698084",
+          "source": "서울신문",
+          "date": "2026-11-11"
+        },
+        {
           "title": "'투자경고' 종목 추격매수 주의보 … 23개 평균 36%↓",
           "link": "https://n.news.naver.com/mnews/article/009/0005761186",
           "source": "매일경제",
@@ -26,8 +61,8 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "상한가 — 사유 미수집",
-      "reason_source_previous": "pattern",
-      "reason_kind": "sector"
+      "reason_kind": "sector",
+      "reason_source_previous": "pattern"
     },
     {
       "date": "20261016",
@@ -735,12 +770,12 @@
     }
   ],
   "stats": {
-    "count_10": 16,
-    "count_15": 11,
-    "count_20": 10,
-    "count_limit": 7,
-    "count_recent": 4,
-    "avg_rate": 23.75
+    "count_10": 17,
+    "count_15": 12,
+    "count_20": 11,
+    "count_limit": 8,
+    "count_recent": 5,
+    "avg_rate": 24.12
   },
-  "built_at": "2026-11-11T11:45:55"
+  "built_at": "2026-11-11T23:52:11"
 }

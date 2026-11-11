@@ -4,6 +4,25 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261111",
+      "change_rate": 20.42,
+      "close_price": 107900.0,
+      "trading_volume": 83987,
+      "trading_value": 9062197300,
+      "rise_reason": "반도체주 69종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "PCB(FPCB 등)",
+      "news": [],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": true,
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector"
+    },
+    {
       "date": "20261110",
       "change_rate": 10.75,
       "close_price": 89600.0,
@@ -19,8 +38,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "PCB(FPCB 등) 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 美 반도체주 급등에 기판株 동반 강세…코리아써키트 9%↑",
@@ -28,7 +45,9 @@
           "source": "조선비즈",
           "date": "2026-11-10"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "theme"
     },
     {
       "date": "20261027",
@@ -791,12 +810,12 @@
     }
   ],
   "stats": {
-    "count_10": 15,
-    "count_15": 6,
-    "count_20": 3,
+    "count_10": 16,
+    "count_15": 7,
+    "count_20": 4,
     "count_limit": 1,
-    "count_recent": 3,
-    "avg_rate": 15.42
+    "count_recent": 4,
+    "avg_rate": 15.74
   },
-  "built_at": "2026-11-11T11:45:55"
+  "built_at": "2026-11-11T23:52:31"
 }

@@ -4,12 +4,12 @@
   "market": "KOSPI",
   "events": [
     {
-      "date": "20261110",
-      "change_rate": 15.51,
-      "close_price": 63300.0,
-      "trading_volume": 351253,
-      "trading_value": 22234314900,
-      "rise_reason": "SK하이닉스와 211억 반도체 장비 공급계약",
+      "date": "20261111",
+      "change_rate": 18.33,
+      "close_price": 74900.0,
+      "trading_volume": 398668,
+      "trading_value": 29860233200,
+      "rise_reason": "수주 공시",
       "reason_confidence": "mid",
       "reason_source": "llm",
       "reason_status": "filled",
@@ -31,8 +31,6 @@
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
       "source": "estimated",
-      "reason_previous": "수주 공시",
-      "reason_source_previous": "news",
       "reason_evidence": [
         {
           "title": "케이씨텍, SK하이닉스와 211억 반도체 장비 공급계약 [공시pick]",
@@ -41,6 +39,45 @@
           "date": "2026-11-10"
         }
       ]
+    },
+    {
+      "date": "20261110",
+      "change_rate": 15.51,
+      "close_price": 63300.0,
+      "trading_volume": 351253,
+      "trading_value": 22234314900,
+      "rise_reason": "SK하이닉스와 211억 반도체 장비 공급계약",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
+      "reason_status": "filled",
+      "theme_tag": "HBM(고대역폭메모리)",
+      "news": [
+        {
+          "title": "기업 공시 [11월 10일]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004680638",
+          "source": "서울경제",
+          "date": "2026-11-10"
+        },
+        {
+          "title": "케이씨텍, SK하이닉스와 211억 반도체 장비 공급계약 [공시pick]",
+          "link": "https://n.news.naver.com/mnews/article/123/0002393732",
+          "source": "조세일보",
+          "date": "2026-11-10"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_evidence": [
+        {
+          "title": "케이씨텍, SK하이닉스와 211억 반도체 장비 공급계약 [공시pick]",
+          "link": "https://n.news.naver.com/mnews/article/123/0002393732",
+          "source": "조세일보",
+          "date": "2026-11-10"
+        }
+      ],
+      "reason_source_previous": "news"
     },
     {
       "date": "20261021",
@@ -1103,12 +1140,12 @@
     }
   ],
   "stats": {
-    "count_10": 18,
-    "count_15": 7,
+    "count_10": 19,
+    "count_15": 8,
     "count_20": 2,
     "count_limit": 0,
-    "count_recent": 2,
-    "avg_rate": 14.8
+    "count_recent": 3,
+    "avg_rate": 14.98
   },
-  "built_at": "2026-11-11T00:21:03"
+  "built_at": "2026-11-11T23:52:31"
 }

@@ -4,6 +4,25 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261111",
+      "change_rate": 15.45,
+      "close_price": 33250.0,
+      "trading_volume": 306306,
+      "trading_value": 10184674500,
+      "rise_reason": "고체산화물 연료전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "filled",
+      "theme_tag": "고체산화물 연료전지(SOFC)",
+      "news": [],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "estimated",
+      "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "theme"
+    },
+    {
       "date": "20261110",
       "change_rate": 14.29,
       "close_price": 28800.0,
@@ -19,8 +38,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "고체산화물 연료전지(SOFC) 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 美 반도체주 급등에 기판株 동반 강세…코리아써키트 9%↑",
@@ -28,7 +45,9 @@
           "source": "조선비즈",
           "date": "2026-11-10"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "theme"
     },
     {
       "date": "20261028",
@@ -1287,12 +1306,12 @@
     }
   ],
   "stats": {
-    "count_10": 22,
-    "count_15": 8,
+    "count_10": 23,
+    "count_15": 9,
     "count_20": 2,
     "count_limit": 0,
-    "count_recent": 3,
-    "avg_rate": 14.85
+    "count_recent": 4,
+    "avg_rate": 14.88
   },
-  "built_at": "2026-11-11T11:45:55"
+  "built_at": "2026-11-11T23:52:31"
 }
