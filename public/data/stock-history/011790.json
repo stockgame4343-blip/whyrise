@@ -9,9 +9,9 @@
       "close_price": 71300.0,
       "trading_volume": 244673,
       "trading_value": 17445184900,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "화학 업종 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "유리 기판",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20260731",
@@ -529,5 +532,5 @@
     "count_recent": 1,
     "avg_rate": 14.83
   },
-  "built_at": "2026-11-11T23:52:08"
+  "built_at": "2026-11-12T02:30:46"
 }

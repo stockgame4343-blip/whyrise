@@ -9,10 +9,10 @@
       "close_price": 250500.0,
       "trading_volume": 24957,
       "trading_value": 6251728500,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
     },
     {
       "date": "20260731",
@@ -515,5 +518,5 @@
     "count_recent": 1,
     "avg_rate": 14.73
   },
-  "built_at": "2026-11-11T23:52:09"
+  "built_at": "2026-11-12T02:30:45"
 }

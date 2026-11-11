@@ -9,9 +9,9 @@
       "close_price": 1521.0,
       "trading_volume": 1000080,
       "trading_value": 1521121680,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "OLED 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "pattern",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -30,7 +30,10 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "theme"
     },
     {
       "date": "20261110",
@@ -777,5 +780,5 @@
     "count_recent": 5,
     "avg_rate": 24.12
   },
-  "built_at": "2026-11-11T23:52:11"
+  "built_at": "2026-11-12T02:30:45"
 }

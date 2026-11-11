@@ -9,9 +9,9 @@
       "close_price": 5570.0,
       "trading_volume": 395132,
       "trading_value": 2200885240,
-      "rise_reason": "우주/위성",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 다목적 로켓 세빛, 29일 브라질서 재발사",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -48,7 +48,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주/위성",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이노스페이스 다목적 로켓 '세빛', 29일 브라질서 재발사",
+          "link": "https://n.news.naver.com/mnews/article/092/0002444546",
+          "source": "지디넷코리아",
+          "date": "2026-11-09"
+        }
+      ]
     },
     {
       "date": "20261109",
@@ -737,5 +748,5 @@
     "count_recent": 2,
     "avg_rate": 13.66
   },
-  "built_at": "2026-11-11T23:52:09"
+  "built_at": "2026-11-12T02:30:46"
 }

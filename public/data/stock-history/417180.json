@@ -9,9 +9,9 @@
       "close_price": 3930.0,
       "trading_volume": 67910,
       "trading_value": 266886300,
-      "rise_reason": "무상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "1주당 0.3주 무상증자 결정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모바일콘텐츠(스마트폰/태블릿PC)",
       "news": [
@@ -48,7 +48,18 @@
       ],
       "sector": "양방향미디어와서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "무상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "핑거스토리, 1주당 0.3주 무상증자 결정…주주가치 제고 나선다",
+          "link": "https://n.news.naver.com/mnews/article/008/0005439051",
+          "source": "머니투데이",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -75,5 +86,5 @@
     "count_recent": 1,
     "avg_rate": 21.63
   },
-  "built_at": "2026-11-11T23:52:10"
+  "built_at": "2026-11-12T02:30:45"
 }

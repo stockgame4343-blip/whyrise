@@ -9,9 +9,9 @@
       "close_price": 6070.0,
       "trading_volume": 2997832,
       "trading_value": 18196840240,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "기계 업종 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남-북-러 가스관사업",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20261016",
@@ -153,5 +156,5 @@
     "count_recent": 3,
     "avg_rate": 15.53
   },
-  "built_at": "2026-11-11T23:52:10"
+  "built_at": "2026-11-12T02:30:45"
 }

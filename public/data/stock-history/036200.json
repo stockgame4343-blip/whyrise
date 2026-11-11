@@ -9,9 +9,9 @@
       "close_price": 8590.0,
       "trading_volume": 267458,
       "trading_value": 2297464220,
-      "rise_reason": "반도체 장비 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "매출 성장 가속화",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "신한證 \"유니셈, 매출 성장 가속화…밸류에이션 매력↑\"",
+          "link": "https://n.news.naver.com/mnews/article/003/0014315749",
+          "source": "뉴시스",
+          "date": "2026-11-11"
+        }
+      ]
     },
     {
       "date": "20260929",
@@ -478,5 +489,5 @@
     "count_recent": 1,
     "avg_rate": 14.98
   },
-  "built_at": "2026-11-11T23:52:09"
+  "built_at": "2026-11-12T02:30:45"
 }

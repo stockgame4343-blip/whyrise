@@ -9,9 +9,9 @@
       "close_price": 204000.0,
       "trading_volume": 194380,
       "trading_value": 39653520000,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: LS전선, 이자 없이 5000억 조달… 성장성 통했다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전선",
       "news": [
@@ -90,7 +90,18 @@
       ],
       "sector": "전기장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "LS전선, 이자 없이 5000억 조달…가온전선 성장성 통했다",
+          "link": "https://n.news.naver.com/mnews/article/293/0000092919",
+          "source": "블로터",
+          "date": "2026-11-09"
+        }
+      ]
     },
     {
       "date": "20260918",
@@ -1940,5 +1951,5 @@
     "count_recent": 1,
     "avg_rate": 18.77
   },
-  "built_at": "2026-11-11T23:52:08"
+  "built_at": "2026-11-12T02:30:45"
 }

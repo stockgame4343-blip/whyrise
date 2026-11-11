@@ -9,9 +9,9 @@
       "close_price": 46550.0,
       "trading_volume": 891356,
       "trading_value": 41492621800,
-      "rise_reason": "신약/임상",
+      "rise_reason": "류마티스 치료제 임상 성공",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "바이오시밀러(복제 바이오의약품)",
       "news": [
@@ -66,7 +66,18 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "신약/임상",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[ET특징주] 한올바이오파마, 류마티스 치료제 임상 성공… 주가 26% 급...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003483982",
+          "source": "전자신문",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20260804",
@@ -845,5 +856,5 @@
     "count_recent": 1,
     "avg_rate": 16.41
   },
-  "built_at": "2026-11-11T23:52:08"
+  "built_at": "2026-11-12T02:30:45"
 }

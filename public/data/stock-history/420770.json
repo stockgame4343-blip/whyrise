@@ -9,9 +9,9 @@
       "close_price": 77100.0,
       "trading_volume": 104336,
       "trading_value": 8044305600,
-      "rise_reason": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "rise_reason": "반도체 기판주 동반 강세",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 기판(FC-BGA/PCB/MLB 등) 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "코리아써키트 10%대 급등…반도체 기판주 동반 상승",
+          "link": "https://n.news.naver.com/mnews/article/008/0005438824",
+          "source": "머니투데이",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20261027",
@@ -958,5 +969,5 @@
     "count_recent": 2,
     "avg_rate": 14.47
   },
-  "built_at": "2026-11-11T23:52:09"
+  "built_at": "2026-11-12T02:30:45"
 }

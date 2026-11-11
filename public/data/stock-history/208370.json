@@ -9,9 +9,9 @@
       "close_price": 2495.0,
       "trading_volume": 9244220,
       "trading_value": 23064328900,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "회계처리 위반 감사인지정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "증선위, '회계처리 위반' 셀바스헬스케어·대우산업개발에 감사인지정",
+          "link": "https://n.news.naver.com/mnews/article/018/0006408437",
+          "source": "이데일리",
+          "date": "2026-11-11"
+        }
+      ]
     },
     {
       "date": "20261105",
@@ -280,5 +291,5 @@
     "count_recent": 2,
     "avg_rate": 15.61
   },
-  "built_at": "2026-11-11T23:52:10"
+  "built_at": "2026-11-12T02:30:45"
 }

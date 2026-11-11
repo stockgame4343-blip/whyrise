@@ -9,9 +9,9 @@
       "close_price": 22300.0,
       "trading_volume": 2530032,
       "trading_value": 56419713600,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "200억원어치 자사주 48만주 전량 소각 결의",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -90,7 +90,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 소각",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "한진, 200억원어치 자사주 48만주 전량 소각 결의",
+          "link": "https://n.news.naver.com/mnews/article/029/0003058333",
+          "source": "디지털타임스",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20261103",
@@ -212,5 +223,5 @@
     "count_recent": 2,
     "avg_rate": 24.02
   },
-  "built_at": "2026-11-11T23:52:09"
+  "built_at": "2026-11-12T02:30:45"
 }

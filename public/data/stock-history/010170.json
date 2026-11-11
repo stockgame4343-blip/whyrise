@@ -9,9 +9,9 @@
       "close_price": 13130.0,
       "trading_volume": 5186518,
       "trading_value": 68098981340,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "광통신주 동반 강세 — 데이터센터 우려 과도 평가",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 광통신주, '데이터센터 우려 과도' 평가에 급등 마감(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016433874",
+          "source": "연합뉴스",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20261021",
@@ -1687,5 +1698,5 @@
     "count_recent": 2,
     "avg_rate": 17.7
   },
-  "built_at": "2026-11-11T23:52:09"
+  "built_at": "2026-11-12T02:30:45"
 }

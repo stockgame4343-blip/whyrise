@@ -9,9 +9,9 @@
       "close_price": 38000.0,
       "trading_volume": 235110,
       "trading_value": 8934180000,
-      "rise_reason": "수주 공시",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 삼성중공업과 361억원 규모 선박엔진 공급계약[공시...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "수주 공시",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "HD현대마린엔진, 삼성중공업과 361억원 규모 선박엔진 공급계약[공시...",
+          "link": "https://n.news.naver.com/mnews/article/014/0005601464",
+          "source": "파이낸셜뉴스",
+          "date": "2026-11-09"
+        }
+      ]
     },
     {
       "date": "20261102",
@@ -772,5 +783,5 @@
     "count_recent": 3,
     "avg_rate": 13.89
   },
-  "built_at": "2026-11-11T23:52:08"
+  "built_at": "2026-11-12T02:30:46"
 }
