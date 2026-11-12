@@ -9,9 +9,9 @@
       "close_price": 23750.0,
       "trading_volume": 1289703,
       "trading_value": 30630446250,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "대주주 공개매수 후 상폐 추진",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -54,7 +54,18 @@
       ],
       "sector": "",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "에스텍, 대주주 공개매수 후 상폐 추진에 20% 급등",
+          "link": "https://n.news.naver.com/mnews/article/003/0014317574",
+          "source": "뉴시스",
+          "date": "2026-11-12"
+        }
+      ]
     },
     {
       "date": "20261111",
@@ -149,5 +160,5 @@
     "count_recent": 2,
     "avg_rate": 24.73
   },
-  "built_at": "2026-11-13T00:42:44"
+  "built_at": "2026-11-13T02:47:10"
 }

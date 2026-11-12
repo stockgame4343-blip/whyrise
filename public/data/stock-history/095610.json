@@ -9,9 +9,9 @@
       "close_price": 95400.0,
       "trading_volume": 418116,
       "trading_value": 39888266400,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: AI 반도체·전력반도체 겨냥 고...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "[미리보는 소부장 테크페어]〈4〉테스, AI 반도체·전력반도체 겨냥 고...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003484600",
+          "source": "전자신문",
+          "date": "2026-11-11"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -1192,5 +1203,5 @@
     "count_recent": 1,
     "avg_rate": 16.47
   },
-  "built_at": "2026-11-13T00:42:44"
+  "built_at": "2026-11-13T02:47:11"
 }

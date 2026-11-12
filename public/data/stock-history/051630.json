@@ -9,9 +9,9 @@
       "close_price": 4180.0,
       "trading_volume": 1518783,
       "trading_value": 6348512940,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "화학 업종 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "당선",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "화학",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector"
     },
     {
       "date": "20261030",
@@ -748,5 +751,5 @@
     "count_recent": 4,
     "avg_rate": 18.7
   },
-  "built_at": "2026-11-13T00:42:44"
+  "built_at": "2026-11-13T02:47:10"
 }

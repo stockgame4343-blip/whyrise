@@ -9,9 +9,9 @@
       "close_price": 930.0,
       "trading_volume": 5416320,
       "trading_value": 5037177600,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "최대주주 80억 유상증자",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "코로나19(진단키트)",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엔젠바이오, 최대주주 80억 유상증자…태양광 사업 진출",
+          "link": "https://n.news.naver.com/mnews/article/277/0005840660",
+          "source": "아시아경제",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20261105",
@@ -837,5 +848,5 @@
     "count_recent": 3,
     "avg_rate": 21.59
   },
-  "built_at": "2026-11-13T00:42:46"
+  "built_at": "2026-11-13T02:47:11"
 }

@@ -9,9 +9,9 @@
       "close_price": 12930.0,
       "trading_volume": 196044,
       "trading_value": 2534848920,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 부산역 AI 역무원 운영 분석으로 철도학회 우수상",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -54,7 +54,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "코난테크놀로지, 부산역 AI 역무원 운영 분석으로 철도학회 우수상",
+          "link": "https://n.news.naver.com/mnews/article/031/0001074262",
+          "source": "아이뉴스24",
+          "date": "2026-11-11"
+        }
+      ]
     },
     {
       "date": "20260824",
@@ -619,5 +630,5 @@
     "count_recent": 1,
     "avg_rate": 16.07
   },
-  "built_at": "2026-11-13T00:42:44"
+  "built_at": "2026-11-13T02:47:10"
 }

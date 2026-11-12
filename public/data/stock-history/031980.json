@@ -9,9 +9,9 @@
       "close_price": 152700.0,
       "trading_volume": 284868,
       "trading_value": 43499343600,
-      "rise_reason": "반도체 장비 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "TSMC 설비투자 확대 수혜",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -90,7 +90,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "TSMC 설비투자 확대 수혜… 피에스케이홀딩스 내년 5000억 매출 전망",
+          "link": "https://n.news.naver.com/mnews/article/037/0000039132",
+          "source": "주간동아",
+          "date": "2026-11-11"
+        }
+      ]
     },
     {
       "date": "20261028",
@@ -1373,5 +1384,5 @@
     "count_recent": 3,
     "avg_rate": 15.6
   },
-  "built_at": "2026-11-13T00:42:44"
+  "built_at": "2026-11-13T02:47:11"
 }

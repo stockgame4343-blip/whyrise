@@ -9,9 +9,9 @@
       "close_price": 10580.0,
       "trading_volume": 334283,
       "trading_value": 3536714140,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "HBM 테마 5종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -36,7 +36,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20261021",
@@ -432,5 +435,5 @@
     "count_recent": 3,
     "avg_rate": 14.76
   },
-  "built_at": "2026-11-13T00:42:44"
+  "built_at": "2026-11-13T02:47:11"
 }

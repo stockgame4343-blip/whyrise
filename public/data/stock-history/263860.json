@@ -9,9 +9,9 @@
       "close_price": 33300.0,
       "trading_volume": 8271013,
       "trading_value": 275424732900,
-      "rise_reason": "보안주(정보) 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "누적 영업익 3배 넘게 늘었다",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -90,7 +90,18 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "보안주(정보) 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "지니언스, 누적 영업익 3배 넘게 늘었다…NAC·EDR로 ‘폭풍성장’",
+          "link": "https://n.news.naver.com/mnews/article/009/0005763039",
+          "source": "매일경제",
+          "date": "2026-11-12"
+        }
+      ]
     },
     {
       "date": "20261028",
@@ -681,5 +692,5 @@
     "count_recent": 2,
     "avg_rate": 18.49
   },
-  "built_at": "2026-11-13T00:42:44"
+  "built_at": "2026-11-13T02:47:10"
 }

@@ -9,9 +9,9 @@
       "close_price": 7410.0,
       "trading_volume": 174163,
       "trading_value": 1290547830,
-      "rise_reason": "흑자 전환",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "반도체 장비 테마 21종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "흑자 전환",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20261027",
@@ -404,5 +407,5 @@
     "count_recent": 2,
     "avg_rate": 14.93
   },
-  "built_at": "2026-11-13T00:42:45"
+  "built_at": "2026-11-13T02:47:11"
 }
