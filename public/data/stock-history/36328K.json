@@ -4,6 +4,29 @@
   "market": "KOSPI",
   "events": [
     {
+      "date": "20261112",
+      "change_rate": 29.97,
+      "close_price": 4380.0,
+      "trading_volume": 94587,
+      "trading_value": 414291060,
+      "rise_reason": "상한가 — 사유 미수집",
+      "reason_confidence": "low",
+      "reason_source": "pattern",
+      "reason_status": "filled",
+      "theme_tag": "거래량",
+      "news": [
+        {
+          "title": "개인 홀로 순매수… 코스피 0.11% 내린 5369.63",
+          "link": "https://n.news.naver.com/mnews/article/081/0003698578",
+          "source": "서울신문",
+          "date": "2026-11-12"
+        }
+      ],
+      "sector": "호텔,레스토랑,레저",
+      "is_52w_high": false,
+      "source": "estimated"
+    },
+    {
       "date": "20261111",
       "change_rate": 29.37,
       "close_price": 3370.0,
@@ -14,13 +37,20 @@
       "reason_source": "news_extract",
       "reason_status": "missing",
       "theme_tag": "거래량",
-      "news": [],
+      "news": [
+        {
+          "title": "개인 홀로 순매수… 코스피 0.11% 내린 5369.63",
+          "link": "https://n.news.naver.com/mnews/article/081/0003698578",
+          "source": "서울신문",
+          "date": "2026-11-12"
+        }
+      ],
       "sector": "호텔,레스토랑,레저",
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "거래량 테마 강세",
-      "reason_source_previous": "theme",
-      "reason_kind": "none"
+      "reason_kind": "none",
+      "reason_source_previous": "theme"
     },
     {
       "date": "20260922",
@@ -207,12 +237,12 @@
     }
   ],
   "stats": {
-    "count_10": 3,
-    "count_15": 1,
-    "count_20": 1,
-    "count_limit": 0,
-    "count_recent": 1,
-    "avg_rate": 17.02
+    "count_10": 4,
+    "count_15": 2,
+    "count_20": 2,
+    "count_limit": 1,
+    "count_recent": 2,
+    "avg_rate": 20.26
   },
-  "built_at": "2026-11-12T12:49:31"
+  "built_at": "2026-11-13T00:42:44"
 }

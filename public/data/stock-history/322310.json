@@ -10,8 +10,8 @@
       "trading_volume": 104123,
       "trading_value": 1013116790,
       "rise_reason": "자사주 매입",
-      "reason_confidence": "mid",
-      "reason_source": "llm",
+      "reason_confidence": "high",
+      "reason_source": "news",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -24,15 +24,7 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_evidence": [
-        {
-          "title": "오로스테크놀로지, 10억 규모 자사주 취득 신탁계약",
-          "link": "https://n.news.naver.com/mnews/article/003/0014313306",
-          "source": "뉴시스",
-          "date": "2026-11-10"
-        }
-      ]
+      "source": "estimated"
     },
     {
       "date": "20261110",
@@ -57,8 +49,6 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "자사주 매입",
-      "reason_source_previous": "news",
-      "reason_kind": "catalyst",
       "reason_evidence": [
         {
           "title": "오로스테크놀로지, 10억 규모 자사주 취득 신탁계약",
@@ -66,7 +56,9 @@
           "source": "뉴시스",
           "date": "2026-11-10"
         }
-      ]
+      ],
+      "reason_kind": "catalyst",
+      "reason_source_previous": "news"
     },
     {
       "date": "20260731",
@@ -693,5 +685,5 @@
     "count_recent": 2,
     "avg_rate": 14.7
   },
-  "built_at": "2026-11-12T12:49:31"
+  "built_at": "2026-11-13T00:42:45"
 }
