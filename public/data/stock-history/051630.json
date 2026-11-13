@@ -4,6 +4,32 @@
   "market": "KOSPI",
   "events": [
     {
+      "date": "20261113",
+      "change_rate": 18.42,
+      "close_price": 4950.0,
+      "trading_volume": 1557853,
+      "trading_value": 7711372350,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
+      "theme_tag": "당선",
+      "news": [
+        {
+          "title": "[마감시황]코스피, 0.81% 내린 5018.85 마감…기관 매수에도 외국인·개...",
+          "link": "https://n.news.naver.com/mnews/article/081/0003697292",
+          "source": "서울신문",
+          "date": "2026-11-09"
+        }
+      ],
+      "sector": "화학",
+      "is_52w_high": true,
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
+    },
+    {
       "date": "20261112",
       "change_rate": 15.47,
       "close_price": 4180.0,
@@ -26,8 +52,8 @@
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "52주 신고가 도달",
-      "reason_source_previous": "pattern",
-      "reason_kind": "sector"
+      "reason_kind": "sector",
+      "reason_source_previous": "pattern"
     },
     {
       "date": "20261030",
@@ -744,12 +770,12 @@
     }
   ],
   "stats": {
-    "count_10": 14,
-    "count_15": 9,
+    "count_10": 15,
+    "count_15": 10,
     "count_20": 4,
     "count_limit": 3,
-    "count_recent": 4,
-    "avg_rate": 18.7
+    "count_recent": 5,
+    "avg_rate": 18.68
   },
-  "built_at": "2026-11-13T12:25:39"
+  "built_at": "2026-11-14T00:01:09"
 }
