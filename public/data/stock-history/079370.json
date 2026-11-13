@@ -9,9 +9,9 @@
       "close_price": 11430.0,
       "trading_volume": 321780,
       "trading_value": 3677945400,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "출시 100일 앞두고 매출 최상위권",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "HBM(고대역폭메모리)",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "컴투스 ‘제우스’, 출시 100일 앞두고 매출 최상위권…장기 흥행 기...",
+          "link": "https://n.news.naver.com/mnews/article/009/0005763277",
+          "source": "매일경제",
+          "date": "2026-11-13"
+        }
+      ]
     },
     {
       "date": "20261111",
@@ -482,5 +493,5 @@
     "count_recent": 4,
     "avg_rate": 14.46
   },
-  "built_at": "2026-11-14T00:00:54"
+  "built_at": "2026-11-14T02:23:32"
 }

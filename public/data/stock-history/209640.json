@@ -9,9 +9,9 @@
       "close_price": 3915.0,
       "trading_volume": 2740105,
       "trading_value": 10727511075,
-      "rise_reason": "실적 호조",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "美데이터센터 수주 11배 급증",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "와이제이링크, 美데이터센터 수주 11배 급증…3Q누적 72억 흑자전환",
+          "link": "https://n.news.naver.com/mnews/article/008/0005440285",
+          "source": "머니투데이",
+          "date": "2026-11-12"
+        }
+      ]
     },
     {
       "date": "20261110",
@@ -929,5 +940,5 @@
     "count_recent": 2,
     "avg_rate": 16.54
   },
-  "built_at": "2026-11-14T00:00:54"
+  "built_at": "2026-11-14T02:23:33"
 }

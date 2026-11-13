@@ -9,10 +9,10 @@
       "close_price": 8120.0,
       "trading_volume": 3945634,
       "trading_value": 32038548080,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20261016",
@@ -410,5 +413,5 @@
     "count_recent": 2,
     "avg_rate": 18.98
   },
-  "built_at": "2026-11-14T00:00:54"
+  "built_at": "2026-11-14T02:23:32"
 }
