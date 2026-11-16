@@ -9,9 +9,9 @@
       "close_price": 15700.0,
       "trading_volume": 358195,
       "trading_value": 5623661500,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 고출력 액추에이터로 조선·중공업 로봇 시장 공략",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "하이젠알앤엠, 고출력 액추에이터로 조선·중공업 로봇 시장 공략",
+          "link": "https://n.news.naver.com/mnews/article/030/0003484982",
+          "source": "전자신문",
+          "date": "2026-11-12"
+        }
+      ]
     },
     {
       "date": "20261016",
@@ -913,5 +924,5 @@
     "count_recent": 2,
     "avg_rate": 14.41
   },
-  "built_at": "2026-11-15T10:18:33"
+  "built_at": "2026-11-16T11:43:20"
 }

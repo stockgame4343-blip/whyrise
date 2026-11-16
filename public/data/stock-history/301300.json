@@ -9,9 +9,9 @@
       "close_price": 2365.0,
       "trading_volume": 652334,
       "trading_value": 1542769910,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "에이아이블레이저에 경영권 매각",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "바이브컴퍼니, 에이아이블레이저에 경영권 매각…80억 규모 유상증자...",
+          "link": "https://n.news.naver.com/mnews/article/092/0002445231",
+          "source": "지디넷코리아",
+          "date": "2026-11-13"
+        }
+      ]
     },
     {
       "date": "20261112",
@@ -787,5 +798,5 @@
     "count_recent": 2,
     "avg_rate": 20.07
   },
-  "built_at": "2026-11-15T10:18:35"
+  "built_at": "2026-11-16T11:43:20"
 }

@@ -9,9 +9,9 @@
       "close_price": 4255.0,
       "trading_volume": 237355,
       "trading_value": 1009945525,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 춘천 토이로봇관서 AI·XR 콘텐츠 실증…공간 솔루션 사업 확대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "영상콘텐츠",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "M83, 춘천 토이로봇관서 AI·XR 콘텐츠 실증…공간 솔루션 사업 확대",
+          "link": "https://n.news.naver.com/mnews/article/366/0001204423",
+          "source": "조선비즈",
+          "date": "2026-11-12"
+        }
+      ]
     },
     {
       "date": "20260813",
@@ -506,5 +517,5 @@
     "count_recent": 1,
     "avg_rate": 18.17
   },
-  "built_at": "2026-11-15T10:18:35"
+  "built_at": "2026-11-16T11:43:20"
 }

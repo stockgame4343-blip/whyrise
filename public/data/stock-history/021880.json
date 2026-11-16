@@ -9,10 +9,10 @@
       "close_price": 1222.0,
       "trading_volume": 70724,
       "trading_value": 86424728,
-      "rise_reason": "구조조정 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "구조조정",
       "news": [
         {
@@ -30,7 +30,10 @@
       ],
       "sector": "기타금융",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "구조조정 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260810",
@@ -374,5 +377,5 @@
     "count_recent": 1,
     "avg_rate": 20.84
   },
-  "built_at": "2026-11-15T10:18:35"
+  "built_at": "2026-11-16T11:43:20"
 }
