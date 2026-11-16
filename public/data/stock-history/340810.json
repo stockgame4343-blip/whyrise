@@ -9,9 +9,9 @@
       "close_price": 3295.0,
       "trading_volume": 5280882,
       "trading_value": 17400506190,
-      "rise_reason": "AI/반도체 테마",
+      "rise_reason": "산업부 M.AX 얼라이언스 3개 분과 동시 승인",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료AI",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "시선AI, 산업부 ‘M.AX 얼라이언스’ 3개 분과 동시 승인… “제조 AX ...",
+          "link": "https://n.news.naver.com/mnews/article/009/0005763117",
+          "source": "매일경제",
+          "date": "2026-11-13"
+        }
+      ]
     },
     {
       "date": "20261111",
@@ -482,5 +493,5 @@
     "count_recent": 2,
     "avg_rate": 19.11
   },
-  "built_at": "2026-11-17T01:30:23"
+  "built_at": "2026-11-17T04:52:24"
 }

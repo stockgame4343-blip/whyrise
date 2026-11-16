@@ -9,10 +9,10 @@
       "close_price": 5680.0,
       "trading_volume": 8510168,
       "trading_value": 48337754240,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "코로나19(치료제/백신 개발 등)",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261113",
@@ -1101,5 +1104,5 @@
     "count_recent": 4,
     "avg_rate": 15.61
   },
-  "built_at": "2026-11-17T01:30:22"
+  "built_at": "2026-11-17T04:52:24"
 }

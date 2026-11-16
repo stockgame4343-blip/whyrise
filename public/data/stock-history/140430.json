@@ -9,10 +9,10 @@
       "close_price": 2435.0,
       "trading_volume": 2220262,
       "trading_value": 5406337970,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "방위산업/전쟁 및 테러",
       "news": [
         {
@@ -36,7 +36,10 @@
       ],
       "sector": "통신장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261019",
@@ -1109,5 +1112,5 @@
     "count_recent": 2,
     "avg_rate": 20.99
   },
-  "built_at": "2026-11-17T01:30:23"
+  "built_at": "2026-11-17T04:52:24"
 }
