@@ -9,9 +9,9 @@
       "close_price": 1807.0,
       "trading_volume": 1552800,
       "trading_value": 2805909600,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 루게릭병 신약 뉴로나타 알 3b상 방향 FDA 동의 확...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "코아스템켐온 “루게릭병 신약 ‘뉴로나타 알’ 3b상 방향 FDA 동의 확...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006410677",
+          "source": "이데일리",
+          "date": "2026-11-16"
+        }
+      ]
     },
     {
       "date": "20260527",
@@ -591,5 +602,5 @@
     "count_recent": 1,
     "avg_rate": 18.74
   },
-  "built_at": "2026-11-18T01:35:14"
+  "built_at": "2026-11-18T03:45:25"
 }

@@ -9,9 +9,9 @@
       "close_price": 2530.0,
       "trading_volume": 3717701,
       "trading_value": 9405783530,
-      "rise_reason": "남북/통일",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "남북경협주 동반 강세 — 북미 회동 기대",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "남북경협",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "섬유,의류,신발,호화품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "남북/통일",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "북미 회동 기대에 남북경협株 급등…인디에프 28%↑[코주부]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004683063",
+          "source": "서울경제",
+          "date": "2026-11-17"
+        }
+      ]
     },
     {
       "date": "20261027",
@@ -1055,5 +1066,5 @@
     "count_recent": 3,
     "avg_rate": 21.98
   },
-  "built_at": "2026-11-18T01:35:14"
+  "built_at": "2026-11-18T03:45:25"
 }
