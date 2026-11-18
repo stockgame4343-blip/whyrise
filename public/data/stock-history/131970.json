@@ -9,9 +9,9 @@
       "close_price": 73900.0,
       "trading_volume": 399884,
       "trading_value": 29551427600,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "반도체주 동반 강세 — 美 잇단 시스템 장애",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 보안주·통신장비주, 美 잇단 시스템 장애에 급등(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016449663",
+          "source": "연합뉴스",
+          "date": "2026-11-18"
+        }
+      ]
     },
     {
       "date": "20261111",
@@ -1319,5 +1330,5 @@
     "count_recent": 3,
     "avg_rate": 13.54
   },
-  "built_at": "2026-11-19T01:07:57"
+  "built_at": "2026-11-19T03:23:50"
 }

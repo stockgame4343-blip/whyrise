@@ -9,12 +9,24 @@
       "close_price": 3155.0,
       "trading_volume": 15625151,
       "trading_value": 49297351405,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
+        {
+          "title": "[ET특징주] 아리바이오랩, 치매약 3상 1차 목표 달성했는데… 주가는...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003486514",
+          "source": "전자신문",
+          "date": "2026-11-17"
+        },
+        {
+          "title": "삼진제약 “아리바이오 치매약 임상 3상 성공 판단…상업화 속도”",
+          "link": "https://n.news.naver.com/mnews/article/366/0001205621",
+          "source": "조선비즈",
+          "date": "2026-11-18"
+        },
         {
           "title": "삼진제약 \"아리바이오 AR1001, 임상 3상 성공...상업화 속도 낼 것\"",
           "link": "https://n.news.naver.com/mnews/article/008/0005442869",
@@ -31,12 +43,6 @@
           "title": "아리바이오 치매약 효능 엇갈려",
           "link": "https://n.news.naver.com/mnews/article/015/0005354879",
           "source": "한국경제",
-          "date": "2026-11-17"
-        },
-        {
-          "title": "[ET특징주] 아리바이오랩, 치매약 3상 1차 목표 달성했는데… 주가는...",
-          "link": "https://n.news.naver.com/mnews/article/030/0003486514",
-          "source": "전자신문",
           "date": "2026-11-17"
         },
         {
@@ -66,7 +72,10 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261104",
@@ -860,5 +869,5 @@
     "count_recent": 2,
     "avg_rate": 17.46
   },
-  "built_at": "2026-11-19T01:07:58"
+  "built_at": "2026-11-19T03:23:50"
 }

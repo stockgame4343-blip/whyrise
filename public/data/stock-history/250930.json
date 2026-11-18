@@ -9,9 +9,9 @@
       "close_price": 1424.0,
       "trading_volume": 2329648,
       "trading_value": 3317418752,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "3분기 매출액 121억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "OLED(유기 발광 다이오드)",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "디스플레이장비및부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "예선테크, 3분기 매출액 121억…전년比 26%↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005843323",
+          "source": "아시아경제",
+          "date": "2026-11-16"
+        }
+      ]
     },
     {
       "date": "20261111",
@@ -815,5 +826,5 @@
     "count_recent": 3,
     "avg_rate": 24.44
   },
-  "built_at": "2026-11-19T01:07:59"
+  "built_at": "2026-11-19T03:23:50"
 }

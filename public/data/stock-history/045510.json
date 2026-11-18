@@ -9,9 +9,9 @@
       "close_price": 1144.0,
       "trading_volume": 118364,
       "trading_value": 135408416,
-      "rise_reason": "실적 호조",
+      "rise_reason": "AI 매출 438% 급증",
       "reason_confidence": "high",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "SI(시스템통합)",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "실적 호조",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "정원엔시스, AI 매출 438% 급증…3분기 매출 21%↑",
+          "link": "https://n.news.naver.com/mnews/article/277/0005843044",
+          "source": "아시아경제",
+          "date": "2026-11-16"
+        }
+      ]
     },
     {
       "date": "20260929",
@@ -329,5 +340,5 @@
     "count_recent": 1,
     "avg_rate": 20.63
   },
-  "built_at": "2026-11-19T01:07:59"
+  "built_at": "2026-11-19T03:23:51"
 }
