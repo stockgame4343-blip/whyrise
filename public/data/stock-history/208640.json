@@ -46,9 +46,9 @@
       "close_price": 1043.0,
       "trading_volume": 2389752,
       "trading_value": 2492511336,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 115억 원 규모 유상증자 결정",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모바일게임(스마트폰)",
       "news": [
@@ -67,7 +67,18 @@
       ],
       "sector": "게임엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "썸에이지, 115억 원 규모 유상증자 결정",
+          "link": "https://n.news.naver.com/mnews/article/236/0000258100",
+          "source": "포모스",
+          "date": "2026-11-18"
+        }
+      ]
     },
     {
       "date": "20261117",
@@ -949,5 +960,5 @@
     "count_recent": 5,
     "avg_rate": 26.0
   },
-  "built_at": "2026-11-20T01:12:36"
+  "built_at": "2026-11-20T03:41:19"
 }

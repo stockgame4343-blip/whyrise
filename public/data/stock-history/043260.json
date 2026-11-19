@@ -9,9 +9,9 @@
       "close_price": 26750.0,
       "trading_volume": 5236280,
       "trading_value": 140070490000,
-      "rise_reason": "실적 개선",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "3분기 영업이익 43억",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "광통신(광케이블/광섬유 등)",
       "news": [
@@ -66,7 +66,18 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "실적 개선",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "성호전자, 3분기 영업이익 43억…전년 동기비 703%↑",
+          "link": "https://n.news.naver.com/mnews/article/008/0005441932",
+          "source": "머니투데이",
+          "date": "2026-11-16"
+        }
+      ]
     },
     {
       "date": "20261117",
@@ -1947,5 +1958,5 @@
     "count_recent": 4,
     "avg_rate": 17.26
   },
-  "built_at": "2026-11-20T01:12:20"
+  "built_at": "2026-11-20T03:41:19"
 }

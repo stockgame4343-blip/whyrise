@@ -9,10 +9,10 @@
       "close_price": 3780.0,
       "trading_volume": 22713,
       "trading_value": 85855140,
-      "rise_reason": "쿠팡(coupang) 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "쿠팡(coupang)",
       "news": [
         {
@@ -30,7 +30,10 @@
       ],
       "sector": "전자제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "쿠팡(coupang) 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20261118",
@@ -277,5 +280,5 @@
     "count_recent": 2,
     "avg_rate": 18.35
   },
-  "built_at": "2026-11-20T01:12:22"
+  "built_at": "2026-11-20T03:41:19"
 }

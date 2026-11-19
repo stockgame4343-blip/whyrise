@@ -9,12 +9,24 @@
       "close_price": 90500.0,
       "trading_volume": 339696,
       "trading_value": 30742488000,
-      "rise_reason": "반도체 장비 테마 강세",
+      "rise_reason": "반도체 장비 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
+        {
+          "title": "IBK증권, 테스 목표가↓…\"증시조정 따른 멀티플 하락 반영\"",
+          "link": "https://n.news.naver.com/mnews/article/001/0016442976",
+          "source": "연합뉴스",
+          "date": "2026-11-16"
+        },
+        {
+          "title": "실패해도 개발비 보상…SK하이닉스, 협력사 R&D 위험 나눈다",
+          "link": "https://n.news.naver.com/mnews/article/031/0001075162",
+          "source": "아이뉴스24",
+          "date": "2026-11-16"
+        },
         {
           "title": "삼전닉스 이틀째 강세…전문가 \"저평가 상태로 이익 지속이 관건\"",
           "link": "https://n.news.naver.com/mnews/article/008/0005443770",
@@ -90,7 +102,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 장비 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "theme"
     },
     {
       "date": "20261111",
@@ -1298,5 +1313,5 @@
     "count_recent": 2,
     "avg_rate": 16.6
   },
-  "built_at": "2026-11-20T01:12:20"
+  "built_at": "2026-11-20T03:41:19"
 }
