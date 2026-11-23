@@ -9,9 +9,9 @@
       "close_price": 1772.0,
       "trading_volume": 77231,
       "trading_value": 136853332,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "3분기 순이익 462% 증가",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "가상화폐(비트코인 등)",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 매입",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "파라택시스이더리움, 3분기 순이익 462%↑",
+          "link": "https://n.news.naver.com/mnews/article/018/0006410502",
+          "source": "이데일리",
+          "date": "2026-11-16"
+        }
+      ]
     },
     {
       "date": "20261111",
@@ -717,5 +728,5 @@
     "count_recent": 2,
     "avg_rate": 17.08
   },
-  "built_at": "2026-11-22T10:17:03"
+  "built_at": "2026-11-23T12:42:00"
 }

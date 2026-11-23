@@ -9,9 +9,9 @@
       "close_price": 6230.0,
       "trading_volume": 3379726,
       "trading_value": 21055692980,
-      "rise_reason": "실적 개선",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "3분기 영업이익 13억원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
@@ -78,7 +78,18 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "실적 개선",
+      "reason_source_previous": "news",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "파수AI, 3분기 영업이익 13억원…전년比 400%↑",
+          "link": "https://n.news.naver.com/mnews/article/030/0003486225",
+          "source": "전자신문",
+          "date": "2026-11-16"
+        }
+      ]
     },
     {
       "date": "20261118",
@@ -696,5 +707,5 @@
     "count_recent": 5,
     "avg_rate": 15.22
   },
-  "built_at": "2026-11-22T10:17:02"
+  "built_at": "2026-11-23T12:42:00"
 }

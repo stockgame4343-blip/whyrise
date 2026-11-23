@@ -9,9 +9,9 @@
       "close_price": 1790.0,
       "trading_volume": 87084,
       "trading_value": 155880360,
-      "rise_reason": "반도체 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "3분기 흑자전환",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "멤레이비티, 3분기 흑자전환…서버·스토리지 공급 확대",
+          "link": "https://n.news.naver.com/mnews/article/293/0000093458",
+          "source": "블로터",
+          "date": "2026-11-18"
+        }
+      ]
     },
     {
       "date": "20260814",
@@ -704,5 +715,5 @@
     "count_recent": 1,
     "avg_rate": 21.33
   },
-  "built_at": "2026-11-22T10:17:03"
+  "built_at": "2026-11-23T12:42:00"
 }

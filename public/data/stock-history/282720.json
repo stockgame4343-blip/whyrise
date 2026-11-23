@@ -9,9 +9,9 @@
       "close_price": 9260.0,
       "trading_volume": 1868977,
       "trading_value": 17306727020,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "2300억원 규모 공급계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "풍력에너지",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "대형 수주",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "금양그린파워, 2300억원 규모 공급계약 체결",
+          "link": "https://n.news.naver.com/mnews/article/018/0006413228",
+          "source": "이데일리",
+          "date": "2026-11-20"
+        }
+      ]
     },
     {
       "date": "20261110",
@@ -401,5 +412,5 @@
     "count_recent": 4,
     "avg_rate": 14.72
   },
-  "built_at": "2026-11-22T10:17:02"
+  "built_at": "2026-11-23T12:42:00"
 }

@@ -9,9 +9,9 @@
       "close_price": 99700.0,
       "trading_volume": 480419,
       "trading_value": 47897774300,
-      "rise_reason": "상한가 — 사유 미수집",
-      "reason_confidence": "low",
-      "reason_source": "pattern",
+      "rise_reason": "검은 금요일",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "‘검은 금요일’에도 한진칼우 상한가…지분 경쟁이 투심 자극[마켓시...",
+          "link": "https://n.news.naver.com/mnews/article/011/0004684459",
+          "source": "서울경제",
+          "date": "2026-11-20"
+        }
+      ]
     },
     {
       "date": "20261112",
@@ -690,5 +701,5 @@
     "count_recent": 8,
     "avg_rate": 25.81
   },
-  "built_at": "2026-11-22T10:17:01"
+  "built_at": "2026-11-23T12:42:00"
 }

@@ -9,9 +9,9 @@
       "close_price": 1586.0,
       "trading_volume": 127114,
       "trading_value": 201602804,
-      "rise_reason": "유상증자",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 44억 3자배정 유상증자…차입금 출자전환·최대주주 변경 마...",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "탈모 치료",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "유상증자",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "타임X AI, 44억 3자배정 유상증자…차입금 출자전환·최대주주 변경 마...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005845201",
+          "source": "아시아경제",
+          "date": "2026-11-19"
+        }
+      ]
     },
     {
       "date": "20260721",
@@ -656,5 +667,5 @@
     "count_recent": 1,
     "avg_rate": 38.68
   },
-  "built_at": "2026-11-22T10:17:03"
+  "built_at": "2026-11-23T12:42:00"
 }

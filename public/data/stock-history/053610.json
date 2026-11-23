@@ -9,9 +9,9 @@
       "close_price": 67500.0,
       "trading_volume": 61270,
       "trading_value": 4135725000,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "반도체주 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전자파",
       "news": [
@@ -36,7 +36,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "대형 수주",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20261113",
@@ -565,5 +568,5 @@
     "count_recent": 4,
     "avg_rate": 14.72
   },
-  "built_at": "2026-11-22T10:17:01"
+  "built_at": "2026-11-23T12:42:00"
 }

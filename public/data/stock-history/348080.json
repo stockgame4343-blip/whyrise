@@ -9,9 +9,9 @@
       "close_price": 4090.0,
       "trading_volume": 83141,
       "trading_value": 340046690,
-      "rise_reason": "대형 수주",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "바이오주 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -24,7 +24,10 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "대형 수주",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20260917",
@@ -488,5 +491,5 @@
     "count_recent": 1,
     "avg_rate": 22.51
   },
-  "built_at": "2026-11-22T10:17:02"
+  "built_at": "2026-11-23T12:42:00"
 }
