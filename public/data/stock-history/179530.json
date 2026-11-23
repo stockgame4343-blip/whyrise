@@ -9,9 +9,9 @@
       "close_price": 627.0,
       "trading_volume": 1211721,
       "trading_value": 759749067,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "바이오주 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -36,7 +36,10 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20261002",
@@ -994,5 +997,5 @@
     "count_recent": 1,
     "avg_rate": 18.96
   },
-  "built_at": "2026-11-24T03:53:03"
+  "built_at": "2026-11-24T06:40:20"
 }
