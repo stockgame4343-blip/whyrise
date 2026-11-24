@@ -9,9 +9,9 @@
       "close_price": 16500.0,
       "trading_volume": 534666,
       "trading_value": 8821989000,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "기계 업종 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전기차",
       "news": [
@@ -30,7 +30,10 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20261113",
@@ -953,5 +956,5 @@
     "count_recent": 2,
     "avg_rate": 14.27
   },
-  "built_at": "2026-11-25T03:23:27"
+  "built_at": "2026-11-25T05:21:13"
 }

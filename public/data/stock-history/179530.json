@@ -9,9 +9,9 @@
       "close_price": 815.0,
       "trading_volume": 2704791,
       "trading_value": 2204404665,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 바이오 넘어 K뷰티까지…중앙아시아 시장 공략 나선다",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "사료",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "애드바이오텍, 바이오 넘어 K뷰티까지…중앙아시아 시장 공략 나선다",
+          "link": "https://n.news.naver.com/mnews/article/293/0000093755",
+          "source": "블로터",
+          "date": "2026-11-24"
+        }
+      ]
     },
     {
       "date": "20261123",
@@ -1038,5 +1049,5 @@
     "count_recent": 2,
     "avg_rate": 19.7
   },
-  "built_at": "2026-11-25T03:23:28"
+  "built_at": "2026-11-25T05:21:13"
 }
