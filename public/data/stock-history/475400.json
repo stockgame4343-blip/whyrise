@@ -9,9 +9,9 @@
       "close_price": 16710.0,
       "trading_volume": 168308,
       "trading_value": 2812426680,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "로봇주 동반 강세",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피지컬 AI/휴머노이드 로봇",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 젠슨 황 복귀에 로봇주 일제히 강세…현대오토에버 22% 급등",
+          "link": "https://n.news.naver.com/mnews/article/366/0001206868",
+          "source": "조선비즈",
+          "date": "2026-11-24"
+        }
+      ]
     },
     {
       "date": "20261104",
@@ -921,5 +932,5 @@
     "count_recent": 2,
     "avg_rate": 15.16
   },
-  "built_at": "2026-11-26T02:45:19"
+  "built_at": "2026-11-26T04:35:45"
 }

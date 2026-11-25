@@ -9,9 +9,9 @@
       "close_price": 1875.0,
       "trading_volume": 1222717,
       "trading_value": 2292594375,
-      "rise_reason": "자사주 매입",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "100억 규모 자사주 취득 신탁계약",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "마이코플라스마 폐렴",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 매입",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엑세스바이오, 100억 규모 자사주 취득 신탁계약",
+          "link": "https://n.news.naver.com/mnews/article/277/0005847104",
+          "source": "아시아경제",
+          "date": "2026-11-24"
+        }
+      ]
     },
     {
       "date": "20260512",
@@ -298,5 +309,5 @@
     "count_recent": 1,
     "avg_rate": 16.42
   },
-  "built_at": "2026-11-26T02:45:20"
+  "built_at": "2026-11-26T04:35:45"
 }

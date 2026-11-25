@@ -9,17 +9,35 @@
       "close_price": 41750.0,
       "trading_volume": 9715727,
       "trading_value": 405631602250,
-      "rise_reason": "52주 신고가 도달",
-      "reason_confidence": "mid",
-      "reason_source": "pattern",
+      "rise_reason": "보안주 동반 강세 — 국내외 잇단 해킹 피해",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
+        {
+          "title": "몸값 4배 뛴 지니언스, 5년 동행 마침표 찍은 2대주주 미리캐피탈",
+          "link": "https://n.news.naver.com/mnews/article/293/0000093685",
+          "source": "블로터",
+          "date": "2026-11-23"
+        },
         {
           "title": "[특징주] 보안주, 국내외 잇단 해킹 피해에 급등(종합)",
           "link": "https://n.news.naver.com/mnews/article/001/0016463317",
           "source": "연합뉴스",
           "date": "2026-11-25"
+        },
+        {
+          "title": "[DD 주간브리핑] 오픈AI 보이스·AWS 클라우드 재설계…서울 달구는 '...",
+          "link": "https://n.news.naver.com/mnews/article/138/0002249493",
+          "source": "디지털데일리",
+          "date": "2026-11-22"
+        },
+        {
+          "title": "수능 덮친 'AI 커닝'…자바 취약점·지스타 개막[뉴스잇(IT)쥬]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009303141",
+          "source": "뉴스1",
+          "date": "2026-11-22"
         },
         {
           "title": "[오늘의증시] \"말짱 황\" 하루 만에 삼전닉스 10%대 급락...4600선 후퇴",
@@ -76,12 +94,6 @@
           "date": "2026-11-23"
         },
         {
-          "title": "몸값 4배 뛴 지니언스, 5년 동행 마침표 찍은 2대주주 미리캐피탈",
-          "link": "https://n.news.naver.com/mnews/article/293/0000093685",
-          "source": "블로터",
-          "date": "2026-11-23"
-        },
-        {
           "title": "국산AI 오픈소스로 풀었는데 북한이 쓰면? \"국방 AI는 별도 구축 필요...",
           "link": "https://n.news.naver.com/mnews/article/018/0006414178",
           "source": "이데일리",
@@ -90,7 +102,18 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 보안주, 국내외 잇단 해킹 피해에 급등(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016463317",
+          "source": "연합뉴스",
+          "date": "2026-11-25"
+        }
+      ]
     },
     {
       "date": "20261112",
@@ -781,5 +804,5 @@
     "count_recent": 3,
     "avg_rate": 18.74
   },
-  "built_at": "2026-11-26T02:45:19"
+  "built_at": "2026-11-26T04:35:45"
 }

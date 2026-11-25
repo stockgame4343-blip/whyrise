@@ -9,9 +9,9 @@
       "close_price": 7550.0,
       "trading_volume": 6393922,
       "trading_value": 48274111100,
-      "rise_reason": "52주 신고가",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "소프트웨어 업종 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "딥페이크(deepfake)",
       "news": [
@@ -48,7 +48,10 @@
       ],
       "sector": "소프트웨어",
       "is_52w_high": true,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "52주 신고가",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20261119",
@@ -754,5 +757,5 @@
     "count_recent": 6,
     "avg_rate": 16.64
   },
-  "built_at": "2026-11-26T02:45:20"
+  "built_at": "2026-11-26T04:35:45"
 }

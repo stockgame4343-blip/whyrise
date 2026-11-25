@@ -9,9 +9,9 @@
       "close_price": 915.0,
       "trading_volume": 1338866,
       "trading_value": 1225062390,
-      "rise_reason": "바이오",
+      "rise_reason": "풋옵션 감수한 최대주주",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "줄기세포",
       "news": [
@@ -54,7 +54,18 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "엑셀세라퓨틱스, 40억 수혈…풋옵션 감수한 최대주주",
+          "link": "https://n.news.naver.com/mnews/article/648/0000052942",
+          "source": "비즈워치",
+          "date": "2026-11-24"
+        }
+      ]
     },
     {
       "date": "20260826",
@@ -481,5 +492,5 @@
     "count_recent": 1,
     "avg_rate": 20.4
   },
-  "built_at": "2026-11-26T02:45:21"
+  "built_at": "2026-11-26T04:35:45"
 }

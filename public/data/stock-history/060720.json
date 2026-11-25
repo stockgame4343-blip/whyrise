@@ -9,10 +9,10 @@
       "close_price": 12190.0,
       "trading_volume": 3424780,
       "trading_value": 41748068200,
-      "rise_reason": "삼성 휴머노이드 본격화 소식",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -74,16 +74,14 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
-      "reason_evidence": [
-        {
-          "title": "[특징주] 삼성 휴머노이드 본격화 소식에…KH바텍 ‘상한가’",
-          "link": "https://n.news.naver.com/mnews/article/366/0001206859",
-          "source": "조선비즈",
-          "date": "2026-11-24"
-        }
-      ],
-      "reason_kind": "move",
-      "reason_source_previous": "news"
+      "reason_kind": "none",
+      "reason_source_previous": "news",
+      "reason_hint": {
+        "text": "11/20 주가 저평가",
+        "link": "https://n.news.naver.com/mnews/article/001/0016453487",
+        "title": "IBK증권 \"KH바텍 주가 저평가…내년부터 데이터센터향 매출↑\"",
+        "date": "20261120"
+      }
     },
     {
       "date": "20261016",
@@ -251,5 +249,5 @@
     "count_recent": 1,
     "avg_rate": 17.64
   },
-  "built_at": "2026-11-26T02:45:19"
+  "built_at": "2026-11-26T04:35:45"
 }
