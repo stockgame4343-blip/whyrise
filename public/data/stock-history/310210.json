@@ -9,9 +9,9 @@
       "close_price": 139800.0,
       "trading_volume": 228467,
       "trading_value": 31939686600,
-      "rise_reason": "외국인 매수세",
+      "rise_reason": "국가신약개발사업 과제 3건 선정",
       "reason_confidence": "mid",
-      "reason_source": "news",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "치매",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "외국인 매수세",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "보로노이, 국가신약개발사업 과제 3건 선정…\"VRN10·11 임상 가속\"",
+          "link": "https://n.news.naver.com/mnews/article/008/0005444796",
+          "source": "머니투데이",
+          "date": "2026-11-23"
+        }
+      ]
     },
     {
       "date": "20261110",
@@ -986,5 +997,5 @@
     "count_recent": 2,
     "avg_rate": 14.38
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T04:18:20"
 }

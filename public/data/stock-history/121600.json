@@ -9,10 +9,10 @@
       "close_price": 67100.0,
       "trading_volume": 269270,
       "trading_value": 18068017000,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261111",
@@ -408,5 +411,5 @@
     "count_recent": 4,
     "avg_rate": 13.24
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T04:18:20"
 }

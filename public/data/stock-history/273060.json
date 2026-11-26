@@ -9,10 +9,10 @@
       "close_price": 3855.0,
       "trading_volume": 67160,
       "trading_value": 258901800,
-      "rise_reason": "광고 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "광고",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "광고",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "광고 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260804",
@@ -520,5 +523,5 @@
     "count_recent": 1,
     "avg_rate": 13.96
   },
-  "built_at": "2026-11-27T02:26:51"
+  "built_at": "2026-11-27T04:18:20"
 }

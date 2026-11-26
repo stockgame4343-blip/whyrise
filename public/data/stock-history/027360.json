@@ -9,10 +9,10 @@
       "close_price": 2640.0,
       "trading_volume": 16039712,
       "trading_value": 42344839680,
-      "rise_reason": "우주/위성",
-      "reason_confidence": "mid",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -42,7 +42,10 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주/위성",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261113",
@@ -1082,5 +1085,5 @@
     "count_recent": 2,
     "avg_rate": 19.88
   },
-  "built_at": "2026-11-27T02:26:50"
+  "built_at": "2026-11-27T04:18:20"
 }

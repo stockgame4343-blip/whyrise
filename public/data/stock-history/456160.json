@@ -9,9 +9,9 @@
       "close_price": 44200.0,
       "trading_volume": 452849,
       "trading_value": 20015925800,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "비만치료제 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -30,7 +30,10 @@
       ],
       "sector": "제약",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20261110",
@@ -1098,5 +1101,5 @@
     "count_recent": 2,
     "avg_rate": 16.42
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T04:18:20"
 }

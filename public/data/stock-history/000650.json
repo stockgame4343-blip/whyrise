@@ -9,10 +9,10 @@
       "close_price": 197800.0,
       "trading_volume": 16019,
       "trading_value": 3168558200,
-      "rise_reason": "상한가 — 사유 미수집",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "pattern",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "서울고속버스터미널 재개발 수혜",
       "news": [
         {
@@ -24,7 +24,10 @@
       ],
       "sector": "도로와철도운송",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "상한가 — 사유 미수집",
+      "reason_source_previous": "pattern",
+      "reason_kind": "none"
     },
     {
       "date": "20261014",
@@ -1032,5 +1035,5 @@
     "count_recent": 1,
     "avg_rate": 25.86
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T04:18:20"
 }

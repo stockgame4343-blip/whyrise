@@ -9,9 +9,9 @@
       "close_price": 92400.0,
       "trading_volume": 405504,
       "trading_value": 37468569600,
-      "rise_reason": "mRNA(메신저 리보핵산) 테마 강세",
+      "rise_reason": "관련 보도: 이동기 대표, 보건의료기술진흥 유공 국무총리 표창",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "mRNA(메신저 리보핵산)",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "mRNA(메신저 리보핵산) 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이동기 올릭스 대표, 보건의료기술진흥 유공 국무총리 표창",
+          "link": "https://n.news.naver.com/mnews/article/015/0005358109",
+          "source": "한국경제",
+          "date": "2026-11-25"
+        }
+      ]
     },
     {
       "date": "20261110",
@@ -1095,5 +1106,5 @@
     "count_recent": 2,
     "avg_rate": 14.07
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T04:18:20"
 }

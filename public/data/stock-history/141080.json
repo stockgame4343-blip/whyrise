@@ -9,10 +9,10 @@
       "close_price": 57500.0,
       "trading_volume": 349094,
       "trading_value": 20072905000,
-      "rise_reason": "신약/임상",
-      "reason_confidence": "high",
-      "reason_source": "news",
-      "reason_status": "filled",
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "",
       "news": [
         {
@@ -60,7 +60,10 @@
       ],
       "sector": "",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "신약/임상",
+      "reason_source_previous": "news",
+      "reason_kind": "none"
     },
     {
       "date": "20261111",
@@ -609,5 +612,5 @@
     "count_recent": 2,
     "avg_rate": 12.5
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T04:18:20"
 }
