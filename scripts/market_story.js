@@ -590,7 +590,10 @@ function flowReason(f, max = 34) {
     // 잘리지 않고 한 줄에 들어가는 이유를 우선 (거래대금×상승률이 큰 종목부터)
     const fit = told.find(x => Array.from(leadText(x)).length <= max);
     if (fit) return leadText(fit);
-    return told[0] ? clipWords(leadText(told[0]), max) : '';
+    if (!told[0]) return '';
+    // 넘치면 괄호 안 이유만 줄인다 — "선두 지니너스(58조 유방암 치료제…)" (닫는 괄호가 잘려 나가지 않게)
+    const x = told[0], room = max - Array.from('선두 ' + x.name + '()').length;
+    return room >= 6 ? '선두 ' + x.name + '(' + clipWords(x.reason, room) + ')' : clipWords(leadText(x), max);
 }
 // 단어 중간에서 자르지 않는 말줄임
 function clipWords(s, n) {

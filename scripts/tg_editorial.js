@@ -276,6 +276,7 @@ function daily(date, leaders, market, refined, day, previous, history) {
  * 상한가·+15% 집계 줄, 흐름별 종목 줄, 개별 재료 목록, 공유 링크는 뺐다(전체 보기 페이지에 다 있다).
  * insight: scripts/insight.js build() 결과 — 없으면 해석 줄 생략
  */
+const COMPACT_FLOW_WHY = 26;   // 짧은 캡션 흐름 줄의 이유 길이 — 흐름 줄들이 비슷한 길이로 보이게(11/27 바이오 줄 33자)
 function dailyCompact(date, leaders, market, refined, day, previous, history, insight) {
     const s = storyOf(day, { leader: leaders && leaders.leader ? { ...leaders.leader, rate: leaders.leader.change_rate, vol: leaders.leader.trading_value } : null,
         history: history || (previous ? [previous] : []) });
@@ -290,7 +291,7 @@ function dailyCompact(date, leaders, market, refined, day, previous, history, in
     }
     blocks.push({ prio: 0, lines: head });
     const flowLines = s.lead.slice(0, 3).map(f => {
-        const why = Story.flowReason(f, 34);
+        const why = Story.flowReason(f, COMPACT_FLOW_WHY);
         const lu = f.members.filter(r => r.limit).slice(0, 2).map(r => r.name);
         const tailText = why ? ' — ' + why : lu.length ? ' — ' + lu.join('·') + ' 상한가' : ' — ' + f.members.slice(0, 2).map(r => r.name + ' ' + Story.rateOf(r)).join(', ');
         return b_(f.label) + ' ' + e_(f.members.length + '종목' + tailText);
