@@ -1,0 +1,52 @@
+name: 블로그 딥다이브 미리보기 (게시·커밋 없음)
+
+# 글 개선 Phase 3 — scripts/blog_deep.js 로 A(종목 딥다이브)/B(시장 리뷰) 원고를 만들어 artifact 로만 남긴다.
+# marketing-daily 연결 전 샘플 확인용. 저장소에 커밋하지 않고, 어느 채널에도 게시하지 않는다.
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'YYYYMMDD'
+        required: true
+        type: string
+      kind:
+        description: 'A(종목) | B(시장) | 빈값=자동'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  TZ: Asia/Seoul
+
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DATE: ${{ inputs.date }}
+          KIND: ${{ inputs.kind }}
+        run: |
+          [[ "$DATE" =~ ^[0-9]{8}$ ]] || { echo "bad date"; exit 1; }
+          npm install --no-save --package-lock=false @anthropic-ai/sdk
+          ARGS="$DATE"
+          [[ "$KIND" =~ ^[AB]$ ]] && ARGS="$ARGS --kind=$KIND"
+          node scripts/blog_deep.js $ARGS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blog-deep-${{ inputs.date }}-${{ inputs.kind || 'auto' }}
+          path: public/marketing/${{ inputs.date }}/blog-deep*
+          retention-days: 14
+          if-no-files-found: warn
