@@ -85,9 +85,9 @@
       "close_price": 68300.0,
       "trading_volume": 576074,
       "trading_value": 39345854200,
-      "rise_reason": "반도체주 동반 강세",
-      "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "rise_reason": "美 반도체주 급등에 기판주 동반 강세",
+      "reason_confidence": "high",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "갤럭시 부품주",
       "news": [
@@ -133,12 +133,17 @@
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
       "reason_source_previous": "news",
-      "reason_kind": "sector",
       "reason_evidence": [
         {
           "title": "[특징주] 美 반도체주 급등에 기판株 동반 강세…코리아써키트 9%↑",
           "link": "https://n.news.naver.com/mnews/article/366/0001203675",
           "source": "조선비즈",
+          "date": "2026-11-10"
+        },
+        {
+          "title": "코리아써키트 10%대 급등…반도체 기판주 동반 상승",
+          "link": "https://n.news.naver.com/mnews/article/008/0005438824",
+          "source": "머니투데이",
           "date": "2026-11-10"
         }
       ]
@@ -1170,5 +1175,5 @@
     "count_recent": 3,
     "avg_rate": 15.71
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T19:38:46"
 }

@@ -11,16 +11,10 @@
       "trading_value": 7703942400,
       "rise_reason": "3분기 영업이익 155억원",
       "reason_confidence": "high",
-      "reason_source": "news_extract",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "미용기기",
       "news": [
-        {
-          "title": "메디톡스, 3분기 영업익 155억원…전년比 74.5% 증가",
-          "link": "https://n.news.naver.com/mnews/article/015/0005352605",
-          "source": "한국경제",
-          "date": "2026-11-11"
-        },
         {
           "title": "메디톡스 3분기 영업익 155억원…전년 대비 75% 늘어",
           "link": "https://n.news.naver.com/mnews/article/029/0003058301",
@@ -34,6 +28,12 @@
           "date": "2026-11-10"
         },
         {
+          "title": "메디톡스, 3분기 영업익 155억원…전년比 74.5% 증가",
+          "link": "https://n.news.naver.com/mnews/article/015/0005352605",
+          "source": "한국경제",
+          "date": "2026-11-11"
+        },
+        {
           "title": "메디톡스, 대미레 추계 국제학술대회 참가… 주력 제품 우수성 알려",
           "link": "https://n.news.naver.com/mnews/article/030/0003483672",
           "source": "전자신문",
@@ -45,8 +45,13 @@
       "source": "estimated",
       "reason_previous": "시장 관심 증가",
       "reason_source_previous": "estimated",
-      "reason_kind": "move",
       "reason_evidence": [
+        {
+          "title": "메디톡스 3분기 영업익 155억원…전년 대비 75% 늘어",
+          "link": "https://n.news.naver.com/mnews/article/029/0003058301",
+          "source": "디지털타임스",
+          "date": "2026-11-10"
+        },
         {
           "title": "메디톡스 3분기 영업이익 155억원… 전년比 74.5% ‘껑충’",
           "link": "https://n.news.naver.com/mnews/article/081/0003697797",
@@ -90,5 +95,5 @@
     "count_recent": 1,
     "avg_rate": 12.79
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T19:38:46"
 }
