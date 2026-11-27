@@ -303,3 +303,23 @@ test('해킹 사고 날 보안주 — 정보보안·딥페이크 태그와 해�
     assert.equal(f.members.length, 5);
     assert.equal(s.solos.length, 0);
 });
+
+test('11/27 점검: 수급 서술·분류명·제네릭은 이유로 쓰지 않는다', () => {
+    for (const bad of ['남북/통일', '로봇주 매수세 확대', '외국인·기관 동반 순매수', '개별 종목 상승', '거래량 증가'])
+        assert.equal(S.goodReason(S.cleanReason(bad)), false, bad);
+    for (const ok of ['최대주주·경영진 장내매수', '블룸에너지향 1656억 SOFC 공급계약 체결', '美 MIT와 제조 피지컬 AI 공동개발', '한중 정상회담 한한령 해제 기대감'])
+        assert.equal(S.goodReason(S.cleanReason(ok)), true, ok);
+});
+
+test('기사 배경 없는 흐름의 설명은 대표 종목 것임을 드러낸다', () => {
+    const f = { catalyst: '', members: [{ name: '보로노이', reason: '과제 3건 선정', energy: 2 }, { name: '다른바이오', reason: '', energy: 1 }] };
+    assert.equal(S.flowReason(f), '선두 보로노이(과제 3건 선정)');
+    assert.equal(S.flowReason({ catalyst: '증안펀드 기대', members: [] }), '증안펀드 기대');
+});
+
+test('테마·업종이 비어 흐름이 안 묶인 날은 "뚜렷한 테마 없이"라고 단정하지 않는다', () => {
+    const bare = S.build(day([row('휴림로봇', 29.9), row('대성하이텍', 20)]));
+    assert.equal(bare.headline, '');
+    const tagged = S.build(day([row('가', 20, { theme_tag: '가테마', sector: '가업종' }), row('나', 15, { theme_tag: '나테마', sector: '나업종' })]));
+    assert.equal(tagged.headline, '뚜렷한 테마 없이 개별 종목 장세');
+});

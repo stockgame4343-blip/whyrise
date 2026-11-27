@@ -24,6 +24,7 @@ const LIMIT_UP = 29.5;    // 종가가 없을 때의 상한가 간주 기준
 const PRICE_LIMIT = 30.5; // 가격제한폭(30%) + 반올림 여유 — 이보다 크면 상장 초기 종목 또는 데이터 어긋남
 const RATE_CAP = 30;      // 상승 에너지 비교용 상한
 const RATE_TOLERANCE = 0.6;   // 전일 종가로 다시 계산한 등락률과 허용 차이(%p)
+const HEADLINE_TAGGED_MIN = 0.8;   // 테마·업종이 붙은 종목 비율이 이 이상일 때만 '뚜렷한 테마 없이'라고 단정
 const BLOCKED = { '003060': 1, '018700': 1, '007460': 1 };
 // 투자 권유로 읽히는 말 — '공매도', '공개매수', '장내 매수', '순매수' 같은 사실 용어는 제외
 const FORBIDDEN = /(?<!공개\s?|장내\s?|순)매수(?!세)|(?<!공)매도|추천|목표가|사세요|팔아|급등\s*예상|오를\s*종목|수익\s*보장|관심\s*가져/;
@@ -136,6 +137,10 @@ const BAD_REASON = [
     /^(?:美|미국|中|중국)?\s*훈풍$/,
     /[가-힣](?:은|는|던|온|단|친|킨|낸|른),\s/,                            // 잘린 수식어 ("급한불 끄는, …")
     /상여금|주가\s*따로/,
+    // 이유가 아닌 것 — 수급 서술·분류명·제네릭 (11/27 점검: "남북/통일", "로봇주 매수세 확대", "외국인·기관 동반 순매수")
+    /매수세|매도세|순매수|순매도|사자|팔자|저가\s*매수/,
+    /^[^\s/]+(?:\/[^\s/]+)+$/,
+    /^(?:개별\s*종목\s*상승|시장\s*관심\s*증가|거래(?:량|대금)\s*(?:증가|급증))$/,
 ];
 function cleanReason(text) {
     let t = String(text || '').trim();
@@ -565,7 +570,9 @@ function flowTitle(f) { return f.label; }
 function headline(s) {
     const top = (s.lead || s.flows.filter(f => f.headliner)).slice(0, 2);
     if (top.length) return top.map(flowTitle).join('·') + ' 강세';
-    if (s.rows.length) return '뚜렷한 테마 없이 개별 종목 장세';
+    // 테마가 비어서 흐름이 안 묶인 날(11/24 로봇 2종목)을 '테마 없음'으로 단정하지 않는다
+    const tagged = s.rows.filter(r => r.theme || r.sector).length;
+    if (s.rows.length && tagged / s.rows.length >= HEADLINE_TAGGED_MIN) return '뚜렷한 테마 없이 개별 종목 장세';
     return '';
 }
 // 종목 한 줄의 '왜' — 같은 날 확인된 개별 이유, 없으면 흐름의 기사 배경. 근거 없는 말은 붙이지 않는다
@@ -574,14 +581,16 @@ function whyOf(r) {
     if (r.flow && r.flow.kind !== 'sector' && r.flow.catalyst) return r.flow.label + ' 강세 · ' + r.flow.catalyst;
     return '';
 }
-// 흐름 한 줄 설명 — 기사 배경, 없으면 이유가 확인된 대표 종목의 이유("나라스페이스테크놀로지 메탄위성 교신 성공")
+// 흐름 한 줄 설명 — 기사 배경, 없으면 이유가 확인된 대표 종목의 이유("선두 나라스페이스테크놀로지(메탄위성 교신 성공)")
+// 대표 종목 이유는 그 종목 것임을 드러낸다 — "바이오 10종목 — 보로노이 과제 선정"이 업종 전체 이유처럼 읽히던 문제(11/26)
+function leadText(x) { return '선두 ' + x.name + '(' + x.reason + ')'; }
 function flowReason(f, max = 34) {
     if (f.catalyst) return clipWords(f.catalyst, max);
     const told = f.members.filter(x => x.reason).sort((a, b) => b.energy - a.energy);
     // 잘리지 않고 한 줄에 들어가는 이유를 우선 (거래대금×상승률이 큰 종목부터)
-    const fit = told.find(x => Array.from(x.name + ' ' + x.reason).length <= max);
-    if (fit) return fit.name + ' ' + fit.reason;
-    return told[0] ? clipWords(told[0].name + ' ' + told[0].reason, max) : '';
+    const fit = told.find(x => Array.from(leadText(x)).length <= max);
+    if (fit) return leadText(fit);
+    return told[0] ? clipWords(leadText(told[0]), max) : '';
 }
 // 단어 중간에서 자르지 않는 말줄임
 function clipWords(s, n) {

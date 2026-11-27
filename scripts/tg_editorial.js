@@ -310,6 +310,13 @@ function morningBlock(s) {
         items.push('• ' + b_(f.label) + ' ' + e_(f.members.length + '종목' + (why ? ' — ' + tg.clip(why, 34) : '') + (lu.length ? ' (' + lu.join('·') + ' 상한가)' : '')));
     }
     for (const r of s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, 3 - items.length)) items.push('• ' + b_(r.name) + ' ' + e_(Story.rateOf(r) + ' — ' + tg.clip(r.reason, 34)));
+    // 이유 확인 종목이 하나도 없던 날(11/20 복기) 종목 줄이 통째로 비지 않게 — 상위 종목을 테마·업종 단서와 함께
+    if (!items.length) {
+        s.rows.filter(r => !r.ipo).sort((a, b) => b.rate - a.rate).slice(0, 3).forEach(r => {
+            const tag = Story.tagOf(r) || r.sector;
+            items.push('• ' + b_(r.name) + ' ' + e_(Story.rateOf(r) + (tag ? ' · ' + tag : '')));
+        });
+    }
     lines.push(...items);
     const long = s.flows.filter(f => f.headliner && f.streak >= 3)[0];
     if (long) lines.push(e_('🔁 ' + long.label + ' ' + long.streak + '거래일 연속 급등주가 나왔어요'));

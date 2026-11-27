@@ -187,8 +187,10 @@ function isDuplicateDayData(dayA, dayB) {
 // "OO 관련 뉴스"·"~강세"·"시장 관심 증가"류는 정보가 없으므로 빈 문자열을 돌려주고,
 // 호출부가 테마 폴백/생략을 결정한다. 끝의 '보도'는 떼고 남은 알맹이로 판정.
 var GENERIC_REASON_RE = new RegExp(
-    '^(시장 관심 증가|투자심리 개선.*|증권사 리포트.*|수급 .*|테마)$' +
-    '|관련\\s*(뉴스|이슈|소식)$|(뉴스|소식|이슈)$|(테마\\s*)?(강세|급등)$|^52주|상한가');
+    '^(시장 관심 증가|개별\\s*종목\\s*상승|거래(량|대금)\\s*(증가|급증)|투자심리 개선.*|증권사 리포트.*|수급 .*|테마)$' +
+    '|관련\\s*(뉴스|이슈|소식)$|(뉴스|소식|이슈)$|(테마\\s*)?(강세|급등)$|^52주|상한가' +
+    // 수급 서술·분류명("남북/통일")은 이유가 아니다 (11/27 점검)
+    '|매수세|매도세|순매수|순매도|^[^\\s/]+(/[^\\s/]+)+$');
 var SPECIFIC_REASON_MIN = 4;   // 공백 제거 후 최소 글자수 — "양산"·"M&A" 단독은 애매로 간주
 function specificReason(raw) {
     var r = String(raw == null ? '' : raw).trim().replace(/\s*보도$/, '').trim();
@@ -212,7 +214,8 @@ function verifiedReason(row, date) {
     if (!row || !Number.isFinite(reasonDate(date))) return '';
     if (row.reason_source === 'news_extract' || row.reason_origin === 'news' || row.reason_origin === 'toss') {
         const d = ReasonRule.display(row);
-        return d.unknown ? '' : d.text;
+        // 기사·토스 출처도 수급 서술·분류명이면 빼고, '관련 보도:' 제목은 아래 공통 경로처럼 그대로 둔다
+        return d.unknown ? '' : (/^관련 보도:/.test(d.text) ? d.text : specificReason(d.text));
     }
     var reason = specificReason(row.rise_reason);
     if (row.reason_source === 'admin' || row.reason_status === 'edited') return reason;
