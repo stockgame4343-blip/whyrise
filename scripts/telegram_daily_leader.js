@@ -22,9 +22,11 @@ const tg = require('./tg_common.js');
 const editorial = require('./tg_editorial.js');
 const market = require('./tg_market.js');
 const Story = require('./market_story.js');
+const insight = require('./insight.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
+const INSIGHT_ON = String(process.env.TG_INSIGHT || '').trim() === 'on';
 const DATE_ARG = ((process.argv.find(function (a) { return a.indexOf('--date=') === 0; }) || '').split('=')[1] || '').trim();  // 샘플용 과거 날짜
 const PUBLIC = path.resolve(__dirname, '..', 'public');
 const OUT_IMG = path.resolve(__dirname, '..', 'telegram-daily.png');            // 1번: 대장 카드
@@ -138,7 +140,14 @@ async function main() {
     if (L.leader && !day.rankings.some(function (r) { return r.ticker === L.leader.ticker && r.name === L.leader.name; })) delete refined[L.leader.ticker];
     var previous = editorial.previousSnapshot(PUBLIC, day);
     var history = Story.loadHistory(PUBLIC, today, 10);   // 연속 상승·흐름 연속일
-    var caption = editorial.daily(today, L, M, refined, dayX, previous, history);
+    // 왜 중요한가(지수 맥락·계약 규모·테마 빈도) — 실패해도 캡션은 그대로 나간다
+    // 실게시는 저장소 변수 TG_INSIGHT=on 일 때만(형식 변경 승인 전 기본 꺼짐), 미리보기(--dry-run)는 늘 붙여 본다
+    var ins = null;
+    if (DRY || INSIGHT_ON) {
+        try { ins = await insight.build(today, editorial.storyOf(dayX, { history: history })); }
+        catch (e) { console.error('insight 실패(블록 생략):', e.message); }
+    }
+    var caption = editorial.daily(today, L, M, refined, dayX, previous, history, ins);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
     await renderImage(today, L, refined);

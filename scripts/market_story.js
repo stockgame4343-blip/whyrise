@@ -636,5 +636,5 @@ function period(days) {
 module.exports = {
     RISE, HOT, LIMIT_UP, PRICE_LIMIT, FORBIDDEN, FAMILIES,
     build, period, loadHistory, snapshotExtras, withSnapshot, closesOn, prevTradingDate, rowsOf, flowsOf, parseGroup, cleanReason, goodReason,
-    familyOf, themeShort, companyOf, isLimitUp, limitPrice, tick, headline, whyOf, flowReason, clipWords, tagOf, josa, flowTitle, pct, rateOf, round1, amount, clip,
+    familyOf, rowTheme, themeShort, companyOf, isLimitUp, limitPrice, tick, headline, whyOf, flowReason, clipWords, tagOf, josa, flowTitle, pct, rateOf, round1, amount, clip,
 };

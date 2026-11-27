@@ -127,7 +127,7 @@ const P = Story.pct;
 function headPhrase(s) {
     const lead = s.lead[0];
     const lu = lead ? lead.members.filter(r => r.limit) : [];
-    if (lead && lu.length) return flowWord(lead) + ' 급등, ' + lu.slice(0, 2).map(r => r.name).join('·') + ' 상한가';
+    if (lead && lu.length) return flowWord(lead) + ' 강세, ' + lu.slice(0, 2).map(r => r.name).join('·') + ' 상한가';   // '급등'은 과장으로 읽혀 '강세'로 (11/27)
     // 흐름이 없는 날 — 이유가 확인된 상한가 종목을 앞에
     const solo = !lead ? s.limitUps.filter(r => r.reason).slice(0, 2) : [];
     if (solo.length) return solo.map(r => r.name).join('·') + ' 상한가, 개별 재료 장세';
@@ -244,7 +244,7 @@ function shiftDay(ymd, n) { const t = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.s
 function isWeekday(ymd) { const w = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8))).getUTCDay(); return w > 0 && w < 6; }
 
 /** 15:45 마감 — 이미지(대장 카드·테마 버블)와 함께 나가는 캡션 (1024자 이내) */
-function daily(date, leaders, market, refined, day, previous, history) {
+function daily(date, leaders, market, refined, day, previous, history, insight) {
     const s = storyOf(day, { leader: leaders && leaders.leader ? { ...leaders.leader, rate: leaders.leader.change_rate, vol: leaders.leader.trading_value } : null,
         history: history || (previous ? [previous] : []) });
     const blocks = [];
@@ -261,8 +261,12 @@ function daily(date, leaders, market, refined, day, previous, history) {
     } else if (s.money[0]) {
         blocks.push({ prio: 0, lines: [e_('🏆 오늘의 대장 없음 · 거래대금 1위 ' + s.money[0].name + ' ' + tg.fmtAmount(s.money[0].vol) + ' (' + Story.rateOf(s.money[0]) + ')')] });
     }
+    // 왜 중요한가 — scripts/insight.js 가 데이터로 계산한 맥락 한두 줄(없으면 블록 생략)
+    const ins = insight && Array.isArray(insight.lines) ? insight.lines.filter(Boolean).slice(0, 2) : [];
+    if (ins.length) blocks.push({ prio: 1, lines: [b_('💡 왜 중요한가')].concat(ins.map(e_)) });
     const flows = s.lead.slice(0, 3);
     flows.forEach((f, i) => blocks.push({ prio: 2 + i, lines: [flowHead(f), e_(memberLine(f.members, 3))] }));
+    if (insight && insight.pick) blocks.push({ prio: 5, lines: [e_('📎 ' + insight.pick)] });
     const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, 2);
     if (solos.length) blocks.push({ prio: 6, lines: solos.map(r => '• ' + b_(r.name) + ' ' + e_(Story.rateOf(r) + ' — ' + tg.clip(r.reason, 34))) });
     const hol = holidayCloseLines(date);   // 휴장 안내는 줄이지 않는다
