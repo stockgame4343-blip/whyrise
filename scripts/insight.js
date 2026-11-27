@@ -40,7 +40,7 @@ function eokText(eok) {
 
 // ── ① 지수 ─────────────────────────────────────────
 /** series: [{date:'YYYYMMDD', close, rate}] 오름차순 → 한 줄 또는 '' */
-function indexLine(label, series, date) {
+function indexLine(label, series, date, short = false) {
     const i = series.findIndex(x => x.date === date);
     if (i < 0) return '';
     const r = series[i].rate;
@@ -64,8 +64,20 @@ function indexLine(label, series, date) {
             past.push((series[k + FOLLOW_DAYS].close / x.close - 1) * 100);
         }
     }
-    if (past.length < 2) return head;
     const reversed = past.filter(p => (up ? p < 0 : p > 0)).length;
+    if (short) {
+        // 짧은 캡션용 한 줄 — '최근 N거래일 중 최대 상승. 앞서 +4% 넘게 오른 4번은 5거래일 뒤 모두 더 낮았어요.'
+        let t = label + ' ' + sign(r);
+        if (j < 0 && i >= RECORD_MIN_DAYS) t += ', 최근 ' + (i + 1) + '거래일 중 최대 ' + (up ? '상승' : '하락');
+        else if (j >= 0 && span >= RECORD_MIN_DAYS) t += ', ' + md(series[sinceIdx].date) + ' 이후 최대 ' + (up ? '상승' : '하락');
+        if (past.length < 2) return t + '.';
+        const word = up ? '+' + SIMILAR_MOVE_PCT + '% 넘게 오른' : SIMILAR_MOVE_PCT + '% 넘게 내린';
+        const more = ' 더 ' + (up ? '낮았어요.' : '높았어요.');
+        return t + '. 앞서 ' + word + ' ' + (reversed === past.length
+            ? past.length + '번은 ' + FOLLOW_DAYS + '거래일 뒤 모두' + more
+            : past.length + '번 중 ' + reversed + '번은 ' + FOLLOW_DAYS + '거래일 뒤' + more);
+    }
+    if (past.length < 2) return head;
     const lo = Math.min(...past), hi = Math.max(...past);
     const kind = up ? '+' + SIMILAR_MOVE_PCT + '% 이상 오른' : SIMILAR_MOVE_PCT + '% 이상 내린';
     const tail = reversed === past.length
@@ -136,14 +148,14 @@ function themeLine(flow, date, pub = PUBLIC) {
  * story: market_story.build 결과, mkt: fetchKrMarketSummary 결과(없어도 됨)
  */
 async function build(date, story, opts = {}) {
-    const out = { lines: [], pick: '' };
+    const out = { lines: [], pick: '', short: '' };
     // ① 지수 — 코스닥·코스피 중 더 크게 움직인 쪽 하나
     try {
         const [kq, kp] = await Promise.all([fetchIndexSeries('KOSDAQ'), fetchIndexSeries('KOSPI')]);
         const cand = [['코스닥', kq], ['코스피', kp]].map(([label, s]) => ({ label, s, r: (s.find(x => x.date === date) || {}).rate }))
             .filter(c => Number.isFinite(c.r)).sort((a, b) => Math.abs(b.r) - Math.abs(a.r));
         const line = cand.length ? indexLine(cand[0].label, cand[0].s, date) : '';
-        if (line) out.lines.push(line);
+        if (line) { out.lines.push(line); out.short = indexLine(cand[0].label, cand[0].s, date, true); }
     } catch (e) { console.error('insight 지수 실패(생략):', e.message); }
     // ② 계약 — 이유에 계약액이 있는 종목 중 상승 에너지 큰 순
     const deals = (story.rows || []).filter(r => r.reason && contractEok(r.reason) > 0).sort((a, b) => b.energy - a.energy).slice(0, 3);

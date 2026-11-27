@@ -85,7 +85,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TG_INSIGHT: ${{ vars.TG_INSIGHT }}   # 'on' 이면 '💡 왜 중요한가' 블록 (승인 전 기본 꺼짐)
+          TG_COMPACT: ${{ vars.TG_COMPACT }}   # 'on' 이면 짧은 마감 캡션(해석 한 줄) — 승인 전 기본 꺼짐
         run: |
           ARGS=""
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"

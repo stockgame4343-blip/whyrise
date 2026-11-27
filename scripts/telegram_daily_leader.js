@@ -26,7 +26,7 @@ const insight = require('./insight.js');
 
 const DRY = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
-const INSIGHT_ON = String(process.env.TG_INSIGHT || '').trim() === 'on';
+const COMPACT_ON = String(process.env.TG_COMPACT || '').trim() === 'on';
 const DATE_ARG = ((process.argv.find(function (a) { return a.indexOf('--date=') === 0; }) || '').split('=')[1] || '').trim();  // 샘플용 과거 날짜
 const PUBLIC = path.resolve(__dirname, '..', 'public');
 const OUT_IMG = path.resolve(__dirname, '..', 'telegram-daily.png');            // 1번: 대장 카드
@@ -141,13 +141,16 @@ async function main() {
     var previous = editorial.previousSnapshot(PUBLIC, day);
     var history = Story.loadHistory(PUBLIC, today, 10);   // 연속 상승·흐름 연속일
     // 왜 중요한가(지수 맥락·계약 규모·테마 빈도) — 실패해도 캡션은 그대로 나간다
-    // 실게시는 저장소 변수 TG_INSIGHT=on 일 때만(형식 변경 승인 전 기본 꺼짐), 미리보기(--dry-run)는 늘 붙여 본다
-    var ins = null;
-    if (DRY || INSIGHT_ON) {
+    // 짧은 캡션(해석 한 줄)은 저장소 변수 TG_COMPACT=on 일 때만 실게시 — 승인 전 기본은 지금 캡션. 미리보기(--dry-run)는 둘 다 찍는다
+    var caption = editorial.daily(today, L, M, refined, dayX, previous, history);
+    if (DRY || COMPACT_ON) {
+        var ins = null;
         try { ins = await insight.build(today, editorial.storyOf(dayX, { history: history })); }
-        catch (e) { console.error('insight 실패(블록 생략):', e.message); }
+        catch (e) { console.error('insight 실패(해석 줄 생략):', e.message); }
+        var compact = editorial.dailyCompact(today, L, M, refined, dayX, previous, history, ins);
+        if (DRY) console.log('\n----- 짧은 캡션(TG_COMPACT) -----\n' + compact + '\n----------------\n');
+        if (COMPACT_ON) caption = compact;
     }
-    var caption = editorial.daily(today, L, M, refined, dayX, previous, history, ins);
     console.log('\n----- 캡션 -----\n' + caption + '\n----------------\n');
 
     await renderImage(today, L, refined);

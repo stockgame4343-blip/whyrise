@@ -244,7 +244,7 @@ function shiftDay(ymd, n) { const t = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.s
 function isWeekday(ymd) { const w = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6, 8))).getUTCDay(); return w > 0 && w < 6; }
 
 /** 15:45 마감 — 이미지(대장 카드·테마 버블)와 함께 나가는 캡션 (1024자 이내) */
-function daily(date, leaders, market, refined, day, previous, history, insight) {
+function daily(date, leaders, market, refined, day, previous, history) {
     const s = storyOf(day, { leader: leaders && leaders.leader ? { ...leaders.leader, rate: leaders.leader.change_rate, vol: leaders.leader.trading_value } : null,
         history: history || (previous ? [previous] : []) });
     const blocks = [];
@@ -261,17 +261,48 @@ function daily(date, leaders, market, refined, day, previous, history, insight) 
     } else if (s.money[0]) {
         blocks.push({ prio: 0, lines: [e_('🏆 오늘의 대장 없음 · 거래대금 1위 ' + s.money[0].name + ' ' + tg.fmtAmount(s.money[0].vol) + ' (' + Story.rateOf(s.money[0]) + ')')] });
     }
-    // 왜 중요한가 — scripts/insight.js 가 데이터로 계산한 맥락 한두 줄(없으면 블록 생략)
-    const ins = insight && Array.isArray(insight.lines) ? insight.lines.filter(Boolean).slice(0, 2) : [];
-    if (ins.length) blocks.push({ prio: 1, lines: [b_('💡 왜 중요한가')].concat(ins.map(e_)) });
     const flows = s.lead.slice(0, 3);
     flows.forEach((f, i) => blocks.push({ prio: 2 + i, lines: [flowHead(f), e_(memberLine(f.members, 3))] }));
-    if (insight && insight.pick) blocks.push({ prio: 5, lines: [e_('📎 ' + insight.pick)] });
     const solos = s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, 2);
     if (solos.length) blocks.push({ prio: 6, lines: solos.map(r => '• ' + b_(r.name) + ' ' + e_(Story.rateOf(r) + ' — ' + tg.clip(r.reason, 34))) });
     const hol = holidayCloseLines(date);   // 휴장 안내는 줄이지 않는다
     if (hol.length) blocks.push({ prio: 0, lines: hol.map(e_) });
     return fit(blocks, 1000, tail('오늘 오른 종목·이유 전체 보기', dayUrl(date, 'daily'), true));
+}
+
+/**
+ * 짧은 마감 캡션 (11/27 사용자: "덕지덕지 복잡") — 블록을 더하지 않고 전체를 줄인다.
+ * 머리(날짜·지수) · 대장 한 줄 · 흐름 최대 3줄(흐름당 한 줄) · 해석 딱 한 줄(지수·계약·테마 중 가장 의미 있는 것 하나) · 링크.
+ * 상한가·+15% 집계 줄, 흐름별 종목 줄, 개별 재료 목록, 공유 링크는 뺐다(전체 보기 페이지에 다 있다).
+ * insight: scripts/insight.js build() 결과 — 없으면 해석 줄 생략
+ */
+function dailyCompact(date, leaders, market, refined, day, previous, history, insight) {
+    const s = storyOf(day, { leader: leaders && leaders.leader ? { ...leaders.leader, rate: leaders.leader.change_rate, vol: leaders.leader.trading_value } : null,
+        history: history || (previous ? [previous] : []) });
+    const blocks = [];
+    const idx = market ? ' · 코스피 ' + tg.pct(market.kospi.changePct) + ' · 코스닥 ' + tg.pct(market.kosdaq.changePct) : '';
+    const head = [b_('📌 ' + tg.dateKo(date) + ' 마감') + e_(idx)];
+    const L = s.leader;
+    if (L) {
+        const why = L.row && !L.ipo ? Story.whyOf(L.row) : '';
+        const rateText = L.resumed ? ' 거래 재개' : L.ipo ? ' 신규상장' : ' ' + (L.row ? Story.rateOf(L.row) : P(L.rate));
+        head.push(e_('대장 ' + L.name + rateText + ' · 거래대금 ' + tg.fmtAmount(L.vol) + (why ? ' — ' + tg.clip(why, 30) : '')));
+    }
+    blocks.push({ prio: 0, lines: head });
+    const flowLines = s.lead.slice(0, 3).map(f => {
+        const why = Story.flowReason(f, 34);
+        const lu = f.members.filter(r => r.limit).slice(0, 2).map(r => r.name);
+        const tailText = why ? ' — ' + why : lu.length ? ' — ' + lu.join('·') + ' 상한가' : ' — ' + f.members.slice(0, 2).map(r => r.name + ' ' + Story.rateOf(r)).join(', ');
+        return b_(f.label) + ' ' + e_(f.members.length + '종목' + tailText);
+    });
+    if (flowLines.length) blocks.push({ prio: 2, lines: flowLines });
+    else if (s.solos.length) blocks.push({ prio: 2, lines: s.solos.slice().sort((a, b) => b.rate - a.rate).slice(0, 2).map(r => b_(r.name) + ' ' + e_(Story.rateOf(r) + ' — ' + tg.clip(r.reason, 34))) });
+    // 해석은 딱 한 줄 — 지수(큰 움직임) > 계약 규모 > 테마 빈도 순으로 가장 의미 있는 것 하나
+    const one = insight ? (insight.short || insight.pick || (insight.lines || [])[0] || '') : '';
+    if (one) blocks.push({ prio: 1, lines: [e_('💡 ' + one)] });
+    const hol = holidayCloseLines(date);
+    if (hol.length) blocks.push({ prio: 0, lines: hol.map(e_) });
+    return fit(blocks, 1000, tail('오늘 오른 종목·이유 전체 보기', dayUrl(date, 'daily'), false));
 }
 
 /** 19:00 저녁 — 뉴스 보강 후 '왜 올랐나' 전체 (텍스트 4096자 이내) */
@@ -379,4 +410,4 @@ function calendarObservation(days, start, end) {
     if (!top) return '기록된 ' + entries.length + '거래일 모두 대장 조건을 충족한 종목이 없었어요.';
     return '기록된 ' + entries.length + '거래일 · ' + top.name + ' 대장 ' + top.count + '일.' + (empty ? ' 대장 없는 날은 ' + empty + '일.' : '');
 }
-module.exports = {stockLines, explainedFirst, isDelisting, isNewListing, ipoMark, finalSnapshot, calendarLeaders, activeRows, comparison, previousSnapshot, countLine, daily, intraday, themes, evening, morningCheck, morningBlock, periodLines, headPhrase, storyOf, calendarObservation, holidayCloseLines, holidayMorningLines, usOvernightClosure, holidayNotice};
+module.exports = {stockLines, explainedFirst, isDelisting, isNewListing, ipoMark, finalSnapshot, calendarLeaders, activeRows, comparison, previousSnapshot, countLine, daily, dailyCompact, intraday, themes, evening, morningCheck, morningBlock, periodLines, headPhrase, storyOf, calendarObservation, holidayCloseLines, holidayMorningLines, usOvernightClosure, holidayNotice};
