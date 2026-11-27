@@ -4,23 +4,68 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261127",
+      "change_rate": 26.81,
+      "close_price": 1490.0,
+      "trading_volume": 349843,
+      "trading_value": 521266070,
+      "rise_reason": "M&A 관련 뉴스",
+      "reason_confidence": "high",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "M&A",
+      "news": [
+        {
+          "title": "광진실업, 자회사 통해 中 면세 사업 진출… K-컬처로 현지 시장 공략",
+          "link": "https://n.news.naver.com/mnews/article/366/0001206208",
+          "source": "조선비즈",
+          "date": "2026.11.20"
+        },
+        {
+          "title": "광진실업, 3분기 누적 매출 444억…전년比 3.4%↑",
+          "link": "https://n.news.naver.com/mnews/article/003/0014326484",
+          "source": "뉴시스",
+          "date": "2026.11.17"
+        },
+        {
+          "title": "의무공개매수 도입해도…코스닥 M&A 10건 중 4건은 '사각지대'",
+          "link": "https://n.news.naver.com/mnews/article/648/0000052909",
+          "source": "비즈워치",
+          "date": "2026.11.24"
+        },
+        {
+          "title": "오늘의 메모[11월 26일]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004685994",
+          "source": "서울경제",
+          "date": "2026-11-25"
+        }
+      ],
+      "sector": "철강",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_origin": "rule",
+      "reason_hint": {
+        "text": "11/17 3분기 누적 매출 444억",
+        "link": "https://n.news.naver.com/mnews/article/003/0014326484",
+        "title": "광진실업, 3분기 누적 매출 444억…전년比 3.4%↑",
+        "date": "20261117"
+      }
+    },
+    {
       "date": "20261027",
       "change_rate": 19.97,
       "close_price": 3875.0,
       "trading_volume": 555748,
       "trading_value": 2153523500,
-      "rise_reason": "",
+      "rise_reason": "M&A 테마 강세",
       "reason_confidence": "low",
-      "reason_source": "news_extract",
-      "reason_status": "missing",
-      "theme_tag": "뉴스",
+      "reason_source": "theme",
+      "reason_status": "filled",
+      "theme_tag": "M&A",
       "news": [],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "뉴스 테마 강세",
-      "reason_kind": "none",
-      "reason_source_previous": "theme"
+      "source": "estimated"
     },
     {
       "date": "20261016",
@@ -1180,12 +1225,12 @@
     }
   ],
   "stats": {
-    "count_10": 19,
-    "count_15": 11,
-    "count_20": 5,
+    "count_10": 20,
+    "count_15": 12,
+    "count_20": 6,
     "count_limit": 3,
-    "count_recent": 0,
-    "avg_rate": 17.61
+    "count_recent": 1,
+    "avg_rate": 18.07
   },
-  "built_at": "2026-11-27T19:30:48"
+  "built_at": "2026-11-27T20:07:58"
 }

@@ -4,14 +4,88 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261127",
+      "change_rate": 25.4,
+      "close_price": 23650.0,
+      "trading_volume": 3084668,
+      "trading_value": 72952398200,
+      "rise_reason": "美 MIT와 제조 피지컬 AI 공동개발",
+      "reason_confidence": "high",
+      "reason_source": "llm",
+      "reason_status": "filled",
+      "theme_tag": "로봇(산업용/협동로봇 등)",
+      "news": [
+        {
+          "title": "돌발상황도 AI가 스스로 복구…클로봇, 美 MIT와 ‘제조 피지컬 AI’ 공...",
+          "link": "https://n.news.naver.com/mnews/article/020/0003765789",
+          "source": "동아일보",
+          "date": "2026.11.27"
+        },
+        {
+          "title": "클로봇, 美 MIT와 제조 ‘피지컬 AI’ 공동개발…117억원 규모 국제 R&...",
+          "link": "https://n.news.naver.com/mnews/article/243/0000106389",
+          "source": "이코노미스트",
+          "date": "2026.11.27"
+        },
+        {
+          "title": "[AI 클로즈업] 피지컬AI 상장사 5곳 모두 적자…클로봇, 매출 두 배에...",
+          "link": "https://n.news.naver.com/mnews/article/138/0002249244",
+          "source": "디지털데일리",
+          "date": "2026.11.19"
+        },
+        {
+          "title": "클로봇, '스팟' 사업 매출 100억 돌파 눈앞…산업 현장 공략 확대",
+          "link": "https://n.news.naver.com/mnews/article/030/0003490273",
+          "source": "전자신문",
+          "date": "2026.11.26"
+        },
+        {
+          "title": "클로봇, 상업용 청소로봇 제품군 확대…통합관제로 시설관리 시장 공...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006410860",
+          "source": "이데일리",
+          "date": "2026.11.17"
+        },
+        {
+          "title": "[특징주] 삼성전자 휴머노이드 공개 기대감에…로봇주 上",
+          "link": "https://n.news.naver.com/mnews/article/366/0001207706",
+          "source": "조선비즈",
+          "date": "2026.11.27"
+        },
+        {
+          "title": "LS티라유텍, 편입 2년 만에 수장 교체…스마트팩토리 통합 구심점 될...",
+          "link": "https://n.news.naver.com/mnews/article/293/0000093820",
+          "source": "블로터",
+          "date": "2026.11.25"
+        }
+      ],
+      "sector": "기계",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_origin": "news",
+      "reason_evidence": [
+        {
+          "title": "돌발상황도 AI가 스스로 복구…클로봇, 美 MIT와 ‘제조 피지컬 AI’ 공...",
+          "link": "https://n.news.naver.com/mnews/article/020/0003765789",
+          "source": "동아일보",
+          "date": "2026.11.27"
+        },
+        {
+          "title": "클로봇, 美 MIT와 제조 ‘피지컬 AI’ 공동개발…117억원 규모 국제 R&...",
+          "link": "https://n.news.naver.com/mnews/article/243/0000106389",
+          "source": "이코노미스트",
+          "date": "2026.11.27"
+        }
+      ]
+    },
+    {
       "date": "20261124",
       "change_rate": 10.7,
       "close_price": 17900.0,
       "trading_volume": 833295,
       "trading_value": 14915980500,
-      "rise_reason": "로봇주 동반 강세",
+      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
       "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "reason_source": "theme",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -22,32 +96,27 @@
           "date": "2026-11-25"
         },
         {
+          "title": "돌발상황도 AI가 스스로 복구…클로봇, 美 MIT와 ‘제조 피지컬 AI’ 공...",
+          "link": "https://n.news.naver.com/mnews/article/020/0003765789",
+          "source": "동아일보",
+          "date": "2026-11-27"
+        },
+        {
+          "title": "[특징주] 삼성전자 휴머노이드 공개 기대감에…로봇주 上",
+          "link": "https://n.news.naver.com/mnews/article/366/0001207706",
+          "source": "조선비즈",
+          "date": "2026-11-27"
+        },
+        {
           "title": "클로봇, '스팟' 사업 매출 100억 돌파 눈앞…산업 현장 공략 확대",
           "link": "https://n.news.naver.com/mnews/article/030/0003490273",
           "source": "전자신문",
-          "date": "2026-11-26"
-        },
-        {
-          "title": "[현장] 제철소 점검하고 이응다리 순찰… 클로봇, ‘스팟’ 운영 SW 상...",
-          "link": "https://n.news.naver.com/mnews/article/138/0002249956",
-          "source": "디지털데일리",
           "date": "2026-11-26"
         }
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "시장 관심 증가",
-      "reason_kind": "sector",
-      "reason_source_previous": "estimated",
-      "reason_evidence": [
-        {
-          "title": "[특징주] 젠슨 황 복귀에 로봇주 일제히 강세…현대오토에버 22% 급등",
-          "link": "https://n.news.naver.com/mnews/article/366/0001206868",
-          "source": "조선비즈",
-          "date": "2026-11-24"
-        }
-      ]
+      "source": "estimated"
     },
     {
       "date": "20260814",
@@ -666,12 +735,12 @@
     }
   ],
   "stats": {
-    "count_10": 11,
-    "count_15": 2,
-    "count_20": 1,
+    "count_10": 12,
+    "count_15": 3,
+    "count_20": 2,
     "count_limit": 0,
-    "count_recent": 1,
-    "avg_rate": 13.86
+    "count_recent": 2,
+    "avg_rate": 14.82
   },
-  "built_at": "2026-11-27T19:47:16"
+  "built_at": "2026-11-27T20:08:23"
 }

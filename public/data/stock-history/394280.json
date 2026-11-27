@@ -4,6 +4,25 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261127",
+      "change_rate": 10.74,
+      "close_price": 6290.0,
+      "trading_volume": 175413,
+      "trading_value": 1103347770,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
+    },
+    {
       "date": "20261113",
       "change_rate": 26.83,
       "close_price": 8130.0,
@@ -13,7 +32,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
-      "theme_tag": "시스템반도체",
+      "theme_tag": "",
       "news": [
         {
           "title": "[이 시각 시황] 코스피·코스닥 2%대 동반 급등…반도체·증권주 강세...",
@@ -52,12 +71,10 @@
           "date": "2026-11-16"
         }
       ],
-      "sector": "반도체와반도체장비",
+      "sector": "",
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
-      "reason_kind": "sector",
-      "reason_source_previous": "news",
       "reason_evidence": [
         {
           "title": "[이 시각 시황] 코스피·코스닥 2%대 동반 급등…반도체·증권주 강세...",
@@ -65,7 +82,9 @@
           "source": "SBS Biz",
           "date": "2026-11-13"
         }
-      ]
+      ],
+      "reason_kind": "sector",
+      "reason_source_previous": "news"
     },
     {
       "date": "20260731",
@@ -341,12 +360,12 @@
     }
   ],
   "stats": {
-    "count_10": 9,
+    "count_10": 10,
     "count_15": 3,
     "count_20": 2,
     "count_limit": 0,
-    "count_recent": 1,
-    "avg_rate": 15.12
+    "count_recent": 2,
+    "avg_rate": 14.68
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T20:08:23"
 }

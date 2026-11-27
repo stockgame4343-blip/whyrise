@@ -4,23 +4,70 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261127",
+      "change_rate": 14.66,
+      "close_price": 23850.0,
+      "trading_volume": 149580,
+      "trading_value": 3567483000,
+      "rise_reason": "관련 보도: EUV 인프라 장비 첫 해외 출하",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
+      "reason_status": "filled",
+      "theme_tag": "반도체 재료/부품",
+      "news": [
+        {
+          "title": "에프에스티, EUV 인프라 장비 첫 해외 출하",
+          "link": "https://n.news.naver.com/mnews/article/030/0003489485",
+          "source": "전자신문",
+          "date": "2026.11.25"
+        },
+        {
+          "title": "“내일 당장” vs “제도 살펴야”…‘주 52시간 특례’ 놓고 또 맞붙...",
+          "link": "https://n.news.naver.com/mnews/article/016/0002728800",
+          "source": "헤럴드경제",
+          "date": "2026.11.26"
+        },
+        {
+          "title": "반도체 근로시간 유연화 논의…노동장관 \"연구시간 확보와 노동자 보...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005847992",
+          "source": "아시아경제",
+          "date": "2026.11.26"
+        },
+        {
+          "title": "노동장관, 반도체 연구개발자 간담회…'주52시간제' 의견 듣는다",
+          "link": "https://n.news.naver.com/mnews/article/003/0014345875",
+          "source": "뉴시스",
+          "date": "2026.11.26"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_origin": "news",
+      "reason_evidence": [
+        {
+          "title": "에프에스티, EUV 인프라 장비 첫 해외 출하",
+          "link": "https://n.news.naver.com/mnews/article/030/0003489485",
+          "source": "전자신문",
+          "date": "2026.11.25"
+        }
+      ]
+    },
+    {
       "date": "20261111",
       "change_rate": 20.32,
       "close_price": 26050.0,
       "trading_volume": 210704,
       "trading_value": 5488839200,
-      "rise_reason": "반도체 장비 테마 29종목 동반 상승",
+      "rise_reason": "반도체 재료/부품 테마 강세",
       "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "reason_source": "theme",
       "reason_status": "filled",
-      "theme_tag": "반도체 장비",
+      "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "반도체 장비 테마 강세",
-      "reason_kind": "theme",
-      "reason_source_previous": "theme"
+      "source": "estimated"
     },
     {
       "date": "20261001",
@@ -627,12 +674,12 @@
     }
   ],
   "stats": {
-    "count_10": 14,
+    "count_10": 15,
     "count_15": 7,
     "count_20": 5,
     "count_limit": 0,
-    "count_recent": 1,
-    "avg_rate": 16.98
+    "count_recent": 2,
+    "avg_rate": 16.83
   },
-  "built_at": "2026-11-27T19:39:42"
+  "built_at": "2026-11-27T20:08:23"
 }

@@ -4,23 +4,53 @@
   "market": "KOSPI",
   "events": [
     {
+      "date": "20261127",
+      "change_rate": 13.04,
+      "close_price": 6500.0,
+      "trading_volume": 1254688,
+      "trading_value": 8155472000,
+      "rise_reason": "관련 보도: 캐터필러 딜러 , 군용 불도저 담합 5년 만에 이번엔 불도저 출력...",
+      "reason_confidence": "low",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "방위산업/전쟁 및 테러",
+      "news": [
+        {
+          "title": "캐터필러 딜러 혜인, 군용 불도저 담합 5년 만에 이번엔 불도저 출력...",
+          "link": "https://n.news.naver.com/mnews/article/031/0001079015",
+          "source": "아이뉴스24",
+          "date": "2026.11.27"
+        }
+      ],
+      "sector": "기계",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_origin": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "캐터필러 딜러 혜인, 군용 불도저 담합 5년 만에 이번엔 불도저 출력...",
+          "link": "https://n.news.naver.com/mnews/article/031/0001079015",
+          "source": "아이뉴스24",
+          "date": "2026.11.27"
+        }
+      ]
+    },
+    {
       "date": "20261110",
       "change_rate": 12.57,
       "close_price": 9490.0,
       "trading_volume": 5911150,
       "trading_value": 56096813500,
-      "rise_reason": "기계 업종 8종목 동반 상승",
+      "rise_reason": "방위산업/전쟁 및 테러 테마 강세",
       "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "reason_source": "theme",
       "reason_status": "filled",
-      "theme_tag": "건설기계",
+      "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "건설기계 테마 강세",
-      "reason_kind": "sector",
-      "reason_source_previous": "theme"
+      "source": "estimated"
     },
     {
       "date": "20261106",
@@ -28,25 +58,15 @@
       "close_price": 8120.0,
       "trading_volume": 1903717,
       "trading_value": 15458182040,
-      "rise_reason": "데이터센터 전력수요 발전기 수주 기대",
-      "reason_confidence": "mid",
-      "reason_source": "llm",
+      "rise_reason": "방위산업/전쟁 및 테러 테마 강세",
+      "reason_confidence": "low",
+      "reason_source": "theme",
       "reason_status": "filled",
-      "theme_tag": "건설기계",
+      "theme_tag": "방위산업/전쟁 및 테러",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "건설기계 테마 강세",
-      "reason_evidence": [
-        {
-          "title": "AI 데이터센터 전력 수요 급증…혜인, 발전기 수주 확대 기대",
-          "link": "https://n.news.naver.com/mnews/article/018/0006403311",
-          "source": "이데일리",
-          "date": "2026-11-04"
-        }
-      ],
-      "reason_source_previous": "theme"
+      "source": "estimated"
     },
     {
       "date": "20261021",
@@ -686,12 +706,12 @@
     }
   ],
   "stats": {
-    "count_10": 12,
+    "count_10": 13,
     "count_15": 5,
     "count_20": 4,
     "count_limit": 2,
-    "count_recent": 2,
-    "avg_rate": 19.5
+    "count_recent": 3,
+    "avg_rate": 19.0
   },
-  "built_at": "2026-11-27T19:38:46"
+  "built_at": "2026-11-27T20:07:56"
 }

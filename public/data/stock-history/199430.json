@@ -4,6 +4,25 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261127",
+      "change_rate": 10.42,
+      "close_price": 17690.0,
+      "trading_volume": 176152,
+      "trading_value": 3116128880,
+      "rise_reason": "",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
+      "theme_tag": "",
+      "news": [],
+      "sector": "",
+      "is_52w_high": false,
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
+    },
+    {
       "date": "20261118",
       "change_rate": 10.19,
       "close_price": 16220.0,
@@ -13,7 +32,7 @@
       "reason_confidence": "mid",
       "reason_source": "llm",
       "reason_status": "filled",
-      "theme_tag": "로봇(산업용/협동로봇 등)",
+      "theme_tag": "",
       "news": [
         {
           "title": "케이엔알시스템 2톤짜리 로봇다리, 보행테스트 통과",
@@ -28,7 +47,7 @@
           "date": "2026-11-20"
         }
       ],
-      "sector": "기계",
+      "sector": "",
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "로봇/자동화",
@@ -52,7 +71,7 @@
       "reason_confidence": "mid",
       "reason_source": "llm",
       "reason_status": "filled",
-      "theme_tag": "로봇(산업용/협동로봇 등)",
+      "theme_tag": "",
       "news": [
         {
           "title": "케이엔알시스템, 고토크 QDD 액추에이터 개발",
@@ -73,11 +92,10 @@
           "date": "2026-11-04"
         }
       ],
-      "sector": "기계",
+      "sector": "",
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "시장 관심 증가",
-      "reason_source_previous": "estimated",
       "reason_evidence": [
         {
           "title": "케이엔알시스템, 고토크 QDD 액추에이터 개발",
@@ -85,7 +103,8 @@
           "source": "이데일리",
           "date": "2026-11-04"
         }
-      ]
+      ],
+      "reason_source_previous": "estimated"
     },
     {
       "date": "20261016",
@@ -1647,12 +1666,12 @@
     }
   ],
   "stats": {
-    "count_10": 21,
+    "count_10": 22,
     "count_15": 11,
     "count_20": 5,
     "count_limit": 1,
-    "count_recent": 2,
-    "avg_rate": 16.46
+    "count_recent": 3,
+    "avg_rate": 16.19
   },
-  "built_at": "2026-11-27T19:43:51"
+  "built_at": "2026-11-27T20:08:23"
 }

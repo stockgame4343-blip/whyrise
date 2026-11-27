@@ -4,6 +4,49 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261127",
+      "change_rate": 16.32,
+      "close_price": 6770.0,
+      "trading_volume": 519442,
+      "trading_value": 3516622340,
+      "rise_reason": "2차전지 테마 3종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "2차전지(소재/부품)",
+      "news": [
+        {
+          "title": "[이 시각 시황] 코스피 보합·코스닥 3% 급등…바이오·로봇·2차전지...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000546239",
+          "source": "SBS Biz",
+          "date": "2026.11.27"
+        },
+        {
+          "title": "[이 시각 시황] 저가 매수세 유입에 코스피 반등…MLCC·로봇·우주항...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000545983",
+          "source": "SBS Biz",
+          "date": "2026.11.26"
+        },
+        {
+          "title": "[이 시각 시황] 젠슨 황발 뉴욕증시 훈풍…코스피 5%대 급등, 반도체·...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000545473",
+          "source": "SBS Biz",
+          "date": "2026.11.24"
+        },
+        {
+          "title": "젠슨 황 복귀에 반도체 관련주 줄줄이 급등…삼전·닉스, 7~8% ‘쑥’",
+          "link": "https://n.news.naver.com/mnews/article/009/0005768013",
+          "source": "매일경제",
+          "date": "2026.11.24"
+        }
+      ],
+      "sector": "전자장비와기기",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_origin": "news",
+      "reason_kind": "theme"
+    },
+    {
       "date": "20261126",
       "change_rate": 11.92,
       "close_price": 5820.0,
@@ -13,8 +56,14 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
-      "theme_tag": "2차전지",
+      "theme_tag": "2차전지(소재/부품)",
       "news": [
+        {
+          "title": "[이 시각 시황] 코스피 보합·코스닥 3% 급등…바이오·로봇·2차전지...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000546239",
+          "source": "SBS Biz",
+          "date": "2026-11-27"
+        },
         {
           "title": "[이 시각 시황] 저가 매수세 유입에 코스피 반등…MLCC·로봇·우주항...",
           "link": "https://n.news.naver.com/mnews/article/374/0000545983",
@@ -38,8 +87,8 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "로봇/자동화",
-      "reason_source_previous": "news",
-      "reason_kind": "sector"
+      "reason_kind": "sector",
+      "reason_source_previous": "news"
     },
     {
       "date": "20261124",
@@ -47,11 +96,11 @@
       "close_price": 5390.0,
       "trading_volume": 6809,
       "trading_value": 36700510,
-      "rise_reason": "로봇주 동반 강세",
+      "rise_reason": "2차전지(소재/부품) 테마 강세",
       "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "reason_source": "theme",
       "reason_status": "filled",
-      "theme_tag": "로봇(산업용/협동로봇 등)",
+      "theme_tag": "2차전지(소재/부품)",
       "news": [
         {
           "title": "젠슨 황 복귀에 반도체 관련주 줄줄이 급등…삼전·닉스, 7~8% ‘쑥’",
@@ -66,6 +115,12 @@
           "date": "2026-11-24"
         },
         {
+          "title": "[이 시각 시황] 코스피 보합·코스닥 3% 급등…바이오·로봇·2차전지...",
+          "link": "https://n.news.naver.com/mnews/article/374/0000546239",
+          "source": "SBS Biz",
+          "date": "2026-11-27"
+        },
+        {
           "title": "[이 시각 시황] 저가 매수세 유입에 코스피 반등…MLCC·로봇·우주항...",
           "link": "https://n.news.naver.com/mnews/article/374/0000545983",
           "source": "SBS Biz",
@@ -74,18 +129,7 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "시장 관심 증가",
-      "reason_kind": "sector",
-      "reason_source_previous": "estimated",
-      "reason_evidence": [
-        {
-          "title": "[특징주] 젠슨 황 복귀에 로봇주 일제히 강세…현대오토에버 22% 급등",
-          "link": "https://n.news.naver.com/mnews/article/366/0001206868",
-          "source": "조선비즈",
-          "date": "2026-11-24"
-        }
-      ]
+      "source": "estimated"
     },
     {
       "date": "20260731",
@@ -228,12 +272,12 @@
     }
   ],
   "stats": {
-    "count_10": 6,
-    "count_15": 4,
+    "count_10": 7,
+    "count_15": 5,
     "count_20": 3,
     "count_limit": 2,
-    "count_recent": 2,
-    "avg_rate": 21.83
+    "count_recent": 3,
+    "avg_rate": 21.04
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T20:07:57"
 }

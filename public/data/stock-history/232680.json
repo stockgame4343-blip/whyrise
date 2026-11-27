@@ -4,6 +4,39 @@
   "market": "KOSDAQ",
   "events": [
     {
+      "date": "20261127",
+      "change_rate": 19.76,
+      "close_price": 15210.0,
+      "trading_volume": 4992010,
+      "trading_value": 75928472100,
+      "rise_reason": "로봇주 동반 강세 — 수요 확대 기대감",
+      "reason_confidence": "low",
+      "reason_source": "stockrise",
+      "reason_status": "filled",
+      "theme_tag": "로봇(산업용/협동로봇 등)",
+      "news": [
+        {
+          "title": "내년 기대감에 로봇株 82개 중 78개 상승…코스모로보틱스 24%대↑",
+          "link": "https://n.news.naver.com/mnews/article/008/0005447264",
+          "source": "머니투데이",
+          "date": "2026.11.27"
+        }
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "stockrise",
+      "reason_origin": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 로봇주, 수요 확대 기대감에 급등…일부 상한가(종합)",
+          "link": "https://n.news.naver.com/mnews/article/001/0016468074",
+          "source": "연합뉴스",
+          "date": "2026.11.27"
+        }
+      ]
+    },
+    {
       "date": "20261111",
       "change_rate": 10.32,
       "close_price": 11870.0,
@@ -13,7 +46,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
-      "theme_tag": "반도체 장비",
+      "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
           "title": "공모가 40% 밑돈 브릴스, '로봇 몸값' 적정했나",
@@ -45,7 +78,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
-      "theme_tag": "반도체 장비",
+      "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
           "title": "\"로봇에 숙련공 감각을\"…에이엘로봇 IPO 출사표 [현장+]",
@@ -67,18 +100,12 @@
       "close_price": 11670.0,
       "trading_volume": 6260202,
       "trading_value": 73056557340,
-      "rise_reason": "3분기 영업익 39억",
-      "reason_confidence": "mid",
-      "reason_source": "llm",
+      "rise_reason": "로봇(산업용/협동로봇 등) 테마 강세",
+      "reason_confidence": "low",
+      "reason_source": "theme",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
-        {
-          "title": "라온로보틱스, 3분기 영업익 39억…전년比 259%↑",
-          "link": "https://n.news.naver.com/mnews/article/008/0005434277",
-          "source": "머니투데이",
-          "date": "2026-10-30"
-        },
         {
           "title": "라온로보틱스, 반도체 훈풍에 외형·수익성 동반 개선",
           "link": "https://n.news.naver.com/mnews/article/293/0000092512",
@@ -90,21 +117,17 @@
           "link": "https://n.news.naver.com/mnews/article/081/0003694354",
           "source": "서울신문",
           "date": "2026-10-30"
-        }
-      ],
-      "sector": "반도체와반도체장비",
-      "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "시장 관심 증가",
-      "reason_source_previous": "estimated",
-      "reason_evidence": [
+        },
         {
           "title": "라온로보틱스, 3분기 영업익 39억…전년比 259%↑",
           "link": "https://n.news.naver.com/mnews/article/008/0005434277",
           "source": "머니투데이",
           "date": "2026-10-30"
         }
-      ]
+      ],
+      "sector": "반도체와반도체장비",
+      "is_52w_high": false,
+      "source": "estimated"
     },
     {
       "date": "20260810",
@@ -739,12 +762,12 @@
     }
   ],
   "stats": {
-    "count_10": 18,
-    "count_15": 7,
+    "count_10": 19,
+    "count_15": 8,
     "count_20": 4,
     "count_limit": 2,
-    "count_recent": 3,
-    "avg_rate": 16.04
+    "count_recent": 4,
+    "avg_rate": 16.23
   },
-  "built_at": "2026-11-27T19:34:06"
+  "built_at": "2026-11-27T20:07:56"
 }
