@@ -108,12 +108,18 @@
       "close_price": 5720.0,
       "trading_volume": 10323666,
       "trading_value": 59051369520,
-      "rise_reason": "기계 업종 3종목 동반 상승",
-      "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "rise_reason": "한화로보틱스와 로봇 공급 계약 체결",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
+        {
+          "title": "휴림로봇 주가 ‘불기둥’...한화로보틱스와 로봇 공급 계약 [오늘, 이...",
+          "link": "https://n.news.naver.com/mnews/article/024/0000109840",
+          "source": "매경이코노미",
+          "date": "2026-11-23"
+        },
         {
           "title": "엔비디아·삼전發 훈풍에 로봇주 '불기둥'…휴림로봇 이틀째 '上'[핫종...",
           "link": "https://n.news.naver.com/mnews/article/421/0009307833",
@@ -125,12 +131,6 @@
           "link": "https://n.news.naver.com/mnews/article/374/0000545462",
           "source": "SBS Biz",
           "date": "2026-11-24"
-        },
-        {
-          "title": "휴림로봇 주가 ‘불기둥’...한화로보틱스와 로봇 공급 계약 [오늘, 이...",
-          "link": "https://n.news.naver.com/mnews/article/024/0000109840",
-          "source": "매경이코노미",
-          "date": "2026-11-23"
         },
         {
           "title": "[마감시황] 4700선 사수한 코스피…美 AI 쇼크에 데이터센터株 급락",
@@ -209,8 +209,15 @@
       "is_52w_high": null,
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
-      "reason_kind": "sector",
-      "reason_source_previous": "news"
+      "reason_source_previous": "news",
+      "reason_evidence": [
+        {
+          "title": "휴림로봇 주가 ‘불기둥’...한화로보틱스와 로봇 공급 계약 [오늘, 이...",
+          "link": "https://n.news.naver.com/mnews/article/024/0000109840",
+          "source": "매경이코노미",
+          "date": "2026-11-23"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -948,5 +955,5 @@
     "count_recent": 2,
     "avg_rate": 18.97
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T19:46:28"
 }
