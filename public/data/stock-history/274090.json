@@ -9,9 +9,9 @@
       "close_price": 9170.0,
       "trading_volume": 403087,
       "trading_value": 3696307790,
-      "rise_reason": "우주/위성",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "방산주 동반 강세 — 중동 전쟁 긴장감 고조",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "우주항공산업(누리호/인공위성 등)",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "우주항공과국방",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "우주/위성",
+      "reason_source_previous": "news",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "중동 전쟁 긴장감 고조에..방산주 장 초반 강세",
+          "link": "https://n.news.naver.com/mnews/article/014/0005610684",
+          "source": "파이낸셜뉴스",
+          "date": "2026-11-27"
+        }
+      ]
     },
     {
       "date": "20261126",
@@ -831,5 +842,5 @@
     "count_recent": 2,
     "avg_rate": 16.38
   },
-  "built_at": "2026-11-27T20:07:57"
+  "built_at": "2026-11-27T20:16:00"
 }

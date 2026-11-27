@@ -9,11 +9,11 @@
       "close_price": 25250.0,
       "trading_volume": 153194,
       "trading_value": 3868148500,
-      "rise_reason": "이차전지 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 성장세 꺾인 , 동박·LFP 승부수 통할까",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
-      "theme_tag": "",
+      "theme_tag": "2차전지",
       "news": [
         {
           "title": "성장세 꺾인 피엔티, 동박·LFP 승부수 통할까",
@@ -28,9 +28,20 @@
           "date": "2026-11-23"
         }
       ],
-      "sector": "",
+      "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "이차전지 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "성장세 꺾인 피엔티, 동박·LFP 승부수 통할까",
+          "link": "https://n.news.naver.com/mnews/article/417/0001165842",
+          "source": "동행미디어 시대",
+          "date": "2026-11-27"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -274,5 +285,5 @@
     "count_recent": 1,
     "avg_rate": 12.55
   },
-  "built_at": "2026-11-27T20:07:56"
+  "built_at": "2026-11-27T20:16:00"
 }

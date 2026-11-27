@@ -72,9 +72,9 @@
       "close_price": 92400.0,
       "trading_volume": 405504,
       "trading_value": 37468569600,
-      "rise_reason": "바이오",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 이동기 대표, 보건의료기술진흥 유공 국무총리 표창",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [
@@ -117,7 +117,18 @@
       ],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "바이오",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "이동기 올릭스 대표, 보건의료기술진흥 유공 국무총리 표창",
+          "link": "https://n.news.naver.com/mnews/article/015/0005358109",
+          "source": "한국경제",
+          "date": "2026-11-25"
+        }
+      ]
     },
     {
       "date": "20261110",
@@ -125,15 +136,18 @@
       "close_price": 82700.0,
       "trading_volume": 176770,
       "trading_value": 14618879000,
-      "rise_reason": "비만치료제 테마 강세",
+      "rise_reason": "생명과학도구및서비스 업종 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "비만치료제",
       "news": [],
       "sector": "생명과학도구및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "비만치료제 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector"
     },
     {
       "date": "20261021",
@@ -1167,5 +1181,5 @@
     "count_recent": 3,
     "avg_rate": 14.25
   },
-  "built_at": "2026-11-27T20:07:56"
+  "built_at": "2026-11-27T20:16:00"
 }

@@ -9,9 +9,9 @@
       "close_price": 1970.0,
       "trading_volume": 617278,
       "trading_value": 1216037660,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "철강 중소형",
       "news": [
@@ -79,7 +79,10 @@
       "sector": "철강",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "rule"
+      "reason_origin": "rule",
+      "reason_previous": "자사주 소각",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector"
     },
     {
       "date": "20261126",
@@ -87,10 +90,10 @@
       "close_price": 1537.0,
       "trading_volume": 303248,
       "trading_value": 466092176,
-      "rise_reason": "철강 중소형 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "철강 중소형",
       "news": [
         {
@@ -102,7 +105,10 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "철강 중소형 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260716",
@@ -290,7 +296,7 @@
       "reason_confidence": "mid",
       "reason_source": "llm",
       "reason_status": "filled",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [
         {
           "title": "영흥, 2320만 자사주 소각 감자 결정 [공시pick]",
@@ -317,7 +323,7 @@
           "date": "2026-02-23"
         }
       ],
-      "sector": "",
+      "sector": "철강",
       "is_52w_high": true,
       "source": "estimated",
       "trading_volume": 9769574,
@@ -332,9 +338,9 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [],
-      "sector": "",
+      "sector": "철강",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 2952164,
@@ -351,7 +357,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "철강 중소형",
       "news": [
         {
           "title": "[서울데이터랩]금일 코스피 거래량 1위 동양 거래대금 2,517억 돌파",
@@ -372,7 +378,7 @@
           "date": "2025-10-15"
         }
       ],
-      "sector": "",
+      "sector": "철강",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 5732793,
@@ -389,7 +395,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "철강 중소형",
       "news": [
         {
           "title": "[서울데이터랩]영흥 12.91% 급등…실시간 상승률 1위",
@@ -404,7 +410,7 @@
           "date": "2025-08-28"
         }
       ],
-      "sector": "",
+      "sector": "철강",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 9478129,
@@ -422,5 +428,5 @@
     "count_recent": 2,
     "avg_rate": 15.54
   },
-  "built_at": "2026-11-27T20:07:56"
+  "built_at": "2026-11-27T20:16:00"
 }

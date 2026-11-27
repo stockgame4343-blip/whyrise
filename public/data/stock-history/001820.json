@@ -9,9 +9,9 @@
       "close_price": 76900.0,
       "trading_volume": 229999,
       "trading_value": 17686923100,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "전기제품 업종 16종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "MLCC(적층세라믹콘덴서)",
       "news": [
@@ -42,7 +42,10 @@
       ],
       "sector": "전기제품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "sector"
     },
     {
       "date": "20261111",
@@ -1049,5 +1052,5 @@
     "count_recent": 2,
     "avg_rate": 18.09
   },
-  "built_at": "2026-11-27T20:07:56"
+  "built_at": "2026-11-27T20:16:00"
 }

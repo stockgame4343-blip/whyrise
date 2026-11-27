@@ -99,9 +99,9 @@
       "close_price": 20300.0,
       "trading_volume": 2303919,
       "trading_value": 46769555700,
-      "rise_reason": "로봇/자동화",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "스페이스X 테마 7종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스페이스X(SpaceX)",
       "news": [
@@ -180,7 +180,10 @@
       ],
       "sector": "증권",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "로봇/자동화",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20260731",
@@ -662,5 +665,5 @@
     "count_recent": 2,
     "avg_rate": 14.29
   },
-  "built_at": "2026-11-27T20:07:55"
+  "built_at": "2026-11-27T20:16:00"
 }

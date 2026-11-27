@@ -9,9 +9,9 @@
       "close_price": 9110.0,
       "trading_volume": 143724,
       "trading_value": 1309325640,
-      "rise_reason": "트럼프/관세",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "2차전지 테마 8종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지(소재/부품)",
       "news": [
@@ -42,7 +42,10 @@
       ],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "트럼프/관세",
+      "reason_source_previous": "news",
+      "reason_kind": "theme"
     },
     {
       "date": "20261006",
@@ -432,5 +435,5 @@
     "count_recent": 1,
     "avg_rate": 14.5
   },
-  "built_at": "2026-11-27T20:07:56"
+  "built_at": "2026-11-27T20:16:00"
 }

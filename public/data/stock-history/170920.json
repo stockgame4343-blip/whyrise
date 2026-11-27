@@ -40,9 +40,9 @@
       "close_price": 27700.0,
       "trading_volume": 342480,
       "trading_value": 9486696000,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체주 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [
@@ -61,7 +61,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector"
     },
     {
       "date": "20261111",
@@ -69,15 +72,18 @@
       "close_price": 33250.0,
       "trading_volume": 306306,
       "trading_value": 10184674500,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 21종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "theme"
     },
     {
       "date": "20261110",
@@ -85,15 +91,26 @@
       "close_price": 28800.0,
       "trading_volume": 242053,
       "trading_value": 6971126400,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체주 동반 강세",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 美 반도체주 급등에 기판株 동반 강세…코리아써키트 9%↑",
+          "link": "https://n.news.naver.com/mnews/article/366/0001203675",
+          "source": "조선비즈",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20261028",
@@ -101,15 +118,18 @@
       "close_price": 40850.0,
       "trading_volume": 298264,
       "trading_value": 12184084400,
-      "rise_reason": "반도체 재료/부품 테마 강세",
+      "rise_reason": "반도체 재료 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "theme",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 재료/부품",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "반도체 재료/부품 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "theme"
     },
     {
       "date": "20261016",
@@ -1356,5 +1376,5 @@
     "count_recent": 5,
     "avg_rate": 15.02
   },
-  "built_at": "2026-11-27T20:07:56"
+  "built_at": "2026-11-27T20:16:00"
 }

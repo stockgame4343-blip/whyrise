@@ -9,9 +9,9 @@
       "close_price": 17700.0,
       "trading_volume": 107336,
       "trading_value": 1899847200,
-      "rise_reason": "AI/반도체 테마",
-      "reason_confidence": "mid",
-      "reason_source": "news",
+      "rise_reason": "관련 보도: 3분기 적자·K-ICS 150% 하회…수익·건전성 동반 악화",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "생명보험",
       "news": [
@@ -78,7 +78,18 @@
       ],
       "sector": "생명보험",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "AI/반도체 테마",
+      "reason_source_previous": "news",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "미래에셋생명, 3분기 적자·K-ICS 150% 하회…수익·건전성 동반 악화",
+          "link": "https://n.news.naver.com/mnews/article/629/0000555829",
+          "source": "더팩트",
+          "date": "2026-11-26"
+        }
+      ]
     },
     {
       "date": "20261028",
@@ -1167,5 +1178,5 @@
     "count_recent": 2,
     "avg_rate": 17.53
   },
-  "built_at": "2026-11-27T20:07:56"
+  "built_at": "2026-11-27T20:16:00"
 }

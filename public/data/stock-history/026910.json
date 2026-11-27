@@ -9,9 +9,9 @@
       "close_price": 1490.0,
       "trading_volume": 349843,
       "trading_value": 521266070,
-      "rise_reason": "M&A 관련 뉴스",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "철강주 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "M&A",
       "news": [
@@ -44,12 +44,9 @@
       "is_52w_high": false,
       "source": "stockrise",
       "reason_origin": "rule",
-      "reason_hint": {
-        "text": "11/17 3분기 누적 매출 444억",
-        "link": "https://n.news.naver.com/mnews/article/003/0014326484",
-        "title": "광진실업, 3분기 누적 매출 444억…전년比 3.4%↑",
-        "date": "20261117"
-      }
+      "reason_previous": "M&A 관련 뉴스",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector"
     },
     {
       "date": "20261027",
@@ -57,15 +54,18 @@
       "close_price": 3875.0,
       "trading_volume": 555748,
       "trading_value": 2153523500,
-      "rise_reason": "M&A 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "M&A",
       "news": [],
       "sector": "철강",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "M&A 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20261016",
@@ -1232,5 +1232,5 @@
     "count_recent": 1,
     "avg_rate": 18.07
   },
-  "built_at": "2026-11-27T20:07:58"
+  "built_at": "2026-11-27T20:16:00"
 }

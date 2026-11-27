@@ -9,9 +9,9 @@
       "close_price": 4405.0,
       "trading_volume": 6021746,
       "trading_value": 26525791130,
-      "rise_reason": "거래량 증가",
-      "reason_confidence": "high",
-      "reason_source": "stockrise",
+      "rise_reason": "자동차·부품주 4종목 동반 상승",
+      "reason_confidence": "low",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -43,7 +43,10 @@
       "sector": "자동차부품",
       "is_52w_high": false,
       "source": "stockrise",
-      "reason_origin": "fallback"
+      "reason_origin": "fallback",
+      "reason_previous": "거래량 증가",
+      "reason_source_previous": "stockrise",
+      "reason_kind": "sector"
     },
     {
       "date": "20261124",
@@ -139,15 +142,18 @@
       "close_price": 2765.0,
       "trading_volume": 2387826,
       "trading_value": 6602338890,
-      "rise_reason": "자동차부품 테마 강세",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "theme",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자동차부품 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "none"
     },
     {
       "date": "20260825",
@@ -651,7 +657,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [
         {
           "title": "승부수 vs 무리수…'K로봇 유증' 엇갈린 시선",
@@ -672,7 +678,7 @@
           "date": "2026-04-07"
         }
       ],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": true,
       "source": "estimated",
       "reason_previous": "로봇/자동화",
@@ -687,9 +693,9 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 7500173,
@@ -706,7 +712,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [
         {
           "title": "[서울데이터랩]‘비츠로셀’ +29.96% 폭등…실시간 상승률 1위",
@@ -721,7 +727,7 @@
           "date": "2026-03-17"
         }
       ],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 3382733,
@@ -738,7 +744,7 @@
       "reason_confidence": "mid",
       "reason_source": "llm",
       "reason_status": "filled",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [
         {
           "title": "휴림에이텍, 'KAIST·LG 출신' 로봇 최고 전문가 영입...&quot;첨단 로봇 사...",
@@ -759,7 +765,7 @@
           "date": "2026-03-17"
         }
       ],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 643875,
@@ -774,9 +780,9 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 219543,
@@ -793,7 +799,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [
         {
           "title": "[서울데이터랩]금일 코스닥 거래량 1위 휴림로봇 거래대금 무려 1252억...",
@@ -826,7 +832,7 @@
           "date": "2026-01-21"
         }
       ],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": true,
       "source": "estimated",
       "trading_volume": 228905,
@@ -843,7 +849,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [
         {
           "title": "[서울데이터랩]인트로메딕 97.67% 상승…금일 증시 상승률 1위로 마감",
@@ -876,7 +882,7 @@
           "date": "2026-01-20"
         }
       ],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 4314550,
@@ -894,7 +900,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [
         {
           "title": "[서울데이터랩]금일 코스닥 거래량 1위 휴림로봇 거래대금 무려 480억...",
@@ -903,7 +909,7 @@
           "date": "2025-12-29"
         }
       ],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 2642524,
@@ -921,9 +927,9 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 3145544,
@@ -940,9 +946,9 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": false,
       "source": "estimated",
       "trading_volume": 2738108,
@@ -959,9 +965,9 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": true,
       "source": "estimated",
       "trading_volume": 6076283,
@@ -979,9 +985,9 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": true,
       "source": "estimated",
       "trading_volume": 1260007,
@@ -999,9 +1005,9 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": true,
       "source": "estimated",
       "trading_volume": 1833105,
@@ -1019,7 +1025,7 @@
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "missing",
-      "theme_tag": "",
+      "theme_tag": "자동차부품",
       "news": [
         {
           "title": "[서울데이터랩]한라캐스트 29.94% 상한가…금일 증시 상승률 1위로 마...",
@@ -1034,7 +1040,7 @@
           "date": "2025-09-15"
         }
       ],
-      "sector": "",
+      "sector": "자동차부품",
       "is_52w_high": true,
       "source": "estimated",
       "trading_volume": 1276273,
@@ -1053,5 +1059,5 @@
     "count_recent": 4,
     "avg_rate": 22.54
   },
-  "built_at": "2026-11-27T20:07:57"
+  "built_at": "2026-11-27T20:16:00"
 }
