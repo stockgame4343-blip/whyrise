@@ -11,7 +11,7 @@
       "trading_value": 39262400000,
       "rise_reason": "3분기 영업익 98.3% 증가",
       "reason_confidence": "high",
-      "reason_source": "news_extract",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "스마트그리드(지능형전력망)",
       "news": [
@@ -39,12 +39,23 @@
       "source": "estimated",
       "reason_previous": "시장 관심 증가",
       "reason_source_previous": "estimated",
-      "reason_kind": "move",
       "reason_evidence": [
+        {
+          "title": "일진전기, 전력망 호황에 3분기 영업익 700억",
+          "link": "https://n.news.naver.com/mnews/article/014/0005602881",
+          "source": "파이낸셜뉴스",
+          "date": "2026-11-11"
+        },
         {
           "title": "일진전기, 3분기 영업익 98.3%↑…美 인프라 노후화로 수주 릴레이",
           "link": "https://n.news.naver.com/mnews/article/016/0002722119",
           "source": "헤럴드경제",
+          "date": "2026-11-11"
+        },
+        {
+          "title": "일진전기, 3분기 영업익 98.3% 급증…4분기 대형 수주도 기대",
+          "link": "https://n.news.naver.com/mnews/article/092/0002444841",
+          "source": "지디넷코리아",
           "date": "2026-11-11"
         }
       ]
@@ -556,5 +567,5 @@
     "count_recent": 2,
     "avg_rate": 13.5
   },
-  "built_at": "2026-11-27T19:38:46"
+  "built_at": "2026-11-27T19:39:42"
 }

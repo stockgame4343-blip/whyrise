@@ -10,17 +10,11 @@
       "trading_volume": 1291095,
       "trading_value": 105482461500,
       "rise_reason": "3분기 영업익 667억",
-      "reason_confidence": "mid",
-      "reason_source": "news_extract",
+      "reason_confidence": "high",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "반도체 장비",
       "news": [
-        {
-          "title": "\"원익IPS, 데이터센터 증설 기대감 유효… 목표가↓\"-삼성",
-          "link": "https://n.news.naver.com/mnews/article/008/0005438797",
-          "source": "머니투데이",
-          "date": "2026-11-10"
-        },
         {
           "title": "원익IPS, 3분기 영업익 667억…전년비 142% ↑",
           "link": "https://n.news.naver.com/mnews/article/016/0002720936",
@@ -32,6 +26,12 @@
           "link": "https://n.news.naver.com/mnews/article/001/0016431660",
           "source": "연합뉴스",
           "date": "2026-11-09"
+        },
+        {
+          "title": "\"원익IPS, 데이터센터 증설 기대감 유효… 목표가↓\"-삼성",
+          "link": "https://n.news.naver.com/mnews/article/008/0005438797",
+          "source": "머니투데이",
+          "date": "2026-11-10"
         },
         {
           "title": "5% 넘게 뛴 코스닥, 700선 탈환… 부양책 기대감에 ‘불기둥’",
@@ -111,12 +111,17 @@
       "source": "estimated",
       "reason_previous": "시장 관심 증가",
       "reason_source_previous": "estimated",
-      "reason_kind": "move",
       "reason_evidence": [
         {
           "title": "원익IPS, 3분기 영업익 667억…전년비 142% ↑",
           "link": "https://n.news.naver.com/mnews/article/016/0002720936",
           "source": "헤럴드경제",
+          "date": "2026-11-09"
+        },
+        {
+          "title": "원익IPS 3분기 영업이익 667억원…작년 동기 대비 142%↑",
+          "link": "https://n.news.naver.com/mnews/article/001/0016431660",
+          "source": "연합뉴스",
           "date": "2026-11-09"
         }
       ]
@@ -982,5 +987,5 @@
     "count_recent": 1,
     "avg_rate": 18.09
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T19:39:42"
 }

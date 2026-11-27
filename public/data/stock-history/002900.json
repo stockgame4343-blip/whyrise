@@ -10,23 +10,11 @@
       "trading_volume": 1736475,
       "trading_value": 12815185500,
       "rise_reason": "관련 보도: 자사주 100억 추가 매입… 기업성장 성과 주주들과 공유",
-      "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [
-        {
-          "title": "로봇이 농사짓는 시대 성큼…대동·TYM·현대차, 피지컬 AI 속도전",
-          "link": "https://n.news.naver.com/mnews/article/031/0001073194",
-          "source": "아이뉴스24",
-          "date": "2026-11-09"
-        },
-        {
-          "title": "‘트랙터 회사’들 맞아?…주가 껑충 대동·TYM에 무슨 일?[중기+]",
-          "link": "https://n.news.naver.com/mnews/article/016/0002722543",
-          "source": "헤럴드경제",
-          "date": "2026-11-12"
-        },
         {
           "title": "TYM, 자사주 100억 추가 매입… “기업성장 성과 주주들과 공유”",
           "link": "https://n.news.naver.com/mnews/article/016/0002722237",
@@ -38,6 +26,18 @@
           "link": "https://n.news.naver.com/mnews/article/011/0004681103",
           "source": "서울경제",
           "date": "2026-11-11"
+        },
+        {
+          "title": "로봇이 농사짓는 시대 성큼…대동·TYM·현대차, 피지컬 AI 속도전",
+          "link": "https://n.news.naver.com/mnews/article/031/0001073194",
+          "source": "아이뉴스24",
+          "date": "2026-11-09"
+        },
+        {
+          "title": "‘트랙터 회사’들 맞아?…주가 껑충 대동·TYM에 무슨 일?[중기+]",
+          "link": "https://n.news.naver.com/mnews/article/016/0002722543",
+          "source": "헤럴드경제",
+          "date": "2026-11-12"
         }
       ],
       "sector": "기계",
@@ -45,12 +45,17 @@
       "source": "estimated",
       "reason_previous": "시장 관심 증가",
       "reason_source_previous": "estimated",
-      "reason_kind": "related",
       "reason_evidence": [
         {
           "title": "TYM, 자사주 100억 추가 매입… “기업성장 성과 주주들과 공유”",
           "link": "https://n.news.naver.com/mnews/article/016/0002722237",
           "source": "헤럴드경제",
+          "date": "2026-11-11"
+        },
+        {
+          "title": "기업 공시 [11월 11일]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004681103",
+          "source": "서울경제",
           "date": "2026-11-11"
         }
       ]
@@ -153,5 +158,5 @@
     "count_recent": 2,
     "avg_rate": 12.7
   },
-  "built_at": "2026-11-27T19:35:39"
+  "built_at": "2026-11-27T19:39:42"
 }
