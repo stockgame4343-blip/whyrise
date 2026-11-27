@@ -61,17 +61,35 @@
       "trading_volume": 2477162,
       "trading_value": 3517570040,
       "rise_reason": "관련 보도: 이해성 대표 내정 수익 제고",
-      "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "reason_confidence": "high",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "마스크",
       "news": [
+        {
+          "title": "깨끗한나라 이해성 대표 내정 \"수익 제고\"",
+          "link": "https://n.news.naver.com/mnews/article/014/0005608471",
+          "source": "파이낸셜뉴스",
+          "date": "2026-11-23"
+        },
+        {
+          "title": "외부 출신 대표 앉힌 깨끗한나라…父 복귀 무산후 장녀 체제 굳히나",
+          "link": "https://n.news.naver.com/mnews/article/015/0005357209",
+          "source": "한국경제",
+          "date": "2026-11-23"
+        },
         {
           "title": "깨끗한나라 52%, AK홀딩스 29%↑…하락장 거스른 저PBR株",
           "link": "https://n.news.naver.com/mnews/article/011/0004686640",
           "source": "서울경제",
           "date": "2026-11-26"
-        },
+        }
+      ],
+      "sector": "종이와목재",
+      "is_52w_high": false,
+      "source": "estimated",
+      "reason_previous": "마스크 테마 강세",
+      "reason_evidence": [
         {
           "title": "깨끗한나라 이해성 대표 내정 \"수익 제고\"",
           "link": "https://n.news.naver.com/mnews/article/014/0005608471",
@@ -85,19 +103,6 @@
           "date": "2026-11-23"
         }
       ],
-      "sector": "종이와목재",
-      "is_52w_high": false,
-      "source": "estimated",
-      "reason_previous": "마스크 테마 강세",
-      "reason_evidence": [
-        {
-          "title": "깨끗한나라 이해성 대표 내정 \"수익 제고\"",
-          "link": "https://n.news.naver.com/mnews/article/014/0005608471",
-          "source": "파이낸셜뉴스",
-          "date": "2026-11-23"
-        }
-      ],
-      "reason_kind": "related",
       "reason_source_previous": "theme"
     },
     {
@@ -402,5 +407,5 @@
     "count_recent": 5,
     "avg_rate": 23.38
   },
-  "built_at": "2026-11-27T19:38:05"
+  "built_at": "2026-11-27T19:48:06"
 }

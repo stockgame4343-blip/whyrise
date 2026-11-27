@@ -11,7 +11,7 @@
       "trading_value": 305743033200,
       "rise_reason": "멈추지 않는 해킹 사고",
       "reason_confidence": "high",
-      "reason_source": "news_extract",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "보안주(정보)",
       "news": [
@@ -25,6 +25,12 @@
           "title": "해킹에 보안주 또 들썩…안랩 52주 신고가",
           "link": "https://n.news.naver.com/mnews/article/008/0005446047",
           "source": "머니투데이",
+          "date": "2026-11-25"
+        },
+        {
+          "title": "안랩 ‘상한가’… 美 CIA·국가정보국 해킹에 매수세",
+          "link": "https://n.news.naver.com/mnews/article/014/0005609847",
+          "source": "파이낸셜뉴스",
           "date": "2026-11-25"
         },
         {
@@ -56,12 +62,6 @@
           "link": "https://n.news.naver.com/mnews/article/003/0014346332",
           "source": "뉴시스",
           "date": "2026-11-26"
-        },
-        {
-          "title": "안랩 ‘상한가’… 美 CIA·국가정보국 해킹에 매수세",
-          "link": "https://n.news.naver.com/mnews/article/014/0005609847",
-          "source": "파이낸셜뉴스",
-          "date": "2026-11-25"
         },
         {
           "title": "[특징주] 보안주, 국내외 잇단 해킹 피해에 급등(종합)",
@@ -111,12 +111,23 @@
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
       "reason_source_previous": "news",
-      "reason_kind": "move",
       "reason_evidence": [
         {
           "title": "[ET특징주] 멈추지 않는 해킹 사고… 안랩, 주가 28% 급등",
           "link": "https://n.news.naver.com/mnews/article/030/0003489648",
           "source": "전자신문",
+          "date": "2026-11-25"
+        },
+        {
+          "title": "해킹에 보안주 또 들썩…안랩 52주 신고가",
+          "link": "https://n.news.naver.com/mnews/article/008/0005446047",
+          "source": "머니투데이",
+          "date": "2026-11-25"
+        },
+        {
+          "title": "안랩 ‘상한가’… 美 CIA·국가정보국 해킹에 매수세",
+          "link": "https://n.news.naver.com/mnews/article/014/0005609847",
+          "source": "파이낸셜뉴스",
           "date": "2026-11-25"
         }
       ]
@@ -715,5 +726,5 @@
     "count_recent": 4,
     "avg_rate": 17.97
   },
-  "built_at": "2026-11-27T19:33:14"
+  "built_at": "2026-11-27T19:48:06"
 }
