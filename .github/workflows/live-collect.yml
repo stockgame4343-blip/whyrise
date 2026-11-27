@@ -1,0 +1,122 @@
+name: 자체 주식 데이터 수집 (live)
+
+# stock-rise 의존 단계적 독립 2단계(2026-11-27) — stock-rise collect.yml 을 whyrise 로 옮긴 것.
+# live_collector/collector.py → public/data/live/{date}.json (+ dates.json, summary.json), 캐시 json 은 live_collector/.
+# 대조 기간에는 stock-rise 수집과 함께 돈다(사이트는 아직 stock-rise 데이터를 읽음). 전환은 3단계.
+# 장중 15분마다 커밋하지만 public/data/live/·live_collector/ 만 바뀐 커밋은 vercel.json ignoreCommand 로 배포를 건너뛴다.
+on:
+  # GitHub cron — 누락이 잦아 외부 cron-job.org → orgo.kr/api/collect-trigger(repository_dispatch) 가 주 시계, 이건 백업
+  schedule:
+    - cron: '8,23,38,53 0,1,2,3,4,5 * * 1-5'   # KST 09:08~14:53 intraday
+    - cron: '8,23 6 * * 1-5'                   # KST 15:08 / 15:23 intraday 마지막
+    - cron: '38 6 * * 1-5'                     # KST 15:38 closing 1차
+    - cron: '8 7 * * 1-5'                      # KST 16:08 closing 최종
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: '수집 모드 (intraday / closing)'
+        required: false
+        default: 'closing'
+  repository_dispatch:
+    types: [live-collect]
+
+concurrency:
+  group: live-collect
+  cancel-in-progress: false
+
+env:
+  TZ: Asia/Seoul
+
+jobs:
+  collect:
+    runs-on: ubuntu-24.04   # 26.04 는 Playwright chromium 미지원 (stock-rise 10/22~11/27 수집 실패 원인)
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine collection mode
+        id: mode
+        run: |
+          TODAY=$(date +%Y%m%d)
+          NOW_MIN=$((10#$(date +%H) * 60 + 10#$(date +%M)))
+          DOW=$(date +%u)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ $DOW -ge 6 ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT; echo "주말 — 스킵"; exit 0
+          fi
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            if ! python3 -c "
+          import sys, datetime
+          sys.path.insert(0, '.')
+          from collector.kr_holidays import is_kr_holiday
+          sys.exit(1 if is_kr_holiday(datetime.date.today()) else 0)
+          "; then
+              echo "skip=true" >> $GITHUB_OUTPUT; echo "한국 휴장일($TODAY) — 스킵"; exit 0
+            fi
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.mode }}" ]; then
+            echo "mode=${{ inputs.mode }}" >> $GITHUB_OUTPUT; echo "skip=false" >> $GITHUB_OUTPUT; exit 0
+          fi
+          if [ "${{ github.event_name }}" = "repository_dispatch" ] && [ -n "${{ github.event.client_payload.mode }}" ]; then
+            echo "mode=${{ github.event.client_payload.mode }}" >> $GITHUB_OUTPUT; echo "skip=false" >> $GITHUB_OUTPUT; exit 0
+          fi
+          if [ $NOW_MIN -ge 930 ]; then
+            MODE="closing"
+            FINAL=$(python3 -c "import json;print(json.load(open('public/data/live/${TODAY}.json')).get('is_final', False))" 2>/dev/null || echo "False")
+            if [ "$FINAL" = "True" ]; then
+              echo "skip=true" >> $GITHUB_OUTPUT; echo "장마감 최종 데이터 이미 존재 — 스킵"; exit 0
+            fi
+          else
+            MODE="intraday"
+          fi
+          echo "mode=$MODE" >> $GITHUB_OUTPUT
+          echo "skip=false" >> $GITHUB_OUTPUT
+          echo "모드: $MODE"
+
+      - uses: actions/setup-python@v5
+        if: steps.mode.outputs.skip != 'true'
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: live_collector/requirements.txt
+
+      - name: Install dependencies
+        if: steps.mode.outputs.skip != 'true'
+        run: |
+          pip install -r live_collector/requirements.txt
+          playwright install chromium --with-deps
+
+      - name: Run collector
+        if: steps.mode.outputs.skip != 'true'
+        run: |
+          cd live_collector
+          MODE="${{ steps.mode.outputs.mode }}"
+          for attempt in 1 2 3; do
+            echo "--- 시도 ${attempt}/3 (모드: $MODE) ---"
+            if python collector.py --mode $MODE; then echo "수집 성공"; exit 0; fi
+            echo "실패 — 60초 후 재시도"; sleep 60
+          done
+          echo "::error::3회 시도 모두 실패"; exit 1
+
+      - name: Commit & push data
+        if: steps.mode.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/live/ live_collector/theme_cache.json live_collector/news_history.json live_collector/backtest.json live_collector/sector_cache.json live_collector/naver_mapping.json
+          git diff --staged --quiet && echo "변경 없음" && exit 0
+          MODE="${{ steps.mode.outputs.mode }}"
+          if [ "$MODE" = "closing" ]; then MSG="data(live): $(date +%Y%m%d) 장마감 수집"; else MSG="data(live): $(date +%Y%m%d) $(date +%H:%M) 장중"; fi
+          git commit -q -m "$MSG"
+          # live 경로는 이 워크플로만 쓰므로 충돌 나면 방금 수집한 쪽(-X theirs)이 이긴다
+          for attempt in 1 2 3 4; do
+            git fetch -q origin master
+            if git -c rebase.autoStash=true rebase -X theirs origin/master; then
+              git push origin HEAD:master && echo "push 성공 ($attempt)" && exit 0
+            else
+              git rebase --abort || true
+            fi
+            sleep $((attempt * 5))
+          done
+          echo "::error::push 실패"; exit 1

@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "ignoreCommand": "[ -n \"$VERCEL_GIT_PREVIOUS_SHA\" ] && git cat-file -e \"$VERCEL_GIT_PREVIOUS_SHA^{commit}\" 2>/dev/null && C=$(git diff --name-only \"$VERCEL_GIT_PREVIOUS_SHA\" HEAD) && [ -n \"$C\" ] && ! printf '%s\n' \"$C\" | grep -qvE '^(public/data/live/|live_collector/)'",
   "crons": [
     {
       "path": "/api/threads-cron",
