@@ -28,7 +28,7 @@ env:
 jobs:
   daily:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # 26.04는 Playwright chromium 미지원
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4

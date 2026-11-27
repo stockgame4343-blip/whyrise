@@ -38,7 +38,7 @@ concurrency:
 
 jobs:
   window:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # 26.04는 Playwright chromium 미지원
     outputs:
       run: ${{ steps.window.outputs.run }}
     steps:
@@ -53,7 +53,7 @@ jobs:
   post:
     needs: window
     if: needs.window.outputs.run == 'true' && ( github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # 26.04는 Playwright chromium 미지원
     permissions:
       contents: write
     steps:

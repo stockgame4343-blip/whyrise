@@ -27,7 +27,7 @@ concurrency:
 
 jobs:
   post:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # 26.04는 Playwright chromium 미지원
     permissions:
       contents: write
     steps:
