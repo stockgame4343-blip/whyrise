@@ -245,6 +245,24 @@ class EventWindowTest(unittest.TestCase):
         self.assertIs(events[0]['is_52w_high'], True)
 
 
+class CarryEventMetaTest(unittest.TestCase):
+    """증분 재구성이 비운 업종·테마는 같은 날 기존 값으로 이월, 새 값이 있으면 새 값 우선."""
+
+    def test_empty_new_keeps_old_meta(self):
+        old = [{'date': '20261104', 'sector': '에너지장비및서비스', 'theme_tag': '태양광에너지'}]
+        new = [{'date': '20261104', 'sector': '', 'theme_tag': ''}]
+        merged = bh.merge_ticker_events(old, new, window_start='20261028')
+        self.assertEqual(merged[0]['sector'], '에너지장비및서비스')
+        self.assertEqual(merged[0]['theme_tag'], '태양광에너지')
+
+    def test_new_value_wins(self):
+        old = [{'date': '20261104', 'sector': '옛업종', 'theme_tag': '옛테마'}]
+        new = [{'date': '20261104', 'sector': '새업종', 'theme_tag': ''}]
+        bh.carry_event_meta(old, new)
+        self.assertEqual(new[0]['sector'], '새업종')
+        self.assertEqual(new[0]['theme_tag'], '옛테마')
+
+
 class ApplyOverridesTest(unittest.TestCase):
     """bake 시 pre_override 백업, override 삭제 시 원복."""
 

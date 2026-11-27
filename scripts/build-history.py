@@ -655,6 +655,7 @@ def merge_ticker_events(old: list[dict], new: list[dict], window_start: str) -> 
     → 증분(--days 30)이 백필한 과거를 지우지 않음.
     """
     carry_refined_reasons(old, new)
+    carry_event_meta(old, new)
     kept_old = [e for e in old if (e.get('date') or '') < window_start]
     return sorted(new + kept_old, key=lambda e: e.get('date', ''), reverse=True)
 
@@ -684,6 +685,28 @@ def carry_refined_reasons(old: list[dict], new: list[dict]) -> int:
             if k in prev:
                 e[k] = prev[k]
         carried += 1
+    return carried
+
+
+_CARRY_META_FIELDS = ('sector', 'theme_tag')
+
+
+def carry_event_meta(old: list[dict], new: list[dict]) -> int:
+    """같은 날짜 이벤트의 업종·테마를 new 가 비었을 때만 이월.
+
+    상류(stock-rise)가 빠진 날은 증분 빌드가 업종·테마 없이 이벤트를 다시 만들어,
+    백필로 채워 둔 값을 매일 지웠다(11/27). 새 값이 있으면 새 값이 우선.
+    """
+    by_date = {e.get('date'): e for e in old}
+    carried = 0
+    for e in new:
+        prev = by_date.get(e.get('date'))
+        if not prev:
+            continue
+        for k in _CARRY_META_FIELDS:
+            if not (e.get(k) or '').strip() and (prev.get(k) or '').strip():
+                e[k] = prev[k]
+                carried += 1
     return carried
 
 
