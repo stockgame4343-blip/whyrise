@@ -16,6 +16,7 @@ const RAW = 'https://raw.githubusercontent.com/stockgame4343-blip/stock-rise/mas
 const OUT = path.resolve(__dirname, '..', 'public', 'data', 'leaders-calendar.json');
 const RISE_DIR = path.resolve(__dirname, '..', 'public', 'data', 'rise-history');  // 백필 날짜별 (4/13 이전)
 const MM_DIR = path.resolve(__dirname, '..', 'public', 'data', 'marketmap');       // 일자별 대형주 스냅샷 — +5%대 대장 후보 공급
+const SCREENING = path.resolve(__dirname, '..', 'public', 'data', 'screening.json'); // 종목별 업종·테마(자체 누적) — 대장 행 빈칸 보충
 
 // report.js / report-core.js 와 동일 상수
 const BLOCKED = { '003060': 1, '018700': 1, '007460': 1 };
@@ -42,6 +43,23 @@ function themeTags(row) {
     return out;
 }
 function themeOf(row) { var t = themeTags(row); return t.length ? t[0] : ''; }
+
+// 대장 후보가 marketmap 보충 행(테마 없음)이거나 상류 행에 업종이 비었을 때 '오늘의 대장' 칸이 비던 문제 —
+// 자체 screening.json(종목별 업종·자주 나온 테마)으로 빈칸만 채운다. 파일이 없으면 그대로 둔다.
+var _tickerMeta = null;
+function tickerMeta(ticker) {
+    if (!_tickerMeta) {
+        _tickerMeta = {};
+        try {
+            (JSON.parse(fs.readFileSync(SCREENING, 'utf8')).tickers || []).forEach(function (it) {
+                if (!it || !it.ticker) return;
+                var th = (it.themes || []).filter(function (t) { return t && !JUNK_THEME_TAGS[t]; });
+                _tickerMeta[it.ticker] = { sector: String(it.sector || '').trim(), theme: th.length ? String(th[0]).trim() : '' };
+            });
+        } catch (e) { /* screening 없음 — 보충 없이 진행 */ }
+    }
+    return _tickerMeta[ticker] || {};
+}
 
 function isActive(row, cutoff) {
     if (!row || !row.ticker || BLOCKED[row.ticker]) return false;
@@ -139,7 +157,8 @@ function leadersFromRows(rk, extraRows) {
         stock: leader ? {
             ticker: leader.ticker, name: leader.name, rate: Math.round(num(leader.change_rate) * 10) / 10,
             market: String(leader.market || '').trim(),
-            sector: String(leader.sector || '').trim(), theme: themeOf(leader),
+            sector: String(leader.sector || '').trim() || tickerMeta(leader.ticker).sector || '',
+            theme: themeOf(leader) || tickerMeta(leader.ticker).theme || '',
             vol: Math.round(num(leader.trading_value)), reason: String(leader.rise_reason || '').trim(),
             // 상장 첫날 — 가격제한폭(±30%) 밖 상승 + 신규상장 태그 (텔레그램·발행실 '(상장 첫날)' 표기)
             listing_day: num(leader.change_rate) > 30.5 && themeTags(leader).some(function (t) { return /신규\s*상장/.test(t); }),
@@ -221,14 +240,16 @@ async function main() {
         }
     }
 
-    // 백필(stock-rise 미커버 = 4/13 이전) — 로컬 rise-history 로 과거 대장 계산. 네트워크 불필요.
+    // 백필(stock-rise 미커버 = 4/13 이전 + 상류 수집이 끊긴 날) — 로컬 rise-history 로 대장 계산. 네트워크 불필요.
+    // 상류 dates.json 에 없는 날만 — 10/23~11/26 상류 중단 때 이 날들이 통째로 빠졌다.
     const srMin = dates.slice().sort()[0];   // stock-rise 최소일 (≈20260413)
+    const srHave = new Set(dates);
     let backfilled = 0;
     try {
         const localFiles = fs.readdirSync(RISE_DIR).filter(function (f) { return /^\d{8}\.json$/.test(f); });
         for (const f of localFiles) {
             const d = f.slice(0, 8);
-            if (d >= srMin) continue;                          // stock-rise 가 커버 → 위에서 처리됨
+            if (srHave.has(d)) continue;                       // stock-rise 가 커버 → 위에서 처리됨
             if (have.has(d) && !refresh.has(d)) { skipped++; continue; }  // 이미 보유 → merge 가 유지
             try {
                 const day = JSON.parse(fs.readFileSync(path.join(RISE_DIR, f), 'utf8'));
