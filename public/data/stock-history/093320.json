@@ -62,17 +62,11 @@
       "trading_volume": 5096,
       "trading_value": 798033600,
       "rise_reason": "맥쿼리 공개매수 합의",
-      "reason_confidence": "high",
-      "reason_source": "news_extract",
+      "reason_confidence": "mid",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "클라우드 컴퓨팅",
       "news": [
-        {
-          "title": "맥쿼리·가비아 주주 갈등 일단락…인수·상장폐지 절차 드라이브",
-          "link": "https://n.news.naver.com/mnews/article/092/0002442887",
-          "source": "지디넷코리아",
-          "date": "2026-10-29"
-        },
         {
           "title": "맥쿼리 공개매수 발표에…KINX 상한가, 가비아 26% 급등[시그널]",
           "link": "https://n.news.naver.com/mnews/article/011/0004676229",
@@ -80,15 +74,21 @@
           "date": "2026-10-28"
         },
         {
-          "title": "코스닥 3.69% 급등 771.28 마감… 기관 2242억 순매수",
-          "link": "https://n.news.naver.com/mnews/article/081/0003693435",
-          "source": "서울신문",
-          "date": "2026-10-28"
-        },
-        {
           "title": "케이아이엔엑스, 맥쿼리 공개매수 합의에 ‘상한가’ [줍줍 리포트]",
           "link": "https://n.news.naver.com/mnews/article/011/0004675980",
           "source": "서울경제",
+          "date": "2026-10-28"
+        },
+        {
+          "title": "맥쿼리·가비아 주주 갈등 일단락…인수·상장폐지 절차 드라이브",
+          "link": "https://n.news.naver.com/mnews/article/092/0002442887",
+          "source": "지디넷코리아",
+          "date": "2026-10-29"
+        },
+        {
+          "title": "코스닥 3.69% 급등 771.28 마감… 기관 2242억 순매수",
+          "link": "https://n.news.naver.com/mnews/article/081/0003693435",
+          "source": "서울신문",
           "date": "2026-10-28"
         }
       ],
@@ -98,13 +98,18 @@
       "reason_previous": "상한가 — 사유 미수집",
       "reason_evidence": [
         {
+          "title": "맥쿼리 공개매수 발표에…KINX 상한가, 가비아 26% 급등[시그널]",
+          "link": "https://n.news.naver.com/mnews/article/011/0004676229",
+          "source": "서울경제",
+          "date": "2026-10-28"
+        },
+        {
           "title": "케이아이엔엑스, 맥쿼리 공개매수 합의에 ‘상한가’ [줍줍 리포트]",
           "link": "https://n.news.naver.com/mnews/article/011/0004675980",
           "source": "서울경제",
           "date": "2026-10-28"
         }
       ],
-      "reason_kind": "move",
       "reason_source_previous": "pattern"
     },
     {
@@ -268,5 +273,5 @@
     "count_recent": 2,
     "avg_rate": 16.03
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T19:31:38"
 }

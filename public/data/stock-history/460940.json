@@ -130,18 +130,12 @@
       "close_price": 5120.0,
       "trading_volume": 772859,
       "trading_value": 3957038080,
-      "rise_reason": "멕시코 최대 재활기관 수주",
-      "reason_confidence": "mid",
-      "reason_source": "news_extract",
+      "rise_reason": "멕시코 최대 재활기관 수주, 해외 확대 기대",
+      "reason_confidence": "high",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
-        {
-          "title": "코스닥 3.69% 급등 771.28 마감… 기관 2242억 순매수",
-          "link": "https://n.news.naver.com/mnews/article/081/0003693435",
-          "source": "서울신문",
-          "date": "2026-10-28"
-        },
         {
           "title": "\"걷기 이어 어깨 재활\"…피앤에스로보틱스, '힐러봇' 영토 확장 [줌인...",
           "link": "https://n.news.naver.com/mnews/article/421/0009254412",
@@ -153,6 +147,12 @@
           "link": "https://n.news.naver.com/mnews/article/018/0006397593",
           "source": "이데일리",
           "date": "2026-10-28"
+        },
+        {
+          "title": "코스닥 3.69% 급등 771.28 마감… 기관 2242억 순매수",
+          "link": "https://n.news.naver.com/mnews/article/081/0003693435",
+          "source": "서울신문",
+          "date": "2026-10-28"
         }
       ],
       "sector": "건강관리장비와용품",
@@ -160,8 +160,13 @@
       "source": "estimated",
       "reason_previous": "시장 관심 증가",
       "reason_source_previous": "estimated",
-      "reason_kind": "catalyst",
       "reason_evidence": [
+        {
+          "title": "\"걷기 이어 어깨 재활\"…피앤에스로보틱스, '힐러봇' 영토 확장 [줌인...",
+          "link": "https://n.news.naver.com/mnews/article/421/0009254412",
+          "source": "뉴스1",
+          "date": "2026-10-28"
+        },
         {
           "title": "피앤에스로보틱스, 멕시코 최대 재활기관 수주…해외 확대 기대-밸류...",
           "link": "https://n.news.naver.com/mnews/article/018/0006397593",
@@ -742,5 +747,5 @@
     "count_recent": 5,
     "avg_rate": 16.42
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T19:31:38"
 }
