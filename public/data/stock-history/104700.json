@@ -9,12 +9,24 @@
       "close_price": 12910.0,
       "trading_volume": 1098865,
       "trading_value": 14186347150,
-      "rise_reason": "철강주 3종목 동반 상승",
-      "reason_confidence": "low",
-      "reason_source": "news_extract",
+      "rise_reason": "KISCO홀딩스 한국철강 상장폐지 추진",
+      "reason_confidence": "high",
+      "reason_source": "llm",
       "reason_status": "filled",
       "theme_tag": "철강 주요종목",
       "news": [
+        {
+          "title": "KISCO홀딩스, 자회사 한국철강 상장폐지 추진…'동반 급등'[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009264296",
+          "source": "뉴스1",
+          "date": "2026-11-02"
+        },
+        {
+          "title": "KISCO홀딩스, 1117억원 들여 한국철강 상장폐지 추진",
+          "link": "https://n.news.naver.com/mnews/article/293/0000092539",
+          "source": "블로터",
+          "date": "2026-11-02"
+        },
         {
           "title": "[애프터마켓 리뷰] KISCO홀딩스, 한국철강 완전 자회사 편입 추진",
           "link": "https://n.news.naver.com/mnews/article/374/0000541298",
@@ -32,7 +44,14 @@
           "link": "https://n.news.naver.com/mnews/article/081/0003694891",
           "source": "서울신문",
           "date": "2026-11-02"
-        },
+        }
+      ],
+      "sector": "철강",
+      "is_52w_high": true,
+      "source": "estimated",
+      "reason_previous": "52주 신고가 도달",
+      "reason_source_previous": "pattern",
+      "reason_evidence": [
         {
           "title": "KISCO홀딩스, 자회사 한국철강 상장폐지 추진…'동반 급등'[핫종목]",
           "link": "https://n.news.naver.com/mnews/article/421/0009264296",
@@ -45,13 +64,7 @@
           "source": "블로터",
           "date": "2026-11-02"
         }
-      ],
-      "sector": "철강",
-      "is_52w_high": true,
-      "source": "estimated",
-      "reason_previous": "52주 신고가 도달",
-      "reason_kind": "sector",
-      "reason_source_previous": "pattern"
+      ]
     },
     {
       "date": "20260428",
@@ -137,5 +150,5 @@
     "count_recent": 1,
     "avg_rate": 17.05
   },
-  "built_at": "2026-11-27T19:25:45"
+  "built_at": "2026-11-27T19:34:06"
 }
