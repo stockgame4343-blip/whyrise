@@ -9,15 +9,18 @@
       "close_price": 2400.0,
       "trading_volume": 16247427,
       "trading_value": 38993824800,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "전후 재건 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "theme"
     },
     {
       "date": "20261113",
@@ -25,15 +28,18 @@
       "close_price": 2325.0,
       "trading_volume": 12996761,
       "trading_value": 30217469325,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
       "news": [],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
     },
     {
       "date": "20261105",
@@ -41,15 +47,25 @@
       "close_price": 2260.0,
       "trading_volume": 18690414,
       "trading_value": 42240335640,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "건축자재 업종 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "전후 재건(우크라/중동 전쟁 등)",
-      "news": [],
+      "news": [
+        {
+          "title": "국표원, 건축내화재 국가표준 강화…“샌드위치 패널·석고보드 3종”",
+          "link": "https://n.news.naver.com/mnews/article/029/0003056789",
+          "source": "디지털타임스",
+          "date": "2026-11-03"
+        }
+      ],
       "sector": "건축자재",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector"
     },
     {
       "date": "20260707",
@@ -133,5 +149,5 @@
     "count_recent": 3,
     "avg_rate": 22.96
   },
-  "built_at": "2026-11-27T02:26:50"
+  "built_at": "2026-11-27T19:25:45"
 }

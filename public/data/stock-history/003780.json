@@ -28,9 +28,9 @@
       "close_price": 5490.0,
       "trading_volume": 4573956,
       "trading_value": 25111018440,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 오세훈 테마주 2심 무죄에 난리났다…진양화학·, 29%대 ...",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "",
       "news": [
@@ -61,7 +61,18 @@
       ],
       "sector": "화학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "‘오세훈 테마주’ 2심 무죄에 난리났다…진양화학·진양산업, 29%대 ...",
+          "link": "https://n.news.naver.com/mnews/article/016/0002713624",
+          "source": "헤럴드경제",
+          "date": "2026-10-23"
+        }
+      ]
     },
     {
       "date": "20260310",
@@ -104,5 +115,5 @@
     "count_recent": 1,
     "avg_rate": 18.42
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T19:25:45"
 }

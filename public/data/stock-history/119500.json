@@ -9,15 +9,18 @@
       "close_price": 3435.0,
       "trading_volume": 1198563,
       "trading_value": 4117063905,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
     },
     {
       "date": "20261104",
@@ -25,9 +28,9 @@
       "close_price": 3155.0,
       "trading_volume": 2303347,
       "trading_value": 7267059785,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -40,7 +43,10 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "theme"
     },
     {
       "date": "20261023",
@@ -48,9 +54,9 @@
       "close_price": 2585.0,
       "trading_volume": 661079,
       "trading_value": 1708889215,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "자동차부품 테마 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [
@@ -63,7 +69,10 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "theme"
     },
     {
       "date": "20260305",
@@ -232,5 +241,5 @@
     "count_recent": 2,
     "avg_rate": 18.74
   },
-  "built_at": "2026-11-27T02:26:51"
+  "built_at": "2026-11-27T19:25:45"
 }

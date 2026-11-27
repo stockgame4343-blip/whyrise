@@ -82,15 +82,18 @@
       "close_price": 9350.0,
       "trading_volume": 6365770,
       "trading_value": 59519949500,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "원자력발전 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "theme"
     },
     {
       "date": "20261105",
@@ -98,22 +101,28 @@
       "close_price": 8660.0,
       "trading_volume": 7755850,
       "trading_value": 67165661000,
-      "rise_reason": "",
+      "rise_reason": "태양광주 동반 강세 — 美 민주당 승리 전망",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
-        {
-          "title": "'블루 쓰나미'에 증시 퍼렇게 질리는 데…뒤에서 웃고 있는 주식이 있...",
-          "link": "https://n.news.naver.com/mnews/article/277/0005839064",
-          "source": "아시아경제",
-          "date": "2026-11-06"
-        },
         {
           "title": "코스피 8% 폭락에도 대명에너지·금양그린파워·강원에너지 ‘빨간불...",
           "link": "https://n.news.naver.com/mnews/article/018/0006404798",
           "source": "이데일리",
+          "date": "2026-11-06"
+        },
+        {
+          "title": "美 민주당 승리 전망에 태양광주 급등…한화솔루션 13%↑[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009269653",
+          "source": "뉴스1",
+          "date": "2026-11-04"
+        },
+        {
+          "title": "'블루 쓰나미'에 증시 퍼렇게 질리는 데…뒤에서 웃고 있는 주식이 있...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005839064",
+          "source": "아시아경제",
           "date": "2026-11-06"
         },
         {
@@ -139,8 +148,16 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "태양광/재생에너지",
-      "reason_kind": "none",
-      "reason_source_previous": "news"
+      "reason_kind": "sector",
+      "reason_source_previous": "news",
+      "reason_evidence": [
+        {
+          "title": "美 민주당 승리 전망에 태양광주 급등…한화솔루션 13%↑[핫종목]",
+          "link": "https://n.news.naver.com/mnews/article/421/0009269653",
+          "source": "뉴스1",
+          "date": "2026-11-04"
+        }
+      ]
     },
     {
       "date": "20261104",
@@ -148,10 +165,10 @@
       "close_price": 7820.0,
       "trading_volume": 1980021,
       "trading_value": 15483764220,
-      "rise_reason": "",
+      "rise_reason": "태양광주 동반 강세 — 美 블루웨이브 기대",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "태양광에너지",
       "news": [
         {
@@ -183,8 +200,16 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "태양광/재생에너지",
-      "reason_kind": "none",
-      "reason_source_previous": "news"
+      "reason_kind": "sector",
+      "reason_source_previous": "news",
+      "reason_evidence": [
+        {
+          "title": "美 블루웨이브 기대에 태양광주 급등…한화솔루션·OCI홀딩스 '탈중국...",
+          "link": "https://n.news.naver.com/mnews/article/050/0000112816",
+          "source": "한경비즈니스",
+          "date": "2026-11-04"
+        }
+      ]
     },
     {
       "date": "20260723",
@@ -432,5 +457,5 @@
     "count_recent": 5,
     "avg_rate": 14.39
   },
-  "built_at": "2026-11-27T02:27:04"
+  "built_at": "2026-11-27T19:25:45"
 }

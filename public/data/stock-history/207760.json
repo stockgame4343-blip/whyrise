@@ -9,9 +9,9 @@
       "close_price": 1851.0,
       "trading_volume": 74349,
       "trading_value": 137619999,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "3분기 매출 59% 증가한",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "모바일게임(스마트폰)",
       "news": [
@@ -66,7 +66,18 @@
       ],
       "sector": "양방향미디어와서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 3분기 매출 59% 증가한 미스터블루…上",
+          "link": "https://n.news.naver.com/mnews/article/366/0001205898",
+          "source": "조선비즈",
+          "date": "2026-11-19"
+        }
+      ]
     },
     {
       "date": "20260902",
@@ -425,5 +436,5 @@
     "count_recent": 1,
     "avg_rate": 17.38
   },
-  "built_at": "2026-11-27T02:26:51"
+  "built_at": "2026-11-27T19:25:45"
 }

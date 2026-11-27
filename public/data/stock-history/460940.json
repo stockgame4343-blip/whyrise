@@ -47,15 +47,18 @@
       "close_price": 5600.0,
       "trading_volume": 3690872,
       "trading_value": 20668883200,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
     },
     {
       "date": "20261111",
@@ -63,9 +66,9 @@
       "close_price": 5070.0,
       "trading_volume": 4415358,
       "trading_value": 22385865060,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "의료기기 테마 7종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -78,7 +81,10 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "theme"
     },
     {
       "date": "20261102",
@@ -86,12 +92,18 @@
       "close_price": 5480.0,
       "trading_volume": 3717169,
       "trading_value": 20370086120,
-      "rise_reason": "지능형로봇 테마 3종목 동반 상승",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "지능형로봇/인공지능(AI)",
       "news": [
+        {
+          "title": "엇갈린 투심, 되는 곳 밀어준다… 의료로봇 강세 [바이오맥짚기]",
+          "link": "https://n.news.naver.com/mnews/article/018/0006399613",
+          "source": "이데일리",
+          "date": "2026-10-30"
+        },
         {
           "title": "[마감시황]코스닥, 장중 낙폭 딛고 734.36 마감…기관 623억원 순매수",
           "link": "https://n.news.naver.com/mnews/article/081/0003694890",
@@ -109,7 +121,7 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "상한가 — 사유 미수집",
-      "reason_kind": "theme",
+      "reason_kind": "none",
       "reason_source_previous": "pattern"
     },
     {
@@ -118,9 +130,9 @@
       "close_price": 5120.0,
       "trading_volume": 772859,
       "trading_value": 3957038080,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "멕시코 최대 재활기관 수주",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "의료기기",
       "news": [
@@ -145,7 +157,18 @@
       ],
       "sector": "건강관리장비와용품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "피앤에스로보틱스, 멕시코 최대 재활기관 수주…해외 확대 기대-밸류...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006397593",
+          "source": "이데일리",
+          "date": "2026-10-28"
+        }
+      ]
     },
     {
       "date": "20260810",
@@ -719,5 +742,5 @@
     "count_recent": 5,
     "avg_rate": 16.42
   },
-  "built_at": "2026-11-27T02:26:50"
+  "built_at": "2026-11-27T19:25:45"
 }

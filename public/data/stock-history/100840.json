@@ -9,9 +9,9 @@
       "close_price": 27600.0,
       "trading_volume": 263210,
       "trading_value": 7264596000,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "HRSG 공급 완료",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "원자력발전",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "SNT에너지, 청주 열병합발전소 준공식 참석...\"HRSG 공급 완료\"",
+          "link": "https://n.news.naver.com/mnews/article/014/0005602089",
+          "source": "파이낸셜뉴스",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20260907",
@@ -507,5 +518,5 @@
     "count_recent": 1,
     "avg_rate": 14.37
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T19:25:45"
 }

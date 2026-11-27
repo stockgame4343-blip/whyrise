@@ -9,10 +9,10 @@
       "close_price": 347000.0,
       "trading_volume": 295016,
       "trading_value": 102370552000,
-      "rise_reason": "젠슨황 복귀에 깐부주 부활",
-      "reason_confidence": "high",
+      "rise_reason": "",
+      "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "자율주행차",
       "news": [
         {
@@ -92,15 +92,7 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "자율주행차 테마 강세",
-      "reason_evidence": [
-        {
-          "title": "젠슨황 복귀에 '깐부주' 부활…현대오토에버 상한가[핫종목]",
-          "link": "https://n.news.naver.com/mnews/article/421/0009307251",
-          "source": "뉴스1",
-          "date": "2026-11-24"
-        }
-      ],
-      "reason_kind": "move",
+      "reason_kind": "none",
       "reason_source_previous": "theme"
     },
     {
@@ -109,12 +101,54 @@
       "close_price": 304500.0,
       "trading_volume": 91915,
       "trading_value": 27988117500,
-      "rise_reason": "자율주행차 테마 강세",
-      "reason_confidence": "low",
-      "reason_source": "theme",
+      "rise_reason": "명예기업 선정",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자율주행차",
       "news": [
+        {
+          "title": "현대오토에버, 동반성장지수 3년 연속 최우수…명예기업 선정",
+          "link": "https://n.news.naver.com/mnews/article/029/0003059692",
+          "source": "디지털타임스",
+          "date": "2026-11-17"
+        },
+        {
+          "title": "현대오토에버, SI·ITO 성장 속 AI 기술 개발…바이브코딩·에이전트 ...",
+          "link": "https://n.news.naver.com/mnews/article/092/0002445549",
+          "source": "지디넷코리아",
+          "date": "2026-11-16"
+        },
+        {
+          "title": "현대차 로봇 연구 넘어 '양산' 가속도 아틀라스, 車 아닌 반도체 공장...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006412016",
+          "source": "이데일리",
+          "date": "2026-11-18"
+        },
+        {
+          "title": "하루 만에 ‘5천피’ 탈환…엔비디아 호실적 훈풍에 삼전닉스 ‘쑥’",
+          "link": "https://n.news.naver.com/mnews/article/009/0005765621",
+          "source": "매일경제",
+          "date": "2026-11-18"
+        },
+        {
+          "title": "엔비디아 훈풍에 5000피 회복…로봇·엔터주 '훨훨'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005355331",
+          "source": "한국경제",
+          "date": "2026-11-18"
+        },
+        {
+          "title": "[미리보는 이데일리 신문]美 AI 대중봉쇄 강화…韓 AIDC, 中고객 못 받...",
+          "link": "https://n.news.naver.com/mnews/article/018/0006411408",
+          "source": "이데일리",
+          "date": "2026-11-17"
+        },
+        {
+          "title": "IT서비스 4사, AI·클라우드 타고 3분기 외형 성장…수익성은 '희비'",
+          "link": "https://n.news.naver.com/mnews/article/092/0002445552",
+          "source": "지디넷코리아",
+          "date": "2026-11-16"
+        },
         {
           "title": "[한국의 CISO-권력지도] 현대차·기아보다 앞선 '모비스·글로비스'…...",
           "link": "https://n.news.naver.com/mnews/article/293/0000093497",
@@ -148,7 +182,18 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자율주행차 테마 강세",
+      "reason_source_previous": "theme",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "현대오토에버, 동반성장지수 3년 연속 최우수…명예기업 선정",
+          "link": "https://n.news.naver.com/mnews/article/029/0003059692",
+          "source": "디지털타임스",
+          "date": "2026-11-17"
+        }
+      ]
     },
     {
       "date": "20261016",
@@ -797,5 +842,5 @@
     "count_recent": 2,
     "avg_rate": 18.69
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T19:25:45"
 }

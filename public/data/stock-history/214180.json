@@ -9,9 +9,9 @@
       "close_price": 13480.0,
       "trading_volume": 116118,
       "trading_value": 1565270640,
-      "rise_reason": "자사주 소각",
-      "reason_confidence": "high",
-      "reason_source": "news",
+      "rise_reason": "3분기 영업이익 153억원",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "스테이블코인",
       "news": [
@@ -48,7 +48,18 @@
       ],
       "sector": "IT서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "자사주 소각",
+      "reason_source_previous": "news",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "헥토이노베이션, 3분기 영업이익 153억원…전년比 4% 증가 ‘역대 최대...",
+          "link": "https://n.news.naver.com/mnews/article/138/0002247951",
+          "source": "디지털데일리",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -272,5 +283,5 @@
     "count_recent": 1,
     "avg_rate": 13.79
   },
-  "built_at": "2026-11-22T10:17:01"
+  "built_at": "2026-11-27T19:25:45"
 }

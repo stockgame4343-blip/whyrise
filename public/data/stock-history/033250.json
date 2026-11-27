@@ -35,15 +35,18 @@
       "close_price": 5020.0,
       "trading_volume": 311157,
       "trading_value": 1562008140,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
     },
     {
       "date": "20261102",
@@ -51,15 +54,18 @@
       "close_price": 4050.0,
       "trading_volume": 58064,
       "trading_value": 235159200,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "자동차·부품주 5종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "자동차부품",
       "news": [],
       "sector": "자동차부품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector"
     },
     {
       "date": "20260805",
@@ -264,5 +270,5 @@
     "count_recent": 3,
     "avg_rate": 19.75
   },
-  "built_at": "2026-11-27T13:59:22"
+  "built_at": "2026-11-27T19:25:45"
 }

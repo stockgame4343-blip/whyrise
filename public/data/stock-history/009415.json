@@ -9,10 +9,10 @@
       "close_price": 8240.0,
       "trading_volume": 40536,
       "trading_value": 334016640,
-      "rise_reason": "",
+      "rise_reason": "건설주 4종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "건설",
       "news": [
         {
@@ -38,7 +38,7 @@
       "is_52w_high": null,
       "source": "estimated",
       "reason_previous": "상한가 — 사유 미수집",
-      "reason_kind": "none",
+      "reason_kind": "sector",
       "reason_source_previous": "pattern"
     },
     {
@@ -47,9 +47,9 @@
       "close_price": 6630.0,
       "trading_volume": 23297,
       "trading_value": 154459110,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "건설주 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "건설",
       "news": [
@@ -62,7 +62,10 @@
       ],
       "sector": "건설",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector"
     },
     {
       "date": "20260612",
@@ -810,5 +813,5 @@
     "count_recent": 2,
     "avg_rate": 24.91
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T19:25:45"
 }

@@ -9,9 +9,9 @@
       "close_price": 15740.0,
       "trading_volume": 242266,
       "trading_value": 3813266840,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "3분기 영업익 89억",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "피팅(관이음쇠)/밸브",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "비엠티, 3분기 영업익 89억…전년비 53.6% ↑",
+          "link": "https://n.news.naver.com/mnews/article/016/0002720696",
+          "source": "헤럴드경제",
+          "date": "2026-11-09"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -312,5 +323,5 @@
     "count_recent": 1,
     "avg_rate": 12.48
   },
-  "built_at": "2026-11-27T02:26:50"
+  "built_at": "2026-11-27T19:25:45"
 }

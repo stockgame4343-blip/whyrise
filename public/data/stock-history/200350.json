@@ -9,7 +9,7 @@
       "close_price": 3460.0,
       "trading_volume": 53490,
       "trading_value": 185075400,
-      "rise_reason": "방송과엔터테인먼트 업종 3종목 동반 상승",
+      "rise_reason": "영상콘텐츠 테마 3종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -26,7 +26,7 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "영상콘텐츠 테마 강세",
-      "reason_kind": "sector",
+      "reason_kind": "theme",
       "reason_source_previous": "theme"
     },
     {
@@ -40,7 +40,14 @@
       "reason_source": "news_extract",
       "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
-      "news": [],
+      "news": [
+        {
+          "title": "상장사 M&A로 2년만에 60억 챙긴 이정재·아티스트컴퍼니... 소액주주...",
+          "link": "https://n.news.naver.com/mnews/article/366/0001202083",
+          "source": "조선비즈",
+          "date": "2026-11-03"
+        }
+      ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
       "source": "estimated",
@@ -54,12 +61,18 @@
       "close_price": 3400.0,
       "trading_volume": 109768,
       "trading_value": 373211200,
-      "rise_reason": "관련 보도: 아티스트컴퍼니 매각, IP 커머스 집중",
+      "rise_reason": "",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "filled",
+      "reason_status": "missing",
       "theme_tag": "영상콘텐츠",
       "news": [
+        {
+          "title": "아티스트컴퍼니 \"아티스트스튜디오 매각, IP 커머스 집중\"",
+          "link": "https://n.news.naver.com/mnews/article/014/0005597245",
+          "source": "파이낸셜뉴스",
+          "date": "2026-10-30"
+        },
         {
           "title": "상장사 M&A로 2년만에 60억 챙긴 이정재·아티스트컴퍼니... 소액주주...",
           "link": "https://n.news.naver.com/mnews/article/366/0001202083",
@@ -71,15 +84,7 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "영상콘텐츠 테마 강세",
-      "reason_evidence": [
-        {
-          "title": "아티스트컴퍼니 \"아티스트스튜디오 매각, IP 커머스 집중\"",
-          "link": "https://n.news.naver.com/mnews/article/014/0005597245",
-          "source": "파이낸셜뉴스",
-          "date": "2026-10-30"
-        }
-      ],
-      "reason_kind": "related",
+      "reason_kind": "none",
       "reason_source_previous": "theme"
     },
     {
@@ -724,5 +729,5 @@
     "count_recent": 3,
     "avg_rate": 17.17
   },
-  "built_at": "2026-11-27T02:26:51"
+  "built_at": "2026-11-27T19:25:45"
 }

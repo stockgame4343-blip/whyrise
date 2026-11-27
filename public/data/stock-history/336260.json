@@ -35,12 +35,24 @@
       "close_price": 32500.0,
       "trading_volume": 709118,
       "trading_value": 23046335000,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "3Q 적자 축소 실적 개선",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "고체산화물 연료전지(SOFC)",
       "news": [
+        {
+          "title": "두산퓨얼셀, 3Q 적자 축소 '실적 개선'…\"美 AI 연계 수주로 흑자 전환...",
+          "link": "https://n.news.naver.com/mnews/article/003/0014300513",
+          "source": "뉴시스",
+          "date": "2026-11-04"
+        },
+        {
+          "title": "4000억 조달 두산퓨얼셀, 셀다운 흥행은 '물음표'",
+          "link": "https://n.news.naver.com/mnews/article/008/0005435901",
+          "source": "머니투데이",
+          "date": "2026-11-03"
+        },
         {
           "title": "‘블루웨이브’에 美 빅테크 웃고 韓 반도체는 긴장…친환경株 대안 ...",
           "link": "https://n.news.naver.com/mnews/article/016/0002719580",
@@ -74,7 +86,18 @@
       ],
       "sector": "에너지장비및서비스",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "catalyst",
+      "reason_evidence": [
+        {
+          "title": "두산퓨얼셀, 3Q 적자 축소 '실적 개선'…\"美 AI 연계 수주로 흑자 전환...",
+          "link": "https://n.news.naver.com/mnews/article/003/0014300513",
+          "source": "뉴시스",
+          "date": "2026-11-04"
+        }
+      ]
     },
     {
       "date": "20260915",
@@ -1285,5 +1308,5 @@
     "count_recent": 2,
     "avg_rate": 14.91
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T19:25:45"
 }

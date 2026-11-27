@@ -9,12 +9,18 @@
       "close_price": 10940.0,
       "trading_volume": 55239,
       "trading_value": 604314660,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "화장품",
       "news": [
+        {
+          "title": "K뷰티의 '멀티 브랜드' 전략…계산된 '확장술'",
+          "link": "https://n.news.naver.com/mnews/article/648/0000051739",
+          "source": "비즈워치",
+          "date": "2026-10-20"
+        },
         {
           "title": "\"560억 소식에 상한가 찍었다\"…'김태욱 K-뷰티 회사' 아이패밀리에스...",
           "link": "https://n.news.naver.com/mnews/article/277/0005832886",
@@ -36,7 +42,10 @@
       ],
       "sector": "화장품",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
     },
     {
       "date": "20260629",
@@ -127,5 +136,5 @@
     "count_recent": 0,
     "avg_rate": 16.75
   },
-  "built_at": "2026-11-27T02:26:50"
+  "built_at": "2026-11-27T19:25:45"
 }

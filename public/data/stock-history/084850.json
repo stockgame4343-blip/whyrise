@@ -9,10 +9,10 @@
       "close_price": 5820.0,
       "trading_volume": 349537,
       "trading_value": 2034305340,
-      "rise_reason": "",
+      "rise_reason": "전자장비와기기 업종 6종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
         {
@@ -39,7 +39,7 @@
       "source": "estimated",
       "reason_previous": "로봇/자동화",
       "reason_source_previous": "news",
-      "reason_kind": "none"
+      "reason_kind": "sector"
     },
     {
       "date": "20261124",
@@ -47,10 +47,10 @@
       "close_price": 5390.0,
       "trading_volume": 6809,
       "trading_value": 36700510,
-      "rise_reason": "",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -76,8 +76,16 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "시장 관심 증가",
-      "reason_kind": "none",
-      "reason_source_previous": "estimated"
+      "reason_kind": "sector",
+      "reason_source_previous": "estimated",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 젠슨 황 복귀에 로봇주 일제히 강세…현대오토에버 22% 급등",
+          "link": "https://n.news.naver.com/mnews/article/366/0001206868",
+          "source": "조선비즈",
+          "date": "2026-11-24"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -227,5 +235,5 @@
     "count_recent": 2,
     "avg_rate": 21.83
   },
-  "built_at": "2026-11-27T13:59:22"
+  "built_at": "2026-11-27T19:25:45"
 }

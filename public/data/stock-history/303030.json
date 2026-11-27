@@ -9,10 +9,10 @@
       "close_price": 1276.0,
       "trading_volume": 589274,
       "trading_value": 751913624,
-      "rise_reason": "",
+      "rise_reason": "반도체주 3종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
         {
@@ -44,7 +44,7 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
-      "reason_kind": "none",
+      "reason_kind": "sector",
       "reason_source_previous": "news"
     },
     {
@@ -53,9 +53,9 @@
       "close_price": 982.0,
       "trading_volume": 186614,
       "trading_value": 183254948,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "시스템반도체 테마 8종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시스템반도체",
       "news": [
@@ -80,7 +80,10 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "theme"
     },
     {
       "date": "20260818",
@@ -631,5 +634,5 @@
     "count_recent": 2,
     "avg_rate": 20.89
   },
-  "built_at": "2026-11-27T02:26:51"
+  "built_at": "2026-11-27T19:25:45"
 }

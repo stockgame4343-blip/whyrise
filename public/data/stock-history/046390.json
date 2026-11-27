@@ -9,9 +9,9 @@
       "close_price": 1986.0,
       "trading_volume": 78511,
       "trading_value": 155922846,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "엔터주 동반 강세 — 한한령 해제 기대감",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "엔터테인먼트",
       "news": [
@@ -24,7 +24,18 @@
       ],
       "sector": "방송과엔터테인먼트",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "한한령 해제 기대감에… SM·스튜디오드래곤 등 엔터주 상한가",
+          "link": "https://n.news.naver.com/mnews/article/018/0006412109",
+          "source": "이데일리",
+          "date": "2026-11-18"
+        }
+      ]
     },
     {
       "date": "20260630",
@@ -329,5 +340,5 @@
     "count_recent": 1,
     "avg_rate": 14.75
   },
-  "built_at": "2026-11-27T02:26:51"
+  "built_at": "2026-11-27T19:25:45"
 }

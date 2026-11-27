@@ -213,12 +213,24 @@
       "close_price": 17090.0,
       "trading_volume": 1123483,
       "trading_value": 19200324470,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "공급망주 동반 강세",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "갤럭시 부품주",
       "news": [
+        {
+          "title": "현대차 '아틀라스' 공급망 공개에 관련주 급등…나무가·캠시스 30% 가...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003479218",
+          "source": "전자신문",
+          "date": "2026-10-27"
+        },
+        {
+          "title": "[애프터마켓 리뷰] 루닛, 미 서밋과 항암 신약 개발 협력에 급등",
+          "link": "https://n.news.naver.com/mnews/article/374/0000539910",
+          "source": "SBS Biz",
+          "date": "2026-10-27"
+        },
         {
           "title": "[애프터마켓 리뷰] 삼전닉스 넘어 장비·기판주까지…반도체주 투심 ...",
           "link": "https://n.news.naver.com/mnews/article/374/0000540155",
@@ -229,12 +241,6 @@
           "title": "[단독] 원가절감·기술 보안·탈중국…아틀라스가 소집한 'K부품 군단...",
           "link": "https://n.news.naver.com/mnews/article/015/0005347189",
           "source": "한국경제",
-          "date": "2026-10-27"
-        },
-        {
-          "title": "현대차 '아틀라스' 공급망 공개에 관련주 급등…나무가·캠시스 30% 가...",
-          "link": "https://n.news.naver.com/mnews/article/030/0003479218",
-          "source": "전자신문",
           "date": "2026-10-27"
         },
         {
@@ -252,7 +258,18 @@
       ],
       "sector": "핸드셋",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "현대차 '아틀라스' 공급망 공개에 관련주 급등…나무가·캠시스 30% 가...",
+          "link": "https://n.news.naver.com/mnews/article/030/0003479218",
+          "source": "전자신문",
+          "date": "2026-10-27"
+        }
+      ]
     },
     {
       "date": "20261026",
@@ -260,7 +277,7 @@
       "close_price": 15530.0,
       "trading_volume": 908112,
       "trading_value": 14102979360,
-      "rise_reason": "핸드셋 업종 4종목 동반 상승",
+      "rise_reason": "로봇 테마 5종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -301,7 +318,7 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "바이오",
-      "reason_kind": "sector",
+      "reason_kind": "theme",
       "reason_source_previous": "news"
     },
     {
@@ -656,5 +673,5 @@
     "count_recent": 2,
     "avg_rate": 16.49
   },
-  "built_at": "2026-11-27T02:27:04"
+  "built_at": "2026-11-27T19:25:45"
 }

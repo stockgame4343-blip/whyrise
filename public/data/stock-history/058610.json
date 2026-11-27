@@ -9,10 +9,10 @@
       "close_price": 85700.0,
       "trading_volume": 978901,
       "trading_value": 83891815700,
-      "rise_reason": "",
+      "rise_reason": "로봇주 동반 강세",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -32,8 +32,16 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "AI/반도체 테마",
-      "reason_kind": "none",
-      "reason_source_previous": "news"
+      "reason_kind": "sector",
+      "reason_source_previous": "news",
+      "reason_evidence": [
+        {
+          "title": "[특징주] 젠슨 황 복귀에 로봇주 일제히 강세…현대오토에버 22% 급등",
+          "link": "https://n.news.naver.com/mnews/article/366/0001206868",
+          "source": "조선비즈",
+          "date": "2026-11-24"
+        }
+      ]
     },
     {
       "date": "20261118",
@@ -41,10 +49,10 @@
       "close_price": 77100.0,
       "trading_volume": 471970,
       "trading_value": 36388887000,
-      "rise_reason": "",
+      "rise_reason": "로봇주 동반 강세 — 엔비디아 훈풍에 5000피 회복",
       "reason_confidence": "low",
       "reason_source": "news_extract",
-      "reason_status": "missing",
+      "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
         {
@@ -82,8 +90,16 @@
       "is_52w_high": false,
       "source": "estimated",
       "reason_previous": "로봇/자동화",
-      "reason_kind": "none",
-      "reason_source_previous": "news"
+      "reason_kind": "sector",
+      "reason_source_previous": "news",
+      "reason_evidence": [
+        {
+          "title": "엔비디아 훈풍에 5000피 회복…로봇·엔터주 '훨훨'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005355331",
+          "source": "한국경제",
+          "date": "2026-11-18"
+        }
+      ]
     },
     {
       "date": "20260915",
@@ -1373,5 +1389,5 @@
     "count_recent": 2,
     "avg_rate": 17.32
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T19:25:45"
 }

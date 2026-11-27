@@ -9,9 +9,9 @@
       "close_price": 70400.0,
       "trading_volume": 109431,
       "trading_value": 7703942400,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "3분기 영업이익 155억원",
+      "reason_confidence": "high",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "미용기기",
       "news": [
@@ -42,7 +42,18 @@
       ],
       "sector": "생물공학",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "move",
+      "reason_evidence": [
+        {
+          "title": "메디톡스 3분기 영업이익 155억원… 전년比 74.5% ‘껑충’",
+          "link": "https://n.news.naver.com/mnews/article/081/0003697797",
+          "source": "서울신문",
+          "date": "2026-11-10"
+        }
+      ]
     },
     {
       "date": "20260629",
@@ -79,5 +90,5 @@
     "count_recent": 1,
     "avg_rate": 12.79
   },
-  "built_at": "2026-11-27T02:26:50"
+  "built_at": "2026-11-27T19:25:45"
 }

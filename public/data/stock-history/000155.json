@@ -60,15 +60,25 @@
       "close_price": 250500.0,
       "trading_volume": 24957,
       "trading_value": 6251728500,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "복합기업 업종 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "지주사",
-      "news": [],
+      "news": [
+        {
+          "title": "[단독]\"방치된 우선주\"…보통주와 가격 차이 역대 최고 수준[우선주 디...",
+          "link": "https://n.news.naver.com/mnews/article/277/0005839662",
+          "source": "아시아경제",
+          "date": "2026-11-09"
+        }
+      ],
       "sector": "복합기업",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector"
     },
     {
       "date": "20260731",
@@ -559,5 +569,5 @@
     "count_recent": 2,
     "avg_rate": 14.68
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T19:25:45"
 }

@@ -9,12 +9,18 @@
       "close_price": 4220.0,
       "trading_volume": 35814,
       "trading_value": 151135080,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "관련 보도: 2026 푸드위크 코리아서 식품 X-ray 이물검사기 FSCAN...",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "2차전지",
       "news": [
+        {
+          "title": "자비스, 운영자금 30억원 단기 차입 결정",
+          "link": "https://n.news.naver.com/mnews/article/020/0003759332",
+          "source": "동아일보",
+          "date": "2026-11-02"
+        },
         {
           "title": "자비스, 美 에너지 설비 기업에 약 36억 ‘조립 자동화 라인’ 턴키 수...",
           "link": "https://n.news.naver.com/mnews/article/029/0003057366",
@@ -30,7 +36,18 @@
       ],
       "sector": "전자장비와기기",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "related",
+      "reason_evidence": [
+        {
+          "title": "자비스, ‘2026 푸드위크 코리아’서 식품 X-ray 이물검사기 ‘FSCAN’...",
+          "link": "https://n.news.naver.com/mnews/article/029/0003057013",
+          "source": "디지털타임스",
+          "date": "2026-11-04"
+        }
+      ]
     },
     {
       "date": "20260828",
@@ -650,5 +667,5 @@
     "count_recent": 1,
     "avg_rate": 12.7
   },
-  "built_at": "2026-11-27T02:26:51"
+  "built_at": "2026-11-27T19:25:45"
 }

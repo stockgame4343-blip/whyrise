@@ -9,9 +9,9 @@
       "close_price": 46250.0,
       "trading_volume": 1266472,
       "trading_value": 58574330000,
-      "rise_reason": "시장 관심 증가",
-      "reason_confidence": "low",
-      "reason_source": "estimated",
+      "rise_reason": "판가 인상·고부가 제품 확대 (신한)",
+      "reason_confidence": "mid",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [
@@ -36,7 +36,18 @@
       ],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "analyst",
+      "reason_evidence": [
+        {
+          "title": "티엘비, 판가 인상·고부가 제품 확대…목표가 6.8민원으로 상향-신한",
+          "link": "https://n.news.naver.com/mnews/article/018/0006410227",
+          "source": "이데일리",
+          "date": "2026-11-16"
+        }
+      ]
     },
     {
       "date": "20261111",
@@ -44,7 +55,7 @@
       "close_price": 38250.0,
       "trading_volume": 1267832,
       "trading_value": 48494574000,
-      "rise_reason": "반도체 기판 테마 8종목 동반 상승",
+      "rise_reason": "반도체 기판 테마 7종목 동반 상승",
       "reason_confidence": "low",
       "reason_source": "news_extract",
       "reason_status": "filled",
@@ -82,15 +93,18 @@
       "close_price": 38750.0,
       "trading_volume": 436656,
       "trading_value": 16920420000,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "반도체 기판 테마 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "반도체 기판(FC-BGA/PCB/MLB 등)",
       "news": [],
       "sector": "반도체와반도체장비",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "theme"
     },
     {
       "date": "20260922",
@@ -1053,5 +1067,5 @@
     "count_recent": 2,
     "avg_rate": 15.95
   },
-  "built_at": "2026-11-27T02:26:49"
+  "built_at": "2026-11-27T19:25:45"
 }

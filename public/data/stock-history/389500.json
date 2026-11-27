@@ -9,9 +9,9 @@
       "close_price": 35200.0,
       "trading_volume": 114675,
       "trading_value": 4036560000,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "로봇주 동반 강세 — 엔비디아 훈풍에 5000피 회복",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "로봇(산업용/협동로봇 등)",
       "news": [
@@ -30,7 +30,18 @@
       ],
       "sector": "기계",
       "is_52w_high": false,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector",
+      "reason_evidence": [
+        {
+          "title": "엔비디아 훈풍에 5000피 회복…로봇·엔터주 '훨훨'",
+          "link": "https://n.news.naver.com/mnews/article/015/0005355331",
+          "source": "한국경제",
+          "date": "2026-11-18"
+        }
+      ]
     },
     {
       "date": "20260731",
@@ -1268,5 +1279,5 @@
     "count_recent": 1,
     "avg_rate": 15.85
   },
-  "built_at": "2026-11-27T02:26:50"
+  "built_at": "2026-11-27T19:25:45"
 }

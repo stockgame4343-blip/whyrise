@@ -28,15 +28,18 @@
       "close_price": 5010.0,
       "trading_volume": 37698,
       "trading_value": 188866980,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "건축자재 업종 3종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
       "news": [],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector"
     },
     {
       "date": "20261110",
@@ -127,15 +130,25 @@
       "close_price": 4000.0,
       "trading_volume": 11503,
       "trading_value": 46012000,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "건축자재 업종 4종목 동반 상승",
       "reason_confidence": "low",
-      "reason_source": "estimated",
+      "reason_source": "news_extract",
       "reason_status": "filled",
       "theme_tag": "시멘트/레미콘",
-      "news": [],
+      "news": [
+        {
+          "title": "코스피 장 초반 급락 딛고 2.24% 반등… 5859선 마감",
+          "link": "https://n.news.naver.com/mnews/article/081/0003694891",
+          "source": "서울신문",
+          "date": "2026-11-02"
+        }
+      ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "sector"
     },
     {
       "date": "20261102",
@@ -149,6 +162,12 @@
       "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
       "news": [
+        {
+          "title": "SK하이닉스 7% 뚝, 삼성바이오는 8.9% 쑥… 코스피 206포인트 내려",
+          "link": "https://n.news.naver.com/mnews/article/081/0003694352",
+          "source": "서울신문",
+          "date": "2026-10-30"
+        },
         {
           "title": "코스피 장 초반 급락 딛고 2.24% 반등… 5859선 마감",
           "link": "https://n.news.naver.com/mnews/article/081/0003694891",
@@ -169,15 +188,25 @@
       "close_price": 3485.0,
       "trading_volume": 401,
       "trading_value": 1397485,
-      "rise_reason": "시장 관심 증가",
+      "rise_reason": "",
       "reason_confidence": "low",
-      "reason_source": "estimated",
-      "reason_status": "filled",
+      "reason_source": "news_extract",
+      "reason_status": "missing",
       "theme_tag": "시멘트/레미콘",
-      "news": [],
+      "news": [
+        {
+          "title": "코스피, 반도체 대형주 타고 상승… 5563선 터치",
+          "link": "https://n.news.naver.com/mnews/article/081/0003692314",
+          "source": "서울신문",
+          "date": "2026-10-26"
+        }
+      ],
       "sector": "건축자재",
       "is_52w_high": null,
-      "source": "estimated"
+      "source": "estimated",
+      "reason_previous": "시장 관심 증가",
+      "reason_source_previous": "estimated",
+      "reason_kind": "none"
     },
     {
       "date": "20260918",
@@ -421,5 +450,5 @@
     "count_recent": 8,
     "avg_rate": 25.51
   },
-  "built_at": "2026-11-27T13:59:22"
+  "built_at": "2026-11-27T19:25:45"
 }
