@@ -74,10 +74,8 @@ function report(date, s, o = {}) {
             mark(t === 'published', '쓰레드 발행',
                 !t ? '❌ 쓰레드가 아직 발행 안 됐어요.'
                     : `❌ 쓰레드 ${t === 'uncertain' ? '게시 여부 확인 필요' : '발행 실패'}${s.threadsError ? ' — ' + String(s.threadsError).slice(0, 120) : ''}`);
-        } else {
-            const off = 'ℹ️ 쓰레드 자동 발행이 꺼져 있어요(저장소 변수 THREADS_AUTOPUBLISH=on 이 아님). 발행실 원고를 직접 올려 주세요.';
-            lines.push(off); miss.push(off);
         }
+        // 꺼져 있으면(11/27 쓰레드 운영 중단) 쓰레드는 점검하지 않는다 — 매일 '꺼져 있어요' DM 이 가지 않게
         mark(s.manuscript, '블로그 원고 준비', '❌ 블로그·쓰레드 원고가 아직 안 만들어졌어요.');
         if (s.manuscript && !s.blogNoted) { const t = '📝 블로그 원고 준비 알림이 안 나갔어요 — 원고는 발행실에 있어요: ' + STUDIO; lines.push(t); miss.push(t); }
     }

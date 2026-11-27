@@ -62,9 +62,11 @@ test('원고 단계가 도는 중이면 쓰레드·블로그는 대기로 보고
     assert.equal(report(D, { ...s, closePosted: false }, { autopublish: true, marketingRunning: true }).length, 3);
 });
 
-test('쓰레드 자동 발행이 꺼져 있으면 그걸 알려 준다', () => {
-    const lines = report(D, inspect(D, repo(ALL)), { autopublish: false });
-    assert.ok(lines.some(l => /THREADS_AUTOPUBLISH/.test(l)));
+test('쓰레드 자동 발행이 꺼져 있으면 쓰레드는 점검하지 않는다(다른 게 다 나갔으면 DM 없음)', () => {
+    const s = inspect(D, repo(ALL));
+    assert.deepEqual(report(D, { ...s, threads: '' }, { autopublish: false }), []);
+    const lines = report(D, { ...s, threads: '', closePosted: false }, { autopublish: false });
+    assert.ok(lines.length && !lines.some(l => /쓰레드/.test(l)));
 });
 
 test('운영자 DM chat id — 둘 중 하나만 있어도 가고, 공개 채널은 쓰지 않는다', () => {
