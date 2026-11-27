@@ -53,6 +53,17 @@ jobs:
           [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
           node scripts/telegram_morning_brief.js $ARGS
 
+      # 상류(stock-rise) 확정 데이터가 1거래일 이상 밀렸으면 운영자 개인 DM (정상이면 조용히). 공개 채널 X
+      - name: Upstream watch (operator DM)
+        if: ${{ !cancelled() && inputs.dry_run != true }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+          THREADS_ALERT_CHAT_ID: ${{ secrets.THREADS_ALERT_CHAT_ID }}
+        run: node scripts/upstream_watch.js
+
       # 중복 방지 마커 커밋(게시됐을 때만 변경됨). dry-run/스킵이면 변경 없음 → no-op.
       - name: Commit marker
         if: ${{ inputs.dry_run != true }}
